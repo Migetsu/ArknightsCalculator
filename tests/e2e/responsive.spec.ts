@@ -66,9 +66,17 @@ test.describe('Responsive layout and mobile drawer navigation', () => {
     await page.screenshot({ path: 'test-results/mobile-360.png', fullPage: true })
   })
 
-  test('renders design system showcase in dev environment', async ({ page }) => {
-    await page.goto('/_ui')
+  test('renders design system showcase in dev or verifies exclusion in production', async ({
+    page,
+  }) => {
+    const response = await page.goto('/_ui')
     await page.waitForLoadState('networkidle')
+
+    // In production builds (e.g. CI running build & preview), _ui route is excluded and returns 404
+    if (process.env.CI) {
+      expect(response?.status()).toBe(404)
+      return
+    }
 
     await expect(page.locator('.page-ui__title')).toBeVisible()
     await expect(page.locator('.ak-button--primary').first()).toBeVisible()
