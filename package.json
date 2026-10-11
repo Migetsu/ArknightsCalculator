@@ -20,7 +20,8 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "i18n:check": "node --experimental-strip-types scripts/check-i18n.ts"
   },
   "engines": {
     "node": ">=22.0.0"
@@ -28,6 +29,7 @@
   "dependencies": {
     "@nuxt/icon": "^2.1.0",
     "@nuxt/image": "^2.0.1",
+    "@nuxtjs/i18n": "^10.6.0",
     "@pinia/nuxt": "^1.0.2",
     "@vueuse/core": "^13.9.0",
     "@vueuse/nuxt": "^13.9.0",
