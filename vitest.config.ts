@@ -1,18 +1,27 @@
-import { defineVitestConfig } from '@nuxt/test-utils/config'
+import { defineConfig } from 'vitest/config'
+import { defineVitestProject } from '@nuxt/test-utils/config'
 
-export default defineVitestConfig({
+export default defineConfig({
   test: {
-    include: ['tests/unit/**/*.{test,spec}.ts'],
-    environment: 'node',
-    environmentMatchGlobs: [
-      ['tests/unit/components/**', 'nuxt'],
-      ['tests/unit/pages/**', 'nuxt'],
-      ['tests/unit/composables/**', 'nuxt'],
-    ],
-    environmentOptions: {
-      nuxt: {
-        domEnvironment: 'happy-dom',
+    projects: [
+      {
+        test: {
+          name: 'unit',
+          include: ['tests/unit/shared/**/*.{test,spec}.ts'],
+          environment: 'node',
+        },
       },
-    },
+      await defineVitestProject({
+        test: {
+          name: 'nuxt',
+          include: ['tests/unit/{components,pages,composables}/**/*.{test,spec}.ts'],
+          environmentOptions: {
+            nuxt: {
+              domEnvironment: 'happy-dom',
+            },
+          },
+        },
+      }),
+    ],
   },
 })

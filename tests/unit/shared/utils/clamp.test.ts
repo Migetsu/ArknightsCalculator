@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { clamp } from '../../../shared/utils/clamp'
+import { clamp } from '../../../../shared/utils/clamp'
 
 describe('clamp', () => {
   describe('values within range', () => {
