@@ -23,10 +23,11 @@ const localeList = computed<LocaleItem[]>(() => {
       v-for="item in localeList"
       :key="item.code"
       :to="switchLocalePath(item.code)"
-      role="button"
+      :lang="item.code"
+      :hreflang="item.code"
       class="language-switcher__btn"
       :class="{ 'language-switcher__btn--active': item.code === locale }"
-      :aria-pressed="item.code === locale"
+      :aria-current="item.code === locale ? 'true' : undefined"
       :aria-label="item.name"
       @click="setLocale(item.code)"
     >
@@ -38,31 +39,37 @@ const localeList = computed<LocaleItem[]>(() => {
 <style lang="scss" scoped>
 .language-switcher {
   display: inline-flex;
-  gap: 0.25rem;
+  gap: var(--space-2xs);
 
   &__btn {
     display: inline-block;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1.25;
+    padding: var(--space-2xs) var(--space-xs);
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
     text-decoration: none;
     cursor: pointer;
-    background: transparent;
-    border: 1px solid #444;
-    color: #888;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    background-color: transparent;
+    border: 1px solid var(--color-border-base);
+    color: var(--color-text-muted);
+    border-radius: var(--radius-xs);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    @include focus-ring;
 
     &:hover {
-      color: #fff;
-      border-color: #888;
+      color: var(--color-text-primary);
+      border-color: var(--color-border-bold);
     }
 
     &--active {
-      color: #fff;
-      background: #333;
-      border-color: #666;
+      color: var(--color-accent-primary);
+      background-color: var(--color-accent-primary-subtle);
+      border-color: var(--color-accent-primary);
     }
   }
 }

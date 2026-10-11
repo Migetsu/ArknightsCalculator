@@ -12,8 +12,13 @@ describe('LanguageSwitcher', () => {
     expect(buttons[1]?.text()).toBe('RU')
 
     // In default test environment, locale is 'en'
-    expect(buttons[0]?.attributes('aria-pressed')).toBe('true')
+    expect(buttons[0]?.attributes('lang')).toBe('en')
+    expect(buttons[0]?.attributes('hreflang')).toBe('en')
+    expect(buttons[0]?.attributes('aria-current')).toBe('true')
     expect(buttons[0]?.classes()).toContain('language-switcher__btn--active')
-    expect(buttons[1]?.attributes('aria-pressed')).toBe('false')
+
+    expect(buttons[1]?.attributes('lang')).toBe('ru')
+    expect(buttons[1]?.attributes('hreflang')).toBe('ru')
+    expect(buttons[1]?.attributes('aria-current')).toBeUndefined()
   })
 })

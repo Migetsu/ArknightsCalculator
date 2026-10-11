@@ -16,18 +16,23 @@ const { t } = useI18n()
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding: 2rem;
+  padding: var(--space-2xl);
   text-align: center;
 
   &__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
   }
 
   &__description {
-    font-size: 1.125rem;
-    color: #666;
+    font-family: var(--font-body);
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
   }
 }
 </style>
