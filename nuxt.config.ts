@@ -4,12 +4,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  modules: [
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-    '@nuxt/icon',
-    '@nuxt/image',
-  ],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt', '@nuxt/icon', '@nuxt/image'],
   typescript: {
     strict: true,
   },
