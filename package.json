@@ -8,7 +8,16 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typecheck": "nuxt typecheck"
+    "prepare": "husky",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint . && stylelint \"**/*.{scss,vue}\"",
+    "lint:fix": "eslint --fix . && stylelint --fix \"**/*.{scss,vue}\"",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint --fix .",
+    "lint:style": "stylelint \"**/*.{scss,vue}\"",
+    "lint:style:fix": "stylelint --fix \"**/*.{scss,vue}\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@nuxt/icon": "^2.1.0",
@@ -20,7 +29,18 @@
     "pinia": "^4.0.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "postcss-html": "^2.0.0",
+    "prettier": "^3.9.10",
     "sass": "^1.93.3",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.1.5"
   }
