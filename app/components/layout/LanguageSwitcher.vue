@@ -23,10 +23,11 @@ const localeList = computed<LocaleItem[]>(() => {
       v-for="item in localeList"
       :key="item.code"
       :to="switchLocalePath(item.code)"
-      role="button"
+      :lang="item.code"
+      :hreflang="item.code"
       class="language-switcher__btn"
       :class="{ 'language-switcher__btn--active': item.code === locale }"
-      :aria-pressed="item.code === locale"
+      :aria-current="item.code === locale ? 'true' : undefined"
       :aria-label="item.name"
       @click="setLocale(item.code)"
     >
