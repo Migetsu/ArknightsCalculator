@@ -1,0 +1,73 @@
+@use './tokens' as *;
+
+// Mobile-first responsive breakpoint mixin
+@mixin mq($bp) {
+  @if $bp == sm {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  } @else {
+    @media (min-width: #{$bp}) {
+      @content;
+    }
+  }
+}
+
+// Tactical cut corner via clip-path
+@mixin cut-corner($size: 10px, $corner: top-left) {
+  @if $corner == top-left {
+    clip-path: polygon(#{$size} 0, 100% 0, 100% 100%, 0 100%, 0 #{$size});
+  } @else if $corner == top-right {
+    clip-path: polygon(0 0, calc(100% - #{$size}) 0, 100% #{$size}, 100% 100%, 0 100%);
+  } @else if $corner == bottom-right {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0 100%);
+  } @else if $corner == bottom-left {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, #{$size} 100%, 0 calc(100% - #{$size}));
+  } @else if $corner == dual-diagonal {
+    clip-path: polygon(
+      #{$size} 0,
+      100% 0,
+      100% calc(100% - #{$size}),
+      calc(100% - #{$size}) 100%,
+      0 100%,
+      0 #{$size}
+    );
+  }
+}
+
+// High-contrast tactical focus ring for accessibility
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Respect user preference for reduced motion
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Text truncation with ellipsis
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,106 @@
+// Design Tokens in Arknights aesthetic
+// Dark tactical palette, high-contrast accents, technical metrics
+
+:root {
+  // Background colors
+  --color-bg-base: #0c0e12;
+  --color-bg-surface: #141721;
+  --color-bg-elevated: #1a1f2c;
+  --color-bg-subtle: #22293a;
+  --color-bg-overlay: rgb(12 14 18 / 85%);
+
+  // Border colors
+  --color-border-subtle: #232938;
+  --color-border-base: #323b4f;
+  --color-border-bold: #4a5673;
+  --color-border-active: #00e5ff;
+
+  // Text colors (WCAG AA compliant against dark surfaces)
+  --color-text-primary: #f0f4fc;
+  --color-text-secondary: #a2adc2;
+  --color-text-muted: #6e7991;
+  --color-text-inverse: #0c0e12;
+
+  // Tactical accents (Arknights signature colors)
+  --color-accent-primary: #00e5ff; // Cyan tech
+  --color-accent-primary-hover: #33ebff;
+  --color-accent-primary-active: #00b8cc;
+  --color-accent-primary-subtle: rgb(0 229 255 / 12%);
+  --color-accent-warning: #ffb703; // Tactical Amber
+  --color-accent-warning-hover: #ffc433;
+  --color-accent-warning-subtle: rgb(255 183 3 / 12%);
+  --color-accent-danger: #f36; // Combat Red
+  --color-accent-danger-hover: #ff5c85;
+  --color-accent-danger-subtle: rgb(255 51 102 / 12%);
+  --color-accent-success: #00e676; // Medical Green
+  --color-accent-success-hover: #33eb91;
+  --color-accent-success-subtle: rgb(0 230 118 / 12%);
+
+  // Typography stacks (Both Latin & Cyrillic supported)
+  --font-heading: 'Exo 2', system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', menlo, monaco, consolas, monospace;
+
+  // Font sizes
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+
+  // Font weights
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Line heights
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+
+  // Spacing scale
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  // Sharp / Tactical Radii (minimal, mostly clip-path corners)
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  // Shadows
+  --shadow-panel: 0 4px 20px rgb(0 0 0 / 40%);
+  --shadow-glow-primary: 0 0 12px rgb(0 229 255 / 35%);
+  --shadow-glow-danger: 0 0 12px rgb(255 51 102 / 35%);
+
+  // Z-index scale
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 500;
+  --z-backdrop: 900;
+  --z-drawer: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
+
+  // Transitions
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+// SCSS Breakpoints for media query mixins
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

@@ -6,7 +6,7 @@ test.describe('I18n language switching', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
     await expect(page.locator('.page-home__title')).toHaveText('Arknights Companion')
-    await expect(page.locator('.layout-default__brand')).toHaveText('Arknights Companion')
+    await expect(page.locator('.layout-default__brand-text')).toHaveText('Arknights Companion')
 
     const ruButton = page.locator('.language-switcher__btn', { hasText: 'RU' })
     const enButton = page.locator('.language-switcher__btn', { hasText: 'EN' })
@@ -22,7 +22,7 @@ test.describe('I18n language switching', () => {
     await ruButton.click()
     await expect(page).toHaveURL(/\/ru/)
     await expect(page.locator('.page-home__title')).toHaveText('Компаньон Arknights')
-    await expect(page.locator('.layout-default__brand')).toHaveText('Компаньон Arknights')
+    await expect(page.locator('.layout-default__brand-text')).toHaveText('Компаньон Arknights')
     await expect(ruButton).toHaveAttribute('aria-current', 'true')
     await expect(enButton).not.toHaveAttribute('aria-current')
 
@@ -37,7 +37,7 @@ test.describe('I18n language switching', () => {
     await enButton.click()
     await expect(page).not.toHaveURL(/\/ru/)
     await expect(page.locator('.page-home__title')).toHaveText('Arknights Companion')
-    await expect(page.locator('.layout-default__brand')).toHaveText('Arknights Companion')
+    await expect(page.locator('.layout-default__brand-text')).toHaveText('Arknights Companion')
     await expect(page.locator('.language-switcher__btn', { hasText: 'EN' })).toHaveAttribute(
       'aria-current',
       'true',
