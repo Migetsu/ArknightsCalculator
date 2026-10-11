@@ -21,16 +21,23 @@
 - Added npm scripts: `test`, `test:watch`, `test:e2e`.
 - Configured GitHub Actions CI workflow (`.github/workflows/ci.yml`) for `push` and `pull_request` (quality checks + separate E2E job).
 - Added Testing section to `docs/architecture.md`.
+- Migrated Vitest configuration to projects (`unit` with Node environment, `nuxt` with happy-dom and `@nuxt/test-utils`).
+- Configured Playwright CI webServer to use production build & preview (`npm run build && npm run preview`).
+- Integrated `@nuxtjs/i18n` with English (default, prefix-less) and Russian (`/ru` prefix) with cookie detection and persistence.
+- Implemented accessible BEM `LanguageSwitcher` component with URL routing and cookie persistence.
+- Localized default layout (header, footer disclaimer) and home page using `t('...')` without hardcoded strings.
+- Implemented `scripts/check-i18n.ts` and `npm run i18n:check` to enforce locale key parity, covered by unit tests and CI workflow.
+- Added E2E tests for language switching, URL prefixing, and preference persistence on reload.
 
 ## In progress
 
-- None (Testing infrastructure and CI setup completed).
+- None (Interface localization completed).
 
 ## Next
 
-- Configure `@nuxtjs/i18n` with en/ru locales.
-- Create design tokens and Arknights SCSS theme.
+- Create design tokens and Arknights SCSS theme (palette, angular shapes, technical typography).
 - Configure Supabase client integration and state management.
+- Develop calculation core for operators and material requirements.
 
 ## Known issues
 

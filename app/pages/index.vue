@@ -1,11 +1,11 @@
 <script setup lang="ts">
-// Index page stub
+const { t } = useI18n()
 </script>
 
 <template>
   <main class="page-home">
-    <h1 class="page-home__title">Arknights Companion</h1>
-    <p class="page-home__description">Planner, Depot, Farming, Wiki, Recruitment & Gacha</p>
+    <h1 class="page-home__title">{{ t('home.title') }}</h1>
+    <p class="page-home__description">{{ t('home.description') }}</p>
   </main>
 </template>
 
