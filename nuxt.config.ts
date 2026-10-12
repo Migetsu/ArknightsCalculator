@@ -23,6 +23,11 @@ export default defineNuxtConfig({
   },
   sitemap: {
     exclude: ['/_ui', '/ru/_ui'],
+    urls: async () => {
+      const raw = await import('./data/operators-index.json', { with: { type: 'json' } })
+      const operators = (raw.default ?? raw) as Array<{ id: string }>
+      return operators.flatMap((op) => [`/operators/${op.id}`, `/ru/operators/${op.id}`])
+    },
   },
   image: {
     // Disable Vercel server-side image transformation to stay within Free tier limit (1,000 transforms/month).

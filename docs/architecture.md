@@ -32,7 +32,19 @@ docs/           architectural decisions, module guides, progress tracking
 - **Offline / PWA:** Planner, depot, farming, and gacha tools designed for offline client-side functionality.
 - **Zero Server Cost:** Serverless Nitro functions only for CORS proxies and secret handling.
 
-## 4. Testing
+## 4. Operator Data Loading Architecture
+
+For operator details (`/operators/[id]`), the data loading strategy is evaluated against 4 core criteria:
+
+1. **SSR / Prerender for SEO:** Full operator profiles must be renderable during server-side rendering or prerendering with meta tags, OpenGraph data, and Schema.org semantic annotations without client-only flash.
+2. **Fast initial start & minimal bundle:** Loading the catalog (`/operators`) must only load `data/operators-index.json` (~197 KB, ~35 KB gzip). The 434 individual operator details (~18 MB total) must never bloat the initial client bundle.
+3. **PWA / Offline support:** Individual operator records are loaded on-demand via a typed composable (`useOperatorDetail(id)`). When deployed, each operator record is served as a dedicated lazy chunk or Nitro endpoint, allowing standard Service Worker HTTP caching (CacheFirst/StaleWhileRevalidate) for offline companion usage.
+4. **Implementation mechanism:**
+   - Server-side / SSR: Directly reads operator detail JSON from `data/operators/${id}.json` via isomorphic loader (or dynamic import / Nitro route), guaranteeing zero network roundtrip during SSR.
+   - Client-side navigation: Uses Nuxt's isomorphic `useAsyncData(`operator-detail-${id}`, () => import(\`~/../data/operators/\${id}.json\`))` or Nitro endpoint with SWR cache headers.
+   - Result: 0 KB overhead for unvisited operators, instant SSR hydration, pre-rendered static HTML for search engines, and straightforward caching for offline PWA.
+
+## 5. Testing
 
 ### Structure
 
@@ -57,7 +69,7 @@ docs/           architectural decisions, module guides, progress tracking
 - All calculation core modules in `shared/` must be thoroughly covered by unit tests.
 - E2E tests focus on critical user flows (smoke tests, navigation, core workflows) and layout sanity without horizontal overflow.
 
-## 5. Development Server Isolation
+## 6. Development Server Isolation
 
 - **Owner Dev Server:** Port 3000 is reserved for live development by the project owner. Automated agents must never start, stop, or reload port 3000.
 - **Agent Dev Server:** Runs on `http://localhost:3001` via `npm run dev:agent` (`scripts/dev-agent.mjs`) with isolated `.nuxt-agent` build directory (`NUXT_BUILD_DIR=.nuxt-agent`).
