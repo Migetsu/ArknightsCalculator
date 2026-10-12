@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import {
   ASSET_REPO_COMMIT,
-  PRIMARY_CDN_BASE,
+  resolveAsset,
 } from '../../shared/utils/resolveAsset'
 import type { OperatorSummary } from '../../shared/schemas/operator'
 
@@ -13,6 +13,7 @@ interface AssetAvailability {
 
 export interface AssetManifest {
   version: string
+  source: 'http' | 'tree'
   updatedAt: string
   totalOperators: number
   operatorsWithAvatar: number
@@ -21,22 +22,30 @@ export interface AssetManifest {
   assets: Record<string, AssetAvailability>
 }
 
-async function sleep(ms: number): Promise<void> {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-async function checkAssetExists(url: string, timeoutMs = 8000): Promise<boolean> {
+/**
+ * Checks whether an asset actually exists and delivers valid image content via HTTP GET.
+ */
+async function checkAssetHttp(url: string, timeoutMs = 8000): Promise<boolean> {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   try {
     const res = await fetch(url, {
-      method: 'HEAD',
+      method: 'GET',
       signal: controller.signal,
       headers: {
         'User-Agent': 'ArknightsCalculator-AssetManifest/1.0',
+        Accept: 'image/webp,image/png,image/*,*/*;q=0.8',
       },
     })
-    return res.status === 200
+    if (res.status !== 200) return false
+    const contentType = res.headers.get('content-type')
+    if (!contentType?.toLowerCase().includes('image/')) return false
+    const buf = await res.arrayBuffer()
+    return buf.byteLength > 0
   } catch {
     return false
   } finally {
@@ -75,20 +84,11 @@ async function main(): Promise<void> {
   const operators = JSON.parse(rawIndex) as OperatorSummary[]
 
   console.log(`Loaded ${operators.length} operators from data/operators-index.json.`)
-  console.log(`Checking CDN asset availability against jsDelivr commit ${ASSET_REPO_COMMIT.slice(0, 7)}...`)
+  console.log(`Checking CDN asset availability against commit ${ASSET_REPO_COMMIT.slice(0, 7)}...`)
 
-  // Parse CLI args: --quick (checks sample of 20), --limit=N
   const args = process.argv.slice(2)
-  let opsToCheck = operators
-  const limitArg = args.find((a) => a.startsWith('--limit='))
-  const isQuick = args.includes('--quick')
-
-  if (isQuick) {
-    opsToCheck = operators.slice(0, 20)
-  } else if (limitArg) {
-    const limit = parseInt(limitArg.split('=')[1] ?? '0', 10)
-    if (limit > 0) opsToCheck = operators.slice(0, limit)
-  }
+  const useTree = args.includes('--tree')
+  const sourceMode: 'http' | 'tree' = useTree ? 'tree' : 'http'
 
   const manifestAssets: Record<string, AssetAvailability> = {}
   const missingAvatarIds: string[] = []
@@ -96,84 +96,99 @@ async function main(): Promise<void> {
 
   const startTime = Date.now()
 
-  // Concurrency: 15 parallel requests, 50ms pause between batches
-  const checkResults = await runInBatches(
-    opsToCheck,
-    15,
-    50,
-    async (op) => {
-      const avatarUrl = `${PRIMARY_CDN_BASE}/avatar/${op.id}.png`
-      const portraitUrl = `${PRIMARY_CDN_BASE}/portrait/${op.id}.png`
-
-      const [hasAvatar, hasPortrait] = await Promise.all([
-        checkAssetExists(avatarUrl),
-        checkAssetExists(portraitUrl),
-      ])
-
-      return {
-        id: op.id,
-        avatar: hasAvatar,
-        portrait: hasPortrait,
-      }
-    },
-  )
-
-  for (const res of checkResults) {
-    manifestAssets[res.id] = {
-      avatar: res.avatar,
-      portrait: res.portrait,
+  if (useTree) {
+    console.log('Mode: GitHub repository tree query (fast)...')
+    const treeUrl = `https://api.github.com/repos/yuanyan3060/ArknightsGameResource/git/trees/${ASSET_REPO_COMMIT}?recursive=1`
+    const treeRes = await fetch(treeUrl, {
+      headers: { 'User-Agent': 'ArknightsCalculator-AssetManifest/1.0' },
+    })
+    if (!treeRes.ok) {
+      throw new Error(`Failed to fetch repo tree: ${treeRes.status}`)
     }
+    const treeData = (await treeRes.json()) as { tree: Array<{ path: string }> }
+    const pathSet = new Set(treeData.tree.map((f) => f.path))
 
-    if (res.avatar) {
-      withAvatarCount++
-    } else {
-      missingAvatarIds.push(res.id)
+    for (const op of operators) {
+      const avatarCandidates = resolveAsset('avatar', op.id)
+      const portraitCandidates = resolveAsset('portrait', op.id)
+
+      // Extract repository relative path from primary CDN URL
+      const avatarRelPath = avatarCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
+      const portraitRelPath = portraitCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
+
+      const hasAvatar = pathSet.has(avatarRelPath)
+      const hasPortrait = pathSet.has(portraitRelPath)
+
+      manifestAssets[op.id] = { avatar: hasAvatar, portrait: hasPortrait }
+      if (hasAvatar) {
+        withAvatarCount++
+      } else {
+        missingAvatarIds.push(op.id)
+      }
+    }
+  } else {
+    console.log('Mode: Real HTTP GET checks with concurrency limit...')
+    // Check in batches of 10 with 50ms pause
+    const checkResults = await runInBatches(
+      operators,
+      10,
+      50,
+      async (op) => {
+        const avatarUrl = resolveAsset('avatar', op.id)[0] ?? ''
+        const portraitUrl = resolveAsset('portrait', op.id)[0] ?? ''
+
+        const [hasAvatar, hasPortrait] = await Promise.all([
+          checkAssetHttp(avatarUrl),
+          checkAssetHttp(portraitUrl),
+        ])
+
+        return {
+          id: op.id,
+          avatar: hasAvatar,
+          portrait: hasPortrait,
+        }
+      },
+    )
+
+    for (const res of checkResults) {
+      manifestAssets[res.id] = {
+        avatar: res.avatar,
+        portrait: res.portrait,
+      }
+
+      if (res.avatar) {
+        withAvatarCount++
+      } else {
+        missingAvatarIds.push(res.id)
+      }
     }
   }
 
-  // If checked subset, merge with existing manifest if available, or mark remainder
-  if (opsToCheck.length < operators.length) {
-    for (const op of operators) {
-      if (!manifestAssets[op.id]) {
-        manifestAssets[op.id] = {
-          avatar: true, // Default optimistic assumption for remainder
-          portrait: true,
-        }
-      }
-    }
+  const durationSec = ((Date.now() - startTime) / 1000).toFixed(1)
+  console.log(`\nCompleted asset checks in ${durationSec}s.`)
+  console.log(`Operators with valid avatar: ${withAvatarCount}/${operators.length}`)
+  console.log(`Operators without avatar:    ${missingAvatarIds.length}`)
+
+  if (missingAvatarIds.length > 0) {
+    console.log('\nMissing avatar IDs:', missingAvatarIds.join(', '))
   }
 
   const manifest: AssetManifest = {
     version: ASSET_REPO_COMMIT,
+    source: sourceMode,
     updatedAt: new Date().toISOString(),
-    totalOperators: opsToCheck.length,
+    totalOperators: operators.length,
     operatorsWithAvatar: withAvatarCount,
     operatorsWithoutAvatar: missingAvatarIds.length,
     missingAvatarIds,
     assets: manifestAssets,
   }
 
-  const manifestJson = JSON.stringify(manifest, null, 2)
-  await fs.writeFile(manifestPath, manifestJson, 'utf-8')
-
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
-  const manifestSizeKb = (Buffer.byteLength(manifestJson, 'utf-8') / 1024).toFixed(1)
-
-  console.log('\n=== Asset Manifest Report ===')
-  console.log(`Total Operators Checked:    ${opsToCheck.length}`)
-  console.log(`Operators With Avatar:      ${withAvatarCount}`)
-  console.log(`Operators Without Avatar:   ${missingAvatarIds.length}`)
-  if (missingAvatarIds.length > 0) {
-    console.log(`Missing Avatar IDs:         ${missingAvatarIds.slice(0, 10).join(', ')}${missingAvatarIds.length > 10 ? '...' : ''}`)
-  }
-  console.log(`Manifest File Size:         ${manifestSizeKb} KB`)
-  console.log(`Time Elapsed:               ${elapsed}s`)
-  console.log(`\nWritten manifest to ${manifestPath}`)
+  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8')
+  console.log(`\nManifest saved to ${manifestPath}.`)
 }
 
-if (process.argv[1]?.includes('build-asset-manifest')) {
-  main().catch((err: unknown) => {
-    console.error('Fatal manifest builder error:', err)
-    process.exit(1)
-  })
-}
+main().catch((err) => {
+  console.error('Fatal error building asset manifest:', err)
+  process.exit(1)
+})

@@ -100,9 +100,16 @@
   - Created operator detail page stub (`/operators/[id]`) with `AkPageHeader`, avatar portrait, and metadata grid.
   - Authored component tests (`AkOperatorCard`, `AkOperatorFilters`), unit tests, and Playwright E2E suite (`tests/e2e/operators.spec.ts`) validating search, multi-select, server toggle, URL restoration, empty state, and layout sanity on 5 breakpoints. Total 126 Vitest tests and 93 Playwright tests passing.
 
+- Audited routes, live CDN asset delivery, Amiya class-change mappings, and visual DOM rendering (`fix/audit-batch2`):
+  - Route audit: confirmed `pages/operators.vue` stub is removed and routing functions cleanly through `operators/index.vue` and `operators/[id].vue`. Added E2E tests validating direct access to `/operators/{id}` loads operator detail view, not catalog.
+  - Live asset verification: authored `scripts/data/verify-assets.ts` (`npm run data:verify-assets`) testing 60 operators (all rarities 1★–6★, 3 Amiya classes, CN operators). Validated 100% success rate on jsDelivr (avg 165ms) and Statically (avg 740ms) using real HTTP GET byte delivery.
+  - Amiya class change mapping: audited `yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e` repository tree. Added explicit mappings in `shared/utils/resolveAsset.ts` for Medic Amiya avatar (`char_1037_amiya3_2`) and Guard/Medic portrait variants (`'2'`). Unit tests passing in `tests/unit/shared/resolveAsset.test.ts`.
+  - Manifest pipeline: updated `scripts/data/build-asset-manifest.ts` with real HTTP GET validation, concurrency throttling (10 workers), and `source: 'http' | 'tree'`. Re-generated `data/asset-manifest.json` achieving 434/434 (100%) verified avatars.
+  - Visual DOM audit: authored `tests/e2e/audit-assets-dom.spec.ts` on port 3001. Confirmed `naturalWidth > 0` for all rendered `<img>` elements, captured responsive screenshots `docs/screenshots/operators-360.png` and `docs/screenshots/operators-1440.png`, and traversed full catalog (376 operators) with 0 fallbacks (`fallbackRatio = 0.0%`).
+
 ## In progress
 
-- None (Operator Catalog module, filtering core, UI primitives, and tests completed).
+- None (Audit batch 2 completed).
 
 ## Next
 
