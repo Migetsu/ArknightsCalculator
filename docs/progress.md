@@ -82,9 +82,17 @@
     - Produces lightweight list index `data/operators-index.json` (197.8 KB uncompressed, ~35 KB gzip), `data/meta.json` (0.3 KB), and 434 individual lazy detail files `data/operators/{id}.json` (18.1 MB total).
   - Added 16 unit tests in `tests/unit/data/build-operators.test.ts` covering filter rules, fallback chains, normalization on fixtures, output determinism, and real generated dataset schema compliance. Total 86 Vitest tests passing.
 
+- Implemented game asset delivery pipeline and resilient visual fallback architecture (`feat/assets`):
+  - Authored pure utility `shared/utils/resolveAsset.ts`: returns ordered candidate URLs (primary jsDelivr CDN with pinned commit `9bf239661e37766fba585806fb9fa67e79bb679e`, secondary Statically mirror). Strictly bans direct runtime hotlinking to `prts.wiki` and `raw.githubusercontent.com`.
+  - Authored verification script `scripts/data/build-asset-manifest.ts` (`npm run data:assets`) generating `data/asset-manifest.json`: verified 434 operators (431 with available avatars, 3 CN-only variants handled gracefully by fallback).
+  - Enhanced `AkAvatar.vue` UI primitive: uses `resolveAsset`, sets explicit `width` and `height` dimensions preventing layout shifts (CLS), sets `loading="lazy"` and `decoding="async"`, cycles through CDN candidates on image error, and cleanly falls back to tactical initials over rarity color background.
+  - Configured `@nuxt/image` in `nuxt.config.ts` with `provider: 'none'` and external CDN domains, protecting against Vercel Free Plan image transformation quota exhaustion (0/1,000 monthly usage).
+  - Authored comprehensive documentation in `docs/assets.md` covering CDN hierarchy, Vercel quotas, asset registration guide, and intellectual property disclaimer.
+  - Added unit test suite `tests/unit/shared/resolveAsset.test.ts` (9 tests) and updated component tests `tests/unit/components/ui/AkAvatar.test.ts` (6 tests). Total 97 Vitest tests passing.
+
 ## In progress
 
-- None (Operator normalization, schemas, builder, and data generated).
+- None (Asset resolution, manifest builder, AkAvatar fallback, and documentation completed).
 
 ## Next
 

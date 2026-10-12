@@ -1,24 +1,90 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { resolveAsset } from '~/../shared/utils/resolveAsset'
 
 interface Props {
+  /**
+   * Optional operator identifier (e.g. 'char_102_texas').
+   * If provided, candidate URLs are automatically resolved via resolveAsset.
+   */
+  id?: string
+  /**
+   * Explicit image source URL. If provided, used as the primary candidate.
+   */
   src?: string
+  /**
+   * Operator name for alt text, title, and fallback initials.
+   */
   name: string
+  /**
+   * Operator rarity (1..6) for rarity underline bar and fallback styling.
+   */
   rarity?: 1 | 2 | 3 | 4 | 5 | 6
+  /**
+   * Avatar display size: sm (32px), md (44px), lg (56px).
+   */
   size?: 'sm' | 'md' | 'lg'
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
   src: undefined,
   rarity: 6,
   size: 'md',
 })
 
+const candidateUrls = computed(() => {
+  const urls: string[] = []
+  if (props.src) {
+    urls.push(props.src)
+  }
+  if (props.id) {
+    const resolved = resolveAsset('avatar', props.id)
+    for (const url of resolved) {
+      if (!urls.includes(url)) {
+        urls.push(url)
+      }
+    }
+  }
+  return urls
+})
+
+const currentCandidateIndex = ref(0)
 const hasError = ref(false)
 
+// Reset state if target operator or explicit src changes
+watch(
+  () => [props.id, props.src],
+  () => {
+    currentCandidateIndex.value = 0
+    hasError.value = false
+  },
+)
+
+const activeSrc = computed(() => {
+  if (hasError.value) return undefined
+  return candidateUrls.value[currentCandidateIndex.value]
+})
+
 function handleError(): void {
-  hasError.value = true
+  if (currentCandidateIndex.value + 1 < candidateUrls.value.length) {
+    currentCandidateIndex.value++
+  } else {
+    hasError.value = true
+  }
 }
+
+const pixelDimensions = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 32
+    case 'lg':
+      return 56
+    case 'md':
+    default:
+      return 44
+  }
+})
 
 const initials = computed(() => {
   if (!props.name) return 'OP'
@@ -40,11 +106,14 @@ const initials = computed(() => {
   >
     <div class="ak-avatar__frame">
       <img
-        v-if="src && !hasError"
-        :src="src"
+        v-if="activeSrc"
+        :src="activeSrc"
         :alt="name"
+        :width="pixelDimensions"
+        :height="pixelDimensions"
         class="ak-avatar__image"
         loading="lazy"
+        decoding="async"
         @error="handleError"
       />
       <div v-else class="ak-avatar__fallback">

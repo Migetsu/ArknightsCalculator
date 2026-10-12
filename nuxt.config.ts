@@ -15,6 +15,13 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
   ],
+  image: {
+    // Disable Vercel server-side image transformation to stay within Free tier limit (1,000 transforms/month).
+    // External game assets are served directly from fast, edge-cached jsDelivr / Statically CDNs.
+    provider: 'none',
+    domains: ['cdn.jsdelivr.net', 'cdn.statically.io'],
+    format: ['webp', 'png'],
+  },
   css: ['~/assets/styles/main.scss'],
   vite: {
     cacheDir: process.env.NUXT_BUILD_DIR ? `${process.env.NUXT_BUILD_DIR}/vite` : undefined,
