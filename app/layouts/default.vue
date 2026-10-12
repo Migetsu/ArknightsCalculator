@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import { useScrollLock } from '@vueuse/core'
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import AkButton from '~/components/ui/AkButton.vue'
+import AkDrawer from '~/components/ui/AkDrawer.vue'
+import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 
-interface NavLinkItem {
+interface ModuleItem {
   to: string
+  code: string
   labelKey: string
+  descKey: string
+  icon: string
 }
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
 
 const head = useLocaleHead({
   seo: true,
@@ -22,63 +30,81 @@ useHead(() => ({
   meta: [...(head.value.meta || [])],
 }))
 
-const navLinks: NavLinkItem[] = [
-  { to: '/operators', labelKey: 'navigation.operators' },
-  { to: '/planner', labelKey: 'navigation.planner' },
-  { to: '/depot', labelKey: 'navigation.depot' },
-  { to: '/farm', labelKey: 'navigation.farm' },
-  { to: '/recruit', labelKey: 'navigation.recruit' },
-  { to: '/gacha', labelKey: 'navigation.gacha' },
+const modules: ModuleItem[] = [
+  {
+    to: '/',
+    code: 'DSH-00',
+    labelKey: 'navigation.dashboard',
+    descKey: 'navigation.dashboardDesc',
+    icon: '⊞',
+  },
+  {
+    to: '/planner',
+    code: 'PLN-01',
+    labelKey: 'navigation.planner',
+    descKey: 'navigation.plannerDesc',
+    icon: '📋',
+  },
+  {
+    to: '/gacha',
+    code: 'GCH-02',
+    labelKey: 'navigation.gacha',
+    descKey: 'navigation.gachaDesc',
+    icon: '✦',
+  },
+  {
+    to: '/recruit',
+    code: 'RCR-03',
+    labelKey: 'navigation.recruit',
+    descKey: 'navigation.recruitDesc',
+    icon: '🔍',
+  },
+  {
+    to: '/operators',
+    code: 'OPS-04',
+    labelKey: 'navigation.operators',
+    descKey: 'navigation.operatorsDesc',
+    icon: '👥',
+  },
+  {
+    to: '/depot',
+    code: 'INV-05',
+    labelKey: 'navigation.depot',
+    descKey: 'navigation.depotDesc',
+    icon: '📦',
+  },
+  {
+    to: '/settings',
+    code: 'SET-06',
+    labelKey: 'navigation.settings',
+    descKey: 'navigation.settingsDesc',
+    icon: '⚙',
+  },
 ]
 
-const isMobileMenuOpen = ref(false)
-const burgerButtonRef = ref<HTMLButtonElement | null>(null)
-const mobileMenuRef = ref<HTMLElement | null>(null)
+const isDrawerOpen = ref(false)
+const isSyncModalOpen = ref(false)
 
-// Lock body scroll while mobile drawer is open
-const isLocked = useScrollLock(typeof document !== 'undefined' ? document.body : null)
-
-function openMobileMenu(): void {
-  isMobileMenuOpen.value = true
-  isLocked.value = true
-  nextTick(() => {
-    const firstLink = mobileMenuRef.value?.querySelector<HTMLAnchorElement>('a')
-    firstLink?.focus()
-  })
+function openDrawer(): void {
+  isDrawerOpen.value = true
 }
 
-function closeMobileMenu(): void {
-  if (!isMobileMenuOpen.value) return
-  isMobileMenuOpen.value = false
-  isLocked.value = false
-  nextTick(() => {
-    burgerButtonRef.value?.focus()
-  })
+function closeDrawer(): void {
+  isDrawerOpen.value = false
 }
 
-function toggleMobileMenu(): void {
-  if (isMobileMenuOpen.value) {
-    closeMobileMenu()
-  } else {
-    openMobileMenu()
+function openSyncModal(): void {
+  isSyncModalOpen.value = true
+}
+
+function isModuleActive(path: string): boolean {
+  const currentPath = route.path
+  const localizedTarget = localePath(path)
+  if (path === '/') {
+    return currentPath === localizedTarget || currentPath === '/ru'
   }
+  return currentPath.startsWith(localizedTarget)
 }
-
-function handleKeydown(event: KeyboardEvent): void {
-  if (event.key === 'Escape' && isMobileMenuOpen.value) {
-    event.preventDefault()
-    closeMobileMenu()
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown)
-  isLocked.value = false
-})
 </script>
 
 <template>
@@ -86,81 +112,81 @@ onUnmounted(() => {
     <header class="layout-default__header">
       <div class="layout-default__brand-group">
         <NuxtLink :to="localePath('/')" class="layout-default__brand">
-          <span class="layout-default__brand-tag">PRTS</span>
-          <span class="layout-default__brand-text">{{ t('layout.header.title') }}</span>
+          <!-- Original geometric symbol: Terminal Delta (NOT Rhodes Island logo) -->
+          <span class="layout-default__brand-logo" aria-hidden="true">
+            <svg
+              class="layout-default__brand-svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+            >
+              <rect
+                x="2.5"
+                y="2.5"
+                width="19"
+                height="19"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <polygon points="12,6 18,17.5 6,17.5" fill="currentColor" />
+            </svg>
+          </span>
+
+          <div class="layout-default__brand-text-block">
+            <span class="layout-default__brand-title">ARKCALC</span>
+            <span class="layout-default__brand-sub">
+              {{ t('layout.header.brandSubtitle') }}
+            </span>
+          </div>
         </NuxtLink>
       </div>
-
-      <nav class="layout-default__desktop-nav" aria-label="Main Navigation">
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="localePath(link.to)"
-          class="layout-default__nav-link"
-        >
-          {{ t(link.labelKey) }}
-        </NuxtLink>
-      </nav>
 
       <div class="layout-default__actions">
-        <LayoutLanguageSwitcher />
+        <!-- Doctor Status Pill -->
+        <div class="layout-default__doctor-pill" title="Doctor Status">
+          <span class="layout-default__status-dot" aria-hidden="true" />
+          <span class="layout-default__doctor-name">
+            {{ t('layout.doctor.title') }}
+          </span>
+          <span class="layout-default__doctor-lvl"> {{ t('layout.doctor.level') }} [EN] </span>
+        </div>
 
-        <button
-          ref="burgerButtonRef"
-          type="button"
-          class="layout-default__burger"
-          :aria-expanded="isMobileMenuOpen"
-          aria-controls="mobile-navigation"
-          :aria-label="t('layout.menu.toggle')"
-          @click="toggleMobileMenu"
+        <!-- Sync Button -->
+        <AkButton
+          variant="secondary"
+          size="sm"
+          class="layout-default__sync-btn"
+          @click="openSyncModal"
         >
-          <span class="layout-default__burger-line" />
-          <span class="layout-default__burger-line" />
-          <span class="layout-default__burger-line" />
-        </button>
+          <span class="layout-default__sync-icon" aria-hidden="true">⟳</span>
+          {{ t('common.sync') }}
+        </AkButton>
+
+        <!-- Menu Button (Opens Drawer) -->
+        <AkButton
+          variant="ghost"
+          size="sm"
+          class="layout-default__burger"
+          :aria-expanded="isDrawerOpen"
+          aria-controls="tactical-drawer"
+          :aria-label="t('layout.menu.toggle')"
+          @click="openDrawer"
+        >
+          <span class="layout-default__burger-bars" aria-hidden="true">
+            <span class="layout-default__burger-bar" />
+            <span class="layout-default__burger-bar" />
+            <span class="layout-default__burger-bar" />
+          </span>
+          <span class="layout-default__burger-text">
+            {{ t('common.menu') }}
+          </span>
+        </AkButton>
+
+        <!-- Language Switcher -->
+        <LayoutLanguageSwitcher />
       </div>
     </header>
-
-    <!-- Mobile Drawer Overlay -->
-    <div
-      v-if="isMobileMenuOpen"
-      class="layout-default__mobile-overlay"
-      aria-hidden="true"
-      @click="closeMobileMenu"
-    />
-
-    <!-- Mobile Drawer Menu -->
-    <aside
-      id="mobile-navigation"
-      ref="mobileMenuRef"
-      class="layout-default__mobile-menu"
-      :class="{ 'layout-default__mobile-menu--open': isMobileMenuOpen }"
-      :aria-hidden="!isMobileMenuOpen"
-    >
-      <div class="layout-default__mobile-header">
-        <span class="layout-default__mobile-title">{{ t('layout.header.title') }}</span>
-        <button
-          type="button"
-          class="layout-default__mobile-close"
-          :aria-label="t('layout.menu.close')"
-          @click="closeMobileMenu"
-        >
-          <span class="layout-default__mobile-close-icon">✕</span>
-        </button>
-      </div>
-
-      <nav class="layout-default__mobile-nav" aria-label="Mobile Navigation">
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="localePath(link.to)"
-          class="layout-default__mobile-nav-link"
-          @click="closeMobileMenu"
-        >
-          {{ t(link.labelKey) }}
-        </NuxtLink>
-      </nav>
-    </aside>
 
     <main class="layout-default__main">
       <slot />
@@ -173,6 +199,70 @@ onUnmounted(() => {
         </p>
       </div>
     </footer>
+
+    <!-- Tactical Navigation Drawer -->
+    <AkDrawer v-model="isDrawerOpen" :tag="t('layout.menu.tag')" :title="t('layout.menu.title')">
+      <template #user>
+        <div class="layout-default__user-card">
+          <div class="layout-default__user-avatar">
+            <span class="layout-default__user-initials">DR</span>
+            <span class="layout-default__user-dot" aria-hidden="true" />
+          </div>
+
+          <div class="layout-default__user-meta">
+            <div class="layout-default__user-row">
+              <span class="layout-default__user-title">
+                {{ t('layout.doctor.title') }}
+              </span>
+              <span class="layout-default__user-level">
+                {{ t('layout.doctor.level') }}
+              </span>
+            </div>
+            <span class="layout-default__user-server">
+              {{ t('layout.doctor.server') }}
+            </span>
+          </div>
+
+          <AkButton variant="secondary" size="sm" @click="openSyncModal">
+            {{ t('common.sync') }}
+          </AkButton>
+        </div>
+      </template>
+
+      <div class="layout-default__nav-list">
+        <div class="layout-default__nav-header">
+          <span class="layout-default__nav-heading">
+            {{ t('layout.menu.modulesTitle') }} [07]
+          </span>
+        </div>
+
+        <NuxtLink
+          v-for="item in modules"
+          :key="item.to"
+          :to="localePath(item.to)"
+          class="layout-default__nav-item"
+          :class="{ 'layout-default__nav-item--active': isModuleActive(item.to) }"
+          @click="closeDrawer"
+        >
+          <div class="layout-default__nav-icon-box" aria-hidden="true">
+            <span class="layout-default__nav-icon">{{ item.icon }}</span>
+          </div>
+
+          <div class="layout-default__nav-text">
+            <div class="layout-default__nav-title-row">
+              <span class="layout-default__nav-label">{{ t(item.labelKey) }}</span>
+              <span class="layout-default__nav-code">{{ item.code }}</span>
+            </div>
+            <span class="layout-default__nav-desc">{{ t(item.descKey) }}</span>
+          </div>
+
+          <span class="layout-default__nav-arrow" aria-hidden="true">→</span>
+        </NuxtLink>
+      </div>
+    </AkDrawer>
+
+    <!-- Account Sync Modal -->
+    <SyncAccountModal v-model="isSyncModalOpen" />
   </div>
 </template>
 
@@ -188,15 +278,15 @@ onUnmounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-xs) var(--space-md);
     background-color: var(--color-bg-surface);
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-bold);
     position: sticky;
     top: 0;
     z-index: var(--z-header);
 
     @include mq(md) {
-      padding: var(--space-sm) var(--space-xl);
+      padding: var(--space-xs) var(--space-xl);
     }
   }
 
@@ -210,204 +300,116 @@ onUnmounted(() => {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-    font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-decoration: none;
 
     @include focus-ring;
   }
 
-  &__brand-tag {
-    display: inline-block;
-    padding: var(--space-2xs) var(--space-xs);
-    font-size: var(--font-size-xs);
-    font-family: var(--font-mono);
-    font-weight: var(--font-weight-bold);
-    background-color: var(--color-accent-primary);
-    color: var(--color-text-inverse);
-    border-radius: var(--radius-xs);
-  }
-
-  &__brand-text {
-    font-size: var(--font-size-md);
-  }
-
-  &__desktop-nav {
-    display: none;
+  &__brand-logo {
+    display: inline-flex;
     align-items: center;
-    gap: var(--space-md);
-
-    @include mq(md) {
-      display: flex;
-    }
+    justify-content: center;
+    color: var(--color-accent-primary);
+    line-height: 1;
   }
 
-  &__nav-link {
+  &__brand-svg {
+    display: block;
+  }
+
+  &__brand-text-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__brand-title {
     font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-heading);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+  }
+
+  &__brand-sub {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: var(--space-2xs) var(--space-xs);
-    border-bottom: 2px solid transparent;
-    transition:
-      color var(--transition-fast),
-      border-color var(--transition-fast);
-
-    @include focus-ring;
-
-    &:hover {
-      color: var(--color-text-primary);
-      border-bottom-color: var(--color-accent-primary);
-    }
+    letter-spacing: var(--letter-spacing-mono);
+    color: var(--color-accent-primary);
+    line-height: 1.1;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+  }
+
+  &__doctor-pill {
+    display: none;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-xs);
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-elevated);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-secondary);
+
+    @include mq(md) {
+      display: inline-flex;
+    }
+  }
+
+  &__status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent-warning);
+    box-shadow: 0 0 6px var(--color-accent-warning);
+  }
+
+  &__doctor-name {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__doctor-lvl {
+    color: var(--color-text-secondary);
+  }
+
+  &__sync-btn {
+    font-size: var(--font-size-2xs);
+  }
+
+  &__sync-icon {
+    line-height: 1;
   }
 
   &__burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    width: 2rem;
-    height: 2rem;
-    padding: 4px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid var(--color-border-base);
-    border-radius: var(--radius-xs);
-    color: var(--color-text-primary);
-
-    @include focus-ring;
-
-    @include mq(md) {
-      display: none;
-    }
-  }
-
-  &__burger-line {
-    width: 100%;
-    height: 2px;
-    background-color: currentcolor;
-    border-radius: 1px;
-    transition: transform var(--transition-fast);
-  }
-
-  &__mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: var(--color-bg-overlay);
-    z-index: var(--z-backdrop);
-    backdrop-filter: blur(2px);
-
-    @include mq(md) {
-      display: none;
-    }
-  }
-
-  &__mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 280px;
-    max-width: 80vw;
-    background-color: var(--color-bg-surface);
-    border-left: 1px solid var(--color-border-base);
-    z-index: var(--z-drawer);
-    display: flex;
-    flex-direction: column;
-    box-shadow: var(--shadow-panel);
-    transform: translateX(100%);
-    visibility: hidden;
-    pointer-events: none;
-    transition:
-      transform var(--transition-base),
-      visibility var(--transition-base);
-
-    @include mq(md) {
-      display: none;
-    }
-
-    &--open {
-      transform: translateX(0);
-      visibility: visible;
-      pointer-events: auto;
-    }
-  }
-
-  &__mobile-header {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    border-bottom: 1px solid var(--color-border-subtle);
+    gap: var(--space-2xs);
   }
 
-  &__mobile-title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-
-    @include text-truncate;
-  }
-
-  &__mobile-close {
-    padding: var(--space-2xs) var(--space-xs);
-    color: var(--color-text-muted);
-    font-size: var(--font-size-md);
-
-    @include focus-ring;
-
-    &:hover {
-      color: var(--color-text-primary);
-    }
-  }
-
-  &__mobile-close-icon {
-    display: inline-block;
-  }
-
-  &__mobile-nav {
-    display: flex;
+  &__burger-bars {
+    display: inline-flex;
     flex-direction: column;
-    padding: var(--space-md);
-    gap: var(--space-xs);
-    flex: 1;
-    overflow-y: auto;
+    gap: 3px;
+    width: 14px;
   }
 
-  &__mobile-nav-link {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: var(--space-sm) var(--space-md);
-    border-left: 3px solid transparent;
-    background-color: var(--color-bg-elevated);
-    transition:
-      border-color var(--transition-fast),
-      background-color var(--transition-fast);
+  &__burger-bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: currentcolor;
+  }
 
-    @include focus-ring;
-
-    &:hover {
-      border-left-color: var(--color-accent-primary);
-      background-color: var(--color-bg-subtle);
-    }
+  &__burger-text {
+    font-size: var(--font-size-2xs);
   }
 
   &__main {
@@ -417,22 +419,225 @@ onUnmounted(() => {
   }
 
   &__footer {
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-md);
     background-color: var(--color-bg-surface);
     border-top: 1px solid var(--color-border-subtle);
-    text-align: center;
   }
 
   &__footer-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    text-align: center;
   }
 
   &__disclaimer {
     font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
     margin: 0;
+  }
+
+  // Drawer User Card
+  &__user-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-elevated);
+  }
+
+  &__user-avatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+  }
+
+  &__user-initials {
+    line-height: 1;
+  }
+
+  &__user-dot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent-warning);
+  }
+
+  &__user-meta {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+  }
+
+  &__user-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  &__user-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  &__user-level {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    padding: 1px 4px;
+    background-color: var(--color-accent-primary-subtle);
+    color: var(--color-accent-primary);
+  }
+
+  &__user-server {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-secondary);
+  }
+
+  // Drawer Navigation
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__nav-header {
+    padding-bottom: var(--space-2xs);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  &__nav-heading {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-mono);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-border-bold);
+      background-color: var(--color-bg-subtle);
+    }
+
+    &--active {
+      border-color: var(--color-accent-primary);
+      background-color: var(--color-accent-primary-subtle);
+      box-shadow: inset 2px 0 0 var(--color-accent-primary);
+
+      .layout-default__nav-icon-box {
+        border-color: var(--color-accent-primary);
+        color: var(--color-accent-primary);
+        background-color: var(--color-bg-surface);
+      }
+
+      .layout-default__nav-code {
+        color: var(--color-accent-primary);
+      }
+
+      .layout-default__nav-arrow {
+        color: var(--color-accent-primary);
+      }
+    }
+  }
+
+  &__nav-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+  }
+
+  &__nav-icon {
+    line-height: 1;
+  }
+
+  &__nav-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+  }
+
+  &__nav-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  &__nav-label {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-heading);
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+
+    @include text-truncate;
+  }
+
+  &__nav-code {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-mono);
+    color: var(--color-text-secondary);
+  }
+
+  &__nav-desc {
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+
+    @include text-truncate;
+  }
+
+  &__nav-arrow {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
   }
 }
 </style>

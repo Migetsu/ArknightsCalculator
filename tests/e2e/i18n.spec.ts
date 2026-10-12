@@ -5,8 +5,10 @@ test.describe('I18n language switching', () => {
     // 1. Visit root page (default locale EN)
     await page.goto('/')
     await page.waitForLoadState('networkidle')
-    await expect(page.locator('.page-home__title')).toHaveText('Arknights Companion')
-    await expect(page.locator('.layout-default__brand-text')).toHaveText('Arknights Companion')
+    await expect(page.locator('.dashboard-page__title')).toHaveText('DASHBOARD // OVERVIEW')
+    await expect(page.locator('.layout-default__disclaimer')).toContainText(
+      'Arknights is a registered trademark',
+    )
 
     const ruButton = page.locator('.language-switcher__btn', { hasText: 'RU' })
     const enButton = page.locator('.language-switcher__btn', { hasText: 'EN' })
@@ -21,8 +23,12 @@ test.describe('I18n language switching', () => {
     // 2. Click RU to switch locale
     await ruButton.click()
     await expect(page).toHaveURL(/\/ru/)
-    await expect(page.locator('.page-home__title')).toHaveText('Компаньон Arknights')
-    await expect(page.locator('.layout-default__brand-text')).toHaveText('Компаньон Arknights')
+    await expect(page.locator('.dashboard-page__subtitle')).toContainText(
+      'Центральный командный терминал Rhodes Island',
+    )
+    await expect(page.locator('.layout-default__disclaimer')).toContainText(
+      'Arknights является зарегистрированным товарным знаком',
+    )
     await expect(ruButton).toHaveAttribute('aria-current', 'true')
     await expect(enButton).not.toHaveAttribute('aria-current')
 
@@ -30,14 +36,15 @@ test.describe('I18n language switching', () => {
     await page.reload()
     await page.waitForLoadState('networkidle')
     await expect(page).toHaveURL(/\/ru/)
-    await expect(page.locator('.page-home__title')).toHaveText('Компаньон Arknights')
+    await expect(page.locator('.dashboard-page__subtitle')).toContainText(
+      'Центральный командный терминал Rhodes Island',
+    )
     await expect(ruButton).toHaveAttribute('aria-current', 'true')
 
     // 4. Switch back to EN
     await enButton.click()
     await expect(page).not.toHaveURL(/\/ru/)
-    await expect(page.locator('.page-home__title')).toHaveText('Arknights Companion')
-    await expect(page.locator('.layout-default__brand-text')).toHaveText('Arknights Companion')
+    await expect(page.locator('.dashboard-page__title')).toHaveText('DASHBOARD // OVERVIEW')
     await expect(page.locator('.language-switcher__btn', { hasText: 'EN' })).toHaveAttribute(
       'aria-current',
       'true',

@@ -47,11 +47,20 @@
   }
 }
 
-// High-contrast tactical focus ring for accessibility
+// High-contrast tactical focus ring for standard elements
 @mixin focus-ring {
   &:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
+  }
+}
+
+// Focus ring for clip-path cut-corner elements (where outline is clipped)
+@mixin focus-ring-clipped {
+  &:focus-visible {
+    outline: none;
+    filter: drop-shadow(0 0 2px var(--color-accent-primary))
+      drop-shadow(0 0 4px var(--color-accent-primary));
   }
 }
 
@@ -70,4 +79,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+// Subtle tactical terminal grid background (CSS-only vector grid)
+@mixin terminal-grid {
+  background-color: var(--color-bg-base);
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 2.5%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 2.5%) 1px, transparent 1px);
+  background-size: 32px 32px;
 }

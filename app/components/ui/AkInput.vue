@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   modelValue: string | number
   id?: string
@@ -6,6 +8,7 @@ interface Props {
   type?: string
   placeholder?: string
   error?: string
+  hint?: string
   disabled?: boolean
   readonly?: boolean
 }
@@ -16,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'text',
   placeholder: undefined,
   error: undefined,
+  hint: undefined,
   disabled: false,
   readonly: false,
 })
@@ -58,7 +62,7 @@ function handleInput(event: Event): void {
         :disabled="disabled"
         :readonly="readonly"
         :aria-invalid="!!error"
-        :aria-describedby="error ? `${inputId}-error` : undefined"
+        :aria-describedby="error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined"
         class="ak-input__native"
         @input="handleInput"
       />
@@ -67,6 +71,10 @@ function handleInput(event: Event): void {
         <slot name="suffix" />
       </span>
     </div>
+
+    <p v-if="hint && !error" :id="`${inputId}-hint`" class="ak-input__hint">
+      {{ hint }}
+    </p>
 
     <p v-if="error" :id="`${inputId}-error`" class="ak-input__error" role="alert">
       {{ error }}
@@ -81,11 +89,11 @@ function handleInput(event: Event): void {
   gap: var(--space-2xs);
 
   &__label {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
-    letter-spacing: 0.05em;
+    letter-spacing: var(--letter-spacing-mono);
     text-transform: uppercase;
   }
 
@@ -93,7 +101,7 @@ function handleInput(event: Event): void {
     display: flex;
     align-items: center;
     background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border-base);
+    border: 1px solid var(--color-border-bold);
     transition:
       border-color var(--transition-fast),
       box-shadow var(--transition-fast);
@@ -116,7 +124,8 @@ function handleInput(event: Event): void {
     outline: none;
 
     &::placeholder {
-      color: var(--color-text-muted);
+      color: var(--color-text-secondary);
+      opacity: 0.7;
     }
 
     &:disabled {
@@ -130,7 +139,13 @@ function handleInput(event: Event): void {
     display: inline-flex;
     align-items: center;
     padding: 0 var(--space-xs);
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
+  }
+
+  &__hint {
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-secondary);
+    margin: 0;
   }
 
   &__error {

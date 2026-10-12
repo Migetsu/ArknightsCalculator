@@ -1,89 +1,107 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('Responsive layout and mobile drawer navigation', () => {
-  test('renders desktop navigation on 1440px viewport and takes screenshot', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/')
-    await page.waitForLoadState('networkidle')
+const viewports = [
+  { name: '1440', width: 1440, height: 900 },
+  { name: '768', width: 768, height: 1024 },
+  { name: '360', width: 360, height: 740 },
+]
 
-    // Desktop nav must be visible
-    const desktopNav = page.locator('.layout-default__desktop-nav')
-    await expect(desktopNav).toBeVisible()
+test.describe('Rhodes Island Terminal Design V2 Responsive & States', () => {
+  for (const vp of viewports) {
+    test(`renders Dashboard Overview on ${vp.name}px viewport and takes screenshot`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: vp.width, height: vp.height })
+      await page.goto('/')
+      await page.waitForLoadState('networkidle')
 
-    // Burger button must be hidden on desktop
-    const burgerBtn = page.locator('.layout-default__burger')
-    await expect(burgerBtn).toBeHidden()
+      await expect(page.locator('.dashboard-page__title')).toBeVisible()
+      await expect(page.locator('.dashboard-page__stats-grid')).toBeVisible()
+      await expect(page.locator('.dashboard-page__panels-grid')).toBeVisible()
 
-    // Capture screenshot on 1440px
-    await page.screenshot({ path: 'test-results/desktop-1440.png', fullPage: true })
-  })
+      await page.screenshot({
+        path: `test-results/dashboard-${vp.name}.png`,
+        fullPage: true,
+      })
+    })
 
-  test('handles mobile drawer navigation on 360px viewport', async ({ page }) => {
-    await page.setViewportSize({ width: 360, height: 740 })
-    await page.goto('/')
-    await page.waitForLoadState('networkidle')
+    test(`renders and interacts with Sync Account Modal on ${vp.name}px viewport`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: vp.width, height: vp.height })
+      await page.goto('/')
+      await page.waitForLoadState('networkidle')
 
-    // Desktop nav must be hidden on mobile
-    const desktopNav = page.locator('.layout-default__desktop-nav')
-    await expect(desktopNav).toBeHidden()
+      // Click SYNC in header
+      const syncBtn = page.locator('.layout-default__sync-btn')
+      await expect(syncBtn).toBeVisible()
+      await syncBtn.click()
 
-    // Burger button must be visible with proper ARIA attributes
-    const burgerBtn = page.locator('.layout-default__burger')
-    await expect(burgerBtn).toBeVisible()
-    await expect(burgerBtn).toHaveAttribute('aria-expanded', 'false')
-    await expect(burgerBtn).toHaveAttribute('aria-controls', 'mobile-navigation')
+      const modal = page.locator('.ak-modal')
+      await expect(modal).toBeVisible()
+      await expect(page.locator('.sync-modal')).toBeVisible()
+      await page.waitForTimeout(200)
 
-    // Open mobile menu
-    await burgerBtn.click()
-    await expect(burgerBtn).toHaveAttribute('aria-expanded', 'true')
+      // Capture modal screenshot
+      await page.screenshot({
+        path: `test-results/modal-${vp.name}.png`,
+      })
 
-    const mobileMenu = page.locator('.layout-default__mobile-menu')
-    await expect(mobileMenu).toHaveClass(/layout-default__mobile-menu--open/)
-    await expect(page.locator('.layout-default__mobile-nav-link').first()).toBeVisible()
-    await page.waitForTimeout(300)
+      // Test Escape key closes modal
+      await page.keyboard.press('Escape')
+      await expect(modal).toBeHidden()
+    })
 
-    // Capture open mobile drawer screenshot on 360px
-    await page.screenshot({ path: 'test-results/mobile-360-menu.png' })
+    test(`renders and interacts with Navigation Drawer on ${vp.name}px viewport`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: vp.width, height: vp.height })
+      await page.goto('/')
+      await page.waitForLoadState('networkidle')
 
-    // Test Escape key closes menu and returns focus
-    await page.keyboard.press('Escape')
-    await expect(burgerBtn).toHaveAttribute('aria-expanded', 'false')
-    await expect(burgerBtn).toBeFocused()
+      // Click MENU in header
+      const menuBtn = page.locator('.layout-default__burger')
+      await expect(menuBtn).toBeVisible()
+      await menuBtn.click()
 
-    // Test overlay click closes menu
-    await burgerBtn.click()
-    await expect(burgerBtn).toHaveAttribute('aria-expanded', 'true')
+      const drawer = page.locator('.ak-drawer')
+      await expect(drawer).toBeVisible()
+      await expect(page.locator('.layout-default__user-card')).toBeVisible()
+      await expect(page.locator('.layout-default__nav-item').first()).toBeVisible()
+      await page.waitForTimeout(250)
 
-    const overlay = page.locator('.layout-default__mobile-overlay')
-    await expect(overlay).toBeVisible()
-    await overlay.click({ position: { x: 10, y: 10 } })
+      // Capture drawer screenshot
+      await page.screenshot({
+        path: `test-results/drawer-${vp.name}.png`,
+      })
 
-    await expect(burgerBtn).toHaveAttribute('aria-expanded', 'false')
-    await expect(mobileMenu).not.toHaveClass(/layout-default__mobile-menu--open/)
-    await page.waitForTimeout(300)
+      // Test Escape key closes drawer
+      await page.keyboard.press('Escape')
+      await expect(drawer).toBeHidden()
+    })
 
-    // Capture closed mobile viewport screenshot
-    await page.screenshot({ path: 'test-results/mobile-360.png', fullPage: true })
-  })
+    test(`renders Design System Showcase on ${vp.name}px or verifies exclusion in CI`, async ({
+      page,
+    }) => {
+      if (process.env.CI) {
+        const response = await page.goto('/_ui')
+        expect(response?.status()).toBe(404)
+        return
+      }
 
-  test('renders design system showcase in dev or verifies exclusion in production', async ({
-    page,
-  }) => {
-    const response = await page.goto('/_ui')
-    await page.waitForLoadState('networkidle')
+      await page.setViewportSize({ width: vp.width, height: vp.height })
+      await page.goto('/_ui')
+      await page.waitForLoadState('networkidle')
 
-    // In production builds (e.g. CI running build & preview), _ui route is excluded and returns 404
-    if (process.env.CI) {
-      expect(response?.status()).toBe(404)
-      return
-    }
+      await expect(page.locator('.page-ui__title')).toBeVisible()
+      await expect(page.locator('.ak-button--primary').first()).toBeVisible()
+      await expect(page.locator('.ak-badge').first()).toBeVisible()
+      await expect(page.locator('.ak-stat').first()).toBeVisible()
 
-    await expect(page.locator('.page-ui__title')).toBeVisible()
-    await expect(page.locator('.ak-button--primary').first()).toBeVisible()
-    await expect(page.locator('.ak-panel').first()).toBeVisible()
-    await expect(page.locator('.ak-tabs').first()).toBeVisible()
-    await expect(page.locator('.ak-input').first()).toBeVisible()
-
-    await page.screenshot({ path: 'test-results/ui-showcase.png', fullPage: true })
-  })
+      await page.screenshot({
+        path: `test-results/showcase-${vp.name}.png`,
+        fullPage: true,
+      })
+    })
+  }
 })

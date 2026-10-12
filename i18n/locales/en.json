@@ -1,23 +1,50 @@
 {
   "common": {
-    "appName": "Arknights Companion"
+    "appName": "Arknights Companion",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "sync": "Sync",
+    "menu": "Menu",
+    "active": "Active",
+    "offline": "Offline",
+    "online": "Online",
+    "doctor": "Doctor",
+    "server": "Server"
   },
   "navigation": {
-    "operators": "Operators",
-    "planner": "Planner",
-    "depot": "Depot",
-    "farm": "Farming",
-    "recruit": "Recruitment",
-    "gacha": "Gacha"
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Central command, countdowns & treasury",
+    "planner": "Operator Planner",
+    "plannerDesc": "Promotion costs, mastery & farming deltas",
+    "gacha": "Gacha Calculator",
+    "gachaDesc": "Spark projections, timeline & CN schedule",
+    "recruit": "Recruitment Matrix",
+    "recruitDesc": "Top Operator & guaranteed 4★/5★ tag combos",
+    "operators": "Operator Catalog",
+    "operatorsDesc": "Database of all operators, classes & factions",
+    "depot": "Depot Inventory",
+    "depotDesc": "Material stock, chips & Penguin Stats data",
+    "settings": "Settings",
+    "settingsDesc": "Theme toggles, local cache & data reset",
+    "farm": "Farming"
   },
   "layout": {
     "header": {
       "title": "Arknights Companion",
-      "logo": "Rhodes Island"
+      "brandSubtitle": "PRTS.SYSTEM // v4",
+      "logo": "Rhodes Island Terminal"
     },
     "menu": {
+      "tag": "PRTS // TACTICAL HUD",
+      "title": "NAVIGATION",
       "toggle": "Toggle navigation menu",
-      "close": "Close navigation menu"
+      "close": "Close navigation menu",
+      "modulesTitle": "TACTICAL MODULES"
+    },
+    "doctor": {
+      "title": "Doctor",
+      "level": "LV.1",
+      "server": "SERVER: EN // OFFLINE"
     },
     "languageSwitcher": {
       "ariaLabel": "Select language"
@@ -25,6 +52,103 @@
     "footer": {
       "disclaimer": "Arknights is a registered trademark of Hypergryph / Yostar. This is an unofficial, non-profit fan companion."
     }
+  },
+  "dashboard": {
+    "commandBadge": "● PRTS TACTICAL COMMAND // STATUS: OPTIMAL",
+    "title": "DASHBOARD // OVERVIEW",
+    "subtitle": "Rhodes Island Central Command Terminal. Monitor upcoming headhunting banners, your gacha savings trajectory, and active operator promotion goals.",
+    "alert": {
+      "badge": "PRTS // STANDBY",
+      "title": "NO GAME ACCOUNT SYNCHRONIZED",
+      "body": "Depot stock, gacha currency, and operator promotion goals are currently empty. Synchronize your Arknights account or load interactive demo data to explore ArkCalc.",
+      "loadDemo": "LOAD DEMO DATA",
+      "syncAccount": "SYNC ACCOUNT →"
+    },
+    "stats": {
+      "availablePulls": "AVAILABLE PULLS:",
+      "rolls": "ROLLS",
+      "activeTargets": "ACTIVE TARGETS:",
+      "operators": "OPERATORS",
+      "sparkReadiness": "SPARK READINESS:",
+      "monthlyCard": "MONTHLY CARD:",
+      "activeRate": "ACTIVE (+200/D)"
+    },
+    "banner": {
+      "tag": "GCH // RADAR",
+      "title": "NEXT UPCOMING BANNER",
+      "commencingIn": "COMMENCING IN:",
+      "days": "DAYS",
+      "hrs": "HRS",
+      "min": "MIN",
+      "sec": "SEC",
+      "featuredRateUp": "FEATURED RATE-UP:",
+      "archiveButton": "VIEW BANNER TIMELINE & ARCHIVE →"
+    },
+    "treasury": {
+      "tag": "TREASURY // GACHA",
+      "title": "HEADHUNTING WAR CHEST",
+      "sparkBadge": "300 ROLLS TO SPARK",
+      "pullsAvailable": "PULLS AVAILABLE",
+      "sparkProgress": "300-SPARK PROGRESS:",
+      "orundum": "ORUNDUM",
+      "originitePrime": "ORIGINITE PRIME",
+      "permits": "HEADHUNTING PERMITS",
+      "singleTenRoll": "{single} Single / {ten} Ten-roll",
+      "rollsEquivalent": "= {count} rolls",
+      "monthlyCardNote": "MONTHLY CARD: ACTIVE (+200 ORUNDUM / DAY)",
+      "monthlyCardDesc": "Adds +6,000 Orundum (10 rolls) per calendar month to spark projection.",
+      "calculatorButton": "OPEN GACHA SPARK CALCULATOR →"
+    },
+    "targets": {
+      "tag": "PLN // TARGETS",
+      "title": "ACTIVE PROMOTION GOALS",
+      "activeCount": "{count} ACTIVE",
+      "emptyTitle": "NO OPERATOR TARGETS PLANNED YET.",
+      "emptyDesc": "Click an elite operator below to add to promotion plan:",
+      "planButton": "+ PLAN",
+      "plannerButton": "OPEN FULL PROMOTION PLANNER →"
+    }
+  },
+  "syncModal": {
+    "tag": "PRTS.GATEWAY // PROTOCOL SYNC",
+    "title": "Account Synchronization",
+    "risk": {
+      "title": "ACCOUNT RISK ADVISORY",
+      "zeroStorage": "ZERO-STORAGE POLICY",
+      "safetyLabel": "Account Safety",
+      "safetyDesc": "Synchronizing via live verification codes interacts directly with official authentication endpoints. Logging into an external tool while your in-game client is open will disconnect your active game session.",
+      "privacyLabel": "Privacy Guarantee",
+      "privacyDesc": "We do not store login credentials, verification codes, or access tokens on any server. All depot items and operator rosters remain entirely in your local browser session."
+    },
+    "tabs": {
+      "yostar": "YOSTAR EMAIL CODE",
+      "json": "MANUAL JSON IMPORT",
+      "demo": "DEMO PREVIEW"
+    },
+    "region": {
+      "label": "SERVER REGION"
+    },
+    "email": {
+      "label": "YOSTAR ACCOUNT EMAIL",
+      "placeholder": "doctor@example.com",
+      "hint": "Click Send Code to receive a 6-digit verification code in your email inbox."
+    },
+    "code": {
+      "label": "6-DIGIT VERIFICATION CODE",
+      "placeholder": "1 2 3 4 5 6",
+      "hint": "Enter the verification code received via email.",
+      "send": "SEND CODE",
+      "sent": "CODE SENT"
+    },
+    "json": {
+      "description": "Import your saved roster or depot backup directly from a JSON data file without logging in.",
+      "selectFile": "SELECT JSON FILE"
+    },
+    "demo": {
+      "description": "Load pre-populated Rhodes Island demo data to explore operator planning and spark analytics instantly.",
+      "loadButton": "LOAD INTERACTIVE DEMO DATA"
+    },
+    "startSync": "START SYNC"
   },
   "home": {
     "title": "Arknights Companion",
@@ -37,6 +161,12 @@
     "panels": "Panels",
     "tabs": "Tabs",
     "inputs": "Inputs",
-    "typography": "Typography"
+    "typography": "Typography",
+    "badges": "Badges & Rarities",
+    "stats": "Stats Tiles",
+    "alerts": "Alerts & Advisories",
+    "avatars": "Operator Avatars",
+    "emptyStates": "Empty States",
+    "progress": "HUD Progress Bars"
   }
 }
