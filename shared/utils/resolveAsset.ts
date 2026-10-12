@@ -45,12 +45,29 @@ const KIND_DIR_MAP: Record<AssetKind, string> = {
 }
 
 /**
+ * Known avatar overrides for operators whose base avatar has non-standard naming.
+ * Amiya (Medic class change) is released with only Elite 2 assets in the game files.
+ */
+const AVATAR_DEFAULT_OVERRIDE_MAP: Record<string, string> = {
+  char_1037_amiya3: 'char_1037_amiya3_2',
+}
+
+/**
+ * Known portrait default variant overrides.
+ * Class changes (Amiya Guard, Amiya Medic) only exist in Elite 2 form, so their base portrait is _2.
+ */
+const PORTRAIT_DEFAULT_VARIANT_MAP: Record<string, string> = {
+  char_1001_amiya2: '2',
+  char_1037_amiya3: '2',
+}
+
+/**
  * Resolves an ordered list of candidate URLs for a given game asset.
  * Pure function: strictly no network I/O, no runtime hotlinking to prts.wiki
  * or raw.githubusercontent.com.
  *
  * @param kind - The category of the asset (avatar, portrait, item, skill, equip).
- * @param id - The unique game asset identifier (e.g. 'char_102_texas', '30012', 'skchr_texas_2').
+ * @param id - The unique game asset identifier (e.g. 'char_102_texas', 'char_002_amiya').
  * @param options - Formatting and variant options.
  * @returns Array of fallback URL candidates.
  */
@@ -66,13 +83,50 @@ export function resolveAsset(
   const cleanId = id.trim()
   const dir = KIND_DIR_MAP[kind] ?? 'avatar'
   const ext = options?.format ?? 'png'
+
+  // 1. Portrait kind handling
+  if (kind === 'portrait') {
+    if (options?.variant) {
+      const filename = `${cleanId}_${options.variant}.${ext}`
+      return [`${PRIMARY_CDN_BASE}/${dir}/${filename}`, `${SECONDARY_CDN_BASE}/${dir}/${filename}`]
+    }
+
+    // Default portrait naming in ArknightsGameResource uses _1 (or _2 for class changes)
+    const primaryVariant = PORTRAIT_DEFAULT_VARIANT_MAP[cleanId] ?? '1'
+    const altVariant = primaryVariant === '1' ? '2' : undefined
+
+    const primaryFilename = `${cleanId}_${primaryVariant}.${ext}`
+    const candidates = [
+      `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+    ]
+
+    if (altVariant) {
+      const altFilename = `${cleanId}_${altVariant}.${ext}`
+      candidates.push(
+        `${PRIMARY_CDN_BASE}/${dir}/${altFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${altFilename}`,
+      )
+    }
+
+    return candidates
+  }
+
+  // 2. Avatar kind handling with Amiya class change mapping
+  if (kind === 'avatar' && !options?.variant) {
+    const overrideName = AVATAR_DEFAULT_OVERRIDE_MAP[cleanId]
+    if (overrideName) {
+      return [
+        `${PRIMARY_CDN_BASE}/${dir}/${overrideName}.${ext}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${overrideName}.${ext}`,
+        `${PRIMARY_CDN_BASE}/${dir}/${cleanId}.${ext}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${cleanId}.${ext}`,
+      ]
+    }
+  }
+
+  // 3. Standard asset resolution (avatar, item, skill, equip)
   const filename = options?.variant ? `${cleanId}_${options.variant}.${ext}` : `${cleanId}.${ext}`
 
-  // 1. Primary candidate: jsDelivr with pinned commit
-  const primaryUrl = `${PRIMARY_CDN_BASE}/${dir}/${filename}`
-
-  // 2. Secondary mirror candidate: Statically CDN with pinned commit
-  const secondaryUrl = `${SECONDARY_CDN_BASE}/${dir}/${filename}`
-
-  return [primaryUrl, secondaryUrl]
+  return [`${PRIMARY_CDN_BASE}/${dir}/${filename}`, `${SECONDARY_CDN_BASE}/${dir}/${filename}`]
 }

@@ -4,7 +4,6 @@ import {
   ASSET_REPO_COMMIT,
   PRIMARY_CDN_BASE,
   SECONDARY_CDN_BASE,
-  type AssetKind,
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
@@ -26,15 +25,65 @@ describe('resolveAsset utility', () => {
   })
 
   describe('kind directory paths', () => {
-    const kinds: AssetKind[] = ['avatar', 'portrait', 'item', 'skill', 'equip']
+    it('generates standard avatar candidates', () => {
+      const candidates = resolveAsset('avatar', 'char_102_texas')
+      expect(candidates).toEqual([
+        `${PRIMARY_CDN_BASE}/avatar/char_102_texas.png`,
+        `${SECONDARY_CDN_BASE}/avatar/char_102_texas.png`,
+      ])
+    })
 
-    it.each(kinds)('generates valid candidates for kind: %s', (kind) => {
-      const candidates = resolveAsset(kind, 'test_id')
-      expect(candidates).toHaveLength(2)
+    it('generates standard item, skill, and equip candidates', () => {
+      expect(resolveAsset('item', '30012')).toEqual([
+        `${PRIMARY_CDN_BASE}/item/30012.png`,
+        `${SECONDARY_CDN_BASE}/item/30012.png`,
+      ])
+      expect(resolveAsset('skill', 'skchr_texas_2')).toEqual([
+        `${PRIMARY_CDN_BASE}/skill/skchr_texas_2.png`,
+        `${SECONDARY_CDN_BASE}/skill/skchr_texas_2.png`,
+      ])
+      expect(resolveAsset('equip', 'uniequip_002_texas')).toEqual([
+        `${PRIMARY_CDN_BASE}/equip/uniequip_002_texas.png`,
+        `${SECONDARY_CDN_BASE}/equip/uniequip_002_texas.png`,
+      ])
+    })
 
-      const [primary, secondary] = candidates
-      expect(primary).toBe(`${PRIMARY_CDN_BASE}/${kind}/test_id.png`)
-      expect(secondary).toBe(`${SECONDARY_CDN_BASE}/${kind}/test_id.png`)
+    it('generates portrait candidates with default _1 variant and _2 fallback', () => {
+      const candidates = resolveAsset('portrait', 'char_102_texas')
+      expect(candidates).toEqual([
+        `${PRIMARY_CDN_BASE}/portrait/char_102_texas_1.png`,
+        `${SECONDARY_CDN_BASE}/portrait/char_102_texas_1.png`,
+        `${PRIMARY_CDN_BASE}/portrait/char_102_texas_2.png`,
+        `${SECONDARY_CDN_BASE}/portrait/char_102_texas_2.png`,
+      ])
+    })
+  })
+
+  describe('Amiya class change asset mappings', () => {
+    it('resolves standard avatar and portrait for Caster Amiya (char_002_amiya)', () => {
+      const avatarCandidates = resolveAsset('avatar', 'char_002_amiya')
+      expect(avatarCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/avatar/char_002_amiya.png`)
+
+      const portraitCandidates = resolveAsset('portrait', 'char_002_amiya')
+      expect(portraitCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_1.png`)
+      expect(portraitCandidates[2]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_2.png`)
+    })
+
+    it('resolves Guard Amiya (char_1001_amiya2) avatar and E2 portrait', () => {
+      const avatarCandidates = resolveAsset('avatar', 'char_1001_amiya2')
+      expect(avatarCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/avatar/char_1001_amiya2.png`)
+
+      const portraitCandidates = resolveAsset('portrait', 'char_1001_amiya2')
+      expect(portraitCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_1001_amiya2_2.png`)
+    })
+
+    it('resolves Medic Amiya (char_1037_amiya3) with char_1037_amiya3_2 avatar and portrait', () => {
+      const avatarCandidates = resolveAsset('avatar', 'char_1037_amiya3')
+      expect(avatarCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/avatar/char_1037_amiya3_2.png`)
+      expect(avatarCandidates[1]).toBe(`${SECONDARY_CDN_BASE}/avatar/char_1037_amiya3_2.png`)
+
+      const portraitCandidates = resolveAsset('portrait', 'char_1037_amiya3')
+      expect(portraitCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_1037_amiya3_2.png`)
     })
   })
 
