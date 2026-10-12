@@ -11,6 +11,9 @@ import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkProgress from '~/components/ui/AkProgress.vue'
 import AkModal from '~/components/ui/AkModal.vue'
+import AkContainer from '~/components/ui/AkContainer.vue'
+import AkGrid from '~/components/ui/AkGrid.vue'
+import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 
 const { t } = useI18n()
 
@@ -27,12 +30,25 @@ const isModalOpen = ref(false)
 
 <template>
   <div class="page-ui">
-    <div class="page-ui__container">
-      <header class="page-ui__header">
-        <span class="page-ui__badge">PRTS // DEV SHOWCASE</span>
-        <h1 class="page-ui__title">{{ t('ui.title') }}</h1>
-        <p class="page-ui__subtitle">{{ t('ui.subtitle') }}</p>
-      </header>
+    <AkContainer size="lg" class="page-ui__container">
+      <AkPageHeader
+        code="UI-00"
+        tag-label="DEV SHOWCASE"
+        :title="t('ui.title')"
+        :subtitle="t('ui.subtitle')"
+        watermark="PRTS"
+        badge="DEV-ONLY"
+        badge-variant="cyan"
+      >
+        <template #title>
+          <span class="page-ui__title">{{ t('ui.title') }}</span>
+        </template>
+        <template #actions>
+          <AkButton variant="secondary" size="sm" @click="isModalOpen = true">
+            Launch Modal
+          </AkButton>
+        </template>
+      </AkPageHeader>
 
       <!-- Buttons -->
       <AkPanel title="AkButton Component" tag="UI // 01" line-color="cyan">
@@ -222,7 +238,41 @@ const isModalOpen = ref(false)
           </template>
         </AkTabs>
       </AkPanel>
-    </div>
+
+      <!-- Layout Primitives -->
+      <AkPanel
+        title="Layout Primitives (AkContainer, AkGrid, AkPageHeader)"
+        tag="UI // 09"
+        line-color="green"
+      >
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">
+            AkGrid: Preset Panels (1 col mobile, 2 col md, 3 col xl)
+          </span>
+          <AkGrid preset="panels">
+            <AkPanel title="Module Grid Card 1" tag="DEMO // 01" line-color="cyan">
+              <p>Responsive content card automatically constrained with minmax(0, 1fr).</p>
+            </AkPanel>
+            <AkPanel title="Module Grid Card 2" tag="DEMO // 02" line-color="amber">
+              <p>Guaranteed zero horizontal overflow across 360px up to 1920px.</p>
+            </AkPanel>
+            <AkPanel title="Module Grid Card 3" tag="DEMO // 03" line-color="green">
+              <p>Adheres strictly to Rhodes Island tactical UI guidelines.</p>
+            </AkPanel>
+          </AkGrid>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">AkGrid: Preset Stats (4 columns with minmax)</span>
+          <AkGrid preset="stats">
+            <AkStat label="DEPLOYED OPERATORS" value="48" variant="cyan" />
+            <AkStat label="ORUNDUM RESERVE" value="73,200" variant="amber" />
+            <AkStat label="MASTERY TARGETS" value="12" variant="green" />
+            <AkStat label="SYSTEM TELEMETRY" value="OPTIMAL" variant="neutral" />
+          </AkGrid>
+        </div>
+      </AkPanel>
+    </AkContainer>
 
     <!-- Interactive Showcase Modal -->
     <AkModal

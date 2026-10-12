@@ -54,12 +54,19 @@
   - Added responsive breakpoint distribution: 1 column on `< md`, 2 columns on `md`–`xl`, 3 columns on `xl+`.
   - Enforced `min-width: 0`, `flex-shrink: 0`, and `text-overflow: ellipsis` on panels, operator chips, currency bars, and Drawer Doctor profile card.
 - Implemented Playwright console/pageerror defense fixture (`tests/e2e/fixtures.ts`) to fail tests on unhandled errors or missing translation keys.
-- Implemented comprehensive E2E layout sanity suite (`tests/e2e/layout-sanity.spec.ts`) validating 0 horizontal overflow and no raw translation keys across 10 viewport/locale combinations (360px, 768px, 1024px, 1440px, 1920px in EN and RU).
-- All quality gates passing: 44 unit/component tests in Vitest and 26 Playwright E2E tests.
+- Implemented UI consistency foundation and central module architecture:
+  - Added Section 13 «Единообразие интерфейса» to `AGENTS.md`.
+  - Created central typed modules registry `app/config/modules.ts` with `APP_MODULES` (`DSH-00`..`SET-06`), icons, routes, status (`ready` | `soon`), and i18n keys.
+  - Refactored `app/layouts/default.vue` navigation drawer to build entirely from `APP_MODULES` without markup duplication.
+  - Created layout primitive components in `app/components/ui/`: `AkContainer` (size presets `sm`–`xl`, responsive padding), `AkGrid` (strict `minmax(0, 1fr)` columns, gap presets, responsive presets `panels`/`stats`/`operators`), and `AkPageHeader` (tactical code tag, title, subtitle, watermark, actions slot). Added them to `app/pages/_ui.vue` showcase.
+  - Implemented uniform placeholder pages for all registered modules: `planner.vue`, `gacha.vue`, `recruit.vue`, `operators.vue`, `depot.vue`, `settings.vue` with `AkPageHeader`, `AkEmptyState`, and responsive 360px support for loading, error, and empty states.
+  - Added unit test suite `tests/unit/config/modules.test.ts` validating uniqueness of id/route/code, regex formatting, lookup helpers, and 100% presence of keys in `en.json` and `ru.json`.
+  - Added component tests `AkContainer.test.ts`, `AkGrid.test.ts`, `AkPageHeader.test.ts`. Total 55 unit/component tests passing.
+  - Automated `layout-sanity.spec.ts` to traverse all registry routes in EN and RU across 5 viewports (360, 768, 1024, 1440, 1920). Total 86 Playwright E2E tests passing.
 
 ## In progress
 
-- None (Layout bugfixes, i18n defenses, and server isolation completed).
+- None (Page templates, modules registry, and uniform layouts completed).
 
 ## Next
 

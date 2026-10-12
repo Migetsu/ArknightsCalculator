@@ -7,7 +7,7 @@ export default defineConfig({
       {
         test: {
           name: 'unit',
-          include: ['tests/unit/{shared,scripts,routes}/**/*.{test,spec}.ts'],
+          include: ['tests/unit/{shared,scripts,routes,config}/**/*.{test,spec}.ts'],
           environment: 'node',
         },
       },

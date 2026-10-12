@@ -1,15 +1,21 @@
 import { test, expect } from './fixtures'
+import { APP_MODULES } from '../../app/config/modules'
 
 const VIEWPORTS = [360, 768, 1024, 1440, 1920]
-const PAGES = [
-  { path: '/', locale: 'en' },
-  { path: '/ru', locale: 'ru' },
-]
+
+const ROUTES = APP_MODULES.flatMap((mod) => [
+  { id: mod.id, path: mod.route, locale: 'en' as const },
+  {
+    id: mod.id,
+    path: mod.route === '/' ? '/ru' : `/ru${mod.route}`,
+    locale: 'ru' as const,
+  },
+])
 
 test.describe('Layout Sanity & Responsiveness', () => {
-  for (const { path, locale } of PAGES) {
+  for (const { id, path, locale } of ROUTES) {
     for (const width of VIEWPORTS) {
-      test(`verifies zero horizontal overflow and no raw i18n keys on ${locale.toUpperCase()} (${width}px)`, async ({
+      test(`verifies zero horizontal overflow and no raw i18n keys on ${id} [${locale.toUpperCase()}] (${width}px)`, async ({
         page,
       }) => {
         await page.setViewportSize({ width, height: 900 })
@@ -45,7 +51,7 @@ test.describe('Layout Sanity & Responsiveness', () => {
 
         expect(
           overflowCheck.hasOverflow,
-          `Horizontal scroll detected on viewport ${width}px (${locale}):\n` +
+          `Horizontal scroll detected on viewport ${width}px (${locale}) at ${path}:\n` +
             `scrollWidth (${overflowCheck.scrollWidth}px) > clientWidth (${overflowCheck.clientWidth}px).\n` +
             `Overflowing elements:\n${overflowCheck.overflowingElements.join('\n')}`,
         ).toBe(false)
@@ -103,7 +109,7 @@ test.describe('Layout Sanity & Responsiveness', () => {
 
         // 3. Save screenshot to test-results/
         await page.screenshot({
-          path: `test-results/dashboard-${locale}-${width}.png`,
+          path: `test-results/${id}-${locale}-${width}.png`,
           fullPage: true,
         })
       })
