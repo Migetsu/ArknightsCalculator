@@ -4,14 +4,7 @@ import { useRoute } from 'vue-router'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkDrawer from '~/components/ui/AkDrawer.vue'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
-
-interface ModuleItem {
-  to: string
-  code: string
-  labelKey: string
-  descKey: string
-  icon: string
-}
+import { APP_MODULES } from '~/config/modules'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -29,58 +22,6 @@ useHead(() => ({
   link: [...(head.value.link || [])],
   meta: [...(head.value.meta || [])],
 }))
-
-const modules: ModuleItem[] = [
-  {
-    to: '/',
-    code: 'DSH-00',
-    labelKey: 'navigation.dashboard',
-    descKey: 'navigation.dashboardDesc',
-    icon: '⊞',
-  },
-  {
-    to: '/planner',
-    code: 'PLN-01',
-    labelKey: 'navigation.planner',
-    descKey: 'navigation.plannerDesc',
-    icon: '📋',
-  },
-  {
-    to: '/gacha',
-    code: 'GCH-02',
-    labelKey: 'navigation.gacha',
-    descKey: 'navigation.gachaDesc',
-    icon: '✦',
-  },
-  {
-    to: '/recruit',
-    code: 'RCR-03',
-    labelKey: 'navigation.recruit',
-    descKey: 'navigation.recruitDesc',
-    icon: '🔍',
-  },
-  {
-    to: '/operators',
-    code: 'OPS-04',
-    labelKey: 'navigation.operators',
-    descKey: 'navigation.operatorsDesc',
-    icon: '👥',
-  },
-  {
-    to: '/depot',
-    code: 'INV-05',
-    labelKey: 'navigation.depot',
-    descKey: 'navigation.depotDesc',
-    icon: '📦',
-  },
-  {
-    to: '/settings',
-    code: 'SET-06',
-    labelKey: 'navigation.settings',
-    descKey: 'navigation.settingsDesc',
-    icon: '⚙',
-  },
-]
 
 const isDrawerOpen = ref(false)
 const isSyncModalOpen = ref(false)
@@ -237,16 +178,18 @@ function isModuleActive(path: string): boolean {
       <div class="layout-default__nav-list">
         <div class="layout-default__nav-header">
           <span class="layout-default__nav-heading">
-            {{ t('layout.menu.modulesTitle') }} [07]
+            {{ t('layout.menu.modulesTitle') }} [{{
+              APP_MODULES.length.toString().padStart(2, '0')
+            }}]
           </span>
         </div>
 
         <NuxtLink
-          v-for="item in modules"
-          :key="item.to"
-          :to="localePath(item.to)"
+          v-for="item in APP_MODULES"
+          :key="item.route"
+          :to="localePath(item.route)"
           class="layout-default__nav-item"
-          :class="{ 'layout-default__nav-item--active': isModuleActive(item.to) }"
+          :class="{ 'layout-default__nav-item--active': isModuleActive(item.route) }"
           @click="closeDrawer"
         >
           <div class="layout-default__nav-icon-box" aria-hidden="true">
@@ -255,10 +198,10 @@ function isModuleActive(path: string): boolean {
 
           <div class="layout-default__nav-text">
             <div class="layout-default__nav-title-row">
-              <span class="layout-default__nav-label">{{ t(item.labelKey) }}</span>
+              <span class="layout-default__nav-label">{{ t(item.nameKey) }}</span>
               <span class="layout-default__nav-code">{{ item.code }}</span>
             </div>
-            <span class="layout-default__nav-desc">{{ t(item.descKey) }}</span>
+            <span class="layout-default__nav-desc">{{ t(item.descriptionKey) }}</span>
           </div>
 
           <span class="layout-default__nav-arrow" aria-hidden="true">→</span>
