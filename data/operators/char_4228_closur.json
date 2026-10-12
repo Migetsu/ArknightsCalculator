@@ -1,0 +1,1572 @@
+{
+  "id": "char_4228_closur",
+  "name": {
+    "en": "Closure",
+    "zh": "可露希尔",
+    "isMachineTranslation": true
+  },
+  "appellation": "Closure",
+  "displayNumber": "R00A",
+  "rarity": 6,
+  "class": "PIONEER",
+  "subclass": "tactician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "费用回复",
+    "控场"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "罗德岛总工程师可露希尔，以先锋身份亲临前线！",
+    "zh": "罗德岛总工程师可露希尔，以先锋身份亲临前线！",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "和她一起亲临前线的还有工具组、无人机、零食，以及她脑子里那些亟待解决的工程问题。",
+    "zh": "和她一起亲临前线的还有工具组、无人机、零食，以及她脑子里那些亟待解决的工程问题。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 788,
+            "atk": 202,
+            "def": 46,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1126,
+            "atk": 298,
+            "def": 77,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 5
+        },
+        {
+          "id": "30032",
+          "count": 10
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1126,
+            "atk": 298,
+            "def": 77,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1444,
+            "atk": 393,
+            "def": 110,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "30044",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1444,
+            "atk": 393,
+            "def": 110,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1762,
+            "atk": 480,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_closur_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 5,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 5,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 5,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 6,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 6,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 6,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 7,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 1,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 7,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 1,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 7,
+            "shield_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "递归策略",
+            "zh": "递归策略",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "zh": "立即使自身的援军获得<@ba.vup>{shield_cnt}</>层<$ba.shield>护盾</>（不叠加），技能持续时间内逐渐获得<@ba.vup>{cost}</>点部署费用；部署后每使用过一次技能，获得的部署费用<@ba.vup>+{cost_per_add}</>（最多提升至<@ba.vup>{cost_add_max}</>点）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 1,
+          "blackboard": {
+            "cost": 3,
+            "cost_per_add": 1,
+            "cost_add_max": 7,
+            "shield_cnt": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31113",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31094",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_closur_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "cost": 5,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.15,
+            "atk": 0.25,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 26,
+          "blackboard": {
+            "cost": 5,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.2,
+            "atk": 0.3,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 27,
+          "blackboard": {
+            "cost": 5,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.25,
+            "atk": 0.35,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 28,
+          "blackboard": {
+            "cost": 6,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.3,
+            "atk": 0.4,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 29,
+          "blackboard": {
+            "cost": 6,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.35,
+            "atk": 0.45,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "cost": 6,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.4,
+            "atk": 0.5,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 31,
+          "blackboard": {
+            "cost": 7,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.45,
+            "atk": 0.55,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 32,
+          "blackboard": {
+            "cost": 8,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.5,
+            "atk": 0.6,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 33,
+          "blackboard": {
+            "cost": 9,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.55,
+            "atk": 0.7,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "模型扩展",
+            "zh": "模型扩展",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，自身的援军防御力<@ba.vup>+{def:0%}</>，阻挡数<@ba.vup>+{block_cnt}</>，自身攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标且能攻击到自身援军阻挡的敌人；在战术点效果范围内部署干员时，立即返还部署费用的<@ba.vup>{cost_return:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 34,
+          "blackboard": {
+            "cost": 10,
+            "cost_return": 0.4,
+            "block_cnt": 1,
+            "def": 0.6,
+            "atk": 0.8,
+            "attack@max_target": 2,
+            "cost_period": 15,
+            "closur_s_2[add_cost_period].cost": 1,
+            "closur_s_2[add_cost_period].interval": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31114",
+              "count": 4
+            },
+            {
+              "id": "31093",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_closur_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.1,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.03,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.3,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 13,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.2,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.03,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.3,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 14,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.3,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.03,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.3,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.5,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.04,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.4,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 16,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.6,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.04,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.4,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 17,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.7,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.04,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.4,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 18,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 1.9,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.05,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.5,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 19,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 2.1,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.05,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.5,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 21,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 2.3,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.05,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.5,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        },
+        {
+          "name": {
+            "en": "Q.E.D.",
+            "zh": "Q.E.D.",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{cost_period}</>点部署费用，攻击间隔缩短，锁定自身和援军原本攻击范围内的敌人进行攻击，造成可露希尔<@ba.vup>{attack@atk_scale:0%}</>攻击力的物理伤害并施加持续<@ba.vup>{attack@slow_down_time}</>秒的<@ba.vup>{attack@slow_down:0%}</><$ba.slowdown>迟钝</>效果（可叠加，最高<@ba.vup>{attack@slow_down_max:0%}</>），每攻击<@ba.vup>{attack_trigger_cnt}</>次后攻击目标数+1（最多触发<@ba.vup>{max_trigger_cnt}</>次）",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 23,
+          "blackboard": {
+            "cost": 0,
+            "cost_attack_add": 0,
+            "attack_trigger_cnt": 9,
+            "max_trigger_cnt": 6,
+            "attack@atk_scale": 2.5,
+            "base_attack_time": -0.5,
+            "attack@slow_down": 0.06,
+            "attack@slow_down_time": 3,
+            "attack@max_stack_cnt": 10,
+            "attack@slow_down_max": 0.6,
+            "cost_period": 18,
+            "closur_s_3[add_cost_period].cost": 1,
+            "closur_s_3[add_cost_period].interval": 1.66
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31074",
+              "count": 4
+            },
+            {
+              "id": "31053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 6
+        },
+        {
+          "id": "30011",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31023",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30033",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "精准投放",
+            "zh": "精准投放",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "可以在战术点召唤指挥中心协助作战，其被击败后会在15秒后自动刷新；战术点效果范围随携带技能变化，效果范围内的友方单位视为自身的援军",
+            "zh": "可以在战术点召唤指挥中心协助作战，其被击败后会在15秒后自动刷新；战术点效果范围随携带技能变化，效果范围内的友方单位视为自身的援军",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "极限调度",
+            "zh": "极限调度",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "携带可露希尔时，<$ba.costlowerbound>部署费用下限</>降低3，【罗德岛】干员攻击力+4%",
+            "zh": "携带可露希尔时，<$ba.costlowerbound>部署费用下限</>降低3，【罗德岛】干员攻击力+4%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cost": -3,
+            "atk": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "极限调度",
+            "zh": "极限调度",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "携带可露希尔时，<$ba.costlowerbound>部署费用下限</>降低4<@ba.talpu>（+1）</>，【罗德岛】干员攻击力+4%",
+            "zh": "携带可露希尔时，<$ba.costlowerbound>部署费用下限</>降低4<@ba.talpu>（+1）</>，【罗德岛】干员攻击力+4%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "cost": -4,
+            "atk": 0.04
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "第二天赋效果增强",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击力+25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击速度+8",
+        "zh": "攻击速度+8",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60,
+        "def": 20
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_closur",
+      "name": {
+        "en": "可露希尔证章",
+        "zh": "可露希尔证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_closur",
+      "description": {
+        "en": "干员可露希尔擅长布设战术点召唤援军来争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使战术家职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员可露希尔擅长布设战术点召唤援军来争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使战术家职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_closur",
+      "name": {
+        "en": "给自己的小奖杯",
+        "zh": "给自己的小奖杯",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_closur",
+      "description": {
+        "en": "【采购部特殊渠道进货清单】\n\n松香、小提琴清洁剂及维护套组——莱塔尼亚——进价：■■■■，售价：-\n从泽尔格勒回来之后，阿米娅拉小提琴的次数多了不少。真让人欣慰。之前阿米娅总说那把小提琴用不着太贵的维护套组，我也不太懂。问了好几个莱塔尼亚的干员才知道，不管小提琴本身如何，精心养护一定是没错的。乌萨斯这一整档子事过去之后，也该好好犒劳一下她了。\n\n各种报纸合订本——泰拉各国——进价：■■■■，售价：-\n全自动扫描设备和阅读器——卡西米尔——进价：■■■■，售价：-\n凯尔希没说，但这段时间泰拉发生了什么，她肯定想知道。\n扫描仪和阅读器就当我送她的了。卡西米尔的厂商偶尔还是能做出些有用的物件，自动翻页自动扫描自动整理的扫描仪在泰拉其他地方可不好找……虽然感觉像是哪个绝望的秘书发明的东西。\n\n热水壶智能化改装组件——哥伦比亚——进价：■■■■，售价：-\n说是智能化改装，其实是买了一整台提卡伦多产的智能净水机，再想办法把上面的组件改到热水壶上，因为实在是找不到“智能热水壶”这种东西——哥伦比亚人怎么就体会不到热水壶的好呢！\n不对，热水壶有什么好？\n……算了，反正现在这把水壶已经可以声控了，能控制水温，还能直出过滤后的冷水，大概相当于一个小型化了的净水机。不管喜不喜欢，这都是博士的了。\n\n掌机游戏开发大师V10.0——东国（南院）——进价：■■■■，售价：-\n……\n\n收到了礼物的人们担心可露希尔忙到忘了她自己，于是各自准备了回礼，一起去向可露希尔道谢。不过这样的担心是多余的。他们到工程部时，可露希尔正趴在桌子上呼呼大睡，身旁还放了个很有她个人风格的小奖杯。",
+        "zh": "【采购部特殊渠道进货清单】\n\n松香、小提琴清洁剂及维护套组——莱塔尼亚——进价：■■■■，售价：-\n从泽尔格勒回来之后，阿米娅拉小提琴的次数多了不少。真让人欣慰。之前阿米娅总说那把小提琴用不着太贵的维护套组，我也不太懂。问了好几个莱塔尼亚的干员才知道，不管小提琴本身如何，精心养护一定是没错的。乌萨斯这一整档子事过去之后，也该好好犒劳一下她了。\n\n各种报纸合订本——泰拉各国——进价：■■■■，售价：-\n全自动扫描设备和阅读器——卡西米尔——进价：■■■■，售价：-\n凯尔希没说，但这段时间泰拉发生了什么，她肯定想知道。\n扫描仪和阅读器就当我送她的了。卡西米尔的厂商偶尔还是能做出些有用的物件，自动翻页自动扫描自动整理的扫描仪在泰拉其他地方可不好找……虽然感觉像是哪个绝望的秘书发明的东西。\n\n热水壶智能化改装组件——哥伦比亚——进价：■■■■，售价：-\n说是智能化改装，其实是买了一整台提卡伦多产的智能净水机，再想办法把上面的组件改到热水壶上，因为实在是找不到“智能热水壶”这种东西——哥伦比亚人怎么就体会不到热水壶的好呢！\n不对，热水壶有什么好？\n……算了，反正现在这把水壶已经可以声控了，能控制水温，还能直出过滤后的冷水，大概相当于一个小型化了的净水机。不管喜不喜欢，这都是博士的了。\n\n掌机游戏开发大师V10.0——东国（南院）——进价：■■■■，售价：-\n……\n\n收到了礼物的人们担心可露希尔忙到忘了她自己，于是各自准备了回礼，一起去向可露希尔道谢。不过这样的担心是多余的。他们到工程部时，可露希尔正趴在桌子上呼呼大睡，身旁还放了个很有她个人风格的小奖杯。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30165",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

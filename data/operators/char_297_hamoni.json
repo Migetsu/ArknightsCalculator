@@ -1,0 +1,1099 @@
+{
+  "id": "char_297_hamoni",
+  "name": {
+    "en": "Harmonie",
+    "zh": "和弦",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "DB03",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "mystic",
+  "faction": "victoria",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ex-double agent Harmonie, now taking your orders.",
+    "zh": "曾经的双面间谍和弦，现在听从你的指挥。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "It's true, she <i>does</i> hold no ill will toward anyone.",
+    "zh": "她的确对任何人都没有恶意。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-13",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 674,
+            "atk": 543,
+            "def": 48,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 964,
+            "atk": 776,
+            "def": 81,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-14",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 964,
+            "atk": 776,
+            "def": 81,
+            "magicResistance": 15,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1252,
+            "atk": 1008,
+            "def": 112,
+            "magicResistance": 15,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-14",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30104",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1252,
+            "atk": 1008,
+            "def": 112,
+            "magicResistance": 20,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1546,
+            "atk": 1245,
+            "def": 125,
+            "magicResistance": 20,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_hamoni_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.3,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.31,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.32,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.35,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.36,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.37,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.4,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.43,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.46,
+            "base_attack_time": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lithe Steps",
+            "zh": "轻巧舞步",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.5,
+            "base_attack_time": 0.2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30093",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_hamoni_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces very slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 100,
+            "base_attack_time": 0.8,
+            "move_speed": -0.45
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces very slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 120,
+            "base_attack_time": 0.8,
+            "move_speed": -0.45
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces very slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 140,
+            "base_attack_time": 0.8,
+            "move_speed": -0.45
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>略微缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 140,
+            "base_attack_time": 0.7,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>略微缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 160,
+            "base_attack_time": 0.7,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces slightly</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>略微缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 180,
+            "base_attack_time": 0.7,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces moderately</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>一定程度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 180,
+            "base_attack_time": 0.65,
+            "move_speed": -0.55
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces moderately</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>一定程度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 200,
+            "base_attack_time": 0.65,
+            "move_speed": -0.6
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces moderately</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>一定程度缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 230,
+            "base_attack_time": 0.65,
+            "move_speed": -0.6
+          }
+        },
+        {
+          "name": {
+            "en": "A Disastrous Drowning",
+            "zh": "沉溺之灾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, attacks only blocked enemies. Attack interval <@ba.vup>reduces</>, and creates a pool of water in attack range, which causes ground enemies to have <@ba.vup>-{-move_speed:0%}</> Movement Speed and take <@ba.vup>{damage_value}</> Arts damage per second.",
+            "zh": "开启技能后自身只攻击被阻挡的敌人，攻击间隔<@ba.vup>缩短</>，攻击范围内生成一个水域，地面敌人经过时移动速度<@ba.vup>-{-move_speed:0%}</>，且每秒受到<@ba.vup>{damage_value}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "damage_value": 250,
+            "base_attack_time": 0.6,
+            "move_speed": -0.6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "A Surprise Visitor",
+            "zh": "不期而至",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal 12% more damage when attacking blocked enemies",
+            "zh": "攻击被阻挡的敌人造成伤害提升12%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.12
+          }
+        },
+        {
+          "name": {
+            "en": "A Surprise Visitor",
+            "zh": "不期而至",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal 15% <@ba.talpu>(+3%)</> more damage when attacking blocked enemies",
+            "zh": "攻击被阻挡的敌人造成伤害提升15%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "A Surprise Visitor",
+            "zh": "不期而至",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal 17% more damage when attacking blocked enemies",
+            "zh": "攻击被阻挡的敌人造成伤害提升17%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.17
+          }
+        },
+        {
+          "name": {
+            "en": "A Surprise Visitor",
+            "zh": "不期而至",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal 20% <@ba.talpu>(+3%)</> more damage when attacking blocked enemies",
+            "zh": "攻击被阻挡的敌人造成伤害提升20%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +45",
+        "zh": "攻击力+45",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 130
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_hamoni",
+      "name": {
+        "en": "Harmonie's Badge",
+        "zh": "和弦证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_hamoni",
+      "description": {
+        "en": "Operator Harmonie has demonstrated a perennial commitment to Originium Arts.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Mystic Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员和弦常年与源石技艺为伴\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使秘术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_hamoni",
+      "name": {
+        "en": "The Spy's Dossiers",
+        "zh": "情报人员资料夹",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_hamoni",
+      "description": {
+        "en": "Personnel: Hamilton\nColonel and commanding officer of County Hillock Barracks, an ordinary citizen with no involvement in any power struggles. Holds a firm and aggressive stance towards people of Taran background. He is on high alert, and decapitation operations are not advised.\nOn the evening of the 12th, he dined with two Messengers at the Waterside Restaurant, lip reading reveals that they were dispatched by a certain Count.\n...\nAs expected, all attempts at communication have failed. It can now be confirmed that the Oripathy crisis in County Hillock has been artificially exacerbated. Someone is stoking his hatred behind the scenes and using his stubborn and self-centered personality to test the Duke of Wellington's stance. The battle plan has taken shape, and the image contains a telegram sent to the barracks on an outlying plate.\nThis calls for a requisite disclosure of information to him in order to reduce suspicion on me from within the military apparatus.\n\nPersonnel: Count Mourning\nIntends to defect to the Duke of Wellington. His demesne is near to Londinium, and a large quantity of Originium product orders have been flowing in. Based on the volume, he has the military prowess to stand firm against the various units outside Londinium.\nHe and his wife share a love of Bolívarian coffee, taking regular trips to purchase the beans in person. His children are not yet of age, and his eldest daughter attended a private secondary school in the Auchterigg Borough of Londinium until departing last year.\nSignature and handwriting can be seen in the image.\n...\nHe is on good terms with the Skamandros family, and most of his trusted aides also have respect for the White Wolf Count. Rita may be a crucial bargaining chip. If Mandragora brings Rita with her to negotiate a collaboration, the process should go smoother. After all, he would not want to see anything happen to his friend's daughter. Time is limited, we will need to push him to make a decision and agree to help Dublinn infiltrate Londinium.\n\nOrganization: 'Rhodes Island'\nThe medical organization that made off with Loughshinny. They're registered in Victoria and have four drug patents pertaining to Oripathy.\n...\n\n'The remaining pages are all about you, so you've no need to scrutinize them any further, right?'\n'I've been at it for nearly a year now, and this is the only information I've gathered. I have to compliment your clandestine work.'\n'The intelligence I'm offering you is only the lovingly curated fraction that is beneficial to the both of us. Whether or not I've fabricated anything is up to you to determine.'\n'...Come now, have I not been sufficiently pacifist in my methods?'\n'After all, I've never picked anyone out as an enemy, and I don't particularly enjoy seeing people sacrifice themselves.'\n'I just like to push people in the right direction and listen as those contradictory bits form their own harmony.'",
+        "zh": "人员：汉密尔顿\n小丘郡驻军上校，普通市民出身，无势力牵扯。对塔拉人的态度和手段都十分强硬。警觉性高，不建议对其进行斩首行动。\n十二日晚，与两位信使在水岸餐厅共进晚餐，从唇形判断信使来自某位伯爵。\n……\n不出所料，所有争取沟通的尝试都失败了。已经可以确定，小丘郡的矿石病问题是人为激化的。有人在背后支持他的仇恨，借他刚愎自用的性格试探威灵顿公爵的立场。军方计划已经成型，照片为一封发往边缘地块驻军处的电报。\n需要向他适当透露信息，降低军队系统内部对我的疑虑。\n\n人员：莫宁伯爵\n有意投靠威灵顿公爵。领地接近伦蒂尼姆，近期有大批源石制品订单流入，以订单量估测，他的军事实力能够支持他在伦蒂尼姆城外的各方驻军中站稳脚跟。\n与夫人共同爱好玻利瓦尔咖啡豆，二人每年亲自前往采买。子女尚未成年，长女曾在奥克特里格区某私立中学就读，去年已离开伦蒂尼姆。\n签名及字迹见照片。\n……\n与斯卡曼德罗斯家族交好，所任用的亲信也大都对白狼伯爵有尊敬之情。丽塔或许能成为关键性的筹码。如果蔓德拉带上丽塔与他谈合作，沟通应该会更顺利，毕竟，他不会希望看到老友的女儿出什么意外。时间有限，的确需要推动他下定决心，同意协助深池进入伦蒂尼姆城内。\n\n组织：“罗德岛”\n带走了拉芙希妮的医疗公司，在维多利亚境内注册有四种药物，均与矿石病相关。\n……\n\n“后面几页都是与你们自身相关的内容，你们就没有必要再仔细看了，对不对？”\n“我追踪了近一年，得到的信息也只有这些，我都想称赞你们的保密工作了。”\n“赠送给你们的情报当然只是精心挑选的一小部分，对你我都有利的部分。至于我有没有造假，就请你们自己判断吧。”\n“……哎呀，难道我的做法还不够和平吗？”\n“毕竟，我可从来没有把任何人当做敌人，更不喜欢让人牺牲掉呀。”\n“我喜欢做的事，只是把人推到他们该去的地方，让那些互不相容的东西能演奏出一个协调的和弦罢了。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30024",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

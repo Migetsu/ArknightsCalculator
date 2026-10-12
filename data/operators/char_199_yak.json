@@ -1,0 +1,1055 @@
+{
+  "id": "char_199_yak",
+  "name": {
+    "en": "Matterhorn",
+    "zh": "角峰",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "JC03",
+  "rarity": 4,
+  "class": "TANK",
+  "subclass": "protector",
+  "faction": "kjerag",
+  "position": "MELEE",
+  "tagList": [
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Matterhorn, Defender of Karlan Trade CO.,LTD, is at your service as a Defender Operator.",
+    "zh": "喀兰贸易公司卫士角峰，将作为重装干员为您提供服务。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The reliable shield of Kjerag.",
+    "zh": "坚实可靠的谢拉格之盾。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1273,
+            "atk": 198,
+            "def": 241,
+            "magicResistance": 5,
+            "cost": 17,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1698,
+            "atk": 254,
+            "def": 361,
+            "magicResistance": 5,
+            "cost": 17,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        },
+        {
+          "id": "30042",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1698,
+            "atk": 254,
+            "def": 361,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 2264,
+            "atk": 318,
+            "def": 489,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3232",
+          "count": 5
+        },
+        {
+          "id": "30083",
+          "count": 14
+        },
+        {
+          "id": "30063",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2264,
+            "atk": 318,
+            "def": 489,
+            "magicResistance": 5,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3235,
+            "atk": 375,
+            "def": 670,
+            "magicResistance": 5,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_yak_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.2,
+            "hp_recovery_per_sec": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.23,
+            "hp_recovery_per_sec": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.26,
+            "hp_recovery_per_sec": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.3,
+            "hp_recovery_per_sec": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.33,
+            "hp_recovery_per_sec": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.36,
+            "hp_recovery_per_sec": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.4,
+            "hp_recovery_per_sec": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.5,
+            "hp_recovery_per_sec": 33
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.6,
+            "hp_recovery_per_sec": 36
+          }
+        },
+        {
+          "name": {
+            "en": "Stamina Enhancement",
+            "zh": "体能强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; Restores HP by <@ba.vup>{HP_RECOVERY_PER_SEC}</> per second",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "max_hp": 0.7,
+            "hp_recovery_per_sec": 40
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 1
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_yak_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.2,
+            "def": 0.1,
+            "magic_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.23,
+            "def": 0.1,
+            "magic_resistance": 0.53
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.26,
+            "def": 0.1,
+            "magic_resistance": 0.56
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.3,
+            "def": 0.1,
+            "magic_resistance": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.33,
+            "def": 0.1,
+            "magic_resistance": 0.63
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.36,
+            "def": 0.1,
+            "magic_resistance": 0.66
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.4,
+            "def": 0.15,
+            "magic_resistance": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.43,
+            "def": 0.2,
+            "magic_resistance": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 5,
+          "blackboard": {
+            "max_hp": 0.46,
+            "def": 0.25,
+            "magic_resistance": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Cold Resistance",
+            "zh": "抗寒体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</>; DEF <@ba.vup>+{def:0%}</>; RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，防御力<@ba.vup>+{def:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "max_hp": 0.5,
+            "def": 0.3,
+            "magic_resistance": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 1
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30061",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Snowfield Guard",
+            "zh": "雪原卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +7",
+            "zh": "法术抗性+7",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Snowfield Guard",
+            "zh": "雪原卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +15",
+            "zh": "法术抗性+15",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 15
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +250",
+        "zh": "生命上限+250",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 385
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_yak",
+      "name": {
+        "en": "Matterhorn's Badge",
+        "zh": "角峰证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Matterhorn has demonstrated a remarkable aptitude for preservation of the front and resilience against the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Protector responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员角峰擅长维持战线抵御敌人\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使铁卫职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_yak",
+      "name": {
+        "en": "Father's Robe",
+        "zh": "父亲的袍子",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_yak",
+      "description": {
+        "en": "In the Snow Realm's coldest season, your mother fell from her burdenbeast in labor pains, where the thick snow cover protected you both. Her groans, each higher than the last, drew the livestock close one after another, forming a circle with her inside. Those livestock were warm of fur—so thick yet fine—keeping the blizzard away, and the hot breath from their mouths and noses became a wall, providing enough warmth for your mother's labor.\nYou were born, your face so filthy, and you bawled in tears. I put out my hand and caressed your eyelids, shut so firm, my rough skin brushing the corners of your eyes red. I was born with a pair of wide, rugged hands, in which your grandfather took pride, saying I would be a man who could feed his family, but that day they caused you to cry without end.\nThen your mother swatted away my hand in annoyance, and I laughed, about to pull my finger away, when your arm found its way out from your swaddle and gripped my finger tight. You see? You were only but the size of my hand, yet you made me panic like nothing else, and I stood there dumb in the snow, not moving a step.\nThe blizzard that had been screaming outside forced its way into this delivery circle the livestock formed, the red retreating from your skin, naked to the wind, and an ominous purple spreading over. Your mother opened the fore of my robe and pressed you against my bosom. Carefully and cautiously I wrapped it again, as if caring for my own second heart. And your face frozen frigid by the cold was warmed by my body, and finally you ceased to cry, and simply sucked your fingers and took small, weak breaths. Then your mother climbed onto my back, and called for the livestock to return home with a whistle. Their tumbling hides bounded across the gentle, narrow slope down the mountain, and I was like their leader, with her riding tenderly on my back, and you so frail against my chest, though my legs shivered as they sank into the ankle-deep snow. Like I was bearing the weight of all the land.\nThat robe later opened a hole right at its chest, which must have been from some Holy Hunt or other. Last year your mother unearthed it from our wardrobe's depths, where I had all but forgotten it. Your mother chose to repair it so finely it in the end, and asked if I would still wear it. I shook my head no, saying we would best send it to you. I'm well into my age now, and stoop more with each passing day, but you are in the prime of your youth, standing tall as the mountains, never to fear the north wind nor the icy snow. All else aside, I want you to have it. I imagine you'll look just the same as I did when you wear it, no? So wear it, and come drop by. My chest may be shriveled and dry now, and my robe run through with holes, but it's still far enough to keep a heart safe.\n—Letter from Father",
+        "zh": "在雪境最寒冷的季节，你的母亲因为阵痛从驮兽身上跌落，地上厚厚的积雪保护了她和你。她一声高过一声的呻吟吸引牲畜一只只靠了过来，围成一个圈，将她包围在内。那些牲畜暖烘烘的皮毛厚实细密，把风雪挡在外面，而从它们口鼻中喷出的热气砌成一堵墙，为你母亲的分娩提供了合适的温度。\n你出生了，脸上脏兮兮的，一直干嚎，我伸出手摸了摸你紧闭的眼缝，粗糙的皮肤蹭得你眼角通红一片。我生就一副结实宽大的手，你的祖父为此骄傲，说我会是一个能养家的男人，可它们却在那天害得你啼哭不止。\n于是你母亲不悦地将我的手拍开，我哂笑着，正打算抽回手指，你的手臂却从襁褓中探出，紧紧牵住我的手指。你看，明明你只有我一只手大，却能让我惊慌失措，呆立在雪地动弹不得。\n一直在外面疾驰呼啸着的风雪挤进了牲畜围成的产房，红润的血色从你裸露在外的皮肤上褪去，不祥的青紫色漫延上来。你的母亲解开我袍子的前襟，把你塞进我的胸膛。我小心翼翼裹紧袍子，像对待我第二颗心脏。而你被冻得硬邦邦的小脸被我的体温温暖，终于你不再啼哭，只是含着手指，呼吸细弱。你的母亲则在这时攀上我的后背，打着呼哨驱赶牲畜群回家，滚滚的牲畜群顺着狭窄的缓坡奔下山，我像牲畜的头领，背上驮着纤细的她，怀里装着孱弱的你，两腿却在及踝深的雪地中不停打颤，好像负着的是一方天地的重量。\n后来那件袍子的胸口位置破了一个窟窿，应该是在哪一次圣猎中吧。去年你的母亲把它从衣柜底翻了出来，我们几乎都要忘记它了。最后你的母亲细细补好了它，问我还穿吗？我摇摇头，说还是寄给你吧。我已经衰老，日渐佝偻，而你正值盛年，如高山巍峨，再不惧朔风和冰雪。可我还是想寄给你，想你穿着它的样子，和我当年的样子是否如出一辙？所以穿上它吧，所以躲进来吧，纵使我的胸膛干瘪枯瘦，我的袍子千疮百孔，却依然能够保护一颗心脏。\n——父亲的信",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30033",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31013",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

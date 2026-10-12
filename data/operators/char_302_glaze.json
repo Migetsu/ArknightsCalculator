@@ -1,0 +1,1048 @@
+{
+  "id": "char_302_glaze",
+  "name": {
+    "en": "Ambriel",
+    "zh": "安比尔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LT02",
+  "rarity": 4,
+  "class": "SNIPER",
+  "subclass": "longrange",
+  "faction": "laterano",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Slow"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ambriel, Sniper Operator of Rhodes Island, has her sights on your back from somewhere you cannot see.",
+    "zh": "罗德岛狙击干员安比尔，她会在你看不到的地方瞄准你的身后。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "A well-rounded and capable sniper, as long as she doesn't doze off.",
+    "zh": "一位全面而标准的狙击手，只要不打瞌睡的话。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 785,
+            "atk": 437,
+            "def": 60,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1020,
+            "atk": 608,
+            "def": 80,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 1
+        },
+        {
+          "id": "30012",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1020,
+            "atk": 608,
+            "def": 80,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1276,
+            "atk": 801,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3242",
+          "count": 5
+        },
+        {
+          "id": "30043",
+          "count": 16
+        },
+        {
+          "id": "30103",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1276,
+            "atk": 801,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1595,
+            "atk": 977,
+            "def": 122,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_glaze_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Snaring Shell",
+            "zh": "阻挡弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend} tile</>, and attacks <$ba.sluggish>Slow</> the target for <@ba.vup>{attack@sluggish}</> seconds",
+            "zh": "攻击范围<@ba.vup>+{ability_range_forward_extend}格</>，且攻击会使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 1,
+            "attack@sluggish": 1.2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 1
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_glaze_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8,
+            "base_attack_time": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Radar Sweep",
+            "zh": "雷达定位",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Attack Range <@ba.vup>becomes global</>, but Attack Interval <@ba.vdown>increases a bit</>, and attack wind-up <@ba.vdown>takes longer</> when attacking an enemy outside of this unit's original range.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大至整个战场</>，但攻击间隔<@ba.vdown>略微增大</>，且在攻击超出原本攻击范围的敌方单位时攻击前摇<@ba.vdown>增大</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1,
+            "base_attack_time": 0.9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30041",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "31013",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "31023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Precise Strike",
+            "zh": "精确打击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 25% chance to <$ba.stun>Stun</> target for 2 seconds when attacking an enemy outside this unit's normal Attack Range",
+            "zh": "攻击原本攻击范围以外的目标时，有25%的几率使其<$ba.stun>晕眩</>2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "buff_prob": 0.25,
+            "stun": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Strike",
+            "zh": "精确打击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 28% <@ba.talpu>(+3%)</> chance to <$ba.stun>Stun</> target for 2 seconds when attacking an enemy outside this unit's normal Attack Range",
+            "zh": "攻击原本攻击范围以外的目标时，有28%<@ba.talpu>（+3%）</>的几率使其<$ba.stun>晕眩</>2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "buff_prob": 0.28,
+            "stun": 2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +6",
+        "zh": "攻击速度+6",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_glaze",
+      "name": {
+        "en": "Ambriel's Badge",
+        "zh": "安比尔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Ambriel has demonstrated a remarkable aptitude for defeating enemies from long range. \nThe Field Operations Department has thus passed the following resolution: \nThis operator shall be appointed a Sniper Operator during field operations to exercise Deadeye responsibilities. \nIn witness whereof, \nThis badge is hereby conferred upon the above named.",
+        "zh": "干员安比尔擅长在远距离击溃敌人\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使神射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_glaze",
+      "name": {
+        "en": "Portable Radar Equipment",
+        "zh": "便携雷达的辅助器材",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_glaze",
+      "description": {
+        "en": "Ambriel received a mission today. \nA mission it might be, but in reality, it's more like a small request. \nOf course, as the request came from Beanstalk, the reward was enough to make anyone's heart waver: an exquisitely-crafted wooden music box bearing a flowering tree. As soon as she saw that music box, Ambriel thought to herself, there's nobody in this world who wouldn't be charmed by it.\n'Please help me! While I was transporting the little metal crabs, two of them got lost! They're very important to me, so please, I'm begging you!' \nWhen Ambriel went to the location indicated by Beanstalk and set up her equipment, she couldn't help but to think to herself, she never imagined she'd be out in the wilderness trying to catch metal crabs. \n'What the heck even is my job...' \n.......\n Well, whatever. Catching crabs might even be fun. All the infected wild metal crabs I've seen in the past were ugly and troublesome, but I've never seen Miss Beanstalk's crabs before. Maybe they're cute. \nInexplicable thoughts ran through Ambriel's head. \nBut the cute little crabs were not today's main agenda. \nAmbriel activated the equipment around her – the sooner she finished the mission, the sooner she'd get her hands on that wonderful music box. \nShe switched on the power, flipped the switch, adjusted the angle, entered the data, and confirmed her target's information... \nBut there was a problem. The radar appeared to be broken. \nBe it the gibberish on the data output display or the smoking battery, everything was telling her the same bad news. \nIf she had to go back to repair the radar, then she definitely would not be able to complete the mission today, and the music box... She definitely didn't want that... \n...... \n'Ohhhh! I have spare parts here!' \nAmbriel's sudden yelp echoed through the wilderness as she excitedly opened a pack of equipment. Her mood was so good she even broke out into a little hum, finishing the repairs in no time at all and returning to her original mental state. \nAfter re-adjusting the equipment, Ambriel would set up the transceiver and begin releasing her Originium Arts–– \nHmm... This reminds me of tracking down those classmates when they were playing hooky. Now, little crabs, where are you......' \n...... \nA few hours later, the pink-haired Sankta returned to Beanstalk with a breeder box, two little metal crabs rolled up into balls inside. \nIn a box behind her were three fowlbeast eggs of different colors. \nBeanstalk got her metal crabs back, and Ambriel received the exquisite music box, so beautiful that one dared not handle it with anything more than the gentlest of touches. \n'I can't believe it.' Ambriel thought to herself while joyfully looking at the music box. 'I can't believe all that equipment ended up being so useful even off the battlefield.~' \n'Um, excuse me, were you planning on hatching those?' Beanstalk pointed to the fowlbeast eggs. 'If you want to hatch fowlbeast eggs, you'll need an incubator, and you'll have to turn them over frequently...' \n'Is it that complicated?!' \n'P-Please don't just throw them out though! You can ask Miss Vanilla... She'll be able to teach you!'",
+        "zh": "安比尔今天接到了一个任务。\n说是任务，其实是一个小小的委托。\n当然，豆苗作为委托人投其所好，提出了令人心动的报酬：一个精巧的木制花树八音盒。看到那些花瓣的第一眼，安比尔就打赌不会有人能对它不心动。\n“帮帮我！小磐蟹在运输的时候跑丢了两只，它们对我非常重要，拜托了！”\n来到豆苗所说的地点，布置好设备，安比尔没想到自己有一天会在旷野上捉小磐蟹。\n“我本职是什么来着……”\n……\n算了，捉磐蟹感觉也很有趣，以前见到的都是被感染的野生磐蟹，又丑又麻烦。豆苗的小磐蟹们她没见过，或许会很可爱？\n安比尔在心里有一出没一出地想着。\n但是可爱小磐蟹不是今天的主题。\n为了早点完成委托，尽早得到那个漂亮的八音盒，安比尔启动了身边的设备。\n发动电源，安置支架，调整角度，输入数据，确认目标信息……\n安比尔突然发现了问题，雷达好像坏了。\n不论是凌乱的数据还是甚至已经开始冒烟的电池，都在告诉她这个不幸的消息。\n难道要回去修好了雷达再来吗，那今天肯定就没法完成委托了，八音盒也……不要啊……\n……\n“哦哦哦我有辅助器材来着！！”\n在旷野里突然大呼小叫的安比尔兴奋地打开一包器材，心情好到几乎是哼着小曲完成了设备的维修更换，快速地调整好了自己的状态。\n重新调试好设备后，安比尔将接收传感器布设好，开始释放自己源石技艺——\n“哎呀，怎么感觉和以前抓逃课学生一样？唔唔，小磐蟹们都在哪呢……”\n……\n几刻钟后，粉色头发的萨科塔捧着在养殖箱里缩成两团的小磐蟹，来到了豆苗的面前。\n她身后的箱子里还放着三个颜色不同的羽兽蛋。\n豆苗得到了她心心念念的小磐蟹们，安比尔得到了美得让人只敢小心翼翼触碰的精致八音盒。\n“帮了大忙了。”安比尔边喜滋滋地看着八音盒边想，“没想到就算不在战场上，那些器材也是这么有用的哦~”\n“唔，姐姐要养它们吗？”豆苗指着那些羽兽蛋，“孵化羽兽蛋需要恒温箱哦，还要经常翻面……”\n“这么麻烦？！”\n“那，那也请千万不要扔了它们！可以问问香草姐姐……她会教你的！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30033",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30063",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30013",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "id": "char_181_flower",
+  "name": {
+    "en": "Perfumer",
+    "zh": "调香师",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "MN03",
+  "rarity": 4,
+  "class": "MEDIC",
+  "subclass": "ringhealer",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Perfumer, manager of 'Health Garden,' will use her fragrant aromatherapy to heal the squad.",
+    "zh": "“疗养庭院”管理人调香师，播撒熏香为大家带来芬芳与治愈。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Anyone with a pollen allergy should stay away.",
+    "zh": "花粉过敏者除外。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 710,
+            "atk": 117,
+            "def": 69,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 960,
+            "atk": 189,
+            "def": 92,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 960,
+            "atk": 189,
+            "def": 92,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1232,
+            "atk": 256,
+            "def": 120,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3262",
+          "count": 5
+        },
+        {
+          "id": "30073",
+          "count": 19
+        },
+        {
+          "id": "30053",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1232,
+            "atk": 256,
+            "def": 120,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1560,
+            "atk": 320,
+            "def": 145,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_heal_up[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up β",
+            "zh": "治疗强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_flower_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.5,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.6,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.7,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.8,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.9,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2.1,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2.2,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2.3,
+            "attack_speed": -50
+          }
+        },
+        {
+          "name": {
+            "en": "Fine Blending",
+            "zh": "精调",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vdown>-{-attack_speed}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击速度<@ba.vdown>-{-attack_speed}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2.5,
+            "attack_speed": -50
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 1
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lavender",
+            "zh": "熏衣草",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores the HP of all allies by 3% of Perfumer's ATK per second",
+            "zh": "在战场时全体友方单位每秒恢复相当于调香师攻击力3%的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "Lavender",
+            "zh": "熏衣草",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores the HP of all allies by 3.5% <@ba.talpu>(+0.5%)</> of Perfumer's ATK per second",
+            "zh": "在战场时全体友方单位每秒恢复相当于调香师攻击力3.5%<@ba.talpu>（+0.5%）</>的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.035
+          }
+        },
+        {
+          "name": {
+            "en": "Lavender's Fragrance",
+            "zh": "熏衣香",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores the HP of all allies by 5% of Perfumer's ATK per second",
+            "zh": "在战场时全体友方单位每秒恢复相当于调香师攻击力5%的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Lavender's Fragrance",
+            "zh": "熏衣香",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores the HP of all allies by 5.5% <@ba.talpu>(+0.5%)</> of Perfumer's ATK per second",
+            "zh": "在战场时全体友方单位每秒恢复相当于调香师攻击力5.5%<@ba.talpu>（+0.5%）</>的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.055
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +19",
+        "zh": "攻击力+19",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 150,
+        "atk": 25
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_flower",
+      "name": {
+        "en": "Perfumer's Badge",
+        "zh": "调香师证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Perfumer has demonstrated a remarkable aptitude for healing several teammates in a short period of time. \nThe Field Operations Department has thus passed the following resolution: \nThis operator shall be appointed a Medic Operator during field operations to exercise Multi-target Medic responsibilities. \nIn witness whereof, \nThis badge is hereby conferred upon the above named.",
+        "zh": "干员调香师擅长在短时间内为数位干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使群愈师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_flower",
+      "name": {
+        "en": "'Aegean's Kiss'",
+        "zh": "“爱琴之吻”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_flower",
+      "description": {
+        "en": "Inhale–– \nLet the aroma linger in your nose for a spell–– \nSlowly exhale–– \nHow was that, Doctor? This perfume's pretty nice, right? \nHm, my secret? What secret? \nAll the ingredients are all-natural. You just have to put a liiit-tle extra work into it. \nYou still want to know more? \nMy, oh my, you're not planning on just copying the recipe, are you? \nHehe~ Well, it doesn't matter if I write the recipe down for you anyway. This can only be made with local materials from Minos. \nNot a single ingredient can be substituted. \nIt's like–– all my personal memories from Minos distilled. \nThe nights in the Aegean Plain, the peacefully grazing fowlbeasts, the moon settling into the bottom of the lake, springtime in boronia's blossom–– \nI can see it. \nI can feel it. \nThere's nothing quite like it. \nAlas–– 'nothing quite like it' isn't quite right. After all, everyone can enjoy this aroma. \nAhh, just treat this as using your nose to alleviate a little bit of my homesickness~ \nNow, tell me, Doctor. \nWhat can you smell, \nfrom this 'Aegean's Kiss'~~",
+        "zh": "吸气——\n让香味在鼻子里停留一会——\n慢慢呼出来——\n怎么样博士，这款香水不错吧。\n唉，秘密？什么秘密？\n只是原料有些多，工艺稍微复杂一点——点罢了。\n您想要更多地了解一下？\n哎呀哎呀，不会是想拿了配方去复制吧。\n哼哼~就算写给您也无妨哦，反正这个东西，只能用米诺斯当地的材料做。\n没有一样能够被替代。\n就像——我个人对米诺斯的浓缩回忆。\n爱琴平原的夜晚，缓掠的羽兽，沉入湖底的月亮，波罗尼色的春天——\n看得见。\n摸得着。\n独一无二。\n啊——独一无二好像也不太准确，毕竟大家都嗅到了。\n唉，就当是借各位的鼻子舒缓一下我的乡愁吧~\n现在，告诉我吧，博士。\n你从这“爱琴之吻”里，\n闻出了什么呢~~",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30043",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30073",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

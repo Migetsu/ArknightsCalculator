@@ -1,0 +1,1512 @@
+{
+  "id": "char_245_cello",
+  "name": {
+    "en": "Virtuosa",
+    "zh": "塑心",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LT22",
+  "rarity": 6,
+  "class": "SUPPORT",
+  "subclass": "ritualist",
+  "faction": "laterano",
+  "position": "RANGED",
+  "tagList": [
+    "Elemental",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Operator Virtuosa visits Rhodes Island, waiting for the performance to begin.",
+    "zh": "干员塑心造访罗德岛，等待演奏开始。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "For whom does the anthem sing? For whom does the music sound?",
+    "zh": "颂歌为谁而鸣，心声为谁奏响？",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 484,
+            "atk": 231,
+            "def": 48,
+            "magicResistance": 5,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 702,
+            "atk": 321,
+            "def": 70,
+            "magicResistance": 5,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 702,
+            "atk": 321,
+            "def": 70,
+            "magicResistance": 10,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 936,
+            "atk": 407,
+            "def": 93,
+            "magicResistance": 10,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30104",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 936,
+            "atk": 407,
+            "def": 93,
+            "magicResistance": 15,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1201,
+            "atk": 485,
+            "def": 109,
+            "magicResistance": 15,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_cello_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 1 charge and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能1次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "ep_damage_ratio": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 1 charge and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能1次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "ep_damage_ratio": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 1 charge and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能1次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 2,
+            "ep_damage_ratio": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 2 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能2次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 6,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "ep_damage_ratio": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 2 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能2次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 8,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "ep_damage_ratio": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 2 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能2次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "ep_damage_ratio": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 2 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能2次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 12,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "ep_damage_ratio": 0.95
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 3 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能3次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 14,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "ep_damage_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 3 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能3次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 16,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "ep_damage_ratio": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "'Golden Ecstasy'",
+            "zh": "“黄金的狂喜”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage, and an additional <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</> if the enemy is not under the burst effect\n<@ba.rem>Can store 3 charges and cannot use normal attacks when skill is inactive</>",
+            "zh": "对一个未处于损伤爆发期间的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>\\n<@ba.rem>可充能3次，技能未开启时无法普通攻击</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 18,
+          "blackboard": {
+            "atk_scale": 3,
+            "ep_damage_ratio": 1.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_cello_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 15,
+            "ep_damage_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 2,
+          "blackboard": {
+            "attack_speed": 20,
+            "ep_damage_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 4,
+          "blackboard": {
+            "attack_speed": 25,
+            "ep_damage_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 7,
+          "blackboard": {
+            "attack_speed": 30,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 9,
+          "blackboard": {
+            "attack_speed": 35,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 11,
+          "blackboard": {
+            "attack_speed": 40,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 45,
+            "ep_damage_ratio": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 50,
+            "ep_damage_ratio": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 55,
+            "ep_damage_ratio": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Requiem Mass'",
+            "zh": "“安魂的弥撒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, attack <@ba.vup>1</> additional target; when this unit and the allied Operator with highest ATK within range deal damage to an enemy, additionally deal <@ba.vup>{ep_damage_ratio:0%}</> ATK as <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，额外攻击<@ba.vup>1</>个目标，自身和攻击范围内攻击力最高的另一名友方干员对敌人造成伤害时附带自身<@ba.vup>{ep_damage_ratio:0%}</>攻击力的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 60,
+            "ep_damage_ratio": 0.25
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "31083",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_cello_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.7,
+            "scale_delta_to_one": 1.6,
+            "cello_s_3[max_hp].max_hp": 0.15,
+            "cello_s_3[atk].atk": 0.15,
+            "cello_s_3[def].def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 0.8,
+            "scale_delta_to_one": 1.7,
+            "cello_s_3[max_hp].max_hp": 0.15,
+            "cello_s_3[atk].atk": 0.15,
+            "cello_s_3[def].def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 24,
+          "blackboard": {
+            "atk": 0.9,
+            "scale_delta_to_one": 1.8,
+            "cello_s_3[max_hp].max_hp": 0.15,
+            "cello_s_3[atk].atk": 0.15,
+            "cello_s_3[def].def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 1.05,
+            "scale_delta_to_one": 1.9,
+            "cello_s_3[max_hp].max_hp": 0.2,
+            "cello_s_3[atk].atk": 0.2,
+            "cello_s_3[def].def": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 28,
+          "blackboard": {
+            "atk": 1.15,
+            "scale_delta_to_one": 2,
+            "cello_s_3[max_hp].max_hp": 0.2,
+            "cello_s_3[atk].atk": 0.2,
+            "cello_s_3[def].def": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 1.25,
+            "scale_delta_to_one": 2.1,
+            "cello_s_3[max_hp].max_hp": 0.2,
+            "cello_s_3[atk].atk": 0.2,
+            "cello_s_3[def].def": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 32,
+          "blackboard": {
+            "atk": 1.4,
+            "scale_delta_to_one": 2.2,
+            "cello_s_3[max_hp].max_hp": 0.25,
+            "cello_s_3[atk].atk": 0.25,
+            "cello_s_3[def].def": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 1.55,
+            "scale_delta_to_one": 2.3,
+            "cello_s_3[max_hp].max_hp": 0.25,
+            "cello_s_3[atk].atk": 0.25,
+            "cello_s_3[def].def": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 37,
+          "blackboard": {
+            "atk": 1.65,
+            "scale_delta_to_one": 2.4,
+            "cello_s_3[max_hp].max_hp": 0.25,
+            "cello_s_3[atk].atk": 0.25,
+            "cello_s_3[def].def": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "'Liberal Tango'",
+            "zh": "“自由的探戈”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, 2nd Talent effect increased to <@ba.vup>{scale_delta_to_one}</>x; when skill is active, for all other Operators within range, the one with the highest max HP gains max HP <@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>, the one with the highest ATK gains ATK <@ba.vup>+{cello_s_3[atk].atk:0%}</>, and the one with the highest DEF gains DEF <@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "zh": "<@ba.vdown>停止攻击</>，攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，第二天赋效果提升至<@ba.vup>{scale_delta_to_one}</>倍；技能期间使攻击范围内其他干员生命上限最高的生命上限<@ba.vup>+{cello_s_3[max_hp].max_hp:0%}</>、攻击力最高的攻击力<@ba.vup>+{cello_s_3[atk].atk:0%}</>、防御力最高的防御力<@ba.vup>+{cello_s_3[def].def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-8",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 1.8,
+            "scale_delta_to_one": 2.5,
+            "cello_s_3[max_hp].max_hp": 0.3,
+            "cello_s_3[atk].atk": 0.3,
+            "cello_s_3[def].def": 0.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "31023",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30061",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30083",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30073",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Wordless Elegy",
+            "zh": "无词哀歌",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Enemies within attack range take 6% ATK as <$ba.dt.apoptosis2>Necrosis damage</> per second",
+            "zh": "使攻击范围内敌人每秒受到相当于攻击力6%的<$ba.dt.apoptosis2>凋亡损伤</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_ratio": 0.06,
+            "sluggish": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wordless Elegy",
+            "zh": "无词哀歌",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Enemies within attack range take 8% ATK as <$ba.dt.apoptosis2>Necrosis damage</> per second, and are <$ba.sluggish>Slowed</> for 0.2s",
+            "zh": "使攻击范围内敌人每秒受到相当于攻击力8%的<$ba.dt.apoptosis2>凋亡损伤</>并<$ba.sluggish>停顿</>0.2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_ratio": 0.08,
+            "sluggish": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Wordless Elegy",
+            "zh": "无词哀歌",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Enemies within attack range take 10% ATK as <$ba.dt.apoptosis2>Necrosis damage</> per second, and are <$ba.sluggish>Slowed</> for 0.2s",
+            "zh": "使攻击范围内敌人每秒受到相当于攻击力10%的<$ba.dt.apoptosis2>凋亡损伤</>并<$ba.sluggish>停顿</>0.2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_ratio": 0.1,
+            "sluggish": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mental Inversion",
+            "zh": "精神逆构",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Enemies within attack range take 20% more <$ba.dt.apoptosis2>Necrosis damage</>",
+            "zh": "使攻击范围内敌人受到的<$ba.dt.apoptosis2>凋亡损伤</>提高20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Mental Inversion",
+            "zh": "精神逆构",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Enemies within attack range take 22% more <$ba.dt.apoptosis2>Necrosis damage</> <@ba.talpu>(+2%)</>",
+            "zh": "使攻击范围内敌人受到的<$ba.dt.apoptosis2>凋亡损伤</>提高22%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ep_damage_scale": 1.22
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 300,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_cello",
+      "name": {
+        "en": "Virtuosa's Badge",
+        "zh": "塑心证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_cello",
+      "description": {
+        "en": "Operator Virtuosa has demonstrated a remarkable aptitude for assisting allies in the inflicting of elemental casualties upon the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Supporter Operator during field operations to exercise Ritualist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员塑心擅长协助友方对敌人造成元素杀伤\n根据外勤部门决议\n在外勤任务中划分为辅助干员，行使巫役职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_cello",
+      "name": {
+        "en": "The Decrescendo",
+        "zh": "强弱法",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_cello",
+      "description": {
+        "en": "Her tutor seems very late to today's lesson, but the student hardly cares. She's always hated this tutor anyway. Clearly she's good enough to finish this whole cello solo unguided! But somehow, her tutor's just never satisfied.\nCertainly, she can't play as well as her tutor. Oh, she's <i>tried</i> to submerge herself in the score, to converse without care with the composer she never got to know. But those ebon-black markings have stayed silent on their chalk-white scores. Their mysterious composer passed away almost a century ago; they say she died all alone, and practically left no trace she ever lived save for a few of her scores. It's not in her grasp to comprehend the passion and sorrow that lie within each movement, nor does she have a clue who that 'ever-lost lover' hiding with the score really was, or why they were struck by such fits of madness.\nAnd so she can only but play as the score instructs, emotionlessly. At first, it goes well enough. She can still feel the brush of each note, feel them settle in her heart. But as the movements progress, and the music enters its passages of true frothing turbulence, the leaps, the repeats, those elegant trills and appoggiaturas, it all embraces her with fervor. They invite her to a mad dance, but step by step, her gait follows less and less. Tempestuous crescendos and diminuendos barrel violently through her vision, only to slip away next instant to the score's furthest reaches. She tries to catch them, grab hold of each glittering moment that accompanies them, struggling in the midst of the endlessly long staff to the point her strings' tremors can no longer rouse those worked-up emotions, and their place is taken by the repetitious back-and-forth of the metronome, clack, clack, clack, clack... echoing lonely in her ears, until the impassioned music agonizingly lingers no longer, as if this betrayal was preordained.\nAnd thus, the energy fades from her fingertips as does that beautiful passage, leaving only the metronome still chiming away. Clack, clack, clack, clack... This imperfect silence becomes a parting declaration. At this, the fury and despair that lurk in her heart burst forth, becoming the heat in the tears her eyes brim with. Her vision blurs—the plain white score before her bids her final throes of resistance. She snatches the quill, and upon the score engraves each and every leap, every repeat, every elegant trill and appoggiatura, every tempestuous crescendo and diminuendo. Jet-black like cast iron shackles, she knows she's gone mad, but this is the only way she has to bind her ever-lost lover to her side. Before the final barline ends it all, her life will flow with the music.\nAnd this is when the cello grinds to a halt. She finds herself holding the bow, the cello silently resting upon her bosom, and the strings are not quivering, and the metronome is not rocking, and all that fills the chamber is her heavy breathing. And her Sankta tutor, with her black gloves, gently brushes a hand over hers, and speaks in the same soft and gentle tone as ever.\n'Your playing today was perfect,' she congratulates her, content. 'The composer's life, and her love, flowed within your performance.'",
+        "zh": "今天的提琴课，老师似乎迟到了很长时间，但学生却并无所谓，反正她从来也不喜欢那位提琴教师。那部大提琴独奏，她明明已经能够独立完成，却总也无法让老师满意。\n自己确实没法演奏得和老师一样好。她曾经也想要沉到乐谱中去，与素未谋面的作曲家畅快对谈。可那苍白乐谱上的漆黑字迹却总是沉默。那位神秘的作曲家离世已逾百年，据说她终身孤独，除了几份乐谱孤本流传，其他生平几乎无迹可寻。她无从领悟乐章中起伏的热情和悲伤，也不知道乐谱中那“永恒的爱人”究竟是什么人物，又为什么会变得狂乱仓皇。\n于是她只能无情地执行着乐谱上的指令。一开始，她还得心应手，那些音符都还触手可及，稳当地落在她的心中。然而随着乐章的行进，音乐来到了真正汹涌澎湃的乐段，那些跳进和反复、那些华丽的颤音和倚音与她热烈相拥。它们邀请她一同狂舞，但一步一步，她的舞步却越发局促。那些粗重的强弱记号凶暴地闯入她的视野，又在下一个瞬间疾速滑向乐谱的远端。她想要抓住它们，抓住与它们相伴的灿烂时光，因此在漫长的谱线之中疲于奔命，直到琴弦的振动不再能引起情绪的激昂，取而代之的是节拍器往复的声响，咔、咔、咔、咔……孤单地在耳畔回荡，直到那些热烈的乐音不再苦苦流连，仿佛这场背叛早已经注定。\n于是在她指尖的活力也连同那些华美的乐段一起逝去，只剩节拍器的声音还在回响，咔、咔、咔、咔……这不尽然的沉默变成了分手的宣言。她心底潜藏的愤怒与绝望再也无可抑制，裹挟着泪水夺眶而出。她的视野模糊起来，只有那份苍白的乐谱就在眼前，鼓动着最后的抵抗。她抓起一支羽毛笔，把那些跳进和反复、华丽的颤音和倚音，还有粗重的强弱记号都记录在乐谱上。漆黑字迹宛如钢铁镣铐，她知道自己已经癫狂，但这是唯一的办法，将永恒的爱人束缚在自己身旁。在终止线到来之前，她的生命会同音乐一起流淌。\n就在这时，大提琴的声音戛然而止。她发现自己拿着琴弓，大提琴静静地靠在自己的怀中，琴弦没有振动，节拍器也没有发出声响，仅有自己粗重的呼吸在琴室回响。而那位萨科塔老师，戴着黑色的手套，轻抚着学生扶琴的手，话语依然温柔。\n“今天的演奏非常完美，”老师欣喜地祝贺道，“那位作曲家的生命会同她的爱一起在你的演奏中流淌。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_cello",
+      "name": {
+        "en": "音乐家的旅程",
+        "zh": "音乐家的旅程",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_cello",
+      "description": {
+        "en": "第一厅枢机桑加罗，同时转第五厅、第六厅、第七厅相关人员知悉：\n随此公函一并向各位转送法柏尔区中心医院关于此前灾异中神秘提琴声之于萨科塔共感失衡的影响性调查，以及执行者费德里科提交的阿尔图罗越狱始末的报告……即日起，封存阿尔图罗·吉亚洛的相关卷宗，恢复其拉特兰一至十三项公民权益之适用。\n——伊万杰利斯塔十一世\n伊万杰利斯塔十一世一只手在公函的末尾签下名字，一只手抓向仙人掌干，茶几上的甜品碗距他有点距离，但有人将碗轻轻推到了他手边。\n“唔，你来了。”老人抬头看了看来客，“我刚处理完一份和你有关的文件。”\n“很慷慨的赦免啊。”阿尔图罗微笑着在老人对面坐了下来，“新的律法允许这样功过相抵？”\n“毕竟几乎全城的同胞都在那天傍晚听到了你的演奏啊，阿尔图罗……很不‘拉特兰’的调子，倒也挺动人。”\n“哈哈，教宗阁下，毕竟那也是很不‘拉特兰’的场合，不是吗？”\n“也是。你刚刚说，‘功过相抵’？阿尔图罗，我不记得你是一个会将过去的所作所为视作罪行的人。”\n“定期反思自己的审美倾向与演奏习惯，对一个音乐家来说还是很有必要的。”\n“哦？”\n“如果一个人喜欢变幻的云，那他难免讨厌刻板的晴天和雨天。曾经，触碰那些无趣乏味的心声，对我来说就像是一只有洁癖的云兽不幸跌入了泥坑。为了寻求那些堪称伟大而富于变化的心灵，我曾走遍整片大地，我去过长生军的失落之地，也去过巫王的帕维永，也因此错过万千的人——我想，经过那些人身边时，我一定是皱着眉头的……”\n“啊，我的牙……抱歉，你继续说，我在听。”\n“可是，我人生中最没有遗憾的演奏，却是那天用琴声，和那些唱着玻利瓦尔赞美诗的陌生人一起，迎接拉特兰入夜……教宗阁下，我能妄言自己小小地改变了我的听众吗？或许，那些丰富的变化，可以从我的指尖开始，它应该发端于未来，而非过去。\n“我想重新走一遍那些路，教宗阁下。或许我能遇见我曾错过的听众。我甚至想要去找找那些没有心灵却能抚弄琴弦的家伙……”\n“唔，你是在说海嗣？”\n“或许呢……”\n“原来你是来辞行的啊。孩子，听起来，你的路很远。”\n“对如今的同胞来说，不都是吗？”阿尔图罗轻抚着大提琴的琴弦，笑容愈发灿烂，“幸好，我带了我的琴。”\n“哈哈也是。”\n一老一少对坐着，卖力地鼓动腮帮子。谈话结束，不该再有任何琐事打扰此刻的恬适，毕竟嚼完这块仙人掌干，萨科塔便要开始她新的旅程。",
+        "zh": "第一厅枢机桑加罗，同时转第五厅、第六厅、第七厅相关人员知悉：\n随此公函一并向各位转送法柏尔区中心医院关于此前灾异中神秘提琴声之于萨科塔共感失衡的影响性调查，以及执行者费德里科提交的阿尔图罗越狱始末的报告……即日起，封存阿尔图罗·吉亚洛的相关卷宗，恢复其拉特兰一至十三项公民权益之适用。\n——伊万杰利斯塔十一世\n伊万杰利斯塔十一世一只手在公函的末尾签下名字，一只手抓向仙人掌干，茶几上的甜品碗距他有点距离，但有人将碗轻轻推到了他手边。\n“唔，你来了。”老人抬头看了看来客，“我刚处理完一份和你有关的文件。”\n“很慷慨的赦免啊。”阿尔图罗微笑着在老人对面坐了下来，“新的律法允许这样功过相抵？”\n“毕竟几乎全城的同胞都在那天傍晚听到了你的演奏啊，阿尔图罗……很不‘拉特兰’的调子，倒也挺动人。”\n“哈哈，教宗阁下，毕竟那也是很不‘拉特兰’的场合，不是吗？”\n“也是。你刚刚说，‘功过相抵’？阿尔图罗，我不记得你是一个会将过去的所作所为视作罪行的人。”\n“定期反思自己的审美倾向与演奏习惯，对一个音乐家来说还是很有必要的。”\n“哦？”\n“如果一个人喜欢变幻的云，那他难免讨厌刻板的晴天和雨天。曾经，触碰那些无趣乏味的心声，对我来说就像是一只有洁癖的云兽不幸跌入了泥坑。为了寻求那些堪称伟大而富于变化的心灵，我曾走遍整片大地，我去过长生军的失落之地，也去过巫王的帕维永，也因此错过万千的人——我想，经过那些人身边时，我一定是皱着眉头的……”\n“啊，我的牙……抱歉，你继续说，我在听。”\n“可是，我人生中最没有遗憾的演奏，却是那天用琴声，和那些唱着玻利瓦尔赞美诗的陌生人一起，迎接拉特兰入夜……教宗阁下，我能妄言自己小小地改变了我的听众吗？或许，那些丰富的变化，可以从我的指尖开始，它应该发端于未来，而非过去。\n“我想重新走一遍那些路，教宗阁下。或许我能遇见我曾错过的听众。我甚至想要去找找那些没有心灵却能抚弄琴弦的家伙……”\n“唔，你是在说海嗣？”\n“或许呢……”\n“原来你是来辞行的啊。孩子，听起来，你的路很远。”\n“对如今的同胞来说，不都是吗？”阿尔图罗轻抚着大提琴的琴弦，笑容愈发灿烂，“幸好，我带了我的琴。”\n“哈哈也是。”\n一老一少对坐着，卖力地鼓动腮帮子。谈话结束，不该再有任何琐事打扰此刻的恬适，毕竟嚼完这块仙人掌干，萨科塔便要开始她新的旅程。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30165",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

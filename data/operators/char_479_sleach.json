@@ -1,0 +1,1553 @@
+{
+  "id": "char_479_sleach",
+  "name": {
+    "en": "Saileach",
+    "zh": "琴柳",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC10",
+  "rarity": 6,
+  "class": "PIONEER",
+  "subclass": "bearer",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Standard-bearer Saileach has come to Rhodes Island from County Hillock.",
+    "zh": "执旗手琴柳，从小丘郡来到罗德岛。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The banner keeps waving. Faith never dies.",
+    "zh": "信仰不灭，旗帜永在。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 771,
+            "atk": 243,
+            "def": 169,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1057,
+            "atk": 348,
+            "def": 236,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 7
+        },
+        {
+          "id": "30032",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1057,
+            "atk": 348,
+            "def": 236,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1339,
+            "atk": 458,
+            "def": 311,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 4
+        },
+        {
+          "id": "30145",
+          "count": 4
+        },
+        {
+          "id": "31044",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1339,
+            "atk": 458,
+            "def": 311,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1835,
+            "atk": 546,
+            "def": 367,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_assist_cost[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 12,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 13,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 14,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 15,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_sleach_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "def": 0.1,
+            "atk_to_hp_recovery_ratio": 0.1,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "def": 0.14,
+            "atk_to_hp_recovery_ratio": 0.14,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 5,
+          "blackboard": {
+            "def": 0.18,
+            "atk_to_hp_recovery_ratio": 0.18,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "def": 0.22,
+            "atk_to_hp_recovery_ratio": 0.22,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "def": 0.26,
+            "atk_to_hp_recovery_ratio": 0.26,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "def": 0.3,
+            "atk_to_hp_recovery_ratio": 0.3,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 12,
+          "blackboard": {
+            "def": 0.35,
+            "atk_to_hp_recovery_ratio": 0.35,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 13,
+          "blackboard": {
+            "def": 0.4,
+            "atk_to_hp_recovery_ratio": 0.4,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 14,
+          "blackboard": {
+            "def": 0.45,
+            "atk_to_hp_recovery_ratio": 0.45,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Inheritance of Faith",
+            "zh": "信仰传承",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and generates a total of <@ba.vup>{value}</> DP over the skill duration. Throws the banner to the location of the allied unit with the lowest HP percentage within range, granting them DEF <@ba.vup>+{def:0%}</> and restoring their HP equal to <@ba.vup>{atk_to_hp_recovery_ratio:0%}</> of Saileach's ATK every second. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用；将军旗掷向范围内生命比例最低的干员所在位置，使其防御力<@ba.vup>+{def:0%}</>且每秒恢复相当于琴柳攻击力<@ba.vup>{atk_to_hp_recovery_ratio:0%}</>的生命值。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 15,
+          "blackboard": {
+            "def": 0.5,
+            "atk_to_hp_recovery_ratio": 0.5,
+            "value": 20,
+            "sleach_s_2[cost].interval": 0.75,
+            "sleach_s_2[cost].cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_sleach_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "stun": 2.5,
+            "damage_scale": 1.15,
+            "cost": 10,
+            "debuff.damage_scale": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "stun": 2.5,
+            "damage_scale": 1.15,
+            "cost": 10,
+            "debuff.damage_scale": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "stun": 2.5,
+            "damage_scale": 1.15,
+            "cost": 10,
+            "debuff.damage_scale": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2,
+            "stun": 3,
+            "damage_scale": 1.2,
+            "cost": 10,
+            "debuff.damage_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "stun": 3,
+            "damage_scale": 1.2,
+            "cost": 10,
+            "debuff.damage_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "stun": 3,
+            "damage_scale": 1.2,
+            "cost": 10,
+            "debuff.damage_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 6,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "stun": 3,
+            "damage_scale": 1.25,
+            "cost": 10,
+            "debuff.damage_scale": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "stun": 3.5,
+            "damage_scale": 1.25,
+            "cost": 10,
+            "debuff.damage_scale": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "stun": 3.5,
+            "damage_scale": 1.27,
+            "cost": 10,
+            "debuff.damage_scale": 0.27
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Banner",
+            "zh": "光辉旗帜",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and immediately gains <@ba.vup>{cost}</> DP. Throws the banner to the location of ground enemies, dealing <@ba.vup>{atk_scale:0%}</> Physical damage and Stunning them for <@ba.vup>{stun}</> seconds. Enemies within the surrounding 8 tiles of the banner are inflicted with <$ba.sluggish>Slow</> and <@ba.vup>{debuff.damage_scale:0%}</> <$ba.fragile>Fragile</> effect. When the skill ends, retrieve the banner",
+            "zh": "停止攻击，立即回复<@ba.vup>{cost}</>点部署费用，将军旗掷向地面敌人所在位置，并对周围造成<@ba.vup>{atk_scale:0%}</>的物理伤害和<@ba.vup>{stun}</>秒<$ba.stun>晕眩</>；期间军旗周围8格敌人受到<$ba.sluggish>停顿</>和<@ba.vup>{debuff.damage_scale:0%}</>的<$ba.fragile>脆弱</>效果。技能结束时收回军旗。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-1",
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale": 3,
+            "stun": 3.5,
+            "damage_scale": 1.3,
+            "cost": 10,
+            "debuff.damage_scale": 0.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 6
+        },
+        {
+          "id": "30011",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30073",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30083",
+          "count": 3
+        },
+        {
+          "id": "31043",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Unwavering Banner",
+            "zh": "不退之旗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deploys with a banner; Within the surrounding 8 tiles of the banner, allied units have ASPD +5 and enemies have ASPD -5",
+            "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+5，敌人的攻击速度-5",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sleach_t_1[ally].attack_speed": 5,
+            "sleach_t_1[enemy].attack_speed": -5
+          }
+        },
+        {
+          "name": {
+            "en": "Unwavering Banner",
+            "zh": "不退之旗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deploys with a banner; Within the surrounding 8 tiles of the banner, allied units have ASPD +7 <@ba.talpu>(+2)</> and enemies have ASPD -7 <@ba.talpu>(+2)</>",
+            "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+7<@ba.talpu>（+2）</>，敌人的攻击速度-7<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "sleach_t_1[ally].attack_speed": 7,
+            "sleach_t_1[enemy].attack_speed": -7
+          }
+        },
+        {
+          "name": {
+            "en": "Unwavering Banner",
+            "zh": "不退之旗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deploys with a banner; Within the surrounding 8 tiles of the banner, allied units have ASPD +10 and enemies have ASPD -10",
+            "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+10，敌人的攻击速度-10",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sleach_t_1[ally].attack_speed": 10,
+            "sleach_t_1[enemy].attack_speed": -10
+          }
+        },
+        {
+          "name": {
+            "en": "Unwavering Banner",
+            "zh": "不退之旗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deploys with a banner; Within the surrounding 8 tiles of the banner, allied units have ASPD +12 <@ba.talpu>(+2)</> and enemies have ASPD -12 <@ba.talpu>(+2)</>",
+            "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+12<@ba.talpu>（+2）</>，敌人的攻击速度-12<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "sleach_t_1[ally].attack_speed": 12,
+            "sleach_t_1[enemy].attack_speed": -12
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Spiritual Influence",
+            "zh": "精神感召",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, the next Operator has -2 DP Cost",
+            "zh": "部署后，下一名部署的干员费用-2",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "value": -2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 40,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_sleach",
+      "name": {
+        "en": "Saileach's Badge",
+        "zh": "琴柳证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_sleach",
+      "description": {
+        "en": "Operator Saileach has demonstrated a remarkable aptitude for raising allied morale in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Standard Bearer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员琴柳擅长在战场上振奋同伴士气\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使执旗手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_sleach",
+      "name": {
+        "en": "Pastoral",
+        "zh": "牧人的歌",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_sleach",
+      "description": {
+        "en": "'Alright, Janie, you wait here for a tick, and I'll go and buy some ice cream. What flavor do you want?'\nThe girl tilts her head and thinks for a bit, then gives a confident reply. 'Chocolate! I want chocolate.'\n'It's New Year's today—I'll buy you two scoops. You can pick another flavor too.'\n'Chocolate. I want chocolate for both.'\n'Brilliant. Your wish is my command, my little pea.'\n'You're the best, Da!'\n'Don't run anywhere, now.'\nShe watches her father squeeze through the crowded park and disappear into the throng. When he does, she pulls her gaze away, and begins to stare at her feet and count. Count until her father comes back.\n'One, two, three...'\nThe powerful beating of a drum interrupts the girl's mumbling. She looks up and sees the little theater across from her pull its curtains wide open, its host gaily thumping away at a hand drum.\n'One, two, three! Ding-ding-ding, it's time for the puppet show! Gather around, little mateys, you won't want to miss this! Today we've got the Song of the Shepherd Boy.'\nDrawn by the adorable puppets, the girl can't help but approach the stage—though perhaps a wide-open wooden box would be a better description.\n'Come January, King took up his greatest cane, come February, General waved saber just the same,\n'Come March, riverbank burned with hardy flame, come April not a meadow to a sprout could claim,\n'Come May, shepherd hugged his hornbeasts tame, and swore they'd find new home, far away...'\nThe puppet hugs its shaggy hornbeast, seeming hurt beyond measure, and the girl can't help but grip tight at the cloth of her skirt. Behind the stage, the host continues to sing the song.\n'Come August he forded through rapids clear, and 'hind him brayed his herd so dear,\n'Unto drear September awaited forest grim, and shaking hornbeasts shook heads at him,\n'Unto high October, a rest at mountain's foot, his beasts flock'd 'round him at center put,\n'Unto cool November...'\nBefore the host sings the next line, a large hand drags the girl out of the audience.\n'Janie! Janie! What are you over here for? Why didn't you wait where I told you to?'\n'I... I saw there was a puppet show. It was really good.\n'Do you know, I came back to an empty bench and was scared half to death.'\n'I'm sorry, Da, I... I shouldn't have gone off.'\n'Come on, now. We'd better get home.'\n'I want to watch it more, Da, at least...' The rest of her sentence is gulped back down. She glances at the puppet and his hornbeast hugging each other tightly on stage, and the backdrop is a verdant spring. She lets out a sigh of relief, and leads her father by the hand.\n'Come on, Da, let's go home too.'\n'Ahah, shepherd boy found his hornbeast a new home, then. Yet another happily ever after. Here, your ice cream.'\n'Thank you.' The girl licks at her double scoop. 'Is it bad that it's happily ever after, Da?'\n'Not particularly, Janie, there's just a lot of them. Might say we're sick of it.'\n'Really? But even if they show them over and over, I think there's not a lot of happy endings anyway...' She takes another lick.",
+        "zh": "“好了，简妮，你在这里稍等一会儿，我去买支冰激凌，你要什么口味的？”\n女孩歪着头思考了片刻，然后肯定地回复说：“巧克力！我要巧克力。”\n“今天是新年，我给你买两个球，你可以多选一个口味。”\n“巧克力，两个都要巧克力。”\n“好，如你所愿，我的小甜豆。”\n“爸爸最好了！”\n“不要乱跑哦。”\n目送父亲挤过游乐园里熙攘的人群，消失在其中，简妮收回视线，开始盯着脚尖数数，等待父亲回来。\n“一、二、三……”\n强劲的鼓点声打断了女孩的喃喃自语，她抬起头，看见对面的小剧场拉开了帷幕，主持人正兴高采烈地打着手鼓。\n“一、二、三！铛铛铛，木偶戏就要开场啦，各位小朋友千万别错过，今天的剧目是《牧童之歌》。”\n被可爱的木偶吸引，女孩忍不住靠近了舞台——或许说是一面敞开的木箱更为合适。\n“一月份国王举起了华美的手杖，二月份将军挥舞着锋利的长剑，\n“三月份河畔燃起了熊熊的大火，四月份草地寻不到新发的萌芽，\n“五月份牧童怀抱着发抖的角兽，发誓寻找新的家园……”\n木偶抱着自己毛茸茸的角兽，看起来伤心异常，让女孩不由得攥紧裙角。舞台后，主持人继续唱着那首歌。\n“八月份他穿过一条湍急的河流，身后的角兽群叫声洪亮，\n“九月份一片幽暗树林正等着他，吓得角兽群连连把头摇，\n“十月份他停在一座高山的脚下，角兽们将他围在正中央，\n“十一月……”\n不等主持人唱出下一句，女孩便被一只大手拽出了观众席。\n“简妮！简妮！你怎么在这里？为什么不在原地等我？”\n“我……我看到了木偶戏，觉得很有趣。”\n“我发现长椅上没坐着你的时候，简直要吓死了。”\n“对不起，爸爸，我……不该乱跑的。”\n“走吧，该回去了。”\n“我还想再看看，至少……”剩下的半句话女孩咽回了肚子，她瞥到舞台上的小木偶正与他的角兽紧紧相拥，背后的布景换成了一片春色。她缓缓松了一口气，牵起父亲的手。\n“走吧，爸爸，我们也回家。”\n“哈，看来那个牧童带着他的角兽找到新家了，又一个大团圆结局。给，你的冰激凌。”\n“谢谢。”女孩舔了两口冰激凌球，“大团圆结局不好吗，爸爸？”\n“没什么不好，简妮，就是有点多了，大家都看腻了。”\n“是吗？可我觉得，美好的结局无论上演多少次都不算多……”女孩又舔了一口冰激凌。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_sleach",
+      "name": {
+        "en": "'Auld Lang Syne'",
+        "zh": "“友谊万岁”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_sleach",
+      "description": {
+        "en": "'This medicine's for your leg, Máire. Make sure to rub it on once every two days. And this will help with your cough, take it once a day...'\nIn a corner of the camp, Saileach gives her instructions firmly as she packs some medicine into Máire's bag.\n'Relax, Janie, I will.'\nMáire coughs lightly a few times, but her complexion is already looking a lot better than before.\n'You say that every time, but how many times have I found those meds stashed in your bag?' It seems Saileach won't be letting this issue go.\n'You bought them for us with your own money, so I thought...'\n'I know you want to save some for others, but you've got to care about your own health too. I don't know when we'll be meeting next, so you need to take care of yourself.' Saileach inspects the bag once more, making sure nothing has fallen out, before standing up, ready to leave.\nMáire's eyes cloud over with worry as she hears the last few words. She tugs on Saileach's hand, her reluctance to let her leave clear on her face.\n'Janie, I'll tell that young lady Reed that you're the only reason we could even survive. We're willing to go along with her people because you trust her.'\n'There's no need for that, Máire. You guys should head home, and she can take you home. It's as simple as that.'\nSaileach makes her way to the other side of the camp, where a man is banging away at a cart. When he sees her, he stands and greets her.\n'Hey there, Janie. This cart here can roll steady even with a dozen of people's luggage on it. I bet when that Reed lady's men see it, why, they'll be green with envy.'\n'You're getting better at carpentry by the day, Deaglán. Oh, right, remember to help watch Máire for me while I'm gone. Don't let her hide her medicine again.'\n'Relax, I'll keep an eye on her.' Deaglán pats his chest.\n'You look after yourself too. She's already lost her family once. Nobody can bear that kind of loss twice.'\n'I know. I'll take good care of myself, for her sake...' Deaglán scratches his head, a hint of shyness on his face. 'It's a shame, really. I was hoping you'd be the witness at our wedding.' He sighs.\n'I'd love to, once you've settled down.'\n'Great! Then it's a done deal!'\nAnd so she continues on her walk around the camp. Sometimes she helps sort out luggage, sometimes she stops to have a chat. Sometimes it's a hug, sometimes it's a laugh. Sometimes it's silence, sometimes it's tears, until the sun's nearly set and Reed's soldiers appear over the horizon, out in the wilds.\nThe refugees pick up their bags and hold each other's hands as they leave the camp and walk off into the distance. There are compatriots there, compatriots who bring hope with them.\nBut they cannot stop themselves from looking back. Their friend is here, a friend who refused to let them die in despair.\nSaileach walks up the hill and places a harp on the ground, then begins to pluck at the strings.\nShe plays an ancient melody, and those refugees who hear it hum along to that age-old tune—\n'Should auld acquaintance be forgot, and never brought to mind? Should auld acquaintance be forgot, and auld lang syne?'",
+        "zh": "“穆丽，你的腿不好，这个药是外敷的，你要记得两天用一次。这种药对你的咳嗽有帮助，每天都要吃一次……”\n营地的一角，琴柳一边叮嘱，一边往穆丽的行囊中装入一些药品。\n“放心，简妮，我会的。”\n穆丽轻轻咳嗽了几声，和当初相比，她现在的气色已经好了不少。\n“你每次都这么说，每次我都会发现你偷偷把药藏起来。”琴柳没好气地说道。\n“这些药都是你用你的钱帮我们买的，我想……”\n“我知道你想为其他人省一点出来，但是，你自己的身体最重要。下次见面不知道是什么时候，你要照顾好自己。”琴柳又检查了一下行囊，确认没有东西落下后，站起身，打算离开。\n听到最后一句话，穆丽眼中蒙上了一丝忧愁，她拉住琴柳的手，满脸的不舍。\n“简妮，我会告诉那个叫苇草的姑娘，我们在这里能活下来，多亏了你。我们愿意跟她的队伍走，也是因为你信任她。”\n“没这个必要，穆丽。你们应该回家，而她能带你们回家，事情就这么简单。”\n琴柳来到营地的另一边，一个男人正在对着一辆板车敲敲打打，见到琴柳走来，他站起身打了个招呼。\n“瞧，简妮，这辆板车能稳稳当当地装十几个人的行李。我敢保证，那个叫苇草的姑娘带领的队伍里的人，看到这辆板车准会羡慕。”\n“你的手艺越来越好了，德文。对了，你记得帮我盯着穆丽，别让她再偷偷藏药了。”\n“放心，我会照顾好穆丽的。”德文拍了拍胸脯。\n“你也要保重，她已经失去过一次自己的家庭，这样的打击，没人经得住第二次。”\n“我知道，为了她，我也会好好活着……”德文挠了挠头，脸上带着一丝羞涩，但马上又转为惋惜，“可惜了，我还想请你来当我们的证婚人呢。”\n“等你们安顿下来，我会来看你们的。”\n“好，一言为定！”\n她就这样，在营地里四处走动，帮忙收拾行李，或者聊天问候，时而拥抱，时而欢笑，当然，也有沉默，也有流泪，直到太阳落山，直到苇草带领的队伍出现在荒野的地平线上。\n流民们拿起行李，牵起家人，走出营地，向着远方走去。那里有他们的同胞，为他们带来希望的同胞。\n但他们还是忍不住回头，这里有他们的朋友，让他们不至于在绝望中死去的朋友。\n琴柳走上山坡，将一把竖琴放在地上，然后拨动琴弦。\n古老的旋律随即响起，而听到这旋律的流民们，也跟着旋律哼唱起了那首古老的歌谣——\n“昔日的相识怎能遗忘，怎能不常怀于心，昔日的相识怎能遗忘，一起度过的美好时光……”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

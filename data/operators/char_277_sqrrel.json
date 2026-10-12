@@ -1,0 +1,1046 @@
+{
+  "id": "char_277_sqrrel",
+  "name": {
+    "en": "Shaw",
+    "zh": "阿消",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LM11",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "pusher",
+  "faction": "lungmen",
+  "position": "MELEE",
+  "tagList": [
+    "Shift"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Shaw, officer of the Lungmen Fire Department, will provide various means of tactical support for everyone.",
+    "zh": "龙门消防署警员阿消向你报到，她将会为你提供各类援助。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Not just a firefighter.",
+    "zh": "不只是消防。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 824,
+            "atk": 252,
+            "def": 151,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1099,
+            "atk": 351,
+            "def": 229,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 1
+        },
+        {
+          "id": "30012",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1099,
+            "atk": 351,
+            "def": 229,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1392,
+            "atk": 469,
+            "def": 302,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 12
+        },
+        {
+          "id": "30033",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1392,
+            "atk": 469,
+            "def": 302,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1785,
+            "atk": 580,
+            "def": 365,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_sqrrel_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>slightly</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>slightly</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>slightly</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.24,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.27,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>moderately</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.45,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Steam Pump",
+            "zh": "水蒸气泵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Pushes the target towards the attack direction <@ba.vup>greatly</> in the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>较大力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "force": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_sqrrel_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>slightly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>slightly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>slightly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>小力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>中等力度地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>较大力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "force": 2
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>较大力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "force": 2
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>较大力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "force": 2
+          }
+        },
+        {
+          "name": {
+            "en": "High-Pressure Water Cannon",
+            "zh": "高压水炮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes all enemies in the two frontal tiles towards the attack direction <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to them",
+            "zh": "立即将前方两格内所有敌人往攻击方向<@ba.vup>较大力地</>推开，并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3,
+            "force": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Fireproof Suit",
+            "zh": "防火护服",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +7",
+            "zh": "法术抗性+7",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Fireproof Suit",
+            "zh": "防火护服",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +15",
+            "zh": "法术抗性+15",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 15
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +140",
+        "zh": "生命上限+140",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_sqrrel",
+      "name": {
+        "en": "Shaw's Badge",
+        "zh": "阿消证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_sqrrel",
+      "description": {
+        "en": "Operator Shaw has demonstrated a remarkable aptitude for physically distancing the enemy via applied force so as to preserve the front.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Push Stroker responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员阿消擅长将敌人推至远方以维持战线\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使推击手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_sqrrel",
+      "name": {
+        "en": "Customized Firefighting Suit",
+        "zh": "客制化防火服",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_sqrrel",
+      "description": {
+        "en": "'...highly customized protective module, for a fireproof experience that can't be beat!'\nCatching the commercial coming from the shop, two people in the Lungmen Fire Department gear slow their pace as they pass the display window.\n'Annoyed because your not-so-ordinary horns puncture your protective layers? Worried because you just can't figure out how to stuff that fluffy tail inside your suit?\n'You can trust the OF-6D Multifunction Protective Suit, the professional's first choice!\n'Sharp tapers, towering ears, soft plumage—thanks to the OF-6D's adjustable helmet, you'll always have a comfortable, perfect fit! Special protective horn sheaths designed for Forte, Caprinae, Elafia and more races besides will keep your beloved horns insulated while looking and feeling as good as ever!\n'Whether running rescues or escapes at the scene of a fire, we know the tail is another big concern, but have no fear! With the highly customized tail module, your tail has all the room it needs to flex inside your suit, while still coming out as shiny and fluffy as it went in! Hate squashing it up to your skin and pulling out a felt mat? No more!\n......\n'What, ad got you hooked?'\n'A little.'\n'But you're an Ægir.'\n'Shut it. I'm thinking of Shaw.'\nThey come to a complete stop outside the emporium door.\n'How did Shaw handle her tail again? I think her height only fit our smallest size, but her tail needs the biggest one, if I remember right.'\n'For ordinary jobs, she leaves it hanging out of her suit. For heading into fires, she always wears a size up and wraps her tail around her waist.'\n'Right, right, that's what I mean. I was busy somewhere else when that fire hit a few days ago, but the reports said there was a gap on the scene so narrow only someone short as Shaw could fit through.'\n'Don't bring that up. Coiling your tail bloats the suit too much. Shaw went straight in with her tail out because there wasn't enough time. We rescued the people, but her tail...'\n'Wasn't she uninjured?'\n'You telling me curled hair is an injury?'\n'Sorry. I used to be totally clueless about how you saw your horns and tails and all those parts.'\n'Well, now she's applied for leave. Put two and two together.'\n'I thought she just wanted to chill out for a few days while there were less fires.'\n'Dude!'\nAfter a moment of silence, the two share a glance, and enter the shop in coincidental unison.",
+        "zh": "“……高度客制化的防护组件，给您无与伦比的耐热体验！”\n听见商店里传来的广告声，两个穿着龙门消防署常服的人在橱窗前放慢了脚步。\n“还在为不同寻常的双角戳破防护层而烦恼吗？还在为如何将蓬松的尾巴塞进防护服而劳心费神吗？\n“认准OF-6D型多功能防护服，专业人士的第一选择！\n“无论是锐利的尖角、挺立的双耳，还是轻柔的耳羽，都能在OF-6D可调节的头部获得自在贴合的空间！还有为丰蹄、卡普里尼、埃拉菲亚等种族设计的特殊角部护套，为您的爱角隔热的同时提供焗油保养！\n“尾巴则是火场逃生与救援的另一个大问题，但是别担心！高度客制化的尾部组件让您的尾巴在防护服内部自如伸展，甚至在脱下防护服之后仍然蓬松油亮，避免紧紧粘在皮肤上，看起来像个毡垫的困扰！\n……\n“怎么，被广告说动了？”\n“有点。”\n“可你是个阿戈尔欸。”\n“别闹，我是在想阿消。”\n两人彻底站定在商店门口。\n“阿消以前都是怎么处理尾巴的事情来着？我记得她按身材只能穿最小号的防护服，但尾巴得穿最大号的。”\n“一般的工作，她就直接把尾巴放在护服外面了。要进火场的时候，她一直是穿比自己身材大一圈的防护服，然后把尾巴盘在腰上。”\n“对对，我说的就是这件事。前几天那次火情我在忙别的，但看报告说，火场里有个很狭窄的缝隙，身高上只有阿消进得去的那种。”\n“别提了。尾巴盘在腰上会让防护服太臃肿，为了赶时间，阿消直接穿着露尾巴的护服挤了进去。人倒是救出来了，可她的尾巴……”\n“她不是没受伤吗？”\n“你会把头发烧卷了叫受伤吗？”\n“抱歉，之前不太了解你们对自己的角和尾巴这类部位的看法。”\n“你想想，她现在还请着假呢。”\n“我以为她正好趁火灾不多的时期休息几天。”\n“你呀！”\n片刻的沉默过后，两个人对视一眼，然后不约而同地往店里走去。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30083",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30023",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30033",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

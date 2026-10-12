@@ -1,0 +1,1120 @@
+{
+  "id": "char_436_whispr",
+  "name": {
+    "en": "Whisperain",
+    "zh": "絮雨",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R163",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "healer",
+  "faction": "iberia",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Whisperain, roving doctor, journeys gentle and lonely with us.",
+    "zh": "巡游医师絮雨，温柔与孤独同行。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Come closer to her, and do not be afraid.",
+    "zh": "多接近一些，不要害怕。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 785,
+            "atk": 172,
+            "def": 52,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1034,
+            "atk": 282,
+            "def": 76,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-4",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1034,
+            "atk": 282,
+            "def": 76,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1231,
+            "atk": 393,
+            "def": 95,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-4",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "31033",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1231,
+            "atk": 393,
+            "def": 95,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1432,
+            "atk": 492,
+            "def": 119,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_whispr_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.05,
+            "status_resistance[limit]": 1,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.05,
+            "status_resistance[limit]": 2,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "status_resistance[limit]": 2,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "status_resistance[limit]": 3,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.15,
+            "status_resistance[limit]": 3,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.15,
+            "status_resistance[limit]": 4,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "status_resistance[limit]": 4,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "status_resistance[limit]": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.25,
+            "status_resistance[limit]": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Oriented Diagnosis",
+            "zh": "定向诊断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK, and an additional target will be healed (prioritizes units under abnormal status) and granted <$ba.buffres>status resistance</> for <@ba.vup>{status_resistance[limit]}</> seconds",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，额外治疗一名单位（优先选择处于<$ba.debuff>异常状态</>中的单位）并使其获得<$ba.buffres>抵抗</>，持续<@ba.vup>{status_resistance[limit]}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.3,
+            "status_resistance[limit]": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_whispr_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 1,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 1,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 63,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 1,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 62,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 2,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 61,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 2,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 2,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 3,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 3,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 3,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Pain Suppression",
+            "zh": "痛觉抑制",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduced</>. The healing effect of this unit's Talent increases to <@ba.vup>{talent_scale:0%}</>, and each target healed by this unit is granted <$ba.buffres>status resistance</> for <@ba.vup>{attack@status_resistance[limit]}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋生命回复效果提升至<@ba.vup>{talent_scale:0%}</>，每次治疗使目标获得<@ba.vup>{attack@status_resistance[limit]}</>秒<$ba.buffres>抵抗</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "attack@status_resistance[limit]": 4,
+            "attack@one_minus_status_resistance": -0.5,
+            "talent_scale": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 2
+        },
+        {
+          "id": "31013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Tower of Life",
+            "zh": "生命塔台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 3% of Whisperain's ATK (Unaffected by this unit's Trait)",
+            "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力3%的生命（不受特性影响）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "Tower of Life",
+            "zh": "生命塔台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 4% <@ba.talpu>(+1%)</> of Whisperain's ATK (Unaffected by this unit's Trait)",
+            "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力4%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "Tower of Life",
+            "zh": "生命塔台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 6% of Whisperain's ATK (Unaffected by this unit's Trait)",
+            "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力6%的生命（不受特性影响）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Tower of Life",
+            "zh": "生命塔台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 7% <@ba.talpu>(+1%)</> of Whisperain's ATK (Unaffected by this unit's Trait)",
+            "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力7%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_to_hp_recovery_ratio": 0.07
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_whispr",
+      "name": {
+        "en": "Whisperain's Badge",
+        "zh": "絮雨证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Whisperain has demonstrated a remarkable aptitude for wide-range healing in tandem with endowment of effects of benefit upon Operators.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Therapist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员絮雨擅长大范围治疗并为其他干员提供增益效果\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使疗养师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_whispr",
+      "name": {
+        "en": "A Quaint First-Aid Kit",
+        "zh": "古朴的急救箱",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_whispr",
+      "description": {
+        "en": "On that rainy day, a young traveler came through our door, breathing faintly to us that she wished to shelter from the rain.\nIt was around that time that the children in the village had fallen sick one after another, and my precious Veitch wasn't lucky enough to be spared. We all muttered how it was some devil's witchcraft silently spreading about, and so we all kept our houses tightly shut. But we didn't have the heart to throw a single frail woman back into the wild in the rainstorm, so we agreed to let her in.\nThe first moment she laid eyes on Veitch, she sensed something was wrong. She was prudent as we worked through his symptoms with her, and she asked how the village at large was doing, before revealing herself to be a roving doctor.\n'This is no Originium Arts; it's an illness. The soil and wellwater is contaminated, and the children are the first to be sick; as the poisoning builds up over time, the adults will come to show symptoms too.'\nShe opened her suitcase, and mixed a medicine with practiced hands. As she did, she spoke. 'I'm sorry. All I can give myself is a temporary first aid, but the only way to cure an illness such as this is to be away from the contamination's source, and convalesce through medication in the long-term. If possible, I'd ask you to tell all the village that they should move away from here.'\n'But this is our home,' my husband said with worry. 'Even if this soil will harm us, where are we going to shelter if we leave here?'\nThe doctor said nothing more. She worked in simple silence.\n\nThe weather had cleared up the next day, and I found the doctor just as she was about to leave. On the door was stuck a wild flower, a kind that grew anywhere. In that instant, a faint memory of someone seemed to match with her in my head.\n'I remember you, doctor. I've met you before.'\n'I was still in a small town on the outer edge of a nomadic city. You'd make home visits to everyone, and you always secretly handed out fresh flowers to us children... I was behind the curtains watching, I remember seeing from there.'\n'That was decades ago by now. My mother caught Oripathy, see and we were driven out... and I've gone from a child to a married woman now, I know you wouldn't recognize me. But, well, you look about the same now, compared to all the way back then.'\nI told her how grateful I was for her, from the bottom of my heart, for she cured me of my fever when I was young, and now she'd saved my own child too. Yet the look on her face was at first blank, then became so sorrowful, as if she was close to weeping.\n'No, please... don't go on any further. Just treat me as though I'd never visited before.'",
+        "zh": "在那个下雨天，一位年轻的旅行者敲开了我们的房门，轻声细语地说，希望避一避雨。\n当时村子里的孩子们一个接一个地生了怪病，我的小维奇也未能幸免，大家都说是某种魔族巫术在悄悄传播，于是家家门户紧闭。但我们不忍心将一位柔弱的女性赶回荒野的暴雨里，所以还是同意她进了屋。\n她看见小维奇第一眼就察觉到了异常。她向我们仔细询问症状，又打听了村子的整体情况，然后才说出自己的身份是巡游医师。\n“这不是源石技艺，是一种疾病。土地和水源被污染了，孩子们就会先得病；随着毒素日积月累，成年人也会出现症状。”\n她打开自己的手提箱，熟练地调配起药剂来：“抱歉，我只能提供一时的急救，但是这样的疾病，唯一的治疗方式就是离开污染源，通过长期用药调理。如果可能的话，请告诉全村的人，大家都从这里搬走吧。”\n“但这里是我们的家啊。”我的丈夫忧虑地说，“就算这片土地会伤害我们，可是离了这里，我们要去哪里安身呢？”\n医师便不再说话了，只是默默地工作。\n\n第二天天气放晴了，我在门口遇见正要离开的医师。门上新插了一束随处可以采撷的野花。那一瞬间，我记忆中模糊的身影与她重合起来。\n“医师，我想起来了，我见过你。”\n“那时我还住在移动城市外围的小镇里呢，你会给大家看病，还总是悄悄给我们这些小孩捎来鲜花……当时我都躲在窗帘后面看到啦。”\n“虽然那已经是几十年前的事情了，因为母亲感染矿石病，我们被赶了出来……而且我已经从小孩变成了妇人，你肯定认不出我了。不过，你还是和那时的样貌差不多呀。”\n我一心想向她传达我心中的感激，因为当年她治好过高烧的我，现在又救了我的孩子。可她的表情先是茫然，接着变成了快要落泪一般的悲伤。\n“不，请您……不要说下去了。请当我没有来过吧。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30074",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

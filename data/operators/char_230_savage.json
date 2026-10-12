@@ -1,0 +1,1044 @@
+{
+  "id": "char_230_savage",
+  "name": {
+    "en": "Savage",
+    "zh": "暴行",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RB01",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "centurion",
+  "faction": "rim",
+  "position": "MELEE",
+  "tagList": [
+    "AoE",
+    "Nuker"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Savage, Guard Operator of Rim Billiton, has always been thinking of doing something for you and Amiya.",
+    "zh": "雷姆必拓所属近卫干员暴行，心里总是想着为你和阿米娅做些什么。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Whatever you do, don't get her mad.",
+    "zh": "千万别惹她生气。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1108,
+            "atk": 284,
+            "def": 135,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1421,
+            "atk": 395,
+            "def": 193,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1421,
+            "atk": 395,
+            "def": 193,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1822,
+            "atk": 535,
+            "def": 262,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "30023",
+          "count": 18
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1822,
+            "atk": 535,
+            "def": 262,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2430,
+            "atk": 705,
+            "def": 320,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_savage_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_savage_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 3,
+            "atk_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 3,
+            "atk_scale": 3.1
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 3,
+            "atk_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 4,
+            "atk_scale": 3.3
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 4,
+            "atk_scale": 3.4
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 4,
+            "atk_scale": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 4,
+            "atk_scale": 3.6
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.7
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.8
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Blast",
+            "zh": "微差爆破",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to at most <@ba.vup>{max_target}</> enemies within three tiles ahead",
+            "zh": "对前方三格范围内至多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 2
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Valley",
+            "zh": "山谷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +5% when there are more than two ranged tiles in the four surrounding tiles",
+            "zh": "周围四格中有两格以上的高地地形时攻击力和防御力+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 2,
+            "atk": 0.05,
+            "def": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Valley",
+            "zh": "山谷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +10% when there are more than two ranged tiles in the four surrounding tiles",
+            "zh": "周围四格中有两格以上的高地地形时攻击力和防御力+10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 2,
+            "atk": 0.1,
+            "def": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +35",
+        "zh": "攻击力+35",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +250",
+        "zh": "生命上限+250",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +35",
+        "zh": "防御力+35",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +8",
+        "zh": "攻击速度+8",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "RES +8",
+        "zh": "法术抗性+8",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_savage",
+      "name": {
+        "en": "Savage's Badge",
+        "zh": "暴行证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_savage",
+      "description": {
+        "en": "Operator Savage has demonstrated a remarkable aptitude for swift and fierce enemy suppression in combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Centurion responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员暴行擅长以凌厉攻势阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使强攻手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_savage",
+      "name": {
+        "en": "Hit the Road",
+        "zh": "未竟的旅程",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_savage",
+      "description": {
+        "en": "Mum's very cross with the big Cautus girl scratching her head in front of her.\n'Trying to sneak out again! If you don't rest, I'll MAKE you rest, I'm warning you!'\nSavage lifts away the giant basket of carrots perched atop her mum's head.\n'Fresh, sweet, and crunchy! Just perfect for this trip's rations. I'll bring the leftover ones back, Mum, and then you can make carrot pie!'\nMum leaps up and gives Savage a few raps on the head. 'These are for you to rest up at home, and let your health come back to you!\n'Ever since you came back from that abandoned mine all a muddle, it's like your motor's never stopped.\n'If you're not banging on about how you met a ghost, then you're trying to run out of doors... Stuffing all our family plans, that's you. You've got me at wit's end.'\nShe can't possibly explain to her mother that that wasn't a ghost sighting, but on the other hand, it is true the mysterious stranger with the little rabbit hasn't left a trace for her to find.\nIt's as if whoever they were, they never existed in these lands at all.\nHow?\n'You went somewhere, suddenly passed out, then the people who were with you all vanished into thin air.\n'Ghost stories like that are a penny a piece for the workers here. That's just life in the mines.'\n'They were NOT just ghosts haunting Rim Billy!'\nEven though it was the briefest of encounters, Savage remembers the warmth of the girl curled up sleeping in her arms that evening. Moreover, when she spent every bit of her strength smashing apart boulders to rescue them from that collapsed mineshaft, the mysterious stranger clearly bled.\nThey never told her where their journey's destination lay, but when the mysterious stranger was alone, tightly wrapped in solemn silence, Savage knows she caught a glimpse of them gazing into the starry sky, and to lands far away.\nWho could be waiting for them up ahead?\nSavage doesn't know, but they need her help.\n'Mum, I'm not going to make it! I still have to go to the maintenance crew and check if they've fixed my hammer yet!'\nHer mother knows this passionate girl of hers. Ever since she was little, once she got fixated on something, she'd never let it go.\n'Oi, you forgot to empty the letterbox again, it's been more than a week now. Honestly, you make me doubt if you can take care of yourself...'\nBut that letter Savage had ignored for days is what finally calms her down. Stuffed inside is a design, drawn by hand, for a weapon just for her—and in the corner is a doodle of three people. Plus, a note.\n'Miss, pardon us for not saying goodbye. The Doctor is very sorry that you broke your weapon to help us.'\nPutting the letter away, Savage lets out a deep breath. She absolutely can't wait to hit the road again.\nA strong gut feeling tells her that in the end, they'll meet once again, and finish their journey.",
+        "zh": "老妈对眼前这位挠头的卡特斯大姑娘很生气。\n“你又想溜出去，不行我就强制让你休息！”\n暴行扛起了老妈顶在头上的一大筐胡萝卜。\n“甜脆新鲜，用来做这次外出的口粮刚刚好。剩下的，等回来再给老妈你做胡萝卜派吧！”\n老妈蹦起来敲了敲暴行的头：“这些是让你在家休息，好好补身体！\n“你自从上次迷迷糊糊从那个废弃矿区回来，就一直不消停。\n“不是嚷嚷着你撞鬼的事情，就是不停往外跑……对家里的安排视而不见，我都快愁死了。”\n她没法向母亲解释那不是撞鬼，但她的确找不到那个带着小兔子的神秘人留下的任何痕迹。\n那个人仿佛从未存在于这片大地。\n这怎么可能？\n“你走到一个地方突然晕倒，然后和你同行的人都消失得无影无踪。\n“撞鬼这种事在我们这里很多工人的采矿生涯里不算离奇。”\n“他们才不是游荡在雷姆必拓的幽灵！”\n虽然他们相遇的时间很短暂，但暴行记得那晚蜷在她怀里熟睡的女孩的温度。况且，她拼尽全力击碎坍塌矿洞的巨石救出他们时，神秘人也会流血。\n他们从未告知旅程的终点在何处，而她也的确瞥见过裹得严严实实的神秘人在独处时默默凝望星空与远方的大地。\n谁会在前路等着他们？\n暴行不知道，但他们需要帮助。\n“老妈，时间来不及了！我还得先去维修队确认锤子有没有修好！”\n母亲了解这个热情的姑娘，她从小就不会放弃认定的事情。\n“哎，你邮箱里的信又忘取了，都一周多了。我真怀疑你能不能照顾好自己……”\n而那封被暴行忽视多日的信件终于让她安静下来了，里面叠着为她亲手绘制的武器设计图——角落还画着三个人的涂鸦。还有一张字条。\n“姐姐，原谅我们不辞而别。博士很抱歉，你为帮我们弄坏了武器。”\n收好信，暴行长舒了一口气，她已经等不及再次上路了。\n强烈的直觉告诉她，他们终究还是会再次相遇，完成他们未竟的旅程。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30064",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

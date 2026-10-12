@@ -1,0 +1,1150 @@
+{
+  "id": "char_4147_mitm",
+  "name": {
+    "en": "Mitm",
+    "zh": "渡桥",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R184",
+  "rarity": 5,
+  "class": "PIONEER",
+  "subclass": "tactician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "DP-Recovery",
+    "Nuker"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Vanguard Mitm refuses to work overtime without pay.",
+    "zh": "先锋干员渡桥，拒绝一切没有津贴的加班。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The adviser of the Sarkaz has only his own counsel to keep when he runs into a difficult problem himself.",
+    "zh": "为萨卡兹们排忧解难的顾问，遇到难题时，他也只能向自己寻求答案。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 612,
+            "atk": 208,
+            "def": 42,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 875,
+            "atk": 307,
+            "def": 71,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 875,
+            "atk": 307,
+            "def": 71,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1123,
+            "atk": 405,
+            "def": 102,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 3
+        },
+        {
+          "id": "31034",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1123,
+            "atk": 405,
+            "def": 102,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1370,
+            "atk": 495,
+            "def": 122,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mitm_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 3,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 2.9
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 3,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 3,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.1
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 5,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.3
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 5,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.4
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 6,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.55
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 7,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.7
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 8,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 3.85
+          }
+        },
+        {
+          "name": {
+            "en": "Remote Self-Destruct",
+            "zh": "遥控解体",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> DP and causes Cherry-3 to self-destruct, dealing <@ba.vup>{aoe_damage_scale:0%}</> of Mitm's ATK as Physical damage to enemies in the four adjacent tiles",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使樱桃三号自毁且对周围四格敌人造成相当于渡桥攻击力<@ba.vup>{aoe_damage_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 6,
+            "aoe_damage_scale": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mitm_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.3,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 0.8,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.35,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 0.85,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.4,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 0.9,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 15,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.45,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 0.95,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 15,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.5,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.55,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1.05,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 17,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.6,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1.1,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 18,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.65,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1.2,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 19,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.7,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1.3,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Under Pressure",
+            "zh": "承压功率",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gradually gains <@ba.vup>{mitm_s_2[cost].display}</> DP over the skill duration, ATK <@ba.vup>+{atk:0%}</>; Cherry-3 <@ba.vdown>stops attacking</>, gains Block <@ba.vup>+{block_cnt_display}</> and DEF <@ba.vup>+{mitm_s_2[to_token].def:0%}</>\n<@ba.rem>After the skill ends, Cherry-3 will self-destruct</>",
+            "zh": "技能持续时间内逐渐获得<@ba.vup>{mitm_s_2[cost].display}</>点部署费用，攻击力<@ba.vup>+{atk:0%}</>；樱桃三号<@ba.vdown>停止攻击</>，阻挡数<@ba.vup>+{block_cnt_display}</>，防御力<@ba.vup>+{mitm_s_2[to_token].def:0%}</>\\n<@ba.rem>技能结束后樱桃三号销毁自身</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "attack@max_target": 1,
+            "atk": 0.8,
+            "mode": 1,
+            "mitm_s_2[to_token].block_cnt": 2,
+            "mitm_s_2[to_token].def": 1.4,
+            "mitm_s_2[to_token].hp": 1,
+            "mitm_s_2[cost].cost": 1,
+            "mitm_s_2[cost].interval": 1.25,
+            "mitm_s_2[cost].display": 12,
+            "block_cnt_display": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "31074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31043",
+          "count": 3
+        },
+        {
+          "id": "30033",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Scrapheap Buggies",
+            "zh": "废品战车",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Cherry-3 to assist in combat from a Tactical Point; after being defeated, Cherry-3 will spawn Wreckage in the four adjacent tiles, then automatically respawn 20s later",
+            "zh": "可以在战术点召唤樱桃三号协助作战，其被击败后会在20秒后自动刷新，并在周围四格生成残骸",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Scrapheap Buggies",
+            "zh": "废品战车",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Cherry-3 to assist in combat from a Tactical Point; after being defeated, Cherry-3 will spawn Wreckage in the four adjacent tiles, then automatically respawn 17s later",
+            "zh": "可以在战术点召唤樱桃三号协助作战，其被击败后会在17秒后自动刷新，并在周围四格生成残骸",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Scrapheap Buggies",
+            "zh": "废品战车",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Cherry-3 to assist in combat from a Tactical Point; after being defeated, Cherry-3 will spawn Wreckage in the four adjacent tiles, then automatically respawn 15s later",
+            "zh": "可以在战术点召唤樱桃三号协助作战，其被击败后会在15秒后自动刷新，并在周围四格生成残骸",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +8",
+        "zh": "攻击速度+8",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mitm",
+      "name": {
+        "en": "Mitm's Badge",
+        "zh": "渡桥证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_mitm",
+      "description": {
+        "en": "Operator Mitm has demonstrated a remarkable aptitude in the designation of tactical points for summoning reinforcements so as to secure leeway for deployment.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Tactician responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员渡桥擅长布设战术点召唤援军来争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使战术家职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mitm",
+      "name": {
+        "en": "Beware of the Edges",
+        "zh": "内敛锋芒",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_mitm",
+      "description": {
+        "en": "'With all that, are you sure you have enough vouchers to pay for it?' An operator selecting daily necessities cannot help but worry as they look at Mitm's bulging shopping bag.\n'I've got a few coupons about to expire, so I need to use them up,' Mitm says, pushing an overflowing shopping cart from behind the shelf.\n'Whoa! Look at all that stuff! I'd better check out now—I don't want to be stuck behind you in line.'\nBy the time Mitm reaches the checkout counter, a crowd had already gathered there, waiting for the show.\nThe logistics operator at the register looked fully prepared. 'Bring it on!' they cry.\nThe scanner beeps nonstop, as the total amount on screen keeps zooming skyward.\n'Your total is... 997.5 LMD!'\n'Hold on a second...' Mitm says as he reaches into the inner pocket of his coat.\n'Planning to pay with your personal operator points? The 5% discount has already been applied.'\nThe crowd offers scattered applause, though the logistics operator shows no sign of relief. He knows the battle has only just begun.\n'Is that so...' Mitm pulls out a large stack of vouchers, all in different colors, from his coat. 'I'd like to use these coupons too, please.'\nThe onlookers begin to murmur with excitement.\n'Limited-time anniversary commemorative discount vouchers, new operator breakfast vouchers... these ones have expired.' The logistics operator carefully sorts through the stack and pulls out the few invalid ones.\nThe scanner beeps again, but this time, the number on the screen begins to drop steadily.\nFifteen minutes later, it displays '103 LMD.' The logistics operator finally smiles. 'Still above 100 LMD. Ha.'\nMitm frowns, scans the area, then fixes his gaze on the clock across from him.\n'Add this.' Mitm picks up a pack of gum and hands it to the logistics operator. 'Also, it's just past 8 PM—after 8, fruit and deli are half-price.'\nThe logistics operator's smile freezes. The number on the display flickers, settling at 84.75.\nThe crowd erupts into cheers.\n'Wait!' The logistics operator isn't ready to give up yet. He eyes the shopping bag hanging from Mitm's tail. 'What about that big bag? I haven't scanned anything in it yet!'\nMitm's expression changes. 'These are personal items!'\n'No, I saw what's in it! A big box of cystymilk and some detergent... that's at least 30 LMD—I haven't lost yet!'\nThe logistics operator lunges forward, while Mitm swings his tail, sending the shopping bag flying.\nThe box of cystymilk spins in the air, the hinge on its side flipping open to reveal hidden blades; the detergent bottle opens wide, revealing a remote-controlled car and an energy reserve unit inside.\nFor a moment, a torrent of blades and metal tools flies everywhere...\n'I told you, they're my personal items!'\n'Who would hide dangerous items in milk cartons and detergent bottles?! Can't you use a normal toolbox like everyone else?'\n'It's called 'camouflage'! If I carried a toolbox, even a kid would know there's a weapon inside.'",
+        "zh": "“买这么多东西，你的购物凭证还够用吗？”正在挑选生活用品的干员看着那个被塞得鼓鼓囊囊的购物袋，不禁为渡桥担忧。\n“有几张优惠券快过期了，得赶紧用掉。”渡桥从货架后拖出一辆满到快溢出来的购物车。\n“居然还有这么多？不行，我得先去结账！千万不能排在你后面。”\n等渡桥抵达结账柜台时，来看热闹的人已经围成了一个圈。\n负责结账的后勤干员已经严阵以待：“来吧！”\n收银设备嘀嘀地响个不停，显示屏上的数字以夸张的速度增长着。\n“一共是……997.5龙门币！”\n“等一下，我要……”渡桥把手伸向大衣内袋。\n“要用干员个人积分结账吗？积分结账的95折优惠已经算进去了。”\n人群中响起零星的掌声。但那名后勤干员脸上没有笑意，他知道这场战斗才刚开始。\n“这样啊……”渡桥从大衣中拿出一大摞五颜六色的票券，“这些优惠券，也麻烦帮我用掉吧。”\n围观的人群开始躁动。\n“周年庆限时折扣券，还有新人干员早餐兑换券，这些都过期了。”后勤干员谨慎地从那一摞票券里挑出几张。\n收银设备又嘀嘀地响了起来，这次显示屏上的数字开始不断下降——\n一刻钟后。\n“103龙门币。”后勤干员的脸上终于绽放出笑意，“总算守住了100龙门币的大关。”\n渡桥皱起眉头，扫视一圈，目光停在对面的挂钟上。\n“算上这个。”渡桥拿起一盒口香糖，递给那名后勤干员，“另外，现在的时间是晚上八点过一分——八点以后，水果熟食可半价兑换。”\n后勤干员脸上的笑容凝固了。显示屏上的数字跳动了一下，变成了84.75。\n人群中爆发出欢呼声。\n“等等！”后勤干员仍不死心，他盯着渡桥尾巴上的购物袋，“你那一大袋子，还没结账吧？”\n渡桥脸色一变：“袋子里是我的私人物品！”\n“我都看见了！一大盒瘤奶，还有洗涤剂……至少30龙门币，我还没输！”\n后勤干员扑上前去，渡桥尾巴一甩，购物袋被高高抛起——\n瘤奶盒在空中翻滚，侧面的合页被甩开，露出其中藏着的刀刃；洗涤剂瓶则敞开胸怀，展示着嵌在其中的遥控小车与备用储能单元。\n一时间，刀刃与各种五金工具乱飞……\n“都说了是私人物品！”\n“谁让你把那么危险的东西藏在奶盒跟瓶子里！你就不能像其他人一样用个正常点的工具箱吗？”\n“这叫‘伪装’！拎着工具箱的话，就算是小孩也知道里面藏着武器了。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30104",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

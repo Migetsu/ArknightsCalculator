@@ -1,0 +1,1090 @@
+{
+  "id": "char_141_nights",
+  "name": {
+    "en": "Haze",
+    "zh": "夜烟",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC02",
+  "rarity": 4,
+  "class": "CASTER",
+  "subclass": "corecaster",
+  "faction": "victoria",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Debuff"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Haze, Caster Operator of Rhodes Island, will provide support for the squad with her Originium Arts.",
+    "zh": "罗德岛术师干员夜烟，将使用源石技艺为小队提供援助。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Nothing can get in her way.",
+    "zh": "什么都束缚不了她。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 619,
+            "atk": 253,
+            "def": 42,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 885,
+            "atk": 362,
+            "def": 71,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 885,
+            "atk": 362,
+            "def": 71,
+            "magicResistance": 15,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1150,
+            "atk": 483,
+            "def": 98,
+            "magicResistance": 15,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3252",
+          "count": 5
+        },
+        {
+          "id": "30013",
+          "count": 19
+        },
+        {
+          "id": "30103",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1150,
+            "atk": 483,
+            "def": 98,
+            "magicResistance": 20,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1420,
+            "atk": 583,
+            "def": 110,
+            "magicResistance": 20,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_atk_up[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30043",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_nights_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "atk": 0.15,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "atk": 0.2,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "atk": 0.25,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "atk": 0.3,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "atk": 0.35,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "atk": 0.4,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 45,
+            "atk": 0.45,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 50,
+            "atk": 0.5,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 55,
+            "atk": 0.55,
+            "max_hp": -0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Eyes",
+            "zh": "赤色之瞳",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vdown>-{-max_hp:0%}</>; ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "最大生命值<@ba.vdown>-{-max_hp:0%}</>；攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 60,
+            "atk": 0.6,
+            "max_hp": -0.75
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30011",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Black Mist",
+            "zh": "黑色迷雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks reduce the target's RES by 10% for 1 second",
+            "zh": "攻击使目标法术抗性-10%，持续1秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "duration": 1,
+            "magic_resistance": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Black Mist",
+            "zh": "黑色迷雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks reduce the target's RES by 13% <@ba.talpu>(+3%)</> for 1 second",
+            "zh": "攻击使目标法术抗性-13%<@ba.talpu>（+3%）</>，持续1秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "duration": 1,
+            "magic_resistance": -0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Black Mist",
+            "zh": "黑色迷雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks reduce the target's RES by 20% for 1 second",
+            "zh": "攻击使目标法术抗性-20%，持续1秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "duration": 1,
+            "magic_resistance": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Black Mist",
+            "zh": "黑色迷雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks reduce the target's RES by 23% <@ba.talpu>(+3%)</> for 1 second",
+            "zh": "攻击使目标法术抗性-23%<@ba.talpu>（+3%）</>，持续1秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "duration": 1,
+            "magic_resistance": -0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +100",
+        "zh": "生命上限+100",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_nights",
+      "name": {
+        "en": "Haze's Badge",
+        "zh": "夜烟证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_nights",
+      "description": {
+        "en": "Operator Haze has demonstrated a remarkable aptitude for inflicting Arts casualties on the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Core Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员夜烟擅长对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使中坚术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_nights",
+      "name": {
+        "en": "The Witch's Hat",
+        "zh": "女巫的帽子",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_nights",
+      "description": {
+        "en": "Through the 'Forest' she makes her way. Between the bars of naked steel she skips, from one end of the alleyway to the other, and on top of a faded billboard she climbs. Not far away, an empty tin can topples over. She takes a small step back, crouching for a while under the shadow. Only once she's sure her silhouette is alone again under the moonlight—does her step pick up once again, deft like a wisp of fog. She finds her way straight through a window empty of its glass.\nA puddle of water rests on the ground, which she avoids with great intent. Probably the recent shower of rain, that tonight's so especially bright. Not a good omen, in any case. In times gone by, no one would dare trespass into the Forest thick of fog, for there was Witch's domain. The greedy merchant had want of the Witch's powers, but pitch-black smoke would bind the neck of such a soul. Only lost children would have good fortune in the night... Most of the coven had come to suffer a different kind of curse already, but in the hazy night those inauspicious stones would happily be hidden from view.\nA great fire of yore took the original Witch Forest. Thereafter, one nomadic city to the next, these empty rooms have been little more than the cracks amidst neon and skyscraper's reflections... hardly fit for a safe domain.\nShe silently patrols her temporary lodgings, and finds the Hat out of a pile of miscellanies. A broad-brimmed one, cloth heavy-set in all its layers. Its inside is riddled with patchwork, every hand which sewed on those eclectic fabrics still there in her memories. Some were wizened, some young, all so soft without exception, so tender. She jumps into it, lets the sheets of fabric surround her body, as if she's returned to their embrace.\nAnother hand rests upon her head. She remembers this one, the youngest among them, and the last to still follow her. This girl's hand once carried the scent of clean grass and fresh paper, like the others, but in these times it was always sullied with rust, with blood.\n'We've been found again.' The young Witch picks her up and cradles her, and puts on another hat entirely. 'Take a guess. How long can we still run, I wonder, before the next time we're caught?'\nThe creature brushes against the Witch's cheek, reflecting not an inch of light.\nTogether, she and the girl leap into the dark of night, straight through the Forest. Such is the freedom they were meant to share.",
+        "zh": "她穿行于“森林”之中。她在裸露的钢筋之间跳跃，从小径的一头来到另一头，爬上一块褪了色的广告牌的顶部。一个空罐头在不远处倒下了。她后退了一小步，在阴影里躲了一会儿。直到确认月光下再没有第二个影子，她才再度迈开步子，轻巧得像一缕烟一样，钻进了一扇没有玻璃的窗户。\n地上有一汪积水，她小心翼翼地绕开了。可能是因为刚下过雨，这个夜晚格外明亮。这可不是什么好兆头。在过去，没什么人敢闯入浓雾缭绕的森林，因为那里是女巫的领地。贪婪的商人想要获得女巫的力量，却只会被灰黑色的烟雾缠住脖颈。只有迷路的孩子才能在黑夜中获得一些好运气，她们中的大部分已经受到了另一种诅咒，而夜色与雾气恰好能遮住那些不祥的石头。\n最初的巫女林早已消失在大火中。在一座又一座不同的移动城市中，这些空屋只是霓虹与高楼倒影间的缝隙，远远称不上安全的领地。\n她悄无声息地巡视着自己的临时居所，在一堆杂物之间找到了那顶帽子。宽宽的帽檐，层层叠叠的布料。帽子内侧有许多补丁，她还记得把那些不同的料子缝上去的每一只手。它们有的苍老，有的年轻，无一例外都很柔软。她跳进了帽子，让布片环绕着自己的身躯，就像回到了她们的怀抱里。\n另一只手落在她头顶。她记得那只手，那是她们中最年轻的一个，也是陪伴着她的最后一个。和她们一样，那孩子的手上原本是干净的青草和纸张的味道，而现在却常常带着铁锈味和血腥气。\n“又被发现啦。”年轻的女巫将她抱了起来，戴上了另外一顶帽子，“猜猜看，在下一次被抓之前，我们还能跑多久呢？”\n黑色的生灵蹭了蹭女巫的脸颊。\n她和女孩一起跳进黑夜里，穿行于森林之中。她们本该一样自由。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30073",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31053",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30063",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

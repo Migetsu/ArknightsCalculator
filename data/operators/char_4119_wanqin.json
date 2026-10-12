@@ -1,0 +1,1135 @@
+{
+  "id": "char_4119_wanqin",
+  "name": {
+    "en": "Wanqing",
+    "zh": "万顷",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "YD13",
+  "rarity": 5,
+  "class": "PIONEER",
+  "subclass": "bearer",
+  "faction": "yan",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Nongye Tianshi Wanqing of Yan, striving so that ever more can eat their fill.",
+    "zh": "来自炎国的农业天师万顷，致力于让更多人吃饱饭。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Ten thousand qing of fertile fields he dreams, and one day it will surely come to be.",
+    "zh": "良田万顷的梦，总有一天会成真的。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 637,
+            "atk": 228,
+            "def": 176,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 873,
+            "atk": 327,
+            "def": 245,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 873,
+            "atk": 327,
+            "def": 245,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1106,
+            "atk": 431,
+            "def": 323,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 3
+        },
+        {
+          "id": "31054",
+          "count": 9
+        },
+        {
+          "id": "31013",
+          "count": 9
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1106,
+            "atk": 431,
+            "def": 323,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1516,
+            "atk": 514,
+            "def": 380,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_assist_cost[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 12,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 13,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 14,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 15,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_wanqin_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 6,
+          "blackboard": {
+            "attack@attack_speed": 10,
+            "attack@heal_scale": 0.1,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 6,
+          "blackboard": {
+            "attack@attack_speed": 12,
+            "attack@heal_scale": 0.1,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 6,
+          "blackboard": {
+            "attack@attack_speed": 12,
+            "attack@heal_scale": 0.12,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 8,
+          "blackboard": {
+            "attack@attack_speed": 15,
+            "attack@heal_scale": 0.12,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 8,
+          "blackboard": {
+            "attack@attack_speed": 15,
+            "attack@heal_scale": 0.15,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 8,
+          "blackboard": {
+            "attack@attack_speed": 20,
+            "attack@heal_scale": 0.15,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "attack@attack_speed": 20,
+            "attack@heal_scale": 0.2,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 12,
+          "blackboard": {
+            "attack@attack_speed": 23,
+            "attack@heal_scale": 0.2,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 14,
+          "blackboard": {
+            "attack@attack_speed": 23,
+            "attack@heal_scale": 0.25,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Along the Easterlies",
+            "zh": "应东风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking, gradually recovers <@ba.vup>{value}</> DP in total\nWhile skill is active, restores the HP of surrounding allied Operators by <@ba.vup>{attack@heal_scale:0%}</> of Wanqing's ATK every second, and increases their ASPD by <@ba.vup>+{attack@attack_speed}</> if they are deployed facing the same direction as Wanqing",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用\\n技能期间，每秒治疗周围友方干员相当于万顷<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值，周围部署方向与万顷相同的干员攻击速度<@ba.vup>+{attack@attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 16,
+          "blackboard": {
+            "attack@attack_speed": 25,
+            "attack@heal_scale": 0.25,
+            "value": 20,
+            "wanqin_s_2[cost].interval": 0.75,
+            "wanqin_s_2[cost].cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "31023",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "31074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 3
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Observe Nature's Way",
+            "zh": "看天时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +3%, increased to +5% if they are deployed facing the same direction as Wanqing",
+            "zh": "周围8格的干员最大生命值+3%，若部署方向与万顷相同，改为+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "wanqin_t_1[hp_common].max_hp": 0.03,
+            "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.02
+          }
+        },
+        {
+          "name": {
+            "en": "Observe Nature's Way",
+            "zh": "看天时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +4% <@ba.talpu>(+1%)</>, increased to +6% <@ba.talpu>(+1%)</> if they are deployed facing the same direction as Wanqing",
+            "zh": "周围8格的干员最大生命值+4%<@ba.talpu>（+1%）</>，若部署方向与万顷相同，改为+6%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "wanqin_t_1[hp_common].max_hp": 0.04,
+            "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.02
+          }
+        },
+        {
+          "name": {
+            "en": "Observe Nature's Way",
+            "zh": "看天时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +5%, increased to +9% if they are deployed facing the same direction as Wanqing",
+            "zh": "周围8格的干员最大生命值+5%，若部署方向与万顷相同，改为+9%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "wanqin_t_1[hp_common].max_hp": 0.05,
+            "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "Observe Nature's Way",
+            "zh": "看天时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +6% <@ba.talpu>(+1%)</>, increased to +10% <@ba.talpu>(+1%)</> if they are deployed facing the same direction as Wanqing",
+            "zh": "周围8格的干员最大生命值+6%<@ba.talpu>（+1%）</>，若部署方向与万顷相同，改为+10%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "wanqin_t_1[hp_common].max_hp": 0.06,
+            "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "def": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_wanqin",
+      "name": {
+        "en": "Wanqing's Badge",
+        "zh": "万顷证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_wanqin",
+      "description": {
+        "en": "Operator Wanqing has demonstrated a remarkable aptitude for raising allied morale in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Standard Bearer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员万顷擅长在战场上振奋同伴士气\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使执旗手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_wanqin",
+      "name": {
+        "en": "With My Wind",
+        "zh": "牵风",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_wanqin",
+      "description": {
+        "en": "'He Sheng—'\nHe Sheng leaps from the earthen slope, turning his head wildly. He rises in a hurry and his thread spool falls into the water, leaving his paper kite cut in the shape of a fowlbeast's tail to become nothing but a tiny dot in the pale blue sky in the blink of an eye, disappearing before his eyes as it follows the river's current.\nHe Sheng himself was brought to Dahuang by this very river. Were it not for the strong wind that guided him to the shore's embrace, were it not for the sharp, attentive eyes of the farmer hauling sandbags, a babe of not even two years would surely have met with disaster. The Tianshis and the farmers had discussed arrangements for him throughout the night, sent for instructions from the Ministry of Revenue, and even dispatched a Messenger to head directly upstream. However, that year the north had suffered floods after a great drought, while the south was buffeted by a vicious Catastrophe, and so the search for his parents had borne no fruit.\nSince then, he was known as He Sheng, and he was considered born in Dahuang.\nHe grew up atop the crop ridges. He grew up by the water pumps. He grew up on top of the mobile greenhouse frames. He grew up in the Tianshi dormitories and the farmers' courtyards. He grew up in the service channels between the artificial canals. He remembered Tianshi Shu giving palm readings to the children his age, then dabbing a drop of wine onto their foreheads. He remembered sitting atop the backs of stockbeasts alongside Grain Buds, surveying the container ships reminiscent of small mountains slowly entering the waterways, leaving for distant Baizao, Shangshu, or perhaps Danyan to the north. He also remembered one time that an experimental field of high-sugar crops spontaneously combusted, and Dahuang was filled with the inescapable sickly-sweet scent of boiling syrup for a month.\nHe Sheng rubs his eyes and spots the old farmers he's known since childhood rushing towards him. 'You've passed your exams,' they shout along with his name, joy plastered across their faces. 'You've passed your exams, and Tianshi Shu said she'd take you on as an apprentice!' Behind them, a small stockbeast languidly chews on the fresh grass, a brand-new metal ruler tied to its back alongside a silver kite. A strong wind pushes him towards the crowd, while little bells jingled and jangled amidst the hubbub that had swallowed up heaven and earth.\nHe jumps down from the slope, running beside the Yiwei plate's canal, pulling a silver wind behind him.",
+        "zh": "“禾生——”\n禾生从土坡上蹿起来，回头张望。他起得急，线轴落进水里，剪尾羽兽模样的纸风筝眨眼就变成白色天光下的一个小点，沿着河流消失在他眼前。\n禾生自己就是被这条河卷来大荒城的。要不是那阵迎着岸的强风，要不是正在田里扛沙袋的职农眼尖心细，一个不到两岁的孩子必定凶多吉少。天师和职农就他的安置问题通宵开会，请示户部，也直接向上游派了信使。但这一年，北方大旱之后又有洪泛，南方的天灾也闹得凶，为他寻亲终究是没有结果。\n从此，禾生就叫禾生，就生在大荒城。\n禾生在田垄上长大，在水泵旁长大，在移动大棚的框架上长大，在天师的宿舍和职农的院落中长大，在人工水渠之间的检修通道上长大。他记得黍天师给和他差不多大的孩子们看手相，然后把酒浆点上他们的额头；他记得他和小满并肩坐在牧兽背上，眺望小山般的仓储舰缓缓驶入航道，前往百灶、尚蜀，或者北方的丹燕；他还记得有一回，一块糖料作物试验田发生了自燃，大荒城足有一个月都笼罩在煮沸的麦芽糖般的甜腻香气里。\n禾生揉揉眼睛，他望见了，那些他从小就认识的老职农向他奔来。“考校通过咯，”他们喊着禾生的名字，满脸喜色，“考校通过咯，黍天师要收你当徒弟咯。”在他们的身后，一头小牧兽慢悠悠地咀嚼着新草，背上拴着一把崭新的铁尺，还有一只银色的风筝。强风将他推向人群，铃铛在开辟天地的呼啸中丁零作响。\n他跳下土坡，在乙未号地块的水渠边奔跑起来，牵着一束银色的风。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

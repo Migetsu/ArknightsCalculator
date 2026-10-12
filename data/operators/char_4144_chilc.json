@@ -1,0 +1,1151 @@
+{
+  "id": "char_4144_chilc",
+  "name": {
+    "en": "Chilchuck",
+    "zh": "齐尔查克",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "DD03",
+  "rarity": 5,
+  "class": "PIONEER",
+  "subclass": "agent",
+  "faction": "laios",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "Fast-Redeploy"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Chilchuck, a nimble and small-statured Half-foot. Whether it's lockpicking or checking for traps, you can rest easy leaving it to him.",
+    "zh": "灵活小巧的半身人齐尔查克，不论是开锁还是感知陷阱都可以放心地交给他。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He can be a bit of a grouchy fellow, but he's actually very considerate.",
+    "zh": "嘴巴可能有点毒，但他其实是在关心同伴。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 840,
+            "atk": 236,
+            "def": 97,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1201,
+            "atk": 348,
+            "def": 163,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1201,
+            "atk": 348,
+            "def": 163,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1541,
+            "atk": 459,
+            "def": 233,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 3
+        },
+        {
+          "id": "31044",
+          "count": 9
+        },
+        {
+          "id": "30103",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1541,
+            "atk": 459,
+            "def": 233,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1880,
+            "atk": 560,
+            "def": 277,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_chilc_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 6,
+          "blackboard": {
+            "mid_cost": 4,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 7,
+            "ground": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 7,
+          "blackboard": {
+            "mid_cost": 4,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 7,
+            "ground": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 14,
+          "initSp": 7,
+          "blackboard": {
+            "mid_cost": 5,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 8,
+            "ground": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 14,
+          "initSp": 8,
+          "blackboard": {
+            "mid_cost": 5,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 8,
+            "ground": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 13,
+          "initSp": 8,
+          "blackboard": {
+            "mid_cost": 6,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 9,
+            "ground": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 13,
+          "initSp": 9,
+          "blackboard": {
+            "mid_cost": 6,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 9,
+            "ground": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 12,
+          "initSp": 9,
+          "blackboard": {
+            "mid_cost": 6,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 9,
+            "ground": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 12,
+          "initSp": 10,
+          "blackboard": {
+            "mid_cost": 7,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 10,
+            "ground": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 11,
+          "initSp": 10,
+          "blackboard": {
+            "mid_cost": 7,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 10,
+            "ground": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Lockpicks",
+            "zh": "开锁工具",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; after skill ends, obtain <@ba.vup>{ground}</>-<@ba.vup>{floor}</> DP randomly",
+            "zh": "停止攻击，技能结束后随机获得<@ba.vup>{ground}</>-<@ba.vup>{floor}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 3,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 10,
+          "initSp": 10,
+          "blackboard": {
+            "mid_cost": 7,
+            "step": 3,
+            "prob_add": 0.4,
+            "prob_stay": 0.2,
+            "prob_minus": 0.4,
+            "floor": 10,
+            "ground": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "31043",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_chilc_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 11,
+          "blackboard": {
+            "attack_speed": 35,
+            "prob": 0.3,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "attack_speed": 37,
+            "prob": 0.3,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 11,
+          "blackboard": {
+            "attack_speed": 39,
+            "prob": 0.3,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 12,
+          "blackboard": {
+            "attack_speed": 42,
+            "prob": 0.35,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 12,
+          "blackboard": {
+            "attack_speed": 44,
+            "prob": 0.35,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 12,
+          "blackboard": {
+            "attack_speed": 46,
+            "prob": 0.35,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 50,
+            "prob": 0.38,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 54,
+            "prob": 0.4,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 57,
+            "prob": 0.42,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Improvisation",
+            "zh": "随机应变",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gain <@ba.vup>{prob:0%}</> Physical Dodge, ASPD +<@ba.vup>{attack_speed}</>, and obtain <@ba.vup>{cost}</> DP with every attack",
+            "zh": "获得<@ba.vup>{prob:0%}</>的物理闪避，攻击速度+<@ba.vup>{attack_speed}</>，每次攻击时获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 17,
+          "blackboard": {
+            "attack_speed": 60,
+            "prob": 0.45,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Keen Senses",
+            "zh": "敏锐的五感",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "For 35 seconds after deployment, Chilchuck and allied units within his range will not take damage from environmental effects or <$ba.dt.element>Elemental Injury</>",
+            "zh": "部署后，使自身及攻击范围内的友方单位不会受到来自自然环境的伤害和<$ba.dt.element>元素损伤</>，持续35秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "immune_duration": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Keen Senses",
+            "zh": "敏锐的五感",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "For 40 <@ba.talpu>(+5)</> seconds after deployment, Chilchuck and allied units within his range will not take damage from environmental effects or <$ba.dt.element>Elemental Injury</>",
+            "zh": "部署后，使自身及攻击范围内的友方单位不会受到来自自然环境的伤害和<$ba.dt.element>元素损伤</>，持续40<@ba.talpu>（+5）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "immune_duration": 40
+          }
+        },
+        {
+          "name": {
+            "en": "Keen Senses",
+            "zh": "敏锐的五感",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "For 45 seconds after deployment, Chilchuck and allied units within his range will not take damage from environmental effects or <$ba.dt.element>Elemental Injury</>",
+            "zh": "部署后，使自身及攻击范围内的友方单位不会受到来自自然环境的伤害和<$ba.dt.element>元素损伤</>，持续45秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "immune_duration": 45
+          }
+        },
+        {
+          "name": {
+            "en": "Keen Senses",
+            "zh": "敏锐的五感",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "For 50 <@ba.talpu>(+5)</> seconds after deployment, Chilchuck and allied units within his range will not take damage from environmental effects or <$ba.dt.element>Elemental Injury</>",
+            "zh": "部署后，使自身及攻击范围内的友方单位不会受到来自自然环境的伤害和<$ba.dt.element>元素损伤</>，持续50<@ba.talpu>（+5）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "immune_duration": 50
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +5",
+        "zh": "攻击速度+5",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_chilc",
+      "name": {
+        "en": "Chilchuck's Badge",
+        "zh": "齐尔查克证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_chilc",
+      "description": {
+        "en": "Operator Chilchuck has demonstrated a remarkable aptitude for disarming traps to aid teammates in combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Agent responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员齐尔查克擅长解除陷阱协助队友作战\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使情报官职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_chilc",
+      "name": {
+        "en": "Authentic Locksmith's Instruments",
+        "zh": "原版开锁工具",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_chilc",
+      "description": {
+        "en": "One day, in a Durin bar near the Acahuallan jungle, where every vintage boasts at least a quarter-century...\n'Hear the news? Apparently the Liquor Association had an accident at the hangar yesterday.'\n'Don't need to hear it, I was there! They made a worse ruckus than last time. Three cheers once more to the poor old Terran Society For The Protection of Durin People!'\n'Last time some idiot gave an automaton a champagne bubble bath and hit a control chip, right? What happened this time?'\n'Ale.'\n'Really? It's the booze again?'\n'Have you been to their hangar? They keep their entire stockpile of booze there, emphasis on the pile. Barrels and bottles all over. I'd be suspicious if nothing went wrong!'\n'Too true. And they never learn! It was a nightmare to subdue the Spirit of Liquor last time! Well, what about this time?'\n'The Association wanted to rein it in themselves, so they threw every engineer they had at it... and they're all proudly hospitalized now.'\n'Brutal... So they had to call for help again?'\n'Funny luck, actually. The moment they made the call, an expert came to them and solved it.'\n'Expert? Go on?'\n'Foreigner, complete stranger, 'bout a head shorter than you. Says he's some kinda specialist at disarming mechanical traps. At first, everyone thought he was an engineer from somewhere else, but no, he made it clear he's not. Claims he's an adventurer, just gathering supplies nearby before heading back to some dungeon. The Association thought he was drunk off his rocker, but hey, let him have a go if he wants, right? So they shake hands, and the moment they let go he's vanished into the hangar. Next thing you know, he's working his magic like a pro.'\n'Hold on, Spirit of Liquor's a deathtrap, sure, but it's not like a trap-trap, is it?'\n'Suppose it's all the same if you're good enough. By the time I got there, the hangar was back out of lockdown. He'd disassembled the machine so thoroughly, the place was a sea of parts.'\n'Trust them to get a dab hand like him—Wait, that means the problem's been solved, right? So why haven't I seen anyone from the Association all day?'\n'Problem solved meant the Association compensated him from their stash of ale like they agreed on. But you know how they are when they find someone who truly appreciates the brew. They threw a grand feast and made the foreigner their honored guest.'\n'...And?'\n'You wouldn't believe the liver on that foreigner. The little quarter-pint drank the entire Association under the table!'",
+        "zh": "某日，在阿卡胡拉丛林边缘一家只出售二十年以上陈酿的杜林酒吧内……\n“听说了吗，昨天烈酒协会的机库那边出事了。”\n“那肯定，我还在现场呢。这一次比上一次闹得还要大，杜林保护协会又是好一阵忙活。”\n“我记得上一次是那台自走机械的控制芯片被香槟给泡了，这一次又是怎么回事？”\n“这一次是麦酒。”\n“啊？怎么又是酒？”\n“你去过他们的机库吗？他们的酒也全堆在那里，东一桶西一瓶的到处乱扔，不出问题才怪呢。”\n“唉，他们真是不长记性！上次制服‘烈酒金刚’花了不少功夫，这次怎么办？”\n“这次烈酒协会本想自己去制服‘烈酒金刚’，结果呢，他们的工程师，有一个算一个，现在全部在医院躺着呢。”\n“这么惨烈啊……那烈酒协会只能请外援了吧？”\n“还得算他们运气好，刚发公告，就有高手出面解决了。”\n“高手？说来听听？”\n“是个没见过的外地人，比你还矮一头，自称是个解除机关陷阱的专家。刚开始大家以为他是其他地方来的工程师，但他偏要强调自己不是什么工程师而是冒险者，正在我们这边筹集补给，要回什么迷宫去。烈酒协会的人觉得他是喝多了在说胡话，但还是决定让他试试。双方一谈妥，他一溜烟就进机库里去了，身手灵活得很。”\n“但是‘烈酒金刚’不是什么机关陷阱啊？”\n“讨生活的手艺都是相通的嘛。等我到的时候，机库已经重新开放了，‘烈酒金刚’被那个外地人拆了个七零八落。”\n“他们总能遇到这样的高手——那问题不是解决了吗，怎么今天一整天都没看到烈酒协会的人？”\n“事情解决后，按他们之前说好的，烈酒协会用机库里堆着的麦酒作为给那个外地人的报酬。但是遇到个懂酒的，烈酒协会那些人哪忍得住，马上拉着对方开始大搞庆功宴。”\n“……结果呢？”\n“没想到那外地人一边说着自己的酒量不怎么样，一边还喝了不少呢。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31064",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

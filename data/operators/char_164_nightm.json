@@ -1,0 +1,1125 @@
+{
+  "id": "char_164_nightm",
+  "name": {
+    "en": "Nightmare",
+    "zh": "夜魔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC03",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "corecaster",
+  "faction": "victoria",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Healing",
+    "Slow"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Nightmare, Caster Operator of Rhodes Island, will provide help with her Originium Arts, no matter which personality is in at the moment.",
+    "zh": "罗德岛术师干员夜魔，两种人格都愿意使用源石技艺为你提供援助。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "I'm not quite sure who's standing in front of me.",
+    "zh": "我也不太确定眼前这个人究竟是谁。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 658,
+            "atk": 281,
+            "def": 45,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 941,
+            "atk": 396,
+            "def": 77,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 7
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 941,
+            "atk": 396,
+            "def": 77,
+            "magicResistance": 15,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1223,
+            "atk": 522,
+            "def": 107,
+            "magicResistance": 15,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30024",
+          "count": 7
+        },
+        {
+          "id": "30083",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1223,
+            "atk": 522,
+            "def": 107,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1510,
+            "atk": 622,
+            "def": 120,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_nightm_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "attack@heal_scale": 0.4,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "attack@heal_scale": 0.45,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "attack@heal_scale": 0.5,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 35,
+          "blackboard": {
+            "attack@heal_scale": 0.55,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 35,
+          "blackboard": {
+            "attack@heal_scale": 0.6,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 35,
+          "blackboard": {
+            "attack@heal_scale": 0.65,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "attack@heal_scale": 0.7,
+            "attack@max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 43,
+          "blackboard": {
+            "attack@heal_scale": 0.8,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 46,
+          "blackboard": {
+            "attack@heal_scale": 0.9,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Drain Soul",
+            "zh": "灵魂汲取",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each attack restores the HP of at most <@ba.vup>{attack@max_target}</> allies by <@ba.vup>{attack@heal_scale:0%}</> of damage dealt to enemies",
+            "zh": "每次攻击对敌人造成伤害的同时会对范围内至多<@ba.vup>{attack@max_target}</>名友方单位恢复相当于伤害量<@ba.vup>{attack@heal_scale:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 50,
+          "blackboard": {
+            "attack@heal_scale": 1,
+            "attack@max_target": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_nightm_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 3,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 4,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 4,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Night Phantom",
+            "zh": "夜魇魔影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Applies the Nightmare effect to up to <@ba.vup>{max_target}</> enemies within range:\nDecreases the Movement Speed of affected enemies by <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds, and makes them suffer <@ba.vup>True</> damage proportional to the distance they move during this effect",
+            "zh": "立即对攻击范围内最多<@ba.vup>{max_target}</>名敌人施加梦魇效果：\\n敌人的移动速度<@ba.vup>-{-move_speed:0%}</>，并令其在移动时受到正比于距离的<@ba.vup>真实</>伤害，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.6,
+            "max_target": 5,
+            "interval": 0.066,
+            "value": 1200,
+            "duration": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Dual Personality",
+            "zh": "表里人格",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 20% Physical and Arts Dodge when equipped with skill 1; Obtains 9% ATK when equipped with skill 2",
+            "zh": "装备技能1时获得20%的物理和法术闪避，装备技能2时获得+9%攻击力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "atk": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Personality",
+            "zh": "表里人格",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 25% <@ba.talpu>(+5%)</> Physical and Arts Dodge when equipped with skill 1; Obtains 12% <@ba.talpu>(+3%)</> ATK when equipped with skill 2",
+            "zh": "装备技能1时获得25%<@ba.talpu>（+5%）</>的物理和法术闪避，装备技能2时获得+12%<@ba.talpu>（+3%）</>攻击力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.25,
+            "atk": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Personality",
+            "zh": "表里人格",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 40% Physical and Arts Dodge when equipped with skill 1; Obtains 15% ATK when equipped with skill 2",
+            "zh": "装备技能1时获得40%的物理和法术闪避，装备技能2时获得+15%攻击力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.4,
+            "atk": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Personality",
+            "zh": "表里人格",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 45% <@ba.talpu>(+5%)</> Physical and Arts Dodge when equipped with skill 1; Obtains 18% <@ba.talpu>(+3%)</> ATK when equipped with skill 2",
+            "zh": "装备技能1时获得45%<@ba.talpu>（+5%）</>的物理和法术闪避，装备技能2时获得+18%<@ba.talpu>（+3%）</>攻击力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.45,
+            "atk": 0.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +26",
+        "zh": "攻击力+26",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_nightm",
+      "name": {
+        "en": "Nightmare's Badge",
+        "zh": "夜魔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_nightm",
+      "description": {
+        "en": "Operator Nightmare has demonstrated a remarkable aptitude for inflicting Arts casualties on the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Core Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员夜魔擅长对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使中坚术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_nightm",
+      "name": {
+        "en": "'The Double'",
+        "zh": "“两生花”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_nightm",
+      "description": {
+        "en": "CONSULTATION RECORDING N-02 20:37\nAre you feeling better now, Gloria?\nA bit. I'm sorry, it happened again...\nThat's alright. Are the flowers and fragrances here able to calm you down?\nYes...\nIs 'Nightmare' causing your panic?\nI don't know.\nGloria, for this consultation, I'd like to chat with you. I'll need you to try not to let 'Nightmare' come out. Can you do that?\nI... I can try.\nGood, I trust in you. If she's about to come out, you warn me as loudly as you can, okay?\nMm. Let's begin. Last consultation, you said you were awake while 'Nightmare' came out. What did it feel like, during that time?\nIt felt like... like I was sitting in front of a big screen. The sounds, and pictures... were all really clear, but I wasn't able to do anything.\nYou did something to take back control of your body. Can you describe that?\nI ran and ran, and there were all these threads pulling at me, sticky, and dark, and I was pulling those threads... [COUGH], [COUGH]!\nGloria, are you alright? You have a very bad cough there.\nCould I have a cup of water, doctor?\nHere.\nThank you.\nLet's continue. Were you doing that because you don't like 'Nightmare' occupying your body? So you'd like to get rid of her?\nNo, I just feel... helpless. Like if I don't do this, I'll lose something.\nWhat do you think of 'Nightmare'?\nShe's different from me. She does things I can't do. It scares me a little.\nDo you consider the two of you independent from each other?\nProbably.\nSuppose, and this is only me supposing, that one day, out of the two of you, only you were left. How would you feel?\nI don't know... [COUGH] Sorry, I need more water.\nRelax, it's okay. Now, we're going to try a slightly different method for our chat.\nI'm going to have you recall some quite deep memories. Don't worry, I promise it can't hurt you in any way.\nMm. Watch my three fingers carefully. One by one, I'll bend them down, and they'll sink slowly into the deepest parts of your mind.\nThree.\nTwo.\nOne.\nAre you Gloria?\nYes.\nGloria, can you recall when 'Nightmare' first emerged?\nI don't remember exactly when, just... that night, I had a bad dream.\nA bad dream?\nMm, I dreamed there was a white wall, with very bright corridor lights, and lots of people, and a lot of blood... and then, she appeared.\nSo she first appeared in your dream?\nYes.\nWas she doing anything?\nI remember, I dreamed she... saved me.\nShe saved you? And did she do anything else?\nAh... [COUGH]! Water, I need...\nCalm down, take me through slowly.\nHere—agh! That's my hand!\nHeh. Heheh.\n'Nightmare'! But why wasn't there any sign?\nOh, Gloria clearly warned you, you just didn't notice. What did you think? My imitation of her's quite a good one, isn't it?\nRequesting backup! 'Nightmare'—\nHush, not loud. Now, do you think that really was a bad dream? And just which of us could be after the Originium?\nThe twinflower, the doublet... truth and lie. How are you supposed to tell them apart?\nAlright, now listen to me. Hand over the Originium...\n—RECORDING ENDS HERE.",
+        "zh": "访谈录音 N-02 20:37\n葛罗莉亚，你感觉好些了吗？\n好一点了。对不起，我又……\n没事。这些花和香味能让你感到平静吗？\n是……\n你的恐慌是“夜魔”造成的吗？\n我不知道。\n葛罗莉亚，这次访谈我想和你聊聊，需要你努力不让“夜魔”出来，能做到吗？\n我……试试。\n好，我信任你。如果她要出来了，你就大声提醒我，好吗？\n嗯。我们开始吧。上次访谈中，你说在“夜魔”出来时你是清醒的，那时你有什么感受？\n感觉……就像坐在一面大屏幕前。所有的声音、画面……很清晰，可什么都做不了。\n你有夺回身体控制权的行为，是怎么做到的？\n我跑啊跑啊，有很多线在拉扯着我，黏黏的，黑色的，我扯那些线……咳、咳！\n葛罗莉亚，你还好吗？你咳得厉害。\n医生，可以给我一杯水吗？\n给你。\n谢谢。\n我们继续。让你这么做的原因是你不喜欢“夜魔”占据你的身体？所以你很排斥她？\n不是，我只是觉得……很无力。不这么做，有什么会消失。\n你怎么看待“夜魔”？\n和我不一样，她会做我做不到的事，我有些害怕。\n你认为你们两个彼此独立吗？\n应该吧。\n假如，我说假如，某一天你们两个中只有你会留下，你会怎么想？\n我不知道……咳，抱歉，我再喝口水。\n放松，接下来我们换个方式聊吧。\n我会让你回忆起一些深处的记忆。别担心，这不会给你带来伤害。\n嗯。看着这三根手指，它们会依次弯曲，慢慢潜入你的内心深处。\n三。\n二。\n一。\n你是葛罗莉亚吗？\n我是。\n葛罗莉亚，你能回忆起“夜魔”第一次出来是什么时候吗？\n不记得准确时间，只记得……那天，我做了一场噩梦。\n噩梦？\n嗯，我梦见白色的墙，走廊的灯光好亮，好多人，还有好多血……然后她出现了。\n她是先在梦里出现的吗？\n是的。\n她有做什么吗？\n我记得，在梦里她……救了我。\n救了你？她还有做什么吗？\n啊……咳！水，我要……\n别急，慢慢说。\n给你——啊！我的手！\n呵、呵呵。\n“夜魔”！可为什么没有任何迹象？\n葛罗莉亚明明提醒你啦，只是你没有注意到。怎么样？我模仿她模仿得还不错吧？\n请求援助！“夜魔”——\n嘘，不要吵哦。你以为那真是一场噩梦吗？究竟是谁需要源石呢？\n双生的花啊……真实与谎言，你该如何分辨？\n好啦，听我的，把源石交给我吧……\n——录音到此结束。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30044",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30104",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30054",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export const RawEvolutionCostSchema = z
 export const RawPhaseSchema = z
   .object({
     maxLevel: z.number(),
-    rangeId: z.string().optional(),
+    rangeId: z.string().nullable().optional(),
     evolveCost: z.array(RawEvolutionCostSchema).nullable().optional(),
   })
   .passthrough()
@@ -31,7 +31,7 @@ export const RawSkillLvlUpCostCondSchema = z
 
 export const RawCharSkillSchema = z
   .object({
-    skillId: z.string(),
+    skillId: z.string().nullable().optional(),
     overridePrefabKey: z.string().nullable().optional(),
     overrideTokenKey: z.string().nullable().optional(),
     levelUpCostCond: z.array(RawSkillLvlUpCostCondSchema).optional(),

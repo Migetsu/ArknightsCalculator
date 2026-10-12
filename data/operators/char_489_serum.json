@@ -1,0 +1,1094 @@
+{
+  "id": "char_489_serum",
+  "name": {
+    "en": "Corroserum",
+    "zh": "蚀清",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "CB12",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "blastcaster",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Debuff"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Operator Corroserum comes as a dispatch from Raythean Industries, and how he enjoys his time off after finishing his work is no worry of yours.",
+    "zh": "来自雷神工业的外派干员蚀清，不必质疑他在完成工作内容后享受的休息时间。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He welcomes interruptions at any time too—after all, it's just one more part of work.",
+    "zh": "也欢迎随时打断，毕竟，这也是工作的一部分。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "4-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 686,
+            "atk": 343,
+            "def": 45,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 980,
+            "atk": 484,
+            "def": 77,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "5-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 980,
+            "atk": 484,
+            "def": 77,
+            "magicResistance": 15,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1273,
+            "atk": 638,
+            "def": 107,
+            "magicResistance": 15,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "5-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30064",
+          "count": 5
+        },
+        {
+          "id": "30103",
+          "count": 10
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1273,
+            "atk": 638,
+            "def": 107,
+            "magicResistance": 20,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1572,
+            "atk": 760,
+            "def": 120,
+            "magicResistance": 20,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_serum_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.1,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.2,
+            "stun": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Overload",
+            "zh": "专注力超载",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. <@ba.rem>Corroserum is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，<@ba.rem>技能结束后蚀清<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.35,
+            "stun": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30043",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_serum_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.3,
+            "attack@silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.35,
+            "attack@silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.45,
+            "attack@silence": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.5,
+            "attack@silence": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@silence": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.7,
+            "attack@silence": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.8,
+            "attack@silence": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.9,
+            "attack@silence": 4.5
+          }
+        },
+        {
+          "name": {
+            "en": "Conductive Corrosive Blast",
+            "zh": "传导蚀滞弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and attacks silence the targets for <@ba.vup>{attack@silence} seconds</>\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击后使目标失去特殊能力<@ba.vup>{attack@silence}秒</>\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1,
+            "attack@silence": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Tactical Readjustment",
+            "zh": "战术性调整",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After not attacking for 4 seconds, own SP recovery rate +0.2/second",
+            "zh": "4秒内没有主动攻击过，技力自然回复速度+0.2/秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "delay": 4,
+            "sp_recovery_per_sec": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Readjustment",
+            "zh": "战术性调整",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After not attacking for 4 seconds, own SP recovery rate +0.25 <@ba.talpu>(+0.05)</>/second",
+            "zh": "4秒内没有主动攻击过，技力自然回复速度+0.25<@ba.talpu>（+0.05）</>/秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "delay": 4,
+            "sp_recovery_per_sec": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Readjustment",
+            "zh": "战术性调整",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After not attacking for 4 seconds, own SP recovery rate +0.45/second",
+            "zh": "4秒内没有主动攻击过，技力自然回复速度+0.45/秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "delay": 4,
+            "sp_recovery_per_sec": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Readjustment",
+            "zh": "战术性调整",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After not attacking for 4 seconds, own SP recovery rate +0.5 <@ba.talpu>(+0.05)</>/second",
+            "zh": "4秒内没有主动攻击过，技力自然回复速度+0.5<@ba.talpu>（+0.05）</>/秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "delay": 4,
+            "sp_recovery_per_sec": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +33",
+        "zh": "攻击力+33",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_serum",
+      "name": {
+        "en": "Corroserum's Badge",
+        "zh": "蚀清证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_serum",
+      "description": {
+        "en": "Operator Corroserum has demonstrated a remarkable aptitude for inflicting exceptionally long-range Arts casualties with a directional aspect.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Blast Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员蚀清擅长在单方向造成超远距法术伤害\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使轰击术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_serum",
+      "name": {
+        "en": "Unerasable",
+        "zh": "无可抹消",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_serum",
+      "description": {
+        "en": "Let me tell you a very boring story.\nThere are countless middle-class Columbian children living plainly favorable lives, who still attempt to assert their own individuality via what rebelliousness they've learned from others. Our hero for today is one such case.\nThe kids downtown never seem to exhaust their creativity or energy. Their skate tricks, graffiti art, and street rap hold a certain peculiar charm. No need for any means of intercity communication; it flourishes naturally in any urban center. Even the private school kids are captivated by this downtown 'ruff 'n' tuff stuff,' but discipline from their parents or teachers usually keeps them steering clear. They don't go out and experience the cool stuff for themselves.\nSo, our hero? His parents weren't for or against, they just didn't care, because our hero was a step ahead of the rest of his year. In whatever time was his own, he'd run off to hang out with those kids, but never actually joined in any of their activities. Maybe he was scared his classmates would mock him? Maybe he was scared that doing anything alongside the Infected would bring him trouble? Maybe he knew he wasn't like those kids, and in his heart raged all manner of emotions with nowhere to pour them? Who knows. All we know is that after the city passed a few new regulations quite unfriendly to the Infected, he put his self-taught knowledge to use and provided those kids some special new graffiti paints. If you ever tried to use water or any ordinary solvent to clean those walls, fresh anti-City Hall obscenities would show up over the works to disappoint you.\nYou think this story's actually veering on being interesting? Heh. Wait until I'm done. Yes, there's still more.\nYears later, those downtown kids are grown-ups now, saddled with what City Hall gave them, including the 'necessities for life' bundled along with their experimental weapons. They're on Pioneer Teams. I hear the forces they're part of took down a group of wicked barbarians like they were spraypainting across a map, opening up an ideal site for Columbia to build a nomadic city. The street culture they once also pioneered hasn't vanished since their departure, either. You could even say it's popular among all the youth of the city now, as a form of recreation.\nAnd what of our hero, you ask? He left the city, and never again encountered any graffiti from the throes of the heart, or skateboards in hand-painted livery. He found a job, and spends day in and day out either making more efficient weapons for his customers, or researching how to more efficiently destroy them.",
+        "zh": "来讲一个无聊的故事吧。\n有许多哥伦比亚中产家庭的孩子，明明过着优渥的生活，却仍试图用从别人身上学来的叛逆主张自己的个性。我们今天要讲的主角也在此列。\n下城区的孩子们似乎总是有用之不竭的创造力和精力，他们的花式滑板、涂鸦艺术、街头说唱拥有一种奇特的魔力，不需要任何跨城交流的手段，也能在各个城市中自发萌生。即便是私立学校的孩子们，也有许多为这些下城区的“粗俗的酷东西”着迷，但他们往往因为父母或教师的规训而退避三舍，并不会去亲身体验这些酷东西。\n那我们的主角呢？他的父母并不支持或反对，他们只是不关心，因此我们的主角比同龄人要走得远小半步。他在自己可支配的时间跑去和那些孩子厮混在一起，却并不直接参与他们的活动。或许是怕被同学们取笑？或许是怕跟感染者一起行动惹上麻烦？或许是他明白自己并不像那些孩子一样，在骨子里蓄藏着无处倾泻的缤纷情绪？谁知道呢。我们只知道，在这座城市颁布了一些对感染者并不友好的新条例之后，他活用了自学的知识，为那些孩子提供了一些特殊的涂鸦颜料。如果你尝试用水或者一些常见的清洗剂去处理那些墙面，那么涂鸦上新浮现出的针对市政府的脏话可就要让你失望了。\n你说这个故事勉强还算有趣？呵，听我讲完吧。是的，它还有后续。\n数年后，那群下城区的孩子成长为青年，拿着市政府发给他们的一些，包括实验武器在内的“生活必需品”，加入了拓荒队。听说他们所在的这支队伍像在地图上喷涂颜料一般，轻易地战胜了一支邪恶的蛮族，为哥伦比亚开拓了一块理想的移动地块建址。他们当初创造的那些街头文化也并没有因为他们的离去而消失，甚至已经成了在那座城市的所有年轻人中流行的娱乐方式。\n你问我们的主角后来怎么样了？他离开了那座城市，再也没有碰过当年心血来潮制作的涂鸦颜料和自己动手涂装的滑板。他找了一份工作，日复一日地为主顾制造更有效率的新武器，或是研究如何更有效率地销毁它们。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30064",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

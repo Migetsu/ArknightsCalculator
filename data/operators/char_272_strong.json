@@ -1,0 +1,1087 @@
+{
+  "id": "char_272_strong",
+  "name": {
+    "en": "Jaye",
+    "zh": "孑",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LM14",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "merchant",
+  "faction": "lungmen",
+  "position": "MELEE",
+  "tagList": [
+    "Fast-Redeploy",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Jaye, Specialist Operator, will use his expert knife skills to force enemies back.",
+    "zh": "特种干员孑，用精湛的刀功逼退对手。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He is rather terrifying when he's out there fighting.",
+    "zh": "他在战斗的时候确实蛮可怕的。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1110,
+            "atk": 321,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 5,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1461,
+            "atk": 441,
+            "def": 250,
+            "magicResistance": 0,
+            "cost": 5,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1461,
+            "atk": 441,
+            "def": 250,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1804,
+            "atk": 559,
+            "def": 321,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30093",
+          "count": 14
+        },
+        {
+          "id": "30053",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1804,
+            "atk": 559,
+            "def": 321,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2284,
+            "atk": 674,
+            "def": 378,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 25,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_strong_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.15,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "attack@silence": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "attack@silence": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@silence": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shell Splitter",
+            "zh": "断螯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks Silence the target for <@ba.vup>{attack@silence}</> second(s)\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击目标失去特殊能力<@ba.vup>{attack@silence}</>秒\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "attack@silence": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_strong_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.23,
+            "scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.26,
+            "scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "scale": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.33,
+            "scale": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.36,
+            "scale": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "scale": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Sashimi Platter",
+            "zh": "刺身拼盘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals a nearby friendly unit's HP equal to <@ba.vup>{scale:0%}</> of the damage dealt\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次攻击治疗周围一名友方单位相当于造成伤害<@ba.vup>{scale:0%}</>的生命值\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "scale": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 1
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "31023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Anatomy Master",
+            "zh": "解剖高手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK to 125% when attacking [Infected Creatures]",
+            "zh": "攻击【感染生物】时，攻击力提升至125%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Anatomy Master",
+            "zh": "解剖高手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK to 130% <@ba.talpu>(+5%)</> when attacking [Infected Creatures]",
+            "zh": "攻击【感染生物】时，攻击力提升至130%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Anatomy Master",
+            "zh": "解剖高手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK to 145% when attacking [Infected Creatures]",
+            "zh": "攻击【感染生物】时，攻击力提升至145%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Anatomy Master",
+            "zh": "解剖高手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK to 150% <@ba.talpu>(+5%)</> when attacking [Infected Creatures]",
+            "zh": "攻击【感染生物】时，攻击力提升至150%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -3 sec",
+        "zh": "再部署时间-3秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_strong",
+      "name": {
+        "en": "Jaye’s Badge",
+        "zh": "孑证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Jaye has demonstrated a remarkable aptitude in repeated battlefield penetration.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Merchant responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员孑擅长反复切入战场\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使行商职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_strong",
+      "name": {
+        "en": "Steel Tool Set",
+        "zh": "精钢刀具套组",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_strong",
+      "description": {
+        "en": "'Boy, one must choose his own path. If you wish to drift freely, you shall not starve in Lungmen. But if you wish to live peacefully, then you must master a craft. Starting today, I will teach you how to make finballs.' \n'One makes a finball the same way one makes a man, and do you know what the most important thing is?' \n'It's––' \n'Slow and steady, one step at a time!' \n'But you said the most important thing was to never lie, cheat, or steal...' \n'There are many principles required to make a man, and you would do well to remember them all!' \n'When I make finballs, I have to do every single step starting from the slaughter. So, in order to learn how to make finballs, you must also learn how to use a knife.' Uncle Tung pauses for a moment, as if sensing that the words he wanted to impart are too difficult to articulate. He squeezes out the sentence, 'I'll demonstrate one more time, watch carefully.' \nUncle Tung takes out a rolled leather bag and spreads it across the table. A row of dazzling knives reflect a blinding light. He retrieves a lively finfish from the water tank and slaps it a few times against the chopping board, its movements soon ceasing. He then takes out knives of different shapes and sizes and in turn, removes the scales with a small knife and slices open the belly with a large knife, each step orderly and neat. He shakes the complete finfish around in his hand a few times, and it turns into several different parts, neatly placed upon the table. \n'It seems complicated, and that's because it is. I'll tell you the principle behind using a knife - practice makes perfect.' \nI follow Uncle Tung's example and learn from him. I learn to slaughter the finfish, then how to make filling, then finally how to make soup. Uncle Tung calls me a fast learner, and it doesn't take me very long to join him at the stand. \nOne day, a few people come to eat finballs and order a whole lot of them. They get up and turn to leave without paying. \nUncle Tung has always allowed credit, but I know these guys and I know they aren't going to pay. Angered, I decide to teach them a lesson, but Uncle Tung rushes over and steps between me and them. \n'It's just a few finballs, just a few coins. All you have to do is remember to make up for it next time. There's always next time.' \nI had no choice but to give up, but that makes the punks even bolder. One of them shouts: \n'You filthy hawkers, clutching books all day. Think you're all high-and-mighty or something?' \nUncle Tung turns around to face them. I can't see the expression on his face, but the punks look like they’re staring straight into hell itself. They half-run, half-crawl over each other as they scramble away. \nThat night, Uncle Tung gives me that set of knives. \n'Make sure you take care of these. They might look old, but they're not cheap.' \n'Let me tell you another principle for how you use knives. The most important thing is to hide how sharp they are.'",
+        "zh": "“小子，一个人的路，都是自己选的。你要是想自由自在漂着，龙门饿不死你，但想安身立命，就必须掌握一门手艺。今天开始，我教你做鳞丸。”\n“做鳞丸和做人一样，你知道最重要的是什么吗？”\n“是——”\n“是要脚踏实地，一步一步地做！”\n“可您上回说是‘不能弄虚作假’……”\n“做人的道理多着呢，你记着就对了！”\n“我做鳞丸，从宰鳞开始每步都得亲自上手。所以学做鳞丸，得先学使刀。”董阿伯顿了一下，似乎是觉得要教的东西有点多，不好言语。扔下一句“我做一遍示范，你瞧仔细。”\n董阿伯取出一卷皮包打开平铺在桌上。一排明晃晃的刀刃闪着刺眼的光。又从水缸里拿出一条活蹦乱跳的鳞，在案板上摔打两下，鳞便没了动静。紧接着依次取出不同形状大小的刀具，小刀去鳞，大刀开肚，井然有序。一条完整的鳞，在他手里晃荡了几下，就变成了许多零件，整齐地摆放在案。\n“看起来复杂，其实就是那么回事，告诉你一个用刀的道理，熟能生巧。”\n我照着董阿伯的样子学了起来，学完宰鳞，接着学打馅，最后是调汤。董阿伯夸我学得快，没过多久，就让我替他去出摊了。\n有天，几个人来吃鳞丸，点了好多份。吃完没有给钱，转身就要走。\n董阿伯出摊向来是允许赊账的。但我认识那几个人，他们常来吃鳞丸，从来没有给过钱。我很生气，想教训他们一下。董阿伯连忙走了过来，拦在我和那几个人中间。\n“几颗鳞丸的事，没几块钱，下回记得补上就行，下回补上。”\n我只能作罢，但那几人看起来更加得意，其中一个大喊：\n“臭摆摊的，整天抱本书，真当自己人上人了。”\n董阿伯转过身去，面向那几个人。我看不到董阿伯脸上的表情，但那几个混混看起来像是活见鬼一般，连滚带爬地逃走了。\n那天晚上，董阿伯把那套刀交给了我。\n“好好拿着，这套东西看着老旧，可不便宜。”\n“再告诉你一个用刀的道理。用刀最重要的，是藏锋。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31013",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30083",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30053",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

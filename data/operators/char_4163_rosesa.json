@@ -1,0 +1,1167 @@
+{
+  "id": "char_4163_rosesa",
+  "name": {
+    "en": "Rose Salt",
+    "zh": "瑰盐",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "II11",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "ringhealer",
+  "faction": "iberia",
+  "position": "RANGED",
+  "tagList": [
+    "Healing",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Self-styled wandering herbalist Rose Salt, offering an array of herbal 'remedies' that may cause dizziness.",
+    "zh": "自称是流浪草药医生的瑰盐，可以为你提供包括迷晕在内的一系列草药“治疗”。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She wants to hold all she desires in the palm of her hand, eternally chasing after her idea of the good life.",
+    "zh": "想把自己渴望的一切都抓在手里，永远去追求自己想要的好生活。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 782,
+            "atk": 120,
+            "def": 72,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1058,
+            "atk": 195,
+            "def": 96,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1058,
+            "atk": 195,
+            "def": 96,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1323,
+            "atk": 264,
+            "def": 125,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "31034",
+          "count": 7
+        },
+        {
+          "id": "31053",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1323,
+            "atk": 264,
+            "def": 125,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1675,
+            "atk": 330,
+            "def": 151,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_rosesa_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.45,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.55,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.6,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.65,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.7,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.8,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Top-Notch Emergency Meds!",
+            "zh": "上佳的应急药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> ATK\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.9,
+            "ct": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "31074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_rosesa_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 17,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -0.75,
+            "attack@damage_scale": 0.9,
+            "damage_reduce_scale_display": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 17,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -0.75,
+            "attack@damage_scale": 0.85,
+            "damage_reduce_scale_display": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 17,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -0.75,
+            "attack@damage_scale": 0.8,
+            "damage_reduce_scale_display": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces somewhat slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 19,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.05,
+            "attack@damage_scale": 0.8,
+            "damage_reduce_scale_display": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces somewhat slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 19,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.05,
+            "attack@damage_scale": 0.75,
+            "damage_reduce_scale_display": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces somewhat slightly</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 19,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.05,
+            "attack@damage_scale": 0.7,
+            "damage_reduce_scale_display": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 21,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.35,
+            "attack@damage_scale": 0.7,
+            "damage_reduce_scale_display": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 23,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.35,
+            "attack@damage_scale": 0.65,
+            "damage_reduce_scale_display": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 25,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.35,
+            "attack@damage_scale": 0.6,
+            "damage_reduce_scale_display": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Super-Fine Slow-Release Meds!",
+            "zh": "绝妙的长效药呀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vup>reduces</>, <@ba.vup>{damage_reduce_scale_display:0%}</> of Physical and Arts damage received by allied Operators within range becomes HP loss over <@ba.vup>{attack@final_duration}</>s",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击范围内的友方干员受到的物理与法术伤害的<@ba.vup>{damage_reduce_scale_display:0%}</>变为持续<@ba.vup>{attack@final_duration}</>秒的生命流失",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 27,
+          "blackboard": {
+            "attack@interval": 1,
+            "attack@final_duration": 5,
+            "base_attack_time": -1.35,
+            "attack@damage_scale": 0.5,
+            "damage_reduce_scale_display": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31043",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 5% more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 7% <@ba.talpu>(+2%)</> more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升7%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.07
+          }
+        },
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 10% more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 12% <@ba.talpu>(+2%)</> more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升12%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.12
+          }
+        },
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 15% more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Herbalist Número Uno",
+            "zh": "最好的草药医生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK -5%, but allied Operators within range receive 17% <@ba.talpu>(+2%)</> more healing",
+            "zh": "自身攻击力-5%，但攻击范围内的友方干员受到的治疗效果提升17%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": -0.05,
+            "heal_scale": 1.17
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_rosesa",
+      "name": {
+        "en": "Rose Salt's Badge",
+        "zh": "瑰盐证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_rosesa",
+      "description": {
+        "en": "Operator Rose Salt has demonstrated a remarkable aptitude for healing several teammates in a short period of time.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Multi-target Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员瑰盐擅长在短时间内为数位干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使群愈师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_rosesa",
+      "name": {
+        "en": "Colorful Life in the Salt Flat",
+        "zh": "多彩盐漠生活",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_rosesa",
+      "description": {
+        "en": "The old prison guard hands Pascuala a bowl of soup. She puts her hand in and fishes out a scrap of saltfin leather with writing scrawled on it: 'Boss, we plan to blow up the maximum security cell block with saltfin poop explosives. We'll rescue you while causing maximum chaos to scare the hell out of these people. That's how we'll keep them under our thumbs and make a fortune!' She nods her head in satisfaction, listening to the guard hum a tune as she waits for tomorrow's jailbreak.\nWait. Something's not right here! Pascuala's eyes widen as she looks at the drafty walls of her cell and the frail old guard with his back turned, humming his tune. This isn't a maximum security cell! She looks out the window. Her crew has already finished planting the explosives, and their shadows are retreating in the moonlight.\nPascuala slams down her soup bowl, 'Hey! You locked me up in the frigging wrong cell!'\nThe old guard straightens up, shakily, 'What? There's a fire in your cell?'\n'No! You put me in the wrong cell! I committed a capital offense. I should be in the supermax.\n'Huh? Soup? I just gave you your soup. No need to worry, child. This here's the county jail. I'm sure someone will bail you out tomorrow.'\n'No! I'm going to the gallows tomorrow! Look! My wanted posters are all over the walls. I should be in maximum security!'\nThe old guard squints at the wanted poster. 'No. I'm afraid you're mistaken. This looks nothing like you. She's a fearsome demon, and you're just a frightened little girl.'\n'Finshit!' Pascuala jumps three feet in the air. 'I robbed the mayor's house, kidnapped his precious pet musbeast, drained his wine cellar, sold off all his jewels, and threw a wild party in his mansion. The old geezer got so mad he passed out for three whole days! I deserve to be in maximum security!'\n'Oh—' The old guard gives her a knowing glance. 'I get it now.'\nPascuala's face glows with joy. Finally, they would transfer her to the right prison cell. Then, tomorrow, when the explosives go off, she would shock the whole town into submission! She would make her fortune with this, and even become the town mayor just for the heck of it!\nThe old guard pats her on the forehead. 'You poor girl. You must be delirious from your fever. We've got to get you to the medical office, straightaway.'\nHe rushes her off to see his good friend, the town doctor. 'You poor girl,' the doctor murmurs. 'You've been wrongly arrested and developed a fever from the shock.' He gives her medication to stop the fever, combined with a sedative. He then places her in a warm bed with heart-print sheets. By the time Pascuala drifts off to sleep, she is surrounded by plush toys, with a lollipop in her mouth.\nThe next day, Pascuala's crew, armed to the teeth with explosives, stand in grim silence around the hospital bed. The doctor places the girl in their arms. He looks them over and yells, 'You must be her family! The girl is so sick! Why didn't you bring her here earlier?!' The crew stares at their 'fearsome' leader, bundled up like a flower bouquet. A collective horrified scream rings through the room. In a panic, they dump Pascuala back onto the bed, turn tail, and bolt into the night, never to return.\n—And so, according to legend, the greatest bandit gang in Salt Town history crumbled overnight… at the hands of one old prison guard.",
+        "zh": "牢房里，老看守递来一碗汤，帕斯卡拉从里面捞出了张写有字的鳞皮：“老大，计划是用鳞屎炸药炸翻重刑犯牢房，大闹一场救你出来，吓破这里人的胆，以后压着他们挣大钱！”她满意地点了点头，听着老看守哼的小曲，等待明天那场惊天动地的劫狱到来。\n等等，不对！帕斯卡拉猛地瞪大眼睛——这漏风的墙，这老弱的看守甚至还背对着自己哼歌——这里不是重刑犯牢房！她看向窗外，手下们在真正的重刑犯牢房外放满了炸药，在月光下留下一串背影。\n帕斯卡拉一把掀翻自己的汤碗大叫：“喂！你们把我关错了！”\n老看守颤巍巍直起腰：“什么——着火了？”\n“关错了！我可是重刑犯，这里算什么？”\n“这里没有蒜，这里是牢房……孩子，别害怕，明天你就能回家了。”\n“不对，我明天是去受绞刑！你看我的通缉令贴得满墙都是，我应该在重刑犯牢房！”\n老看守试图看清那画像：“不对，你才不对。你是个吓破胆的小丫头，这画的是个丑恶大魔头！”\n“放鳞屁！”帕斯卡拉一蹦三尺高，“我可是偷了镇长家，绑了他的宝贝鼷兽喝空了他的酒卖光了他的珠宝还在他家开派对，气得老头昏了三天才醒，我要去重刑犯牢房！”\n“哦——”老看守若有所悟地看向帕斯卡拉，“我懂了。”\n帕斯卡拉喜上眉梢，连体温都升高不少：她马上就可以去正确的牢房，等明天炸翻这里，她就能震慑住镇子！借着镇子挣大钱，说不定也能当个镇长玩玩！\n但老看守只是摸了摸她的额头：“孩子都吓得发烧说胡话了，得送去让医生看看。”\n于是，和老看守相熟的医生呵护着“被误抓吓到发烧”的帕斯卡拉，给她喂了有安眠效果的退烧药，将她塞进满是可爱图案的被子里，只露出一张小脸。睡着后的帕斯卡拉身边堆放着布娃娃，嘴里还有一根棒棒糖。\n满身炸药的帕斯卡拉手下黑压压地围着病床站了一圈，医生在一旁惊讶道：“天啊，是她的伯伯姨姨吧！孩子都烧成这样了，你们怎么现在才来？”手下们看着医生放到他们怀中被打扮得像花团一般的老大，爆发出一声惨叫，慌张地将她丢到了病床上并转身逃走，消失在夜色中，再也没有回来。\n——盐漠传言，咸盐镇最大的强盗团伙，就是这样在一个老看守手中一夜陨落的。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

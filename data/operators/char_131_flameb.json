@@ -1,0 +1,1095 @@
+{
+  "id": "char_131_flameb",
+  "name": {
+    "en": "Flamebringer",
+    "zh": "炎客",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R137",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fearless",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Flamebringer, Guard Operator of Rhodes Island, will bring ruination to enemies worthy of standing before him.",
+    "zh": "罗德岛近卫干员炎客，将倾力毁灭那些值得一战的敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He might just ditch if the enemies are too weak.",
+    "zh": "但如果敌人太弱，他可能会放水。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1496,
+            "atk": 408,
+            "def": 86,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2138,
+            "atk": 601,
+            "def": 123,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2138,
+            "atk": 601,
+            "def": 123,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2930,
+            "atk": 761,
+            "def": 161,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30074",
+          "count": 9
+        },
+        {
+          "id": "30083",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2930,
+            "atk": 761,
+            "def": 161,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3907,
+            "atk": 918,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_flameb_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.55,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.65,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Pact",
+            "zh": "歃血",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack's power is increased to <@ba.vup>{atk_scale:0%}</>, and restores HP by <@ba.vup>{hp_ratio:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并回复自身<@ba.vup>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "hp_ratio": 0.08
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_flameb_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 60,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 58,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 56,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 54,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 52,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 48,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 46,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 44,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "attack_speed": 40
+          }
+        },
+        {
+          "name": {
+            "en": "Blade Demon",
+            "zh": "刃鬼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "attack_speed": 45
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 4
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Bloody Slaughter",
+            "zh": "血戮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases Max HP by 20 after defeating an enemy, stacking up to 30 times.",
+            "zh": "每击杀一名敌人后自身的生命上限提高20，最多可以叠加30次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 20,
+            "max_stack_cnt": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Bloody Slaughter",
+            "zh": "血戮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases Max HP by 30 <@ba.talpu>(+10) </>after defeating an enemy, stacking up to 30 times.",
+            "zh": "每击杀一名敌人后自身的生命上限提高30<@ba.talpu>（+10）</>，最多可以叠加30次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 30,
+            "max_stack_cnt": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Bloody Slaughter",
+            "zh": "血戮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases Max HP by 40 after defeating an enemy, stacking up to 30 times.",
+            "zh": "每击杀一名敌人后自身的生命上限提高40，最多可以叠加30次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 40,
+            "max_stack_cnt": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Bloody Slaughter",
+            "zh": "血戮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases Max HP by 50 <@ba.talpu>(+10) </>after defeating an enemy, stacking up to 30 times.",
+            "zh": "每击杀一名敌人后自身的生命上限提高50<@ba.talpu>（+10）</>，最多可以叠加30次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 50,
+            "max_stack_cnt": 30
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 400,
+        "atk": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_flameb",
+      "name": {
+        "en": "Flamebringer's Badge",
+        "zh": "炎客证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Flamebringer has demonstrated a remarkable aptitude in wielding his twin blades to penetrate enemy formations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Dreadnought responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员炎客擅长挥舞双刀切入战阵\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使无畏者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_flameb",
+      "name": {
+        "en": "Rusty Broken Blade",
+        "zh": "锈损的断刀",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_flameb",
+      "description": {
+        "en": "This blade, and its master, once had the opportunity to end his life. Yet in the end, this blade ended up shattered. \nOne piece remains buried in the mud of that battlefield, and the other piece rests on the flowerbed's frame. \n'That guy came with a score to settle.' \n'That standard-issue longsword looked like a merc weapon.' \n'Said he was getting revenge for a friend, but I had no idea who he was talking about.' \n'The branches in this pot have already begun to turn yellow, and it'll be difficult for it to sprout new ones' \n'What can one do when one’s lost one’s will to live?' \n'Putting someone else's life above his own, a meaningless gesture.' \n'Utterly ridiculous.' \n'People always talk about how they're willing to get run through for their friends. You hear it a lot.' \n'But when it comes to how many can actually live up to the talk... Hah, guess he's pretty impressive.' \n'Ugh... the two branches here have tangled together and are starting to wilt. Going to have to prune them' \n'When you prune them and let them bud again, the part that survives flourishes. Even plants are like that.' \n'Too bad he didn't know how to swing a sword at all. Nothing but brute strength.' \n'Even after I broke his blade, he still wanted to complete his revenge, literally tooth and nail.' \n'He left his life behind so that the living could pay the price.' \n'A somewhat interesting idea, but...'\n'You'll never become strong if you only see your life as an extension of the dead.' \n'When plants treat the offshoots that have been pruned and propagated as their own nutrition, they will flourish more vigorously, and perhaps even bloom more flowers.' \n'All life is like this.' \n'......' \n'This pot might not do too well in the greenhouse. Go take it to the balcony.' \n'Maybe it'll grow into something new.'",
+        "zh": "这把刀和它的主人曾有机会杀掉他，但这刀最后还是成了一把断刀。\n一截留在战场的泥地里，另外一截则放在花圃的挂架上。\n“那人带着仇恨找过来。”\n“那把制式长刀，看上去像是雇佣兵们常用的家伙。”\n“他说是为了朋友报仇，可我都不知道他是谁。”\n“……这盆的枝条已经开始发黄，很难再发新芽。”\n“一个失去生存意志的人又还能做到什么？”\n“把他人生死凌驾于自己的生命上，那更没有什么意义。”\n“无聊。”\n“嘴上都说能为了朋友两肋插刀，这很寻常。”\n“不过真的能将之付诸实践，呵，他还算有点本事。”\n“唔……这里长成并蒂了，有点蔫，要掐下一株。”\n“掐掉并蒂芽，活下来的部分就会长得更加茁壮，植物都是这样。”\n“可惜他根本不懂怎么使刀，左劈右砍，只会用蛮力。”\n“刀被斩断了，他还想着用拳头，用牙齿，完成他的复仇。”\n“他为了让活着的人付出代价，就把自己的命抛在脑后。”\n“有几分意思，但……”\n“生命如果只是把自己看作死去生命的附属，就无法成为强大的存在。”\n“植物把被摘掉埋在土里的部分当作自己的养料吸取走，才会更茁壮地生长，说不定还能再开出几朵花。”\n“一切生命都是如此。”\n“……”\n“这盆可能不适合在温室里种，拿到阳台那里吧。”\n“兴许还能长出点新样子。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

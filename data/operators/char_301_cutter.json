@@ -1,0 +1,1100 @@
+{
+  "id": "char_301_cutter",
+  "name": {
+    "en": "Cutter",
+    "zh": "刻刀",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R144",
+  "rarity": 4,
+  "class": "WARRIOR",
+  "subclass": "sword",
+  "faction": "columbia",
+  "position": "MELEE",
+  "tagList": [
+    "Nuker",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Cutter, mercenary, will complete all tasks on the battlefield in a calm and disciplined manner.",
+    "zh": "雇佣兵刻刀，于战场上冷静而富有准则地完成所有任务。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The kitchen is more dangerous than the battlefield, and it would be best to not let her in the kitchen.",
+    "zh": "厨房比战场更凶险，最好不要让她进厨房。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 990,
+            "atk": 233,
+            "def": 142,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1357,
+            "atk": 338,
+            "def": 204,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 1
+        },
+        {
+          "id": "30052",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1357,
+            "atk": 338,
+            "def": 204,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1763,
+            "atk": 439,
+            "def": 266,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3222",
+          "count": 5
+        },
+        {
+          "id": "31013",
+          "count": 12
+        },
+        {
+          "id": "30083",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1763,
+            "atk": 439,
+            "def": 266,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2320,
+            "atk": 571,
+            "def": 325,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_cutter_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 14,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 13,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 3,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 12,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 3.2,
+            "times": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Redshift",
+            "zh": "红移",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately attacks random enemies within range <@ba.vup>{times}</> times with throwing knives, each knife dealing <@ba.vup>{atk_scale:0%}</> of ATK as physical damage.",
+            "zh": "立即投掷<@ba.vup>{times}</>把飞刀随机攻击前方的敌人，每把造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 11,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 3.4,
+            "times": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 1
+            },
+            {
+              "id": "31013",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_cutter_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.1,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.2,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 1,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.4,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 1,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.5,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 1,
+          "blackboard": {
+            "max_target": 5,
+            "atk_scale": 3.6,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 2,
+          "blackboard": {
+            "max_target": 6,
+            "atk_scale": 3.8,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 14,
+          "initSp": 3,
+          "blackboard": {
+            "max_target": 6,
+            "atk_scale": 4,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 13,
+          "initSp": 4,
+          "blackboard": {
+            "max_target": 6,
+            "atk_scale": 4.2,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Crimson Crescent",
+            "zh": "绯红刺刀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> Physical damage to up to <@ba.vup>{max_target}</> nearby enemies\n<@ba.rem>Damage is doubled against aerial enemies</>",
+            "zh": "对周围最多<@ba.vup>{max_target}</>个敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害\\n<@ba.rem>对飞行单位的攻击力系数加倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 12,
+          "initSp": 5,
+          "blackboard": {
+            "max_target": 6,
+            "atk_scale": 4.5,
+            "cutter_s_2[drone].atk_scale": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Photoetched Marks",
+            "zh": "光蚀刻痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When dealing damage, has 12% chance to recover 1 additional SP",
+            "zh": "造成伤害时有12%的几率额外回复1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp": 1,
+            "prob": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Photoetched Marks",
+            "zh": "光蚀刻痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When dealing damage, has 15% <@ba.talpu>(+3%)</> chance to recover 1 additional SP",
+            "zh": "造成伤害时有15%<@ba.talpu>（+3%）</>的几率额外回复1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "sp": 1,
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Photoetched Marks",
+            "zh": "光蚀刻痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When dealing damage, has 20% chance to recover 1 additional SP",
+            "zh": "造成伤害时有20%的几率额外回复1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp": 1,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Photoetched Marks",
+            "zh": "光蚀刻痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When dealing damage, has 23% <@ba.talpu>(+3%)</> chance to recover 1 additional SP",
+            "zh": "造成伤害时有23%<@ba.talpu>（+3%）</>的几率额外回复1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "sp": 1,
+            "prob": 0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +21",
+        "zh": "攻击力+21",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_cutter",
+      "name": {
+        "en": "Cutter’s Badge",
+        "zh": "刻刀证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Cutter has demonstrated a remarkable aptitude for inflicting multistage damage to the enemy in close-quarters combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Swordmaster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员刻刀擅长于近身搏斗中对敌人造成多段杀伤\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使剑豪职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_cutter",
+      "name": {
+        "en": "Replaceable Tool Set",
+        "zh": "可替换刀具套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_cutter",
+      "description": {
+        "en": "Cutter has three principles.\nNever kill the innocent. No trafficking nor blackmail. If the mission loses anyone their belongings, you have to compensate with equal value afterwards.\nSo today, while everyone's still asleep, Cutter knocks out a mercenary guard, cracks open a crate, and holds a hand out to the little girl inside.\nShe knows mercenaries. For people like them who deal in blood, letting the goods escape doesn't just affect their reputation, it impacts their business, so they'll kill their friends, and it won't weigh on them one bit. But for the sake of this innocent girl, nothing will stop her.\nCutter conceals herself in the pitch-black night. A dull, bad sweetness emerges in her throat, reminding her of the blood that coated her under the blazing sun in times past. But the girl on her back grips Cutter's arms tight, reminiscent of that day years ago, when she herself gripped tight onto those machetes with no owner.\nShe pushes the girl up on her back, adjusting positions, freeing herself up.\nIn the interval where her taut nerves relax, the aches on her body come with—Cutter uses the moonlight to inspect their wounds on her. A bolt shot at them hours earlier cut her shoulder and the girl's arm, the blood of the two congealed together. In this moment, thanks to the movement, fresh blood finds a way to well from her shoulder again.\nCutter tilts her head to look, her mind beginning to ring thanks to this trouble from nowhere.\nThe rope that fate bound around her neck suddenly tightens, and Cutter begins to feel this instant that her very breathing is beginning to freeze. Her hands turn cold in an instant, her heart pounding in her ears with every pulse, and she feels this darkness will drown her.\nCutter stares in shock, rooted to the ground, the cut on her shoulder smoldering red.",
+        "zh": "刻刀有三条准则。\n绝不杀害无辜者。贩卖人口与诈骗不做。任务中若使无关之人蒙受财物损失，事后须照价赔偿。\n所以今天，刻刀趁着众人昏睡，敲晕了看守的佣兵，打开货箱，对着里面的小女孩伸出了自己的手。\n她了解雇佣兵，对于刀口舔血的他们来说，让货物逃走不仅影响他们的声誉，也影响生计，因此对同伴痛下杀手，他们决不会有丝毫心理负担。但为了这个无辜的女孩，她决不会停下。\n刻刀在伸手不见五指的黑夜里躲藏，喉咙里泛起淡淡的腥甜味，这让她想起曾经烈日下那些淌在她面上的血。而背上的小女孩紧紧地攥着刻刀的胳膊，就像多年前的那日，她自己紧紧攥着那把不知属于谁的长刀。\n她将背后的小女孩往上抬了抬，调整一下位置，好叫自己轻松些。\n在紧绷着的精神松懈的间隙，身体上的疼痛随之而来——刻刀借着月光查看身上的伤口，几小时前射来的弩箭割开了她的肩膀和肩上女孩的胳膊，两股鲜血已经凝固在一起，此时此刻肩膀随着动作裂开新鲜的口子。\n刻刀偏头看着这个伤口，她的脑子因为这突如其来的变故而嗡鸣作响。\n命运束缚在她脖颈上的绳索突然收紧，刻刀觉得自己此刻呼吸都开始凝滞，她的手瞬间变凉，心脏每一次跳动都在耳里轰鸣，她觉得自己要被这黑暗淹死。\n刻刀惊怔在原地，肩上的伤口灼灼发烫。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30073",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30033",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31033",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1523 @@
+{
+  "id": "char_1019_siege2",
+  "name": {
+    "en": "Vina Victoria",
+    "zh": "维娜·维多利亚",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC00",
+  "rarity": 6,
+  "class": "WARRIOR",
+  "subclass": "artsfghter",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Speaker of Parliament of Londinium Vina Victoria will forge the road ahead at your side.",
+    "zh": "伦蒂尼姆议会议长维娜·维多利亚，将与你共铸前路。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She is Victoria, just like the thousands by her side.",
+    "zh": "她就是维多利亚，一如她身边的千千万万人。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1320,
+            "atk": 289,
+            "def": 189,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1738,
+            "atk": 420,
+            "def": 271,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 12
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1738,
+            "atk": 420,
+            "def": 271,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2200,
+            "atk": 546,
+            "def": 348,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 4
+        },
+        {
+          "id": "30145",
+          "count": 4
+        },
+        {
+          "id": "30014",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2200,
+            "atk": 546,
+            "def": 348,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2895,
+            "atk": 675,
+            "def": 420,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_siege2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Reforged Radiance",
+            "zh": "重铸晖光",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True</> damage to all surrounding ground enemies",
+            "zh": "下次攻击对四周所有地面敌人额外造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>真实</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "31033",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "31084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_siege2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 90,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.2,
+            "atk": 1.2,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 90,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.2,
+            "atk": 1.25,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 90,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.2,
+            "atk": 1.3,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.3,
+            "atk": 1.35,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.3,
+            "atk": 1.4,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.3,
+            "atk": 1.45,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.5,
+            "atk": 1.5,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.5,
+            "atk": 1.6,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.5,
+            "atk": 1.7,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Homeward Bound",
+            "zh": "进赴故土",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: if there are 2 or more friendly units within Talent 1's range, Vina's SP recovery <@ba.vup>+{sp_recovery_per_sec}/s</>\nUpon automatic activation: Attack Range <@ba.vup>+1</>, ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：天赋一生效范围内若有2个及以上友方单位，维娜技力回复速度<@ba.vup>+{sp_recovery_per_sec}/秒</>\\n自动开启：攻击距离<@ba.vup>+1</>，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</> \\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "sp_recovery_per_sec": 0.5,
+            "atk": 1.8,
+            "attack@max_target": 2,
+            "buff_stack_cnt": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_siege2_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.3,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.35,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.4,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.45,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.5,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+1</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+1</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.55,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+2</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+2</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.6,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+2</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+2</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 31,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.7,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+2</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+2</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 33,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.8,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "And All Be In My Name",
+            "zh": "俱以我之名",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons Golden Vows on deployable tiles within Talent 1's range; when skill is active, can attack enemies being blocked by friendly units in Talent 1's range; ATK <@ba.vup>+{atk:0%}</>, attack target count <@ba.vup>+3</>, Attack Interval <@ba.vup>reduces</>, attacks deal <@ba.vup>True</> damage",
+            "zh": "立即在天赋一生效范围内可部署地面召唤“黄金盟誓”；技能期间可攻击被天赋一生效范围友方单位阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，攻击目标数<@ba.vup>+3</>，攻击间隔<@ba.vup>缩短</>，攻击时伤害类型变为<@ba.vup>真实</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 35,
+          "blackboard": {
+            "base_attack_time": -0.25,
+            "atk": 1.9,
+            "attack@max_target": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31074",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31043",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30023",
+          "count": 5
+        },
+        {
+          "id": "31073",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "The Kings' Sighs",
+            "zh": "诸王的叹息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and friendly units within the surrounding 8 tiles take 12% less Physical damage, and Vina gains +3% ATK for each friendly unit within this range",
+            "zh": "自身与周围8格友方单位受到的物理伤害减少12%，且此范围内每个友方单位使维娜攻击力+3%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_resistance": 0.12,
+            "atk": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Kings' Sighs",
+            "zh": "诸王的叹息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and friendly units within the surrounding 8 tiles take 14% <@ba.talpu>(+2%)</> less Physical damage, and Vina gains +4% <@ba.talpu>(+1%)</> ATK for each friendly unit within this range",
+            "zh": "自身与周围8格友方单位受到的物理伤害减少14%<@ba.talpu>（+2%）</>，且此范围内每个友方单位使维娜攻击力+4%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_resistance": 0.14,
+            "atk": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "The Kings' Sighs",
+            "zh": "诸王的叹息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and friendly units within the surrounding 8 tiles take 20% less Physical damage, and Vina gains +5% ATK for each friendly unit within this range",
+            "zh": "自身与周围8格友方单位受到的物理伤害减少20%，且此范围内每个友方单位使维娜攻击力+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_resistance": 0.2,
+            "atk": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "The Kings' Sighs",
+            "zh": "诸王的叹息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and friendly units within the surrounding 8 tiles take 22% <@ba.talpu>(+2%)</> less Physical damage, and Vina gains +6% <@ba.talpu>(+1%)</> ATK for each friendly unit within this range",
+            "zh": "自身与周围8格友方单位受到的物理伤害减少22%<@ba.talpu>（+2%）</>，且此范围内每个友方单位使维娜攻击力+6%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_resistance": 0.22,
+            "atk": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Unsheathed Sword",
+            "zh": "无拘的锋芒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When damaging an enemy for the first time, inflicts <$ba.tremble>Frighten</> for 4s",
+            "zh": "对每个敌人首次造成伤害时，使其<$ba.tremble>战栗</>4秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "not_combat": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Unsheathed Sword",
+            "zh": "无拘的锋芒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When damaging an enemy for the first time, inflicts <$ba.tremble>Frighten</> for 5s <@ba.talpu>(+1)</>",
+            "zh": "对每个敌人首次造成伤害时，使其<$ba.tremble>战栗</>5<@ba.talpu>（+1）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "not_combat": 5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +28",
+        "zh": "攻击力+28",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_siege2",
+      "name": {
+        "en": "Vina Victoria's Badge",
+        "zh": "维娜·维多利亚证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_siege2",
+      "description": {
+        "en": "Operator Vina Victoria has demonstrated a remarkable aptitude for inflicting Arts damage on the enemy in close-quarters combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Arts Fighter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员维娜·维多利亚擅长在近身搏斗中对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使术战者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_siege2",
+      "name": {
+        "en": "The Adventure of the Lioness",
+        "zh": "城主的冒险",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_siege2",
+      "description": {
+        "en": "Vina never expected her meeting with the Doctor after reboarding to take so long.\nWhen she strolled through the Command Center doors on a whim, she never would have guessed the intense discussions the Doctor and Closure were having was about a board game of all things. Londinium's newest fad—The Adventure of the Lioness. There were only so many ways to kill time in the pubs right now, and this game for kids quickly found a home among pubgoers who loved picking at politics.\nTo all that, the Doctor replied: 'Closure and I see plenty of unpatched holes in the game design.'\nShe prepared to deploy her standard suite of excuse-mes and beat a hasty retreat, but Closure had already sealed off her escape route, and was urging her to join in. 'I can vouch. This game really takes me back to those days, you know? Underground in Londinium, fighting with the Self-Salvation Corps.'\nAnd how was she to predict that a fun little idea from a couple of kids playing house would get snapped up, commercialized, shipped, and become all the rage in Londinium? And then the greatest surprise was Morgan gleefully bringing the game back to the landship and recommending it to everyone she possibly could.\n'I'll play as you.' Taking on the 'Vina' role, the Doctor readied for the other two players' assault. Dice rolled again and again, and each time City Keeper 'Vina' came out on top, even twice succeeding in a complete counteroffensive and taking the 'Caster' territory for 'herself'.\nDefeated time and time again by 'herself', Vina was somewhat exasperated. 'Doctor, this is cheating. Hardly anything you're doing is in the rulebook.'\n'We never agreed to play by anyone else's rules, Vina.\n'Londinium's an enormous city. There are plenty to draw on that the designers didn't know or care about. That's what I meant by holes.'\nFor a moment, Vina thought to herself, then threw herself decisively into the next round. The aftermath of an independent Tara, the strategic give-and-take of Caster, the Infected vanguard bearing news of Gododdin... Vina played character after character, trying with all her might to wrest the Doctor's advantage away, but always to minimal effect.\nBefore her eyes was a city that far surpassed her expectations. With a peculiar and twisted ambition, she sought to beat 'herself'.\nBut it was beyond her to read any of the strange and crafty angles by which the Doctor defused her offensives. Their tiny little board couldn't support the three's game anymore. With a flash of inspiration, Closure called directly on PRTS to simulate one that was even larger and more complex.\n'Uh. Closure, are you allowed to use PRTS like that? What if Dr. Kal'tsit—'\nClosure waved it off. 'She's got urgent business, she's not on the ship. Besides, I have the permissions to guarantee she'll never find out what we did.'\nAn absurdly protracted ten hours later, Vina finally had to excuse herself from the game thanks to an anonymous express delivery to her dormitory.\nWhat had arrived was the yet-to-be-published first expansion for the game, including a series of all-new powers with all-new game plays. There was Normandy, Ashworth, and the Unicorn. Printed on the box was a roadmap for future expansions and updates, too.\n'The Adeptus Chamber Knights, the Empire's Blades, the Agents of Operation Boulder, the Twins' Voices, and the Angels of Judgement...'\nAnd finally, a message that left Vina silent.\n'I hope you like it! Looking forward to your feedback. —Eleanor'",
+        "zh": "维娜并未料到这次回舰与博士会面的时间会如此之长。\n偶然逛到指挥中心之前，她无论如何也想不到博士和可露希尔认真研讨着的竟然是在伦蒂尼姆刚刚兴起的新桌游——《城主的冒险》。时下酒馆里能消磨时间的办法不多，而这套供孩子嬉闹的游戏则迅速在喜欢指点时政的酒客间风靡起来。\n“我和可露希尔都认为这套游戏的设计还有许多的漏洞。”博士对此回应道。\n她刚准备掏出自己惯用的说辞搪塞过去然后迅速溜走，可露希尔就已经先一步挡住了她的退路，撺掇着她加入了游戏：“这游戏真让我想起了当初和自救军在伦蒂尼姆地下战斗的日子。”\n维娜也没想到，最初几个孩子过家家的奇思妙想会迅速被商人做成游戏上架，并在伦蒂尼姆流行开来。但她更没想到的是，摩根会乐呵呵地拿着游戏跑回本舰大张旗鼓地跟人推荐。\n“我来扮演你。”博士扮演着“维娜”，应对着另外两名玩家的进攻。骰子一次又一次落下，据守主城的“维娜”总能占据上风，甚至有两次还彻底反攻吃下了“开斯特”的地盘。\n不断被“自己”挫败的维娜有些无奈：“博士，这是作弊。你用的很多手段都不在规则书里。”\n“我们从来没有约定过要按照别人制定的规则游玩，维娜。\n“伦蒂尼姆是一座庞大的城市，很多被隐藏和被忽视的资源还未被设计师认知到，这也是我所说的漏洞。”\n维娜若有所思，随后毫不犹豫地投入了下一轮游戏。塔拉独立的浪潮余波，开斯特的合纵连横，高多汀领的感染者先锋队宣传……维娜尝试扮演不同角色，用尽全力争夺博士手中的优势，但总是收效甚微。\n她看到了一个远远超出她预期的城市。怀着异样的别扭心态，她想要战胜“自己”。\n但她从没想过博士会从更奇怪刁钻的角度化解她的攻势，而小小的棋盘已经无法承托三人的游戏。可露希尔灵机一动，直接调用了PRTS模拟出了更大和更复杂的棋盘。\n“呃，可露希尔小姐，PRTS真能这么用吗？要是凯尔希医生……”\n可露希尔摆了摆手：“她有要紧的事要处理，不在本舰。况且，现在我有权限保证她查不到我们干了什么。”\n漫长的十个小时后，因为一份送到宿舍的匿名快递，维娜不得不退出游戏。\n那是桌游尚未发售的首个拓展包，加入了一系列新势力的全新玩法，包括诺曼底、阿什沃思，还有独角兽。盒子上还印着后续的拓展包更新计划。\n“监商会大骑士、帝国的利刃、磐石计划特工、双子之声，还有审判天使……”\n最后，维娜看到了一句让她沉默的留言。\n“希望你喜欢，期待你的改进意见。——艾莉诺”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_siege2",
+      "name": {
+        "en": "秩序圣“球”",
+        "zh": "秩序圣“球”",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_siege2",
+      "description": {
+        "en": "“议长大人，请容我献上这一件……小礼物。”\n“揍歪下巴”拳馆里，一位大腹便便的贵族正站在维娜面前，而旁边的摩根将头撇在一边，一脸不悦。\n“维娜，我已经帮你拦过好几次了，这次是真没辙了。”\n“感谢您愿意把奥克特里格区的重建工程交给我来负责。”贵族赔着笑绕过了摩根，“之前我拜访了您的府邸好几次，结果您的朋友连门都没让我进。这次必须亲自把这个交到您手里我才能安心！”\n没等维娜回答，贵族就将手中华贵的匣子缓缓打开，露出了里面的礼物。\n“一只……梨球？”\n虽然从外形上能勉强辨认，但那“梨球”还是让维娜有些哭笑不得——本该是挂在板架上、用粗帆布缝成的练习道具，此刻却被深蓝丝绒裹覆，绣着维多利亚的金色纹章，更可笑的是，它的顶端居然还镶上了各种繁复的配饰。\n“我知晓您早年热爱拳术，所以特意请伦蒂尼姆手最巧的工匠定制了这个梨球。这上面还加入了一些我的小巧思——梨球的配色和您推崇的秩序圣球相呼应，这不正代表着您的意志和我们国家的方向永远统一？”\n一口气说了一长串话，贵族已经明显有些气喘吁吁，他扯着自己的领带，想要让自己肥胖的脖颈好受一些。\n“卡斯帕伯爵，您也对拳术有所研究？”\n“当然！”伯爵的双眼开始发光。\n维娜径直走向了一个空板架，把伯爵送的梨球挂在了上面。\n“请吧，伯爵大人。这是您送的礼物，应该让您先来。”\n伯爵面露难色，但盛情难却，他只能挽起袖子，朝梨球轻轻挥了一拳。梨球不痛不痒地晃了两下。\n“再用点力，伯爵大人。”\n“不能再用力了！这些金饰和宝石刮花了就——”\n维娜没等伯爵说完，一拳挥出。梨球撞上板架，它顶部镶嵌的金狮配饰顿时断成了两半。看到这样的情形，伯爵在旁急得跳脚。\n一拳，又一拳。各种小配饰从这颗华丽的梨球上稀稀拉拉地掉了下来，伯爵甚至都来不及捡。\n“这……这可是我花了重金的啊！”伯爵的脸已经涨到红得发紫，“议长大人，您不喜欢这个礼物，也不必这么羞辱我！”\n“不，卡斯帕伯爵，我很喜欢这个礼物。去掉这些不实用的部分，它是我用过的最精良的梨球。同样的，伯爵大人，除去您的这身华丽的衣服，我仍记得您年轻时在城市规划方面的诸多建树。如果您需要找我，去议长办公室就行，我大多数时间都在那里。另外，别忘了带上您的项目计划书。”\n维娜停下了拳击，看着梨球。梨球因为惯性此刻仍在摇摇晃晃，上面用金线缝制的维多利亚国徽也因摇晃而变得难以看清。\n“秩序圣球之所以得到人们的尊敬，绝不是因为它的华贵，而是因为我们的先辈创造过一个文明的奇迹。\n“但很显然，如今我们所处的这个时代并不能称之为‘奇迹’。\n“所以，伯爵大人，我会把这颗梨球挂在这里，让所有路过的人都能敲打它。\n“如果有一天它不再摇晃，我希望不是因为大家觉得它尊贵……\n“而是他们发自内心地认可，认可上面这枚由所有维多利亚人组成的国徽。”",
+        "zh": "“议长大人，请容我献上这一件……小礼物。”\n“揍歪下巴”拳馆里，一位大腹便便的贵族正站在维娜面前，而旁边的摩根将头撇在一边，一脸不悦。\n“维娜，我已经帮你拦过好几次了，这次是真没辙了。”\n“感谢您愿意把奥克特里格区的重建工程交给我来负责。”贵族赔着笑绕过了摩根，“之前我拜访了您的府邸好几次，结果您的朋友连门都没让我进。这次必须亲自把这个交到您手里我才能安心！”\n没等维娜回答，贵族就将手中华贵的匣子缓缓打开，露出了里面的礼物。\n“一只……梨球？”\n虽然从外形上能勉强辨认，但那“梨球”还是让维娜有些哭笑不得——本该是挂在板架上、用粗帆布缝成的练习道具，此刻却被深蓝丝绒裹覆，绣着维多利亚的金色纹章，更可笑的是，它的顶端居然还镶上了各种繁复的配饰。\n“我知晓您早年热爱拳术，所以特意请伦蒂尼姆手最巧的工匠定制了这个梨球。这上面还加入了一些我的小巧思——梨球的配色和您推崇的秩序圣球相呼应，这不正代表着您的意志和我们国家的方向永远统一？”\n一口气说了一长串话，贵族已经明显有些气喘吁吁，他扯着自己的领带，想要让自己肥胖的脖颈好受一些。\n“卡斯帕伯爵，您也对拳术有所研究？”\n“当然！”伯爵的双眼开始发光。\n维娜径直走向了一个空板架，把伯爵送的梨球挂在了上面。\n“请吧，伯爵大人。这是您送的礼物，应该让您先来。”\n伯爵面露难色，但盛情难却，他只能挽起袖子，朝梨球轻轻挥了一拳。梨球不痛不痒地晃了两下。\n“再用点力，伯爵大人。”\n“不能再用力了！这些金饰和宝石刮花了就——”\n维娜没等伯爵说完，一拳挥出。梨球撞上板架，它顶部镶嵌的金狮配饰顿时断成了两半。看到这样的情形，伯爵在旁急得跳脚。\n一拳，又一拳。各种小配饰从这颗华丽的梨球上稀稀拉拉地掉了下来，伯爵甚至都来不及捡。\n“这……这可是我花了重金的啊！”伯爵的脸已经涨到红得发紫，“议长大人，您不喜欢这个礼物，也不必这么羞辱我！”\n“不，卡斯帕伯爵，我很喜欢这个礼物。去掉这些不实用的部分，它是我用过的最精良的梨球。同样的，伯爵大人，除去您的这身华丽的衣服，我仍记得您年轻时在城市规划方面的诸多建树。如果您需要找我，去议长办公室就行，我大多数时间都在那里。另外，别忘了带上您的项目计划书。”\n维娜停下了拳击，看着梨球。梨球因为惯性此刻仍在摇摇晃晃，上面用金线缝制的维多利亚国徽也因摇晃而变得难以看清。\n“秩序圣球之所以得到人们的尊敬，绝不是因为它的华贵，而是因为我们的先辈创造过一个文明的奇迹。\n“但很显然，如今我们所处的这个时代并不能称之为‘奇迹’。\n“所以，伯爵大人，我会把这颗梨球挂在这里，让所有路过的人都能敲打它。\n“如果有一天它不再摇晃，我希望不是因为大家觉得它尊贵……\n“而是他们发自内心地认可，认可上面这枚由所有维多利亚人组成的国徽。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30155",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

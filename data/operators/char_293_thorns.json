@@ -1,0 +1,1549 @@
+{
+  "id": "char_293_thorns",
+  "name": {
+    "en": "Thorns",
+    "zh": "棘刺",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "II01",
+  "rarity": 6,
+  "class": "WARRIOR",
+  "subclass": "lord",
+  "faction": "iberia",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Thorns, Guard Operator of Rhodes Island, wastes not an ounce of energy, calculating each strike meticulously.",
+    "zh": "罗德岛近卫干员棘刺，从不浪费力气，每一次攻击都经过精密计算。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He'll cooperate according to his own interpretation of the commands.",
+    "zh": "他往往会以自己的理解来配合指挥。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1096,
+            "atk": 296,
+            "def": 191,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1567,
+            "atk": 442,
+            "def": 263,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1567,
+            "atk": 442,
+            "def": 263,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2063,
+            "atk": 575,
+            "def": 333,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30044",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2063,
+            "atk": 575,
+            "def": 333,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2612,
+            "atk": 711,
+            "def": 402,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_atk_up[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_thorns_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.4,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.45,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.5,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.55,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.6,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.65,
+            "cooldown": 0.8,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.7,
+            "cooldown": 0.75,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 37,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.8,
+            "cooldown": 0.7,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.9,
+            "cooldown": 0.65,
+            "max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Protective Spikes",
+            "zh": "护身尖刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>; When hit by an enemy's normal attack, launches long-ranged spikes at up to <@ba.vup>{max_target}</> enemies in front (<@ba.vup>{cooldown:0.0}</>-second cooldown)",
+            "zh": "停止攻击，攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，受到敌人普通攻击时释放尖刺对前方最多<@ba.vup>{max_target}</>名敌人进行一次远程攻击（每<@ba.vup>{cooldown:0.0}</>秒最多触发一次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 1.1,
+            "cooldown": 0.6,
+            "max_target": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_thorns_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.26,
+            "attack_speed": 12,
+            "thorns_s_3[b].atk": 0.52,
+            "thorns_s_3[b].attack_speed": 24,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.28,
+            "attack_speed": 12,
+            "thorns_s_3[b].atk": 0.56,
+            "thorns_s_3[b].attack_speed": 24,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 12,
+            "thorns_s_3[b].atk": 0.6,
+            "thorns_s_3[b].attack_speed": 24,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.33,
+            "attack_speed": 14,
+            "thorns_s_3[b].atk": 0.66,
+            "thorns_s_3[b].attack_speed": 28,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35,
+            "attack_speed": 14,
+            "thorns_s_3[b].atk": 0.7,
+            "thorns_s_3[b].attack_speed": 28,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.37,
+            "attack_speed": 14,
+            "thorns_s_3[b].atk": 0.74,
+            "thorns_s_3[b].attack_speed": 28,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 16,
+            "thorns_s_3[b].atk": 0.8,
+            "thorns_s_3[b].attack_speed": 32,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 19,
+            "thorns_s_3[b].atk": 0.9,
+            "thorns_s_3[b].attack_speed": 38,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 22,
+            "thorns_s_3[b].atk": 1,
+            "thorns_s_3[b].attack_speed": 44,
+            "thorns_s_3[b].duration": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Destreza",
+            "zh": "至高之术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>, and ranged attacks no longer deal reduced damage\n<@ba.rem>Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，远程攻击不再降低攻击力\\n<@ba.rem>第二次及以后使用时能力加成变为最初的两倍，且持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "attack_speed": 25,
+            "thorns_s_3[b].atk": 1.2,
+            "thorns_s_3[b].attack_speed": 50,
+            "thorns_s_3[b].duration": -1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30073",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30041",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30053",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 6
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Nerve Corrosion",
+            "zh": "神经腐蚀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Poisons the targets when attacking, dealing 65 Arts damage to them per second, lasting 3 seconds (damage is doubled against Ranged enemies)",
+            "zh": "攻击使目标中毒，在3秒内每秒受到65点法术伤害（对会远程攻击的目标伤害加倍）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage[normal]": 65,
+            "damage[ranged]": 130,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Nerve Corrosion",
+            "zh": "神经腐蚀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Poisons the targets when attacking, dealing 80 <@ba.talpu>（+15）</> Arts damage to them per second, lasting 3 seconds (damage is doubled against Ranged enemies)",
+            "zh": "攻击使目标中毒，在3秒内每秒受到80<@ba.talpu>（+15）</>点法术伤害（对会远程攻击的目标伤害加倍）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage[normal]": 80,
+            "damage[ranged]": 160,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Nerve Corrosion",
+            "zh": "神经腐蚀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Poisons the targets when attacking, dealing 125 Arts damage to them per second, lasting 3 seconds (damage is doubled against Ranged enemies)",
+            "zh": "攻击使目标中毒，在3秒内每秒受到125点法术伤害（对会远程攻击的目标伤害加倍）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage[normal]": 125,
+            "damage[ranged]": 250,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Nerve Corrosion",
+            "zh": "神经腐蚀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Poisons the targets when attacking, dealing 140 <@ba.talpu>（+15）</> Arts damage to them per second, lasting 3 seconds (damage is doubled against Ranged enemies)",
+            "zh": "攻击使目标中毒，在3秒内每秒受到140<@ba.talpu>（+15）</>点法术伤害（对会远程攻击的目标伤害加倍）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage[normal]": 140,
+            "damage[ranged]": 280,
+            "duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Echoes of Ancestral Waves",
+            "zh": "故土潮声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "If this unit hasn't attacked for 2 seconds, restores 3.5% of Max HP every second",
+            "zh": "如果2秒内没有主动攻击过，每秒恢复最大生命3.5%的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "delay": 2,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.035
+          }
+        },
+        {
+          "name": {
+            "en": "Echoes of Ancestral Waves",
+            "zh": "故土潮声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "If this unit hasn't attacked for 2 seconds, restores 4% <@ba.talpu>(+0.5%)</> of Max HP every second",
+            "zh": "如果2秒内没有主动攻击过，每秒恢复最大生命4%<@ba.talpu>（+0.5%）</>的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "delay": 2,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.04
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +26",
+        "zh": "攻击力+26",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 30,
+        "def": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_thorns",
+      "name": {
+        "en": "Thorns's Badge",
+        "zh": "棘刺证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_thorns",
+      "description": {
+        "en": "Operator Thorns has demonstrated a remarkable aptitude for wide-range enemy suppression.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Lord responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员棘刺擅长在较大范围内阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使领主职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_thorns",
+      "name": {
+        "en": "The Salt and the Sand",
+        "zh": "“盐与沙”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_thorns",
+      "description": {
+        "en": "Once upon a time, salt was not of this land, just as sand was not of the sea.\nBack then, fanatical laws had not yet gripped the land, and a king still sat atop Iberia's royal throne.\nBack then, the king was the master of his domain, the mighty forces at his disposal conquering city-state after city-state.\nHis bravery and renown outlived Catastrophe after Catastrophe, and his forts and outposts sprouted across increasingly remote frontiers.\nHe erected palaces and great courts, and his cities were filled with statues bearing his image.\nBut the king could never be sated, for he wished his name to be sung everywhere.\nAnd so, the King of Iberia decreed thusly to his hundred cities:\n'Gather all learned men to my royal city, so that I may know of the vastness of the land and sea.'\nThe first to seek an audience was a merchant, old and frail, yet bearing a treasure he wished to present.\nThe king trusted in the wisdom afforded by time, and summoned the merchant to his hall.\nThe merchant presented a burning-hot hourglass, proclaiming that the hottest desert marked the ends of the earth.\n'I have once reached the ends of the earth, where the wind scalds like flame and the sun blazes like a torch, and I bring to you the sand of that place!'\nThe second to seek an audience was a fisherman, youthful and naive, yet bearing a treasure he wished to present.\nThe king trusted in the wisdom innate to youth, and summoned the fisherman to his hall.\nThe fisherman presented a flask of black seawater, claiming that the darkest water filled the ends of the sea.\n'I have once reached the ends of the sea, where the water is bottomless and the currents run relentless. I bring to you the brine of that place!'\nThe next to seek an audience was an alchemist, shrouded from sight and of age unknown, yet bearing a treasure he wished to present.\nBut before the king could decide whether or not to trust this figure, the alchemist appeared within his hall.\nHe asked the king to give him the hourglass and the flask, and the king readily agreed, curious as to what he would do.\nThe sand from the ends of the land melted into red liquid before his eyes.\nThe brine from the ends of the sea crystallized into white sand before his eyes.\nThe alchemist scattered them both nonchalantly, and they seemed to dissipate into thin air. As if responding to his will, a strong wind blew through the kingdom for three days and nights.\n'I know not how vast the land or the sea are, but regardless, neither are as vast as Iberia's boundless power.'\n'From now on, the winds of the land and sea obey your will, O King of Iberia.\n'Starting today, see to it that a fleet is built, and follow the direction of the wind.'\n'Be it by land or sea, Iberia's fleet shall show the way.'",
+        "zh": "从前，盐还不属于大地，沙还不属于海洋。\n那时狂热的律法还未将这片土地禁锢，伊比利亚的王城之中仍有国王。\n那时国王是这片疆土的主人，他的麾下兵强士壮，他的谕令征服无数城邦。\n他的勇武和威名穿过重重天灾，他将堡垒和哨所修到越发遥远的边疆。\n他建起宫殿厅堂，他的王城内遍布他的塑像。\n但国王永远不会满足，他还希望自己名字处处传唱。\n于是伊比利亚的国王向一百座城池发出号令——\n“把所有博学多识的人都召集到我的王城来，我要知道这大地与海洋究竟有多宽广。”\n第一位求见的是位商人，他年老体衰，说带有宝物，要献给国王。\n国王相信岁月的智慧，便把商人召至他的厅堂。\n商人向国王献上一个烫手的沙漏，声称最炙热的沙漠，就是大地的尽头。\n“我已抵达大地的尽头，那里焚风似火，烈阳如炬，这其中的沙砾，就来自那个地方！”\n第二位求见的是位渔民，他稚气未脱，说带有宝物，要献给国王。\n国王相信青春的智慧，便把渔民召至他的厅堂。\n渔民向国王献上一瓶黑色的海水，声称最漆黑的水域，就是海洋的终点。\n“我已抵达海洋的终点，那里水深无底，狂风不息，这瓶中的咸水，就来自那个地方！”\n最后求见的是一位炼金术师，他面目不清，长幼不辨，说带有宝物，要献给国王。\n国王还未决定是否取信，炼金术师便已经出现在他的厅堂。\n炼金术师请求国王赐他沙漏和咸水，而国王欣然应允，想看看他到底能玩出什么名堂。\n那大地尽头的沙砾，竟在国王的面前熔成一摊红水。\n那海洋终点的咸水，竟在国王的面前结作粒粒白砂。\n炼金术师随意抛洒，它们消散在空中。似是应了他的旨意，王国的疆土上刮起大风，三天三夜仍不见停歇。\n“我不知道大地与海洋究竟有多宽广，但我知道无论如何，都不及伊比利亚的无边力量。\n“从今往后这大地与海洋上的风都将忠实于您，伊比利亚的国王。\n“请您从今天开始打造舰队，顺着风的方向。\n“不论大地还是海洋，请让伊比利亚的舰队去丈量。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_thorns",
+      "name": {
+        "en": "Sand Erosion",
+        "zh": "沙蚀",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "D",
+      "icon": "uniequip_003_thorns",
+      "description": {
+        "en": "'I lost.' The swordsman puts away his blade, and lowers his head towards the man near the cliff edge.\n'You're good.' The other man also puts his sword away, and nods to the swordsman in approval, 'You almost forced me to use that technique.'\n'Technique? Which one?' The swordsman grows curious, and instead of waving goodbye, crosses his arms.\nThe man shows no emotion, but his words stun: 'A move I save for the last moment between life and death. Over the years, everyone who has seen it has either begged for mercy or simply run away... No one has lasted more than three moves.'\n'That powerful, huh? Which school did you learn it from?' The swordman's eyes widen.\n'Nowhere, I learned it when I was still with my teacher.'\n'And who is this teacher of yours...?'\n'...No one important. Just an ordinary cleric.'\n'An ordinary cleric? Impossible. Your swordplay reminds me of an old friend. Aulus, he was called. He defeated me decades ago.' The swordsman laments, 'If he was your teacher, then I would understand.'\n'...No, not him.'\n'Alright. You did display a diverse array of swordplay. I'm sure you must have had multiple teachers.'\n'...The one who taught me this didn't know swordplay at all. But even he would emerge the victor when my teacher confronted him.' The man shakes his head as he falls into memories of the past.\n'Even <i>he</i> would lose to this man...? That's impossible! Who could it be?!' The swordsman's tone turns eager.\n'He was hired by my teacher to take care of the students. He seemed a little gloomy and didn't like to socialize with others, so everyone was afraid of him. Start up any trouble, and he'd brandish the mop in his hand and give the offender a good beating.' Recalling his fierce appearance, the man trembles slightly.\n'Just a mop? That's nothing to be afraid of.'\n'No, the mop always had an unpleasant smell of disinfectant on it. Even the droplets splashing from the head were corrosive.' The man shows a strange expression of admiration of his face. 'I was inspired by him, and installed a tube connected to my longsword, linking to a disinfectant with an improved formula. It is far more corrosive and smells even worse.'\n'Now you've gotten me curious. How bad can it get?'\n'Are you sure you want a sniff?'\n'...Yes, I do.'\nThe man sighs, unplugs the tube from his blade and approaches the swordsman.\nThe swordsman takes a deep breath, then his face quickly flashes from white, to red, and then to purple, before finally he drops to the ground.\nThe man swiftly plugs the tube back to his sword and crouches next to the swordsman. He sees a pair of eyes rolled backward, the swordsman unconscious. After a momentary silence, he finally utters a sentence—\n'Phew... I've been holding my breath for so long... but I can still smell it...'",
+        "zh": "“我输了。”剑士收起剑，向断崖旁的男人低下头。\n“你很厉害。”男人也收起剑，向剑士轻轻颔首，认可道：“几乎要逼迫我使出那一招了。”\n“那一招？哪一招？”剑士心生好奇，本想挥手作别的双手又抱在怀里。\n男人面无表情，但说出来的话却令人震撼：“是我保命的一招，这些年来，凡是见过它的人，或是讨饶，或是逃跑……没有谁能坚持三个回合。”\n“这么厉害，是哪个流派的剑术？”剑士瞪大眼睛。\n“没有流派，是我还跟着老师时学的。”\n“恩师是……？”\n“……没什么，只是一个普通的教士罢了。”\n“普通的教士？我可不信，你的剑招让我想起了一位故人，他的名字叫奥卢斯，数十年前我曾落败于他手下。”剑士感慨道，“如果是他教你的，那我心里有数。”\n“……不，那一招不是他教给我的。”\n“也是，你所学剑招颇杂，应该不止师承一位剑术大师。”\n“……那人并不会剑术。但就连老师在与他对峙时也会败下阵来。”男人摇摇头，陷入往日的回忆。\n“连他也会输……不可能！那个人是谁？！”剑士的语气变得激动。\n“他是老师请来照料学生们衣食住行的人，有点凶，不怎么爱和人交际，大家都怕他。只要有人捣乱，他便会挥舞手中的拖把狠狠将对方教训一顿。”想起那人凶巴巴的模样，男人轻轻一颤。\n“一把拖把而已，有什么好怕的。”\n“不，那把拖把上总有一股刺鼻的消毒水味，极其难闻，甚至甩出来的水滴还有腐蚀性。”男人脸上诡异地露出了一抹赞赏的神色，“受他启发，我也在长剑上安装了储液管，里面是改良过配方的消毒液，腐蚀性更强，也更加难闻。”\n“我开始好奇了，到底有多难闻？”\n“你确定要闻吗？”\n“……是，我要闻。”\n男人叹了口气，拔开连接长剑的软管，凑到剑士面前。\n剑士深吸一口气，随后他的面色迅速从白转红再到紫，最后整个人竟直直栽倒在地。\n男人迅速将软管插了回去，蹲在剑士身旁，发现他已经两眼翻白，不省人事，沉默片刻，才终于吐出一句话——\n“呼……怎么憋了那么久的气……气味还是没散干净……”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30165",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

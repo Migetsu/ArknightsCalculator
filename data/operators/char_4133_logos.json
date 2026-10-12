@@ -1,0 +1,1569 @@
+{
+  "id": "char_4133_logos",
+  "name": {
+    "en": "Logos",
+    "zh": "逻各斯",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RE03",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "corecaster",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Rhodes Island Elite Operator Logos, ferryman of the Sarkaz's myriad souls.",
+    "zh": "罗德岛精英干员逻各斯，萨卡兹众魂的摆渡人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Whole hosts of Banshees guard his true name. Written or spoken, you are never to repeat it thrice or more in ten seconds.",
+    "zh": "他的真名得到了众多女妖的加护，绝对不要在十秒内连续朗读或者书写三遍以上。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 698,
+            "atk": 303,
+            "def": 45,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 998,
+            "atk": 422,
+            "def": 76,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30032",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 998,
+            "atk": 422,
+            "def": 76,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1297,
+            "atk": 556,
+            "def": 106,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "30074",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1297,
+            "atk": 556,
+            "def": 106,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1663,
+            "atk": 671,
+            "def": 119,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_logos_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.1,
+            "attack@kill_atk_scale": 0.6,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 78,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack@kill_atk_scale": 0.7,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 76,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "attack@kill_atk_scale": 0.8,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "attack@kill_atk_scale": 0.9,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "attack@kill_atk_scale": 1,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@kill_atk_scale": 1.1,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 68,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "attack@kill_atk_scale": 1.2,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8,
+            "attack@kill_atk_scale": 1.3,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 62,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9,
+            "attack@kill_atk_scale": 1.4,
+            "attack@kill_damage": 9999999
+          }
+        },
+        {
+          "name": {
+            "en": "Perish",
+            "zh": "殁亡",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</> and ATK <@ba.vup>+{atk:0%}</>. Immediately defeats enemies in range with HP below <@ba.vup>{attack@kill_atk_scale:0%}</> of Logos's ATK, and deals Arts damage equal to the HP of the defeated unit to another random target.\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命值低于逻各斯攻击力<@ba.vup>{attack@kill_atk_scale:0%}</>的敌人立刻倒下、并对另一个随机目标造成与倒下单位生命值相等的法术伤害\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-3",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "attack@kill_atk_scale": 1.5,
+            "attack@kill_damage": 9999999
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_logos_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 30,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.2,
+            "attack@atk_scale_delta": 0.04,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 30,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.25,
+            "attack@atk_scale_delta": 0.05,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 30,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.3,
+            "attack@atk_scale_delta": 0.06,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 40,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.35,
+            "attack@atk_scale_delta": 0.07,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 40,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.4,
+            "attack@atk_scale_delta": 0.08,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 40,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.45,
+            "attack@atk_scale_delta": 0.09,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 50,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.5,
+            "attack@atk_scale_delta": 0.1,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 60,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.6,
+            "attack@atk_scale_delta": 0.12,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 60,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.65,
+            "attack@atk_scale_delta": 0.13,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Synecdoche",
+            "zh": "提喻",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES <@ba.vup>+{magic_resistance}</>. Attacks now lock on to a target, dealing <@ba.vup>{attack@atk_scale_base:0%}</> ATK as Arts damage every <@ba.vup>{attack@cooldown}</>s. When against the same target, gradually increases damage up to a maximum of <@ba.vup>3</>x and gradually reduces its Movement Speed to up to <@ba.vup>40%</> (max effect reached after 5s). The locked-on target and the effects are reset when the skill is interrupted, or when the target is defeated.",
+            "zh": "法术抗性<@ba.vup>+{magic_resistance}</>，攻击改为锁定一个目标对其每<@ba.vup>{attack@cooldown}</>秒造成一次相当于攻击力<@ba.vup>{attack@atk_scale_base:0%}</>的法术伤害，对相同目标的伤害逐渐提高至<@ba.vup>3</>倍并使其移动速度逐渐降低至<@ba.vup>40%</>(锁定5秒后达到上限)，被打断或目标倒下时重新索敌且效果重置",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "magic_resistance": 70,
+            "attack@cooldown": 0.5,
+            "attack@atk_scale_base": 0.75,
+            "attack@atk_scale_delta": 0.15,
+            "attack@move_speed": -0.06,
+            "attack@max_stack_cnt": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "31043",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_logos_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 1.2,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 1.4,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 9,
+          "blackboard": {
+            "atk": 1.6,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 1.8,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 2,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 2.2,
+            "attack@max_target": 3,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 2.4,
+            "attack@max_target": 4,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 2.6,
+            "attack@max_target": 4,
+            "projectile_move_scale": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Extended Acuity",
+            "zh": "延异视阈",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, and attacks strike <@ba.vup>{attack@max_target}</> targets at once; enemy projectile speed in attack range is <@ba.vup>greatly reduced</>, and all projectiles are <@ba.vup>removed</> when the skill expires.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标，使攻击范围内敌方子弹的飞行速度<@ba.vup>大幅降低</>、并在技能结束时将其全部<@ba.vup>清除</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 3,
+            "attack@max_target": 4,
+            "projectile_move_scale": 0.05
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30041",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31043",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31023",
+          "count": 5
+        },
+        {
+          "id": "31043",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lexical Evolution",
+            "zh": "语汇演化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking a target, there is a 40% chance to deal 40% ATK as Arts damage to a random target in attack range.",
+            "zh": "对一个目标发起攻击时，有40%几率额外对攻击范围内一个随机目标造成相当于攻击力40%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.4,
+            "atk_scale": 0.4,
+            "sluggish": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Lexical Evolution",
+            "zh": "语汇演化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking a target, there is a 40% chance to deal 45% <@ba.talpu>(+5%)</> ATK as Arts damage to a random target in attack range.",
+            "zh": "对一个目标发起攻击时，有40%几率额外对攻击范围内一个随机目标造成相当于攻击力45%<@ba.talpu>（+5%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.4,
+            "atk_scale": 0.45,
+            "sluggish": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Lexical Evolution",
+            "zh": "语汇演化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking a target, there is a 40% chance to deal 60% ATK as Arts damage to a random target in attack range and <$ba.sluggish>Slow</> it for 0.8s.",
+            "zh": "对一个目标发起攻击时，有40%几率额外对攻击范围内一个随机目标造成相当于攻击力60%的法术伤害并使其<$ba.sluggish>停顿</>0.8秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.4,
+            "atk_scale": 0.6,
+            "sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lexical Evolution",
+            "zh": "语汇演化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking a target, there is a 40% chance to deal 65% <@ba.talpu>(+5%)</> ATK as Arts damage to a random target in attack range and <$ba.sluggish>Slow</> it for 0.8s.",
+            "zh": "对一个目标发起攻击时，有40%几率额外对攻击范围内一个随机目标造成相当于攻击力65%<@ba.talpu>（+5%）</>的法术伤害并使其<$ba.sluggish>停顿</>0.8秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.4,
+            "atk_scale": 0.65,
+            "sluggish": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Requiem Aeternam",
+            "zh": "剜魂具辞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks inflict RES -10 and Arts damage taken +150 on targets for 5s.",
+            "zh": "攻击使目标在5秒内法术抗性-10且受到的法术伤害提高150点",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "duration": 5,
+            "magic_resistance": -10,
+            "atk_addition": 150
+          }
+        },
+        {
+          "name": {
+            "en": "Requiem Aeternam",
+            "zh": "剜魂具辞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks inflict RES -10 and Arts damage taken +165 <@ba.talpu>(+15)</> on targets for 5s.",
+            "zh": "攻击使目标在5秒内法术抗性-10且受到的法术伤害提高165<@ba.talpu>（+15）</>点",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "duration": 5,
+            "magic_resistance": -10,
+            "atk_addition": 165
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_logos",
+      "name": {
+        "en": "Logos's Badge",
+        "zh": "逻各斯证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_logos",
+      "description": {
+        "en": "Operator Logos has demonstrated a remarkable aptitude for disposing of enemies with Arts.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Core Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员逻各斯擅长对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使中坚术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_logos",
+      "name": {
+        "en": "A Pen Collection from the Convallis",
+        "zh": "来自河谷的笔盒",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "D",
+      "icon": "uniequip_002_logos",
+      "description": {
+        "en": "Nightfall, the time Aefanyl has been patiently waiting for has come. He gently pulls aside the curtains of black silk—woven by his mother and the elders—around his small bed. He takes a while to get dressed, then quietly leaves the bedroom. He silently walks through the long stone corridor, across the open courtyard and road, and past the flickering candles and lights that stave off the darkness. On his way to the river, the oblique moonlight and faint firelight behind him cast a spattering of vague shadows around his feet. Everything around him becomes a part of the child's night adventure.\nDuring the day, when the sun's not hidden behind clouds, the Banshees will take the young and carefree Aefanyl to wander through valleys and fables. In the light-dappled woods, beneath the gaze of the towering mountains in the distance, they sing ancient epics and extol life's brilliance. Aefanyl, clad in splendorous robes, dances to the songs of the elders. Through these cadences passed down from thousands of years, he hears the footsteps of ancient heroes on their faraway journeys and the breathing of new shoots as they sprout from the trees. His thoughts rise and fall with the sun: this land is an extension of the Convallis, home to laughter and melodies without end.\nA cry draws his attention and jerks him back to reality. On the other side of the river, several tuskbeasts are dragging a cystybeast into the forest's depths, vanishing before he can take a good look. He hears his own panting, along with several strange sounds mixed with the gurgling of the river, as if something is being torn apart, then broken. It is a new language that Aefanyl has never heard before. It seems to contain certain emotions and connotations he has never experienced, and it begins to fill him with confusion.\nHe takes out the bone pen from his breast pocket—his birthday gift—and draws simple symbols in the air. They look like words but are little more than scribbles. He has his own way of recording this new language.\n'Our little hero's great adventure thus reaches its end.' The young Banshee turns his head and sees the dresses of the Banshee elders fluttering in the night, shimmering with the silken strands they had woven themselves.\n'Do you remember what we agreed upon, Aefanyl?'\n'I am not to use Arts while I am alone.'\n'Wonderful.' An older Banshee gently cups Aefanyl's chin and rubs his face with the base of her palm. 'Why, then, did you do what you just did?'\n'I wanted to understand, what the cystybeast was saying just now...' Aefanyl lowers his head, his right hand sliding behind his back as he grips the pen, gently pressing his thumb against its tip, as if trying to conceal it within his palm.\n'If I could figure out what it was saying, would that have prevented it from being taken away by the tuskbeasts? If I understood what it was saying, how it felt, would I have been able to help it and stop it from making that sad sound? I want it to know that someone cares.' Aefanyl recalls what he had just seen. Confusion becomes pain, and from pain comes a wish.\nIn an instant, everyone becomes quiet, and a breeze stirs.\n'From now on,' the Great Banshee Laqeramaline breaks the silence and steps forth from the crowd, 'our Aefanyl is free to go where he pleases, and practice as he pleases.' 'However,' his mother continues, 'it is now time to go to bed.'\n'Mother...' Aefanyl approaches his mother, and her hand lovingly clasp his.\nThe Banshees return the way they had come. Along the way, moonlight elongates Aefanyl's thin figure. They walk in silence, while the leaves of beech, fir, and pine trees rustle softly in the wind. Beneath the deep blue night sky and the misty gray clouds, the river quietly carries the floating light forward, like a crack of luminous light from a black valley, from which a gentle pulse of courage emerges.",
+        "zh": "夜晚，哀珐尼尔等到了夜晚。他轻轻拨开床边的黑色锦绸，那是母亲和长辈们为他编织的，笼罩在他小小床铺上的精致床幔。他花了好些时间穿上衣服，然后静悄悄地离开卧室，又静悄悄地穿过长长的石制走廊，穿过露天的庭院和道路，路过那些跳动着的，驱散黑暗的灯和烛火。走向河边的路上，斜照的月光和背后的火光在他的脚下投出几个模糊的影子。这周围的一切都伴随着他上演一出只属于孩子的单人夜间冒险。\n在白天，阳光好些的时候，女妖们会带着无忧无虑的小哀珐尼尔在故事和河谷中漫游。在光线斑驳的树林里，在远方崇山峻岭的注视下，她们歌唱古老的史诗，歌唱明媚的生命。哀珐尼尔穿着华丽的衣裙随着长辈们的歌谣起舞，在那些传承千百年的韵律中，他听见了古老英雄远行的脚步声，听见了树木新枝抽芽的呼吸声，他的思绪伴随着太阳升起又降落：这片大地是河谷的延伸，是欢笑的家园和不息的乐歌。\n一声啼叫吸引了他的注意，他回过神来。河对岸，几头牙兽正拖着只瘤兽进入树林深处，只一瞬间就从他的视野里消失了。他听见了喘气声，水流声中还夹杂着些奇怪的声音，好像是什么被撕扯开来，然后又被折断了。这是新奇的语言，哀珐尼尔从未听过这样的声音，其中好像蕴含着某些他不曾触及的感情和含义，他开始感到困惑。\n哀珐尼尔从怀中掏出一根骨笔——那是他的生日礼物，在空中画着简单的符号，似乎是文字，但更像是简单的涂鸦。他在用自己的方法记录这种语言。\n“我们小小英雄的伟大冒险结束啦。”小女妖回过头，女妖长辈们的裙袍在夜里闪着点点光芒，那是女妖纺织出的纱在闪烁。\n“还记得我们的约定吗，哀梵？”\n“不可以，在一个人的时候，使用巫术。”\n“真棒。”一位年长的女妖轻轻托住哀珐尼尔的下巴，用掌根揉了揉他的脸，“那你刚才为什么要那样做呢？”\n“我想要明白，瘤兽刚才在说什么……”哀珐尼尔低下头，把拿着笔的右手背在身后，然后握住笔杆，接着用大拇指轻轻按住笔尖，想要隐藏手中的笔。\n“如果我能搞清楚它在说什么，它是不是就不会被牙兽带走了？如果我能听懂它的话，就能了解它的感受，是不是就能帮助它，它就不会发出那种让我难过的声音了？我想让它知道，有人在乎它。”哀珐尼尔想起刚才的画面，困惑开始转变为痛苦，转变成一种渴望。\n一瞬间，周围安静了下来，起风了。\n“从今天起，”大女妖菈玛莲打破了沉寂，她从人群中走了出来，“我们的哀珐尼尔可以自由行动和练习了。”母亲这样说道，“不过，现在是睡觉的时间了哦。”\n“母亲……”哀珐尼尔走向母亲，大女妖伸手握住了孩子稚嫩的手。\n女妖们一起顺着来时的道路返回。在路上，月光把哀珐尼尔瘦小的身影拖得很长很长。他们一路安静地走着，耳边是榉树、杉树和松树被风翻动的叶涛声。在夜空的黛蓝与蒙蒙薄云的亮灰下，溪流载着浮动的光寂静前行，像是黑色山谷中一道深深的闪烁银光的裂痕，正涌出些许跃动的勇气。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_logos",
+      "name": {
+        "en": "Semantics Paradigm Encyclopedia",
+        "zh": "《语义范式百科》",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_logos",
+      "description": {
+        "en": "A book lies open on the table. Logos adjusts his magnifying glass, trying to use his bone pen to write witchcraft onto the characters on the page. Every incantation he marks down will be magnified and projected onto a curtain by machines, then deciphered by Pith, who writes down its meaning and implications. These then pass on to a group of casters in the hall, who will try them out and discuss their effects.\nThis started off as a hobbyist class for Rhodes Island's casters, but at some point, it changed into a research group supporting Logos with his experiments.\nHe was currently performing a pointless task: designing incantations for a book currently only available on Rhodes Island—the <i>Semantics Paradigm Encyclopedia</i>, incantations that will ensure the correct meanings of the book's contents will appear directly in the minds of a reader.\nAs languages are in a state of constant flux, he must pay close attention to how people from across as many different nations, races, and classes as possible comprehend the same words, constantly noting the differences between the original meanings of the incantations and how others interpret them. After an unending series of adjustments and revisions, the incantation is finally put to paper.\nThus this collection of casters in the hobbyist class, be they Ursus, Victorian, Sarkaz, Feline, hide-bound academic or free-flowing liberal, must first take a photocopy of the encyclopedia, read the enchanted contents, then cast the Arts according to their understanding of the text. Through this process, Logos can capture the most minute differences between the understandings, and perfect the incantations even further.\nThanks to Pith's ability to unerringly duplicate and understand Originium Arts, Logos can rest assured that all transcription, correction, and instruction work can be left to his esteemed comrade-in-arms, allowing him to focus on the effects of the incantations within the tome.\nBased on the most recent test results, nearly all experiment participants who read the Encyclopedia passage on applied incantations were able to accurately repeat that passage's contents and cast the Arts described.\nThe participating casters were over the moons with joy, but Logos did not share in their happiness.\nThere was still doubt in his mind about whether he had managed to truly achieve his goal: lossless transmission of meaning to everyone.\nThe potential held by this little side project of his far exceeded his original intent of modernizing Sarkaz witchcraft. It has instead become some sort of attempt at creating an entirely new language. By writing with this infused script, the meaning you wish to pass on will not be easily misinterpreted. If everyone were to write like this, why, information transmission could ideally be near lossless. Anyone reading a text a thousand years in the future would derive the exact same meaning from it as a reader today.\nBut when this project is complete, will it be able to destroy all barriers to using Arts, or will it serve as the catalyst of total annihilation? Or perhaps, even after all this effort, will he be forced to close the book and let it become some forgotten tome in the library?\n......\nThe operators who took part in the experiment came and went, and now, he is the only one left in the room. As he lifts his pen to write more, he notices cracks in the bone from long hours of scribing.\nAs a King of the Royal Court and a Sarkaz, he compiles Kazdel's very first 'great work', patiently awaiting the day there will be great need of it.\nBut as a member of Rhodes Island and a child of Terra, he imagines a time when the barriers between all living things are broken, a time when they grasp fate in their own hands. It is for this reason he researches and experiments, even if such a dream cannot be realized in the present.\nAefanyl takes a new pen, and begins to study once more.\nThe dream yet lives in his heart, and in the slender shaft of his pen.",
+        "zh": "一本书平摊在桌上，逻各斯调整了一下放大镜，尝试用骨笔在文字上书写巫术。他所刻下的每一个咒文，会由设备放大投影于幕布上，再由Pith将其解读，写下其表意与隐意，然后让围坐一堂的术师们施展并讨论效果。\n这原本是罗德岛术师的兴趣班，不知从何时开始，变成了辅助逻各斯进行实验的研究团队。\n他正在做一件无用的事，为他那本暂时只在罗德岛内部流通的《语义范式百科》设计咒文，这些咒文将确保书内所有内容对应的正确意义显现在每一个阅览者的脑中。\n由于语言的意义会不断流变，他需要倾听尽量多的不同国家、种族、阶级的人对相同内容的理解，不断比对咒文原始意义与他人理解意义间的差别，随后去不断调整咒文，最终将之书写于纸张上。\n于是乌萨斯人、维多利亚人、萨卡兹、菲林、学院派、自由派，每个参加兴趣班的术师，需要先接过一本影印版百科，阅读受咒文影响的内容后，根据自己的理解施展一遍法术。这样，逻各斯便能捕捉其中最细微的差别，从而对咒文进行矫正。\n得益于Pith对源石技艺精准无误的复制与理解力，逻各斯可以放心地将转录、纠错与教学工作交给这位好战友，自己则能专注于实现每段内容的咒文效果。\n从最近获得的实验数据来看，近乎所有参加测试，阅读过施加咒文的《语义范式百科》段落的干员，都已经能准确传达出该段落的内容并施放法术。\n参加实验的术师们欣喜若狂，但逻各斯并没有陷入喜悦之中。\n这是否代表着，他获得了他想要的成果——将相同内容完全没有损耗地传递给所有人，他仍旧心存疑虑。\n这一行为所蕴含的可能，已经完全超出了萨卡兹巫术现代化的初衷，成为某种创造新语言的尝试。写下被标注的文字，想要传达的意义便不易被歪曲，而如果所有人都用其书写，那么，在最理想的情况下，信息传递的损耗将被降低到极限，千年后的人阅读这段文字，所能获取的信息将与现在别无二致。\n可这项工程何时能够完成，从中产生的东西最终能够促进打破一切使用源石技艺的隔阂，还是成为毁灭一切的催化剂？又或者，在花费了如此多的心血后，只能合上书本，任其成为图书馆中一本无人问津的著作？\n……\n参加讨论与实验的干员们来来去去，现在，整个房间里只剩下他一个人，提笔时，才发现骨笔已经因长时间的书写出现了裂痕。\n作为王庭之主，作为萨卡兹，他为卡兹戴尔编纂了第一本“大部头”，耐心等待它真正需要这部书的那一天。\n但作为罗德岛的一员，作为泰拉的一分子，他畅想生灵放下所有隔阂，将命运握在手中的时刻。为此，他要研究，他要尝试，哪怕那种梦想，眼下并没有实现的可能。\n哀珐尼尔换了一支新笔，开始了新一轮钻研。\n理想还活着，在他的心中，在他那纤细的笔杆上。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

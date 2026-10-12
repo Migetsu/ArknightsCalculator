@@ -10,7 +10,7 @@ export const RawEquipDictItemSchema = z
     uniEquipIcon: z.string().optional(),
     uniEquipDesc: z.string().optional(),
     type: z.string().optional(),
-    typeName2: z.string().optional(),
+    typeName2: z.string().nullable().optional(),
     charId: z.string(),
     itemCost: z
       .record(

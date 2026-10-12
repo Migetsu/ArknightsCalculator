@@ -1,0 +1,1135 @@
+{
+  "id": "char_154_morgan",
+  "name": {
+    "en": "Morgan",
+    "zh": "摩根",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "GG02",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fearless",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Morgan of the Glasgow Gang wishes you would contact her through her boss.",
+    "zh": "格拉斯哥帮摩根，希望您最好通过她的老大来联系她。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "If you'd like to teach a lesson to anyone on your nerves, this street fight expert is a smart choice.",
+    "zh": "如果是要私下教训些看不上的人，请教她这个街头专家绝对是明智的选择。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1459,
+            "atk": 403,
+            "def": 107,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2085,
+            "atk": 593,
+            "def": 154,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2085,
+            "atk": 593,
+            "def": 154,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2857,
+            "atk": 751,
+            "def": 201,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "31054",
+          "count": 8
+        },
+        {
+          "id": "31063",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2857,
+            "atk": 751,
+            "def": 201,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3810,
+            "atk": 905,
+            "def": 243,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_morgan_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.2,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 1,
+          "blackboard": {
+            "attack@atk_scale": 1.25,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 2,
+          "blackboard": {
+            "attack@atk_scale": 1.3,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 3,
+          "blackboard": {
+            "attack@atk_scale": 1.4,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 4,
+          "blackboard": {
+            "attack@atk_scale": 1.45,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.5,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 12,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.6,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 13,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 7,
+          "blackboard": {
+            "attack@atk_scale": 1.7,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 14,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.8,
+            "attack@hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Street Fighter",
+            "zh": "街头好手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage and drain <@ba.vdown>{attack@hp_ratio:0%}</> of current HP",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并使自身流失<@ba.vdown>{attack@hp_ratio:0%}</>当前生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.9,
+            "attack@hp_ratio": 0.12
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_morgan_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 12,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.7,
+            "attack@atk_scale": 1,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 12,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.7,
+            "attack@atk_scale": 1.1,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 12,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.7,
+            "attack@atk_scale": 1.2,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1,
+            "attack@atk_scale": 1.3,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1,
+            "attack@atk_scale": 1.4,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1,
+            "attack@atk_scale": 1.5,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 18,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.3,
+            "attack@atk_scale": 1.6,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 18,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.3,
+            "attack@atk_scale": 1.7,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 18,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.3,
+            "attack@atk_scale": 1.8,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Dauntless Resistance",
+            "zh": "无畏招架",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, loses <@ba.vdown>{morgan_s_2.hp_ratio:0%}</> Max HP and gains a <$ba.barrier>Barrier</> equivalent to <@ba.vup>{hp_ratio:0%}</> of Max HP (<$ba.barrier>Barrier</> decays over <@ba.vup>{shield_duration}</> seconds); Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage",
+            "zh": "部署后立即流失<@ba.vdown>{morgan_s_2.hp_ratio:0%}</>最大生命，并获得可吸收相当于最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>（该<$ba.barrier>屏障</>会在<@ba.vup>{shield_duration}</>秒内持续衰减），每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 18,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.5,
+            "attack@atk_scale": 1.9,
+            "morgan_s_2.hp_ratio": 0.7,
+            "shield_duration": 6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 3
+        },
+        {
+          "id": "31033",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Hot-Blooded Vanguard",
+            "zh": "沸血先锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains up to +40% ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+            "zh": "在场时，自身获得最高+40%攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "min_atk": 0.4,
+            "min_hp_ratio": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Hot-Blooded Vanguard",
+            "zh": "沸血先锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains up to +42% <@ba.talpu>(+2%)</> ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+            "zh": "在场时，自身获得最高+42%<@ba.talpu>（+2%）</>攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "min_atk": 0.42,
+            "min_hp_ratio": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Hot-Blooded Vanguard",
+            "zh": "沸血先锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains up to +50% ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+            "zh": "在场时，自身获得最高+50%攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "min_atk": 0.5,
+            "min_hp_ratio": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Hot-Blooded Vanguard",
+            "zh": "沸血先锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains up to +52% <@ba.talpu>(+2%)</> ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+            "zh": "在场时，自身获得最高+52%<@ba.talpu>（+2%）</>攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "min_atk": 0.52,
+            "min_hp_ratio": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Home-Ground Advantage",
+            "zh": "主场作战",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deployment does not consume Deployment Slots in 'All Quiet Under The Thunder'",
+            "zh": "在【惊霆无声】中，部署不消耗部署位",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75,
+        "def": 25
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_morgan",
+      "name": {
+        "en": "Morgan's Badge",
+        "zh": "摩根证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_morgan",
+      "description": {
+        "en": "Operator Morgan has demonstrated a remarkable aptitude in wielding a machete to penetrate enemy formations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Dreadnought responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员摩根擅长挥舞砍刀切入战阵\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使无畏者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_morgan",
+      "name": {
+        "en": "'Iron Heart'",
+        "zh": "“钢铁之心”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_morgan",
+      "description": {
+        "en": "Something's definitely new about the Slobberknocker's sign.\nBack in the gym in the lockdown zone, Morgan's first order of business is to check the sign hung over the entrance, with Vina's blessing. The shoddy paint has bubbles trapped in it, and the big 'Slobberknocker' that's been carved is definitely a cleaner job than when Hannah first had a go.\nInside the big lockbox under Morgan's bed rest her dearly beloved Morgan's Memoirs, still safe and sound. After triple-checking it hasn't been touched at any point, she pulls out the good tipple stashed alongside, takes two honking swigs, then chokes and starts hacking and coughing.\nPast its best-by date, but still. If it was a good tipple, it's always worth a try.\nNow fretful, Morgan looks through the pile of old cruft in her box. Something's missing.\nBut it turns out to be a page that's fallen out of her Memoirs, and just a quick skim is enough for her to remember all the details.\nThis was back when their old neighborhood friends weren't taking the Glasgow Gang's biz seriously yet. No denying that Morgan's ideas then were absolute rotters from time to time, stuff like getting outsiders to buff up the gang's standing. Who knew she and the one-track mind Hannah would hit it off so easily? And so they went about harassing plenty of youths from Victoria's other parts.\nUntil Hannah was humiliated at the hands of she who protected those youths, Vina.\nThat was the first time Morgan heard Vina's name, more than a decade ago. Hannah just kept pestering Morgan to talk this 'outsider' Feline into joining the gang. Went as far as talking about 'protecting the neighborhood toy factory' and stuff like that as a front. Shame the Feline in question wouldn't fall for that.\nWhat narked Hannah more was when some noble's servant from the city center came to mess with the toy factory for whatever reason, both she and Morgan tried to stick their heads out for the neighborhood and took a horrid beating instead. And then in the end, who but Vina would show up and shoo the two out of there.\nHannah came back and spent that entire afternoon in a huff. After making a big show to Vina that blew up in their faces, she'd never agree to join now. But to the surprise of both, that night a Vina covered in wounds ran up to the gym cradling a huge box of local specialty toys, banging away on the door.\n'From the toy factory's owner. This way everyone'll know the factory is under Glasgow Gang protection.'\nMorgan made fun of Hannah about it for ages afterwards. The dumbstruck Hannah and the visibly impassioned Vina would become the principal heroes of the Memoirs in time.\nAnd it's ever since then that Morgan's decided deep down to protect Vina. After all, everyone knows the poncey lords doomed themselves by messing with Central.\nIt's there that Vina, wearing a perplexed face and holding a rusted toy, interrupts Morgan's reminiscence.\n'I found this in my room. Do you remember whose it is?'\nMorgan finally twigs what was missing from the box. Up in high spirits, she slings her arm over Vina's shoulders.\n'Let's go ask Hannah. She might know.'\nAt least nobody's changed.",
+        "zh": "“揍歪下巴”的牌子确实变了。\n托维娜的福，这次摩根回到封锁区拳馆的第一件事就是确认了一下挂在拳馆门口的牌子。牌子上用的劣质油漆起了泡，“揍歪下巴”的刻字也比汉娜当初写的工整不少。\n在摩根房间床下上锁的大盒子里，她心心念念的“摩根回忆录”确实安静地躺着。再三确认盒子没有被动过之后，摩根才翻出了藏在里面的好酒，狠灌了两口，却被呛得不轻。\n好酒虽然过了适饮期，但总值得一试。\n摩根发愁地看着盒子里堆积的旧物，她总觉得缺了什么。\n反倒是回忆录中漏出的一页，摩根只需扫过一眼就能回忆起全部的细节。\n那是在格拉斯哥帮的事业不被街区的老熟人们认真对待的时候，摩根脑子里确实偶尔蹦出些馊主意，比如找个外地人来给帮派充充门面什么的。谁知道和一根筋的汉娜真就一拍即合，因此骚扰了不少外地来的年轻人。\n最后让汉娜吃瘪的就是出手保护外地年轻人的维娜。\n那是摩根十几年前第一次听到维娜的名字，汉娜执着地鼓动摩根说服这位“外地”菲林加入格拉斯哥帮，甚至还扯出“罩着街区玩具厂”之类的话来撑场面。可惜这位菲林并不吃这一套。\n更让汉娜觉得不爽的是，当中央区贵族的家仆不知为何故意找玩具厂的麻烦时，摩根和汉娜试图为街区出头却挨了好一顿揍，最后还是维娜出面才将两人弄走。\n那天汉娜回家生了一下午的闷气，因为她们在维娜面前的大话被戳破了，这下维娜指定不会同意加入了。但出乎两人意料的是，晚上一身伤的维娜就抱着一大箱特产玩具敲响了拳馆的门。\n“玩具厂老板送的，这下大家都知道我们格拉斯哥帮罩着玩具厂了。”\n摩根此后拿这件事取笑了汉娜很久，目瞪口呆的汉娜和满脸激动的维娜都在后来成了回忆录中的主角。\n也是从那时起，摩根就暗自决定要保护维娜，毕竟谁都知道得罪了中央区的老爷们不会有好下场。\n但这时满脸困惑的维娜拿着一个生锈的玩具打断了摩根的回忆。\n“我在房间里找到了这个，你记得是谁的吗？”\n摩根终于想起来盒子里少了什么，她心情大好地跳起来勾着维娜的脖子。\n“我们去问问汉娜吧，她兴许知道。”\n至少大家还没变。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

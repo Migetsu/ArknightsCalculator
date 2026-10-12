@@ -1,0 +1,1051 @@
+{
+  "id": "char_106_franka",
+  "name": {
+    "en": "Franka",
+    "zh": "芙兰卡",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "BS01",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fearless",
+  "faction": "columbia",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Franka, Guard Operator of B.P.R.S. of Blacksteel, is waiting for your orders.",
+    "zh": "黑钢防化小队近卫干员芙兰卡，正在等待你的部署。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "This scorching thermite blade shall penetrate all defenses.",
+    "zh": "炽热的铝热剑穿透一切防御。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1443,
+            "atk": 416,
+            "def": 105,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2062,
+            "atk": 613,
+            "def": 150,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2062,
+            "atk": 613,
+            "def": 150,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2826,
+            "atk": 776,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30044",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 18
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2826,
+            "atk": 776,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3768,
+            "atk": 936,
+            "def": 235,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_quickattack[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.22,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.24,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.27,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.29,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.31,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.34,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.37,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 45
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_franka_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.53,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.56,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.63,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.66,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.8,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.9,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vorpal Edge",
+            "zh": "极致锋度",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>; The chance of Talent ignoring the target's DEF is increased to <@ba.vup>{talent_scale} times</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>，天赋无视防御的概率提高至<@ba.vup>{talent_scale}倍</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1,
+            "talent_scale": 2.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 2
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Thermite Blade",
+            "zh": "铝热剑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 10% chance to ignore the target's Defense when attacking",
+            "zh": "攻击时有10%的几率无视目标的防御",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Thermite Blade",
+            "zh": "铝热剑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 20% chance to ignore the target's Defense when attacking",
+            "zh": "攻击时有20%的几率无视目标的防御",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75,
+        "def": 25
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_franka",
+      "name": {
+        "en": "Franka's Badge",
+        "zh": "芙兰卡证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Franka has demonstrated a remarkable aptitude in wielding her thermite blade to penetrate enemy formations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Dreadnought responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员芙兰卡擅长使用铝热剑切入战阵\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使无畏者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_franka",
+      "name": {
+        "en": "Cutting-edge Thermite Unit",
+        "zh": "尖端铝热单元",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_franka",
+      "description": {
+        "en": "Tenth routine physical examination. \nOripathy prognosis is stable, Originium Arts have improved due to disease progression, and the new Arts Unit prepared beforehand has been loaded. Subsequently, thermite blade's power will be greatly increased. \nWell, huh... Looking at things this way, Originium only sucks when it acts up and hurts a lot. But other than that, it doesn't get in the way of my life, and can even help me in battle. Isn't that pretty decent? \nHmm, maybe that's what I'll tell the teacher’s pet the next time I see her. Can't wait to see what kind of face she makes. \nWonder how she'd even respond to that... \n'Your health isn't some kind of game!' \n'What's so decent about that? You're actually going to die!' \nSheesh, what's the big deal anyway? You only live once, right? So why not enjoy it? \n'Didn't you say you wanted to go traveling across the world? With Oripathy...' \n...... \n...... \nYeah, about that travel planner... \nI'm not gonna get to check off a lot of things from my bucket list. \nIt sucks that I didn't even make it through a tenth of my list before getting sick. And some of the places still on it don't welcome the Infected at all. The vast tundras of Ursus, Londinium's eclectic manors, Leithanien's concert halls, Kazimierz's knight tournament arenas, the thousands of fowlbeasts sweeping across Sargon's deserts... \nI wanted to see all of them, with her. \nMight as well cross them out now... \nJeez, why am I thinking about all these things anyway... It's all because of that teacher’s pet. I listen to her nagging too much. Even when she's not here, I hear her voice in my head. \nStop thinking about these things. \n...... \nLet's keep those plans after all. \nRhodes Island is still moving forward, so I have to keep moving forward. \nMaybe one day... \nJust maybe, those places will open their doors to welcome the Infected.",
+        "zh": "第十次例行身体检查。\n矿石病情况稳定，源石技艺受病状影响进一步提升，提前准备好的新技术模块已经装载，接下来，铝热剑的威力会更加强大。\n什么嘛……这么看来，矿石病也就是发作的时候很痛而已。不影响日常生活，还能提升战斗力，这不是不错嘛。\n嗯，下次优等生小姐再提这件事，就这么跟她说，她听到这些话时的表情一定很有趣。\n她会说些什么呢……\n“身体健康不是儿戏！”\n“哪里不错了，你会死的！”\n哎呀，都没关系啦，享受现在不就好了？\n“你不是还想周游大地吗！得了矿石病还怎么……”\n……\n……\n是啊，那张旅行计划书……\n很多项目都已经去不成了。\n真可惜，得病之前划掉的项目连十分之一都不到，而剩下的名单里，有些地方是完全不欢迎感染者的。\n——乌萨斯壮阔的雪原、伦蒂尼姆集众家之长的庄园、莱塔尼亚的音乐厅、卡西米尔的骑士竞技场、萨尔贡万千羽兽飞掠的沙漠……这些地方，本来还想和她一起去的。\n现在只好划掉了……\n真是的，为什么要想起这些事啊……都怪优等生小姐，听她的念叨多了，感觉她不在的时候，脑子里都有她的声音在念叨。\n别想这些事了。\n……\n那些项目，还是保留着吧。\n罗德岛还在努力，我也还会努力。\n或许有一天……\n或许有一天，那些地方还能为感染者敞开大门。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30044",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30064",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30084",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

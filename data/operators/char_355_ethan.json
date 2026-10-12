@@ -1,0 +1,1048 @@
+{
+  "id": "char_355_ethan",
+  "name": {
+    "en": "Ethan",
+    "zh": "伊桑",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R130",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "stalker",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ethan, Specialist Operator of Rhodes Island, will utilize unique abilities to carry out special missions for you.",
+    "zh": "罗德岛特种干员伊桑，将以独特的能力为你执行特别任务。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "You... can't see me!",
+    "zh": "你，看不见我！",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 730,
+            "atk": 346,
+            "def": 139,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1014,
+            "atk": 468,
+            "def": 214,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 1
+        },
+        {
+          "id": "30042",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1014,
+            "atk": 468,
+            "def": 214,
+            "magicResistance": 20,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1300,
+            "atk": 601,
+            "def": 279,
+            "magicResistance": 20,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30023",
+          "count": 17
+        },
+        {
+          "id": "30013",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1300,
+            "atk": 601,
+            "def": 279,
+            "magicResistance": 30,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1530,
+            "atk": 742,
+            "def": 337,
+            "magicResistance": 30,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ethan_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 40,
+            "attack@duration": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 45,
+            "attack@duration": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 50,
+            "attack@duration": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 55,
+            "attack@duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 60,
+            "attack@duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 65,
+            "attack@duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 70,
+            "attack@duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 80,
+            "attack@duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 90,
+            "attack@duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Fancy Maneuvers",
+            "zh": "花式回旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Hitting the target with normal attack deals extra <@ba.vup>{attack@poison_damage}</> Arts damage for <@ba.vup>{attack@duration}</> seconds",
+            "zh": "普通攻击时对击中目标额外造成每秒<@ba.vup>{attack@poison_damage}</>的法术伤害，持续<@ba.vup>{attack@duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "attack@poison_damage": 100,
+            "attack@duration": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ethan_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35,
+            "talent_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "talent_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "talent_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 24,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Suspended Cross",
+            "zh": "十字悬挂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, increasing the chance to trigger Talent to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "talent_scale": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 1
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Entwined",
+            "zh": "缠绕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 25% chance to <$ba.root>Bind</> the target for 2 seconds",
+            "zh": "攻击时有25%的几率使目标<$ba.root>束缚</>2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.25,
+            "frozen_duration": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Entwined",
+            "zh": "缠绕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 25% chance to <$ba.root>Bind</> the target for 3 seconds",
+            "zh": "攻击时有25%的几率使目标<$ba.root>束缚</>3秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.25,
+            "frozen_duration": 3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +150",
+        "zh": "生命上限+150",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 450
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ethan",
+      "name": {
+        "en": "Ethan's Badge",
+        "zh": "伊桑证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Ethan has demonstrated a remarkable aptitude for bodily concealment and enemy ambush.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Ambusher responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员伊桑擅长隐匿身形伏击敌人\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使伏击客职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ethan",
+      "name": {
+        "en": "Super Spray Paint Suit",
+        "zh": "超级喷漆套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ethan",
+      "description": {
+        "en": "'First, pick your wall. Too low, too neat, or just too busted up, that's a no-go. Obviously, this being Rhodes Island, you don't wanna choose the bridge or the corridors. Closure ain't gonna be happy.\nSecond, pick your paint. Bright or basic, stinking or scentless, that's just your criteria. More important, coverability and absorption. If your stuff runs the moment it hits the wall, then you're going nowhere no matter how good a paint-bender you are.\nThird, exaggerating your typography...\n......\nFinally, what your graffiti IS. You don't just wanna let off steam. That doesn't DO anything, whether it's paint on a wall or violence on a crowd. It's not art just to soil something. That's not the root of graffiti. You've got to express an attitude, pass on a message... don't get too extreme, but don't ever get wimpy.'\n—Speech by Ethan on a Rhodes Island graffiti art course\n\n'That camouflaging Savra screwed up our original plans.\nYou see graffiti in the slums all too often, it's like ringworms on dermatitis patients, popping up everywhere. A commonplace oddity. So when we planned the riot there, we thought of using graffiti to pass on intel, hiding in plain sight. That Savra did his street art all the time, so we got him in on it with our codes.\nIntel exchange went smoothly. Three different works on the barbershop wall at the crossroads, and we got our time, place and method confirmed—a bombing, to put a little color into this numbed city. Everything was smooth sailing. Final word-out, final graffiti, that Savra decided he'd sneak his own little 'danger, don't hang around here' shit in the corner. Lucky someone else noticed early, covered it in black, got hands on him. Recipient aside, only people who'd even look at that whistleblowing shit on the wall were those drifters on the ground floor. He got a sudden case of conscience, wanted to warn them. Ngong gau!\nYou know how it went after that. He used his color-changing and slipped out while the brothers on guard weren't watching. But you gotta understand, the Savra was usually the biggest wimp you ever saw. Ran away at the slightest trouble. We never thought he'd have the guts to turn himself in to the L.G.D.\n......'\n—Extracts from an L.G.D. transcript of a Reunion member interrogation during a riot incident, later forwarded to Rhodes Island as certain details pertained to Ethan",
+        "zh": "“首先，是墙壁的选择。太过隐蔽、太过整洁、有破损的墙面，都不适合，当然现在是在罗德岛，尽量不要选择舰桥和走廊，可露希尔会不高兴的。\n其次，是喷漆的选择。色彩是否鲜艳、有无异味，无非那么几个标准，更重要的，是遮盖力和吸附性，要是刚沾到墙壁就流得到处都是，那你控漆的手段再高超也没用嘛。\n第三，是字体的夸张变形……\n……\n最后，是涂鸦的内容。不要只想着宣泄，宣泄无济于事，无论是以喷漆对着墙壁，还是以暴力对着人群。把东西弄脏谈不上艺术，涂鸦根本不是这么一回事。你可以表达一种态度，传递一些信息……不要过激，也不要害怕。”\n——伊桑在罗德岛涂鸦艺术课上的发言\n\n“那个会变色的萨弗拉破坏了我们当时的计划。\n涂鸦在贫民窟太常见了，就跟皮肤病人身上长的癣一样，到处都是，见怪不怪。所以我们在策划那场贫民窟骚乱的时候，想到了用涂鸦来传递情报，光明正大，反而安全。那个萨弗拉平时常玩街头艺术，也被我们选进了涂鸦情报队伍。\n情报的交换很顺利，十字路口理发店外墙的涂鸦换了三版，我们也就确定好了行动的时间、地点和方式——一场爆炸，给这座麻木不仁的城市一点颜色。一切都很顺利。最后一次情报传递，最后一次涂鸦，那个萨弗拉竟然在墙壁的角落用喷漆悄悄留了些‘有危险不要在这里逗留’之类的蠢话，幸亏其他人发现得早，用黑漆盖住了，把他抓了回来。除了接头的人，也就只有那些在底层苟活的家伙，才会认真看墙上这些花里胡哨的玩意，他这是突然发了善心，要提醒他们，*龙门粗口*！\n后来的事你们都知道了，他趁着看守的兄弟不注意，利用变色的本事逃走了。但我们没想到这个平时胆小得要死，遇到点什么事就畏畏缩缩的萨弗拉，竟然敢主动去近卫局自首。\n……”\n——摘自龙门近卫局在某起暴动事件中对整合运动成员的审讯笔录，因部分细节涉及到伊桑，后递送罗德岛",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31013",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30063",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

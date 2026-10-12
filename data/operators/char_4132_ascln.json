@@ -1,0 +1,1545 @@
+{
+  "id": "char_4132_ascln",
+  "name": {
+    "en": "Ascalon",
+    "zh": "阿斯卡纶",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SW00",
+  "rarity": 6,
+  "class": "SPECIALIST",
+  "subclass": "stalker",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "Slow",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "S.W.E.E.P. Supervisor Ascalon—the fog of the war, the smoke of the fire, the one who pounces when the time is right.",
+    "zh": "S.W.E.E.P.主管阿斯卡纶，烟影之中，伺机而动。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Guess how long she spends right behind you. Now guess higher.",
+    "zh": "她在你身边的时间，远比你想象的要长。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 702,
+            "atk": 410,
+            "def": 146,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 949,
+            "atk": 587,
+            "def": 215,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 12
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 949,
+            "atk": 587,
+            "def": 215,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1233,
+            "atk": 763,
+            "def": 283,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "30054",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1233,
+            "atk": 763,
+            "def": 283,
+            "magicResistance": 30,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1623,
+            "atk": 954,
+            "def": 333,
+            "magicResistance": 30,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ascln_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 1,
+          "blackboard": {
+            "atk_scale": 1.15,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 3,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Pursuit",
+            "zh": "追袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively.\n<@ba.rem>Can store up to {cnt} charge(s)</>",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "cnt": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "31074",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ascln_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "move_speed": -0.2,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 1,
+          "blackboard": {
+            "atk": 0.3,
+            "move_speed": -0.2,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 0.4,
+            "move_speed": -0.25,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5,
+            "move_speed": -0.3,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.6,
+            "move_speed": -0.35,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.7,
+            "move_speed": -0.35,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9,
+            "move_speed": -0.4,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 1,
+            "move_speed": -0.45,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 1.2,
+            "move_speed": -0.5,
+            "range_radius": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Endowment",
+            "zh": "恩赐",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Movement Speed of ground enemies in attack range <@ba.vup>{move_speed:0%}</>, and inflict one stack of Talent 1 effect on nearby enemies when they are defeated.",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内地面敌人移动速度<@ba.vup>{move_speed:0%}</>，并在其被击倒时对周围敌人施加一层第一天赋效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.3,
+            "move_speed": -0.6,
+            "range_radius": 1.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "31063",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ascln_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>slightly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "atk": 0.1,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.03,
+            "attack@damage_hitrate_physical": -0.1,
+            "attack@damage_hitrate_magical": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>slightly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.03,
+            "attack@damage_hitrate_physical": -0.1,
+            "attack@damage_hitrate_magical": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>slightly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.03,
+            "attack@damage_hitrate_physical": -0.15,
+            "attack@damage_hitrate_magical": -0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -1.2,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.04,
+            "attack@damage_hitrate_physical": -0.15,
+            "attack@damage_hitrate_magical": -0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -1.2,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.04,
+            "attack@damage_hitrate_physical": -0.2,
+            "attack@damage_hitrate_magical": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 25,
+          "blackboard": {
+            "base_attack_time": -1.2,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.04,
+            "attack@damage_hitrate_physical": -0.25,
+            "attack@damage_hitrate_magical": -0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>significantly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>较大幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 30,
+          "blackboard": {
+            "base_attack_time": -1.5,
+            "atk": 0.2,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.05,
+            "attack@damage_hitrate_physical": -0.3,
+            "attack@damage_hitrate_magical": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>significantly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>较大幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 30,
+          "blackboard": {
+            "base_attack_time": -1.5,
+            "atk": 0.3,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.06,
+            "attack@damage_hitrate_physical": -0.35,
+            "attack@damage_hitrate_magical": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>significantly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>较大幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 30,
+          "blackboard": {
+            "base_attack_time": -1.5,
+            "atk": 0.4,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.07,
+            "attack@damage_hitrate_physical": -0.5,
+            "attack@damage_hitrate_magical": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Descent",
+            "zh": "降临",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval is <@ba.vup>significantly shortened</>, and reduces Physical and Arts hit rate of ground enemies in attack range by <@ba.vup>{attack@damage_hitrate_physical:0%}</>. More likely to be attacked by enemies, and recovers <@ba.vup>{attack@hp_ratio:0%}</> max HP when enemy attacks miss or upon a successful dodge.",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>较大幅度缩短</>，使攻击范围内的地面敌人物理与法术命中率<@ba.vup>{attack@damage_hitrate_physical:0%}</>。自身更易受到敌人攻击，敌人未命中自身或自身闪避时回复<@ba.vup>{attack@hp_ratio:0%}</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 35,
+          "blackboard": {
+            "base_attack_time": -1.5,
+            "atk": 0.5,
+            "taunt_level": 2,
+            "attack@hp_ratio": 0.08,
+            "attack@damage_hitrate_physical": -0.5,
+            "attack@damage_hitrate_magical": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30023",
+          "count": 6
+        },
+        {
+          "id": "31053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mortal Interrogation",
+            "zh": "死亡拘审",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks inflict the following effect on enemies: Movement Speed reduced by 12% and take 6% of Ascalon's current ATK as Arts damage per second for 18s, stacking up to 3 times.",
+            "zh": "攻击对敌人施加效果：移动速度降低12％，每秒受到6％阿斯卡纶当前攻击力的法术伤害，持续18秒，效果最多叠加三层",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.12,
+            "atk_ratio": 0.06,
+            "max_stack_cnt": 3,
+            "debuff_duration": 18,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Mortal Interrogation",
+            "zh": "死亡拘审",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks inflict the following effect on enemies: Movement Speed reduced by 15% and take 8% of Ascalon's current ATK as Arts damage per second for 18s, stacking up to 3 times.",
+            "zh": "攻击对敌人施加效果：移动速度降低15％，每秒受到8％阿斯卡纶当前攻击力的法术伤害，持续18秒，效果最多叠加三层",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.15,
+            "atk_ratio": 0.08,
+            "max_stack_cnt": 3,
+            "debuff_duration": 18,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Mortal Interrogation",
+            "zh": "死亡拘审",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks inflict the following effect on enemies: Movement Speed reduced by 18% and take 10% of Ascalon's current ATK as Arts damage per second for 25s, stacking up to 3 times.",
+            "zh": "攻击对敌人施加效果：移动速度降低18％，每秒受到10％阿斯卡纶当前攻击力的法术伤害，持续25秒，效果最多叠加三层",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.18,
+            "atk_ratio": 0.1,
+            "max_stack_cnt": 3,
+            "debuff_duration": 25,
+            "interval": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Penumbral Image",
+            "zh": "噬光残影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +8; gain an additional ASPD +6 if there is high ground in the 4 adjacent tiles.",
+            "zh": "攻击速度+8，自身周围四格有高台时，攻击速度额外+6",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 8,
+            "attack_speed_add": 6,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Penumbral Image",
+            "zh": "噬光残影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +10 <@ba.talpu>(+2)</>; gain an additional ASPD +6 if there is high ground in the 4 adjacent tiles.",
+            "zh": "攻击速度+10<@ba.talpu>（+2）</>，自身周围四格有高台时，攻击速度额外+6",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 10,
+            "attack_speed_add": 6,
+            "cnt": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +160",
+        "zh": "生命上限+160",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ascln",
+      "name": {
+        "en": "Ascalon's Badge",
+        "zh": "阿斯卡纶证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ascln",
+      "description": {
+        "en": "Operator Ascalon has demonstrated a remarkable aptitude for bodily concealment and enemy ambush.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Ambusher responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员阿斯卡纶擅长隐匿身形伏击敌人\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使伏击客职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ascln",
+      "name": {
+        "en": "'Hidden Blade'",
+        "zh": "“无形，无情”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ascln",
+      "description": {
+        "en": "The deathmonger's finger curls, lightly touching the base of her palm. The blade slides along its tracks out into the fierce sunlight, pinpricks of light dripping down its edge until coming together like molten iron silently filling a mold.\nIn the heat, there is only quiet.\nThis quiet is broken by the hissing of carrion fowlbeasts. Under the scorching sun, an elderly Sarkaz lifts his head, and sees mist careening down the sides of the canyon towards him. The burdenbeast disappears, as does the canyon. The faintest shadow crosses his eyes, another layer of gray atop the ones from gazing at the forge year round.\nThe blade leaves his chest soon after. His skewered torso fills with blood, leaving him to drown on dry land. He remembers that this slow death was but one of many cruel punishments used in Kazdel. At first, he thinks he will spend his final moments lying flat on the hot sands, his puzzled burdenbeast his only deathbed companion. However,  the deathmonger hasn't left yet. She kneels down on one knee, supporting his back.\n'Oh... it's you.'\nThe wrinkles on his face gradually smoothen. He still remembers those eyes. Back then, he had looked up from the forge to see a girl by the general's side. She was young, but had a warrior's eyes, and hands that could tear apart a storm. Then the general told him to make her a sword.\n'Can I see it one last time?' She observes the old man's longing gaze. 'I... didn't see it clearly just now.'\nThe deathmonger looks towards her wrist. She remembers those willing to die for their cause. The armories of the Military Commission offered excellent equipment, but... She places her hand on the old man's chest. The death-defying fighters were prepared. Kazdel's finest smith had personally forged their regicidal blades.\nHer finger curls, lightly touching the base of her palm. The blade slides along its tracks out into the fierce sunlight, pinpricks of light dripping up its edge until coming together. The old man strokes these points of light. He knows their true identity. Every parry, every strike, leaves a scar upon its edge. Some of the scars are stained with his blood.\n'As I forged it... the fires told me that one day, it would take my life. But... it was a commission from the general.' The old man raises his torso, struggling to breathe as he lifts his head to look into his deathmonger's eyes.\n'How about you? Shadow beneath the sun. Who commissioned you... to settle this account?'\nThe deathmonger does not answer. She covers his eyes with her palm, allowing her sleeve-blade to cut across his throat. The carrion fowlbeasts whirl down from above the canyon, crowding into the shadows of the cliff and rubbing their beaks against one another's feathers.",
+        "zh": "刽子手的手指勾回，轻触掌根。利刃在暴烈的日光下沿轨道滑出，细小的光点顺着锋刃边缘坠向交会处，如铁水无声地注入模具。\n热浪，寂静。\n寂静被食腐羽兽的嘶鸣打破。烈日下独行的萨卡兹老人抬起头，见到烟雾自峡谷顶端俯冲而下。驮兽不见了，峡谷也不见了，只有日光下仅剩的影子为老人常年凝视熔炉的双眼蒙上又一层灰色。\n很快，利刃离开了他的胸膛。接下来，被刺穿的胸腔将充满血液，将他溺毙在干旱的土地上。他还记得，在卡兹戴尔，这种缓慢的死亡是一种残忍的刑罚。他原以为自己会仰卧于热砂，在驮兽不解的注视中独自迎来最后一刻。然而，刽子手没有转身离开，她单膝跪地，托住了老人的后背。\n“哦……是你。”\n老人脸上的皱纹逐渐展开，他还记得这一双眼睛。那一次，他从熔炉的火焰上移开视线，看到了将军身旁的女孩。她还小，但有一双战士的眼睛，一双撕扯过风暴的手。然后，将军说，为她造一柄剑。\n“让我再看它一眼，好吗？”她看到老人恳求的目光，“刚才……我没看清。”\n刽子手的目光移向手腕，她还记得那些死士。军事委员会控制的兵工厂为他们提供了精良的装备，但是……她的手掌放在老人胸前，那些无坚不摧的赴死者有备而来，卡兹戴尔最优秀的工匠亲手为他们打造了弑君的剑刃。\n她的手指勾回，轻触掌根。利刃在暴烈的日光下沿轨道滑出，细小的光点顺着锋刃边缘升向交会处。老人的手指抚过这些光点，他知道它们的真面目，每一次招架，每一次相击，都在锋刃上留下伤痕。它们诉说，某一道伤痕，还含着他的血。\n“我锻造它的时候……炉火曾告诉我，终有一日，它将夺去我的性命。但那……是将军的委托。”老人挺起上身，艰难地吸着气，他抬起头，望着刽子手的眼睛。\n“你呢？日光下的影子。你的清算……是谁的委托？”\n刽子手没有回答。她用手掌盖住老人的眼睛，让袖刃划过他的咽喉。食腐羽兽从峡谷顶端回旋落下，它们填满了峭壁的影子，在彼此的羽毛上擦着喙。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_ascln",
+      "name": {
+        "en": "'Eyes of Ascalon'",
+        "zh": "“阿斯卡纶的眼睛”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_ascln",
+      "description": {
+        "en": "You notice the sudden appearance of an exquisite humidifier on your desk. You learn from Closure that Ascalon put it there.\nThe strands of mist resemble Ascalon's eyes. You know how her Originium Arts work, and are sure that any strange movement in your room will send the master assassin emerging from this humidifier within three seconds.\nBut why did she send you this 'gift'? To protect, or to surveil you? You know Ascalon does not need a prop like this to watch anyone, and it showing up here serves more as a warning than any practical function—that she is watching you. You feel a little helpless, but from any other point of view, there is ample reason on her part to keep her eyes on you after the incident that brought pain to everyone on Rhodes Island.\nYou remember what you have gone through together, albeit with perhaps an imperfect working relationship. You think of the beginning, when she was showing utmost vigilance, and remember the battlefields of Victoria when she risked her life again and again to save yours. It took three relatively stable years for her to gradually become a familiar figure to you.\nAmong Rhodes Island's operators, Ascalon may be the most mysterious of all. She is the organization's shadow, and a dagger serving as its defender. You can only piece her past together from what the other Elite Operators tell you, and get a sense of her determination from reviewing her combat records. No matter what, you have always trusted Ascalon, because she has proved—too many times to count—that when you and Rhodes Island need her, she is always there.\nBut how does she see herself? Perhaps it is time to have a heart-to-heart with everyone...\n'Ascalon.'\nYou call out softly to the humidifier.\nOne, two... sixty seconds pass, but Ascalon does not float out from it. At that very moment, someone knocks on your office door.\nAscalon stands at the entrance with a document in hand.\n'I believe now is the time.' Ascalon gives you the file.\n'I will hand S.W.E.E.P.'s command privileges over to you. From today onwards, S.W.E.E.P. will no longer exist independently from the Rhodes Island system. It can take on any field work or security operations. As for how to integrate us into Rhodes Island and turn us into regulars in the eyes of the other operators, that is up to you.'\n'Why?'\n'I made this choice after careful consideration. Amiya has already been informed, and she has no objections. She also hoped I would inform you directly—\n'We believe a dagger is most effective when placed in the hands of a commander who can see the entire chessboard, so we can nip our next threat in the bud before its too late. Currently, you are the most suitable person in Rhodes Island, Doctor, so—Doctor, are you listening?'\n'O-Of course.'\n'I was just wondering... what's with this humidifier?'\n'A little gadget from Medical. Touch gave it to me. You can add a sedative in there for pain relief, but it also works normally as a humidifier.\n'The weather is quite dry here, so everyone could use one. I also left one in Amiya's room, but I'm not sure if Mon3tr will need one—do you have a problem with it?\n'...No, not really.'\n'Thank you, Ascalon.'",
+        "zh": "你注意到了这个突然出现在你办公桌上的精致的“加湿器”，从可露希尔口中得知，是阿斯卡纶放在这里的。\n缕缕缭绕的雾气就仿佛是阿斯卡纶的眼睛，你了解她的源石技艺，你丝毫不怀疑，只要这间房间里出现一丝异动，那位刺客大师就会在三秒钟之内从这个加湿器里钻出来。\n可她为什么要送这样一份“礼物”？是保护，抑或是监视？你清楚阿斯卡纶无需借助这样一件道具来完成对某一人的监视，而这个神秘装置出现在这里，警示的意味远大于实际的功用——她正在盯着你。你感到有些无奈，但从任何角度来说，在罗德岛经历了那场令所有人痛心的变故之后，她都有充分的理由再度将注意力放在你身上。\n你回忆起你们之间过往的经历，那或许算不上是默契无间的合作关系。你想起最初那段时间里她始终警惕的态度；又想起在维多利亚的战场上，她几次三番不顾性命保护你脱离险境；直到在那相对平稳的三年里，她才慢慢变成了一个你所熟悉的人。\n在所有与罗德岛长久同行的干员里，阿斯卡纶或许是最神秘的那一位。她是罗德岛的影子，担任守卫之职的尖刀。你只能从精英干员口中拼凑她的过往，从一次次作战记录中感受她的决心。无论如何，你始终信任着阿斯卡纶，因为她已经无数次地证明过，你和罗德岛需要她的时候，她就在那里。\n可是，她又是如何看待自己的呢？或许是时候和大家谈谈心了……\n“阿斯卡纶。”\n你对着加湿器轻声呼唤道。\n一秒、两秒……一分钟过去了，阿斯卡纶并没有从加湿器中飘出来。就在此时，有人敲了敲办公室的门。\n阿斯卡纶站在门口，手中拿着一份文件。\n“我认为现在是时候了。”阿斯卡纶将文件递到了你的面前。\n“我会将S.W.E.E.P.的指挥权交给你，从今往后，S.W.E.E.P.不会再是独立于罗德岛系统的存在，它可以承担任何外勤和安保工作。至于要如何让S.W.E.E.P.融入罗德岛，出现在其他干员的视线中，具体的事宜由你决定。”\n“为什么？”\n“这是我仔细思考后作出的选择。我已经告知过阿米娅，她没有任何异议，她也希望这件事能直接由我来向你说明——\n“我们都相信尖刀握在统揽全局的指挥官手中才能发挥最大的效用，下一次，我们可以更早地将威胁扼杀在襁褓里。现在的罗德岛，没有人比你更合适，博士——博士，你在听吗？”\n“当、当然。”\n“我只是在想……这个加湿器是？”\n“是医疗部的小发明，本来是Touch送给我的，里面加入镇定药物可以缓解病痛，也可以只当作加湿器用。\n“这边天气干燥，大家都用得上。我在阿米娅那里也放了一件，至于Mon3tr，我不确定她是否需要——你很在意它？”\n“……不，没什么好在意的。”\n“谢谢你，阿斯卡纶。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30165",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

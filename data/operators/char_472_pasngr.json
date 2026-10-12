@@ -1,0 +1,1621 @@
+{
+  "id": "char_472_pasngr",
+  "name": {
+    "en": "Passenger",
+    "zh": "异客",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SG07",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "chain",
+  "faction": "sargon",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Engineering Operator Passenger, thunderous punisher of enemies.",
+    "zh": "工程干员异客，将以雷霆手段惩罚敌手。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "His various autonomous weapons bear only models with no names, and telling the difference when they're iterated is a little hard.",
+    "zh": "他的各类自走兵器只有型号而没有名称，迭代的时候有点难分辨。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 654,
+            "atk": 311,
+            "def": 49,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 935,
+            "atk": 433,
+            "def": 84,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 935,
+            "atk": 433,
+            "def": 84,
+            "magicResistance": 15,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1215,
+            "atk": 571,
+            "def": 116,
+            "magicResistance": 15,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "30044",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1215,
+            "atk": 571,
+            "def": 116,
+            "magicResistance": 20,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1558,
+            "atk": 689,
+            "def": 130,
+            "magicResistance": 20,
+            "cost": 33,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_pasngr_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 1.5,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 1.6,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 1.7,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 1.8,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 1.9,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 2,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 2.1,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 2.2,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 2.3,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Touch of Static",
+            "zh": "电能之触",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{pasngr_s_1.atk_scale:0%}</>; The attack will jump between at most <@ba.vup>{pasngr_s_1.max_target}</> enemies and the duration of the <$ba.sluggish>Slow</> is increased to <@ba.vup>{pasngr_s_1.sluggish}</> seconds",
+            "zh": "下次攻击时攻击力提升至<@ba.vup>{pasngr_s_1.atk_scale:0%}</>，最多在<@ba.vup>{pasngr_s_1.max_target}</>个目标间跳跃，攻击造成的<$ba.sluggish>停顿</>时间延长至<@ba.vup>{pasngr_s_1.sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "pasngr_s_1.atk_scale": 2.5,
+            "pasngr_s_1.sluggish": 1.5,
+            "pasngr_s_1.max_target": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_pasngr_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases slightly</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>略微缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "ability_range_forward_extend": 1,
+            "atk": 0.1,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases slightly</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>略微缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 11,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "ability_range_forward_extend": 1,
+            "atk": 0.1,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases slightly</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>略微缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 12,
+          "blackboard": {
+            "base_attack_time": -0.2,
+            "ability_range_forward_extend": 1,
+            "atk": 0.1,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases a little</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 13,
+          "blackboard": {
+            "base_attack_time": -0.3,
+            "ability_range_forward_extend": 1,
+            "atk": 0.15,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases a little</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 14,
+          "blackboard": {
+            "base_attack_time": -0.3,
+            "ability_range_forward_extend": 1,
+            "atk": 0.15,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases a little</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>小幅度缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "base_attack_time": -0.3,
+            "ability_range_forward_extend": 1,
+            "atk": 0.15,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 16,
+          "blackboard": {
+            "base_attack_time": -0.4,
+            "ability_range_forward_extend": 1,
+            "atk": 0.2,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 17,
+          "blackboard": {
+            "base_attack_time": -0.4,
+            "ability_range_forward_extend": 1,
+            "atk": 0.25,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": -0.4,
+            "ability_range_forward_extend": 1,
+            "atk": 0.3,
+            "attack@max_target": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Focus Command",
+            "zh": "聚焦指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>decreases moderately</>. Increase the maximum number of jumps to <@ba.vup>{attack@max_target}</>",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>较大幅度缩短</>，攻击最大弹跳次数提升至<@ba.vup>{attack@max_target}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "ability_range_forward_extend": 1,
+            "atk": 0.3,
+            "attack@max_target": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_pasngr_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.25,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Glorious Shards",
+            "zh": "辉煌裂片",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates a lightning storm centered on the target with the highest HP within a wide range, lasting for <@ba.vup>{duration}</> seconds; Deals an additional attack equal to <@ba.vup>{atk_scale:0%}</> ATK to a random enemy within the lightning storm every <@ba.vup>{interval}</> seconds; <@ba.rem>Can store {ct} charges</>",
+            "zh": "立即寻找大范围内生命值最高的目标，在其位置生成持续<@ba.vup>{duration}</>秒的雷暴区域，期间每<@ba.vup>{interval}</>秒以<@ba.vup>{atk_scale:0%}</>的攻击力对雷暴区域内的随机敌人进行一次额外攻击；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-3",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "duration": 4,
+            "ct": 2,
+            "projectile_delay_time": 4,
+            "interval": 0.5,
+            "chain.max_target": 4,
+            "sluggish": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31013",
+          "count": 4
+        },
+        {
+          "id": "30043",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mechanism Analysis",
+            "zh": "机理分析",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking enemies with 80% or more HP, Passenger will deal 10% increased damage to them for 3 seconds",
+            "zh": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.8,
+            "pasngr_t_1[enhance].damage_scale": 1.1,
+            "pasngr_t_1[enhance].duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Mechanism Analysis",
+            "zh": "机理分析",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking enemies with 80% or more HP, Passenger will deal 15% <@ba.talpu>(+5%)</> increased damage to them for 3 seconds",
+            "zh": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升15%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 5
+          },
+          "blackboard": {
+            "hp_ratio": 0.8,
+            "pasngr_t_1[enhance].damage_scale": 1.15,
+            "pasngr_t_1[enhance].duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Mechanism Analysis",
+            "zh": "机理分析",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking enemies with 80% or more HP, Passenger will deal 20% increased damage to them for 3 seconds",
+            "zh": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.8,
+            "pasngr_t_1[enhance].damage_scale": 1.2,
+            "pasngr_t_1[enhance].duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Mechanism Analysis",
+            "zh": "机理分析",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking enemies with 80% or more HP, Passenger will deal 25% <@ba.talpu>(+5%)</> increased damage to them for 3 seconds",
+            "zh": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升25%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 5
+          },
+          "blackboard": {
+            "hp_ratio": 0.8,
+            "pasngr_t_1[enhance].damage_scale": 1.25,
+            "pasngr_t_1[enhance].duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lone Soldier",
+            "zh": "孤卒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When there are no enemies in the surrounding 4 tiles, ATK +8%",
+            "zh": "当周围4格没有敌人时，攻击力+8%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "Lone Soldier",
+            "zh": "孤卒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When there are no enemies in the surrounding 4 tiles, ATK +10% <@ba.talpu>(+2%)</>",
+            "zh": "当周围4格没有敌人时，攻击力+10%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "atk": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +32",
+        "zh": "攻击力+32",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 85
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_pasngr",
+      "name": {
+        "en": "Passenger's Badge",
+        "zh": "异客证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Passenger has demonstrated a remarkable aptitude for controlling apparatus to attack multiple enemies in series.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Chain Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员异客擅长操控器械串联攻击多个敌人\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使链术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_pasngr",
+      "name": {
+        "en": "Electromagnetic Regulator",
+        "zh": "电磁调节器",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_pasngr",
+      "description": {
+        "en": "'Water...' \nTrudging endlessly through the sandstorm, gone a full day without water, my body has slowly begun to lose the strength to stand. \nKal'tsit hasn't a water bottle, instead coldly telling me to 'hold on for a little longer,' soon after continuing on her own brisk way ahead. \nHow long have we spent slogging through these winds? Three hours? Five? The golden sands rush through my clothes, tempest throwing the dust against my face, without reprieve, so rough against my eyes I have to keep them shut. But we can't stop yet—the Sarkaz mercenaries behind us are still fast on our tail—they're trained and tireless—even a sandstorm couldn't hold their march back. \nAnd the water... might have been drunk dry long ago. \nI've heard traditions that in the desert, filling empty canteens with sand can give people hope, but right now, I've drunk enough sand. Water—I just want one gulp of water. Even if it costs every coin of mine in exchange, I would do it. \nBut in these wilds, the shine of metal has no meaning at all. \nClutching this silver case tight, I grit my teeth and keep striding. \nMy ears are battered with mournful screams. Like the deceased are howling, and ghosts are calling. Maybe Professor Thorne is among them, calling my name? \nBut I can't quite make it out. \nHow long has my brain spent filled with these noises now? Three minutes? Three hours? Or three years? \nThe dust has blocked the sky out, day and night all the same now, time practically stood still, and only the people seeking to survive through all this still endure through this welter of punishment. \nI just wanted to research, I just wanted to offer my strength to the furtherment of science. I didn't want this—desiccating away in this sea of sands—not like this. \nMy head aches and swells and stings, my body seemingly gone long without any sense. Am I walking, or am I watching this body named Elliot squirm? \nNo... thinking too has become too much to ask. Only one thing wanders in my head, a single order: move. \nMove... move... move... \n...but the desert is limitless. \n'Elliot, open your mouth.' \nOpen my mouth? \nI subconsciously slacken my muscles, let my lips and teeth reveal the channel to my oral cavity. \nA fruit coated in sand and soil lands in my mouth. \nAcrid? And sweet? Oh, it's water. It's water. \nIt's water. \n...... \nSince when, I don't know, but there's no more wind at my ears, the land has returned to peace, and there's only sun, sand, and two earthly humans walking through the dunes. \n...... \nI gaze off far. Beyond the yellow dust, is still more yellow dust. \nNo end is in sight, just like technical documentation scattered all across the ground to be trodden by wet leather shoes, no longer able to be reassembled, nor made sense of. \nIn anger, I kick at the sand, and watch it tumble and slide down the dune, then blend again into the desert, as if nothing ever happened. \nSand, sand. \nI begin to hate sand for the first time in my entire life. \n'Let's go. We'll be able to replenish supplies very soon.' \nKal'tsit interrupts my train of thought. \nUm, very soon? How soon can it be? \nAnd resupply? How much could that be? \nBut—Kal'tsit never promises hope to anyone. \nBut at least... \nI think I can see a cactus.",
+        "zh": "“水……”\n在沙尘暴中跋涉许久，又整整一天没有饮水，身体已经逐渐支撑不住了。\n凯尔希没有拿水瓶，而是冷冷地说了一句“再撑一会”，随后就自顾自继续向前赶路。\n我们已经在沙暴里跋涉了多久？三个小时？还是五个小时？黄沙不停往衣物里涌，狂风则不停将沙尘甩在脸上，刮得眼睛都睁不开。但我们还不能停步，后面的萨卡兹雇佣兵还在紧追不舍，他们尽职尽责，即使是沙暴都阻挡不了他们的脚步。\n至于水……或许早就喝完了吧。\n听说沙漠里有在空水壶中灌沙来给人以希望的传统，可现在，沙子我已经喝够了，水，我只想喝口水，哪怕用身上所有的硬币去换，我也愿意。\n只是在这荒野里，闪亮的金属毫无意义。\n紧紧抱着银色的手提箱，我咬紧牙关继续迈步。\n耳边都是凄厉的呼啸，像是亡者的哭号，又像是鬼魂的呼唤。索恩教授或许也在其中，呼唤着我的名字？\n但我听不太清了。\n脑中满是这样的响声，已经多久了？三分钟？三小时？还是三年？\n沙尘遮蔽了天空，白天和黑夜已经毫无区别，时间似乎都已凝滞，只有在其中求生的人们，还在忍受着此间种种刑罚。\n我只是想做研究，我只是想为科学进步奉献自己的力量，而不是像现在这样，倒在沙海里风干。\n脑袋又酸又胀又痛，身体好像早就没了知觉，我是在行走吗，还是在看着这具名为艾利奥特的躯壳蠕动？\n不……思考也成为了一种奢求，现在徘徊在脑袋里的，只有一个指令：移动。\n移动……移动……移动……\n……但沙海是无垠的。\n“艾利奥特，张嘴。”\n张嘴？\n我下意识地放松肌肉，让嘴唇和牙齿露出一条通往口腔的通道。\n一串沾满沙土的果实落到了口中。\n有些酸涩？有些甘甜？哦，是水，是水。\n是水啊。\n……\n不知从什么时候开始，耳边再也没有风声，大地回复了寂静，只有阳光，沙漠，和两个在沙丘间徒步的凡人。\n……\n我望向远方，除了黄沙，还是黄沙。\n一眼望不到尽头，就像散落满地又被浸湿的皮鞋踩上几脚的技术文件，再也归不拢，再也理不齐。\n我忿忿地踢了一脚沙子，看着它们从沙丘尖端翻滚滑落，然后重新融到沙漠中，好似什么都没有发生过。\n沙子，沙子。\n我生平第一次开始痛恨沙子。\n“走吧，很快就能获得补给了。”\n凯尔希打断了我的思绪。\n可，很快？能有多快？\n一些补给？又有多少呢？\n呵，凯尔希从来不向人许诺希望。\n但至少……\n我似乎看见了一颗仙人掌。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30125",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_pasngr",
+      "name": {
+        "en": "Gold of Crowns",
+        "zh": "王权金币",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_pasngr",
+      "description": {
+        "en": "The Reefsteep Black Market, where I was born anew.\nAt the end of the western passage, one can see the land and the sky. Once, it was an arms dealer's territory. I worked under him in my first few years in this place. He was a born despot. He left several welts on my back, but I've no hate for him. It was only natural, just as it was only natural that his irate underlings slit his throat in drunkenness, before throwing him from a cliff. I placed my first gold coin in those turncoats' hands, and it was warm to the touch.\nThe northern oasis, Reefsteep's border. For a time and an age, the favored turf of the mercenaries. Soldiers were replaced batch by batch, but there was only ever one leader. My biggest customer, and the one who taught me how to taste wine. But that winter, he died. He died in front of my storehouse, his body bruised and battered. He coveted my creations, and died to my precautions. Mercenaries keep no loyalty, and thus I rewarded his subordinates at his funeral. Unfortunately, his life couldn't even buy a decent bottle of wine.\nThe southern side, where the towns sit. Messengers and merchants come and go in spades, the value they trade in circulating through the villages. The lords recognize as much, hence why Ibut's lord ameer had such a special fondness for the place. Sargon's unbearably chaotic, barbaric politics never interested me, but I needed the lord's support. The division of powers within the Reefsteep Black Market bored me so much I'm loathe to mention it, but we all had something to say when it came to the lord. I'm surprised that I held such frail relations for so long; a lord that doesn't judge by the cover, perhaps? Out of respect, I didn't personally attend the revolt. But once his family were puppets, I did show up to pay respects to that poor boy—he was akin to Elliot. Akin to me.\nThe Reefsteep Black Market's center. An old tomb lies there, an ancient pasha's grave. Every night, Isin carefully wipes his memory under the light of the stars. A long time ago, I exhausted his wealth. And by now, I've repaid him several times over, but he doesn't pay any mind. His age looms by the day, and aside from a few errant, insignificant questions, we never even speak.\nThat day, Old Isin asked me why others call me 'Sand Soldier.'\n'Sand Soldier.'\nThe meaninglessness of a grain of sand. The pathetic fate of a pawn. The term is filled with significance I abhor.\nHence why I gladly accepted it. As a price paid in advance, for the impossible trial to follow. The Reefsteep Black Market had its towns, and they were fuel ready for the fire.\nI waited for the lord ameer of Ibut to come. If I could, I would have burned even the golden sands to nothing.\nAnd in the final moment before I set the flame alight—\n—what came to mind was the afternoon a young Elliot Glover was taken to tour an institute of science, where he sees a new model of Originium engine ignite and combust, upon which a tremendous machine stirs to life. He's always remembered how much that moved him.\nI've always remembered.",
+        "zh": "沁礁黑市，我重新诞生的地方。\n西边走廊的尽头，那一片能看见天空的空地。那里曾是一个武器商的地盘。刚来这里的几年，我在他手下干活。他是个天生的暴君。他在我的背上留下了几道鞭痕，可我并不恨他。这就像他被愤怒的部下在醉酒中割破喉咙，扔下悬崖一样理所当然。我将第一枚金币放在那些叛徒的手心里，它散发着温热。\n北方的绿洲，沁礁的边缘。长久以来，那里都是雇佣兵们最中意的地盘。士兵们一批又一批的更换，但领袖始终只有一人。他是我最大的客户，他教会了我如何品酒。可那个冬天，他死了。他死在我的仓库前，身体千疮百孔。他觊觎我的造物，也死于我的防备。雇佣兵不存在忠诚，所以，我在他的葬礼上奖赏了他的部下。他的命甚至都买不起一瓶像样的酒，可悲。\n南方，城镇所在。信使与商人频繁出入，价值在那座小镇流动。领主清楚地认识到这一点，这也是为何伊巴特的王酋对此地情有独钟的缘故。我对萨尔贡混乱不堪的野蛮政治不感兴趣，但我需要领主的支持。沁礁黑市里的势力划分无趣到我不齿提及，但谈及领主，我们都有话可聊。我惊讶于这脆弱的关系竟然维系了如此之久，也许那位领主，人不可貌相？出于尊敬，我没有亲自参与那场叛变。只是当领主的家族成为傀儡之后，我亲自去拜访了那位可怜的小男孩——和艾利奥特一样。和我一样。\n沁礁黑市的中心。那里有一座古老的墓穴，古老的帕夏的墓穴。每一个夜晚，伊辛都会在星光下仔细擦拭他的记忆。很久以前，我花光了他的财富。如今，我几倍还赠于他，可他毫不在意。他日渐苍老，除了问我一些无关紧要的小事，我们就没有别的交流。\n那天，老伊辛问我，为什么别人称我为“沙卒”。\n“沙卒”。\n虚无的沙粒，可悲的小卒。这个词满是我痛恨的象征。\n所以我欣然接受。为接下来无法的审判提前支付代价。沁礁黑市还有那些城镇，它们都是准备好的薪柴。\n我等着伊巴特王酋来到这里。如果可以，我连这片黄沙都想焚烧干净。\n而在点燃火焰的最后一刻——\n——我想到的是年轻的艾利奥特·格罗夫被带去科技馆参观的那个下午，他看见新型的源石引擎点燃火焰，巨大的机械随之运转，他一直记着那份感动。\n我一直记着的。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_004_pasngr",
+      "name": {
+        "en": "异客特限证章",
+        "zh": "异客特限证章",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "A",
+      "icon": "uniequip_004_pasngr",
+      "description": {
+        "en": "异客已获得特别认证许可\n根据外勤部门决议\n在生息演算行动中以改良策略应对敌人\n特别颁发此证章\n以兹证明\n“毁灭是你应得的刑罚。”",
+        "zh": "异客已获得特别认证许可\n根据外勤部门决议\n在生息演算行动中以改良策略应对敌人\n特别颁发此证章\n以兹证明\n“毁灭是你应得的刑罚。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ]
+}

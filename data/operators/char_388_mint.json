@@ -1,0 +1,1099 @@
+{
+  "id": "char_388_mint",
+  "name": {
+    "en": "Mint",
+    "zh": "薄绿",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC08",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "phalanx",
+  "faction": "victoria",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Mint, the Victorian Caster, seeks recognition as a scholar far more than as a Caster.",
+    "zh": "维多利亚术师薄绿，比起术师更希望被视作学者。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Curiosity is her greatest weapon.",
+    "zh": "好奇心是她最大的武器。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "x-4",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1020,
+            "atk": 377,
+            "def": 125,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1275,
+            "atk": 503,
+            "def": 146,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1275,
+            "atk": 503,
+            "def": 146,
+            "magicResistance": 15,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1594,
+            "atk": 629,
+            "def": 170,
+            "magicResistance": 15,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "31024",
+          "count": 9
+        },
+        {
+          "id": "30013",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1594,
+            "atk": 629,
+            "def": 170,
+            "magicResistance": 15,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1945,
+            "atk": 732,
+            "def": 196,
+            "magicResistance": 15,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mint_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Wind Whispers",
+            "zh": "风语",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands; Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mint_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.05,
+            "atk_scale": 1.8,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.05,
+            "atk_scale": 1.9,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.05,
+            "atk_scale": 2,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.1,
+            "atk_scale": 2.1,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.1,
+            "atk_scale": 2.2,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.1,
+            "atk_scale": 2.3,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 12,
+          "blackboard": {
+            "attack@atk_scale": 1.15,
+            "atk_scale": 2.4,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 13,
+          "blackboard": {
+            "attack@atk_scale": 1.2,
+            "atk_scale": 2.6,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>slightly</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>小力地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 14,
+          "blackboard": {
+            "attack@atk_scale": 1.25,
+            "atk_scale": 2.8,
+            "attack@force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Swirling Vortex",
+            "zh": "聚能涡旋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Every attack drags the target to Mint <@ba.vup>moderately</>, dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage. Deal <@ba.vup>{atk_scale:0%}</> ATK as Arts damage when the skill ends",
+            "zh": "每次攻击把目标<@ba.vup>中等力度地</>拖拽至面前，并造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害。技能结束时对攻击范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.3,
+            "atk_scale": 3,
+            "attack@force": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Geologist",
+            "zh": "地质学者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, adjacent allies gain +5% DEF",
+            "zh": "技能未开启时，周围四格友方单位的防御力+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0.05,
+            "atk": 0,
+            "taunt_level": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Geologist",
+            "zh": "地质学者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, adjacent allies gain +7% <@ba.talpu>(+2%)</> DEF",
+            "zh": "技能未开启时，周围四格友方单位的防御力+7%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": 0.07,
+            "atk": 0,
+            "taunt_level": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Geologist",
+            "zh": "地质学者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, adjacent allies gain +10% DEF; When this unit's skill is active, become less likely to be targeted by enemies",
+            "zh": "技能未开启时，周围四格友方单位的防御力+10%；技能开启时，自身不容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0.1,
+            "atk": 0,
+            "taunt_level": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Geologist",
+            "zh": "地质学者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, adjacent allies gain +12% <@ba.talpu>(+2%)</> DEF; When this unit's skill is active, become less likely to be targeted by enemies",
+            "zh": "技能未开启时，周围四格友方单位的防御力+12%<@ba.talpu>（+2%）</>；技能开启时，自身不容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": 0.12,
+            "atk": 0,
+            "taunt_level": -1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75,
+        "def": 15
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mint",
+      "name": {
+        "en": "Mint's Badge",
+        "zh": "薄绿证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_mint",
+      "description": {
+        "en": "Operator Mint has demonstrated a remarkable aptitude for inflicting well-timed Arts casualties on a large scale.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Phalanx Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员薄绿擅长适时造成大规模法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使阵法术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mint",
+      "name": {
+        "en": "Attention-holding Device",
+        "zh": "注意力保持装置",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_mint",
+      "description": {
+        "en": "The forty-second time Mint wanders off is the time she resolves, as other operators keep telling her, to train herself to stay focused.\nAfter picking up more than a few items from the flea market, her training commences.\n-METRONOME. The shop says Leithanians use this little tool when beginning to learn music, in order to help them grasp tempo. But conversely, '100 Ways to Up Your Concentration' says having a regular sound playing helps focus your attention, as people will map out the thoughts in their head to the rhythm, thus untangling their logic. 'Tick, tock, tick, tock, tick, tock, pebbles, twigs, outside, everywhere, pretty, favorite, I want to look, I'll look right now...'\n-SOUND BATH. 'Bathed in pure, long, and gentle tones, you will come to find serenity, and concentrate upon the self.' '*ding*—' It... sounds like Pramanix's bell, it's so reassuring... I wonder if this was from Kjerag too? I remember there was a holy mountain there, since Cliffheart's told me heaps about the place. I'd like to visit too one day, sooner or later—I'm sure there'd be so much geological knowledge to pick up on! The Black Flow's on the bucket list too. Maybe I should consult Asbestos about it beforehand? That door she has looks so hefty...\n-ATTENTION SPAN TRAINING CARDS. This one's a present from Skyfire after she heard I was starting attention training. 'Suitable for children ages 3-5. WARNING: CHOKING HAZARD.' Why did she buy me this?\n-BANDAGES FOR WHEN A BOOK BITES. These aren't to do with attention training, I simply saw them on the table just now and put them in here with everything else, hehe.\n-PEBBLE. Saga told me that to concentrate on but one thing before thee, one item, be it even the most mundane and unremarkable stone, would settle thee down, and see that thou wouldst ponder the primitive and true. She led me through some meditation, to focus my attention, but eventually... the natto gohan was just too tasty to resist.\nThen comes the forty-third time she's wandered off. Her attention training is declared a failure, and consequently her journaling ends there. The final item noted is a fire extinguisher.\n-FIRE EXTINGUISHER. I put out the flames that started from Skyfire flaring up. I think... I think it's better than any other tool at addressing the most frightening consequences of being unfocused...\nOhh... but still, I have to make a proper apology...",
+        "zh": "薄绿在第四十二次走丢之后，决定按其他干员所说，训练自己集中注意力。\n从旧货市场淘来大量工具后，训练开始了。\n-节拍器。店家说这是莱塔尼亚人在初学乐器时会用的小工具，用以辅助把握节拍，不过《提升专注力的一百种方法》上说，有规律的声音有助于集中注意力，让人跟随节奏规划自己脑中的思考，捋清逻辑。“滴、答、滴、答、滴、答、小石头、小树枝、外边有、很多的、亮闪闪、很喜欢、想看看、那就去……”\n-音疗钵。“在温柔绵长的纯净音疗中，感受宁静，专注自我。”“咚——”这个声音……和初雪小姐的铃音一样，让人感到安静……不知道这个东西是不是也来自谢拉格？我记得谢拉格有座圣山，崖心小姐讲过很多那里的情况，迟早有一天我也要去看看，肯定能收获很多地质知识！黑流树海也在待去名单上，我要不要先去咨询一下石棉小姐？她那个门板看起来很厉害……\n-注意力训练卡片。这个是天火学姐听说我要开始注意力训练送的礼物。“适合3-5岁孩童使用，注意防止孩童误食”，天火学姐为什么给我买这个？\n-咬人书绑带。这个和注意力训练无关，刚刚看到它在桌子上，也一起收在这里好了，嘿嘿。\n-小石头。嵯峨告诉我，集中于眼下的一件事、一个物品，哪怕只是对着一块平平无奇的小石头，也能静下心来，思考本原真意。她带着我打坐冥想，集中注意力，可是后来……纳豆拌饭真的太好吃了。\n第四十三次走丢。注意力训练宣告失败，感受记录也停在了这里。最后一项物品记录是灭火器。\n-灭火器。扑灭了天火学姐发火导致的燃烧，好像……好像比其他工具更能解决注意力不集中带来的最可怕的后果……\n呜……但还是要好好道歉才行……",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30084",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

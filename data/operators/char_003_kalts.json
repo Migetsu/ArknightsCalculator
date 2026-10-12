@@ -1,0 +1,1535 @@
+{
+  "id": "char_003_kalts",
+  "name": {
+    "en": "Kal'tsit",
+    "zh": "凯尔希",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "B003",
+  "rarity": 6,
+  "class": "MEDIC",
+  "subclass": "physician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Summon",
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Rhodes Island Medical Department Officer-in-Charge, Kal'tsit.",
+    "zh": "罗德岛医疗部门负责人，凯尔希。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She comes from the past. She belongs to the present.",
+    "zh": "她来自过去。她属于现在。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 865,
+            "atk": 167,
+            "def": 94,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1219,
+            "atk": 274,
+            "def": 137,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-8",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 5
+        },
+        {
+          "id": "30022",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1219,
+            "atk": 274,
+            "def": 137,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1469,
+            "atk": 392,
+            "def": 172,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-10",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 4
+        },
+        {
+          "id": "30145",
+          "count": 4
+        },
+        {
+          "id": "30064",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1469,
+            "atk": 392,
+            "def": 172,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1633,
+            "atk": 490,
+            "def": 215,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_kalts_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "def": 0.6,
+            "attack@def": 0.6,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 1,
+          "blackboard": {
+            "def": 0.7,
+            "attack@def": 0.7,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 2,
+          "blackboard": {
+            "def": 0.8,
+            "attack@def": 0.8,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 3,
+          "blackboard": {
+            "def": 0.9,
+            "attack@def": 0.9,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 4,
+          "blackboard": {
+            "def": 1,
+            "attack@def": 1,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "def": 1.1,
+            "attack@def": 1.1,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 6,
+          "blackboard": {
+            "def": 1.2,
+            "attack@def": 1.2,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 37,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 7,
+          "blackboard": {
+            "def": 1.3,
+            "attack@def": 1.3,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 8,
+          "blackboard": {
+            "def": 1.4,
+            "attack@def": 1.4,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Structural Fortification",
+            "zh": "指令：结构加固",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and Mon3tr gains DEF <@ba.vup>+{def:0%}</>. This unit also gains <@ba.vup>{prob:0%}</> Physical resist",
+            "zh": "自身和Mon3tr的防御力<@ba.vup>+{def:0%}</>，且自身获得<@ba.vup>{prob:0%}</>的物理格挡",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.5,
+            "attack@def": 1.5,
+            "prob": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kalts_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 30,
+            "attack@atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "attack@atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "attack@atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 45,
+            "attack@atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 50,
+            "attack@atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 55,
+            "attack@atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 60,
+            "attack@atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 70,
+            "attack@atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 80,
+            "attack@atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Tactical Coordination",
+            "zh": "指令：战术协同",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit gains ASPD <@ba.vup>+{attack_speed}</>; Mon3tr gains ATK <@ba.vup>+{attack@atk:0%}</> and attacks all blocked enemies\n<@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "自身的攻击速度<@ba.vup>+{attack_speed}</>，Mon3tr的攻击力<@ba.vup>+{attack@atk:0%}</>，Mon3tr可以攻击阻挡的所有敌人\\n<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 100,
+            "attack@atk": 0.9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kalts_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.3,
+            "attack@def": 1,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.4,
+            "attack@def": 1,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.5,
+            "attack@def": 1,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.6,
+            "attack@def": 1.2,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.7,
+            "attack@def": 1.2,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.8,
+            "attack@def": 1.2,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 1.9,
+            "attack@def": 1.4,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 2.1,
+            "attack@def": 1.6,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 2.3,
+            "attack@def": 1.8,
+            "attack@hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Command: Meltdown",
+            "zh": "指令：熔毁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Mon3tr gains DEF <@ba.vup>+{attack@def:0%}</>, ATK <@ba.vup>+{attack@atk:0%}</> that gradually decays to +0% over the skill duration and deals <@ba.vup>True damage</>. If this skill ends without Mon3tr killing any enemies, Mon3tr loses <@ba.vup>{attack@hp_ratio:0%}</> Max HP. <@ba.rem>This skill is </><$ba.binding><@ba.rem>Tied</> to Mon3tr</>",
+            "zh": "Mon3tr的防御力<@ba.vup>+{attack@def:0%}</>，技能期间攻击力从<@ba.vup>+{attack@atk:0%}</>逐渐降低至+0%且伤害类型变为<@ba.vup>真实</>，此期间如果未击杀任何敌人则技能结束后流失最大生命的<@ba.vup>{attack@hp_ratio:0%}</>。<@ba.rem>该技能与Mon3tr</><$ba.binding><@ba.rem>绑定</></>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk": 2.6,
+            "attack@def": 2,
+            "attack@hp_ratio": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30061",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30043",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30053",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 6
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mon3tr",
+            "zh": "Mon3tr",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use and heal Mon3tr, and Mon3tr has a 35 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0",
+            "zh": "可以使用并治疗Mon3tr，拥有35秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1,
+            "def": 0,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Mon3tr",
+            "zh": "Mon3tr",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use and heal Mon3tr, and Mon3tr has a 30 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0",
+            "zh": "可以使用并治疗Mon3tr，拥有30秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1,
+            "def": 0,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Mon3tr",
+            "zh": "Mon3tr",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use and heal Mon3tr, and Mon3tr has a 25 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0",
+            "zh": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1,
+            "def": 0,
+            "attack_speed": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Non-Damaging Restructuring",
+            "zh": "不毁重构",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mon3tr is defeated (excluding retreat), all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3 seconds and receive 1200 True damage",
+            "zh": "Mon3tr在被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3秒并对其造成1200点真实伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Non-Damaging Restructuring",
+            "zh": "不毁重构",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mon3tr is defeated (excluding retreat), all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3.5 <@ba.talpu>(+0.5)</> seconds and receive 1400 <@ba.talpu>(+200)</> True damage",
+            "zh": "Mon3tr在被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5<@ba.talpu>（+0.5）</>秒并对其造成1400<@ba.talpu>（+200）</>点真实伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 400,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_kalts",
+      "name": {
+        "en": "Kal'tsit's Badge",
+        "zh": "凯尔希证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_kalts",
+      "description": {
+        "en": "Kal'tsit has demonstrated a remarkable aptitude for healing teammates in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "凯尔希擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_kalts",
+      "name": {
+        "en": "Mon2tr",
+        "zh": "Mon2tr",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_kalts",
+      "description": {
+        "en": "Sand circles above. In the rays of light, no longer can she trust anything before her.\nVoices call to her. Souls lift her hide-wrought bag, turn her dazedness to weariness.\nShe sees a land without limit, a land rich with life. She feels something tightly grip her hand. She looks back, and in the haze of memory fumbles for her own name.\nKal'tsit.\nShe knows she was born into these ruins of civilization bearing a calling, but there is no one to shine a light on what is to come for her. Ultimately, she cannot live free from this calling. It is akin to taking a meal, or sleeping.\nShe begins to walk, walk upon the lost dust, carefully sorting through her myriad years of memories and knowledge. She sees a new nation rise from yet more ruins. She recalls how the result of her abandonment was deposed royalty. She sees fresh, novel flags howl atop the blood-soaked battlefield. She recalls how both sides of the war united against a common enemy in those ancient times.\nShe sees forests yet thinks of barrens, gazes on mountains yet recollects lakes—she walks through the river that is Time, picking up stones, while the eras surge, parting around her, rushing forward on.\nBut she is immutable. She has no past, and no future either.\nIt takes her a deal of Time before she has her thoughts reorganized. She remembers the last death. The years stretching long enough to see the form of life itself change. Still, she never thought death would be so fast; some things are changing at this very moment.\nLives flourish without rhyme or reason, and the land morphs and fluctuates. Man-made machines operate with a rumble, the radiance of Originium energy shining into the umbra. In the dark, the people struggle, yearning for the light, scorning shadow in an age of brilliance, on and on. Her countenance is concealed by the flurry of grit stirred by a nomadic city, and she feels anxious to the depths of her heart.\nDoes the will that hid the stars behind the false sky still watch the surface recur in its rise and fall? How long until the Terrans, so proud of their thriving civilizations, personally send those same civilizations into the ice-cold void, to join countless lost lives?\nTime is running short. This is what Kal'tsit tells herself. She has fallen to blaming herself. She has wasted too much Time, and at so many moments barely averted the self-destruction of Terra, barely led them to a safe place to develop. It has exhausted her, drained her.\nShe is no omniscient, omnipotent being. And yet, she tasks herself with tending to the entire World.\nHer calling was never a fair one.\nShe has to hurry. She has to do whatever it takes.\nHer gaze comes to rest on a shattered Kazdel. It is far from the first time she's touched on the legend of the Lord of Fiends. In the boundless years, more than once she has thought of retrieving and exploiting this ancient force. She cannot help but stifle her memories of the Teekaz—to make an effort not to long for the bygone days where Originium had not yet molded life into its present form, and not to commemorate a possibility that has long since vanished.\nMaybe this time, it's time she made up her mind.\n......\n...\n'So this was your previous journey, Kal'tsit.'\n'It stretches longer than the fragment you've seen. Thousands and thousands of times longer, Theresa.'\n'But perhaps it's only now I've truly understood you... my enemy.'\n'...I feel the same, King of Sarkaz.'",
+        "zh": "流沙盘旋于顶，光线让眼前万物都不再可信。\n声音在呼唤她。灵魂掀起她的皮囊，令她的茫然化作疲倦。\n她看见的是一片无垠的土地，土地孕育着生命。她感到有什么紧紧握着她的手。她回过头去，在模糊的回忆中摸索着自己的名字。\n凯尔希。\n她知道自己怀着使命诞生于这片文明的荒墟，却无人点明她的未来。她终究无法摆脱这个使命而活着，像进食，又似睡眠。\n她开始行走，行走于失落的尘土之上，小心翼翼地整理那万年来的记忆与知识。她看见新的国家在又一座废墟上拔地而起，她记起那被罢黜的王权曾是她遗弃的成果。她看见崭新的旗帜在血气弥漫的战场上猎猎作响，她记起那征战的双方曾在某个远古的时期同仇敌忾。\n她看着森林却想起荒漠，望向高山却忆及湖泊——她在名为时间的长河中行走，拾起石子，时光涌动，从她的身侧分开，汹涌向前。\n可她是不变的。她没有过去，也没有将来。\n她花了一些时间才整理好思绪。她回忆起了上一次死亡。横跨的岁月足以令生命的形式发生变化。可她从没想过死亡如此之快，有些事物正在改变。\n生命野蛮蓬勃，大地千变万化。人造机器轰鸣运作，源石能的光辉照亮了暗影。人们挣扎在暗处，向往光明，在辉煌时轻视阴影，如是反复。她的面目隐藏在移动城市卷起的砂砾下，她感到忧心忡忡。\n将群星隐藏在虚伪天空后的意志是否还注视着地表上的迭起兴衰？泰拉人类还要多久就会将他们引以为豪的发达文明亲手送进冰冷的虚空，与无数失落的生命为伍？\n时间不多了。凯尔希这么告诉自己，她陷入自责，她浪费了太多时间，而许多时刻，仅仅是避免泰拉自取灭亡，仅仅是引导他们向一个安全的方向发展，就已经让她精疲力尽。\n她并非一个全知全能的生命。她却要求自己去照料全部的世界。\n她的使命从未公平。\n得赶快。得不择手段。\n她将目光放向了破碎的卡兹戴尔。魔王的传说她并非首次触及，漫长的岁月里，她不止一次想过取回并利用这古老的力量。她不得不按捺下那些关于提卡兹的回忆，试图不去怀恋那些源石尚没有把生命塑造成如今模样的过往，不去纪念一种早已消失的可能性。\n也许这一次，该下定决心了。\n……\n...\n“这就是你上一段旅途，凯尔希。”\n“比你所见的片段还要漫长，漫长千倍万倍，特蕾西娅。”\n“可也许我到现在才真正理解了你，我的敌人。”\n“……同感，萨卡兹的王。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_kalts",
+      "name": {
+        "en": "Panacea",
+        "zh": "医者",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_kalts",
+      "description": {
+        "en": "The wind and sand kissed the sky, and by an oasis pool in the distance, a wandering merchant rested.\nKal'tsit stayed silent for a long time, standing on the deck. Occasionally, she looked out into the distance, and sometimes down at her feet. It was as if the ship called Rhodes Island was hiding something from her. Until a young vampire stepped forward, holding a stack of documents. Hesitating slightly, Closure interrupted Kal'tsit's thoughts.\n'Rhodes Island Pharmaceuticals Inc.' Closure feigned a smile, swallowing her memories, and decided to continue, 'The work on this side of Rim Billiton is already done. Whew, those rabbits are a pain, none of them're as cute as Amiya. They wasted so much of our time, insisting the ship was registered for ore hauling...'\nClosure paused.\nFortunately, Kal'tsit snapped out of her reverie in time and gently responded in an almost soothing tone, 'Thank you for your hard work.'\n'What's next?'\n'Continuing the discussions we didn't finish in the last meeting.'\n'Are we going to lose more people?'\n'More people will leave.' Kal'tsit gazed into the distance where the wandering merchant had packed up, 'They belong to Babel, not Rhodes Island. I just hope there won't be any more bloodshed between us.'\n'I understand, but—'\nA voice interrupted the two.\n'Dr. Kal'tsit? Closure?'\nThe moment she heard the voice, a gentle and caring look flashed in Kal'tsit's eyes, but she quickly composed herself. 'Amiya, you should be resting.'\n'I'm fine. I just had another nightmare.' Amiya tugged at her collar, the wind was strong, and she was small, 'The trip to take the Doctor to Chernobog, and the days we spent in the wilderness... those Sarkaz warriors...'\nKal'tsit and Closure exchanged a quick glance. Closure understood what Kal'tsit meant; after all, both Ascalon and Ace visited Amiya often.\nThey didn't say anything; Amiya could sense it now as well.\n'Yes. They chose to be our enemies.'\n'Why?'\n'Because they live under the beautiful promise of Babel. They don't want to give up that illusion. And to them, we are deserters.'\n'Is Miss Theresa's promise an illusion?'\n'To them, yes.' Kal'tsit stood quietly beside Amiya and reached out to pat her head; she had grown a little taller. 'But they believe that continuing the war will solve all their problems.'\n'They're not entirely wrong, though.'\nKal'tsit was slightly surprised for a moment. She looked at Amiya, gazing at this tired and lost girl for a long time, until she finally felt a sense of relief. 'You're right, Amiya. They're not entirely wrong.'\n'What about the Doctor? Is Ursus safe?' Amiya looked up at Kal'tsit. 'I miss the Doctor a bit.'\nThis innocent gesture made Kal'tsit slightly flustered. At that moment, Closure embraced Amiya from behind.\n'Look, Amiya!'\nAmiya looked and saw an unfamiliar Rim Billitonian merchant, kicking up dust in the distance. The sand-covered cart tied with packages appeared heavy, and somehow cute.\nClosure playfully smiled and held Amiya even tighter.\n'Rhodes Island's journey is just beginning. When the Doctor returns, we'll be Terra's greatest Oripathy experts!'",
+        "zh": "风沙亲吻着天空，远处的绿洲水池边，有行脚商在歇脚。\n凯尔希长久地沉默着，伫立在甲板上。偶尔看向远方，偶尔看向脚下。仿佛这艘名为罗德岛的船有什么东西隐瞒着她。直到年轻的血魔抱着一叠文件找上她。可露希尔犹豫了一小会，打断了凯尔希的思绪。\n“罗德岛制药公司。”可露希尔故作笑颜，把回忆咽了回去，她决定说多一些，“雷姆必拓这边的手续已经办好了。哎呀，那群兔子可真不省事，一点都没有阿米娅可爱。浪费了我们那么多时间，非要说这艘船当时是注册为矿船送回……”\n可露希尔停住了。\n所幸凯尔希及时地回过了神，以近乎安抚的语气轻轻回应了一声：“辛苦了。”\n“接下来呢？”\n“继续上次会议没有讨论完的事情。”\n“会有更多人离开吗？”\n“会有更多人离开的。”凯尔希望向远方，那位行脚商已经收拾好行囊，“他们属于巴别塔，他们不属于罗德岛。只希望我们之间不要再流血了。”\n“我理解，但是——”\n一个声音打断了二人。\n“凯尔希医生？可露希尔小姐？”\n听见声音的那一刻，凯尔希的眼神里便流露出了一些温柔与关切，但很快她板起脸来：“阿米娅，你应该好好休息。”\n“我没事。只是我又做噩梦了。”阿米娅拽着衣领，风很大，她很娇小，“送博士前往切尔诺伯格的路上，还有之前停泊在荒野上的日子里……那些萨卡兹战士们……”\n凯尔希迅速与可露希尔交换了眼神。可露希尔明白凯尔希的意思，毕竟无论是阿斯卡纶还是Ace，都常去探望阿米娅。\n他们什么都不说，现在的阿米娅也会察觉。\n“是的。他们选择与我们为敌。”\n“为什么？”\n“因为他们活在巴别塔美好的许诺里。他们不想放弃那个幻影。而我们无异于逃兵。”\n“特蕾西娅小姐的许诺，是幻影吗？”\n“对他们而言，是的。”凯尔希默默站在了阿米娅的身侧，摸了摸阿米娅的头，她长高了一些，“但他们认为继续战争能消弭一切问题。”\n“但他们也没有错。”\n凯尔希轻微地惊讶了一瞬，她看着阿米娅，久久地看着这个疲惫、茫然的女孩，随后便品味到欣慰之情，“你说得对，阿米娅。他们也没有错。”\n“那博士呢？乌萨斯安全吗？”阿米娅仰头望向凯尔希，“我有些想博士了。”\n这个充满童真的动作却让凯尔希难得有些手足无措。这时，可露希尔从后面抱住了阿米娅。\n“看呀，阿米娅！”\n阿米娅望去，有一位不知名的雷姆必拓行脚商，正在远处扬起沙尘。绑满包裹的沙地车显得沉重又可爱。\n可露希尔俏皮一笑，将阿米娅抱得更紧。\n“罗德岛的旅途才刚要开始，等博士回来，我们就是泰拉最厉害的矿石病专家啦！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_004_kalts",
+      "name": {
+        "en": "Kal'tsit's Specialized Badge",
+        "zh": "凯尔希特限证章",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "A",
+      "icon": "uniequip_004_kalts",
+      "description": {
+        "en": "In light of special permissions granted, the Field Operations Department has hence passed the following resolution with respect to Kal'tsit:\nWhere the entailing mission would fall under Integrated Strategies scope, this operator shall be pursuant to tactics of a reinforced nature in meeting the enemy.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.\n'Strategy confirmed. Mon3tr, prepare to annihilate. Ensure none remain.'",
+        "zh": "凯尔希已获得特别认证许可\n根据外勤部门决议\n在集成战略行动中以改良策略应对敌人\n特别颁发此证章\n以兹证明\n“策略已确认。Mon3tr，准备歼灭，一个不留。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1036 @@
+{
+  "id": "char_235_jesica",
+  "name": {
+    "en": "Jessica",
+    "zh": "杰西卡",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "BS03",
+  "rarity": 4,
+  "class": "SNIPER",
+  "subclass": "fastshot",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Jessica, Sniper Operator of Blacksteel, will provide effective attack power for the squad with her professional skills.",
+    "zh": "黑钢狙击干员杰西卡，将用其专业技术为团队提供有效的打击力量。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "If only she wasn't such a scaredy-cat...",
+    "zh": "如果她没那么胆小的话会更好。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 604,
+            "atk": 163,
+            "def": 54,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 864,
+            "atk": 272,
+            "def": 91,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 1
+        },
+        {
+          "id": "30022",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 864,
+            "atk": 272,
+            "def": 91,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1108,
+            "atk": 389,
+            "def": 130,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3242",
+          "count": 5
+        },
+        {
+          "id": "30073",
+          "count": 20
+        },
+        {
+          "id": "30043",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1108,
+            "atk": 389,
+            "def": 130,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1320,
+            "atk": 475,
+            "def": 154,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_jesica_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_jesica_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.2,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.25,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.35,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.45,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.5,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.6,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 24,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.7,
+            "prob": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Smokescreen",
+            "zh": "掩护烟幕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; <@ba.vup>{prob:0%}</> chance to dodge Physical and Arts attacks",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.8,
+            "prob": 0.75
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 1
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Fast Cartridge",
+            "zh": "快速弹匣",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +6",
+            "zh": "攻击速度+6",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Fast Cartridge",
+            "zh": "快速弹匣",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +12",
+            "zh": "攻击速度+12",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +24",
+        "zh": "攻击力+24",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 65
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_jesica",
+      "name": {
+        "en": "Jessica's Badge",
+        "zh": "杰西卡证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Jessica has demonstrated a remarkable aptitude for maintaining distance whilst conducting suppressive fire against the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Marksman responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员杰西卡擅长保持距离对敌人进行火力压制\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使速射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_jesica",
+      "name": {
+        "en": "Jessica's Order",
+        "zh": "杰西卡的订单",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_jesica",
+      "description": {
+        "en": "Dear Sis,\n\nI've been looking forward to the day you wear the equipment I designed into the battlefield, ever since you became a mercenary at BSW with that giant smile on your face. Now my wish has finally come true. Do you know how happy that makes me?\nHere are some tactical gloves designed for Pioneer teams heading anywhere from Columbia to Sami, with insulating material, extra protection on the knuckles. They should do great for helping you resist the cold. I worried a lot about how they'd conduct Arts, but I don't really know much about controlling stuff as precisely as firing a gun, so maybe these gloves could interfere slightly? Whenever you reply, remember to fill me in on how they went in real combat. If you don't write me at least a full page, I'll tell Dad about how you've been ordering equipment from me on the down-low.\nYou mentioned how touching ice still makes you shake because of the brutally cold winter days you spent in Ursus, so none of the sugary stuff I'm buying you needs refrigerating. I hope this partner firm you're at now doesn't treat you too bad.\nYou always seem a little guilty about how you performed in your most recent op, like blaming yourself for not contributing enough. You might not be willing to tell me about what's happened in concrete, but I think if you're still standing on both feet at mission complete, nobody can ask you for anything more. You end up getting put through the wringer on campaigns as a merc, and even just listening to clients' stories tells me there's more than enough funny business out there. Even the most seasoned vets have some terrors carved into their memories forever, and some enemies they think they could never take down. I've even seen a guy start sobbing uncontrollably when something old came up at a meeting.\nIf you keep having all these nightmares, I just want you to know you're welcome back home anytime for some rest.\n—Take a step back, though. You chose to purchase new gear, and more etched ammo. Doesn't that say how brave you are?\n\nAlso, I'm not gonna jab at you about taking a break, but if you get hurt while wearing gear I designed, I'm gonna feel real bad about it. So get yourself in a good headspace before you run your next op, okay?",
+        "zh": "亲爱的妹妹：\n\n从你决心加入黑钢国际，成为一名雇佣兵的那天起，我就一直期待着你能穿戴我设计的装备进入战场，现在这个愿望终于能实现了，你知道姐姐有多高兴吗？\n这副战术手套是为哥伦比亚前往萨米的开拓队设计的，材料保暖，手套的指关节部位做了额外防护，应该符合你对抗寒能力的要求。当时我也充分考虑了源石技艺传导的问题，但我不知道对于持铳射击这样精密的操作，这副手套在手感上会不会出现微小变化。下一次来信的时候，记得告诉我实战体验，如果写不满一页纸，我就把你悄悄找我订装备的事情告诉父亲。\n你之前说自己在乌萨斯经历了非常寒冷的冬日，以至于现在碰到冰水还会发抖，那我就不给你买需要冷藏的甜点了，希望你现在所在的这家合作企业待遇不会太差。\n你似乎一直在为自己最近一次行动中的表现愧疚，责怪自己没有做出足够的贡献。虽然你不愿意告诉我具体的经历，但我觉得，到任务完成的一刻你的双脚还站在地上，这就很了不起了。作为雇佣兵，难免会面对形势险峻的战役，就算是我从客户那里道听途说的离奇故事也够多了。那些最老练的战士也会有刻骨铭心的恐惧回忆，也有自己觉得无法战胜的对手。我还见过有人在会议中因为提起旧事忍不住流泪呢。\n如果你总是做很多噩梦的话，家里也随时欢迎你回来休息。\n——不过，你已经选择了购置新装备，还有更多的蚀刻子弹，这不是说明你很勇敢吗？\n\n另外，我是不会叫你注意休息的，但是如果你戴着我设计的装备受了伤，我会很难过。所以下一次执行任务之前，调整好自己的状态，好吗？",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30093",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30103",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30083",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

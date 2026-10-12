@@ -1,0 +1,1091 @@
+{
+  "id": "char_304_zebra",
+  "name": {
+    "en": "Heavyrain",
+    "zh": "暴雨",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R164",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "protector",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Defender Operator Heavyrain, uncomplaining and diligent.",
+    "zh": "重装干员暴雨，任劳任怨。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She's got a lot she wants to say, just no idea how to say it.",
+    "zh": "她有很多话想说，只是不知道怎么说。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1443,
+            "atk": 199,
+            "def": 253,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1899,
+            "atk": 256,
+            "def": 378,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1899,
+            "atk": 256,
+            "def": 378,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2467,
+            "atk": 321,
+            "def": 519,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "30043",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2467,
+            "atk": 321,
+            "def": 519,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3380,
+            "atk": 378,
+            "def": 721,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_zebra_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 30,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 33,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 36,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 40,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 43,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 46,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 50,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 55,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 60,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Camouflage",
+            "zh": "应急迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack grants <$ba.camou>Camouflage</> and <@ba.vup>{HP_RECOVERY_PER_SEC}</> HP recovery per second to a nearby ally unit with less than 50% HP, lasting for <@ba.vup>{duration}</> seconds (will not use on an ally unit already under the same effect)\n<@ba.rem>Can store {cnt} charge(s)</>",
+            "zh": "下一次攻击会使周围血量不足一半的一名友方干员获得<$ba.camou>迷彩</>并每秒恢复<@ba.vup>{HP_RECOVERY_PER_SEC}</>点生命，持续<@ba.vup>{duration}</>秒（不会对已有该技能效果的干员重复释放）\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec": 70,
+            "cnt": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_zebra_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 15,
+          "blackboard": {
+            "max_hp": 0.2,
+            "def": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 15,
+          "blackboard": {
+            "max_hp": 0.23,
+            "def": 0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 15,
+          "blackboard": {
+            "max_hp": 0.26,
+            "def": 0.26
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 20,
+          "blackboard": {
+            "max_hp": 0.3,
+            "def": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 20,
+          "blackboard": {
+            "max_hp": 0.33,
+            "def": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "max_hp": 0.36,
+            "def": 0.36
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 25,
+          "blackboard": {
+            "max_hp": 0.4,
+            "def": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 25,
+          "blackboard": {
+            "max_hp": 0.45,
+            "def": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 25,
+          "blackboard": {
+            "max_hp": 0.5,
+            "def": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Group Camouflage",
+            "zh": "群体迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; DEF <@ba.vup>+{def:0%}</> and Max HP <@ba.vup>+{max_hp:0%}</>. Self and allies in the surrounding 4 tiles gain <$ba.camou>Camouflage</>",
+            "zh": "停止攻击敌人；防御力<@ba.vup>+{def:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，使自身和周围4格内的友方干员获得<$ba.camou>迷彩</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "max_hp": 0.55,
+            "def": 0.55
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 2
+        },
+        {
+          "id": "31013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Striped Camouflage",
+            "zh": "条纹迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Heavyrain and allies on high ground tiles within the 8 surrounding tiles gain 10% Physical Dodge",
+            "zh": "自身和周围8格内的高台干员获得10%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Striped Camouflage",
+            "zh": "条纹迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Heavyrain and allies on high ground tiles within the 8 surrounding tiles gain 13% <@ba.talpu>(+3%)</> Physical Dodge",
+            "zh": "自身和周围8格内的高台干员获得13%<@ba.talpu>（+3%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Striped Camouflage",
+            "zh": "条纹迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Heavyrain and allies on high ground tiles within the 8 surrounding tiles gain 20% Physical Dodge",
+            "zh": "自身和周围8格内的高台干员获得20%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Striped Camouflage",
+            "zh": "条纹迷彩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Heavyrain and allies on high ground tiles within the 8 surrounding tiles gain 23% <@ba.talpu>(+3%)</> Physical Dodge",
+            "zh": "自身和周围8格内的高台干员获得23%<@ba.talpu>（+3%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 350,
+        "def": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_zebra",
+      "name": {
+        "en": "Heavyrain's Badge",
+        "zh": "暴雨证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Heavyrain has demonstrated a remarkable aptitude for preservation of the front and resilience against the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Protector responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员暴雨擅长维持战线抵御敌人\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使铁卫职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_zebra",
+      "name": {
+        "en": "Stickers of a Popular Character",
+        "zh": "人气角色贴纸",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_zebra",
+      "description": {
+        "en": "'They said you're a spy, that you betrayed us, but I won't believe it!'\n'Weren't we best buddies? There's gotta be a mistake, right?!'\n'It WAS you?! You—you betrayed us?!'\n'Why?! I'm not going to believe it, not until you give me an answer!'\n'Just say you're innocent, and I'll believe you!'\n'You saved me before, and ever since then, you've been a savior to me...'\n'Is that so? You don't—remember anymore?'\n'Even so—it's a fact that'll never change to me... I could never lay a hand on you, even if it was an order!'\n—Taken from Vol. 9, Ch. 6 of the comic book Field Raider\n\nWhen the fresh-aboard-the-landship, former soldier of Sargon shrinks into a nook to read her comics, it's usually all quiet.\nBut today seems a little out of the ordinary. The other operators in the lounge all heard the stifled yet clear sobs, yet are surprised to find Heavyrain, comic book in hand, buried in a sofa in the lounge's corner—and yes, in tears.\nThis unusual situation leads them to discuss in private.\n\n'Is there anything in that comic worth crying over?'\n'Dunno. I always thought that series had kinda crappy art.'\n'Then why...?'\n'Y'know, why not just ask her directly?'\n'Wait, wait! Hey, what if you end up touching a nerve?!'\n'Then what's your idea?'\n'I've got a plan.'\n\nMaybe due to having his reading time interrupted, Spot, original owner of the comic he lent Heavyrain, yawns as he gets up, walks over, and pats her on the shoulders as she continues to cry.\n'This comic's—'\nSpot speaks very, very slowly. '—MC turns into a superhuman who singlehandedly blocks cannons by the end, and none of his team die. Apparently the one who betrayed them was a double agent who couldn't tell anyone about it, and every enemy gets redemption and surrenders one by one.'\nThe emotionless Spot continues, 'After the volume you're holding, the plot just falls apart.'\n\nHeavyrain stops crying, her expression gone completely blank upon hearing spoilers far too convoluted for her turbulent emotions.\n'So... the lead protects everyone, and his friend... didn't betray him?'\nHeavyrain slowly shuts the comic.\nIt really is a sloppy plot. So sloppy and trite, her head hurts like a shield just took a whack at her brain.\n\nBut still...\nIt's a story. What's so bad about a happy ending where everyone's together?\nAnd blocking cannons singlehandedly—k-kind of sounds a bit cool.",
+        "zh": "“他们说你是个细作，说你背叛了我们，但我不会相信！”\n“我们不是最好的伙伴吗？这一定是误会，对不对？！”\n“真的是你？！你真的、真的背叛了我们？！”\n“为什么！没有一个答案的话，我是不会相信的！”\n“只要你说你是清白的，我就一定相信你！”\n“你曾经救过我一次，从那时候起，我就一直当你是我的恩人……”\n“是吗，你已经、不记得了？”\n“可是，对我来说这是不会变的事实……就算是命令，我也没法对你动手！”\n——摘自漫画《战场奇兵》第六卷第九话\n\n新来的前萨尔贡士兵缩在角落里看漫画时，一般都非常安静。\n不过今天似乎有点特殊，休息室里的其他干员都听到了一声压抑但清晰的抽泣声，然后大家惊讶地发现，手捧着一本漫画，把自己埋在休息室一角的沙发里的暴雨，竟然，正在落泪。\n这种非常规的事态令大家私下里议论纷纷。\n\n“这本漫画有什么值得哭泣的点吗？”\n“不知道，我一直觉得那个系列画得挺烂的。”\n“那为什么……”\n“我说，要不然直接问问本人？”\n“等会等会，万一戳到她的伤心处怎么办啊！”\n“那你说怎么办？”\n“我有办法。”\n\n或许是因为看书被打扰，借这本漫画给暴雨的斑点打了个哈欠站了出来，走上前拍了拍还在落泪的暴雨的肩膀。\n“这套漫画——”\n斑点慢吞吞地说，“主角最后成了个单盾接大炮的超人，主角团一个都没死，据说背叛了的伙伴其实是忍辱负重的双料间谍，敌方全都被感化挨个投降了。”\n无情的斑点继续说，“你手上这卷之后，剧情就崩盘了。”\n\n暴雨停止了抽泣，她的表情因为听到剧透后过于复杂的内心情感而变得一片空白。\n“那就是说……主角保护了所有人，他的伙伴也没有背叛……吗？”\n暴雨缓慢地合上漫画。\n确实是个烂结局。又烂又俗，听完之后就像是脑袋被盾牌砸过一样头疼。\n\n但是……\n故事嘛。大团圆结局又何妨呢？\n单盾接大炮——听、听起来还有点帅呢。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

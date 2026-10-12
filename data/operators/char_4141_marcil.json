@@ -1,0 +1,1623 @@
+{
+  "id": "char_4141_marcil",
+  "name": {
+    "en": "Marcille",
+    "zh": "玛露西尔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "DD02",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "splashcaster",
+  "faction": "laios",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Healing",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Marcille the Mage, top student in the Magic School's history.",
+    "zh": "魔法师玛露西尔，魔法学校自创始以来的才女。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "'I'm not eating monsters! No way!'",
+    "zh": "“绝对不吃魔物，绝对不吃！！”",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 810,
+            "atk": 424,
+            "def": 52,
+            "magicResistance": 10,
+            "cost": 31,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1125,
+            "atk": 598,
+            "def": 79,
+            "magicResistance": 10,
+            "cost": 31,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1125,
+            "atk": 598,
+            "def": 79,
+            "magicResistance": 15,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1407,
+            "atk": 767,
+            "def": 109,
+            "magicResistance": 15,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "30094",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1407,
+            "atk": 767,
+            "def": 109,
+            "magicResistance": 20,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1805,
+            "atk": 914,
+            "def": 130,
+            "magicResistance": 20,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_marcil_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.4,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.45,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.5,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.55,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.6,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.7,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 0.85,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 1,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 1.2,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "A Top Student's Abilities",
+            "zh": "才女的实力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for a short time, activates the skill. Consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> every attack, and ATK <@ba.vup>+{atk:0%}</>. If there are no enemies within range, heals allied operators instead\n<@ba.rem>Skill can be manually deactivated</>",
+            "zh": "短暂<$ba.chant>吟唱</>后开启技能，每次攻击消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>，攻击力<@ba.vup>+{atk:0%}</>，在找不到攻击目标时改为治疗友方干员\\n<@ba.rem>技能可随时主动关闭</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 25,
+          "blackboard": {
+            "chant_duration": 1.5,
+            "skill_cost_min_sp": 2,
+            "mana_init": 25,
+            "atk": 1.4,
+            "sp_cost": 2,
+            "mana_max": 80
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_marcil_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.4,
+            "attack@sluggish": 0.5,
+            "attack_speed": 30,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.45,
+            "attack@sluggish": 0.5,
+            "attack_speed": 30,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.5,
+            "attack@sluggish": 0.5,
+            "attack_speed": 30,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.55,
+            "attack@sluggish": 0.5,
+            "attack_speed": 35,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.6,
+            "attack@sluggish": 0.5,
+            "attack_speed": 35,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.65,
+            "attack@sluggish": 0.5,
+            "attack_speed": 35,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.7,
+            "attack@sluggish": 0.5,
+            "attack_speed": 45,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.8,
+            "attack@sluggish": 0.5,
+            "attack_speed": 50,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 0.9,
+            "attack@sluggish": 0.5,
+            "attack_speed": 55,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Summon Familiar",
+            "zh": "召唤使魔",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{sp_cost}</> <$ba.magicpoint>Mana</> to create a familiar to attack; ATK <@ba.vup>+{atk:0%}</>, attacks <$ba.sluggish>Slow</> all targets for <@ba.vup>{attack@sluggish}</>s.\nSkill can be activated again to upgrade the familiar; attack range <@ba.vup>+1</>, ASPD <@ba.vup>+{attack_speed}</>, attacks <$ba.stun>Stun</> the main target for <@ba.vup>{attack@stun}</>s\n<@ba.rem>Unlimited duration. Skill can be manually deactivated during first activation</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{sp_cost}</>点<$ba.magicpoint>魔力</>制作并使用使魔攻击，攻击力<@ba.vup>+{atk:0%}</>，攻击使所有命中目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n第二次使用时使魔升级，攻击距离<@ba.vup>+1</>，攻击速度<@ba.vup>+{attack_speed}</>，攻击<$ba.stun>晕眩</>主目标<@ba.vup>{attack@stun}</>秒\\n<@ba.rem>技能持续时间无限，第一次使用可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 10,
+          "blackboard": {
+            "chant_duration": 11,
+            "skill_cost_min_sp": 35,
+            "mana_init": 10,
+            "atk": 1,
+            "attack@sluggish": 0.5,
+            "attack_speed": 60,
+            "attack@stun": 0.5,
+            "sp_cost": 35,
+            "mana_max": 80
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 4
+            },
+            {
+              "id": "31043",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31074",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_marcil_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 2.8,
+            "interval": 0.45,
+            "stun": 2,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 2.9,
+            "interval": 0.45,
+            "stun": 2,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3,
+            "interval": 0.45,
+            "stun": 2,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.1,
+            "interval": 0.45,
+            "stun": 3,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.2,
+            "interval": 0.45,
+            "stun": 3,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.3,
+            "interval": 0.45,
+            "stun": 3,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.4,
+            "interval": 0.45,
+            "stun": 3,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.5,
+            "interval": 0.45,
+            "stun": 3.5,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.7,
+            "interval": 0.45,
+            "stun": 3.5,
+            "trig_cnt": 49
+          }
+        },
+        {
+          "name": {
+            "en": "Explosion Magic",
+            "zh": "爆破魔法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After <$ba.chant>Chanting</> for <@ba.vdown>{chant_duration}</>s, consumes <@ba.vdown>{skill_cost_min_sp}</> <$ba.magicpoint>Mana</> to create an explosion in front of the unit at max range; explosion deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to surrounding enemies and causes high ground tiles to collapse, <$ba.stun>Stunning</> them for <@ba.vup>{stun}</>s\n<$ba.chant>Chanting</> can be extended for <@ba.vdown>{extra_chant_duration}</>s; upon completion, consumes <@ba.vdown>all remaining</> <$ba.magicpoint>Mana</>; for every <@ba.vdown>{sp_cost_extra}</> additional <$ba.magicpoint>Mana</> consumed, create 1 additional explosion\n<@ba.rem>Extended chanting can be manually deactivated</>",
+            "zh": "<$ba.chant>吟唱</><@ba.vdown>{chant_duration}</>秒后，消耗<@ba.vdown>{skill_cost_min_sp}</>点<$ba.magicpoint>魔力</>，在正前方位置造成爆炸，对周围敌人造成<@ba.vup>{atk_scale:0%}</>攻击力的法术伤害，炸到的高台会崩开碎片<$ba.stun>晕眩</>其周围敌人<@ba.vup>{stun}</>秒\\n可追加<$ba.chant>吟唱</><@ba.vdown>{extra_chant_duration}</>秒，完成后消耗剩余<@ba.vdown>所有</><$ba.magicpoint>魔力</>，每额外消耗<@ba.vdown>{sp_cost_extra}</>点<$ba.magicpoint>魔力</>，追加1次爆炸\\n<@ba.rem>追加吟唱可随时停止</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "chant_duration": 5,
+            "extra_chant_duration": 10,
+            "skill_cost_min_sp": 8,
+            "mana_max": 80,
+            "mana_init": 40,
+            "sp_cost_extra": 8,
+            "atk_scale": 3.9,
+            "interval": 0.45,
+            "stun": 4,
+            "trig_cnt": 49
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "30023",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31043",
+          "count": 5
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "The Most Brilliant Student In the School's History",
+            "zh": "建校以来第一才女",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Skills use <$ba.magicpoint>Mana</> and can be activated at any time. <$ba.magicpoint>Mana</> does not recover naturally (recovers 1 point per second when not on the field). When having <$ba.magicpoint>Mana</>, ATK +10%, attacks have increased splash area",
+            "zh": "技能消耗<$ba.magicpoint>魔力</>且可随时开启，<$ba.magicpoint>魔力</>不自然回复，不在场时每秒回复1点；有<$ba.magicpoint>魔力</>时，攻击力+10%，攻击溅射范围扩大",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "interval": 1,
+            "mana_add": 1,
+            "mana_max": 100,
+            "mana_init": 0,
+            "sp": 1,
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "The Most Brilliant Student In the School's History",
+            "zh": "建校以来第一才女",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Skills use <$ba.magicpoint>Mana</> and can be activated at any time. <$ba.magicpoint>Mana</> does not recover naturally (recovers 1 point per second when not on the field). When having <$ba.magicpoint>Mana</>, ATK +15% <@ba.talpu>(+5%)</>, attacks have increased splash area",
+            "zh": "技能消耗<$ba.magicpoint>魔力</>且可随时开启，<$ba.magicpoint>魔力</>不自然回复，不在场时每秒回复1点；有<$ba.magicpoint>魔力</>时，攻击力+15%<@ba.talpu>（+5%）</>，攻击溅射范围扩大",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "interval": 1,
+            "mana_add": 1,
+            "mana_max": 100,
+            "mana_init": 0,
+            "sp": 1,
+            "atk": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "The Most Brilliant Student In the School's History",
+            "zh": "建校以来第一才女",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Skills use <$ba.magicpoint>Mana</> and can be activated at any time. <$ba.magicpoint>Mana</> does not recover naturally (recovers 1 point per second when not on the field). When having <$ba.magicpoint>Mana</>, ATK +20%, attacks have increased splash area",
+            "zh": "技能消耗<$ba.magicpoint>魔力</>且可随时开启，<$ba.magicpoint>魔力</>不自然回复，不在场时每秒回复1点；有<$ba.magicpoint>魔力</>时，攻击力+20%，攻击溅射范围扩大",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "interval": 1,
+            "mana_add": 1,
+            "mana_max": 100,
+            "mana_init": 0,
+            "sp": 1,
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "The Most Brilliant Student In the School's History",
+            "zh": "建校以来第一才女",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Skills use <$ba.magicpoint>Mana</> and can be activated at any time. <$ba.magicpoint>Mana</> does not recover naturally (recovers 1 point per second when not on the field). When having <$ba.magicpoint>Mana</>, ATK +25% <@ba.talpu>(+5%)</>, attacks have increased splash area",
+            "zh": "技能消耗<$ba.magicpoint>魔力</>且可随时开启，<$ba.magicpoint>魔力</>不自然回复，不在场时每秒回复1点；有<$ba.magicpoint>魔力</>时，攻击力+25%<@ba.talpu>（+5%）</>，攻击溅射范围扩大",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "interval": 1,
+            "mana_add": 1,
+            "mana_max": 100,
+            "mana_init": 0,
+            "sp": 1,
+            "atk": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Reliable Companion",
+            "zh": "可靠的同伴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Initial <$ba.magicpoint>Mana</> +25; when there are 4 <$ba.laiosteam>[Laios's Party]</> Operators in the squad, all <$ba.laiosteam>[Laios's Party]</> Operators gain +25 ASPD and +35% DEF",
+            "zh": "初始<$ba.magicpoint>魔力</>+25，编队中有4名<$ba.laiosteam>【莱欧斯小队】</>干员时，所有<$ba.laiosteam>【莱欧斯小队】</>干员攻击速度+25，防御力+35%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "mana_init": 25,
+            "attack_speed": 25,
+            "def": 0.35
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +34",
+        "zh": "攻击力+34",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 110
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_marcil",
+      "name": {
+        "en": "Marcille's Badge",
+        "zh": "玛露西尔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_marcil",
+      "description": {
+        "en": "Operator Marcille has demonstrated a remarkable magic-based aptitude for inflicting Arts casualties on multitudes of enemies.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Splash Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员玛露西尔擅长以魔法对复数敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使扩散术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_marcil",
+      "name": {
+        "en": "Book Collection of the Best Magician",
+        "zh": "才女的藏书",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_marcil",
+      "description": {
+        "en": "From Marcille's reading notes...\nI sat in on some 'Originium Arts' lectures. It's what they call magic here, and there are several different schools of it—my explosion magic falls under the School of Evocation. When it was Skyfire's turn to demonstrate, the class suggested we compare the differences between our magic. Afterwards, I caught the whiff of barbecue—they shared a skewer with me and made me swear not to tell Skyfire. I think she knew anyway, because the temperature around her shot up noticeably. Not to mention, it was cold that day, to the point Mint invited me to tag-team hug Skyfire. She was wonderfully warm at first, but quickly got a little too toasty!\nFamiliar summoning falls under the School of Transmutation, which is where Originium energy is used to alter something's physical composition. The class was dying to see my familiars against Mudrock's Colossi in a tug-of-war, which we refused. However, someone mentioned a game called 'beast arenas', which aren't contests of brute strength, but a magician's wisdom and skill—now this we couldn't refuse. After eventually bringing a box into the room, we made our miniature familiar and 'rockbeast' respectively. Still, Mudrock didn't even need to lift a finger to control hers! I worked my butt off trying to win!\n......\nWhile listening to them chat after class, I discovered that Yan's Chief of Lungmen is reputedly extremely handsome, and his wife is the princess of a neighboring country. Not only does she ride motorbikes, but she also has a personal ninja maid! With love blossoming amidst the intricacies of politics, they must have faced countless challenges to be together. The family head even dispatched a ninja to capture the princess. The sight of the chief and the princess together in love moved the stoic and loyal ninja, prompting her to aid them, even if it meant sacrificing herself. On a dark and stormy night, the chief carved a bloody path with his sword to reach the captive princess's chambers. They dashed to her motorbike and screeched away from their pursuers into the night. The ninja, gravely injured while covering for them, faintly smiled as she watched them ride away and then closed her eyes... There's no doubt about it—that's exactly how it happened! And obviously, the chief and the princess went back later to save the ninja!\nI know the bookstall here has a tale of their love in stock. I'm going to get my hands on it!\n......\nI was only expecting a casual read. I had no idea of the truth... I'm noting down their profiles while I can!\nWei Yenwu: The elder brother of Yan's Lung. Carries a red longsword on him. No one expected he'd fall in love at first sight with a foreign lady.\nFumizuki: The Princess of Higashi. A free soul determined to rule her own life.\nShirayuki: Loyal ninja. Would do anything for her princess.\nI'm bringing Falin this novel along with all the books on Arts theory! I just know she'll love it!",
+        "zh": "玛露西尔的读书笔记\n我旁听了几节源石技艺课，他们这里被称为“源石技艺”的魔法会分成很多种流派，我的爆炸魔法属于“塑能转换系”。天火在课堂上做展示时，学生们提议看看我们二人魔法的区别，演示后我闻到了烤肉的香气，休息的时候他们分给了我一串，还让我不要告诉天火——但我觉得她是知道的，因为她周围的温度又上升了。而且那天有点冷，薄绿问我要不要一起抱着天火。确实很暖和，但后来就有些烫了！\n使魔召唤术算是“塑形重构系”，解释为可以依靠源石能量改变物质原本的结构。学生们很兴奋地想让我的使魔和泥岩的岩石巨像进行一场拔河赛——我们都拒绝了，但一位学生提出了一种叫做“斗兽场”的游戏，不是比拼蛮力，而是魔法师智慧和技巧的对决——这我们没法拒绝。最终我们在课堂上找来了一个盒子，制作了小巧的使魔和“岩石兽”。\n……\n不过我课后听他们聊天，炎国的龙门总督是一个非常英俊的人，他的妻子还是邻国的公主，不仅会骑机车，还有一个贴身的忍者侍女！他们能走到一起一定经历了种种挫折，两人的爱情介于政治的夹缝之间。家主派出忍者看押公主，忍者原本冷面冷心奉命行事，没想到被总督与公主的爱情所打动，不惜牺牲自己也要成全他们。最终，在一个漆黑的夜晚，总督一人一剑杀出一条血路，找到了关着公主的房间，公主带着总督飞身坐上了自己的机车，二人甩开了身后的追兵，消失在夜色之中。忍者因奋力掩护身负重伤，看着他们离开的背影，露出了满足的微笑，闭上了双眼……啊啊，一定是这样！当然啦，总督和公主一定会回去救忍者的！\n小摊还有卖讲他们爱情故事的书，下次去看看！\n……\n一开始只是想读读看，没想到……我一定要把他们的人物形象都记下来！\n魏彦吾：他是炎国真龙的哥哥，手持一柄赤红长剑，却没想到第一眼就爱上了来自异国的她。\n文月：她是东国的公主，恣意不拘，决意掌握住自己的人生。\n白雪：忠诚的忍者，为了公主愿意做任何事。\n除了那些理论书，一定要把这本小说也带给法琳！她一定会喜欢的！",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

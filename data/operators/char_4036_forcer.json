@@ -1,0 +1,1125 @@
+{
+  "id": "char_4036_forcer",
+  "name": {
+    "en": "Enforcer",
+    "zh": "见行者",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LT10",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "pusher",
+  "faction": "laterano",
+  "position": "MELEE",
+  "tagList": [
+    "Shift",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Enforcer, executor of the Laterano Notarial Hall, will mediate all disputes for you.",
+    "zh": "拉特兰公证所执行者见行者，将为你调解纷争。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "His only trick is having enough patience.",
+    "zh": "他唯一的秘诀是足够耐心。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 825,
+            "atk": 285,
+            "def": 158,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1147,
+            "atk": 396,
+            "def": 240,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1147,
+            "atk": 396,
+            "def": 240,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1510,
+            "atk": 528,
+            "def": 316,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "31014",
+          "count": 8
+        },
+        {
+          "id": "31053",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1510,
+            "atk": 528,
+            "def": 316,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1937,
+            "atk": 653,
+            "def": 381,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_forcer_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>slightly</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 0,
+            "stun": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>slightly</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 0,
+            "stun": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>slightly</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 0,
+            "stun": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>moderately</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Deterring Shot",
+            "zh": "护身射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes the target towards the attack direction <@ba.vup>greatly</>, <$ba.stun>stunning</> it for <@ba.vup>{stun}</> seconds if the target collides with High Ground.",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>较大力地</>推开，目标撞到高台时<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "force": 2,
+            "stun": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_forcer_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 2.7,
+            "forcer_s_2[brush].stun": 1.6,
+            "forcer_s_2[hit_directly].stun": 1.6,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 2.8,
+            "forcer_s_2[brush].stun": 1.7,
+            "forcer_s_2[hit_directly].stun": 1.7,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 2.9,
+            "forcer_s_2[brush].stun": 1.8,
+            "forcer_s_2[hit_directly].stun": 1.8,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 3,
+            "forcer_s_2[brush].stun": 1.9,
+            "forcer_s_2[hit_directly].stun": 1.9,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 3.1,
+            "forcer_s_2[brush].stun": 2,
+            "forcer_s_2[hit_directly].stun": 2,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>moderately</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>中等力度地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "force": 1,
+            "stun": 3.2,
+            "forcer_s_2[brush].stun": 2.1,
+            "forcer_s_2[hit_directly].stun": 2.1,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>greatly</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>较大力地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "force": 2,
+            "stun": 3.4,
+            "forcer_s_2[brush].stun": 2.2,
+            "forcer_s_2[hit_directly].stun": 2.2,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>greatly</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>较大力地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "force": 2,
+            "stun": 3.6,
+            "forcer_s_2[brush].stun": 2.3,
+            "forcer_s_2[hit_directly].stun": 2.3,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>greatly</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>较大力地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "force": 2,
+            "stun": 3.8,
+            "forcer_s_2[brush].stun": 2.4,
+            "forcer_s_2[hit_directly].stun": 2.4,
+            "projectile_range": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Staggering Shot",
+            "zh": "惊爆射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately pushes back all enemies within range <@ba.vup>significantly</> in the direction this unit is facing, additionally <$ba.stun>stunning</> them for <@ba.vup>{forcer_s_2[hit_directly].stun}</> seconds (the <$ba.stun>stun</> duration is increased to <@ba.vup>{stun}</> seconds if the target collides with High Ground). If the target collides with another enemy, the enemy will also be <$ba.stun>stunned</> for <@ba.vup>{forcer_s_2[brush].stun}</> seconds.",
+            "zh": "立即将范围内所有敌人往身前方向<@ba.vup>大力地</>推开并<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[hit_directly].stun}</>秒（撞到高台时<$ba.stun>晕眩</>时间延长为<@ba.vup>{stun}</>秒）。若目标碰撞其他敌人，使其<$ba.stun>晕眩</><@ba.vup>{forcer_s_2[brush].stun}</>秒。",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "force": 3,
+            "stun": 4,
+            "forcer_s_2[brush].stun": 2.5,
+            "forcer_s_2[hit_directly].stun": 2.5,
+            "projectile_range": 0.33
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 3
+        },
+        {
+          "id": "31043",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Precise Aim",
+            "zh": "技巧射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ignores 90 DEF when attacking enemies with weight greater than or equal to 3",
+            "zh": "攻击重量大于等于3的敌人时无视目标90的防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "value": 3,
+            "def_penetrate_fixed": 90
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Aim",
+            "zh": "技巧射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ignores 110 <@ba.talpu>(+20)</> DEF when attacking enemies with weight greater than or equal to 3",
+            "zh": "攻击重量大于等于3的敌人时无视目标110<@ba.talpu>（+20）</>的防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "value": 3,
+            "def_penetrate_fixed": 110
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Aim",
+            "zh": "技巧射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ignores 180 DEF when attacking enemies with weight greater than or equal to 3",
+            "zh": "攻击重量大于等于3的敌人时无视目标180的防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "value": 3,
+            "def_penetrate_fixed": 180
+          }
+        },
+        {
+          "name": {
+            "en": "Precise Aim",
+            "zh": "技巧射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ignores 200 <@ba.talpu>(+20)</> DEF when attacking enemies with weight greater than or equal to 3",
+            "zh": "攻击重量大于等于3的敌人时无视目标200<@ba.talpu>（+20）</>的防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "value": 3,
+            "def_penetrate_fixed": 200
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 350,
+        "def": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_forcer",
+      "name": {
+        "en": "Enforcer's Badge",
+        "zh": "见行者证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_forcer",
+      "description": {
+        "en": "Operator Enforcer has demonstrated a remarkable aptitude for physically distancing the enemy via applied force so as to preserve the front.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Push Stroker responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员见行者擅长将敌人推至远方以维持战线\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使推击手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_forcer",
+      "name": {
+        "en": "Heaven, Here, Now",
+        "zh": "可执行的幻想",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_forcer",
+      "description": {
+        "en": "'You want to work at my patisserie? A Notarial Hall executor?!'\n'Yes.'\n......\nNo matter the reason Ezell gives, the patisserie owner finds it hard to comprehend why an executor wants to do this of all things. Still, Laterano's Sankta are famed for doing as they please, and he has no reason to refuse, so the patisserie is where he lets Ezell be.\nAt first, Ezell's work is rough around the edges, clearly too stiff in copying what he sees. He unfailingly takes down all the necessary ingredients, amounts, ratios, and methods in his notebook.\nSome, of course, are floored to recognize what Ezell is. There's even speculation that some major case is developing—why else would a Notarial Hall executor go into hiding here, like this? Still, the week ends without anything of note. And just like at the Notarial Hall, Ezell is never late. But no matter how busy the shop is, he never works overtime, always punctual to clock out.\n'Cecelia, I'm home. Here, cookies.'\n'Thanks, Mister Ezell!'\n'They're really good! Mister Ezell, did you make them?'\n'Mm-hm. In a few more days, once I've made the preparations, we'll head out to see your papà.'\n'Okay!'\n......\n'What? You're quitting, right now? *sigh* You've put so much effort into learning patisserie, you know. Even taught you my secret recipe, hahaha.'\n'I'm sorry.'\n......\n'Ezell, the intel you need's all here.'\n'Thank you, Richele.'\n'Once you're checked in at Rhodes Island, got an idea of where you're going next?'\n'Hmm... based on our present intel, I think I do, roughly.\n'Let's go, Cecelia.'\n......\nIf you took a look through the notebook Ezell carries, you'd find it crammed full of things you'd expect from someone like him. Notes on his work, timetables, coffee brewing instructions, etc.\nBut on one page, in immature handwriting, is 'I want to eat Lateran sweets,' contrasted by a dessert recipe below in Ezell's script.\n'They'd be hard to find in any stores after leaving Laterano, and would spoil on the way if prepared in bulk beforehand, so the best plan was to learn to make them myself.'\n'I know how implausible leaving Laterano to find a Sarkaz is, given the current circumstances. I have enough faith to stay by Cecelia's side the whole way, but I know that for her, the journey to come will reveal itself to be an ordeal like nothing else.'\n'So I've told her that whenever she wants to do something, she can write in this book. No matter how unrealistic, I'll earnestly plan it out, execute it, and achieve it. So that on this journey, Cecelia's heart remains ever filled with hope.'\nThus explains Ezell.\n'Ah! Cecelia, wait!'\n'That's black coffee! You won't grow big if you drink that!'",
+        "zh": "“你说你要在我这甜品店工作？一名公证所的执行者？！”\n“是的。”\n……\n不管艾泽尔给出什么样的理由，甜品店的老板都很难理解一名执行者为什么要做这样的事情。不过拉特兰的萨科塔也是出了名地随心所欲，他倒也没有理由拒绝，也就让艾泽尔在店里留了下来。\n初上手的艾泽尔手艺称不上熟练，必然是一板一眼。他会将所需的原料、用量、比例、手法通通记录在自己的笔记本上。\n当然也有人认出艾泽尔的身份而感到非常惊讶，甚至猜测是有什么大的案件发生，所以公证所的执行者要以这样的方式隐藏在这里，不过这一个星期最终都是无事发生。而且就如在公证所一样，艾泽尔绝不迟到，但就算店里再忙，也绝不会加班，必定准时下班。\n“塞茜莉亚，我回来了。给你，曲奇饼干。”\n“谢谢你，艾泽尔哥哥！”\n“好好吃！这是艾泽尔哥哥做的吗？”\n“嗯，再过几天，等我把所有东西准备完毕， 我们就出发去找你的爸爸。”\n“好！”\n……\n“欸？你这就要辞职吗？唉，不过你学甜品是真的很努力，还把我那点秘方都记去了，哈哈哈。”\n“对不起。”\n……\n“艾泽尔，你要的情报都在这里了。”\n“谢谢你，里凯莱前辈。”\n“到罗德岛报到以后，你想好去哪里了吗？”\n“唔……根据目前这些情报，我大概有些想法。\n“塞茜莉亚，我们出发吧。”\n……\n如果你看过艾泽尔手上的笔记本的话，就会发现上面不出意料地写满了一切符合你对他印象的事物，工作日志、时间安排、咖啡调配方法等。\n不过在某一页上，有稚嫩的字体写着“想吃拉特兰的点心”，下面则是艾泽尔记下的甜点配方。\n“离开拉特兰以后就很难再买到。如果准备很多带在路上一定会坏掉，所以最好的办法是学会怎么制作。”\n“我很清楚在现在的情形下，离开拉特兰去找一名萨卡兹是怎样一件几乎不可能的事情。虽然我有足够的信念会一直陪伴在塞茜莉亚身边。但我也知道对于塞茜莉亚来说，未来的旅途一定会变得无比煎熬。”\n“所以我告诉她可以随时把想做的事情写在本子上，无论多么不切实际，我都会认真计划，去执行然后实现它。愿这趟旅途上，塞茜莉亚能一直满怀希望。”\n艾泽尔这样解释道。\n“啊！塞茜莉亚，等下！”\n“那个是黑咖啡，喝了会长不高的！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30094",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30044",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30074",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

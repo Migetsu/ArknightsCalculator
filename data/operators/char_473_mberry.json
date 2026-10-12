@@ -1,0 +1,1100 @@
+{
+  "id": "char_473_mberry",
+  "name": {
+    "en": "Mulberry",
+    "zh": "桑葚",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "YD03",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "wandermedic",
+  "faction": "yan",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Mulberry, of the rescue team, carries out her work conscientiously.",
+    "zh": "救援队成员桑葚，兢兢业业地做好自己的工作。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Regardless of position or status, life always comes first.",
+    "zh": "不论立场如何，生命第一。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 750,
+            "atk": 136,
+            "def": 43,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 987,
+            "atk": 223,
+            "def": 63,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 987,
+            "atk": 223,
+            "def": 63,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1175,
+            "atk": 310,
+            "def": 79,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "31043",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1175,
+            "atk": 310,
+            "def": 79,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1367,
+            "atk": 388,
+            "def": 99,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mberry_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "ep_heal_ratio": 0.6,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.25,
+            "ep_heal_ratio": 0.625,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.3,
+            "ep_heal_ratio": 0.65,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.35,
+            "ep_heal_ratio": 0.675,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.4,
+            "ep_heal_ratio": 0.7,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.45,
+            "ep_heal_ratio": 0.725,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "ep_heal_ratio": 0.75,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.6,
+            "ep_heal_ratio": 0.8,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.7,
+            "ep_heal_ratio": 0.85,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Haze",
+            "zh": "治愈云雾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the next heal's healing effect and <$ba.dt.element>Elemental Injury</> recovery to <@ba.vup>{heal_scale:0%}</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken\n<@ba.rem>Can store up to {cnt} charges</>",
+            "zh": "下次治疗的治疗量和<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{heal_scale:0%}</>，优先治疗<$ba.dt.element>元素损伤</>最严重的目标\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.8,
+            "ep_heal_ratio": 0.9,
+            "cnt": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mberry_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.4,
+            "ep_damage_resistance": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 79,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.4,
+            "ep_damage_resistance": 0.17
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 78,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.4,
+            "ep_damage_resistance": 0.19
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 76,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.33,
+            "ep_damage_resistance": 0.21
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 75,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.33,
+            "ep_damage_resistance": 0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.33,
+            "ep_damage_resistance": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.33,
+            "ep_damage_resistance": 0.28
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.33,
+            "ep_damage_resistance": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces significantly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 68,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.26,
+            "ep_damage_resistance": 0.32
+          }
+        },
+        {
+          "name": {
+            "en": "Safe Zone",
+            "zh": "安全区域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces significantly</> and prioritizes the target with the highest <$ba.dt.element>Elemental Injury</> taken. All allied units within Attack Range receive <@ba.vup>{ep_damage_resistance:0%}</> less <$ba.dt.element>Elemental Injury</>",
+            "zh": "攻击间隔<@ba.vup>大幅度缩短</>并优先治疗<$ba.dt.element>元素损伤</>最严重的目标，攻击范围内所有友方单位受到的<$ba.dt.element>元素损伤</>降低<@ba.vup>{ep_damage_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 66,
+          "initSp": 50,
+          "blackboard": {
+            "base_attack_time": 0.26,
+            "ep_damage_resistance": 0.35
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Helper",
+            "zh": "助手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mulberry and at least one more Medic Operator are on the battlefield, all Medic Operators gain +6% ATK",
+            "zh": "场上存在桑葚和另外至少一名【医疗】干员时，所有【医疗】干员的攻击力+6%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Helper",
+            "zh": "助手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mulberry and at least one more Medic Operator are on the battlefield, all Medic Operators gain +7% <@ba.talpu>(+1%)</> ATK",
+            "zh": "场上存在桑葚和另外至少一名【医疗】干员时，所有【医疗】干员的攻击力+7%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Helper",
+            "zh": "助手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mulberry and at least one more Medic Operator are on the battlefield, all Medic Operators gain +10% ATK",
+            "zh": "场上存在桑葚和另外至少一名【医疗】干员时，所有【医疗】干员的攻击力+10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Helper",
+            "zh": "助手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When Mulberry and at least one more Medic Operator are on the battlefield, all Medic Operators gain +11% <@ba.talpu>(+1%)</> ATK",
+            "zh": "场上存在桑葚和另外至少一名【医疗】干员时，所有【医疗】干员的攻击力+11%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.11
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +19",
+        "zh": "攻击力+19",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 150,
+        "atk": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mberry",
+      "name": {
+        "en": "Mulberry's Badge",
+        "zh": "桑葚证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_mberry",
+      "description": {
+        "en": "Operator Mulberry has demonstrated a remarkable aptitude for wide-range healing in tandem with remedying Operators of their accrued Elemental Injurys.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Wandering Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员桑葚擅长大范围治疗并为干员恢复元素损伤\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使行医职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mberry",
+      "name": {
+        "en": "Serenity Inside",
+        "zh": "宁心静神",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_mberry",
+      "description": {
+        "en": "Ning-Ning,\nHave you been eating and sleeping well lately? In your last letter, you mentioned often waking up startled at night, which has made us very worried. Your second sister has been transferred to work in Danyan, and she went up the mountain there and picked some nerve-soothing herbs for you. She plans to send them to you via a Messenger—has your address changed recently? If it has, please write back soon to let us know your new address. Or maybe she can ask the Chun-qian team to contact Rhodes Island's office and give the herbs to them. Which way works better for you?\nAs for what you asked about in your last letter, your dad has already looked into it for you. Thankfully no one was hurt in the snowstorm last month. Your dad carried the disaster-prevention pamphlets you sent back and handed them out door-to-door. The teachers at the local school read those pamphlets and even praised your writing, saying your wrist strength has greatly improved. When he told me this, I felt really happy for you, but when the night falls, I still can't help but feel a bit sad. Ning-Ning, my girl, you're far from home now. When you sit at the desk writing and studying until your fingers are all sore, you wouldn't be able to run over to me for a good massage... All I can do is remind you to rest well in my letters. You've always been a smart child, and now you've even learned much about saving lives. I'm sure you know better how to take good care of yourself, right?\nOh, I have a funny story to share with you. The festival is coming up next week, and not only are the kids excited about the rice dumplings and snacks, even Grandma is thrilled. When the weather is nice, she likes to do some needlework on her lounge chair, but her eyesight isn't great, so she always needs help threading the needle. One afternoon, when I got back home from work, she complained to me that she had called for you many times in the morning, but you never came. I didn't know how to explain it to her; it was both funny and a bit sad. I took the afternoon off that day and made two sachets with Grandma. Actually, I've never really sewed anything before, so my stitching came out all crooked—you'll probably recognize which one I made at first glance. Or you can tell it by its smell. I filled it with some dried acanthopanax root, the same herb we used to put under your pillow to help calm your mind. Hang the sachet by your bed and it should give off a gentle scent that might help you sleep better.\nYour dad and I agreed to cooperate on this letter and it was supposed to start with me writing and then your dad finishing it. But he sat there chewing on the end of his pen half the night without writing a single word. With the Messenger arriving at dawn, I decided to just finish it myself. Everything at home is going well, and both your dad and I are doing fine at work. Whenever people talk about you, they always praise how strong and brave you are. Your father and I have read your last letter over and over again.\nIf you have the time, maybe send another letter home?",
+        "zh": "宁宁：\n近来饮食睡眠可好？上次来信，你说自己夜里常常惊醒，这令我们十分挂念。你二姊调派到了丹燕城工作，她特意去那边的山上采摘了些补心益气的药草，准备联系信使给你寄去，你的收信地址近期会有变化吗？如果有变动，希望你早些回信将新地址告知我们。或者让你二姊拜托“春乾”的队员去联系罗德岛的办事处，你觉得哪样更稳妥些？\n上次来信中所问之事，你爸爸已帮你去打听过了。上个月山里虽然受了雪灾，但所幸无人受伤。你爸爸把你寄回来的防灾小册子揣了一路，挨家挨户给他们分发过去。学堂的老师看过那些册子，还夸赞了你的书写，说你的腕上力气大有长进呢。你爸爸说给我听的时候，我也感到高兴，可到了夜里，又总觉得心酸。宁宁，你现在离家很远，不再像从前，你坐在桌前写字背书，手酸了就跑过来让我给你揉揉……妈妈能做的似乎也只有在信里多叮嘱你两句。不过，你一直都是个聪明的孩子，现在又学了很多救人性命的学问，你肯定比妈妈更清楚要怎么照顾好自己，对吗？\n说到这里，想起有件趣事该告诉你。下周就要过节了，不光家里的小朋友们期待着粽子点心，连姥娘都很有精神头。日头好的时候，她就在躺椅上做点针线活，不过她眼神不好，穿针的时候总得喊人帮忙。有天中午我刚下班回到家，她跟我抱怨说，一上午喊了你好多遍你都不肯来。我一时不知道怎么跟她解释，真是哭笑不得。那天我请了下午的假，和姥娘一起缝了两个香囊。我从来没拿过缝衣针，缝出来的图案都歪歪扭扭的，你应该一眼就能认出来哪个是我缝的。认不出来的话，也可以闻一闻，我往里面塞了些晒干的刺五加，就是从前家里压在你枕头下面的那种草药叶子，也是能够宁心静神的，挂在床头，味道不会很浓，希望能帮你睡得安稳些。\n这封信本来说好是我写开头，你爸爸来写结尾的。不过他咬着笔杆子坐了半宿也没写下一个字，天亮信使就要来了，干脆还是我来写吧。家中一切都好，我和你爸爸的工作也很顺利，大家谈起你时，总是夸你坚强又勇敢。你上次寄来的信，我和你爸爸翻来覆去看了好多遍，可还是觉得看不够。\n如果你有空的话，可以再给家里回一封信吗？",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31064",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

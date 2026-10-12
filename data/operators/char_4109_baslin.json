@@ -1,0 +1,1063 @@
+{
+  "id": "char_4109_baslin",
+  "name": {
+    "en": "Bassline",
+    "zh": "深律",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LN13",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "guardian",
+  "faction": "leithanien",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Defender operator Bassline, here by the Empresses' will.",
+    "zh": "重装干员深律，奉女皇之命前来。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "'Special Court Etiquette Officer Michael, on assignment to Rhodes Island. Kindly keep my schedule confidential, considering the sensitivity of my mission.'",
+    "zh": "“特遣双塔宫廷礼仪官米夏埃尔驻罗德岛专办，考虑到身份特殊，来去频繁，讯息紧要，行程务必保密。”",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1150,
+            "atk": 195,
+            "def": 238,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1555,
+            "atk": 279,
+            "def": 350,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1555,
+            "atk": 279,
+            "def": 350,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1994,
+            "atk": 378,
+            "def": 467,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "31084",
+          "count": 7
+        },
+        {
+          "id": "30083",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1994,
+            "atk": 378,
+            "def": 467,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2770,
+            "atk": 473,
+            "def": 570,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_baslin_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.15,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.35,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.6,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.7,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.8,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31084",
+              "count": 3
+            },
+            {
+              "id": "31053",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "31054",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_baslin_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.2,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.25,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.3,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.35,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.45,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 50,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 51,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 52,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Calming Bass",
+            "zh": "沉音宁神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; stop attacking and focus on healing nearby allies, each heal giving the target a <$ba.barrier>Barrier</> that absorbs <@ba.vup>Arts</> damage equal to <@ba.vup>{attack@scale:0%}</> of Bassline's ATK",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗，每次治疗使目标获得一个<$ba.barrier>屏障</>，屏障能吸收相当于深律攻击力<@ba.vup>{attack@scale:0%}</>的<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 53,
+          "blackboard": {
+            "atk": 0.8,
+            "base_attack_time": 1.3,
+            "attack@scale": 0.6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "30033",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31083",
+          "count": 2
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Authoritarian Teachings",
+            "zh": "威权教诲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +6; if there are allied Operators in the 8 surrounding tiles, gain another RES +2",
+            "zh": "法术抗性+6，周围8格有友方干员时，法术抗性额外+2",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "baslin_t[self].magic_resistance": 6,
+            "baslin_t[ally].magic_resistance": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Authoritarian Teachings",
+            "zh": "威权教诲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +12; if there are allied Operators in the 8 surrounding tiles, gain another RES +4",
+            "zh": "法术抗性+12，周围8格有友方干员时，法术抗性额外+4",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "baslin_t[self].magic_resistance": 12,
+            "baslin_t[ally].magic_resistance": 4
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +25",
+        "zh": "防御力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +200",
+        "zh": "生命上限+200",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 50,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_baslin",
+      "name": {
+        "en": "Bassline's Badge",
+        "zh": "深律证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_baslin",
+      "description": {
+        "en": "Operator Bassline has demonstrated the capacity for simultaneously treating allied forces while holding the battlefront.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Guardian responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员深律在维持战线的同时为友军提供医疗支援\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使守护者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_baslin",
+      "name": {
+        "en": "Bestowed Trinket",
+        "zh": "受赐玩物",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_baslin",
+      "description": {
+        "en": "Micha waves a hand over the crystal-shaped nightlight. Like wafting a breeze to put out a candle, it extinguishes; the Spire's study turns to dusk hues, with only the light of the setting sun coming through the window.\nEvening falls over Zwillingstürme, the sound of music filtering like mist through the Spire's generous walls. It is profound and yet murky, not at all there, yet opaque to the senses. Micha recognizes the piece; Bach's 12th Symphony 'Abendrot', 3rd movement, performed by the Fortsgard Philharmonic Orchestra. From the style, possibly conducted by Ricercar, yet also reminiscent of Graf Lotzmann—is he still allowed into Zwillingstürme these days? Grimmacht had already sent him off to the Black Manor, thirteen months ago. It was Micha himself who delivered the documents...\nA muffled noise ripples past his ear, one he's all too familiar with: his Originium Arts. Silent soundwaves transmit outwards from him, pushing the sound of 'Abendrot' away, until every corner of the study is encompassed. The room is soundproofed, and Micha's mind is proofed from the chaos of any lingering thoughts.\nMicha picks up the pair of castanets, much heavier than any ordinary kind, made of thicker, sturdier wood. On top, the inlaid—well, what used to be inlaid gold thread was gilded with no regard for acoustics, which already ruined the castanets' original timbre, not to mention the oversized gemstones. Thanks to those, they come off as ornate, respectable, no longer capable of the sound they were meant to make. They qualify no longer as an instrument, but an exceptional gift instead, and an exceptional trinket.\nMicha has never really treasured this reward since it was bestowed to him. He doesn't want an instrument permanently stripped of its proper sound—and he knows the one who gave them to him meant it in exactly that way. That's why the castanets scare him, why he detests them, why they prick at him at practically every turn.\nHe won't take them up; he'd rather regard them as a trinket, a child's plaything, to be willfully handled until the gold thread falls off, their formerly sleek black surface riddled with scratches. He once even thought of throwing them away, into the hills, into the wind, back into that curdled-stiff afterglow.\n'You must keep them by your side. Can a toy hurt you? You must keep them by your side, to prove that you and them are different. Not for Lupukarn, but for yourself.' The voice sounds so close to him, but in truth it is further than any other voice could be. Micha knows that that voice is the reason he's kept them. He remembers, gazing at that Spire, how the black shadow it cast would always keep him strong.\nMicha looks out of the window, and all he sees is the golden afterglow.",
+        "zh": "米夏挥手掠过晶石状的夜灯，就像扬起清风扇灭蜡烛，夜灯随即熄灭，高塔的书房变得昏暗，唯一的光亮来自窗外的夕阳。\n崔林特尔梅天色将暮，几尺厚的塔墙之外传来雾霭般的乐音，厚重又朦胧，它仿佛不存在，但又让人看不穿。米夏辨认出了这首乐曲，巴赫第十二交响曲“晚霞”，第三乐章，福特冈爱乐乐团演奏，指挥风格像是利切卡尔，又像是罗尔兹曼伯爵——罗尔兹曼伯爵现在还能进入崔林特尔梅吗？赫琳玛特已经把他送去了黑色的府邸，就在十三个月之前，是米夏自己送去的文书……\n一声闷响在耳边荡漾开来，这声闷响他再熟悉不过，这是他的源石技艺。无声的音波自周身向外传播，推开了“晚霞”的声音，直到书房的每个角落都被纳入其中。房间隔绝了声响，米夏的思绪也隔绝了杂乱的念想。\n米夏拿起那一副响板，它比一般的响板要沉得多，制成它的木材更厚实，上面镶嵌——或者说曾经镶嵌着的金丝完全没有考虑声学构造，把响板原有的音色完全破坏了，更不要说那颗夸张的宝石。这副响板因为它们而显得华美、尊贵，已经不再能够发出本应发出的声音。它不再是一件合格的乐器，而是一件绝佳的赏赐、一件绝佳的玩物。\n自他受赐的那天起，米夏就没有真正爱惜过这件赏赐品，他不想要一件不再能够正常发声的乐器——他知道将这副响板赐给自己的那个人正是这个意思。米夏因此害怕这副响板，憎恨这副响板，这副响板似乎无时无刻不在刺痛着他。\n他不愿把它带在身边，他宁愿就把它当成一件玩物，一件孩童的玩物，任性处置，直到金丝脱落，直到原先光滑乌黑的表面布满划痕。他甚至曾经想过把它扔掉，扔到山野，扔到风中，扔回那一片凝固的晚霞里。\n“你得把它留在身边。一件玩具就能伤害你？你得把它留在身边，证明你和它不一样。这不是为了鲁珀坎，这是为了你自己。”那声音好像离他很近，但实际上又比任何声音都要遥远。米夏知道那声音就是留下它的理由。米夏还记得望向那座高塔的时候，它投下的黑影总能让他坚强。\n米夏望向窗外，唯独望见了金色的晚霞。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31044",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31054",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

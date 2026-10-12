@@ -1,0 +1,1027 @@
+{
+  "id": "char_118_yuki",
+  "name": {
+    "en": "Shirayuki",
+    "zh": "白雪",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LM10",
+  "rarity": 4,
+  "class": "SNIPER",
+  "subclass": "aoesniper",
+  "faction": "higashi",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Slow"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Shirayuki, bodyguard of Mrs. Fumizuki, will provide help for you under the orders of her master.",
+    "zh": "文月夫人的贴身护卫白雪，谨遵主命为你提供帮助。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "To your surprise, she always reappears out of nowhere.",
+    "zh": "她总会从你意想不到的地方出现。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 834,
+            "atk": 347,
+            "def": 51,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1043,
+            "atk": 496,
+            "def": 66,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-8",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 1
+        },
+        {
+          "id": "30012",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1043,
+            "atk": 496,
+            "def": 66,
+            "magicResistance": 0,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1304,
+            "atk": 621,
+            "def": 84,
+            "magicResistance": 0,
+            "cost": 25,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-10",
+      "evolveCost": [
+        {
+          "id": "3242",
+          "count": 5
+        },
+        {
+          "id": "30053",
+          "count": 15
+        },
+        {
+          "id": "30043",
+          "count": 9
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1304,
+            "atk": 621,
+            "def": 84,
+            "magicResistance": 0,
+            "cost": 27,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1630,
+            "atk": 797,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 27,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_yuki_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 0,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 5,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 5,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shuriken",
+            "zh": "敌飙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND} tiles</>",
+            "zh": "攻击范围<@ba.vup>+{ABILITY_RANGE_FORWARD_EXTEND}格</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 10,
+          "blackboard": {
+            "ability_range_forward_extend": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_yuki_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.5,
+            "attack@duration": 1,
+            "attack@move_speed": -0.22
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.5,
+            "attack@duration": 1,
+            "attack@move_speed": -0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.5,
+            "attack@duration": 1,
+            "attack@move_speed": -0.24
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.6,
+            "attack@duration": 1,
+            "attack@move_speed": -0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.6,
+            "attack@duration": 1,
+            "attack@move_speed": -0.26
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.6,
+            "attack@duration": 1,
+            "attack@move_speed": -0.27
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.7,
+            "attack@duration": 1,
+            "attack@move_speed": -0.28
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.7,
+            "attack@duration": 1,
+            "attack@move_speed": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.7,
+            "attack@duration": 1,
+            "attack@move_speed": -0.32
+          }
+        },
+        {
+          "name": {
+            "en": "Fatal Shuriken",
+            "zh": "凝武",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws giant spinning shurikens, the target's Movement Speed reduces by <@ba.vup>{-attack@move_speed:0%}</> for a short time and dealing <@ba.vup>{attack@atk_scale:0%}</> of <@ba.vup>ATK Arts damage</> to the target per second",
+            "zh": "攻击变为投掷回旋的大飞镖，短时间内使命中目标的移动速度<@ba.vup>降低{-attack@move_speed:0%}</>，并每秒受到相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的<@ba.vup>法术伤害</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 0.8,
+            "attack@duration": 1,
+            "attack@move_speed": -0.35
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Heavy Shuriken",
+            "zh": "重型手里剑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval increases slightly, but ATK +20%",
+            "zh": "攻击间隔略微增大，但攻击力+20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "base_attack_time": 0.2,
+            "atk": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_yuki",
+      "name": {
+        "en": "Shirayuki's Badge",
+        "zh": "白雪证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Shirayuki has demonstrated a remarkable aptitude for inflicting physical casualties on multitudes of enemies.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Artilleryman responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员白雪擅长对复数敌人造成物理杀伤\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使炮手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_yuki",
+      "name": {
+        "en": "Shuriken",
+        "zh": "手里剑",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_yuki",
+      "description": {
+        "en": "Heavy snow, a bamboo forest.\nAn emaciated figure dives in, staggering; this is where she's concealed herself the whole way. She thinks to dig out some winter bamboo shoots to stave off her hunger, to take a few mouthfuls of snow to allay her thirst.\nThe bamboo forest is a fine place to hide, but she's not the only one who knows that. A dozen or so shinobi are in cover here, tasked with ensuring that this girl, the last survivor to escape from the purge of her family, does not remain so.\nThe bamboo leaves rustle, and the branches up high drift up and down in the wind.\nTheir tips shudder, shaking free small clumps of snow, which scatter in a slicing gust before they ever touch the ground, becoming a fine wintry mist and disappearing into the air. A few fowlbeasts on another stalk retract their necks, stuck out moments prior, and fold their wings up again, relaxing and continuing to huddle close.\nAll is still.\nThe bony girl lifts her head.\nSuddenly, a white glint.\nA dart at odds with her build flies from her hand, snowflakes and wind whirling alongside. This weapon has seen plenty of use thus far; now, it makes a clean cut yet smashes to pieces a bamboo leaf big enough to conceal someone.\nThe struck shinobi lets out a short cry, and powdery snow explodes off the layers of leaves. A trap prepared long in advance cuts off the girl's retreat. She leaps atop a branch, before being forced back by the flash of a descending blade. Her weakness from days without food catching up to her, she loses her grip on the branch, and drops like a stone. But undeterred, she looses one final arrow from her sleeve in midair.\nIt finds itself with no target to hit, but both her and the shinobi crash to the ground at practically the same time, with a dull thud. She lifts her head, and before her is a Lung dressed in black, brandishing a naginata right behind the shinobi.\n'So this is where you were, girl?'\nThe girl stares blankly, not knowing how to respond.\n'I am Fumizuki,' she says, patting the girl's head. 'Can you use a blade?'\nThe girl comes to her senses, and nods. She grasps a handful of snow from the ground, stuffs it in her mouth and swallows, draws a spare tantou from Fumizuki's waist, and charges at her enemy within the forest. Fumizuki watches this frail girl leave, and quickly follows behind.\nOne, then two. From sun overhead to horizon-laid, the shadows amidst the bamboo fall without even a chance to signal their backup. When the final shinobi uses the last of their strength to charge the girl, aiming a hidden shot straight at her stomach, Fumizuki pushes her down to avoid this fatal blow.\nOnce it's all over, a tiny body collapses in the great bamboo thicket, holding her wounds and letting out a long, slow breath.\nSunshine's rays filter through the leaves and shine on her face, the sound of fowlbeasts flapping by in her ears.\nBefore exhaustion brings her to sleep, her parents' lifelong teachings come back to her. The girl must offer her loyalty to the princess before her.",
+        "zh": "大雪，竹林。\n一个瘦弱的身影有些踉跄地扑了进来，她一路躲藏到此处，想挖几个冬笋充饥，再吃几口冰解渴。\n竹林是个藏身的好地方，但不只她这么想。这里藏匿着的十数位忍者领了任务，务必除掉这最后一个从家族清洗里逃出去的女孩。\n风吹竹叶发出簌簌的声响，竹枝在头顶随着风上下浮动。\n枝端微微颤了颤，落下几小团雪来，还没挨到地面就被横着飞来的一阵风吹散，飘成一小片雪雾，散在空气里。另一枝竹上的几只羽兽收回了方才稍稍伸长的脖颈，安心地再度膨起羽毛，继续挤做一堆取暖。\n安静。\n瘦弱的女孩抬头。\n银光乍现。\n和她体型不相符的飞镖从手中滑出，旋带起雪花和风声。这武器一路以来做了不少用途，如今刀口豁开，但仍旧击碎一蓬能让人藏身的竹叶。\n被击落的忍者发出一声简短的呼哨，雪尘在层叠的叶片中爆开，早就布下的陷阱围断了女孩的退路。她蹿上枝头，又被从上而下的刀光逼退，几日未进食的虚弱让她再也抓不住竹枝，从枝头脱力落下。但她仍不死心地在半空射出最后一发袖箭。\n袖箭没能射中任何人，但忍者和她几乎同时摔在地面上，发出沉闷的声响。她抬起头，眼前是个穿了一身黑衣的龙，正从那个忍者的背后拔出自己的长刀。\n“小丫头，你原来在这里？”\n女孩怔神，不知应回答什么。\n“我是文月。”她拍了下女孩的头，“刀会用吗？”\n女孩从愣怔中回神，她点头，从地上抓起一把雪塞进嘴里咽下，抽出文月腰间别的另一把短刀，冲向了竹林中的敌人。文月看着这个瘦小的背影，快步跟在她的后面。\n一个，两个，日光从直射到倾斜，竹林里倒下的人甚至没能放出一个通知后援的信号。当最后一个忍者用仅剩的力气把暗器直冲着女孩的胸口射来时，文月按下她躲过这致命的一击。\n当一切结束后，这个小小的身子躺倒在竹林里，按着身上的伤口，长呼出一口气。\n阳光透过树叶洒在脸上，耳朵里传来羽兽振翅飞过的声音。\n力竭昏迷之前，父母从小的教诲在她的脑中浮现，女孩决定为眼前的公主献上她的忠诚。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30053",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31043",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

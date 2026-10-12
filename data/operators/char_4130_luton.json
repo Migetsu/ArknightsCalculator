@@ -1,0 +1,1107 @@
+{
+  "id": "char_4130_luton",
+  "name": {
+    "en": "Lutonada",
+    "zh": "露托",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "BV33",
+  "rarity": 4,
+  "class": "TANK",
+  "subclass": "unyield",
+  "faction": "bolivar",
+  "position": "MELEE",
+  "tagList": [
+    "Survival",
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Lutonada, child of Bolívar, her hands in the rubble searching for what's usable.",
+    "zh": "玻利瓦尔的孩子露托，以双手在残垣瓦砾间搜寻可用之物。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The hands that laid so many vacant eyes to gentle rest.",
+    "zh": "也是她的双手，曾轻轻地合上了许多双眼睛。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1516,
+            "atk": 332,
+            "def": 188,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1995,
+            "atk": 462,
+            "def": 285,
+            "magicResistance": 10,
+            "cost": 30,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1995,
+            "atk": 462,
+            "def": 285,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 2591,
+            "atk": 616,
+            "def": 381,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3232",
+          "count": 5
+        },
+        {
+          "id": "31043",
+          "count": 14
+        },
+        {
+          "id": "30063",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2591,
+            "atk": 616,
+            "def": 381,
+            "magicResistance": 10,
+            "cost": 34,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3550,
+            "atk": 790,
+            "def": 495,
+            "magicResistance": 10,
+            "cost": 34,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_luton_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "31033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 2
+            },
+            {
+              "id": "31084",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_luton_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.45,
+            "magic_atk_scale": 0.3,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.5,
+            "magic_atk_scale": 0.35,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.55,
+            "magic_atk_scale": 0.4,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.7,
+            "magic_atk_scale": 0.5,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.75,
+            "magic_atk_scale": 0.55,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.8,
+            "magic_atk_scale": 0.6,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 0.95,
+            "magic_atk_scale": 0.7,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 1.05,
+            "magic_atk_scale": 0.8,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 1.15,
+            "magic_atk_scale": 0.9,
+            "interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Magnetic Defense",
+            "zh": "强磁防卫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vdown>Stops attacking</> and deploys a massive shield, creating a powerful magnetic field. Gains <@ba.vup>+{def:0%}</> DEF, deals <@ba.vup>{magic_atk_scale:0%}</> ATK as Arts damage to all nearby ground enemies every <@ba.vup>{interval}</>s, and drags all unblocked enemies <@ba.vup>slightly</> towards self.",
+            "zh": "<@ba.vdown>停止攻击</>，展开大盾并开启强磁场模式，防御力<@ba.vup>+{def:0%}</>，每<@ba.vup>{interval}</>秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{magic_atk_scale:0%}</>的法术伤害，并将所有未被阻挡的敌人<@ba.vup>小力地</>拖拽至自身中心",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "p_force": 0,
+            "mode": 1,
+            "def": 1.3,
+            "magic_atk_scale": 1,
+            "interval": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31074",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "31073",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "From Death's Clutches",
+            "zh": "死里求生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recovers 12% HP when an enemy being blocked by this unit is killed.",
+            "zh": "自身阻挡的敌方单位被击杀时，回复自身12%的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "From Death's Clutches",
+            "zh": "死里求生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recovers 14% <@ba.talpu>(+2%)</> HP when an enemy being blocked by this unit is killed.",
+            "zh": "自身阻挡的敌方单位被击杀时，回复自身14%<@ba.talpu>（+2%）</>的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_ratio": 0.14
+          }
+        },
+        {
+          "name": {
+            "en": "From Death's Clutches",
+            "zh": "死里求生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recovers 16% HP when an enemy being blocked by this unit is killed.",
+            "zh": "自身阻挡的敌方单位被击杀时，回复自身16%的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "From Death's Clutches",
+            "zh": "死里求生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recovers 18% <@ba.talpu>(+2%)</> HP when an enemy being blocked by this unit is killed.",
+            "zh": "自身阻挡的敌方单位被击杀时，回复自身18%<@ba.talpu>（+2%）</>的生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_ratio": 0.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +25",
+        "zh": "防御力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 400,
+        "def": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_luton",
+      "name": {
+        "en": "Lutonada's Badge",
+        "zh": "露托证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_luton",
+      "description": {
+        "en": "Operator Lutonada has demonstrated a remarkable aptitude for holding the front with minimal support.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Juggernaut responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员露托能以一人之力戍守防线\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使不屈者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_luton",
+      "name": {
+        "en": "Survivors",
+        "zh": "生还的人与物",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_luton",
+      "description": {
+        "en": "Hmph. I'm still alive.\nI remember Originium bombs blowing up nearby... Lucky me, I guess.\nWall's wet. Looks like some long-abandoned tunnel? How did I get here, though?\nWait, is someone there?! Show yourself! Don't move!\n...A Zalak? Ha, guess I was rescued by some little girl.\nShe calls herself a battlefield cleaner. Found me on my last legs and dragged me back here.\nWhen she saw me wake up, she gave me my stuff back. Weapon, medkit, even my dog tag.\nBefore I could even thank her, she'd already gone to the next guy.\nLorenzo? Now that I get a good look, that poor torched bastard is actually Lorenzo.\nHey, let go of him, Zalak! He's one of us! Get away from him!\nHe's still alive, goddammit! Can't you see him breathing? He's still trying to survive! I'll save him!\nDammit, Lorenzo, why's your body so cold? He's still bleeding—\n......\nLorenzo's dead.\nHis wounds were too much, I... I couldn't save him.\nThat Zalak girl brought back another wounded soldier. An enemy.\nDammit... They're the ones who killed Lorenzo. I wanna kill the bastard, but it's like that girl is stubbornly blocking me.\nShe told me I could save this one. She wanted me to save him.\nHa, this is beastshit. I couldn't save Lorenzo, but I can save an enemy...\nThe girl's heading out again. She's put wheels on her shield; says she can carry more people that way.\nI hear people snorting and laughing in disdain, and others groaning in pain.\nI hear explosions above me, and feel dust falling into my eyes. It stings.\nRight... What was even the point of this battle, where people die every day?\n......\nTwenty-three. There are now twenty-three people in this hole in the ground, all brought back by that girl.\nShe's far stronger than she looks, considering she could drag all these people back.\nI feel numb. I inject meds into the injured, dress their wounds, and wait for their breathing to steady and their faces to relax.\nI just... don't want to see any more pain and suffering.\nI don't know when it started, but I feel hot all over. I hear the feeble calls of one of the wounded, and I lean over to put my ear up against their mouth—\nI'm surprised to hear a trembling 'thank you.'\nI wanted to check his dog tag, but all of a sudden, I can't see anything through the tears.\nI know that I didn't need to know his identity. I just needed to know that someone survived.\nThat's right. Thanks to her, I lived, and they lived too.\nWe lived. Is there anything more meaningful than that?",
+        "zh": "啧，我还活着。\n我记得有颗源石炸弹就在我附近炸开……呵，算是走了大运。\n墙壁是湿的，看上去这里是个早已废弃的坑道。可我是怎么到这里来的？\n等等，前面有人？！是谁！别动！\n……一个札拉克女孩？呵呵，原来我被一个女孩救了。\n她说她是打扫战场的人，发现我奄奄一息，就把我弄了回来。\n见我醒了，她把东西都还给了我——我的武器，我的药品和医疗箱，还有我的身份识别牌。\n我还没来得及说谢谢，她已经径直走向了另一处。\n雷瑞利？我才看出来，那被炸得像鬼一样的，竟然是雷瑞利。\n喂，札拉克，你快放开他！雷瑞利是我们的人！滚开！\n该死的，他还活着，你没发现他还有气吗？他想要活下去！我能救他！\n可恶，雷瑞利的身体怎么这么冷？他还在流血——\n……\n雷瑞利死了。\n他伤得太重了，我……没能救活他。\n那札拉克女孩还背回来一个受伤的士兵，是我们的敌人。\n该死的……是他们杀了雷瑞利。我要宰了他，可那女孩却不长眼似的拦着我。\n她说，这是能救活的人。她希望我救他。\n呵呵，真是可笑。我救不了雷瑞利，却能救一个敌人……\n那女孩又要出去了。她在盾牌下面安上了轮子，说这样能多拖几个人。\n我听到有人不屑地哼笑，还有人在痛苦地呻吟。\n头顶上又响起了炮声，我感觉有灰落进了眼睛里。刺痛。\n是啊……在这天天死人的战场上，这样做有什么意义？\n……\n二十三个人，现在这个洞里有二十三个活着的人，全是那女孩带回来的。\n她力气大得惊人，竟然把这些人都从战场上拖回了洞里。\n我感到麻木。我为受伤的人注射药剂，包扎伤口，等待他们的呼吸变平稳，表情变松弛。\n我只是……不想再看到更多的疼痛了。\n不知从何时起，我感觉浑身发热。我听到伤者微弱的呼唤，便俯身把耳朵凑到他嘴边——\n我听到的，竟然是一句颤抖着的“谢谢”。\n我本想去看他的身份识别牌，却忽然觉得眼眶湿润，视线也变得模糊。\n我知道，我并不需要搞清楚他的身份。我只需要知道，有一个人活下来了。\n是啊，多亏了她，我活下来了，这些人也都活下来了。\n我们还活着，还有什么比这更有意义吗？",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30033",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30013",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30093",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

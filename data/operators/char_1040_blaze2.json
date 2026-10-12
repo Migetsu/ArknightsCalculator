@@ -1,0 +1,1679 @@
+{
+  "id": "char_1040_blaze2",
+  "name": {
+    "en": "Blaze the Igniting Spark",
+    "zh": "烛煌",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "REX1",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "primcaster",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Elemental",
+    "DPS",
+    "AoE"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Rhodes Island Elite Operator Blaze, willing to burn herself away to see your shared dream realized.",
+    "zh": "罗德岛精英干员煌，愿为你们共同的理想燃烧生命。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Her flames may not miss a single enemy—but if you need to light some birthday candles, just use a match!",
+    "zh": "她的火焰不会放过任何一个敌人——但如果只是过生日点蜡烛这种小事，还是尽量用火柴吧！",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 668,
+            "atk": 324,
+            "def": 52,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 928,
+            "atk": 444,
+            "def": 79,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 12
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 928,
+            "atk": 444,
+            "def": 79,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1206,
+            "atk": 556,
+            "def": 108,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "31034",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1206,
+            "atk": 556,
+            "def": 108,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1608,
+            "atk": 662,
+            "def": 131,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_blaze2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 0.43,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 0.46,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 0.49,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 0.52,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 6,
+          "blackboard": {
+            "atk_scale": 0.55,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 6,
+          "blackboard": {
+            "atk_scale": 0.6,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 8,
+          "blackboard": {
+            "atk_scale": 0.65,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hand in Heated Hand",
+            "zh": "炙手之援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Selects the Operator with the highest Max HP within range, dealing <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and <@ba.vup>{element_multiplier:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> to all enemies surrounding that Operator every second for {max_duration}s",
+            "zh": "立即选择攻击范围内生命上限最高的一名干员，每秒对其周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_multiplier:0%}</>的<$ba.dt.burning2>灼燃损伤</>，持续{max_duration}秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 8,
+          "blackboard": {
+            "atk_scale": 0.7,
+            "element_multiplier": 0.3,
+            "max_duration": 20,
+            "range_radius": 1.5,
+            "interval": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "31033",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_blaze2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.8,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.9,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 1,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 1.1,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.2,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 21,
+          "blackboard": {
+            "atk": 1.3,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 1.4,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Blood Ablaze",
+            "zh": "沸血燎原",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and attacks <@ba.vup>{attack@max_target}</> enemies at once; when attacking, loses <@ba.vdown>{attack@hp_ratio:0%}</> HP and sets a burning field at the location of the target: passing enemies have <@ba.vup>{move_speed:0%}</> Movement Speed and take <@ba.vup>{atk_scale:0%}</> of Blaze the Igniting Spark's ATK as Arts damage and <@ba.vup>{element_damage_scale:0%}</> of that Arts damage as <$ba.dt.burning2>Burn damage</> every second",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>名敌人；攻击时流失<@ba.vdown>{attack@hp_ratio:0%}</>的生命并在目标所在位置留下灼烧地段：经过的敌人移动速度<@ba.vup>{move_speed:0%}</>，每秒受到烛煌攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害和相当于法术伤害<@ba.vup>{element_damage_scale:0%}</>的<$ba.dt.burning2>灼燃损伤</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 1.5,
+            "base_attack_time": 0.9,
+            "atk_scale": 0.35,
+            "attack@max_target": 3,
+            "attack@hp_ratio": 0.05,
+            "element_damage_scale": 0.3,
+            "move_speed": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_blaze2_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.55,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 15,
+            "attack@atk_scale": 0.5,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 11,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 16,
+            "attack@atk_scale": 0.5,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.65,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 17,
+            "attack@atk_scale": 0.5,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 18,
+            "attack@atk_scale": 0.6,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 0.75,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 19,
+            "attack@atk_scale": 0.6,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.8,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 20,
+            "attack@atk_scale": 0.6,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.85,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 21,
+            "attack@atk_scale": 0.7,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.95,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 23,
+            "attack@atk_scale": 0.7,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 1.05,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 25,
+            "attack@atk_scale": 0.7,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Pyre of Perdition",
+            "zh": "众恶的焚场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>changes</>, ATK <@ba.vup>+{atk:0%}</>, Attack Interval <@ba.vup>greatly reduces</>, and normal attacks now deal AoE damage; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, deals an additional <@ba.vup>{attack@atk_scale:0%}</> ATK as Elemental Damage\n<@ba.rem>Loses {lose_hp_scale:0%} of Max HP every second; skill activation grants {attack@trigger_time} ammo, and whenever an enemy enters the burst effect of <$ba.dt.burning2>Burn damage</>, gains {ammo_recover} additional ammo; skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击力<@ba.vup>+{atk:0%}</>，攻击间隔<@ba.vup>大幅缩短</>，攻击变为群体攻击；若目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间则额外造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的元素伤害\\n<@ba.rem>自身每秒流失最大生命的{lose_hp_scale:0%}，攻击装有{attack@trigger_time}发弹药，全场有敌人进入<$ba.dt.burning2>灼燃损伤</>爆发时获得{ammo_recover}颗额外弹药，弹药打完后结束（可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-11",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.15,
+            "base_attack_time": -1.3,
+            "attack@trigger_time": 25,
+            "attack@atk_scale": 0.8,
+            "lose_hp_scale": 0.03,
+            "ammo_recover": 2,
+            "skill_max_trigger_time": -1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31074",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30063",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30073",
+          "count": 5
+        },
+        {
+          "id": "31063",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Meltdown",
+            "zh": "熔点引爆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Whenever an enemy triggers a <$ba.dt.burning2>Burn damage</> burst, immediately deals 250% ATK as Elemental Damage to that enemy and recovers 6% Max HP",
+            "zh": "全场有敌人<$ba.dt.burning2>灼燃损伤</>爆发开始时，立即对其造成相当于攻击力250%的元素伤害并回复6%最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_scale": 2.5,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Meltdown",
+            "zh": "熔点引爆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Whenever an enemy triggers a <$ba.dt.burning2>Burn damage</> burst, immediately deals 280% <@ba.talpu>(+30%)</> ATK as Elemental Damage to that enemy and recovers 9% <@ba.talpu>(+3%)</> Max HP",
+            "zh": "全场有敌人<$ba.dt.burning2>灼燃损伤</>爆发开始时，立即对其造成相当于攻击力280%<@ba.talpu>（+30%）</>的元素伤害并回复9%<@ba.talpu>（+3%）</>最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ep_damage_scale": 2.8,
+            "hp_ratio": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Meltdown",
+            "zh": "熔点引爆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Whenever an enemy triggers a <$ba.dt.burning2>Burn damage</> burst, immediately deals 350% ATK as Elemental Damage to that enemy and recovers 12% Max HP",
+            "zh": "全场有敌人<$ba.dt.burning2>灼燃损伤</>爆发开始时，立即对其造成相当于攻击力350%的元素伤害并回复12%最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_damage_scale": 3.5,
+            "hp_ratio": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Meltdown",
+            "zh": "熔点引爆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Whenever an enemy triggers a <$ba.dt.burning2>Burn damage</> burst, immediately deals 380% <@ba.talpu>(+30%)</> ATK as Elemental Damage to that enemy and recovers 15% <@ba.talpu>(+3%)</> Max HP",
+            "zh": "全场有敌人<$ba.dt.burning2>灼燃损伤</>爆发开始时，立即对其造成相当于攻击力380%<@ba.talpu>（+30%）</>的元素伤害并回复15%<@ba.talpu>（+3%）</>最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ep_damage_scale": 3.8,
+            "hp_ratio": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "From the Ashes",
+            "zh": "绝处重燃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When defeated, becomes downed instead and gains 6000 <$ba.barrier>Barrier</>; cannot attack or be healed while downed, but recovers 3% HP per second; once HP is full, revives and <$ba.stun>stuns</> nearby enemies for 5s",
+            "zh": "被击倒时倒地并获得6000点<$ba.barrier>屏障</>，倒地期间不能攻击，无法被治疗，每秒回复3%生命；生命回满后复活并使附近的敌人<$ba.stun>晕眩</>5秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.03,
+            "stun": 5,
+            "dynamic": 6000
+          }
+        },
+        {
+          "name": {
+            "en": "From the Ashes",
+            "zh": "绝处重燃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When defeated, becomes downed instead and gains 6000 <$ba.barrier>Barrier</>; cannot attack or be healed while downed, but recovers 3.5% <@ba.talpu>(+0.5%)</> HP per second; once HP is full, revives and <$ba.stun>stuns</> nearby enemies for 5s",
+            "zh": "被击倒时倒地并获得6000点<$ba.barrier>屏障</>，倒地期间不能攻击，无法被治疗，每秒回复3.5%<@ba.talpu>（+0.5%）</>生命，生命回满后复活并使附近的敌人<$ba.stun>晕眩</>5秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+            "stun": 5,
+            "dynamic": 6000
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +31",
+        "zh": "攻击力+31",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_blaze2",
+      "name": {
+        "en": "烛煌证章",
+        "zh": "烛煌证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_blaze2",
+      "description": {
+        "en": "干员烛煌擅长对敌人造成法术杀伤与元素杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使本源术师职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员烛煌擅长对敌人造成法术杀伤与元素杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使本源术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_blaze2",
+      "name": {
+        "en": "热切的期盼",
+        "zh": "热切的期盼",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_blaze2",
+      "description": {
+        "en": "“你你你，先别嫌弃它简陋！它背后可有个故事的——\n“在去到罗德岛之前，我在我维多利亚的老家附近活动过一阵。那边没什么人管，感染者的日子很不好过。那段时间，我一方面忙着帮他们讨薪、讨药，另一方面又担心自己的行动波及我老妈，所以好几年没回去看过她。\n“我把能弄到手的药物都拿去接济病情比我严重的人了，总觉得自己活蹦乱跳的，还能撑很久。可突然有一天，我毫无预兆地倒下了。我的血液真的烧得像在沸腾，五脏六腑像是快被烧裂的瓷器……\n“我曾经想象过自己最终倒下的时候，会多么不甘心，多么放不下这些工人。可没想到，真的到了最虚弱的时候，我一个人躺在棚屋里……我只是拼了命地摸索到身边的废木头，刻了一个简陋的小灯框。没有火柴，就用自己的一滴血，点亮了那盏灯。然后就一直对着它看啊看。\n“我记得，我老妈以前总在家门口点这么一盏灯。那么多年我们都没有搬家，她也总习惯那样做，她说，那样我老爸回来的时候就能认得路……我每次回家，印象最深的就是那盏灯。没想到自己快死的时候，最想看到的竟然也是那盏灯……不知不觉，看着它，我的疼痛好像减轻了，症状似乎也缓和了一些，最后坚持到了同伴发现我。\n“这盏？哦，它不是当年那盏破灯，是我重新做的。我手不算巧，你不会嫌弃吧？”\n第一次听煌说起这些，宁茵只顾着替她后怕，但想到她大过年的，不远千里送来这盏意义非凡的灯，便勉强露出笑容，夸赞起她的礼物来。\n“不是，我说这些不是为了……哎，看我这张笨嘴！”行动高于语言，煌于是把那盏灯挂在了宁茵的出租屋里。随后，又麻利地将自己带来的酒菜一样样码在桌上。宁茵闻着温暖的饭菜香，方才慢慢回过神来。她独居的小出租屋已经太久没有如此热闹。手工制灯发出的柔和亮光，将屋中原本的寂寥驱散得一干二净。\n“重要的不是一盏灯，而是这盏灯让你想起了什么，对吧。”",
+        "zh": "“你你你，先别嫌弃它简陋！它背后可有个故事的——\n“在去到罗德岛之前，我在我维多利亚的老家附近活动过一阵。那边没什么人管，感染者的日子很不好过。那段时间，我一方面忙着帮他们讨薪、讨药，另一方面又担心自己的行动波及我老妈，所以好几年没回去看过她。\n“我把能弄到手的药物都拿去接济病情比我严重的人了，总觉得自己活蹦乱跳的，还能撑很久。可突然有一天，我毫无预兆地倒下了。我的血液真的烧得像在沸腾，五脏六腑像是快被烧裂的瓷器……\n“我曾经想象过自己最终倒下的时候，会多么不甘心，多么放不下这些工人。可没想到，真的到了最虚弱的时候，我一个人躺在棚屋里……我只是拼了命地摸索到身边的废木头，刻了一个简陋的小灯框。没有火柴，就用自己的一滴血，点亮了那盏灯。然后就一直对着它看啊看。\n“我记得，我老妈以前总在家门口点这么一盏灯。那么多年我们都没有搬家，她也总习惯那样做，她说，那样我老爸回来的时候就能认得路……我每次回家，印象最深的就是那盏灯。没想到自己快死的时候，最想看到的竟然也是那盏灯……不知不觉，看着它，我的疼痛好像减轻了，症状似乎也缓和了一些，最后坚持到了同伴发现我。\n“这盏？哦，它不是当年那盏破灯，是我重新做的。我手不算巧，你不会嫌弃吧？”\n第一次听煌说起这些，宁茵只顾着替她后怕，但想到她大过年的，不远千里送来这盏意义非凡的灯，便勉强露出笑容，夸赞起她的礼物来。\n“不是，我说这些不是为了……哎，看我这张笨嘴！”行动高于语言，煌于是把那盏灯挂在了宁茵的出租屋里。随后，又麻利地将自己带来的酒菜一样样码在桌上。宁茵闻着温暖的饭菜香，方才慢慢回过神来。她独居的小出租屋已经太久没有如此热闹。手工制灯发出的柔和亮光，将屋中原本的寂寥驱散得一干二净。\n“重要的不是一盏灯，而是这盏灯让你想起了什么，对吧。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_blaze2",
+      "name": {
+        "en": "沟通小助手",
+        "zh": "沟通小助手",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_blaze2",
+      "description": {
+        "en": "“‘没事’，但并不是真的无事发生。可能只是对方不介意，又或者其实这个人很介意，但选择不说。不说可能是因为和你太熟，怕伤害你的感情。也可能是因为和你不熟，不想和你多费口舌。\n“‘你看着办’，听起来是让你决定，但既可能是对方信任你的表现，也可能是一种漠视和嫌弃。如果是前者，那么其实你最终还是要以说这句话的人的意见为准，以此来表示感激和尊敬。如果是后者，那就更复杂了，你不光不能真的擅作主张，还得想清楚自己因为什么事而得罪了对方——\n“这真的太费脑子了！\n“和那些人比起来，沙漠里那种一生只叫一次的洞穴鼷兽都显得啰嗦了！”\n煌一把捏断了手中的笔，墨水溅了一身。她长叹一口气，在客房里翻找半天，也只找出了惊蛰为她准备的那一身天师风格的装束。\n“都怪麟青砚，事先不提醒我，害我在街上出丑不说，现在连和人沟通的小抄都得我自己写！”想到前两天在百灶大街上那一幕幕，煌不禁扶额长叹。\n“下次看见几个人在饭馆柜台前争吵推搡，我再也不会去把他们扭送到大理寺了！\n“下次有服务员笑眯眯问我茶泡得没味儿了要不要换一壶，我再也不会说‘好的’然后一直待到他们打烊了！\n“有什么话不能直说吗？！”煌越想越气，干脆把那张小抄连同笔记本一起扔到了客房角落里。\n……\n顾烛煌回到客房，最后检查了一遍行李，明天她就要离开百灶了。角落里被窗帘盖住的一个笔记本引起了她的注意。她捡了起来，想起了自己刚到百灶时的样子。\n“有什么话不能直说吗……”顾烛煌认真地想了想，“还真有。”\n她干脆从行李箱里找出笔，接着那张小纸条的最后一句，给当初的自己写了几句回信。\n“煌，在进入炎国这个陌生的故乡时，你难以避免地感到了担忧和害怕。但当你不再害怕，把自己真的当成这里的人之后，就会发现，其实直来直去也没问题。直率和勇气，在炎国同样是好的品质。\n“况且，有时候那些没说出口的话，反而更让人刻骨铭心。”",
+        "zh": "“‘没事’，但并不是真的无事发生。可能只是对方不介意，又或者其实这个人很介意，但选择不说。不说可能是因为和你太熟，怕伤害你的感情。也可能是因为和你不熟，不想和你多费口舌。\n“‘你看着办’，听起来是让你决定，但既可能是对方信任你的表现，也可能是一种漠视和嫌弃。如果是前者，那么其实你最终还是要以说这句话的人的意见为准，以此来表示感激和尊敬。如果是后者，那就更复杂了，你不光不能真的擅作主张，还得想清楚自己因为什么事而得罪了对方——\n“这真的太费脑子了！\n“和那些人比起来，沙漠里那种一生只叫一次的洞穴鼷兽都显得啰嗦了！”\n煌一把捏断了手中的笔，墨水溅了一身。她长叹一口气，在客房里翻找半天，也只找出了惊蛰为她准备的那一身天师风格的装束。\n“都怪麟青砚，事先不提醒我，害我在街上出丑不说，现在连和人沟通的小抄都得我自己写！”想到前两天在百灶大街上那一幕幕，煌不禁扶额长叹。\n“下次看见几个人在饭馆柜台前争吵推搡，我再也不会去把他们扭送到大理寺了！\n“下次有服务员笑眯眯问我茶泡得没味儿了要不要换一壶，我再也不会说‘好的’然后一直待到他们打烊了！\n“有什么话不能直说吗？！”煌越想越气，干脆把那张小抄连同笔记本一起扔到了客房角落里。\n……\n顾烛煌回到客房，最后检查了一遍行李，明天她就要离开百灶了。角落里被窗帘盖住的一个笔记本引起了她的注意。她捡了起来，想起了自己刚到百灶时的样子。\n“有什么话不能直说吗……”顾烛煌认真地想了想，“还真有。”\n她干脆从行李箱里找出笔，接着那张小纸条的最后一句，给当初的自己写了几句回信。\n“煌，在进入炎国这个陌生的故乡时，你难以避免地感到了担忧和害怕。但当你不再害怕，把自己真的当成这里的人之后，就会发现，其实直来直去也没问题。直率和勇气，在炎国同样是好的品质。\n“况且，有时候那些没说出口的话，反而更让人刻骨铭心。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1082 @@
+{
+  "id": "char_157_dagda",
+  "name": {
+    "en": "Dagda",
+    "zh": "达格达",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "GG04",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fighter",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Dagda, member of the Glasgow Gang, she and her metal claws calmly awaiting assignment.",
+    "zh": "格拉斯哥帮成员达格达，与她手中钢爪一同静候差遣。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She defends the dark night of Victoria, and you within that darkness too.",
+    "zh": "她守护着维多利亚的黑夜，也守护着黑夜中的你。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1185,
+            "atk": 236,
+            "def": 134,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1602,
+            "atk": 348,
+            "def": 192,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1602,
+            "atk": 348,
+            "def": 192,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2054,
+            "atk": 464,
+            "def": 260,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "31024",
+          "count": 7
+        },
+        {
+          "id": "30013",
+          "count": 21
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2054,
+            "atk": 464,
+            "def": 260,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2506,
+            "atk": 574,
+            "def": 310,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_dagda_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "attack@defensive_atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "attack@defensive_atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "attack@defensive_atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "attack@defensive_atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "attack@defensive_atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "attack@defensive_atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "damage_resistance": 0.5,
+            "attack@defensive_atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 1,
+          "blackboard": {
+            "damage_resistance": 0.5,
+            "attack@defensive_atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 2,
+          "blackboard": {
+            "damage_resistance": 0.5,
+            "attack@defensive_atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Counter Technique",
+            "zh": "反制技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next time Physical damage would be taken, reduce it by <@ba.vup>{damage_resistance:0%}</>, and the ATK of the next attack is increased by <@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "zh": "使下次受到的物理伤害减少<@ba.vup>{damage_resistance:0%}</>，触发后下次攻击的攻击力提高至<@ba.vup>{attack@defensive_atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 4,
+          "initSp": 3,
+          "blackboard": {
+            "damage_resistance": 0.6,
+            "attack@defensive_atk_scale": 2.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "31063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_dagda_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.1,
+            "talent@prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.13,
+            "talent@prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.16,
+            "talent@prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.19,
+            "talent@prob": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.22,
+            "talent@prob": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.25,
+            "talent@prob": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.28,
+            "talent@prob": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.3,
+            "talent@prob": 0.53
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.32,
+            "talent@prob": 0.56
+          }
+        },
+        {
+          "name": {
+            "en": "Search and Destroy",
+            "zh": "精准捕杀",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit twice; Talent activation rate increased by <@ba.vup>{talent@prob:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为二连击，天赋发动概率提升至<@ba.vup>{talent@prob:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.35,
+            "talent@prob": 0.6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31043",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31063",
+          "count": 3
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Gang Spirit",
+            "zh": "帮派精神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 30% chance of increasing ATK to 130% when attacking. When deployed, this multiplier increases by +5% for every enemy defeated within the 4 adjacent tiles of a [Glasgow Gang] Operator (max 190%)",
+            "zh": "攻击时有30%概率使当次攻击力提升至130%，自身在场时，【格拉斯哥帮】干员周围4格内每有一个敌人倒下，攻击力提升额外提升5%（最高提升至190%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.3,
+            "atk_scale": 1.3,
+            "atk_up_max_value": 1.9,
+            "atk_up_each_time": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Gang Spirit",
+            "zh": "帮派精神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has 30% chance of increasing ATK to 150% when attacking. When deployed, this multiplier increases by +5% for every enemy defeated within the 4 adjacent tiles of a [Glasgow Gang] Operator (max 240%)",
+            "zh": "攻击时有30%概率使当次攻击力提升至150%，自身在场时，【格拉斯哥帮】干员周围4格内每有一个敌人倒下，攻击力提升额外提升5%（最高提升至240%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.3,
+            "atk_scale": 1.5,
+            "atk_up_max_value": 2.4,
+            "atk_up_each_time": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Knight's Honor",
+            "zh": "骑士意志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Return to Mist], HP +20%, and each attack restores HP equal to 20% of damage dealt",
+            "zh": "在【淬火尘霾】中，生命值+20%，每次攻击治疗自身相当于造成伤害20%的生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0.2,
+            "heal_scale": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +24",
+        "zh": "攻击力+24",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 40,
+        "def": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_dagda",
+      "name": {
+        "en": "Dagda's Badge",
+        "zh": "达格达证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_dagda",
+      "description": {
+        "en": "Operator Dagda has demonstrated a remarkable aptitude for asserting the advantage in close-quarters combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Fighter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员达格达擅长在近身格斗中取得优势\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使斗士职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_dagda",
+      "name": {
+        "en": "Backstreet Shield",
+        "zh": "后街圆盾",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_dagda",
+      "description": {
+        "en": "This round shield sent from Rhodes Island's Engineering Department seems rather plain, but robust and reliable. Apparently it was the result of the Department holding a 'traditional Victorian arms manufacturing competition' in their spare time. 'This was one of the symbols of a knight,' said the Engineering operator to Dagda in their most charming voice, 'so we decided it'd be best to give it to one of the lady knights making the rounds between Rhodes Island and Victoria.' Dagda looks at the shield proudly displayed atop the table, and can't help but think back to the time before she was accepted as a trainee under the Knights of the Tower.\nBack then, other than the strict physical and tactical training regimens, she also took many classes on knightly etiquette. Amongst the grueling and complicated tests of memory and body language drills, this simple round shield had been a major component of them. The historical piece of military equipment was once used daily by knights of old, but the knights of today have long since left theirs at home when marching to war. They would be hung above fireplaces, or used as a nameplate to display one's identity. Expensive paints were commonly used to draw family crests or the coats of arms of various knightly orders. These brightly-colored designs would cover up the shield's own color, just as their delicate etiquette would cover up the inherent violence a knight represents.\nFinn, the Captain of the Watch, once described a scene of the knights and their dazzling shields to Dagda: During the evenings of celebration days, the knights would parade down the street, clad in fine armor and with arms in hand. Their shields with their crests and blazons would proudly display images of their birthplaces, or warriors in various stances, or myriad different flowers, or great sturdy beasts, or checkered patterns one could weave into a net. The crisp rhythm of the military drums accompanied deep horns enveloping the orderly knights, and by the end of the parade they would all face towards the flame atop the tower. But that tower has long since collapsed, and these knightly tableaus now exist only in Dagda's imagination.\n'I've never actually seen the scene my mentor once described to me.' Recovering her senses somewhat, Dagda continues. 'Just like those books that record the exploits of knights long past, and the ones attempting to define whether a knight's life was glorious and honorable, my position as a knight is long gone. If you asked me if there's still anything worth engraving on that...' Dagda takes the shield off to the workshop, where she draws what she considers to be her emblem—a coat of arms from the streets.",
+        "zh": "罗德岛工程部送来的这面圆盾看起来简朴、牢靠，据说是工程部干员们在闲暇时间里一时兴起举办的“维多利亚传统制式装备制造竞赛”的产物。“这可是骑士身份的象征，”将圆盾送至达格达面前的工程部干员说着俏皮话，“我们决定将它送给往返于罗德岛和维多利亚之间的骑士小姐。”达格达看着桌上摆着的圆盾，想起来以前接受塔楼骑士训练的时光，不禁陷入恍惚。\n那段时间里，除了接受严格的体能训练和战术培训外，达格达还学习了大量有关骑士礼仪的课程。在那些复杂而折磨的记忆训练和肢体语言操练中，眼前的圆盾是课程的重要组成部分。这种历史悠久的军事装备曾经是骑士日常使用的物品，但在当下，圆盾早已不被骑士们用作战斗中的防具。它是挂在壁炉之上的装饰品，以及彰显身份的铭牌——通常点缀着用昂贵颜料绘制的家徽和骑士团纹章。鲜艳的花纹遮盖住盾牌本身的颜色，一如精致的礼仪掩饰了骑士本身代表的暴力。\n芬恩警戒长曾经向达格达描绘骑士们炫耀圆盾的景象：庆典日的傍晚，骑士们身披铠甲，手持武器走上街头，盾上的纹饰标志着他们骄傲的出身，姿态各异的武士、各色的花朵、强健的野兽和能够织成网罗的交叉图纹；清脆的军鼓节奏伴随着低沉的号声环绕在整齐的队伍周围，所有人的终点都指向塔楼上的火光。但那塔楼早已坍塌，连这些有关骑士的场景都只存在于达格达的想象之中。\n“导师回忆中的画面，我从未见过。”达格达稍稍回过神来，“我的骑士身份也早已随着那本记述着骑士生涯，能够界定骑士一生光荣与否的书籍远去了。如果说如今还有值得铭记的东西……”达格达拿起盾牌前往工坊，绘上了属于她的象征——来自街头的纹章。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30064",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

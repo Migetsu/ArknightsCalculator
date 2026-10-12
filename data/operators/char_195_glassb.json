@@ -1,0 +1,1042 @@
+{
+  "id": "char_195_glassb",
+  "name": {
+    "en": "Istina",
+    "zh": "真理",
+    "isMachineTranslation": false
+  },
+  "appellation": "Истина",
+  "displayNumber": "USS2",
+  "rarity": 5,
+  "class": "SUPPORT",
+  "subclass": "slower",
+  "faction": "ursus",
+  "position": "RANGED",
+  "tagList": [
+    "Slow",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Istina, member of Ursus Student Self-Governing Group, will beat the enemy with Originium Arts chosen from one of her books.",
+    "zh": "乌萨斯学生自治团成员真理，从书籍中挑选合适的源石技艺痛击敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Education is the key to life's riches.",
+    "zh": "书中自有颜如玉。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 581,
+            "atk": 218,
+            "def": 46,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 797,
+            "atk": 321,
+            "def": 67,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 797,
+            "atk": 321,
+            "def": 67,
+            "magicResistance": 15,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1024,
+            "atk": 429,
+            "def": 87,
+            "magicResistance": 15,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 3
+        },
+        {
+          "id": "30064",
+          "count": 5
+        },
+        {
+          "id": "30103",
+          "count": 9
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1024,
+            "atk": 429,
+            "def": 87,
+            "magicResistance": 20,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1280,
+            "atk": 518,
+            "def": 104,
+            "magicResistance": 20,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_glassb_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Small</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Small</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Small</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Moderate</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Moderate</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 24,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Moderate</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Significant</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Significant</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Significant</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "专心致志",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.vup>Very Significant</> Attack Interval reduction",
+            "zh": "攻击间隔<@ba.vup>极大幅度缩短</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": -1.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_glassb_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>1</> extra target",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>一</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>1</> extra target",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>一</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 0.2,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>1</> extra target",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>一</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.2,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.45,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Literature Storm",
+            "zh": "文学风暴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Range <@ba.vup>expands</>; Attacks <@ba.vup>2</> extra targets",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击范围<@ba.vup>扩大</>，额外攻击<@ba.vup>两</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.75,
+            "attack@max_target": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 4
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Explorer",
+            "zh": "探知者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF -35%; ASPD +18",
+            "zh": "防御力-35%，但攻击速度+18",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": -0.35,
+            "attack_speed": 18
+          }
+        },
+        {
+          "name": {
+            "en": "Explorer",
+            "zh": "探知者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF -35%; ASPD +21 <@ba.talpu>(+3)</>",
+            "zh": "防御力-35%，但攻击速度+21<@ba.talpu>（+3）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": -0.35,
+            "attack_speed": 21
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 65
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_glassb",
+      "name": {
+        "en": "Istina's Badge",
+        "zh": "真理证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Istina has demonstrated a remarkable aptitude for impeding the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Supporter Operator during field operations to exercise Decel Binder responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员真理擅长牵制敌人\n根据外勤部门决议\n在外勤任务中划分为辅助干员，行使凝滞师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_glassb",
+      "name": {
+        "en": "Reading Notes",
+        "zh": "读书笔记",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_glassb",
+      "description": {
+        "en": "Pastry flour 180g; cystymilk 120g; icing sugar 90g; dried berries 60g; fowl yolk 22g; salt 1g\nThey might be the most basic cookies, but Gummy loves these.\nLet cystymilk sit at room temperature, then add the icing sugar. Once evenly folded in, add the fowl yolk. Dice the dried berries finely (full chunks will be slightly sour). Sift in pastry flour, knead until smooth, then trim and cut into 4 x 4cm squares.\nNB: If these are for Sonya, make bigger. Natalya likes more salt in hers. Drizzle honey for Rosalind's.\nPlace in freezer to rest for 1hr, then transfer straight into a preheated 170°C oven for 20min until done.\n......\nI see... And I thought all along the chief would turn out to be the true mastermind! Now that I look back at previous descriptions, he did plenty that he wouldn't have done otherwise. Blatantly letting the protagonist go on with the investigation, making such a solemn vow at the meeting, and him and his wife truly being in love all along, not a political marriage... He even began by committing suicide...\nThe author's deliberately crafted narrative tricks may have had their impact, but I did still let first impressions blind me to many unusual details.\nIt may be that people truly can be affected by information from all sides given specific circumstances, and end up overlooking facts that should have been obvious.\nI've overlooked a lot, that much is true.\nThis is something I'll have to reflect on frequently in future.\n......\nI've borrowed several books from the Doctor throughout my time here at Rhodes Island. As a student, I've certainly been through things most others my age have not yet. It's beyond me to more deeply comprehend some conundrums posed in books with my current level of knowledge, but with my experiences, perhaps the author's intent is something I can feel out.\nPertinently, the passage on the 'mass' in Chashcha Lesa: 'Those who have done wrong once find they are not punished, for those around them who know of it will opt to turn one's blind eye to carry on living one's 'days of well-being,' so accordingly the wrongdoers will then go to do wrong a second and third time. May there merely be one willing to fix their firm eye and raise their voice, and this chaos can be dispelled.'\nMay there merely be one willing to fix their firm eye and raise their voice, and this chaos can be dispelled.\n\n—Excerpts from Istina's reading notes",
+        "zh": "低筋粉 180克；瘤奶 120克；糖粉 90克；莓干 60克；羽兽卵液 22克；盐 1克\n虽然是最基础的饼干，但是古米很喜欢吃。\n瘤奶放至室温加入糖粉，拌匀后加入羽兽卵液。莓干需要切成小片，整颗莓干口感略酸。低筋粉过筛加入，揉匀后修整成切面长宽均4厘米左右的长块。\n备注：若给索尼娅需要做更大些。娜塔莉娅喜欢吃多加些盐的。罗莎琳的要淋上蜂蜜。\n放入冰箱冷冻1小时，取出切片，放入预热170度的烤箱20分钟即可完成。\n……\n原来是这样……我竟然一直以为这位上司就是最后的幕后黑手！现在再回翻以前的描述，他确实做了很多他原本不会做的事。如此明显地放过打探消息的主角、在大会上那样真心地宣誓，还有他与他夫人竟是真心相爱，而不是政治联姻……他竟然以自杀作为开端……\n虽然有作者故意设计出的叙述诡计的影响，但我确实因为一种先入为主的无意识忽略了很多不寻常的细节。\n人们或许真的会在某种特定的环境下被各方信息所影响，忽视掉一些原本很明显的信息。\n我确实忽视过很多。\n这也是我在以后需要时常反思的地方。\n……\n在罗德岛这些日子，我向博士借阅了许多书籍。作为一名学生，我确实经历了大多数同龄人不曾经历过的事情。以我现在的知识水平，书中提到的一些问题我并不能深刻地理解，只是有了这段经历，我或许能感受到作者的意图。\n正如《深林》这本书中关于“群体性”的一段：“做过一次坏事的人发现自己不会受到惩罚，因为周围知道这件事的人选择视而不见，继续过着自己的‘好日子’，所以他们才会去做第二次第三次。只要有人愿意死盯着，喊出声来，这片混沌就能被破开。”\n只要有人愿意死盯着，喊出声来，这片混沌就能被破开。\n\n——节选自真理的读书笔记",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

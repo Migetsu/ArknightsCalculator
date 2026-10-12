@@ -1,0 +1,1094 @@
+{
+  "id": "char_4054_malist",
+  "name": {
+    "en": "Minimalist",
+    "zh": "至简",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SG09",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "funnel",
+  "faction": "sargon",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Durin architectural designer Minimalist, hauled surface-side by Gavial.",
+    "zh": "杜林的建筑设计师至简，被嘉维尔扛上了地面。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He's here on a voluntary basis, honest!",
+    "zh": "他其实是自愿的！",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 573,
+            "atk": 148,
+            "def": 47,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 819,
+            "atk": 209,
+            "def": 72,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 819,
+            "atk": 209,
+            "def": 72,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1064,
+            "atk": 268,
+            "def": 100,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "31034",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1064,
+            "atk": 268,
+            "def": 100,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1400,
+            "atk": 320,
+            "def": 120,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_quickattack[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.22,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.24,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.27,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.29,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.31,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.34,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.37,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 45
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_malist_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 1,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 1,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 2,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 3,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Prodigious Craftsmanship",
+            "zh": "神工意匠",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage and attacks twice consecutively\n<@ba.rem>Can store {ct} charges</>",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并连续攻击两次\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 4,
+          "blackboard": {
+            "atk_scale": 2,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31043",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Flash of Insight",
+            "zh": "忽有所悟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 10% chance to increase that ATK to 150%",
+            "zh": "攻击时，10％几率当次攻击的攻击力提升至150％",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.1,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash of Insight",
+            "zh": "忽有所悟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 15% <@ba.talpu>(+5%)</> chance to increase that ATK to 150%",
+            "zh": "攻击时，15％<@ba.talpu>（+5%）</>几率当次攻击的攻击力提升至150％",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.15,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash of Insight",
+            "zh": "忽有所悟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 25% chance to increase that ATK to 150%",
+            "zh": "攻击时，25％几率当次攻击的攻击力提升至150％",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.25,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash of Insight",
+            "zh": "忽有所悟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 30% <@ba.talpu>(+5%)</> chance to increase that ATK to 150%",
+            "zh": "攻击时，30％<@ba.talpu>（+5%）</>几率当次攻击的攻击力提升至150％",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.3,
+            "atk_scale": 1.5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_malist",
+      "name": {
+        "en": "Minimalist's Badge",
+        "zh": "至简证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_malist",
+      "description": {
+        "en": "Operator Minimalist has demonstrated a remarkable aptitude for manipulating hovering units to combat and pursue the enemy in concert.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Mech-accord Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员至简擅长操纵浮游单元协同作战，追击敌人\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使驭械术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_malist",
+      "name": {
+        "en": "'New Home'",
+        "zh": "“新家园”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_malist",
+      "description": {
+        "en": "'Minimalist, you KNOW it's treatment time.'\nAaand more pounding at the door.\nMinimalist ignores the commotion outside, instead glancing at the distorted model on his desk. He'd rather jump off the ship than turn in this design for a New Zeruertzan landmark as it is!\nHe averts his eyes from it as fast as he can. Like it or not, he made that model himself, and it burns him—it leers at him. <i>What now, proud architect?</i> Tasking him with 'fun' was an exercise in self-defeat.\n'I can't do it.'\nCan't he defend his dignity in any way? He dithers in circles, growing all the more agitated. No, now he feels like he's being lassoed along. He once chased after his departed 'design representative' with all the same agitation, and the harder he held on, the harder that title threatened to tear him in two. Like his right leg, the responsibility stung relentlessly: a reminder of how short his life was, how every standstill was a step forever lost.\nHe can't stop now.\nHe roots around everywhere he can, dying for some flash of inspiration to save him. Sketches fly into the air, models tumble to the ground, and still... still no eureka moment. He claws at his head in annoyance, and then, he comes face to face with the very last thing in the room.\nA barrel of berry tomato wine.\nFrom Catch. His fellow Durin are all big drinkers—where they're concerned, booze and fun more or less go hand in hand. Still, he recalls his mentor languidly staring out the window at the dome from time to time, sitting with a glass at the table.\nHe resists the idea, but the thought of trying is hard to stifle once it surfaces. He strains to pry the barrel open, then fills a glass. The scent of it actually stuns him for a moment. His reflection in it ripples with memory.\n'If you're curious, you may as well try.'\nHe did as his mentor said, accepting the bottle proffered and pouring the entire thing. The fierce bite of it made him dizzy, threatening to write off the rest of his workday. He scratched at the tiny rocks on his right leg as hard as he could, just hoping the pain would keep him sober still.\nBut his mentor laughed at that.\n'Enjoying life is our finest trait, and what we founded our homeland on. You're no exception, Stitch. You'll understand one day.'\nHearing that voice from long ago wakes him back up. He's startled to find himself reclining carefree in his chair, glass in hand just like Catch and his mentor and all the other Durin, quietly gazing out the cabin window. He subconsciously moves to scratch at his leg's stones, but his hand freezes.\nHe has no throbbing pain beneath the stones. He didn't feel it when he eyed the wine barrel. He hasn't felt it for a long, long time now.\n'Gavial, finally! He's been hiding in his studio forever!'\n'Alright, alley-oop—'\nThe door bursts open, and Gavial's fist stops just a finger's width from his nose.\n'Gavial? Perfect timing. Take me to the Medical Department—it's time for my treatment. What are you all staring at?'\nGavial gawks at the model rec facilities on the table behind him, a simple and surefire crowd-pleaser. Also, the bare and empty glass. It all clicks in her head, and a smile creeps onto her face.\n'Gavial! Why are you hitting me? I was NOT drinking before my appointment! I poured it all back!'",
+        "zh": "“至简，已经到治疗的时间了哦。”\n又一阵敲门声。\n至简没理会门外的动静，目光投向桌上那座扭曲的模型。与其交付这项设计让它成为新际崖城的地标，他还不如现在就从舰上跳下去！\n他飞快地扭开目光。这份亲手制作的模型灼痛了他——它仿佛在嘲笑某位自矜的设计师。他对享乐根本就是一窍不通。\n“我做不到。”\n他很想为自己辩解，原地徘徊的脚步却愈发急切，仿佛被一根收紧的线牵扯。他曾以同等急切的步子追逐着“设计代表”的背影，当这枚头衔紧握在手，他的紧绷却有增无减。责任就像右腿上纠缠的刺痛，提醒他生命如此短暂，没有停滞的余地。\n不能停下。\n他四下翻找着，渴望灵光能在某一瞥中闪现。草稿满屋飞舞，模型摔了一地，灵感迟迟没有眷顾。他懊恼地挠头，看向最后一样东西。\n一桶浆果番茄酒。\n卡奇留下了这桶酒。族人们都爱喝酒，对于大多数杜林，享乐往往和酒紧密相关。但他记起，老师偶尔也会悠闲地望着窗外的穹顶，在桌前喝上一杯。\n他有些抗拒，但尝试的念头一旦冒出就很难按下。他费力地撬开酒桶，接满一杯。酒香竟令他瞬间失神，杯中的倒影有记忆荡漾。\n“既然好奇，不如自己试试吧。”\n那天听了老师的话，他灌下了老师递来的一整瓶酒。剧烈的辛辣使他头晕目眩，这样一天的工作都会完蛋。他使劲地抓挠着右腿上的细小石头，期望疼痛能让他保持清醒。\n可老师笑了。\n“享受生命是我们最美好的特质，我们的家园以此建起。斯第奇，以后你会明白的，你并不例外。”\n昔日的声音唤回了意识。他惊讶地发觉自己正安然坐在椅子中，像卡奇、老师和族人一样端着酒杯，静静地望着舷窗。他下意识要去抓挠腿上的石头，手却停在空中。\n石头下跳动的疼痛，在他望向酒桶前，已经许久没有出现了。\n“嘉维尔，你总算来了！他躲在工作室里好久了！”\n“让我来——”\n门突然打开，嘉维尔的拳头停在距鼻尖一厘米的位置。\n“嘉维尔？来得正好，带我去医疗部吧，我该接受治疗了。你们都愣着干嘛？”\n嘉维尔朝后张望，看见桌上简洁宜人的娱乐设施模型，以及空空如也的酒杯。她明白了一切，于是露出微笑。\n“嘉维尔！你打我干什么？我没在治疗前喝酒！都倒回去了！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31024",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

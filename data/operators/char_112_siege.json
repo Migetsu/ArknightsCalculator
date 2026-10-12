@@ -1,0 +1,1503 @@
+{
+  "id": "char_112_siege",
+  "name": {
+    "en": "Siege",
+    "zh": "推进之王",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "GG01",
+  "rarity": 6,
+  "class": "PIONEER",
+  "subclass": "pioneer",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Siege, leader of the Glasgow Gang, will carve a path for you.",
+    "zh": "格拉斯哥帮头领推进之王，将为你辟开前路。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She is a born leader.",
+    "zh": "她的领导力与生俱来。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 911,
+            "atk": 212,
+            "def": 154,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1199,
+            "atk": 308,
+            "def": 227,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 5
+        },
+        {
+          "id": "30022",
+          "count": 9
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1199,
+            "atk": 308,
+            "def": 227,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1643,
+            "atk": 422,
+            "def": 307,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "30014",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1643,
+            "atk": 422,
+            "def": 307,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2251,
+            "atk": 515,
+            "def": 384,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_charge_cost[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 14,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 16,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 18,
+          "blackboard": {
+            "cost": 12
+          }
+        },
+        {
+          "name": {
+            "en": "Charge γ",
+            "zh": "冲锋号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "cost": 12
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_siege_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "cost": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "cost": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "cost": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 3,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "cost": 3,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 3,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "cost": 3,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 3,
+          "blackboard": {
+            "atk_scale": 2.7,
+            "cost": 3,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 6,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "cost": 3,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale": 3,
+            "cost": 3,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 8,
+          "blackboard": {
+            "atk_scale": 3.2,
+            "cost": 3,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Aerial Hammer",
+            "zh": "跃空锤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies in the next attack; Gains <@ba.vup>{cost}</> DP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次攻击对四周所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.4,
+            "cost": 3,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_siege_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 2.6,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.5,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 2.7,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.5,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 2.8,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.5,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 2.9,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.8,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 3,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.8,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 3.1,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 0.8,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 3.2,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 1.1,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 3.4,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 1.2,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 3.6,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 1.3,
+            "base_attack_time": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Skull Breaker",
+            "zh": "碎颅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>. Increases ATK to <@ba.vup>{attack@atk_scale:0%}</> when attacking and has <@ba.vup>{attack@buff_prob:0%}</> chance to <$ba.stun>Stun</> the target for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击时攻击力提高至<@ba.vup>{attack@atk_scale:0%}</>，并且有<@ba.vup>{attack@buff_prob:0%}</>的概率<$ba.stun>晕眩</>目标<@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 25,
+          "blackboard": {
+            "attack@atk_scale": 3.8,
+            "attack@buff_prob": 0.4,
+            "attack@stun": 1.5,
+            "base_attack_time": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30073",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30053",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30063",
+          "count": 3
+        },
+        {
+          "id": "30023",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "King of Beasts",
+            "zh": "万兽之王",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All Vanguard Operators' ATK and DEF +4%",
+            "zh": "所有【先锋】职业干员的攻击力和防御力各+4%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.04,
+            "def": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "King of Beasts",
+            "zh": "万兽之王",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All Vanguard Operators' ATK and DEF +6% <@ba.talpu>(+2%)</>",
+            "zh": "所有【先锋】职业干员的攻击力和防御力各+6%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.06,
+            "def": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "King of Beasts",
+            "zh": "万兽之王",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All Vanguard Operators' ATK and DEF +8%",
+            "zh": "所有【先锋】职业干员的攻击力和防御力各+8%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.08,
+            "def": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "King of Beasts",
+            "zh": "万兽之王",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All Vanguard Operators' ATK and DEF +10% <@ba.talpu>(+2%)</>",
+            "zh": "所有【先锋】职业干员的攻击力和防御力各+10%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.1,
+            "def": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Crushing",
+            "zh": "粉碎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 1 Skill Point when an enemy in the four surrounding tiles is killed",
+            "zh": "周围四格内有敌人倒下时获得1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60,
+        "def": 25
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_siege",
+      "name": {
+        "en": "Siege's Badge",
+        "zh": "推进之王证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_siege",
+      "description": {
+        "en": "Operator Siege has demonstrated a remarkable aptitude for preemptive penetration of the battlefield situation and active offense so as to secure leeway for deployment.\nThis operator shall hereby be appointed a Vanguard Operator during field operations to exercise Pioneer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员推进之王擅长抢先切入战局，通过进攻争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使尖兵职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_siege",
+      "name": {
+        "en": "'Candy Box'",
+        "zh": "“糖果盒”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_siege",
+      "description": {
+        "en": "Vina sits atop the roof, staring at the clouds above that hang ever crushingly low. It's a month in Londinium where rain comes every evening. Not too badly; it's a fine drizzle, nothing that inconveniences anyone rushing home from work, but it stirs the scent of the ground into the air. Rotting wood, the rankling smell of fins, and needless to say, sweat. The Borough of Norbert never smells much like a part of Londinium. All the bigger logistics warehouses have relocated to the north side, and the factories and markets have gone with, leaving behind a plate full of refuse no other borough wants, and the people with nowhere else to go.\nA shout comes from the boxing gym downstairs—sounds like Indra's won again. It's a night of celebration for the Glasgow Gang. Vina led the lot charging into the underground casino on Mariner Road this afternoon, and scared the Ronnie brothers right out of Norport wholesale. After that, the buildings surrounding were all Glasgow's. Morgan got all worked up and hefted barrels of booze over—needed to celebrate properly, according to her. Said she got this stuff from that top fancy pub on the corner, paid loads for it. Got Baird worried she'd been taken in. With enough drink down them, the lot all paraded up arm in arm and chanted her name, 'Siege,' so loud the whole street could hear.\nHow much of a conqueror does subduing a few gangs really make you? When she first got that name, Vina honestly could've laughed or died of embarrassment, maybe both. None of Indra's lot knew her background, and she wasn't even hiding it on purpose, she just never found the right time to share all. Norbert and Auchterigg were like two different countries—no one cared whose parents were who here. The most was the one time, when the police got hold of some Glasgow and brought them into the station. It was routine questioning from the coppers—what race was she? She stared that officer beaming from ear to ear dead in the eye, and on some ridiculous impulse, answered 'Aslan.' That threw him for a loop, and then he had her by the scruff, trying to tug her head into the table. Vina sat calm, didn't bend her neck one bit. Oh, he turned red. His hands shook and shook, as tends to happen on a diet of grease and drink, until he finally turned from trying violence to harsh words instead. Threatened her saying she wouldn't step out of this station for the rest of the month talking daft shit like that, the piddling hoodlum she was. She was out the next day. Morgan and Indra fetched her there, Indra telling her how she sent a Baron's boys running for the hills with a Molotov, Morgan saying she had to mediate like crazy, and it cost a pretty penny. Past the street corner, Vina couldn't help but take a look back. Absolutely nothing there watching her, no people nor giant creatures. That flash of gold must've just been the sun blinding her eyes.\nVina couldn't tell you how long she's gone without seeing Gawain now. Her teacher might well be everywhere at once. At a fried fin stand, mingling in the boxing gym, maybe up in the clouds above. Could be anywhere. The moment that occurs to her, something makes her twitch for no reason at all, and unconsciously, she goes to reach for another bitter lollipop to stick in her mouth. But once she does, she finds the metal box emptied. Completely vacant and light as a feather. Somehow, someway, her heart feels just as airy, like she's losing her balance. She'd better find something heavier to shove in there next time, Vina thinks. Wouldn't go wrong with some rivets from the construction site.\nSomewhere behind, Baird calls for her. Shoving her candy box back in her trouser pocket, Vina grins a little and turns around, sauntering back over to the clamor of voices that was, is, and will be Siege's.",
+        "zh": "维娜坐在屋顶上，看着头顶的云层越压越低。伦蒂尼姆的这个月份，每天傍晚都会有一场雨。雨不会下得太大，绵绵密密的，拦不住急着下工的人，但会把地里的味道都逼出来。烂木头和鳞腥味，当然还有汗臭。诺伯特区闻起来总是不那么像伦蒂尼姆的一部分。大一点的物流仓库都搬去了北边，工厂和集市也都跟着挪走了，剩下的地块上塞满了其他城区不想要的垃圾和无处可去的人。\n楼下的拳馆里爆发出一阵欢呼声，听起来赢的人又是因陀罗。今晚是格拉斯哥帮的庆祝之夜。下午维娜带人突击了水手街的地下赌场，把罗尼兄弟吓得逃出了诺伯特区。以后附近的街区都是格拉斯哥帮的了。摩根激动地搬来了好几桶酒，说要好好庆祝一番。她说这酒是从街角最气派的那家酒店买的，花了好大一笔钱，贝尔德很担心她被骗了。喝多了之后那些家伙就搂在一起吼她的名字，“推进之王”，声音大得一条街的人都能听见。\n收服几个帮派算什么攻城略地？刚得到这个名号的时候，维娜多少有些哭笑不得。因陀罗她们还不知道她的出身，她并不是有意瞒着，只是也没找到什么交底的好时机。诺伯特区和奥克特里格区就像两个国家，在这里没什么人在乎其他人的父母是谁。只有一次，格拉斯哥帮被警察找上了，在警局里，警察照惯例问话，问她什么种族，她盯着那个满面油光的警察，不知哪来的冲动回答了“阿斯兰”。警察愣了几秒，揪着她衣领子就想把她的头往桌子上磕。维娜坐得稳稳的，脖子没有弯下哪怕一点角度。警察憋红了脸，酗酒和油腻的饮食让他的手哆嗦个不停，只得用狠话替代暴力，威胁她这个满嘴胡话的小混混这个月都别想走出警局的门。结果第二天她就走了出来。摩根和因陀罗来接她，因陀罗说着自己是怎么用燃烧瓶吓跑了男爵的走卒，摩根说上下疏通真的很费钱。走过街角的时候，维娜忍不住回了下头。那里并没有什么人或者巨大的生物在看着她，刚才那一闪而过的金色可能只是太阳晃了她的眼。\n维娜记不清自己有多久没见到高文了。她的老师可能无处不在。炸鳞摊位前、拳馆人群中，或者头顶的云层里，都有可能。一想到这一点，她就没来由地烦躁，下意识想再掏一根苦味棒棒糖塞进嘴里。可是当她再伸手的时候，铁盒已经空了。空荡荡的盒子变轻了，让她的心也跟着轻飘飘的，像是失去了重心。下回最好得找个重点的东西填进去，维娜心想，工地里的铆钉是个不错的选择。\n贝尔德在背后叫她。糖果盒子落回裤兜，维娜笑了笑，转身走回属于推进之王的喧哗声里。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_siege",
+      "name": {
+        "en": "'Thy First Vow'",
+        "zh": "“初诺”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_siege",
+      "description": {
+        "en": "Gawain ambles through the city. He's spent so much time in this manner, yet still can't say he's used to seeing what he sees. Londinium's clouds are hanging low as ever—when did that start happening? He strains to recall, but can't come up with a definite answer. As if the last time he looked to the sky, the gloomy haze was never even there.\nAlexandrina Vina Victoria lies sleeping on the counter in the pub. Yesterday, she and her companions made an all-too-tough escape from the beat. It strikes Gawain that she especially resembles her grandmother in these moments—or was it her great-grandmother? The one named Mathilda, the girl with a head of gold curls, how exactly was she related to Vina here? Face after face flashes by, going from young to old, ultimately scattering with the sand on the wind. Some of those faces might not even actually exist, being simply products of vaguer parts of the mind. Gawain has to admit, his time spent by this family's side may be longer than he was anticipating at first. Far longer already.\nHe doesn't make a habit of appearing before people. The interpretations of him as a symbol of power disgust him, and hardly fall in line with his original agreement. Still, their ups and downs have kept Gawain watching with interest all the same. There'll be times he can't help but reflect on history. Moments where shadows of similarity loom over them.\nVina once asked him why her teacher would always be by her side, and at the time his answer was silence. Yes, he learned long ago not to meddle anymore, because farewell would always come eventually. He still dimly remembers how, once, he and Lugalszargus bounded about that battlefield they call the foehn hotlands these days. He carried that mettlesome man atop his back, and with the Nightzmoran Khagan by their side, they charged for the sandstorms of afar. Everyone died there—and that was the news he brought back to Lugalszargus's daughter. He remembers the feeling of his mane wet with tears. Those times proved... to pass in the twinkling of an eye. Humanity is far frailer than a master of the beasts, and the years have taught him that fact again and again.\nSome bygones aren't worth dredging up so often, and Gawain only recalls those periods very, very occasionally in his dreams. A meeting so old that history had not yet been written, a reckless boy upon the barrens who never feared him one bit. Their travels together, cheers and tears, song and wine, and then—his age, his death. That was the first time, not as a sovereign, but as a friend, that Gawain witnessed death. Warmth fading from flesh, breath stilling from mouth and nose. Before that, Gawain had never imagined that to witness death would be such torment.\nIt was then that Gawain promised him, that he would aid his descendants in their continued survival, until they no longer needed him.\nThe golden creature stops in his step, and narrows his eyes. He, that friend, that boy... what was his name?\nGawain sighs. Fortunately, he still hasn't abandoned his vow.",
+        "zh": "高文漫步在城市中，他已经度过了如此之长的岁月，却仍然称不上习惯眼前的这一切，伦蒂尼姆的云层总是很低，这是从什么时候开始的？高文努力回忆，却想不起一个切实的答案，仿佛在他上次仰望天空的时候，这一层阴霾还并不存在。\n亚历山德莉娜·维娜·维多利亚趴在酒馆的吧台上睡着了，她昨天和她的伙伴们好不容易才从警察的手中逃了出来。高文想到，在这种时刻，她格外像她的祖母，还是曾祖母？那个叫玛蒂尔塔的，有着一头金色卷发的女孩和这位维娜的亲缘关系到底是怎样的？一张张脸庞从年幼到年老依次闪过，最终却都消散在风沙里，其中有些面孔或许并不真实存在，只是来自他臆想中的拼接。高文不得不承认，自己陪伴在这个家族身边的时间，或许比他一开始所预想的，已经长得多了。\n他并不总是出现在人们的面前，高文厌恶那些把自己作为权力象征的阐释，这并不符合最初的约定。但他们的浮沉确实也让高文难以移开目光，总有些时光会使他不得不向历史回望，总有些片刻，他们的身上有着相似的影子。\n维娜曾问过他，自己这位老师为何要始终陪伴在她身边，那时的高文以沉默相对。是啊，自己早就已经学会不再插手，因为分别终将来临。高文依稀还记得，他曾与路加萨尔古斯奔赴那个如今被称为焚风热土的战场，他把意气风发的男人驮在背上，与身边的梦魇可汗一起向着远处的风沙冲刺。所有人都死在了那里，自己为他的女儿带回了这个消息，他记得鬃毛被泪水浸湿的感觉，那些时光终究……转瞬即逝，人类比兽主脆弱得多，岁月让他一次次认清这个事实。\n有些旧事不值得常常提起，高文也只是在极偶尔的梦中才会回忆起那些片段。在久到历史还没有被记述之前的那次相遇，荒野上从未对他有过一丝恐惧的鲁莽少年，他们一起的旅程，欢呼与泪水，歌声与佳酿，以及——他的衰老，他的死亡。那是高文并非作为兽主，而是作为朋友第一次目睹的死亡。温度从肉体上消失，气息自口鼻中停滞，在此之前，高文从未想过，目睹一场死亡居然会如此备受折磨。\n在那时，高文答应他，自己会帮助他的后代们继续活下去，直到他们不再需要自己。\n黄金一般的生物停下脚步，眯起眼睛，他，那位朋友，那个孩子……叫什么名字？\n高文叹了口气，好在，他仍未背弃诺言。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

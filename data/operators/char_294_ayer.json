@@ -1,0 +1,1100 @@
+{
+  "id": "char_294_ayer",
+  "name": {
+    "en": "Ayerscarpe",
+    "zh": "断崖",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RB04",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "lord",
+  "faction": "rim",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "AoE"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ayerscarpe, Messenger Bodyguard, will provide support in accordance with the terms of his contract.",
+    "zh": "信使护卫断崖，根据雇佣合约提供支援。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Actual performance far exceeds what is stipulated in the contract.",
+    "zh": "实际履行时会比合约中规定的内容多很多。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1016,
+            "atk": 279,
+            "def": 178,
+            "magicResistance": 5,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1452,
+            "atk": 417,
+            "def": 245,
+            "magicResistance": 5,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1452,
+            "atk": 417,
+            "def": 245,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1911,
+            "atk": 542,
+            "def": 311,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30044",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1911,
+            "atk": 542,
+            "def": 311,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2420,
+            "atk": 670,
+            "def": 375,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ayer_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.25,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35,
+            "sluggish": 1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "sluggish": 1,
+            "max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.45,
+            "sluggish": 1,
+            "max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "sluggish": 1,
+            "max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Shrapnel Burst",
+            "zh": "多导向散射弹丸",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to up to <@ba.vup>{max_target}</> enemies within range and <$ba.sluggish>Slows</> them for <@ba.vup>{sluggish:0.0}</> second(s)",
+            "zh": "下次攻击对攻击范围内最多<@ba.vup>{max_target}</>名敌人造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使目标<$ba.sluggish>停顿</><@ba.vup>{sluggish:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "sluggish": 1,
+            "max_target": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ayer_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 16,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 17,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 18,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 19,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 21,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 22,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 23,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Activate Phase Blades",
+            "zh": "浮游刃启动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; Damage type changes to Arts Damage; Each attack deals an additional <@ba.vup>{atk_scale:0%}</> of ATK as Arts damage to all enemies blocked by friendly Operators in the surrounding 8 tiles (this damage is treated as a melee attack)",
+            "zh": "攻击范围<@ba.vup>扩大</>，伤害类型变为法术；每次攻击时，额外对周围8格友方单位阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害(均视为近战攻击）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "attack@atk_scale": 1,
+            "atk_scale": 1.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 2
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Seek Aid",
+            "zh": "索敌援助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and allied Operators in the surrounding 8 tiles gain +4 ASPD",
+            "zh": "自身与周围8格友方干员攻速+4",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Seek Aid",
+            "zh": "索敌援助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and allied Operators in the surrounding 8 tiles gain +6 <@ba.talpu>(+2)</> ASPD",
+            "zh": "自身与周围8格友方干员攻速+6<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Seek Aid",
+            "zh": "索敌援助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and allied Operators in the surrounding 8 tiles gain +8 ASPD",
+            "zh": "自身与周围8格友方干员攻速+8",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Seek Aid",
+            "zh": "索敌援助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit and allied Operators in the surrounding 8 tiles gain +10 <@ba.talpu>(+2)</> ASPD",
+            "zh": "自身与周围8格友方干员攻速+10<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 10
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +26",
+        "zh": "攻击力+26",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ayer",
+      "name": {
+        "en": "Ayerscarpe's Badge",
+        "zh": "断崖证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ayer",
+      "description": {
+        "en": "Operator Ayerscarpe has demonstrated a remarkable aptitude for wide-range enemy suppression.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Lord responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员断崖擅长在较大范围内阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使领主职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ayer",
+      "name": {
+        "en": "Portable Wildland Stimulants",
+        "zh": "荒野便携提神剂",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ayer",
+      "description": {
+        "en": "<Portable Wildland Stimulant: Preparation, Instruction and Efficacy>\n[Preparation and Instruction]\n1. Prepare some cooked edamame. Do not salt or peel them.\n2. Prepare a device to freeze the edamame. I will use my own edamame box here as a demonstration: this much freezing is just right.\n3. Prepare a device to discharge electricity. I'll demonstrate with my trusty sidekick here: this much power leakage is just right.\n4. Lower the voltage of the discharge device and shock the edamame until the juice inside carries a slight charge.\n5. Eat.\n[Efficacy]\nIn the barrens, maintaining a clear mind can be a real challenge. The boundless wilderness, the sweeping dust storms, the glow reflecting from the active Originium clouds in the sky, the howl of the wind blowing through Originium crystal clusters... It's easy to gradually lose your sense of self and fall into a trance-like state where you won't notice incoming dangers.\nChew the edamame along with its shell. The hairs of the shell can stimulate the mouth, thus keeping the user's nerves active.\nFrozen edamame can stimulate the gums and make it easier to stay awake.\nThe slightly-charged juices can give a tingling jolt, thus sharpening the user's perception.\nProper stimulation can prevent people from falling into a stupor. This is the only way to survive in the wilderness.\n\n'You've put a weird amount of thought into this manual, Ayers.'\n'Quit flapping your gums, Leon. A lot of operators have been coming by the last few days, asking me for the secret to staying awake in the wilds. I'm sick of giving the same explanation again and again.'\n'I guess it's true that your manual could stop people from coming, but... to be honest, I'm surprised those hobbies of yours can actually come in handy.'\n'That's a nice bonus. Edamame is delicious, and I find the electric jolt refreshing.'\n'Well, whatever floats your boat. At first, I was worried you were forcing yourself to do all that just to stay awake protecting me...'\n'Do I seem like that kind of person?'\n'Not really. Remember the first time you ate edamame? With shell and everything? You didn't know to peel it back then and we were worried it'd cause some sort of problem, but instead you seemed happy as could be.'\n'I remember. That was when the mining ship broke down in the barrens. By the time we got it huffing and puffing to the next mine, everyone was already delirious with hunger. It was the first time I had food that could just snap you back to your senses, and it really stuck with me.'\n'Wait, so it all comes back to waking you up after all? You know, I'm starting to feel a little sorry for you, Ayers.'\n'No, it's because edamame is delicious, and I find the electric jolt refreshing.'\n'...Alright then. Whatever floats your boat.'",
+        "zh": "《荒野便携提神剂制作及使用方法外加功效说明》\n【制作及使用方法】\n1.准备煮熟的毛豆。不同于盐水毛豆，这里用到的毛豆不能加盐。毛豆不要剥开。\n2.准备能冷冻毛豆的设备，此处用我的毛豆盒演示，它制冷的效果刚好合适。\n3.准备可以放电的设备，此处用我的好家伙演示，它漏电的程度刚好合适。\n4.调低放电设备的电压，多次电击毛豆，使毛豆内部的汁水微微带电。\n5.吃。\n【功效说明】\n在荒野中，保持意识清醒相当困难。无边无际的旷野、漫天卷地的尘暴、活性源石云在空中映出的辉光、风刮过源石晶簇发出的凄鸣，都很容易让人逐渐丧失自我感知，陷入迷离的状态，从而忽视迫近的危险。\n带壳咀嚼毛豆，毛豆的茸毛持续刺激食用者的口腔，可以使食用者的神经活跃。\n冷冻后的毛豆，可以刺激食用者的牙龈，使食用者的神志清醒。\n毛豆的汁水微微带电，可以令食用者轻微触电，使食用者的知觉敏锐。\n适当的刺激使人不至于陷入麻木，唯有如此才能在荒野上存活。\n\n“艾尔斯，好严谨的一张说明书。”\n“莱特，是不是你又跟人说了什么？这几天总有干员来找我讨要‘在荒野上保持清醒的秘诀’。我一遍遍解释，太麻烦。”\n“你这说明书倒确实能起到杜绝访客的作用……说真的，连我都不知道，你这些奇妙的喜好原来都是有实用价值的吗？”\n“只是顺带。毛豆确实好吃，过电确实爽。”\n“好吧，你开心就行。我刚看到的时候还有些担心，生怕你一直以来都是为了在护卫我的时候保持清醒，才勉强自己维持这些‘喜好’的……”\n“我像是这种人？”\n“那倒不像。还记得你第一次吃带壳的毛豆吗？那时候你还只是不知道要剥壳。我们都担心你会吃出什么问题，你反而开心得不行。”\n“记得，那次矿船在荒野上出了故障，等它挣扎着开到最近的矿场，大家都已经饿昏了头。这种吃完之后能让人那么清醒的食物，我头一次见，很喜欢。”\n“到头来还是为了保持清醒吗？我开始有点心疼你了，艾尔斯。”\n“不，是因为毛豆确实好吃，过电确实爽。”\n“……好吧，你开心就行。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

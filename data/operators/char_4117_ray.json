@@ -1,0 +1,1489 @@
+{
+  "id": "char_4117_ray",
+  "name": {
+    "en": "Ray",
+    "zh": "莱伊",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RB15",
+  "rarity": 6,
+  "class": "SNIPER",
+  "subclass": "hunter",
+  "faction": "rim",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Sniper Operator Ray, staring out the window without a word.",
+    "zh": "狙击干员莱伊，一言不发地抬头望着窗外。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Pulled out from the mineshaft. Gone far. Still searching.",
+    "zh": "她从矿井里被拉上来，她走了很远，她还在追寻。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-12",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 904,
+            "atk": 547,
+            "def": 103,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1190,
+            "atk": 720,
+            "def": 140,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "4-9",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 5
+        },
+        {
+          "id": "30032",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1190,
+            "atk": 720,
+            "def": 140,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1507,
+            "atk": 900,
+            "def": 180,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "4-9",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "30014",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1507,
+            "atk": 900,
+            "def": 180,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1933,
+            "atk": 1072,
+            "def": 228,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ray_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 1 charge</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 1 charge</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 1 charge</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.9,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.1,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.3,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.6,
+            "cnt": 1,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.9,
+            "cnt": 2,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>moderately</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>中等力度地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 4.2,
+            "cnt": 2,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Parting Shot",
+            "zh": "脱身矢",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire a special bullet, dealing <@ba.vup>{atk_scale:0%}</> of ATK as Physical damage and pushing the target back <@ba.vup>greatly</>. If target is defeated, the next reload loads <@ba.vup>{cnt}</> additional bullet(s)\n<@ba.rem>Can store 2 charges</>",
+            "zh": "立即用额外特殊子弹攻击目标，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并将其<@ba.vup>较大力地</>推开，若将其击倒则使下次装填额外加装<@ba.vup>{cnt}</>发子弹\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 4.5,
+            "cnt": 2,
+            "force": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ray_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "respawn_time": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "respawn_time": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "respawn_time": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "respawn_time": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "respawn_time": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8,
+            "respawn_time": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9,
+            "respawn_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "respawn_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.1,
+            "respawn_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Area Overwatch",
+            "zh": "广域警觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: When the sandbeast retreats, recover all bullets that hit in the area\nAutomatic: Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, sandbeast redeployment time <@ba.vup>{respawn_time:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "被动效果：沙地兽撤退时回收命中该区域的子弹\\n自动开启：攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，沙地兽的再部署时间<@ba.vup>{respawn_time:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-10",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.2,
+            "respawn_time": -0.4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "31043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ray_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 1.9,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.1,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 15,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.3,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 15,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.4,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.5,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 20,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.7,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 2.9,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 20,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 3.1,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        },
+        {
+          "name": {
+            "en": "'See the Light'",
+            "zh": "“得见光芒”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately <@ba.vdown>stop attacking</> until fully loaded, reload interval <@ba.vup>greatly reduces</>, Attack Range <@ba.vup>increases</>, attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage and bind the enemy for <@ba.vup>{attack@unmove_duration}</>s\n<@ba.rem>If an enemy is defeated while skill is active, gain {sp} SP when skill ends</>",
+            "zh": "立即<@ba.vdown>停止攻击</>直至子弹装满，装填间隔<@ba.vup>大幅缩短</>，攻击范围<@ba.vup>扩大</>，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.root>束缚</><@ba.vup>{attack@unmove_duration}</>秒\\n<@ba.rem>技能期间若击倒敌人，技能结束时获得{sp}点技力</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-8",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "reload_interval": -1.2,
+            "attack@atk_scale": 3.3,
+            "attack@unmove_duration": 2,
+            "sp": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30041",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30053",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31033",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Patrol Partner",
+            "zh": "巡哨伙伴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy a sandbeast within Attack Range to scout an area for 15s, extending Attack Range into that area. Prioritizes attacking targets within this area, and deals 10% more Physical damage to them",
+            "zh": "可以在攻击范围内部署沙地兽于15秒内侦察一片区域延伸攻击范围，自身优先攻击该区域内的目标且对其造成的物理伤害提高10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Patrol Partner",
+            "zh": "巡哨伙伴",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy a sandbeast within Attack Range to scout an area for 25s, extending Attack Range into that area. Prioritizes attacking targets within this area, and deals 15% more Physical damage to them",
+            "zh": "可以在攻击范围内部署沙地兽于25秒内侦察一片区域延伸攻击范围，自身优先攻击该区域内的目标且对其造成的物理伤害提高15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Extreme Focus",
+            "zh": "入神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking the same target, each attack increases ATK by 8%, stacking up to 3 times",
+            "zh": "攻击相同目标时每次攻击提高自身攻击力8%，最多3层",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.08,
+            "max_stack_cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Focus",
+            "zh": "入神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking the same target, each attack increases ATK by 9% <@ba.talpu>(+1%)</>, stacking up to 3 times",
+            "zh": "攻击相同目标时每次攻击提高自身攻击力9%<@ba.talpu>（+1%）</>，最多3层",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.09,
+            "max_stack_cnt": 3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +37",
+        "zh": "攻击力+37",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 120
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ray",
+      "name": {
+        "en": "Ray's Badge",
+        "zh": "莱伊证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ray",
+      "description": {
+        "en": "Operator Ray has demonstrated a remarkable aptitude for storing and unleashing capacitance-based firepower to penetrative ends when facing the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Hunter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员莱伊擅长蓄积火力对敌人进行贯穿打击\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使猎手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ray",
+      "name": {
+        "en": "Dancing Moonlight",
+        "zh": "《跳舞的月光》",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ray",
+      "description": {
+        "en": "Human Resources Record File RF-099-47\nDay One\nOperator Ray has been reported missing this morning without submitting any official application to leave the ship. Human Resources is currently collaborating with Field Operations to investigate.\nDay Two\nWhile the Field Operations team conducts searches, we have also reviewed Ray's recent activities. On the night before her disappearance, she attended a private dance, which we consider to be abnormal behavior. We interviewed Alanna, Ray's friend and an intern at the Workshop, for more details. Below is an excerpt from our interview:\n'To think a weirdo like her went to a dance! I would never have believed it was her, but her cookie-shaped bangs were too iconic.'\n'What did she do at the dance?'\n'Umm... She just sat in a corner. Now that's more like something she'd do.'\n'Did she get into contact with anyone during the dance?'\n'Well, there was this old lady with a cane who sat in the corner with her.'\n'Did they interact in any way?'\n'That's the strange part! Neither of them spoke at all. It was as if they weren't at a dance, but sitting in a sauna house!'\nDay Three\nAccording to our investigation, the elderly woman whom Ray interacted with is a retired Operator from the Logistics Department currently on Rhodes Island for Oripathy treatment. She provided the following explanation for her attendance at the dance:\nShe used to be a dance teacher in her youth but had to end her career prematurely due to Oripathy. Now, severe crystallization of her left leg requires her to use a cane for walking.\nStatement from Retired Operator: 'All I wanted was to see young people dance.'\nDay Four\nAfter another futile day of searching, the search party witnessed two 'blue ghosts' as they were about to return. The Field Operators quickly assumed battle formations but broke formation after carefully probing said 'ghosts' with Arts: One of them was Ray.\nNext to Ray was a wasteland burdenbeast, its thick skin folds glistening with a blue hue as it heaved and twisted its massive body, as if dancing. Ray, also covered in a blue light, remained motionless. However, she was smiling like a child—a rare sight.\n[Supplementary Information]\nRay later learned that the blue light came from the dust pheromone of the Fluorescent Originium Slug, which causes intolerable irritation upon contact with the skin. This explained why the burdenbeast appeared to be dancing; in reality, it was writhing in itchiness. As for why Ray could remain unaffected by the itch... her 'excellent' rating in physical resilience is well-deserved. Below is an excerpt from our interview with her:\n'So, why did you suddenly leave the ship?'\n'I wanted to find the big burdenbeasts on the Colombian wasteland and make them dance to the moon again.'\n'Err... Did this have anything to do with the dance you attended? Was it because of the old lady who sat next to you?'\n'Yes. Her eyes showed me that she wanted to dance. So I suddenly felt that it was time to let the burdenbeasts dance again.'\n'... Huh?'\n'Yup.'\n'Well, umm, did you ever meet that old lady again? Maybe you'd like to tell her about your experience?'\n'No... but you're right, that'd be nice. If it's not too much trouble, could you tell her for me?'",
+        "zh": "人事部事件记录RF-099-47\n【第一日】\n干员莱伊于上午失踪。此前，她并未提交任何形式的离舰申请。我们已经与外勤部展开联合调查。\n【第二日】\n外勤部组织搜寻的同时，我们也调查了莱伊近日的动向。据悉，莱伊在失踪前一晚反常地参加了一场干员们举办的私人舞会，我们向莱伊的朋友，工坊的实习工匠阿兰娜询问了详情。\n“那家伙居然会参加舞会！要不是她那螺纹曲奇似的头发太有标志性，我都不敢相信是她！”\n“她在舞会上做了什么吗？”\n“呃……在角落里坐着。好吧，这倒是很像她会做的事。”\n“她在舞会上和谁有过接触吗？”\n“有个拄拐的老太太，和她一起在角落里坐着。”\n“她们有进行过什么互动吗？”\n“她俩从头到尾一句话也没说！简直就像去的不是舞会，是桑拿房！”\n【第三日】\n我们了解到，与莱伊有交集的老人是后勤部退休干员，现以病患身份继续在罗德岛接受治疗。她向我们说明了自己参加舞会的原因。\n据悉，老人年轻时曾是一名舞蹈教师，因矿石病而被迫结束了舞蹈生涯。如今，她的左腿已严重结晶化，必须依靠辅助工具行走。\n“没别的念想，只是想看看年轻人跳舞。”她说。\n【第四日】\n一日无果的努力之后，搜寻队在准备收队时目击了两个蓝色的幽影。经过谨慎的法术探测，已经排开作战队形的外勤干员们放下了戒备——他们发现了搜寻的目标，莱伊。\n莱伊身边是一只荒地驮兽，厚实的皮褶里闪烁着蓝色的幽光，它正喘着粗气扭动着庞大的身躯，仿佛是在跳舞。而同样披着蓝色幽光的莱伊本人，则一动不动，只是少见地笑着，笑得像个孩子。\n【补充信息】\n后来莱伊才知道，“蓝色的幽光”实际上来自荧壳源石虫的粉尘状信息素。如果被它接触到皮肤，会产生难以忍受的瘙痒，那只驮兽正是因此才会“跳起舞来”。至于莱伊自己……她的生理耐受评测结果是“优良”，不是没有原因的。\n“所以，你到底为什么突然离舰？”\n“我想找到哥伦比亚荒野上的一种大驮兽，让它们重新开始跟着月亮跳舞。”\n“呃……这和那天的舞会有关吗？因为那位坐在你旁边的老人？”\n“嗯。我看到她的眼睛，那是一双想要跳舞的眼睛。所以我突然感觉，是时候去让驮兽跳舞了。”\n“……啊？”\n“嗯。”\n“那，你有再见过那位老人吗？或许可以给她讲讲你的经历呢？”\n“没……但你说得对，这样也许不错。如果不麻烦的话……能不能请你帮忙讲给她听？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_ray",
+      "name": {
+        "en": "证明什么？",
+        "zh": "证明什么？",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_ray",
+      "description": {
+        "en": "莱叶菈第一次见到沙地兽，是在一个困苦的长冬。间歇泉五个月没喷出半滴水，整片荒原上都没了动物的身影。无论如何都不愿去招惹巨磐蟹的猎人们，最终不情愿地将目光投向了沙地兽栖息的沙丘。\n即便最老到的猎人，也很难分辨哪些沙丘是天然形成的，哪些是沙地兽的洞口。哪怕找到了洞口，能不能把沙地兽抓出来，通常也只与运气有关。猎人们都忙着把头埋进沙地里，远远地，在一棵枯干的瓶树之下，莱叶菈看见一只沙地兽轻轻摇晃着背扇。它不慌不忙地用舌头卷住试图从自己齿间逃走的鼷兽幼崽，满足地在树根上磨着蹄子，仿佛眼下的一切闹剧都与它无关。不论雷姆必拓荒原上的长冬对猎人们来说有多么恐怖，在沙地兽眼里，那就只是又一个稀松平常的季节。\n年幼的莱叶菈并未意识到，这顿可以救急的沙地兽肉有多么重要。她只是在那个瞬间，不由得对那只她未曾见过的小生物感到了敬畏。那天，她没有开口告诉任何人她的所见。\n莱叶菈第二次见到沙地兽，是在一间昏暗的棚屋。大大小小的铁笼挤满了走道之外的每一寸空间，刨抓金属的声音比荒原上的风更刺耳。曾经令她感到敬畏的那种动物，数以百计地被关在铁笼当中。莱叶菈忍不住好奇，它们是来帮忙抓鼷兽的，还是来帮忙松土的呢？都不是，当然。它们布满毛细血管的背扇，被用来分辨矿井下的气体是否有毒，像一张试纸。\n这一次，莱叶菈开口了。她见过这种动物，她说，她知道它都能做到些什么，她可以作证。\n“可它还是长着一顶背扇，不是吗？”老板轻描淡写地答道，好像这些沙地兽能做到什么，和它们能待在哪里，全然没有关系。莱叶菈忽然愣住了。那之后，父亲是怎样为了那个被埋葬在长冬的家人责骂她的，她都记不清了。\n所以，很多年以后，当探井人莱伊从一个好心的矿区经理手中接过一张写着“能力证明”的铜版纸的时候，她并不知道对方是在试图救她。虽然艰难，但莱伊勉强能读懂上面的文字是在证明她有能力做到什么。她只是不明白，这张纸有什么用。正巧，回到家，她看到沙地兽又咬烂了自己的窝顶棚，她把那张纸一折为二，小心地用胶水固定在沙地兽的窝顶上。\n那张纸原本有机会带她去到哪里，她永远也没机会知道了。但她知道，沙地兽的窝又有了个坚固的顶棚，小家伙晚上不会着凉了。至于小家伙下周的伙食，下个月的化毛膏，她会再想办法。\n至少，还有明天早上挟着晨雾的风，能给她指路。",
+        "zh": "莱叶菈第一次见到沙地兽，是在一个困苦的长冬。间歇泉五个月没喷出半滴水，整片荒原上都没了动物的身影。无论如何都不愿去招惹巨磐蟹的猎人们，最终不情愿地将目光投向了沙地兽栖息的沙丘。\n即便最老到的猎人，也很难分辨哪些沙丘是天然形成的，哪些是沙地兽的洞口。哪怕找到了洞口，能不能把沙地兽抓出来，通常也只与运气有关。猎人们都忙着把头埋进沙地里，远远地，在一棵枯干的瓶树之下，莱叶菈看见一只沙地兽轻轻摇晃着背扇。它不慌不忙地用舌头卷住试图从自己齿间逃走的鼷兽幼崽，满足地在树根上磨着蹄子，仿佛眼下的一切闹剧都与它无关。不论雷姆必拓荒原上的长冬对猎人们来说有多么恐怖，在沙地兽眼里，那就只是又一个稀松平常的季节。\n年幼的莱叶菈并未意识到，这顿可以救急的沙地兽肉有多么重要。她只是在那个瞬间，不由得对那只她未曾见过的小生物感到了敬畏。那天，她没有开口告诉任何人她的所见。\n莱叶菈第二次见到沙地兽，是在一间昏暗的棚屋。大大小小的铁笼挤满了走道之外的每一寸空间，刨抓金属的声音比荒原上的风更刺耳。曾经令她感到敬畏的那种动物，数以百计地被关在铁笼当中。莱叶菈忍不住好奇，它们是来帮忙抓鼷兽的，还是来帮忙松土的呢？都不是，当然。它们布满毛细血管的背扇，被用来分辨矿井下的气体是否有毒，像一张试纸。\n这一次，莱叶菈开口了。她见过这种动物，她说，她知道它都能做到些什么，她可以作证。\n“可它还是长着一顶背扇，不是吗？”老板轻描淡写地答道，好像这些沙地兽能做到什么，和它们能待在哪里，全然没有关系。莱叶菈忽然愣住了。那之后，父亲是怎样为了那个被埋葬在长冬的家人责骂她的，她都记不清了。\n所以，很多年以后，当探井人莱伊从一个好心的矿区经理手中接过一张写着“能力证明”的铜版纸的时候，她并不知道对方是在试图救她。虽然艰难，但莱伊勉强能读懂上面的文字是在证明她有能力做到什么。她只是不明白，这张纸有什么用。正巧，回到家，她看到沙地兽又咬烂了自己的窝顶棚，她把那张纸一折为二，小心地用胶水固定在沙地兽的窝顶上。\n那张纸原本有机会带她去到哪里，她永远也没机会知道了。但她知道，沙地兽的窝又有了个坚固的顶棚，小家伙晚上不会着凉了。至于小家伙下周的伙食，下个月的化毛膏，她会再想办法。\n至少，还有明天早上挟着晨雾的风，能给她指路。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30165",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1492 @@
+{
+  "id": "char_1012_skadi2",
+  "name": {
+    "en": "Skadi the Corrupting Heart",
+    "zh": "浊心斯卡蒂",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "CR01",
+  "rarity": 6,
+  "class": "SUPPORT",
+  "subclass": "bard",
+  "faction": "egir",
+  "position": "RANGED",
+  "tagList": [
+    "Support",
+    "Survival",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Skadi the Corrupting Heart, a visitor familiar yet unbeknownst to you.",
+    "zh": "浊心斯卡蒂，一位让你熟悉又陌生的访客。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Are you willing to welcome it?",
+    "zh": "你愿意接纳它吗？",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "x-4",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 613,
+            "atk": 145,
+            "def": 93,
+            "magicResistance": 0,
+            "cost": 6,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 877,
+            "atk": 228,
+            "def": 139,
+            "magicResistance": 0,
+            "cost": 6,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 5
+        },
+        {
+          "id": "30032",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 877,
+            "atk": 228,
+            "def": 139,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1202,
+            "atk": 305,
+            "def": 186,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30094",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1202,
+            "atk": 305,
+            "def": 186,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1603,
+            "atk": 368,
+            "def": 233,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_skadi2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 0.8,
+            "attack@atk_to_hp_recovery_ratio": 0.4,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 0.9,
+            "attack@atk_to_hp_recovery_ratio": 0.4,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1,
+            "attack@atk_to_hp_recovery_ratio": 0.4,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.1,
+            "attack@atk_to_hp_recovery_ratio": 0.5,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.2,
+            "attack@atk_to_hp_recovery_ratio": 0.5,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.3,
+            "attack@atk_to_hp_recovery_ratio": 0.5,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.4,
+            "attack@atk_to_hp_recovery_ratio": 0.6,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.5,
+            "attack@atk_to_hp_recovery_ratio": 0.7,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.6,
+            "attack@atk_to_hp_recovery_ratio": 0.7,
+            "damage_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Chant of Returning by Varied Paths",
+            "zh": "同归殊途之吟",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores all HP and gains Max HP <@ba.vup>+{max_hp:0%}</>. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</> and <@ba.vup>{damage_resistance:0%}</> of damage taken by all ally units within Attack Range is directly transferred to this unit (only the highest effect of this type is applied)",
+            "zh": "立即回复自身所有生命值且生命上限<@ba.vup>+{max_hp:0%}</>，特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>，攻击范围内我方所有单位受到伤害的<@ba.vup>{damage_resistance:0%}</>直接转移给浊心斯卡蒂承担（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "max_hp": 1.7,
+            "attack@atk_to_hp_recovery_ratio": 0.8,
+            "damage_resistance": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30083",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_skadi2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 68,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.15,
+            "def": 0.15,
+            "attack@atk_to_hp_recovery_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 68,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "def": 0.2,
+            "attack@atk_to_hp_recovery_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 68,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25,
+            "def": 0.25,
+            "attack@atk_to_hp_recovery_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 66,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.3,
+            "attack@atk_to_hp_recovery_ratio": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 66,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35,
+            "def": 0.35,
+            "attack@atk_to_hp_recovery_ratio": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 66,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.4,
+            "attack@atk_to_hp_recovery_ratio": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.45,
+            "attack@atk_to_hp_recovery_ratio": 0.17
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 61,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.5,
+            "attack@atk_to_hp_recovery_ratio": 0.18
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "def": 0.55,
+            "attack@atk_to_hp_recovery_ratio": 0.19
+          }
+        },
+        {
+          "name": {
+            "en": "Wish of Burial Beyond the Light",
+            "zh": "同葬无光之愿",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All other ally units within Attack Range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK and DEF. The healing effect of this unit's Trait is increased to <@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击范围内所有其他友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力与防御力的<$ba.inspire>鼓舞</>效果，自身特性效果提高至<@ba.vup>{attack@atk_to_hp_recovery_ratio:0%}</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 0.6,
+            "attack@atk_to_hp_recovery_ratio": 0.2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30073",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_skadi2_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.25,
+            "atk": 0.5,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.3,
+            "atk": 0.55,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "atk": 0.6,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "atk": 0.65,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.45,
+            "atk": 0.7,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.5,
+            "atk": 0.75,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.55,
+            "atk": 0.8,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.6,
+            "atk": 0.9,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.65,
+            "atk": 1,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "'The Tide Surges, The Tide Recedes'",
+            "zh": "\"潮涌，潮枯\"",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "This unit's Trait changes to losing <@ba.vdown>{hp_ratio:0%}</> HP every second. Deals <@ba.vup>{atk_scale:0%}</> ATK as <@ba.vup>True damage</> to all enemies within range every second (damage from this unit and the Seaborn stacks). All ally units within range gain <$ba.inspire>Inspiration</> equal to <@ba.vup>{atk:0%}</> of this unit's ATK",
+            "zh": "特性变为自身每秒流失<@ba.vdown>{hp_ratio:0%}</>生命，使范围内所有敌人每秒受到<@ba.vup>{atk_scale:0%}</>攻击力的<@ba.vup>真实</>伤害（自身与海嗣造成的伤害可叠加），范围内所有友方单位获得相当于浊心斯卡蒂<@ba.vup>{atk:0%}</>攻击力的<$ba.inspire>鼓舞</>效果",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.7,
+            "atk": 1.1,
+            "hp_ratio": 0.05
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30041",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31023",
+          "count": 4
+        },
+        {
+          "id": "30083",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Ancient Kin",
+            "zh": "远古血亲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use a Seaborn that lasts for 15 seconds. The Seaborn's Attack Range is regarded as an extension of this unit's Attack Range",
+            "zh": "可以使用一个持续15秒的海嗣，海嗣的攻击范围视为自身攻击范围的延伸",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ancient Kin",
+            "zh": "远古血亲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use a Seaborn that lasts for 25 seconds. The Seaborn's Attack Range is regarded as an extension of this unit's Attack Range",
+            "zh": "可以使用一个持续25秒的海嗣，海嗣的攻击范围视为自身攻击范围的延伸",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Predatory Habits",
+            "zh": "捕食习性",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +6% when there is an allied unit within range of self or the Seaborn; If the allied unit is an [Abyssal Hunter] Operator, gain ATK +15% instead",
+            "zh": "自身或海嗣攻击范围内存在我方干员时，自身攻击力+6%；存在【深海猎人】干员时改为攻击力+15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "skadi2_t_2[atk][1].atk": 0.06,
+            "skadi2_t_2[atk][2].atk": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Predatory Habits",
+            "zh": "捕食习性",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +9% <@ba.talpu>(+3%)</> when there is an allied unit within range of self or the Seaborn; If the allied unit is an Abyssal Hunter operator, gain ATK +18% <@ba.talpu>(+3%)</> instead",
+            "zh": "自身或海嗣攻击范围内存在我方干员时，自身攻击力+9%<@ba.talpu>（+3%）</>；存在【深海猎人】干员时改为攻击力+18%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "skadi2_t_2[atk][1].atk": 0.09,
+            "skadi2_t_2[atk][2].atk": 0.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 50,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_skadi2",
+      "name": {
+        "en": "Skadi the Corrupting Heart's Badge",
+        "zh": "浊心斯卡蒂证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_skadi2",
+      "description": {
+        "en": "You sheathe your blade and hide who you are.//YOU KNOW WHO YOU ARE AND WADE UNTO WE MANY.\nYou traipse through the shallows and sing twixt sea and sky.//YOU MELT TWIXT EVERY DEPTH AND CHANT FOR YOUR KIN.\nAbyssal Hunter name of Skadi,//SEABORN NAME OF ISHAR'MLA,\nHHeErReE yYoOuU lLiInNgGeErR.\nWe await your deployment.//WE CLAMOR FOR YOUR CALL.",
+        "zh": "收起巨剑，隐藏身份//认清自我，迈入大群\n漫步浅滩，于海天间歌唱//潜入深洋，为同胞们发声\n名为斯卡蒂的深海猎人//名为伊莎玛拉的海嗣\n正停留此处\n等待你的部署//渴盼你的呼唤",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_skadi2",
+      "name": {
+        "en": "An Exuvia of Her Past",
+        "zh": "蜕化的残迹",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_skadi2",
+      "description": {
+        "en": "The Time has come, He thinks, despite that Time exists no longer.\nThe last distant light extinguishes under His watchful gaze. At His extremities are naught but thin void blacknesses, the stars gone. Amidst space, His half-immaterial body is the lone existence that remains, stretching to infinity, drifting without destination. Ere people had proclaimed Him the end of a cycle; now in this moment He truly is. All else has passed on from being; only He persists.\nSo, what next?\nHe gazes at His own body. The blood kin He once migrated with. The kin He led to blot out countless millions upon millions of lives, all turned part of His body, nourishment for it. Where once clamored countless visions of the future, now lapsed into eternal silence. All this the cost for His life in this very moment, yet in this very moment He knows not what He could use His life for.\nIn yore He had a calling that drove Him to engulf those millions upon millions of lives, and each and every star and satellite they perched on, becoming as every lifeform that had and could have existed in this universe, ultimately drove Him to this shore of oblivion—yet now that once-irresistible calling grows imperceptible, soon to dwindle to nothing. Those hopes that all came to dwell within Him died at the moment where all fell quiet. Even the ones who first blessed Him with this mission may never have imagined this future to follow.\nHe feels lost, uneasy. But nowhere can He seek the answers. Beyond Him is mere void, and within Him purposeless nutrients. Given this, the only place to send His thought can be into the deepest recesses of His body, to stir those aimless nutrients, to try and derive the slightest hint from them.\nUnder His thought's interference, they begin to collide, begin to reconstitute, reform as endless and strange shatterings of information, shatterings that pass away in a blink. So in this Timeless eternity He keeps trying and trying, until His thought finally catches with nimbleness upon a piece altogether familiar to Him—it is a fragment of His own voice, metal threads' vibrations and living membranes' tremors in common harmony... Yes, it is Song.\nOnce, a lone technician had sung this. No matter what seas she swam, it was by herself, trailing hundreds upon thousands of optical cables behind her. The technician deftly strummed these optical cables, and amidst swirling halos sang to schools of indifferent fins that passed her by.\nOnce, a lone wandering singer had sung this too. No matter what lands she walked, it was by herself, trailing tune after tune of memories behind her. The singer wove those memories into ditties, and in rundown inns sang to crowds of indifferent souls.\nIn this moment He Himself is lone, trailing every breadth of creation He engulfed behind Him, drifting through a dying universe to the ends of Time. So in this moment, should He not sing too, to those indifferent nutrients within His body?\nSkadi certainly would. While complex problems still lay on her mind to puzzle through, her Song would well forth—for Song was her language, her imagination, her creation.\nSo Skadi begins to sing. And in her Song, Skadi begins to blossom, more fiercely and ardently than any life that has ever blossomed before. Dimly, Skadi realizes the act she is about to undertake. With the beginning of this Song, those indifferent nutrients within her body will birth new existence, new life, a new universe.\nViolently her body expands, and rapidly her consciousness scatters, and filled with hope she imagines the brand new universe she will never witness.",
+        "zh": "时间到了，祂如是想，尽管时间已经不复存在。\n最后一点遥远的光在祂的注视下熄灭，祂的身侧只剩下空洞而稀薄的黑暗，再无星辰。宇宙中唯一还存在的是祂自己半虚半实的身躯，绵延至视野的尽头，漫无目的地漂流着。曾有人宣称，祂将是循环的终点，而此刻，祂确实已是循环的终点。万物已然寂灭，唯有祂还存续。\n那么，接下来呢？\n祂注视着自己的身躯。祂曾经与之共同遨游的血亲族群，一如祂带领族群抹去的亿万生灵，都已经化作了祂体内的养分，曾经喧哗的无数愿景，永远地沉寂了。所有这些代价换来的是祂此刻的生命，可此刻，祂居然不知道这生命可以用来做些什么。\n过去，有一个使命推动着祂吞噬了亿万生灵与他们栖居的千百星月，变换了宇宙中曾有过与可能有的一切生命形态，最终使祂来到了寂灭的彼端——但那个曾经无可违抗的使命正在变得越发模糊，很快就要消散殆尽。寄托在祂身上的所有期望都止步于万物寂灭的那一刻，或许就连最初将那使命赋予祂的人，也不曾构想过此后的未来。\n祂感到迷茫，也感到不安。但祂无处寻觅答案，在祂之外徒存虚空，在祂体内空余养分。于是，祂只能将思维探入自己的躯体深处，拨弄着那些无动于衷的养分，试图从它们身上寻得一丝线索。\n在祂的思维的干预之下，那些养分开始碰撞，开始重构，不断地生成一些陌生的信息碎片，而这些碎片都转瞬即逝。祂就这样在没有时间的永恒中不断地尝试着，直到祂的思维终于敏锐地捕捉到了一枚熟悉的碎片——那是一段属于祂自己的声音，由金属丝的颤动和生物膜的振动共同构成……对了，那是歌声。\n曾经，一个孤独的技术员也这样唱过歌。技术员游过哪片海域都是一人，孤独地拖着千丝万缕的光缆。技术员灵巧地拨动那些光缆，在流转的光晕中对无动于衷的鳞群歌唱。\n曾经，一个孤独的流浪歌手也这样唱过歌。流浪歌手走过哪片土地都是一人，孤独地拖着一腔回忆。流浪歌手将那些回忆编织成曲，在破败的酒馆里对无动于衷的灵魂歌唱。\n此刻的祂也是独身，孤独地拖着自己吞噬过的万物，在将死的宇宙中漂流到了时间的尽头。那么此刻，祂是否也该对自己身躯里那些无动于衷的养分歌唱？\n如果是斯卡蒂的话，她一定会歌唱。在她思考清楚那些复杂的问题之前，她的歌声就会先涌出来——因为歌声就是她的话语、她的想象、她的创造。\n于是斯卡蒂开始歌唱。在歌声中，斯卡蒂开始绽放，比任何存在过的生命都更剧烈地绽放。朦胧地，斯卡蒂意识到了自己将要做些什么。就从这首歌开始，她身体里那些无动于衷的养分将会诞生成新的存在、新的生命、新的宇宙。\n她的身躯剧烈地膨胀，她的意识急剧地消散，她满怀希望地想象着那个自己无缘见证的新宇宙。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_skadi2",
+      "name": {
+        "en": "新生代",
+        "zh": "新生代",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_skadi2",
+      "description": {
+        "en": "斯卡蒂俯视着珊瑚丛间那个缩在甲壳中，正拿着翻译装置吸引祂注意的人类。\n祂见过她，人类在海底铺设了一片金属森林，而她似乎是他们的首领。此刻，她正兴奋地向斯卡蒂讲述着自己的宏伟愿景——\n离开泰拉，前往虚空，在远行中寻找并迁徙至另一颗泰拉。而祂所要付出的，仅仅是接受一些改造，背负一点货物和人类。\n虽然缺少争斗，但她的提议无疑迎合了自己的天性与准则。\n有一片更广阔的疆土可以探索与迁徙，祂又怎么会拒绝呢？\n于是斯卡蒂跟着人类的指引，游向了那片金属森林。而在钢铁环绕的花园中，祂的几位同胞早已栖居多时。\n……\n斯卡蒂像同胞们那样被赋予了名字。祂被称作“伊莎玛拉”，按照人类的说法，那似乎是他们遥远传说中神灵名号的转写。而祂们，被统称为“海神”。斯卡蒂曾以为那意指祂们是海洋的神灵，但她指了指海洋之上的虚无，告诉祂人类将之也归入了海洋的历史。虚无海的神灵，斯卡蒂将这个概念咀嚼了很久，那甘甜的回味直至今日仍在祂脑中盘旋。\n……\n人类之间发生了争斗吗？斯卡蒂并不明白，祂和祂的同类只能感觉到人类之间的紧张氛围，就像是猎物即将被捕获前的恐慌。当她将科技培育的“海神子代”送到祂们面前时，斯卡蒂发现那并不是精灵，而更接近祂们的外形。它们被称作“海嗣”。海神们都欣然接受了自己的子代，可为什么她会如此悲伤呢，斯卡蒂不明白。\n……\n大多数人类都离开海洋，前去面对他们的终结。海面上发生的事情与其说是屠杀，不如说是一场能看到尽头的减法。金属森林陷入沉寂，只有她还陪伴着我们。在收到一封信件后，她似乎一直在准备着什么。最终，她召集了我们。\n那是她唯一一次命令我们，她站在园林的植物间，平静地叙述自己的未来：她会在注射药剂后死亡，而我们将要分食她的遗体。药剂会将她头脑中的知识毫无保留地贡献给我们，并一劳永逸地抹消人类在我们记忆中的留存。\n……陆。\n她没给我们机会反驳，在针管刺入脖颈的下一刻，她就倒在了亲手栽种的陵寝之中。\n我看着她的嘴唇在蠕动，看着她的瞳孔涣散，听觉能够接收到的，只有她最后的祝福。\n活下去——\n活下去……\n活下去。",
+        "zh": "斯卡蒂俯视着珊瑚丛间那个缩在甲壳中，正拿着翻译装置吸引祂注意的人类。\n祂见过她，人类在海底铺设了一片金属森林，而她似乎是他们的首领。此刻，她正兴奋地向斯卡蒂讲述着自己的宏伟愿景——\n离开泰拉，前往虚空，在远行中寻找并迁徙至另一颗泰拉。而祂所要付出的，仅仅是接受一些改造，背负一点货物和人类。\n虽然缺少争斗，但她的提议无疑迎合了自己的天性与准则。\n有一片更广阔的疆土可以探索与迁徙，祂又怎么会拒绝呢？\n于是斯卡蒂跟着人类的指引，游向了那片金属森林。而在钢铁环绕的花园中，祂的几位同胞早已栖居多时。\n……\n斯卡蒂像同胞们那样被赋予了名字。祂被称作“伊莎玛拉”，按照人类的说法，那似乎是他们遥远传说中神灵名号的转写。而祂们，被统称为“海神”。斯卡蒂曾以为那意指祂们是海洋的神灵，但她指了指海洋之上的虚无，告诉祂人类将之也归入了海洋的历史。虚无海的神灵，斯卡蒂将这个概念咀嚼了很久，那甘甜的回味直至今日仍在祂脑中盘旋。\n……\n人类之间发生了争斗吗？斯卡蒂并不明白，祂和祂的同类只能感觉到人类之间的紧张氛围，就像是猎物即将被捕获前的恐慌。当她将科技培育的“海神子代”送到祂们面前时，斯卡蒂发现那并不是精灵，而更接近祂们的外形。它们被称作“海嗣”。海神们都欣然接受了自己的子代，可为什么她会如此悲伤呢，斯卡蒂不明白。\n……\n大多数人类都离开海洋，前去面对他们的终结。海面上发生的事情与其说是屠杀，不如说是一场能看到尽头的减法。金属森林陷入沉寂，只有她还陪伴着我们。在收到一封信件后，她似乎一直在准备着什么。最终，她召集了我们。\n那是她唯一一次命令我们，她站在园林的植物间，平静地叙述自己的未来：她会在注射药剂后死亡，而我们将要分食她的遗体。药剂会将她头脑中的知识毫无保留地贡献给我们，并一劳永逸地抹消人类在我们记忆中的留存。\n……陆。\n她没给我们机会反驳，在针管刺入脖颈的下一刻，她就倒在了亲手栽种的陵寝之中。\n我看着她的嘴唇在蠕动，看着她的瞳孔涣散，听觉能够接收到的，只有她最后的祝福。\n活下去——\n活下去……\n活下去。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30165",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1120 @@
+{
+  "id": "char_4199_makiri",
+  "name": {
+    "en": "Matsukiri",
+    "zh": "松桐",
+    "isMachineTranslation": true
+  },
+  "appellation": "Matsukiri",
+  "displayNumber": "HK17",
+  "rarity": 5,
+  "class": "PIONEER",
+  "subclass": "counsellor",
+  "faction": "higashi",
+  "position": "MELEE",
+  "tagList": [
+    "费用回复",
+    "支援"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "先锋干员松桐，提供你所需要的一切信息。",
+    "zh": "先锋干员松桐，提供你所需要的一切信息。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "你要付出的，只不过是一小段时间，和一些微不足道的代价。",
+    "zh": "你要付出的，只不过是一小段时间，和一些微不足道的代价。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 746,
+            "atk": 244,
+            "def": 162,
+            "magicResistance": 10,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1022,
+            "atk": 359,
+            "def": 243,
+            "magicResistance": 10,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1022,
+            "atk": 359,
+            "def": 243,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1401,
+            "atk": 492,
+            "def": 320,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 3
+        },
+        {
+          "id": "31064",
+          "count": 7
+        },
+        {
+          "id": "31023",
+          "count": 17
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1401,
+            "atk": 492,
+            "def": 320,
+            "magicResistance": 15,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2002,
+            "atk": 600,
+            "def": 400,
+            "magicResistance": 15,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_makiri_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 14,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 16,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 18,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        },
+        {
+          "name": {
+            "en": "入场安排",
+            "zh": "入场安排",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并使当前待部署区最右边的<@ba.vup>{cnt}</>名干员部署费用<@ba.vup>{value}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "cost": 10,
+            "cnt": 1,
+            "value": -4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31074",
+              "count": 3
+            },
+            {
+              "id": "31093",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_makiri_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.05,
+            "makiri_s_2[passive].atk": 0.25,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.05,
+            "makiri_s_2[passive].atk": 0.3,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.05,
+            "makiri_s_2[passive].atk": 0.35,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.06,
+            "makiri_s_2[passive].atk": 0.4,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.06,
+            "makiri_s_2[passive].atk": 0.45,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.1,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.06,
+            "makiri_s_2[passive].atk": 0.5,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.12,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.08,
+            "makiri_s_2[passive].atk": 0.55,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 13,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.13,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.08,
+            "makiri_s_2[passive].atk": 0.6,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 14,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.14,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.08,
+            "makiri_s_2[passive].atk": 0.65,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        },
+        {
+          "name": {
+            "en": "万手成局",
+            "zh": "万手成局",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "zh": "逐渐回复总共<@ba.vup>{value}</>点部署费用，攻击力<@ba.vup>+{makiri_s_2[passive].atk:0%}</>，每秒恢复<@ba.vup>{makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio:0%}</>的最大生命值；技能开启时立即使待部署区所有重装与辅助干员费用<@ba.vup>{cost_decrease}</>，并且最大生命值<@ba.vup>+{max_hp:0%}</>（生命加成最多叠加<@ba.vup>{max_stack_cnt}</>次，持续至下次撤退）",
+            "isMachineTranslation": true
+          },
+          "rangeId": "1-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 15,
+          "blackboard": {
+            "cost": 1,
+            "max_hp": 0.15,
+            "makiri_s_2[passive].hp_recovery_per_sec_by_max_hp_ratio": 0.1,
+            "makiri_s_2[passive].atk": 0.7,
+            "max_stack_cnt": 2,
+            "cost_decrease": -1,
+            "interval": 1,
+            "value": 15
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31094",
+              "count": 3
+            },
+            {
+              "id": "31053",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 3
+        },
+        {
+          "id": "31043",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "慢手有筹",
+            "zh": "慢手有筹",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+5%",
+            "zh": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+5%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "interval": 30,
+            "atk": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "慢手有筹",
+            "zh": "慢手有筹",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+7%<@ba.talpu>（+2%）</>",
+            "zh": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+7%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "interval": 30,
+            "atk": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "慢手有筹",
+            "zh": "慢手有筹",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+10%",
+            "zh": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+10%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "interval": 30,
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "慢手有筹",
+            "zh": "慢手有筹",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+12%<@ba.talpu>（+2%）</>",
+            "zh": "在战场停留30秒后，仅一次使场上与待部署区的所有重装和辅助干员攻击力+12%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "interval": 30,
+            "atk": 0.12
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "",
+            "zh": "",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-10秒",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 50,
+        "def": 20
+      }
+    }
+  ]
+}

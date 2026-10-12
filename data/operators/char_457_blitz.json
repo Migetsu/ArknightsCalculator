@@ -1,0 +1,1136 @@
+{
+  "id": "char_457_blitz",
+  "name": {
+    "en": "Blitz",
+    "zh": "闪击",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RS02",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "shotprotector",
+  "faction": "rainbow",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Blitz, a member of Team Rainbow, wields a charged-and-ready tactical shield.",
+    "zh": "彩虹小队成员闪击，战术护盾充能完毕。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Considering how most enemies we deal with have eyes, a blinded enemy is the best enemy.",
+    "zh": "瞎掉的敌人就是最好的敌人，毕竟我们对付的家伙大都有眼睛。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1296,
+            "atk": 230,
+            "def": 243,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1728,
+            "atk": 295,
+            "def": 364,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1728,
+            "atk": 295,
+            "def": 364,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2305,
+            "atk": 369,
+            "def": 493,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "30084",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2305,
+            "atk": 369,
+            "def": 493,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3213,
+            "atk": 445,
+            "def": 676,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_blitz_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 2.5,
+            "silence": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 2.5,
+            "silence": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 2.5,
+            "silence": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 3,
+            "silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 3,
+            "silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 5,
+          "blackboard": {
+            "stun": 3,
+            "silence": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 10,
+          "blackboard": {
+            "stun": 3.5,
+            "silence": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 11,
+          "blackboard": {
+            "stun": 3.8,
+            "silence": 3.8
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 12,
+          "blackboard": {
+            "stun": 4.1,
+            "silence": 4.1
+          }
+        },
+        {
+          "name": {
+            "en": "Flash Shield",
+            "zh": "闪光护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within range and disables their special abilities for <@ba.vup>{stun}</> seconds; <@ba.rem>Can only be used 4 times every deployment</>",
+            "zh": "前方范围内所有敌人<$ba.stun>晕眩</>且特殊能力失效，持续<@ba.vup>{stun}</>秒；<@ba.rem>每次部署后可发动4次技能</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-5",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 15,
+          "blackboard": {
+            "stun": 4.5,
+            "silence": 4.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31023",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_blitz_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.25,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.35,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "stun": 5,
+            "attack_speed": 200,
+            "talent_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 6,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "stun": 6,
+            "attack_speed": 200,
+            "talent_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 6,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "stun": 6,
+            "attack_speed": 200,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 6,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 20,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "stun": 6,
+            "attack_speed": 200,
+            "talent_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Shield Bash",
+            "zh": "突破防线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks all blocked enemies once, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage and <$ba.stun>Stunning</> them for <@ba.vup>{stun}</> seconds. ASPD <@ba.vup>+{attack_speed}</> and first Talent's effect increases to <@ba.vup>{talent_scale}</> times",
+            "zh": "对所有阻挡单位造成一次相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害并<$ba.stun>晕眩</><@ba.vup>{stun}</>秒。自身攻击速度<@ba.vup>+{attack_speed}</>，第一天赋效果提升至<@ba.vup>{talent_scale}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk_scale": 2,
+            "stun": 7,
+            "attack_speed": 200,
+            "talent_scale": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 2
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Shielded Shooting",
+            "zh": "持盾射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize <$ba.stun>Stunned</> enemies; Increase ATK to 130% when attacking <$ba.stun>Stunned</> enemies",
+            "zh": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至130%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Shooting",
+            "zh": "持盾射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize <$ba.stun>Stunned</> enemies; Increase ATK to 135% <@ba.talpu>(+5%)</> when attacking <$ba.stun>Stunned</> enemies",
+            "zh": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至135%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Shooting",
+            "zh": "持盾射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize <$ba.stun>Stunned</> enemies; Increase ATK to 160% when attacking <$ba.stun>Stunned</> enemies",
+            "zh": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至160%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Shooting",
+            "zh": "持盾射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize <$ba.stun>Stunned</> enemies; Increase ATK to 165% <@ba.talpu>(+5%)</> when attacking <$ba.stun>Stunned</> enemies",
+            "zh": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至165%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.65
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Bunker Defense",
+            "zh": "掩体防御",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When there is a High Ground tile beside or behind this operator, gain 25% chance to shrug off physical damage",
+            "zh": "身侧或身后存在高台时获得25%的物理抵挡",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1,
+            "prob": 0.25
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 45,
+        "def": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_blitz",
+      "name": {
+        "en": "Blitz's Badge",
+        "zh": "闪击证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_blitz",
+      "description": {
+        "en": "Operator Blitz has demonstrated a remarkable aptitude for tactical defense and frontline breaching.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations. In witness whereof,\nThis badge is hereby conferred upon the above named, whether this band of soldiers needs such recognition notwithstanding.",
+        "zh": "干员闪击擅长战术防御与阵线突破\n根据外勤部门决议\n在外勤任务中划分为重装干员，特别颁发此证章\n但是像他们这样的人，真的需要这种证明么？",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_blitz",
+      "name": {
+        "en": "Shield Maintenance Oil",
+        "zh": "战术盾牌维护油",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_blitz",
+      "description": {
+        "en": "'We'll reach our destination before sundown, Mr. Kötz.'\n'But do you really believe what that noble told us? That there's a land in the wastes for these refugees to eke out a living?'\nThe mercenaries' worries weren't without reason, Kötz understands that.\nBut he has no grounds to doubt that young Leithanian noble. The self-professed Hyacinth Count's Arts have saved countless people in the midst of war, and he claims he can lead these people to a new home.\nSuch kindness is hard to come by.\nKötz turns to look back at the procession of refugees.\nLeithanians, Siracusans, and those driven from their homelands by conflict, now exiles of the wastes.\nThe despairing crowd trudges slow on the barren ground. Their destination, a land that exists only in legend.\n\nAnd far in the distance, a colossal glut of buildings appears on the horizon before them.\nWhen the procession reaches its destination, the people let out a collective sigh at the sight.\nAmidst a swathe of ruins, a number of constructs tower, goliaths near a hundred meters each, their sensational metal structures sheltering from the setting sun.\nYet Kötz lapses into silence.\nThe lofty metal monoliths strike no sense of wonder in him. In his own world, such buildings stood on every corner. Only their dimensions speak to a difference.\nThe colossal parabola of the antenna dish is riddled with holes, its pedestal imposing firm and straight in its root upon the earth. The wastes' bitter winds bore through those holes, giving rise to a terrifying whistle.\nUnder these ancient buildings, the low mumble of machinery still sounds, the impression cast that some equipment remains at work.\nThis radio telescope of such preposterous size is clearly not of this age.\n'So this is that land where the titans sound...'\n'Do you see that big bowl that's fallen over there?'\nThe Hyacinth Count points far off at another telescope, collapsed in disrepair.\nIts parabolic antenna, size encapsulated in tens of meters, lays turned over on the ground, forming a sturdy shelter.\n'Quite a number could fit in there.'\n'There's a spring nearby, and according to recent records, there's been very few Catastrophes in the area.'\n'So, why has nobody settled down here?'\n'Because they fear this place.'\nWith a discontented chuckle, the young Count explains.\n'Sargonians think these buildings are the remnants of a long-gone disaster.'\n'Minoans believe this place is cursed.'\n'But as a scientist, I have no faith in any of this unfounded hearsay.'\nThe refugees turn through the building's remains, finding in the age-old ruins a place of respite.\nThis is to be their new home.\n\nNight falls and Kötz sits alone, high on the ancient building, gazing at the complex, each part of it just as foregone.\nWhat went into the making of these vestiges, such that they persist from innumerable years to this very day?\nThe people of this world once looked with hope to the starry skies, but what was it that happened afterward?\nHe looks across the wastes stretching from near to far.\nEven further off, the twin moons gently rise.",
+        "zh": "“我们天黑之前能够到达目的地，库兹先生。”\n“但是你真的相信那个贵族的说法吗？荒地上真的有能让这些难民活下去的土地？”\n佣兵们的担忧不无道理，库兹明白这一点。\n但是自己不该怀疑那位年轻的莱塔尼亚贵族。自称风信子伯爵的术师在战争中拯救了许多人，并且声称能够带领这些人找到新的家园。\n如此善行难能可贵。\n库兹回头看向难民的队伍。\n莱塔尼亚人、叙拉古人，还有那些被战争驱离家乡的荒地流民。\n绝望的人群缓慢地行走在荒地之上，而他们的目的地，却是一片只存在于传说中的土地。\n\n远处，巨大的建筑群已经浮现在地平线上。\n当难民的队伍到达目的地的那一刻，所有人都在感叹自己眼前的一切。\n在一片废墟中耸立着数个近百米高的巨大建筑，夸张的金属结构遮挡了落日。\n然而库兹陷入了沉默。\n眼前高耸的金属巨物并没有让他感到惊奇。在自己的世界中，这样的建筑十分常见，只是尺寸有所不同。\n巨大的碗状抛物面天线上千疮百孔，依然坚实的巨型基座屹立在大地之上。荒地的寒风穿过天线上的孔洞，发出骇人的呼啸声。\n在这片古老建筑之下，依然传来低沉的机械轰鸣，似乎有什么设备还在运作。\n这些尺寸夸张的射电望远镜，很明显并不属于这个时代。\n“这就是所谓的巨物嚣响之地啊……”\n“看到那面倒下的大碗了么？”\n风信子伯爵指着远处一座已经损坏倒塌的射电望远镜。\n数十米宽的碗形天线倒扣在地面上，形成了一处坚固的避难所。\n“那里可以容纳不少人。”\n“这附近有水源，依据这些年的记载，这附近的天灾并不多。”\n“既然如此，为什么没有人在这里定居？”\n“因为他们恐惧这里。”\n年轻的伯爵苦笑着解释。\n“萨尔贡人认为这些建筑是古老灾难的残留。”\n“米诺斯人认为这里受到了诅咒。”\n“但是作为学者，我并不相信这些没有根据的传言。”\n难民们翻过建筑残骸，在古代废墟中寻找歇脚之地。\n这里就是他们的新家园。\n\n夜晚，库兹一个人坐在古老建筑的高处，凝视着这片古老的建筑群。\n无数年前的建筑能够保留至今，这些遗迹是什么材料制造的？\n这个世界上的人曾经仰望星空，但是后来发生什么事了？\n他看着一望无际的荒地。\n远处，双月正在缓缓升起。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30034",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30094",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

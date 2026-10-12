@@ -1,0 +1,1499 @@
+{
+  "id": "char_136_hsguma",
+  "name": {
+    "en": "Hoshiguma",
+    "zh": "星熊",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LM05",
+  "rarity": 6,
+  "class": "TANK",
+  "subclass": "protector",
+  "faction": "lungmen",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Hoshiguma, member of the Special Service of Lungmen Guard Department, is awaiting your orders.",
+    "zh": "龙门近卫局特别任务组干员星熊准备完毕，等待你的指示。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Stand by her side when you are scared. It really helps.",
+    "zh": "害怕的时候可以站在她身边壮胆。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1602,
+            "atk": 221,
+            "def": 257,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2165,
+            "atk": 284,
+            "def": 384,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 11
+        },
+        {
+          "id": "30042",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2165,
+            "atk": 284,
+            "def": 384,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2849,
+            "atk": 356,
+            "def": 527,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30094",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2849,
+            "atk": 356,
+            "def": 527,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 3850,
+            "atk": 430,
+            "def": 723,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_hsguma_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.1,
+            "def": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.1,
+            "def": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.1,
+            "def": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.2,
+            "def": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 24,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.2,
+            "def": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.2,
+            "def": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.65
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Warpath",
+            "zh": "战意",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vup>+{def:0%}</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_hsguma_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.5,
+            "def": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.55,
+            "def": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.6,
+            "def": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.65,
+            "def": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.7,
+            "def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.75,
+            "def": 0.17
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.8,
+            "def": 0.21
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.85,
+            "def": 0.24
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.9,
+            "def": 0.27
+          }
+        },
+        {
+          "name": {
+            "en": "Thorns",
+            "zh": "荆棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</>\nDeals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to enemies that attack Hoshiguma",
+            "zh": "防御力<@ba.vup>+{def:0%}</>\\n每次受到攻击时对目标造成相当于星熊攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1,
+            "def": 0.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_hsguma_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.65,
+            "def": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.7,
+            "def": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.75,
+            "def": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.8,
+            "def": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.85,
+            "def": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.9,
+            "def": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 0.95,
+            "def": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 27,
+          "blackboard": {
+            "atk": 1.1,
+            "def": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 28,
+          "blackboard": {
+            "atk": 1.25,
+            "def": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Saw of Strength",
+            "zh": "力之锯",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; DEF <@ba.vup>+{def:0%}</>; Cuts all targets in the frontal tile with the shield",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，对前方一格的所有敌人使用盾牌进行切割",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 1.4,
+            "def": 0.9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Tactical Armor",
+            "zh": "战术装甲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "12% chance to resist damage",
+            "zh": "获得12%的伤害抵挡",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Armor",
+            "zh": "战术装甲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "15%<@ba.talpu>(+3%)</> chance to resist damage",
+            "zh": "获得15%<@ba.talpu>（+3%）</>的伤害抵挡",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Armor",
+            "zh": "战术装甲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "25% chance to resist damage",
+            "zh": "获得25%的伤害抵挡",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Armor",
+            "zh": "战术装甲",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "28%<@ba.talpu>(+3%)</> chance to resist damage",
+            "zh": "获得28%<@ba.talpu>（+3%）</>的伤害抵挡",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "prob": 0.28
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Special Operation Strategy",
+            "zh": "特种作战策略",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, allied Defender Operators gain +6% DEF",
+            "zh": "在场时所有友方【重装】职业干员的防御力提升6%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Special Operation Strategy",
+            "zh": "特种作战策略",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, allied Defender Operators gain +8%<@ba.talpu>(+2%)</> DEF",
+            "zh": "在场时所有友方【重装】职业干员的防御力提升8%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 5
+          },
+          "blackboard": {
+            "def": 0.08
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +30",
+        "zh": "防御力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60,
+        "def": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_hsguma",
+      "name": {
+        "en": "Hoshiguma's Badge",
+        "zh": "星熊证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Hoshiguma has demonstrated a remarkable aptitude for preservation of the front and resilience against the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Protector responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员星熊擅长维持战线抵御敌人\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使铁卫职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_hsguma",
+      "name": {
+        "en": "Gifts From Friends",
+        "zh": "友人们的赠礼",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_hsguma",
+      "description": {
+        "en": "■■ Day, ■■ Month\nI got this shield from him. Unusual form, extremely sharp, but feels good to hold.\nHannya, he says its name is. I don't know what scripture was on his mind when he named it, or who he was thinking of, or what mistake, but I like the name. Hannya. I'll take it with me. From here on, it's my partner.\n\n\n■■ Day, ■■ Month\nBefore I left, Hannya's good old 'father' said he had something else to give me. I thought it'd be something important, but it was just a hunk of scrap metal.\nHe said any handle paired with Hannya, I'd need to polish myself. It's a strange ask, but if that's part of the craft, it's not like I can't do it. Hannya already has a front that terrifies people, and an edge sharp enough to chop through enemies, so me personally making an inside to match might be the proper way.\n\n■■ Day, ■■ Month\nApparently, I've got to polish this to the point I can fight holding Hannya barehanded without chafing my hands, or feeling any sort of discomfort.\nAs in, I've just got to polish all the edges flat?\nAlright, looks like this is going to be a very long process.\n\n■■ Day, ■■ Month\nI feel like I've been polishing for long enough, but it still chafes.\nIt looks smooth and flat already. Is this still not enough?\n\n■■ Day, ■■ Month\nIt's been... some time since I left Higashi. Lungmen's a complex place. There's good parts, and bad parts. I've taught lessons to plenty who needed them, and run across plenty of interesting folk. I think I like it here.\nThere's no part of Hannya's handle for me to polish any further. After using it so long, even the curve's run flat. But it's still a metal block in the end, and no matter what, it won't reach the point where people can use it without any discomfort. It seems like it was all an impossible task from the beginning.\nI guess my craft isn't perfected enough. Even if I force myself to polish all the edges flat, it still can't hide itself. An iron chunk's an iron chunk, and it won't get any softer. Even if it looks smooth and slick, its nature won't change.\nAs of today, I think I've understood his intent a little.\n\n■■ Day, ■■ Month\nI got this gift from my friends.\nMaybe it's bad of me to say this, but I definitely didn't expect those two ladies to put so much care into thinking up a suitable present for me. A latest-model soft-strap shield handle... it sure is something I've been in need of. I appreciate the consideration.\nYou know what they say about kind gestures from friends. Let's try using it tomorrow.",
+        "zh": "■月■日\n从那个人手里拿到了这面盾，不常见的造型，非常锋利，但是手感很好。\n般若，那人说这是它的名字。虽然不知道他起名时心里念的是哪一篇经文，或者想着哪一个人，哪一桩过错，但我喜欢这个名字。般若，我会带走它，今后它就是我的搭档了。\n\n\n■月■日\n出发之前，般若这家伙的“父亲”说还有东西要给我，本以为是什么重要的物品，结果却只是一块废铁。\n对方说，和般若相配的把手需要我自己打磨。虽然是个古怪的要求，但若说这也是修行的一种，倒也不是不能接受。般若既然已经有了令人丧胆的盾面，和锋利到足以切碎敌人的边缘，由我亲手来制作与其相配的内面，或许也是应有之义。\n\n■月■日\n据说，要一直打磨到空手握着般若战斗，也不会磨手，不会感到任何不适的程度才行。\n那就是要把棱角都磨平才行的意思咯？\n行吧，看起来会是一个漫长的过程。\n\n■月■日\n好像已经磨了够久了，但还是硌手。\n看起来已经很平滑了，这样还是不够吗？\n\n■月■日\n离开东国……也有不少日子了。龙门是个复杂的地方，有好的地方，也有坏的地方，教训了不少该教训的人，也遇到了不少有意思的人，我觉得我喜欢这里。\n般若的把手已经没有再能打磨的地方了，用了这么久，连弧度都已经被磨平了。但这东西终究是一块铁，不论如何还是做不到让人在使用时没有任何不适，从最开始，这似乎就是一个不可能的任务。\n就当是我的修行不足吧。就算勉强将棱角都磨平，终究还是瞒不过自己。铁块就是铁块，没法变柔软，就算外表圆滑了，本质却不会变。\n到了今天，那个人的用意，我似乎也理解了一些。\n\n■月■日\n收到了朋友们合送的礼物。\n或许不该这么说，不过，确实没有想到，这两位大小姐会花心思替我考虑合适的礼物。最新款的盾牌软带把手啊……确实是现在的我需要的东西，难为她们能考虑到。\n朋友们的一番心意，明天就来用用看吧。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_hsguma",
+      "name": {
+        "en": "Amulet",
+        "zh": "护身符",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_003_hsguma",
+      "description": {
+        "en": "L.G.D. backup Ah Hsiang sucks in a deep, deep breath when the runaway lets the first crossbow bolt fly. He can scarcely believe his eyes.\n'No one told me anything about this!' he shrieked. 'Why the hell are they doing this in the city? That's not how this is supposed to work!'\n'It's the pursuit of wealth. Not uncommon.'\nThe towering Oni lady who responds leans behind a metal barrel, her posture somehow relaxed, but her hand never leaving her shield.\nThere's a momentary break in the commotion.\nHoshiguma takes a peek out. The other end is pitch black, and she knows danger hides in the dark.\nThe L.G.D.'s reinforcements are still out in the street, hemmed by a group of runaways who've broken the rules, their attack primed and imminent.\nThe situation is, in essence, a total crapshoot, and they can only wait for a chance to break the encirclement.\nAh Hsiang's face is grave. He was a street youth, no stranger to the downtown. He'd scraped through life for some years in every corner of the city, just a nameless nobody, but at least he had a talent for making it, or so he'd profess.\nNow he was an informant for the L.G.D., and at a glance much steadier on his feet. No need to lie—Hoshiguma was happy for that.\nIt's hard to tell who brought up the conversation up first.\n'How's everyone else been?'\n'Pretty good. Ah Sam's family found him a job. Daai Tau's running a bar now. I remember he was counting on you for the official stuff, Madame Oni.'\n'That's right. You? Haven't been back home all these years?'\n'No, too busy. Wouldn't work out.'\n'How's your family doing, then?'\n'Living on pensions. Not much, but they get by.'\n'That's good. Stable.'\n'You, Madame Oni?'\n'I'm cruising. If it's enough, it's enough for me.'\nAh Hsiang doesn't say any more. Neither does Hoshiguma.\nThe weather is gloomy, and it rained not long ago.\nFilthy, strangely-tinted water leaks out from the pile of trash bags next to them, trickling out near their feet and straight into a drain not far away.\nA rustling gradually abates. The calmer it gets, the more his nerves stretch.\nAt that moment, Ah Hsiang suddenly becomes talkative.\n'You afraid, Madame Oni?'\nHe asks, but he also keeps going. 'I only agreed to pitch in for the L.G.D. this time because you were here.'\n'There was that one time they said we could go out with knives to spook that shop guy for trying to snatch up business, and we'd get lai see for it. You still remember that, Madame Oni?'\nHoshiguma stares at the alley entrance, unnodding.\nShe remembers coming across those youngsters a few years ago. They were trash, dumped out onto the street, seen as scum unfit for society. They lived muddied lives, liable to drop dead for no reason, at any time.\nSo when Wei Yenwu invited her to join the L.G.D., Hoshiguma spent a whole night thinking, and then nodded to agree.\nShe believes there'll be change in Lungmen.\n'If you didn't stop me back then, I would've gone with them.'\nThe voice behind her trembles.\n'I heard, later, they actually killed someone, and they all got thrown in.\n'And there was the other time, those mafia guys from outside came giving us trouble, and in the end it was you who held them off too.'\nHis throat constricts, his teeth chatter, and his voice seems to falter somewhat.\n'I've been thinking. My family's toughing it a little, going on nothing but pension after all.\n'I bet you'd have an easy time charging out there if you wanted. If I wasn't here.\n'I took out insurance on myself, you know. I'm sorted.\n'So, Madame Oni, don't worry about me—'\n\nClank. \n\nA sudden brittle noise.\nLike some kind of signal, the L.G.D. Inspector rises like a sheer mountain, and breaks her silence with a roar of fury.\nAll hell breaks loose within that shortest of moments, set to the sound of trash being trampled, and piles of barrels being knocked over, and crossbows slicing the air, and—\nHefty crashes of metal.\nAn unblocked bolt pierces the Lungmen Guard Department Inspector's badge Hoshiguma has set on her chest, but it doesn't stop her shield sweeping through every foe as she stands in front of the one she's meant to protect, not one step forward, not one step back.\nHoshiguma once again lifts her shield, swallows a mouthful of blood back down, and coughs twice before finally saying something.\n'Not worrying about you'll be a little difficult.'\nShe wipes a bloodstain from the corner of her mouth, voice as though choking on water. 'Try something I <i>can</i> do instead—say, letting me apply for your bonus this operation. How's that?'",
+        "zh": "当亡命之徒射出第一支尖锐的弩箭，近卫局的协助人阿祥重重地抽了一口气，难以置信地瞪大双眼。\n“我不知道有这回事！”他惊叫出声，“他们怎么敢在城区这么干？他们这是坏了规矩！”\n“富贵险中求，不稀奇。”\n答话的高大鬼族女性靠在铁桶后头，姿态看似随意放松，手却没离开她的盾。\n外头的动静稍歇。\n星熊向外看了一眼，尽头处一片漆黑，她知道危机就藏在暗处。\n近卫局的支援还在路上，一群打破规矩的亡命之徒已经将他们包围，攻击随时可能到来。\n情况可以说糟糕透顶，他们只能等待突围的机会。\n阿祥的面色凝重，他原本是下城区不算少见的一个街头青年，大街小巷地四处混过几年时间，是个排不上号的小角色，但出去也自称是混过道上的人。\n现在做了近卫局的线人，看着比从前稳重不少，这让星熊不免感到欣慰。\n话头分不清是哪边先牵起来的。\n“其他人最近怎么样？”\n“都挺好的。阿森家里给找了工作，大头开了家酒吧，我记得手续还是当时托鬼姐给办的吧。”\n“是有这么回事。你呢？这几年都没回家？”\n“没回，身上事多，不好回去。”\n“那家里人日子怎么过？”\n“领退休金，少是少点，但还能过。”\n“也好，稳定。”\n“鬼姐你呢？”\n“我轻松，糊自己的口就行。”\n阿祥没再说话。星熊也没有。\n天气很阴，不久前才下过雨。\n两人身旁成堆的垃圾沥出颜色奇怪的脏水，从他们脚边爬过，一路淌向不远处的下水口。\n窸窸窣窣的动静逐渐停歇，越是一片平静，神经就越是紧绷着。\n阿祥在这时忽然变得饶舌起来。\n“鬼姐，你怕不怕？”\n他兀自问，又兀自说下去，“我是因为鬼姐你在，才答应这次给近卫局干活的。\n“之前有一回，他们说要拿刀去吓唬吓唬那个抢生意的老板，事成后能拿利是，鬼姐你还记得不？”\n星熊盯着巷口，没点头。\n她记得早几年遇到那几个年轻人，他们是这片街头被遗弃的垃圾，被视作不适应社会的渣滓，他们活得稀里糊涂，随时可能莫名其妙地赔掉人生。\n所以当魏彦吾邀请她加入近卫局时，星熊想了一晚，点头答应下来。\n她相信龙门将会有所改变。\n“当时，要不是鬼姐你拦着，我就和那群人一起去了。”\n她背后的声音带着颤抖。\n“后来我听说，他们真闹出人命，几个人全都栽进去。\n“还有一回，那群外头的黑帮找我们麻烦，最后也是鬼姐你把人给拦了。”\n身后的人压着嗓子，牙关咯咯，声音显得有些失真。\n“我想了想，家里只靠退休金日子还是难过了点。\n“要是没我在，我信鬼姐你想冲出去肯定不难。\n“我给自己投过保，我不亏。\n“所以鬼姐，别管我了——” \n\n“铛。” \n\n一声突兀的脆响。\n像是某种信号，一直沉默的近卫局督察如山墙般立起，发出怒喝。\n一切都在极短的时间内发生，垃圾被踩踏发出的声响，堆积的铁桶被撞击的声响，划开空气的弩声，还有——\n沉重的金属撞击声。\n未被阻挡的弩箭击穿了星熊搁在胸前的龙门近卫局督察证，而她的盾则横扫所有敌人，一步不让地立在该保护的人身前。\n星熊再次将盾抬起，往回咽下一口血，又咳了两嗓子才终于开口。\n“别管你这个要求，有点难。”\n她抹掉唇角的血渍，声音听起来像是呛了水，“换一个我能做得到的吧——比如，替你申请这次行动的奖金，怎么样？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

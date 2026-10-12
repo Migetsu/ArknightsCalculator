@@ -1,0 +1,1532 @@
+{
+  "id": "char_4204_mantra",
+  "name": {
+    "en": "Mantra",
+    "zh": "真言",
+    "isMachineTranslation": true
+  },
+  "appellation": "Mantra",
+  "displayNumber": "RE06",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "primcaster",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "元素",
+    "输出",
+    "控场"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "沉默的精英干员真言，必要时，她总会“陪伴”在你左右。",
+    "zh": "沉默的精英干员真言，必要时，她总会“陪伴”在你左右。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "是不可言说者，也是恒久的聆听者。",
+    "zh": "是不可言说者，也是恒久的聆听者。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 593,
+            "atk": 340,
+            "def": 52,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 824,
+            "atk": 466,
+            "def": 79,
+            "magicResistance": 5,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 11
+        },
+        {
+          "id": "30042",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 824,
+            "atk": 466,
+            "def": 79,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1071,
+            "atk": 583,
+            "def": 107,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "31024",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1071,
+            "atk": 583,
+            "def": 107,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1428,
+            "atk": 695,
+            "def": 130,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mantra_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "ep_damage_ratio": 0.1,
+            "element_atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "ep_damage_ratio": 0.1,
+            "element_atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "ep_damage_ratio": 0.1,
+            "element_atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "ep_damage_ratio": 0.15,
+            "element_atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "ep_damage_ratio": 0.15,
+            "element_atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "ep_damage_ratio": 0.2,
+            "element_atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.75,
+            "ep_damage_ratio": 0.2,
+            "element_atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.75,
+            "ep_damage_ratio": 0.25,
+            "element_atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3,
+            "ep_damage_ratio": 0.3,
+            "element_atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "共鸣溃缩",
+            "zh": "共鸣溃缩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "下次攻击造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并附带伤害<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则额外造成<@ba.vup>{element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3.25,
+            "ep_damage_ratio": 0.3,
+            "element_atk_scale": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31094",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mantra_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 15,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "attack@atk_scale": 1.6,
+            "attack@chain.atk_scale": 0.9,
+            "attack@ep_damage_ratio": 0.12,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "attack@atk_scale": 1.6,
+            "attack@chain.atk_scale": 0.9,
+            "attack@ep_damage_ratio": 0.12,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 15,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "attack@atk_scale": 1.6,
+            "attack@chain.atk_scale": 1,
+            "attack@ep_damage_ratio": 0.12,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 16,
+          "blackboard": {
+            "base_attack_time": -0.6,
+            "attack@atk_scale": 1.7,
+            "attack@chain.atk_scale": 1,
+            "attack@ep_damage_ratio": 0.13,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.18
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 16,
+          "blackboard": {
+            "base_attack_time": -0.6,
+            "attack@atk_scale": 1.7,
+            "attack@chain.atk_scale": 1,
+            "attack@ep_damage_ratio": 0.13,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.18
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间则附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 16,
+          "blackboard": {
+            "base_attack_time": -0.6,
+            "attack@atk_scale": 1.9,
+            "attack@chain.atk_scale": 1,
+            "attack@ep_damage_ratio": 0.13,
+            "attack@times": 3,
+            "chain_times": 2,
+            "attack@element_atk_scale": 0.18
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 17,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "attack@atk_scale": 2.1,
+            "attack@chain.atk_scale": 1.1,
+            "attack@ep_damage_ratio": 0.15,
+            "attack@times": 4,
+            "chain_times": 3,
+            "attack@element_atk_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 17,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "attack@atk_scale": 2.1,
+            "attack@chain.atk_scale": 1.2,
+            "attack@ep_damage_ratio": 0.15,
+            "attack@times": 4,
+            "chain_times": 3,
+            "attack@element_atk_scale": 0.22
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 17,
+          "blackboard": {
+            "base_attack_time": -0.7,
+            "attack@atk_scale": 2.1,
+            "attack@chain.atk_scale": 1.2,
+            "attack@ep_damage_ratio": 0.18,
+            "attack@times": 4,
+            "chain_times": 3,
+            "attack@element_atk_scale": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "意识联协",
+            "zh": "意识联协",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害并以短暂间隔跳跃至其他<@ba.vup>{chain_times}</>名敌人造成攻击力<@ba.vup>{attack@chain.atk_scale:0%}</>的法术伤害，均附带伤害<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.neural2>神经损伤</>，若目标处于<$ba.dt.neural2>神经损伤</>爆发期间附带<@ba.vup>{attack@element_atk_scale:0%}</>攻击力的元素伤害",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "attack@atk_scale": 2.4,
+            "attack@chain.atk_scale": 1.2,
+            "attack@ep_damage_ratio": 0.18,
+            "attack@times": 4,
+            "chain_times": 3,
+            "attack@element_atk_scale": 0.25
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31074",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30165",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mantra_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 1.45,
+            "attack@max_target": 2,
+            "atk_scale": 0.8,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 1.5,
+            "attack@max_target": 2,
+            "atk_scale": 0.9,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 1.6,
+            "attack@max_target": 2,
+            "atk_scale": 1,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 24,
+          "blackboard": {
+            "atk": 1.7,
+            "attack@max_target": 2,
+            "atk_scale": 1.1,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 24,
+          "blackboard": {
+            "atk": 1.8,
+            "attack@max_target": 2,
+            "atk_scale": 1.2,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 24,
+          "blackboard": {
+            "atk": 1.9,
+            "attack@max_target": 2,
+            "atk_scale": 1.3,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 2.1,
+            "attack@max_target": 2,
+            "atk_scale": 1.45,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 26,
+          "blackboard": {
+            "atk": 2.3,
+            "attack@max_target": 2,
+            "atk_scale": 1.65,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 28,
+          "blackboard": {
+            "atk": 2.5,
+            "attack@max_target": 2,
+            "atk_scale": 1.65,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        },
+        {
+          "name": {
+            "en": "无言为真",
+            "zh": "无言为真",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "zh": "攻击范围<@ba.vup>扩大</>，范围内敌人<$ba.invisible>隐匿</>失效且<$ba.palsy>麻痹</>层数上限<@ba.vdown>降为2</>，攻击力<@ba.vup>+{atk:0%}</>同时攻击<@ba.vup>{attack@max_target}</>个目标，范围中干员开启技能时（包括自身）使范围内敌人获得{per_active}层<$ba.palsy>麻痹</>（至多{max_trigger_cnt}次），范围内敌人<$ba.palsy>麻痹</>层数每<@ba.vup>超过上限</>1层在目标及{chain_times}名敌人间跳跃1次<@ba.vup>{atk_scale:0%}</>攻击力的元素伤害，跳跃间存在短暂间隔",
+            "isMachineTranslation": true
+          },
+          "rangeId": "3-17",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 31,
+          "blackboard": {
+            "atk": 2.75,
+            "attack@max_target": 2,
+            "atk_scale": 1.85,
+            "max_target": 2,
+            "chain_times": 1,
+            "max_trigger_cnt": 3,
+            "interval_projectile_trigger": 1.5,
+            "per_active": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31094",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31023",
+          "count": 5
+        },
+        {
+          "id": "31053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "噤声限域",
+            "zh": "噤声限域",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力100%的元素伤害，且触发<$ba.palsy>麻痹</>时有8%概率不消耗<$ba.palsy>麻痹</>层数",
+            "zh": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力100%的元素伤害，且触发<$ba.palsy>麻痹</>时有8%概率不消耗<$ba.palsy>麻痹</>层数",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1,
+            "prob": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "噤声限域",
+            "zh": "噤声限域",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力110%<@ba.talpu>（+10%）</>的元素伤害，且触发<$ba.palsy>麻痹</>时有11%<@ba.talpu>（+3%）</>概率不消耗<$ba.palsy>麻痹</>层数",
+            "zh": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力110%<@ba.talpu>（+10%）</>的元素伤害，且触发<$ba.palsy>麻痹</>时有11%<@ba.talpu>（+3%）</>概率不消耗<$ba.palsy>麻痹</>层数",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.1,
+            "prob": 0.11
+          }
+        },
+        {
+          "name": {
+            "en": "噤声限域",
+            "zh": "噤声限域",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力135%的元素伤害，且触发<$ba.palsy>麻痹</>时有10%概率不消耗<$ba.palsy>麻痹</>层数",
+            "zh": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力135%的元素伤害，且触发<$ba.palsy>麻痹</>时有10%概率不消耗<$ba.palsy>麻痹</>层数",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.35,
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "噤声限域",
+            "zh": "噤声限域",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力145%<@ba.talpu>（+10%）</>的元素伤害，且触发<$ba.palsy>麻痹</>时有13%<@ba.talpu>（+3%）</>概率不消耗<$ba.palsy>麻痹</>层数",
+            "zh": "场上敌人触发<$ba.palsy>麻痹</>效果时立即受到相当于真言攻击力145%<@ba.talpu>（+10%）</>的元素伤害，且触发<$ba.palsy>麻痹</>时有13%<@ba.talpu>（+3%）</>概率不消耗<$ba.palsy>麻痹</>层数",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.45,
+            "prob": 0.13
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "全局洞悉",
+            "zh": "全局洞悉",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "距离真言最近的一个侵入点出场的敌人出现时立刻获得1层<$ba.palsy>麻痹</>",
+            "zh": "距离真言最近的一个侵入点出场的敌人出现时立刻获得1层<$ba.palsy>麻痹</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-6秒",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击力+31",
+        "zh": "攻击力+31",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "第一天赋效果增强",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 180,
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mantra",
+      "name": {
+        "en": "真言证章",
+        "zh": "真言证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_mantra",
+      "description": {
+        "en": "干员真言擅长对敌人造成法术杀伤与元素杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使本源术师职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员真言擅长对敌人造成法术杀伤与元素杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使本源术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_mantra",
+      "name": {
+        "en": "中枢神经探测模块",
+        "zh": "中枢神经探测模块",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_mantra",
+      "description": {
+        "en": "……综上所述，多种材质的尝试都以失败告终。\n最新进展：尝试依旧采用唱片刻录原理，以我的源石技艺进行辅助，在发信器内部线圈的表面稳定镀镍，并制造核心。新的施术单元原型会由Mantra在下一次模拟任务中配备，以验证它能否在一定程度上减轻她“说话”的负担。\n——Whitesmith，《关于尾部发信器式施术单元可行性研究的进展报告》\n【“响尾”的维护日志】\n需求描述：它不好用了，需要排查一下原因。\n送检记录：发信器式施术单元“响尾”的内部金属镀层严重磨损，已经影响施术效果。\n工程干员留言：翻了下之前的维护日志，都没人注意到她一直都带着这么重的施术单元上战场吗？虽然身体上的问题是医疗部要担心的，但把整整六个这样的玩意儿挂在尾巴上，跟用尾巴一直提着五十斤重的铅球也没什么区别了……\n解决方案：倾向在不影响功能的前提下调整材质，减轻施术单元重量。预计需要时间为一个月。\n需求描述：重新镀镍就行，急用。\n解决方案：重新镀镍。\n……\n【“响尾”的维护日志】\n需求描述：在战斗中损坏，需要修复。\n送检记录：“响尾”的三组发信器均受损、变形严重，无法继续使用。\n工程干员留言：这是直接把施术单元当成锤子用了吧？没想到它的超标重量还有这种应用场合。修复是不行了，原本制作这件施术单元的人已经不在工程部。\n解决方案：倾向参考现存研究报告和已损坏原型，制作新的发信器式施术单元。可继续使用金属镀层，更换核心结构。预计需要时间为三个月到半年不等。\n需求描述：是否可以完全复刻原本的核心结构？\n工程干员留言：抱歉，制作原核心结构的材料中包含一种独特的源石技艺产物，目前工程部无法完全复刻，只能尽量做到外表和功能相同。\n解决方案：这里是Mechanist。Whitesmith留下的文件都在我这里，我来想想办法吧。\n……\n【“中枢神经探测模块”的维护日志】\n需求描述：常规护理。\n送检记录：“中枢神经探测模块”的内部金属镀层有一定磨损。\n工程干员留言：看上去拆开进行常规护理就行。完全看不出来它已经使用这么久了，Mantra女士自己对它的日常护理也很到位啊。\n解决方案：常规的全套护理，预计需要时间两天，可按需缩短至半天。\n需求描述：在外勤任务中，不用急。\n工程干员留言：咦？不带施术单元出任务吗？\n需求描述：有通讯员。",
+        "zh": "……综上所述，多种材质的尝试都以失败告终。\n最新进展：尝试依旧采用唱片刻录原理，以我的源石技艺进行辅助，在发信器内部线圈的表面稳定镀镍，并制造核心。新的施术单元原型会由Mantra在下一次模拟任务中配备，以验证它能否在一定程度上减轻她“说话”的负担。\n——Whitesmith，《关于尾部发信器式施术单元可行性研究的进展报告》\n【“响尾”的维护日志】\n需求描述：它不好用了，需要排查一下原因。\n送检记录：发信器式施术单元“响尾”的内部金属镀层严重磨损，已经影响施术效果。\n工程干员留言：翻了下之前的维护日志，都没人注意到她一直都带着这么重的施术单元上战场吗？虽然身体上的问题是医疗部要担心的，但把整整六个这样的玩意儿挂在尾巴上，跟用尾巴一直提着五十斤重的铅球也没什么区别了……\n解决方案：倾向在不影响功能的前提下调整材质，减轻施术单元重量。预计需要时间为一个月。\n需求描述：重新镀镍就行，急用。\n解决方案：重新镀镍。\n……\n【“响尾”的维护日志】\n需求描述：在战斗中损坏，需要修复。\n送检记录：“响尾”的三组发信器均受损、变形严重，无法继续使用。\n工程干员留言：这是直接把施术单元当成锤子用了吧？没想到它的超标重量还有这种应用场合。修复是不行了，原本制作这件施术单元的人已经不在工程部。\n解决方案：倾向参考现存研究报告和已损坏原型，制作新的发信器式施术单元。可继续使用金属镀层，更换核心结构。预计需要时间为三个月到半年不等。\n需求描述：是否可以完全复刻原本的核心结构？\n工程干员留言：抱歉，制作原核心结构的材料中包含一种独特的源石技艺产物，目前工程部无法完全复刻，只能尽量做到外表和功能相同。\n解决方案：这里是Mechanist。Whitesmith留下的文件都在我这里，我来想想办法吧。\n……\n【“中枢神经探测模块”的维护日志】\n需求描述：常规护理。\n送检记录：“中枢神经探测模块”的内部金属镀层有一定磨损。\n工程干员留言：看上去拆开进行常规护理就行。完全看不出来它已经使用这么久了，Mantra女士自己对它的日常护理也很到位啊。\n解决方案：常规的全套护理，预计需要时间两天，可按需缩短至半天。\n需求描述：在外勤任务中，不用急。\n工程干员留言：咦？不带施术单元出任务吗？\n需求描述：有通讯员。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30165",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

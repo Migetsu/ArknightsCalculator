@@ -1,0 +1,1180 @@
+{
+  "id": "char_4151_tinman",
+  "name": {
+    "en": "Tin Man",
+    "zh": "锡人",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "CB30",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "alchemist",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "Debuff",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "The Maylander Foundation agent Tin Man, just back from a short long vacation.",
+    "zh": "梅兰德基金会高级特工锡人，刚刚度了一个短暂的长假。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He firmly believes he has found the course of the future for the past.",
+    "zh": "他确信自己已经为过去找到了未来的航向。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 500,
+            "atk": 207,
+            "def": 44,
+            "magicResistance": 20,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 677,
+            "atk": 288,
+            "def": 65,
+            "magicResistance": 20,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "2-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 677,
+            "atk": 288,
+            "def": 65,
+            "magicResistance": 25,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 880,
+            "atk": 379,
+            "def": 83,
+            "magicResistance": 25,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-5",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "30054",
+          "count": 7
+        },
+        {
+          "id": "30013",
+          "count": 18
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 880,
+            "atk": 379,
+            "def": 83,
+            "magicResistance": 30,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1114,
+            "atk": 469,
+            "def": 99,
+            "magicResistance": 30,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_tinman_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.15,
+            "atk_scale": 0.3,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.15,
+            "atk_scale": 0.35,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.15,
+            "atk_scale": 0.4,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.2,
+            "atk_scale": 0.45,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.2,
+            "atk_scale": 0.5,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.2,
+            "atk_scale": 0.55,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 8,
+            "atk": -0.25,
+            "atk_scale": 0.6,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 9,
+            "atk": -0.25,
+            "atk_scale": 0.65,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 9,
+            "atk": -0.25,
+            "atk_scale": 0.7,
+            "projectile_range": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Ol' Curly'",
+            "zh": "“老科利”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point suffer from <@ba.vup>{-atk:0%}</> <$ba.weaken>Enfeeble</> and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人获得<@ba.vup>{-atk:0%}</>的<$ba.weaken>虚弱</>效果且每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 10,
+            "atk": -0.3,
+            "atk_scale": 0.75,
+            "projectile_range": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_tinman_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "projectile_delay_time": 10,
+            "hp_recovery_per_sec_ratio": 0.1,
+            "atk_scale": 0.5,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "projectile_delay_time": 10,
+            "hp_recovery_per_sec_ratio": 0.1,
+            "atk_scale": 0.55,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "projectile_delay_time": 10,
+            "hp_recovery_per_sec_ratio": 0.1,
+            "atk_scale": 0.6,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 12,
+          "blackboard": {
+            "projectile_delay_time": 11,
+            "hp_recovery_per_sec_ratio": 0.15,
+            "atk_scale": 0.65,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 12,
+          "blackboard": {
+            "projectile_delay_time": 11,
+            "hp_recovery_per_sec_ratio": 0.15,
+            "atk_scale": 0.7,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 12,
+          "blackboard": {
+            "projectile_delay_time": 11,
+            "hp_recovery_per_sec_ratio": 0.15,
+            "atk_scale": 0.75,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 14,
+          "blackboard": {
+            "projectile_delay_time": 12,
+            "hp_recovery_per_sec_ratio": 0.2,
+            "atk_scale": 0.8,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 16,
+          "blackboard": {
+            "projectile_delay_time": 13,
+            "hp_recovery_per_sec_ratio": 0.2,
+            "atk_scale": 0.9,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 18,
+          "blackboard": {
+            "projectile_delay_time": 14,
+            "hp_recovery_per_sec_ratio": 0.2,
+            "atk_scale": 1,
+            "projectile_range": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'Big Larry'",
+            "zh": "“大拉里”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit. For <@ba.vup>{projectile_delay_time}</> seconds, enemies around the landing point take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second, while allied units around the point recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害、友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 20,
+          "blackboard": {
+            "projectile_delay_time": 15,
+            "hp_recovery_per_sec_ratio": 0.25,
+            "atk_scale": 1.1,
+            "projectile_range": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31023",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 3
+        },
+        {
+          "id": "31063",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "'On My Way'",
+            "zh": "“在路上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Sarkaz's Furnaceside Fables], costs -1 Hope to recruit",
+            "zh": "在【萨卡兹的无终奇语】中，被招募时希望消耗-1",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "'On My Way'",
+            "zh": "“在路上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Sarkaz's Furnaceside Fables], costs -2 Hope to recruit and grants +3 Toil Limit when acting as a Loadbearing Operator",
+            "zh": "在【萨卡兹的无终奇语】中，被招募时希望消耗-2，且作为负荷干员时使负荷临界点额外+3",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "'On My Way'",
+            "zh": "“在路上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Sarkaz's Furnaceside Fables], costs -2 Hope to recruit and grants +4 <@ba.talpu>(+1)</> Toil Limit when acting as a Loadbearing Operator",
+            "zh": "在【萨卡兹的无终奇语】中，被招募时希望消耗-2，且作为负荷干员时使负荷临界点额外+4<@ba.talpu>（+1）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'On My Way'",
+            "zh": "“在路上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Sarkaz's Furnaceside Fables], costs -2 Hope to recruit and grants +9 Toil Limit when acting as a Loadbearing Operator",
+            "zh": "在【萨卡兹的无终奇语】中，被招募时希望消耗-2，且作为负荷干员时使负荷临界点额外+9",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "'On My Way'",
+            "zh": "“在路上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Sarkaz's Furnaceside Fables], costs -2 Hope to recruit and grants +10 <@ba.talpu>(+1)</> Toil Limit when acting as a Loadbearing Operator",
+            "zh": "在【萨卡兹的无终奇语】中，被招募时希望消耗-2，且作为负荷干员时使负荷临界点额外+10<@ba.talpu>（+1）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Shriveled Soul",
+            "zh": "凋敝魂灵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the continuous damage dealt to ground enemies in range of Tin Man's Alchemical Units by 20%",
+            "zh": "使自身炼金单元影响范围内地面敌人受到的持续伤害提高20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "skill@damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Shriveled Soul",
+            "zh": "凋敝魂灵",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the continuous damage dealt to ground enemies in range of Tin Man's Alchemical Units by 22% <@ba.talpu>(+2%)</>",
+            "zh": "使自身炼金单元影响范围内地面敌人受到的持续伤害提高22%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "skill@damage_scale": 1.22
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "RES +8",
+        "zh": "法术抗性+8",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_tinman",
+      "name": {
+        "en": "Tin Man's Badge",
+        "zh": "锡人证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_tinman",
+      "description": {
+        "en": "Operator Tin Man has demonstrated a remarkable aptitude in hurling alchemical units to flexibly adjust the situation on the battlefield.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Alchemist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员锡人擅长投掷炼金单元灵活调整战场局势\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使炼金师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_tinman",
+      "name": {
+        "en": "'Phrenology'",
+        "zh": "“颅相学”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_tinman",
+      "description": {
+        "en": "'Good afternoon, ma'am. I'm from the Maylander Foundation. Please, call me Tin Man. Going forward, I'll be in charge of constructing of the future capital of film: Wrankwood.'\n'My gosh, Mr. Tin Man, you look like you've stepped out of a movie yourself.'\n'I've heard that at least once a day ever since movies became a thing.'\n'Then why not make it reality? I daresay movies will prove to be the future of Columbian entertainment.'\n'I'll consider it, but I've got a question for you first, ma'am. I see you've brought along a lot of things from the early days of Wrankwood, but what's with the metal prospector's head and the reel of minework?'\n'Well, I'm glad you asked! You know, when I first got here, I asked someone here the same question. They told me this item and the film reel both have major significance to the birth of cinematography.'\n'Go on.'\n'You see, the camera on the prospector's head didn't only record the 3D structure of the mine, it also managed to capture the sheen of the ore and the dynamic environmental changes. Apparently, this was shot in the early years of our fair nation, as a way to make geological surveys more efficient, but we can't verify who actually took the footage.'\n'Hmm... Well, I suppose I can't just go around telling people how I jammed the reel right into my head, trying to save my hands the trouble.'\n'Sorry, what was that?'\n'...Never mind, just talking to myself. I'll be honest, ma'am, I still don't get what this has to do with movies.'\n'I heard that Wrankwood's founder happened to watch that reel during his pioneering days, and realized that we've had the technology to record our lives and share them with others all along. After his revelation, he quit his job to learn cinematography, then shot his very first film by the lakeside.'\n'Well now... I doubt that prospector ever expected to make such a splash when he left that film reel behind.'\n'Well, I'm sure he'd be mighty pleased if he knew how much it was worth now.'\n'And why are you so sure of that, ma'am? In my opinion, movies aren't much different from any other newfangled pastime. They're all just ways to kill time.'\n'The first time I watched a movie as a little girl, mister, it was an experience I didn't even know how to describe in words. All I knew was that I had to be a part of it, part of the film industry.\n'They might be time wasters to you, but to me and many others, they're a source of hopes and dreams. I think movies are always inspired from a single moment in time, because of someone wanting to share their experiences with others. Share what they see and how they see it. Am I wrong?'\n'...Hah.'\n'Sorry, I'm not trying to say <i>you're</i> wrong either—'\n'It's not that. Maybe you're right, ma'am. A farmer once told me that the technology used to kill people could also be put to building idyllic, peaceful towns. I was convinced. But once the skyscrapers started going up, a question began itching at my brain. Was this the future I had been looking forward to? And thanks to today's chance meeting, you've shown me a new possibility. And so—\n'If I wanted to be an actor, where would I start?'",
+        "zh": "“午安，女士。我来自梅兰德基金会，您可以称呼我为锡人。接下来，我将会负责这座未来的电影之都——蓝卡坞的建设。”\n“天哪，锡人先生，您可真像从电影中走出来的人。”\n“自从电影这种娱乐风靡起来之后，这样的评价我每天都要收到至少一次。”\n“那您为什么不把这样的评价化为现实呢？我敢说，电影未来一定会是哥伦比亚最流行的娱乐。”\n“我会考虑的。不过，我有一个问题，女士。我看到你们带来了许多和蓝卡坞的起点有关的东西，但是，为什么其中会有一个金属探矿器的头部和一段在矿洞中作业的影片？”\n“这真是个好问题！您知道吗，先生，我刚入行时，也问了我的前辈同样的问题。而我的前辈告诉我，这件藏品和这段影片，对电影这种艺术的诞生有着相当重要的意义。”\n“愿闻其详。”\n“您看，接在探矿器上的摄像机不仅记录了矿洞的三维结构，还捕捉到了矿石的光泽以及周围环境的动态变化。据说，这段影像拍摄于建国时期，目的是更高效地勘察地貌，不过，究竟是谁拍摄的已经不可考了。”\n“呃……毕竟我也没法告诉别人，当时我为了省事，把这个圆盘直接装在了自己的脑袋上。”\n“您说什么？”\n“——没什么，只是一点自言自语罢了。女士，我还是没明白，这和电影有什么关系？”\n“据说，蓝卡坞的奠基人，就是在拓荒过程中偶然看到了这段影片，并由此意识到——我们的技术原来已经能够做到记录并向他人展示一段生活。于是，他转而开始学习摄影技术，而后在湖边拍出了属于自己的第一部电影。”\n“这……恐怕当事人都想不到，工作时留下的影片，居然能制造这样的契机。”\n“但是，我想，如果那个人知道自己拍摄的影像还有这样的价值，他一定是欣慰的。”\n“为什么您能这么肯定，女士？在我看来，电影和许多当下兴起的娱乐一样，只是一种无意义的消遣行为。”\n“我小时候看了人生中的第一部电影，先生，我不知道该怎么形容自己的感受，我只知道——那时起，我就下定决心要参与电影的制作。\n“它在您眼中也许只是一种消遣，但在我看来，它给许多人带去理想与希望。我想，电影是一定会凭某种契机诞生的，因为，总会有人渴望以影像的方式向他人分享自己的所见所闻，所思所想。您能说，这种想法是没有意义的吗？”\n“……哈。”\n“抱歉，我没有否定您的意思——”\n“不，女士，或许您是对的。曾经有一个农夫告诉我，用于杀人的技术同样可以用来建造安居之地，我被他说服了。但当那些高楼大厦拔地而起时，一个问题开始困扰我，这就是我所期望的未来的终点了吗？而今天的这场偶遇，您让我看到了一种新的可能性。所以——\n“如果我想成为一名演员，我该怎么做？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

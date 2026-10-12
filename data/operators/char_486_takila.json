@@ -1,0 +1,1120 @@
+{
+  "id": "char_486_takila",
+  "name": {
+    "en": "Tequila",
+    "zh": "龙舌兰",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "BV12",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "librator",
+  "faction": "bolivar",
+  "position": "MELEE",
+  "tagList": [
+    "Nuker"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Guard Operator Tequila, all smiles on the battlefield too.",
+    "zh": "近卫干员龙舌兰，在战场上也面带笑容。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Don't worry, he'll set everything up just hunky-dory.",
+    "zh": "别担心，他会把一切都安排妥帖。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1871,
+            "atk": 137,
+            "def": 238,
+            "magicResistance": 15,
+            "cost": 11,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2463,
+            "atk": 197,
+            "def": 331,
+            "magicResistance": 15,
+            "cost": 11,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-2",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2463,
+            "atk": 197,
+            "def": 331,
+            "magicResistance": 15,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3118,
+            "atk": 256,
+            "def": 425,
+            "magicResistance": 15,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-2",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30064",
+          "count": 5
+        },
+        {
+          "id": "30093",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 3118,
+            "atk": 256,
+            "def": 425,
+            "magicResistance": 15,
+            "cost": 13,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3757,
+            "atk": 302,
+            "def": 501,
+            "magicResistance": 15,
+            "cost": 13,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_takila_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 20,
+            "attack@atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 23,
+            "attack@atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 26,
+            "attack@atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 29,
+            "attack@atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 32,
+            "attack@atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "attack@atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 38,
+            "attack@atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 42,
+            "attack@atk_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 46,
+            "attack@atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Decisive Action",
+            "zh": "当机立断",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</> and every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 50,
+            "attack@atk_scale": 1.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_takila_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.4,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.4,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.5,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.5,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.6,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.6,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.7,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.7,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.8,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.8,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.9,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 1.9,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 2,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 2,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 2.1,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 2.1,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 12,
+          "blackboard": {
+            "attack@atk_scale": 2.2,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 2.2,
+            "duration_plus": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Esoteric Bladework",
+            "zh": "剑走偏锋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>expands</> and attacks <@ba.vup>2</> enemies simultaneously. Every attack deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage. <$ba.charged>Charged</> effect: Changes to attacking <@ba.vup>3</> enemies simultaneously and skill duration is extended to <@ba.vup>{enhance_duration}</> seconds\n<@ba.rem>Can manually deactivate skill (skill can be deactivated at will)</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，同时攻击<@ba.vup>2</>名敌人，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，<$ba.charged>蓄力</>额外效果：改为同时攻击<@ba.vup>3</>名敌人，持续时间延长为<@ba.vup>{enhance_duration}</>秒\\n<@ba.rem>可主动关闭技能（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-3",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 12,
+          "blackboard": {
+            "attack@atk_scale": 2.3,
+            "enhance_duration": 30,
+            "attack@plus_max_target": 3,
+            "attack@plus_atk_scale": 2.3,
+            "duration_plus": 15
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 3
+        },
+        {
+          "id": "31013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Waiting Game",
+            "zh": "伺机而动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When skill is inactive, deals 10% of Tequila's ATK as Arts damage to the attacker when Tequila is attacked",
+            "zh": "技能未开启时每次受到攻击时对目标造成相当于龙舌兰攻击力10%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Waiting Game",
+            "zh": "伺机而动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When skill is inactive, deals 13% <@ba.talpu>(+3%)</> of Tequila's ATK as Arts damage to the attacker when Tequila is attacked",
+            "zh": "技能未开启时每次受到攻击时对目标造成相当于龙舌兰攻击力13%<@ba.talpu>（+3%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Waiting Game",
+            "zh": "伺机而动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When skill is inactive, deals 20% of Tequila's ATK as Arts damage to the attacker when Tequila is attacked",
+            "zh": "技能未开启时每次受到攻击时对目标造成相当于龙舌兰攻击力20%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Waiting Game",
+            "zh": "伺机而动",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When skill is inactive, deals 23% <@ba.talpu>(+3%)</> of Tequila's ATK as Arts damage to the attacker when Tequila is attacked",
+            "zh": "技能未开启时每次受到攻击时对目标造成相当于龙舌兰攻击力23%<@ba.talpu>（+3%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 230,
+        "atk": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_takila",
+      "name": {
+        "en": "Tequila's Badge",
+        "zh": "龙舌兰证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_takila",
+      "description": {
+        "en": "Operator Tequila has demonstrated excellent timing when dealing with perilous combat situations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Liberator responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员龙舌兰擅长待时而动以应对极端险恶的战情\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使解放者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_takila",
+      "name": {
+        "en": "'Two Faces'",
+        "zh": "“双重身份”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_takila",
+      "description": {
+        "en": "'Mr. Ernesto, before this trip, I never imagined what a charming city Dossoles could be.'\nInside a luxurious parlor, a man raises a glass to Ernesto, making no effort to hide the joyous surprise on his face.\n'It's wonderful to hear that you like the city, Mr. Charles.'\nErnesto's face also bears a cheerful smile, and he raises a glass to meet the other.\nThe communication terminal buzzes. Ernesto silently glances down at the screen, and leaks a slight frown.\nBut soon he returns to his previously nonchalant look, as if nothing had happened, and begins introducing the room's decorations to Charles. Afterwards, as Charles appreciates the art on display, Ernesto deftly sweeps a hand over his guest's wine glass, sprinkling a transparent powder into the drink.\nA few minutes later, when a bodyguard receives a notification and knocks to enter the room, Charles is deep asleep on the sofa while Ernesto wears a helpless look on his face—\n'Mr. Charles isn't used to the climate here in Dossoles, so I believe he won't be able to perform on stage today.'\nThe young bodyguard becomes nervous, 'Then... What should we do now, director? Mr. Charles is one of the show's headline acts.'\n'He should recover by tomorrow, I'll take his place later this afternoon.' Ernesto pats the bodyguard on the shoulder to assure him.\nHe does not wait for him to respond before leaving.\nReturning to his room, Ernesto opens a suitcase lying quietly in a corner. The bottom compartment contains various documents and office stationery he usually uses—all neatly arranged and normal-looking—until he opens a hidden compartment filled with weapons.\nAfter choosing one suitable for covert operations and hiding it on his person, Ernesto turns around to open the closet. Inside is a complete costume for performances.\nThe news he just received earlier came from his father's underlings—behind Charles is a big deal between Mayor Candela and the Columbian entertainment industry, and a group of exiled soldiers are plotting to kill Charles and ruin the deal.\nHe has no plans to ruin it, but nor does he intend to have the soldiers return empty handed.\nStanding before a mirror, Ernesto changes into his costume while imagining the actions every party might take. When he snaps back to reality, he notices a rather stern look on his face.\n'Enough, Ernesto. You're the one who decided to give yourself so much trouble.' As he speaks, he picks up the microphone next to him. 'The audience at least is innocent, so let them enjoy themselves.'\nHe takes a deep breath, faces his reflection, and flashes his signature beaming smile.",
+        "zh": "“埃内斯托先生，在启程之前，我从没想过，多索雷斯居然是这样一座充满魅力的城市。”\n豪华的会客室内，男人端起酒杯敬向埃内斯托，毫不掩饰脸上的惊喜。\n“您能喜欢这座城市，那真是再好不过了，查理斯先生。”\n埃内斯托的脸上也露出喜悦的笑容，举起杯子与查理斯相碰。\n这时，通讯终端震了一下，埃内斯托不动声色地看了眼屏幕，随即微微皱了皱眉头。\n但他很快换回了从容不迫的神情，向查理斯介绍起会客室内的装饰。而后，趁着查理斯欣赏艺术品的间隙，他的手指熟练地掠过查理斯的酒杯，撒下了一些透明的粉末。\n几分钟后，当警卫接到通讯，敲门进入会客室时，查理斯已经在沙发上沉沉睡去，而埃内斯托则露出了无可奈何的表情——\n“查理斯先生的身体不适应多索雷斯的空气，看来，他今天不能登台演出了。”\n年轻的警卫瞬间紧张起来，“这……我们该怎么办，主任？这位查理斯先生可是这次演出的招牌之一。”\n“他明天应该就能恢复过来，今天下午，我会代替他登场。”埃内斯托拍了拍警卫的肩膀，示意他安心。\n不等警卫反应，埃内斯托已经离开。\n回到房间，他打开安静躺在房间一角的箱子。箱子的下层整齐地摆放着各种他平时会用到的文件和办公用具，看上去就像一个普通的公文箱，但当他打开箱子的夹层，里面却嵌着各种各样的武器。\n挑选了一把适合隐秘行动的武器藏在身上后，埃内斯托转身打开衣柜。衣柜里有一套完整的演出服。\n他刚才收到的消息来自父亲的手下——那位查理斯的背后，牵扯着坎黛拉市长和哥伦比亚演艺圈之间一桩不小的生意，有一群流亡军人想要杀了查理斯，让这桩生意泡汤。\n他既不打算让这桩生意泡汤，也不打算让那群军人空手而归。\n站在镜子面前，埃内斯托一边更换演出服，一边在心里推演着各方可能采取的行动。回过神时，他注意到，镜子中自己的表情有些凝重。\n“别闹了，埃内斯托。是你自己决定把事情变得这么麻烦的。”这么说着，他拿起身边的话筒，“至少，来观看演出的人是无辜的，让他们收获一些快乐吧。”\n然后，他深吸了一口气，对着镜子中的自己，露出他那标志性的爽朗笑容。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30104",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

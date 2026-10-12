@@ -1,0 +1,1090 @@
+{
+  "id": "char_494_vendla",
+  "name": {
+    "en": "Vendela",
+    "zh": "刺玫",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC24",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "incantationmedic",
+  "faction": "victoria",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Vendela, a florist who survived when war came. Now doing what she can to rebuild her little greenhouse.",
+    "zh": "在战争中幸存的花店店长刺玫，正试着重新搭建自己的小温室。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "If you happen to run across her napping on a clear afternoon, don't say anything. Do as she does, and close your eyes. Feel the sunlight on them.",
+    "zh": "如果恰好遇上在明媚午后打盹的她，别出声，不妨也学着她闭上眼感受阳光。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 751,
+            "atk": 192,
+            "def": 44,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 989,
+            "atk": 316,
+            "def": 64,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 989,
+            "atk": 316,
+            "def": 64,
+            "magicResistance": 15,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1178,
+            "atk": 440,
+            "def": 80,
+            "magicResistance": 15,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "30054",
+          "count": 5
+        },
+        {
+          "id": "30093",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1178,
+            "atk": 440,
+            "def": 80,
+            "magicResistance": 20,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1370,
+            "atk": 550,
+            "def": 100,
+            "magicResistance": 20,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_magic_rage[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 45
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 50
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 55
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 70
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Chant γ",
+            "zh": "战术咏唱·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 90
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_vendla_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 0.1,
+            "taunt_level": 1,
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 0.15,
+            "taunt_level": 1,
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 0.18,
+            "taunt_level": 1,
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 0.2,
+            "taunt_level": 1,
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 0.25,
+            "taunt_level": 1,
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 0.28,
+            "taunt_level": 1,
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 12,
+          "blackboard": {
+            "atk_scale": 0.3,
+            "taunt_level": 1,
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 14,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "taunt_level": 1,
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "taunt_level": 1,
+            "atk": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Umbrage of Thorns",
+            "zh": "荆藤庇荫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Makes the ally with the highest Max HP within Attack Range more likely to be attacked by enemies, and when this ally receives an enemy attack, Vendela deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to the attacker and activates her Trait on the ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，使攻击范围内生命上限最高的友方角色更容易受到敌人攻击，且该角色受到攻击时刺玫对目标造成攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害并仅对该角色触发刺玫特性",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 0.5,
+            "taunt_level": 1,
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31074",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31043",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Soil Fertilizer Enhancement",
+            "zh": "土壤基肥改良",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ally with the highest Max HP within range receives 8% more healing",
+            "zh": "攻击范围内生命上限最高的友方角色受到的治疗效果提升8%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1.08
+          }
+        },
+        {
+          "name": {
+            "en": "Soil Fertilizer Enhancement",
+            "zh": "土壤基肥改良",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ally with the highest Max HP within range receives 11% <@ba.talpu>(+3%)</> more healing",
+            "zh": "攻击范围内生命上限最高的友方角色受到的治疗效果提升11%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.11
+          }
+        },
+        {
+          "name": {
+            "en": "Soil Fertilizer Enhancement",
+            "zh": "土壤基肥改良",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ally with the highest Max HP within range receives 15% more healing",
+            "zh": "攻击范围内生命上限最高的友方角色受到的治疗效果提升15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Soil Fertilizer Enhancement",
+            "zh": "土壤基肥改良",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ally with the highest Max HP within range receives 18% <@ba.talpu>(+3%)</> more healing",
+            "zh": "攻击范围内生命上限最高的友方角色受到的治疗效果提升18%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +22",
+        "zh": "攻击力+22",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 180,
+        "atk": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_vendla",
+      "name": {
+        "en": "Vendela's Badge",
+        "zh": "刺玫证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_vendla",
+      "description": {
+        "en": "Operator Vendela has demonstrated a remarkable aptitude for simultaneous aggression and medical treatment while casting.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Incantation Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员刺玫擅长在向敌人施术杀伤的同时疗愈友方\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使咒愈师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_vendla",
+      "name": {
+        "en": "Broken Rose",
+        "zh": "碎片",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_vendla",
+      "description": {
+        "en": "ORDERED BY / Operator Vendela:\nHi Deepcolor. These fragments came from a stained glass door back home. My grandpa made for my 12th birthday, and fitted it into my greenhouse. Then later on it got destroyed in the war, but I gathered up all the fragments and brought them with me to Rhodes. I planned to just leave them around as a keepsake, but then I heard you can restore stained glass, so I'm sending them to you. Fingers crossed you can make it good as new. Whatever it costs, it doesn't matter.\nThe shards are v. sharp. I've given each a run through soap suds and wrapped them up properly, but please be careful when you get them so you don't cut your hands.\nREPLY FROM / Deepcolor:\nHello. I can tell it was damaged in war; no wonder it's covered in so much grime. I'll need some time to clean it—please wait patiently in the meanwhile.\nREPLY FROM / Operator:\nThank you so much, would it be OK to ask you to save any soil you clean off?\nI know it's dirt, but it's my home soil. I've been raising a flower from home here, growth hasn't been ideal. Maybe it will be more comfortable if I fill its flowerpot with that soil.\nREPLY FROM / Logistics Department:\nAll good. Please come pick up your package tomorrow before 12.\nREPLY FROM / Operator:\nThank you\n(attached: A daisy)\nREPLY FROM / Deepcolor:\nRestoration work went very smoothly—you kept the fragments in such remarkable shape, I hardly found any trouble piecing it all together. However, red has seeped into several pieces' cracks, which is spoiling the original design. My suggestion is substituting those with pieces of brand new glass, onto which I can paint using the original design.\nREPLY FROM / Operator:\nSorry. I'm assuming the red in there is blood I accidentally spilled on it, I thought I managed to clean it all off.\nI think I need some time to consider. Would it be OK if you paused the restoration work for the moment?\nThank you.\nREPLY FROM / Deepcolor:\nIs something the matter, Vendela? I haven't been able to contact you all this time—the glass door has been with me for almost a month now.\nREPLY FROM / Operator:\nVery sorry, Deepcolor. I took a trip home.\nAll that blood on the glass reminded me of something I hate remembering. I once had to sprint through an alley covered in blood, it dripped all over the soil and left these black marks behind, I couldn't bear to look.\nBut on my trip back, I found it blooming with deep red roses in the same alley, maybe some seeds from my pocket fell too back then, and they took up that blood as nutrients, and then they bore flowers to all the sun and rain.\nI'd like to keep that bloodstained glass. Could you repaint on top with these gorgeous flowers if that's OK? They have blood's color, and its warmth too.\n(attached: One of my roses from home, I've used Arts to keep it fresh, in hopes you'll feel the beauty of it too)",
+        "zh": "来自刺玫干员的订单：\n深海色小姐你好，这些碎片来自我家乡的一扇彩绘玻璃门，是祖父在我十二岁生日时为我制作的礼物，安设在我的花房内。但后来因为战事，玻璃门被损毁，我收集了所有碎片，将它们带到罗德岛。本来我只是想作为纪念留在身边，但听说您可以修复彩绘玻璃，就把它们送到这里，希望您能够帮忙还原。不论要花费多少，都有没有关系。\n碎片很锋利，每一片我都用泡沫纸妥善包裹好了，希望你拿取时尽量小心，不要割破手。\n深海色回复：\n你说，这扇彩绘玻璃门是在战事中损毁，难怪上面覆盖着大量尘土。我需要时间清理，请您耐心等待。\n干员回复：\n辛苦您了，可否麻烦您为我保留那些扫下来的尘土。\n那是尘土，也是我的故土。我在这里栽培了一株家乡的花，长势不是很理想。或许将那些土填进它的花盆里，它能更自在地生长。\n后勤部回复：\n好的，请于明日十二点前查收包裹。\n干员回复：\n谢谢\n（附带一支雏菊）\n深海色回复：\n修复工作非常顺利，您带来的碎片保存得非常完好，我没费什么力气就将它们拼凑完整了。不过，有许多块玻璃的裂缝中沁入了红色，破坏了原有的花样，我建议取几块全新的玻璃来代替，上面的花纹我会照原来的模样绘制。\n干员回复\n抱歉，我猜想裂缝中的红色应该是无意中溅在上面的鲜血，我以为我已经擦干净了。\n我想我需要一段时间考虑，可否请您暂时停止修复工作。\n谢谢。\n深海色回复：\n发生什么了，刺玫小姐？这些天一直联系不上你，这扇玻璃门已经在我这里快有一个月了。\n干员回复\n很抱歉，深海色小姐，我回了一趟家乡。\n那些玻璃上的血液让我想起了一段不愿回想的经历，我曾沾着鲜血在一条小径上狂奔，血液滴在土地上，留下黑色的印记，我不敢细看。\n可这次回家，我发现那条小径上开满了鲜红的玫瑰，或许当时落下的还有我口袋里的种子，它们吸收了那些血液作为养分，向着阳光雨露生出了花朵。\n我想留下那些沾染了鲜血的玻璃，请您为我重新在上面绘制这些艳丽的花朵。它有着血一样的颜色，也和血一样的有着温度。\n（附上一支来自我家乡的我玫瑰，我用了源石技艺保鲜，希望您也能感受到它的美丽）",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31034",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30074",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

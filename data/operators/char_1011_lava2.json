@@ -1,0 +1,1103 @@
+{
+  "id": "char_1011_lava2",
+  "name": {
+    "en": "Lava the Purgatory",
+    "zh": "炎狱炎熔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RF01",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "splashcaster",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Rhodes Island Caster Operator, Lava the Purgatory, skillfully creates space for you with her outstanding Originium Arts.",
+    "zh": "罗德岛术师干员炎狱炎熔，将熟练地运用高超的源石技艺为您开辟空间。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Her Arts have grown immensely stronger since when she was fresh aboard Rhodes Island.",
+    "zh": "和最初进入罗德岛时相比，她的法术实力已经不可同日而语。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 692,
+            "atk": 370,
+            "def": 46,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 962,
+            "atk": 522,
+            "def": 70,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 962,
+            "atk": 522,
+            "def": 70,
+            "magicResistance": 15,
+            "cost": 35,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1203,
+            "atk": 670,
+            "def": 96,
+            "magicResistance": 15,
+            "cost": 35,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30074",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1203,
+            "atk": 670,
+            "def": 96,
+            "magicResistance": 20,
+            "cost": 35,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1543,
+            "atk": 798,
+            "def": 115,
+            "magicResistance": 20,
+            "cost": 35,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_lava2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.02,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.04,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.06,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.08,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.1,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.12,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.14,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.16,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.18,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Flame Quenched Dagger",
+            "zh": "焰淬匕首",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>+{ability_range_forward_extend}</> tile, ATK <@ba.vup>+{atk:0%}</>, and attack up to <@ba.vup>{attack@max_target}</> targets simultaneously",
+            "zh": "攻击距离<@ba.vup>+{ability_range_forward_extend}</>，攻击力<@ba.vup>+{atk:0%}</>，同时攻击<@ba.vup>{attack@max_target}</>个目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.2,
+            "ability_range_forward_extend": 1,
+            "attack@max_target": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_lava2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.3,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 79,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.3,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 78,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.3,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 77,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 76,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 75,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.35,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 37,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 73,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Ring of Hellfire",
+            "zh": "狱火之环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and targets the ally with the highest HP within range, enveloping them and herself within a ring of fire. Each ring of fire deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to all enemies in the surrounding 8 tiles",
+            "zh": "停止攻击，立即选择攻击范围内生命值最高的友方单位，使其和自身被火环笼罩，每秒对各自周围8格的所有敌人造成相当于炎狱炎熔攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 0.5,
+            "interval": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 4
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Spell Formation",
+            "zh": "咒术阵线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately obtains 15 SP after the first deployment. On each deployment, grants SP +2 to other Caster allies on the field. When deployed, other Caster allies obtain initial SP +2",
+            "zh": "首次部署后立即获得15点技力，每次部署时使在场术师干员技力+2，在场时其余友方术师干员初始技力+2",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "lava2_t_1[ally].sp": 2,
+            "lava2_t_1[self].sp": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Spell Formation",
+            "zh": "咒术阵线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately obtains 20 <@ba.talpu>(+5)</> SP after the first deployment. On each deployment, grants SP +3 <@ba.talpu>(+1)</> to other Caster allies on the field. When deployed, other Caster allies obtain initial SP +3 <@ba.talpu>(+1)</>",
+            "zh": "首次部署后立即获得20<@ba.talpu>（+5）</>点技力，每次部署时使在场术师干员技力+3<@ba.talpu>（+1）</>，在场时其余友方术师干员初始技力+3<@ba.talpu>（+1）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "lava2_t_1[ally].sp": 3,
+            "lava2_t_1[self].sp": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Spell Formation",
+            "zh": "咒术阵线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately obtains 30 SP after the first deployment. On each deployment, grants SP +4 to other Caster allies on the field. When deployed, other Caster allies obtain initial SP +4",
+            "zh": "首次部署后立即获得30点技力，每次部署时使在场术师干员技力+4，在场时其余友方术师干员初始技力+4",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "lava2_t_1[ally].sp": 4,
+            "lava2_t_1[self].sp": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Spell Formation",
+            "zh": "咒术阵线",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately obtains 35 <@ba.talpu>(+5)</> SP after the first deployment. On each deployment, grants SP +5 <@ba.talpu>(+1)</> to other Caster allies on the field. When deployed, other Caster allies obtain initial SP +5 <@ba.talpu>(+1)</>",
+            "zh": "首次部署后立即获得35<@ba.talpu>（+5）</>点技力，每次部署时使在场术师干员技力+5<@ba.talpu>（+1）</>，在场时其余友方术师干员初始技力+5<@ba.talpu>（+1）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "lava2_t_1[ally].sp": 5,
+            "lava2_t_1[self].sp": 35
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_lava2",
+      "name": {
+        "en": "Lava the Purgatory's Badge",
+        "zh": "炎狱炎熔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Lava the Purgatory has demonstrated a remarkable aptitude for inflicting Arts casualties on multitudes of enemies.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Splash Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "炎狱炎熔擅长对复数敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使扩散术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_lava2",
+      "name": {
+        "en": "Sarkaz's Knife",
+        "zh": "萨卡兹的刀",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_lava2",
+      "description": {
+        "en": "The hammering comes to a halt in the foundry. Taking the heavy tongs from the artificer, Lava submerges the red-hot dagger into the ice cold water. As bubbles and white smoke erupt uncontrollably out of the water, in unison with an intense searing sound, she finds herself unable to take her eyes away.\nThe cooled dagger sits atop a smithing table, and Lava herself personally etched a crude depiction of her own horns on it.\n\n'That's so sick! Miss, I want one too!'\nThe children of the slums rarely get to eat anything tasty, and they have certainly never seen the sweet treats that Lava is so fond of.\nEver since Lava removed the small, sweet-smelling pouch dangling from her waist and carefully divvied the snow-white, delicious treats evenly among all the timidly outstretched hands, the children here forgot all about the stories their parents had told them about 'Devils'. They even began looking forward to this super cool lady coming to play with them.\nWhen she sees that the animosity in the children's black eyes has faded bit by bit, from both time and her displays of goodwill, Lava finally asks a question that she's wanted to ask for a very long while.\n'Do you guys know what Arts are?'\nLava starts to manifest red, burning flowers one after another, their branches glowing beautifully under the night sky.\nThe children want to approach, but are too scared to. Lava then takes their hands and crouches down to teach them the basics of Arts.\nLava has never seen them imitate her so excitedly, and, surprisingly, she finds a few of them managing to eke out a few sparks. Their Arts may be crude and imperfect, but they certainly lit up their elated faces.\nLava decides to do something that she's always wanted to do.\nEven just for material reasons, it's a good idea to learn Arts. It helps you find a stable job and fills your stomach. You won't have to starve in the cold slums anymore. It's how you escape the fate that's haunted you your whole life.\n\nAs time goes by, one day after another, the world hasn't gotten any better. Nor has it gotten any worse. It yet fosters both misfortune and joy, as well as life and death.\nThe children here have learned the Sarkaz's Arts. They haven't become any better or worse, and they continue to live here, peacefully as ever. But their future has already started to change.\nBy passing this newly forged dagger around from one tiny, curious hand to the next, Lava is slowly changing things her own way.",
+        "zh": "铸造室中锤打的声音停了下来，从工匠手中接过沉重的铁夹，炎熔把烧得通红的小刀浸入冰冷的水中，气泡和白烟伴随着剧烈的沸腾声毫无章法地窜出来，迷住了她的眼睛。\n冷却好的小刀被放在铸台上，上面有炎熔刻上去的，自己双角的图案。\n\n“好酷……！姐姐，我也想要这个！”\n出生在贫民区的孩子们很难吃到好的食物，而炎熔平日里爱吃的甜食，他们更是从来都没有见过。\n自从炎熔解下腰间随着走路步伐一晃一晃散发出甜蜜气息的小袋，把雪白的美味一个一个仔细分给那些怯生生伸来的小手后，这里的孩子们便把父母口中曾经说的“魔族”抛在脑后，甚至期盼着这个看起来酷酷的姐姐来和他们玩。\n看着孩子们乌黑眼珠中的芥蒂随着时光和自己的善意一层一层减少，炎熔问出了一个想了很久的问题。\n“你们知道法术吗？”\n炎熔变出一片片红色的火焰花朵，枝枝蔓蔓，在夜色下显得惊人的美丽。\n一群小脑袋想靠近却又不敢，炎熔牵着他们的手，蹲下身子讲解一些入门的知识。\n从来没有见过这些的他们兴奋地有样学样，意料之外地，炎熔看到其中一两只小手之间腾出零碎的光芒，是还没有成型的法术，那光映着自己惊喜的脸。\n炎熔决定做一件自己一直想做的事情。\n即使单从世俗的一面来讲，学会一些法术也是一件好事，能找到一份稳定的工作，填饱肚子，不必在贫民区继续挨饿受冻，这样才能摆脱一些缠绕在自己身上的命运。\n\n时间一日接一日地过去，这片大地没有变好，也没有变坏，它仍旧孕育着祸与福、生与死。\n这里的孩子学会了萨卡兹的法术，他们并没有变好，也没有变坏，他们仍旧和平日一样生活，但他们的未来已经在悄悄地变动。\n这把新打出来的小刀在好奇的小手里接连不断地传递着，炎熔用她自己的方法改变一些事情。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30104",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

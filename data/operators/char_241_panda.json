@@ -1,0 +1,1121 @@
+{
+  "id": "char_241_panda",
+  "name": {
+    "en": "FEater",
+    "zh": "食铁兽",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "YD01",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "pusher",
+  "faction": "lungmen",
+  "position": "MELEE",
+  "tagList": [
+    "Shift",
+    "Slow"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "FEater, Specialist Operator of Rhodes Island, will settle disputes with her excellent martial art skills.",
+    "zh": "罗德岛特种干员食铁兽，将用自身高超的武艺，解决争端。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "No stand-in, NO.",
+    "zh": "坚决不用替身。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 852,
+            "atk": 279,
+            "def": 158,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1136,
+            "atk": 388,
+            "def": 240,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1136,
+            "atk": 388,
+            "def": 240,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1439,
+            "atk": 518,
+            "def": 317,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "30094",
+          "count": 8
+        },
+        {
+          "id": "30033",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1439,
+            "atk": 518,
+            "def": 317,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1845,
+            "atk": 640,
+            "def": 382,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_panda_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>slightly</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds </>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 3,
+            "move_speed": -0.15,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>slightly</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds </>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 3,
+            "move_speed": -0.16,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>slightly</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds </>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>小力地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 3,
+            "move_speed": -0.17,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 4,
+            "move_speed": -0.18,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 4,
+            "move_speed": -0.19,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 4,
+            "move_speed": -0.2,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 4,
+            "move_speed": -0.21,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 5,
+            "move_speed": -0.24,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>moderately</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds</>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>中等力度地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 5,
+            "move_speed": -0.27,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Raging Iron Fist",
+            "zh": "铁意六合",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack pushes enemies towards the attack direction <@ba.vup>greatly</> and their Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}seconds </>",
+            "zh": "下次攻击会把目标往攻击方向<@ba.vup>较大力地</>推动，<@ba.vup>{duration}秒</>内命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 5,
+            "move_speed": -0.3,
+            "force": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30033",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_panda_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "move_speed": -0.15,
+            "force": 1,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.65,
+            "move_speed": -0.16,
+            "force": 1,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "move_speed": -0.17,
+            "force": 1,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75,
+            "move_speed": -0.18,
+            "force": 1,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "move_speed": -0.19,
+            "force": 1,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>moderately</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>中等力度地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85,
+            "move_speed": -0.2,
+            "force": 1,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>较大力地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "move_speed": -0.21,
+            "force": 2,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>较大力地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "move_speed": -0.24,
+            "force": 2,
+            "duration": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>greatly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>较大力地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "move_speed": -0.27,
+            "force": 2,
+            "duration": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Destructive Fist",
+            "zh": "崩拳式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Rushes forward immediately and targets the closest enemy in the frontal line; Knocks back all nearby enemies <@ba.vup>significantly</>, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage and the targets' Movement Speed <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration} seconds</>",
+            "zh": "立即往前方突进，寻找前方直线内的最近目标，<@ba.vup>大力地</>击退该目标周围的所有敌军，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，在<@ba.vup>{duration}秒</>内所有命中目标的移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "move_speed": -0.3,
+            "force": 3,
+            "duration": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30043",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30033",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 2
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Kung Fu",
+            "zh": "功夫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 20% Physical Dodge",
+            "zh": "获得20%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Kung Fu",
+            "zh": "功夫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 23% <@ba.talpu>(+3%)</> Physical Dodge",
+            "zh": "获得23%<@ba.talpu>（+3%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Kung Fu",
+            "zh": "功夫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 40% Physical Dodge",
+            "zh": "获得40%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Kung Fu",
+            "zh": "功夫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 43% <@ba.talpu>(+3%)</> Physical Dodge",
+            "zh": "获得43%<@ba.talpu>（+3%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.43
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +8",
+        "zh": "攻击速度+8",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 300,
+        "atk": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_panda",
+      "name": {
+        "en": "FEater's Badge",
+        "zh": "食铁兽证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_panda",
+      "description": {
+        "en": "Operator FEater has demonstrated a remarkable aptitude for physically distancing the enemy via applied force so as to preserve the front.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Push Stroker responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员食铁兽擅长将敌人推至远方以维持战线\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使推击手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_panda",
+      "name": {
+        "en": "Shangshu-Style Homemade Chili Sauce",
+        "zh": "尚蜀风味自制辣酱",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_panda",
+      "description": {
+        "en": "'Ah-choo... ah-choo...'\nOutside the kitchen door, everyone is wiping their noses, sneezing one after another like there's no tomorrow, even their eyes sealed shut.\nThe culprit: a pungent, choking aroma wafting from a crack in the door, inflaming everyone's nostrils, tickling their throats.\n'Ah-choo... ah-choo...'\nDespite how unbearable it is, nobody's willing to take even one step away. People are still flowing <i>into</i> the cafeteria, in fact.\n'Is—Is it ready? Is FEater still inside?'\n'*cough* *cough*... Yeah, you can hear the banging. She's probably still chopping chilis.'\n'So spicy... I—I'm almost at my limit... ah-choo!'\n'Then you'd better get out of here... *cough* *cough*...'\n'No way am I letting you jump my spot... ah-choo!'\nWith a 'crrrk,' the kitchen door swings open, and in an instant, the entire room is filled with a scent rich and stimulating. Right behind it comes FEater carrying a plate, her smile brimming with satisfaction.\n'It's done! Step on up and try it, guys. I've even added my hometown chili paste for a special touch.'\nSeeing the brilliant red pepper slices and vividly shining chili oil, the crowd craning to steal a look just a moment before is now hush-silent. They share looks of alarm at each other, each sporting their own unique expression.\n'Don't let it scare you! Sit down and try!'\n'I assume... it's going to be very spicy, FEater?'\n'Nope, not spicy at all. I just tasted it.'\n'Then I suppose I will.'\nNo sooner do the words come out than the crowd parts perfectly into two, and under the admiring attention of all, one lone operator walks up to the table, rubs her hands, and picks up a pair of chopsticks with a tremble.\n'Come on, try!'\nAs if unable to withstand FEater's expectant gaze, the operator's chopsticks chatter like teeth, with a sharp clack-clack-clack-clack. Finally, after circling above the plate a few times, they descend, carefully picking up a piece of meat not totally stuffed with peppers.\nShe lifts the chopsticks high and gives them a shake, then two, hoping the chili seeds and peppercorns will fall out of the roll of meat, and right away senses it still won't be enough, leading her to wipe it a few times against the edge of the plate. Only once it's wiped bare of all excess oil does she finally take a deep breath, and prepare to put it in her mouth.\n'Wait, give it a rinse in your glass!'\nThe prompting voice from the crowd enters her ears, and she sees the light. Her chopsticks make an about face and dunk the meat in her drinking glass, and instantly, what was clear warm water is now scarlet throughout, beads of oil floating about within.\nThe sight of the meat's original, fair color greets her. The operator sighs with palpable relief, and scarfs it down in one clean go.\n'How is it? Good?' asks FEater with a wink.\n'*cough* *cough* *cough* *cough*... Wh—Where's my water? *cough* *cough*—'\n'*glug* *glug*...'\n'Hey, isn't that the water she just...'\n'Pppffffhh—!'",
+        "zh": "“阿嚏……阿嚏……”\n厨房门前，所有人都揉着鼻子，狠狠地打喷嚏，一个又一个，连眼睛都没法睁开。\n祸源是一股从门缝中飘出的呛辣气味，让在场所有人鼻腔充血，喉咙发痒。\n“阿嚏……阿嚏……”\n尽管痛苦难忍，但没有一个人愿意抬脚离开，甚至还有更多的人不停涌进食堂。\n“好、好了吗？食铁兽小姐还在里面吗？”\n“咳咳……嗯，你听里面咣咣不停，她应该还在剁辣椒。”\n“好辣……我、我快要不行了……阿嚏！”\n“那你赶紧离开啊……咳咳……”\n“不，你休想支开我……阿嚏！”\n“吱呀”一声，厨房门从里面被推开，一瞬间，整个屋内的味道愈发浓郁刺激，随之而来的，还有端着盘子的食铁兽，她的脸上洋溢着满意的笑容。\n“做好了，你们都来尝尝，在这道菜里我特意加了老家的辣酱。”\n看到盘子里红艳艳的辣椒段和鲜亮的红油，原本翘首以盼的众人突然在此刻都没了声息，只是面面相觑，神色各异。\n“别都绷着，快坐下来尝尝！”\n“这个……应该很辣吧，食铁兽小姐？”\n“不辣，一点也不辣，我刚刚尝过了。”\n“那我来试试吧。”\n话音刚落，人群齐齐从中间分至两边，在众人敬佩的目光中一位干员走到桌前，搓了搓手，颤抖着拿起一副筷子。\n“快尝尝！”\n似乎是承受不住食铁兽期待的目光，干员手中的筷子不停碰撞，发出清脆的“咔哒”声。在盘子上方转过几圈后，筷子终于落下，谨慎地从里面夹起一片未裹满辣椒的肉。\n干员举高筷子抖了抖，希望藏在卷曲肉片中的辣椒籽和花椒粒可以掉出来，即便如此她仍然觉得不够，又将肉片搁在盘子边缘刮了几下。直到将残余的红油刮干净后，她才喉咙一动，准备放进嘴里。\n“等等，先在杯子里涮涮！”\n听到人群中的一声提醒，干员恍然大悟，掉转筷子将肉片送进水杯里，顷刻间，清澈的温水变成鲜红一片，还有油珠在上面漂浮。\n看到肉片露出粉嫩的原色，干员长出一口气，干脆地将肉片吃下。\n“怎么样，好吃吗？”食铁兽眨眨眼问道。\n“咳咳咳咳……水，水在哪里？咳咳——”\n“咕咚咕咚……”\n“哎，那杯水不是刚刚……”\n“噗——！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30104",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31024",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}
