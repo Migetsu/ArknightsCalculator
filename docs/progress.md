@@ -205,14 +205,23 @@
   - Audited operator chunk transfer and bundle telemetry: client-side chunks (`BpdH-CFf.js` for SilverAsh, `D7HbWlUc.js` for Myrtle, `BNpv6iik.js` for Logos) compress to 6–13 KB over the wire via Vite tree-shaking, compared to 40–88 KB raw JSON.
   - Verified simulated mobile network profile (Fast 3G/Slow 4G + CPU 4x): FCP ~1.9s, DomContentLoaded ~2.1s on warm navigation, 0 script leaks.
 
+- Leveling EXP & promotion material requirements planner core (`feat/planner-core`):
+  - Created pure TypeScript planner core in `shared/utils/planner/`:
+    - `types.ts`: typed models & Zod schemas (`OperatorState`, `CostCategoryBreakdown`, `CalculatedCost`, `ExpCardPlan`).
+    - `calculateCost.ts`: computes exact required LMD, EXP, and items across Elite promotions (with in-game level reset to 1), common skill ranks (1-7), skill masteries (M1-M3), and module stages (0-3).
+    - `planExpCards.ts`: optimal battle record card converter (Strategic, Tactical, Frontline, Drill) with `min_cards` greedy algorithm and `min_waste` bounded search.
+    - `sumCosts.ts`: aggregated cost calculator for combining multi-operator rosters.
+  - Documented complete architecture, formulas, and verified benchmarks in `docs/planner.md`.
+  - Added 15 comprehensive unit tests in `tests/unit/shared/planner/planner.test.ts` verifying boundary validation, zero cost on identical states, arithmetic benchmarks (e.g. 6* SilverAsh E0L1->E2L90 = 1,111,400 EXP and 1,334,796 LMD), monotonicity, and additivity.
+
 ## In progress
 
-- Task 16: Leveling EXP & promotion material requirements planner core (`feat/planner-core`).
+- None.
 
 ## Next
 
-- Implement pure TS calculation engine in `shared/utils/planner/` (`calculateCost`, `planExpCards`, `sumCosts`).
-- Build unit tests for monotonicity, additivity, and zero-cost edge cases.
+- Module `PLN-02`: Operator planner store & target state persistence via Pinia.
+- Module `DEP-01`: Depot inventory management & craft tree decomposition core.
 - Move language switcher to settings page when implementing module `SET-06`.
 
 ## Known issues
