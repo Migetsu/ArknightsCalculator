@@ -198,14 +198,21 @@
   - Removed `app/plugins/hydration.client.ts` which injected a test-only `data-hydrated="true"` DOM attribute; migrated test waiting logic in `tests/e2e/fixtures.ts` to standard public DOM readiness checks (`#__nuxt` selector and `domcontentloaded` state).
   - Created `docs/known-issues.md` to track non-blocking deferred items per `AGENTS.md`.
 
+- Component-level stats audit and chunk telemetry audit (`chore/audit-fixes`):
+  - Completed component-by-component live audit for all 5 reference operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) against `arknights.wiki.gg` and `prts.wiki` (checked 2026-10-12): base stats on level/phase, Trust 100%, Potentials 1–6, and Module Stage 3.
+  - Documented full component breakdown table in `docs/stats.md`, showing how the calculation engine dynamically sums verified parts into total stats.
+  - Clarified subclass module abbreviations (`uniequip_table.json` and `battle_equip_table.json`): `SOL` (Soldier/Pioneer Vanguard, e.g. Texas `SOL-Y`), `BEA` (Bearer/Standard Bearer, e.g. Myrtle `BEA-X`), `LOR` (Lord Guard, e.g. SilverAsh `LOR-X`), `CCR` (Core Caster, e.g. Eyjafjalla `CCR-X`/`CCR-Y`), `PHY` (Physician Medic, e.g. Kal'tsit `PHY-X`).
+  - Audited operator chunk transfer and bundle telemetry: client-side chunks (`BpdH-CFf.js` for SilverAsh, `D7HbWlUc.js` for Myrtle, `BNpv6iik.js` for Logos) compress to 6–13 KB over the wire via Vite tree-shaking, compared to 40–88 KB raw JSON.
+  - Verified simulated mobile network profile (Fast 3G/Slow 4G + CPU 4x): FCP ~1.9s, DomContentLoaded ~2.1s on warm navigation, 0 script leaks.
+
 ## In progress
 
-- None.
+- Task 16: Leveling EXP & promotion material requirements planner core (`feat/planner-core`).
 
 ## Next
 
-- Develop leveling EXP & promotion material requirements calculator core in `shared/`.
-- Build depot inventory models and craft decomposition tree core in `shared/`.
+- Implement pure TS calculation engine in `shared/utils/planner/` (`calculateCost`, `planExpCards`, `sumCosts`).
+- Build unit tests for monotonicity, additivity, and zero-cost edge cases.
 - Move language switcher to settings page when implementing module `SET-06`.
 
 ## Known issues
