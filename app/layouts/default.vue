@@ -123,9 +123,6 @@ function isModuleActive(path: string): boolean {
             {{ t('common.menu') }}
           </span>
         </AkButton>
-
-        <!-- Language Switcher -->
-        <LayoutLanguageSwitcher />
       </div>
     </header>
 

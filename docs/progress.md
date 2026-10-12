@@ -117,15 +117,21 @@
   - Documented dataset specifications and schemas in `docs/data-formats.md`.
   - Built referential integrity validator `scripts/data/validate-data.ts` (`npm run data:validate`) and integrated it into `.github/workflows/ci.yml`: verified 22,426 item references, 956 skill references, and 891 module references across all 434 operators and recipes with 0 violations.
 
+- Removed language switcher from navigation header (`refactor/remove-nav-lang-switcher`):
+  - Removed `<LayoutLanguageSwitcher />` from `app/layouts/default.vue` header actions. English remains the active default locale (`en`).
+  - Preserved `LanguageSwitcher.vue` component and unit tests for subsequent integration into the Settings page (`/settings`).
+  - Updated E2E tests (`tests/e2e/i18n.spec.ts`) asserting language switcher absence in header and validating direct localized routing (`/ru`).
+
 ## In progress
 
-- None (Data constants and calculation foundation completed).
+- None.
 
 ## Next
 
 - Develop calculation core for operators (level exp, promotion materials, skill mastery tree, module unlock requirements) in `shared/`.
 - Build depot inventory models and craft decomposition tree core in `shared/`.
 - Build full operator detail page (`/operators/[id]`).
+- Move language switcher to settings page when implementing module `SET-06`.
 
 ## Known issues
 
