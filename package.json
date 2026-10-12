@@ -22,7 +22,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "i18n:check": "node --experimental-strip-types scripts/check-i18n.ts"
+    "i18n:check": "node --experimental-strip-types scripts/check-i18n.ts",
+    "data:fetch": "jiti scripts/data/fetch-raw.ts"
   },
   "engines": {
     "node": ">=22.0.0"
@@ -35,7 +36,8 @@
     "@vueuse/core": "^13.9.0",
     "@vueuse/nuxt": "^13.9.0",
     "nuxt": "^4.6.1",
-    "pinia": "^4.0.3"
+    "pinia": "^4.0.3",
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.3",
