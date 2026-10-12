@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { I18nStringSchema } from './operator'
+import { I18nStringSchema, ServerRegionSchema } from './operator'
 
 /**
  * Item category classification for calculator and depot planning.
@@ -41,6 +41,7 @@ export const GameItemSchema = z.object({
   sortId: z.number().int(),
   iconId: z.string(),
   flags: ItemFlagsSchema,
+  servers: z.array(ServerRegionSchema).min(1),
 })
 
 export type GameItem = z.infer<typeof GameItemSchema>

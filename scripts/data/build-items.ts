@@ -129,6 +129,7 @@ export async function buildItems(): Promise<{
     const canDrop = (base.stageDropList && base.stageDropList.length > 0) || false
     const canCraft = craftableIds.has(id) || (base.buildingProductList && base.buildingProductList.length > 0) || false
     const isModuleToken = id.startsWith('mod_')
+    const servers: ('cn' | 'global')[] = rawEn ? ['cn', 'global'] : ['cn']
 
     const itemObj: GameItem = {
       id,
@@ -145,6 +146,7 @@ export async function buildItems(): Promise<{
         canCraft,
         ...(isModuleToken ? { isModuleToken: true } : {}),
       },
+      servers,
     }
 
     GameItemSchema.parse(itemObj)
