@@ -131,6 +131,19 @@
 
 ## In progress
 
+- Implemented rich text parser, blackboard interpolation, and accessible AkRichText component (`feat/rich-text`):
+  - Audited full game dataset across 29,324 active descriptions in `data/operators/*.json` via `scripts/data/scan-rich-text.ts`. Documented all 5 highlight tags (`ba.vup`, `ba.rem`, `ba.talpu`, `ba.kw`, `ba.vdown`), 60 unique battle term tags (100% matched against `constants.json`), and placeholder formats in `docs/rich-text.md`.
+  - Authored pure, zero-HTML parser `shared/utils/richText/` with typed AST schema (`RichTextNode`, `text`, `break`, `highlight`, `term`):
+    - Blackboard interpolation (`resolveBlackboardValue`) with formatters (`0%`, `0.0%`, `0`, `0.0`, default raw).
+    - Resilient parser handling unclosed tags, nested markup, unknown tags/keys (graceful fallback with console warning), and literal angle brackets (`<Substitute>`, `<替身>`).
+  - Authored accessible UI component `AkRichText.vue` (`app/components/ui/AkRichText.vue`) rendering AST nodes without `v-html`:
+    - Themed highlights with Arknights tactical colors (Cyan, Red, Amber, Green, Gold).
+    - Accessible popover for terms: `role="button"`, `tabindex="0"`, `aria-expanded`, keyboard support (`Enter`, `Space`, `Escape`), touch/click toggle, and outside click dismiss.
+  - Added rich text showcase section to `app/pages/_ui.vue` demonstrating skill interpolations, tactical terms, and nested highlights.
+  - Added 18 unit tests in `tests/unit/shared/richText/parseRichText.test.ts` (including formatting, blackboard resolution, AST validation, and a full dataset scanner test verifying 100% tag recognition across all operator files) and 5 component tests in `tests/unit/components/ui/AkRichText.test.ts`. Total 149 Vitest unit/component tests passing.
+
+## In progress
+
 - None.
 
 ## Next

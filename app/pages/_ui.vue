@@ -272,6 +272,48 @@ const isModalOpen = ref(false)
           </AkGrid>
         </div>
       </AkPanel>
+
+      <!-- Rich Text Formatting -->
+      <AkPanel title="AkRichText Component" tag="UI // 10" line-color="cyan">
+        <div class="page-ui__column">
+          <div class="page-ui__group">
+            <span class="page-ui__group-label"
+              >Skill Description with Blackboard & Highlights:</span
+            >
+            <AkPanel variant="bordered">
+              <AkRichText
+                text="Deals <@ba.vup>{atk_scale:0%}</> physical damage to up to <@ba.vup>{max_target}</> targets. Target suffers <@ba.vdown>-{def:0%}</> DEF."
+                :blackboard="{ atk_scale: 2.3, max_target: 3, def: 0.25 }"
+                as="div"
+              />
+            </AkPanel>
+          </div>
+
+          <div class="page-ui__group">
+            <span class="page-ui__group-label"
+              >Interactive Terminology Tooltips (Click/Focus to Inspect):</span
+            >
+            <AkPanel variant="bordered">
+              <AkRichText
+                text="<@ba.rem>Automatically activated; Amiya is <$ba.stun>Stunned</> for {stun} seconds after skill ends. Enemies in range suffer <$ba.sleep>Sleep</> and <$ba.sluggish>Slow</>.</>"
+                :blackboard="{ stun: 10 }"
+                as="div"
+              />
+            </AkPanel>
+          </div>
+
+          <div class="page-ui__group">
+            <span class="page-ui__group-label">Nested Tags & Keywords:</span>
+            <AkPanel variant="bordered">
+              <AkRichText
+                text="<@ba.kw>Overdrive</>: ATK increases to <@ba.vup>+{atk:0%}</> and attack speed <@ba.talpu>+{aspd}</>. Switches to <Substitute> mode."
+                :blackboard="{ atk: 1.1, aspd: 35 }"
+                as="div"
+              />
+            </AkPanel>
+          </div>
+        </div>
+      </AkPanel>
     </AkContainer>
 
     <!-- Interactive Showcase Modal -->
