@@ -1,0 +1,1540 @@
+{
+  "id": "char_1023_ghost2",
+  "name": {
+    "en": "Specter the Unchained",
+    "zh": "归溟幽灵鲨",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "CR02",
+  "rarity": 6,
+  "class": "SPECIALIST",
+  "subclass": "dollkeeper",
+  "faction": "egir",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Fast-Redeploy"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Specter the Unchained, free from her cage, awake from her madness.",
+    "zh": "归溟幽灵鲨，自囚笼里挣脱，从疯狂中苏醒。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Always insane in the heat of the fight.",
+    "zh": "战斗时的她总是疯狂的。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1311,
+            "atk": 335,
+            "def": 133,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1749,
+            "atk": 459,
+            "def": 205,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 5
+        },
+        {
+          "id": "30022",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1749,
+            "atk": 459,
+            "def": 205,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2214,
+            "atk": 604,
+            "def": 267,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30054",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2214,
+            "atk": 604,
+            "def": 267,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2803,
+            "atk": 737,
+            "def": 322,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ghost2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "The Skill to Survive",
+            "zh": "生存的技巧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When activated, exchange HP percentage with the ally with the lowest HP percentage within range. Specter gains ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "开启时立即与范围内生命上限比例最低的其他我方干员交换生命上限比例，自身攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ghost2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 13,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 10
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 13,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 14
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 13,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.6,
+            "attack_speed": 18
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.7,
+            "attack_speed": 22
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.8,
+            "attack_speed": 26
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.9,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1,
+            "attack_speed": 34
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.1,
+            "attack_speed": 38
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.2,
+            "attack_speed": 44
+          }
+        },
+        {
+          "name": {
+            "en": "The Thirst to Survive",
+            "zh": "生存的渴望",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. While skill is active, prevents Specter's HP from falling below <@ba.vup>1</>\n<@ba.rem>Will be defeated when the skill ends</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，技能持续期间内干员的生命值不会低于<@ba.vup>1</>\\n<@ba.rem>技能结束后视为被击倒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.3,
+            "attack_speed": 50
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ghost2_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.3,
+            "max_hp": 1,
+            "attack@atk_scale_ex": 0.4,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.4,
+            "max_hp": 1.1,
+            "attack@atk_scale_ex": 0.4,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.6,
+            "max_hp": 1.2,
+            "attack@atk_scale_ex": 0.4,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.7,
+            "max_hp": 1.3,
+            "attack@atk_scale_ex": 0.5,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.8,
+            "max_hp": 1.4,
+            "attack@atk_scale_ex": 0.5,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.9,
+            "max_hp": 1.5,
+            "attack@atk_scale_ex": 0.5,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 2,
+            "max_hp": 1.6,
+            "attack@atk_scale_ex": 0.6,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 2.2,
+            "max_hp": 1.7,
+            "attack@atk_scale_ex": 0.7,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 2.4,
+            "max_hp": 1.85,
+            "attack@atk_scale_ex": 0.7,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "The Pressure to Survive",
+            "zh": "生存的重压",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack interval <@ba.vdown>increases</>, attacks all blocked enemies, ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>; deal <@ba.vup>{attack@atk_scale_ex:0%}</> ATK as extra Physical damage when attacking enemies with HP percentage equal to or higher than self, otherwise lose <@ba.vdown>{attack@hp_ratio:0%}</> of HP",
+            "zh": "攻击间隔<@ba.vdown>延长</>，攻击所有阻挡的敌人，攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，攻击生命比例高于或等于自身的敌人时额外造成一次攻击力<@ba.vup>{attack@atk_scale_ex:0%}</>的物理伤害，否则自身流失<@ba.vdown>{attack@hp_ratio:0%}</>生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 2.6,
+            "max_hp": 2,
+            "attack@atk_scale_ex": 0.7,
+            "base_attack_time": 1,
+            "attack@hp_ratio": 0.03
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30031",
+          "count": 6
+        },
+        {
+          "id": "30041",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30043",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30053",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 6
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Embraced Self",
+            "zh": "拥抱自我",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<Substitute> reduces Movement Speed of nearby enemies by 20%, and deals 20% ATK as Arts damage to them per second",
+            "zh": "<替身>使周围敌人移动速度-20%且每秒造成相当于20%攻击力的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.2,
+            "atk_scale": 0.2,
+            "talent_override_rangeid_flag": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Embraced Self",
+            "zh": "拥抱自我",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<Substitute> reduces Movement Speed of nearby enemies by 30%, and deals 30% ATK as Arts damage to them per second",
+            "zh": "<替身>使周围敌人移动速度-30%且每秒造成相当于30%攻击力的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.3,
+            "atk_scale": 0.3,
+            "talent_override_rangeid_flag": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Embraced Self",
+            "zh": "拥抱自我",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<Substitute> reduces Movement Speed of nearby enemies by 40%, and deals 40% ATK as Arts damage to them per second",
+            "zh": "<替身>使周围敌人移动速度-40%且每秒造成相当于40%攻击力的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.4,
+            "atk_scale": 0.4,
+            "talent_override_rangeid_flag": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Ægir's Depths",
+            "zh": "阿戈尔的深邃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +20% Max HP",
+            "zh": "编入队伍时，所有【深海猎人】干员的生命值+20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Ægir's Depths",
+            "zh": "阿戈尔的深邃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +23% <@ba.talpu>(+3%)</> Max HP",
+            "zh": "编入队伍时，所有【深海猎人】干员的生命值+23%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +33",
+        "zh": "攻击力+33",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 80
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ghost2",
+      "name": {
+        "en": "Specter the Unchained's Badge",
+        "zh": "归溟幽灵鲨证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Specter the Unchained has demonstrated a remarkable aptitude for repeated contention with the enemy upon the battlefield.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Dollkeeper responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员归溟幽灵鲨擅长于战场上同敌人反复周旋\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使傀儡师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ghost2",
+      "name": {
+        "en": "'Vinyl Record' Box",
+        "zh": "“唱片”收藏箱",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ghost2",
+      "description": {
+        "en": "Specter draws a record from the record box and puts it on the gramophone, and melodious music arises.\nShe has no missions today. The only thing she needs to do is let herself relax, place herself into the best possible state to be thrown into the next mission, the next battle.\nThe record is a masterpiece of the Iberian Golden Age, bought by her off an Iberian operator's hands.\nSpecter closes her eyes, lets herself sink into the sofa, and enjoys it in stillness.\nShe couldn't tell you a thing about what accomplishments marked Iberia's Golden Age, but she can sense from the music the splendor of that age, and how its people must have been so proud of their successes.\nIt's not godawful at all, she concedes.\nShe never masks her disdain for the glories of dry land's culture, but she has no intents of applying that prejudice to the arts—\nYes. Prejudice.\nShe even admits as much to the Doctor, while continuing on her merry way.\nBut her insistence isn't without meaning.\nBesides, she believes that while her and the Captain seem to have it in common, there's actually quite the distinction.\nThe Captain's arrogance comes from that good old Captain purview of Chief Designer. But she—she thinks—she doesn't care where her power comes from, and she's passionate about what undertakings she has these days. But still, sometimes she can't help but wonder—how has that statue in her hometown ended up? How about her hometown itself?\nThe music comes to a crackling halt.\nLaurentina opens her eyes, and what gradually seeps into view is her familiar ceiling. She knows, terrifyingly, she'll get even more used to this environment in time. She's not panicked about it. In order to panic in a new environment, you need to not want to leave the old one, but she's practically forgotten just how her life in Ægir felt to live.\nFrom the record box she now pulls a sawblade, and gently wipes over it, swapping for a new record to continue playing all the while. Maybe, just as the Iberians used all the methods under the sun to record their Golden Age, she can try and get back into her once most beloved activity—sculpting.\nHer one stroke of luck: she might just be stuck away from home for a good while longer. She still has enough time to remember how it looked, she thinks, with no lack of self-mocking irony.",
+        "zh": "幽灵鲨从唱片箱中随手拿起一张唱片放在留声机上，悠扬的音乐随之响起。\n今天她没有任务，她唯一需要做的，就是放松自己，让自己能够以最好的状态投入下一个任务、下一场战斗。\n唱片是她从来自伊比利亚的干员手中买下的伊比利亚黄金时代的杰作。\n幽灵鲨闭上眼，让自己陷入沙发，静静享受。\n她并不了解伊比利亚的黄金时代究竟有怎样的成就，但她能够从音乐中感受到，那个时代的辉煌和那个时代的人对自身成就的自豪。\n这并不糟糕，她承认。\n她从不掩饰自己对陆上文明的辉煌嗤之以鼻，但她并不打算将这样的偏见付诸艺术之中——\n是的，偏见。\n她甚至面对博士承认这一点，并继续我行我素。\n但这并不是某种没有意义的坚持。\n而且，她认为自己的这一点与队长虽然在表现上有共通之处，实际上却不是一回事。\n队长的傲慢源自于她作为总设计师的眼界。但于她，她想，她不在乎自己的力量来源于何处，也对如今的事业抱有热情。然而，她偶尔会忍不住去想，家乡的那座雕像，现在究竟变成了什么样，她的家乡，又变成了什么样？\n音乐戛然而止。\n劳伦缇娜睁开眼，映入眼帘的，是逐渐开始熟悉的天花板。她知道，自己恐怕还会对这个环境继续习惯下去。她并不对此恐慌，对新的环境恐慌的前提是，不希望离开旧的环境，但她几乎已经忘了她在阿戈尔生活时，是一种怎样的感觉。\n她从唱片箱中掏出一枚锯片轻轻擦拭，同时换上了一张新的唱片继续播放。或许，正如伊比利亚人用各种方式记录了他们的黄金时代一样，她也可以试着重新捡回她曾经最爱做的事——雕塑。\n唯一幸运的是，恐怕离回到家乡还有相当长一段时间，还有足够的时间去回忆家乡的样貌，她不无自嘲地想到。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_ghost2",
+      "name": {
+        "en": "The Beauty in the Incomplete",
+        "zh": "未竟之美",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_ghost2",
+      "description": {
+        "en": "'It is as if slaughtering those overgrown cuts of meat has become our unignorable, even our one-and-only, calling.'\nThe clock ticks and tocks. The dreadnought obstructs the rays as they come down from the dome. Ulpianus lifts his head and fixes his eyes on the flickering indicator lights, as if in thought.\n'It ought not be,' the young female Consul replies, following a long hesitation.\n'Of course it ought not. When an Ægir wakes, the first thought that enters their mind should not be of what they've lost, never. Nor of how to take back what they've lost.' Ulpianus is silent for a juncture, some kind of emotion flowing about his raspy throat. After a good while, he sighs, 'Oh, how many magnificent works we once made.'\n'And now, the battle to survive has become the only to-do list that this new generation knows.'\n'Battle. A glorious word, to be sure. And yet, our outstanding creativity and pursuit of beauty have been all but forgotten.'\nThe two simultaneously gaze afar. Lights dazzle beneath the dome.\n'...Not by choice.' Ulpianus adds.\nGladiia shoots a glance at Ulpianus, mulls over the wording for a moment, then speaks inquisitively: 'You were never the type to be so receptive to sentimentality.'\n'Indeed.' Ulpianus does not halt this time. 'We should address this matter solemnly. Our culture is in the midst of being permanently altered by these protracted days of calamity.'\nA colossal rumbling cuts short Gladiia's pregnant pause. More ships are entering port, a new fleet of migration and reconstruction, and she is left to ponder in earnest what Ulpianus has said. Over the pursuit of beauty, over the creation of the new. Before she was born, or perhaps earlier than that... centuries ago? Millennia? When the Ægir founded this stark and grand culture—did they imagine that now, its radiance would be so dull?\nDid they make any preparations for the present day?\nGladiia's thoughts are lost for but an instant. To her, the past is of unimportance. More vital are what preparations she is soon to make, what things she <i>can</i> do.\n'A new Abyssal Hunter.' Ulpianus unceremoniously breaks the silence. 'I hear she previously had quite an interest in the arts. Ballet, opera, she's dabbled in it all.'\n'Laurentina has mentioned a rather profound recollection of the sculpture in her hometown.'\n'Then she still retains some of the essence what all Ægir should have by rights.' Ulpianus turns around. The Consul's light attire for the season cannot conceal his body scarred by experimentation. 'What is she like? If she truly is an epitome of Ægir life from days gone by, then being forced away from the proper course of things must fill her with so much hate.'\n'No. Such sentimentality is but a small supplement to her whole.'\nGladiia breaks into a rare smile. This, despite how her smiles always took careful observation and judgment, on the muscular and nervous levels.\n'She creates a beauty of her own through battle. One of the sorts you speak of, with great exuberance.'\nUlpianus makes a light and noncommittal harrumph in response, after which he soon leaves Gladiia by herself under those gigantic shadows to appreciate the serenity.\nThe grand hall echoes with only the sounds of the Ægir's footsteps forward.",
+        "zh": "“与那些疯长的肉块厮杀，似乎已经成为了我们不可忽视的，乃至唯一的使命。”\n钟表嘀嗒作响，巨舰遮蔽了穹顶的光芒，乌尔比安仰头凝视那些闪烁着的指示灯，若有所思。\n“这不应当。”年轻的女性执政官在犹豫很久后才回应道。\n“确实不应当。当阿戈尔人睡醒时，他们所想的第一件事，从来不该是失去的东西……或是如何夺回那些失去的东西。”乌尔比安沉默了片刻，某种情感在他的沙哑的声音中流淌，良久，他叹息一声，“我们曾创造了多少壮美的事物。”\n“而为了生存而斗争，已经成为了新一代人唯一熟知的待办事项。”\n“斗争，光荣的词汇，这没有错。可是，我们卓越的创造力和对美好的追求，正在被人们遗忘……”\n二人同时看向远方，穹顶之下，灯火通明。\n“……被迫遗忘。”乌尔比安补充道。\n歌蕾蒂娅瞥了一眼乌尔比安，在酝酿了片刻措辞后，她质疑道：“你不该是一个多愁善感的人。”\n“是的。”乌尔比安这一次没有停顿，“我们该严肃地对待这个问题。我们的文明正在这场旷日持久的灾难中发生着永久性的改变。”\n巨大的轰鸣声打断了欲言又止的歌蕾蒂娅。更多的巨舰进入港湾，新一轮的迁徙与重建，她不得不开始认真思考乌尔比安所说的话。对美的追求，对新事物的创造。在她出生之前，或者更早，几百年前？几千年前？阿戈尔人建立起这个宏伟文明的时候，想过如今的它，光芒会如此暗淡吗？\n他们是否为今天做好了某些准备？\n歌蕾蒂娅的思绪只缥缈了一瞬。对她而言，过去并不重要。重要的是，她将要做什么准备，她能够做什么。\n“一个新的深海猎人。”乌尔比安突兀地打破了沉默，“听说，她曾对艺术事业颇感兴趣。舞蹈，歌剧，她都有所涉猎。”\n“劳伦缇娜曾说过她对家乡的雕塑艺术印象颇深。”\n“那她身上还留有阿戈尔人本应有的品质。”乌尔比安转过身去，执政官在这个时节轻薄的衣衫，遮不住他因实验而伤痕累累的身体，“她是个什么样的人？如果她真的是阿戈尔旧日生活的一个缩影，那么被迫偏离正轨，一定令这样的人满腔愤恨。”\n“不。那些情感只是构成她样貌的些微辅料。”\n歌蕾蒂娅难得展露了微笑，尽管她的微笑向来需要用肌肉与神经层面的细致观察来判断。\n“她正在斗争中创造属于她的美。如你所说那般，兴致勃勃。”\n乌尔比安以一声不置可否的轻哼取代回答，随后便留歌蕾蒂娅一人在那些庞然大物的阴影里品味宁静。\n只有阿戈尔人前进的脚步声回荡在大厅里。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_004_ghost2",
+      "name": {
+        "en": "归溟幽灵鲨特限证章",
+        "zh": "归溟幽灵鲨特限证章",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "A",
+      "icon": "uniequip_004_ghost2",
+      "description": {
+        "en": "归溟幽灵鲨已获得特别认证许可\n根据外勤部门决议\n在集成战略行动中以改良策略应对敌人\n特别颁发此证章\n以兹证明\n“走向狂乱的死亡吧，害兽。”",
+        "zh": "归溟幽灵鲨已获得特别认证许可\n根据外勤部门决议\n在集成战略行动中以改良策略应对敌人\n特别颁发此证章\n以兹证明\n“走向狂乱的死亡吧，害兽。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1094 @@
+{
+  "id": "char_4211_snhunt",
+  "name": {
+    "en": "Snow Hunter",
+    "zh": "雪猎",
+    "isMachineTranslation": true
+  },
+  "appellation": "Snow Hunter",
+  "displayNumber": "KJ07",
+  "rarity": 5,
+  "class": "SNIPER",
+  "subclass": "hunter",
+  "faction": "kjerag",
+  "position": "RANGED",
+  "tagList": [
+    "爆发",
+    "控场"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "被病痛缠上的小猎手，但她不会任凭自己成为苦难的猎物。",
+    "zh": "被病痛缠上的小猎手，但她不会任凭自己成为苦难的猎物。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "弩箭穿透风雪，她终会找到属于自己的前进的方向。",
+    "zh": "弩箭穿透风雪，她终会找到属于自己的前进的方向。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-12",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 779,
+            "atk": 487,
+            "def": 104,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1026,
+            "atk": 650,
+            "def": 139,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "4-9",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1026,
+            "atk": 650,
+            "def": 139,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1316,
+            "atk": 824,
+            "def": 177,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "4-9",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 3
+        },
+        {
+          "id": "31014",
+          "count": 8
+        },
+        {
+          "id": "31033",
+          "count": 17
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1316,
+            "atk": 824,
+            "def": 177,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1710,
+            "atk": 981,
+            "def": 222,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_snhunt_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "强力击·β型",
+            "zh": "强力击·β型",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 3
+            },
+            {
+              "id": "31074",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31094",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_snhunt_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.2,
+            "atk_scale_2": 1.6,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.3,
+            "atk_scale_2": 1.7,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.4,
+            "atk_scale_2": 1.8,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.6,
+            "atk_scale_2": 1.85,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.65,
+            "atk_scale_2": 1.9,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.7,
+            "atk_scale_2": 2,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.8,
+            "atk_scale_2": 2.1,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 1.9,
+            "atk_scale_2": 2.2,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 2,
+            "atk_scale_2": 2.4,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "风雪连弩",
+            "zh": "风雪连弩",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "zh": "立即使用特殊子弹发动相当于攻击力<@ba.vup>{atk_scale_1:0%}</>的两连击（对非移动敌人提升至<@ba.vup>{atk_scale_2:0%}</>）\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale_1": 2.2,
+            "atk_scale_2": 2.6,
+            "ct": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "31043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "31094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30033",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 3
+        },
+        {
+          "id": "31053",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "裂云一击",
+            "zh": "裂云一击",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力150%的物理伤害和2秒<$ba.cold>寒冷</>",
+            "zh": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力150%的物理伤害和2秒<$ba.cold>寒冷</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.5,
+            "cold": 2
+          }
+        },
+        {
+          "name": {
+            "en": "裂云一击",
+            "zh": "裂云一击",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力155%<@ba.talpu>（+5%）</>的物理伤害和2秒<$ba.cold>寒冷</>",
+            "zh": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力155%<@ba.talpu>（+5%）</>的物理伤害和2秒<$ba.cold>寒冷</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.55,
+            "cold": 2
+          }
+        },
+        {
+          "name": {
+            "en": "裂云一击",
+            "zh": "裂云一击",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力180%的物理伤害和3秒<$ba.cold>寒冷</>",
+            "zh": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力180%的物理伤害和3秒<$ba.cold>寒冷</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.8,
+            "cold": 3
+          }
+        },
+        {
+          "name": {
+            "en": "裂云一击",
+            "zh": "裂云一击",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力185%<@ba.talpu>（+5%）</>的物理伤害和3秒<$ba.cold>寒冷</>",
+            "zh": "开启技能时，派出裂云兽进行攻击，造成相当于攻击力185%<@ba.talpu>（+5%）</>的物理伤害和3秒<$ba.cold>寒冷</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.85,
+            "cold": 3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-4秒",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击力+32",
+        "zh": "攻击力+32",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_snhunt",
+      "name": {
+        "en": "雪猎证章",
+        "zh": "雪猎证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_snhunt",
+      "description": {
+        "en": "干员雪猎擅长蓄积火力对敌人进行贯穿打击\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使猎手职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员雪猎擅长蓄积火力对敌人进行贯穿打击\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使猎手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_snhunt",
+      "name": {
+        "en": "过去的狩猎",
+        "zh": "过去的狩猎",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_snhunt",
+      "description": {
+        "en": "“阿克托斯老爷什么时候给我们分发新的狩猎工具啊？哎，茱安娜，你还在用你爸当年给你做的这个弹簧陷阱啊，最近怎么样，每次猎到的东西够吃吗？”\n“茱安娜的技术可比你好了不知道多少倍，人家用老式陷阱和旧的弩箭也能猎到猎物，你还是再好好练练吧，别老是指望用什么新武器。”\n“那你说怎么办？我从现在开始练，练到和茱安娜一样厉害了，山上的动物早就跑没了，练了也没用啊。”\n“修路通列车对雪林的影响应该不会持续太久吧……不过，是不是也可以考虑搬到山下呢？我听说老汉斯最近就跟着他儿子儿媳搬到城里去了。”\n乡亲们还在你一言我一语地谈论着雪林中出现的列车轰鸣、绵延而去的平坦道路以及道路连接起来的一个又一个闹市。茱安娜在一旁调试着自己的老式弹簧陷阱。这么多年过去，铁齿间已产生了细小的沟壑般的暗色痕迹，但卡扣依然灵活。她没有插话，只是默默把陷阱重新收紧，又用指尖推了推弹簧，确认它仍能咬合，随后跟老乡们挥了挥手道别，开始了今天的狩猎工作。\n天色渐晚，白茫茫的雪中凹出窄窄的一道印记，里面躺着一只瑟瑟发抖的云兽。陷阱就在不远处，它大概是被陷阱中食物的气味吸引来的。这样小的云兽不该独自出现在这里，它的绒毛还没长齐，爪子细小无力，显然是和同类走散了。它试图往前挪，却被冷风逼得缩成一团。\n茱安娜蹲下身，先把陷阱收了起来。她没有去抓那只小兽，而是拿出随身携带的肉干掰下一小块，轻轻放在雪地上。她知道，这样的云兽要是没人管，今晚恐怕就熬不过去。她望着小兽颤抖的身影，心里涌起一种复杂的酸涩。\n不知道爸爸从车站回来了没有？茱安娜突然想到，也许有一天自己家也会搬去山下，也许有一天爸爸会答应工艺厂的人，去车间里继续雕刻耶拉冈德的神像……耶拉冈德的身躯依旧挺立着，经年不息的风雪依旧呼啸而过，爸爸给自己做的弹簧陷阱也依旧很好用，也许不是每个人都非要拥有新的工具、新的环境，为什么世事好像总是在往前赶，大家手里能抓住的东西却越来越少？茱安娜抱起小兽，把它揣进衣襟里，小兽在她怀里轻轻蹭动，毛尖带着雪水，凉得她胸口一紧。她低头看向瘦弱的小兽，它的动作不自觉放缓了几分。\n“明天再继续吧，明天再和大家一起来狩猎，总会有办法的。”茱安娜的怀里传来微弱的心跳，脚下的雪路安静而漫长。",
+        "zh": "“阿克托斯老爷什么时候给我们分发新的狩猎工具啊？哎，茱安娜，你还在用你爸当年给你做的这个弹簧陷阱啊，最近怎么样，每次猎到的东西够吃吗？”\n“茱安娜的技术可比你好了不知道多少倍，人家用老式陷阱和旧的弩箭也能猎到猎物，你还是再好好练练吧，别老是指望用什么新武器。”\n“那你说怎么办？我从现在开始练，练到和茱安娜一样厉害了，山上的动物早就跑没了，练了也没用啊。”\n“修路通列车对雪林的影响应该不会持续太久吧……不过，是不是也可以考虑搬到山下呢？我听说老汉斯最近就跟着他儿子儿媳搬到城里去了。”\n乡亲们还在你一言我一语地谈论着雪林中出现的列车轰鸣、绵延而去的平坦道路以及道路连接起来的一个又一个闹市。茱安娜在一旁调试着自己的老式弹簧陷阱。这么多年过去，铁齿间已产生了细小的沟壑般的暗色痕迹，但卡扣依然灵活。她没有插话，只是默默把陷阱重新收紧，又用指尖推了推弹簧，确认它仍能咬合，随后跟老乡们挥了挥手道别，开始了今天的狩猎工作。\n天色渐晚，白茫茫的雪中凹出窄窄的一道印记，里面躺着一只瑟瑟发抖的云兽。陷阱就在不远处，它大概是被陷阱中食物的气味吸引来的。这样小的云兽不该独自出现在这里，它的绒毛还没长齐，爪子细小无力，显然是和同类走散了。它试图往前挪，却被冷风逼得缩成一团。\n茱安娜蹲下身，先把陷阱收了起来。她没有去抓那只小兽，而是拿出随身携带的肉干掰下一小块，轻轻放在雪地上。她知道，这样的云兽要是没人管，今晚恐怕就熬不过去。她望着小兽颤抖的身影，心里涌起一种复杂的酸涩。\n不知道爸爸从车站回来了没有？茱安娜突然想到，也许有一天自己家也会搬去山下，也许有一天爸爸会答应工艺厂的人，去车间里继续雕刻耶拉冈德的神像……耶拉冈德的身躯依旧挺立着，经年不息的风雪依旧呼啸而过，爸爸给自己做的弹簧陷阱也依旧很好用，也许不是每个人都非要拥有新的工具、新的环境，为什么世事好像总是在往前赶，大家手里能抓住的东西却越来越少？茱安娜抱起小兽，把它揣进衣襟里，小兽在她怀里轻轻蹭动，毛尖带着雪水，凉得她胸口一紧。她低头看向瘦弱的小兽，它的动作不自觉放缓了几分。\n“明天再继续吧，明天再和大家一起来狩猎，总会有办法的。”茱安娜的怀里传来微弱的心跳，脚下的雪路安静而漫长。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

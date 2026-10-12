@@ -1,0 +1,1489 @@
+{
+  "id": "char_456_ash",
+  "name": {
+    "en": "Ash",
+    "zh": "灰烬",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RS01",
+  "rarity": 6,
+  "class": "SNIPER",
+  "subclass": "fastshot",
+  "faction": "rainbow",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ash, a member of Team Rainbow, always has grenades loaded and ready.",
+    "zh": "彩虹小队成员灰烬，榴弹已填充。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Acts an individual, but thinks for the entire squad.",
+    "zh": "为团体思考，作为个体行动。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 718,
+            "atk": 181,
+            "def": 60,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1026,
+            "atk": 302,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 11
+        },
+        {
+          "id": "30042",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1026,
+            "atk": 302,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1351,
+            "atk": 432,
+            "def": 143,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "31014",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1351,
+            "atk": 432,
+            "def": 143,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1689,
+            "atk": 534,
+            "def": 169,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ash_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.05,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.06,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.07,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.08,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.09,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.1,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.11,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.12,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.13,
+            "attack@times": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Supporting Fire",
+            "zh": "支援射击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks hit <@ba.vup>{attack@times}</> times in a row\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击变为<@ba.vup>{attack@times}</>连击\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.15,
+            "attack@times": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ash_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "Assault Tactics",
+            "zh": "突击战术",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately trigger the first talent. Attack Interval is <@ba.vup>reduced significantly</> and increase ATK to <@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</> when attacking <$ba.stun>Stunned</> targets\n<@ba.rem>Skill activation grants 31 bullets and the skill ends when all bullets are used (Can manually deactivate skill)</>",
+            "zh": "立即触发第一天赋，攻击间隔<@ba.vup>大幅度缩短</>，且攻击被<$ba.stun>晕眩</>目标时攻击力提高至<@ba.vup>{ash_s_2[atk_scale].atk_scale:0%}</>\\n<@ba.rem>攻击装有31发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.8,
+            "ash_s_2[atk_scale].atk_scale": 2.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ash_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "force": 1,
+            "not_hitwall_scale": 3,
+            "hitwall_scale": 6,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "force": 1,
+            "not_hitwall_scale": 3.1,
+            "hitwall_scale": 6.2,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "force": 1,
+            "not_hitwall_scale": 3.2,
+            "hitwall_scale": 6.4,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "force": 1,
+            "not_hitwall_scale": 3.3,
+            "hitwall_scale": 6.6,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "force": 1,
+            "not_hitwall_scale": 3.4,
+            "hitwall_scale": 6.8,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>moderately</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>中等力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "force": 1,
+            "not_hitwall_scale": 3.5,
+            "hitwall_scale": 7,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>significantly</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>较大力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "force": 2,
+            "not_hitwall_scale": 3.6,
+            "hitwall_scale": 7.2,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>significantly</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>较大力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.7,
+            "force": 2,
+            "not_hitwall_scale": 3.7,
+            "hitwall_scale": 7.4,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>significantly</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>较大力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "force": 2,
+            "not_hitwall_scale": 3.8,
+            "hitwall_scale": 7.6,
+            "range_radius": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Rounds",
+            "zh": "攻坚榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fires a Breaching Round forwards, dealing <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to enemies in the line of fire and pushing them backwards <@ba.vup>significantly</>; The Breaching Round will explode and deal <@ba.vup>{not_hitwall_scale:0%}</> ATK as Physical damage to nearby enemies (If the Breaching Round hits a High Ground tile from a low tile, it will immediately explode and deal <@ba.vup>{hitwall_scale:0%}</> ATK as Physical damage); <@ba.rem>Can only be used 2 times every deployment</>",
+            "zh": "向前发射破墙弹，对沿途敌人造成<@ba.vup>{atk_scale:0%}</>的物理伤害并向后<@ba.vup>较大力度</>推动；爆炸对周围造成<@ba.vup>{not_hitwall_scale:0%}</>的物理伤害（从低地撞到高台直接爆炸且造成<@ba.vup>{hitwall_scale:0%}</>的物理伤害）；<@ba.rem>每次部署只能释放2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3,
+            "force": 2,
+            "not_hitwall_scale": 4,
+            "hitwall_scale": 8,
+            "range_radius": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31033",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Auxiliary Equipment",
+            "zh": "辅助装备",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately throw a Stun Grenade at an enemy within range, <$ba.stun>Stunning</> them and nearby enemies for 3 seconds",
+            "zh": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人<$ba.stun>晕眩</>3秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Auxiliary Equipment",
+            "zh": "辅助装备",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately throw a Stun Grenade at an enemy within range, <$ba.stun>Stunning</> them and nearby enemies for 4 seconds",
+            "zh": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人<$ba.stun>晕眩</>4秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "stun": 4
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Breaching Specialist",
+            "zh": "突击手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "During the first deployment, DP Cost -3 and gain 17 SP after deployment",
+            "zh": "首次部署时部署费用-3，部署后立即获得17技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "runtime_cost": -3,
+            "sp": 17
+          }
+        },
+        {
+          "name": {
+            "en": "Breaching Specialist",
+            "zh": "突击手",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "During the first deployment, DP Cost -3 and gain 20 <@ba.talpu>(+3)</> SP after deployment",
+            "zh": "首次部署时部署费用-3，部署后立即获得20<@ba.talpu>（+3）</>技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "runtime_cost": -3,
+            "sp": 20
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ash",
+      "name": {
+        "en": "Ash's Badge",
+        "zh": "灰烬证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Ash has demonstrated a remarkable aptitude in both long-distance support fire and assault and breaching of fortified targets.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations. In witness whereof,\nThis badge is hereby conferred upon the above named, whether this band of soldiers needs such recognition notwithstanding.",
+        "zh": "干员灰烬擅长远距离火力支援与攻坚突破\n根据外勤部门决议\n在外勤任务中划分为狙击干员，特别颁发此证章\n但是像他们这样的人，真的需要这种证明么？",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ash",
+      "name": {
+        "en": "Tactical Breaching Round Pack",
+        "zh": "破墙榴弹战术收纳包",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_ash",
+      "description": {
+        "en": "Jacob Roland never thought much about it.\nWhat it meant to be a Kazimierz competition knight of little renown.\nTo be able to find a job in Columbia.\nJust how weird this job was.\nIronforge City, Southern District, in a small meeting room inside the Maylander Security and Defense Company’s office building.\nHe carefully wipes down his small shield and accompanying weapon.\nQuietly awaiting the arrival of his 'superior.'\nJacob takes stock of the meeting room.\nFive unique 'professionals' sit around him.\nThe Sargonian to his side is showing off his muscles.\nThis brawny man, over two meters tall, boasts that he could smash through the walls with brute strength alone.\nThe Bolívarian soldier talking to him is assembling a crossbow, the head of each bolt conspicuously marked with different colors.\nThe Leithanian caster leaning against the wall fiddles with an Arts Unit, the device occasionally emitting electric noises.\nClosest to the window are two tight-lipped Victorian soldiers.\nOne of them holds a sledgehammer with a head larger than his own.\n\nEach of them looks like they've been through a hundred battles, endured countless trials and tribulations.\nBut what about himself? The toughest battle he ever endured... was just a match in a Kazimierz arena.\nIs he really qualified for this job?\nWhy would a Columbian recruit a group of warriors from all across the world?\nJust as these thoughts run through his mind, someone pushes open the door.\nA tall, red-haired lady wearing sunglasses walks in.\nShe has a small gun hanging from her waist, but she is not a Sankta.\nShe walks up to the podium, clearly in no hurry.\n\n'Welcome to my squad.'\n'You can call me Ash.'",
+        "zh": "雅各布·罗兰从来没有想过。\n作为一名没什么名声的卡西米尔竞技骑士。\n竟然能在哥伦比亚找到一份工作。\n尽管这份工作实在太过诡异。\n铸铁城南区，梅兰德安全防卫公司办公楼的小小会议室中。\n他认真擦拭着自己的小盾与武器。\n静静等待那位“上司”的到来。\n雅各布环视了整个会议室。\n身边坐着五位身份独特的“专业人士”。\n旁边的萨尔贡人正在展示自己的肌肉。\n这个两米多高的壮汉吹嘘着，自己能依靠肉体撞穿这间屋子的墙壁。\n和他搭话的玻利瓦尔军人正在组装弓弩，那些标记着不同颜色的箭头非常显眼。\n靠在墙边的莱塔尼亚术师摆弄着自己的施术单元，偶尔发出滋滋的电流声。\n最靠近窗户的，是那两个沉默寡言的维多利亚士兵。\n其中一人手里的巨锤甚至比自己的脑袋还要大。\n\n他们每一个看起来都身经百战，每个人看起来都穿越过刀山火海。\n而自己呢？自己经历过最艰苦的战斗，不过是卡西米尔竞技场的一场比赛而已。\n自己真的能胜任这份工作？\n为什么哥伦比亚人会召集一群来自各国的战士呢？\n就在他陷入思考的时候，有人推开了会议室的大门。\n一位戴着墨镜，身材高挑的红发女士走了进来。\n这位女士的腰间挂着小型铳，但并不是萨科塔人。\n她不紧不慢地走到了讲台边。\n\n“欢迎加入我的小队。”\n“你们可以叫我灰烬。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_ash",
+      "name": {
+        "en": "Modified Breaching Grenade",
+        "zh": "刺针式合金爆破弹",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_003_ash",
+      "description": {
+        "en": "'So, they've got a president?'\n'Yeah, I heard that’s what they call their leader.'\n'Wait, hold up a sec.'\n'You just told me Victoria is ruled by a king. Leithanien is ruled by empresses, and Ursus has an emperor.'\n'But the leader of the Columbians... is a president??'\n'Yeah... Something wrong with that?'\n\nThe strange mercenary before Thumbtack seems lost in thought.\nEver since the mercenary team calling themselves 'Team Rainbow' showed up at Rhodes Island, the soldier woman named 'Ash' had been asking all kinds of strange questions.\n\n'Then I have one more question.'\n'Fire away.'\n'Do they happen to have a city named New York?'\n'Huh? Are you talking about County York? That's a city in Victoria.'\n'In other words, Victoria has a County York, but Columbia doesn’t have a New York??'\n'That's right.'\n\nThe soldier falls silent again, muttering something along the lines of 'this makes no sense.'\nThumbtack recalls an incident last week at the cafeteria, when Ash was shocked to see blue tomatoes and square potatoes.\nMost of the operators were visibly perplexed.\nJust what kind of country do they come from?\n\n'Now that I think about it...'\nThumbtack decides to change the topic.\n'When we get a day off this week, the folks from Engineering are going to play football on the deck. Want to watch?'\n'Football... what exactly is that?'\n'Have you never seen a football game before? 11 players on each side, and they try to kick a ball into the other team’s goal.'\n'Oh! Yeah, I know that one.'\nFor a moment, the expression on Ash’s face becomes much softer.\n\nThat's something comforting to her?\nThumbtack remains at a loss.",
+        "zh": "“所以那个国家还有总统？”\n“是，我听说他们的掌权者就叫这个。”\n“等等，等一下。”\n“你刚才说，维多利亚有国王，莱塔尼亚有女皇，乌萨斯有皇帝。”\n“但是哥伦比亚人的领袖是总统？？”\n“是……这样，有什么问题？”\n\n在图钉眼前，这个奇怪的佣兵陷入了沉思。\n自从这支名叫“彩虹小队”的佣兵队伍来到罗德岛后，这位代号“灰烬”的女战士一直在询问各种奇怪的问题。\n\n“那，我再问个问题。”\n“您说。”\n“他们是不是有一个城市叫新约克？”\n“哦，你说约克郡？那是维多利亚的城市。”\n“也就是说，维多利亚有约克郡，但是哥伦比亚没有新约克？？”\n“是啊。”\n\n女战士再一次陷入了沉默。嘴里嘟囔着“这也太怪了”之类的话。\n图钉记得，上周在食堂里，灰烬因为看到了蓝色的番茄和方型的土豆而感到诧异。\n大部分干员都表示难以理解。\n他们到底来自一个什么样的国度呢？\n\n“说起来……”\n图钉决定换个话题。\n“这周休息日，工程部的人要在甲板上踢球赛，灰烬小姐要去看吗？”\n“足球……是什么样的运动？”\n“你没看过足球赛？就是那个双方各派十一个运动员上场，把球踢到别人的球门里的运动。”\n“哦！那个，那个我知道。”\n一瞬间，灰烬脸上表情缓和了许多。\n\n这是什么让人安心的事情吗？\n图钉依然一头雾水。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30155",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1603 @@
+{
+  "id": "char_4123_ela",
+  "name": {
+    "en": "Ela",
+    "zh": "艾拉",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RS05",
+  "rarity": 6,
+  "class": "SPECIALIST",
+  "subclass": "traper",
+  "faction": "rainbow",
+  "position": "RANGED",
+  "tagList": [
+    "Summon",
+    "Crowd-Control",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Team Rainbow member Ela has a surprise for you with her Grzmot mines.",
+    "zh": "彩虹小队成员艾拉，准备用雷鸣地雷给你一个惊喜。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Don't worry, you'll love it. No guarantee your hostiles will, though.",
+    "zh": "别担心，对你而言真的是惊喜，但对敌人来说就不一定了。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 696,
+            "atk": 270,
+            "def": 72,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 916,
+            "atk": 366,
+            "def": 108,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 916,
+            "atk": 366,
+            "def": 108,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1145,
+            "atk": 476,
+            "def": 141,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "30044",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1145,
+            "atk": 476,
+            "def": 141,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1468,
+            "atk": 588,
+            "def": 173,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ela_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 7,
+            "sluggish": 7,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.1,
+            "damage_hitrate_magical": -0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 7,
+            "sluggish": 7,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.15,
+            "damage_hitrate_magical": -0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 7,
+            "sluggish": 7,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.2,
+            "damage_hitrate_magical": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 8,
+            "sluggish": 8,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.2,
+            "damage_hitrate_magical": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 8,
+            "sluggish": 8,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.25,
+            "damage_hitrate_magical": -0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 8,
+            "sluggish": 8,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.3,
+            "damage_hitrate_magical": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 9,
+            "sluggish": 9,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.3,
+            "damage_hitrate_magical": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 9,
+            "sluggish": 9,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.35,
+            "damage_hitrate_magical": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 9,
+            "sluggish": 9,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.4,
+            "damage_hitrate_magical": -0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Interference",
+            "zh": "眩目阻滞",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and reduces the hit rate of Physical and Arts attacks by <@ba.vup>{damage_hitrate_physical:0%}</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Immediately gains 1 trap",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>且物理与法术命中率<@ba.vup>{damage_hitrate_physical:0%}</>，持续<@ba.vup>{sluggish}</>秒\\n主动效果：立即获得一个陷阱",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "duration": 10,
+            "sluggish": 10,
+            "projectile_range": 1.7,
+            "damage_hitrate_physical": -0.4,
+            "damage_hitrate_magical": -0.4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "31033",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ela_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 1.5,
+            "def_penetrate_fixed": 200,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 1.5,
+            "def_penetrate_fixed": 250,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 1.5,
+            "def_penetrate_fixed": 300,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 22,
+          "initSp": 4,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 2,
+            "def_penetrate_fixed": 350,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 21,
+          "initSp": 4,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 2,
+            "def_penetrate_fixed": 400,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 4,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 2,
+            "def_penetrate_fixed": 450,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 19,
+          "initSp": 8,
+          "blackboard": {
+            "stun": 4,
+            "projectile_range": 1.7,
+            "def": 2.5,
+            "def_penetrate_fixed": 500,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 8,
+          "blackboard": {
+            "stun": 5,
+            "projectile_range": 1.7,
+            "def": 2.5,
+            "def_penetrate_fixed": 600,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 8,
+          "blackboard": {
+            "stun": 5,
+            "projectile_range": 1.7,
+            "def": 2.5,
+            "def_penetrate_fixed": 700,
+            "attack@projectile_range": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Shock Defense",
+            "zh": "震荡坚守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.stun>Stuns</> all surrounding targets, lasting for <@ba.vup>{stun}</>s\nActive Effect: Sets up Deployable Shield to increase this unit's DEF by <@ba.vup>+{def:0%}</>; Attack Range <@ba.vdown>reduces</>; Attacks deal splash Physical damage to all enemies around the target that ignores <@ba.vup>{def_penetrate_fixed}</> of their DEF\n<@ba.rem>Gains 1 trap when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.stun>晕眩</>，持续<@ba.vup>{stun}</>秒\\n主动效果：架设机动护盾使自身防御力<@ba.vup>+{def:0%}</>，攻击范围<@ba.vdown>缩小</>，攻击对目标周围造成溅射物理伤害且无视其<@ba.vup>{def_penetrate_fixed}</>的防御力\\n<@ba.rem>技能结束时获得一个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-6",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 12,
+          "blackboard": {
+            "stun": 5,
+            "projectile_range": 1.7,
+            "def": 3,
+            "def_penetrate_fixed": 800,
+            "attack@projectile_range": 1.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31073",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31044",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ela_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 10,
+          "blackboard": {
+            "sluggish": 5,
+            "weak[limit]": 5,
+            "damage_scale": 1.15,
+            "fake_damage_scale": 0.15,
+            "projectile_range": 1.7,
+            "atk": 0.3,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 11,
+          "blackboard": {
+            "sluggish": 5,
+            "weak[limit]": 5,
+            "damage_scale": 1.15,
+            "fake_damage_scale": 0.15,
+            "projectile_range": 1.7,
+            "atk": 0.35,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 12,
+          "blackboard": {
+            "sluggish": 5,
+            "weak[limit]": 5,
+            "damage_scale": 1.15,
+            "fake_damage_scale": 0.15,
+            "projectile_range": 1.7,
+            "atk": 0.4,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 13,
+          "blackboard": {
+            "sluggish": 6,
+            "weak[limit]": 6,
+            "damage_scale": 1.2,
+            "fake_damage_scale": 0.2,
+            "projectile_range": 1.7,
+            "atk": 0.45,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 14,
+          "blackboard": {
+            "sluggish": 6,
+            "weak[limit]": 6,
+            "damage_scale": 1.2,
+            "fake_damage_scale": 0.2,
+            "projectile_range": 1.7,
+            "atk": 0.5,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 15,
+          "blackboard": {
+            "sluggish": 6,
+            "weak[limit]": 6,
+            "damage_scale": 1.2,
+            "fake_damage_scale": 0.2,
+            "projectile_range": 1.7,
+            "atk": 0.55,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 16,
+          "blackboard": {
+            "sluggish": 6,
+            "weak[limit]": 6,
+            "damage_scale": 1.25,
+            "fake_damage_scale": 0.25,
+            "projectile_range": 1.7,
+            "atk": 0.6,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 16,
+          "blackboard": {
+            "sluggish": 7,
+            "weak[limit]": 7,
+            "damage_scale": 1.3,
+            "fake_damage_scale": 0.3,
+            "projectile_range": 1.7,
+            "atk": 0.7,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 16,
+          "blackboard": {
+            "sluggish": 7,
+            "weak[limit]": 7,
+            "damage_scale": 1.3,
+            "fake_damage_scale": 0.3,
+            "projectile_range": 1.7,
+            "atk": 0.8,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "'The Bosak Tempest'",
+            "zh": "“博萨克风暴”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: When a trap is triggered, <$ba.sluggish>Slows</> all surrounding targets and inflicts <@ba.vup>{fake_damage_scale:0%}</> <$ba.fragile>Fragile</>, lasting for <@ba.vup>{sluggish}</>s\nActive Effect: Attack Interval <@ba.vup>reduces</>; ATK <@ba.vup>+{atk:0%}</>; Attacks prioritize enemies affected by GRZMOT Mines\n<@ba.rem>Skill activation grants 40 ammo and the skill ends when all ammo is used (Can manually deactivate skill); Gains 2 traps when this skill ends</>",
+            "zh": "被动效果：陷阱触发时使周围所有目标<$ba.sluggish>停顿</>并获得<@ba.vup>{fake_damage_scale:0%}</>的<$ba.fragile>脆弱</>效果，持续<@ba.vup>{sluggish}</>秒\\n主动效果：攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，优先攻击受到雷鸣地雷效果影响的敌人\\n<@ba.rem>攻击装有40发子弹，打完后技能结束（期间可随时停止技能），技能结束时获得两个陷阱</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 16,
+          "blackboard": {
+            "sluggish": 7,
+            "weak[limit]": 7,
+            "damage_scale": 1.35,
+            "fake_damage_scale": 0.35,
+            "projectile_range": 1.7,
+            "atk": 0.9,
+            "base_attack_time": -0.35,
+            "attack@trigger_time": 40,
+            "cnt": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30011",
+          "count": 6
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31073",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 1 GRZMOT Mine (Can store up to 2); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用1个雷鸣地雷（最多拥有2个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 2 <@ba.talpu>(+1)</> GRZMOT Mines (Can store up to 2); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用2<@ba.talpu>（+1）</>个雷鸣地雷（最多拥有2个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 2 GRZMOT Mines (Can store up to 3); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用2个雷鸣地雷（最多拥有3个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 3 <@ba.talpu>(+1)</> GRZMOT Mines (Can store up to 3); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用3<@ba.talpu>（+1）</>个雷鸣地雷（最多拥有3个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 3 GRZMOT Mines (Can store up to 4); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用3个雷鸣地雷（最多拥有4个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "GRZMOT Mine",
+            "zh": "雷鸣地雷",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can deploy up to 4 <@ba.talpu>(+1)</> GRZMOT Mines (Can store up to 4); the first enemy that passes the mine will trigger its effect. When retreats, immediately triggers the effect of a GRZMOT Mine from the tile this Operator was deployed on",
+            "zh": "可以使用4<@ba.talpu>（+1）</>个雷鸣地雷（最多拥有4个），经过周围的第一个敌人会触发其效果，撤退时以自身为中心触发一次雷鸣地雷效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "cnt": 4
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "'Bullseye'",
+            "zh": "“正中靶心”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks have a 30% chance to deal 150% of ATK as Physical damage; The chance is increased to 100% when attacking a target that's affected by a GRZMOT Mine",
+            "zh": "攻击有30%几率造成相当于攻击力150%的物理伤害，对受到雷鸣地雷效果影响的目标必定触发",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.5,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "'Bullseye'",
+            "zh": "“正中靶心”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attacks have a 30% chance to deal 160% <@ba.talpu>(+10%)</> of ATK as Physical damage; The chance is increased to 100% when attacking a target that's affected by a GRZMOT Mine",
+            "zh": "攻击有30%几率造成相当于攻击力160%<@ba.talpu>（+10%）</>的物理伤害，对受到雷鸣地雷效果影响的目标必定触发",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.6,
+            "prob": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 80
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ela",
+      "name": {
+        "en": "Ela's Badge",
+        "zh": "艾拉证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ela",
+      "description": {
+        "en": "Operator Ela has demonstrated a remarkable aptitude for battlefield ambush and trap deployment.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations. In witness whereof,\nThis badge is hereby conferred upon the above named, whether this band of soldiers needs such recognition notwithstanding.",
+        "zh": "干员艾拉擅长战场伏击与陷阱布置\n根据外勤部门决议\n在外勤任务中划分为特种干员，特别颁发此证章\n但是像他们这样的人，真的需要这种证明么？",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ela",
+      "name": {
+        "en": "Social Expectation Backpack",
+        "zh": "社会期望背包",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "D",
+      "icon": "uniequip_002_ela",
+      "description": {
+        "en": "One day...\n'Myrinia was precisely in need of these medicines, Rhodes Island mercenary madam. You have our boundless thanks for coming all this way!'\n'Elżbieta Bosak, operator codename Ela.'\n'Hah! There was an old local saying before Sargon came: 'Respect the Minoan, even should they come bearing gifts.' You may be of Kazimierz, but that striking majesty—in you is the stuff of Minos!'\n'I'm not sure that saying means what you think... Anyway, I'd like to ask you something, seeing as you're the leader around here.'\n'Very well! As temple priest, I promise you that any answers I hold are yours!'\n'I'm told this nation only recently gained independence?'\n'Yes and no. Minos and Hymnoi were born to walk together, two peas in a pod, their histories as one; that said, speaking solely of when we drove out the Sargonians... Hah! The great River Delphi has seen neither pike nor polearm in decades! While West Vouivre still battles with Sargon...'\n'And since your independence, you've been working on a large-scale cultural revival and art restoration?'\n'...Oh, so that's what you meant—I should be clear, placid as Myrinia is, it is by no means in dire straits. All the daily medicines and inhibitor doses used by the villagers are, as you can see, a duty easily borne by my temple. Let alone the claim that the sculptures outside—dating from the ancient city-states—are left unrepaired for a lack of funds!'\n'Then why are you leaving your marble statues out there in pieces?'\n'The course and prayers of our ceremonial rites, the neighbors and their village, all I know by heart; the bygone affairs of the three capitals, and the wider state of the greater land, I am likewise well-informed.\n'Yet how can I possibly know the who, the what, and the why of those sculptures' makers and molders? Whither did strike their chisel, and whence did fall their hammer?\n'I know not, the villagers know not, and nor do the masters of crafts or the sophists of the scholastic—how then, can I repair them? Hence, they have never been repaired.'\n'Why not use your imagination?'\n'Nay, nay! The chroniclers shall be anonymous, as shall the heroes! The man in the wine jar with not a coming nor a going has biographers still to testify of him to this very day.\n'Think about it, now. Supposing today I went to the wilds beyond the village and sought a statue, unknown and unnamed. Presumably by my Forte's strength, I could on my own have it standing anew.\n'Yet I could also go out today and plant a stake in the ground, and what difference would that make?'\n'...When the artist is known by no one, the art transcends society.'\n'If you were to put it in baffling terms, then more or less, yes!'\n'But it's not like you want art that transcends society.'\n'...If you were to put it in baffling terms, then more or less, yes!'\n'Then how about art that <i>records</i> society?'\nAnother day...\nThe fowls commence their recital of the verse of daybreak, Minos's golden sun dawns His golden gift upon the village of Myrinia as He always has, and the villagers are startled to find that the temple's solemn walls do not, as was their custom and theirs alone, return that gift with the purest white dazzling gleam.\n'Priest, what are these garish drawings?'\n'The artist claims them to be our very selves—this is a kind of foreign wall art by the name of 'graffiti'!'",
+        "zh": "某一天。\n“米利尼埃村正需要这批药物，罗德岛的佣兵小姐。难途远道，不胜感激！”\n“艾姿碧塔·博萨克，干员代号艾拉。”\n“哈！萨尔贡来之前这里曾有句古话，‘应该敬畏米诺斯人，哪怕他带着礼物拜访’，您虽然是个卡西米尔人，可您威风凛凛，也有相当一股米诺斯的气质了！”\n“这古话可能不是你想的那个意思……总之，既然你是领导这里的人，我有问题想要问你。”\n“那么好吧！我作为神殿的祭司，一定知无不言！”\n“我听说这是个近来才独立的国家？”\n“然又非然，米诺斯乃是荷谟伊天造的伴侣，连襟并蒂，等寿齐年；但要单说赶跑萨尔贡人这事嘛……哈！特尔斐大河未见兵戈也好几十年了！西边瓦伊凡还在跟萨尔贡打呢……”\n“你们独立之后在进行大规模的文化复兴和艺术复原？”\n“……哦，您说的是这件事情——我得澄清一下，米利尼埃固然清旷，但绝不困顿。村里人日常所用各类成药、抑制针剂，如您所见，我这神殿也可轻松负担。外面那些古城邦的浮雕立像，更非我乏财修复！”\n“那你为何要让那些大理石艺术品散落原地？”\n“祝祭仪轨，村中邻里，我全都熟记；三都旧事，大地时局，我亦大半清楚。\n“然我哪里能知道，那些雕像，其筑塑者姓甚名谁？他们何处下凿，又何处落锤？\n“我不知，村人不知，雅赛努斯的巨匠宗师亦不知——我道这如何能修嘛，便未曾修了。”\n“按你的想象来复原不就好了吗？”\n“非也非也！立传者无名，英雄也无名！那没有出身和归处的酒桶中人尚有记传者可考哩。\n“您想想，倘我今日就到村外野地，寻一尊无名人像。想必以我丰蹄之力，一人便可使其重新站立。\n“但那和我今天出门去在地里插了一根木桩又有何区别？”\n“……艺术家不为人所知，艺术便超脱了社会。”\n“用难懂的话说大概是这个样子吧！”\n“但你并不想要超脱社会的艺术。”\n“……用难懂的话说大概是这个样子吧！”\n“那，记录社会的那种呢？”\n又是一天。\n当羽兽开始背诵清晨的诗篇，当米诺斯金色的朝阳一如既往地将他金色的礼物赠予米利尼埃村的时候，村民们惊讶地发现，庄严的神殿墙壁并未同往常一样，回赠以自身独有的那一片洁白耀目的光芒。\n“大人，这花花绿绿的画的是啥？”\n“画家说这画的是咱们——这是外国壁画，叫‘涂鸦’！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1084 @@
+{
+  "id": "char_290_vigna",
+  "name": {
+    "en": "Vigna",
+    "zh": "红豆",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R105",
+  "rarity": 4,
+  "class": "PIONEER",
+  "subclass": "charger",
+  "faction": "columbia",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "DP-Recovery"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Vigna, Vanguard Operator of Rhodes Island, is ready for combat with the lance in her hands.",
+    "zh": "罗德岛先锋干员红豆，握紧长枪，准备着进入战场。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Playing rock 'n roll is a battlefield of its own. This is a fact that she knows well.",
+    "zh": "她很清楚，在需要全身心投入这一点上，战争和摇滚别无二致。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 724,
+            "atk": 248,
+            "def": 152,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1006,
+            "atk": 355,
+            "def": 218,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1006,
+            "atk": 355,
+            "def": 218,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1291,
+            "atk": 468,
+            "def": 287,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3212",
+          "count": 5
+        },
+        {
+          "id": "30043",
+          "count": 16
+        },
+        {
+          "id": "30013",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1291,
+            "atk": 468,
+            "def": 287,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1845,
+            "atk": 558,
+            "def": 351,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_vigna_1",
+      "iconId": "skcom_atk_up[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_vigna_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.1,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.2,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.3,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.4,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 1.5,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 1.65,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 1.8,
+            "base_attack_time": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hammer-On",
+            "zh": "槌音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases a bit</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 2,
+            "base_attack_time": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30061",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Fierce Stabbing",
+            "zh": "蛮力穿刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 10% chance to increase the current damage of that attack by 50%. The chance increases to 30% when Vigna's skill is active.",
+            "zh": "攻击时，10%几率当次攻击的攻击力+50%。技能中这个几率提高到30%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.5,
+            "prob1": 0.1,
+            "prob2": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Fierce Stabbing",
+            "zh": "蛮力穿刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 10% chance to increase the current damage of that attack by 60% <@ba.talpu>(+10%). The chance increases to 30% when Vigna's skill is active.",
+            "zh": "攻击时，10%几率当次攻击的攻击力+60%<@ba.talpu>（+10%）</>。技能中这个几率提高到30%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.6,
+            "prob1": 0.1,
+            "prob2": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Fierce Stabbing",
+            "zh": "蛮力穿刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 10% chance to increase the current damage of that attack by 100%. The chance increases to 30% when Vigna's skill is active.",
+            "zh": "攻击时，10%几率当次攻击的攻击力+100%。技能中这个几率提高到30%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 1,
+            "prob1": 0.1,
+            "prob2": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Fierce Stabbing",
+            "zh": "蛮力穿刺",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 10% chance to increase the current damage of that attack by 110% <@ba.talpu>(+10%). The chance increases to 30% when Vigna's skill is active.",
+            "zh": "攻击时，10%几率当次攻击的攻击力+110%<@ba.talpu>（+10%）</>。技能中这个几率提高到30%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 1.1,
+            "prob1": 0.1,
+            "prob2": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +24",
+        "zh": "攻击力+24",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_vigna",
+      "name": {
+        "en": "Vigna’s Badge",
+        "zh": "红豆证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Vigna has demonstrated a remarkable aptitude in preemptive penetration of the battlefield situation so as to secure leeway for deployment.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Charger responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员红豆擅长抢先切入战局争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使冲锋手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_vigna",
+      "name": {
+        "en": "The Greatrock",
+        "zh": "伟大的摇滚",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_vigna",
+      "description": {
+        "en": "An aged Sarkaz lecturer writes two big words on the blackboard—\n'Westward Relocation'\n'Terran Calendar 898, after the Sarkaz capital was once again made ruins.'\n'Many Sarkaz had lost all faith and courage.'\n'They chose to escape; to flee the crumbling mortar of their homeland, and their own fates, for a different land and different rule.'\n'From Gaul to Victoria, to present-day Columbia.'\n'And so the wandering Sarkaz were without home.'\n'Even in Columbia, the Sarkaz spent all their lives in the cracks of the cities and wilds.'\n'Not to mention those of their fellow people infected with Oripathy.'\n'Under this life of oppression and pain, a Sarkaz named Bill Perley decided he would use music to convey his discontent in life.'\n'As long as you're alive, times come when you want nothing more than to shout out loud.'\n'This was Bill Perley's saying.'\n'Whenever Perley picked up his guitar, crowds would eagerly listen to him sing.'\n'His shouts carried through the streets of Columbia's cities, through the wastes, and echoed on over Columbia's great prairies.'\n'Leithanien's musicians turned their noses up at him, but nevertheless, this rock 'n' roll singer forced a change in Columbia's pop culture.'\n'He even changed the fates of many a Sarkaz.'\nAt that, the lecturer has written the names of this Sarkaz immortalized in history, and his rock band.\n'But what happened to Bill Perley in the end?'\nSo a student asks to the lecturer.\n'He made it big time in Columbia, his records sold as far away as Victoria.'\n'But one day, he picked up his guitar and left the city, walking into the wilderness.'\n'This giant of a singer told his friends.'\n'He was going back home, back to what was Kazdel.'\n'And so, nobody ever saw him again.'\nVigna diligently takes notes, narrating this chapter of history, narrating this Sarkaz singer's legendary experiences.\n\nThat night, on an underground concert stage...\nVigna tunes her axe.\nThe story of that legendary singer is twined in part with the history of the Sarkaz, and the history of the guitar, and it still turns about in her head.\nShe lifts her head to look at her band's drummer, a Sarkaz youth testing drumsticks.\n'Fino, ever think you might go back to Kazdel one day?'\n'Back to Kazdel? Why?'\nVigna receives a puzzled stare in response.\n'Why am I going back to Kazdel now?'\n'Always comes a day Sarkaz head home again, right?'\n'Hahahahah, you're kidding, Vinny.'\nThe young Sarkaz stands up.\n'I'm a Columbian. My home's right here.'",
+        "zh": "年迈的萨卡兹讲师在黑板上写下两个大字——\n“西迁”\n“泰拉历898年，当萨卡兹人的国都再一次化为废墟后。”\n“很多萨卡兹人，彻底失去了信念与勇气。”\n“他们选择了逃离，逃离自己家乡的残垣断壁，逃离自己的命运，前往异国异乡。”\n“从高卢到维多利亚，再到现在的哥伦比亚。”\n“然而流浪的萨卡兹人无以为家。”\n“即便是在哥伦比亚，萨卡兹人也始终生活在城市与荒野的夹缝中。”\n“更不用说那些感染了矿石病的族人。”\n“在这种压抑与痛苦的生活中，一个叫作比尔·普雷的萨卡兹人决定用音乐来表达自己对生活的不满。”\n“只要是生存着的人，就都会有想要发出呐喊的时候。”\n“这是比尔·普雷的名言。”\n“当比尔·普雷拿起他的吉他时，很多人都愿意倾听他的歌声。”\n“他的呐喊穿过了哥伦比亚城市的街道，穿过荒地，响彻在哥伦比亚大平原上”\n“尽管来自莱塔尼亚的音乐家对他嗤之以鼻，但是这位摇滚歌手改变了哥伦比亚的流行文化。”\n“甚至改变了很多萨卡兹人的命运。”\n讲师在黑板上写下了这位名垂青史的萨卡兹人与他的摇滚团的名字。\n“但是比尔·普雷最后去了哪里？”\n一位学生向讲师发问。\n“他在哥伦比亚大红大紫，他的唱片远销维多利亚。”\n“但是有一天，他拿着自己的吉他离开了城市，走向了荒野。”\n“这位伟大的歌手告诉他的朋友。”\n“他要回到故土，回到曾经的卡兹戴尔。”\n“于是再也没有人见过他。”\n红豆认真地记着笔记，记叙着这段历史，记叙着那位萨卡兹歌手的传奇经历。\n\n晚上，地下演唱会的后台\n红豆调试着自己的吉他。\n那位传奇歌手的故事，有关萨卡兹人的过去，有关故土的历史，依然萦绕在她的脑中。\n她抬起头看着自己乐队的鼓手，萨卡兹年轻人正在擦拭着自己的鼓槌。\n“斐诺，你有没有想过自己有一天会回到卡兹戴尔？”\n“回卡兹戴尔？为什么？”\n鼓手斐诺不解地看着红豆。\n“我为什么要回卡兹戴尔？”\n“萨卡兹人总有一天会回到自己的故土吧？”\n“哈哈哈哈，开什么玩笑，小红豆。”\n年轻的萨卡兹人站了起来。\n“我是个哥伦比亚人，这儿就是我的家。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30083",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31053",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31013",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

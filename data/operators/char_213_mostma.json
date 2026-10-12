@@ -1,0 +1,1459 @@
+{
+  "id": "char_213_mostma",
+  "name": {
+    "en": "Mostima",
+    "zh": "莫斯提马",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LT77",
+  "rarity": 6,
+  "class": "CASTER",
+  "subclass": "splashcaster",
+  "faction": "laterano",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Support",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Mostima, Senior Messenger, will lay low all obstacles in your path with her Arts.",
+    "zh": "资深信使莫斯提马，用法术为你扫平前路。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "You'll have to find her first.",
+    "zh": "不过首先，你要能找得到她。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 822,
+            "atk": 387,
+            "def": 52,
+            "magicResistance": 10,
+            "cost": 31,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1142,
+            "atk": 546,
+            "def": 80,
+            "magicResistance": 10,
+            "cost": 31,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1142,
+            "atk": 546,
+            "def": 80,
+            "magicResistance": 15,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1428,
+            "atk": 700,
+            "def": 110,
+            "magicResistance": 15,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "30094",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1428,
+            "atk": 700,
+            "def": 110,
+            "magicResistance": 20,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1831,
+            "atk": 834,
+            "def": 132,
+            "magicResistance": 20,
+            "cost": 34,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.9,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_atk_up[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up γ",
+            "zh": "攻击力强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mostma_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 5,
+          "blackboard": {
+            "atk_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 7,
+          "blackboard": {
+            "atk_scale": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 63,
+          "initSp": 9,
+          "blackboard": {
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 61,
+          "initSp": 11,
+          "blackboard": {
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 13,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 5,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 15,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 6,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 56,
+          "initSp": 17,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 6,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 20,
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 23,
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Lock of Shattered Time",
+            "zh": "荒时之锁",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.stun>Stuns</> all enemies within Attack Range and deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to them every second",
+            "zh": "攻击范围内的敌人全部<$ba.stun>晕眩</>，且每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk_scale": 1.4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mostma_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 50,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 52,
+          "blackboard": {
+            "atk": 0.7,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 54,
+          "blackboard": {
+            "atk": 0.8,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 56,
+          "blackboard": {
+            "atk": 0.9,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 58,
+          "blackboard": {
+            "atk": 1,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 22,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 60,
+          "blackboard": {
+            "atk": 1.1,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 24,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 62,
+          "blackboard": {
+            "atk": 1.2,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 68,
+          "blackboard": {
+            "atk": 1.35,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 74,
+          "blackboard": {
+            "atk": 1.5,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Key of Chronology",
+            "zh": "序时之匙",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>increases</>, attacks turn into ripples that spread outward, ATK <@ba.vup>+{atk:0%}</>, increases the effect of the second talent to <@ba.vup>{talent_scale:0}</>, and attacks knock targets back <@ba.vup>slightly</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击变为向外扩散的波纹，攻击力<@ba.vup>+{atk:0%}</>，第二天赋的效果提升至<@ba.vup>{talent_scale:0}</>倍，<@ba.vup>小力度地</>击退攻击目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-15",
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 110,
+          "initSp": 80,
+          "blackboard": {
+            "atk": 1.7,
+            "attack@force": 0,
+            "talent_scale": 3,
+            "base_attack_time": 0
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30034",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 6
+        },
+        {
+          "id": "30011",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Skill Aura - Caster",
+            "zh": "技力光环·术师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, increases the SP recovery rate of all Casters by +0.2/second (only the highest effect of this type takes place)",
+            "zh": "在场时所有【术师】干员的技力自然回复速度+0.2/秒（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp_recovery_per_sec": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Skill Aura - Caster",
+            "zh": "技力光环·术师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, increases the SP recovery rate of all Casters by +0.4/second (only the highest effect of this type takes place)",
+            "zh": "在场时所有【术师】干员的技力自然回复速度+0.4/秒（同类效果取最高）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp_recovery_per_sec": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Subjective Time Dilation",
+            "zh": "主观缓时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Slows the movement speed of enemies within this unit's attack range by 15%",
+            "zh": "攻击范围内的敌人移动速度-15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "move_speed": -0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Subjective Time Dilation",
+            "zh": "主观缓时",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Slows the movement speed of enemies within this unit's attack range by 18%<@ba.talpu>(+3%)</>",
+            "zh": "攻击范围内的敌人移动速度-18%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "move_speed": -0.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +34",
+        "zh": "攻击力+34",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 105
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mostma",
+      "name": {
+        "en": "Mostima's Badge",
+        "zh": "莫斯提马证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Mostima has demonstrated a remarkable aptitude for inflicting Arts casualties on multitudes of enemies.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Splash Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员莫斯提马擅长对复数敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使扩散术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mostma",
+      "name": {
+        "en": "Home of 'Black Lock' and 'White Key'",
+        "zh": "锁与匙之家",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_mostma",
+      "description": {
+        "en": "When he was 10 years old, his homeland was laid waste by war, leaving him no choice but to flee. During his escape, he tumbled into a hole blown open by an explosion, and found the long dormant Lock and Key by accident.\nWhen he was 20 years old, he became a Caster, and quickly earned the praise and respect of those around him, thanks to the Lock and Key's power.\nWhen he was 30 years old, he had amassed great wealth and a reputation he could have only dreamt of. Yet, he had long since ceased to care about any of that. At some point, he began to talk to his staff day after day. Everyone thought he had gone insane.\nWhen he was 40 years old, he suddenly disappeared from inside the palace one day, and no one knew where he'd gone. Rumors began to spread in certain parts of Kazdel that a madman would tell certain impossible predictions to anyone who passed him by in the barrenlands. For example, that a giant beast would soon lay waste to our nation and that the sky would one day tear in two and reveal its true face. Afterward, he would peddle his watches to whoever stopped to listen, and should they refuse, he would bring their time to a halt.\nBy the time he was 100, he no longer knew where he was, but that no longer held any meaning to him. He believed he was seeking the secrets behind time itself.\nHe had the Key, but where was the Lock?\nHe had the Lock, but where was the Key?\nThe past becomes the future, and the future shall have no secrets. Day after day, he talked to his own shadow, firmly believing that the truth was hidden within.\nUntil one day, footsteps echoed throughout, as three Sankta walked into the underground palace.",
+        "zh": "10岁，他的家乡因战争而被毁于一旦，他被迫逃亡。逃跑途中，他不慎摔入一处因爆炸而出现的缺口，在那里，他见到了沉睡已久的锁与匙。\n20岁，他成为了一名术师，凭借着锁与匙赋予他的力量，他以极快的速度开始获得赏识。\n30岁，他获得了曾经梦寐以求的财富与名声，但此时的他却早已对这一切不屑一顾。不知从什么时候开始，他日复一日地与手中的杖对话，所有人都以为他已经疯了。\n40岁，有一天，他忽然消失在了宫廷中，没有人知道他的去向。卡兹戴尔一些地区开始出现一个传闻，据说有一个疯子，他会在荒野上向路过的人预言一些不可能发生的事，例如巨大的兽将毁灭我们的国度，天空有一天会裂开，向人展示它真正的面貌。然后，他会向他们兜售钟表，如果对方不买，他就会停止对方的时间。\n到他百岁之时，他已经不知道自己身处何地，但这于他已经失去意义，他相信自己在探寻时间的秘密。\n他有钥匙，可是锁在哪里？\n他有锁，可是钥匙又在哪里？\n过去成为未来，未来没有秘密可言，他日复一日地和自己的影子对话，坚信一切的真理蕴含其中。\n直到有一天，脚步声响起，三个萨科塔走入地宫——",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_mostma",
+      "name": {
+        "en": "Veteran Legatus' Customized Cloak",
+        "zh": "资深万国信使定制斗篷",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_003_mostma",
+      "description": {
+        "en": "'Pasha, Your Excellency, this is the fifth story I've told for you. I hope it was to your satisfaction?'\nIn the resplendent palace of Sargon, a blue-haired Messenger, dressed in attire markedly different from those around her, stands at the foot of the steps, bowing respectfully toward the Pasha seated on his throne.\nOn the high platform, the richly dressed Pasha gestures to his attendant, whispering something to him. The attendant's face briefly shows a hint of surprise, then he steps forward to loudly announce the Pasha's decree—\n'Messenger, my lord had never heard of such ruins hidden within the Black Flow, nor of the history buried within Victoria's ancient battlefields. Your stories have greatly pleased him, and he is willing to forge a friendship with Yvangelista XI from afar.'\n'Thank you very much.' The blue-haired Messenger gives a polite and confident Sargonian court bow and begins to turn to leave. But the attendant speaks again, 'Don't be in such a hurry, Messenger. My lord has one more question for you.'\n'Please, go ahead.'\n'My lord wishes to ask if you would stay and tell him the remaining nine hundred and ninety-five stories?'\n'Does... His Excellency the Pasha mean that he wishes for me to relinquish my role as a Messenger, and remain by his side?'\n'Precisely. My lord offers you wealth and luxury here, in exchange for sharing with him all your enchanting stories.'\nThe blue-haired Messenger smiles. 'I thank His Excellency for his kindness, but I am accustomed to my life of freedom; such riches and luxury are not suited to me.'\nThe Pasha whispers a few more words to the attendant, who then steps forward again. 'You are already an outlier among the Sankta. Your kin will not accept you, and your homeland has no place for you. Why go to such lengths on their behalf?'\nThis time, the blue-haired Messenger pauses to think before answering, 'I don't journey for my kin, nor do I long for my homeland. In the beginning, it was an old friend who set me on my travels. Now, I travel out of curiosity for a certain story.'\n'What kind of story?'\n'An old man once told me a story before I left. It was a silly story about everyone eating ice cream together under the sun. But as I traveled, I began to see what was intriguing about it—and as I reflected more and more on it, I discovered even more stories.' The blue-haired Messenger gives another courtly bow. 'You should instead let me travel as far as possible, so that when I return, I may regale you with even more wondrous tales.'\nThe Pasha no longer tries to persuade her, only ordering that, whenever the blue-haired Messenger returned, the palace gates would always be open to her. As they walk out of the palace, her red-haired companion, who had been silently listening all along, finally can't hold back and asks, 'Did His Holiness really tell you a story like that?'\nA smile appears at the corner of the blue-haired Messenger's mouth. 'What do you think?'",
+        "zh": "“帕夏阁下，这是我为您讲的第五个故事，不知道您是否满意？”\n金碧辉煌的萨尔贡宫殿中，服装风格与旁人迥异的蓝发信使站在台阶之下，向着高高在上的帕夏行礼。\n高台之上，衣着华贵的帕夏示意近侍凑近，对他一番耳语。近侍脸上闪过一丝讶异，而后上前高声宣布帕夏的旨意——\n“信使，我的主人从未听说过黑流树海之中还有这样的遗迹，也从不知晓维多利亚的古战场之中掩藏着那样的历史，你的故事令他非常满意，他愿意与远方的伊万杰利斯塔十一世建立友谊。”\n“万分感谢。”蓝发信使面带微笑，不卑不亢地行了一个标准的萨尔贡宫廷礼，转身打算退下，但近侍再次开口：“别急，信使，我的主人还有一个问题。”\n“请讲。”\n“主人想问，你是否愿意留在这里，为他讲述你剩下的九百九十五个故事？”\n“这——帕夏阁下的意思是，希望我卸下信使的身份，常驻其左右？”\n“正是。主人许诺你在此处的荣华富贵，而你只需要为主人讲述那一个又一个美妙的故事。”\n蓝发信使笑了笑：“感谢帕夏阁下的好意，但我本人自由惯了，这样的荣华富贵，恐怕无福消受。”\n帕夏又召去近侍耳语两句，近侍再次上前：“你已是萨科塔中的异类，你的同族不会接纳你，你的故乡也容不下你，你又何苦为他们而奔波？”\n蓝发的信使这回思索了一会儿才开口：“我不为同族奔波，也不留恋故乡。一开始，驱使我旅行的是一个故人，而现在，则多了一些对一个故事的小小好奇。”\n“什么样的故事？”\n“有一个老人，他在我临行之前给我讲了一个故事，那是一个所有人都在阳光之下一起吃冰淇淋的可笑故事。但在旅途中，我逐渐发现了这个故事的有趣之处——因为对它有了更深入的理解，我找到了更多的故事。”说到这里，蓝发信使又行了一个宫廷礼，“您应该让我离开，越远越好，这样，当我下一次来到这里时，您就能从我口中听到更有意思的故事。”\n帕夏于是不再挽留，只是下令，无论何时，这座宫殿的大门永远为这位蓝发信使敞开。直至走出宫殿，一直在旁听的红发同伴终于忍不住问道：“教宗阁下真的给你讲过这样的故事？”\n蓝发信使嘴角勾起一个笑容：“你猜？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

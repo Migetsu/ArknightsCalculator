@@ -1,0 +1,1028 @@
+{
+  "id": "char_289_gyuki",
+  "name": {
+    "en": "Matoimaru",
+    "zh": "缠丸",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "HK01",
+  "rarity": 4,
+  "class": "WARRIOR",
+  "subclass": "fearless",
+  "faction": "higashi",
+  "position": "MELEE",
+  "tagList": [
+    "Survival",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Matoimaru, Guard Operator of Rhodes Island, will wield her blade to wipe out the enemy.",
+    "zh": "罗德岛近卫干员缠丸，她挥刀只为斩落你的敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Fast reactions, fast attacks, and even faster recovery.",
+    "zh": "反应快，下手快，伤口好得更快。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1514,
+            "atk": 396,
+            "def": 70,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 2019,
+            "atk": 592,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2019,
+            "atk": 592,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 2693,
+            "atk": 760,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3222",
+          "count": 5
+        },
+        {
+          "id": "30053",
+          "count": 16
+        },
+        {
+          "id": "30023",
+          "count": 10
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2693,
+            "atk": 760,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3640,
+            "atk": 916,
+            "def": 156,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_heal_self[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.26
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 3,
+          "blackboard": {
+            "heal_scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 3,
+          "blackboard": {
+            "heal_scale": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 3,
+          "blackboard": {
+            "heal_scale": 0.36
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 7,
+          "blackboard": {
+            "heal_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 8,
+          "blackboard": {
+            "heal_scale": 0.43
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 9,
+          "blackboard": {
+            "heal_scale": 0.46
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration β",
+            "zh": "生命回复·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "heal_scale": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_gyuki_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.95
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 11,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 12,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 13,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 14,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 7,
+          "blackboard": {
+            "atk": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Power",
+            "zh": "恶鬼之力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vdown>reduces to 0</>; ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "防御力<@ba.vdown>降至0</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30011",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Demonic Physique",
+            "zh": "恶鬼体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF -20%; Max HP +20%",
+            "zh": "防御力-20%，但最大生命值+20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": -0.2,
+            "max_hp": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Demonic Physique",
+            "zh": "恶鬼体质",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF -20%; Max HP +23% <@ba.talpu>(+3%)</>",
+            "zh": "防御力-20%，但最大生命值+23%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": -0.2,
+            "max_hp": 0.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +180",
+        "zh": "生命上限+180",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 450
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_gyuki",
+      "name": {
+        "en": "Matoimaru's Badge",
+        "zh": "缠丸证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Matoimaru has demonstrated a remarkable aptitude in wielding her naginata to penetrate enemy formations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Dreadnought responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员缠丸擅长挥舞薙刀切入战阵\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使无畏者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_gyuki",
+      "name": {
+        "en": "Bamboo Ikebana",
+        "zh": "断竹插花作品",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_gyuki",
+      "description": {
+        "en": "The young Oni warrior passes by this street every day, sticking to the glass of the florist's shop to see the new ikebana arrangement, before leaving satisfied. It is difficult to identify the age of an Oni, but she carries a bamboo naginata on her back, indicating that she is still a musha in training. Our florist has a secret rule: Oni are not allowed inside because their actions are uncouth, and if they are not careful, they will destroy months of the flower arrangers' efforts in the blink of an eye. We are justifiably cautious, as we never know if they might have the support of their kin from the underworld behind them.\nThere is an alley on the other side of the florist, and misbehaving students use it as a hideout. They demand money from their frail and weak classmates, throwing them to the ground or stomping on them. This Wednesday evening, I saw a little boy with a backpack run by the window with a sullen, tear-stained face and a bruised nose. On Thursday, he passed by this place with the Oni, but soon turned back alone and squirmed back into the alley. \n On Friday afternoon, I was helping the master arrange flowers when I saw people squatting along the side of the street with water pipes, wine bottles, crowbars, and the like. Before we could call the police, the person they were waiting for arrived. The Oni musha accompanied the little boy from school just like yesterday. When they got to our window, the little boy suddenly began to pick up his pace, and the teens who were bullying him quickly surrounded him. \nThey were almost ready to kill the Oni. The Oni's bamboo naginata managed to block a few blows, but was broken into several pieces by their sheer brute force. \nThen, that was the first time I saw an ‘Oni.’ \nThe Oni musha who had lost her weapon raised her fists, tearing through metal with her bare knuckles, smearing her own blood in the eyes of her opponents, lashing out with her knees and feet when her fists were blocked, striking out with her horns when her legs were restrained, biting with her teeth when her horns were blocked. When the whistle signaling the police's arrival came at last, only one was still standing – the Oni. \nShe wiped the corners of her bleeding lips emotionlessly, like the legendary man-eating fiends of lore. The people were intimidated by her silence and kept their distance to avoid her, pointing at her from behind windows and doors. \nThen, my master opened the door of the flower shop and walked out, sliding a bamboo leaf freshly-folded into an appropriate shape into the palm of her hand. \nThe young Oni warrior blinked, as if she had woken up from a nightmare, carefully closed her fist, and smiled at my master.",
+        "zh": "那个年轻的鬼族武士每天都会路过这条街，贴在花室的橱窗玻璃上看一会儿新的插花作品，然后心满意足地离开。鬼族的年龄不容易辨认，但她背着一柄竹薙刀，说明她还是个修习中的武者。我们花室有条暗中的规矩，不会让鬼族进门，因为他们做事粗鲁，一不留神就会毁掉插花人几个月的心血。万一他们背后还有黑道的同族支撑，我们就是有理也说不清。\n花室对面有条小巷，附近顽劣的学生把它当成一处基地。他们向瘦小文弱的同学要钱，要么就把人掼倒在地上用脚踹。这周三的傍晚我就看见一个背双肩包的小男孩灰头土脸地跑过窗外，鼻青脸肿，满脸泪痕。周四时他是和那个鬼族一起从这里路过的，但不久后他一个人折返回来，钻进了小巷。\n周五下午我正在帮老师整理花材，看见几个人拿着水管、酒瓶和撬棍一类的东西蹲在街边等着。我们还没来得及叫来警察，他们等的人就先到了。鬼族武士和前一天一样陪着那个小男孩放学，走到我们窗下时，男孩突然加快脚步跑开，那几个惯于欺凌的少年则围了上来。\n他们对鬼族几乎是下了死手。鬼族的竹薙刀格挡了几下，竟然被蛮力折成了数截。\n然后我才第一次见识到“鬼”。\n丢了刀的鬼族武士赤手空拳，用自己的关节去撞坚硬的金属，用自己的血去糊对方的眼睛，拳头被架住了就用膝顶脚踹，腿被绊住了就用角撞，角被躲开了就用牙咬。警方的鸣笛声传来的时候，那里已经只有她一个人——一只鬼站着了。\n她面无表情地擦了擦流血的嘴角，就像传说中食人的恶鬼一样。人们都受到她无声的威慑，远远地避开她，站在窗户与门背后对她指指点点。\n接着，我的老师打开花室的门走了出去，将一枝刚折成合适造型的竹叶插进她的拳心。\n年轻的鬼族武士眨了眨眼睛，像是从梦魇中醒来一般，小心翼翼地拢住手指，向我的老师露出了笑容。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30093",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30023",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

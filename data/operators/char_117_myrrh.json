@@ -1,0 +1,1085 @@
+{
+  "id": "char_117_myrrh",
+  "name": {
+    "en": "Myrrh",
+    "zh": "末药",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R104",
+  "rarity": 4,
+  "class": "MEDIC",
+  "subclass": "physician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Myrrh, Medic Operator of Rhodes Island, will provide medical care for the squad with her herbs.",
+    "zh": "罗德岛医疗干员末药，将用草药为小队提供医疗援助。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She might be sweet, but her herbs are sure bitter.",
+    "zh": "苦在舌尖，甜在心间。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 752,
+            "atk": 161,
+            "def": 57,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1060,
+            "atk": 264,
+            "def": 83,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 1
+        },
+        {
+          "id": "30012",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1060,
+            "atk": 264,
+            "def": 83,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1278,
+            "atk": 372,
+            "def": 104,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3262",
+          "count": 5
+        },
+        {
+          "id": "30053",
+          "count": 14
+        },
+        {
+          "id": "30033",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1278,
+            "atk": 372,
+            "def": 104,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1420,
+            "atk": 465,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_myrrh_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.02,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.04,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.06,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.08,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.12,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.16,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Dual Healing",
+            "zh": "二重治疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal is increased to <@ba.vup>{heal_scale:0%}</> of ATK and can target 1 extra ally\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一名单位\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.25,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_myrrh_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.05,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.1,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.15,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.25,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.35,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 0.55,
+            "attack_speed": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Medic Field",
+            "zh": "医疗力场",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Can heal 1 extra ally",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次可额外治疗一名单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.65,
+            "attack_speed": 0
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "First Aid Kit",
+            "zh": "急救包",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores the HP of all allies by 100% of Myrrh's ATK after deployment",
+            "zh": "部署后立刻恢复全体友方单位的生命值，恢复量为末药攻击力的100%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Kit",
+            "zh": "急救包",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores the HP of all allies by 110% <@ba.talpu>(+10%)</> of Myrrh's ATK after deployment",
+            "zh": "部署后立刻恢复全体友方单位的生命值，恢复量为末药攻击力的110%<@ba.talpu>（+10%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Kit",
+            "zh": "急救包",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores the HP of all allies by 150% of Myrrh's ATK after deployment",
+            "zh": "部署后立刻恢复全体友方单位的生命值，恢复量为末药攻击力的150%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Kit",
+            "zh": "急救包",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately restores the HP of all allies by 160% <@ba.talpu>(+10%)</> of Myrrh's ATK after deployment",
+            "zh": "部署后立刻恢复全体友方单位的生命值，恢复量为末药攻击力的160%<@ba.talpu>（+10%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.6
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_myrrh",
+      "name": {
+        "en": "Myrrh's Badge",
+        "zh": "末药证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_myrrh",
+      "description": {
+        "en": "Operator Myrrh has demonstrated a remarkable aptitude for healing teammates in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员末药擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_myrrh",
+      "name": {
+        "en": "'Brevity of Life'",
+        "zh": "“生命的短暂”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_myrrh",
+      "description": {
+        "en": "'You're carrying a lot of herbal remedies. Did you pick them all yourself?'\n'Yes. I wanted to help Harmonia with these, but the medicine I make doesn't even work to treat a headache. I can't do anything for her... If we hadn't been found by a Rhodes Island operator, Harmonia would be gone by now.'\nThe Feline sits down on a chair, and calmly regards the Vulpo.\n'I'm just so useless... Harmonia caught Oripathy because of me, and I can't even ease her pain...'\n'Not necessarily.'\n'Thank you, but you don't need to comfort me—'\n'That wasn't my intent. How did you have her take these remedies? Directly?'\n'I know a whole set of ways of processing herbs, but none of the finished products did anything at all.'\n'Try making some.'\nBlearily, the Vulpo lifts her head.\n'Try making some here. If you feel conditions are lacking, you may borrow a Rhodes Island pharmaceutical laboratory.'\n'N-No, that's fine, I can just make it here.'\n\nThe Vulpo blows her nose, and quickly enters work mode, using the herbal tools she carries with practiced hands.\nDry, chop, grind, soak, percolate.\nShe wastes no time at all. In a scant ten minutes, as exact as a machine, she has turned the herbal remedy into a sparkling liquid in a test tube.\n'What color is the liquid in the test tube?'\n'It's a very pretty green.'\n'Has the liquid you've extracted always been that color?'\n'I want to say yes, but also... I'm not sure. Harmonia was so sick, and I was in such a rush making so much per batch, I never stopped to note what color it was...\n'Make it again.'\nIn short order, herbal liquid fills a second test tube.\n'Keep making it, and do not stop. Continue until all the test tubes in front of you are filled with this medication.'\nFeeling gratitude to Rhodes Island, the Vulpo stifles the doubt in her heart, and busies herself as directed.\n\nThe sun falls past the horizon.\nShe is finally free to look at the results of her efforts, but the sight before her leaves her stupefied.\nThe medicines are all lined up in a row, every tube labeled with a time. The older they are, the more their color has deepened, first to as dark green as a forest, then finally to a complete black, as if a kind of grave hint.\nThe Feline stands up.\n'People wish to use medicine to extend the lives of others—an eternally praiseworthy effort. However, they always forget that the life of a drug is often far briefer than a human's.'\n'Keep in mind the brevity of life, and the Rhodes Island Medical Department will open its doors to you.'",
+        "zh": "“你身上这么多草药，都是自己采的？”\n“是的，我想用这些草药帮帮哈默妮，可我制出的药连镇痛的效果都没有，根本帮不了她……如果不是罗德岛的干员发现了我们，哈默妮已经不在了。”\n菲林坐在椅子上，静静看着眼前的沃尔珀。\n“我真的太没用了……哈默妮因为我感染了矿石病，我却连为她缓解痛苦都做不到……”\n“未必。”\n“谢谢您，但您不用安慰我——”\n“我并无此意。你是怎么让哈默妮服用这些草药的？直接服用？”\n“我知道一整套加工草药的方法，可加工出来的成品根本没有用。”\n“做来看看。”\n沃尔珀泪眼婆娑地抬起头。\n“就在这里做来看看。如果觉得条件不足，可以借用罗德岛的药品实验室。”\n“不、不用了，我在这里做就好。”\n\n沃尔珀抽抽鼻子，很快进入工作状态，熟练地操作起自己随身携带的制药工具。\n烘干，切碎，研磨，浸渍，渗漉。\n沃尔珀没有浪费任何时间。短短十几分钟，如同精密的机器一般，她将草药化为了试管中晶莹的液体。\n“试管里的浸出液是什么颜色的？”\n“是很漂亮的绿色。”\n“你制取的浸出液一直是这个颜色？”\n“好像是，又好像不是……我不知道。哈默妮病得很重，我很着急，一次要做的量也很多，没空关注药剂的颜色……”\n“再做一次。”\n草药的浸出液很快填满了第二个试管。\n“继续做，不要停，直到你面前所有的试管都装上这种药剂。”\n抱着对罗德岛的感激之情，沃尔珀压抑住心中的疑惑，按照指示忙碌起来。\n\n夕阳西斜。\n沃尔珀终于有空看看自己忙碌的成果，而眼前的景象让她目瞪口呆。\n药剂排成一排，每一管都贴上了写有时间的标签。随着时间的流逝，药剂的颜色从绿色渐渐变深，变成墨绿，最后彻底变黑，如同某种沉重的暗示。\n菲林站起身来。\n“人们想用药剂去延长他人的生命，这样的努力永远值得赞赏。但他们却总是忘记，药剂的生命常常比人更短暂。”\n“牢记生命的短暂，罗德岛医疗部的大门将为你敞开。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30063",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30073",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

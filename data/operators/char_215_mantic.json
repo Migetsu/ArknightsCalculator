@@ -1,0 +1,1105 @@
+{
+  "id": "char_215_mantic",
+  "name": {
+    "en": "Manticore",
+    "zh": "狮蝎",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SG01",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "stalker",
+  "faction": "sargon",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Manticore, Specialist Operator of Rhodes Island, will hunt down enemies silently with her scorpion tail.",
+    "zh": "罗德岛特种干员狮蝎，将在战场上挥舞蝎尾无声地狩猎敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "I'm right here!",
+    "zh": "我在这里呀！",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 777,
+            "atk": 378,
+            "def": 141,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1080,
+            "atk": 511,
+            "def": 218,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1080,
+            "atk": 511,
+            "def": 218,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1385,
+            "atk": 656,
+            "def": 284,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "30084",
+          "count": 8
+        },
+        {
+          "id": "30023",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1385,
+            "atk": 656,
+            "def": 284,
+            "magicResistance": 30,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1630,
+            "atk": 811,
+            "def": 343,
+            "magicResistance": 30,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mantic_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.23,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.25,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.27,
+            "duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.29,
+            "duration": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.31,
+            "duration": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.33,
+            "duration": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.35,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.4,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.45,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Scorpion Venom",
+            "zh": "蝎毒",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The Movement Speed of targets hit <@ba.vup>-{-move_speed:0%}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "每次攻击会在<@ba.vup>{duration}</>秒内令命中目标移动速度<@ba.vup>-{-move_speed:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "move_speed": -0.5,
+            "duration": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mantic_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.3,
+            "attack@stun": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.35,
+            "attack@stun": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.4,
+            "attack@stun": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 34,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.45,
+            "attack@stun": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.5,
+            "attack@stun": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.55,
+            "attack@stun": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 37,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.6,
+            "attack@stun": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 38,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 6,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.7,
+            "attack@stun": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 39,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 8,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.8,
+            "attack@stun": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Toxic Overload",
+            "zh": "蓄力毒尾击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack wind-up and Attack Interval <@ba.vdown>increases</>. ATK <@ba.vup>+{atk:0%}</> and hit targets are <$ba.stun>Stunned</> for <@ba.vup>{attack@stun:0.0}</> seconds",
+            "zh": "攻击前摇和攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，使命中目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 1.7,
+            "atk": 0.9,
+            "attack@stun": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30033",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30033",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Hidden Killer - Medium",
+            "zh": "隐匿的杀手·中级",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stays <$ba.invisible>Invisible</> normally. The first attack made gains +25% ATK and removes <$ba.invisible>Invisibility</>. Regains <$ba.invisible>Invisible</> state after not attacking for 6 seconds",
+            "zh": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+25%。停止攻击6秒后，重新进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "delay": 6,
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Hidden Killer - Medium",
+            "zh": "隐匿的杀手·中级",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stays <$ba.invisible>Invisible</> normally. The first attack made gains +29% <@ba.talpu>(+4%)</> ATK and removes <$ba.invisible>Invisibility</>. Regains <$ba.invisible>Invisible</> state after not attacking for 6 seconds",
+            "zh": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+29%<@ba.talpu>（+4%）</>。停止攻击6秒后，重新进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "delay": 6,
+            "atk": 0.29
+          }
+        },
+        {
+          "name": {
+            "en": "Hidden Killer - Elite",
+            "zh": "隐匿的杀手·精英",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stays <$ba.invisible>Invisible</> normally. The first attack made gains +50% ATK and removes <$ba.invisible>Invisibility</>. Regains <$ba.invisible>Invisible</> state after not attacking for 5 seconds",
+            "zh": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+50%。停止攻击5秒后，重新进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "delay": 5,
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hidden Killer - Elite",
+            "zh": "隐匿的杀手·精英",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stays <$ba.invisible>Invisible</> normally. The first attack made gains +54% <@ba.talpu>(+4%)</> ATK and removes <$ba.invisible>Invisibility</>. Regains <$ba.invisible>Invisible</> state after not attacking for 5 seconds",
+            "zh": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+54%<@ba.talpu>（+4%）</>。停止攻击5秒后，重新进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "delay": 5,
+            "atk": 0.54
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mantic",
+      "name": {
+        "en": "Manticore's Badge",
+        "zh": "狮蝎证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Manticore has demonstrated a remarkable aptitude for bodily concealment and enemy ambush.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Ambusher responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员狮蝎擅长隐匿身形伏击敌人\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使伏击客职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mantic",
+      "name": {
+        "en": "Tail-Protection Training Tool",
+        "zh": "训练用尾部防护套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_mantic",
+      "description": {
+        "en": "A note stuck on the general store's warehouse door reads:\nSorry, I had to leave half an hour early today to see a doctor. I'm not feeling too good. I've been having a few sudden, intense aches, I think the part where I got scratched hasn't healed normally. I've already taken stock of everything for today, and those people who didn't like me didn't follow as far as the store. No worries.\n\nA note stuck on the shabby bottle of perfume reads:\nThank you for always being with me all this time, and always being able to find me. This is a present for you. I know it's far from enough as a thank you, so if there's anything else I can do for you, please be sure to tell me right away.\nAlso, my sickness is mostly set to keep getting worse... If in time, this present can remind you of me every now and then, then I'm happy. It's alright if you can't remember me too.\n\nA note fallen in the market's grit paving reads:\nHello, do you need help sorting out goods or cleaning up dust? I can do other work too. I'd like to work in exchange for some food. You might not notice where I am, but please don't worry. I'll do everything as earnestly as possible.\n\nA note trapped beneath the dagger reads:\nMission complete.\n\nA note stuck in the corner of the bulletin board of a Rhodes Island lounge, almost covered by the neighboring rainbow of stickers reads:\nEveryone at the get-together sang very well. I didn't think it was one bit noisy. But if you decide to move to a more soundproofed room next time, could you put a notice up on the bulletin board beforehand?\nThank you to the person who recommended me drinks. I liked that sour and sweet dark orange one a lot.\n—Manticore",
+        "zh": "一张贴在杂货铺仓库门上的便条：\n对不起，今天我不得不提前半小时离开去找医生。我的身体不太舒服，有几处突然异常剧烈地疼痛，我想可能是之前被划伤的地方没有正常愈合。今天的货物我已经清点完了，那些不喜欢我的人也没有追到店里来，请您放心。\n\n一张贴在小瓶劣质香水上的便条：\n谢谢你这段时间以来一直陪着我，总能找到我在哪里。这是送给你的礼物，当然，它远远不足以向你表达我的感激，如果我还有什么可以为你做的，请一定一定要告诉我。\n以及，我的病症大概还会继续恶化吧……到了那个时候，要是这件小小的礼物能让你偶尔想起我就好了。想不起来也没关系的。\n\n一张掉在市集砂砾中的便条：\n您好，您需要有人帮忙整理货物或者清扫沙尘吗？别的工作也可以，我想换取一点食物。您可能没注意到我在哪里，但是请不要害怕，我会认真地做好任何事情的。\n\n一张压在短刀底下的便条：\n任务已完成。\n\n一张贴在罗德岛休息室公告板角落的便条，几乎被旁边五颜六色的贴纸遮盖住：\n聚会上大家唱歌都很好听，我觉得一点也不吵呀。不过，如果决定了下次要去隔音更好的地方聚会，可以在公告板上张贴一份通知吗？\n谢谢给我推荐饮料的人，那种橙红色酸甜味饮料我很喜欢。\n——狮蝎",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

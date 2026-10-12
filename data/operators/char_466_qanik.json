@@ -1,0 +1,1120 @@
+{
+  "id": "char_466_qanik",
+  "name": {
+    "en": "Qanipalaat",
+    "zh": "雪绒",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SI03",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "corecaster",
+  "faction": "sami",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "From a Sami tribe comes Operator Qanipalaat, taking his first steps into outside lands.",
+    "zh": "来自萨米部落的干员雪绒，第一次踏足外面的土地。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Plunge forth with courage! There's new discoveries around every corner.",
+    "zh": "勇敢前进吧，处处都是新发现。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 654,
+            "atk": 283,
+            "def": 45,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 935,
+            "atk": 399,
+            "def": 76,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 935,
+            "atk": 399,
+            "def": 76,
+            "magicResistance": 15,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1215,
+            "atk": 525,
+            "def": 106,
+            "magicResistance": 15,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30044",
+          "count": 7
+        },
+        {
+          "id": "30083",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1215,
+            "atk": 525,
+            "def": 106,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1500,
+            "atk": 625,
+            "def": 119,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_qanik_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 30,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 45,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 50,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack_speed": 55,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 60,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 70,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack_speed": 80,
+            "mode": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Wind",
+            "zh": "冻风",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD <@ba.vup>+{attack_speed}</>, prioritizes attacking Aerial enemies",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，优先攻击空中单位",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 90,
+            "mode": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_qanik_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.3,
+            "critical_damage_scale": 1.7,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.35,
+            "critical_damage_scale": 1.8,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.4,
+            "critical_damage_scale": 1.9,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.45,
+            "critical_damage_scale": 2,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.5,
+            "critical_damage_scale": 2.1,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.55,
+            "critical_damage_scale": 2.2,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.6,
+            "critical_damage_scale": 2.3,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.65,
+            "critical_damage_scale": 2.5,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.7,
+            "critical_damage_scale": 2.7,
+            "levitate_duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Falling Snow",
+            "zh": "坠雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{trigger_atk_scale:0%}</> ATK as Arts damage to at most <@ba.vup>{max_target}</> Ground enemies within range once every <@ba.vup>{interval}</> seconds and causes targets to <$ba.levitate>Levitate</> for <@ba.vup>{levitate_duration}</> seconds; When a target's <$ba.levitate>Levitate</> effect ends, deals <@ba.vup>{critical_damage_scale:0%}</> ATK as Arts damage to all enemies in a small area around that target",
+            "zh": "使范围内最多<@ba.vup>{max_target}</>名地面敌人每<@ba.vup>{interval}</>秒受到一次相当于攻击力<@ba.vup>{trigger_atk_scale:0%}</>的法术伤害并<$ba.levitate>浮空</><@ba.vup>{levitate_duration}</>秒，目标<$ba.levitate>浮空</>结束时会对周围小范围内所有敌人造成相当于攻击力<@ba.vup>{critical_damage_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 7,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "max_target": 2,
+            "interval": 0.5,
+            "trigger_atk_scale": 0.75,
+            "critical_damage_scale": 3,
+            "levitate_duration": 7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "31023",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 3
+        },
+        {
+          "id": "31053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Tundra Survival",
+            "zh": "冰原生存",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Inflicts 10% <$ba.magicfragile>[Arts Fragility]</> on all Aerial units within range",
+            "zh": "攻击范围内的所有空中单位获得10%的<$ba.magicfragile>【法术脆弱】</>效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Tundra Survival",
+            "zh": "冰原生存",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Inflicts 12% <@ba.talpu>(+2%)</> <$ba.magicfragile>[Arts Fragility]</> on all Aerial units within range",
+            "zh": "攻击范围内的所有空中单位获得12%<@ba.talpu>（+2%）</>的<$ba.magicfragile>【法术脆弱】</>效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 1.12
+          }
+        },
+        {
+          "name": {
+            "en": "Tundra Survival",
+            "zh": "冰原生存",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Inflicts 20% <$ba.magicfragile>[Arts Fragility]</> on all Aerial units within range",
+            "zh": "攻击范围内的所有空中单位获得20%的<$ba.magicfragile>【法术脆弱】</>效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Tundra Survival",
+            "zh": "冰原生存",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Inflicts 22% <@ba.talpu>(+2%)</> <$ba.magicfragile>[Arts Fragility]</> on all Aerial units within range",
+            "zh": "攻击范围内的所有空中单位获得22%<@ba.talpu>（+2%）</>的<$ba.magicfragile>【法术脆弱】</>效果",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 1.22
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +26",
+        "zh": "攻击力+26",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_qanik",
+      "name": {
+        "en": "Qanipalaat's Badge",
+        "zh": "雪绒证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_qanik",
+      "description": {
+        "en": "Operator Qanipalaat has demonstrated a remarkable aptitude for inflicting Arts casualties on the enemy.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Core Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员雪绒擅长对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使中坚术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_qanik",
+      "name": {
+        "en": "Homemade Trekking Poles",
+        "zh": "自制登山杖",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_qanik",
+      "description": {
+        "en": "Ieddne and Áhttje pull up young Qanipalaat by the hands, and walk through the snow that barely reaches to the knees.\nMeasuring the tundra's breadth by their own two feet is a tradition of the sijdda's rescue team, handed down unchanged for several generations. It has been written into story, woven into folksong, taught by parents to their children while they still burble and babble, climb to their feet with a stagger, learning all the while.\nThere is a symbol that a child of the sijdda is young no longer, has become an adult who will weather the blizzards, and it is not by means of counting years, but by whether they can enter the tundra alone, and retrieve a knot of blessings that their parents tied to a pillar of ice in the snowy fields at their birth. His viellja and oabbá told him countless times, half in flaunting and half in earnestness, of being out there and what they saw, and it made young Qanipalaat look forward to it like nothing else.\nThe pillar, limpid crystal in its glimmer, stands upright and alone. Too wide for even ten to encircle, this frozen colossus shines in a pale blue. They drew the way they'd come on the bark of a massive tree upon the tundra, a tree that would stretch its branches further day by day, reaching for somewhere unknown.\nWhen he said with all the grand aspiration in his heart that he'd join the rescue team when he grew up, his áhttje gave him a miniature hiking cane carved of wood. All about did he run in excitement, and confidently tripped straight over in the snow. Lifting his head up to look, his áhttje laughed as he pulled him to his feet, and the stars in the sky shone with a flicker, snowflakes perching on his nose.\n\nAlone, he walks through the snow that barely reaches to the knees.\nHe's arrived at a place further than his viellja or áhttje have ever been, but he knows that's because the tundra is where his áhttje's life ultimately lingers, and his brother can no longer take on any assignments with his injured leg. The other members worry for Qanipalaat's young age, but he always stands at the very front.\nHe takes note of the peculiar phenomena, and when he returns, he describes them with care to those in his sijdda that compose folksong; in return for his lifesaving grace, the Columbian doctor accompanying him stays with the sijdda, and actively helps by examining people's ailments; Qanipalaat lies over the elder's lap and sweetly persuades, so the Liberi woman who often comes to see her mother may begin to converse with their most stubborn elder who nevertheless has witnessed the most of all, and in return she can share her newest discoveries.\nHe departs from his sijdda, and then returns bringing even more things. He runs on trip after trip, until finally, he falls straight to the ground as weariness takes its physical toll. And when those around him move to help him back up, worried, Qanipalaat wipes his face off and lies there on the ground, staring up at the snowflakes falling down from the sky.\n'If a blizzard blows past the tip of my nose, that's my áhttje come to see me.'\nAnd his áhttje's snowflake floats down.",
+        "zh": "爸爸妈妈拉起小雪绒的手，走在积雪没过膝盖的雪地上。\n用双脚去丈量冰原的宽度，是部落的搜救队中流传了几代人不变的传统。它被写成故事，编成歌谣，由父母在孩子们咿呀学语、蹒跚学步时，一点点地教给他们。\n代表着部落中的孩童不再稚嫩、成长为可以直面风雪的大人的，并不是可被计算的年岁，而是能够做到孤身一人走入冰原，带回由父母在他出生时绑在冰原冻枝上的祈福绳结。哥哥姐姐无数次地和他半炫耀半认真地讲起自己在冰原上的所见，这令小雪绒无比向往。\n晶莹剔透的冻枝孤独地矗立，十人难以围抱的巨冰会呈现出淡淡的蓝色，他们把自己的足迹描绘成一棵生长在冰原上的巨树，一点点伸展自己的枝桠，伸向未知的地方。\n当他有一天豪言壮志地说自己长大后也要当一个搜救队员时，爸爸给他用木棍削出了一个小小的登山杖。他兴奋地拿着它四处乱跑，在雪地上结结实实地摔了一跤。小雪绒抬头往上看，爸爸笑着拉他起来，天上的星星闪闪发亮，雪花落在他的鼻尖上。\n\n他独自走在积雪没过膝盖的雪地上。\n他走到了比哥哥和爸爸去过的更远的地方，但他知道那是因为爸爸的生命最终停留在了冰原，而哥哥因为腿伤再也不能承担任务。其他队员担忧他年纪小，但他总是会站在最前面。\n他记下那些奇特的天象，回去仔细描述给部落中编撰歌谣的老人；为了报答他的救命之恩，那些哥伦比亚的随队医生留在部落，主动帮人们检查起了病痛；他趴在老人的腿边甜甜地劝说，那个经常来看望妈妈的黎博利姐姐终于能和部落中最固执也是见识最多的老人搭上话，一起交流一些她最新的发现。\n他从自己的部落中走了出来，又带着更多的东西回去。当他一次又一次地往返奔波，终于因为筋疲力尽而摔倒，周围人担心地想要扶起他时，雪绒抹了一把脸，躺在地上看着天上正在落下的雪花。\n“如果有风雪飞上我的鼻尖，那就是爸爸来看我啦。”\n爸爸的雪花落下来了。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30074",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30044",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30104",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

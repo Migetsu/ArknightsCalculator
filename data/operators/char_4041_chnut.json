@@ -1,0 +1,1086 @@
+{
+  "id": "char_4041_chnut",
+  "name": {
+    "en": "Chestnut",
+    "zh": "褐果",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R134",
+  "rarity": 4,
+  "class": "MEDIC",
+  "subclass": "wandermedic",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "This pint-sized doctor puts all his heart into wiping clean the crystal in his hands.",
+    "zh": "个子小小的医生悉心擦拭着手里的水晶。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "'Look how beautiful it is,' he says to you, lifting his head.",
+    "zh": "“看它多漂亮啊。”他抬头对你说。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 623,
+            "atk": 136,
+            "def": 44,
+            "magicResistance": 10,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 820,
+            "atk": 223,
+            "def": 64,
+            "magicResistance": 10,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 820,
+            "atk": 223,
+            "def": 64,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 977,
+            "atk": 311,
+            "def": 80,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3262",
+          "count": 5
+        },
+        {
+          "id": "30073",
+          "count": 20
+        },
+        {
+          "id": "31023",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 977,
+            "atk": 311,
+            "def": 80,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1137,
+            "atk": 389,
+            "def": 101,
+            "magicResistance": 10,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_chnut_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "trait_scale": 1.5,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "trait_scale": 1.6,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "trait_scale": 1.7,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 4,
+          "blackboard": {
+            "trait_scale": 2,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 4,
+          "blackboard": {
+            "trait_scale": 2.1,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 4,
+          "blackboard": {
+            "trait_scale": 2.2,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 6,
+          "blackboard": {
+            "trait_scale": 2.5,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 6,
+          "blackboard": {
+            "trait_scale": 2.7,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 6,
+          "blackboard": {
+            "trait_scale": 2.8,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Little by Little",
+            "zh": "积微成著",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Perform a heal with <$ba.dt.element>Elemental Injury</> recovery increased to <@ba.vup>{trait_scale:0%}</>\n<@ba.rem>Can store {cnt} charges</>",
+            "zh": "立即进行一次治疗，并且该次治疗<$ba.dt.element>元素损伤</>回复量提升至<@ba.vup>{trait_scale:0%}</>\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 8,
+          "blackboard": {
+            "trait_scale": 3,
+            "cnt": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31044",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 2
+            },
+            {
+              "id": "31054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "31044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_chnut_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 90,
+          "initSp": 20,
+          "blackboard": {
+            "attack_speed": 80,
+            "attack@heal_continuously_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 88,
+          "initSp": 21,
+          "blackboard": {
+            "attack_speed": 80,
+            "attack@heal_continuously_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 86,
+          "initSp": 22,
+          "blackboard": {
+            "attack_speed": 80,
+            "attack@heal_continuously_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 82,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 90,
+            "attack@heal_continuously_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 26,
+          "blackboard": {
+            "attack_speed": 90,
+            "attack@heal_continuously_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 78,
+          "initSp": 27,
+          "blackboard": {
+            "attack_speed": 90,
+            "attack@heal_continuously_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 30,
+          "blackboard": {
+            "attack_speed": 100,
+            "attack@heal_continuously_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 34,
+          "blackboard": {
+            "attack_speed": 110,
+            "attack@heal_continuously_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 36,
+          "blackboard": {
+            "attack_speed": 110,
+            "attack@heal_continuously_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Rising Earth",
+            "zh": "厚土迸发",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>reduced</>; ASPD <@ba.vup>+{attack_speed}</>; when healing the same target multiple times, healing effect and <$ba.dt.element>Elemental Injury</> recovery are increased to <@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "zh": "攻击范围<@ba.vdown>缩小</>，攻击速度<@ba.vup>+{attack_speed}</>，连续治疗同一目标时，治疗量和<$ba.dt.element>元素损伤</>回复量提高至<@ba.vup>{attack@heal_continuously_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 40,
+          "blackboard": {
+            "attack_speed": 130,
+            "attack@heal_continuously_scale": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "31033",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Solidly Grounded",
+            "zh": "脚踏实地",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.dt.element>Elemental Injury</> recovery +10% when healing ground units",
+            "zh": "治疗地面单位，<$ba.dt.element>元素损伤</>回复量提高10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_heal_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Solidly Grounded",
+            "zh": "脚踏实地",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.dt.element>Elemental Injury</> recovery +13% <@ba.talpu>(+3%)</> when healing ground units",
+            "zh": "治疗地面单位，<$ba.dt.element>元素损伤</>回复量提高13%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ep_heal_scale": 1.13
+          }
+        },
+        {
+          "name": {
+            "en": "Solidly Grounded",
+            "zh": "脚踏实地",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.dt.element>Elemental Injury</> recovery +20% when healing ground units",
+            "zh": "治疗地面单位，<$ba.dt.element>元素损伤</>回复量提高20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ep_heal_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Solidly Grounded",
+            "zh": "脚踏实地",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<$ba.dt.element>Elemental Injury</> recovery +23%<@ba.talpu>(+3%)</> when healing ground units",
+            "zh": "治疗地面单位，<$ba.dt.element>元素损伤</>回复量提高23%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ep_heal_scale": 1.23
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +15",
+        "zh": "攻击力+15",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "atk": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_chnut",
+      "name": {
+        "en": "Chestnut's Badge",
+        "zh": "褐果证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_chnut",
+      "description": {
+        "en": "Operator Chestnut has demonstrated a remarkable aptitude for wide-range healing in tandem with remedying Operators of their accrued Elemental Injurys.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Wandering Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员褐果擅长大范围治疗并为干员恢复元素损伤\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使行医职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_chnut",
+      "name": {
+        "en": "Ground Journey Commemorative Light",
+        "zh": "地上巡旅纪念灯",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_chnut",
+      "description": {
+        "en": "A shard of Kjerag ice crystal. Chestnut found himself comfortably seated in a baby carrier on a burdenbeast, snugly wrapped in a coat he 'rented' from a shopkeeper. Well, the smallest size fit him like a trailing robe, prompting the generous shopkeeper to let him keep it for free. Upon reaching the summit at dawn, golden sunlight filtered through the ice crystal onto his face. Lifted high by the jubilant crowd, he basked in their cheers.\nA piece of Rim Billiton pyrite. Coming to observe the geysers, Chestnut was greeted with an unexpected subterranean eruption followed by a mine collapse. Amid the chaos, he pushed through the fleeing masses, brandishing his medical license as he advanced against the current. After a long night of aid, he declined the grimy coins offered by the grateful miners, accepting instead a pristine piece of pyrite.\nA fossilized tree root from Sami. Traveling aimlessly to the far north, Chestnut clutched the fossil and sought a local diviner. They interpreted the ancient tree root, hidden for millennia, to say: 'The expansive land surpasses your wildest dreams. Never cease your journey.'\nAn uncut jade from Yan. At a bustling food stall, Chestnut used money pawned from the jade to treat two feuding groups of youths to local delicacies. Post-meal, the young men reconciled, chipped in for the jade back. If only all conflicts could resolve so straightforwardly, thought Chestnut, wishing to heal rather than witness needless strife.\nA chunk of amber. In Columbia, Chestnut stumbled upon a piece of amber encasing an insect. Earthspirit and Eyjafjalla scrutinized it, revealing that the creature hailed from Sargon, mystified at its presence in Columbia. They stood on the Rhodes Island landship, traversing the desert towards Sargon's boundless sands.\nChestnut pocketed the amber, realizing it was time to return home.\nBack underground, he revisited the familiar stone falls. Clumps of fluorescent mushrooms adorned the moist rock faces. Chestnut stood on his toes, measuring himself against the fungi. Little heads clustered around, eager for tales of his surface stories.\nA line of ore lamps shed gentle light on curious gazes, reminiscent of his childhood days, though now he was the storyteller. Chestnut grinned.\n'Every one of these minerals come from distinct landscapes. Which story would you like to hear first?'",
+        "zh": "一块谢拉格冰晶石。褐果被专门安排坐在了驮兽宝宝椅上，他裹紧了租来的大衣——说是租，但实际上老板发现最小号都能被他穿成拖地长袍，大手一挥就让他免费套在身上了。在终于登上山顶看到日出时，淡金色的阳光透过冰晶石照在褐果的脸上，他被人们高高举起来，淹没在欢呼声中。\n一块雷姆必拓黄铁矿。原本只是来见识间歇泉的喷发，但一次前所未有的地下喷发导致了矿洞塌陷，褐果从惊慌逃生的人群中挤出，一路高举着自己的从医资格证逆着人流上前。在忙了一整晚之后，他没有要矿工们递来的脏脏的钱币，只收下了一块美丽规整的黄铁矿。\n一块萨米的树根化石。一路走到极北，不知道自己下一站去哪里的褐果拿着这块化石，拜托当地人进行一次占卜。当地人告诉他，这块在地下埋藏了千万年的老树根说：“大地的广阔超出你的想象，不要停下。”\n一块炎国璞玉。在冒着热气的小吃摊上，褐果拿着用一块璞玉典当换来的钱请两拨为了一时意气快要打起来的年轻人坐下来，先尝尝当地的小吃。一顿美食下肚，年轻人们互相拍了拍肩膀表示和解，又一起凑钱赎回了璞玉。褐果想，要是人与人之间的争端都像今天的这样容易解决就好了，他愿意治病救人，但并不想看到无谓的流血争执。\n一块琥珀。褐果在哥伦比亚发现了这块封存着昆虫的琥珀，地灵和艾雅法拉仔细查看，告诉他里面的昆虫只在萨尔贡一带有分布，她们也不知道它是怎么出现在哥伦比亚的。而此时他们正站在罗德岛的舰船上，轧过荒漠，前方正是萨尔贡的无垠沙漠。\n褐果收回这块琥珀，他想，自己也该回家看看了。\n回到地底，他又来到了熟悉的石瀑前。几丛荧光蘑菇生长在潮湿的石壁上，褐果踮了踮脚，和蘑菇比了比身高。几个小脑袋围在他的身边，等他讲地面上的经历。\n一排矿石灯发出各色柔和的光芒，照亮了一双双好奇的眼睛，就和小时候一样，只是讲故事的人变成了自己。褐果笑了起来。\n“这里每一块矿石都来自一片完全不同的江河湖泊，山野峡谷，你们想听哪个呢？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30103",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30023",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

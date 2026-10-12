@@ -1,0 +1,1028 @@
+{
+  "id": "char_260_durnar",
+  "name": {
+    "en": "Dur-nar",
+    "zh": "坚雷",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R124",
+  "rarity": 4,
+  "class": "TANK",
+  "subclass": "artsprotector",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Dur-nar, Defender of Rhodes Island, vows to stop all rioters with her shield.",
+    "zh": "罗德岛重装干员坚雷，誓将一切暴徒挡在盾前。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Those foolhardy enough to try to overcome her shield soon find themselves eating dirt.",
+    "zh": "每个自信能越过盾墙的人最终都会被击倒在地。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1201,
+            "atk": 244,
+            "def": 220,
+            "magicResistance": 5,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1623,
+            "atk": 349,
+            "def": 324,
+            "magicResistance": 5,
+            "cost": 20,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1623,
+            "atk": 349,
+            "def": 324,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 2165,
+            "atk": 466,
+            "def": 438,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3232",
+          "count": 5
+        },
+        {
+          "id": "30013",
+          "count": 19
+        },
+        {
+          "id": "30103",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2165,
+            "atk": 466,
+            "def": 438,
+            "magicResistance": 15,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3007,
+            "atk": 583,
+            "def": 548,
+            "magicResistance": 15,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_atk_up[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "ATK Up β",
+            "zh": "攻击力强化·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 1
+            },
+            {
+              "id": "30033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_durnar_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 36,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 34,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 33,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 32,
+          "initSp": 3,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 31,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 29,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 27,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Shielded Counterattack",
+            "zh": "起盾回击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, attacks all blocked enemies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，同时攻击阻挡的所有敌人",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 25,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30043",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30011",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Sword and Shield",
+            "zh": "攻守兼备",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +4%, DEF +4%",
+            "zh": "攻击力+4%，防御力+4%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.04,
+            "def": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "Sword and Shield",
+            "zh": "攻守兼备",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +7%, DEF +7%",
+            "zh": "攻击力+7%，防御力+7%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.07,
+            "def": 0.07
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +20",
+        "zh": "防御力+20",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 65
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_durnar",
+      "name": {
+        "en": "坚雷证章",
+        "zh": "坚雷证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_durnar",
+      "description": {
+        "en": "干员坚雷擅长在维持战线的同时对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使驭法铁卫职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员坚雷擅长在维持战线的同时对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使驭法铁卫职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_durnar",
+      "name": {
+        "en": "守护的道路",
+        "zh": "守护的道路",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_durnar",
+      "description": {
+        "en": "“竟然要从这面木盾开始……好吧，它是我最久的老朋友了，甚至还被路过的同事当成过菜板哈哈。但这是我刚在军队受训时的装备。\n“我还记得那位负责训练我的教官，不像其他哥伦比亚人，他很严苛，总是批评我只会用进攻打开局面。他告诉我，战场上会杀人的前卫太多了，杀人是战场最不足为奇的事。\n“在战场上真正值得托付的，是往前面一站，别人就知道，自己又能多活几天的那种人。\n“谁想到，没过多久我人生的第一次实战就来了。那是一场佯攻，在敌人恐怖的炮火下，我们遭受的损失还是远远超出了预期。\n“所以这面盾牌……其实是我从倒下的战友手里捡起来的。那批垫后的人里只剩我一个了……你们从它的毁损程度也看得出有多惨烈了。\n“那一战之后，军队以表彰为名头，把那面印有哥伦比亚国徽的盾颁给了我。它的做工和材质比我们前卫队在战场上配备的都好。可惜它并没有出现在战场上。\n“再后来你们也清楚啦，那也是我第一次当教官。虽然我总嘲笑汉克他们，要是连我都越不过去，去了战场也是凑数的……可在我心里，他们就是最好的兵，他们是我最开始的骄傲。所以当后面我接到要他们去当敢死队的指令，我想都没想就把这盾砸在了那个死老头脸上。\n“最后就是现在啦……看，在罗德岛特别改装的这面上，这个擦痕是芬的，这个凹陷是米格鲁的，这几道箭痕是克洛丝的……而如今的大家也成长为了更成熟的模样，个头蹿高了，战斗的表现也更精湛了，真是欣慰呀……欣慰到甚至有些怀念呢。\n“……嗐，其实我现在做的事儿，和以前也没多大区别。只是把所有吃过的亏磕过的坎，都用我自己的方式告诉他们而已。但这绝不意味着走捷径。因为，肯定还有不计其数的新挫折等待着他们。而如何面对那些挫折，是旁人无论如何都没办法教的。\n“我只能反复向他们强调，杀敌人永远不是目的，杀敌人是为了保护更多人——战场的胜利永远只属于活着的人。\n“好啦，要述职的内容就是这些。哦，对了，前段时间我提交的那个改造方案还没通过吗？不实用？哪里不实用了？！就是在盾后面多加个放零食的空间，这样训练完以后，我好慰劳那些小家伙们不是吗？！这是我的教学习惯啦，通融通融，拜托了！”\n——来自坚雷的晋升述职录音",
+        "zh": "“竟然要从这面木盾开始……好吧，它是我最久的老朋友了，甚至还被路过的同事当成过菜板哈哈。但这是我刚在军队受训时的装备。\n“我还记得那位负责训练我的教官，不像其他哥伦比亚人，他很严苛，总是批评我只会用进攻打开局面。他告诉我，战场上会杀人的前卫太多了，杀人是战场最不足为奇的事。\n“在战场上真正值得托付的，是往前面一站，别人就知道，自己又能多活几天的那种人。\n“谁想到，没过多久我人生的第一次实战就来了。那是一场佯攻，在敌人恐怖的炮火下，我们遭受的损失还是远远超出了预期。\n“所以这面盾牌……其实是我从倒下的战友手里捡起来的。那批垫后的人里只剩我一个了……你们从它的毁损程度也看得出有多惨烈了。\n“那一战之后，军队以表彰为名头，把那面印有哥伦比亚国徽的盾颁给了我。它的做工和材质比我们前卫队在战场上配备的都好。可惜它并没有出现在战场上。\n“再后来你们也清楚啦，那也是我第一次当教官。虽然我总嘲笑汉克他们，要是连我都越不过去，去了战场也是凑数的……可在我心里，他们就是最好的兵，他们是我最开始的骄傲。所以当后面我接到要他们去当敢死队的指令，我想都没想就把这盾砸在了那个死老头脸上。\n“最后就是现在啦……看，在罗德岛特别改装的这面上，这个擦痕是芬的，这个凹陷是米格鲁的，这几道箭痕是克洛丝的……而如今的大家也成长为了更成熟的模样，个头蹿高了，战斗的表现也更精湛了，真是欣慰呀……欣慰到甚至有些怀念呢。\n“……嗐，其实我现在做的事儿，和以前也没多大区别。只是把所有吃过的亏磕过的坎，都用我自己的方式告诉他们而已。但这绝不意味着走捷径。因为，肯定还有不计其数的新挫折等待着他们。而如何面对那些挫折，是旁人无论如何都没办法教的。\n“我只能反复向他们强调，杀敌人永远不是目的，杀敌人是为了保护更多人——战场的胜利永远只属于活着的人。\n“好啦，要述职的内容就是这些。哦，对了，前段时间我提交的那个改造方案还没通过吗？不实用？哪里不实用了？！就是在盾后面多加个放零食的空间，这样训练完以后，我好慰劳那些小家伙们不是吗？！这是我的教学习惯啦，通融通融，拜托了！”\n——来自坚雷的晋升述职录音",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30103",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30023",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

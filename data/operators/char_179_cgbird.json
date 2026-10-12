@@ -1,0 +1,1538 @@
+{
+  "id": "char_179_cgbird",
+  "name": {
+    "en": "Nightingale",
+    "zh": "夜莺",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "FO03",
+  "rarity": 6,
+  "class": "MEDIC",
+  "subclass": "ringhealer",
+  "faction": "followers",
+  "position": "RANGED",
+  "tagList": [
+    "Healing",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Nightingale, Sarkaz healer, will do everything she can to provide medical care for the squad.",
+    "zh": "萨卡兹医师夜莺，竭尽所能为小队提供医疗支援。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "As simple as a blank sheet.",
+    "zh": "宛如一张白纸。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 796,
+            "atk": 132,
+            "def": 80,
+            "magicResistance": 5,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1076,
+            "atk": 210,
+            "def": 107,
+            "magicResistance": 5,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1076,
+            "atk": 210,
+            "def": 107,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1346,
+            "atk": 280,
+            "def": 140,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "y-2",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "30054",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1346,
+            "atk": 280,
+            "def": 140,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1705,
+            "atk": 350,
+            "def": 169,
+            "magicResistance": 5,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_heal_up[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.65
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Up γ",
+            "zh": "治疗强化·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_cgbird_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.4,
+            "magic_resistance": 5,
+            "duration": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.43,
+            "magic_resistance": 5,
+            "duration": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.46,
+            "magic_resistance": 5,
+            "duration": 3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.5,
+            "magic_resistance": 10,
+            "duration": 3.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.53,
+            "magic_resistance": 10,
+            "duration": 3.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.56,
+            "magic_resistance": 10,
+            "duration": 3.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.6,
+            "magic_resistance": 15,
+            "duration": 4,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.7,
+            "magic_resistance": 15,
+            "duration": 4,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.8,
+            "magic_resistance": 15,
+            "duration": 4,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Arts Shield",
+            "zh": "法术护盾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal grants all targets a <$ba.barrier>Barrier</> that lasts for <@ba.vup>{duration}</> seconds\nThe barrier can absorb <@ba.vup>Arts damage</> equal to <@ba.vup>{atk_scale:0%}</> of Nightingale's ATK and increases the target's RES by <@ba.vup>+{magic_resistance}</>; <@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗使所有目标获得一个持续<@ba.vup>{duration}</>秒的<$ba.barrier>屏障</>\\n屏障能吸收相当于夜莺攻击力<@ba.vup>{atk_scale:0%}</>的<@ba.vup>法术</>伤害，同时使目标法术抗性<@ba.vup>+{magic_resistance}</>；<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 0.9,
+            "magic_resistance": 20,
+            "duration": 5,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_cgbird_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 100,
+          "blackboard": {
+            "atk": 0.3,
+            "magic_resistance": 0.75,
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 100,
+          "blackboard": {
+            "atk": 0.3,
+            "magic_resistance": 0.8,
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 100,
+          "blackboard": {
+            "atk": 0.3,
+            "magic_resistance": 0.85,
+            "prob": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 105,
+          "blackboard": {
+            "atk": 0.4,
+            "magic_resistance": 0.9,
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 105,
+          "blackboard": {
+            "atk": 0.4,
+            "magic_resistance": 0.95,
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 105,
+          "blackboard": {
+            "atk": 0.4,
+            "magic_resistance": 1,
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 110,
+          "blackboard": {
+            "atk": 0.5,
+            "magic_resistance": 1.05,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 110,
+          "blackboard": {
+            "atk": 0.6,
+            "magic_resistance": 1.2,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 110,
+          "blackboard": {
+            "atk": 0.7,
+            "magic_resistance": 1.35,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Sanctuary",
+            "zh": "圣域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>; ATK <@ba.vup>+{atk:0%}</>; RES of allies within range <@ba.vup>+{magic_resistance:0%}</> and grants them <@ba.vup>{prob:0%}</> Arts Dodge",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击范围内的友方单位法术抗性<@ba.vup>+{magic_resistance:0%}</>并获得<@ba.vup>{prob:0%}</>的法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": "y-4",
+          "skillType": "MANUAL",
+          "duration": 60,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 120,
+          "initSp": 115,
+          "blackboard": {
+            "atk": 0.8,
+            "magic_resistance": 1.5,
+            "prob": 0.25
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 4
+            },
+            {
+              "id": "30013",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "30033",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +5",
+            "zh": "攻击范围内的友方单位法术抗性+5",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 5
+          }
+        },
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +7 <@ba.talpu>(+2)</>",
+            "zh": "攻击范围内的友方单位法术抗性+7<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "magic_resistance": 7
+          }
+        },
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +10",
+            "zh": "攻击范围内的友方单位法术抗性+10",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 10
+          }
+        },
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +12 <@ba.talpu>(+2)</>",
+            "zh": "攻击范围内的友方单位法术抗性+12<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "magic_resistance": 12
+          }
+        },
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +15",
+            "zh": "攻击范围内的友方单位法术抗性+15",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 15
+          }
+        },
+        {
+          "name": {
+            "en": "White Fiend's Protection",
+            "zh": "白恶魔的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES of allies within range +17 <@ba.talpu>(+2)</>",
+            "zh": "攻击范围内的友方单位法术抗性+17<@ba.talpu>（+2）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "magic_resistance": 17
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Fleeting Phantom",
+            "zh": "转瞬即逝的幻影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Phantoms. Phantoms cannot attack or block enemies, but have 75 RES and 30% Physical Dodge and are more likely to be targeted by enemies. Phantoms lose 3% Max HP per second",
+            "zh": "可以使用幻影。幻影无法攻击和阻挡敌人，拥有75法术抗性，30%的物理闪避，并且更容易吸引敌人的攻击，同时每秒流失3%的最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "RES +10",
+        "zh": "法术抗性+10",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_cgbird",
+      "name": {
+        "en": "Nightingale's Badge",
+        "zh": "夜莺证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Nightingale has demonstrated a remarkable aptitude for healing several teammates in a short period of time. \nThe Field Operations Department has thus passed the following resolution: \nThis operator shall be appointed a Medic Operator during field operations to exercise Multi-target Medic responsibilities. \nIn witness whereof, \nThis badge is hereby conferred upon the above named.",
+        "zh": "干员夜莺擅长在短时间内为数位干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使群愈师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_cgbird",
+      "name": {
+        "en": "'Closed Hope'",
+        "zh": "“封闭的希望”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_cgbird",
+      "description": {
+        "en": "To come in contact with life is a miraculous feeling. \nUnlike the hardships, sorrows, and pain that people exhibit, life is always full of vitality. \nWith the release of Originium Arts, a new form of connection is created. \nBetween my life, and theirs. \nBy taking on their pain, Originium activates, promoting the blooming of life, and healing takes root. \nThis process seems to be significantly different from modern medical procedures. \nBut for me, results speak loudest. \nBecause I endured a little more pain, others can be born anew. \nThis is very good. \nBut... if I could be like ordinary people, without this physical pain, that spark of hope in my heart would surely shine a little bit brighter. \nUnfortunately, as I am now, I can only rely on others to survive. \nLike a light crystal in a lantern. Even if the lantern door is open, even if the light can bring warmth to others, the crystal itself is still fixed inside. \nIt is fixed there, because it has no ability to move on its own. \n'Nightingale, Nightingale––' \nI hope that one day, I will also be able to spread my wings and fly... just like the bird next to me. \n'Nightingale, wake up already––' \nUntil then, I must impose upon them yet more to take care of me. \n...... \n... \n \n'What's the matter, Shining?'",
+        "zh": "触碰生命的感觉很奇妙。\n和人本身表现出的苦难与悲痛不同，生命总是鲜活的。\n通过释放治疗的源石技艺，一种新的沟通模式便建立了起来。\n我的生命，与他们的生命。\n通过分享痛苦，源石激发，促进生命绽放，疗愈便产生了。\n这种过程似乎和现代的医疗行为完全不同。\n不过对于我来说，结果应该更加重要些。\n只因我承受些许痛苦，他人便能得到新生。\n这样很好。\n只是……如果我能如普通人那样，没有肢体上的病痛，心中那个小小的希望，一定会更加明亮吧。\n很惭愧，现在的我，只能依靠别人生存。\n就像笼中的晶光，即使笼门开着，即使光芒能洒在别人身上，晶石本身还是固定在笼中。\n因为它没有移动的能力，被固定在了那里。\n“夜莺，夜莺——”\n希望哪一天，我也能像身边的小鸟一样展翅飞翔吧。\n“夜莺，该醒了——”\n在那之前，还是要麻烦她们照顾我。\n……\n...\n\n“怎么了，闪灵？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_cgbird",
+      "name": {
+        "en": "'Nocturnal Echoes'",
+        "zh": "“莺歌”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_cgbird",
+      "description": {
+        "en": "I still remember those voices.\nI remember the mountain wind brushing over imaginary fields, the rustling grass around us.\nI recall the stream just reaching our calves, its babbling waters flowing past us, through the riverbed. Fins nibbled at our toes then.\nI remember your white sword, and the stone bed beneath me, colder than the stream.\nI recall your carefulness, the tip of your white sword against the newly created soul. They quivered from the magic, ringing loudly.\nYou stopped your carving, you hesitated—was it happiness or sorrow?\nDo not feel guilty, nor apologize, Shining.\nListen, the first note of this night song began sooner than you thought.\nI certainly remember the dried bloodlines that accompanied it, ninety thousand sinful names, and like the vilest curse, wishing to silence us.\nBut do you remember why that pure white suddenly grew warm, why the new soul no longer resisted your sword's tip?\nWhy, in the heavy twilight, could a blue fowlbeast break free from the narrow sky?\nSo small, so fragile, yet its down left a soft glow in your eyes and that silent white.\nListen, I still remember.\nIn that moment, the blade and the pure white resonated; I heard your life bloom along the blade's edge, and the parched sheath could sing anew.\nThe first soul I healed was at the sword's other end.\nShining, do not ask me to tell memories from illusions.\nI never meant to forsake those echoes.\nThey are all part of my night song.\nDry your tears, Shining.\nLet me sing it for you.",
+        "zh": "那些声音，我还记得呀。\n我还记得，山风拂过不存在的原野，青草在我们身边沙沙作响。\n我记得那条小溪刚刚没过我们的小腿，溪水潺潺流过我们，流过河床。当时有鳞在啄我们的脚趾。\n我也记得那个时候你的白剑，还有我身下的石床，它们比小溪更冰凉。\n我记得你如此谨慎小心，你的白色剑尖抵住新造的灵魂。我记得它们因法术而振动，轰鸣刺耳。\n你停止了雕琢，你犹豫了，是因为欣喜还是悲伤？\n不要愧疚，更不要为此道歉，闪灵。\n你听，这支夜歌的第一个音符，比你想象的要早。\n我当然记得与之一同而来的干枯血脉，九万个罪恶的名字，和最邪恶的咒文一样，它不想让我们发出任何声响。\n但你还记得吗？为什么那片纯白突然变得温暖，为什么新造的灵魂不再抵触你的剑尖？\n为什么在凝重的黄昏里，一只蓝色的羽兽能够挣开狭窄的天空？\n它那么小，那么脆弱，但它的绒羽在你的眼眸和在那片寂静的纯白中都留下了淡淡的光。\n你听，我还记得。\n那一刻，剑锋与那片纯白共鸣，我听到你的生命在剑锋绽放，干枯的剑鞘又能重新欢唱。\n我治愈的第一个灵魂，就在剑的另一端。\n闪灵，不必劝我区隔哪些是回忆，哪些是假象。\n我从未想过抛弃那些回响。\n它们都是我的夜歌。\n擦干眼泪，闪灵。\n来，我来唱给你听。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

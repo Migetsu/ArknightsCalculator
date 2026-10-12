@@ -1,0 +1,1104 @@
+{
+  "id": "char_348_ceylon",
+  "name": {
+    "en": "Ceylon",
+    "zh": "锡兰",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SS01",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "healer",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Ceylon, researcher of Rhodes Island, will provide you with knowledge and technical support on Originium in her spare time.",
+    "zh": "罗德岛研究员锡兰，在研究的空余时间，将会为你提供有关源石的知识和技术支持。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She might have forgotten that she is on the battlefield.",
+    "zh": "她有可能忘记自己在战场。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 798,
+            "atk": 164,
+            "def": 55,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1050,
+            "atk": 269,
+            "def": 80,
+            "magicResistance": 10,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-4",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1050,
+            "atk": 269,
+            "def": 80,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1251,
+            "atk": 374,
+            "def": 100,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-4",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "30044",
+          "count": 7
+        },
+        {
+          "id": "30053",
+          "count": 10
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1251,
+            "atk": 374,
+            "def": 100,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1455,
+            "atk": 468,
+            "def": 126,
+            "magicResistance": 10,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ceylon_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.4,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.45,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.55,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.6,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.65,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.7,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.8,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.9,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Concentrated Hydrotherapy",
+            "zh": "集中式水疗",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases next healing's amount to <@ba.vup>{heal_scale:0%}</> of ATK. The amount will not be reduced by trait effects\n<@ba.rem>Can charge for {cnt} times</>",
+            "zh": "下次治疗时的治疗量提升至攻击力的<@ba.vup>{heal_scale:0%}</>，并且不会因特性效果而降低\\n<@ba.rem>可以充能{cnt}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 2,
+            "cnt": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ceylon_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 20,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.3,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 22,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.3,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 24,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.3,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 26,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.4,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 28,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.4,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.4,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 32,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 34,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.53,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 36,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.56,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Water Blessing",
+            "zh": "水灵庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, each attack heals 1 additional target. While the skill is active, all allies within range gain <$ba.buffres>status resistance</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗目标数+1，持续时间内攻击范围内的友方单位获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 40,
+          "blackboard": {
+            "attack@max_target": 2,
+            "atk": 0.6,
+            "one_minus_status_resistance": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 2
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lake Walker",
+            "zh": "湖畔漫步者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +3%, when there is water terrain on the battlefield, the effect becomes ATK +9%",
+            "zh": "攻击力+3%，当场地中存在水地形时改为攻击力+9%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ceylon_t_1[common].atk": 0.03,
+            "celyon_t_1[map].atk": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Lake Walker",
+            "zh": "湖畔漫步者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +4%<@ba.talpu> (+1%)</>, when there is water terrain on the battlefield, the effect becomes ATK +15%<@ba.talpu> (+6%)</>",
+            "zh": "攻击力+4%<@ba.talpu>（+1%）</>，当场地中存在水地形时改为攻击力+15%<@ba.talpu>（+6%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ceylon_t_1[common].atk": 0.04,
+            "celyon_t_1[map].atk": 0.11
+          }
+        },
+        {
+          "name": {
+            "en": "Lake Walker",
+            "zh": "湖畔漫步者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +5%, when there is water terrain on the battlefield, the effect becomes ATK +18%",
+            "zh": "攻击力+5%，当场地中存在水地形时改为攻击力+18%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "ceylon_t_1[common].atk": 0.05,
+            "celyon_t_1[map].atk": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Lake Walker",
+            "zh": "湖畔漫步者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +6%<@ba.talpu> (+1%)</>, when there is water terrain on the battlefield, the effect becomes ATK +24%<@ba.talpu> (+6%)</>",
+            "zh": "攻击力+6%<@ba.talpu>（+1%）</>，当场地中存在水地形时改为攻击力+24%<@ba.talpu>（+6%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "ceylon_t_1[common].atk": 0.06,
+            "celyon_t_1[map].atk": 0.18
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ceylon",
+      "name": {
+        "en": "Ceylon's Badge",
+        "zh": "锡兰证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Ceylon has demonstrated a remarkable aptitude for wide-range healing in tandem with endowment of effects of benefit upon Operators.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Therapist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员锡兰擅长大范围治疗并为其他干员提供增益效果\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使疗养师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ceylon",
+      "name": {
+        "en": "Field Research Equipment",
+        "zh": "野外考察套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ceylon",
+      "description": {
+        "en": "On a hospital corridor bench, a student reading a book sits side by side with a middle-aged woman of professorly airs. Next to them, a distressed-looking worker anxiously mumbles to himself.\n'Peter Davis.' A doctor steps out, test results in hand. The worker whose name has now been called tensely lifts his head. The student shuts her book.\n'—Elevated BOCD, no signs of Oripathy.'\n'Ceylon Doykos. Elevated BOCD, no signs of Oripathy.'\nThe three let out a collective sigh. 'See!' the student starts to tell the other woman in excitement. 'I'm fine, Professor!'\n'More like you're lucky,' the professor replies sternly, shaking her head.\n'I've warned you two before. Outdoor investigations are to be carried out within stipulated safe regions, during designated times, and proper protective measures have to be taken. Without specialized protective gear, coming into contact with highly activated Originium is exceedingly dangerous. Moreover, we have no right to extract ore from the mines. The mines can hold you liable for anything you've done. Ceylon, you're supposed to be a model student.'\n'But I want to verify the theories I see in my textbooks... and besides, if I hadn't warned Mr. Davis and the others to halt their work, there would've been an acute infection incident. I couldn't—'\n'What if you'd judged wrong?'\nCeylon stops in her tracks. After a moment, she droops her head. 'Sorry.'\n'I'm not expelling you, but you will have to retake this course,' says Ceylon's professor says as she gets up from the bench. 'It was only your first field outing. Be mindful of properly protecting yourself in future.'\n\nOnce the professor has left, only then does the mine-worker nervously move to say a word of thanks.\n'Thank you for saving us. I don't know if we've burdened you... Your professor sounds like she thinks you did the wrong thing.'\n'No, not at all,' Ceylon replies with a smile.\n'I know what my professor thinks. She just has to teach me these things as part of the course. I need to know fear, and the worst case, and I have to weigh whether the responsibility's something I can take.'\n'It's when I learn all that that I can truly make my own choices.'",
+        "zh": "医院的走廊长椅上，一位正在看书的学生和老师模样的中年女性并排坐着，她们身边，一位面容愁苦的工人焦虑地喃喃自语。\n“受检者彼得·戴维斯。”医生拿着检测报告走了出来。被喊到名字的工人紧张地抬起头，学生合上了书。\n“——血液源石结晶密度偏高，无矿石病感染迹象。”\n“受检者锡兰·道尔科斯，血液源石结晶密度偏高，无矿石病感染迹象。”\n三人同时舒了一口气，学生雀跃地对她的老师开口：“老师您看，我们都没事！”\n“这只是你运气好。”老师严肃地摇摇头。\n“我提醒过你们，野外考察要在规定的安全活动区域和活动时间进行，并且要做好防护措施。在没有专业防护服的情况下，接触高度活性化源石是极度危险的。另外，我们无权进入矿场开采地，你的任何行为都可能被矿场追责。锡兰，你应该是个好学生。”\n“但是我想证实我在书中看到的理论……而且，如果我没有去提醒戴维斯先生和他的同伴停工的话，一定会发生急性感染事件的，我不能——”\n“如果你的判断失误呢？”\n锡兰顿住了。过了片刻，她低下了头：“对不起。”\n“我不会开除你，但是这门课你需要重修。”她的老师从长椅上起身，“这只是你的第一次野外考察，以后请你注意安全防护。”\n\n老师离开后，矿场工人才紧张地开口道谢。\n“谢谢您救了我们。不知道我们是不是让您惹上了麻烦……听起来您的老师认为您做了错事。”\n“没有哦。”锡兰回以一个微笑。\n“我明白老师的意思，她只是在这门课上必须教给我这些。我要知道害怕，要知道最坏的结果，要衡量自己是否能承担。”\n“在这之后，我才可以做出自己的选择。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30064",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

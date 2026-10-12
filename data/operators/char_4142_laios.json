@@ -1,0 +1,1051 @@
+{
+  "id": "char_4142_laios",
+  "name": {
+    "en": "Laios",
+    "zh": "莱欧斯",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "DD01",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fearless",
+  "faction": "laios",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Laios, adventurer. I'll do my best to research Terra's monsters—ah, no, to support everyone in completing their duties.",
+    "zh": "冒险者莱欧斯，我一定会努力研究这些泰拉魔物——啊不对，是会努力辅助大家完成任务。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "'The continent of Terra has so much wildlife. I wonder how it all tastes?'",
+    "zh": "“泰拉大陆上的这么多生物，吃起来是什么味道？”",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1481,
+            "atk": 401,
+            "def": 114,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2117,
+            "atk": 590,
+            "def": 163,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2117,
+            "atk": 590,
+            "def": 163,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2901,
+            "atk": 747,
+            "def": 212,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30044",
+          "count": 7
+        },
+        {
+          "id": "31063",
+          "count": 10
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2901,
+            "atk": 747,
+            "def": 212,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3868,
+            "atk": 900,
+            "def": 256,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_laios_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.75,
+            "peak_performance.atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.7,
+            "peak_performance.atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.7,
+            "peak_performance.atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.65,
+            "peak_performance.atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.65,
+            "peak_performance.atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.6,
+            "peak_performance.atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.5,
+            "peak_performance.atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.5,
+            "peak_performance.atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.5,
+            "peak_performance.atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Cowardly Kensuke",
+            "zh": "胆小剑助",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When HP is above <@ba.vup>{peak_performance.hp_ratio:0%}</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{peak_performance.atk:0%}</> ATK\nThe first time a Leader enemy appears on the field, Laios cannot attack for <@ba.vdown>15</> seconds",
+            "zh": "生命值高于<@ba.vup>{peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>\\n场上首次出现领袖敌人时，莱欧斯在<@ba.vdown>15</>秒内无法攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 15,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "peak_performance.hp_ratio": 0.5,
+            "peak_performance.atk": 0.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "31063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_laios_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.9,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.2,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.4,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.6,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3.8,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 4,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 4.2,
+            "not_combat": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Intimidation Tactics",
+            "zh": "威吓战法",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking; enemies blocked during skill are <$ba.tremble>Frightened</>. Once skill ends, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to blocked enemies",
+            "zh": "停止攻击，技能期间使阻挡的敌人<$ba.tremble>战栗</>，技能结束时立即对阻挡的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 4.5,
+            "not_combat": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31074",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31053",
+          "count": 3
+        },
+        {
+          "id": "31033",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Dungeon Monster Expert",
+            "zh": "迷宫魔物专家",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After defeating an enemy, Laios ignores 20% DEF with every attack against enemies with the same name",
+            "zh": "击倒敌人后，莱欧斯攻击所有同名敌人时无视其20%防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def_penetrate": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Dungeon Monster Expert",
+            "zh": "迷宫魔物专家",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After defeating an enemy, Laios ignores 40% DEF with every attack against enemies with the same name",
+            "zh": "击倒敌人后，莱欧斯攻击所有同名敌人时无视其40%防御力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def_penetrate": 0.4
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +32",
+        "zh": "攻击力+32",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75,
+        "def": 25
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_laios",
+      "name": {
+        "en": "Laios's Badge",
+        "zh": "莱欧斯证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_laios",
+      "description": {
+        "en": "Operator Laios has demonstrated a remarkable aptitude for mimicking monsters to infiltrate enemy formations.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Dreadnought responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员莱欧斯擅长分析魔物然后切入战阵\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使无畏者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_laios",
+      "name": {
+        "en": "Trophies to Bring Back to the Dungeon",
+        "zh": "想要带回迷宫的包裹",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_laios",
+      "description": {
+        "en": "All along his search for Rhodes Island, Laios has been quietly gathering odds and ends in anticipation of his return to the dungeon, where he might continue studying their wonders.\n \nINTIMIDATION POSES. A set of hand-drawn how-tos by Laios for use in combat, one for the mock-gloompincer (imitate mandibles with the arms as a deterrent) and one for the mock-Originium slug (arch the body and imitate pricking with the hands). The gloompincer chart also has a small annotation to the side: 'could be interpreted by male gloompincers as a mating ritual.'\nSKETCH OF MON3TR. Multiple hand-drawn sketches of Mon3tr from different angles by Laios. Finely rendered, but the abdomen and claws are given a jarring level of detail, possibly suggesting he had the chance to observe up close while being grabbed by Mon3tr. Small annotation to the side: 'so cool!'\nA FEATHER. Confirmed by Zumama to be from the High Priest, who has filed with Rhodes Island for a restraining order. Nevertheless, countless operators report seeing the High Priest waiting in areas Laios frequents, and even perching on his head. HR operators suspect the High Priest may actually be enjoying the attention.\nSEEDS. Sami silencing chestnut seeds (P.S. works on Marcille), Rim Billitonian bottletree fruit (P.S. is swimming in the tree trunk possible?), Iberian seagrass roots (P.S. tongue numb after taste), etc. Doodle on a note to the side of a walking mushroom, with... the head of an Originium slug?\nSEA TERROR IN A BOTTLE. A small Sea Terror kept in a bottle. Laios occasionally feeds it different things to test what it eats, and observes how it is able to change form in such a short time. Unfortunately, this one hasn't demonstrated even the slightest metamorphosis, which has more than saddened Laios.\n \nLaios had a spot in his armor where he could nestle these items safe and sound, but in a tragic turn of events, Marcille spotted his Sea Terror during feeding time, and then everything else too, ending in the forcible disposal of the entire bundle by her hands.\nOperators at the scene report that Laios was 'like a hoarding musbeast who had a year's worth of food soaked by rain,' and simply walked away down the corridor with his head hung low. He contacted HR and relayed the day's events out of concern for the repercussions, following which we discovered the Sea Terror in a standard wastebin in an ordinary Rhodes Island hallway.\nPursuant to this, HR has elected to commend Marcille for her safety awareness, and to act on an immediate and pressing need to put Laios through safety training.",
+        "zh": "莱欧斯在寻找罗德岛的路途中一直都在偷偷搜集各种材料，准备带回迷宫，尝试继续研究其中的奥妙。\n \n威吓身法图。莱欧斯手绘的一套战斗时可以使用的身法图，分别是模仿钳兽（用双手模拟钳子进行威慑）和模仿源石虫（拱起身体、用手模拟刺），钳兽身法图旁边还有一行小字：似乎会被公钳兽认为是求偶。\nMon3tr素描。莱欧斯手绘的Mon3tr多视图，画功很好，但不知为何极其细致地描绘了腹部和爪子，仿佛他曾被Mon3tr抓起来，近距离观察过它一样。旁边还有一行小字：真的好酷！\n一根羽毛。经由祖玛玛确认，这是大祭司的羽毛。大祭司已经向罗德岛申请了人身安全保护令，但很多干员都反映经常看到大祭司在莱欧斯常经过的路上等着，还会停在他的头上。人事干员怀疑大祭司其实乐在其中。\n各色种子。内有萨米闭口栗种子（P.S. 玛露西尔变安静了）、雷姆必拓瓶树果实（P.S. 能不能在树干里游泳？）、伊比利亚海草根（P.S. 舌头麻麻的）等。一旁的便签上还画着一只会走路的蘑菇，长着……源石虫的脑袋？\n养在瓶中的恐鱼。一小尾养在瓶子中的恐鱼。莱欧斯会时不时放入一些食物测试它是否会吃，并试图观察它究竟是如何在极短的时间内变成全新的样子。很可惜这尾恐鱼一直没发生什么变化，莱欧斯对此十分伤心。\n \n莱欧斯已经在盔甲内找到一个合适的地方可以贴身保存这些珍贵的物品，但很可惜，恐鱼在一次喂食中被玛露西尔发现了，她还连带着发现了其他的东西，最后这个包裹被玛露西尔勒令处理掉。\n据目击干员描述，莱欧斯当时“像一只发现一整年的存粮被雨打湿了的鼷兽”，低着头，独自消失在走廊尽头。他担心发生了什么事情，联系人事部反映了当天的情况，我们最终在罗德岛普通走廊的普通垃圾桶里发现了恐鱼。\n对此，人事部的结论是玛露西尔的安全意识值得表扬，但需要立刻、马上对莱欧斯进行安全培训。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30084",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

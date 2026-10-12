@@ -1,0 +1,1130 @@
+{
+  "id": "char_4016_kazema",
+  "name": {
+    "en": "Kazemaru",
+    "zh": "风丸",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "HK09",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "dollkeeper",
+  "faction": "higashi",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Fast-Redeploy"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Kazemaru, intelligence agent, will get you any information you need.",
+    "zh": "情报员风丸，你可以从她那里获得任何你想要的消息。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Be extra careful. When you speak to her, which 'her' are you really talking to?",
+    "zh": "但要注意，和你说话的究竟是哪一个“她”呢？",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1109,
+            "atk": 313,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1479,
+            "atk": 430,
+            "def": 202,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1479,
+            "atk": 430,
+            "def": 202,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1873,
+            "atk": 567,
+            "def": 263,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "31043",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1873,
+            "atk": 567,
+            "def": 263,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2372,
+            "atk": 692,
+            "def": 318,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_kazema_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.35,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.75,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3.3,
+            "hp_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Swift Strike",
+            "zh": "纸艺·迅击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's HP",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，并使自身流失<@ba.vdown>{hp_ratio:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3.5,
+            "hp_ratio": 0.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kazema_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.75,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.8,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 1,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 1.1,
+            "hp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Origami Art - Twin Shadows",
+            "zh": "纸艺·双影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately sacrifices <@ba.vdown>{hp_ratio:0%}</> of this unit's current HP, gaining <@ba.vup>+{atk:0%}</> ATK and summoning a <Substitute> on a surrounding melee tile to assist in combat",
+            "zh": "立即流失<@ba.vdown>{hp_ratio:0%}</>当前生命，攻击力<@ba.vup>+{atk:0%}</>，并在周围的近战部署位召唤<替身>协助作战",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.2,
+            "hp_ratio": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30021",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 150% of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力150%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 155% <@ba.talpu>(+5%)</> of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力155%<@ba.talpu>（+5）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 225% of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力225%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 2.25
+          }
+        },
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 230% <@ba.talpu>(+5%)</> of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力230%<@ba.talpu>（+5）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 270% of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力270%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 2.7
+          }
+        },
+        {
+          "name": {
+            "en": "From Paper Comes Life",
+            "zh": "折纸生花",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When <Substitute> is summoned, it will deal 275% <@ba.talpu>(+5%)</> of its ATK as Arts Damage to enemies in the surrounding 8 tiles",
+            "zh": "<替身>出现时对其周围8格内所有敌方单位造成相当于其攻击力275%<@ba.talpu>（+5）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 2.75
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 80
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_kazema",
+      "name": {
+        "en": "Kazemaru's Badge",
+        "zh": "风丸证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Kazemaru has demonstrated a remarkable aptitude for repeated contention with the enemy upon the battlefield.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Dollkeeper responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员风丸擅长于战场上同敌人反复周旋\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使傀儡师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_kazema",
+      "name": {
+        "en": "An Old Thing",
+        "zh": "旧物",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_kazema",
+      "description": {
+        "en": "A Kazemaru with head covered in mud seeks out her parents.\nShe's been trained to become a shinobi since she was five. Family, loyalty, freedom, future, she has no clear awareness of any of it at that age. She just grits her teeth and endures training too ruthless in some measures for a child, and in her wide eyes gleams light—she wants to be what her strongest senpais are, reach the top, offer her loyalty to the lord.\nBut she doesn't know what 'offer her loyalty' means. She just knows it's an honor, it's what her parents and herself want to do, so she has to do it.\n\nA Kazemaru no longer cleaning the mud from her head again seeks out the young lord.\nShe has become the lord's shinobi. Her hair is bound beneath her hat, her nails orderly trimmed, and missions arrive secretly one after another from the bamboo tubes into her hands. Kazemaru pulls out the scroll inside, and silently looks over. The name she has no recognition of written at the top of that scroll is about to silently lose everything he originally possessed, all before a single fowl is startled.\n'Well done.'\nSo the lord often commends her, but while in hiding, she hears a mother in another courtyard scolding her crying child: 'Keep crying, and the people in black will take you away!'\n\nThe young lord looks at his employee whose head is covered in mud.\nShe changes out of the black bodysuit, and will no longer receives scrolls in bamboo tubes. The old lord has passed, and Kazemaru has a new outfit.\nThe meeting room isn't secret, but it's cramped and inaccessible; contracts fly back and forth in the open, but it's all too smooth and steady. As the days wear on, Kazemaru flexes her stiffened spine at her office desk, joints chafing with a 'krrk,' and the last time she heard that noise, it was like a hidden weapon scraped at her bones.\nShe doesn't like sitting, nor becoming one of the 'people in black' which that mother had tried to spook her child with.\nThis isn't what she's meant to do. This isn't what she likes to do. She wants to do actual good work. She doesn't want to neglect her skills like this. She wants a new way out, but she still hasn't found the full resolve to take the step.\n\nThe young lord reaches out, brushes away the grime caking Kazemaru's pale hair, and hands her a contract termination, along with a business card for Rhodes Island.\nOne time when returning from work, an unsteady flowerpot was blown into the air, crumbs of soil and leaf fragments flying out to form a graceful arc, and the planter compacted with soil plummeted down and crashed straight onto Kazemaru's head.\nHead covered in soil and ceramic chips, Kazemaru was struck awake—she needed to leave. She had to leave.",
+        "zh": "顶着一头泥的风丸去找了自己的父母。\n她从五岁起就接受了成为忍者的训练。家族，忠诚，自由，未来，那时的她对这一切都还没有一个清楚的认知，她只是咬着牙坚持下那些对于一个孩子来说有些过分残酷的特训，大大的眼睛里闪着光——她想和最厉害的那些前辈一样，拿到第一名，去为家主献忠。\n但“献忠”是什么意思，她不知道。她只知道，那是个荣誉，是父母和自己都想让她做到的事情，那她就一定要去做到。\n\n连泥都不想再清理的风丸又去找了自己的小家主。\n她成为了家主的忍者。头发裹在帽子里，指甲修剪得利落，夹在竹筒里的任务一次又一次秘密地送到自己手中，风丸抽出里面的纸卷，默默地查看，在惊起任何一只羽兽之前，上面写着的这个自己不认识的名字，即将在悄无声息中失去他原本拥有的东西。\n“做得好。”\n家主经常这么称赞，但她潜伏时听到另一院中的母亲正在吓唬自己哭闹的孩子：“再哭，穿黑衣服的人就把你抓走！”\n\n小家主看着自己的员工顶着一头泥。\n换下一身黑的紧身衣，再也不会收到夹着纸卷的竹筒，家主去世后，风丸有了一身新的衣服。\n会议室不在暗处，但是狭小闭塞；一张张往来合同光明正大，但是太过安稳，日子一天天地过去，风丸在办公桌前活动自己僵住的颈椎，关节摩擦发出“咯”的一声，上次她听到这个声音，好像还是暗器擦过骨头。\n她不喜欢坐着，也不喜欢变成那位母亲口中吓唬自己孩子的“穿着黑衣服的人”。\n不是她该做的，不是她喜欢的，她想做真正好的事，她不想埋没自己的本领，她想有一条新的路，但她还没有彻底下定决心要走出这一步。\n\n小家主伸手，拂去了那些蒙住了风丸浅色头发的污泥，递出了一份解约合同，和一张罗德岛的名片。\n在一次下班的路上，没有放稳的花盆被风吹落从天而降，在半空中飞洒出土粒和碎叶，划出条条弧线，陶盆挟着泥土直直落下，正砸在风丸头上。\n顶着一头泥土和花盆碎片，风丸被砸醒了——她想离开，她要离开。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31014",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

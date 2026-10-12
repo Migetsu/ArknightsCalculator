@@ -1,0 +1,1100 @@
+{
+  "id": "char_449_glider",
+  "name": {
+    "en": "Honeyberry",
+    "zh": "蜜莓",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RB06",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "wandermedic",
+  "faction": "rim",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Apprentice doctor Honeyberry, using bitter herbals to defend the body and sweet snacks to cure the soul.",
+    "zh": "实习医师蜜莓，用苦涩的草药守护身体，用甜蜜的零食治愈心灵。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Be sure to catch her when she jumps down from up high.",
+    "zh": "当她从高处跳下的时候，请好好接住她。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 799,
+            "atk": 131,
+            "def": 46,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1052,
+            "atk": 216,
+            "def": 68,
+            "magicResistance": 10,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1052,
+            "atk": 216,
+            "def": 68,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1253,
+            "atk": 300,
+            "def": 85,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-17",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "31044",
+          "count": 7
+        },
+        {
+          "id": "30063",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1253,
+            "atk": 300,
+            "def": 85,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1458,
+            "atk": 375,
+            "def": 107,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_glider_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 2,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 3,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 3,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 3,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Spiritual Care",
+            "zh": "精神护理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal targets 2 Operators with the highest <$ba.dt.element>Elemental Injury</> taken, and additionally recovers their Elemental Injury by <@ba.vup>{glider_s_1.ep_heal_ratio:0%}</> of Honeyberry's ATK every second for <@ba.vup>{glider_s_1.duration}</> seconds",
+            "zh": "下次治疗以<$ba.dt.element>元素损伤</>最严重的2名干员为目标，并使其<@ba.vup>{glider_s_1.duration}</>秒内每秒恢复蜜莓攻击力<@ba.vup>{glider_s_1.ep_heal_ratio:0%}</>的元素损伤",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "glider_s_1.duration": 3,
+            "glider_s_1.interval": 1,
+            "glider_s_1.ep_heal_ratio": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_glider_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.15,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.18,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.21,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.25,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.28,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.31,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.35,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.45,
+            "attack@max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Rouse",
+            "zh": "振奋",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>. Every heal prioritizes <@ba.vup>{attack@max_target}</> Operators with the highest <$ba.dt.element>Elemental Injury</> taken",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，每次治疗以<$ba.dt.element>元素损伤</>最严重的<@ba.vup>{attack@max_target}</>名干员为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.5,
+            "attack@max_target": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31043",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31053",
+          "count": 3
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Collective Consciousness",
+            "zh": "集体意识",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ranged Operators within Attack Range gain Max HP +5%",
+            "zh": "攻击范围内的远程干员最大生命值+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Collective Consciousness",
+            "zh": "集体意识",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ranged Operators within Attack Range gain Max HP +7% <@ba.talpu>(+2%)</>",
+            "zh": "攻击范围内的远程干员最大生命值+7%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Collective Consciousness",
+            "zh": "集体意识",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ranged Operators within Attack Range gain Max HP +10%",
+            "zh": "攻击范围内的远程干员最大生命值+10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Collective Consciousness",
+            "zh": "集体意识",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Ranged Operators within Attack Range gain Max HP +12% <@ba.talpu>(+2%)</>",
+            "zh": "攻击范围内的远程干员最大生命值+12%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 0.12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +19",
+        "zh": "攻击力+19",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 150,
+        "atk": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_glider",
+      "name": {
+        "en": "Honeyberry's Badge",
+        "zh": "蜜莓证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_glider",
+      "description": {
+        "en": "Operator Honeyberry has demonstrated a remarkable aptitude for wide-range healing in tandem with remedying Operators of their accrued Elemental Injurys.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Wandering Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员蜜莓擅长大范围治疗并为干员恢复元素损伤\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使行医职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_glider",
+      "name": {
+        "en": "After Landing",
+        "zh": "落地之后",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_glider",
+      "description": {
+        "en": "For the first time, she quarreled with her mother over a field mission.\nSeveral months ago, after one such mission, while mending her cloak, her mother suddenly asked if she could stop going on these missions. She tried to convince her mother that the missions were safe, but her mother was unusually stubborn. Advice turned into argument, and the argument festered like a dull thorn. Standing at the edge of a cliff with shouts behind her, all Zoey Perris could think of was her mother's anxious eyes when she left Rhodes Island.\nAs her pursuers closed in, Zoey leapt off the cliff. An arrow whizzed past her, and she suddenly realized that to her mother, frayed hems meant falls, holes implied an arrow had missed a vital spot, and tears suggested narrowly saved limbs.\nFor the first time, she made her daughter unhappy over a field mission.\nDespite Zoey explaining the safety of these missions many times, she couldn't shake those ominous dreams. She opened the door to find Zoey standing outside, with the tattered cloak covered in dust.\nSuddenly, regret washed over her. She was the patient to be cared for, and it was her daughter who managed everything perfectly. Life wasn't about Zoey easing her burdens anymore, but about her trying to ease Zoey's.\nShe let Zoey take off the cloak, admitting she'd been overthinking. But Zoey didn't respond. Instead, she pulled her mother to sit down and began explaining the damages on the cloak—branches, gravel, finbeasts... until she reached the rip made by an arrow.\nShe saw her mother gently shake her head, more pleading than forbidding. But she continued, recounting how an infected man, almost enslaved because no one would help him, led to the slaver firing that arrow out of spite.\n'Each mission, we actually helped some people, who were just a bit luckier than Dad, who didn't vanish silently. And the damage to the cloak isn't always from weapons. This time, it was just this one arrow... I can take care of myself. Please rest assured.'\nZoey bit her lip, looking at her mother, whose face showed a mix of sorrow and pride. Finally, her mother silently patted her head, took off her cloak, and draped the previously mended one over her shoulders.\nThe sewing machine hummed as Zoey, wrapped in the carefully patched cloak, tiptoed out of her mother's room, silently apologizing for calling a blade a fin.\nBehind her, the sewing machine paused for a moment—the instant her mother noticed the unnaturally smooth tear—then resumed its sad yet proud rhythm.",
+        "zh": "她第一次因为外勤问题和母亲闹了别扭。\n几个月前的某次外勤过后，缝补斗篷时，母亲忽然问她能不能不再参加外勤。她试图说服母亲外勤没有危险，但母亲异常执拗。劝告演变成争执，争执积聚成一根钝刺。直到现在，佐伊·伯里斯站在陡崖前，身后是喊叫声，但她仍然想着自己这次离开罗德岛时母亲的眼神。\n追赶者渐渐逼近，佐伊从崖上一跃而下。一支弩箭从身边飞过，她突然意识到，在母亲心里，擦破的下摆意味着摔伤，破洞意味着弩箭避过了要害，而裂口可能意味着侥幸保住一条手臂。\n她第一次因为外勤问题惹了女儿不开心。\n就算女儿多次跟她解释过外勤有多安全，她仍然无法摆脱那些不祥的梦境。直到现在，她打开房门，佐伊就站在门外，破破烂烂的斗篷上沾满了灰尘。\n她突然感到后悔。自己是受照顾的病人，是女儿将一切打理得井井有条。生活早就不是佐伊为自己分忧，而是自己为佐伊分忧了。\n她招呼佐伊脱下斗篷，说自己之前想太多了。可佐伊并未接话，而是拉着母亲坐下，一处一处地讲述那些破损的来历——树枝、砂石，甚至鳞兽……一直讲到那处被弩箭撕开的裂口。\n她看见母亲冲自己轻轻摇了摇头，神色不像制止，倒像恳求。但她还是说了下去，从一个无人愿意伸手相助，差点就沦为奴隶的感染者男人说起，一直说到奴隶贩子为泄愤射出的弩箭。\n“每次外勤，我们其实都帮助了一些人，一些只是比爸爸幸运一点，没有无声无息地消失的人。而斗篷上的破损也不总是武器造成的，就像这次，就只有这一支弩箭……我一定能照顾好自己的，您……能够放心吗？”\n佐伊·伯里斯咬住嘴唇看着母亲，而母亲的脸上现出悲伤与骄傲混杂的神色。最后，母亲默默拍了拍她的头，从佐伊身上解下斗篷，把先前补好的那件披在她的肩膀上。\n缝纫机运转的声音响起，佐伊披着精心补好的斗篷，轻手轻脚地离开母亲的房间，在心里为把刀锋说成鳞兽向母亲道歉。\n而在她身后，缝纫机的声音停顿了片刻——那是母亲发现裂口平滑得不自然的瞬间——随后又像先前一样，悲伤而骄傲地响了起来。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31044",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30064",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

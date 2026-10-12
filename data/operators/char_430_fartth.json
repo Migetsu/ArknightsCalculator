@@ -1,0 +1,1471 @@
+{
+  "id": "char_430_fartth",
+  "name": {
+    "en": "Fartooth",
+    "zh": "远牙",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "KZ13",
+  "rarity": 6,
+  "class": "SNIPER",
+  "subclass": "longrange",
+  "faction": "kazimierz",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "'Fartooth' Knight Justyna will not miss.",
+    "zh": "“远牙”骑士查丝汀娜，不会漏过任何目标。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Not a great fan of commotion, but even less a fan of solitude.",
+    "zh": "不太喜欢吵闹，但更不愿孤单一人。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 749,
+            "atk": 535,
+            "def": 79,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 973,
+            "atk": 744,
+            "def": 106,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 973,
+            "atk": 744,
+            "def": 106,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1217,
+            "atk": 980,
+            "def": 133,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "31054",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1217,
+            "atk": 980,
+            "def": 133,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1522,
+            "atk": 1196,
+            "def": 163,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_quickattack[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.22,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.24,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.27,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.29,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.31,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.34,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.37,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Swift Strike γ",
+            "zh": "迅捷打击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 45
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_fartth_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 65
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 70
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 18,
+          "blackboard": {
+            "attack_speed": 75
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 18,
+          "blackboard": {
+            "attack_speed": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 18,
+          "blackboard": {
+            "attack_speed": 85
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 21,
+          "blackboard": {
+            "attack_speed": 90
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 22,
+          "blackboard": {
+            "attack_speed": 95
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 23,
+          "blackboard": {
+            "attack_speed": 100
+          }
+        },
+        {
+          "name": {
+            "en": "Ally Support",
+            "zh": "同盟支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can attack blocked enemies outside of Attack Range. ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "可以攻击到范围外被阻挡的敌方单位，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 110
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_fartth_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.6,
+            "damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.65,
+            "damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.7,
+            "damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.8,
+            "damage_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.85,
+            "damage_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.9,
+            "damage_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 7,
+          "blackboard": {
+            "atk": 1,
+            "damage_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 1.1,
+            "damage_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 9,
+          "blackboard": {
+            "atk": 1.2,
+            "damage_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Feathershine Arrows",
+            "zh": "光羽箭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range changes to an <@ba.rem>infinitely long straight line</> ahead, ATK <@ba.vup>+{atk:0%}</>. When attacking an enemy outside of the normal Attack Range, damage dealt increases to <@ba.vup>{damage_scale:0%}</>",
+            "zh": "攻击范围改为前方<@ba.rem>无限长的直线</>，攻击力<@ba.vup>+{atk:0%}</>，攻击原本范围以外的目标时，造成的伤害提高至<@ba.vup>{damage_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1.4,
+            "damage_scale": 1.4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31023",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30061",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30083",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 4
+        },
+        {
+          "id": "30013",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "凝神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When no damage is taken within the past 10 seconds, ATK +10%",
+            "zh": "最近10秒内未受伤害时，攻击力+10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.1,
+            "delay": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "凝神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When no damage is taken within the past 10 seconds, ATK +13% <@ba.talpu>(+3%)</>",
+            "zh": "最近10秒内未受伤害时，攻击力+13%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.13,
+            "delay": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "凝神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When no damage is taken within the past 10 seconds, ATK +15%",
+            "zh": "最近10秒内未受伤害时，攻击力+15%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.15,
+            "delay": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Concentration",
+            "zh": "凝神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When no damage is taken within the past 10 seconds, ATK +18% <@ba.talpu>(+3%)</>",
+            "zh": "最近10秒内未受伤害时，攻击力+18%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.18,
+            "delay": 10
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Stilled Breath",
+            "zh": "屏息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is active, becomes less likely to be targeted by enemies and attacks ignore the target's Physical Dodge",
+            "zh": "技能开启时不容易成为敌人的目标，且攻击无视目标的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "taunt_level": -1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +40",
+        "zh": "攻击力+40",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 100
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_fartth",
+      "name": {
+        "en": "Fartooth's Badge",
+        "zh": "远牙证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Fartooth has demonstrated a remarkable aptitude for defeating enemies from long range. \nThe Field Operations Department has thus passed the following resolution: \nThis operator shall be appointed a Sniper Operator during field operations to exercise Deadeye responsibilities. \nIn witness whereof, \nThis badge is hereby conferred upon the above named.",
+        "zh": "干员远牙擅长在远距离击溃敌人\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使神射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_fartth",
+      "name": {
+        "en": "First-show Support Set",
+        "zh": "首战支援套组",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_fartth",
+      "description": {
+        "en": "......The wind. \nI can hear the wind's sound changing. \nIt was quiet before, but now it's become noisy.\n......\nLots of people... They're here to watch the match. \nMy first time competing in the knight tournament. \nThis is different from when I was in the underground arena... This is an official match. \n...Different? \nI've become an official Infected Knight, but does this really make a difference compared to before? \n...... \n......Soon. \nThere's not much time left. The match will start soon. \nI... \nI know, I will win. \nI will win...... \n...... \n\nExcuse me, is Miss Justyna Valentine here? We've brought your custom-made equipment! \nHuh, is Miss Valentine not here? \nShe... hasn't been seen since noon? What do you mean nobody knows where she is? The match is about to begin, and she's still not back yet? \nThis is quite unfortunate. Being late to her debut match will surely leave a bad taste in the fans' mouths. This certainly won't do any favors for Miss Valentine's future career! \nAnd in addition to that, she's going to need to personally look over her custom equipment, and if she's not here... \nHuh? Wait, what's that sound? \nHmm... Is that... somebody playing the flute? \n\nThe soft melody of the flute was gently carried along the wind, far, far away. \nEver higher, ever further away. \nThe wind continued to blow, to the place I promised to return to. \nPlease, take this tune back with you. \nPlease tell everyone. \nThat Justyna has finally become a knight. \nBut don't tell anyone. \nThat Justyna sorely misses her home. \n\n......\n......My goodness, how long have I been here?! \nI shouldn't be spacing out like that! Who has the time to sit around leisurely, playing a bland country tune? \nWell, whatever. \nThere's not much time left, I've gotta find Miss Valentine, and fast!",
+        "zh": "……风声。\n我能听到风的声音变了。\n刚刚还很安静，但是现在却变得吵闹。\n……\n有很多人……来看这一场比赛。\n我的第一场骑士竞技赛。\n和之前地下竞技场不同……这是一场正式的比赛。\n……不同？\n成为正式的感染者骑士，真的就和之前有什么不同了吗？\n……\n……快了。\n时间不多了，比赛就快要开始了。\n我……\n我知道，我会赢。\n我会赢……\n……\n\n打扰了，请问查丝汀娜·瓦伦泰小姐在吗？为您特制的新装备到了！\n咦，瓦伦泰小姐人不在吗？\n这……人从中午开始就不见了？没人知道她去了哪，现在马上就要准备上场了，人却还没有回来？\n这就难办了，第一场比赛就迟到，会给观众留下坏印象的，这对瓦伦泰小姐今后的发展可没有半点好处啊！\n而且，这里的定制品都需要她本人确认，如果她不在的话……\n咦，等一等，这是什么声音？\n嗯……这好像是，笛声？\n\n轻缓的笛声被风温柔地裹挟，被带到很远的地方。\n向着高处，向着远处。\n向着约定好要回去的那个地方，风不停地吹。\n拜托了，就将这支曲子带回去吧。\n告诉大家。\n查丝汀娜终于成为骑士了。\n不用告诉大家。\n查丝汀娜其实很想家。\n\n……\n……哎呀，这都什么时候了！\n我怎么发起呆来了，真不应该！到底是谁还这么有闲心，在这里吹这么土气的乡村小调？\n哎，不管了。\n快快，时间不多了，得赶快把瓦伦泰小姐找回来！",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_fartth",
+      "name": {
+        "en": "Fan Letters",
+        "zh": "支持者来信",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_fartth",
+      "description": {
+        "en": "To the incredible Ms. Justyna,\n\nI'm a loyal fan of yours!\n...I'm really sorry, I just don't know how to start this letter off. I've almost filled up the wastebasket with scrapped drafts at this point. In the end, I think that cliche is the only thing I can really write.\n\nThis is the first time in my life I'm writing a letter to a hero of mine. You said during an interview that you read every single letter from your supporters, and I know you wouldn't lie!\nFirst, I want to congratulate you on getting the title 'Fartooth,' it's so incredibly cool! I was there for your match with Feather Knight, the sight of you winning without any backup at all touched all of us there! It's only right you were #1 in the season!\nEver since I first saw a match of yours three years ago, I got really into you as a knight. You might not remember, but I was sat in the front row of the grandstand, and the knight who was against you slipped up with a move and almost hurt the audience, but then you blocked it even though you were injured. Among the people you saved, the ones behind you, were me and my family.\nEver since then, you've been an inspirational figure for me. You're a true knight, Ms. Justyna, I'm surer of that than anything. I was still a student then, and if I studied good enough and my grades got better, my family would reward me by taking me to see your matches. I could say you were the one who gave me the drive to keep heading forwards.\n\nI want to become a glorious knight like you so much! Knights would never point their arrowheads at the defenseless, and I don't believe you'd ever use violence against any Knightclub's fans!\nThe 'Fartooth' Knight Justyna I know doesn't concede even when she's hurt, and never talks down to other knights even in the arena. I, along with your other supporters, don't believe any of that slander against you, so please don't take those irresponsible newspaper reports to heart! We're all looking forward to you returning as soon as you can!\nAlso, when I heard you say you wanted to start your own Knightclub, I was over the moons! You always ran solo in the past, and sometimes you looked sort of lonely, so it made me and a lot of other fans really worried... In the end, whether you start your own Knightclub, join another one, or stay active as an independent knight, we'll always support you as long as it's your decision, Ms. Justyna!\nWe hope everything goes well for you!\n\nYour faithful supporter",
+        "zh": "敬爱的查丝汀娜小姐：\n\n我是查丝汀娜小姐的忠实追随者！\n……非常抱歉，我实在不知道该怎么写这开头的第一句话，废掉的信纸已经快把纸篓塞满，最终还是只能写下这种没有新意的开场白。\n\n这是我人生中头一次给崇拜的对象写信，您曾在记者采访时说过，您会阅读每一位支持者的来信，我完全相信您！\n我想要在这里先祝贺您得到了“远牙”这个称号，真的非常帅气！您和飞羽骑士的那场比赛我就在现场，最后您不靠支援就取胜的姿态打动了所有人，您拿到赛季第一是实至名归！\n自从三年前头一次看到查丝汀娜小姐的比赛，我就喜欢上了作为骑士的查丝汀娜小姐。您或许不记得，当时我坐在看台的前排，您的对手骑士出招失误，险些伤到观众，是您不顾受伤拦下了危险。在您身后被您救下的人中，就有我和我的家人。\n从那时起，您就已经是我的憧憬对象，查丝汀娜小姐是真正的骑士，我无比确信这一点。那时我还是一名学生，只要我努力学习成绩进步，家人就会奖励我，带我来看您的比赛，可以说，是您给了我不断前进的动力。\n\n我多想像您一样成为一名光荣的骑士！骑士的箭锋绝不会指向手无寸铁的人，我决不相信查丝汀娜小姐会暴力袭击其他骑士团的粉丝！\n我认识的“远牙”骑士查丝汀娜，就算受伤也不会认输，在赛场下也从不对其他骑士恶言相向。我，还有其他支持者都不会相信那些污蔑您的言辞，请您也不要在意那些不负责任的报纸上的报道，我们都期盼您能够尽快回来！\n以及，听到查丝汀娜小姐说想要组建自己的骑士团，我非常高兴！您过去总是独来独往，有时看起来会有些孤独，这让我和其他追随者都很担忧……不论如何，不管您最终决定是要组建自己的骑士团，还是加入其他骑士团，或者继续作为独立骑士活动，只要是查丝汀娜小姐的决定，我们都会一直支持！\n希望您一切顺利！\n\n您忠实的支持者",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30115",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

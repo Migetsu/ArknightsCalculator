@@ -1,0 +1,1498 @@
+{
+  "id": "char_248_mgllan",
+  "name": {
+    "en": "Magallan",
+    "zh": "麦哲伦",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RL06",
+  "rarity": 6,
+  "class": "SUPPORT",
+  "subclass": "summoner",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "Support",
+    "Slow",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Magallan, the Commissioner of Rhine Labs, is glad to welcome new adventures.",
+    "zh": "莱茵生命外勤专员麦哲伦，随时准备迎接新的探险。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Many things can happen when she presses that button, but she swears that explosions aren't one of them.",
+    "zh": "她摁下按钮后会发生很多事情，但其中绝对不包括爆炸。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-6",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 495,
+            "atk": 211,
+            "def": 60,
+            "magicResistance": 15,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 670,
+            "atk": 302,
+            "def": 87,
+            "magicResistance": 15,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 7
+        },
+        {
+          "id": "30032",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 670,
+            "atk": 302,
+            "def": 87,
+            "magicResistance": 20,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 871,
+            "atk": 403,
+            "def": 116,
+            "magicResistance": 20,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-1",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "30084",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 871,
+            "atk": 403,
+            "def": 116,
+            "magicResistance": 20,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1103,
+            "atk": 469,
+            "def": 140,
+            "magicResistance": 20,
+            "cost": 12,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_mgllan_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 1.6,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 1.7,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 12,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 1.8,
+            "attack@sluggish": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 13,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 1.9,
+            "attack@sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 14,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2,
+            "attack@sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2.1,
+            "attack@sluggish": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 16,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2.2,
+            "attack@sluggish": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 17,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2.3,
+            "attack@sluggish": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 18,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2.4,
+            "attack@sluggish": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "High-Efficiency Freezing Module",
+            "zh": "高效制冷模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: <$ba.sluggish>Slows</> enemies within the Attack Range of this unit and drones every <@ba.vup>{attack@interval}</> seconds for <@ba.vup>{attack@sluggish}</> seconds\nActive: Instead of <$ba.sluggish>Slowing</>, <$ba.root>Binds</> targets for <@ba.vup>{attack@frozen_duration}</> seconds. <@ba.rem>Retreats all drones after this effect ends</>",
+            "zh": "被动效果：使自身和无人机攻击范围内的敌方单位每<@ba.vup>{attack@interval}</>秒<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒\\n主动开启：<$ba.sluggish>停顿</>变为<$ba.root>束缚</><@ba.vup>{attack@frozen_duration}</>秒，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "attack@interval": 3,
+            "attack@frozen_duration": 2.5,
+            "attack@sluggish": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "30083",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30034",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mgllan_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 65
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 70
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 85
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 90
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 100
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 115
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 130
+          }
+        },
+        {
+          "name": {
+            "en": "Laser Mining Module",
+            "zh": "激光开采模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on melee tiles, dealing single-target Arts damage. \nActive: Magallan and her drones gain <@ba.vup>+{attack_speed}</> ASPD, and drones gain <@ba.vup>AoE</> attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在近战位，进行单体法术攻击\\n主动开启：麦哲伦和她的无人机攻击速度<@ba.vup>+{attack_speed}</>，无人机变为<@ba.vup>群体</>攻击，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 25,
+          "blackboard": {
+            "attack_speed": 150
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_mgllan_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.65
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Armed Combat Module",
+            "zh": "武装打击模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive: Drones may be deployed on ranged tiles, dealing AoE physical damage. \nActive: Magallan and her drones gain <@ba.vup>+{atk:0%}</> ATK, and <@ba.vup>increases</> the AoE of drones' attacks. <@ba.rem>Retreats all drones after this effect ends.</>",
+            "zh": "被动效果：无人机可以部署在远程位，进行群体物理攻击\\n主动开启：麦哲伦和她的无人机攻击力<@ba.vup>+{atk:0%}</>，无人机攻击的爆炸范围<@ba.vup>扩大</>，<@ba.rem>技能结束时回收所有无人机</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30041",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "30033",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Support Drone - Soaring Dragon",
+            "zh": "支援无人机·龙腾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use up to 3 drones that do not block (max 3 deployed at once). Drones' effect changes based upon Skill.",
+            "zh": "可以使用3个不阻挡敌人的无人机（最多同时部署3个），功能随技能选择而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Support Drone - Soaring Dragon",
+            "zh": "支援无人机·龙腾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use up to 4 drones that do not block (max 3 deployed at once). Drones' effect changes based upon Skill.",
+            "zh": "可以使用4个不阻挡敌人的无人机（最多同时部署3个），功能随技能选择而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Support Drone - Soaring Dragon",
+            "zh": "支援无人机·龙腾",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can use up to 5 drones that do not block (max 3 deployed at once). Drones' effect changes based upon Skill.",
+            "zh": "可以使用5个不阻挡敌人的无人机（最多同时部署3个），功能随技能选择而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 5
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Optical Refraction Accessories",
+            "zh": "光学折射配件",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Drones gain <$ba.invisible>Invisibility</> for 12 seconds after deployment (cannot be targeted by enemy ranged attacks)",
+            "zh": "无人机在部署后的12秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Refraction Accessories",
+            "zh": "光学折射配件",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Drones gain <$ba.invisible>Invisibility</> for 14 <@ba.talpu>(+2)</> seconds after deployment (cannot be targeted by enemy ranged attacks)",
+            "zh": "无人机在部署后的14<@ba.talpu>（+2）</>秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Refraction Accessories",
+            "zh": "光学折射配件",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Drones gain <$ba.invisible>Invisibility</> for 20 seconds after deployment (cannot be targeted by enemy ranged attacks)",
+            "zh": "无人机在部署后的20秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Optical Refraction Accessories",
+            "zh": "光学折射配件",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Drones gain <$ba.invisible>Invisibility</> for 22 <@ba.talpu>(+2)</> seconds after deployment (cannot be targeted by enemy ranged attacks)",
+            "zh": "无人机在部署后的22<@ba.talpu>（+2）</>秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 300,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_mgllan",
+      "name": {
+        "en": "Magallan's Badge",
+        "zh": "麦哲伦证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Magallan has demonstrated a remarkable aptitude in combat with the deployment and control of her self-developed drones.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Supporter Operator during field operations to exercise Summoner responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员麦哲伦擅长操纵自行研发无人机模块参加作战\n根据外勤部门决议\n在外勤任务中划分为辅助干员，行使召唤师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_mgllan",
+      "name": {
+        "en": "Drone Control Module.P",
+        "zh": "专业无人机操作模块",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_mgllan",
+      "description": {
+        "en": "First expedition to the endless icefield, 25 days from the closest research station on foot:\nI just dug a tree branch out of the snow.\nThe exact data is in the data sheets, but to briefly describe it, I guess it's about as long as my arm.\nI can conclude it went through a really long petrification process. The one I'm holding must have had 90% of its original volume dissolved away before its petrification.\nWhen you think of it this way, it must have been a very big chunk of wood!\nI guess... it was probably as thick as the trunk of that tree the other day?\nIn that case, maybe the whole tree was as big as the Rhine Lab headquarters building!\nWhoa, that's amazing!\nIt doesn't seem very heavy; I'll try to take it back whole. I only hope that the Ursus police at the border aren't too hard on me.\n\nSecond expedition to the endless tundra, 28 days from the closest research station on foot:\nI'm taking shelter from the snowstorm outside. It doesn't look like I'll get anywhere today, so I'll stay here and try to rest up.\nI'm all out of drones, too. If I'd kept to the plan, I would've gone back as soon as I lost one of my drones.\nIn normal circumstances, I should have theoretically been able to last a month and a half in the tundra, but the situation here is way too brutal. A month is about as long as I can make it...\nIf I don't find anything once the snowstorm calms down a little, I'll—\nHey, you guys know what I found?!\nA field of flowers right inside the cave!\nThese plants get their water and nutrients from the ice here. They don't grow very tall, but they look like they're doing very well.\nI am taking an entire plant back in a culturing jar. I'll do some preliminary analysis back at the research station, and then bring it back to Rhine Lab.\nI'll try to keep going for two more days once the storm is over, then I'll go back.\nIf I act on impulse again, it might end up killing me.\n\nSecond expedition to the endless tundra, 30 days from the closest research station on foot:\nThere is an entire block of Originium ice crystal standing in front of me. Could be three times as tall as me!\nIt's a whole diamond shaped block, so if it wasn't for the snowstorm here, it'd be reflecting light in all directions. That'd look so cool!\nIt's a shame to just let it sit here among the pile of rocks and snow.\nI've marked down its rough location and taken a picture. I hope I'll be able to find it again next time by following the locator beacon.\nGiven the implications of the crystal being in one intact piece, I couldn't possibly have taken any samples from it. Thankfully, there are more than enough shards lying around that I can bring back to analyze. They'll last me a whole year.\nThat's the expedition's objective accomplished. Now it's time to go home!\nI wonder if I'll come across that police officer I met last time.\n\nThird expedition to the endless tundra, 15 days from the closest research station on foot:\nI'm taking a different route this time just like HQ suggested.\n15 days into this route, however, I got stopped!\nIt's an official Messenger from Ursus.\nHe told me there's a restricted military area up ahead and I shouldn't go any further.\nI showed him the expedition permit I got from the Ursus government, their confirmation of my expedition route, as well as the commission letter for me to map this area to show that I have a right to come through here.\nHe wouldn't listen and ordered me to turn back, even claiming he has the authority to cancel these documents on the spot.\nThe words he used had a really strict tone to them, but the way he said it sounded like he was just asking me to leave.\nI have a feeling that whatever lies ahead is definitely worth probing, but I also know it's not a good idea to pick a fight with a foreign official while I'm on an expedition in their territory.\nI told him I understood and gave him a pack of scalecis jerky.\nHe calmed down right away, and said he'd be willing to help me out on my way back.\nAccording to the forecast, there will probably be another huge snowstorm the next two days, so I really welcome his help.\nI may not have been able to complete my survey's objective this time, but the results I have aren't so bad.\nWhat's more, I made myself a new friend.\nThere's some black snow falling from the sky. Is there going to be a Catastrophe soon?\nI picked up a snowflake while he wasn't looking.\nI hope I'll find something interesting out of this.",
+        "zh": "第一次无尽冰原探险，距最近科考观测站二十五天路程：\n我刚刚从雪地里挖出来了一根树枝。\n具体数据附在数据表里，简单形容一下的话，大概和我手臂差不多长。\n能够确定它的硅化过程持续了非常久，现在我手上的这一支，在完全硅化前至少被分解了90%。\n这样想的话，它原本该是多粗一根枝条呀！\n大概有……前几天那棵孤树主干的粗细？\n这样的话，整棵树会不会和莱茵生命总部大楼一样高？！\n呜哇，这可太惊人了。\n它还不算沉，我会试着把它完整带回去，希望边检的乌萨斯警官先生不要太为难我。\n\n第二次无尽冰原探险，距最近科考观测站二十八天路程：\n我正在洞窟里避难，外面暴风雪肆虐，今天可能没法前进了，就先在这里好好休整一下吧。\n备用无人机已经全部用上了，按照计划，再有一架无人机损坏，我就该返回了。\n理论上，我的探索极限是向冰原内走一个半月，可惜实际情况太残酷啦，一整个月是极限了……\n等暴风雪过去，再没有什么发现，我就该\n嗨！你们知道我发现了什么吗？！\n一个花田，就在洞窟里！\n这些植物从冰层中汲取水分和养料，虽然长得不高，但势头很良好。\n我取下了一整株植物放在培养罐里，在科考站进行初步的性质分析，然后带回莱茵。\n等暴风雪停了，再往前走两天吧，就走两天，然后就该返回了。\n一时冲动可是会要命的。\n\n第二次无尽冰原探险，距最近科考观测站三十天路程：\n现在我面前有一整块源石冰晶，大概有三个我那么高！\n还是完整的棱形，如果这里不刮暴风雪的话，我一定能看到它反射光线的奇景！\n唉，它就那样横在乱石和风雪里，太可怜了。\n已经对这里的具体方位做了标记，目的物进行了拍摄，希望我下次再来的时候还能循着信标找到它。\n考虑到冰晶完整性所蕴含的实际意义，我没办法直接从上面采取样本，万幸的是，地上散落着许多碎片，数量充足，把它们带回去就足够做一年的分析啦。\n这次的勘察目标算是达成了，准备回家咯！\n不知道还能不能遇到上一次的警官先生呢？\n\n第三次无尽冰原探险，距最近科考观测站十五天路程：\n根据总部的提议，这次调整了行进方向。\n但在走了十五天之后，居然被人拦下来了！\n是一位乌萨斯的官方信使。\n他对我说前方是军事管制区，示意我不要再继续前进了。\n我向他出示了乌萨斯政府的探险许可书、探险路线确认书以及冰原地图绘制委托书，告知他我有通过这里的权利。\n但他还是执拗地勒令我返回，声称自己拥有更高的授权来暂时撤销这些文书的有效性。\n他的措辞很严厉，但是语气中带着些恳求。\n我有预感，前面一定有非常值得探索的东西，但我也要明白，在他国领土上探险时与公务人员冲突是不太明智的。\n我向他表示了理解，送了他一包鳞兽干。\n他也马上放下了架子，表示愿意在我回程时提供一些帮助。\n按照预报，明后两天这里可能会有大规模暴风雪，能在这时候得到帮助，实在是太好不过了。\n虽然这回没能达成勘探目标，但剩下的成果也还算是喜人。\n最重要的是，又在这里交到了新朋友。\n天上下起了黑色的雪，是要发生天灾了吗？\n趁他不注意，我收集了一朵雪花。\n今后能从中发现一些有趣的东西就好了。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_mgllan",
+      "name": {
+        "en": "Instructional Soaring Dragon Drone",
+        "zh": "教学用龙腾无人机",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_mgllan",
+      "description": {
+        "en": "I still remember how my first university lecture ended up with us wandering the school building.\nWe were in the classroom at first. Our professor had an amazing reputation, so there we were, waiting for him to enter, introduce himself, and begin teaching—that was a 'class' as we knew it.\nBut once our 'professor' came in, he told us to pack our stuff and follow him. All the students did as they were told, and I was no exception.\nThe whole way, he was telling us about the makeup of Columbia's geology, the manufacturers that made prospecting machines, and various archeological findings, but every time we arrived at a statue or a bust or the like, he'd stop to introduce the next of these historical greats and school alumni that had made outstanding contributions to Columbian expeditionary causes.\nFinally, once he'd made a full circle and brought us back to the classroom, the course's real professor decided to show up. He sent off the old guy, introduced himself to everyone, and then announced that his first class was over.\nYou should've heard my classmates whispering. Was it a prank? Was it some kind of school tradition? Some figured the old schmuck went out of his way to put it on, with all the power he had.\nNot a single person cared about anything he'd just told us.\nNot a one.\n......\nOne day, I was eating lunch by a little brook on campus when I came across the man by accident. Moreover, he seemed to recognize me from back then, and mentioned how I was taking notes so diligently.\nSo I asked him, was he a professor at the school? And his response was no.\n'I just give a little dirty money to the place,' he told me.\nIt was only then that I realized the man in front of me was on the school's Board of Governors.\nHe said he'd retired by now, handed all his property down to his children, and had nothing to do but occasionally come to the school and stroll around.\nHe asked me what I planned to do in future, and I said I was going to be a scientific explorer. 'Nice. You do that for a couple of years, then you retire as a senior consultant for some non-profit environmental org. Good plan, young lady.'\nI said I planned to remain an explorer, until I was physically unable to. It seemed the moment I finished saying that, something in his eyes lit up.\n'Then I wish you luck, explorer. Once you get results... remember to come back, you hear? Tell the next generation the story of their predecessors.'\nThen he left, just like that, and we never crossed paths again.\nBefore I actually took on this career, I thought the whole thing was just a governor giving a student some words of encouragement. However, now I totally understand the hopes, and the expectations, that those words entailed.\nNobody ever made a scientific achievement in one shot. People like to only remember talent, and attribute everything to miracle-workers.\nBut history is very, very long, and filled with all sorts of people giving everything they've got, all so one subject or another isn't forgotten and left behind.\nOur lives are finite, and the new generation's always learning from the ground up. It falls to us to keep accumulating and synthesizing, endlessly, to lay the bricks for those who follow us.\nI don't know if my findings will be enough to change this land.\nI just know that whatever I discover will be passed on to whoever comes next.\nThey won't need to fall where I fell, or bleed where I bled.\nThey can go further than I did, see further ahead.\nEven just the tiniest step can be enough to make new history.\nThat's the day I look forward to.\n—Magallan, foreword to the Instructional Soaring Dragon Drone development files",
+        "zh": "我还记得，大学的第一堂课，是在教学楼里闲逛着上完的。\n我们原本坐在教室里，等着那位名声赫赫的老师进来，自我介绍，然后开始授课——在我们认知中，“上课”是这样的。\n但那位“教授”进来之后，便让我们收拾好东西跟着他走。于是，他的学生们照办了，我也不例外。\n一路上，他和我们聊着哥伦比亚的地质构造、勘探器械生产厂商、考古发现，但每当走至一座雕像或一幅人像前时，他便停下脚步，为我们介绍这些为哥伦比亚科考事业做出过杰出贡献的伟人或校友。\n最终，他兜完一圈，把我们带回教室时，这门课真正的老师才出现在教室门口。他送走了老先生，向大家做了自我简介，随后宣布第一节课下课。\n我听到同学们窃窃私语，有人说这是恶作剧，有人说这是学院传统，还有人猜测可能是那位高权重的老家伙刻意为之。\n没有人在意他之前说过的内容。\n一个都没有。\n……\n某一天，我在校园的小河边吃午饭，意外遇上了那位老先生，他似乎还认得我，说我那时笔记记得很认真。\n我问他是学院里的教授吗？他说不是。\n“我只是给这里出了点臭钱。”他是这么和我说的。\n就在那时候我才意识到，我眼前的这个人，是学校的校董。\n他说自己已经退休了，家业也都交给子女打理，没什么事情做，所以偶尔会来学校逛逛。\n他问我以后准备做什么，我说科考队员。“这份活做个几年，然后去非盈利环保组织做资深顾问，小姑娘规划得不错。”\n我说我想要一直做下去，直到自己身体不允许为止。在我说完这句话的时候，老先生的眼睛似乎亮了一下。\n“那就祝你好运，科考队员。等你业有所成，记得回来给后辈们讲讲先人的故事。”\n他就这样离开了，而我们的生活再无交集。\n在我真正从事这份事业前，我认为那只是老校董对学生的鼓励。而现在，我清楚地明白了那些话语中蕴含的期盼。\n所有学科的成就都不是一蹴而就的，人们只记得天才，将一切归功于创造奇迹的人。\n然而历史很漫长，许多人付出一切，只是为了确保一门学科不被人遗忘。\n我们的生命是有限的，新生代总是要从头学起，而我们所能做的，便是不断积累，不断总结，为后人铺上砖石。\n我不知道自己的发现能不能够改变这片大地。\n我只知道，我的所学所探，将来是要传承给后人的。\n这样他们便不用踩我摔下去的坑，流我曾流过的血。\n他们能够比我多走一步，多看一眼前方。\n或许就是这一小步，便能够创造新的历史。\n我期待那一天的到来。\n——麦哲伦，写在教学用龙腾无人机的研发档案前",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

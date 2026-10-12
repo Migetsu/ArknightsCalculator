@@ -1,0 +1,1041 @@
+{
+  "id": "char_344_beewax",
+  "name": {
+    "en": "Beeswax",
+    "zh": "蜜蜡",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R147",
+  "rarity": 5,
+  "class": "CASTER",
+  "subclass": "phalanx",
+  "faction": "sargon",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Beeswax, shaman priestess from the Sargon Desert, brings her blessings from the golden sands.",
+    "zh": "萨尔贡沙漠上的部族司祭蜜蜡，金色沙原中寄寓她的祝福。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Allowing one to touch the horns is a symbol of intimacy, trust, and respect between the two parties.",
+    "zh": "允许触碰犄角，代表双方之间的亲昵、信赖，与尊重。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "x-4",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1052,
+            "atk": 378,
+            "def": 131,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1315,
+            "atk": 505,
+            "def": 153,
+            "magicResistance": 15,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1315,
+            "atk": 505,
+            "def": 153,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1644,
+            "atk": 632,
+            "def": 178,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "x-1",
+      "evolveCost": [
+        {
+          "id": "3253",
+          "count": 3
+        },
+        {
+          "id": "30064",
+          "count": 5
+        },
+        {
+          "id": "30073",
+          "count": 18
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1644,
+            "atk": 632,
+            "def": 178,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2005,
+            "atk": 735,
+            "def": 205,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_beewax_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Growing Sandstorm",
+            "zh": "沙暴扩散",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range <@ba.vup>expands</>, ATK <@ba.vup>+{atk:0%}</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-2",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.6
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_beewax_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "stun": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "stun": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 2.7,
+            "stun": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian Obelisk",
+            "zh": "守卫尖碑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Summons an Obelisk upon a melee tile within this unit's Attack Range. When the Obelisk appears, it deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "在攻击范围内的近战部署位召唤一个可以阻挡敌人的方尖塔，方尖塔在出现时会对附近的敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，并使其<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk_scale": 3,
+            "stun": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 2
+        },
+        {
+          "id": "31013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Shambhala's Sanctuary",
+            "zh": "沙原的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, restores 2.5% Max HP per second",
+            "zh": "技能未开启时，每秒恢复2.5%的最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.025
+          }
+        },
+        {
+          "name": {
+            "en": "Shambhala's Sanctuary",
+            "zh": "沙原的庇护",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active, restores 4% Max HP per second",
+            "zh": "技能未开启时，每秒恢复4%的最大生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.04
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 70,
+        "def": 20
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_beewax",
+      "name": {
+        "en": "Beeswax's Badge",
+        "zh": "蜜蜡证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_beewax",
+      "description": {
+        "en": "Operator Beeswax has demonstrated a remarkable aptitude for effecting well-timed Arts casualties on a large scale.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Phalanx Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员蜜蜡擅长适时造成大规模法术杀伤\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使阵法术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_beewax",
+      "name": {
+        "en": "'Beeswax's Blessing'",
+        "zh": "“司祭的祝福”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_beewax",
+      "description": {
+        "en": "When a Rhodes Island squad rescued the slender Elafia girl of about eleven or twelve from slave traffickers, she did not cry nor make any noise. Nor respond to any questions pointed at her. A considerable headache for the squad's strait-laced captain, who promptly placed the child in Beeswax's care and left to pursue the fleeing slavers.\nThe captain in all his extroversion likely felt awkward about it, but Beeswax did not. Once she realized the child had no intention of speaking, she turned her attention instead to the jungle, fresh and verdant.\nAfter stepping away for a while, she happened to notice the girl staring at her horns. The two made eye contact, the girl immediately averted her gaze. They repeated this a few times, and then Beeswax moved to speak:\n'You can touch them, if you're curious.'\nThe girl's eyes opened wide.\n'I'm not lying.'\nShe hesitantly stood up, approached Beeswax, and cautiously, nervously reached her arm out, as if a timid fowl was on her hand. She gave the lightest touch.\n'So pretty...'\nSomething Beeswax had heard from many a horned or antlered operator before. It embarrassed and flustered her at first, but she learned in time to reply with a 'yours are wonderful, too,' as was polite.\nBe that so, the sight of the Elafia rescued only moments ago from slavers—soiled, undernourished, even missing a chunk from her antlers—drove a new response to her mind.\n'I can make yours just as pretty. Okay?'\nMarch's spring breeze still carried a chill. The young Elafia sat on the ground. Beeswax cleared the tangle of dirty cotton from her antlers, then took out a care kit. A gauze to wipe the stains away, then a soft brush to clean the dust out from the crevices where the bone forked.\nThe Elafia lowered her head, screwing her eyes shut, as if she were taking part in a solemn ceremony of sorts.\nOnce the cleaning was over, Beeswax took a sanding block and a small file and worked patiently at the dried-out keratin of the Elafia's antlers, before applying a layer of essential oils with due care. All done, she brought out a miniature length of ribbon from her kit, and tied a small bow upon the antler's break.\n'There we are.'\nBeeswax passed the girl a pocket mirror.\nThe girl shied from looking at first, but eventually, she stole a glance, before finally fixing her gaze on it, eyes wide open. A blush bloomed across her sapped face, beyond herself with excitement.\nBeeswax stood up and gave a stretch, before hurriedly remembering the last step had been left undone.\nShe gave her head a light rapping, and drew from her pocket a tiny, golden stone, wrapped tightly in thread. She tied it to the antler left unbroken, working the cord as she recited softly to the Elafia:\n'May the gods bless you. May you be blessed to live in neither bondage nor hunger. May you be blessed to live as do the burning sun, the storms, and the golden plains of sand, in eternal beauty and strength.'",
+        "zh": "罗德岛小队从奴隶贩子手中救出这个十一二岁的瘦小埃拉菲亚时，她不哭也不闹，别人问话也不回答。直性子的队长对此感到头疼，于是把孩子交给蜜蜡照顾，自己追击逃离的奴隶贩子去了。\n这种时候，像队长那样外向的人恐怕会觉得尴尬，但蜜蜡不觉得。她发觉孩子没有说话的意思之后，就把注意力放到了新绿萌蘖的密林上。\n走了一会儿神，她突然发觉对方一直在看自己的角。两人视线相碰，孩子立刻别开目光。这样的过程重复了几次，于是蜜蜡开了口：\n“如果觉得好奇，可以摸摸看的。”\n孩子瞪大了眼睛。\n“真的。”\n孩子畏畏缩缩地站了起来，走近蜜蜡，小心翼翼地伸出手，仿佛上面停着一只胆小的羽兽，轻轻碰了一下。\n“好漂亮……”\n蜜蜡听许多有角的干员说过这句话。她一开始会因此害羞和慌乱，后来就学会了礼貌地回答“你的也很不错”。\n然而，看到这个刚从奴隶贩子手中救出的小埃拉菲亚脏污、干枯，甚至有一根断了一截的角，她想到了另一种回答。\n“我帮你把角变得一样漂亮，好不好？”\n三月的春风尚嫌寒冷，年幼的埃拉菲亚席地而坐。蜜蜡替她除掉角上缠绕着的脏棉絮，然后找出随身携带的护理套装，用软布轻轻擦掉上面的脏污，用软刷刷去藏在分叉中的灰尘。\n埃拉菲亚低着头，紧紧闭着眼睛，仿佛在参加某种隆重的仪式。\n清洁工作完成后，蜜蜡耐心地用磨砂条和小矬子磨去埃拉菲亚角上干枯的角质，细细涂上一层精油。一切结束之后，她在套装里找出一小截缎带，在断角处系了一个小小的蝴蝶结。\n“好了。”\n蜜蜡递给孩子一面小镜子。\n孩子先是不肯睁眼，然后做贼似的偷瞟了一眼，最后双目圆睁，枯瘦的脸上泛起潮红，兴奋得手足无措。\n蜜蜡站起身，伸了一个懒腰，忽然想起，还剩最后的步骤没有做。\n她轻轻敲了敲自己的头，从怀中找出一枚小小的、金色的石头，用细绳绑好，系在埃拉菲亚未断那一侧的角上，一边系，一边轻轻地念诵道：\n“愿神灵祝福你，祝福你从此远离奴役与饥饿，祝福你如同烈阳、风暴和金色的沙原一般，永远美丽而坚强。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31044",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31054",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

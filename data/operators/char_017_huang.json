@@ -1,0 +1,1523 @@
+{
+  "id": "char_017_huang",
+  "name": {
+    "en": "Blaze",
+    "zh": "煌",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RE41",
+  "rarity": 6,
+  "class": "WARRIOR",
+  "subclass": "centurion",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Blaze, Rhodes Island's most fired-up Operator, will spread her enthusiasm like a wildfire.",
+    "zh": "罗德岛最热情的精英干员，煌，将在任何地方散播她的热情。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Please, it's okay to dial it down a bit...",
+    "zh": "拜托，有时候实在是太热了。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1286,
+            "atk": 308,
+            "def": 156,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1649,
+            "atk": 429,
+            "def": 224,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1649,
+            "atk": 429,
+            "def": 224,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2115,
+            "atk": 581,
+            "def": 303,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "30064",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2115,
+            "atk": 581,
+            "def": 303,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2821,
+            "atk": 765,
+            "def": 370,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_huang_1",
+      "iconId": "skcom_powerstrike[3]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.05
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.15
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.25
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.45
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.65
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike γ",
+            "zh": "强力击·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_huang_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 90,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 89,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 88,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 85,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 84,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 83,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.65,
+            "def": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "def": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 77,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8,
+            "def": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.9,
+            "def": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Chainsaw Extension Module",
+            "zh": "链锯延伸模块",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and Attack Range <@ba.vup>increases</>\n<@ba.rem>Unlimited duration</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击距离<@ba.vup>加长</>\\n<@ba.rem>持续时间无限</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "2-2",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1,
+            "def": 0.35
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_huang_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.3,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.35,
+            "def": 0.35,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.4,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.45,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.5,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.55,
+            "def": 0.55,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 19,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 0.6,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.4
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 21,
+          "blackboard": {
+            "atk": 0.65,
+            "def": 0.65,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.6
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.7,
+            "def": 0.7,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 3.8
+          }
+        },
+        {
+          "name": {
+            "en": "Boiling Burst",
+            "zh": "沸腾爆裂",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Upon skill activation, ATK and DEF gradually increases to <@ba.vup>+{atk:0%}</>, and attacks slice all enemies in front of this unit. When this skill ends, this unit loses <@ba.vdown>{hp_ratio:0%}</> HP and deals <@ba.vup>{damage_by_atk_scale:0%}</> ATK as Physical damage to all surrounding enemies",
+            "zh": "技能开启后，攻击力和防御力逐渐增至<@ba.vup>+{atk:0%}</>并对前方一格内的敌方单位进行切割。技能结束时对附近所有敌人造成此时攻击力<@ba.vup>{damage_by_atk_scale:0%}</>的物理伤害，自己流失<@ba.vdown>{hp_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 10,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.8,
+            "def": 0.8,
+            "hp_ratio": 0.25,
+            "damage_by_atk_scale": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30061",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31013",
+          "count": 4
+        },
+        {
+          "id": "30043",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Emergency Defibrillation",
+            "zh": "紧急除颤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's HP falls beneath 25%, restores 50% HP (one time only) and prevents HP from falling under 50% for 3 seconds",
+            "zh": "在生命值低于25%时，仅一次回复50%的生命值并在3秒内使生命值不低于50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.25,
+            "huang_t_1[heal].hp_ratio": 0.5,
+            "huang_t_1[lock].min_hp_ratio": 0.5,
+            "huang_t_1[lock].duration": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Defibrillation",
+            "zh": "紧急除颤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's HP falls beneath 25%, restores 50% HP (one time only) and prevents HP from falling under 50% for 4<@ba.talpu>(+1)</> seconds",
+            "zh": "在生命值低于25%时，仅一次回复50%的生命值并在4<@ba.talpu>（+1）</>秒内使生命值不低于50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "hp_ratio": 0.25,
+            "huang_t_1[heal].hp_ratio": 0.5,
+            "huang_t_1[lock].min_hp_ratio": 0.5,
+            "huang_t_1[lock].duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Defibrillation",
+            "zh": "紧急除颤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's HP falls beneath 25%, restores 50% HP (one time only) and prevents HP from falling under 50% for 6 seconds",
+            "zh": "在生命值低于25%时，仅一次回复50%的生命值并在6秒内使生命值不低于50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_ratio": 0.25,
+            "huang_t_1[heal].hp_ratio": 0.5,
+            "huang_t_1[lock].min_hp_ratio": 0.5,
+            "huang_t_1[lock].duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Defibrillation",
+            "zh": "紧急除颤",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's HP falls beneath 25%, restores 50% HP (one time only) and prevents HP from falling under 50% for 7<@ba.talpu>(+1)</> seconds",
+            "zh": "在生命值低于25%时，仅一次回复50%的生命值并在7<@ba.talpu>（+1）</>秒内使生命值不低于50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "hp_ratio": 0.25,
+            "huang_t_1[heal].hp_ratio": 0.5,
+            "huang_t_1[lock].min_hp_ratio": 0.5,
+            "huang_t_1[lock].duration": 7
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Harsh Training",
+            "zh": "严酷训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains <$ba.buffres>status resistance</> after being deployed for 15 seconds",
+            "zh": "在战场停留15秒后获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "one_minus_status_resistance": -0.5,
+            "interval": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Harsh Training",
+            "zh": "严酷训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains <$ba.buffres>status resistance</> after being deployed for 12 <@ba.talpu>(-3)</> seconds",
+            "zh": "在战场停留12<@ba.talpu>（-3）</>秒后获得<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "one_minus_status_resistance": -0.5,
+            "interval": 12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +28",
+        "zh": "攻击力+28",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60,
+        "def": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_huang",
+      "name": {
+        "en": "Blaze's Badge",
+        "zh": "煌证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_huang",
+      "description": {
+        "en": "Operator Blaze has demonstrated a remarkable aptitude for swift and fierce enemy suppression in close combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Centurion responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员煌擅长近身以凌厉攻势阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使强攻手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_huang",
+      "name": {
+        "en": "Overloaded Weapons, Overheated Heart",
+        "zh": "过载的武器与过热的心脏",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_huang",
+      "description": {
+        "en": "'...Each and every Deputy Minister entered into the Haoran Pavilion has a history with an intractable case, one that tried to elude their very investigation.'\n'No wonder you care so much about my deal, ***. It's just complicated enough for you, right? Just listening to that huge string of numbers makes my head want to explode.'\n'No. It's because of a predecessor of mine.'\n'Care to explain?'\n'The year I'd just assumed Deputy Minister duties at the Central Judicial Office, I'd been rummaging through files in light of a case I had, only to find that in order to fell a great villain, he'd employed counterfeit evidence at their impeachment. Despite him already being retired at the time, I convinced the Censor to recall him to the capital for punishment.'\n'Uh, I'm not going to weigh in on whether that was right for you to do or not. Can I ask what this has to do with me?'\n'I only later came to know that said predecessor had not retired under normal circumstances, and was frankly not in his hometown caring for his family as one would assume... He'd concealed his identity and been appointed to chase down a series of unsolved cases... At the time, he'd practically figured out the third child's whereabouts, and it was exactly then when I just so happened to learn of his early mistake—what are you doing? Stop rubbing my shoulder...'\n'You were used. Which also means, if it wasn't for this case, my dad's whole deal would've come to light forever ago, huh?! No need to pull that face, I'm not blaming you for this. All I can say is that this is a real complicated affair... Don't let me interrupt you, go on.'\n'At the time, your father had suddenly been given a transfer. He departed for Victoria; in the two weeks following my predecessor being taken into custody, the Central Judicial Office scrollery suffered an inexplicable fire one night, and all the south's documents were reduced to ash... The Tianshi are correct. As a Central Judicial Office Deputy Minister, I must investigate the truth of this matter, and to do so, I must renounce my very Central Judicial Office Deputy Minister status... hence why I must take it on now.'\n'You can't give me that again! Tell me everything you know, now. All of it. Chop-chop.'\n'No. You can't help me. These days, you are no more than 'a Victorian lodging aboard Rhodes Island.' You need only tell me what <i>you</i> know, all the things you've been through, and you can leave the rest to me.'\n'And I call that crap! The guy who died the land's most inexplicable death in a whole other country was my dad, not yours, and the woman who's dead according to her official paperwork and had to spend so long without a life except one on the move is me, not you. You may as well have never taken your mask off here, if it wasn't gonna make you any better at talking to me! Jeez, I know what you're worrying about, but there's nothing to fear! I'm an Elite Operator of Rhodes Island! Have you seen me with my chainsaw or not? Have you experienced my heat or not? I don't CARE how complicated the case is or how many enemies we've got, you think they get to burrow away in the shadows their entire lives?'\n'......'\n'...Oh, yeah, did you mention just now your predecessor chased down that third kid's whereabouts?'",
+        "zh": "“……入选浩然阁的每位少卿，都曾经手一桩让他们无从查起的棘手案件。”\n“难怪你对我的事情这么上心，***的，因为它足够复杂对吧，光听那一大串数字就让人脑袋爆炸了。”\n“不。是因为我的一位前辈。”\n“怎么说？”\n“我在刚就任大理寺少卿那年，依例翻检过往卷宗，却发现那位前辈为了扳倒一个巨奸，在弹劾对方时使用了伪造的证据。尽管他当时已经退休，我还是说服监察司将他召回京城治罪。”\n“呃，不想评价你做得对不对。请问这和我有什么关系？”\n“我此后才知道，那位前辈并非正常退休，也压根没在老家种地养老……他隐去身份，受命追查一系列悬案……他当时几乎已经追查到了第三个孩子的行踪，而就在此时，我那么刚好地知道了他早年犯的过错——你干嘛，别捏我肩膀啊……”\n“你被利用了。也就是说，要不是这档子事，我爸的事情早就水落石出了？！你别那个表情，我又没怪你。只能说这件事真的足够复杂……你接着说。”\n“当年，你父亲突然得到调迁，前往维多利亚；而在那个前辈被收监之后的半月，大理寺卷牍库某夜意外失火，整个南区的卷宗尽数化为灰烬……天师说得没错，身为大理寺少卿，必须调查这件事的真相，而要调查这件事的真相，必须放弃大理寺少卿的身份……所以我必须，将它接过来。”\n“还是那句话！把你知道的都告诉我。全部。赶快。”\n“不，你帮不上忙，你现在只是个‘寄居罗德岛的维多利亚人’，你只需要告诉我你知道的、经历的所有事情，剩下的交给我。”\n“这是什么屁话！莫名其妙死在异国他乡的是我爸不是你爸，在档案上被写成死人、那么长的时间里只能游来荡去的是我不是你。你这会儿不戴着面具了，怎么说话还是没比戴着面具时好多少！哎呀，我知道你在顾忌什么，但有什么可怕的！我可是罗德岛的精英干员，你见识过我的链锯没有，你见识过我的温度没有？就算案子再复杂、敌人再多，他们还能一辈子缩在阴影里不出来？”\n“……”\n“……欸，对了，你刚刚说，当年你那个前辈已经快追查到第三个孩子的行踪了？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_huang",
+      "name": {
+        "en": "“稍后回来”",
+        "zh": "“稍后回来”",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_huang",
+      "description": {
+        "en": "她抓起被炮弹震得发晕的外勤干员，扔到自己背后。她还想再随口叮嘱一句——\n眼前忽然变得一片漆黑。\n“她的状态很不好。”\n她听见有人在说话，那声音离她不远……她努力睁开眼，可看到的一切是那么破碎且模糊，像严重受损的录像带。\n她看到两个人相向而坐，其中一人戴着熟悉的面具，另一人则低头盯着胸前的听诊器在思索。\n那两个人为她的去留争论许久，但结果似乎让双方都不甚满意。最后，那个脖子上挂着听诊器的人走到她身边，一边记录监护仪器上的读数，一边说：\n“你可以留在这里。你会有新的名字。”\n她认出了凯尔希，但她不敢确定，自己曾经真的看见过凯尔希医生流露出那样担忧的眼神。\n也许是记忆出现了偏差，她想着——\n一阵刺耳的蜂鸣声。\n昏黄而温暖的灯光挤占了她的视野，她站在家门口，脚下的石砖比棉花糖还软。\n母亲在写信，装满信的箱子摆在母亲脚边。很久之前，母亲就用不会寄出的信代替了眼泪。\n她想去安慰母亲自己没事，但母亲好像没看见她。\n她想看清信上的内容，眼前却只冒出来许多笔画，像一幅难缠的拼图。\n她试图将那一堆笔画摆成顺眼的形状，可那些笔画却突然开始淡去，消失不见。\n不——她紧张地抓住了剩下的笔画——在哪里？她看不见自己的手——她要看见——\n她看见了窗外自己的背影，她想起来：哦，原来这是我离开家的那一天。\n随即，眼前的家坍塌成了一道伤口，她使出全力用手去按压，试图止住不停涌出的鲜血……\n有人扯动她的胳膊——放弃吧，那人已经没救了。\n可她还是用力地按着，直到伤口里长出许多黑色的石头，刺破了她的手，接着她的身上也长出了石头。\n她不在乎。她咬紧牙关，继续按压，直到那人开始咳嗽，那人说——\n“康纳郡的纺织工人会记住你为家乡做的一切，永远别向那些罪犯屈服。”\n家乡？可是，康纳郡真的是她的家乡吗？恍惚间，她看向那个被施暴者劈开脖颈的工人领袖，看到的却是不久前被炮弹震傻的外勤干员——\n“紧急除颤完成——检查瞳孔！”外勤干员紧张地喊叫着，下一秒，煌推开了他。\n“你醒了！你刚刚被另一枚——唔！”煌按着他的脑袋将他塞回了掩体里，接着从地上捡起了自己的链锯。\n“你要做什么？”外勤干员担忧地问。\n煌不屑地吐出嘴里已经凝固的血块。\n“继续战斗。”",
+        "zh": "她抓起被炮弹震得发晕的外勤干员，扔到自己背后。她还想再随口叮嘱一句——\n眼前忽然变得一片漆黑。\n“她的状态很不好。”\n她听见有人在说话，那声音离她不远……她努力睁开眼，可看到的一切是那么破碎且模糊，像严重受损的录像带。\n她看到两个人相向而坐，其中一人戴着熟悉的面具，另一人则低头盯着胸前的听诊器在思索。\n那两个人为她的去留争论许久，但结果似乎让双方都不甚满意。最后，那个脖子上挂着听诊器的人走到她身边，一边记录监护仪器上的读数，一边说：\n“你可以留在这里。你会有新的名字。”\n她认出了凯尔希，但她不敢确定，自己曾经真的看见过凯尔希医生流露出那样担忧的眼神。\n也许是记忆出现了偏差，她想着——\n一阵刺耳的蜂鸣声。\n昏黄而温暖的灯光挤占了她的视野，她站在家门口，脚下的石砖比棉花糖还软。\n母亲在写信，装满信的箱子摆在母亲脚边。很久之前，母亲就用不会寄出的信代替了眼泪。\n她想去安慰母亲自己没事，但母亲好像没看见她。\n她想看清信上的内容，眼前却只冒出来许多笔画，像一幅难缠的拼图。\n她试图将那一堆笔画摆成顺眼的形状，可那些笔画却突然开始淡去，消失不见。\n不——她紧张地抓住了剩下的笔画——在哪里？她看不见自己的手——她要看见——\n她看见了窗外自己的背影，她想起来：哦，原来这是我离开家的那一天。\n随即，眼前的家坍塌成了一道伤口，她使出全力用手去按压，试图止住不停涌出的鲜血……\n有人扯动她的胳膊——放弃吧，那人已经没救了。\n可她还是用力地按着，直到伤口里长出许多黑色的石头，刺破了她的手，接着她的身上也长出了石头。\n她不在乎。她咬紧牙关，继续按压，直到那人开始咳嗽，那人说——\n“康纳郡的纺织工人会记住你为家乡做的一切，永远别向那些罪犯屈服。”\n家乡？可是，康纳郡真的是她的家乡吗？恍惚间，她看向那个被施暴者劈开脖颈的工人领袖，看到的却是不久前被炮弹震傻的外勤干员——\n“紧急除颤完成——检查瞳孔！”外勤干员紧张地喊叫着，下一秒，煌推开了他。\n“你醒了！你刚刚被另一枚——唔！”煌按着他的脑袋将他塞回了掩体里，接着从地上捡起了自己的链锯。\n“你要做什么？”外勤干员担忧地问。\n煌不屑地吐出嘴里已经凝固的血块。\n“继续战斗。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

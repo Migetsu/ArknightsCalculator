@@ -1,0 +1,1082 @@
+{
+  "id": "char_421_crow",
+  "name": {
+    "en": "La Pluma",
+    "zh": "羽毛笔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "BV13",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "reaper",
+  "faction": "bolivar",
+  "position": "MELEE",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Guard Operator La Pluma, a complete compliance with command.",
+    "zh": "近卫干员羽毛笔，完全服从指挥。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Of course, there are times it's not necessarily a good thing.",
+    "zh": "当心，有的时候这未必是一件好事。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1120,
+            "atk": 297,
+            "def": 215,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1474,
+            "atk": 425,
+            "def": 299,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1474,
+            "atk": 425,
+            "def": 299,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1867,
+            "atk": 552,
+            "def": 384,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30054",
+          "count": 7
+        },
+        {
+          "id": "30083",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1867,
+            "atk": 552,
+            "def": 384,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2250,
+            "atk": 650,
+            "def": 452,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_crow_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Rapid Slashing",
+            "zh": "高速切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.65
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_crow_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.3,
+            "crow_s_2[atk].atk": 0.3,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.35,
+            "crow_s_2[atk].atk": 0.3,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 21,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.4,
+            "crow_s_2[atk].atk": 0.3,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>较小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.4,
+            "crow_s_2[atk].atk": 0.3,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>较小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.45,
+            "crow_s_2[atk].atk": 0.4,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>较小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 23,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.5,
+            "crow_s_2[atk].atk": 0.4,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>较小幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.55,
+            "crow_s_2[atk].atk": 0.4,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.6,
+            "crow_s_2[atk].atk": 0.4,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.65,
+            "crow_s_2[atk].atk": 0.4,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Reap",
+            "zh": "收割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces greatly</>, ATK <@ba.vup>+{atk:0%}</>. ATK increases by an additional <@ba.vup>+{crow_s_2[atk].atk:0%}</> against enemies with less than <@ba.vup>{hp_ratio:0%}</> HP",
+            "zh": "攻击间隔<@ba.vup>较大幅度缩短</>，攻击力<@ba.vup>+{atk:0%}</>，对生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人造成伤害时使该次伤害的攻击力额外<@ba.vup>+{crow_s_2[atk].atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.7,
+            "crow_s_2[atk].atk": 0.5,
+            "hp_ratio": 0.5,
+            "base_attack_time": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30043",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Into the Groove",
+            "zh": "渐入佳境",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +2 after defeating an enemy (stacks up to 8 times)",
+            "zh": "每击杀一个敌人+2攻速，最多叠加8次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 2,
+            "max_stack_cnt": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Into the Groove",
+            "zh": "渐入佳境",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +3 after defeating an enemy (stacks up to 8 times)",
+            "zh": "每击杀一个敌人+3攻速，最多叠加8次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 3,
+            "max_stack_cnt": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Into the Groove",
+            "zh": "渐入佳境",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ASPD +3 after defeating an enemy (stacks up to 12 times)",
+            "zh": "每击杀一个敌人+3攻速，最多叠加12次",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 3,
+            "max_stack_cnt": 12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +25",
+        "zh": "防御力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_crow",
+      "name": {
+        "en": "La Pluma's Badge",
+        "zh": "羽毛笔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_crow",
+      "description": {
+        "en": "Operator La Pluma has demonstrated a remarkable aptitude in dispatching enemy swathes with little to no support.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Reaper responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员羽毛笔擅长孤身一人扫清众敌\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使收割者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_crow",
+      "name": {
+        "en": "Aqua Blue Dawn",
+        "zh": "水蓝色黎明",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_crow",
+      "description": {
+        "en": "Why do people like to drink?\nWhen Rafaela first began her bartending job, the question floated to her mind from time to time.\nShe can always ask her papá when she has a question. But this is a work thing—Papá usually barely talks to her about his work, so likewise, she'd better not ask him about hers.\nAnd she doesn't want to ask her hermano about it.\nEspecially not her hermano.\nSo she'll ask a customer! People are always coming and going in Dossoles, but in just a short time, Rafaela's learned to recognize a lot of regulars, and they all like to talk to her.\nAccording to the person dancing wildly to the jota while calling her 'Rafa' and 'chica' at the top of their lungs, you drink for the color, the mouthfeel, the taste, and for a moment of joy.\nBut according to the person calling her 'Señorita Silva' while leaning on the bar counter, sluggishly lifting a hand as they sing fado, you drink just to forget and be free from your worries for a while.\n'Thanks for asking,' they add more often than not.\nRafaela isn't sure if she comprehended all these answers, but she makes sure to remember every one. It's how it should be, she thinks.\nTimes change.\nAs the landship sails, there's a regular thrumming all throughout the hold. Rafaela hasn't gotten used to this noise yet—after all, it's nothing like fowlbeast chirps or beating waves—but she doesn't react badly to it at all.\nShe's asked another operator before, and now she knows this is how it should be on the ship.\nIn the landship, music is more varied too, with lots she's never heard before.\nEven so, the person who dances wildly while calling her 'Rafa' and 'chica' at the top of their lungs is still there. When she meets this kind of person, she does as they request, and squeezes some of the sweetest fruit juice into their drinks, adding some of the most bracing syrup. But at the same time, she secretly dilutes these flavors until they make for the coolest, most reinvigorating flavors. She gives whoever's drinking it a moment of joy, and all the wake-up they need to bask in that joy.\nAnd there's still the person who calls her 'Señorita Silva' and 'Miss La Pluma' while leaning on the bar counter, sluggishly lifting a hand. When she meets this kind of person, she does as they quietly ask her, and pulls the strongest, most biting bottles from the racks to pour into their glass. But at the same time, she doesn't forget to mix in a little of the finest pedigree, sourced locally from Logroño. She watches them down a glass of bitter drink, but knows the taste left behind won't be totally astringent.\n'Thank you,' they say in approval more often than not. Sometimes she nods, but feels strange about it, so other times she just doesn't nod at all.\nOf course, this method of mixology isn't entirely described in the Dossoles Guide to Cocktails, but she makes a note of it in there herself.\nAnd she's already given the book away to someone who deserves it. She may not have it anymore, but she's learned it by heart.\nRafaela feels that this way is good.\nThis is how it should be.",
+        "zh": "为什么人们喜欢喝酒呢？\n拉菲艾拉刚开始调酒师工作的那段时间，脑中时不时会浮出这个问题。\n有问题的时候总是可以问爸爸。但这算是工作上的事情——爸爸平时很少和拉菲艾拉讲他工作上的事情，那么对等地，自己工作上的事情也不去问爸爸好了。\n也不想拿这个问题去问哥哥。\n尤其不想拿这个问题去问哥哥。\n去问问客人吧！多索雷斯人来人往，但短短时间内，拉菲艾拉已经认得许多熟客，他们都喜欢朝着自己讲话。\n在霍塔的曲声里一边狂舞一边大声喊自己“拉珐”和“姑娘”的人说，喝酒是为了色泽、口感、味道，更是为了一瞬的快乐。\n在法朵的歌声里，靠着吧台慢慢地举起手，称自己“席尔瓦小姐”的人则说，喝酒不过是为了忘掉发生的事情，是为了一时的安宁罢了。\n“谢谢你问我。”他们往往这样补充道。\n拉菲艾拉不确定自己是否理解了所有这些答案，但她把它们全都记住了。应该这样的，她想。\n时间变换。\n陆行舰行驶的时候，船舱里到处都有一种规律的嗡嗡声。拉菲艾拉还没有习惯这种声音，毕竟它和羽兽的鸣叫、波浪的拍打都不同，但她并不反感这种声音。\n她有问过其他干员，她现在知道，舰上就该是这样的。\n陆行舰上，音乐的种类也多一些，很多自己都没听过。\n不过，仍然会有一边狂舞一边大声喊自己“拉珐”和“姑娘”的人。遇到这种人的时候，就按他的要求，往饮料中挤一些最香甜的果汁、兑一些最甘冽的糖浆。与此同时，再暗暗把这些材料稀释成最清凉提神的味道。既给喝下去的人一瞬的快乐，也给他享受快乐所需的清醒。\n也会有靠着吧台慢慢地举起手，称自己“席尔瓦小姐”和“羽毛笔小姐”的人。遇到这种人的时候，就像他轻声诉说的一般，在他眼前从酒架上取下最苦、最烈的几瓶，倒在杯里。但同时，不要忘了混入一点来自洛格罗尼奥的、当地最好的琼浆。眼看着他仰一杯苦酒下肚，却知道他喉咙里留下的总不全是苦味。\n“谢谢你。”他们往往评价说。自己有时候会点点头，但感觉怪怪的，于是另外一些时候就不点头了。\n当然，这样制作饮料的方法并没有全写在《多索雷斯调酒指南》里，但她自己记进去了。\n这套书也已经送给了值得拥有它的人，不在手边，但她背下来了。\n拉菲艾拉觉得这样就好了。\n就该是这样的。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30074",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31034",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

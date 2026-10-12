@@ -72,15 +72,25 @@
   - Built idempotent download script `scripts/data/fetch-raw.ts` (`npm run data:fetch`) with exponential retries, rate-limiting pauses, payload integrity verification, schema validation, and `.cache/raw/` caching.
   - Authored offline mini-fixtures in `tests/fixtures/raw/` and 15 comprehensive unit tests in `tests/unit/data/raw-schemas.test.ts` (0 network calls in tests). Total 70 Vitest unit/component tests passing.
 
+- Implemented typed operator data transformation and normalization pipeline (`feat/data-operators`):
+  - Created strict Zod schemas and models in `shared/schemas/operator.ts`: `I18nString`, `OperatorSummary`, `OperatorDetail`, `OperatorSkill`, `OperatorTalent`, `OperatorModule`, `DataMeta`.
+  - Implemented pure localized text resolver `resolveI18nString` with fallback chain: `ru` -> `en` -> `zh` and `isMachineTranslation` tracking.
+  - Authored deterministic transformation builder `scripts/data/build-operators.ts` (`npm run data:build`):
+    - Filter rules: strictly isolates tokens (`token_`, `isToken: true`, `profession: TOKEN`), traps, test characters (`char_500_noone`, `notchar*`), and temporary IS-story dummies without catalog display numbers.
+    - Successfully normalizes 434 playable operators (376 Global, 58 CN-only) including Amiya class changes (Guard, Medic).
+    - Merges and normalizes localized names, skills, masteries, talents, potentials, and modules (`uniequip_table`).
+    - Produces lightweight list index `data/operators-index.json` (197.8 KB uncompressed, ~35 KB gzip), `data/meta.json` (0.3 KB), and 434 individual lazy detail files `data/operators/{id}.json` (18.1 MB total).
+  - Added 16 unit tests in `tests/unit/data/build-operators.test.ts` covering filter rules, fallback chains, normalization on fixtures, output determinism, and real generated dataset schema compliance. Total 86 Vitest tests passing.
+
 ## In progress
 
-- None (Raw data sources audit, Zod schemas, fixtures, and fetcher completed).
+- None (Operator normalization, schemas, builder, and data generated).
 
 ## Next
 
-- Implement data normalization scripts to transform raw tables into typed application schemas in `data/`.
-- Develop calculation core for operators, material requirements, and craft trees in `shared/`.
-- Build operator catalog and planner modules.
+- Develop calculation core for operators (level exp, promotion materials, skill mastery tree, module unlock requirements) in `shared/`.
+- Build depot inventory models and craft decomposition tree core in `shared/`.
+- Build operator catalog UI and planner UI.
 
 ## Known issues
 

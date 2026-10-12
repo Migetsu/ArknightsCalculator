@@ -1,0 +1,1080 @@
+{
+  "id": "char_149_scave",
+  "name": {
+    "en": "Scavenger",
+    "zh": "清道夫",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SW02",
+  "rarity": 4,
+  "class": "PIONEER",
+  "subclass": "pioneer",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Scavenger, executor of S.W.E.E.P, is ready for combat at any time.",
+    "zh": "S.W.E.E.P.执行人清道夫，时刻准备部署。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She can clean everything, except her own room.",
+    "zh": "能够扫清一切，唯独对自己的房间束手无策。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 693,
+            "atk": 185,
+            "def": 136,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 937,
+            "atk": 281,
+            "def": 198,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30022",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 937,
+            "atk": 281,
+            "def": 198,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1284,
+            "atk": 385,
+            "def": 255,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3212",
+          "count": 5
+        },
+        {
+          "id": "30073",
+          "count": 20
+        },
+        {
+          "id": "30063",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1284,
+            "atk": 385,
+            "def": 255,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1835,
+            "atk": 470,
+            "def": 310,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_charge_cost[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 8,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 8,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 8,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 11,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Charge β",
+            "zh": "冲锋号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Instantly gains <@ba.vup>{cost}</> Deployment Points.",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 13,
+          "blackboard": {
+            "cost": 9
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_scave_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.2,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.23,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.26,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 0.3,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 0.33,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 0.36,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.4,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.5,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.6,
+            "cost": 11
+          }
+        },
+        {
+          "name": {
+            "en": "Command - Attack",
+            "zh": "冲锋号令·攻击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains <@ba.vup>{cost}</> Deployment Points\nATK <@ba.vup>+{atk:0%}</>",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用\\n攻击力<@ba.vup>+{atk:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 0.7,
+            "cost": 11
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 1
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30011",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lone Wolf",
+            "zh": "单独行动者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +5% when there are no allies in the four adjacent tiles",
+            "zh": "当周围四格内没有其他友方单位时，攻击力和防御力各+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.05,
+            "def": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Lone Wolf",
+            "zh": "单独行动者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +7% <@ba.talpu>(+2%)</> when there are no allies in the four adjacent tiles",
+            "zh": "当周围四格内没有其他友方单位时，攻击力和防御力各+7%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.07,
+            "def": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Lone Wolf",
+            "zh": "单独行动者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +11% when there are no allies in the four adjacent tiles",
+            "zh": "当周围四格内没有其他友方单位时，攻击力和防御力各+11%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.11,
+            "def": 0.11
+          }
+        },
+        {
+          "name": {
+            "en": "Lone Wolf",
+            "zh": "单独行动者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK and DEF +13% <@ba.talpu>(+2%)</> when there are no allies in the four adjacent tiles",
+            "zh": "当周围四格内没有其他友方单位时，攻击力和防御力各+13%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.13,
+            "def": 0.13
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_scave",
+      "name": {
+        "en": "Scavenger's Badge",
+        "zh": "清道夫证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_scave",
+      "description": {
+        "en": "Operator Scavenger has demonstrated a remarkable aptitude for preemptive penetration of the battlefield situation and active offense so as to secure leeway for deployment.\nThis operator shall hereby be appointed a Vanguard Operator during field operations to exercise Pioneer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员清道夫擅长抢先切入战局，通过进攻争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使尖兵职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_scave",
+      "name": {
+        "en": "'Designer Dinnerware'",
+        "zh": "“专属餐具”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_scave",
+      "description": {
+        "en": "'Bowls are for holding food. Spoons are for scooping it. Canteens hold water. Cut up big pieces of food with your knife like this, stick your fork in, and you can put it in your mouth and eat it. You all got that?'\nIt's the young Zalaks' first time at the dinner table, learning how to use the tableware, and Hamelin is among them. She's never seen such sumptuous dishes before, their glistening sheen like flowing gold.\n'Hamelin, when I grow up, I'm gonna make sure we eat really tasty food like this every day!'\nHearing the voice beside her perk up, she turns to look and is met with her sweetheart's smile.\nMuch, much later, when she's long since left her tribe, left her beloved, Hamelin skulks alone in the dark. It's been so long she hasn't the energy left to recall the scene. Even filling her stomach is too much to ask now.\nAnother mission nobody else was willing to take. Her failing to contact her target the first time has lost her all her equipment, the only thing saving her life being the ditch she hid in. The aftermath of this mission failure will be hard to shoulder, but she's void of fighting capacity anyhow. Hamelin presses forward, limping against the damp brick wall, eyes sweeping over the putrid filth, searching for anything she can make use of. Eventually, in the thick of the mud, she catches sight of a portable dining set that's been thrown away.\nShe picks it up, wipes it off, hangs it on her waist, and then climbs out of the sewer, finding the restaurant where her target sits.\nIn the process of taking out her target, every item in the set finds its use: the bowl, the spoon, the fork, the knife, the canteen... In a first for her, she's done an efficient job, undetected by anyone. Hamelin exits the lavish, high-end restaurant, and wanders alone onto the streets. She feels famished, completely out of strength. Winding down, she slowly slumps against a wall, pulls in her knees, and buries her head deep.\n'Hello? You hungry? Want something to eat?'\nHamelin raises her head to find a large-tailed Lupo girl. The girl leads Hamelin back to her office, and places before her the remainders of her food supplies.\n'It's all we've got. Put something inside you, okay?'\nWatching Hamelin's movements, her brows suddenly knit.\n'Hey, don't use your hands—you're carrying tableware, aren't you? Are you not that good with it? Let me teach you.\n'Put your food in the bowl, then use that spoon to scoop up a mouthful. You can cut up big chunks of food with a knife, and stick it on your fork to eat it. Hand me your canteen—I'll fill you up some water.\n'If you go hungry again, you're free to stop by every day for something to eat... huh? What's wrong?'\nHamelin stares up, blinking frantically, refusing to let the tears fall from the corners of her eyes.",
+        "zh": "“碗用来装饭菜，勺子舀饭菜，水壶拿来装水，像这样用刀切开大块的食物，将叉子叉进去，就可以放进嘴里吃掉啦。你们记住了吗？”\n年幼的札拉克们第一次围在餐桌前，学习如何使用餐具，哈莫琳也在他们之中。她从未见过如此丰盛的菜肴，闪亮的油光仿佛流动的黄金。\n“哈莫琳，等我长大了，我一定会让我们天天吃上这么美味的食物的！”\n她听见身边的声音，转头看见了心上人的笑容。\n后来过去了很久，久到哈莫琳已经离开了族群，离开了深爱之人，在黑暗中独行。久到她已经没精力想起这件事了，连填饱肚子也成了奢望。\n又是一次无人愿意承接的任务，初次接触目标失败让哈莫琳失去了全部装备，躲入下水道中才保住了性命。任务失败的后果难以承担，可她已经失去了战斗的能力。哈莫琳倚着潮湿的砖墙前行，目光扫过恶臭的污秽，寻找任何能派上用场的东西。直到在一片泥泞中，她看见了，一套废弃的便携餐食套装。\n哈莫琳将它捡起来，擦干净，挂在腰间，而后爬出下水道，找到了目标所在的餐厅。\n在解决目标的过程中，碗、勺子、叉子、餐刀、水壶……套装里的每一样餐具都派上了用场。有了第一次的经验，她做得干净利落，没让任何人发觉。哈莫琳走出了那间富丽堂皇的高级餐厅，独自一人走上街道。她感觉很饿，身上没有了力气。最终她靠在墙边缓缓坐下，抱着膝盖，深深埋下头去。\n“嘿，你饿了吗？要吃点东西吗?”\n哈莫琳抬起头，看见了一位大尾巴的鲁珀女孩。她将哈莫琳领回自己的办公室，把仅剩的食物摆在了哈莫琳面前。\n“只有这么多了，你填填肚子吧。”\n她看着哈莫琳的动作，忽然皱起眉头。\n“喂，不要用手抓，你带着餐具呀。是不太会用吗？我告诉你。\n“把食物倒进碗里，用那柄勺子舀着吃。大块的食物可以用刀切开，用叉子叉着吃。把水壶给我，我去给你装点水。\n“要是你以后还饿肚子了，每天都可以来这里吃点东西哦……嗯？你怎么啦？”\n哈莫琳仰起头，拼命眨着眼睛，没让泪水流出眼眶。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30043",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31023",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30033",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

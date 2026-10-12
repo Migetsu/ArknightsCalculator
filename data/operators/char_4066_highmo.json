@@ -1,0 +1,1136 @@
+{
+  "id": "char_4066_highmo",
+  "name": {
+    "en": "Highmore",
+    "zh": "海沫",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "II10",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "reaper",
+  "faction": "iberia",
+  "position": "MELEE",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Branch Operator Highmore, more belligerent than her looks suggest.",
+    "zh": "驻外干员海沫，她比看上去的要更好斗。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Daughter of the sea, yet willful rejecter of the ocean.",
+    "zh": "海的女儿，选择了拒绝大海。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1055,
+            "atk": 306,
+            "def": 216,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1389,
+            "atk": 438,
+            "def": 300,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 7
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1389,
+            "atk": 438,
+            "def": 300,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1759,
+            "atk": 569,
+            "def": 385,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 9
+        },
+        {
+          "id": "31043",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1759,
+            "atk": 569,
+            "def": 385,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2120,
+            "atk": 670,
+            "def": 454,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_highmo_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Surrendrance from Hindsight",
+            "zh": "回首，断舍",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The ATK of next attack increases to <@ba.vup>{atk_scale:0%}</>, attacking twice consecutively",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并连续攻击两次",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.65
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_highmo_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.3,
+            "prob": 0.4,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.33,
+            "prob": 0.4,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.36,
+            "prob": 0.4,
+            "hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.4,
+            "prob": 0.45,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.43,
+            "prob": 0.45,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.46,
+            "prob": 0.45,
+            "hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 0.5,
+            "prob": 0.5,
+            "hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.53,
+            "prob": 0.53,
+            "hp_ratio": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 0.56,
+            "prob": 0.56,
+            "hp_ratio": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Evanescence from Paranoia",
+            "zh": "泡影，殆尽",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, gain <@ba.vup>{prob:0%}</> Physical dodge, and recover <@ba.vup>{hp_ratio:0%}</> of max HP whenever an enemies dies within range",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，获得<@ba.vup>{prob:0%}</>的物理闪避，攻击范围内有敌人倒下时，恢复自身最大生命值的<@ba.vup>{hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.6,
+            "prob": 0.6,
+            "hp_ratio": 0.1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Sustenance from the Reaper",
+            "zh": "收割，给养",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recover 18 <$ba.dt.element>Elemental Injury</> for each enemy hit during attacks, up to Block count",
+            "zh": "每攻击到一个敌人回复自身18<$ba.dt.element>元素损伤</>，最大生效数等于阻挡数",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "value": 18
+          }
+        },
+        {
+          "name": {
+            "en": "Sustenance from the Reaper",
+            "zh": "收割，给养",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recover 23 <@ba.talpu>(+5)</> <$ba.dt.element>Elemental Injury</> for each enemy hit during attacks, up to Block count",
+            "zh": "每攻击到一个敌人回复自身23<@ba.talpu>（+5）</><$ba.dt.element>元素损伤</>，最大生效数等于阻挡数",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "value": 23
+          }
+        },
+        {
+          "name": {
+            "en": "Sustenance from the Reaper",
+            "zh": "收割，给养",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recover 30 <$ba.dt.element>Elemental Injury</> for each enemy hit during attacks, up to Block count",
+            "zh": "每攻击到一个敌人回复自身30<$ba.dt.element>元素损伤</>，最大生效数等于阻挡数",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "value": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Sustenance from the Reaper",
+            "zh": "收割，给养",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Recover 35 <@ba.talpu>(+5)</> <$ba.dt.element>Elemental Injury</> for each enemy hit during attacks, up to Block count",
+            "zh": "每攻击到一个敌人回复自身35<@ba.talpu>（+5）</><$ba.dt.element>元素损伤</>，最大生效数等于阻挡数",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "value": 35
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Interfluence from Maladie",
+            "zh": "罹患，浸染",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Mizuki & Caerula Arbor], ASPD +10, Block +1",
+            "zh": "在【水月与深蓝之树】中，攻击速度+10，阻挡数+1",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 10,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Interfluence from Maladie",
+            "zh": "罹患，浸染",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "In [Mizuki & Caerula Arbor], ASPD +25, Block +1",
+            "zh": "在【水月与深蓝之树】中，攻击速度+25，阻挡数+1",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 25,
+            "block_cnt": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +160",
+        "zh": "生命上限+160",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 250,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_highmo",
+      "name": {
+        "en": "Highmore's Badge",
+        "zh": "海沫证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_highmo",
+      "description": {
+        "en": "Operator Highmore has demonstrated a remarkable aptitude in dispatching enemy swathes with little to no support.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Reaper responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员海沫擅长孤身一人扫清众敌\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使收割者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_highmo",
+      "name": {
+        "en": "'Weighing Anchor'",
+        "zh": "“启航”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_highmo",
+      "description": {
+        "en": "This is not the first time I bring you out to sea. You've heard countless ocean tales from me.\nYou already know how the tides flow, and how they ebb. You know that when pale blue light shines in the surface, you are no longer to bother the fins and seabeasts. You know that when the pinnacle of Oberos Lighthouse touches the very top of the Shadow-Moon, we Ægir should return home.\nYou are familiar with the skyscraping surges, and the smallest of sprays. You've learned to converse with them, haven't you? You love to chatter with them, and they are glad to tell you how they are feeling. Do you still remember what they told you? They are but one part of the sea; they are one and the same. You know where the surges will stop and rest, and you know where the tiniest suds will assimilate into the ocean. I have nothing left to tell you now. Hence, this time will be very different; you must prepare yourself, and you must listen to me.\nWe are familiar with the earth and ocean; they have made me and my vessel old, unable to reach farther places. You see? The briny winds dry my cheeks, the air erodes at my bones, the starlight presses down on my shoulders, and if not for you, even lifting this oar would likely be beyond me. But you are different. Your arms are still growing, your bones and flesh are sturdier than mine, your eyes livelier, and your thoughts brighter. You should make it to higher, farther waters. Young child, you must sail far. Child, this sea will be very different. Gone will be the fins you know, gone will be the fearsome seabeasts, and there will be no lighthouse to guide your way, as your destination is in the seas beyond where the stars shine... However, still there will be tides there, still there will be waves, and still there will be countless glimmering specks of ocean foam just like you, Highmore. I trust that, just as before, you will be familiar with these new tides, and familiar with these new waves. They will tell you stories even I haven't heard. You must accompany the twin moons—no, you must go somewhere higher, farther, vaster than the twin moons...\nThe meaning of a voyage is not mine to give, for you will find it yourself. But first you must remember, Highmore, remember what I've told you. A voyage is by no means a retreat, and the reason we leave our home is by no means our disappointment with it. Your voyage is because you are young, because you are sturdy, and because it is for a home as young and hope-filled as you. Once you have seen tide upon tide, seen wave upon wave, you must return home, and you must return to tell us.\nHighmore, a voyage is not a farewell. You must remember, remember your anchor, for so long as you have your anchor, your vessel will be sure to make landfall; so long as you have your anchor, you, voyaging child, will be sure to return home.",
+        "zh": "这不是我第一次带你出海。你也听我讲了许多大海的故事。\n你已经知道海潮如何涨起，如何退去。你知道当海面泛起淡蓝色的光，就不要再去打扰鳞和海兽。你知道当奥伯罗斯灯塔的尖顶触到影月的最边上，我们阿戈尔人就应该回家。\n你认识摩天的巨浪，也认识最小的浪花，你学会了和他们对谈，不是吗？你很喜欢和他们聊天，他们也很乐意把自己的心绪讲给你听。你还记得他们和你说了什么吗？他们都是大海的一部分，他们是一样的。你知道巨浪将在哪里休止，你知道最小的微沫将在什么地方融入海洋。我已经没有什么可讲给你的了。所以这一次会很不一样，你得做好准备，你得听我说。\n我们认识的大地海洋，让我和我的船都变老了，去不了更远的地方。你看，海风正吹干我的面颊，空气让我的骨骼风化，星光压着我的肩膀，如果没有你，我可能连这把桨都没法抬起来了。但你不一样，你的臂膊还在生长，你的骨与肉比我强壮，你的双眸比我有神，你的思维比我明亮，你应该去到更高更远的海域。年轻的孩子，你要远航。孩子，那片海将会很不一样。那里不再有你熟悉的鳞，不会再有可怕的海兽，也没有灯塔为你指明方向，你的目的地是星光之外的海洋……不过那里依然会有海潮，依然会有海浪，依然会有无数和你一样的海沫泛着微光。我相信你会和之前一样，认识新的海潮，认识新的海浪。他们会对你讲连我都没听过的故事。你要与双月为伴——不，你要去往比双月更高远、更广阔的地方……\n远航的意义我没法告诉你，你会自己发现它。但首先要记得，海沫，记得我之前和你说的，远航绝对不是逃亡，离开故乡的理由绝对不是对故乡失望。你远航是因为你年轻，你远航是因为你强壮，你远航也是为了一个和你一样年轻、一样充满希望的故乡。当你见过了许多海潮，见过了许多海浪，你要回到故乡，你要回来和我们讲。\n海沫，远航不是永别。你要记住，要记住船锚，只要有船锚，船就一定能够靠岸；只要有船锚，远航的孩子就一定能够回到故乡。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30064",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

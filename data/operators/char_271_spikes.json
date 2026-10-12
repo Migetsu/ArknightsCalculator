@@ -1,0 +1,1095 @@
+{
+  "id": "char_271_spikes",
+  "name": {
+    "en": "Arene",
+    "zh": "芳汀",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LT06",
+  "rarity": 4,
+  "class": "WARRIOR",
+  "subclass": "lord",
+  "faction": "laterano",
+  "position": "MELEE",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Vanguard Operator Arene, always taking pleasure in toying with his enemies on the field.",
+    "zh": "近卫干员芳汀，乐于在战场上捉弄敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Don't come too close. It's dangerous.",
+    "zh": "别靠太近，有危险。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 945,
+            "atk": 263,
+            "def": 162,
+            "magicResistance": 5,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1350,
+            "atk": 388,
+            "def": 222,
+            "magicResistance": 5,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30052",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1350,
+            "atk": 388,
+            "def": 222,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1777,
+            "atk": 518,
+            "def": 282,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-12",
+      "evolveCost": [
+        {
+          "id": "3222",
+          "count": 5
+        },
+        {
+          "id": "30013",
+          "count": 21
+        },
+        {
+          "id": "30063",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1777,
+            "atk": 518,
+            "def": 282,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2250,
+            "atk": 640,
+            "def": 340,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_spikes_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 1,
+          "blackboard": {
+            "attack@atk_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 2,
+          "blackboard": {
+            "attack@atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 4,
+          "blackboard": {
+            "attack@atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 6,
+          "blackboard": {
+            "attack@atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 8,
+          "blackboard": {
+            "attack@atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 11,
+          "blackboard": {
+            "attack@atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 12,
+          "blackboard": {
+            "attack@atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Just Kidding",
+            "zh": "小玩笑",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies. Attacks strike twice and deal <@ba.vup>{attack@atk_scale:0%}</> ATK as physical damage each",
+            "zh": "阻挡数变为0，攻击变为二连击，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_spikes_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.1,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.15,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "attack@atk_scale": 1.2,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.25,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.3,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 1.35,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.4,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.45,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.5,
+            "attack@max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Deadly Prank",
+            "zh": "致命恶作剧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Range expands and ranged attacks no longer deal reduced damage. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage and target an additional enemy",
+            "zh": "攻击范围扩大，远程攻击不再降低攻击力，攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害，额外攻击一名目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-1",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.6,
+            "attack@max_target": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 1
+            },
+            {
+              "id": "31013",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Structural Decomposition",
+            "zh": "结构分解",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize attacking drones",
+            "zh": "优先攻击【无人机】单位",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Structural Decomposition",
+            "zh": "结构分解",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize attacking drones; ATK +20% when attacking drones",
+            "zh": "优先攻击【无人机】单位，且攻击【无人机】时攻击力+20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Structural Decomposition",
+            "zh": "结构分解",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize attacking drones; ATK +23% <@ba.talpu>(+3%)</> when attacking drones",
+            "zh": "优先攻击【无人机】单位，且攻击【无人机】时攻击力+23%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.23
+          }
+        },
+        {
+          "name": {
+            "en": "Structural Decomposition",
+            "zh": "结构分解",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize attacking drones; ATK +40% when attacking drones",
+            "zh": "优先攻击【无人机】单位，且攻击【无人机】时攻击力+40%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Structural Decomposition",
+            "zh": "结构分解",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Prioritize attacking drones; ATK +43% <@ba.talpu>(+3%)</> when attacking drones",
+            "zh": "优先攻击【无人机】单位，且攻击【无人机】时攻击力+43%<@ba.talpu>（+3%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.43
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +18",
+        "zh": "攻击力+18",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 55
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_spikes",
+      "name": {
+        "en": "Arene's Badge",
+        "zh": "芳汀证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_spikes",
+      "description": {
+        "en": "Operator Arene has demonstrated a remarkable aptitude for wide-range enemy suppression.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Lord responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员芳汀擅长在较大范围内阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使领主职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_spikes",
+      "name": {
+        "en": "The Book of Arene",
+        "zh": "芳汀之书",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_spikes",
+      "description": {
+        "en": "The youth is unbothered by the curiosity of others, especially when it is directed toward the notebook he carries.\n'It was my teacher's request.'\nBut during such conversations, he would always wear his usual distant smile, making no attempt to mask his indifference.\n'My teacher wants me to write more.'\nOf course, he's always known that people were secretly gossiping about the contents:\n'Did you know? Arene takes the name of every enemy he's killed in his notebook. The Doctor had him keep a record so that he'd understand the value of life.'\n'I heard the ink he uses is a deadly toxin he concocted himself. Anyone who tries to take a look at his notebook will—'\n'I'm more inclined to believe he's hiding something shady in there, like data from human experimentation. The last time I saw him with a prisoner—'\n'If you ask me, he's just going through a rough patch in life. He's probably just keeping a diary to sort through his feelings.'\nThey speculate, they doubt, but the young man simply smiles at the various comments.\nHe sets the notebook down on his desk and flips it open.\nHe pulls out a transparent fountain, as if drawing an overly sharpened dagger, and fills it with the brightly colored ink he made himself, purported to be laced with deadly toxin\n'The voices of others are important, but it's your own answers that matter most.\n'Write down whatever you want to tell me, and yourself, the most.'\nGuns that have killed, poison with a deceiving aroma, blurry voices, the cruelty and malice inexorably hidden deep within... Many things cross his mind.\nWhen his senses return to him, he realizes that the tip of the pen has punctured the page again, the brightly-colored ink seeping into the snow-white paper like the bloodied, grasping limbs of enemies, until everything contorts into a bottomless vortex.\nArene lets out a chuckle and casually tears out the besmirched sheet of paper.\nHe then closes the notebook and stashes it back in his pocket.",
+        "zh": "少年并不介意他人对自己感到好奇，尤其是对他随身携带的笔记本感到好奇。\n“是老师的要求。”\n只不过在这种谈话中，他会继续带着惯常的疏远笑容，毫不掩饰自己内心深处的漠不关心。\n“老师希望我，多记录一下。”\n他也知道，其他人会在背后如何揣测他笔记本里的内容——\n“你知道吗，芳汀的笔记本里写着被他杀掉的敌人的名字。博士要求他记住每一个死者，理解人的价值。”\n“我听说他用的墨水都是自己调制的，毒性很强，任何人偷看了笔记本，都会……”\n“我更相信笔记本里写的是些见不得人的东西，人体实验的数据之类的。我上次见到他对一个俘虏——”\n“我倒是觉得，他只是个人生不太顺的年轻人，应该只是写写日记，记录点迷茫时的心情。”\n他们猜测，他们怀疑，而少年对一切议论付之一笑。\n他端坐在书桌前，摊开笔记本。\n他像拔出一把过于锋利的刀一般拔出那支透明钢笔，为其吸入自己亲手调制的墨水——颜色鲜艳，有如剧毒。\n“你需要的不仅仅是来自他人的指引，还有自己的答案。\n“写下你最想告诉我的，最想告诉自己的。”\n夺取性命的铳，带着芳香气息的毒，模糊的声音，永远潜藏心底的残忍和恶意……\n他回过神来，看到笔记本再次被笔尖戳破，鲜艳的色彩和雪白的纸张搅在一起，如同敌人的鲜血卷动着残肢，变成了深不见底的漩涡。\n芳汀轻笑一声，毫不在意地撕掉被污染的残渣。\n然后，他合上笔记本，放回了身上。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30043",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31063",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30103",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

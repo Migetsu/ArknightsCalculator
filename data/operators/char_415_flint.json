@@ -1,0 +1,1109 @@
+{
+  "id": "char_415_flint",
+  "name": {
+    "en": "Flint",
+    "zh": "燧石",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SG06",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "fighter",
+  "faction": "sargon",
+  "position": "MELEE",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Flint, a tribal warrior, is the pure embodiment of power.",
+    "zh": "部族拳手燧石，强大而纯粹的战士。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The first step towards communication starts with finding a common language.",
+    "zh": "交流的第一步从学习通用语开始。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1180,
+            "atk": 224,
+            "def": 144,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1595,
+            "atk": 330,
+            "def": 207,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1595,
+            "atk": 330,
+            "def": 207,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2045,
+            "atk": 441,
+            "def": 280,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30014",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2045,
+            "atk": 441,
+            "def": 280,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2495,
+            "atk": 545,
+            "def": 334,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.78,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_flint_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "force": 0,
+            "sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Relentless",
+            "zh": "不息",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, pushes the target towards the attack direction <@ba.vup>slightly</> and <$ba.sluggish>Slows</> the target for 1 second",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>，将目标朝攻击方向以<@ba.vup>小力度</>推开并造成1秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "force": 0,
+            "sluggish": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_flint_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.1,
+            "attack_speed": 10,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.15,
+            "attack_speed": 15,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 20,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.25,
+            "attack_speed": 25,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.35,
+            "attack_speed": 35,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 21,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 40,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 22,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 45,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 50,
+            "attack@sluggish": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Display of Might",
+            "zh": "锋芒毕露",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Cannot block enemies, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>. Each attack <$ba.sluggish>Slows</> the target for 0.3 seconds",
+            "zh": "阻挡数变为0，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，每次攻击对目标造成0.3秒<$ba.sluggish>停顿</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.55,
+            "attack_speed": 55,
+            "attack@sluggish": 0.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 2
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Featherweight",
+            "zh": "身轻无痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals 20% more damage to enemies that are not blocked by this unit",
+            "zh": "对未被自身阻挡的敌人造成的伤害提升20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Featherweight",
+            "zh": "身轻无痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals 25% <@ba.talpu>(+5%)</> more damage to enemies that are not blocked by this unit",
+            "zh": "对未被自身阻挡的敌人造成的伤害提升25%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Featherweight",
+            "zh": "身轻无痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals 40% more damage to enemies that are not blocked by this unit",
+            "zh": "对未被自身阻挡的敌人造成的伤害提升40%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Featherweight",
+            "zh": "身轻无痕",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals 45% <@ba.talpu>(+5%)</> more damage to enemies that are not blocked by this unit",
+            "zh": "对未被自身阻挡的敌人造成的伤害提升45%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_scale": 1.45
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +24",
+        "zh": "攻击力+24",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_flint",
+      "name": {
+        "en": "Flint's Badge",
+        "zh": "燧石证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_flint",
+      "description": {
+        "en": "Operator Flint has demonstrated a remarkable aptitude for asserting the advantage in close-quarters combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Fighter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员燧石擅长在近身格斗中取得优势\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使斗士职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_flint",
+      "name": {
+        "en": "Meaning of Flowers",
+        "zh": "这些花朵的含义",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_flint",
+      "description": {
+        "en": "Soon to return to Acahualla, Kemar takes her flashcards with her. The handwriting's kind of immature, and she doesn't need them to remember what the words mean now, but still she hooks them on her belt, the well-worn eyelet fraying day by day.\n'These ones, I brought from home. The rest, I picked on the outside,' replied Kemar once upon a time, when a Rhodes operator was curious about the flowers on her cards. At first, they were how the girl of the rainforest learned her way through other languages—they fascinated her since she was young. Tender little plants. As enrapturing as a flying fist, and they called to her the way the wild things did.\nOn a certain level, these flowers held more strength than any brave warrior. Their names and stories were some of the earliest things Kemar knew by heart: learning how the people beyond the rainforest colored the four seasons with them, interpreted their lives with them. What describes these flowers now are no longer unfamiliar words, but a ring of keys, hung on her waist, opening each of Terra's doors alongside her.\n'Look well, it's our tribe's tallest, mightiest warrior! Her footprints are left in places even our imaginations couldn't reach! And now, she's back!' Kemar parts the grass weave over the doorway, and is met headon with the eager chatter of her tribesfolk, in her native language. Eventually, she stirs; in this most familiar of rainforests, she'll never be needing any 'key'.\nThe tribe's kiddies mill around Kemar, jabbing zealously at all the names on her flashcards' flowers, pestering her to tell all her stories from beyond the forest.\n'Beyond the rainforest... it's very wide.'\nKemar recalls the most exciting moment of her own language-learning Not the first time she understood a spoken word. Not being able to fluently converse with Big Boss Blaze. It was when she realized she could finally explain to others, coherently and clearly, the things that all the flowers of her home represented.\n'...But don't let me tell you about it. You should all go see it for yourself!\n'And then face off with the people outside, and tell them... let them know how mighty we are.' Kemar flips back to the very first flashcard, pressed with a flower of the rainforest. Its power to live is unwavering, and its power to adapt is unrivalled. Rainforest, prairie, or barrens, it will bloom more avidly, more ardently than all.",
+        "zh": "准备重返阿卡胡拉时，克玛尔带上了她的单词卡。即使已经不再需要这些略显稚嫩的字迹来提示自己某些词汇的意义，她还是将单词卡挂在了腰带那日渐松垮的扣眼上。\n“这些是我从家乡带来的。剩下的那些，都是后来从外面采摘的。”曾有罗德岛干员好奇贴附在卡片上的花，克玛尔便这样回答。最初，这个在雨林里长大的女孩就是借助它们来学习其他语言的——从小时候起，这些娇小之物便让她着迷，它们如迅捷的拳般勾人眼目，又如野性的嘶嚎般唤起她的共鸣。\n从某种程度上来说，这些花朵比任何一位强大的战士都更具力量。克玛尔对它们的名字与故事早已熟稔，了解雨林之外的人如何用它们来润饰四季，又如何用它们去注解生命。原本用来描述这些花朵的、已经不再陌生的词汇成了一把把钥匙，它们挂在克玛尔的腰间，陪伴她打开泰拉的每一扇门。\n“瞧瞧，她就是我们部族中最高大最强壮的战士！她的脚印留在了我们的想象都到不了的地方！而现在，她回来了！”克玛尔掀起草席门帘，便迎头撞上了族人们叽哩哇啦的家乡话。她终于反应过来，在这片最熟悉的雨林里，自己从不需要什么“钥匙”。\n族里的小不点们都凑到克玛尔的身边来，兴致勃勃地指着单词卡上那些花的名字，要克玛尔讲讲那些雨林外面的故事。\n“雨林外面……很广阔。”\n克玛尔想起了自己学习语言时最兴奋的那个时刻——不是听懂第一个词汇时，也不是能够和煌大头目顺畅沟通时，而是她意识到自己终于能够向其他人解释清楚，雨林里的花在她的家乡代表着什么含义时。\n“……但比起听我讲，你们更应该自己亲眼去看一看！\n“然后向外面的人比划，再向外面的人讲述……让他们也了解我们的强大。”克玛尔翻到最初的那一张单词卡，上面贴着雨林里的花。它生命力顽强，适应力超群，无论在雨林、草原还是荒野，都能够以最热烈的姿态盛开。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

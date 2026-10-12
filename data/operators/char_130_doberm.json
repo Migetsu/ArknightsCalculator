@@ -1,0 +1,1077 @@
+{
+  "id": "char_130_doberm",
+  "name": {
+    "en": "Dobermann",
+    "zh": "杜宾",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R100",
+  "rarity": 4,
+  "class": "WARRIOR",
+  "subclass": "instructor",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Dobermann, Starter instructor of Rhodes Island, is always ready to offer advice on the battlefield.",
+    "zh": "罗德岛新人教官杜宾，能够随时为你提供战场上的各项建议。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "You could always use the advice of a veteran.",
+    "zh": "你永远需要一位老兵的建议。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 818,
+            "atk": 264,
+            "def": 178,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1121,
+            "atk": 378,
+            "def": 252,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 1
+        },
+        {
+          "id": "30032",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1121,
+            "atk": 378,
+            "def": 252,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1457,
+            "atk": 505,
+            "def": 320,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3222",
+          "count": 5
+        },
+        {
+          "id": "30083",
+          "count": 15
+        },
+        {
+          "id": "30073",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1457,
+            "atk": 505,
+            "def": 320,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2024,
+            "atk": 602,
+            "def": 382,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_doberm_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 1
+            },
+            {
+              "id": "30013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_doberm_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 80,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.3,
+            "talent_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 79,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.3,
+            "talent_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 78,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.3,
+            "talent_scale": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 77,
+          "initSp": 32,
+          "blackboard": {
+            "atk": 0.4,
+            "talent_scale": 2.4
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 76,
+          "initSp": 32,
+          "blackboard": {
+            "atk": 0.4,
+            "talent_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 75,
+          "initSp": 32,
+          "blackboard": {
+            "atk": 0.4,
+            "talent_scale": 2.6
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 74,
+          "initSp": 34,
+          "blackboard": {
+            "atk": 0.5,
+            "talent_scale": 2.7
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 73,
+          "initSp": 36,
+          "blackboard": {
+            "atk": 0.6,
+            "talent_scale": 2.8
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 72,
+          "initSp": 38,
+          "blackboard": {
+            "atk": 0.7,
+            "talent_scale": 2.9
+          }
+        },
+        {
+          "name": {
+            "en": "Spur",
+            "zh": "鞭策",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and the effect of this unit's first Talent increases to <@ba.vup>{talent_scale:0.0}</> times",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，第一天赋的效果提升至<@ba.vup>{talent_scale:0.0}</>倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.8,
+            "talent_scale": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 1
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30013",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Starter Instructor",
+            "zh": "新人教官",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, all three-star Operators gain +5% ATK",
+            "zh": "在场时，所有三星干员的攻击力+5%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Starter Instructor",
+            "zh": "新人教官",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, all three-star Operators gain +6% <@ba.talpu>(+1%)</> ATK",
+            "zh": "在场时，所有三星干员的攻击力+6%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Starter Instructor",
+            "zh": "新人教官",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, all three-star Operators gain +10% ATK",
+            "zh": "在场时，所有三星干员的攻击力+10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Starter Instructor",
+            "zh": "新人教官",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, all three-star Operators gain +11% <@ba.talpu>(+1%)</> ATK",
+            "zh": "在场时，所有三星干员的攻击力+11%<@ba.talpu>（+1%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.11
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +150",
+        "zh": "生命上限+150",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 30,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_doberm",
+      "name": {
+        "en": "Dobermann's Badge",
+        "zh": "杜宾证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Dobermann has demonstrated a remarkable aptitude in rallying reserve operators.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Instructor responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员杜宾擅长鼓舞预备干员\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使教官职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_doberm",
+      "name": {
+        "en": "Military Telescope",
+        "zh": "军用望远镜",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_doberm",
+      "description": {
+        "en": "'Officer, how is it going over here?'\nThrough the lens of her binoculars, Colonel Dobermann sees the remnants of a city block as well as the entrance to a beltway not far away.\nThe Singas and the Coalition government are constantly sending their men to the area, and her team needs to find a way to make it through the chaotic warzone to make it to the other side of the city to provide support.\nAll the routes available to them are treacherous and dangerous. She has a decision to make.\n'You, take the beltway with your men. I'll take my team and make it through the city.'\n'Yes, sir.'\n'If we lose contact with each other, we'll prioritize the mission first. Make sure you do that. Got it?!'\n'Yes, sir!'\n'Roll out!'\n......\n'Dobermann, what should we do now?'\nDobermann and her team, having joined up with the resistance, have been retreating, but they find themselves being chased by pursuing enemies.\nShe must find a way to get her men out alive.\n'We can go this way... then take the waterway to make it past them.'\n'I'll need a few of you to stay behind, though...'\n'I'll do it. This is no problem for me!'\n'But...'\n'If I don't, all of us will die here, no?'\n'Sorry...'\n'This ain't your fault. You've done all you can.'\n'My brothers and I will get ourselves ready.'\n'I'm leaving everyone else to you!'\n......\n'Instructor, what should we do?'\nRhodes Island Operator Dobermann is currently carrying out a mission. The images she sees through her binoculars are once again forcing her to make a decision.\n'I think it'll be better if we lead the squad away and flank them.'\n'No, we'll wait till it's night where we are, then we'll head in through the ruins and attack that way. Our forces would be too divided, and that could lead to accidents.'\n'Understood.'\n'I'll head on inside first. Take the others to the objective point as soon as it gets dark and wait for my orders.'\n'That puts you in danger!'\n'This is the best way, and it's what I chose to do.'\n'I want all of you to trust in me, just like I trust you. Got it?!'\n'Yes, Instructor! Please be careful!'\n'Hmph, you just do what you are supposed to.'\n......\nThat night, Team Dobermann successfully completed its mission.",
+        "zh": "“长官，这里的情况如何？”\n通过望远镜的镜片，联合政府上校杜宾见到了一片城区残骸，以及不远处的环城区车道入口。\n辛嘉斯和联合政府正在将兵力不断投入这片地区，而她的小队需要想办法通过混乱的城区战场去往另一边进行支援任务。\n没有哪一条是坦途，她需要做出选择。\n“你带一部分人从车道上走，我带队从城中突破。”\n“是，长官。”\n“如果我们失联了，任务优先，你们那边也是，明白了吗！”\n“是，长官！”\n“出发！”\n……\n“杜宾同志，我们现在该怎么办？”\n加入反抗组织的杜宾正在带领部队撤退，而现在，前有敌人后有追兵。\n她得想办法把部下活着带出去。\n“我们可以走这里……然后过水路绕过警戒。”\n“但我需要一些人殿后……”\n“让我来吧，我可以的！”\n“可是……”\n“不然我们的人会全死在这里，不是么？”\n“抱歉……”\n“这不是您的错，您已经很优秀了。”\n“我会和弟兄们做思想工作。”\n“其他人的性命，就交给您了！”\n……\n“教官，我们这里该怎么做？”\n罗德岛干员杜宾现在正在执行一项任务，而通过望远镜传入她眼中的视相，又在催促她做出抉择。\n“我觉得将小队分开，包抄更加合适。”\n“不，原地等待到入夜，然后从废墟中直接穿过去进攻。不然火力太分散，我怕会出意外。”\n“明白。”\n“我会先潜入进去，天黑了之后，你把其他人带到目标据点附近，等我指令。”\n“这样对您来说会不会太危险了。”\n“这是最优解，也是我的选择。”\n“我希望你们信赖我，正如我信赖你们一样，明白吗？！”\n“是，教官！您可千万要当心啊！”\n“哼，做好你分内的事。”\n……\n是夜，杜宾小队圆满完成任务。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30103",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30043",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

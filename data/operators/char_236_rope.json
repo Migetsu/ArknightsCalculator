@@ -1,0 +1,1095 @@
+{
+  "id": "char_236_rope",
+  "name": {
+    "en": "Rope",
+    "zh": "暗索",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RB02",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "hookmaster",
+  "faction": "lungmen",
+  "position": "MELEE",
+  "tagList": [
+    "Shift"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Rope, Specialist Operator of Rhodes Island, will provide assistance for the squad with her grappling hook.",
+    "zh": "罗德岛特种干员暗索，将凭借钩索技术为小队提供便利。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Snag 'em and grab 'em! Who's next?",
+    "zh": "一钩，一拉，成了！",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 744,
+            "atk": 313,
+            "def": 142,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1006,
+            "atk": 448,
+            "def": 209,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-2",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1006,
+            "atk": 448,
+            "def": 209,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1307,
+            "atk": 582,
+            "def": 276,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-2",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30043",
+          "count": 15
+        },
+        {
+          "id": "30023",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1307,
+            "atk": 582,
+            "def": 276,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1720,
+            "atk": 728,
+            "def": 325,
+            "magicResistance": 0,
+            "cost": 12,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_rope_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>slightly</>",
+            "zh": "下次攻击会把目标<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>slightly</>",
+            "zh": "下次攻击会把目标<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>slightly</>",
+            "zh": "下次攻击会把目标<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2,
+            "force": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>moderately</>",
+            "zh": "下次攻击会把目标<@ba.vup>中等力度地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "force": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Hook Shot",
+            "zh": "勾爪发射",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to its target and drags it towards this unit <@ba.vup>greatly</>",
+            "zh": "下次攻击会把敌人<@ba.vup>较大力地</>牵引至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "force": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_rope_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>slightly</>",
+            "zh": "将远距离内两个敌人<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "force": 0,
+            "atk_scale": 1.2,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>slightly</>",
+            "zh": "将远距离内两个敌人<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "force": 0,
+            "atk_scale": 1.3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>slightly</>",
+            "zh": "将远距离内两个敌人<@ba.vup>小力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 10,
+          "blackboard": {
+            "force": 0,
+            "atk_scale": 1.4,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 1.5,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 1.6,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 1.7,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 1.8,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 1.95,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>moderately</>",
+            "zh": "将远距离内两个敌人<@ba.vup>中等力度地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 10,
+          "blackboard": {
+            "force": 1,
+            "atk_scale": 2.1,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Double Hook",
+            "zh": "复式勾爪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to up to 2 target and drags them towards this unit <@ba.vup>greatly</>",
+            "zh": "将远距离内两个敌人<@ba.vup>较大力地</>拖拽至面前，并对其造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 10,
+          "blackboard": {
+            "force": 2,
+            "atk_scale": 2.25,
+            "max_target": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Auditory Training",
+            "zh": "听觉训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 15% Physical Dodge",
+            "zh": "获得15%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Auditory Training",
+            "zh": "听觉训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 19% <@ba.talpu>(+4%)</> Physical Dodge",
+            "zh": "获得19%<@ba.talpu>（+4%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.19
+          }
+        },
+        {
+          "name": {
+            "en": "Auditory Training",
+            "zh": "听觉训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 30% Physical Dodge",
+            "zh": "获得30%的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Auditory Training",
+            "zh": "听觉训练",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Obtains 34% <@ba.talpu>(+4%)</> Physical Dodge",
+            "zh": "获得34%<@ba.talpu>（+4%）</>的物理闪避",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.34
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +22",
+        "zh": "防御力+22",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "def": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_rope",
+      "name": {
+        "en": "Rope's Badge",
+        "zh": "暗索证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Rope has demonstrated a remarkable aptitude for assault following physical coercion of enemy proximity.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Hookmaster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员暗索擅长将敌人拖拽至身边后进行攻击\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使钩索师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_rope",
+      "name": {
+        "en": "Tin Casket",
+        "zh": "铁皮首饰盒",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_rope",
+      "description": {
+        "en": "'Quit bugging me. Hold on a liiiittle more.'\nOpening her sheet metal box, Rope bobs her chin, torn between two chokers. The plastic imitation-tattoo one is her usual pick; it makes her neck look more slender. Most importantly, it's cheap—they come a literal dime a dozen.\n'Salary, y'know? I don't wanna splash salary. I have to rake that stuff in with my own poor cutesy hands.'\n'Rope, it's been ten minutes. Are you still not decided?'\n'Just gimme a tiny bit longer, pleaaase.'\n'I'm giving you ten more minutes. That's ten. Period.'\n'Gotcha!'\n'Man, I really like the other one too. Nawww. I super like it...'\nIn the box lies an exquisitely handmade leather choker, studded with limpid melee diamonds, somewhat at odds sat with the cheap and loud plastic product next to it.\nA few months ago, a fellow squad op gave Rope this choker as a present, as thanks for having her back in a desperate situation. Rope loves it. It's a treasure of hers, but never her pick. She used to loiter at the display window, making her reflection overlap with the pedestal behind the glass, and like moonlight shines on the water, this choker would sit around her neck. She'd flutter her eyes, and so would the girl in the glass, and in that moment they'd become one.\nBut unfortunately, reflections aren't forever.\n'I bet I looked way too desperate staring at it. I bet that's how she figured me out.'\n'Aw, it sucks so much. All the stuff I want but can't get, and now the only thing I get to do is daydream about it.'\n'Ugh—why'd I ever get on this pirate ship?!'\nShe dangles the choker in front of her nose, shuts her eyes and sniffs deeply at the leather's smoky scent. It's the fragrance of tar oil, picked up from its tanning phase.\n'Ahh, that's the smell of wealth—maybe I'll just wear this one for today. Then again, the leather's so soft. What if it gets scraped up?'\nRope cups the choker in her hands, and lightly rubs her cheeks against it, reveling in the sophisticated and sensual texture.\n'You're so comfy. I love you. Couldn't bear to wear you...'\n'It's been ten minutes! If you don't come out, I'm leaving you behind!'\nRope curls her lips, secretly showing her resentment at the voice nagging her from behind the door.\n'Coming!'\n'What are you even picking?'\n'I'm a girl going out! I've gotta pick out my shoes and outfit and jewelry just right.'\n'Your clothes look pretty much same as normal to me.'\n'You say that again and I'm gonna get mad.'\n'...Why aren't you wearing that choker I got you? Don't you like it?'\n'Of course I'm not. It's the good stuff. You've always gotta leave the good stuff for next time.'\n'Hrmph. I'd beg to differ.'",
+        "zh": "“不要催我了，再等一下下。”\n打开铁皮盒子，暗索点点下巴，艰难地在两条项圈间做选择。那条仿纹身的塑料项圈是她通常的选择，能让脖子显得修长，最重要的是，它很便宜，一点小钱就能买一打。\n“工钱、工钱可不能乱花，那可都是我辛辛苦苦一钩一钩钩来的。”\n“暗索，十分钟了，你还没有选好吗？”\n“再给我一点时间，拜托啦。”\n“我再多等你十分钟哦，就十分钟。”\n“知道啦！”\n“另外一条我也很喜欢啊，不，是超级喜欢……”\n盒子里躺着一条做工精致的皮质项圈，中间点缀着剔透的碎钻，同旁边廉价鲜艳的塑料制品相比，它有些格格不入。\n几个月前，同组干员为了答谢暗索危急时刻的出手相助，将这条项圈作为礼物赠送给她。暗索很喜欢，这是她的钟爱，却从不是她的选择。她曾徜徉在橱窗前，任自己的倒影和玻璃后的展示台重叠，就像月亮会落在水面，这条项圈也会挂在她脖间。她眨眨眼，玻璃上的女孩也眨眨眼，这一刻，她们融为一体。\n但可惜，倒影从不永恒。\n“一定是我当时的目光太过艳羡，所以才会被她发现。”\n“太痛苦了，那些我想要却得不到的好东西，现在我唯一能做的，就是偷偷想。”\n“呜——我怎么就上了这条贼船！”\n她将项圈凑在鼻前，闭上眼狠狠嗅着皮子的烟熏味，那是它在鞣制的过程中染上的焦油香气。\n“啊，闻起来是财富的味道——不如今天就戴它好了，可是这个皮料这么柔软，磨损了怎么办？”\n暗索双手捧着项圈，用脸颊轻轻蹭着皮面，享受那细腻紧密的质感。\n“好舒服，好喜欢，舍不得戴……”\n“十分钟了哦，你再不出门我就不等你了！”\n暗索撇撇嘴，对门外的催促声暗暗表示了自己的不满。\n“来了啦！”\n“你到底在选什么？”\n“女孩子出门嘛，鞋子衣服首饰都得好好挑选一番。”\n“我觉得和你平时穿的没什么两样。”\n“你说这种话我会生气哦。”\n“……你为什么不戴我送给你的那条项圈？你不喜欢吗？”\n“当然没有，那可是好东西，好东西永远都得留给下一次。”\n“哼，不敢苟同。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30103",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31013",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30013",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

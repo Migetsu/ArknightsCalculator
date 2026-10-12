@@ -1,0 +1,1121 @@
+{
+  "id": "char_491_humus",
+  "name": {
+    "en": "Humus",
+    "zh": "休谟斯",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R171",
+  "rarity": 4,
+  "class": "WARRIOR",
+  "subclass": "reaper",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Waste management expert Humus firmly believes that everyone and everything has a purpose.",
+    "zh": "废弃物处理专家休谟斯，坚信一切人与物都自有其用处。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Capable of fixing everything other than his unkempt appearance.",
+    "zh": "除了不修边幅什么都修。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 882,
+            "atk": 275,
+            "def": 194,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1225,
+            "atk": 393,
+            "def": 266,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1225,
+            "atk": 393,
+            "def": 266,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1612,
+            "atk": 511,
+            "def": 342,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-3",
+      "evolveCost": [
+        {
+          "id": "3222",
+          "count": 5
+        },
+        {
+          "id": "30103",
+          "count": 11
+        },
+        {
+          "id": "30023",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1612,
+            "atk": 511,
+            "def": 342,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2150,
+            "atk": 616,
+            "def": 403,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_humus_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "value": 50
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "value": 50
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "value": 50
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "value": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "value": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "value": 60
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "value": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "value": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "value": 80
+          }
+        },
+        {
+          "name": {
+            "en": "Solid Waste Cutting",
+            "zh": "固废切割",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of the next attack to <@ba.vup>{atk_scale:0%}</>, and recovers <@ba.kw>{value}</> HP",
+            "zh": "下次攻击的攻击力提升至<@ba.vup>{atk_scale:0%}</>，并额外回复自身<@ba.kw>{value}</>生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "value": 80
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_humus_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 15,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.15,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.3,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 15,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.18,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.36,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 15,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.21,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.42,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.25,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.5,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.28,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.56,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.32,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.64,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 25,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.36,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.72,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 26,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.39,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.78,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 28,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.42,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.84,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Processing",
+            "zh": "高效处理",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block count <@ba.vup>+1</>, gains <$ba.strong>Vigor</> effect of <@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</> ATK when over <@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</> HP; effect doubles when over <@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</> HP",
+            "zh": "技能持续时间内阻挡数<@ba.vup>+1</>，生命值高于<@ba.vup>{humus_s_2[peak_1].peak_performance.hp_ratio:0%}</>时，获得<@ba.vup>+{humus_s_2[peak_1].peak_performance.atk:0%}</>攻击力的<$ba.strong>精力充沛</>；高于<@ba.vup>{humus_s_2[peak_2].peak_performance.hp_ratio:0%}</>时效果翻倍",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "humus_s_2[peak_1].peak_performance.atk": 0.45,
+            "humus_s_2[peak_1].peak_performance.hp_ratio": 0.5,
+            "humus_s_2[peak_2].peak_performance.atk": 0.9,
+            "humus_s_2[peak_2].peak_performance.hp_ratio": 0.8,
+            "block_cnt": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 1
+            },
+            {
+              "id": "31053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30061",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30033",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Re-recycle",
+            "zh": "再回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Any HP gain exceeding this unit's Max HP is converted into a <$ba.barrier>Barrier</>; caps at 60% of Max HP",
+            "zh": "超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>；最多不超过自身最大生命值的60%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp_ratio": 0.6,
+            "def": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Re-recycle",
+            "zh": "再回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Any HP gain exceeding this unit's Max HP is converted into a <$ba.barrier>Barrier</>; caps at 64% <@ba.talpu>(+4%)</> of Max HP",
+            "zh": "超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>；最多不超过自身最大生命值的64%<@ba.talpu>（+4%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp_ratio": 0.64,
+            "def": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Re-recycle",
+            "zh": "再回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Any HP gain exceeding this unit's Max HP is converted into a <$ba.barrier>Barrier</>; caps at 100% of Max HP",
+            "zh": "超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>；最多不超过自身最大生命值的100%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp_ratio": 1,
+            "def": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Re-recycle",
+            "zh": "再回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Any HP gain exceeding this unit's Max HP is converted into a <$ba.barrier>Barrier</>; caps at 104% <@ba.talpu>(+4%)</> of Max HP",
+            "zh": "超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>；最多不超过自身最大生命值的104%<@ba.talpu>（+4%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp_ratio": 1.04,
+            "def": 0
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +35",
+        "zh": "攻击力+35",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 30,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_humus",
+      "name": {
+        "en": "Humus's Badge",
+        "zh": "休谟斯证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_humus",
+      "description": {
+        "en": "Operator Humus has demonstrated a remarkable aptitude in dispatching enemy swathes with little to no support.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Reaper responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员休谟斯擅长孤身一人扫清众敌\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使收割者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_humus",
+      "name": {
+        "en": "Badlands Exotic Toolkit",
+        "zh": "恶地奇异工具套组",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_humus",
+      "description": {
+        "en": "This is a story from when Humus just came aboard.\nHearing they'd gotten a waste processing station's foreman from the Columbian frontier, several operators from Engineering had their curiosities piqued, wanting to see if someone with that kind of work experience had any special skills.\nWhen Humus checked in at Engineering, carrying his heap of trustworthy tools, clearly used for years, everyone present had quite the scare.\nFirstly, the box used to carry them was intimidatingly huge—only someone used to rough work like Humus could carry that thing about by one hand. Secondly, aside from the usual tools was a smorgasbord of bizarrely-shaped wonders whose usages were unclear, enough to perplex anyone who saw them.\nFortunately, Humus is the type who's happy to share. Over the next few hours, Engineering's operators gained a considerable boost to their knowledge.\n'This one's a multifunction remote control, with a lot of leeway for remodeling. Just do this... this... reassemble it quickly, and it'll transform from a TV remote to an RC detonator. It's high-power, has a huge effective range, and it's a treat to use.\n'This one's basically just an average hand cranked dynamo, but with a little souped-up functionality—it can generate electricity while it threshes corn or maybe peels potatoes. We were constantly out of power at the processing station, after all, and usually we only had corn or potatoes to eat.\n'As for this sickle, I made it out of a car door I pulled off. That car was a real funny one—after it came in written off, we had to shelve it for forever because it was just too rugged, and tearing the thing apart took some massive effort. I made the sickle's form overkill enough so if I pull it out and it scares people off, then that's one less pointless fight.'\nIt so happened that moments after the conclusion of this eye-opening equipment seminar, the bell sounded for dinnertime. Completely dazed, the operators of Engineering were itching to take this out-of-the-ordinary new colleague to the canteen for the welcome party they'd set up in advance. At the table, Humus told his curious coworkers a few stories, of people and things out on the frontier that in his eyes were just everyday life. Yet it was only after his captive audience had finished taking in his stories that they realized <i>why</i> Humus had the skillset that he did.\nThe frontier's not a place you survive with just the average Joe's common sense.",
+        "zh": "那是休谟斯刚入职时的故事了。\n听说来了个哥伦比亚的拓荒地废弃物处理站负责人，许多工程部的干员都非常好奇，想看看拥有这样工作经验的人是不是有什么特别的本领。\n当休谟斯提着那堆陪了他许多年的工具设备去工程部报到的时候，在场的所有人都吓了一跳。\n首先，用来装这些工具的箱子大得吓人，也只有休谟斯这样习惯了粗重工作的人能单手提着这玩意儿走来走去。其次，除了常规工具之外，箱子里还有一大堆造型奇特、用途不明的东西，足以让看到它们的人感到困惑。\n好在，休谟斯是一个乐于分享的人。在接下来的几个小时里，工程部的干员们结结实实长了不少见识。\n“这是一个多功能遥控器，改造空间很大。只要像这样……这样……重新组装一下，它就可以从电视遥控器变成遥控炸弹引爆器，功率大，有效距离远，很好用的。\n“这基本上就是个普通的手摇发电机，不过有个额外功能，可以一边发电一边给玉米脱粒或者给土豆削皮。毕竟在处理站的时候经常没电用，又经常只有玉米和土豆可以吃。\n“至于这把镰刀，是我拆了一扇车门做的。那辆车可真不一般，送来报废之后搁置了好久，因为太结实了，拆起来得费好大功夫。我把镰刀的造型做得足够夸张，这样把它掏出来之后，要是能吓到人，就不用打架了。”\n这场别开生面的工具设备说明会刚刚结束，晚饭铃正好就响了。被搞得晕头转向的工程部干员们迫不及待地拖着这位不太一般的新同事去食堂举行预定好的欢迎会。席间，休谟斯向好奇的同事们讲了一些故事，一些在他看来司空见惯的，拓荒地的人和事。而他的听众们听完故事后才明白，为什么休谟斯有这样一套本领。\n拓荒地可不是什么依靠普通人的常识就能生活下去的地方。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31043",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30033",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1090 @@
+{
+  "id": "char_144_red",
+  "name": {
+    "en": "Projekt Red",
+    "zh": "红",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SW01",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "executor",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "Fast-Redeploy",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Projekt Red the Wolf Hunter, Specialist Operator of Rhodes Island, will join the hunt.",
+    "zh": "罗德岛特种干员、猎狼人红，即将加入狩猎。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Her blades are her fangs.",
+    "zh": "利刃，就是锐齿。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 703,
+            "atk": 204,
+            "def": 135,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 938,
+            "atk": 301,
+            "def": 194,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 7
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 938,
+            "atk": 301,
+            "def": 194,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1173,
+            "atk": 413,
+            "def": 253,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "30084",
+          "count": 7
+        },
+        {
+          "id": "30043",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1173,
+            "atk": 413,
+            "def": 253,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1505,
+            "atk": 530,
+            "def": 302,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_red_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.35,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.45,
+            "prob": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.55,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6,
+            "prob": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.65,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.75,
+            "prob": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Execution Mode",
+            "zh": "处决模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, ATK <@ba.vup>+{atk:0%}</>, and gain <@ba.vup>{prob:0%}</> Physical and Arts Dodge",
+            "zh": "部署后攻击力<@ba.vup>+{atk:0%}</>，并获得<@ba.vup>{prob:0%}</>物理和法术闪避",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 10,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.8,
+            "prob": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_red_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "stun": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "stun": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "stun": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "stun": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "stun": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "stun": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "stun": 2.6
+          }
+        },
+        {
+          "name": {
+            "en": "Wolfpack",
+            "zh": "狼群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately deals <@ba.vup>{atk_scale:0%}</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stuns</> them for <@ba.vup>{stun}</> seconds",
+            "zh": "部署后立即对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并使命中目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-5",
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "stun": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30033",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30033",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Chill",
+            "zh": "刺骨",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals at least 20% of ATK damage every attack",
+            "zh": "每次攻击至少造成20%攻击力的伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Chill",
+            "zh": "刺骨",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals at least 23% <@ba.talpu>(+3%)</> of ATK damage every attack",
+            "zh": "每次攻击至少造成23%<@ba.talpu>（+3%）</>攻击力的伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 0.23
+          }
+        },
+        {
+          "name": {
+            "en": "Chill",
+            "zh": "刺骨",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals at least 30% of ATK damage every attack",
+            "zh": "每次攻击至少造成30%攻击力的伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Chill",
+            "zh": "刺骨",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals at least 33% <@ba.talpu>(+3%)</> of ATK damage every attack",
+            "zh": "每次攻击至少造成33%<@ba.talpu>（+3%）</>攻击力的伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 0.33
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +20",
+        "zh": "攻击力+20",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -2 sec",
+        "zh": "再部署时间-2秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_red",
+      "name": {
+        "en": "Projekt Red's Badge",
+        "zh": "红证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Projekt Red has demonstrated a remarkable aptitude in repeated battlefield penetration.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Executor responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员红擅长反复切入战场\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使处决者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_red",
+      "name": {
+        "en": "Mystery Prop Pack",
+        "zh": "神秘的道具包",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_red",
+      "description": {
+        "en": "The red lone wolf, with a fully relaxed posture, lies prone in the pile of leaves. \nDarkness falls, the ochre leaves flutter, and remarkably, her eye-catching red jacket, like the black knapsack she has on hand, blends into her surroundings. \nShe's waiting. \nKal'tsit said the prey will pass through here tonight; all you need do is stay calm and wait. \nShe listens to what Kal'tsit says. She's here, waiting. \n\nFootstep noises. \nThe sound of boots treading on leaves. \nThe lone wolf patiently waits, until the prey has moved to the other side of her vision. Then like an apparition, she flits behind them, a cold glint in her hand. \nIn the next instant, the lone wolf's figure fades back into the night. \n\nThe visitor warily watches around, inspects their pocket, feels what they should between their fingers. They relax with a sigh, continue on, but are oblivious that the chip in their pocket has already changed homes. \nEven the counterfeit they feel now will, in a few short minutes, slip from their pocket, to disappear into the eddy of the woods' falling leaves. \n\nAfter all other breaths vanish, the lone wolf's figure emerges from the pile of withered leaves. \nThe true prey, the chip, securely lies deep in her knapsack. \nMission complete, the lone wolf sets back on foot, but her mood is by no means restful. \nDisconnected from her mission already, she's enveloped by the scent of the deserted overgrowth, and remembers Siracusa's wilds. \n\nShe walks alone, the past on her mind. \nThe wilds were drenched in blood. Grandma taught her how to get out of them, then straight away threw her into their midst. \nShe got out. \nShe exhausted a whole life's worth of possibilities at once, soaked in blood from head to toe, and finally got out. \nGrandma was very pleased, but as she expected, Grandma was no more than that either. \n\nShe got out of the wilds, and came headfirst into the maze, life's maze, far vaster than the wilds ever were. \nThe maze had uncountably many ways through, and Grandma never taught her a single one. \nSo she didn't know life's meaning, and she didn't want to either. She had no desire in her to learn, or to give it any trial and error. She just wanted the simplest way out of this whole maze— \nWithout Kal'tsit, she would be gone by now. \n\nKal'tsit said if you don't know where you can go, then stopping where you are, giving thought to the way forward, isn't necessarily a bad idea; during that time, she would be given shelter. \nShe listens to what Kal'tsit says. \nFor now, she stopped at a crossroads called Rhodes Island, and got food, a place to stay, and a salary she doesn't know the use of. She even got a small fluffy ball, stuffed in her knapsack, that she can hold in her hand when there's no Lupo's tail to stroke, letting her feel fur brushing past her fingertips. \nBut how long is she going to stay here? \nKal'tsit didn't say. \nBut she's ultimately unable to adapt to this tremendous maze, and the wilds stopped needing her long ago. \nSo, is she going to leave? \nShe doesn't know. \n\nThe dagger she knows lies deep in her knapsack, letting out a minute hum, just like a whimper.",
+        "zh": "红色的孤狼以最放松的姿势俯卧在落叶堆中。\n夜幕低垂，红叶纷飞，她身上显眼的红外套竟也能同手边的黑色背包一样，与周遭融为一体。\n她在等。\n凯尔希说，猎物会在今晚经过此处，只要安心等待即可。\n她听凯尔希的话，她在这里等。\n\n脚步声。\n靴子踩在落叶上的声音。\n孤狼耐心地等待着，一直等到猎物移动到自己视野的另一端。然后，她如幽灵般掠过那人背后，手中寒光一闪。\n下一个瞬间，孤狼的身影又隐没在夜色里。\n\n来人警觉地环顾四周，一探口袋，指间传来应有的触感，于是松了口气，继续前行，却浑然不知，口袋里的芯片已经被调了包。\n就连他现在摸到的假货，也会在几分钟后从破口中滑落，消失在落叶纷飞的林中。\n\n他人的气息彻底消散后，孤狼从枯叶堆中现出身形。\n真正的猎物，那枚芯片，正安稳地躺在孤狼的背包深处。\n任务完成，孤狼踏上归途，心境却并不安稳。\n跟任务已经无关了，她只是被杳无人迹的荒芜气息包围着，回忆起了叙拉古的荒野。\n\n孤狼踽踽独行，想着往事。\n荒野被血浸透。外婆把走出荒野的方法教给了她，然后直接把她扔进荒野的正中央。\n她走出来了。\n她透支了一生的可能性，浑身被血浸透，终于走出了荒野。\n外婆很满意，但外婆对她的期许，也就仅此而已。\n\n她走出了荒野，然后一头撞进了比荒野大得多的、名为生活的迷宫。\n这座迷宫的走法不计其数，而外婆没教过她任何一种。\n所以，她不知道何谓生活，她也不想知道。她没有心力去学习和试错了。她只想以最简单的方法离开这座迷宫——\n如果没有凯尔希，她已经离开了。\n\n凯尔希说，如果不知有何处可去，就在原地停下，想一想前路，也未尝不是一件好事；在此期间，她会得到庇护。\n她听凯尔希的。\n她暂且在名为罗德岛的交叉点停住，得到了食物、住处，还有不知有何用处的薪水。她甚至还得到了一个毛茸茸的小球，塞在背包里面，没有鲁珀的尾巴可摸的时候，可以把小球握在手中，感受软毛拂过手指的触感。\n但她要在这儿停留多久？\n凯尔希没有说。\n但她终究无法适应这座硕大无朋的迷宫，荒野也早已不再需要她了。\n那么，要离开吗？\n她不知道。\n\n那柄她用惯了的匕首躺在背包深处，发出细微的嗡鸣声，宛如呜咽。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30104",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31024",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1164 @@
+{
+  "id": "char_187_ccheal",
+  "name": {
+    "en": "Gavial",
+    "zh": "嘉维尔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "IU07",
+  "rarity": 4,
+  "class": "MEDIC",
+  "subclass": "physician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Gavial, Medic Operator of Rhodes Island, will protect the lives of her squad members using her special techniques.",
+    "zh": "罗德岛医疗干员嘉维尔，将用其特殊的医疗手段保障大家的生命安全。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Her patients always have a peaceful look on their faces.",
+    "zh": "经过她医治的干员，表情都很安详。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 851,
+            "atk": 159,
+            "def": 66,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1167,
+            "atk": 262,
+            "def": 96,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 1
+        },
+        {
+          "id": "30022",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1167,
+            "atk": 262,
+            "def": 96,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1374,
+            "atk": 364,
+            "def": 121,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3262",
+          "count": 5
+        },
+        {
+          "id": "30063",
+          "count": 13
+        },
+        {
+          "id": "30043",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1374,
+            "atk": 364,
+            "def": 121,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1580,
+            "atk": 450,
+            "def": 152,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ccheal_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.2,
+            "heal_scale_2": 0.4,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.21,
+            "heal_scale_2": 0.42,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.22,
+            "heal_scale_2": 0.44,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.23,
+            "heal_scale_2": 0.46,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.24,
+            "heal_scale_2": 0.48,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.25,
+            "heal_scale_2": 0.5,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.26,
+            "heal_scale_2": 0.52,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 4,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.29,
+            "heal_scale_2": 0.58,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.32,
+            "heal_scale_2": 0.64,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration",
+            "zh": "活力再生",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs the target ally in the next healing, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下次治疗时为目标增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 0.35,
+            "heal_scale_2": 0.7,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 5,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ccheal_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "heal_scale": 0.15,
+            "heal_scale_2": 0.38,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 31,
+          "blackboard": {
+            "heal_scale": 0.16,
+            "heal_scale_2": 0.4,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 32,
+          "blackboard": {
+            "heal_scale": 0.17,
+            "heal_scale_2": 0.42,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 35,
+          "blackboard": {
+            "heal_scale": 0.18,
+            "heal_scale_2": 0.44,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 36,
+          "blackboard": {
+            "heal_scale": 0.19,
+            "heal_scale_2": 0.46,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 37,
+          "blackboard": {
+            "heal_scale": 0.2,
+            "heal_scale_2": 0.48,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 40,
+          "blackboard": {
+            "heal_scale": 0.21,
+            "heal_scale_2": 0.5,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 43,
+          "blackboard": {
+            "heal_scale": 0.24,
+            "heal_scale_2": 0.6,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 46,
+          "blackboard": {
+            "heal_scale": 0.27,
+            "heal_scale_2": 0.7,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Vitality Restoration - Wide Range",
+            "zh": "活力再生·广域",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Buffs all allies within range immediately, restoring HP by <@ba.vup>{heal_scale:0%}</> of Gavial's ATK (by <@ba.vup>{heal_scale_2:0%}</> of Gavial's ATK when the target's HP is lower than 50%) per second, lasting <@ba.vup>{duration}</> seconds",
+            "zh": "立即为攻击范围内所有友方单位增加一个增益，每秒持续恢复相当于嘉维尔攻击力<@ba.vup>{heal_scale:0%}</>（血量低于一半时为<@ba.vup>{heal_scale_2:0%}</>）的生命，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 50,
+          "blackboard": {
+            "heal_scale": 0.3,
+            "heal_scale_2": 0.8,
+            "hp_ratio": 0.5,
+            "interval": 1,
+            "duration": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30041",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30103",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Battlefield Medic",
+            "zh": "战地医师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After Gavial is deployed, all [Medic] Operators' ATK +5% and DEF +50, lasting 15 seconds",
+            "zh": "部署后全体友方【医疗】职业干员攻击力+5%，防御力+50，持续15秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.05,
+            "def": 50,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Battlefield Medic",
+            "zh": "战地医师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After Gavial is deployed, all [Medic] Operators' ATK +7% <@ba.talpu>(+2%)</> and DEF +70 <@ba.talpu>(+20)</>, lasting 17 <@ba.talpu>(+2)</> seconds",
+            "zh": "部署后全体友方【医疗】职业干员攻击力+7%<@ba.talpu>（+2%）</>，防御力+70<@ba.talpu>（+20）</>，持续17<@ba.talpu>（+2）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.07,
+            "def": 70,
+            "duration": 17
+          }
+        },
+        {
+          "name": {
+            "en": "Battlefield Medic",
+            "zh": "战地医师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployed, all [Medic] Operators' ATK +10% and DEF +100, lasting 15 seconds",
+            "zh": "部署后全体友方【医疗】职业干员攻击力+10%，防御力+100，持续15秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.1,
+            "def": 100,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Battlefield Medic",
+            "zh": "战地医师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployed, all [Medic] Operators' ATK +12% <@ba.talpu>(+2%)</> and DEF +120 <@ba.talpu>(+20)</>, lasting 17 <@ba.talpu>(+2)</> seconds",
+            "zh": "部署后全体友方【医疗】职业干员攻击力+12%<@ba.talpu>（+2%）</>，防御力+120<@ba.talpu>（+20）</>，持续17<@ba.talpu>（+2）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.12,
+            "def": 120,
+            "duration": 17
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +23",
+        "zh": "攻击力+23",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 30,
+        "def": 30
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ccheal",
+      "name": {
+        "en": "Gavial's Badge",
+        "zh": "嘉维尔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ccheal",
+      "description": {
+        "en": "Operator Gavial has demonstrated a remarkable aptitude for healing teammates in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员嘉维尔擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ccheal",
+      "name": {
+        "en": "'Follow Your Doctor's Orders'",
+        "zh": "“请遵医嘱”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_ccheal",
+      "description": {
+        "en": "A primer on receiving treatment, circulated in secret between Rhodes Island operators:\n...that case, you're in luck. He'll fix you up and be gentle about it.\nBut if your primary doctor is Gavial, I have one piece of advice for you: don't try and be smart with her, just do exactly as she says. If you've been treated by Gavial before, you know what I'm talking about, and I know you know.\nBut seeing as this primer is aimed at giving all you adorable, blank-slate newbies some advice from the deep end of the pool, I want you to read what follows very carefully.\nFirstly: no matter what rumors you've heard, don't be scared. Gavial is a professional medic who's qualified to practice. Her medical expertise is a genuine thing of envy aboard Rhodes. If she says she's going to treat you, but approaches you with tools that look extremely dangerous (including but not limited to hammers/drills/impact drivers), then stay where you are and do not move. There is a very high probability she IS coming to fix up your wounds. Of course, we can't rule out the scenario where she just seized a bunch of new toys from the enemy as spoils, and really wants to show them off to you, in which case you may express a suitable degree of admiration for her, BUT DO NOT GO TOO FAR, or she may beat you up.\nSecondly: please, follow her medical instructions to the letter, 100%. Don't complain no matter how bitter the medicine she made you take, because she means well. If she's laid down strict dietary restrictions for you, you obey them perfectly, unless you have miracle Arts that let you hide what you've been eating from everyone forever, which you don't. She's a good doctor who takes great responsibility for her patients, and if she finds you refusing to follow instructions, the consequences will likely be Very Bad. The Rhodes Island Medical Department does not accept complaints about that.\nLastly: when you're wounded on the battlefield and need emergency aid, please report in to Gavial ASAP. Otherwise, she may run out of anesthetics, in which case she's exceedingly likely to prep you for treatment using a technique she personally innovated and dubbed 'kinetic anesthesia.' It's been appraised by Medical as 'tentatively safe, but patient experience has been relatively poor.'\nThis author has been a casualty of said technique, and can VERY responsibly report there's a little more to the experience than 'relatively poor.'",
+        "zh": "一份罗德岛干员间私下流传的就医指南：\n……么，你运气不错，他会温柔地把你治好的。\n但倘若你的主治医生是嘉维尔，我对你的唯一建议就是：别想耍什么小聪明，老实听她的话。如果你已经接受过嘉维尔的治疗，你一定知道我是什么意思。\n但鉴于这份就医指南是为了给那些白纸一样的可爱新人们传授些经验教训，那么，请仔细阅读下面的内容。\n首先，无论你之前听说过什么传闻，别害怕。嘉维尔是一位有行医资格的执业医师，她的医术在罗德岛有口皆碑，当她声称要给你治疗，并手持一些看似很危险的工具（不限于锤子/手钻/冲击螺丝刀）接近你的时候，老实待在原地别动，她有很大的几率真的是来处理你的伤口的。当然，也不排除她只是想向你炫耀一下刚从敌人那里缴获的新家伙，此时，你可以适度向她表示自己的敬佩之情，切记别过火，否则可能会挨揍。\n其次，请百分百遵照她的医疗指示，就算吃了很苦的药也别抱怨，她是为你好。如果嘉维尔为你制定了严格的饮食禁忌，除非你拥有偷吃永远不会被发现的神奇源石技艺，否则请尽可能完美地执行。她是个对自己病人十分负责的好医生，当她发现你拒不执行医嘱，后果可能会很严重，罗德岛的医疗部门不会受理与此有关的投诉。\n最后，当你在战场上受伤，需要应急处理时，请尽快找嘉维尔报到。否则当她携带的麻醉剂用完的时候，她很可能会使用一种自己独创的，名为“动能麻醉”的技术为你做术前准备。经医疗部门评估，该技术安全性姑且可以保证，但是患者体验比较糟糕。\n笔者作为这项技术曾经的受害者，可以很负责任地说，体验不只是“比较糟糕”那么简单。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30013",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31013",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30023",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

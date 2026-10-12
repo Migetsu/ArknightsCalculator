@@ -1,0 +1,1095 @@
+{
+  "id": "char_478_kirara",
+  "name": {
+    "en": "Kirara",
+    "zh": "绮良",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "HK05",
+  "rarity": 5,
+  "class": "SPECIALIST",
+  "subclass": "stalker",
+  "faction": "higashi",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Higashi student Kirara, all videogame consoles forbidden while she's forced on missions.",
+    "zh": "东国学生绮良，被勒令任务时禁止携带游戏机。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Confiscate one, and she's still got a second, third and fourth.",
+    "zh": "没收了一台，还有第二三四台。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 849,
+            "atk": 372,
+            "def": 141,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1180,
+            "atk": 503,
+            "def": 217,
+            "magicResistance": 10,
+            "cost": 18,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1180,
+            "atk": 503,
+            "def": 217,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1513,
+            "atk": 646,
+            "def": 282,
+            "magicResistance": 20,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 3
+        },
+        {
+          "id": "31024",
+          "count": 7
+        },
+        {
+          "id": "30063",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1513,
+            "atk": 646,
+            "def": 282,
+            "magicResistance": 30,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1780,
+            "atk": 798,
+            "def": 340,
+            "magicResistance": 30,
+            "cost": 20,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_kirara_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 0.95
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Strike",
+            "zh": "锚击",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional hit equal to <@ba.vup>{kirara_s_1.atk_scale:0%}</> of ATK as Arts damage",
+            "zh": "下次攻击额外造成一次相当于攻击力<@ba.vup>{kirara_s_1.atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 2,
+          "initSp": 0,
+          "blackboard": {
+            "kirara_s_1.atk_scale": 1.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kirara_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.1,
+            "attack@atk_scale": 0.45,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.2,
+            "attack@atk_scale": 0.5,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.3,
+            "attack@atk_scale": 0.55,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.4,
+            "attack@atk_scale": 0.6,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.5,
+            "attack@atk_scale": 0.65,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "talent_scale": 2.6,
+            "attack@atk_scale": 0.7,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "talent_scale": 2.7,
+            "attack@atk_scale": 0.75,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 6,
+          "blackboard": {
+            "talent_scale": 2.8,
+            "attack@atk_scale": 0.8,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 8,
+          "blackboard": {
+            "talent_scale": 2.9,
+            "attack@atk_scale": 0.9,
+            "attack@duration": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Anchor Point Snap",
+            "zh": "锚点捕捉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The effect of this unit's Talent increases to <@ba.vup>{talent_scale}</> times. Deals <@ba.vup>{attack@atk_scale:0%}</> of ATK as Arts damage to enemies within Attack Range every second",
+            "zh": "天赋效果提升至<@ba.vup>{talent_scale}</>倍，对攻击范围内的敌人造成每秒相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "talent_scale": 3,
+            "attack@atk_scale": 1,
+            "attack@duration": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 2
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Lonesome Protector",
+            "zh": "离群独守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 1% HP per second. If there are no allied Operators in the surrounding 8 tiles, restores 2% HP per second instead",
+            "zh": "每秒回复1%生命值，周围8格没有友方干员时，改为每秒回复2%生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.01,
+            "kirara_t_2.hp_recovery_per_sec_by_max_hp_ratio": 0.02
+          }
+        },
+        {
+          "name": {
+            "en": "Lonesome Protector",
+            "zh": "离群独守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 1% HP per second. If there are no allied Operators in the surrounding 8 tiles, restores 2.5% <@ba.talpu>(+0.5%)</> HP per second instead",
+            "zh": "每秒回复1%生命值，周围8格没有友方干员时，改为每秒回复2.5%<@ba.talpu>（+0.5%）</>生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.01,
+            "kirara_t_2.hp_recovery_per_sec_by_max_hp_ratio": 0.025
+          }
+        },
+        {
+          "name": {
+            "en": "Lonesome Protector",
+            "zh": "离群独守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 2% HP per second. If there are no allied Operators in the surrounding 8 tiles, restores 3.5% HP per second instead",
+            "zh": "每秒回复2%生命值，周围8格没有友方干员时，改为每秒回复3.5%生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.02,
+            "kirara_t_2.hp_recovery_per_sec_by_max_hp_ratio": 0.035
+          }
+        },
+        {
+          "name": {
+            "en": "Lonesome Protector",
+            "zh": "离群独守",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 2% HP per second. If there are no allied Operators in the surrounding 8 tiles, restores 4% <@ba.talpu>(+0.5%)</> HP per second instead",
+            "zh": "每秒回复2%生命值，周围8格没有友方干员时，改为每秒回复4%<@ba.talpu>（+0.5%）</>生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.02,
+            "kirara_t_2.hp_recovery_per_sec_by_max_hp_ratio": 0.04
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 60
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_kirara",
+      "name": {
+        "en": "Kirara's Badge",
+        "zh": "绮良证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Kirara has demonstrated a remarkable aptitude for bodily concealment and enemy ambush.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Ambusher responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员绮良擅长隐匿身形伏击敌人\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使伏击客职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_kirara",
+      "name": {
+        "en": "We Will Survive 3 Online",
+        "zh": "《闹闹生存挑战3 联机版》",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_kirara",
+      "description": {
+        "en": "Thank you for purchasing We Will Survive 3 Online. The following is a brief rundown of the game.\n\n■ Primer\nWe Will Survive 3 Online is an RPG that includes both competitive and cooperative gameplay. Players will play as and control different characters in-game, raising their survival rank, and battling with other players to win the Survivals.\nOf course, joining forces will also be necessary throughout many points in the game, so this is a game to enjoy with your friends.\n\n■ Controls\nPlayers must use a controller compatible with the console when controlling their chosen character.\nIf you have multiple people playing, have more controllers ready.\n\n■ Items\nAll items within the game can be obtained either through exploring the wild or through crafting.\nOnce obtained, items can be stored in your backpack. Backpack space is limited, so you can trade any items you don't need at the moment with your friends in-game, and you can opt to just send them as gifts too.\nEach item you collect also unlocks its illustration in the guidebook. If you want to unlock them all and unlock the secret achievement, get trading with players!\n\n■ Competition Phase\nDon't forget, your ultimate goal is victory in the Survivals!\nMerry cooperation goes hand-in-hand with the struggle to compete afterwards! Use your survival skills to contest and loot other players' resources. Out in the wild, you can also lie in ambush, or directly challenge people, initiating one-on-one battles with other players!\nThe higher a player's survival rank, the bigger the advantage in the fight! Decide who amongst you will be the champion of the Survivals!\n\nWith that, you should now have a decent understanding of the game. Invite your friends, plunge into a colorful world, and have a fun time playing together!",
+        "zh": "感谢购入《闹闹生存挑战3 联机版》。以下为游戏简介。\n\n■游戏指南\n本游戏是一款集竞技与合作于一体的角色扮演游戏。玩家需通过扮演并操纵不同的游戏角色，提高自身的生存等级，并与其他玩家争夺生存赛的冠军。\n当然，在游戏过程中许多时候也需要玩家的通力合作，请与好友共同享受本游戏。\n\n■操作说明\n玩家操作选定的角色时，必须使用游戏机配套的遥控手柄。\n多人游玩，请准备复数手柄。\n\n■游戏道具\n本游戏中所有游戏道具，都可以通过野外探索与手工制作两种途径获得。\n获得游戏道具后，可以将其存储在游戏背包内，背包的容量有限，可以将暂时不需要的道具与你的游戏好友进行交换，也可以选择单方面的赠送。\n每收集一个道具，都可以解锁对应的道具图鉴，想要解锁全图鉴达成神秘成就，就和一起游戏的玩家多多进行交换吧！\n\n■竞技环节\n请不要忘记，我们的最终目标是获得生存赛的胜利！\n在愉快的合作之后，争锋相对的竞技环节也必不可少！玩家可以通过生存技能比拼，抢夺属于其他玩家的生存资源，也可以通过野外埋伏、直接挑战等操作，与其他玩家进行一场面对面的较量！\n生存等级越高的玩家，在比拼时就拥有越大的优势！决出你们之中的生存赛冠军吧！\n\n现在，玩家一定已经对本游戏有所了解，快邀请你的好友一起，进入丰富多彩的游戏世界，和朋友们尽情享受愉快的游戏时间吧！",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31024",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

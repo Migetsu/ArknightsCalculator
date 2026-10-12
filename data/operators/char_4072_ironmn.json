@@ -1,0 +1,1491 @@
+{
+  "id": "char_4072_ironmn",
+  "name": {
+    "en": "Stainless",
+    "zh": "白铁",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "VC17",
+  "rarity": 6,
+  "class": "SUPPORT",
+  "subclass": "craftsman",
+  "faction": "victoria",
+  "position": "MELEE",
+  "tagList": [
+    "Support",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Stainless of the Londinium Citizens' Self-Salvation Corps, ready to move with you at a moment's notice.",
+    "zh": "伦蒂尼姆市民自救军成员白铁，随时准备与你一起行动。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The faint smell of machine oil surrounds him, but both his smile and his hands are spotless as can be.",
+    "zh": "他身上有淡淡的机油味，但他的笑容和双手很干净。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1043,
+            "atk": 236,
+            "def": 190,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1490,
+            "atk": 369,
+            "def": 274,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 5
+        },
+        {
+          "id": "30042",
+          "count": 7
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1490,
+            "atk": 369,
+            "def": 274,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2042,
+            "atk": 492,
+            "def": 354,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "31044",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2042,
+            "atk": 492,
+            "def": 354,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2723,
+            "atk": 593,
+            "def": 421,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_ironmn_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.1,
+            "fake_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.2,
+            "fake_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 10,
+          "blackboard": {
+            "attack@atk_scale": 1.3,
+            "fake_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.4,
+            "fake_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.5,
+            "fake_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.6,
+            "fake_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 17,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 1.7,
+            "fake_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 18,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 1.8,
+            "fake_scale": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 19,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 1.9,
+            "fake_scale": 3.5
+          }
+        },
+        {
+          "name": {
+            "en": "Extreme Firepower",
+            "zh": "极致火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator ATK <@ba.vup>+12%</>\nWhen activated, immediately gain a device. Attacks deal <@ba.vup>{attack@atk_scale:0%}</> of ATK as Physical damage, and device effects increase by <@ba.vup>{fake_scale}</>x\n<@ba.rem>All active devices are destroyed when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员的攻击力<@ba.vup>+12%</>\\n开启时立即获得一个装置，攻击造成相当于<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，装置效果提升至<@ba.vup>{fake_scale}</>倍\\n<@ba.rem>技能结束时所有场上的装置被销毁</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 2,
+            "fake_scale": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30125",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ironmn_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.1,
+            "def": 0.1,
+            "fake_interval": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.15,
+            "def": 0.15,
+            "fake_interval": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 65,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.2,
+            "def": 0.2,
+            "fake_interval": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.25,
+            "def": 0.25,
+            "fake_interval": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.3,
+            "fake_interval": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.35,
+            "def": 0.35,
+            "fake_interval": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.4,
+            "fake_interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.45,
+            "fake_interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.5,
+            "fake_interval": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Efficient Resupply",
+            "zh": "高效补给",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device gives an ally Operator <@ba.vup>1</> SP every 3.5s.\nATK<@ba.vup>+{atk:0%}</>, DEF <@ba.vup>+{def:0%}</>, and attack all blocked enemies. Device boosted to grant <@ba.vup>1</>SP every <@ba.vup>{fake_interval}</>s, but HP loss is doubled.\n<@ba.rem>Gain 1 device when skill expires</>",
+            "zh": "携带此技能时：装置使一名我方干员每3.5秒获得<@ba.vup>1</>点技力\\n攻击力<@ba.vup>+{atk:0%}</>，防御力<@ba.vup>+{def:0%}</>，攻击所有阻挡的敌人，装置强化为每<@ba.vup>{fake_interval}</>秒使目标获得<@ba.vup>1</>点技力但生命流失翻倍。\\n<@ba.rem>技能结束时获得一个装置</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 0.6,
+            "fake_interval": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30093",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_ironmn_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.1,
+            "attack_speed": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.15,
+            "attack_speed": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 20
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.25,
+            "attack_speed": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 0.35,
+            "attack_speed": 35
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 40
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 45
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 50
+          }
+        },
+        {
+          "name": {
+            "en": "Prototype of Feist's Metal Crab",
+            "zh": "铁钳号·原型机",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this skill is equipped: Device can be attacked by allied Operators, but does not take damage. Can deal area Physical damage with its skill, but loses HP\nWhen activated, immediately gain a device, ATK <@ba.vup>+{atk:0%}</>, ASPD <@ba.vup>+{attack_speed}</>",
+            "zh": "携带此技能时：装置可被我方干员攻击但不会受伤，可通过技能造成群体物理伤害但会流失生命\\n开启时立即获得一个装置，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.55,
+            "attack_speed": 55
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 6
+        },
+        {
+          "id": "30011",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30012",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31043",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31033",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Battlefield Engineer",
+            "zh": "战地工程师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can carry 2 <Support Devices> (deploy up to 1), with different effects depending on Skill",
+            "zh": "可以携带2个<支援装置>(最多可部署1个)，效果根据技能改变而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Battlefield Engineer",
+            "zh": "战地工程师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can carry 2 <Support Devices> (deploy up to 2), with different effects depending on Skill",
+            "zh": "可以携带2个<支援装置>(最多可部署2个)，效果根据技能改变而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Battlefield Engineer",
+            "zh": "战地工程师",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can carry 3 <Support Devices> (deploy up to 2), with different effects depending on Skill",
+            "zh": "可以携带3个<支援装置>(最多可部署2个)，效果根据技能改变而改变",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 3
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Cost Cutting",
+            "zh": "节约经费",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stainless has a 70% chance to recycle a device if it is destroyed within the 8 tiles surrounding him",
+            "zh": "当白铁周围8格的自身装置损毁时，有70%的几率回收使白铁额外获得1个装置",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.7,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Cost Cutting",
+            "zh": "节约经费",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stainless has a 80%<@ba.talpu>(+10%)</> chance to recycle a device if it is destroyed within the 8 tiles surrounding him",
+            "zh": "当白铁周围8格的自身装置损毁时，有80%<@ba.talpu>（+10%）</>的几率回收使白铁额外获得1个装置",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.8,
+            "cnt": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 40,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_ironmn",
+      "name": {
+        "en": "Stainless's Badge",
+        "zh": "白铁证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_ironmn",
+      "description": {
+        "en": "Operator Stainless has demonstrated a remarkable aptitude for utilizing installations so as to aid teammates in combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Supporter Operator during field operations to exercise Artificer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员白铁擅长使用装置协助队友作战\r\n根据外勤部门决议\r\n在外勤任务中划分为辅助干员，行使工匠职责\r\n特别颁发此证章\r\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_ironmn",
+      "name": {
+        "en": "FMC-Crawler",
+        "zh": "铁钳号·爬行者",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_ironmn",
+      "description": {
+        "en": "A fully automatic dual-purpose passenger-freighter carrier device serving the entire landship!\nBefore seeing the design blueprints, none of Engineering's operators would have thought Feist had such a marvelous imagination. No wonder he'd dubbed the plans 'Dreams' and stuck them in the most eye-catching spot of his workbench.\nThe creativity on show in the blueprints was succinct: Preserve the motor core of an FMC, then upgrade it with an all-terrain ambulatory mechanical installation.\n'How many neat automation ideas has this guy got hidden up in that head of his?' Closure was heard to say in appraisal, which served to stir up Engineering even more. Finally, one voice said what everyone was secretly thinking—\n'Let's get this thing made while he's out in the field!'\nPredictably they came to a resounding agreement. They'd all received Feist's help in ways both big and small, or been given one of his timely little presents. Moreover, not one operator there would ever refuse the chance to make someone's dream a reality.\nSeveral workshops joined hands and got down to work, all of Engineering bustling like nobody's business. Driven by wanting to finish it before Feist got back, sticking points were overcome one after another, and progress flew by far smoother than usual. Very soon, the main chassis was fully built, short of just one final step: merging it with a Feist Metal Crab motor system.\nOnce 'MERGE SUCCESSFUL' flashed up on their giant display, ardent applause filled all of Engineering. A brand spanking new automated transport vehicle could enter operation, and it couldn't have happened without the combined hard work of Feist and every single other engineer. Some operators had already begun to imagine how he would react to seeing it: would a lad who'd pulled himself out of the fires of war shed a tear or two? Or would he laugh like mad and give everyone a giant hug?\nThat was when a question came that threw everyone off, its asker stood over by the generator.\n'How does the FMC motor system... actually work?'\nClearly, nobody had given thought to this one little detail preserved from the design, and a moment of silence ensued that felt like forever.\n'Hey, what're you lot all gathered in here for?'\nFeist, who'd come back aboard earlier, gave the crowd a puzzled stare before his eyes fell on the little sheetmetal fellow they surrounded. He blinked, then blinked again, making sure he wasn't just hallucinating.\n'Hold on, you got the Crawler all built? I don't know what to say!'\nAll of Engineering's eyes were on him as he picked up a steel pipe and gave the 'Crawler' a hefty tap on the back. With a loud rumble, the 'Crawler' slowly whirred into motion. That was the instant that reminded everyone just how the FMC operated.\nA few days later, the children aboard Rhodes got the gift Stainless had promised them: a little people-carrying robot that moved when you struck it. There in the shade of a thicket of steel, both his and their dreams had come true at once.\nNow they just needed to find an open space, and everyone could experience the joy of riding a burdenbeast.",
+        "zh": "一台服务于全舰的全自动客货两用运载装置！\n看到设计图纸前，工程干员们谁都没有想到费斯特竟有这样神奇的构想。怪不得这张图纸被他以“梦想”命名，贴在工作台上最醒目的地方。\n图纸上展现出的创意仍是如此简洁：保留铁钳号的动力核心，将其升级为一台全地形步行机械装置。\n“这家伙的脑子里到底藏着多少自动化的好点子”，听到可露希尔给出了这样的评价，工程干员们跃跃欲试的情绪便更加高涨。终于有一个声音将大家的心里话喊了出来——\n“趁着他出差的工夫，咱们把这东西做出来吧！”\n结果当然是一呼百应。大家或多或少都受过费斯特的帮助，或是拿到过费斯特适时赠与的小礼物。更何况，没有哪位干员会拒绝帮人实现梦想。\n多个工作室联合起来投入制作，工程部里热火朝天。抱着在费斯特返回前做完的想法，诸多难题被一一解决，工程推进竟然异常顺利。很快，设备的主体框架制作完成，只差最后的一道工序：合并铁钳号的动力系统。\n当“合并完成”的提示在大屏幕上跳出时，工程部内响起了热烈的掌声。一台全新的自动化运输工具能够投入运行，这是费斯特，以及各位工程师共同的功劳。有些干员已经开始想象费斯特见到这一幕时的反应：这名从战火中艰难走出的小伙子，他会流下泪水吗？还是笑着上前拥抱大家？\n就在这时，一声提问忽然打断了众人的思绪，声音从电源那边传来。\n“铁钳号的动力系统……它是怎么运行的啊？”\n显然没有人会考虑设计图上被保留的东西，这一刻的静寂如此漫长。\n“欸，大家都围在这里干什么？”\n提前归来的费斯特不解地望着众人，接着他的目光落在了中间的那个铁皮家伙上。他眨了眨眼睛，确定了眼前的不是幻觉。\n“喔，你们把爬行者造出来了呀？多谢了！”\n众目睽睽下，费斯特拎起一根钢管，狠狠地敲在了“爬行者”的尾部。伴随着一声响亮的轰鸣，“爬行者”缓慢地移动起来。这下，大家都回想起铁钳号是如何运作的了。\n几天后，罗德岛上的孩子们得到了白铁承诺的礼物：一台随敲击行动的载人机器人。钢铁林立的影子之下，他与孩子们的梦想同时得以实现。\n现在只需找一片空地，谁都能体验赶驮兽的乐趣了。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_ironmn",
+      "name": {
+        "en": "Highbury Imprint",
+        "zh": "海布里印记",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_ironmn",
+      "description": {
+        "en": "Rhodes Island has been invited to tour Highbury, which in recent times is all but the beating heart of Victorian industry. So, you, together with a convoy of operators looking forward to some exchange study, step for the first time in a while onto its formerly war-blighted soil.\nAll is not as you left it. No longer is Highbury crossed with heat and the sweat of brows; now, it's a well-oiled machine, the picture of order. With a grin, Stainless tells you that you've the Londinium Industry Development Association to thank—they've brought together every factory, advanced every proposal, combined every assembly line they could to produce the Highbury of today.\nYou don't tell him you heard as much on the factory tour you just took (you've been at this since morning, and it was your hunger that had you leave the rest of the ops to their tour while you nipped out for a bite to eat); it's been a while since you've seen Stainless talk so glowingly, and you're not about to interrupt him. You just nod along while you scan about for that smashing fried fin place he told you of the last time you were in town.\nWhat greets you when you get there, though, is a random factory's side door. Only then in your hunger do Stainless's words register properly: the whole borough's layout got revised, which meant the fin place had to move premises. Your stomach chooses this moment to grumble loudly.\n'What's that, Doctor, getting peckish? I was just going to say, that best chippy in town I told you about a while back? It's right here!'\nYou nod, perplexed as to why Stainless is stopping here... and opening the door to beckon you in. Is he <i>trying</i> to starve you?\nA moment later, a giant stonking thing appears before your eyes with a thunderous boom. Stainless skips over and hops into the cockpit, and shakes you out of your stunned stupor with a yell. 'The Crawler! Doctor, I give you The Crawler!\nDidn't I mention we were revising the borough layout? Well, they wanted to optimize out the food stands, up the place's total usability—but I didn't think so! Factories might define Highbury, but so do our little eateries!'\n'So?' you shout back, swept along by his sudden fervor.\n'So—'\nWith Stainless at the helm, THWOOMP! The Crawler's shell unfolds in all directions to reveal its inner workings—and what should greet you but several stands. One stand's owner in particular is frying her fins with the half an arm the war left her, and she's deft as ever. She greets you all smiles.\n'How's that for a show? A decommissioned first-model Crawler! Couldn't leave it gathering dust on the factory floor, and I so happen to have a stand to run! Now it's the Nomadic Food Crawler! Look, got my hand-drawn sign up there and everything!'\nYou're dumbstruck, and in your dumbstruckedness climb up a Crawler leg and into the thing, and continue to be dumbstruck as Stainless guides you through ordering a whole table's worth of food. Finally, your mouth closes again around a bite of crisp golden battered fin, and you feel happiness permeate all throughout you. It's now that you see Stainless up in the Crawler's cockpit, the wind tousling his hair, and when he looks over his shoulder, your eyes meet.\n'Doctor! This is a lot like that dream I told you about, right? That stupid, barmy dream.'\nYou nod.\nHe throws his arms wide open as he welcomes the wind and sun that rush to greet him. 'Doctor, I think I've made it come true.'",
+        "zh": "罗德岛受邀前往如今已经成为维多利亚工业心脏的海布里区参观，于是，你带着一大群想要进行交流学习的干员，时隔许久踏上了这片曾被战火覆盖的土地。\n和记忆中的不同，海布里区不再似之前那般拥挤湿热，而是一片井然有序。白铁向你笑着解释，这都是伦蒂尼姆工业振兴协会的功劳——这些日子里，他们联合起所有的工厂，冒出了各种点子，又合并了多条生产线，才有了如今的海布里区。\n其实这些内容你在刚才的工厂参观中听过一遍了，经过一早上你已经饥肠辘辘，告别想继续参观的干员们一个人跑出来是为了找东西吃，但你很久没有看到白铁如此兴奋地说着什么的样子了，你并不想打断他，只是一边听着，一边寻找着很久之前白铁向你描述海布里区时提到的那家特别好吃的炸鳞店。\n直到你们走到那里，才发现眼前只有某工厂的侧门。你这才在饥饿中想起，白铁刚才说他们重新规划了城区的布局，那家店应该已经搬走了。这时你的肚子大声地叫了起来。\n“啊，博士，你饿了是不是？我刚想说我之前跟你提过的那家最好吃的炸鳞店就在这里！”\n你点点头，却很疑惑为什么白铁没有要离开这里的意思，还打开了工厂的侧门向你招手，难道他真的打算饿死你吗？\n但随后，一个庞然大物随着震耳的轰鸣声出现在了你的眼前，白铁几步跳进了驾驶舱，冲着无比震惊的你大喊起来：“‘爬行号’！博士，这是‘爬行号’！\n“我刚才不是说我们重新规划了城区布局吗？他们提议优化掉这些店铺，这样能更好地提升城区利用率——但我不太同意！我觉得工厂是海布里区的象征，但这些小吃店和酒馆也是！”\n“所以呢？”你也没道理地被他的情绪调动，跟着一起大声地喊着。\n“所以——”\n轰！“爬行号”的外壳随着白铁的操作向四方打开，露出了里面的结构——是几家小店，其中一家的老板用战争给她留下的半截手臂熟练地炸着鳞，满面笑容地和你打了声招呼。\n“怎么样？‘爬行号’初代机退役后，我觉得放在工厂里落灰太可惜，又不想让这些小店消失，所以我就改造了一下，现在它是‘移动小吃店·爬行号’！你看，上面还有我画的招牌！”\n你目瞪口呆，随后目瞪口呆地顺着“爬行号”的一条腿爬了上去，又目瞪口呆地在白铁的指导下点了一桌子菜。在终于咬下那一口金黄酥脆的炸鳞，感到十分幸福的时候，你看到白铁高高地坐在“爬行号”的驾驶舱里，风吹起他的头发，他回过头来。\n“博士，这是不是和我给你讲过的那个梦很像？那个很傻的梦。”\n你点点头。\n白铁张开双臂，迎接着奔向他的风和阳光：“博士，我好像实现它了。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30125",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30155",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

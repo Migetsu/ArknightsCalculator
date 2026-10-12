@@ -1,0 +1,1135 @@
+{
+  "id": "char_422_aurora",
+  "name": {
+    "en": "Aurora",
+    "zh": "极光",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "JC09",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "duelist",
+  "faction": "kjerag",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Defender Operator Aurora will always be at your side in times of need.",
+    "zh": "重装干员极光，总会在你需要的时候伴你左右。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "The fiercer the blizzard, the warmer her hands.",
+    "zh": "风雪越大，她的手就越温暖。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1696,
+            "atk": 413,
+            "def": 257,
+            "magicResistance": 0,
+            "cost": 28,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2356,
+            "atk": 582,
+            "def": 378,
+            "magicResistance": 0,
+            "cost": 28,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2356,
+            "atk": 582,
+            "def": 378,
+            "magicResistance": 0,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 3100,
+            "atk": 747,
+            "def": 512,
+            "magicResistance": 0,
+            "cost": 30,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "30074",
+          "count": 9
+        },
+        {
+          "id": "30013",
+          "count": 19
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 3100,
+            "atk": 747,
+            "def": 512,
+            "magicResistance": 0,
+            "cost": 32,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 4027,
+            "atk": 901,
+            "def": 640,
+            "magicResistance": 0,
+            "cost": 32,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_aurora_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "def": 0.6,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "def": 0.8,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.2,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.4,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.6,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.8,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 10,
+          "blackboard": {
+            "def": 1.9,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "def": 2,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Homeland Protector",
+            "zh": "固守家园",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Block <@ba.vup>+{block_cnt}</>, DEF <@ba.vup>+{def:0%}</> and gain <$ba.buffres>Resist</>\n<@ba.rem>Aurora is <$ba.stun>Stunned</> for {stun} seconds after skill duration</>",
+            "zh": "阻挡数<@ba.vup>+{block_cnt}</>，防御力<@ba.vup>+{def:0%}</>，获得<$ba.buffres>抵抗</>\\n<@ba.rem>技能结束后自身<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "def": 2.1,
+            "block_cnt": 2,
+            "stun": 5,
+            "one_minus_status_resistance": -0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "31053",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_aurora_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.3,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.35,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 9,
+          "blackboard": {
+            "atk": 0.45,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 9,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 9,
+          "blackboard": {
+            "atk": 0.55,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 11,
+          "blackboard": {
+            "atk": 0.65,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 3.1
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 3.2
+          }
+        },
+        {
+          "name": {
+            "en": "Artificial Snowfall",
+            "zh": "人工降雪",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases slightly</>, ATK <@ba.vup>+{atk:0%}</>. Attacks inflict <$ba.cold>Cold</> for <@ba.vup>{attack@cold}</> seconds to the target; If the target is already <$ba.frozen>Frozen</>, the attack will instead deal <@ba.vup>{atk_scale:0%}</> of ATK as damage\n<@ba.rem>Skill activation grants 9 ammo and the skill ends when all ammo is used (Can manually deactivate skill)</>",
+            "zh": "攻击间隔<@ba.vdown>略微增大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击对目标造成<@ba.vup>{attack@cold}</>秒<$ba.cold>寒冷</>，若目标已经处于<$ba.frozen>冻结</>状态，则改为使本次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>\\n<@ba.rem>攻击装有9发子弹，打完后技能结束（期间可随时停止技能）</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.75,
+            "base_attack_time": 0.25,
+            "attack@cold": 2.5,
+            "atk_scale": 3.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Frigid Respite",
+            "zh": "低温休憩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active and SP is less than or equal half the maximum, stops attacking and restores 1.5% Max HP every second",
+            "zh": "未开启技能且技力小于或等于最大值一半时，停止攻击并每秒恢复1.5%最大生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.015,
+            "sp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Respite",
+            "zh": "低温休憩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active and SP is less than or equal half the maximum, stops attacking and restores 2% <@ba.talpu>(+0.5%)</> Max HP every second",
+            "zh": "未开启技能且技力小于或等于最大值一半时，停止攻击并每秒恢复2%<@ba.talpu>（+0.5%）</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.02,
+            "sp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Respite",
+            "zh": "低温休憩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active and SP is less than or equal half the maximum, stops attacking and restores 3% Max HP every second",
+            "zh": "未开启技能且技力小于或等于最大值一半时，停止攻击并每秒恢复3%最大生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.03,
+            "sp_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Frigid Respite",
+            "zh": "低温休憩",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When this unit's skill is not active and SP is less than or equal half the maximum, stops attacking and restores 3.5% <@ba.talpu>(+0.5%)</> Max HP every second",
+            "zh": "未开启技能且技力小于或等于最大值一半时，停止攻击并每秒恢复3.5%<@ba.talpu>（+0.5%）</>最大生命值",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+            "sp_ratio": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +27",
+        "zh": "防御力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 55,
+        "def": 55
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_aurora",
+      "name": {
+        "en": "Aurora's Badge",
+        "zh": "极光证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Aurora has demonstrated a remarkable aptitude for head-on enemy confrontation contemporaneous with resistance to harm.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Duelist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员极光擅长在抵挡伤害的同时迎战敌人\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使决战者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_aurora",
+      "name": {
+        "en": "Shield Photography Module",
+        "zh": "盾用摄制模块",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_aurora",
+      "description": {
+        "en": "Maggy, I got your pictures, thank you. The aurora's so pretty, so... stunning. Sorry I can't find better words. I saw the other material you sent back from Rhodes Island too. That little yellow flower! I never knew flowers that pretty could grow in the extreme north, all the way in the ice deserts! It's unbelievable, really.\nYou suggested I should 'join the next exploration project as a supporting surveyor,' right? I've given serious thought to it. Not whether to go or not—I still have to stay on the landship at this stage so I can get Oripathy treatment. It's what help I would be if I did go. Mayer's said how under extreme cold conditions, your Soaring Dragon drones get their stability affected. I minored in research filming while I was studying at Ironforge Polytechnic, so I tried installing a set of production lenses on my shield, so it could handle photography and data storage roles at certain temperatures. I should be able to take my shield through more special terrain, compared to using drones, and use it for fundamental defense work. It can sort out the issue of stability, too.\n......\nMaggy, I admire you, with all my heart. While everyone only has the barest imagining of what such faraway places are like, you've gone deep into them, gotten a taste of all this fascinating scenery, felt the pulse of life. I once went with a survey group into the northern icefields and saw the aurora, and that was when I learned a really important lesson in life: not every place has snowy peaks like Kjerag, and protection like Kjeragandr's, but every place has its own beauty you can't explain with common sense. The Black Flow forests, the Ringed Plains with mountains all around... all these extreme landscapes have nothing to do with the supernatural, really. They're part of Terra in themselves. I can't help but wonder, just how—shallow and narrow everything we know and hear and think and believe about this great land is.\nI want to see the aurora again more than anything else. I want to go and see the ice deserts. Not so I can prove anything—just because, well, 'I want to go and see.' Master SilverAsh is right. If we want to protect Kjerag, then we have to know just what kind of world it is we live in.\nWe can only better defend the homeland behind us if we're brave enough to explore onward. And besides, I have this sort of feeling, like the ice deserts, the poles, all these places full of hidden secrets far away already have a lot of eyes watching them... \nSo once I'm ready, Maggy, you can be sure I'll submit my application to the Doctor.\n......\nI eat... a little bigger, and I sleep more as well, but you don't need to worry, I promise. When it comes work time, I'll get down to it, believe me. I'm sure I'll be able to help you out.\n\n—Extract from comms logs sent to Operator Magallan by Operator Aurora",
+        "zh": "麦麦，照片我收到了，谢谢你。极光很美，很……震撼，抱歉我找不到更好的词汇了。我还看了你传回罗德岛的其他资料，那朵黄色的小花，我没有想到极北的冰漠上居然能生长出那么美的花！真不可思议。\n“以辅助勘察员的身份加入接下来的科考计划”，我认真考虑了你的提议，并不是考虑“去”或者“不去”——虽然现阶段我还得留在本舰接受矿石病的治疗，而是我去了能帮到什么。听梅尔说过，在极寒条件下，龙腾无人机组的稳定性会受到影响，我在铸铁城理工大学就读期间辅修过科研摄制，所以我尝试在自己的盾牌上加装了一组摄制模块，让它能承担一定程度的拍摄与资料存储任务。比起无人机的话，我带着盾牌，应该能去到一些更特殊的地形，而且有它作为基础防护工事，稳定性的问题也能够解决。\n……\n麦麦，我由衷地敬佩你，在大家对于遥远之地仅有贫瘠的想象时，你已然深入其中，领略迷人的风光，感知生命的脉搏。我曾跟随科考团在北地冰原看见过极光，也正是那次，我修习到了人生的重要一课：不是每个地方都有谢拉格那样的雪山，都有耶拉冈德的庇佑，可每个地方都有无法用常理解释的美丽，黑流树海、环山平原……这种极致的景象其实和神灵无关，它们本就是泰拉的一部分。我忍不住地想，对这片大地，我们的所知所闻所为所信，到底有多么浅陋和狭隘。\n我无比想要再去看极光，去看冰漠，不是为了证明什么，仅仅是“想要去看”。银灰老爷说得对，想要保护谢拉格的话，就必须知道我们身处的，到底是怎样的天地。\n只有勇敢地向前探索，才能更好地守护我们身后的家园。而且，我有种预感，冰漠、极地，这些埋藏着秘密的遥远之地，早已被许多双眼睛注视着……\n所以，麦麦，等我准备好了，我一定会向博士提交申请的。\n……\n我的饭量……有点大，觉也比较多，不过请放心，工作的时候我会很认真，一定可以帮到你。\n\n——摘自干员极光发给干员麦哲伦的通讯记录",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30024",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30054",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

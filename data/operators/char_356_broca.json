@@ -1,0 +1,1108 @@
+{
+  "id": "char_356_broca",
+  "name": {
+    "en": "Broca",
+    "zh": "布洛卡",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SR27",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "centurion",
+  "faction": "siracusa",
+  "position": "MELEE",
+  "tagList": [
+    "AoE",
+    "Survival"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Broca, Guard Operator of Rhodes Island, is busy defending the other Operators on the front lines.",
+    "zh": "罗德岛近卫干员布洛卡，将在前线守护其他干员。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He's not as scary as he looks.",
+    "zh": "他只是看上去很可怕。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1064,
+            "atk": 308,
+            "def": 155,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1365,
+            "atk": 428,
+            "def": 222,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1365,
+            "atk": 428,
+            "def": 222,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1751,
+            "atk": 579,
+            "def": 300,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30024",
+          "count": 7
+        },
+        {
+          "id": "30093",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1751,
+            "atk": 579,
+            "def": 300,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2335,
+            "atk": 762,
+            "def": 366,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_broca_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 1,
+          "blackboard": {
+            "atk": 0.25
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 2,
+          "blackboard": {
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 5,
+          "blackboard": {
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 7,
+          "blackboard": {
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Galvanize",
+            "zh": "通电",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts</> damage",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_broca_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8,
+            "attack@sluggish": 0.7,
+            "base_attack_time": 0.65,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 11,
+          "blackboard": {
+            "atk": 0.9,
+            "attack@sluggish": 0.7,
+            "base_attack_time": 0.65,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 1,
+            "attack@sluggish": 0.7,
+            "base_attack_time": 0.65,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 13,
+          "blackboard": {
+            "atk": 1.1,
+            "attack@sluggish": 0.8,
+            "base_attack_time": 0.65,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 14,
+          "blackboard": {
+            "atk": 1.2,
+            "attack@sluggish": 0.8,
+            "base_attack_time": 0.65,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 15,
+          "blackboard": {
+            "atk": 1.3,
+            "attack@sluggish": 0.8,
+            "base_attack_time": 0.65,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 1.4,
+            "attack@sluggish": 0.9,
+            "base_attack_time": 0.65,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 1.6,
+            "attack@sluggish": 0.9,
+            "base_attack_time": 0.65,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 1.7,
+            "attack@sluggish": 1,
+            "base_attack_time": 0.65,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "High-Voltage Current",
+            "zh": "高压电流",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vdown>increases</>, Attack Range <@ba.vup>increases</>, ATK <@ba.vup>+{atk:0%}</>, normal attacks deal <@ba.vup>Arts damage</> and <$ba.sluggish>Slow</> the targets for <@ba.vup>{attack@sluggish:0.0}</> seconds\n<@ba.rem>This unit is <$ba.stun>Stunned</> for {stun} seconds after the skill duration</>",
+            "zh": "攻击间隔<@ba.vdown>增大</>，攻击距离<@ba.vup>加长</>，攻击力<@ba.vup>+{atk:0%}</>，普通攻击造成<@ba.vup>法术</>伤害并使击中的敌人<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish:0.0}</>秒\\n<@ba.rem>技能结束后<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-2",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 1.9,
+            "attack@sluggish": 1,
+            "base_attack_time": 0.65,
+            "stun": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 2
+        },
+        {
+          "id": "30023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Drill Strengthening",
+            "zh": "钻头强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK and DEF by 6% when blocking 2 or more enemies",
+            "zh": "阻挡两个以上的敌人时，攻击力和防御力+6%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.06,
+            "def": 0.06,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Drill Strengthening",
+            "zh": "钻头强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK and DEF by 8% <@ba.talpu>(+2%)</> when blocking 2 or more enemies",
+            "zh": "阻挡两个以上的敌人时，攻击力和防御力+8%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.08,
+            "def": 0.08,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Drill Strengthening",
+            "zh": "钻头强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK and DEF by 12% when blocking 2 or more enemies",
+            "zh": "阻挡两个以上的敌人时，攻击力和防御力+12%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.12,
+            "def": 0.12,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Drill Strengthening",
+            "zh": "钻头强化",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases ATK and DEF by 14% <@ba.talpu>(+2%)</> when blocking 2 or more enemies",
+            "zh": "阻挡两个以上的敌人时，攻击力和防御力+14%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.14,
+            "def": 0.14,
+            "cnt": 2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +28",
+        "zh": "攻击力+28",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 80
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_broca",
+      "name": {
+        "en": "Broca's Badge",
+        "zh": "布洛卡证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_broca",
+      "description": {
+        "en": "Operator Broca has demonstrated a remarkable aptitude for swift and fierce enemy suppression in combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Centurion responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员布洛卡擅长以凌厉攻势阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使强攻手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_broca",
+      "name": {
+        "en": "'Buddies'",
+        "zh": "“兄弟”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_broca",
+      "description": {
+        "en": "In a gloomy jail cell, not one glimmer of light hangs about. Behind the bars, a respectably dressed gentiluomo wrinkles his brow in revulsion. In a shadowy corner sits a loud-mouthed man.\n'Signore, you got any bros?'\nHearing him utter that specific word, 'bros,' the gentiluomo haughtily pulls at his sleeve collars, and speaks boastfully.\n'My elder brother Davis, Signore Davis to you, is an important man in the Eastern region. He has many a means up his sleeve. I won't be loitering in here for long.'\n'Nice, nice. I've got a buddy too. Bet you he's also trying every trick to get me out.'\n'My brother has a lawyer who charges four thousand an hour. What does your 'bro' have?'\n'A giant drill? Plus some insanely buff arms. No joke, chiseled like a rock.'\n'Oh? And how is he going to rescue you from this place? Punching a hole in the wall?'\n'Haha, yeah, that's just his style.'\nLetting out a disdainful sneer, the gentiluomo folds his arms and silently mocks this man in his head—\n'Doesn't he know the walls here are half a meter of cement? What an utter dunce.'\nThe door creaks open, and in comes a man carrying paperwork, his leather shoes gleaming unusually brightly in the dim of the cell.\n'Signore Hengel, my pleasure. I'm your brother's attorney.'\nThe gentiluomo pats off his suit and gingerly stands.\n'Are you here to let me out?'\n'Sincere apologies, Signore Hengel, but I cannot.\n'Your brother wanted me to deliver you a message: 'Enjoying the benefits of the famiglia comes with a duty to the famiglia.''\nAt these words, the gentiluomo's eyes grow wide.\n'But it was my brother who had me do those things...'\nYet the lawyer gives him not even another glance, merely a parting remark as he turns to leave.\n'Brothers must help each other out, no, signore?'\n'Stop, wait, come back! You bastard!'\nThe gentiluomo clutches at the bars and begins to wail. The man in the corner attempts, at least, to comfort him.\n'Maybe you can come with us.'\n'Pull your head out. Your 'bro' isn't coming.\n'Everyone who lands in here, without exception, is someone their famiglia cast away.'\n'...Famiglia? It ain't anything like that. He's a buddy to me. He'll come.'\n'Enough, you moron. Even setting aside how heavy the guard is out there, this wall alone is fifty whole—'\nAn earsplitting drilling noise cuts off the gentiluomo mid-sentence. Through the wall steadily pokes out a gargantuan drill, wrecking the concrete at such speed it may as well be shredded paper.\nDust and debris is thrown down in spades, and the ground itself lightly trembles.\nA burly man steps through the yawning hole, toting the giant drill by hand. The light shining in from behind him hides his face in chiaroscuro.\nCasually turning off his handheld titan, the man turns to ask something to the dumbstruck gentiluomo.\n'Are you coming with us, signore?'",
+        "zh": "昏暗的牢房里，一丝光也透不进来。铁栏后一位衣着体面的绅士嫌恶地皱着眉，墙角的阴影里，坐着一个聒噪的男人。\n“先生，你有兄弟吗？”\n听到对方提起“兄弟”这个字眼，绅士骄矜地扯扯衣袖，自豪地开口。\n“我的兄长戴维斯先生是东区有名的大人物。他这个人手段很多，我不会在这里待很久。”\n“真不错，我也有个兄弟，我打赌他也正想方设法带我出去。”\n“我兄长有位每小时收费四千的律师，你兄弟他有什么？”\n“有把巨大的电钻？他双臂也非常强壮，是个大块头。”\n“哦？那他怎么将你从这里解救出去，在墙上掏个洞吗？ ”\n“哈哈，没错，是他的风格。”\n发出不屑的嗤笑，绅士抱起双臂，在心里默默讽刺男人——\n“难道他不知道这里的水泥墙有半米厚吗？真是个蠢货。”\n推门声响起，一个男人抱着公文包走进来，皮鞋在昏黑的牢房内也锃亮异常。\n“亨格尔先生，您好，我是你哥哥的律师。”\n绅士拍拍自己的衣摆，缓缓站起。\n“您是要带我离开吗？”\n“很抱歉，亨格尔先生，我并不能。\n“您的兄长让我带给您一句话：‘享受了家族的便利，就须为家族承担责任’。”\n听到这话，绅士睁大双眼。\n“可那些事都是我哥哥让我……”\n可律师却没有给他哪怕一个眼神，只是丢下一句话便转身离开了。\n“兄弟之间总是要互帮互助的，不是吗，先生？”\n“等等，回来！你这家伙！”\n绅士紧抓着栏杆大吼出声，角落里的男人试图安慰他。\n“或许你可以和我一起走。”\n“别做梦了，你的兄弟不会来的。\n“会出现在这里的人，无一例外，全是被家族抛弃的人。”\n“……家族？哪有那么复杂，他是我的兄弟，他一定会来。”\n“够了，蠢货。且不说外面守卫重重，光这面墙就有半米——”\n一阵刺耳的钻击声打断了绅士的话，墙壁上缓缓露出一个巨大的钻头，它破坏墙体的速度就好像撕碎纸张。\n灰尘和瓦砾纷纷落下，地面也在轻轻颤抖。\n一个强壮的男人手持一把巨大的电钻从破洞中走出，背着光看不清他的面容。\n不紧不慢地关掉手中的电钻，男人转头询问目瞪口呆的绅士。\n“你要和我们一起走吗，先生？”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

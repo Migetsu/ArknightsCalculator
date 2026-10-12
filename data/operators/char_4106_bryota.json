@@ -1,0 +1,1137 @@
+{
+  "id": "char_4106_bryota",
+  "name": {
+    "en": "Bryophyta",
+    "zh": "苍苔",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SS03",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "instructor",
+  "faction": "columbia",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Bryophyta, born and raised by the Siestan seaside, and come to Rhodes Island to begin a new journey.",
+    "zh": "土生土长的汐斯塔海边少年苍苔，来到罗德岛开启新的旅程。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "By his family's side, he's never afraid.",
+    "zh": "在家人身边，他从未胆怯。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 768,
+            "atk": 286,
+            "def": 197,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1053,
+            "atk": 409,
+            "def": 278,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1053,
+            "atk": 409,
+            "def": 278,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1368,
+            "atk": 546,
+            "def": 353,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "31044",
+          "count": 7
+        },
+        {
+          "id": "30053",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1368,
+            "atk": 546,
+            "def": 353,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1900,
+            "atk": 650,
+            "def": 421,
+            "magicResistance": 0,
+            "cost": 18,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.05,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_bryota_1",
+      "iconId": "skcom_powerstrike[2]",
+      "levels": [
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.75
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.95
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Power Strike β",
+            "zh": "强力击·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the ATK of next attack to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "下次攻击的攻击力提高至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31053",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_bryota_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "def": 0.3,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.35,
+            "def": 0.35,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "def": 0.4,
+            "stun": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.45,
+            "def": 0.45,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.5,
+            "def": 0.5,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.55,
+            "def": 0.55,
+            "stun": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.6,
+            "def": 0.6,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.65,
+            "def": 0.65,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.7,
+            "def": 0.7,
+            "stun": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Earthen Tenacity",
+            "zh": "土石的恒心",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, and grants DEF <@ba.vup>+{def:0%}</> to the melee Operator in the surrounding 8 tiles with the highest Block (if no applicable Operators, effect is granted to self)\n<@ba.rem>After skill ends, <$ba.stun>Stuns</> self for {stun}s</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，并使周围8格内阻挡数最高的我方近战干员防御力<@ba.vup>+{def:0%}</>（若周围8格内不存在近战干员时，该效果由自身获得）\\n<@ba.rem>技能结束后干员<$ba.stun>晕眩</>{stun}秒</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.8,
+            "def": 0.8,
+            "stun": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "31034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31063",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 3
+        },
+        {
+          "id": "30073",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +4%; while blocking enemies, increases this unit's DEF by +4%",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+4%，阻挡敌人时自身防御力+4%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.04,
+            "bryota_t_self.def": 0.04
+          }
+        },
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +6% <@ba.talpu>(+2%)</>; while blocking enemies, increases this unit's DEF by +6% <@ba.talpu>(+2%)</>",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+6%<@ba.talpu>（+2%）</>，阻挡敌人时自身防御力+6%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.06,
+            "bryota_t_self.def": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +8%; while blocking enemies, increases this unit's DEF by +8%",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+8%，阻挡敌人时自身防御力+8%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.08,
+            "bryota_t_self.def": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +10% <@ba.talpu>(+2%)</>; while blocking enemies, increases this unit's DEF by +10% <@ba.talpu>(+2%)</>",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+10%<@ba.talpu>（+2%）</>，阻挡敌人时自身防御力+10%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.1,
+            "bryota_t_self.def": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +12%; while blocking enemies, increases this unit's DEF by +12%",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+12%，阻挡敌人时自身防御力+12%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.12,
+            "bryota_t_self.def": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Cautious and Calculated",
+            "zh": "量时度力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +14% <@ba.talpu>(+2%)</>; while blocking enemies, increases this unit's DEF by +14% <@ba.talpu>(+2%)</>",
+            "zh": "未阻挡敌人时使周围8格内近战干员防御力+14%<@ba.talpu>（+2%）</>，阻挡敌人时自身防御力+14%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "bryota_t_ally.def": 0.14,
+            "bryota_t_self.def": 0.14
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 35,
+        "def": 35
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_bryota",
+      "name": {
+        "en": "Bryophyta's Badge",
+        "zh": "苍苔证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_bryota",
+      "description": {
+        "en": "Operator Bryophyta has demonstrated a remarkable aptitude for rallying nearby Melee operators.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Instructor responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员苍苔擅长鼓舞身旁的近战干员\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使教官职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_bryota",
+      "name": {
+        "en": "Sobremesa",
+        "zh": "餐后好时光",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_bryota",
+      "description": {
+        "en": "Old posters, cassette tapes, graphite pencils, ballpoint pens, coloring books, swimming goggles... Miscellanies are tossed one after another onto the bed. The young boy seems to be looking for an important treasure, hence his excursion through his big brother's 'secret base.'\n'Look what I found! Liv, you gotta look!'\nThe young girl comes running at the call, and seeing the topsy-turvy state of the room, somewhat angrily pouts.\n'Lut! You... Harley said not to mess with Enis's stuff!'\n'*clatter*! It's the schedule for Enis's part-time job—\n'Don't you wanna know where he went today, and what he's doing now?'\n'......'\nThe boy waves about his brother's schedule, brandishing it like it's a spoil of war. The girl follows with big round eyes, watching fixedly as the sheet flutters through the air. She's totally won over, the errands the grown-ups gave her gone in a puff of smoke.\n'Enis said he'd play kick the can with me!'\n'Enis said he'd braid my hair for me!'\nAnd so, one sprawled on the bed and the other leaning by the wall, the two little rascals vie over it, each wanting the bigger slice of their brother's time.\n'5:30, restock, there is no pepper, if you do not buy it Harley will think the food tastes like nothing again.'\n'9:30, deliver letters, also mail Chuck the trekking sticks he wants, they are just picking up dust at home.'\n1 to 4, Grandpa Tom's sunbathing time, look after store for him. Save ice cream for Liv and Lut, strawberry and chocolate!'\n'At 6...'\n'At 8...'\nThe day was packed, and the to-do list was too. The little ones looked and pondered, and it seemed there was no free time to squeeze in anything else.\n'Oh, with so much to do... will Enis make it back for dinner?'\n'He'll definitely come back for dinner! Instead of going for ice cream, let's help Harley with dinner...'\n'So, no more kick the can?'\n'No more hair braiding!'\nThe little boy pulled out a chessboard from under the bed, and the little girl found the chess pieces in a drawer.\n'After dinner, we can play this!'\n'But Enis has been working all day; he must be really tired... Will he still play with us?'\n'Of course! Enis says...\n'He loves playing with us the most!'",
+        "zh": "旧海报，磁带盒，碳素笔，手绘本，游泳镜……杂物被一件件丢在床上，小男孩似是在寻找重要的宝物，就这样探索着哥哥的“秘密基地”。\n“看我翻到了什么！丽芙，你快来看啊！”\n小女孩闻声而来，看见乱七八糟的房间，有些生气地撅起了嘴。\n“路特！你……哈莉说过，不要乱动埃尼斯的东西呀！”\n“铛铛！埃尼斯的打工时间表——\n“难道你不想知道埃尼斯今天去了哪里，现在在做什么吗？”\n“……”\n小男孩挥动着哥哥的时间表，如同挥动着一件值得炫耀的战利品。小女孩睁着圆溜溜的眼睛，直勾勾地看着那张飘动的纸，一副被说服的样子，也把大人们的嘱托抛之云外了。\n“埃尼斯说好了要陪我踢罐子！”\n“埃尼斯说好了要帮我编辫子！”\n于是，一个趴在床，一个靠在墙，两个小家伙你争我抢地，都想多分走一些哥哥的时间。\n“五点半去进货，胡椒粉没有啦，不买好的话哈莉估计又要嫌饭没味道。”\n“九点半去送信，顺便把查克要的登山杖寄过去，家里放着光落灰了。”\n“一点到四点，汤姆爷爷的日光浴时间，去帮忙看店。要给丽芙和路特留冰淇淋，草莓和巧克力！”\n“六点要……”\n“八点要……”\n时间表密密麻麻，备忘事项也密密麻麻。小家伙们看了又看，想了又想，好像没有空闲时间能再挤进去。\n“唔，这么多事情……埃尼斯还能回来吃晚饭吗？”\n“他一定会回来吃晚饭的！我们不去要冰淇淋了，先和哈莉一起把晚餐都准备好——”\n“那就不踢罐子了？”\n“也不编辫子了！”\n小男孩从床下面翻出了棋盘，小女孩从抽屉里找到了棋子。\n“等吃完饭，我们一起玩这个！”\n“可是埃尼斯都工作一天了，一定很累……他还会陪我们玩吗？”\n“当然！埃尼斯他说过的——\n“他最喜欢和我们一起玩啦！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30024",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30054",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

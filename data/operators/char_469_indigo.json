@@ -1,0 +1,1110 @@
+{
+  "id": "char_469_indigo",
+  "name": {
+    "en": "Indigo",
+    "zh": "深靛",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "II05",
+  "rarity": 4,
+  "class": "CASTER",
+  "subclass": "mystic",
+  "faction": "iberia",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Caster Indigo, come bearing a light.",
+    "zh": "术师深靛，携一点灯火而来。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Don't ask for her opinions on Rhodes Island's current lighting systems, unless you're looking forward to a deck-wide lightshow.",
+    "zh": "别问她对罗德岛目前照明系统的看法，除非你在期待一场甲板灯光秀。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-13",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 625,
+            "atk": 486,
+            "def": 44,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 894,
+            "atk": 695,
+            "def": 75,
+            "magicResistance": 20,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-14",
+      "evolveCost": [
+        {
+          "id": "3251",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        },
+        {
+          "id": "30042",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 894,
+            "atk": 695,
+            "def": 75,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1162,
+            "atk": 903,
+            "def": 104,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-14",
+      "evolveCost": [
+        {
+          "id": "3252",
+          "count": 5
+        },
+        {
+          "id": "30043",
+          "count": 14
+        },
+        {
+          "id": "30103",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1162,
+            "atk": 903,
+            "def": 104,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1435,
+            "atk": 1116,
+            "def": 117,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_indigo_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.3,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.31,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.32,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.35,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.36,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.37,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.4,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.43,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.46,
+            "base_attack_time": -0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Lighthouse Guardian",
+            "zh": "灯塔守卫者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>changes</>, attack interval is <@ba.vup>significantly reduced </>, and each attack deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Arts damage",
+            "zh": "攻击范围<@ba.vup>改变</>，攻击间隔<@ba.vup>大幅度缩短</>，每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": "4-1",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 5,
+          "blackboard": {
+            "attack@atk_scale": 0.5,
+            "base_attack_time": -0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_indigo_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces a little</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.8,
+            "talent_scale": 1.5,
+            "indigo_s_2[damage].atk_scale": 0.1,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces a little</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.8,
+            "talent_scale": 1.5,
+            "indigo_s_2[damage].atk_scale": 0.1,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces a little</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>小幅度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.8,
+            "talent_scale": 1.5,
+            "indigo_s_2[damage].atk_scale": 0.1,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.7,
+            "talent_scale": 2,
+            "indigo_s_2[damage].atk_scale": 0.12,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.7,
+            "talent_scale": 2,
+            "indigo_s_2[damage].atk_scale": 0.12,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces slightly</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>略微缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 10,
+          "blackboard": {
+            "base_attack_time": 0.7,
+            "talent_scale": 2,
+            "indigo_s_2[damage].atk_scale": 0.12,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>一定程度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 15,
+          "blackboard": {
+            "base_attack_time": 0.65,
+            "talent_scale": 2.5,
+            "indigo_s_2[damage].atk_scale": 0.15,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>一定程度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 17,
+          "blackboard": {
+            "base_attack_time": 0.65,
+            "talent_scale": 2.5,
+            "indigo_s_2[damage].atk_scale": 0.17,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces moderately</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>一定程度缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": 0.65,
+            "talent_scale": 3,
+            "indigo_s_2[damage].atk_scale": 0.17,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Labyrinth of Light",
+            "zh": "光影迷宫",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>reduces</> and the activation rate of this unit's Talent increases to <@ba.vup>{talent_scale:0.0}</> times. <$ba.root>Bound</> enemies within Attack Range receive Arts damage equal to <@ba.vup>{indigo_s_2[damage].atk_scale:0%}</> of Indigo's ATK every <@ba.vup>{indigo_s_2[damage].interval}</> seconds",
+            "zh": "攻击间隔<@ba.vup>缩短</>，天赋的触发几率提升至<@ba.vup>{talent_scale:0.0}</>倍，攻击范围内处于<$ba.root>束缚</>状态的敌人每<@ba.vup>{indigo_s_2[damage].interval}</>秒受到相当于深靛攻击力<@ba.vup>{indigo_s_2[damage].atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "base_attack_time": 0.6,
+            "talent_scale": 3,
+            "indigo_s_2[damage].atk_scale": 0.2,
+            "indigo_s_2[damage].interval": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 1
+            },
+            {
+              "id": "31033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30093",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Gentle Binding Gaze",
+            "zh": "柔光缚目",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 12% chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+            "zh": "攻击时有12%的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.12,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Gentle Binding Gaze",
+            "zh": "柔光缚目",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 14% <@ba.talpu>(+2%)</> chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+            "zh": "攻击时有14%<@ba.talpu>（+2%）</>的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.14,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Gentle Binding Gaze",
+            "zh": "柔光缚目",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 18% chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+            "zh": "攻击时有18%的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.18,
+            "duration": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Gentle Binding Gaze",
+            "zh": "柔光缚目",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When attacking, has a 20% <@ba.talpu>(+2%)</> chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+            "zh": "攻击时有20%<@ba.talpu>（+2%）</>的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "duration": 4
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +36",
+        "zh": "攻击力+36",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 100
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_indigo",
+      "name": {
+        "en": "Indigo's Badge",
+        "zh": "深靛证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Indigo has demonstrated a perennial commitment to Originium Arts.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Caster Operator during field operations to exercise Mystic Caster responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员深靛常年与源石技艺为伴\n根据外勤部门决议\n在外勤任务中划分为术师干员，行使秘术师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_indigo",
+      "name": {
+        "en": "Staff Maintenance Kit",
+        "zh": "法杖保养套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_indigo",
+      "description": {
+        "en": "When Indigo was still newly arrived on Rhodes Island, we conducted a study on her staff. The unit at its head seemed to be the key to its function, but we could find no clear theory underpinning it. During further studies, new Operators Irene and Lumen—who had visited Engineering to undergo equipment certification—coincidentally passed by, and the latter took one look at Indigo's staff and very confidently told us that he had seen something similar in the 'Eye of Iberia.' The 'Eye of Iberia' is a lighthouse... a series of lighthouses along Iberia's coastal towns, a grand project that once illuminated the whole nation, abandoned altogether after a disaster decades ago, and now a legacy of the age. Indigo's teacher was one of those very lighthouse keepers, and it was he who gave her the staff as she left home.\n'The unit at her staff's head is a standard installation in Iberia's lighthouse systems.' This much should be more or less accurate. The issue was that, based on her account, her teacher protected the Rocky Coast's lighthouse all his life, hoping it would one day shine anew. So why would he give her something so important and then allow her to leave?\nIndigo herself had this to say: 'I'm sure my teacher wanted me to gain some experience on the outside, unravel the secret of its technology, and let it come to life once again... He really was mindful!'\nMeanwhile, Irene stated: 'Will Iberia's lighthouses never shine again without those Ægir relics? Iberia's prosperity should be left up to the Iberians themselves this time.'\nIndigo and Irene's answers undoubtedly represent two different outlooks held by the modern Iberian on the nation's future, and deserve some consideration. However, once they had both left, Lumen raised an alternative, 'small-minded' conjecture, more or less that before an old man sends his granddaughter off to the city, he stuffs the only valuable they own into her suitcase and hopes she'll never come back, or that he'll have passed by the time she does... or thereabouts.\n'The elderly are like that. They like to decide everything for you while you're still clueless,' Lumen added.\nSpeculating on an old man's intentions seemed unnecessary. Besides, having ascertained the history of her Arts unit, our investigation into Indigo was complete. And, of course, it would never have affected how welcome she is at Rhodes Island. But we will note that upon learning the staff's origins, Indigo went blank for a moment. As for what thoughts she had in that instant, and what decisions she made, we have no way of knowing.",
+        "zh": "深靛刚来罗德岛的时候，我们对她所持的法杖进行了研究，发现关键在于顶端的单元，但并未得出明确的结论。在随后的一次补充研究时，前来工程部办理设备使用凭证的新干员艾丽妮和流明偶然经过，后者看了一眼深靛的法杖，随后非常笃定地告诉我们：他在“伊比利亚之眼”中看见过类似的东西。“伊比利亚之眼”，灯塔……绵延于伊比利亚沿海城镇的灯塔，曾经点亮整个国家的伟大工程，统统在几十年前的大灾难中被弃置，成为了时代的遗产。而深靛小姐的老师，正是一位灯塔看守人，也正是他将法杖交予了离开家乡的深靛小姐。\n“深靛法杖顶端的单元，是伊比利亚灯塔系统的某种制式设备”，这样的结论应该是准确的。问题是，按照深靛的说法，她的老师毕生守护着岩湾镇的灯塔，希望它有朝一日能重新亮起，那为什么会将如此重要的东西交给深靛并让她离开家乡呢？\n“老师一定是希望我能在外面长些见识，破解它技术的奥秘，让它重新发挥作用……真是良苦用心！”这是深靛自己的说法。\n“没有那些阿戈尔的遗物，伊比利亚的灯塔就不会再亮了吗？伊比利亚的存续，这次应该交由伊比利亚人自己来完成。”这是艾丽妮的说法。\n深靛和艾丽妮的答案，无疑是现今伊比利亚人看待未来的两种态度，颇值得思索。不过等到艾丽妮与深靛都离开后，流明提出了另一种“小家子气”的猜测，大概类似于老人送孙女去到大城市之前，把家里唯一值钱的东西塞进她的行李，并希望她永远不要再回来，毕竟回来了自己也已经不在了……之类的。\n“老人们总是那样，想在你不知情的前提下为你考虑好一切。”流明补充。\n我们无需求证一个老人的心思，何况弄清施术单元的来历后，我们有关深靛小姐的调查便全部结束了——当然这本来也不会影响什么，毕竟她在罗德岛很受欢迎。但我们注意到，在得知法杖的来历后，深靛其实有一瞬间的愣神，那一瞬间她想到了什么，又做了什么决定，我们不得而知。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30043",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30023",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31043",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

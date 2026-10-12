@@ -1,0 +1,1087 @@
+{
+  "id": "char_145_prove",
+  "name": {
+    "en": "Provence",
+    "zh": "普罗旺斯",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SR03",
+  "rarity": 5,
+  "class": "SNIPER",
+  "subclass": "closerange",
+  "faction": "siracusa",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Provence, Catastrophe Messenger of Rhodes Island, always keeps an eye on the movements of Catastrophes and the enemy.",
+    "zh": "罗德岛天灾信使普罗旺斯，时刻注意着天灾与敌人的动向。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She also keeps an eye on everyone's health.",
+    "zh": "也注意着大家的生活质量。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 716,
+            "atk": 332,
+            "def": 81,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 995,
+            "atk": 456,
+            "def": 117,
+            "magicResistance": 0,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 995,
+            "atk": 456,
+            "def": 117,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1276,
+            "atk": 601,
+            "def": 156,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-6",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 3
+        },
+        {
+          "id": "30024",
+          "count": 9
+        },
+        {
+          "id": "30063",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1276,
+            "atk": 601,
+            "def": 156,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1680,
+            "atk": 781,
+            "def": 215,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_prove_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.14
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.19
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.22
+          }
+        },
+        {
+          "name": {
+            "en": "Wolf's Eye",
+            "zh": "狼眼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk_scale_up:0%}</> every time the HP of the target <@ba.vup>falls by {hp_ratio_drop:0%}</>",
+            "zh": "目标敌人的生命<@ba.vup>每降低{hp_ratio_drop:0%}</>，对其造成伤害时的攻击力<@ba.vup>+{atk_scale_up:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": 0,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio_drop": 0.2,
+            "atk_scale_up": 0.25
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_prove_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Prey Seeker",
+            "zh": "杀戮嗅觉",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, but Normal Attack will not target enemies with over <@ba.vdown>80%</> HP",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，但普通攻击不再以生命值高于<@ba.vdown>80%</>的敌人作为目标",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 2.2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Hunter's Arrow",
+            "zh": "狩猎箭头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 20% chance to increase the ATK of the current attack to 140% when attacking, and the chance increases to 50% when an enemy is in the frontal tile",
+            "zh": "攻击时，20%几率当次攻击的攻击力提升至140%。当敌人在正前方一格时，该几率提升到50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "prob2": 0.5,
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Hunter's Arrow",
+            "zh": "狩猎箭头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 20% chance to increase the ATK of the current attack to 150% <@ba.talpu>(+10%)</> when attacking and the chance increases to 50% when an enemy is in the frontal tile",
+            "zh": "攻击时，20%几率当次攻击的攻击力提升至150%<@ba.talpu>（+10%）</>。当敌人在正前方一格时，该几率提升到50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "prob2": 0.5,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Hunter's Arrow",
+            "zh": "狩猎箭头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 20% chance to increase the ATK of the current attack to 180% when attacking and the chance increases to 50% when an enemy is in the frontal tile",
+            "zh": "攻击时，20%几率当次攻击的攻击力提升至180%。当敌人在正前方一格时，该几率提升到50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "prob2": 0.5,
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Hunter's Arrow",
+            "zh": "狩猎箭头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 20% chance to increase the ATK of the current attack to 190% <@ba.talpu>(+10%)</> when attacking and the chance increases to 50% when an enemy is in the frontal tile",
+            "zh": "攻击时，20%几率当次攻击的攻击力提升至190%<@ba.talpu>（+10%）</>。当敌人在正前方一格时，该几率提升到50%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "prob": 0.2,
+            "prob2": 0.5,
+            "atk_scale": 1.9
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +30",
+        "zh": "攻击力+30",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_prove",
+      "name": {
+        "en": "Provence's Badge",
+        "zh": "普罗旺斯证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Provence has demonstrated a remarkable aptitude for inflicting physical casualties with precision on enemies at close range.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Heavyshooter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员普罗旺斯擅长射击近距离敌人造成精准物理杀伤\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使重射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_prove",
+      "name": {
+        "en": "Tail-Care Suit",
+        "zh": "尾巴养护套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_prove",
+      "description": {
+        "en": "'It's a land in despair with messy hair!'\n'Your first step to glamor, Uncle Vought's Hair Treatment!'\n'......'\nThe model picks her tail up, makes a proud show for the camera... It's amazingly blunt. No lenscraft to speak of at all. Anyone can see how forced she is. After the commercial's over, whether anyone will remember the hair treatment cream is unknown, but the tail will have been undeniably close to perfection, soft and yielding with a gorgeous luster. Even the arc in which it pointed up, idyllic.\n\nProvence hasn't been a model before; she's only a Catastrophe Messenger. There's something she often hears, at least along the lines of it: 'if you can't do your best, you can only do better next time.' 'Better' signals something to compare to, and that signals regret. No one dares say whether the info one gets scrambling across and monitoring the wilds is 100% exact, whether you can get word of a Catastrophe to the epicenter in time, whether you can relay it to everyone there. Regret is part and parcel with a Catastrophe Messenger's work, and 'do better next time' is how they comfort each other. So when Provence had managed to shelter the villagers she'd just brought back from the barrens, and turned back to see a village lost under the violent storm, a village with people still into it, and she wasn't in time to save them, she could only tell herself: 'Don't blame yourself, Provence, settlements are too scattered in the wild, there's not even a comms line, you're doing this on just your own two legs, this was bound to happen... you can only do better next time.'\nThe next day, while she was resupplying at a town, she saw an engineering team. They were firm-hired, helping the local government install a local communications system, and they'd mounted electronic screens at some of the crossroads, so they could... put ads on them. Commercials worshipping quality of life bombarding people, one after another, while villagers in the wilds never even receive any life-or-death Catastrophe alert. Provence sought out the one in charge of the firm, and requested the local system extend its coverage out to the belt of surrounding wilderness. Even just a single emergency comms circuit more would do.\n'Those mucks are starving every day, and you think they can afford a hair treatment? How is this going to do anything for us?'\n'Don't give me that baloney about passing on hope. That's for you Catastrophe Messengers to worry about.'\n'Isn't there any way?' Provence knew this wouldn't work. She was just hung up on how if that emergency line existed, if things could be... that little bit faster in future. Of course she couldn't do her best, but she could do better, and 'better' signals something to compare to, and that signals there's a possibility, so it was down to her to do everything she could.\n'Did you just say your product was for hair treatment?'\n'Maybe—we can work together on this.'",
+        "zh": "“毛发脏乱，大地黯淡！”\n“魅力第一步，沃特大叔毛发养护！”\n“……”\n模特拎起她的大尾巴，冲着镜头骄傲地展示……真是直白，毫无镜头艺术可言，谁都能看出模特的不自然。广告播放结束，那款毛发养护剂能否被记住不得而知，尾巴确实是一条近乎完美的尾巴，松软柔顺有光泽，连翘起的弧度都恰到好处。\n\n普罗旺斯没做过模特，她只是一名天灾信使。她常听到这样一句话：“你做不到最好，你只能下次做得更好。”“更”意味着比较，有比较意味着有遗憾。荒野奔行，监测到的信息是否百分百准确，灾讯能否及时传递到发生地，又能否传递给发生地的所有人，谁也不敢断言。天灾信使的工作伴随着遗憾，大家用“下次做得更好”互相宽慰。所以那次，普罗旺斯安顿好刚刚从荒野上带回的村民，回首去看根本不可能看到的已被风暴吞噬的村子，那里还有一些人，还没来得及救出来，她只能对自己说：“别自责了普罗旺斯，荒野上村落太过分散，连通讯线路都没有，你靠着两条腿，没办法……你只能下次做得更好。”\n第二天，她在城镇补给物资时，见到了那支工程队。工程队受雇于一家企业，将协助当地政府改造局域通讯系统，并在部分十字路口安装电子屏，用于……广告投放。推崇品质生活的广告在人前轮番轰炸，荒野上的村民却等不来攸关生死的灾讯。普罗旺斯找到了企业的负责人，请求将局域通讯系统的覆盖范围延伸至这一带的荒野，哪怕是增设一条紧急通讯线路也好。\n“那些家伙连饭都吃不上，难道还买得起毛发养护剂？这样做于我们有什么好处？”\n“别给我讲什么传递希望的大道理，那是你们天灾信使的事情。”\n“真的没有办法了吗？”普罗旺斯也知道行不通，她不过是想如果有那么一条紧急通讯线路的话，将来要是……速度会快一些。她当然做不到最好，可她能做到更好，“更”意味着有比较，有比较意味着有可能，那她就应该尽力去做。\n“你刚说你们的产品是毛发养护剂？”\n“或许，我们可以合作。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30094",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

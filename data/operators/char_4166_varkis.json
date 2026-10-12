@@ -1,0 +1,1100 @@
+{
+  "id": "char_4166_varkis",
+  "name": {
+    "en": "Varkáris",
+    "zh": "摆渡人",
+    "isMachineTranslation": true
+  },
+  "appellation": "Varkáris",
+  "displayNumber": "MN08",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "centurion",
+  "faction": "minos",
+  "position": "MELEE",
+  "tagList": [
+    "群攻",
+    "生存"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "近卫干员摆渡人，严肃的渡口管理者。",
+    "zh": "近卫干员摆渡人，严肃的渡口管理者。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "他了解河流最细微的水文，也清楚战场上瞬息万变的动向。",
+    "zh": "他了解河流最细微的水文，也清楚战场上瞬息万变的动向。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1195,
+            "atk": 306,
+            "def": 141,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1533,
+            "atk": 426,
+            "def": 202,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1533,
+            "atk": 426,
+            "def": 202,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1966,
+            "atk": 577,
+            "def": 273,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "31024",
+          "count": 7
+        },
+        {
+          "id": "31053",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1966,
+            "atk": 577,
+            "def": 273,
+            "magicResistance": 0,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2622,
+            "atk": 760,
+            "def": 333,
+            "magicResistance": 0,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_varkis_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.05
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.15
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "奔流",
+            "zh": "奔流",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并连续攻击三次",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31073",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30054",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31084",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_varkis_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.35,
+            "attack@hp_ratio": 0.05,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.4,
+            "attack@hp_ratio": 0.05,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.45,
+            "attack@hp_ratio": 0.05,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.55,
+            "attack@hp_ratio": 0.06,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.6,
+            "attack@hp_ratio": 0.06,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.65,
+            "attack@hp_ratio": 0.06,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 25,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.75,
+            "attack@hp_ratio": 0.07,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 26,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.85,
+            "attack@hp_ratio": 0.07,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 28,
+          "blackboard": {
+            "attack@s2_atk_scale": 1.9,
+            "attack@hp_ratio": 0.07,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        },
+        {
+          "name": {
+            "en": "同胞的意志",
+            "zh": "同胞的意志",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@s2_atk_scale:0%}</>的物理伤害，并回复自身<@ba.vup>{attack@hp_ratio:0%}</>最大生命值；超出自身生命上限的生命值可转化为<$ba.barrier>屏障</>\\n<@ba.rem><$ba.barrier>屏障</>最高叠加至最大生命值的{max_hp_ratio:0%}，技能结束后逐渐流失</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "attack@s2_atk_scale": 2,
+            "attack@hp_ratio": 0.08,
+            "max_hp_ratio": 1,
+            "dynamic_dec_per_sec": 100
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "30043",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "31084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30093",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "永志不忘",
+            "zh": "永志不忘",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至107%",
+            "zh": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至107%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "talent_atk_scale": 1.07
+          }
+        },
+        {
+          "name": {
+            "en": "永志不忘",
+            "zh": "永志不忘",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至109%<@ba.talpu>（+2%）</>",
+            "zh": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至109%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "talent_atk_scale": 1.09
+          }
+        },
+        {
+          "name": {
+            "en": "永志不忘",
+            "zh": "永志不忘",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至110%",
+            "zh": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至110%",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "talent_atk_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "永志不忘",
+            "zh": "永志不忘",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至112%<@ba.talpu>（+2%）</>",
+            "zh": "在场时，所有【米诺斯】干员攻击生命比例不高于自身的敌人时攻击力提升至112%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "talent_atk_scale": 1.12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-10秒",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 150,
+        "atk": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_varkis",
+      "name": {
+        "en": "摆渡人证章",
+        "zh": "摆渡人证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_varkis",
+      "description": {
+        "en": "干员摆渡人擅长以凌厉攻势阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使强攻手职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员摆渡人擅长以凌厉攻势阻击敌人\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使强攻手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_varkis",
+      "name": {
+        "en": "回家的路",
+        "zh": "回家的路",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_varkis",
+      "description": {
+        "en": "天色还没有暗透，但他已开始准备露营。没必要再赶路了，他对自己说。\n他已辞去了摆渡人的工作，尽管雅赛努斯的公民们投票决定让他留下。徒弟也离开了，如今已不再有任何事需要他按时按点去做。\n这种自由让他惶恐，他知道，自己正越走越慢。大地似乎与五年前他离开故乡时没有任何变化，荒凉，寂静，他手中那张软烂的地图上清晰画着的河道，在他眼前全无踪迹。\n祭司说，高山的积雪总会融化，新的河流总会出现，但他目之所及之处却只有荒芜。\n隐约的恐惧又在他心头涌起，这种情绪已伴随他很久。自他踏上这条回家的路以来，甚至，自他带着伊萨科斯的血衣抵达雅赛努斯、祭司邀请他留下的时候，他就已经被它攥住了。是这份恐惧让他留下，让他无法回到故乡，让他将愤怒与恨倾泻在萨尔贡人身上——他一直在害怕，如果他回到故乡，发现再也回不到从前，那他还能再做什么？他还能再追寻什么？\n天彻底暗了。他放下手中的桨，去取挂在桨上的提灯。这盏提灯已经很旧了，布满使用的痕迹，但他一直随身带着。它原本只是一盏普通的油灯，是伊萨科斯帮他做了改造，将它改成源石驱动，又做了防风的护壳——这是非常精巧的设计，上下两部分护壳间有卡扣，只要轻轻提起，就能将护壳打开，让提灯露出柔和的光芒，照亮他回家的路。他还记得那天的情景，当时他在饭桌边给手中的河道图添加自己观测水文后的注释，伊萨科斯就在不远处的工作台上做着改造，制造出一些叮叮当当的动静。\n他终于露出了一丝微笑，小心地擦了擦提灯上沾到的土，想要拉开提灯的护壳——但是没能拉开。\n护壳卡住了。这是以前从未发生过的事。他不敢用力硬拔，也不知该如何修理，只能尝试轻轻地转动提灯。冷汗在他的面具下、在他的背上浮起，他又开始害怕了。在他将伊萨科斯的护甲和施术单元留给游击队，将伊萨科斯的血衣留给雅赛努斯之后，这已是他所拥有的与伊萨科斯相关的最后一件物品，假如连它都失去，那他今后该——\n咔哒。\n提灯打开了。\n一片薄薄的纤维掉了下来。\n他松了口气，将提灯放到河道图旁，在寂静中呆坐许久之后，才想起来查看那一小片纤维。他惊讶地发现，那竟然是芦苇的冠毛。或许是在前一夜，也可能是在这天的早上，风将芦苇送到了他身边，而他一直没有注意到这一点。\n就像他现在才意识到，脚下黑色的土地是松软的，在他离开的这些年里，虽然河流还没有回来，但土壤中的环节动物已开始翻动土地，属于河流和沼地的芦苇已经感受到了湿润的气息。\n天亮之后，可以再多赶些路。他想。",
+        "zh": "天色还没有暗透，但他已开始准备露营。没必要再赶路了，他对自己说。\n他已辞去了摆渡人的工作，尽管雅赛努斯的公民们投票决定让他留下。徒弟也离开了，如今已不再有任何事需要他按时按点去做。\n这种自由让他惶恐，他知道，自己正越走越慢。大地似乎与五年前他离开故乡时没有任何变化，荒凉，寂静，他手中那张软烂的地图上清晰画着的河道，在他眼前全无踪迹。\n祭司说，高山的积雪总会融化，新的河流总会出现，但他目之所及之处却只有荒芜。\n隐约的恐惧又在他心头涌起，这种情绪已伴随他很久。自他踏上这条回家的路以来，甚至，自他带着伊萨科斯的血衣抵达雅赛努斯、祭司邀请他留下的时候，他就已经被它攥住了。是这份恐惧让他留下，让他无法回到故乡，让他将愤怒与恨倾泻在萨尔贡人身上——他一直在害怕，如果他回到故乡，发现再也回不到从前，那他还能再做什么？他还能再追寻什么？\n天彻底暗了。他放下手中的桨，去取挂在桨上的提灯。这盏提灯已经很旧了，布满使用的痕迹，但他一直随身带着。它原本只是一盏普通的油灯，是伊萨科斯帮他做了改造，将它改成源石驱动，又做了防风的护壳——这是非常精巧的设计，上下两部分护壳间有卡扣，只要轻轻提起，就能将护壳打开，让提灯露出柔和的光芒，照亮他回家的路。他还记得那天的情景，当时他在饭桌边给手中的河道图添加自己观测水文后的注释，伊萨科斯就在不远处的工作台上做着改造，制造出一些叮叮当当的动静。\n他终于露出了一丝微笑，小心地擦了擦提灯上沾到的土，想要拉开提灯的护壳——但是没能拉开。\n护壳卡住了。这是以前从未发生过的事。他不敢用力硬拔，也不知该如何修理，只能尝试轻轻地转动提灯。冷汗在他的面具下、在他的背上浮起，他又开始害怕了。在他将伊萨科斯的护甲和施术单元留给游击队，将伊萨科斯的血衣留给雅赛努斯之后，这已是他所拥有的与伊萨科斯相关的最后一件物品，假如连它都失去，那他今后该——\n咔哒。\n提灯打开了。\n一片薄薄的纤维掉了下来。\n他松了口气，将提灯放到河道图旁，在寂静中呆坐许久之后，才想起来查看那一小片纤维。他惊讶地发现，那竟然是芦苇的冠毛。或许是在前一夜，也可能是在这天的早上，风将芦苇送到了他身边，而他一直没有注意到这一点。\n就像他现在才意识到，脚下黑色的土地是松软的，在他离开的这些年里，虽然河流还没有回来，但土壤中的环节动物已开始翻动土地，属于河流和沼地的芦苇已经感受到了湿润的气息。\n天亮之后，可以再多赶些路。他想。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31044",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31054",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31074",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

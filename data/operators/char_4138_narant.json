@@ -1,0 +1,1583 @@
+{
+  "id": "char_4138_narant",
+  "name": {
+    "en": "Narantuya",
+    "zh": "娜仁图亚",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SG17",
+  "rarity": 6,
+  "class": "SNIPER",
+  "subclass": "loopshooter",
+  "faction": "sargon",
+  "position": "RANGED",
+  "tagList": [
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "The crimson Nightzmora Narantuya walks her own Khaganquest.",
+    "zh": "赤红的梦魇娜仁图亚，正走在自己的“天途”上。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She believes her name with be known throughout Sargon one day, as she has believed for a long time.",
+    "zh": "她相信自己即将名扬萨尔贡，她已经如此相信了很多年。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1064,
+            "atk": 229,
+            "def": 60,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1520,
+            "atk": 382,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "y-7",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1520,
+            "atk": 382,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2000,
+            "atk": 546,
+            "def": 144,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "y-7",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 4
+        },
+        {
+          "id": "30125",
+          "count": 4
+        },
+        {
+          "id": "31014",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2000,
+            "atk": 546,
+            "def": 144,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 2500,
+            "atk": 675,
+            "def": 170,
+            "magicResistance": 0,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_narant_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.2,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.25,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.3,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.4,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.45,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.5,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.6,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.7,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.8,
+            "ability_range_forward_extend": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Whirling Blade",
+            "zh": "旋刃",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "<@ba.rem>Can switch between the default state and the following state:</>\nAttack range <@ba.vdown>-1</>, boomerang projectiles deal <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage, and repeatedly bounce between enemies (up to <@ba.vup>{attack@times}</> bounces)",
+            "zh": "<@ba.rem>可以在下列状态和初始状态间切换：</>\\n攻击距离<@ba.vdown>-1</>，回旋投射物造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害，并且可以在敌人间重复弹射（最多弹跳<@ba.vup>{attack@times}</>次）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "attack@times": 3,
+            "attack@atk_scale": 1.9,
+            "ability_range_forward_extend": -1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 4
+            },
+            {
+              "id": "31063",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31074",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_narant_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 2,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 1.9,
+            "attack@atk_scale_comeback": 1.4,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 3,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2,
+            "attack@atk_scale_comeback": 1.45,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 4,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.05,
+            "attack@atk_scale_comeback": 1.5,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 5,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.1,
+            "attack@atk_scale_comeback": 1.55,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 6,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.15,
+            "attack@atk_scale_comeback": 1.6,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 7,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.2,
+            "attack@atk_scale_comeback": 1.65,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 8,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.25,
+            "attack@atk_scale_comeback": 1.7,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 8,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.3,
+            "attack@atk_scale_comeback": 1.8,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 16,
+          "initSp": 8,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.4,
+            "attack@atk_scale_comeback": 1.9,
+            "attack@sluggish": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Nightmare",
+            "zh": "恶魇",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Deals <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage per attack and <$ba.sluggish>Slows</> targets for <@ba.vup>{attack@sluggish}</> second. Projectiles will briefly pass through enemies after striking them, then return; all enemies hit during the return take <@ba.vup>{attack@atk_scale_comeback:0%}</> ATK as Physical damage",
+            "zh": "每次攻击造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒，投射物命中目标后会在短暂突进后折返，返回时对穿过的所有敌人造成一次相当于攻击力<@ba.vup>{attack@atk_scale_comeback:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 8,
+          "blackboard": {
+            "attack@move_ahead_time": 0.5,
+            "attack@projectile_range": 1,
+            "attack@atk_scale": 2.5,
+            "attack@atk_scale_comeback": 2,
+            "attack@sluggish": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "30023",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_narant_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 11,
+          "blackboard": {
+            "attack@atk_scale": 1.3,
+            "atk_scale_aoe": 1.2,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 12,
+          "blackboard": {
+            "attack@atk_scale": 1.35,
+            "atk_scale_aoe": 1.2,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 13,
+          "blackboard": {
+            "attack@atk_scale": 1.4,
+            "atk_scale_aoe": 1.2,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 14,
+          "blackboard": {
+            "attack@atk_scale": 1.45,
+            "atk_scale_aoe": 1.3,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 15,
+          "blackboard": {
+            "attack@atk_scale": 1.5,
+            "atk_scale_aoe": 1.3,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 16,
+          "blackboard": {
+            "attack@atk_scale": 1.55,
+            "atk_scale_aoe": 1.3,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 17,
+          "blackboard": {
+            "attack@atk_scale": 1.6,
+            "atk_scale_aoe": 1.4,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 18,
+          "blackboard": {
+            "attack@atk_scale": 1.65,
+            "atk_scale_aoe": 1.45,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 19,
+          "blackboard": {
+            "attack@atk_scale": 1.7,
+            "atk_scale_aoe": 1.5,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Sunswallower",
+            "zh": "吞日",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws <@ba.vup>{cnt}</> projectiles (each dealing <@ba.vup>{attack@atk_scale:0%}</> ATK as Physical damage) per attack; whenever all projectiles return, up to <@ba.vup>{attack@aoe.max_target}</> enemies in the 8 tiles surrounding Narantuya take <@ba.vup>{atk_scale_AOE:0%}</> ATK as Physical damage and are <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</> second",
+            "zh": "每次攻击发射<@ba.vup>{cnt}</>个回旋投射物（每个造成相当于攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害），投射物全部回收时娜仁图亚对周围8格内至多<@ba.vup>{attack@aoe.max_target}</>名敌人造成一次相当于攻击力<@ba.vup>{atk_scale_AOE:0%}</>的物理伤害并使其<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "attack@atk_scale": 1.75,
+            "atk_scale_aoe": 1.6,
+            "sluggish": 1,
+            "attack@aoe.max_target": 3,
+            "cnt": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30011",
+          "count": 6
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31063",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30103",
+          "count": 5
+        },
+        {
+          "id": "31083",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "'I See, I Take'",
+            "zh": "“我见，我得”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, each attack <$ba.steal>Steals</> 15 ATK (Caps at 150) and 10 DEF (Caps at 100) from the target",
+            "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其15点攻击力（最高150点）与10点防御力（最高100点）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack@steal_atk": 15,
+            "attack@steal_atk_max": 150,
+            "attack@steal_def": 10,
+            "attack@steal_def_max": 100
+          }
+        },
+        {
+          "name": {
+            "en": "'I See, I Take'",
+            "zh": "“我见，我得”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, each attack <$ba.steal>Steals</> 17 <@ba.talpu>(+2)</> ATK (Caps at 170 <@ba.talpu>(+20)</>) and 11 <@ba.talpu>(+1)</> DEF (Caps at 110 <@ba.talpu>(+10)</>) from the target",
+            "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其17<@ba.talpu>（+2）</>点攻击力（最高170<@ba.talpu>（+20）</>点）与11<@ba.talpu>（+1）</>点防御力（最高110<@ba.talpu>（+10）</>点）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack@steal_atk": 17,
+            "attack@steal_atk_max": 170,
+            "attack@steal_def": 11,
+            "attack@steal_def_max": 110
+          }
+        },
+        {
+          "name": {
+            "en": "'I See, I Take'",
+            "zh": "“我见，我得”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, each attack <$ba.steal>Steals</> 25 ATK (Caps at 250) and 20 DEF (Caps at 200) from the target",
+            "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其25点攻击力（最高250点）与20点防御力（最高200点）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack@steal_atk": 25,
+            "attack@steal_atk_max": 250,
+            "attack@steal_def": 20,
+            "attack@steal_def_max": 200
+          }
+        },
+        {
+          "name": {
+            "en": "'I See, I Take'",
+            "zh": "“我见，我得”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, each attack <$ba.steal>Steals</> 27 <@ba.talpu>(+2)</> ATK (Caps at 270 <@ba.talpu>(+20)</>) and 21 <@ba.talpu>(+1)</> DEF (Caps at 210 <@ba.talpu>(+10)</>) from the target",
+            "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其27<@ba.talpu>（+2）</>点攻击力（最高270<@ba.talpu>（+20）</>点）与21<@ba.talpu>（+1）</>点防御力（最高210<@ba.talpu>（+10）</>点）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack@steal_atk": 27,
+            "attack@steal_atk_max": 270,
+            "attack@steal_def": 21,
+            "attack@steal_def_max": 210
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Graceful Shadow",
+            "zh": "婀娜虚影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains 35% Physical and Arts Dodge and reduces the hit rate of Physical and Arts attacks from enemies in the surrounding 8 tiles by 20%",
+            "zh": "获得35%的物理与法术闪避，周围8格内敌人的物理与法术命中率-20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "prob": 0.35,
+            "damage_hitrate_physical": -0.2,
+            "damage_hitrate_magical": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Graceful Shadow",
+            "zh": "婀娜虚影",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Gains 38% <@ba.talpu>(+3%)</> Physical and Arts Dodge and reduces the hit rate of Physical and Arts attacks from enemies in the surrounding 8 tiles by 20%",
+            "zh": "获得38%<@ba.talpu>（+3%）</>的物理与法术闪避，周围8格内敌人的物理与法术命中率-20%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "prob": 0.38,
+            "damage_hitrate_physical": -0.2,
+            "damage_hitrate_magical": -0.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_narant",
+      "name": {
+        "en": "娜仁图亚证章",
+        "zh": "娜仁图亚证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_narant",
+      "description": {
+        "en": "干员娜仁图亚擅长操纵回旋投射物往复打击靠近的敌人\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使回环射手职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员娜仁图亚擅长操纵回旋投射物往复打击靠近的敌人\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使回环射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_narant",
+      "name": {
+        "en": "“吹尽狂沙”",
+        "zh": "“吹尽狂沙”",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_narant",
+      "description": {
+        "en": "娜仁图亚从夜梦中惊醒，喉咙里仿佛含着一块热炭，耳朵里仍是梦中响起的金铁相击之声，令她难以忍受。\n她走出帐篷，荒漠顶上无月，风似远征的骑兵，狂奔向沙漠深处。\n“叮！铛！”那打铁一般的声音愈发响亮。娜仁图亚四处寻找声音的源头，却意外发现自己腰间的黑色弯刀正颤抖不止。\n她握住刀柄，本以为这样便能止住它的躁动，没想到反而令其势更盛，将她震得手臂发麻、头晕目眩。\n“停下！”她怒吼着，将那把刀抓得更紧。\n黑色的弯刀拽着她，使她踉踉跄跄地跑进了夜色里。\n她看到一柄如同山岭的巨锤，重重砸落在火红的铁砧之上，一声声战鼓，一阵阵金铁的嘶鸣，火星飞溅，巨锤不屑于铸造凡铁，它竟然将那坚不可摧的铁砧砸成了一把刀！\n战鼓声越来越清晰，她看到有人接过了那把刀，行走在远征队伍的最前面，用它劈开坚硬的骨头，用它斩落歪斜的旗帜，直到那人死去，刀落进黄沙里。娜仁图亚若有所悟，自己此刻正站在那片黄沙之上！\n“……不，”她说，“那不是我！”\n她不再试图遏止弯刀的躁动，狠狠地扔出弯刀，似乎要用它击碎那片风沙中的幻景。\n“无论你是什么来历，我都不在乎！我有我自己的路，如果你不愿意跟我走，那随便你！”\n娜仁图亚不确定自己有没有喊出这句话，因为下一刻，她狠狠摔进了荒漠里。\n……\n娜仁图亚醒来时，一旁的酒友正关切又畏惧地给她摇着扇子。\n“我喝多了？”\n正在往酒里掺水的摊主赧然一笑。\n“我的刀呢？！”娜仁图亚手往腰间一拍，冷汗立刻冒了出来。\n酒友们将她引到一块巨岩前。\n“娜仁图亚，你究竟是怎么做到的？”\n娜仁图亚揉了揉眼睛，那把深深插进巨岩的黑色弯刀的确是自己的。她试着往外拔，但刀与石头都纹丝未动。\n“昨晚天上打了几个雷，你醉醺醺地从帐篷里出来，对着阴云破口大骂，然后就拔出刀往这大石头上一砸！”一名酒友龇着牙说，“太吓人了，等会儿我就把欠你的酒钱都还你……”\n“的确吓人，我还记得你最后大声喊了一句——”\n“我喊了什么？”娜仁图亚此时已经回忆起了一些片段，她甚至有些佩服自己能想出那样霸气的宣言，她并不介意再听别人讲一遍。\n“你喊的是——‘如果你再不老实，我就把你卖了，换一把纯金的！’”\n“什么？等等，难道不是……”\n“唔，就是这句，我也听到了。的确是娜仁图亚会说的话。”\n“……”",
+        "zh": "娜仁图亚从夜梦中惊醒，喉咙里仿佛含着一块热炭，耳朵里仍是梦中响起的金铁相击之声，令她难以忍受。\n她走出帐篷，荒漠顶上无月，风似远征的骑兵，狂奔向沙漠深处。\n“叮！铛！”那打铁一般的声音愈发响亮。娜仁图亚四处寻找声音的源头，却意外发现自己腰间的黑色弯刀正颤抖不止。\n她握住刀柄，本以为这样便能止住它的躁动，没想到反而令其势更盛，将她震得手臂发麻、头晕目眩。\n“停下！”她怒吼着，将那把刀抓得更紧。\n黑色的弯刀拽着她，使她踉踉跄跄地跑进了夜色里。\n她看到一柄如同山岭的巨锤，重重砸落在火红的铁砧之上，一声声战鼓，一阵阵金铁的嘶鸣，火星飞溅，巨锤不屑于铸造凡铁，它竟然将那坚不可摧的铁砧砸成了一把刀！\n战鼓声越来越清晰，她看到有人接过了那把刀，行走在远征队伍的最前面，用它劈开坚硬的骨头，用它斩落歪斜的旗帜，直到那人死去，刀落进黄沙里。娜仁图亚若有所悟，自己此刻正站在那片黄沙之上！\n“……不，”她说，“那不是我！”\n她不再试图遏止弯刀的躁动，狠狠地扔出弯刀，似乎要用它击碎那片风沙中的幻景。\n“无论你是什么来历，我都不在乎！我有我自己的路，如果你不愿意跟我走，那随便你！”\n娜仁图亚不确定自己有没有喊出这句话，因为下一刻，她狠狠摔进了荒漠里。\n……\n娜仁图亚醒来时，一旁的酒友正关切又畏惧地给她摇着扇子。\n“我喝多了？”\n正在往酒里掺水的摊主赧然一笑。\n“我的刀呢？！”娜仁图亚手往腰间一拍，冷汗立刻冒了出来。\n酒友们将她引到一块巨岩前。\n“娜仁图亚，你究竟是怎么做到的？”\n娜仁图亚揉了揉眼睛，那把深深插进巨岩的黑色弯刀的确是自己的。她试着往外拔，但刀与石头都纹丝未动。\n“昨晚天上打了几个雷，你醉醺醺地从帐篷里出来，对着阴云破口大骂，然后就拔出刀往这大石头上一砸！”一名酒友龇着牙说，“太吓人了，等会儿我就把欠你的酒钱都还你……”\n“的确吓人，我还记得你最后大声喊了一句——”\n“我喊了什么？”娜仁图亚此时已经回忆起了一些片段，她甚至有些佩服自己能想出那样霸气的宣言，她并不介意再听别人讲一遍。\n“你喊的是——‘如果你再不老实，我就把你卖了，换一把纯金的！’”\n“什么？等等，难道不是……”\n“唔，就是这句，我也听到了。的确是娜仁图亚会说的话。”\n“……”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30165",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_narant",
+      "name": {
+        "en": "“致我们的老大”",
+        "zh": "“致我们的老大”",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_narant",
+      "description": {
+        "en": "“她不是好人！”\n两个逃跑的女孩在荒野迷路，天色阴暗，难辨方向。\n“那个红头发疯子把我们从沙盗手里抢出来，就是为了再卖给其他沙盗！”\n阿雅吉和阿雅妮并非亲姐妹，而是被沙盗从不同地方抓来的奴隶，名字也是自己起的。\n“可她砍断了我们的脚镣，还给饭吃。”\n“演的！她老念叨什么部族的规矩，就是想让我们放松警惕。”\n“阿雅吉，我跑不动了！我想回去。跟着她起码不用挨饿。”\n“就算当沙盗，你也得认个有出息的老大吧？瞧她那样子，连个手下都没有，能有什么前途？”\n“可她说以前她有很多手下，只是那些人都不愿跟着她混了，她就决定再也不当老大了。”\n“那你怎么不想想那些人为什么不愿意跟着她混了？”\n她们只顾争吵，没注意到一群游荡的裂兽已悄然逼近了她们。\n“糟、糟了！阿雅吉，我不想死在这儿！”\n裂兽的族母绕着她们转圈，似在等待什么。其他裂兽朝远方咆哮起来。很快，一个红色的身影出现了。\n“我不是说了有裂兽出没，让你们别在我去买东西的时候乱跑吗？”\n“我还以为你在吓唬人，让我们不敢逃跑！”\n“逃跑？你们想走就走，我什么时候拦过？”\n娜仁图亚气喘吁吁地将皮鞭和匕首分给两人，随后上前，猎食者与猎物的游戏变成了两个族群间的对峙。\n“你要带着你的族群活下去，我也一样。她们是我的人。我们会反抗，我会杀死你族群中的裂兽，三头，两头，我绝对能杀掉。如果你喜欢两败俱伤，咱们就这么干。”\n裂兽族母陷入沉默。\n“看来你觉得不划算？”娜仁图亚啐了一口，“那就滚！”\n被激怒的裂兽纷纷咆哮，娜仁图亚也扯嗓子仰天怒吼，回敬以自己的态度。\n直到所有裂兽收起獠牙，娜仁图亚才停下，她扔出一个刚买来的包裹，里面是兽群必需的盐。\n裂兽族母叼起盐包，带着族群退回荒原深处。\n“走吧，回家。”娜仁图亚嗓音发哑，“既然收了你们当手下，以后就得听我的话，不能乱跑了。”\n“你、你什么时候收我们当手下了？而且，你不是说再也不当老大了吗？”\n“没办法，我也不想当老大，但我总不能看着你们去死吧？你们要是不愿意，我可以把裂兽叫回来。”\n阿雅吉闭上了嘴。阿雅妮凑近说：“这个老大能吓走一群裂兽欸，将来肯定有出息。”\n阿雅吉叹了口气：“我们俩现在都欠她一条命，这可该怎么报答呀？总不能给她当一辈子手下吧？”\n“阿雅吉，这已经是她第二次救我们了，一辈子可能都不够的。”\n娜仁图亚头也没回地应道：“我不需要你们报答我，我也没那耐心给别人当一辈子老大！将来哪天咱们散伙，过上安稳日子了，只要你们还记得我就够了，最好逢年过节愿意给我寄点小礼物。”\n“放心吧老大！我们肯定会给你寄最好的礼物！”\n“……倒也不用那么急着想散伙后的事。”",
+        "zh": "“她不是好人！”\n两个逃跑的女孩在荒野迷路，天色阴暗，难辨方向。\n“那个红头发疯子把我们从沙盗手里抢出来，就是为了再卖给其他沙盗！”\n阿雅吉和阿雅妮并非亲姐妹，而是被沙盗从不同地方抓来的奴隶，名字也是自己起的。\n“可她砍断了我们的脚镣，还给饭吃。”\n“演的！她老念叨什么部族的规矩，就是想让我们放松警惕。”\n“阿雅吉，我跑不动了！我想回去。跟着她起码不用挨饿。”\n“就算当沙盗，你也得认个有出息的老大吧？瞧她那样子，连个手下都没有，能有什么前途？”\n“可她说以前她有很多手下，只是那些人都不愿跟着她混了，她就决定再也不当老大了。”\n“那你怎么不想想那些人为什么不愿意跟着她混了？”\n她们只顾争吵，没注意到一群游荡的裂兽已悄然逼近了她们。\n“糟、糟了！阿雅吉，我不想死在这儿！”\n裂兽的族母绕着她们转圈，似在等待什么。其他裂兽朝远方咆哮起来。很快，一个红色的身影出现了。\n“我不是说了有裂兽出没，让你们别在我去买东西的时候乱跑吗？”\n“我还以为你在吓唬人，让我们不敢逃跑！”\n“逃跑？你们想走就走，我什么时候拦过？”\n娜仁图亚气喘吁吁地将皮鞭和匕首分给两人，随后上前，猎食者与猎物的游戏变成了两个族群间的对峙。\n“你要带着你的族群活下去，我也一样。她们是我的人。我们会反抗，我会杀死你族群中的裂兽，三头，两头，我绝对能杀掉。如果你喜欢两败俱伤，咱们就这么干。”\n裂兽族母陷入沉默。\n“看来你觉得不划算？”娜仁图亚啐了一口，“那就滚！”\n被激怒的裂兽纷纷咆哮，娜仁图亚也扯嗓子仰天怒吼，回敬以自己的态度。\n直到所有裂兽收起獠牙，娜仁图亚才停下，她扔出一个刚买来的包裹，里面是兽群必需的盐。\n裂兽族母叼起盐包，带着族群退回荒原深处。\n“走吧，回家。”娜仁图亚嗓音发哑，“既然收了你们当手下，以后就得听我的话，不能乱跑了。”\n“你、你什么时候收我们当手下了？而且，你不是说再也不当老大了吗？”\n“没办法，我也不想当老大，但我总不能看着你们去死吧？你们要是不愿意，我可以把裂兽叫回来。”\n阿雅吉闭上了嘴。阿雅妮凑近说：“这个老大能吓走一群裂兽欸，将来肯定有出息。”\n阿雅吉叹了口气：“我们俩现在都欠她一条命，这可该怎么报答呀？总不能给她当一辈子手下吧？”\n“阿雅吉，这已经是她第二次救我们了，一辈子可能都不够的。”\n娜仁图亚头也没回地应道：“我不需要你们报答我，我也没那耐心给别人当一辈子老大！将来哪天咱们散伙，过上安稳日子了，只要你们还记得我就够了，最好逢年过节愿意给我寄点小礼物。”\n“放心吧老大！我们肯定会给你寄最好的礼物！”\n“……倒也不用那么急着想散伙后的事。”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30155",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30145",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

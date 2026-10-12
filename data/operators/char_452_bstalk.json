@@ -1,0 +1,1086 @@
+{
+  "id": "char_452_bstalk",
+  "name": {
+    "en": "Beanstalk",
+    "zh": "豆苗",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "CB16",
+  "rarity": 4,
+  "class": "PIONEER",
+  "subclass": "tactician",
+  "faction": "columbia",
+  "position": "RANGED",
+  "tagList": [
+    "DP-Recovery",
+    "Summon"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Top specialist Metal Crab breeder Beanstalk, commanding her Metal Crab teams to guard the frontline.",
+    "zh": "最专业的磐蟹饲养员豆苗，指挥她的磐蟹小队守护前线。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Carefully examine any expense applications she submits. Once in a while, her contracts hide tiny traps.",
+    "zh": "仔细审查她提交的经费申请，合同里偶尔会藏着小小的陷阱。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 702,
+            "atk": 171,
+            "def": 43,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1003,
+            "atk": 252,
+            "def": 73,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 1
+        },
+        {
+          "id": "30022",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1003,
+            "atk": 252,
+            "def": 73,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1286,
+            "atk": 332,
+            "def": 105,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3212",
+          "count": 5
+        },
+        {
+          "id": "31013",
+          "count": 13
+        },
+        {
+          "id": "30083",
+          "count": 10
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1286,
+            "atk": 332,
+            "def": 105,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1569,
+            "atk": 405,
+            "def": 125,
+            "magicResistance": 0,
+            "cost": 13,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_bstalk_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 9,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 11,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 12,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 13,
+          "blackboard": {
+            "cost": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Sentinel Command",
+            "zh": "定点指令",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately generates <@ba.vup>{cost}</> DP, and refreshes all Reinforcements (Restores all Reinforcements to max HP if they are already deployed)",
+            "zh": "立即获得<@ba.vup>{cost}</>点部署费用，并立刻刷新援军（如已存在则恢复其所有生命值）",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "cost": 8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_bstalk_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 12,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.2,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 12,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.25,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 12,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.3,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 13,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.35,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 13,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.4,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 13,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.45,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 14,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.5,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 16,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.55,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 18,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.6,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "'Everyone Together!'",
+            "zh": "“大家一起上”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately summons Metal Crabs in the four tiles adjacent to the Tactical Point (excluding the tile occupied by the Tactical Point); While this skill is active, generates a total of <@ba.vup>{value}</> DP, and increases the DEF of summoned Metal Crabs by <@ba.vup>+{attack@def:0%}</>",
+            "zh": "立即在战术点周围四格的所有近战位临时召唤磐蟹（不包括战术点本身）；技能持续时间内回复总共<@ba.vup>{value}</>点部署费用，所有磐蟹的防御力<@ba.vup>+{attack@def:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 15,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "value": 12,
+            "attack@def": 0.7,
+            "attack@atk": 0,
+            "interval": 1.25,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "30093",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30031",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30073",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Professional Breeder",
+            "zh": "专业饲养员",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Metal Crabs to assist in combat from a Tactical Point; Metal Crabs will automatically respawn 20s after being defeated",
+            "zh": "可以在战术点召唤磐蟹协助作战，其被击败后会在20秒后自动刷新",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Breeder",
+            "zh": "专业饲养员",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Metal Crabs to assist in combat from a Tactical Point; Metal Crabs will automatically respawn 17s after being defeated",
+            "zh": "可以在战术点召唤磐蟹协助作战，其被击败后会在17秒后自动刷新",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Professional Breeder",
+            "zh": "专业饲养员",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Can summon Metal Crabs to assist in combat from a Tactical Point; Metal Crabs will automatically respawn 15s after being defeated",
+            "zh": "可以在战术点召唤磐蟹协助作战，其被击败后会在15秒后自动刷新",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cnt": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ASPD +8",
+        "zh": "攻击速度+8",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_bstalk",
+      "name": {
+        "en": "Beanstalk's Badge",
+        "zh": "豆苗证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_blkngt",
+      "description": {
+        "en": "Operator Beanstalk has demonstrated a remarkable aptitude in the designation of tactical points for summoning reinforcements so as to secure leeway for deployment.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Tactician responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员豆苗擅长布设战术点召唤援军来争取部署空间\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使战术家职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_bstalk",
+      "name": {
+        "en": "All-You-Crabs-Eat",
+        "zh": "钳钳自助餐",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_blkngt",
+      "description": {
+        "en": "'Beanstalk, that sales contractor you were in touch with finally sent their first draft of the ad copy!' \n'Nice! Lemme have a look!'\nThank you for choosing the 'All-You-Crabs-Eat' smart metal crab feeder! This device uses cutting-edge smart technology to solve any issue you may run into while raising metal crabs. Racked with worry that you can't tend to your crabs while away from home? Afraid that ordinary feeders could incubate harmful bacteria that will affect your crabs? Well, worry no more! The 'All-You-Crabs-Eat' offers your crabs a nutritionally balanced diet, all pre-portioned according to the latest science!\n'Sounds good, but what's this 'cutting-edge smart technology'?'\n'Oh, I asked Mayer to help with the computer interface stuff. In return, I lent her Peacake to help her develop a biomimetic intelligent partner.'\n'I see...'\nIf you're using this device for the first time, please follow the illustrated instructions to assemble the feeder and food barrel, then use the touchscreen to complete your device's basic setup. The 'All-You-Crabs-Eat' offers three preset feeding schedules, and can support up to ten additional custom schedules. And if you can't bear to miss the wonder of even a single feeding session, order our camera now and enjoy a 20% discount!\n'A camera? Whose idea was that?'\n'I thought of it during training! The instructors stuck some tiny cameras on crabs for a while to assess their combat abilities. So I figured I'd add something similar as an upgrade for the feeder! Cute pet videos are all the rage on Columbia's intercity net, you know!'\nDue to their omnivorous nature, we suggest setting the feeder to a single daily serving, with a serving size not exceeding 10% of the weight of your metal crab. The 'All-You-Crabs-Eat' supports freeze-dried feed, and requires no pre-crushing. We recommend using it with 'Beanstalk's Fine Metal Crab Feed,' launching alongside the feeder! With fifteen natural ingredients following a carefully developed formula, your crabs will be feasting like kings! Their pincers will grow stronger!\nUsage instructions:\n1. Do not feed children with this device.\n2. Place the device on a level surface to avoid spillage.\n'P.S. While setting up your feeding schedule, please remove your metal crab from the room. Some breeds are extremely intelligent, and may learn to use the feeder.'\n'I-Is that really true?'\n'Of course. That's how Peacake did. And if I'm not careful, she'll invite all her buddies over for a buffet.'",
+        "zh": "“豆苗干员，你之前联络的销售承包商终于把他们草拟的广宣文案寄过来了！”\n“好呀，我来看看！”\n感谢您选择“钳钳自助餐”智能磐蟹喂食器！本产品使用最新智能技术，旨在为您解决磐蟹培育过程中可能遇到的各类问题。您是否因为离家外出，无暇照料磐蟹而焦虑不已？您是否担忧普通喂食器滋生病菌，从而影响磐蟹的健康？从今天起，您再也不会被这些问题困扰，“钳钳自助餐”将为您的磐蟹提供营养均衡、健康卫生、科学定量的餐饮服务！\n“看起来不错，但‘最新智能技术’是怎么回事？”\n“唔，我拜托梅尔帮忙设计了人机交互方案。条件是我把豆豆借给她，帮她研发仿生型智能伙伴。”\n“原来如此……”\n首次使用本产品时，请您根据图示步骤组装喂食器整机与储粮罐，使用触摸面板完成喂食器的基础设置。“钳钳自助餐”提供三种预设喂食方案，并且支持您保存最多十种自定义喂食方案。此外，如果您不想错过磐蟹进食的每一个精彩瞬间，现在订购摄像外设，还可享受八折优惠。\n“摄像外设？这又是谁的主意？”\n“这是我在训练期间想到的点子！为了验证磐蟹的实战能力，教官组临时为它们安装了微型摄像机。后来，我就想到用相似的思路来升级喂食器！要知道，萌宠录像在哥伦比亚的城际网络上可是相当受欢迎的！”\n由于磐蟹的杂食习性，我们建议您设置每日喂食一次，每次喂食量不超过磐蟹体重的10%。“钳钳自助餐”支持您使用冻干饲料进行喂食，无需提前粉碎。我们还推荐您使用与本产品一同推出的“豆苗牌精致磐蟹粮”，十五种天然原料精心配比，让您的磐蟹顿顿好胃口！钳子更有力！\n使用须知：\n1.请勿使用本产品为儿童喂食。\n2.请将本产品置于平整的地面上，避免饲料溢出。\n“等等，帮我补充一条——设置喂食方案的过程中，请将您的磐蟹暂时请出房间。部分磐蟹品种具有良好的学习能力，它们可能会学会喂食器的用法。”\n“这、这是真的吗？”\n“那当然，豆豆就会用智能喂食器哦。只要我一不留神，它就会请其他小伙伴吃自助餐。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30093",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31013",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1070 @@
+{
+  "id": "char_237_gravel",
+  "name": {
+    "en": "Gravel",
+    "zh": "砾",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "KZ04",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "executor",
+  "faction": "kazimierz",
+  "position": "MELEE",
+  "tagList": [
+    "Fast-Redeploy",
+    "Defense"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Gravel, Specialist Operator of Rhodes Island, will zip around the battlefield to defend the squad.",
+    "zh": "罗德岛特种干员砾，将灵活闪现在战场上抵御攻击。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Is she really a knight? Really?",
+    "zh": "真的是骑士吗？真的?",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 663,
+            "atk": 176,
+            "def": 151,
+            "magicResistance": 0,
+            "cost": 6,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 885,
+            "atk": 256,
+            "def": 216,
+            "magicResistance": 0,
+            "cost": 6,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 1
+        },
+        {
+          "id": "30052",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 885,
+            "atk": 256,
+            "def": 216,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1107,
+            "atk": 352,
+            "def": 281,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30033",
+          "count": 18
+        },
+        {
+          "id": "30013",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1107,
+            "atk": 352,
+            "def": 281,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1420,
+            "atk": 452,
+            "def": 335,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 0.93,
+            "respawnTime": 18,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_gravel_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 2,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 2.2,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 2.4,
+            "duration": 6
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 2.7,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 2.9,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 3.1,
+            "duration": 7
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 3.4,
+            "duration": 8
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 3.6,
+            "duration": 9
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 3.8,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Shadow Assault",
+            "zh": "影袭",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DEF <@ba.vup>+{def:0%}</> after Gravel is deployed; her DEF continually decreases over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后防御力<@ba.vup>+{def:0%}</>，在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "def": 4,
+            "duration": 12
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 1
+            },
+            {
+              "id": "30063",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_gravel_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.1,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.2,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.4,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.5,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.6,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.8,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 2,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 2.2,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Rat Swarm",
+            "zh": "鼠群",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, gains a <$ba.barrier>Barrier</> that can absorb damage equal to <@ba.vup>{hp_ratio:0%}</> of Max HP, decaying over <@ba.vup>{duration}</> seconds",
+            "zh": "部署后获得可吸收相当于自己最大生命<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，该屏障会在<@ba.vup>{duration}</>秒内持续衰减",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "PASSIVE",
+          "duration": -1,
+          "spType": 8,
+          "spCost": 0,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 2.5,
+            "duration": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30011",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30073",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Fast Deployment",
+            "zh": "快速部署",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DP Cost -1",
+            "zh": "自身部署费用-1",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cost": -1
+          }
+        },
+        {
+          "name": {
+            "en": "Support of the Little",
+            "zh": "小个子支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DP Cost -1; All units that cost 10 or less DP gain +6% DEF",
+            "zh": "自身部署费用-1，所有初始部署费用不超过10的单位防御力提升6%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "cost": -1,
+            "def": 0.06,
+            "cond.cost": 10
+          }
+        },
+        {
+          "name": {
+            "en": "Support of the Little",
+            "zh": "小个子支援",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "DP Cost -1; All units that cost 10 or less DP gain +6% <@ba.talpu>(+2%)</> DEF",
+            "zh": "自身部署费用-1，所有初始部署费用不超过10的单位防御力提升8%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "cost": -1,
+            "def": 0.08,
+            "cond.cost": 10
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Max HP +160",
+        "zh": "生命上限+160",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -2 sec",
+        "zh": "再部署时间-2秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 300
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_gravel",
+      "name": {
+        "en": "Gravel's Badge",
+        "zh": "砾证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Gravel has demonstrated a remarkable aptitude in repeated battlefield penetration.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Executor responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员砾擅长反复切入战场\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使处决者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_gravel",
+      "name": {
+        "en": "Covert Action Toolkit",
+        "zh": "隐秘行动工具包",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_gravel",
+      "description": {
+        "en": "'Come here!' \n'Yes.' \n'Who let you sneak off to do training with the campaign knights? Only a few days you've been here, and you think that gives you the right to go sparring with that mouthy bastard lot? How many times have I told you, take things in order!' \n'Yes.' \n'Stand here! You're not to move from this spot until I say so!' \n'Yes.' \n...... \n'Why are you still here?' \n'You had me stand here as punishment...' \n'It's alright, you've been there long enough. That'll teach you, won't it?' \n'But it's only been five minu—' \n'Shut up, you little scamp. Any more lollygagging and there's no dinner tonight for you, got it?' \n'...Yes, Master.' \n'That's a bit more like it. Yes, have this biscuit. You must be starving, aren't you?' \nI shakily took it, but didn't dare put it near my mouth, fearing the master of the house would suddenly beat me, just as the villagers did. \n\n'I've seen the report. To do so finely on your first outing... not an easy feat.' \n'Thank you for the praise, hehe.' \n'Don't be so smiles and giggles with me. I still need to ask about something. After the assignment ended in Leithanien, you spent a while longer there. What was that about?' \nI heard some information pertaining to army mobilization on the border, and with the extra time I had, once I'd applied to the authorities, I went to investigate.' \n'Do you know how sensitive the Leithanian army's nose is?' \n'But...' \n'There are no buts! Even if they approved it, I permit you not to act without permission! If this happens again, I'll have you confined!' \n'Yes, Master.' \n'I'll forgive you this time. Even if you had the luck not to run up against the army, you must be covered in scrapes, aren't you? Take my card, and get to the hospital for a checkup! Now, immediately!' \nThe master of the house always had a volatile temper. Just as this time showed, if one thing didn't suit his mood, he'd yell his head off at me. \n\n'Master, look! I'm discharged and perfectly fine, aren't I?' \n'You think coming out of hospital's the end of it? Your assignment was to draw that Ursus spy out, and I could deal with him myself. Who asked you to block his blade in my place?' \n'It was an emergency...' \n'An emergency's no excuse either! I need to teach you a proper lesson, so this mess doesn't happen next time.' \n'How are you going to teach me my lesson, then?' \n'Erm...' \n'Have you decided?' \n'Hmph, you little scamp. You never listen to a thing I say.' \n'I've always felt I'm a very obedient one, though.' \n'...Right. Look at that old tat you're wearing. You're a fourth-order knight already. How can you be so neglectful of your own appearance?! This is your allowance for the month. Take it, and go buy some new clothes! You're not allowed back until you spend every last cent of it!' \n'Master, with this much money, do you want me to be buried alive under clothes?' \nThe master of the house awkwardly cleared his throat, quickened his step, and walked off before me. The setting sun spilled across his shoulders. \n\n'Come back to Kazimierz, should you want to come back. And should you not... then do not be burdened, and go!' \n—This was the parting advice the master of the house gave to me. \nDoctor. I know you know, I was trafficked to Kazimierz before I could even remember. The village that bought me was end to end of hard servitude and beatings; even after I'd fled, I couldn't free myself from people who marked me with prices. \nBut the moment the master of the house and I met our eyes in the 'market'... \nThat was the first time fate showed me any kindness.",
+        "zh": "“给我过来！”\n“是。”\n“谁让你偷偷跟征战骑士团训练的？你来这儿才几天，就敢跟着那帮没轻没重的浑小子对打？我跟你说过多少次了，要循序渐进！”\n“是。”\n“你给我在这儿罚站！”\n“是。”\n……\n“你怎么还在这儿？”\n“您刚刚让我罚站……”\n“好了，站了这么长时间，长记性了吧？”\n“可是这才五分——”\n“闭嘴，你这个小坏蛋。再磨磨蹭蹭就赶不上晚饭了，知道吗？”\n“……是，老爷。”\n“这还差不多。喏，拿着这块饼干。饿坏了吧？”\n我颤抖着接过饼干，却不敢往嘴里送，生怕老爷突然揍我一顿，就像那些村民一样。\n\n“报告我看了，你第一次出任务就做得这么漂亮，不容易。”\n“多谢您的夸奖，嘻嘻。”\n“少跟我嬉皮笑脸的。我还没问呢，任务结束后你还在莱塔尼亚一侧待了半天，怎么回事？”\n“我听到一些关于边境军队调动的消息，加上时间有剩余，向上级申请之后，去调查了一下。”\n“你知道莱塔尼亚军队的鼻子有多灵吗？”\n“可是……”\n“没什么可是！就算上面批准了，我也不允许你擅自行动！再有下次，我关你禁闭！”\n“是，老爷。”\n“这次就饶了你。就算你命好没碰上军队，小伤也不少吧？拿着我的卡，去医院检查！现在，马上！”\n老爷的脾气总是很暴躁。就像这次，一件事不合他的意，他就冲着我大喊大叫。\n\n“老爷，您看，我这不是好好出院了吗。”\n“你以为出院就结了？你的任务不过是把那个乌萨斯间谍引出来，我自有办法对付他。谁让你替我挡刀了？”\n“情况紧急……”\n“紧急也不行！我得好好教训你一顿，免得下次再出这样的乱子。”\n“那您打算怎么教训我呢？”\n“这个……”\n“您想好了吗？”\n“哼，你这小坏蛋，从来都不听我的话。”\n“我可是一直都觉得自己很听话的呀。”\n“……对了，看你这身旧衣服，都四阶骑士了，怎么一点管理仪表的意识都没有！这是我这个月的津贴，拿去，买衣服去！不把钱花光不许回来见我！”\n“老爷，这么多钱，您是想用衣服把我埋起来吗？”\n老爷尴尬地清了清嗓子，加快脚步，走到我前面去了。夕阳洒在他的肩膀上。\n\n“想回来看看的时候就回卡西米尔来，不想回来……就不要有负担，走！”\n——这是老爷留给我的临别赠言。\n博士，您也知道，我是在还不记事的时候被拐到卡西米尔的。买我的村庄里，充斥着无尽的苦役和打骂；甚至在逃离那里之后，我都摆脱不了被人明码标价的处境。\n而老爷与我在“市场”里四目相对的那一刻……\n那是命运第一次向我展露出仁慈。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30053",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "31013",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "30093",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

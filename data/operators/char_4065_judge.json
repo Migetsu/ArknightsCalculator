@@ -1,0 +1,1597 @@
+{
+  "id": "char_4065_judge",
+  "name": {
+    "en": "Penance",
+    "zh": "斥罪",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "SR35",
+  "rarity": 6,
+  "class": "TANK",
+  "subclass": "unyield",
+  "faction": "siracusa",
+  "position": "MELEE",
+  "tagList": [
+    "Survival",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "A former Siracusan city judge, hoping to do right by law and justice.",
+    "zh": "叙拉古的原城邦法官，希望自己能坚守法律正义。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Atop briars she walks, cleaving a path brand new to her.",
+    "zh": "在荆棘之上前行，开辟以前未有之路。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1732,
+            "atk": 368,
+            "def": 234,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 2279,
+            "atk": 512,
+            "def": 355,
+            "magicResistance": 10,
+            "cost": 32,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2279,
+            "atk": 512,
+            "def": 355,
+            "magicResistance": 10,
+            "cost": 34,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2960,
+            "atk": 683,
+            "def": 474,
+            "magicResistance": 10,
+            "cost": 34,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 4
+        },
+        {
+          "id": "30135",
+          "count": 4
+        },
+        {
+          "id": "30074",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2960,
+            "atk": 683,
+            "def": 474,
+            "magicResistance": 10,
+            "cost": 36,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 4055,
+            "atk": 876,
+            "def": 616,
+            "magicResistance": 10,
+            "cost": 36,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_judge_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.4,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.45,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.5,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.6,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.65,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.7,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.8,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.9,
+            "judge_s_1_enhance_checker.atk_scale": 1.8,
+            "stun": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 1.95,
+            "judge_s_1_enhance_checker.atk_scale": 2,
+            "stun": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Last Word",
+            "zh": "一锤定音",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack deals an additional instance of Arts damage equal to <@ba.vup>{atk_scale_2:0%}</> ATK\n<$ba.charged>Charged</> effect: The next attack deals <@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</> damage and Stuns the target for <@ba.vup>{stun}</> seconds",
+            "zh": "下次攻击额外造成相当于攻击力<@ba.vup>{atk_scale_2:0%}</>的法术伤害\\n<$ba.charged>蓄力</>额外效果：攻击时攻击力提升至<@ba.vup>{judge_s_1_enhance_checker.atk_scale:0%}</>并使目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale_2": 2,
+            "judge_s_1_enhance_checker.atk_scale": 2,
+            "stun": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30043",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30135",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_judge_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "atk_scale": 0.7,
+            "shield_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "atk_scale": 0.75,
+            "shield_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "damage_resistance": 0.3,
+            "atk_scale": 0.8,
+            "shield_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 12,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "atk_scale": 0.9,
+            "shield_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 12,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "atk_scale": 0.95,
+            "shield_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 12,
+          "blackboard": {
+            "damage_resistance": 0.4,
+            "atk_scale": 1,
+            "shield_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 14,
+          "blackboard": {
+            "damage_resistance": 0.5,
+            "atk_scale": 1.1,
+            "shield_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 16,
+          "blackboard": {
+            "damage_resistance": 0.55,
+            "atk_scale": 1.2,
+            "shield_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 18,
+          "blackboard": {
+            "damage_resistance": 0.55,
+            "atk_scale": 1.3,
+            "shield_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Stoic Atonement",
+            "zh": "坚心苦修",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and gains <@ba.vup>{damage_resistance:0%}</> <$ba.protect>Sanctuary</>; deals <@ba.vup>{atk_scale:0%}</> Arts damage to all nearby Ground enemies every second; While this skill is active, increases the <$ba.barrier>Barrier</> effect of Talent 1 by <@ba.vup>{shield_scale:0%}</>",
+            "zh": "停止攻击，获得<@ba.vup>{damage_resistance:0%}</>的<$ba.protect>庇护</>，每秒对周围所有地面敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，技能期间第一天赋的<$ba.barrier>屏障</>获取效果提升<@ba.vup>{shield_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "damage_resistance": 0.6,
+            "atk_scale": 1.4,
+            "shield_scale": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "30103",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30104",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_judge_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.4,
+            "base_attack_time": 0.9,
+            "atk": 2,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.5,
+            "base_attack_time": 0.9,
+            "atk": 2.2,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.6,
+            "base_attack_time": 0.9,
+            "atk": 2.4,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.7,
+            "base_attack_time": 0.9,
+            "atk": 2.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 26,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.8,
+            "base_attack_time": 0.9,
+            "atk": 2.8,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.9,
+            "base_attack_time": 0.9,
+            "atk": 3,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1,
+            "base_attack_time": 0.9,
+            "atk": 3.2,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.1,
+            "base_attack_time": 0.9,
+            "atk": 3.5,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.2,
+            "base_attack_time": 0.9,
+            "atk": 3.7,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Trial of Thorns",
+            "zh": "披荆斩棘",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately gains a <$ba.barrier>Barrier</> equal to <@ba.vup>{hp_ratio:0%}</> Max HP; Attack Interval <@ba.vdown>increases</>, ATK <@ba.vup>+{atk:0%}</>, and makes enemies more likely to attack this unit",
+            "zh": "立即获得相当于生命上限<@ba.vup>{hp_ratio:0%}</>的<$ba.barrier>屏障</>，攻击间隔<@ba.vdown>增大</>，攻击力<@ba.vup>+{atk:0%}</>，自身更容易受到敌人攻击",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 1.3,
+            "base_attack_time": 0.9,
+            "atk": 4,
+            "taunt_level": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "30084",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30011",
+          "count": 6
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30093",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30083",
+          "count": 5
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 30% Max HP",
+            "zh": "部署后立即获得相当于生命上限30%的<$ba.barrier>屏障</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0,
+            "born_hp_ratio": 0.3,
+            "higher_effect_hp_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 35% <@ba.talpu>(+5%)</> Max HP",
+            "zh": "部署后立即获得相当于生命上限35%<@ba.talpu>（+5%）</>的<$ba.barrier>屏障</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0,
+            "born_hp_ratio": 0.35,
+            "higher_effect_hp_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 30% Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 6% Max HP (Cannot exceed 300% Max HP)",
+            "zh": "部署后立即获得相当于生命上限30%的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限6%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0.06,
+            "born_hp_ratio": 0.3,
+            "higher_effect_hp_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 35% <@ba.talpu>(+5%)</> Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 6% Max HP (Cannot exceed 300% Max HP)",
+            "zh": "部署后立即获得相当于生命上限35%<@ba.talpu>（+5%）</>的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限6%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0.06,
+            "born_hp_ratio": 0.35,
+            "higher_effect_hp_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 50% Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 10% Max HP (Cannot exceed 300% Max HP)",
+            "zh": "部署后立即获得相当于生命上限50%的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限10%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0.1,
+            "born_hp_ratio": 0.5,
+            "higher_effect_hp_ratio": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Guardian of the Law",
+            "zh": "律法卫士",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 55% <@ba.talpu>(+5%)</> Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 10% Max HP (Cannot exceed 300% Max HP)",
+            "zh": "部署后立即获得相当于生命上限55%<@ba.talpu>（+5%）</>的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限10%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "max_hp_ratio": 3,
+            "kill_hp_ratio": 0.1,
+            "born_hp_ratio": 0.55,
+            "higher_effect_hp_ratio": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Wreathed in Thorns",
+            "zh": "荆棘环身",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 50% ATK as Arts damage to the attacker",
+            "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力50%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Wreathed in Thorns",
+            "zh": "荆棘环身",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 53% <@ba.talpu>(+3%)</> ATK as Arts damage to the attacker",
+            "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力53%<@ba.talpu>（+3%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 0.53
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +28",
+        "zh": "攻击力+28",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Second Talent",
+        "zh": "第二天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 600,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_judge",
+      "name": {
+        "en": "Penance's Badge",
+        "zh": "斥罪证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_judge",
+      "description": {
+        "en": "Operator Penance has demonstrated a remarkable aptitude for holding the front with minimal support.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Juggernaut responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员斥罪能以一人之力戍守防线\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使不屈者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_judge",
+      "name": {
+        "en": "The Thorny Road That Continues",
+        "zh": "通往未来的荆棘之路",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_judge",
+      "description": {
+        "en": "It took a disembodied hand flying past her head for Lavinia to snap out of it.\nJust a few hours ago, she'd concluded her first ever trial of Famiglia matters.\nEver since she decided to walk this path, she'd heard of—and experienced—many a Famiglia's interference with the justices. Some around her had even gone missing by now.\nBut she stayed her course. After all, she'd long prepared herself mentally. These troubles could not trounce her; in fact, the more they cropped up, the more she believed she had to change this status quo.\n—All until she finished her work for the day, and entered the alley where she had parked her vehicle.\nIt was then that she thought she should drop in tomorrow to see the man who'd supported her taking this path, to tell him how she hadn't let him down. And on the other hand she thought, perhaps, that that would make her seem too much a pushover; maybe something sterner was called for. After all, should his own Famiglia fall afoul of a lawsuit themselves, she could only be impartial.\nIf not for that familiar hand pulling her down, her head may well have been skewered by the bolt.\nShe felt her own thoughts halt, leaving her staring blankly at the hand's owner—Bernardo stood in her way, taking out each figure that rushed her one by one.\nAnd only once she snapped out of it did she finally realize the gulf between what she'd heard and pictured, and experiencing it personally.\nA momentary silence descended on the alley, at which point Bernardo gave the underlings to his rear a nod, and they brought out a box half her size.\nBernardo opened it, and within, there laid a metal gauntlet with a hammer shackled to it. Under the dusk streetlamps, their gold luster almost stung the eye, but what hurt most about them to see was the circle of thorns winding about the glove.\n'I'm not going to protect you forever, Lavinia,' said Bernardo, as he took out the gauntlet and handed it to her. 'If you want to survive on this path, then you've got to learn to protect yourself, starting today.'\nShe was silent for a spell, took the gauntlet, and with no regard for the pain its sharp thorns laced across her skin, she put it on. Then, she walked deeper into the alley depths.\nShe and Bernardo had brushed with death. She knew though the night was deep as ever, Bernardo would not take the same path as her. She had to go it alone into the darkness, a black dyed in sanguine red.\nThe first and only gift Bernardo would ever give her was stained by blood on its very first day.",
+        "zh": "直到一只断手从拉维妮娅的耳边飞过，她才回过神来。\n就在几小时前，她第一次完成了一场与家族有关的审判。\n从她决意踏上这条道路开始，她听闻并且经历了许多家族对司法的干预，甚至已经有一些身边的人消失了。\n但她坚持了下来，毕竟，她早就做好了心理准备，那些困难是无法击溃她的，甚至，这些事情越是发生，她越是认为这是自己需要去改变的现状。\n——直到她完成了今天的工作，踏入停着自己座驾的小巷。\n那时，她想，明天她应该去见一见那个支持她走上这条道路的人，告诉他自己没有辜负他的期望。她还想，这样或许会显得自己太软弱，说不定她应该更加硬气一些，对他说，未来如果他的家族惹上了官司，她也只会秉公办事。\n如果不是那只熟悉的手拉了她一把，她的头可能已经被弩箭贯穿了。\n她感觉自己的思考在某一时刻停止了，只能呆呆地看着那只手的主人——贝纳尔多拦在她的面前，将涌向她的身影一一解决。\n直到她回过神来，她终于意识到，那些听说的、想象的画面，和亲身经历的差距究竟在哪里。\n等到巷子里暂时安静下来，贝纳尔多向身后的手下点了点头，手下将一个有她身体一半大的盒子抱了上来。\n贝纳尔多打开了盒子，里面躺着的，是一只金属手套以及一个由锁链连接在上面的锤子，它们金色的光泽，在昏暗的路灯下有些刺眼，但这一套装备最惹眼的部分，是手套上蔓延出来的那一圈荆棘。\n“我不会一直保护你，拉维妮娅。”贝纳尔多这么说着，将手套拿了出来，递给她，“如果你想要在这条道路上生存下来，从今天开始，你要学会自己保护自己。”\n她沉默片刻，接过手套，不顾上面的尖刺划过皮肤带来的疼痛，戴上了它。然后，她走向小巷深处。\n她与贝纳尔多擦肩而过，她知道，尽管夜色依然浓重，但贝纳尔多不会和她同路，她必须独自走入那已经被血色染红的黑暗之中。\n贝纳尔多一生中送她的第一件，同时也是唯一一件礼物，在第一天就染上了血渍。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30135",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30125",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    },
+    {
+      "id": "uniequip_003_judge",
+      "name": {
+        "en": "'Innocent'",
+        "zh": "“无罪”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_003_judge",
+      "description": {
+        "en": "Night is always hard, especially the ones where she tosses and turns on the bed, waiting for the night to pass. The pale, faded light of dawn is the guest that has yet to arrive, for whom there is nothing to do but wait.\nSuch nights are a familiar friend to Lavinia. What awaits after an exhausting day is yet another exhausting day, filled with pretentious defending counsels, arrogant famiglia and silent judges. The sound of the gavel echoes through the court, yet it is no different from a fairground game, except worse, because at least in a fairground the hammer whacks the mole.\nWhen tormented by such cruel nights, Lavinia pulls out the creased letter from the bottom of her drawer. She remembers finding it under her windscreen wipers; such letters were usually threats and warnings, but this was an exception.\nIt is a short letter, scribbled down hastily, reproaching Lavinia for pronouncing innocent a defendant that the famiglia had sent into the courthouse to take the fall. The letter wrote that Lavinia's 'self-righteous' judgment had done more harm than good, a complaint that she had seen many times: The small attempts of the judges to do the right thing are often futile, any small justice achieved in the courthouse quickly swallowed by the dark night outside.\nYet the writer, after what seemed to be a long struggle with himself, left this line at the end: 'No one cares, but at least there was one person who said I was innocent. Thanks.'\nLavinia has tried to deduce whom the writer of this unusual letter was, which is akin to trying to find a needle in a haystack. There have been so many, people whom she knew were innocent, whom she pronounced innocent, but what of it? As the writer of the letter said: No one cares.\nLavinia never stopped searching. Perhaps she wanted to tell the writer face-to-face, that justice would never be alone and fleeting, as long as she was there, that justice would come at the gavel's drop, as the dawn breaks the night.\nThat is, until she found the coroner's autopsy report on her desk. The cause of death was suicide.\nIf this was the end that Siracusa had for its judges, then what was the point of the justice that she sought?\nA creased letter, a word of thanks. However insignificant it was, even if it could not light her desk like a lamp, perhaps there was someone who felt that she was the only defender of justice, then and there.\nAnd so, she never gave up, even if she fights a lonely battle. If she gives up, there will be no one left to fight it; if she kept silent, there will be no one to speak up.\nThere are two ways to live with the night before the dawn. Allow it to consume oneself, until one does not feel it, or search for what should not be consumed by it, and keep those things safe.\nThe one thing that must not be surrendered is the right to define the light.",
+        "zh": "深夜总是难熬。特别是那些辗转反侧不得安眠，只能等待窗外晨光亮起的夜晚。那惨白又黯淡的光如同迟迟不到的客人一般让人心焦，而唯一可做的事只有等待。\n拉维妮娅经历过很多这样的夜晚，筋疲力尽的一天之后，可预见的依旧是筋疲力尽的明天——法院里仍会充斥着虚情假意的辩护人，高傲蛮横的家族成员以及缄默不语的法官。法槌一次次落下，铿锵的声音回荡在法庭之上，与游乐场的游戏却没什么不同。不，甚至还要不如，在游戏中，那把槌子起码实在地落在了那些塑料鼹兽头上。\n每当被如此残忍的夜晚折磨，拉维妮娅就会从抽屉的最底层翻出那封皱巴巴的信件。她还记得，这封信被压在她车子的雨刮器下，在那个位置出现的往往是威胁与警告。但确实偶有例外。\n这封信很短，像是匆忙之下潦草写就的，信中在谴责一场拉维妮娅主持的判决——她宣告了被家族推上法庭的替罪者无罪。这封信的措辞相当不客气，指责拉维妮娅进行了“自以为正义的判决”，反而“害苦了自己”。这样的抱怨她看过很多。在叙拉古，法官们就算想要做出些微小的有关正义的努力，其结果往往也不遂人愿，哪怕公正在法院里得到了片刻的彰显，法院外的黑夜也依旧会吞噬一切，这种徒劳感最让人灰心。\n可是，到了信件的最后，写信人似乎犹豫了很久，却还是留下了这样的话语：“虽然人们并不在意，但这世上还是有人说出了我的清白，谢谢。”\n拉维妮娅不止一次尝试过推测这封特别的信是谁留下的，这可不容易，因为这样的人太多太多。她知道他们是清白的，她宣告他们是清白的，但那又如何。留下这封信的人说得对，人们并不在意。\n拉维妮娅从未放弃过寻找，也许她只是想当面告诉那个人，只要有她在，正义就不会孤单，正义就不会转瞬即逝；只要有她在，正义就会自法槌落下的那一刻起，如黎明揭穿黑夜，如期到来。\n直到那个人的尸检报告被递上拉维妮娅的办公桌，死因写得确凿——自杀身亡。\n若这就是叙拉古能给一个法官的最终结果，那她所追求的正义，究竟又有何意义？\n她得到了一封皱巴巴的信件，一声“谢谢”，哪怕这个词微不足道，哪怕这个词其实并不能如一盏灯一样给她的桌面带来光明。也许留下这封信的人只是觉得，她是那片刻正义唯一的捍卫者。\n所以，哪怕孤立无援，她也绝不放弃。若她放弃，则再无人在意；若她缄默，则再无人诉说。\n在黎明前，与黑夜相处的方式有两种，或是任由它浸透自己，直至感觉不到它的存在；或是在黑夜中寻找一切本不该被其吞噬的事物，然后小心珍藏。\n因为最不可让渡的，是定义光明的权利。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30145",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30115",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30135",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

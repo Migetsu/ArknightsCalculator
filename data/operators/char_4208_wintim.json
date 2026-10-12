@@ -1,0 +1,1096 @@
+{
+  "id": "char_4208_wintim",
+  "name": {
+    "en": "Снегурочка",
+    "zh": "冬时",
+    "isMachineTranslation": true
+  },
+  "appellation": "Снегурочка",
+  "displayNumber": "US38",
+  "rarity": 4,
+  "class": "PIONEER",
+  "subclass": "agent",
+  "faction": "ursus",
+  "position": "MELEE",
+  "tagList": [
+    "费用回复",
+    "快速复活"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "先锋干员冬时，会严谨地对待每一份数据。",
+    "zh": "先锋干员冬时，会严谨地对待每一份数据。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "并非世间所有问题都有解，但她会尽力去寻找。",
+    "zh": "并非世间所有问题都有解，但她会尽力去寻找。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "2-2",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 692,
+            "atk": 239,
+            "def": 106,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 948,
+            "atk": 342,
+            "def": 148,
+            "magicResistance": 0,
+            "cost": 7,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 1
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 948,
+            "atk": 342,
+            "def": 148,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1200,
+            "atk": 451,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "2-2",
+      "evolveCost": [
+        {
+          "id": "3212",
+          "count": 5
+        },
+        {
+          "id": "31083",
+          "count": 13
+        },
+        {
+          "id": "30103",
+          "count": 6
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1200,
+            "atk": 451,
+            "def": 195,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1645,
+            "atk": 537,
+            "def": 230,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1,
+            "respawnTime": 35,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_wintim_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 2.5
+          }
+        },
+        {
+          "name": {
+            "en": "数据分析",
+            "zh": "数据分析",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "zh": "下次攻击造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并获得<@ba.vup>{cost}</>点部署费用",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 7,
+          "initSp": 2,
+          "blackboard": {
+            "cost": 3,
+            "atk_scale": 2.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31064",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31084",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_wintim_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 5,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 8,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 15,
+          "blackboard": {
+            "attack_speed": 11,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 16,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 19,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 22,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 17,
+          "blackboard": {
+            "attack_speed": 25,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 18,
+          "blackboard": {
+            "attack_speed": 30,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 19,
+          "blackboard": {
+            "attack_speed": 35,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "循理归因",
+            "zh": "循理归因",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每次攻击获得<@ba.vup>{cost}</>点部署费用，并使目标<$ba.sluggish>停顿</><@ba.vup>{attack@sluggish}</>秒",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 9,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 20,
+          "blackboard": {
+            "attack_speed": 40,
+            "attack@sluggish": 1,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 1
+            },
+            {
+              "id": "31073",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "31064",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30061",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "31073",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "疾笔撰录",
+            "zh": "疾笔撰录",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度+5，自身受到伤害后失去该效果",
+            "zh": "攻击速度+5，自身受到伤害后失去该效果",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 5
+          }
+        },
+        {
+          "name": {
+            "en": "疾笔撰录",
+            "zh": "疾笔撰录",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度+7<@ba.talpu>（+2）</>，自身受到伤害后失去该效果",
+            "zh": "攻击速度+7<@ba.talpu>（+2）</>，自身受到伤害后失去该效果",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 7
+          }
+        },
+        {
+          "name": {
+            "en": "疾笔撰录",
+            "zh": "疾笔撰录",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度+10，自身受到伤害后失去该效果",
+            "zh": "攻击速度+10，自身受到伤害后失去该效果",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 10
+          }
+        },
+        {
+          "name": {
+            "en": "疾笔撰录",
+            "zh": "疾笔撰录",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击速度+12<@ba.talpu>（+2）</>，自身受到伤害后失去该效果",
+            "zh": "攻击速度+12<@ba.talpu>（+2）</>，自身受到伤害后失去该效果",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-4秒",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击速度+5",
+        "zh": "攻击速度+5",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_wintim",
+      "name": {
+        "en": "冬时证章",
+        "zh": "冬时证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_wintim",
+      "description": {
+        "en": "干员冬时擅长反复切入战场并为我方建立优势\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使情报官职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员冬时擅长反复切入战场并为我方建立优势\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使情报官职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_wintim",
+      "name": {
+        "en": "缺角的权限",
+        "zh": "缺角的权限",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_wintim",
+      "description": {
+        "en": "科谢尼娅：\n你关于石棺物质特性的研究报告我已经看过。\n实验操作没有问题，几个对照组选得都很准确，只是因为实验方向存在偏差，所以得不到你期望的结果。\n但我调取了你最近的科研日程，并没有发现石棺相关的任何安排。从你借用仪器的时间和系统权限的读取记录分析，我有理由怀疑你并没有和你的导师伊利亚同步这次实验。\n科谢尼娅，这是危险的，也是愚蠢的。\n你从帝国理工毕业，应该深知这片大地从不缺乏天赋异禀的人才，但越聪明的人，往往越容易被心中的执念所困。许多走在科研前沿的人，同样也是疯子和狂徒。\n当下石棺研究仍处于起步阶段，研究的前景和隐患尚不明晰。此时此刻，我们还无法确定石棺究竟会给我们带来什么。为了实验的安全，也是为了你的安全，我必须先取消你的高级权限，确保石棺相关的资料不会再向你开放。\n这不是对你能力的否认，恰恰相反，我担心的正是你有所突破，然后深陷其中。\n伊利亚曾多次和我讨论过你的培养方向，你大学的研究方向偏向能源应用，这是你接受帝国理工调剂专业的结果，却也是伊利亚选择你的原因。这所研究所的许多科研者都只盯着科学史上那屈指可数的桂冠，却从不在乎最终的成果会对这片大地上的多数人产生怎样的影响。\n科谢尼娅，你依然是一位有良知、有胆识的科研者，只是有时有些着急。后附的这些资料，是我多年来未曾完成的研究，你感兴趣的话，可以继续研究。如果你能有所突破，除了我，还有千千万万的人会感谢你。\n你很年轻，你的科研之路才刚刚开始。长路漫漫，共勉。\n——凯尔希\n……\n【申请结果通知】\n亲爱的冬时干员：\n你的申请表单已获批。\n凯尔希医生生前的部分研究数据已经向你开放权限，请在使用的过程中严格依照《罗德岛信息安全手册》操作，确保信息安全，防止机密数据泄露。\n本邮件由罗德岛医疗部系统自动发送，无需回复。",
+        "zh": "科谢尼娅：\n你关于石棺物质特性的研究报告我已经看过。\n实验操作没有问题，几个对照组选得都很准确，只是因为实验方向存在偏差，所以得不到你期望的结果。\n但我调取了你最近的科研日程，并没有发现石棺相关的任何安排。从你借用仪器的时间和系统权限的读取记录分析，我有理由怀疑你并没有和你的导师伊利亚同步这次实验。\n科谢尼娅，这是危险的，也是愚蠢的。\n你从帝国理工毕业，应该深知这片大地从不缺乏天赋异禀的人才，但越聪明的人，往往越容易被心中的执念所困。许多走在科研前沿的人，同样也是疯子和狂徒。\n当下石棺研究仍处于起步阶段，研究的前景和隐患尚不明晰。此时此刻，我们还无法确定石棺究竟会给我们带来什么。为了实验的安全，也是为了你的安全，我必须先取消你的高级权限，确保石棺相关的资料不会再向你开放。\n这不是对你能力的否认，恰恰相反，我担心的正是你有所突破，然后深陷其中。\n伊利亚曾多次和我讨论过你的培养方向，你大学的研究方向偏向能源应用，这是你接受帝国理工调剂专业的结果，却也是伊利亚选择你的原因。这所研究所的许多科研者都只盯着科学史上那屈指可数的桂冠，却从不在乎最终的成果会对这片大地上的多数人产生怎样的影响。\n科谢尼娅，你依然是一位有良知、有胆识的科研者，只是有时有些着急。后附的这些资料，是我多年来未曾完成的研究，你感兴趣的话，可以继续研究。如果你能有所突破，除了我，还有千千万万的人会感谢你。\n你很年轻，你的科研之路才刚刚开始。长路漫漫，共勉。\n——凯尔希\n……\n【申请结果通知】\n亲爱的冬时干员：\n你的申请表单已获批。\n凯尔希医生生前的部分研究数据已经向你开放权限，请在使用的过程中严格依照《罗德岛信息安全手册》操作，确保信息安全，防止机密数据泄露。\n本邮件由罗德岛医疗部系统自动发送，无需回复。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "31023",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30033",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31063",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

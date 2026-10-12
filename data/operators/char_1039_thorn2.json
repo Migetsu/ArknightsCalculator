@@ -1,0 +1,1708 @@
+{
+  "id": "char_1039_thorn2",
+  "name": {
+    "en": "Thorns the Lodestar",
+    "zh": "引星棘刺",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "II02",
+  "rarity": 6,
+  "class": "SPECIALIST",
+  "subclass": "alchemist",
+  "faction": "iberia",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Support",
+    "Debuff"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Thorns, captain of the Cuna de Nene, looks back from atop the mast and stretches out his hand in invitation. 'Come with me,' he says.",
+    "zh": "“宝宝摇篮”号的船长棘刺，从桅杆之上回首，伸出手邀你同行。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "He knows where his ship shall sail.",
+    "zh": "他知道自己要航向何方。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "2-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 527,
+            "atk": 221,
+            "def": 47,
+            "magicResistance": 20,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 713,
+            "atk": 307,
+            "def": 70,
+            "magicResistance": 20,
+            "cost": 14,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "2-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 713,
+            "atk": 307,
+            "def": 70,
+            "magicResistance": 25,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 926,
+            "atk": 405,
+            "def": 89,
+            "magicResistance": 25,
+            "cost": 16,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-5",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 4
+        },
+        {
+          "id": "30115",
+          "count": 4
+        },
+        {
+          "id": "31044",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 926,
+            "atk": 405,
+            "def": 89,
+            "magicResistance": 30,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1173,
+            "atk": 501,
+            "def": 106,
+            "magicResistance": 30,
+            "cost": 18,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_thorn2_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.08,
+            "projectile_delay_time": 5,
+            "def": 45,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.09,
+            "projectile_delay_time": 5,
+            "def": 50,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.1,
+            "projectile_delay_time": 5,
+            "def": 55,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 1,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.11,
+            "projectile_delay_time": 6,
+            "def": 60,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 1,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.12,
+            "projectile_delay_time": 6,
+            "def": 65,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 1,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.13,
+            "projectile_delay_time": 6,
+            "def": 70,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 2,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.14,
+            "projectile_delay_time": 7,
+            "def": 75,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 3,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.16,
+            "projectile_delay_time": 7,
+            "def": 80,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 4,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.18,
+            "projectile_delay_time": 7,
+            "def": 90,
+            "projectile_range": 0
+          }
+        },
+        {
+          "name": {
+            "en": "Wave Reckoning",
+            "zh": "度算浪波",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit at an ally; for <@ba.vup>{projectile_delay_time}</>s, this ally and other allies on the 8 surrounding tiles gain DEF <@ba.vup>+{def}</> and recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio:0%}</> ATK per second",
+            "zh": "向友方单位投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点和周围8格的友方单位防御力<@ba.vup>+{def}</>，每秒回复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio:0%}</>的生命值",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 5,
+          "blackboard": {
+            "hp_recovery_per_sec_ratio": 0.2,
+            "projectile_delay_time": 8,
+            "def": 100,
+            "projectile_range": 0
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31023",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31044",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_thorn2_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 10,
+            "atk_scale": 1,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 10,
+            "hp_recovery_per_sec_ratio_chr": 0.09
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 11,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 10,
+            "atk_scale": 1.05,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 10,
+            "hp_recovery_per_sec_ratio_chr": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 11,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 10,
+            "atk_scale": 1.1,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 10,
+            "hp_recovery_per_sec_ratio_chr": 0.11
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 12,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 12,
+            "atk_scale": 1.2,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 12,
+            "hp_recovery_per_sec_ratio_chr": 0.12
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 12,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 12,
+            "atk_scale": 1.25,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 12,
+            "hp_recovery_per_sec_ratio_chr": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 1 charge</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能1次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 12,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 12,
+            "atk_scale": 1.3,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 12,
+            "hp_recovery_per_sec_ratio_chr": 0.14
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 13,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 15,
+            "atk_scale": 1.4,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 15,
+            "hp_recovery_per_sec_ratio_chr": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 13,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 15,
+            "atk_scale": 1.5,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 15,
+            "hp_recovery_per_sec_ratio_chr": 0.16
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 13,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 15,
+            "atk_scale": 1.65,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 15,
+            "hp_recovery_per_sec_ratio_chr": 0.17
+          }
+        },
+        {
+          "name": {
+            "en": "Surge of Ceration",
+            "zh": "解构涌潮",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Throws an Alchemical Unit; for <@ba.vup>{projectile_delay_time}</>s, ground enemies around the landing point receive <@ba.vup>{heal_scale:0%}</> less healing and recovery effects, and take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; allies in the area recover HP equal to <@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</> ATK per second; the Alchemical Unit will slowly travel in the direction it was thrown and expand its area of effect over <@ba.vup>{remaining_time}</>s\n<@ba.rem>Can store 2 charges</>",
+            "zh": "投掷一个炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使落点周围的地面敌人受到的治疗和回复效果降低<@ba.vup>{heal_scale:0%}</>，每秒受到相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，友方单位每秒恢复相当于攻击力<@ba.vup>{hp_recovery_per_sec_ratio_chr:0%}</>的生命；炼金单元能在<@ba.vup>{remaining_time}</>秒内缓慢沿投掷方向移动且影响范围持续扩大\\n<@ba.rem>可充能2次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 14,
+          "blackboard": {
+            "heal_scale": 0.5,
+            "hp_recovery_per_sec": -0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": -0.5,
+            "projectile_delay_time": 15,
+            "atk_scale": 1.8,
+            "value": 0.13,
+            "projectile_move_speed": 0.1,
+            "projectile_range": 1.1,
+            "remaining_time": 15,
+            "hp_recovery_per_sec_ratio_chr": 0.18
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "30033",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "31074",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_thorn2_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 32,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 18,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 0.9,
+            "max_atk_scale": 2.7,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.11,
+            "max_atk": -0.17,
+            "atk_per_interval": -0.004,
+            "def": -0.31,
+            "max_def": -0.37,
+            "def_per_interval": -0.004,
+            "magic_resistance": -0.31,
+            "max_magic_resistance": -0.37,
+            "magic_resistance_per_interval": -0.004
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 33,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 18,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1,
+            "max_atk_scale": 2.8,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.11,
+            "max_atk": -0.17,
+            "atk_per_interval": -0.004,
+            "def": -0.31,
+            "max_def": -0.37,
+            "def_per_interval": -0.004,
+            "magic_resistance": -0.31,
+            "max_magic_resistance": -0.37,
+            "magic_resistance_per_interval": -0.004
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 70,
+          "initSp": 34,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 18,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.1,
+            "max_atk_scale": 2.9,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.11,
+            "max_atk": -0.17,
+            "atk_per_interval": -0.004,
+            "def": -0.31,
+            "max_def": -0.37,
+            "def_per_interval": -0.004,
+            "magic_resistance": -0.31,
+            "max_magic_resistance": -0.37,
+            "magic_resistance_per_interval": -0.004
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 67,
+          "initSp": 36,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 19,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.2,
+            "max_atk_scale": 3,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.12,
+            "max_atk": -0.21,
+            "atk_per_interval": -0.006,
+            "def": -0.32,
+            "max_def": -0.41,
+            "def_per_interval": -0.006,
+            "magic_resistance": -0.32,
+            "max_magic_resistance": -0.41,
+            "magic_resistance_per_interval": -0.006
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 67,
+          "initSp": 37,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 19,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.3,
+            "max_atk_scale": 3.1,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.12,
+            "max_atk": -0.21,
+            "atk_per_interval": -0.006,
+            "def": -0.32,
+            "max_def": -0.41,
+            "def_per_interval": -0.006,
+            "magic_resistance": -0.32,
+            "max_magic_resistance": -0.41,
+            "magic_resistance_per_interval": -0.006
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 67,
+          "initSp": 38,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 19,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.4,
+            "max_atk_scale": 3.2,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.12,
+            "max_atk": -0.21,
+            "atk_per_interval": -0.006,
+            "def": -0.32,
+            "max_def": -0.41,
+            "def_per_interval": -0.006,
+            "magic_resistance": -0.32,
+            "max_magic_resistance": -0.41,
+            "magic_resistance_per_interval": -0.006
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 40,
+          "blackboard": {
+            "max_target_token": 3,
+            "projectile_delay_time": 20,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.5,
+            "max_atk_scale": 3.3,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.13,
+            "max_atk": -0.25,
+            "atk_per_interval": -0.008,
+            "def": -0.33,
+            "max_def": -0.45,
+            "def_per_interval": -0.008,
+            "magic_resistance": -0.33,
+            "max_magic_resistance": -0.45,
+            "magic_resistance_per_interval": -0.008
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 42,
+          "blackboard": {
+            "max_target_token": 4,
+            "projectile_delay_time": 21,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.7,
+            "max_atk_scale": 3.5,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.14,
+            "max_atk": -0.26,
+            "atk_per_interval": -0.008,
+            "def": -0.34,
+            "max_def": -0.46,
+            "def_per_interval": -0.008,
+            "magic_resistance": -0.34,
+            "max_magic_resistance": -0.46,
+            "magic_resistance_per_interval": -0.008
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 64,
+          "initSp": 45,
+          "blackboard": {
+            "max_target_token": 4,
+            "projectile_delay_time": 22,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 1.9,
+            "max_atk_scale": 3.7,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.15,
+            "max_atk": -0.27,
+            "atk_per_interval": -0.008,
+            "def": -0.35,
+            "max_def": -0.47,
+            "def_per_interval": -0.008,
+            "magic_resistance": -0.35,
+            "max_magic_resistance": -0.47,
+            "magic_resistance_per_interval": -0.008
+          }
+        },
+        {
+          "name": {
+            "en": "'Zona Marítima Personal'",
+            "zh": "“我的海疆”",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Passive Effect: Attack Range increases\nActivation Effect: throws Alchemical Units at the <@ba.vup>{max_target_token}</> Operators with the lowest Block; for <@ba.vup>{projectile_delay_time}</>s, enemies within the defined area have ATK <@ba.vup>-{-atk:0%}</>, DEF <@ba.vup>-{-def:0%}</>, RES <@ba.vup>-{-magic_resistance:0%}</> (does not stack); enemies also take <@ba.vup>{atk_scale:0%}</> ATK as Arts damage per second; these effects gradually increase (reaching max values after <@ba.vup>{max_stack_cnt}</>s: ATK <@ba.vup>-{-max_atk:0%}</>, DEF <@ba.vup>-{-max_def:0%}</>, RES <@ba.vup>-{-max_magic_resistance:0%}</>, take <@ba.vup>{max_atk_scale:0%}</> ATK as Arts damage per second)",
+            "zh": "被动效果：攻击范围扩大\n主动开启：向阻挡数最低的<@ba.vup>{max_target_token}</>名干员投掷炼金单元，在<@ba.vup>{projectile_delay_time}</>秒内使围绕区域内的敌人攻击力<@ba.vup>-{-atk:0%}</>，防御力<@ba.vup>-{-def:0%}</>，法术抗性<@ba.vup>-{-magic_resistance:0%}</>（不叠加），每秒受到攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害，效果逐渐提升（<@ba.vup>{max_stack_cnt}</>秒后达到最大，攻击力<@ba.vup>-{-max_atk:0%}</>，防御力<@ba.vup>-{-max_def:0%}</>，法术抗性<@ba.vup>-{-max_magic_resistance:0%}</>，每秒伤害<@ba.vup>{max_atk_scale:0%}</>）",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-9",
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 48,
+          "blackboard": {
+            "max_target_token": 4,
+            "projectile_delay_time": 23,
+            "max_stack_cnt": 15,
+            "interval": 1,
+            "atk_scale": 2.1,
+            "max_atk_scale": 3.9,
+            "atk_scale_per_interval": 0.12,
+            "atk": -0.15,
+            "max_atk": -0.3,
+            "atk_per_interval": -0.01,
+            "def": -0.35,
+            "max_def": -0.5,
+            "def_per_interval": -0.01,
+            "magic_resistance": -0.35,
+            "max_magic_resistance": -0.5,
+            "magic_resistance_per_interval": -0.01
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "31063",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30011",
+          "count": 6
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "31053",
+          "count": 5
+        },
+        {
+          "id": "31023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +3%; when there are other Operators within range, Alchemical Units thrown by this unit last 1s longer",
+            "zh": "攻击力+3%，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长1秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "projectile_extend": 1,
+            "projectile_extend_max": 1,
+            "atk": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +7% <@ba.talpu>(+4%)</>; when there are other Operators within range, Alchemical Units thrown by this unit last 2s <@ba.talpu>(+1s)</> longer",
+            "zh": "攻击力+7%<@ba.talpu>（+4%）</>，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长2<@ba.talpu>（+1）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "projectile_extend": 2,
+            "projectile_extend_max": 2,
+            "atk": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +6%; when there are other Operators within range, Alchemical Units thrown by this unit last 2s longer",
+            "zh": "攻击力+6%，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长2秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "projectile_extend": 2,
+            "projectile_extend_max": 2,
+            "atk": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +10% <@ba.talpu>(+4%)</>; when there are other Operators within range, Alchemical Units thrown by this unit last 3s <@ba.talpu>(+1s)</> longer",
+            "zh": "攻击力+10%<@ba.talpu>（+4%）</>，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长3<@ba.talpu>（+1）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "projectile_extend": 3,
+            "projectile_extend_max": 3,
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +10%; when there are other Operators within range, Alchemical Units thrown by this unit last 3s longer",
+            "zh": "攻击力+10%，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长3秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "projectile_extend": 3,
+            "projectile_extend_max": 3,
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "La Forma del Corazón",
+            "zh": "心相",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK +14% <@ba.talpu>(+4%)</>; when there are other Operators within range, Alchemical Units thrown by this unit last 4s <@ba.talpu>(+1s)</> longer",
+            "zh": "攻击力+14%<@ba.talpu>（+4%）</>，攻击范围内存在其他干员时，自身投掷的炼金单元持续时间延长4<@ba.talpu>（+1）</>秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "projectile_extend": 4,
+            "projectile_extend_max": 4,
+            "atk": 0.14
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "El Alcance de la Visión",
+            "zh": "视界",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "When deployed, all allies have ASPD +5 and all enemies have ASPD -5; effect is doubled for allies and enemies on a straight line of 6 or more consecutive tiles",
+            "zh": "在场时，所有友方单位攻击速度+5，敌方单位攻击速度-5；位于连续6格或以上直线道路的友方和敌方单位受到的效果翻倍",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed_ally": 5,
+            "attack_speed_enemy": -5,
+            "cnt": 6,
+            "attack_speed_ally_extra": 5,
+            "attack_speed_enemy_extra": -5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "RES +12",
+        "zh": "法术抗性+12",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves First Talent",
+        "zh": "第一天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_thorn2",
+      "name": {
+        "en": "Thorns the Lodestar's Badge",
+        "zh": "引星棘刺证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_thorn2",
+      "description": {
+        "en": "Operator Thorns the Lodestar has demonstrated a remarkable aptitude in hurling alchemical units to flexibly adjust the situation on the battlefield.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Specialist Operator during field operations to exercise Alchemist responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员引星棘刺擅长投掷炼金单元灵活调整战场局势\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使炼金师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_thorn2",
+      "name": {
+        "en": "A Three-Sided Coin",
+        "zh": "三面的金币",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_thorn2",
+      "description": {
+        "en": "'We'll reach shore soon, Captain. I can smell the wheat drying out in Finscale Town.'\n'What we brought there was sugarcane seeds—they won't grow into wheat in any case.'\n'Er, I was just wondering... When we go ashore, Captain, can I quit?'\n'I understand. Hold out your hand.'\n'...A gold coin? A coin with... arms and legs?! What's this about, Captain?'\n'Let me explain.'\n\nMore than a decade ago, in a dark and gloomy church, a boy warily sneaks a glance at the soft-spoken priest. Once, as he was held by that priest, he would force open the man's eyelids, trying to see what secrets he hid within his ever-narrowed eyes. Now, however, the boy shudders at the cold glint occasionally shot from them like bullets.\n'I know you can hear me, Isidro.'\nThe boy does not reply. Blood seeps from the wound on the priest's cheek, as the boy stumbles backwards in fear.\n'You have tried to kill me. You have made up your mind, I see. If that is the case, you should make the same choice your fellow students did.'\nThe boy tightens his grip around his Arts unit as he looks away. He remembers how sick he felt as one of those students squirmed on the ground, before a single cold eye was plucked from the depths of their skull.\n'You are well aware, Isidro, that those children who chose to become my kin did not do so unwillingly. If you do not wish it, I shall not force you.'\nThe boy continues to keep his mouth shut. He remembers the final words spat out by that other student before their life as human ceases: 'Why, Maestro? Why won't you teach me swordplay and alchemy like you do Isidro? Why is this the only path I can choose?' It was then the boy realized the priest's so-called choice was no choice at all. He was the one who dictated the options available to everyone, after all.\n'If you do not wish to choose...' The priest holds out a gold coin. '...You may consider if you would like to leave this life-altering decision up to chance.'\nThe boy does not take it. Only once the priest has placed it on the ground does he reach out his hand to grab it. He knows he is powerless to resist. He knows he must make the choice the priest has given him... Or perhaps, think of a way to refuse that choice.\nThe boy flips the coin into the air. Its cold gleam streaks across the dark room. He holds on tight to his Arts unit, giving the coin the lightest of taps. A fine stream of silver metal winds its way around the coin, becoming its 'arms' and 'legs', allowing it to stand on the ground firmly. Not on its front, nor its back, but on the coin's 'third side'.\n'Ah... I see. You believe you still have other choices. No matter. If you are so sure of this, then go and see for yourself. I leave this question and the right to choose with you... There will come a day you will answer me in your own words.'\n\n'So, Captain, you mean that... you're leaving it up to me to choose? What are the options?'\n'...No. I told you this to let you know you are free.'\n'Then what about the coin?'\n'Nene loves that coin. Take it, and have some fun. It's so that you won't regret not having the chance to play with Nene a little bit longer before you go... Once you're done, that coin will come running back to me on its own.'",
+        "zh": "“快靠岸了吧，船长，我都闻到片鳞镇晒的麦子香味了。”\n“我们当初给片鳞镇带去的是甘蔗种子，晒不出麦子香味。”\n“呃，船长，我就是想说……这次靠岸之后，我能不能不干了？”\n“我明白了。伸手。”\n“……金币？长着手和脚的……金币？！船长，您这是什么意思？”\n“听我讲。”\n\n十几年前，幽暗的小教堂里，一个男孩警觉地瞥向柔声细语的教士。曾经，在教士怀里，他会仰头扒开教士的眼皮，试图搞清教士总是眯着的眼睛里藏着怎样的秘密。而此刻，只是教士眼缝中透出的一丝寒光，就足以让他毛骨悚然。\n“你能听见我说话，伊西多。”\n男孩一言不发。教士脸颊上的伤口滴出血来，男孩恐惧地向后缩了缩。\n“你尝试杀我，说明你决心已定。那么，你的同窗们做过的选择，你也该做了。”\n男孩紧攥着手中的施术单元，别过头去。他记得某位同窗曾以令人作呕的姿势在地上蠕动，而后从颅腔深处抽出一只陌生的、冰冷的眼。\n“你很清楚，伊西多，那些选择成为我的同胞的孩子，无不是发乎本心。你若不愿如此，便不会受到强迫。”\n男孩仍未开口。他记得那位同窗生前吐出的最后一句人言：“为什么，老师？为什么您不能像教伊西多那样，教我剑术和炼金术？为什么我只能选择这样的道路？”早在那时，男孩就意识到，教士所谓的选择从来都不是选择。毕竟，就连每个人的选项，也是他规定好的。\n“若你不愿选择，”教士递上一枚金币，“也可以试着考虑，你是否愿意用一次偶然事件来定夺自己人生的走向。”\n男孩没有接。等教士把金币放在地上，他才伸手去捡。他知道自己已经无力反抗，他只能去做教士给他的选择——又或者，想办法拒绝他给出的选项。\n男孩抛起金币。冷冽的光划过昏暗的房间，他握紧施术单元，对着金币轻轻一点。纤细的银色金属缠住金币，变成了金币的“手”与“脚”，让金币稳稳地立在了地上——既不是正面，也不是反面，而是金币的“第三面”。\n“呵……我明白了。你以为自己还有别的选项。无妨，若你如此确信，就自己去证实。我会将问题和选择的权利都留在你身上……总有一天，你会用自己的意志回应我。”\n\n“所以，船长您的意思是……让我也做个选择？选项呢？”\n“……不是。我讲这些，只是为了让你知道你是自由的。”\n“那，这枚金币？”\n“以防你后悔走之前没和宝宝多玩一会儿……宝宝喜欢玩这枚金币，你拿着，去和它玩。等你们玩够了，金币会自己跑回来找我。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30115",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30135",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30155",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      }
+    }
+  ]
+}

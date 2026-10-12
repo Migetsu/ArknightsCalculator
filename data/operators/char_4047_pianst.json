@@ -1,0 +1,1155 @@
+{
+  "id": "char_4047_pianst",
+  "name": {
+    "en": "Czerny",
+    "zh": "车尔尼",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "LN06",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "artsprotector",
+  "faction": "leithanien",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Czerny, musician from the Afterglow, journeying with the rhythm.",
+    "zh": "来自夕照区的音乐家车尔尼，遨游在旋律中。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "From his fingertips flow an endless stream of light and hope.",
+    "zh": "从他的指尖下流淌出的，是一条无尽的光明与希望之河。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1246,
+            "atk": 262,
+            "def": 231,
+            "magicResistance": 5,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1685,
+            "atk": 375,
+            "def": 341,
+            "magicResistance": 5,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1685,
+            "atk": 375,
+            "def": 341,
+            "magicResistance": 10,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2247,
+            "atk": 500,
+            "def": 461,
+            "magicResistance": 10,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "30084",
+          "count": 8
+        },
+        {
+          "id": "31033",
+          "count": 11
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2247,
+            "atk": 500,
+            "def": 461,
+            "magicResistance": 15,
+            "cost": 27,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3122,
+            "atk": 625,
+            "def": 577,
+            "magicResistance": 15,
+            "cost": 27,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_pianst_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.2,
+            "magic_resistance": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 2,
+          "blackboard": {
+            "atk": 0.25,
+            "magic_resistance": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 4,
+          "blackboard": {
+            "atk": 0.3,
+            "magic_resistance": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 6,
+          "blackboard": {
+            "atk": 0.35,
+            "magic_resistance": 0.65
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 8,
+          "blackboard": {
+            "atk": 0.4,
+            "magic_resistance": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.45,
+            "magic_resistance": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 12,
+          "blackboard": {
+            "atk": 0.5,
+            "magic_resistance": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 16,
+          "blackboard": {
+            "atk": 0.6,
+            "magic_resistance": 0.85
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 33,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 18,
+          "blackboard": {
+            "atk": 0.7,
+            "magic_resistance": 0.9
+          }
+        },
+        {
+          "name": {
+            "en": "Fingerfertigkeit",
+            "zh": "纷飞十指",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and RES <@ba.vup>+{magic_resistance:0%}</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，法术抗性<@ba.vup>+{magic_resistance:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.8,
+            "magic_resistance": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31054",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_pianst_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.3,
+            "atk": 0.16,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.5,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.35,
+            "atk": 0.17,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.5,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 0,
+          "blackboard": {
+            "max_hp": 0.4,
+            "atk": 0.18,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.5,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 3,
+          "blackboard": {
+            "max_hp": 0.5,
+            "atk": 0.2,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.7,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 3,
+          "blackboard": {
+            "max_hp": 0.55,
+            "atk": 0.21,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.7,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 3,
+          "blackboard": {
+            "max_hp": 0.6,
+            "atk": 0.22,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.7,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 6,
+          "blackboard": {
+            "max_hp": 0.7,
+            "atk": 0.24,
+            "max_stack_cnt": 10,
+            "atk_scale": 1.9,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 8,
+          "blackboard": {
+            "max_hp": 0.8,
+            "atk": 0.26,
+            "max_stack_cnt": 10,
+            "atk_scale": 2.1,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 9,
+          "blackboard": {
+            "max_hp": 0.9,
+            "atk": 0.28,
+            "max_stack_cnt": 10,
+            "atk_scale": 2.3,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Meisterwerk",
+            "zh": "曲惊四座",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Max HP <@ba.vup>+{max_hp:0%}</> and becomes more likely to be attacked. For every attack taken, increases ATK by <@ba.vup>+{atk:0%}</> (up to <@ba.vup>{max_stack_cnt}</> times), then deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage to all nearby enemies when the skill ends",
+            "zh": "生命上限<@ba.vup>+{max_hp:0%}</>，自身更容易受到敌人攻击，每次受到攻击使自身攻击力提升<@ba.vup>+{atk:0%}</>（最多<@ba.vup>{max_stack_cnt}</>层），技能结束时对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "max_hp": 1,
+            "atk": 0.3,
+            "max_stack_cnt": 10,
+            "atk_scale": 2.5,
+            "pianst_s_2_fxbound_1": 3,
+            "pianst_s_2_fxbound_2": 7,
+            "interval": 18.6,
+            "taunt_level": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "30044",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30031",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30042",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 2
+        },
+        {
+          "id": "30093",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Reverberation",
+            "zh": "回声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +5. Deals 50% of Czerny's ATK as Arts damage to the attacker whenever Czerny receives Arts attacks",
+            "zh": "法术抗性+5，每次受到法术攻击时对目标造成相当于车尔尼攻击力50%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 5,
+            "atk_scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Reverberation",
+            "zh": "回声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +5. Deals 55% <@ba.talpu>(+5%)</> of Czerny's ATK as Arts damage to the attacker whenever Czerny receives Arts attacks",
+            "zh": "法术抗性+5，每次受到法术攻击时对目标造成相当于车尔尼攻击力55%<@ba.talpu>（+5%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "magic_resistance": 5,
+            "atk_scale": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Reverberation",
+            "zh": "回声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +10. Deals 80% of Czerny's ATK as Arts damage to the attacker whenever Czerny receives Arts attacks",
+            "zh": "法术抗性+10，每次受到法术攻击时对目标造成相当于车尔尼攻击力80%的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "magic_resistance": 10,
+            "atk_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Reverberation",
+            "zh": "回声",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "RES +10. Deals 85% <@ba.talpu>(+5%)</> of Czerny's ATK as Arts damage to the attacker whenever Czerny receives Arts attacks",
+            "zh": "法术抗性+10，每次受到法术攻击时对目标造成相当于车尔尼攻击力85%<@ba.talpu>（+5%）</>的法术伤害",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "magic_resistance": 10,
+            "atk_scale": 0.85
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_pianst",
+      "name": {
+        "en": "车尔尼证章",
+        "zh": "车尔尼证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_pianst",
+      "description": {
+        "en": "干员车尔尼擅长在维持战线的同时对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使驭法铁卫职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员车尔尼擅长在维持战线的同时对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使驭法铁卫职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_pianst",
+      "name": {
+        "en": "“日复一日”",
+        "zh": "“日复一日”",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_pianst",
+      "description": {
+        "en": "不再桀骜不驯是艺术家走向平庸的开始。一位曾站在巅峰的音乐家，一位曾用音符挑战一切规则的天才，如今，正亲手为自己套上重重枷锁——从伊维格娜德音乐厅，到制药公司的儿童琴房。即便笔者不愿承认，但，传奇音乐家车尔尼的“艺术性死亡”，似乎已成事实。是向商业谄媚？向现实低头？还是……才华枯竭的标志？观其近期创作，大抵皆是对旧有范式的重复，显然，他已很难再拿出一首如《晨暮》般惊艳的曲子。江郎才尽，着实可惜，但各位同仁也不必过度苛责。\n——《莱塔尼亚音乐学会会刊》\n车尔尼又站在了舆论中心，这些声音尖锐、伪善。批评家们怀念那个聚光灯下锋芒毕露，甚至有些刻薄的车尔尼，现在这个每天给琴童上课、编写着一篇篇教课书式练习曲的车尔尼，让他们感到无趣。而他那些懵懂的学生，常为此愤愤不平。\n“他们怎么能这样说您！”课堂上，憋红脸的孩子停下演奏，不禁嚷道。\n车尔尼没有抬头，而是在被学生画得五颜六色的琴谱上留下了不少批注。“知道了，继续弹。”语调平静，却带着不容置疑的威严，“这里的琶音毫无章法，这三小节松散无力，这一大段的节奏……几乎全错。与其关注那些没营养的噪音，不如关注你的指尖——你这周真的有练琴？”\n孩子不作声。\n他顿了顿，看向那张稚嫩的、写满委屈的小脸，叹了口气。\n“真正有用的评价，不在别人嘴里，在这儿。”严厉的老师点了点节拍器，又点了点孩子的耳朵、心口。\n“听到了吗？这稳定的摆动声，滴，答，滴，答。它不会因你的身份、天赋或情绪而有丝毫的偏差，快就是快，慢就是慢，错就是错。\n“它不会阿谀奉承，不会落井下石。\n“它要求绝对的专注，持续的练习。\n“它只服务于音乐本身，比任何人的评价都要诚实上万倍。\n“现在，重来！”\n……\n已是深夜，最后一个孩子离开琴房。车尔尼独坐在钢琴前，没有演奏任何复杂的曲子。他只是打开了节拍器，就着机械重复的滴答声，在黑白琴键上落下崭新而严谨的音符，连通心跳，连通音乐的脉搏。",
+        "zh": "不再桀骜不驯是艺术家走向平庸的开始。一位曾站在巅峰的音乐家，一位曾用音符挑战一切规则的天才，如今，正亲手为自己套上重重枷锁——从伊维格娜德音乐厅，到制药公司的儿童琴房。即便笔者不愿承认，但，传奇音乐家车尔尼的“艺术性死亡”，似乎已成事实。是向商业谄媚？向现实低头？还是……才华枯竭的标志？观其近期创作，大抵皆是对旧有范式的重复，显然，他已很难再拿出一首如《晨暮》般惊艳的曲子。江郎才尽，着实可惜，但各位同仁也不必过度苛责。\n——《莱塔尼亚音乐学会会刊》\n车尔尼又站在了舆论中心，这些声音尖锐、伪善。批评家们怀念那个聚光灯下锋芒毕露，甚至有些刻薄的车尔尼，现在这个每天给琴童上课、编写着一篇篇教课书式练习曲的车尔尼，让他们感到无趣。而他那些懵懂的学生，常为此愤愤不平。\n“他们怎么能这样说您！”课堂上，憋红脸的孩子停下演奏，不禁嚷道。\n车尔尼没有抬头，而是在被学生画得五颜六色的琴谱上留下了不少批注。“知道了，继续弹。”语调平静，却带着不容置疑的威严，“这里的琶音毫无章法，这三小节松散无力，这一大段的节奏……几乎全错。与其关注那些没营养的噪音，不如关注你的指尖——你这周真的有练琴？”\n孩子不作声。\n他顿了顿，看向那张稚嫩的、写满委屈的小脸，叹了口气。\n“真正有用的评价，不在别人嘴里，在这儿。”严厉的老师点了点节拍器，又点了点孩子的耳朵、心口。\n“听到了吗？这稳定的摆动声，滴，答，滴，答。它不会因你的身份、天赋或情绪而有丝毫的偏差，快就是快，慢就是慢，错就是错。\n“它不会阿谀奉承，不会落井下石。\n“它要求绝对的专注，持续的练习。\n“它只服务于音乐本身，比任何人的评价都要诚实上万倍。\n“现在，重来！”\n……\n已是深夜，最后一个孩子离开琴房。车尔尼独坐在钢琴前，没有演奏任何复杂的曲子。他只是打开了节拍器，就着机械重复的滴答声，在黑白琴键上落下崭新而严谨的音符，连通心跳，连通音乐的脉搏。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30044",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

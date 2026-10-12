@@ -1,0 +1,1080 @@
+{
+  "id": "char_158_milu",
+  "name": {
+    "en": "Firewatch",
+    "zh": "守林人",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "ST01",
+  "rarity": 5,
+  "class": "SNIPER",
+  "subclass": "longrange",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "DPS",
+    "Nuker"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Firewatch, Sniper Operator of Rhodes Island, will await your orders while undercover.",
+    "zh": "罗德岛狙击干员守林人，隐藏在掩体间伺机待发。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "When will she smile for us? Even the faintest one...",
+    "zh": "她什么时候才能笑呢，哪怕咧咧嘴也好啊……",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 714,
+            "atk": 486,
+            "def": 63,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 928,
+            "atk": 675,
+            "def": 85,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 928,
+            "atk": 675,
+            "def": 85,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1160,
+            "atk": 889,
+            "def": 107,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-9",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 3
+        },
+        {
+          "id": "30034",
+          "count": 7
+        },
+        {
+          "id": "30073",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1160,
+            "atk": 889,
+            "def": 107,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1450,
+            "atk": 1085,
+            "def": 131,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.7,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_milu_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.24
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.26
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.28
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.32
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 31,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.34
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 32,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.36
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 45,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Camouflage",
+            "zh": "环境伪装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</> and gain <$ba.invisible>Invisibility</>",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，进入<$ba.invisible>隐匿</>状态",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 50,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk": 0.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30073",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "30094",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_milu_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 10,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 2.1
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 2.2
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 15,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 2.3
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "max_cnt": 2,
+            "atk_scale": 2.4
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "max_cnt": 3,
+            "atk_scale": 2.6
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 20,
+          "blackboard": {
+            "max_cnt": 3,
+            "atk_scale": 2.8
+          }
+        },
+        {
+          "name": {
+            "en": "Tactical Transceiver",
+            "zh": "战术电台",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Randomly drops <@ba.vup>{max_cnt}</> bombs within range (especially to enemy's position); Every bomb deals <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all nearby enemies",
+            "zh": "立即对攻击范围内随机投下<@ba.vup>{max_cnt}</>枚炸弹进行轰炸（优先选择有敌人的位置），每颗炸弹对周围所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害。",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "max_cnt": 3,
+            "atk_scale": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30083",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30083",
+          "count": 2
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Assassin",
+            "zh": "暗杀者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK increases to 120% when attacking ranged enemies",
+            "zh": "攻击使用远程武器的敌人时，攻击力提升至120%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.2
+          }
+        },
+        {
+          "name": {
+            "en": "Assassin",
+            "zh": "暗杀者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK increases to 125% <@ba.talpu>(+5%)</> when attacking ranged enemies",
+            "zh": "攻击使用远程武器的敌人时，攻击力提升至125%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.25
+          }
+        },
+        {
+          "name": {
+            "en": "Assassin",
+            "zh": "暗杀者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK increases to 140% when attacking ranged enemies",
+            "zh": "攻击使用远程武器的敌人时，攻击力提升至140%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Assassin",
+            "zh": "暗杀者",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK increases to 145% <@ba.talpu>(+5%)</> when attacking ranged enemies",
+            "zh": "攻击使用远程武器的敌人时，攻击力提升至145%<@ba.talpu>（+5%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 1.45
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +35",
+        "zh": "攻击力+35",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 90
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_milu",
+      "name": {
+        "en": "Firewatch's Badge",
+        "zh": "守林人证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Firewatch has demonstrated a remarkable aptitude for defeating enemies from long range.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Deadeye responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员守林人擅长在远距离击溃敌人\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使神射手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_milu",
+      "name": {
+        "en": "Field Sniper Equipment",
+        "zh": "野战狙击套装",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_milu",
+      "description": {
+        "en": "The leaves were inserted into a small novel as bookmarks. \n\n'The Knight's Forest,' page 21. \n'Let me join your knight squad!' \n'Ask again when you're a little older.' \n'That's what you said last time! I've waited a whole year, and I've gotten really good with my crossbow! I can hit a tree branch from 200 meters away!' \n'Fine then, if you can go outside town, slay a gloompincer, and bring it back to camp before nightfall, I'll let you join.' \nThe squad captain couldn't talk the young girl out of it, so he wanted to make things as hard for her as possible so that she would reconsider. \nThough he had said those words half-jokingly, how could he possibly leave a child to fight against a gloompincer alone? He followed the girl quietly, curious as to what she planned to do. But when he saw her scouting out a sniping position, camouflaging into the environment, and then landing three clean shots in a row, he changed his mind. \nThe captain appeared in front of the girl as she dragged the corpse of the gloompincer back to town, the slain beast almost bigger than herself. \n'Come with me from now on.' \nThe girl lifted her head with a smile across her muddied face. \n\n'The Knight's Forest,' page 53. \nTime flies, and so the young girl grew up. She had fought in many battles against the Ursus Army, scoring success after success. The knights would come and go like the wind, routing the Ursus troops before disappearing without a trace. As their names spread fear through the ranks of the Ursus Army, the knights' prestige soared ever higher, and the girl herself became a war hero in the eyes of the people. \n'We won again. Why are you frowning?' The girl asked the captain. \n'Winter is almost here, and our supplies are running short. How long can we persist like this?' \n\n'The Knights' Forest,' page 137. \nThe fated day finally came. \nWhen the enemy army invaded, the knights prepared to sweep them with their usual hit-and-run tactics. But at that moment, the might of Ursus's artillery fell directly on top of them, and the knights were completely unable to put up a fight in the face of overwhelming military strength...... \n'Impossible! How could Ursus possibly know our precise location? It's utterly impossible, unless––' \nThe girl didn't have time for idle thoughts. The most important thing was to break free from the enemy's siege. If she died here, everything would've been for naught. \n'One day, I'll find you, whoever you are––' \nAgainst insurmountable odds, the girl somehow managed to escape the hail of bullets. Behind her... came the smoke of her hometown ablaze. \n\n'The Knights' Forest,' page 201. \nAll the pages of the book after this point were burnt, the edges of the leaf caught between the pages singed. \n\nThe leaf was laminated and stowed in the girls' tactical equipment box. Every time she put away her equipment, she would take another look at that leaf. \nThis may be the last leaf from her hometown that she can still see. \nThis is the story of an ancient war. Just another story. \nBut to Firewatch, this book – and the sole leaf remaining – seems to hold some deeper significance.",
+        "zh": "树叶被当作书签夹入一本小说中。\n\n《骑士之森》第二十一页。\n“请让我加入骑士队！”\n“等你长大一些再来吧。”\n“上次你就这么说！我都等了一年了，而且我的弩已经用得很好了，两百米之外的树桩我都能射中！”\n“好吧，如果你能在天黑前，在镇外打倒一只钳兽并带回营地，我就让你加入。”\n队长拗不过女孩，本想刁难她一下，让她知难而退。谁知女孩想了想，坚毅地点了点头。转身提起弩就向镇外跑去。\n队长只是随口一说，又岂敢让一个孩子单独去面对一只钳兽。便悄悄跟在女孩身后，也想看看她究竟打算怎么做。而当他看到女孩寻找狙击点，做环境伪装，连续三箭全部命中钳兽的要害后，他改变了主意。\n女孩拖着几乎比自己还要大的钳兽尸体向小镇走去的时候，队长出现在她面前。\n“之后你就跟在我身边吧。”\n女孩昂起头，沾满泥污的小脸上露出了笑容。\n\n《骑士之森》第五十三页。\n时光飞逝，女孩长大了不少。也曾多次参与和乌萨斯军队的战斗，屡建奇功。骑士队来去如风，总是将乌萨斯部队打得落花流水后又消失得无影无踪，令乌萨斯军闻风丧胆。骑士队的威名大振，少女更是成为边镇人民眼中的战争英雄。\n“我们又打赢了，您为什么还是愁眉苦脸的？”少女问队长。\n“快要入冬了，物资也很紧张。我们这样还能坚持多久呢？”\n\n《骑士之森》第一百三十七页。\n这一天终于还是来临了。\n敌军大举入侵，骑士队就像往常一样准备迂回作战时，乌萨斯的炮火精准地落在他们身上，在悬殊的军力差距下，骑士队完全无力抵抗……\n“这明明不可能的！乌萨斯人不可能有掌握骑士队位置的手段，绝对不可能！除非——”\n少女来不及多想，当务之急是要逃出敌人的包围圈。如果死在这里的话，那一切都没有意义了。\n“总有一天，我会找出来，究竟是谁——”\n少女九死一生从枪林弹雨中逃了出来，她的身后，是燃着熊熊烈火的故乡。\n\n《骑士之森》第二百零一页。\n之后的书页被烧毁了，夹在这页内的树叶被烧焦了一角。\n\n树叶被塑封起来，装在了少女的战术装备盒里。每次收起装备时，她都会多看一眼盒子里的那片树叶。\n这或许是她能见到的最后一片来自故乡的树叶。\n这是一段关于古老战争的故事。另一个故事。\n但对守林人而言，这本书——如今只留下了这枚树叶——似乎别有深意。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30094",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1091 @@
+{
+  "id": "char_148_nearl",
+  "name": {
+    "en": "Nearl",
+    "zh": "临光",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "FO02",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "guardian",
+  "faction": "followers",
+  "position": "MELEE",
+  "tagList": [
+    "Defense",
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Nearl, former knight of Kazimierz, is a core member on the battlefield with her defense and healing skills.",
+    "zh": "前卡西米尔骑士临光，将是防御与治疗并重的战场核心。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "It feels relieving to have her by your side.",
+    "zh": "有她在身边，总是很安心。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1154,
+            "atk": 191,
+            "def": 240,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1560,
+            "atk": 273,
+            "def": 353,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30062",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1560,
+            "atk": 273,
+            "def": 353,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2001,
+            "atk": 369,
+            "def": 471,
+            "magicResistance": 10,
+            "cost": 19,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "30074",
+          "count": 9
+        },
+        {
+          "id": "30033",
+          "count": 16
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2001,
+            "atk": 369,
+            "def": 471,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2780,
+            "atk": 462,
+            "def": 575,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.2,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_nearl_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.15,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.3,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.35,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.4,
+            "ct": 1
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.5,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.6,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.7,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid",
+            "zh": "急救",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next attack restores HP equal to <@ba.vup>{heal_scale:0%}</> ATK to a nearby friendly unit with less than 50% HP\n<@ba.rem>Can store {ct} charge(s)</>",
+            "zh": "下一次攻击会为周围血量不足一半的一名友方单位恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命\\n<@ba.rem>可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.8,
+            "ct": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_nearl_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.2,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.25,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.35,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 54,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.4,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.45,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.5,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.6,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.7,
+            "base_attack_time": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "First Aid Mode",
+            "zh": "急救模式",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>; Stops attacking and focuses on healing surrounding allies",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，停止攻击并专心对周围友方角色进行治疗",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 40,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.8,
+            "base_attack_time": 1.3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "30034",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30023",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Healing Boost",
+            "zh": "医疗效果大提升",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Nearl's healing effect increases by 10%",
+            "zh": "自身医疗效果提高10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Boost",
+            "zh": "医疗效果大提升",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Nearl's healing effect increases by 12% <@ba.talpu>(+2%)</>",
+            "zh": "自身医疗效果提高12%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.12
+          }
+        },
+        {
+          "name": {
+            "en": "Pegasus's Halo",
+            "zh": "天马光环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the healing effect received by all allies by 10% when deployed",
+            "zh": "在场时，全地图的友方单位医疗效果提高10%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "heal_scale": 1.1
+          }
+        },
+        {
+          "name": {
+            "en": "Pegasus's Halo",
+            "zh": "天马光环",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Increases the healing effect received by all allies in battlefield by 12% <@ba.talpu>(+2%)</> when deployed",
+            "zh": "在场时，全地图的友方单位医疗效果提高12%<@ba.talpu>（+2%）</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "heal_scale": 1.12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +25",
+        "zh": "防御力+25",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 40,
+        "def": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_nearl",
+      "name": {
+        "en": "Nearl's Badge",
+        "zh": "临光证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Nearl has demonstrated the capacity for simultaneously treating allied forces while holding the battlefront.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Defender Operator during field operations to exercise Guardian responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员临光在维持战线的同时为友军提供医疗支援\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使守护者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_nearl",
+      "name": {
+        "en": "Improved Knight Shield",
+        "zh": "改良骑士盾牌",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_nearl",
+      "description": {
+        "en": "A bonfire crackles quietly. A young knight walks nearby, the light of the fire glinting dully off her armor, gone without maintenance for far too long. The coat of arms on her chest is completely scratched off, but the medic, who's trudged across more lands than most, can tell it is of Kazimierzian make.\n'Is your companion resting?' asks the knight softly, her voice filled with apology. 'It truly weighs on me that she should be so frail, yet use her Arts to rescue me. I hoped to be of service to you in some way, which is why I came back.'\n'Please, sit,' answers the medic.\n'No, allow me to be your sentry,' says the knight.\nHer hands grip her warhammer as she stands calm yet firm at five paces out. Her armor is speckled with blood, too; mere hours ago in these twilight wastes, she fought tooth and nail against mercenaries plundering a caravan, the radiance of her Arts nearly enough to convince one that the sun had risen anew. Now, those golden rays merely float about her weapon and body, indistinct. She professes herself to be Infected, afraid of neither the mercenaries' Oripathy, nor of giving her own life.\n'Do you still believe we shouldn't dissuade you?' asks the medic. 'Even though you know full well that despite felling a team of hired soldiers, the mercenary powers camped nearby will continue plundering wherever they please.'\nA lengthy silence. The knight turns her head. The slow rise and fall of the pale-white Sarkaz's chest as she holds her staff, her frail limbs pierced by fine and pointed Originium crystals.\n'I'm sorry, I simply... Perhaps I'm still not used to this.' Finally, she lowers her gaze. 'An insurmountable foe, incurably terminal... It wasn't you I was angry at, back then.'\nHer helpless indignation burns silently in the dark of night. The medic recognizes the naivety in those eyes, those familiar flames not knowing where to burn, that were inevitably snuffed out, one after another, in the misery of the battlefield.\n'I believe that... your willingness to act in defense of others, has sufficed.' She prods the bonfire with a branch, and speaks again with a nod to the knight. 'Please, come and sit. You won't wake up Liz.'",
+        "zh": "篝火发出细小的爆裂声，年轻的骑士走近，火光在她长时间未经养护的盔甲上映出黯淡的光芒。她胸前的纹章被完全刮花了，但跋涉过诸多地域的医师能分辨出，盔甲本身是卡西米尔的工艺。\n“您的同伴已经休息了吗？”骑士满怀歉意地压低声音说，“她那么虚弱，却动用源石技艺救治我，我真的很过意不去。我希望为你们做些什么，所以我又回来了。”\n“请坐吧。”医师回答。\n“不，请让我为你们站岗吧。”骑士说。\n她双手握住战锤，平静而固执地站在五步开外的地方。她的盔甲上还有星点血迹，几个小时前她在黄昏的荒野上与打劫商队的雇佣兵拼命，源石技艺的光辉几乎让人以为太阳从地平线下重新升起；此时金色的光芒只是在她的武器周身隐约浮动着。她自称感染者，既不怕雇佣兵身上的矿石病，也不怕献出性命。\n“您仍然认为我们不应该劝阻您吗？”医师问她，“即使您明白，就算您打倒了那一整队雇佣兵，附近盘踞的其他佣兵势力也仍然会四处劫掠。”\n良久的沉默。骑士回过头去，抱着法杖入睡的白色萨卡兹胸膛微微起伏着，脆弱的肢体被细小尖锐的源石结晶刺破。\n“抱歉，我只是……也许是还没有习惯。”她终于垂下眼睛，“无法战胜的对手，无法治愈的绝症……此前我并不是在对你们生气。”\n她无助的愤怒在黑夜中静静地燃烧着。医师认识那样天真的眼睛，那些不知该烧向何处的火最终在悲惨的战争中一一熄灭。\n“我想，您愿意出手保护他人就已经足够了。”她用树枝翻动火堆，再次对骑士颔首示意，“请坐过来吧，丽兹不会惊醒的。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30034",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31024",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

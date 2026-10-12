@@ -1,0 +1,1151 @@
+{
+  "id": "char_459_tachak",
+  "name": {
+    "en": "Tachanka",
+    "zh": "战车",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "RS04",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "sword",
+  "faction": "rainbow",
+  "position": "MELEE",
+  "tagList": [
+    "Nuker",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Tachanka, a member of Team Rainbow, is ready to lay down suppressive fire.",
+    "zh": "彩虹小队成员战车，火力网架设完毕。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "If the machine gun still isn't enough firepower, just launch some grenades into the mix.",
+    "zh": "如果机枪火力还不够，就打几发榴弹助兴。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1121,
+            "atk": 253,
+            "def": 135,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1536,
+            "atk": 368,
+            "def": 194,
+            "magicResistance": 0,
+            "cost": 20,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1536,
+            "atk": 368,
+            "def": 194,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1995,
+            "atk": 478,
+            "def": 253,
+            "magicResistance": 0,
+            "cost": 22,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "30104",
+          "count": 7
+        },
+        {
+          "id": "31013",
+          "count": 12
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1995,
+            "atk": 478,
+            "def": 253,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2626,
+            "atk": 621,
+            "def": 309,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_tachak_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.2,
+            "def_penetrate_fixed": 100,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.2,
+            "def_penetrate_fixed": 110,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.2,
+            "def_penetrate_fixed": 120,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.3,
+            "def_penetrate_fixed": 130,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.3,
+            "def_penetrate_fixed": 140,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.3,
+            "def_penetrate_fixed": 150,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 19,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.4,
+            "def_penetrate_fixed": 160,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 18,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.5,
+            "def_penetrate_fixed": 170,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 17,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.6,
+            "def_penetrate_fixed": 180,
+            "interval": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Incendiary Grenade",
+            "zh": "燃烧榴弹",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Fire an incendiary grenade at the target, creating a burning zone in the 4 adjacent tiles around the target that lasts for <@ba.vup>{projectile_delay_time:0}</> seconds. The burning zone deals <@ba.vup>{atk_scale:0%}</> ATK as Arts damage every second to enemies within; Tachanka ignores <@ba.vup>{def_penetrate_fixed}</> DEF when attacking enemies within the burning zone",
+            "zh": "发射燃烧榴弹在目标周围四格产生<@ba.vup>{projectile_delay_time:0}</>秒的燃烧区域，范围内的地面敌人每秒受到相当于战车攻击力<@ba.vup>{atk_scale:0%}</>的法术伤害；战车攻击燃烧范围内目标时无视其<@ba.vup>{def_penetrate_fixed}</>的防御力",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 15,
+          "initSp": 0,
+          "blackboard": {
+            "projectile_delay_time": 6,
+            "atk_scale": 0.7,
+            "def_penetrate_fixed": 200,
+            "interval": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "31024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_tachak_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 35,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.05,
+            "atk_scale": 1.3
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 34,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.06,
+            "atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 33,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.07,
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 32,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.08,
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 31,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.09,
+            "atk_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 30,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.1,
+            "atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 29,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.11,
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 28,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.12,
+            "atk_scale": 1.8
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 27,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.13,
+            "atk_scale": 1.9
+          }
+        },
+        {
+          "name": {
+            "en": "Spray and Pray",
+            "zh": "倾泻弹药",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Interval is reduced significantly. Attack random targets within range, with every attack having <@ba.vup>{prob:0%}</> chance to increase ATK to <@ba.vup>{atk_scale:0%}</>",
+            "zh": "攻击间隔大幅度缩短，随机攻击范围内的目标，每次攻击有<@ba.vup>{prob:0%}</>的概率攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "3-12",
+          "skillType": "MANUAL",
+          "duration": 4,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "base_attack_time": -0.85,
+            "prob": 0.15,
+            "atk_scale": 2
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31014",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 3
+        },
+        {
+          "id": "30083",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Heavy Firepower",
+            "zh": "重火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range +1 tile, Redeployment Time +20 seconds",
+            "zh": "攻击距离+1，再部署时间+20秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0,
+            "respawn_time": 20,
+            "ability_range_forward_extend": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Heavy Firepower",
+            "zh": "重火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range +1 tile, DEF +5%, Redeployment Time +20 seconds",
+            "zh": "攻击距离+1，防御力+5%，再部署时间+20秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0.05,
+            "respawn_time": 20,
+            "ability_range_forward_extend": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Heavy Firepower",
+            "zh": "重火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range +1 tile, DEF +10% <@ba.talpu>(+5%)</>, Redeployment Time +20 seconds",
+            "zh": "攻击距离+1，防御力+10%<@ba.talpu>（+5%）</>，再部署时间+20秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": 0.1,
+            "respawn_time": 20,
+            "ability_range_forward_extend": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Heavy Firepower",
+            "zh": "重火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range +2 tiles, DEF +10%, Redeployment Time +20 seconds",
+            "zh": "攻击距离+2，防御力+10%，再部署时间+20秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "def": 0.1,
+            "respawn_time": 20,
+            "ability_range_forward_extend": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Heavy Firepower",
+            "zh": "重火力",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range +2 tile, DEF +15% <@ba.talpu>(+5%)</>, Redeployment Time +20 seconds",
+            "zh": "攻击距离+2，防御力+15%<@ba.talpu>（+5%）</>，再部署时间+20秒",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "def": 0.15,
+            "respawn_time": 20,
+            "ability_range_forward_extend": 2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 40,
+        "def": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_tachak",
+      "name": {
+        "en": "Tachanka’s Badge",
+        "zh": "战车证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Tachanka has demonstrated a remarkable aptitude in comprehensive positional defense against all directions.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations. In witness whereof,\nThis badge is hereby conferred upon the above named, whether this band of soldiers needs such recognition notwithstanding.",
+        "zh": "干员战车擅长全方位的阵地防御作战\n根据外勤部门决议\n在外勤任务中划分为近卫干员，特别颁发此证章\n但是像他们这样的人，真的需要这种证明么？",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_tachak",
+      "name": {
+        "en": "Machinegun Rack",
+        "zh": "轻机枪枪架",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_tachak",
+      "description": {
+        "en": "On Rhodes Island's top deck, a warrior and a girl look out to the sun that's slowly disappearing beneath the horizon.\n'Mr. Alexsandr...'\n'Were you... a soldier?'\n'I'm still a soldier.'\n'What's your motherland like?'\n'It's a beautiful place.'\nThe old soldier looks into the distance and describes what his homeland is like to the girl standing next to him.\nFrom the riverscapes of the Volga to the majestic sights of Mamayev Kurgan.\nNone of them exist in this world.\n'Do you love that place?'\n'I love it all with all my heart.'\n'And you?'\n'I lost everything in Chernobog. My family... My friends.'\n'And so you chose to stay here?'\n'There is nowhere in Ursus for me.'\n'Sonya and Lada need me too.'\n'And... I'm still very young.'\n'I'm still very weak.'\n'Perhaps one day, I will be able to go back to Ursus to help even more people there.'\n'Perhaps one day, I will be powerful enough to make Ursus a better place.'\n'And it won't just be me. There will be a great many people who will go back to Ursus, to go back home.'\n'Does this... sound childish to you?'\n'No, Anna.'\n'Your ambitions are noble.'\n'No one would dare to mock such noble ambitions.'\n'If you will one day return to Ursus to make them come true...'\n'I look forward to that day.'\n'Thank you, Mr. Alexsandr...'\n'Thank you...'",
+        "zh": "在罗德岛的顶层甲板，一位战士和一位少女正在看着落下地平线的夕阳。\n“亚历山大先生……”\n“您以前……是一位士兵？”\n“我现在也是一位士兵。”\n“您的祖国，是一个什么样的地方？”\n“是一个很好的地方。”\n年长的老兵望着远方，向身边的少女描述着自己的家乡。\n从伏尔加河畔到马马耶夫的山岗。\n全都是不存在于这个世界的景象。\n“您，很热爱那片土地？”\n“我始终热爱那一切。”\n“你呢？”\n“在切尔诺伯格，我失去了一切，我的家人……我的朋友。”\n“所以你最后留在了这里？”\n“……乌萨斯已经没有我能去的地方了。”\n“索尼娅和拉达也需要我。”\n“现在……我还很年轻。”\n“我还很弱小。”\n“或许有一天，我能够回到乌萨斯，帮助更多的人。”\n“或许有一天，我能变得更加有力，让乌萨斯变成一个更好的地方。”\n“不单纯是我，更多的人能够回到乌萨斯，回到他们的家乡。”\n“这个想法……是不是听起来很幼稚？”\n“不，安娜。”\n“你的志向非常伟大。”\n“没有人能够嘲笑伟大的理想。”\n“如果你真的有一天要回到乌萨斯实现你的理想。”\n“我很期待那一天。”\n“谢谢您，亚历山大先生……”\n“谢谢您……”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31034",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30014",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30084",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1124 @@
+{
+  "id": "char_4196_reckpr",
+  "name": {
+    "en": "Record Keeper",
+    "zh": "录武官",
+    "isMachineTranslation": true
+  },
+  "appellation": "Record Keeper",
+  "displayNumber": "YD26",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "physician",
+  "faction": "yan",
+  "position": "RANGED",
+  "tagList": [
+    "治疗"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "大炎录武官云青萍，将记录下他与你同行的路。",
+    "zh": "大炎录武官云青萍，将记录下他与你同行的路。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "叶落土中碾作尘，却于微处寻真知。",
+    "zh": "叶落土中碾作尘，却于微处寻真知。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 837,
+            "atk": 177,
+            "def": 54,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1180,
+            "atk": 291,
+            "def": 79,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1180,
+            "atk": 291,
+            "def": 79,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1422,
+            "atk": 416,
+            "def": 99,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "31034",
+          "count": 7
+        },
+        {
+          "id": "30013",
+          "count": 16
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1422,
+            "atk": 416,
+            "def": 99,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1580,
+            "atk": 502,
+            "def": 124,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_reckpr_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1,
+            "max_target": 2,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.05,
+            "max_target": 2,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.1,
+            "max_target": 2,
+            "cnt": 1
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.15,
+            "max_target": 2,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.2,
+            "max_target": 2,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.25,
+            "max_target": 2,
+            "cnt": 2
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.3,
+            "max_target": 2,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.35,
+            "max_target": 2,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.45,
+            "max_target": 2,
+            "cnt": 3
+          }
+        },
+        {
+          "name": {
+            "en": "触类旁通",
+            "zh": "触类旁通",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "zh": "下次治疗可以恢复相当于攻击力<@ba.vup>{heal_scale:0%}</>的生命，并额外治疗一个目标\\n<@ba.rem>可充能{cnt}次</>",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "heal_scale": 1.55,
+            "max_target": 2,
+            "cnt": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31094",
+              "count": 3
+            },
+            {
+              "id": "31034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_reckpr_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 15,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 50,
+            "atk": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 15,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 60,
+            "atk": 0.35
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 15,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 70,
+            "atk": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 20,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 80,
+            "atk": 0.45
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 41,
+          "initSp": 20,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 90,
+            "atk": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 20,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 100,
+            "atk": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 25,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 120,
+            "atk": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 25,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 130,
+            "atk": 0.7
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 25,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 140,
+            "atk": 0.75
+          }
+        },
+        {
+          "name": {
+            "en": "一点关窍",
+            "zh": "一点关窍",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，治疗干员后为其施加一个增益，使其在{attack@buff_duration}秒内每次受到伤害时恢复<@ba.vup>{attack@fixed_heal_value}</>点生命",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 25,
+          "blackboard": {
+            "attack@buff_duration": 10,
+            "attack@fixed_heal_value": 150,
+            "atk": 0.8
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31033",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "31064",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30041",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30052",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 3
+        },
+        {
+          "id": "31063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "学成于聚",
+            "zh": "学成于聚",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+8，持续8秒",
+            "zh": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+8，持续8秒",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 8,
+            "duration": 8,
+            "max_stack_cnt": 1,
+            "prob": 1,
+            "sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "学成于聚",
+            "zh": "学成于聚",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+8，持续10<@ba.talpu>（+2）</>秒",
+            "zh": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+8，持续10<@ba.talpu>（+2）</>秒",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 8,
+            "duration": 10,
+            "max_stack_cnt": 1,
+            "prob": 1,
+            "sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "学成于聚",
+            "zh": "学成于聚",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+16，持续8秒",
+            "zh": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+16，持续8秒",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": 16,
+            "duration": 8,
+            "max_stack_cnt": 1,
+            "prob": 1,
+            "sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "学成于聚",
+            "zh": "学成于聚",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+16，持续10<@ba.talpu>（+2）</>秒",
+            "zh": "攻击范围内的干员开启技能时自身回复1点技力，且攻击速度+16，持续10<@ba.talpu>（+2）</>秒",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack_speed": 16,
+            "duration": 10,
+            "max_stack_cnt": 1,
+            "prob": 1,
+            "sp": 1
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-4秒",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "攻击力+27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_reckpr",
+      "name": {
+        "en": "录武官证章",
+        "zh": "录武官证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_reckpr",
+      "description": {
+        "en": "干员录武官擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员录武官擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_reckpr",
+      "name": {
+        "en": "未完成的录武簿",
+        "zh": "未完成的录武簿",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_reckpr",
+      "description": {
+        "en": "那位老者显然想让刚上任的录武官下不来台，舞着扫把便使了一套羽兽点叶，招式之刁钻古怪、千变万化是云青萍前所未见。老者临了又问一句：“有本事拆吗？”在众将士的围观下，云青萍面有愧色：“晚辈力有不逮。”老者嗤之以鼻，低头扫地，不再搭理他。\n在询问将士们后，云青萍了解到，这位刁难自己的扫地工与上一任录武官是挚友，两人聊了一辈子的武，对“武”的追求可谓纯粹。云青萍本就担忧自己无法胜任录武官一职，上任第一天还被将了一军。“没有真本事，也配拿起录武簿品评武功？”老者心中想必是这样看待他的。\n可那套招式到底要如何拆解？他冥思苦想，得出一法，立时去找老者比划，还欲请路过的将士替他演练，老者却冷声点出他的谬误。\n云青萍碰了一鼻子灰，第三日、第四日，但凡想出新法，便去找那位老者讨教。围观此事竟也渐成军中乐事，众人品评着他的解法，为他的巧思喝彩，也在他被老者驳倒时叹息。时日久了，虽一拳未出，云青萍却早已与老者“交手”无数次。\n虽一直不得解，云青萍也并未去向老师寻找现成的答案，而是自己翻遍库藏武学典籍，看遍目所能及的武功，终在一日梦中惊起，念着：“我知道了！”他翻开录武簿，那一日的记录特地留了半页空白，他提笔欲写，却又意识到——自己的解法是否真的可行，那位老者才说了算，于是便心急如焚地找他讨教。\n“他走了？何时回来？”\n将士的目光使云青萍高举着录武簿的手慢慢垂了下来。\n那天老者一丢扫把，翻开床板，抄起封存已久的剑，便离开了。将士说，他所图之事必为义，所以并没有人拦着。老者走之前交代，如他回不来，便将陪了他四十年的那把扫把烧给他。而现在早已过了约定的时间。\n云青萍坐在院中，依言将老者的扫把烧了，望着火光发愣，身边是围观了这整件事的将士们。\n“好一个老头，留下个谜题就跑了。”将士们说，“不如，把你的解法也写下来烧给他吧？”\n云青萍的神色却不似刚上任时那般迷茫了。他合上录武簿，将那未完成的一页珍惜地留在了其中。",
+        "zh": "那位老者显然想让刚上任的录武官下不来台，舞着扫把便使了一套羽兽点叶，招式之刁钻古怪、千变万化是云青萍前所未见。老者临了又问一句：“有本事拆吗？”在众将士的围观下，云青萍面有愧色：“晚辈力有不逮。”老者嗤之以鼻，低头扫地，不再搭理他。\n在询问将士们后，云青萍了解到，这位刁难自己的扫地工与上一任录武官是挚友，两人聊了一辈子的武，对“武”的追求可谓纯粹。云青萍本就担忧自己无法胜任录武官一职，上任第一天还被将了一军。“没有真本事，也配拿起录武簿品评武功？”老者心中想必是这样看待他的。\n可那套招式到底要如何拆解？他冥思苦想，得出一法，立时去找老者比划，还欲请路过的将士替他演练，老者却冷声点出他的谬误。\n云青萍碰了一鼻子灰，第三日、第四日，但凡想出新法，便去找那位老者讨教。围观此事竟也渐成军中乐事，众人品评着他的解法，为他的巧思喝彩，也在他被老者驳倒时叹息。时日久了，虽一拳未出，云青萍却早已与老者“交手”无数次。\n虽一直不得解，云青萍也并未去向老师寻找现成的答案，而是自己翻遍库藏武学典籍，看遍目所能及的武功，终在一日梦中惊起，念着：“我知道了！”他翻开录武簿，那一日的记录特地留了半页空白，他提笔欲写，却又意识到——自己的解法是否真的可行，那位老者才说了算，于是便心急如焚地找他讨教。\n“他走了？何时回来？”\n将士的目光使云青萍高举着录武簿的手慢慢垂了下来。\n那天老者一丢扫把，翻开床板，抄起封存已久的剑，便离开了。将士说，他所图之事必为义，所以并没有人拦着。老者走之前交代，如他回不来，便将陪了他四十年的那把扫把烧给他。而现在早已过了约定的时间。\n云青萍坐在院中，依言将老者的扫把烧了，望着火光发愣，身边是围观了这整件事的将士们。\n“好一个老头，留下个谜题就跑了。”将士们说，“不如，把你的解法也写下来烧给他吧？”\n云青萍的神色却不似刚上任时那般迷茫了。他合上录武簿，将那未完成的一页珍惜地留在了其中。",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30044",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

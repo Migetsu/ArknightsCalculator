@@ -1,0 +1,1052 @@
+{
+  "id": "char_219_meteo",
+  "name": {
+    "en": "Meteorite",
+    "zh": "陨星",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "ST03",
+  "rarity": 5,
+  "class": "SNIPER",
+  "subclass": "aoesniper",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "AoE",
+    "Debuff"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Meteorite, Sniper Operator of Rhodes Island, is ready to pound enemies with her barrage.",
+    "zh": "罗德岛狙击干员陨星，随时准备以炮火覆盖敌人。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She will fulfill her duties as long as she still has a weapon in her hands.",
+    "zh": "只要武器在手，职责就不能落下。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-3",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 770,
+            "atk": 377,
+            "def": 59,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 963,
+            "atk": 539,
+            "def": 77,
+            "magicResistance": 0,
+            "cost": 24,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-8",
+      "evolveCost": [
+        {
+          "id": "3241",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 963,
+            "atk": 539,
+            "def": 77,
+            "magicResistance": 0,
+            "cost": 26,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1204,
+            "atk": 674,
+            "def": 98,
+            "magicResistance": 0,
+            "cost": 26,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-10",
+      "evolveCost": [
+        {
+          "id": "3243",
+          "count": 3
+        },
+        {
+          "id": "30104",
+          "count": 7
+        },
+        {
+          "id": "30083",
+          "count": 14
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1204,
+            "atk": 674,
+            "def": 98,
+            "magicResistance": 0,
+            "cost": 28,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1505,
+            "atk": 865,
+            "def": 116,
+            "magicResistance": 0,
+            "cost": 28,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.8,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_meteo_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.35
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.4
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.45
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.55
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.85
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Buckshot",
+            "zh": "霰射弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack AoE <@ba.vup>expands</> for the next attack, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage",
+            "zh": "下次攻击的爆炸范围<@ba.vup>扩大</>，造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.15
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30064",
+              "count": 2
+            },
+            {
+              "id": "30043",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "30064",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_meteo_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "def": -130,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "def": -130,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "def": -130,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "def": -170,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "def": -170,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "def": -170,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "def": -210,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.6,
+            "def": -250,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "def": -290,
+            "duration": 10
+          }
+        },
+        {
+          "name": {
+            "en": "High-Explosive Shell",
+            "zh": "高爆弹头",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Immediately launches a firebomb, dealing <@ba.vup>{atk_scale:0%}</> of ATK Physical damage to all hit targets within range and their DEF <@ba.vup>-{-def}</> for <@ba.vup>{duration}</> seconds",
+            "zh": "立即发射一枚火焰弹，对目标范围内所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，所有命中目标在<@ba.vup>{duration}</>秒内防御力<@ba.vup>-{-def}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 3,
+            "def": -330,
+            "duration": 10
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "30053",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30043",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30053",
+          "count": 2
+        },
+        {
+          "id": "30073",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Blast Attachment Refit",
+            "zh": "爆破附着改装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 15% chance to increase the ATK of the current attack by 60% when using Normal Attacks and skills",
+            "zh": "普通攻击和技能释放时，15%几率当次攻击的攻击力+60%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.6,
+            "prob": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "Blast Attachment Refit",
+            "zh": "爆破附着改装",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Has a 30% chance to increase the ATK of the current attack by 60% when using Normal Attacks and skills",
+            "zh": "普通攻击和技能释放时，30%几率当次攻击的攻击力+60%",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.6,
+            "prob": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +35",
+        "zh": "攻击力+35",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 85
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_meteo",
+      "name": {
+        "en": "Meteorite's Badge",
+        "zh": "陨星证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "original",
+      "description": {
+        "en": "Operator Meteorite has demonstrated a remarkable aptitude for inflicting physical casualties on multitudes of enemies.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Sniper Operator during field operations to exercise Artilleryman responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员陨星擅长对复数敌人造成物理杀伤\n根据外勤部门决议\n在外勤任务中划分为狙击干员，行使炮手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_meteo",
+      "name": {
+        "en": "Tag of Nameless",
+        "zh": "无名的身份牌",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_meteo",
+      "description": {
+        "en": "ID tag #1, code name 'Blunt Wedge'.\nThis was her first time receiving a commission as a mercenary. The mission: the most ordinary caravan escort. The journey was estimated at five days, and on the evening of day 2, she picked up on another group of mercenaries targeting the caravan. In the dark, she readied her defenses. Early morning on day 3, she noticed the single mercenary squad tracking them had become two, and a plan to flee with her life began to form in her head. On the night of day 4, the two squads launched simultaneous raids, but took each other as enemies and initiated a firefight, in the end taking everyone down. No survivors.\n......\nID tag #10, code name 'Heavy Arrow'.\nThe mission: escort refugees to a neighboring town. Mixed in with them was likely a military spy, but that had nothing to do with her. All she had to do was hold off a different mercenary group who had come for their lives. Aiming to rescue a Sarkaz child who had drifted away from the group, she spent three days and nights in a confrontation with an enemy sniper, in the end shooting them dead. When she located their position, she found the sniper she had shot was a Sarkaz too—and not much older than the child she was saving. After that, she left Kazdel.\n......\nID tag #17, code name 'Meteorite'. The final tag.\nShe was hired by some organized militia in Kazimierz to take part in guerilla combat against the Ursus Army. Unlike her former missions, the guerilla squad was as close as family. They also didn't treat her in any particular way for being an outsider, a Sarkaz mercenary. She even made a friend among them. Never do good things last forever though, and due to a defector, the guerillas took a devastating attack. When she clawed her way out of that sea of flames by the skin of her teeth, she saw her friend at her side throw a disgusted, furious look her way.\n......\nAt present, this string of tags has been handed over to Rhodes Island along with a list of names. The 'Meteorite' tag is a very unusual one, with no blood type on it, nor any squad affiliation. Just the code name, engraved in its center. On the back, a phrase is etched in the Sarkaz language.\n'May the Sarkaz never suffer again.'",
+        "zh": "第一块身份牌，代号“钝镝”。\n这是她第一次以佣兵的身份接受委托。任务是最常见的护送商队。行程大约有五天，在出发的第二天晚上，她注意到有另一伙雇佣兵盯上了商队，她暗中做好了防备。在第三天凌晨，她注意到跟踪商队的雇佣兵队伍变成了两支，她已经开始思考逃生的办法。在第四天夜里，两支雇佣兵队伍同时发起突袭，却将对方当成敌人开始交火，最终同归于尽，无一人生还。\n……\n第十块身份牌，代号“重矢”。\n任务是护送一众难民撤离到隔壁城镇，难民中应该是混入了一位军事间谍，但这与她无关。她要做的只是阻挡住前来追杀的另一伙雇佣兵。她为了救下一个脱队的萨卡兹孩子，与敌军狙击手对峙了三天三夜，最终击毙了敌人。当她找到敌人的狙击阵地时，发现被她击毙的那名狙击手也是一个萨卡兹——比她救下来的孩子大不了几岁。在那之后，她离开了卡兹戴尔。\n……\n第十七块身份牌，代号“陨星”。最后一块身份牌。\n她受雇于卡西米尔某民兵组织，与乌萨斯军队进行游击作战。与以往的任务不同，游击队成员彼此亲如家人，也没有因为她是外雇的萨卡兹佣兵而特殊对待。她甚至在这里交到了一位朋友。但是好景不长，游击队因有人叛变而受到毁灭性的打击。当她九死一生从那片火海中逃离出来的时候——看到身边的朋友对她投来愤怒而怨恨的眼神。\n……\n如今，这一串身份牌连同一份名单交给了罗德岛。 “陨星”的身份牌很特殊，上面没有血型，更没有所属部队信息，只有代号印在正中间。在身份牌背面，用萨卡兹语印着一句话。\n“愿萨卡兹再无苦难。”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30064",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30024",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30084",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

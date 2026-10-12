@@ -1,0 +1,1072 @@
+{
+  "id": "char_171_bldsk",
+  "name": {
+    "en": "Warfarin",
+    "zh": "华法琳",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R106",
+  "rarity": 5,
+  "class": "MEDIC",
+  "subclass": "physician",
+  "faction": "rhodes",
+  "position": "RANGED",
+  "tagList": [
+    "Healing",
+    "Support"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Warfarin, Medic Operator of Rhodes Island, sees the safety of her fellow Operators as her duty.",
+    "zh": "罗德岛医疗干员华法琳，以维护干员生命安全为己任。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Of course, medical research is a tiny little bit more important.",
+    "zh": "当然了，医学研究要稍微重要那么一点点。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 805,
+            "atk": 172,
+            "def": 55,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1135,
+            "atk": 282,
+            "def": 80,
+            "magicResistance": 0,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3261",
+          "count": 4
+        },
+        {
+          "id": "30052",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1135,
+            "atk": 282,
+            "def": 80,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1368,
+            "atk": 404,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "3-3",
+      "evolveCost": [
+        {
+          "id": "3263",
+          "count": 3
+        },
+        {
+          "id": "30064",
+          "count": 5
+        },
+        {
+          "id": "30023",
+          "count": 17
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1368,
+            "atk": 404,
+            "def": 100,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1520,
+            "atk": 505,
+            "def": 125,
+            "magicResistance": 0,
+            "cost": 19,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.85,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_bldsk_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.11,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.12,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.13,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.15,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.16,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.17,
+            "ct": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.19,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.21,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.23,
+            "ct": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Emergency Triage",
+            "zh": "紧急包扎",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "The next heal restores an additional <@ba.vup>{hp_ratio:0%}</> of its target's Max HP\n<@ba.rem>Only available when the target's HP is lower than 50%; Can store {ct} charge(s)</>",
+            "zh": "下次治疗额外回复目标最大生命值的<@ba.vup>{hp_ratio:0%}</>\\n<@ba.rem>只当目标生命值不满一半时才会触发，可充能{ct}次</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": 0,
+          "spType": "INCREASE_WHEN_ATTACK",
+          "spCost": 4,
+          "initSp": 0,
+          "blackboard": {
+            "hp_ratio": 0.25,
+            "ct": 4
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "30024",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "30094",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_bldsk_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.3,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.35,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.4,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.45,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.5,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 40,
+          "blackboard": {
+            "atk": 0.55,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.6,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.7,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 45,
+          "blackboard": {
+            "atk": 0.8,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        },
+        {
+          "name": {
+            "en": "Unstable Plasma",
+            "zh": "不稳定血浆",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Warfarin and a random ally within range obtain the following status:\nATK <@ba.vup>+{atk:0%}</> and loses <@ba.vdown>{hp_ratio:0%}</> of Max HP every second, lasting for <@ba.vup>{duration}</> seconds",
+            "zh": "自身和攻击范围内随机一名我方单位获得以下状态：\\n攻击力<@ba.vup>+{atk:0%}</>，每秒流失<@ba.vdown>{hp_ratio:0%}</>最大生命值，持续<@ba.vup>{duration}</>秒",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 50,
+          "blackboard": {
+            "atk": 0.9,
+            "hp_ratio": 0.03,
+            "interval": 1,
+            "duration": 15
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "30013",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "30034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30013",
+          "count": 4
+        },
+        {
+          "id": "30063",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Blood Sample Recycle",
+            "zh": "血液样本回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 1 Skill Point to this Operator and a random ally within range when an enemy within range is killed",
+            "zh": "攻击范围内有敌人倒下时，为自身和范围内随机一名友方单位回复1点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "bldsk_t_1[self].sp": 1,
+            "bldsk_t_1[rand].sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Blood Sample Recycle",
+            "zh": "血液样本回收",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores 2 Skill Points to this Operator and a random ally within range when an enemy within range is killed",
+            "zh": "攻击范围内有敌人倒下时，为自身和范围内随机一名友方单位回复2点技力",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "bldsk_t_1[self].sp": 2,
+            "bldsk_t_1[rand].sp": 2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +27",
+        "zh": "攻击力+27",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -6 sec",
+        "zh": "再部署时间-6秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 75
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_bldsk",
+      "name": {
+        "en": "Warfarin's Badge",
+        "zh": "华法琳证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_bldsk",
+      "description": {
+        "en": "Operator Warfarin has demonstrated a remarkable aptitude for healing teammates in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Medic Operator during field operations to exercise Medic responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员华法琳擅长在战场上为干员提供治疗\n根据外勤部门决议\n在外勤任务中划分为医疗干员，行使医师职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_bldsk",
+      "name": {
+        "en": "Emergency Reserves",
+        "zh": "应急储备",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_bldsk",
+      "description": {
+        "en": "[An Accountable Answering of Assorted Queries from Rhodes Island Operators on the Harvesting of Blood Bank Samples]\nThe elements of Rhodes Island's physical examinations are made available to all examinees, and are added or removed as per the examinee's wishes. All procedures and processes are completely transparent, and no part of them is in any way deceptive.\nWe keep strict confidentiality on patient information, and our independently founded blood bank has not, to this day, lost a single blood sample. Yes, not once.\nRhodes Island has confidence that we keep these samples safe under comprehensive surveillance, and it is only during treatment of disease that... what? Who's the supervisor of the bank?\nAhem. That would be Dr. Warfarin, one of Rhodes Island's most longstanding members.\nNo one could ever steal blood samples from under a Vampire's nose. I believe that it is precisely because Dr. Warfarin serves as its supervisor that we can confidently conclude that Rhodes Island's blood bank is not under any external threat.\n[Extract from Warfarin's diary]\nBlood tests on the new operators finished today. Haven't we had a few too many new ops lately? Feline, Perro, Liberi, Sarkaz... one lone doctor drawing all these vials from all these people... At first I was stirring a little at the scent, but by the end I was almost sick of the sight of it.\nKal'tsit really needs to laud me for my paranormal self-control. Forget all the young breeds running amok out there these days... Not even the old guard of our race could match my endurance.\n...Forget that, actually. Comparing yourself to them at anything is stupid.\nBack to the topic at hand. Collecting a few extra samples while I'm off the clock should be fine, right? That Skadi op, not to mention Specter and Gladiia... it's not every day we have so many gathered aboard. It's too good a chance to pass up!\nAlso, the Doctor.\nOh, the Doctor. Just a glance makes my researcher's heart tickle. It's so strange... where does that scent come from? Why am I so strongly drawn to it? Do other Vampires have the same reaction? Does Closure... Actually, never mind Closure. She's an exception.\nIf my judgment is correct, the Doctor's body should be hiding some kind of secret. I bet Kal'tsit knows it, but she keeps tight lips, and she wouldn't want anyone else to go digging.\nOh, that Kal'tsit! Kal'tsit! How can you dangle a chance to bare the truth in front of me like this, then forbid me from looking into it?\nCome to think of it, she seems less uptight lately. What if I just... found a chance and gave it a shot?\nHmm... I'll need to plan this one out...",
+        "zh": "【医疗部干员针对血库样本采集问题的一次对外答疑】\n罗德岛的体检项目完全向所有受检者公开，并根据受检者的意愿进行项目的增减，所有手续和流程都完全透明，不存在任何欺瞒的部分。\n我们会对患者的信息进行严格的封存保密，截至目前，我们建立的血库从来没有丢失过任何一件血液样本。是的，从来没有过。\n罗德岛有信心，我们能够确保这些样本处在安全的监控之下，仅用于疾病的治疗……什么？您问血库的管理人？\n咳咳，管理血库的是罗德岛的元老成员之一，华法琳医生。\n没有人能在血魔眼皮底下偷走任何一滴血液。我认为，正因血库的管理人是华法琳医生，我们才有信心断定罗德岛的血库绝不会受到外来的威胁。\n【华法琳的日志摘选】\n新干员的采血化验今天就结束了，最近新成员是不是有点太多了？菲林、佩洛、黎博利、萨卡兹……这么多人，一人抽好几管血，最开始闻味儿还稍微有点感觉，到最后看都感觉要看饱了。\n凯尔希真该夸一下我非凡的自控力，不说现在那些在外头胡来不知收敛的小辈，就算是族里的那些老家伙，在这方面的耐力肯定也都比不上我。\n……还是算了，和那些家伙有什么好比的。\n不过话又说回来了，工作之余，稍微多收集一点备用应该还是没什么问题的吧？难得罗德岛能聚集这么多人，那个叫斯卡蒂的干员，还有幽灵鲨和歌雷蒂娅，这么好的机会，不活用也太可惜了！\n以及，博士。\n博士啊。真是光看着就让研究者心痒痒，奇怪了，那种香味来源于何处？为什么我会受到如此强烈的吸引？其他血魔对此会有什么样的反应？可露希尔……算了，她算是个例外。\n如果我的判断没有错，博士的身体应该藏着什么秘密。这个秘密凯尔希一定知道，但她不愿意说，也不想让别人挖掘。\n天啊，凯尔希这个女人！怎么能把揭晓真相的机会摆在我面前，又禁止我探索？\n最近凯尔希看得也没那么紧了，要不然，找个机会试试看？\n嗯，得好好计划一下……",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30084",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30074",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31034",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "id": "char_151_myrtle",
+  "name": {
+    "en": "Myrtle",
+    "zh": "桃金娘",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R108",
+  "rarity": 4,
+  "class": "PIONEER",
+  "subclass": "bearer",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "DP-Recovery",
+    "Healing"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Myrtle, Vanguard of Rhodes Island, is ready to lead the charge into battle!",
+    "zh": "罗德岛先锋干员桃金娘，将会带领其他干员冲锋陷阵！",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "Maybe she should have a talk with Zima.",
+    "zh": "或许可以让她和凛冬交流一下。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 658,
+            "atk": 231,
+            "def": 138,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 902,
+            "atk": 331,
+            "def": 193,
+            "magicResistance": 0,
+            "cost": 8,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 3
+        },
+        {
+          "id": "30052",
+          "count": 1
+        },
+        {
+          "id": "30042",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 902,
+            "atk": 331,
+            "def": 193,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1142,
+            "atk": 436,
+            "def": 255,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3212",
+          "count": 5
+        },
+        {
+          "id": "30093",
+          "count": 12
+        },
+        {
+          "id": "30063",
+          "count": 8
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1142,
+            "atk": 436,
+            "def": 255,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1565,
+            "atk": 520,
+            "def": 300,
+            "magicResistance": 0,
+            "cost": 10,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_assist_cost[2]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 8,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 8,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 8,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 9,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 9,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 9,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 11,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 12,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support β",
+            "zh": "支援号令·β型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 13,
+          "blackboard": {
+            "value": 14,
+            "interval": 0.57,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 1
+            },
+            {
+              "id": "30023",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30064",
+              "count": 1
+            },
+            {
+              "id": "30044",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_myrtle_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 5,
+          "blackboard": {
+            "attack@heal_scale": 0.25,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 5,
+          "blackboard": {
+            "attack@heal_scale": 0.25,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 5,
+          "blackboard": {
+            "attack@heal_scale": 0.25,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 6,
+          "blackboard": {
+            "attack@heal_scale": 0.3,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 6,
+          "blackboard": {
+            "attack@heal_scale": 0.3,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 6,
+          "blackboard": {
+            "attack@heal_scale": 0.3,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 7,
+          "blackboard": {
+            "attack@heal_scale": 0.35,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 8,
+          "blackboard": {
+            "attack@heal_scale": 0.4,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 9,
+          "blackboard": {
+            "attack@heal_scale": 0.45,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Healing Wings",
+            "zh": "治愈之翼",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration, healing a nearby friendly unit's HP equal to <@ba.vup>{attack@heal_scale:0%} of Myrtle's ATK</>",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用，并每秒治疗周围一名友方单位相当于桃金娘攻击力<@ba.vup>{attack@heal_scale:0%}</>的生命",
+            "isMachineTranslation": false
+          },
+          "rangeId": "x-4",
+          "skillType": "MANUAL",
+          "duration": 16,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 10,
+          "blackboard": {
+            "attack@heal_scale": 0.5,
+            "interval": 1,
+            "value": 16,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 1
+            },
+            {
+              "id": "30033",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30074",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30051",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30023",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30033",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Glistening",
+            "zh": "浮光跃金",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All [Vanguard] Operators recover 25 HP per second while Myrtle is deployed",
+            "zh": "在场时，所有【先锋】干员每秒回复25点生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "hp_recovery_per_sec": 25
+          }
+        },
+        {
+          "name": {
+            "en": "Glistening",
+            "zh": "浮光跃金",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "All [Vanguard] Operators recover 28<@ba.talpu> (+3)</> HP per second while Myrtle is deployed",
+            "zh": "在场时，所有【先锋】干员每秒回复28<@ba.talpu>（+3）</>点生命",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "hp_recovery_per_sec": 28
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -4 sec",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DEF +22",
+        "zh": "防御力+22",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "def": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_myrtle",
+      "name": {
+        "en": "Myrtle's Badge",
+        "zh": "桃金娘证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_myrtle",
+      "description": {
+        "en": "Operator Myrtle has demonstrated a remarkable aptitude for raising allied morale in the field.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Vanguard Operator during field operations to exercise Standard Bearer responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员桃金娘擅长在战场上振奋同伴士气\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使执旗手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_myrtle",
+      "name": {
+        "en": "Private Collections",
+        "zh": "“私人收藏”",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_myrtle",
+      "description": {
+        "en": "MISSING\nDiscovered extremely important treasure missing while tidying vault. If anyone finds it, would appreciate it returned to me. THANK YOU.\nCONTACT: Myrtle\n(A handwritten addendum follows.)\nDurin says this doesn't actually tell anyone what I lost, so I should add some details about the treasure.\nDESCRIPTION: Tiny, thin card, my name written on it, usually kept in a beautiful card holder. Best thing I ever got on the surface.\n(Handwriting changes color at this point.)\nHow can no one have seen my treasure or my vault? Impossible! But Durin says I have to write about it.\nEvery child of First Avenue keeps a vault where they stow their valuables away. For example, a door bolt you can use as a gun. (The evil neighbors on the commercial street started copying that, the scoundrels.) As Generalissimo of First Avenue and Third Commercial, my collection was naturally the richest, enough to move anyone who saw it, not to mention the fine collection from the surface...\nDurin stole my pen just now. Said I write too much about nothing and to get to the point. Who cares about her! Why isn't she asleep yet?\nEXAMPLE FROM COLLECTION: Tablecloth that never ever gets dirty (my first treasure). Apparently made of materials my dad invented. Paint and draw all you want and it stays clean. Mysterious! I had to listen to my dad go on forever before I understood how it worked. It looks a lot like a flag, so I decided I would campaign everywhere with it. People back home teased me about it, but it stands witness to my great journey as Generalissimo. I didn't think twice before taking it with me to the surface.\nMy lost treasure is about on par with that tablecloth.\n(Newer handwriting follows, ink still wet.)\nIt's not about the apple! Yes, the apple is a treasure too, but I didn't lose it, I loaned it to Engineering!\nADDITIONAL SUPPLEMENT! The missing treasure was the first thing I obtained when I came aboard, and the operators said it marked me as a member of Rhodes Island. I didn't put any stock in it at first, but came to find that that's just how great Rhodes is: there are new things all over, the operators are wonderful and listen to what I have to say and trust my talent as a generalissimo, and I can be of help to everyone too. And most importantly, nobody laughs at my flag, and the Doctor loves it!\nI'm very happy at Rhodes Island, and that thing has become important to me, and now a treasure.\nI hope that finally clear things up.\n......\n'Myrtle, would that treasure you lost happen to be your... work ID?'\n'That does ring a bell or three... oooohhh, I remember! Yes, that's it!'\n'Um... isn't it right there on your chest, then?'\n'Huh?!'",
+        "zh": "寻物启事\n本人在整理藏宝库的时候，发现很重要的宝物不见了。有谁捡到了麻烦还给我，谢谢。\n联系人：桃金娘\n（下面是补上的笔迹）\n杜林说这么写没人知道我丢的是什么，叫我再补充一点关于宝物的信息。\n宝物描述：小小的、薄薄的卡片，上面写着我的名字，平时插在漂亮的卡夹里。我在地上拿到的最好的东西。\n（笔迹换了一种颜色）\n其他人都没见过宝物和藏宝库吗？不可能吧！但杜林坚持让我写上去。\n每一个第一大道的孩子都有一个藏宝库，把自己看重的东西收藏进去，比如能当铳使的门栓。（后来这份特色也被隔壁商店街的家伙们学走了，他们太可恶了。）作为统率第一大道及三条商店街的大将军，我的收藏自然是最丰富的，任何人看到都会心动，更别说还有在地上收集到的好东西……\n刚刚笔被杜林抢走了，她说我写了太多废话，让我切入重点。好烦，她怎么还没睡着。\n收藏举例：绝对弄不脏的桌布（我的第一件宝物）。据说是用爸爸发明的材料制成的，涂涂画画都弄不脏，好神奇，听爸爸说了半天才把原理弄懂。因为看起来很像旗子，我那时就决定让它跟随我征战四方。尽管家乡有人拿它调侃我，可它的确见证了我当上大将军的征程。来地上前，我也毫不犹豫地把它带走啦。\n丢失的那件宝物呢，就和这件桌布的地位差不多。\n（更新的笔迹，墨水还没有干）\n不是那个苹果啦！那虽然也算个宝物，但没有被搞丢，是我借给工程部的！\n追加补充！不见了的那个宝物，是我来到罗德岛拿到的第一样东西，干员说这是我作为罗德岛一员的标志。一开始我没当回事，后来才发现罗德岛挺不错的：到处有新奇事，干员们都很好，肯听我说话，信任我作为大将军的才能，我还能帮上大家的忙。最重要的是，没人会笑话我的旗子，博士还很喜欢呢！\n在罗德岛我很开心，这样东西也就重要起来，成了我的宝物。\n这下总该明白了吧。\n……\n“桃金娘，你丢了的那个宝物，是不是……你的工牌？”\n“好像听到过这个说法……噢噢噢，我想起来了！是的！”\n“可是……它不正好好地挂在你的胸前吗？”\n“欸？！”",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "30103",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 20000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 15
+          },
+          {
+            "id": "30033",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 25000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 1
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 5
+          },
+          {
+            "id": "31053",
+            "count": 6
+          },
+          {
+            "id": "4001",
+            "count": 30000
+          }
+        ]
+      }
+    }
+  ]
+}

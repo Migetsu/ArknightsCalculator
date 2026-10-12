@@ -1,0 +1,1150 @@
+{
+  "id": "char_4237_jcinta",
+  "name": {
+    "en": "Jacinta",
+    "zh": "嘉辛塔",
+    "isMachineTranslation": true
+  },
+  "appellation": "Jacinta",
+  "displayNumber": "RB20",
+  "rarity": 5,
+  "class": "PIONEER",
+  "subclass": "bearer",
+  "faction": "rim",
+  "position": "MELEE",
+  "tagList": [
+    "费用回复",
+    "防护"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "努力活得足够精彩的嘉辛塔，不会停下向前奔跑的脚步。",
+    "zh": "努力活得足够精彩的嘉辛塔，不会停下向前奔跑的脚步。",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "她想要快一点，再快一点，最好能够超过时间。",
+    "zh": "她想要快一点，再快一点，最好能够超过时间。",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 651,
+            "atk": 223,
+            "def": 179,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 892,
+            "atk": 319,
+            "def": 249,
+            "magicResistance": 0,
+            "cost": 9,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3211",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 892,
+            "atk": 319,
+            "def": 249,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 1130,
+            "atk": 421,
+            "def": 328,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3213",
+          "count": 3
+        },
+        {
+          "id": "31044",
+          "count": 7
+        },
+        {
+          "id": "30073",
+          "count": 20
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1130,
+            "atk": 421,
+            "def": 328,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1548,
+            "atk": 502,
+            "def": 387,
+            "magicResistance": 0,
+            "cost": 11,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.3,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_assist_cost[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 31,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 11,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 12,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 13,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 14,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Support γ",
+            "zh": "支援号令·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Stops attacking and recovers <@ba.vup>{value}</> DP over the skill duration",
+            "zh": "停止攻击，持续时间内回复总共<@ba.vup>{value}</>点部署费用",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 8,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 15,
+          "blackboard": {
+            "value": 18,
+            "interval": 0.44,
+            "cost": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "31113",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31104",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_jcinta_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 5,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.1,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.1,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 5,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.2,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.12,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 5,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.2,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.15,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 7,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.4,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.15,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 7,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.4,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.17,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 7,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.7,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.17,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 9,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.7,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.22,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 11,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.9,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.22,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 13,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 1.9,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.24,
+            "attack@heal_max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "伞下乘荫",
+            "zh": "伞下乘荫",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "zh": "停止攻击，逐渐回复总共<@ba.vup>{value}</>点部署费用，技能持续期间使天赋效果的范围扩大且效果提升至<@ba.vup>{talent_scale}</>倍，并每秒治疗天赋范围内的<@ba.vup>{attack@heal_max_target}</>名友方干员相当于嘉辛塔<@ba.vup>{attack@heal_scale:0%}</>攻击力的生命值",
+            "isMachineTranslation": true
+          },
+          "rangeId": "x-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 15,
+          "blackboard": {
+            "value": 27,
+            "interval": 1.11,
+            "cost": 1,
+            "talent_scale": 2,
+            "talent_range_flag": 1,
+            "attack@heal_scale": 0.25,
+            "attack@heal_max_target": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "31053",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 3
+            },
+            {
+              "id": "31074",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31034",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31013",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30103",
+          "count": 3
+        },
+        {
+          "id": "30043",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "淑女风范",
+            "zh": "淑女风范",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "部署后，嘉辛塔自身与周围八格的友方单位获得8%的<$ba.airprotect>对空庇护</>",
+            "zh": "部署后，嘉辛塔自身与周围八格的友方单位获得8%的<$ba.airprotect>对空庇护</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_resistance": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "淑女风范",
+            "zh": "淑女风范",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "部署后，嘉辛塔自身与周围八格的友方单位获得10%<@ba.talpu>（+2%）</>的<$ba.airprotect>对空庇护</>",
+            "zh": "部署后，嘉辛塔自身与周围八格的友方单位获得10%<@ba.talpu>（+2%）</>的<$ba.airprotect>对空庇护</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_resistance": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "淑女风范",
+            "zh": "淑女风范",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "部署后，嘉辛塔自身与周围八格的友方单位获得13%的<$ba.airprotect>对空庇护</>",
+            "zh": "部署后，嘉辛塔自身与周围八格的友方单位获得13%的<$ba.airprotect>对空庇护</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "damage_resistance": 0.13
+          }
+        },
+        {
+          "name": {
+            "en": "淑女风范",
+            "zh": "淑女风范",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "部署后，嘉辛塔自身与周围八格的友方单位获得15%<@ba.talpu>（+2%）</>的<$ba.airprotect>对空庇护</>",
+            "zh": "部署后，嘉辛塔自身与周围八格的友方单位获得15%<@ba.talpu>（+2%）</>的<$ba.airprotect>对空庇护</>",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "damage_resistance": 0.15
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "再部署时间-4秒",
+        "zh": "再部署时间-4秒",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "防御力+23",
+        "zh": "防御力+23",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "天赋效果增强",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "部署费用-1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 100,
+        "def": 45
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_jcinta",
+      "name": {
+        "en": "嘉辛塔证章",
+        "zh": "嘉辛塔证章",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_jcinta",
+      "description": {
+        "en": "干员嘉辛塔擅长在战场上振奋同伴士气\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使执旗手职责\n特别颁发此证章\n以兹证明",
+        "zh": "干员嘉辛塔擅长在战场上振奋同伴士气\n根据外勤部门决议\n在外勤任务中划分为先锋干员，行使执旗手职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "id": "uniequip_002_jcinta",
+      "name": {
+        "en": "弹射起步",
+        "zh": "弹射起步",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_jcinta",
+      "description": {
+        "en": "“长耳朵短耳朵们，欢迎来到雷姆必拓第三十四届改装赛车赛！\n“不论是用废弃矿车改造，还是把自家拉瓶树水的运载车开来，只要能让载具启动，你就可以来到赛场，一展你的改装巧思与车技！话不多说，让我们看看今年的参赛选手——嗯？这辆小白车从外观上看十分普通，驾驶员小姐，想请问一下，你的改装思路是什么？”\n“嘿嘿，先保密，等我拿了第一就告诉你！”\n“哈哈，这么有信心？那就期待你这次的表现了！好，各选手就位——比赛开始！”\n（数台发动机的轰鸣声）\n“嚯，那辆看上去最普通的小白车居然一下冲到了最前面——爆发性很好，看来刚才那位小姐的实力和车的动力都很强劲！接下来是越障路段——减震和稳定性很不错，改造这台车的人不可小觑啊！几个连续的急转，相当考验车技和车身的灵活度——嗯？突然从车里飞出在四周飞舞的那群小飞虫是什么？好像是一些器械，看上去它们在辅助扫描地形——急转完美通过，很有意思的改装！小白车已经把对手远远甩开，难道胜负已定？\n“——等等，突发情况！为了躲避突然窜进场的沙地兽，小白车急刹卡进了防护栏之间！好在驾驶员很快就从里面出来了，看起来没有受伤，不过她还能继续吗？之前拉开的距离逐渐缩短，难道她要与冠军失之交臂了？！\n“——喔喔！她跑到观众席，借来了一个撬棍模样的东西，是准备把车撬出来继续开吗？真的能做到吗？啊啊，在注意到那个递给她撬棍的阿纳缇小姑娘哭了之后，她好像更卖力了！不对，那好像不是撬棍，而是一把遮阳伞——车竟然真的被撬出来了，看来这把伞也很不一般啊！驾驶员回到了车上，重新开始起步，冲刺——第一名！当之无愧的第一名！”\n（嘈杂的欢呼声）\n“我们的第一名，请说说获奖感言吧，哎哎哎，怎么抢我的话筒——”\n“呼、呼，大家！看到了吗？这辆车扎实的工艺、完美的设计、能够获得第一名的实力——都源自工程师阿梅利亚的用心打造！当然，比这些还要出色的，是她最拿手的远程通讯技术！而我本人作为她的投资人，绝对相信她能够成功！我们合办了一家远程通讯公司，欢迎大家了解！”\n“等等哎，是让你说获奖感言不是打广告！”",
+        "zh": "“长耳朵短耳朵们，欢迎来到雷姆必拓第三十四届改装赛车赛！\n“不论是用废弃矿车改造，还是把自家拉瓶树水的运载车开来，只要能让载具启动，你就可以来到赛场，一展你的改装巧思与车技！话不多说，让我们看看今年的参赛选手——嗯？这辆小白车从外观上看十分普通，驾驶员小姐，想请问一下，你的改装思路是什么？”\n“嘿嘿，先保密，等我拿了第一就告诉你！”\n“哈哈，这么有信心？那就期待你这次的表现了！好，各选手就位——比赛开始！”\n（数台发动机的轰鸣声）\n“嚯，那辆看上去最普通的小白车居然一下冲到了最前面——爆发性很好，看来刚才那位小姐的实力和车的动力都很强劲！接下来是越障路段——减震和稳定性很不错，改造这台车的人不可小觑啊！几个连续的急转，相当考验车技和车身的灵活度——嗯？突然从车里飞出在四周飞舞的那群小飞虫是什么？好像是一些器械，看上去它们在辅助扫描地形——急转完美通过，很有意思的改装！小白车已经把对手远远甩开，难道胜负已定？\n“——等等，突发情况！为了躲避突然窜进场的沙地兽，小白车急刹卡进了防护栏之间！好在驾驶员很快就从里面出来了，看起来没有受伤，不过她还能继续吗？之前拉开的距离逐渐缩短，难道她要与冠军失之交臂了？！\n“——喔喔！她跑到观众席，借来了一个撬棍模样的东西，是准备把车撬出来继续开吗？真的能做到吗？啊啊，在注意到那个递给她撬棍的阿纳缇小姑娘哭了之后，她好像更卖力了！不对，那好像不是撬棍，而是一把遮阳伞——车竟然真的被撬出来了，看来这把伞也很不一般啊！驾驶员回到了车上，重新开始起步，冲刺——第一名！当之无愧的第一名！”\n（嘈杂的欢呼声）\n“我们的第一名，请说说获奖感言吧，哎哎哎，怎么抢我的话筒——”\n“呼、呼，大家！看到了吗？这辆车扎实的工艺、完美的设计、能够获得第一名的实力——都源自工程师阿梅利亚的用心打造！当然，比这些还要出色的，是她最拿手的远程通讯技术！而我本人作为她的投资人，绝对相信她能够成功！我们合办了一家远程通讯公司，欢迎大家了解！”\n“等等哎，是让你说获奖感言不是打广告！”",
+        "isMachineTranslation": true
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31014",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31094",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31114",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}

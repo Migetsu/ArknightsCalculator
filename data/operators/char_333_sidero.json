@@ -1,0 +1,1044 @@
+{
+  "id": "char_333_sidero",
+  "name": {
+    "en": "Sideroca",
+    "zh": "铸铁",
+    "isMachineTranslation": false
+  },
+  "appellation": " ",
+  "displayNumber": "R126",
+  "rarity": 5,
+  "class": "WARRIOR",
+  "subclass": "artsfghter",
+  "faction": "minos",
+  "position": "MELEE",
+  "tagList": [
+    "Survival",
+    "DPS"
+  ],
+  "servers": [
+    "cn",
+    "global"
+  ],
+  "itemUsage": {
+    "en": "Sideroca, a reliable mercenary from Corinia.",
+    "zh": "科林尼亚佣兵铸铁，正在寻求可靠的雇主。",
+    "isMachineTranslation": false
+  },
+  "itemDesc": {
+    "en": "She desires trust over fealty or glory.",
+    "zh": "比起忠诚和荣耀，她更渴望信赖。",
+    "isMachineTranslation": false
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1297,
+            "atk": 266,
+            "def": 166,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1707,
+            "atk": 386,
+            "def": 238,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3221",
+          "count": 4
+        },
+        {
+          "id": "30012",
+          "count": 7
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1707,
+            "atk": 386,
+            "def": 238,
+            "magicResistance": 10,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2162,
+            "atk": 502,
+            "def": 306,
+            "magicResistance": 10,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3223",
+          "count": 3
+        },
+        {
+          "id": "31014",
+          "count": 9
+        },
+        {
+          "id": "30043",
+          "count": 13
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2162,
+            "atk": 502,
+            "def": 306,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 2845,
+            "atk": 620,
+            "def": 369,
+            "magicResistance": 15,
+            "cost": 23,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.25,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skcom_heal_self[3]",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 5,
+          "blackboard": {
+            "heal_scale": 0.3
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 5,
+          "blackboard": {
+            "heal_scale": 0.33
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 5,
+          "blackboard": {
+            "heal_scale": 0.36
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 8,
+          "blackboard": {
+            "heal_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 8,
+          "blackboard": {
+            "heal_scale": 0.43
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 8,
+          "blackboard": {
+            "heal_scale": 0.47
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 24,
+          "initSp": 9,
+          "blackboard": {
+            "heal_scale": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 10,
+          "blackboard": {
+            "heal_scale": 0.55
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 11,
+          "blackboard": {
+            "heal_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Regeneration γ",
+            "zh": "生命回复·γ型",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Restores HP by <@ba.vup>{heal_scale:0%}</> of Max HP",
+            "zh": "立即恢复最大生命的<@ba.vup>{heal_scale:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 0,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 12,
+          "blackboard": {
+            "heal_scale": 0.7
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "30103",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "30074",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31014",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_sidero_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.4,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 39,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.45,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 25,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.5,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 37,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.6,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.65,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 26,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.7,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 27,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.8,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 28,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 33,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 0.9,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 29,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.07
+          }
+        },
+        {
+          "name": {
+            "en": "Restorative Surge",
+            "zh": "破浪回神",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "Attack Range <@ba.vdown>decreases</>, ATK <@ba.vup>+{atk:0%}</>, restores <@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</> Max HP each second",
+            "zh": "攻击距离<@ba.vdown>缩短</>，攻击力<@ba.vup>+{atk:0%}</>，每秒恢复最大生命的<@ba.vup>{hp_recovery_per_sec_by_max_hp_ratio:0%}</>",
+            "isMachineTranslation": false
+          },
+          "rangeId": "0-1",
+          "skillType": "MANUAL",
+          "duration": 30,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "atk": 1.1,
+            "hp_recovery_per_sec_by_max_hp_ratio": 0.08
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "31013",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "30084",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30011",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "31023",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "30073",
+          "count": 3
+        },
+        {
+          "id": "30053",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mercenary's Tenacity",
+            "zh": "佣兵之韧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After defeating 7 enemies, Sideroca gains +15 ASPD and <$ba.buffres>status resistance</>",
+            "zh": "击杀7个敌人后获得攻击速度+15和<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "times": 7,
+            "attack_speed": 15,
+            "one_minus_status_resistance": -0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Mercenary's Tenacity",
+            "zh": "佣兵之韧",
+            "isMachineTranslation": false
+          },
+          "description": {
+            "en": "After defeating 5 <@ba.talpu>(-2)</> enemies, Sideroca gains +15 ASPD and <$ba.buffres>status resistance</>",
+            "zh": "击杀5<@ba.talpu>（-2）</>个敌人后获得攻击速度+15和<$ba.buffres>抵抗</>",
+            "isMachineTranslation": false
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "times": 5,
+            "attack_speed": 15,
+            "one_minus_status_resistance": -0.5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeployment Time -10 sec",
+        "zh": "再部署时间-10秒",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Improves Talent",
+        "zh": "天赋效果增强",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "DP Cost -1",
+        "zh": "部署费用-1",
+        "isMachineTranslation": false
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 500
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_sidero",
+      "name": {
+        "en": "Sideroca's Badge",
+        "zh": "铸铁证章",
+        "isMachineTranslation": false
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_sidero",
+      "description": {
+        "en": "Operator Sideroca has demonstrated a remarkable aptitude for inflicting Arts damage on the enemy in close-quarters combat.\nThe Field Operations Department has thus passed the following resolution:\nThis operator shall be appointed a Guard Operator during field operations to exercise Arts Fighter responsibilities.\nIn witness whereof,\nThis badge is hereby conferred upon the above named.",
+        "zh": "干员铸铁擅长在近身搏斗中对敌人造成法术杀伤\n根据外勤部门决议\n在外勤任务中划分为近卫干员，行使术战者职责\n特别颁发此证章\n以兹证明",
+        "isMachineTranslation": false
+      }
+    },
+    {
+      "id": "uniequip_002_sidero",
+      "name": {
+        "en": "Ballast For Wanderlust",
+        "zh": "漫游者的压舱石",
+        "isMachineTranslation": false
+      },
+      "type": "ADVANCED",
+      "typeName2": "Y",
+      "icon": "uniequip_002_sidero",
+      "description": {
+        "en": "'Thou shalt love Corinia.' Thus reads the inscription that crowns the stone pillar marking the city's gate. Its carver must have pictured that all those departing the city would read it the moment they lifted their heads. Now, though, stallkeeps and mercenaries throng the gate as tightly as packed fins, and those who look up will see nothing but smoke-stained graffiti and billboards. These used to be Sideroca's stomping grounds as a child—she'd watch aging mercs grumble as they waited to find employers, snippets of their words helping her piece together a map in her head—the map she'd use for her escape plan one day.\nIt's been years since then. She's returned, here beneath this gate once more. The branch director who'd referred Sideroca to Rhodes Island is here with her now, touring the old haunt together and talking about old times. The director confesses that back then, more than anything, she'd rushed to sign up Sideroca because she didn't want to let a talent like her go anywhere else. Sideroca had that little something extra compared to your average drifter. Real recognizes real, so to speak.\nA freight boat needs a ballast to sail, and the wandering mercs and merchants of this citadel need something spiritual to weigh down their legs, lest they be trapped behind the mountains. Sideroca was barely an adult when she found her legs, firmer ones than any merc drowning their life away in booze. So what did keep her so rock-steady?\nShe doesn't have an answer right away. She scrutinizes Corinia once more, this city built on the idea of an eye for an eye. She can't stand the place in all its dark, bloodied glory. It sickens her how the books you learn to read from here teach you all the different names of money. She despises how children play pretend by copying the way grown-ups haggle and bargain and use each other for their own gain. To her, Corinia is one giant example of what things shouldn't be. With every step, she's reminding herself: don't end up like this. Don't end up like the merchants who peddle fakes beneath the gate, or the mercs who cry ripoff and smash their stalls up.\nA crude rock can be carved into pillar decorations or boat ballasts. Yet, if you price it as a jewel and cling to it, you'll waste all your energy and sink to the river's bottom with it. The further Sideroca travels from her homeland, the more clearly she understands this and many other things.\nShe has no interest in entering the city itself. Just as she's about to go, the branch director asks if she's ever seen how that inscription has a second half:\n'For thy countless paths begin from here.'",
+        "zh": "“你应当爱科林尼亚”。这是城门石柱顶端的铭文，刻下这句话的人大概是想让离开城邦的人一抬头就能看到。但如今城门下被摊贩和佣兵围得水泄不通，人们抬头也只能看到烟熏涂鸦和广告标语。铸铁小时候常在这里逗留，她观察那些等待雇主的衰老佣兵，从他们的抱怨中摘出只言片语，用来在脑海中构建一张地图，为自己将来的逃离计划做着准备。\n时隔多年，铸铁再次走到了这座城门下。曾经引荐铸铁加入罗德岛那位分会长陪她重游故地，聊起往事，分会长坦诚地说，其实那时她抢先与铸铁签约，更多是不甘心将这份潜力让给竞争对手。铸铁要比其他的漫游者要多出一些东西，只有同样拥有过的人才能发现。\n就像货船需要备上压舱石一样，在城邦间漫游的佣兵与行商，如果心底里没有用来压重脚步的东西，是无法走得比山更远的。铸铁当时刚刚成年不久，脚步却比那些在酒瓶中埋葬了大半人生的佣兵更加沉稳。她的心底到底装着什么重物呢？\n铸铁没有立即回答分会长。她重新观察着科林尼亚，这座由一般等价物砌成的城邦。她痛恨这座城市的每一个威名与骂名，厌恶那些印着各种钱币的识字读本，嫌弃这里的小孩过家家时会模仿市场上的大人们讨价还价、推杯换盏。科林尼亚对她来说是一个无比巨大的反例，她踏出每一步时都在警醒自己：不要变成那副样子。不要变成城门下那些卖假货的摊贩，也不要变成那些为了讹钱砸烂货摊的佣兵。\n从山中开采出的顽石，雕刻后可以装饰立柱，放进船里可以压舱。可如果将顽石贴上标价视为珍宝，抱住不知道放手，只会耗尽自己所有的力气，和石头一起沉进水底。铸铁走得离故乡越远，有些事情就想得更明白。\n铸铁没有兴趣走进城内去。临走前，分会长说，她在老城门背面看到了那条铭文的后半句：\n“你的无数条道路都从这里出发”。",
+        "isMachineTranslation": false
+      },
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "30054",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "30084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "31064",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      }
+    }
+  ]
+}
