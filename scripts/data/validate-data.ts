@@ -50,6 +50,7 @@ export async function validateDataIntegrity(): Promise<{
   let totalItemReferences = 0
   let totalSkillReferences = 0
   let totalModuleReferences = 0
+  let globalReferencingCnOnlyCount = 0
 
   // 2. Validate Constants item references
   console.log('2. Validating constants item references...')
@@ -234,6 +235,39 @@ export async function validateDataIntegrity(): Promise<{
         }
       }
     }
+
+    // 4.4 Track Global content referencing CN-only items
+    const isGlobalOp = op.servers.includes('global')
+    const checkItemAvailability = (itemId: string, _contextDesc?: string) => {
+      const item = itemMap.get(itemId)
+      if (item && !item.servers.includes('global') && isGlobalOp) {
+        globalReferencingCnOnlyCount++
+      }
+    }
+
+    for (const phase of op.phases ?? []) {
+      for (const cost of phase.evolveCost ?? []) {
+        checkItemAvailability(cost.id, 'evolveCost')
+      }
+    }
+    for (const skill of op.skills ?? []) {
+      for (const mastery of skill.masteryCosts ?? []) {
+        for (const cost of mastery.levelUpCost ?? []) {
+          checkItemAvailability(cost.id, 'masteryCost')
+        }
+      }
+    }
+    for (const mod of op.modules ?? []) {
+      const isGlobalMod = mod.servers.includes('global')
+      for (const costs of Object.values(mod.itemCost ?? {})) {
+        for (const cost of costs) {
+          const item = itemMap.get(cost.id)
+          if (item && !item.servers.includes('global') && isGlobalMod) {
+            globalReferencingCnOnlyCount++
+          }
+        }
+      }
+    }
   }
 
   return {
@@ -243,6 +277,7 @@ export async function validateDataIntegrity(): Promise<{
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
+    globalReferencingCnOnlyCount,
     issues,
   }
 }
@@ -257,6 +292,7 @@ async function main(): Promise<void> {
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
   console.log(`Total module references:   ${result.totalModuleReferences}`)
+  console.log(`Global -> CN-only items:   ${result.globalReferencingCnOnlyCount} (permitted under explicit note)`)
   console.log(`Integrity issues found:    ${result.issues.length}`)
 
   if (result.issues.length > 0) {

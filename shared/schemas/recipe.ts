@@ -27,13 +27,22 @@ export type RecipeExtraOutcome = z.infer<typeof RecipeExtraOutcomeSchema>
  */
 export const RecipeFormulaTypeSchema = z.enum(['F_EVOLVE', 'F_SKILL', 'F_BUILDING', 'F_ASC'])
 
-export type RecipeFormulaType = z.infer<typeof RecipeFormulaTypeSchema>
+/**
+ * Formula process kind:
+ * - synthesis: standard Workshop material / skill / building item craft
+ * - conversion: reciprocal chip conversion (e.g. Vanguard <-> Supporter)
+ * - manufacture: Factory production (e.g. dualchip formulas)
+ */
+export const RecipeKindSchema = z.enum(['synthesis', 'conversion', 'manufacture'])
+
+export type RecipeKind = z.infer<typeof RecipeKindSchema>
 
 /**
  * Normalized crafting formula schema for Workshop and Factory.
  */
 export const CraftRecipeSchema = z.object({
   id: z.string(),
+  kind: RecipeKindSchema,
   resultId: z.string(),
   resultCount: z.number().int().positive(),
   ingredients: z.array(RecipeIngredientSchema),

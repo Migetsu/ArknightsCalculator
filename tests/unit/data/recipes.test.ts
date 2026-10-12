@@ -101,21 +101,15 @@ describe('Craft Recipes & Dependency Graph (data/recipes.json)', () => {
     }
   })
 
-  it('proves that the synthesis craft tree (F_EVOLVE, F_SKILL, F_BUILDING, Dualchips) is a strict DAG with ZERO cycles', () => {
-    // Synthesis recipes exclude workshop reciprocal chip conversions
-    const synthesisRecipes = recipes.filter(
-      (r) => !(r.formulaType === 'F_ASC' && r.roomType === 'WORKSHOP'),
-    )
+  it('proves that the craft tree of kind !== conversion (synthesis + manufacture) is a strict DAG with ZERO cycles', () => {
+    const nonConversionRecipes = recipes.filter((r) => r.kind !== 'conversion')
 
-    const cycles = findGraphCycles(synthesisRecipes)
+    const cycles = findGraphCycles(nonConversionRecipes)
     expect(cycles).toEqual([])
   })
 
-  it('identifies the exact 8 reciprocal chip conversion cycles in Workshop formulas', () => {
-    // Workshop chip conversions intentionally allow 3:2 conversions between paired classes
-    const chipConversionRecipes = recipes.filter(
-      (r) => r.formulaType === 'F_ASC' && r.roomType === 'WORKSHOP',
-    )
+  it('identifies the exact 8 reciprocal chip conversion cycles in recipes where kind === conversion', () => {
+    const chipConversionRecipes = recipes.filter((r) => r.kind === 'conversion')
 
     const cycles = findGraphCycles(chipConversionRecipes)
     expect(cycles.length).toBe(8)

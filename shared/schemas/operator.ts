@@ -242,6 +242,7 @@ export const OperatorModuleSchema = z.object({
   typeName2: z.string(), // e.g. "CHG-X"
   icon: z.string(),
   description: I18nStringSchema.optional(),
+  servers: z.array(ServerRegionSchema).min(1),
   itemCost: z
     .record(
       z.string(), // Stage level '1', '2', '3'

@@ -540,6 +540,14 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         modulesWithoutBattleCount++
       }
 
+      // Module server availability: available in Global if present in EN uniequip_table and
+      // if it has stages, its stages exist in EN battle_equip_table
+      const isInitial = (cnEquip.type ?? 'INITIAL') === 'INITIAL'
+      const hasEnEquip = Boolean(enEquip)
+      const hasEnBattle = Boolean(enBattle?.phases && enBattle.phases.length > 0)
+      const isGlobalModule = hasEnEquip && (isInitial || hasEnBattle || !cnBattle?.phases)
+      const modServers: ('cn' | 'global')[] = isGlobalModule ? ['cn', 'global'] : ['cn']
+
       modules.push({
         id: cnEquip.uniEquipId,
         name: modName,
@@ -547,6 +555,7 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         typeName2: cnEquip.typeName2 ?? '',
         icon: cnEquip.uniEquipIcon ?? cnEquip.uniEquipId,
         description: modDesc,
+        servers: modServers,
         itemCost: Object.keys(itemCost).length > 0 ? itemCost : undefined,
         stages: stages && stages.length > 0 ? stages : undefined,
       })
