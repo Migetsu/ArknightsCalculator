@@ -30,6 +30,8 @@ describe('Operator Stats Calculation Core (shared/utils/stats)', () => {
         respawnTime: -4,
       })
       expect(parsePotentialModifier('RES +5', '法术抗性+5')).toEqual({ res: 5 })
+      expect(parsePotentialModifier('ASPD +8', '攻击速度+8')).toEqual({ attackSpeed: 8 })
+      expect(parsePotentialModifier('Attack Speed +5', '攻击速度+5')).toEqual({ attackSpeed: 5 })
     })
 
     it('returns empty object for talent enhancements', () => {
@@ -38,15 +40,48 @@ describe('Operator Stats Calculation Core (shared/utils/stats)', () => {
   })
 
   describe('Validation & Boundary Limits', () => {
-    it('throws when elite phase exceeds operator maximum', () => {
-      // Myrtle is 4* with 3 phases (0, 1, 2)
-      // Test invalid phase index on an operator with fewer phases if any, or invalid phase value
+    it('throws when elite phase exceeds operator maximum (e.g. 1* or 3* without E2)', () => {
+      const lancet2 = loadOperatorDetail('char_285_medic2')
+      const fang = loadOperatorDetail('char_123_fang')
+
+      // Lancet-2 (1*) only has phase 0
       expect(() =>
-        calculateOperatorStats(myrtle, {
-          elite: 3 as unknown as 2,
+        calculateOperatorStats(lancet2, {
+          elite: 1,
           level: 1,
         }),
-      ).toThrow()
+      ).toThrow(/Invalid elite phase 1 for operator char_285_medic2 \(max phase: 0\)/)
+
+      // Fang (3*) only has phase 0 and phase 1 (no E2)
+      expect(() =>
+        calculateOperatorStats(fang, {
+          elite: 2,
+          level: 1,
+        }),
+      ).toThrow(/Invalid elite phase 2 for operator char_123_fang \(max phase: 1\)/)
+    })
+
+    it('throws when level exceeds phase maxLevel instead of silently clamping', () => {
+      const fang = loadOperatorDetail('char_123_fang')
+      // Fang E0 maxLevel is 40
+      expect(() =>
+        calculateOperatorStats(fang, {
+          elite: 0,
+          level: 41,
+        }),
+      ).toThrow(
+        /Invalid level 41 for operator char_123_fang at elite 0 \(must be between 1 and 40\)/,
+      )
+
+      // Fang E1 maxLevel is 55
+      expect(() =>
+        calculateOperatorStats(fang, {
+          elite: 1,
+          level: 56,
+        }),
+      ).toThrow(
+        /Invalid level 56 for operator char_123_fang at elite 1 \(must be between 1 and 55\)/,
+      )
     })
 
     it('throws when level is below 1 or above maxLevel for the phase', () => {
@@ -243,6 +278,49 @@ describe('Operator Stats Calculation Core (shared/utils/stats)', () => {
       expect(maxTexas.atk).toBe(612) // 500 + 70 + 42
       expect(maxTexas.def).toBe(365) // 343 + 22
       expect(maxTexas.baseAttackTime).toBe(1.05)
+      expect(maxTexas.attackInterval).toBe(1.05)
+      expect(maxTexas.attackSpeed).toBe(0)
+    })
+
+    it('calculates effective attack interval with ASPD buff from potential or module', () => {
+      // Lava (char_121_lava) Pot 5 has ASPD +8
+      const lava = loadOperatorDetail('char_121_lava')
+      const lavaPot1 = calculateOperatorStats(lava, {
+        elite: 0,
+        level: 1,
+        potential: 1,
+      })
+      expect(lavaPot1.baseAttackTime).toBe(2.9)
+      expect(lavaPot1.attackSpeed).toBe(0)
+      expect(lavaPot1.attackInterval).toBe(2.9)
+
+      // Pot 5 unlocks ASPD +8: 2.9 * 100 / (100 + 8) = 290 / 108 = 2.685s
+      const lavaPot5 = calculateOperatorStats(lava, {
+        elite: 0,
+        level: 1,
+        potential: 5,
+      })
+      expect(lavaPot5.baseAttackTime).toBe(2.9)
+      expect(lavaPot5.attackSpeed).toBe(8)
+      expect(lavaPot5.attackInterval).toBe(2.685)
+      expect(lavaPot5.breakdown.potential.attackSpeed).toBe(8)
+
+      // Ch'en (char_010_chen) with module uniequip_002_chen stage 1 adds attack_speed +5
+      const chen = loadOperatorDetail('char_010_chen')
+      const chenMod = calculateOperatorStats(chen, {
+        elite: 2,
+        level: 90,
+        potential: 1,
+        module: {
+          id: 'uniequip_002_chen',
+          stage: 1,
+        },
+      })
+      // Ch'en baseAttackTime = 1.3s; 1.3 * 100 / 105 = 1.238s
+      expect(chenMod.baseAttackTime).toBe(1.3)
+      expect(chenMod.attackSpeed).toBe(5)
+      expect(chenMod.attackInterval).toBe(1.238)
+      expect(chenMod.breakdown.module.attackSpeed).toBe(5)
     })
   })
 })

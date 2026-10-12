@@ -42,6 +42,11 @@ export function parsePotentialModifier(descEn?: string, descZh?: string): Partia
   const resMatch = text.match(/RES ([+-]?\d+)/i) || text.match(/法术抗性([+-]?\d+)/)
   if (resMatch?.[1]) result.res = parseInt(resMatch[1], 10)
 
+  // 7. Attack Speed (ASPD)
+  const aspdMatch =
+    text.match(/(?:ASPD|Attack Speed)\s*([+-]?\d+)/i) || text.match(/攻击速度\s*([+-]?\d+)/)
+  if (aspdMatch?.[1]) result.attackSpeed = parseInt(aspdMatch[1], 10)
+
   return result
 }
 
@@ -133,6 +138,7 @@ export function calculateOperatorStats(
     cost: baseCost,
     block: baseBlock,
     baseAttackTime,
+    attackSpeed: 0,
     respawnTime: baseRespawnTime,
   }
 
@@ -145,6 +151,7 @@ export function calculateOperatorStats(
     cost: 0,
     block: 0,
     baseAttackTime: 0,
+    attackSpeed: 0,
     respawnTime: 0,
   }
 
@@ -171,6 +178,7 @@ export function calculateOperatorStats(
     cost: 0,
     block: 0,
     baseAttackTime: 0,
+    attackSpeed: 0,
     respawnTime: 0,
   }
 
@@ -189,6 +197,7 @@ export function calculateOperatorStats(
       if (mod.res) potentialBreakdown.res += mod.res
       if (mod.cost) potentialBreakdown.cost += mod.cost
       if (mod.block) potentialBreakdown.block += mod.block
+      if (mod.attackSpeed) potentialBreakdown.attackSpeed += mod.attackSpeed
       if (mod.respawnTime) potentialBreakdown.respawnTime += mod.respawnTime
     }
   }
@@ -202,6 +211,7 @@ export function calculateOperatorStats(
     cost: 0,
     block: 0,
     baseAttackTime: 0,
+    attackSpeed: 0,
     respawnTime: 0,
   }
 
@@ -227,6 +237,10 @@ export function calculateOperatorStats(
     if (stStats.magic_resistance) moduleBreakdown.res += Math.round(stStats.magic_resistance)
     if (stStats.cost) moduleBreakdown.cost += Math.round(stStats.cost)
     if (stStats.block_cnt) moduleBreakdown.block += Math.round(stStats.block_cnt)
+    if (stStats.base_attack_time) {
+      moduleBreakdown.baseAttackTime += Number(stStats.base_attack_time.toFixed(3))
+    }
+    if (stStats.attack_speed) moduleBreakdown.attackSpeed += Math.round(stStats.attack_speed)
     if (stStats.respawn_time) moduleBreakdown.respawnTime += Math.round(stStats.respawn_time)
   }
 
@@ -263,6 +277,19 @@ export function calculateOperatorStats(
       moduleBreakdown.baseAttackTime
     ).toFixed(3),
   )
+  const totalAttackSpeed =
+    baseBreakdown.attackSpeed +
+    trustBreakdown.attackSpeed +
+    potentialBreakdown.attackSpeed +
+    moduleBreakdown.attackSpeed
+
+  // Effective attack interval formula: attackInterval = (baseAttackTime * 100) / (100 + attackSpeed)
+  // Clamp speed denominator to minimum of 10 to prevent division by 0 or negative intervals
+  const effectiveSpeedMultiplier = Math.max(10, 100 + totalAttackSpeed)
+  const totalAttackInterval = Number(
+    ((totalBaseAttackTime * 100) / effectiveSpeedMultiplier).toFixed(3),
+  )
+
   const totalRespawnTime = Math.max(
     0,
     baseBreakdown.respawnTime +
@@ -279,6 +306,8 @@ export function calculateOperatorStats(
     cost: totalCost,
     block: totalBlock,
     baseAttackTime: totalBaseAttackTime,
+    attackInterval: totalAttackInterval,
+    attackSpeed: totalAttackSpeed,
     respawnTime: totalRespawnTime,
     breakdown: {
       base: baseBreakdown,
