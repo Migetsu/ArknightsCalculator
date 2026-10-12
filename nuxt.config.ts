@@ -14,7 +14,16 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    'nuxt-schema-org',
   ],
+  site: {
+    url: 'https://arkcalc.vercel.app',
+    name: 'Arknights Companion',
+  },
+  sitemap: {
+    exclude: ['/_ui', '/ru/_ui'],
+  },
   image: {
     // Disable Vercel server-side image transformation to stay within Free tier limit (1,000 transforms/month).
     // External game assets are served directly from fast, edge-cached jsDelivr / Statically CDNs.
