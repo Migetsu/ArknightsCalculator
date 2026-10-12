@@ -135,7 +135,6 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
   }) => {
     // 1. English direct visit
     await page.goto('/operators/char_003_kalts')
-    await page.waitForLoadState('networkidle')
 
     // Detail page must be loaded, NOT the catalog list
     await expect(page.locator('.operator-detail-page')).toBeVisible()
@@ -145,7 +144,6 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
 
     // 2. Russian direct visit
     await page.goto('/ru/operators/char_003_kalts')
-    await page.waitForLoadState('networkidle')
 
     await expect(page.locator('.operator-detail-page')).toBeVisible()
     await expect(page.locator('.operators-page')).toHaveCount(0)

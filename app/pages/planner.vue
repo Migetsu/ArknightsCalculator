@@ -102,12 +102,14 @@ const pageState = ref<PageState>('empty')
 
   &__empty-box {
     padding: var(--space-xl) var(--space-md);
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 0;
+
+    @include cut-corner(12px, top-right);
   }
 
   &__state-box {
@@ -117,8 +119,10 @@ const pageState = ref<PageState>('empty')
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
+
+    @include cut-corner(12px, top-right);
   }
 
   &__spinner {
@@ -127,6 +131,7 @@ const pageState = ref<PageState>('empty')
     border: 2px solid var(--color-border-subtle);
     border-top-color: var(--color-accent-primary);
     border-radius: var(--radius-full);
+    box-shadow: 0 0 10px var(--color-accent-primary-glow);
     animation: module-spin 0.8s linear infinite;
   }
 

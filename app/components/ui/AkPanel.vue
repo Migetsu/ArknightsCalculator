@@ -78,23 +78,72 @@ withDefaults(defineProps<Props>(), {
   flex-direction: column;
   position: relative;
   border: 1px solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
   box-shadow: var(--shadow-panel);
   min-width: 0;
 
+  // Technical corner tick in top-left
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid var(--color-border-bold);
+    border-left: 2px solid var(--color-border-bold);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Technical corner tick in bottom-right
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 6px;
+    height: 6px;
+    border-bottom: 2px solid var(--color-border-bold);
+    border-right: 2px solid var(--color-border-bold);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   &--line-cyan {
     border-top: 2px solid var(--color-accent-primary);
+
+    &::before {
+      border-top-color: var(--color-accent-primary);
+      border-left-color: var(--color-accent-primary);
+    }
   }
 
   &--line-amber {
     border-top: 2px solid var(--color-accent-warning);
+
+    &::before {
+      border-top-color: var(--color-accent-warning);
+      border-left-color: var(--color-accent-warning);
+    }
   }
 
   &--line-green {
     border-top: 2px solid var(--color-accent-success);
+
+    &::before {
+      border-top-color: var(--color-accent-success);
+      border-left-color: var(--color-accent-success);
+    }
   }
 
   &--line-red {
     border-top: 2px solid var(--color-accent-danger);
+
+    &::before {
+      border-top-color: var(--color-accent-danger);
+      border-left-color: var(--color-accent-danger);
+    }
   }
 
   &--surface {
@@ -110,12 +159,16 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--bordered {
-    background-color: transparent;
-    border-color: var(--color-border-bold);
+    background-color: var(--color-bg-card);
+    border-color: var(--color-border-subtle);
   }
 
   &--cut-top-left {
     @include cut-corner(14px, top-left);
+
+    &::before {
+      display: none;
+    }
   }
 
   &--cut-top-right {
@@ -124,6 +177,10 @@ withDefaults(defineProps<Props>(), {
 
   &--cut-bottom-right {
     @include cut-corner(14px, bottom-right);
+
+    &::after {
+      display: none;
+    }
   }
 
   &__header {
@@ -135,6 +192,7 @@ withDefaults(defineProps<Props>(), {
     border-bottom: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
     min-width: 0;
+    position: relative;
   }
 
   &__actions {

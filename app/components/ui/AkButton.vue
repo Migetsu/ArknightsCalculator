@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'warning'
   size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit' | 'reset'
   to?: string
@@ -193,6 +193,27 @@ function handleClick(event: MouseEvent): void {
     &:active:not(:disabled, .ak-button--disabled) {
       background-color: var(--color-accent-danger-active);
     }
+  }
+
+  // Warning: industrial amber
+  &--warning {
+    background-color: var(--color-accent-warning);
+    border-color: var(--color-accent-warning);
+    color: var(--color-text-inverse);
+
+    &:hover:not(:disabled, .ak-button--disabled) {
+      background-color: var(--color-accent-warning-hover);
+      border-color: var(--color-accent-warning-hover);
+      box-shadow: var(--shadow-glow-amber);
+    }
+
+    &:active:not(:disabled, .ak-button--disabled) {
+      background-color: var(--color-accent-warning-active);
+    }
+  }
+
+  &:active:not(:disabled, .ak-button--disabled) {
+    transform: translateY(1px);
   }
 
   &--disabled,

@@ -3,12 +3,14 @@ interface Props {
   variant?: 'cyan' | 'amber' | 'green' | 'red' | 'neutral' | 'rarity'
   rarity?: 1 | 2 | 3 | 4 | 5 | 6
   size?: 'sm' | 'md'
+  dot?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
   variant: 'neutral',
   rarity: undefined,
   size: 'md',
+  dot: false,
 })
 </script>
 
@@ -21,6 +23,7 @@ withDefaults(defineProps<Props>(), {
       rarity ? `ak-badge--rarity-${rarity}` : null,
     ]"
   >
+    <span v-if="dot" class="ak-badge__dot" aria-hidden="true" />
     <slot />
   </span>
 </template>
@@ -40,6 +43,15 @@ withDefaults(defineProps<Props>(), {
   border: 1px solid var(--color-border-subtle);
   background-color: var(--color-bg-subtle);
   color: var(--color-text-secondary);
+  clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));
+
+  &__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: currentcolor;
+    box-shadow: 0 0 6px currentcolor;
+  }
 
   &--size-sm {
     padding: 0.125rem var(--space-xs);

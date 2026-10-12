@@ -261,12 +261,14 @@ function handleLoadDemo(): void {
     transition:
       border-color var(--transition-fast),
       color var(--transition-fast),
-      background-color var(--transition-fast);
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
 
+    @include cut-corner(4px, top-right);
     @include focus-ring;
 
     &:hover {
-      border-color: var(--color-border-active);
+      border-color: var(--color-accent-primary);
       color: var(--color-text-primary);
     }
 
@@ -274,6 +276,7 @@ function handleLoadDemo(): void {
       border-color: var(--color-accent-primary);
       background-color: var(--color-accent-primary-subtle);
       color: var(--color-accent-primary);
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
     }
   }
 
@@ -303,7 +306,9 @@ function handleLoadDemo(): void {
     padding: var(--space-xl) var(--space-md);
     gap: var(--space-md);
     border: 1px dashed var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
+    background: linear-gradient(135deg, rgb(16 18 23 / 60%) 0%, rgb(8 9 12 / 70%) 100%);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__json-desc,

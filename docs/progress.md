@@ -162,7 +162,35 @@
   - Amber banner notification for CN-exclusive operators (`servers: ['cn']`).
   - Tactical empty state 404 with back-to-catalog button for unknown IDs.
   - Fixed client hydration timing via lifecycle hooks in `app/plugins/hydration.client.ts`.
-  - Verified bundle isolation in production build and Playwright tests: individual per-operator chunks (3–80 KB each) with 0 KB leak of unvisited operators.
+  - Implemented full Arknights PRTS Terminal HUD dark theme overhaul across all pages and components (`feat/arknights-design-overhaul`):
+  - Refactored core styling and design tokens (`_tokens.scss`, `_mixins.scss`, `_reset.scss`):
+    - Dark tactical PRTS palette: deep base (`#08090c`), surface (`#101217`), elevated panels (`#16181f`), card background (`#12141a`), high-contrast borders (`#262b35`), muted text (`#758092`).
+    - Neon tactical accents with subtle glow effects: Cyan (`#00f0ff`), Amber (`#f39000`), Green (`#00e676`), Red (`#ff2a4d`), Gold (`#ffd54f`).
+    - Authentic Rhodes Island styling mixins: `@mixin hazard-stripes`, `@mixin neon-glow`, `@mixin tech-scrollbar`, cut-corner Chamfer clips on buttons, chips, panels, modals, and avatar badges.
+    - Vector HUD grid and radial dark vignette background in pure CSS.
+  - Complete tactical overhaul of base UI primitives in `app/components/ui/` (no Nuxt UI):
+    - `AkButton`: Chamfer cut-corners (4px/6px), tactile active response, `warning` amber variant, glowing hover border.
+    - `AkPanel`: Corner reticle brackets `::before`/`::after` (`[ + ]`), custom colored indicator lines (`lineColor`), technical header tags.
+    - `AkBadge`: 4px cut-corner polygon, glowing dot indicators (`dot` prop).
+    - `AkTabs`: Rhodes Island personnel dossier tab design with Chamfer cut-corner tab heads and neon indicator lines.
+    - `AkInput`: Cut-corner technical input box with neon cyan focus ring and prefix/suffix slots.
+    - `AkPageHeader`: PRTS terminal page header with technical mark `■ `, code tags, watermarks, and neon cyan 64px indicator bar.
+    - `AkStat`: Digital instrument tile with gradient surface, cut corner, and glowing technical monospace metrics.
+    - `AkAlert`: Hazard-striped tactical status box with Chamfer clip and badge slot.
+    - `AkProgress`: High-tech segmented progress bar with neon track glow.
+    - `AkEmptyState`: PRTS targeting reticle icon with crosshair indicators and technical monospace subtitles.
+    - `AkModal`: Tactical window overlay with Chamfer clip, header strip, and keyboard accessibility.
+    - `AkDrawer`: Tactical navigation drawer with PRTS kernel status badge and cut-corner menu items.
+  - Redesigned shell and layout (`app/layouts/default.vue`):
+    - Top 2px neon cyan indicator rail, PRTS logo badge, online Doctor status chip (`SYS // OK`).
+    - Redesigned `SyncAccountModal` with Chamfer-clipped region selector buttons and warning banners.
+  - Overhauled all application pages and views:
+    - Dashboard (`app/pages/index.vue`): PRTS telemetry header, cut-corner banner cards, countdown tiles with glowing amber digits, and tactical currency bars.
+    - Operators catalog (`app/pages/operators/index.vue`): Chamfer-clipped filter panel, cut-corner class/rarity chips, tactical operator cards with rarity stars and cut-corner frames, animated skeleton placeholders.
+    - Operator detail (`app/pages/operators/[id].vue` and all panels): cut-corner portrait frame with E0/E2 switcher, Chamfer-clipped stats/skill/talent/module cards, rich text tags styled with tactical neon highlights.
+    - Feature stubs (`depot.vue`, `gacha.vue`, `planner.vue`, `recruit.vue`, `settings.vue`): Chamfer-clipped 12px panels with pulsing PRTS radar loaders.
+    - Design showcase (`app/pages/_ui.vue`): updated with warning button variant and all refreshed components.
+  - Verified 100% test passing: 171 Vitest unit tests, 104 Playwright E2E tests, zero ESLint/Stylelint warnings, and clean production build.
 
 ## In progress
 

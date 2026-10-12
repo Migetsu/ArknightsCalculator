@@ -102,13 +102,16 @@ function handleInput(event: Event): void {
     align-items: center;
     background-color: var(--color-bg-surface);
     border: 1px solid var(--color-border-bold);
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
     transition:
       border-color var(--transition-fast),
       box-shadow var(--transition-fast);
 
     &:focus-within {
       border-color: var(--color-accent-primary);
-      box-shadow: 0 0 0 1px var(--color-accent-primary);
+      box-shadow:
+        0 0 12px rgb(0 240 255 / 30%),
+        inset 0 0 6px rgb(0 240 255 / 10%);
     }
   }
 
@@ -124,8 +127,8 @@ function handleInput(event: Event): void {
     outline: none;
 
     &::placeholder {
-      color: var(--color-text-secondary);
-      opacity: 0.7;
+      color: var(--color-text-tertiary);
+      opacity: 0.8;
     }
 
     &:disabled {
@@ -139,7 +142,9 @@ function handleInput(event: Event): void {
     display: inline-flex;
     align-items: center;
     padding: 0 var(--space-xs);
-    color: var(--color-text-secondary);
+    color: var(--color-accent-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
   }
 
   &__hint {
@@ -152,13 +157,14 @@ function handleInput(event: Event): void {
     font-size: var(--font-size-xs);
     color: var(--color-accent-danger);
     margin: 0;
+    font-family: var(--font-mono);
   }
 
   &--error &__field {
     border-color: var(--color-accent-danger);
 
     &:focus-within {
-      box-shadow: 0 0 0 1px var(--color-accent-danger);
+      box-shadow: 0 0 12px rgb(255 42 77 / 35%);
     }
   }
 

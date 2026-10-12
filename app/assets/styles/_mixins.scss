@@ -89,3 +89,46 @@
     linear-gradient(to bottom, rgb(255 255 255 / 2.5%) 1px, transparent 1px);
   background-size: 32px 32px;
 }
+
+// Industrial warning diagonal hazard stripes
+@mixin hazard-stripes(
+  $accent-color: var(--color-accent-warning),
+  $bg-color: var(--color-bg-surface),
+  $stripe-width: 10px
+) {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    $accent-color,
+    $accent-color $stripe-width,
+    $bg-color $stripe-width,
+    $bg-color ($stripe-width * 2)
+  );
+}
+
+// Glowing neon rim effect
+@mixin neon-glow($color: var(--color-accent-primary), $intensity: 12px) {
+  box-shadow:
+    0 0 $intensity rgb(0 240 255 / 35%),
+    inset 0 0 calc($intensity / 2) rgb(0 240 255 / 15%);
+}
+
+// Technical custom scrollbar for panels and drawers
+@mixin tech-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-surface);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border-bold);
+    border-radius: var(--radius-none);
+
+    &:hover {
+      background: var(--color-accent-primary);
+    }
+  }
+}

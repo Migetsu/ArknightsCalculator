@@ -178,11 +178,11 @@ onBeforeUnmount(() => {
     position: relative;
     width: 100%;
     display: flex;
-    background-color: var(--color-bg-surface);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
     border: 1px solid var(--color-border-bold);
     box-shadow:
       var(--shadow-panel),
-      0 0 30px rgb(0 0 0 / 70%);
+      0 0 35px rgb(0 0 0 / 80%);
     max-height: calc(100vh - var(--space-xl));
     overflow-y: auto;
     z-index: 1;
@@ -192,8 +192,9 @@ onBeforeUnmount(() => {
   }
 
   &__strip {
-    width: 4px;
+    width: 5px;
     background-color: var(--color-accent-primary);
+    box-shadow: 0 0 10px var(--color-accent-primary-glow);
     flex-shrink: 0;
   }
 
@@ -210,7 +211,7 @@ onBeforeUnmount(() => {
     justify-content: space-between;
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
   }
 
@@ -251,7 +252,7 @@ onBeforeUnmount(() => {
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    border: 1px solid var(--color-border-base);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-subtle);
     color: var(--color-text-primary);
     font-size: var(--font-size-sm);
@@ -260,14 +261,17 @@ onBeforeUnmount(() => {
     transition:
       border-color var(--transition-fast),
       color var(--transition-fast),
-      background-color var(--transition-fast);
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
 
+    @include cut-corner(4px, top-right);
     @include focus-ring;
 
     &:hover {
       border-color: var(--color-accent-primary);
       color: var(--color-accent-primary);
       background-color: var(--color-accent-primary-subtle);
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
     }
   }
 

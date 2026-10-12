@@ -24,13 +24,17 @@ withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 .ak-stat {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border-subtle);
-  background-color: var(--color-bg-surface);
+  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
   min-width: 0;
+  transition: border-color var(--duration-fast) var(--ease-tactical);
+
+  @include cut-corner(8px, top-right);
 
   &__label {
     font-family: var(--font-mono);
@@ -74,39 +78,43 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--cyan {
-    border-left: 2px solid var(--color-accent-primary);
+    border-left: 3px solid var(--color-accent-primary);
 
     .ak-stat__value {
       color: var(--color-accent-primary);
+      text-shadow: 0 0 10px var(--color-accent-primary-glow);
     }
   }
 
   &--amber {
-    border-left: 2px solid var(--color-accent-warning);
+    border-left: 3px solid var(--color-accent-warning);
 
     .ak-stat__value {
       color: var(--color-accent-warning);
+      text-shadow: 0 0 10px var(--color-accent-warning-glow);
     }
   }
 
   &--green {
-    border-left: 2px solid var(--color-accent-success);
+    border-left: 3px solid var(--color-accent-success);
 
     .ak-stat__value {
       color: var(--color-accent-success);
+      text-shadow: 0 0 10px var(--color-accent-success-glow);
     }
   }
 
   &--red {
-    border-left: 2px solid var(--color-accent-danger);
+    border-left: 3px solid var(--color-accent-danger);
 
     .ak-stat__value {
       color: var(--color-accent-danger);
+      text-shadow: 0 0 10px var(--color-accent-danger-glow);
     }
   }
 
   &--neutral {
-    border-left: 2px solid var(--color-border-bold);
+    border-left: 3px solid var(--color-border-bold);
   }
 }
 </style>

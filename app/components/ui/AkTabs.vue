@@ -111,44 +111,54 @@ function handleKeydown(event: KeyboardEvent, currentIndex: number): void {
 
   &__list {
     display: flex;
-    gap: var(--space-2xs);
-    border-bottom: 1px solid var(--color-border-subtle);
+    gap: var(--space-xs);
+    border-bottom: 2px solid var(--color-border-subtle);
     overflow-x: auto;
+    padding-bottom: 1px;
   }
 
   &__tab {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-xs);
     padding: var(--space-xs) var(--space-md);
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-bold);
     color: var(--color-text-secondary);
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-bottom: none;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-mono);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    position: relative;
+    top: 2px;
     transition:
       color var(--transition-fast),
+      background-color var(--transition-fast),
       border-color var(--transition-fast);
     white-space: nowrap;
 
-    @include focus-ring;
+    @include focus-ring-clipped;
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled, .ak-tabs__tab--active) {
       color: var(--color-text-primary);
+      background-color: var(--color-bg-subtle);
+      border-color: var(--color-border-base);
     }
 
     &--active {
-      color: var(--color-accent-primary);
-      border-bottom-color: var(--color-accent-primary);
+      color: var(--color-text-inverse);
+      background-color: var(--color-accent-primary);
+      border-color: var(--color-accent-primary);
+      box-shadow: 0 0 12px rgb(0 240 255 / 35%);
     }
 
     &--disabled {
       cursor: not-allowed;
-      opacity: 0.4;
+      opacity: 0.35;
     }
   }
 

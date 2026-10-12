@@ -79,13 +79,14 @@ const percentage = computed(() => {
   &__percentage {
     color: var(--color-text-primary);
     line-height: 1;
+    font-weight: var(--font-weight-bold);
   }
 
   &__track {
     position: relative;
-    height: 6px;
-    background-color: var(--color-bg-subtle);
-    border: 1px solid var(--color-border-subtle);
+    height: 8px;
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-bold);
     overflow: hidden;
   }
 
@@ -106,15 +107,15 @@ const percentage = computed(() => {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 1px;
-    background-color: var(--color-bg-base);
+    width: 2px;
+    background-color: var(--color-bg-surface);
   }
 
   // Variants
   &--cyan {
     .ak-progress__fill {
       background-color: var(--color-accent-primary);
-      box-shadow: 0 0 8px rgb(0 229 255 / 50%);
+      box-shadow: 0 0 10px var(--color-accent-primary-glow);
     }
 
     .ak-progress__percentage {
@@ -125,7 +126,7 @@ const percentage = computed(() => {
   &--amber {
     .ak-progress__fill {
       background-color: var(--color-accent-warning);
-      box-shadow: 0 0 8px rgb(255 152 0 / 50%);
+      box-shadow: 0 0 10px var(--color-accent-warning-glow);
     }
 
     .ak-progress__percentage {
@@ -136,7 +137,7 @@ const percentage = computed(() => {
   &--green {
     .ak-progress__fill {
       background-color: var(--color-accent-success);
-      box-shadow: 0 0 8px rgb(0 230 118 / 50%);
+      box-shadow: 0 0 10px var(--color-accent-success-glow);
     }
 
     .ak-progress__percentage {

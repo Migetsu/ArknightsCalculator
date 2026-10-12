@@ -105,9 +105,11 @@ function getLocalizedField(
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-md);
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     padding: var(--space-md);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__item {
@@ -117,14 +119,14 @@ function getLocalizedField(
   }
 
   &__label {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 
   &__value {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-md);
     color: var(--color-text-primary);
   }
@@ -142,20 +144,23 @@ function getLocalizedField(
   }
 
   &__dossier-card {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-left: 2px solid var(--color-accent-amber);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
+    border-left: 3px solid var(--color-accent-warning);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__dossier-title {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-amber);
+    color: var(--color-accent-warning);
     text-transform: uppercase;
+    text-shadow: 0 0 6px var(--color-accent-warning-glow);
   }
 
   &__dossier-text {

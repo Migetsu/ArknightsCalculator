@@ -58,6 +58,7 @@ const isModalOpen = ref(false)
             <AkButton variant="primary">Deploy (Primary)</AkButton>
             <AkButton variant="secondary">Radar Scan (Secondary)</AkButton>
             <AkButton variant="ghost">Inspect (Ghost)</AkButton>
+            <AkButton variant="warning">Alert (Warning)</AkButton>
             <AkButton variant="danger">Retreat (Danger)</AkButton>
           </div>
         </div>

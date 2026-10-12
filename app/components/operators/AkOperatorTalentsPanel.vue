@@ -85,8 +85,8 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
   gap: var(--space-lg);
 
   &__empty {
-    color: var(--color-text-dim);
-    font-family: var(--font-family-mono);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
     padding: var(--space-md);
   }
 
@@ -97,20 +97,14 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
   }
 
   &__candidate-card {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    clip-path: polygon(
-      0 var(--cut-corner-size),
-      var(--cut-corner-size) 0,
-      100% 0,
-      100% calc(100% - var(--cut-corner-size)),
-      calc(100% - var(--cut-corner-size)) 100%,
-      0 100%
-    );
+
+    @include cut-corner(8px, top-right);
   }
 
   &__header {
@@ -136,9 +130,11 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
 
   &__desc {
     background: var(--color-bg-base);
-    border-left: 2px solid var(--color-accent-green);
+    border-left: 3px solid var(--color-accent-success);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
+
+    @include cut-corner(4px, top-right);
   }
 }
 </style>

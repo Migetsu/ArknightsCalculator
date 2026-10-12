@@ -30,6 +30,8 @@
   overflow: hidden;
   min-width: 0;
 
+  @include cut-corner(8px, top-right);
+
   &__inner {
     display: flex;
     flex-direction: column;

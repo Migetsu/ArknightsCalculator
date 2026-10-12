@@ -19,9 +19,9 @@ body {
   line-height: var(--line-height-base);
   background-color: var(--color-bg-base);
   background-image:
-    radial-gradient(ellipse 90% 50% at 50% 0%, rgb(0 229 255 / 2%) 0%, transparent 80%),
-    linear-gradient(to right, rgb(255 255 255 / 2.5%) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 2.5%) 1px, transparent 1px);
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgb(0 240 255 / 3%) 0%, transparent 70%),
+    linear-gradient(to right, rgb(255 255 255 / 2%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 2%) 1px, transparent 1px);
   background-size:
     100% 100%,
     32px 32px,
@@ -31,6 +31,29 @@ body {
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+}
+
+// Global tactical scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-bold);
+
+  &:hover {
+    background: var(--color-accent-primary);
+  }
 }
 
 img,

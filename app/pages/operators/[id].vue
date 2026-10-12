@@ -299,7 +299,7 @@ useSchemaOrg([
   &__skeleton-header {
     height: 90px;
     background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-subtle);
     animation: pulse 1.5s infinite;
   }
 
@@ -316,14 +316,14 @@ useSchemaOrg([
   &__skeleton-portrait {
     height: 440px;
     background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-subtle);
     animation: pulse 1.5s infinite;
   }
 
   &__skeleton-content {
     height: 440px;
     background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-subtle);
     animation: pulse 1.5s infinite;
   }
 
@@ -331,9 +331,12 @@ useSchemaOrg([
     display: flex;
     align-items: center;
     gap: var(--space-md);
-    background: rgb(255 152 0 / 8%);
-    border-left: 3px solid var(--color-accent-amber);
+    background: rgb(243 144 0 / 10%);
+    border: 1px solid var(--color-border-subtle);
+    border-left: 4px solid var(--color-accent-warning);
     padding: var(--space-sm) var(--space-md);
+
+    @include cut-corner(6px, top-right);
   }
 
   &__cn-badge-wrap {
@@ -343,7 +346,7 @@ useSchemaOrg([
   &__cn-text {
     margin: 0;
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     line-height: var(--line-height-normal);
   }
 

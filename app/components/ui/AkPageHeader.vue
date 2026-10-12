@@ -67,25 +67,36 @@ withDefaults(defineProps<Props>(), {
   position: relative;
   width: 100%;
   padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-bold);
   overflow: hidden;
   box-sizing: border-box;
   min-width: 0;
 
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 64px;
+    height: 2px;
+    background-color: var(--color-accent-primary);
+    box-shadow: 0 0 8px var(--color-accent-primary-glow);
+  }
+
   &__watermark {
     position: absolute;
-    right: 0;
-    bottom: -0.5rem;
+    right: -1rem;
+    bottom: -0.75rem;
     font-family: var(--font-display);
-    font-size: clamp(3rem, 9vw, 6.5rem);
-    font-weight: var(--font-weight-bold);
+    font-size: clamp(3.5rem, 11vw, 7.5rem);
+    font-weight: var(--font-weight-black);
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
     color: var(--color-text-primary);
-    opacity: 0.035;
+    opacity: 0.04;
     pointer-events: none;
     user-select: none;
-    line-height: 0.8;
+    line-height: 0.75;
     white-space: nowrap;
     z-index: var(--z-base);
   }
@@ -123,13 +134,23 @@ withDefaults(defineProps<Props>(), {
   }
 
   &__code {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-mono);
     color: var(--color-accent-primary);
     text-transform: uppercase;
     overflow-wrap: anywhere;
+
+    &::before {
+      content: '■';
+      font-size: 0.6em;
+      color: var(--color-accent-primary);
+      box-shadow: 0 0 6px var(--color-accent-primary-glow);
+    }
   }
 
   &__badge {

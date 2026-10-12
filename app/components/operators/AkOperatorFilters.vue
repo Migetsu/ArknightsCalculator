@@ -249,9 +249,11 @@ function handleReset(): void {
   flex-direction: column;
   gap: var(--space-md);
   padding: var(--space-md);
-  background-color: var(--color-bg-surface);
-  border: 1px solid var(--color-border-subtle);
+  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+  border: 1px solid var(--color-border-bold);
   min-width: 0;
+
+  @include cut-corner(12px, top-right);
 
   &__top-bar {
     display: flex;
@@ -279,8 +281,10 @@ function handleReset(): void {
   &__server-buttons {
     display: flex;
     align-items: center;
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-subtle);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__server-btn {
@@ -310,6 +314,7 @@ function handleReset(): void {
     &--active {
       background-color: var(--color-accent-primary);
       color: var(--color-bg-root);
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
     }
   }
 
@@ -359,9 +364,12 @@ function handleReset(): void {
     transition:
       border-color var(--duration-fast) var(--ease-tactical),
       background-color var(--duration-fast) var(--ease-tactical),
-      color var(--duration-fast) var(--ease-tactical);
+      color var(--duration-fast) var(--ease-tactical),
+      box-shadow var(--duration-fast) var(--ease-tactical);
     user-select: none;
     white-space: nowrap;
+
+    @include cut-corner(4px, top-right);
 
     &:hover {
       border-color: var(--color-border-bold);
@@ -379,6 +387,7 @@ function handleReset(): void {
       background-color: var(--color-accent-primary-subtle);
       color: var(--color-accent-primary);
       font-weight: var(--font-weight-semibold);
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
     }
 
     &--rarity {
@@ -390,11 +399,13 @@ function handleReset(): void {
     &--rarity-6.ak-operator-filters__chip--active {
       border-color: var(--color-rarity-6);
       color: var(--color-rarity-6);
+      box-shadow: 0 0 8px rgb(243 144 0 / 40%);
     }
 
     &--rarity-5.ak-operator-filters__chip--active {
       border-color: var(--color-rarity-5);
       color: var(--color-rarity-5);
+      box-shadow: 0 0 6px rgb(255 215 0 / 30%);
     }
 
     &--rarity-4.ak-operator-filters__chip--active {
@@ -445,11 +456,13 @@ function handleReset(): void {
     padding: var(--space-2xs) var(--space-sm);
     font-family: var(--font-body);
     font-size: var(--font-size-xs);
-    background-color: var(--color-bg-subtle);
-    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-bold);
     color: var(--color-text-primary);
     cursor: pointer;
     min-height: 2.25rem;
+
+    @include cut-corner(4px, top-right);
 
     &:focus-visible {
       outline: none;
