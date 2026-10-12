@@ -1077,7 +1077,179 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 50,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts</> damage and jump between <@ba.kw>{attack@chain.max_target}</> enemies. Each jump <@ba.kw>no longer deals less damage</> and inflicts a brief <$ba.sluggish>Slow</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@chain.max_target}</>个敌人间跳跃，每次跳跃伤害<@ba.kw>不再降低</>并造成短暂的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 4,
+                    "attack@sluggish": 0.5,
+                    "attack@chain.atk_scale": 1,
+                    "skill@chain.atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30074",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 70,
+            "atk": 62
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts</> damage and jump between <@ba.kw>{attack@chain.max_target}</> enemies. Each jump <@ba.kw>no longer deals less damage</> and inflicts a brief <$ba.sluggish>Slow</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@chain.max_target}</>个敌人间跳跃，每次跳跃伤害<@ba.kw>不再降低</>并造成短暂的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 4,
+                    "attack@sluggish": 0.5,
+                    "attack@chain.atk_scale": 1,
+                    "skill@chain.atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +4 ASPD for every 10 seconds this unit remains on the battlefield, stacking up to 6 times",
+                    "zh": "每在场上停留10秒，攻击速度+4，最多可以叠加6次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 6,
+                    "interval": 10,
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 74
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts</> damage and jump between <@ba.kw>{attack@chain.max_target}</> enemies. Each jump <@ba.kw>no longer deals less damage</> and inflicts a brief <$ba.sluggish>Slow</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@chain.max_target}</>个敌人间跳跃，每次跳跃伤害<@ba.kw>不再降低</>并造成短暂的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 4,
+                    "attack@sluggish": 0.5,
+                    "attack@chain.atk_scale": 1,
+                    "skill@chain.atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +4 ASPD for every 10 seconds this unit remains on the battlefield, stacking up to 7 times",
+                    "zh": "每在场上停留10秒，攻击速度+4，最多可以叠加7次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 7,
+                    "interval": 10,
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

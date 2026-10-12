@@ -1064,7 +1064,166 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Refunds <@ba.kw>a large portion</> of the current DP Cost when retreated",
+                    "zh": "撤退时返还<@ba.kw>大量</>该次部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 120,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Refunds <@ba.kw>a large portion</> of the current DP Cost when retreated",
+                    "zh": "撤退时返还<@ba.kw>大量</>该次部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, reduce the Redeployment Time of [Kazimierz] Operators currently on cooldown by 3 seconds",
+                    "zh": "部署时，使正在再部署的【卡西米尔】阵营干员缩短3秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "remaining_respawn_time": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "31013",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 135,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Refunds <@ba.kw>a large portion</> of the current DP Cost when retreated",
+                    "zh": "撤退时返还<@ba.kw>大量</>该次部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, reduce the Redeployment Time of [Kazimierz] Operators currently on cooldown by 5 seconds",
+                    "zh": "部署时，使正在再部署的【卡西米尔】阵营干员缩短5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "remaining_respawn_time": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30093",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

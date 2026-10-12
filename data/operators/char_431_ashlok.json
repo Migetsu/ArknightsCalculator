@@ -1083,7 +1083,196 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 235,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 290,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +10%. If the two tiles to the front and back are ground tiles, ATK +16% instead",
+                    "zh": "攻击力+10%，前后两格为地面时改为攻击力+16%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "ashlok_t_1.atk": 0.16,
+                    "cnt": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +12% <@ba.talpu>(+2%)</>. If the two tiles to the front and back are ground tiles, ATK +18% <@ba.talpu>(+2%)</> instead",
+                    "zh": "攻击力+12%<@ba.talpu>（+2%）</>，前后两格为地面时改为攻击力+18%<@ba.talpu>（+2%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.12,
+                    "ashlok_t_1.atk": 0.18,
+                    "cnt": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 325,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +10%. If the two tiles to the front and back are ground tiles, ATK +20% instead",
+                    "zh": "攻击力+10%，前后两格为地面时改为攻击力+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "ashlok_t_1.atk": 0.2,
+                    "cnt": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +12% <@ba.talpu>(+2%)</>. If the two tiles to the front and back are ground tiles, ATK +22% <@ba.talpu>(+2%)</> instead",
+                    "zh": "攻击力+12%<@ba.talpu>（+2%）</>，前后两格为地面时改为攻击力+22%<@ba.talpu>（+2%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.12,
+                    "ashlok_t_1.atk": 0.22,
+                    "cnt": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

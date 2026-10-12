@@ -1425,7 +1425,180 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Healing targets gain <$ba.buffres>status resistance</> for 5 seconds. If the target's HP is above 75%, they gain <$ba.buffres>status resistance</> for 7 seconds instead.",
+                    "zh": "治疗的目标获得5秒<$ba.buffres>抵抗</>，若目标生命值高于75%则改为7秒<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "status_resistance[limit]": 5,
+                    "lumen_t_1[special].status_resistance[limit]": 7,
+                    "one_minus_status_resistance": -0.5,
+                    "lumen_t_1[special].one_minus_status_resistance": -0.5,
+                    "hp_ratio": 0.75
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 160,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Healing targets gain <$ba.buffres>status resistance</> for 5 seconds. If the target's HP is above 75%, they gain <$ba.buffres>status resistance</> for 8 seconds instead.",
+                    "zh": "治疗的目标获得5秒<$ba.buffres>抵抗</>，若目标生命值高于75%则改为8秒<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "status_resistance[limit]": 5,
+                    "lumen_t_1[special].status_resistance[limit]": 8,
+                    "one_minus_status_resistance": -0.5,
+                    "lumen_t_1[special].one_minus_status_resistance": -0.5,
+                    "hp_ratio": 0.75
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_lumen",
@@ -1493,7 +1666,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 30,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has a large healing range and healing is <@ba.kw>no longer reduced</> for distant targets",
+                    "zh": "拥有较大治疗范围，治疗较远目标时治疗量<@ba.kw>不再降低</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 40,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has a large healing range and healing is <@ba.kw>no longer reduced</> for distant targets",
+                    "zh": "拥有较大治疗范围，治疗较远目标时治疗量<@ba.kw>不再降低</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When an ally within range receives a negative status, heal them for 90% of Lumen's ATK. 11 second cooldown.",
+                    "zh": "攻击范围内的友方受到异常状态时，立刻治疗目标相当于流明攻击力90%的生命，该效果有11秒冷却时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.9,
+                    "duration": 11
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When an ally within range receives a negative status, heal them for 90% of Lumen's ATK. 9<@ba.talpu>(-2)</> second cooldown.",
+                    "zh": "攻击范围内的友方受到异常状态时，立刻治疗目标相当于流明攻击力90%的生命，该效果有9<@ba.talpu>（-2）</>秒冷却时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.9,
+                    "duration": 9
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 45,
+            "def": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has a large healing range and healing is <@ba.kw>no longer reduced</> for distant targets",
+                    "zh": "拥有较大治疗范围，治疗较远目标时治疗量<@ba.kw>不再降低</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When an ally within range receives a negative status, heal them for 100% of Lumen's ATK. 10 second cooldown.",
+                    "zh": "攻击范围内的友方受到异常状态时，立刻治疗目标相当于流明攻击力100%的生命，该效果有10秒冷却时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1,
+                    "duration": 10
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When an ally within range receives a negative status, heal them for 100% of Lumen's ATK. 8<@ba.talpu>(-2)</> second cooldown.",
+                    "zh": "攻击范围内的友方受到异常状态时，立刻治疗目标相当于流明攻击力100%的生命，该效果有8<@ba.talpu>（-2）</>秒冷却时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1,
+                    "duration": 8
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

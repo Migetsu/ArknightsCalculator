@@ -1119,7 +1119,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 170,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 215,
+            "atk": 54
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 250 DEF when attacking enemies with weight greater than or equal to 3",
+                    "zh": "攻击重量大于等于3的敌人时无视目标250的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 3,
+                    "def_penetrate_fixed": 250
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 270 <@ba.talpu>(+20)</> DEF when attacking enemies with weight greater than or equal to 3",
+                    "zh": "攻击重量大于等于3的敌人时无视目标270<@ba.talpu>（+20）</>的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 3,
+                    "def_penetrate_fixed": 270
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 240,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 280 DEF when attacking enemies with weight greater than or equal to 3",
+                    "zh": "攻击重量大于等于3的敌人时无视目标280的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 3,
+                    "def_penetrate_fixed": 280
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 300 <@ba.talpu>(+20)</> DEF when attacking enemies with weight greater than or equal to 3",
+                    "zh": "攻击重量大于等于3的敌人时无视目标300<@ba.talpu>（+20）</>的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 3,
+                    "def_penetrate_fixed": 300
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

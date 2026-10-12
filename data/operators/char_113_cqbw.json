@@ -1398,7 +1398,259 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 130,
+            "atk": 54
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 68
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range take +21% Physical damage when <$ba.stun>Stunned</>. Recover 1 SP when defeating an enemy",
+                    "zh": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+21%，击倒敌人时获得1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.21,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range take +24% <@ba.talpu>(+3%)</> Physical damage when <$ba.stun>Stunned</>. Recover 1 SP when defeating an enemy",
+                    "zh": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+24%<@ba.talpu>（+3%）</>，击倒敌人时获得1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.24,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 78
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range take +24% Physical damage when <$ba.stun>Stunned</>. Recover 1 SP when defeating an enemy",
+                    "zh": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+24%，击倒敌人时获得1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.24,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range take +27% <@ba.talpu>(+3%)</> Physical damage when <$ba.stun>Stunned</>. Recover 1 SP when defeating an enemy",
+                    "zh": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+27%<@ba.talpu>（+3%）</>，击倒敌人时获得1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.27,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_cqbw",
@@ -1466,7 +1718,194 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After remaining deployed for 10 seconds, obtains 60% Physical and Arts Dodge, and is less likely to be targeted by enemies. When no damage is taken, ATK gradually increases to +10% over 20 seconds, resetting upon taking damage",
+                    "zh": "在战场停留10秒后获得60%的物理和法术闪避，且不容易成为敌人的攻击目标。未受到伤害时20秒内攻击力逐渐提升至最高+10％，受到伤害时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 10,
+                    "prob": 0.6,
+                    "taunt_level": -1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.005,
+                    "max_stack_cnt": 20
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 85
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After remaining deployed for 8 seconds, obtains 60% Physical and Arts Dodge, and is less likely to be targeted by enemies. When no damage is taken, ATK gradually increases to +20% over 16 seconds, resetting upon taking damage",
+                    "zh": "在战场停留8秒后获得60%的物理和法术闪避，且不容易成为敌人的攻击目标。未受到伤害时16秒内攻击力逐渐提升至最高+20％，受到伤害时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 8,
+                    "prob": 0.6,
+                    "taunt_level": -1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.0125,
+                    "max_stack_cnt": 16
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

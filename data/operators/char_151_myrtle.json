@@ -1070,7 +1070,188 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30103",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 130,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "All Vanguard Operators recover 28 HP per second while this unit is deployed",
+                    "zh": "在场时，所有【先锋】干员每秒回复28点生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 28
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "All Vanguard Operators recover 31 <@ba.talpu>(+3)</> HP per second while this unit is deployed",
+                    "zh": "在场时，所有【先锋】干员每秒回复31<@ba.talpu>（+3）</>点生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 31
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30033",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "All Vanguard Operators recover 30 HP per second while this unit is deployed",
+                    "zh": "在场时，所有【先锋】干员每秒回复30点生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 30
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "All Vanguard Operators recover 33 <@ba.talpu>(+3)</> HP per second while this unit is deployed",
+                    "zh": "在场时，所有【先锋】干员每秒回复33<@ba.talpu>（+3）</>点生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 33
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31053",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

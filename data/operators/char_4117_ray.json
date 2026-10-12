@@ -1415,7 +1415,175 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 50,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 65,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can deploy a sandbeast within Attack Range to scout an area for 25s, extending Attack Range into that area. Prioritizes attacking targets within this area, and deals 18% more Physical damage to them; Sandbeast has -5 seconds Redeployment Time",
+                    "zh": "可以在攻击范围内部署沙地兽于25秒内侦察一片区域延伸攻击范围，自身优先攻击该区域内的目标且对其造成的物理伤害提高18%，沙地兽的再部署时间-5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.18
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 70,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can deploy a sandbeast within Attack Range to scout an area for 25s, extending Attack Range into that area. Prioritizes attacking targets within this area, and deals 20% more Physical damage to them; Sandbeast has -10 seconds Redeployment Time",
+                    "zh": "可以在攻击范围内部署沙地兽于25秒内侦察一片区域延伸攻击范围，自身优先攻击该区域内的目标且对其造成的物理伤害提高20%，沙地兽的再部署时间-10秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_ray",
@@ -1483,7 +1651,198 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 60,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "zh": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 8,
+                    "atk_scale": 1.33
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 65,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "zh": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 8,
+                    "atk_scale": 1.33
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击相同目标时每次攻击提高自身攻击力8%，最多4层",
+                    "zh": "攻击相同目标时每次攻击提高自身攻击力8%，最多4层",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击相同目标时每次攻击提高自身攻击力9%<@ba.talpu>（+1%）</>，最多4层",
+                    "zh": "攻击相同目标时每次攻击提高自身攻击力9%<@ba.talpu>（+1%）</>，最多4层",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "atk": 0.09
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 75,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "zh": "攻击时需要消耗子弹且攻击力提升至<@ba.kw>133%</>，不攻击时会缓慢地装填子弹（最多{value}发）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 8,
+                    "atk_scale": 1.33
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击相同目标时每次攻击提高自身攻击力9%，最多4层",
+                    "zh": "攻击相同目标时每次攻击提高自身攻击力9%，最多4层",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "atk": 0.09
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击相同目标时每次攻击提高自身攻击力10%<@ba.talpu>（+1%）</>，最多4层",
+                    "zh": "攻击相同目标时每次攻击提高自身攻击力10%<@ba.talpu>（+1%）</>，最多4层",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "atk": 0.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

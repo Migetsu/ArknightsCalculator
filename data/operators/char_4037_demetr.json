@@ -1505,7 +1505,219 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 140,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击使目标在10秒内防御力降低7%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高142%",
+                    "zh": "攻击使目标在10秒内防御力降低7%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高142%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@def": -0.07,
+                    "attack@limited_stack_cnt": 5,
+                    "attack@s2_limited_stack_cnt": 8,
+                    "attack@def_dec_duration": 10,
+                    "min_hp_ratio": 1,
+                    "max_hp_ratio": 0.2,
+                    "min_add_on_scale": 0,
+                    "max_add_on_scale": 0.42
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击使目标在10秒内防御力降低7%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高150%<@ba.talpu>（+8%）</>",
+                    "zh": "攻击使目标在10秒内防御力降低7%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高150%<@ba.talpu>（+8%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@def": -0.07,
+                    "attack@limited_stack_cnt": 5,
+                    "attack@s2_limited_stack_cnt": 8,
+                    "attack@def_dec_duration": 10,
+                    "min_hp_ratio": 1,
+                    "max_hp_ratio": 0.2,
+                    "min_add_on_scale": 0,
+                    "max_add_on_scale": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30165",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 230,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击使目标在10秒内防御力降低8%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高142%",
+                    "zh": "攻击使目标在10秒内防御力降低8%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高142%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@def": -0.08,
+                    "attack@limited_stack_cnt": 5,
+                    "attack@s2_limited_stack_cnt": 8,
+                    "attack@def_dec_duration": 10,
+                    "min_hp_ratio": 1,
+                    "max_hp_ratio": 0.2,
+                    "min_add_on_scale": 0,
+                    "max_add_on_scale": 0.42
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击使目标在10秒内防御力降低8%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高150%<@ba.talpu>（+8%）</>",
+                    "zh": "攻击使目标在10秒内防御力降低8%（最多叠加5次），并且目标剩余生命值比例越低自身对其造成的伤害越高，在剩余20%以下生命值时伤害提高到最高150%<@ba.talpu>（+8%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@def": -0.08,
+                    "attack@limited_stack_cnt": 5,
+                    "attack@s2_limited_stack_cnt": 8,
+                    "attack@def_dec_duration": 10,
+                    "min_hp_ratio": 1,
+                    "max_hp_ratio": 0.2,
+                    "min_add_on_scale": 0,
+                    "max_add_on_scale": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

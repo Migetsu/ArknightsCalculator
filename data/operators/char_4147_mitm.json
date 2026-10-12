@@ -1144,7 +1144,255 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1,
+                    "def": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When in Buggy form, will spawn Wreckage with higher HP in the four adjacent tiles after being defeated, then automatically respawn 15s later; when in Wreckage form, can block 1 enemy",
+                    "zh": "作为小车形态存在时被击败后会在15秒后自动刷新，并在周围四格生成生命值更高的残骸；作为残骸形态存在时可以阻挡1个敌人",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1,
+                    "interval": 15,
+                    "trshrb_t_1[trash_born].max_hp": -0.35,
+                    "trshrb_t_1[trash_born].block_cnt": 1,
+                    "trshrb_t_1[trash_born].def": -1,
+                    "trshrb_t_1[trash_born].atk": -1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon Cherry-3 to assist in combat from a Tactical Point; after being defeated, Cherry-3 will spawn Wreckage with higher HP in the four adjacent tiles, then automatically respawn 15s later",
+                    "zh": "可以在战术点召唤樱桃三号协助作战，其被击败后会在15秒后自动刷新，并在周围四格生成生命值更高的残骸",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1,
+                    "def": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When in Buggy form, will spawn Wreckage with even higher HP in the four adjacent tiles after being defeated, then automatically respawn 15s later; when in Wreckage form, can block 1 enemy",
+                    "zh": "作为小车形态存在时被击败后会在15秒后自动刷新，并在周围四格生成生命值进一步提高的残骸；作为残骸形态存在时可以阻挡1个敌人",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1,
+                    "interval": 15,
+                    "trshrb_t_1[trash_born].max_hp": -0.3,
+                    "trshrb_t_1[trash_born].block_cnt": 1,
+                    "trshrb_t_1[trash_born].def": -1,
+                    "trshrb_t_1[trash_born].atk": -1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon Cherry-3 to assist in combat from a Tactical Point; after being defeated, Cherry-3 will spawn Wreckage with even higher HP in the four adjacent tiles, then automatically respawn 15s later",
+                    "zh": "可以在战术点召唤樱桃三号协助作战，其被击败后会在15秒后自动刷新，并在周围四格生成生命值进一步提高的残骸",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1,
+                    "def": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

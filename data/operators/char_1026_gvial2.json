@@ -1512,7 +1512,203 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 45,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 60,
+            "def": 29
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases ATK and DEF by 13%, increased by a further 4% for each blocked enemy",
+                    "zh": "攻击力和防御力提升13%，每再阻挡一个敌人提升4%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.13,
+                    "def": 0.13,
+                    "atk_add": 0.04,
+                    "def_add": 0.04
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases ATK and DEF by 15% <@ba.talpu>(+2%)</>, increased by a further 5% <@ba.talpu>(+1%)</> for each blocked enemy",
+                    "zh": "攻击力和防御力提升15%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升5%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "def": 0.15,
+                    "atk_add": 0.05,
+                    "def_add": 0.05
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 73,
+            "def": 34
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases ATK and DEF by 13%, increased by a further 5% for each blocked enemy",
+                    "zh": "攻击力和防御力提升13%，每再阻挡一个敌人提升5%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.13,
+                    "def": 0.13,
+                    "atk_add": 0.05,
+                    "def_add": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases ATK and DEF by 15% <@ba.talpu>(+2%)</>, increased by a further 6% <@ba.talpu>(+1%)</> for each blocked enemy",
+                    "zh": "攻击力和防御力提升15%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升6%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "def": 0.15,
+                    "atk_add": 0.06,
+                    "def_add": 0.06
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_gvial2",
@@ -1580,7 +1776,224 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 155,
+            "atk": 21,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 26,
+            "def": 63
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "被自身阻挡的敌人受到5%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升25%，生命值低于一半时提升至50%",
+                    "zh": "被自身阻挡的敌人受到5%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升25%，生命值低于一半时提升至50%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale_1": 1.25,
+                    "heal_scale_2": 1.5,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "被自身阻挡的敌人受到5%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升30%<@ba.talpu>（+5%）</>，生命值低于一半时提升至55%<@ba.talpu>（+5%）</>",
+                    "zh": "被自身阻挡的敌人受到5%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升30%<@ba.talpu>（+5%）</>，生命值低于一半时提升至55%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale_1": 1.3,
+                    "heal_scale_2": 1.55,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 1.05
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 29,
+            "def": 71
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "被自身阻挡的敌人受到10%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升30%，生命值低于一半时提升至60%",
+                    "zh": "被自身阻挡的敌人受到10%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升30%，生命值低于一半时提升至60%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale_1": 1.3,
+                    "heal_scale_2": 1.6,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "被自身阻挡的敌人受到10%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升35%<@ba.talpu>（+5%）</>，生命值低于一半时提升至65%<@ba.talpu>（+5%）</>",
+                    "zh": "被自身阻挡的敌人受到10%的<$ba.physicfragile>【物理脆弱】</>，自身受到的治疗效果提升35%<@ba.talpu>（+5%）</>，生命值低于一半时提升至65%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale_1": 1.35,
+                    "heal_scale_2": 1.65,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_gvial2",
@@ -1616,7 +2029,265 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 46,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "zh": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_hp": 1.5,
+                    "atk": 1.5,
+                    "def": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 54,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "zh": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_hp": 1.5,
+                    "atk": 1.5,
+                    "def": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力和防御力提升10%，每再阻挡一个敌人提升4%；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复5%生命值，并获取该敌人2%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+2",
+                    "zh": "攻击力和防御力提升10%，每再阻挡一个敌人提升4%；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复5%生命值，并获取该敌人2%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+2",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "def": 0.1,
+                    "atk_add": 0.04,
+                    "def_add": 0.04,
+                    "atk_add_max": 1,
+                    "def_add_max": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力和防御力提升12%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升5%<@ba.talpu>（+1%）</>；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复5%生命值，并获取该敌人2%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+2",
+                    "zh": "攻击力和防御力提升12%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升5%<@ba.talpu>（+1%）</>；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复5%生命值，并获取该敌人2%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+2",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.12,
+                    "def": 0.12,
+                    "atk_add": 0.05,
+                    "def_add": 0.05,
+                    "atk_add_max": 1,
+                    "def_add_max": 1
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "block_cnt": 2,
+                    "hp_ratio": 0.05,
+                    "scale": 0.02,
+                    "max_scale": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 5,
+                    "atk_scale": 1,
+                    "force": 2,
+                    "range_id": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 62,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "zh": "在<@ba.kw>生息演算</>中，首次开启技能后，生命上限、攻击力、防御力提升至150%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_hp": 1.5,
+                    "atk": 1.5,
+                    "def": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力和防御力提升10%，每再阻挡一个敌人提升4%；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复10%生命值，并获取该敌人3%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+3",
+                    "zh": "攻击力和防御力提升10%，每再阻挡一个敌人提升4%；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复10%生命值，并获取该敌人3%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+3",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "def": 0.1,
+                    "atk_add": 0.04,
+                    "def_add": 0.04,
+                    "atk_add_max": 1,
+                    "def_add_max": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力和防御力提升12%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升5%<@ba.talpu>（+1%）</>；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复10%生命值，并获取该敌人3%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+3",
+                    "zh": "攻击力和防御力提升12%<@ba.talpu>（+2%）</>，每再阻挡一个敌人提升5%<@ba.talpu>（+1%）</>；\n在<@ba.kw>生息演算</>中，技能期间，每5秒以自身为中心造成一次相当于100%攻击力的群体物理伤害并中等力度拖拽未被阻挡的敌人，击倒敌人时回复10%生命值，并获取该敌人3%的攻击力与防御力（持续至百炼嘉维尔离场，最多不超过初始属性的300%），所有地面干员阻挡数+3",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.12,
+                    "def": 0.12,
+                    "atk_add": 0.05,
+                    "def_add": 0.05,
+                    "atk_add_max": 1,
+                    "def_add_max": 1
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "block_cnt": 3,
+                    "hp_ratio": 0.1,
+                    "scale": 0.03,
+                    "max_scale": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 5,
+                    "atk_scale": 1,
+                    "force": 2,
+                    "range_id": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

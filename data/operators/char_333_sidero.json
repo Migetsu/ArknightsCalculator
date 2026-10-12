@@ -1038,7 +1038,196 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Enemies blocked by this unit receive <@ba.kw>10%</> <$ba.magicfragile>Arts Fragility</>",
+                    "zh": "自身阻挡的敌人受到<@ba.kw>10%</>的<$ba.magicfragile>法术脆弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 270,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Enemies blocked by this unit receive <@ba.kw>10%</> <$ba.magicfragile>Arts Fragility</>",
+                    "zh": "自身阻挡的敌人受到<@ba.kw>10%</>的<$ba.magicfragile>法术脆弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After defeating 6 enemies, gains +20 ASPD and <$ba.buffres>status resistance</>",
+                    "zh": "击杀6个敌人后获得攻击速度+20和<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 6,
+                    "attack_speed": 20,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After defeating 4 <@ba.talpu>(-2)</> enemies, gains +20 ASPD and <$ba.buffres>status resistance</>",
+                    "zh": "击杀4<@ba.talpu>（-2）</>个敌人后获得攻击速度+20和<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4,
+                    "attack_speed": 20,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 320,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Enemies blocked by this unit receive <@ba.kw>10%</> <$ba.magicfragile>Arts Fragility</>",
+                    "zh": "自身阻挡的敌人受到<@ba.kw>10%</>的<$ba.magicfragile>法术脆弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After defeating 5 enemies, gains +23 ASPD and <$ba.buffres>status resistance</>",
+                    "zh": "击杀5个敌人后获得攻击速度+23和<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 5,
+                    "attack_speed": 23,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After defeating 3 <@ba.talpu>(-2)</> enemies, gains +23 ASPD and <$ba.buffres>status resistance</>",
+                    "zh": "击杀3<@ba.talpu>（-2）</>个敌人后获得攻击速度+23和<$ba.buffres>抵抗</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 3,
+                    "attack_speed": 23,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31064",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

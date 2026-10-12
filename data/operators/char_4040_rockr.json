@@ -1101,7 +1101,227 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 50,
+            "atk": 13,
+            "def": 11
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (base damage increased, deals up to 110% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 70,
+            "atk": 15,
+            "def": 14
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (base damage increased, deals up to 110% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "+4% ATK for every 10 seconds this unit remains on the battlefield, stacking up to 4 times",
+                    "zh": "每在场上停留10秒，攻击力+4%，最多可以叠加4次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.04,
+                    "max_stack_cnt": 4,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "+5% <@ba.talpu>(+1%)</> ATK for every 10 seconds this unit remains on the battlefield, stacking up to 4 times",
+                    "zh": "每在场上停留10秒，攻击力+5%<@ba.talpu>（+1%）</>，最多可以叠加4次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.05,
+                    "max_stack_cnt": 4,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 80,
+            "atk": 18,
+            "def": 16
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (base damage increased, deals up to 110% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "+4% ATK for every 10 seconds this unit remains on the battlefield, stacking up to 4 times, +5 ASPD when at max",
+                    "zh": "每在场上停留10秒，攻击力+4%，最多可以叠加4次，叠满后攻击速度+5",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.04,
+                    "max_stack_cnt": 4,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "+5% <@ba.talpu>(+1%)</> ATK for every 10 seconds this unit remains on the battlefield, stacking up to 4 times, +5 ASPD when at max",
+                    "zh": "每在场上停留10秒，攻击力+5%<@ba.talpu>（+1%）</>，最多可以叠加4次，叠满后攻击速度+5",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.05,
+                    "max_stack_cnt": 4,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "attack_speed": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "max_stack_cnt": 4,
+                    "attack_speed": 5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1130,7 +1130,215 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 35,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 47,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.invisible>Invisible</> enemies. If there are <$ba.invisible>Invisible</> enemies within attack range, ATK +22%",
+                    "zh": "可以攻击<$ba.invisible>隐匿</>敌人，并且攻击范围内存在拥有<$ba.invisible>隐匿</>敌人时，攻击力+22%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.22
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.invisible>Invisible</> enemies. If there are <$ba.invisible>Invisible</> enemies within attack range, ATK +25% <@ba.talpu>(+3%)</>",
+                    "zh": "可以攻击<$ba.invisible>隐匿</>敌人，并且攻击范围内存在<$ba.invisible>隐匿</>敌人时，攻击力+25%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.25
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "31033",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 55,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.invisible>Invisible</> enemies. If there are <$ba.invisible>Invisible</> enemies within attack range, ATK +27%",
+                    "zh": "可以攻击<$ba.invisible>隐匿</>敌人，并且攻击范围内存在拥有<$ba.invisible>隐匿</>敌人时，攻击力+27%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.27
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.invisible>Invisible</> enemies. If there are <$ba.invisible>Invisible</> enemies within attack range, ATK +30% <@ba.talpu>(+3%)</>",
+                    "zh": "可以攻击<$ba.invisible>隐匿</>敌人，并且攻击范围内存在<$ba.invisible>隐匿</>敌人时，攻击力+30%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31023",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

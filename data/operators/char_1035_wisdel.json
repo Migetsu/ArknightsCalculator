@@ -1476,7 +1476,207 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 45,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 55,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have 120% ATK against the main target and attach an afterimage to it. Afterimages have a 15% chance to explode when affected by Wiš'adel's aftershock, dealing 170% ATK as Physical damage to all nearby enemies and <$ba.stun>Stunning</> them for 1s.",
+                    "zh": "攻击时对主目标的攻击力提升至120%并为其附着残影，残影受到维什戴尔的余震影响时有15%概率爆炸，对周围所有敌人造成170%攻击力的物理伤害并使其<$ba.stun>晕眩</>1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@main_atk_scale": 1.2,
+                    "attack@prob": 0.15,
+                    "attack@bomb_atk_scale": 1.7,
+                    "attack@stun": 1,
+                    "attack@range_radius": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have 120% ATK against the main target and attach an afterimage to it. Afterimages have a 15% chance to explode when affected by Wiš'adel's aftershock, dealing 180% <@ba.talpu>(+10%)</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stunning</> them for 1s.",
+                    "zh": "攻击时对主目标的攻击力提升至120%并为其附着残影，残影受到维什戴尔的余震影响时有15%概率爆炸，对周围所有敌人造成180%<@ba.talpu>（+10%）</>攻击力的物理伤害并使其<$ba.stun>晕眩</>1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@main_atk_scale": 1.2,
+                    "attack@prob": 0.15,
+                    "attack@bomb_atk_scale": 1.8,
+                    "attack@stun": 1,
+                    "attack@range_radius": 1.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 65,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have 125% ATK against the main target and attach an afterimage to it. Afterimages have a 15% chance to explode when affected by Wiš'adel's aftershock, dealing 175% ATK as Physical damage to all nearby enemies and <$ba.stun>Stunning</> them for 1s.",
+                    "zh": "攻击时对主目标的攻击力提升至125%并为其附着残影，残影受到维什戴尔的余震影响时有15%概率爆炸，对周围所有敌人造成175%攻击力的物理伤害并使其<$ba.stun>晕眩</>1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@main_atk_scale": 1.25,
+                    "attack@prob": 0.15,
+                    "attack@bomb_atk_scale": 1.75,
+                    "attack@stun": 1,
+                    "attack@range_radius": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have 125% ATK against the main target and attach an afterimage to it. Afterimages have a 15% chance to explode when affected by Wiš'adel's aftershock, dealing 185% <@ba.talpu>(+10%)</> ATK as Physical damage to all nearby enemies and <$ba.stun>Stunning</> them for 1s.",
+                    "zh": "攻击时对主目标的攻击力提升至125%并为其附着残影，残影受到维什戴尔的余震影响时有15%概率爆炸，对周围所有敌人造成185%<@ba.talpu>（+10%）</>攻击力的物理伤害并使其<$ba.stun>晕眩</>1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@main_atk_scale": 1.25,
+                    "attack@prob": 0.15,
+                    "attack@bomb_atk_scale": 1.85,
+                    "attack@stun": 1,
+                    "attack@range_radius": 1.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

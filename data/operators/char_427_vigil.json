@@ -1434,7 +1434,255 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 20,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85,
+                    "evade_duration": 0,
+                    "prob": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 25,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85,
+                    "evade_duration": 7,
+                    "prob": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon a Wolfpack initially consisting of 3 'Wolf Shadows' at the Tactical Point to assist in combat; The number of 'Wolf Shadows' increases by +1 every 25 seconds (up to a maximum of 3; each 'Wolf Shadow' increases the Wolfpack's Block by 1 and causes its attacks to deal an additional instance of damage; each 'Wolf Shadow' lost gives the Wolfpack 30% Physical Dodge for 7 seconds)",
+                    "zh": "可以在战术点召唤由初始三只“狼影”构成的狼群协助作战，“狼影”的数量每25秒增加一只（至多3只；每只“狼影”使狼群阻挡数+1且攻击额外造成一次伤害，每次“狼影”损失时使狼群7秒内获得30%的物理闪避）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +1 'Wolf Shadow' every 25s (up to a maximum of 3). For each 'Wolf Shadow' present, the Wolfpack gains +1 Block, and each attack inflicts an additional instance of damage; when more than 1 'Wolf Shadow' is present, each time upon taking lethal damage, loses 1 'Wolf Shadow' but fully restores HP, and the Wolfpack gains 30% Physical Dodge for 7 seconds.",
+                    "zh": "每25秒增加一只“狼影”（至多3只），每存在一只“狼影”，狼群阻挡数+1，每次攻击额外造成一次伤害；当存在多于1只“狼影”时，每次受到致命伤害时损失一只“狼影”但回复所有生命，并使狼群7秒内获得30%的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1,
+                    "interval": 25,
+                    "vigil_wolf_t_1_enhance[trigger].max_stack_cnt": 2,
+                    "vigil_wolf_t_1_enhance[trigger].interval": 25,
+                    "vigil_wolf_t_1_enhance[trigger].block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 30,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85,
+                    "evade_duration": 10,
+                    "prob": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon a Wolfpack initially consisting of 3 'Wolf Shadows' at the Tactical Point to assist in combat; The number of 'Wolf Shadows' increases by +1 every 25 seconds (up to a maximum of 3; each 'Wolf Shadow' increases the Wolfpack's Block by 1 and causes its attacks to deal an additional instance of damage; each 'Wolf Shadow' lost gives the Wolfpack 50% Physical Dodge for 10 seconds)",
+                    "zh": "可以在战术点召唤由初始三只“狼影”构成的狼群协助作战，“狼影”的数量每25秒增加一只（至多3只；每只“狼影”使狼群阻挡数+1且攻击额外造成一次伤害，每次“狼影”损失时使狼群10秒内获得50%的物理闪避）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +1 'Wolf Shadow' every 25s (up to a maximum of 3). For each 'Wolf Shadow' present, the Wolfpack gains +1 Block, and each attack inflicts an additional instance of damage; when more than 1 'Wolf Shadow' is present, each time upon taking lethal damage, loses 1 'Wolf Shadow' but fully restores HP, and the Wolfpack gains 50% Physical Dodge for 10 seconds.",
+                    "zh": "每25秒增加一只“狼影”（至多3只），每存在一只“狼影”，狼群阻挡数+1，每次攻击额外造成一次伤害；当存在多于1只“狼影”时，每次受到致命伤害时损失一只“狼影”但回复所有生命，并使狼群10秒内获得50%的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1,
+                    "interval": 25,
+                    "vigil_wolf_t_1_enhance[trigger].max_stack_cnt": 2,
+                    "vigil_wolf_t_1_enhance[trigger].interval": 25,
+                    "vigil_wolf_t_1_enhance[trigger].block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_vigil",
@@ -1502,7 +1750,323 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 125,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Vigil and the Wolfpack's attacks ignore 175 DEF and Steal 15 DEF (Caps at 100) when attacking enemies blocked by the Wolfpack",
+                    "zh": "敌人被狼群阻挡时，伺夜和狼群对其的攻击无视其175防御力，并<$ba.steal>偷取</>其15点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 175
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Vigil and the Wolfpack's attacks ignore 200 <@ba.talpu>(+25)</> DEF and Steal 15 DEF (Caps at 100) when attacking enemies blocked by the Wolfpack",
+                    "zh": "敌人被狼群阻挡时，伺夜和狼群对其的攻击无视其200<@ba.talpu>（+25）</>防御力，并<$ba.steal>偷取</>其15点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 200
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 175 DEF and Steals 15 DEF (Caps at 100) when attacking a blocked target",
+                    "zh": "攻击阻挡的目标时无视其175的防御力，并<$ba.steal>偷取</>其15点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 175
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 200 <@ba.talpu>(+25)</> DEF and Steals 15 DEF (Caps at 100) when attacking a blocked target",
+                    "zh": "攻击阻挡的目标时无视其200<@ba.talpu>（+25）</>的防御力，并<$ba.steal>偷取</>其15点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 200
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "vigil_def": 15,
+                    "vigil_def_max": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "vigil_def": 15,
+                    "vigil_def_max": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Vigil and the Wolfpack's attacks ignore 225 DEF and Steal 20 DEF (Caps at 100) when attacking enemies blocked by the Wolfpack",
+                    "zh": "敌人被狼群阻挡时，伺夜和狼群对其的攻击无视其225防御力，并<$ba.steal>偷取</>其20点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 225
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Vigil and the Wolfpack's attacks ignore 250 <@ba.talpu>(+25)</> DEF and Steal 20 DEF (Caps at 100) when attacking enemies blocked by the Wolfpack",
+                    "zh": "敌人被狼群阻挡时，伺夜和狼群对其的攻击无视其250<@ba.talpu>（+25）</>防御力，并<$ba.steal>偷取</>其20点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 250
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 225 DEF and Steals 20 DEF (Caps at 100) when attacking a blocked target",
+                    "zh": "攻击阻挡的目标时无视其225的防御力，并<$ba.steal>偷取</>其20点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 225
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Ignores 250 <@ba.talpu>(+25)</> DEF and Steals 20 DEF (Caps at 100) when attacking a blocked target",
+                    "zh": "攻击阻挡的目标时无视其250<@ba.talpu>（+25）</>的防御力，并<$ba.steal>偷取</>其20点防御力（最高100点）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 250
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "vigil_def": 20,
+                    "vigil_def_max": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "vigil_def": 20,
+                    "vigil_def_max": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

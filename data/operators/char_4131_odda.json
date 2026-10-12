@@ -1109,7 +1109,201 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 210,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are 3 or more enemies within the splash area, ATK of the current instance of attack increases to <@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 230,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are 3 or more enemies within the splash area, ATK of the current instance of attack increases to <@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +20% after this unit deals Physical damage 30 times",
+                    "zh": "累计造成30次物理伤害后，攻击力+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "count": 30,
+                    "atk": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +23% <@ba.talpu>(+3%)</> after this unit deals Physical damage 30 times",
+                    "zh": "累计造成30次物理伤害后，攻击力+23%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "count": 30,
+                    "atk": 0.23
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 250,
+            "atk": 85
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are 3 or more enemies within the splash area, ATK of the current instance of attack increases to <@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +20% after this unit deals Physical damage 20 times",
+                    "zh": "累计造成20次物理伤害后，攻击力+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "count": 20,
+                    "atk": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +23% <@ba.talpu>(+3%)</> after this unit deals Physical damage 20 times",
+                    "zh": "累计造成20次物理伤害后，攻击力+23%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "count": 20,
+                    "atk": 0.23
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

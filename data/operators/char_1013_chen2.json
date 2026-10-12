@@ -1479,7 +1479,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 30,
+            "def": 37
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all enemies</> within range, and deals <@ba.kw>160%</> damage to enemies in the row directly in front of this unit.",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 45,
+            "def": 42
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all enemies</> within range, and deals <@ba.kw>160%</> damage to enemies in the row directly in front of this unit.",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, Ch'en's ammo-based skills have 23% chance to not consume the corresponding ammo; other Sniper Operators' ammo-based skills have 20% chance instead, while other Ranged Operators have 8% chance (only the highest effect of this type will be applied)",
+                    "zh": "在场时自身弹药类技能攻击时23%概率不消耗对应弹药，其他【狙击】干员的弹药类技能改为20%概率不消耗，其他远程干员的弹药类技能改为8%概率不消耗（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "e_spareshot_chen.prob": 0.23,
+                    "chen2_t_002[spareshot][other].prob": 0.08,
+                    "chen2_t_002[spareshot][sniper].prob": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, Ch'en's ammo-based skills have 25% <@ba.talpu>(+2%)</> chance to not consume the corresponding ammo; other Sniper Operators' ammo-based skills have 20% chance instead, while other Ranged Operators have 8% chance (only the highest effect of this type will be applied)",
+                    "zh": "在场时自身弹药类技能攻击时25%<@ba.talpu>（+2%）</>概率不消耗对应弹药，其他【狙击】干员的弹药类技能改为20%概率不消耗，其他远程干员的弹药类技能改为8%概率不消耗（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "e_spareshot_chen.prob": 0.25,
+                    "chen2_t_002[spareshot][other].prob": 0.08,
+                    "chen2_t_002[spareshot][sniper].prob": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all enemies</> within range, and deals <@ba.kw>160%</> damage to enemies in the row directly in front of this unit.",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, Ch'en's ammo-based skills have 25% chance to not consume the corresponding ammo; other Sniper Operators' ammo-based skills have 20% chance instead, while other Ranged Operators have 12% chance (only the highest effect of this type will be applied)",
+                    "zh": "在场时自身弹药类技能攻击时25%概率不消耗对应弹药，其他【狙击】干员的弹药类技能改为20%概率不消耗，其他远程干员的弹药类技能改为12%概率不消耗（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "e_spareshot_chen.prob": 0.25,
+                    "chen2_t_002[spareshot][other].prob": 0.12,
+                    "chen2_t_002[spareshot][sniper].prob": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, Ch'en's ammo-based skills have 27% <@ba.talpu>(+2%)</> chance to not consume the corresponding ammo; other Sniper Operators' ammo-based skills have 20% chance instead, while other Ranged Operators have 12% chance (only the highest effect of this type will be applied)",
+                    "zh": "在场时自身弹药类技能攻击时27%<@ba.talpu>（+2%）</>概率不消耗对应弹药，其他【狙击】干员的弹药类技能改为20%概率不消耗，其他远程干员的弹药类技能改为12%概率不消耗（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "e_spareshot_chen.prob": 0.27,
+                    "chen2_t_002[spareshot][other].prob": 0.12,
+                    "chen2_t_002[spareshot][sniper].prob": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_chen2",
@@ -1547,7 +1736,166 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "cost": -8,
+            "max_hp": 135,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "部署费用<@ba.kw>减少</>",
+                    "zh": "部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "cost": -8,
+            "max_hp": 165,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "部署费用<@ba.kw>减少</>",
+                    "zh": "部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+10%，攻击速度+8，当场地中存在水地形时改为攻击力+15%，攻击速度+12",
+                    "zh": "攻击力+10%，攻击速度+8，当场地中存在水地形时改为攻击力+15%，攻击速度+12",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "chen2_t_2[common].attack_speed": 8,
+                    "chen2_t_2[common].atk": 0.1,
+                    "chen2_t_2[map].attack_speed": 12,
+                    "chen2_t_2[map].atk": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "cost": -8,
+            "max_hp": 180,
+            "atk": 100
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "部署费用<@ba.kw>减少</>",
+                    "zh": "部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+15%，攻击速度+12，当场地中存在水地形时改为攻击力+28%，攻击速度+20，技能开启时，场地视为水地形",
+                    "zh": "攻击力+15%，攻击速度+12，当场地中存在水地形时改为攻击力+28%，攻击速度+20，技能开启时，场地视为水地形",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "chen2_t_2[common].attack_speed": 12,
+                    "chen2_t_2[common].atk": 0.15,
+                    "chen2_t_2[map].attack_speed": 20,
+                    "chen2_t_2[map].atk": 0.28
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

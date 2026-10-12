@@ -1588,7 +1588,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; can create <@ba.kw>Summons</> by defeating enemies, and can attack enemies blocked by their own <@ba.kw>Summons</> with an ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，可以通过击倒敌人生成<@ba.kw>召唤物</>，可攻击到自身<@ba.kw>召唤物</>阻挡的敌人且攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; can create <@ba.kw>Summons</> by defeating enemies, and can attack enemies blocked by their own <@ba.kw>Summons</> with an ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，可以通过击倒敌人生成<@ba.kw>召唤物</>，可攻击到自身<@ba.kw>召唤物</>阻挡的敌人且攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_duration": 10,
+                    "atk": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When an enemy is defeated within Attack Range, gains ATK +15% for 10 seconds, and summons a Servant of Lamentation (max 3); if no more Servants can be summoned, upgrades a Servant instead (increases Block, and increases HP, ATK, and DEF by more)",
+                    "zh": "攻击范围内敌人被击倒时在10秒内自身攻击力+15%，并在攻击范围内生成一个悲叹的仆役，最多召唤3个，若无法再次召唤则使一个悲叹的仆役升级（提升阻挡数与更多的生命、攻击和防御）",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; can create <@ba.kw>Summons</> by defeating enemies, and can attack enemies blocked by their own <@ba.kw>Summons</> with an ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，可以通过击倒敌人生成<@ba.kw>召唤物</>，可攻击到自身<@ba.kw>召唤物</>阻挡的敌人且攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_duration": 10,
+                    "atk": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_duration": 10,
+                    "atk": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When an enemy is defeated within Necrass's or one of her Summon's Attack Range, gains ATK +25% for 10 seconds, and summons a Servant of Lamentation (max 3); if no more Servants can be summoned, upgrades a Servant instead (increases Block, and increases HP, ATK, and DEF by more)",
+                    "zh": "自身和召唤物攻击范围内敌人被击倒时在10秒内自身攻击力+25%，并在攻击范围内生成一个悲叹的仆役，最多召唤3个，若无法再次召唤则使一个悲叹的仆役升级（提升阻挡数与更多的生命、攻击和防御）",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

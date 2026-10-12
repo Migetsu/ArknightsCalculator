@@ -1087,7 +1087,198 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 128,
+            "atk": 53
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 168,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If no attack is made for 2 seconds, the next attack deals 135% ATK as Physical damage",
+                    "zh": "如果2秒内没有主动攻击过，下次攻击造成相当于攻击力135%的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.35,
+                    "attack@delay": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If no attack is made for 2 seconds, the next attack deals 138% <@ba.talpu>(+3%)</> ATK as Physical damage",
+                    "zh": "如果2秒内没有主动攻击过，下次攻击造成相当于攻击力138%<@ba.talpu>（+3%）</>的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.38,
+                    "attack@delay": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 205,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When Ammo count is empty, the next reload +1 Ammo additionally",
+                    "zh": "子弹数量为空时下次装填额外加装1发子弹",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_add": 1,
+                    "value": 8,
+                    "atk_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If no attack is made for 2 seconds, the next attack deals 138% ATK as Physical damage",
+                    "zh": "如果2秒内没有主动攻击过，下次攻击造成相当于攻击力138%的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.38,
+                    "attack@delay": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If no attack is made for 2 seconds, the next attack deals 141% <@ba.talpu>(+3%)</> ATK as Physical damage",
+                    "zh": "如果2秒内没有主动攻击过，下次攻击造成相当于攻击力141%<@ba.talpu>（+3%）</>的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.41,
+                    "attack@delay": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

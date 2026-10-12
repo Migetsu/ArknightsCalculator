@@ -1130,7 +1130,195 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> deals Arts damage and reduces Physical and Arts damage taken by 43%",
+                    "zh": "<替身>攻击造成法术伤害且受到的物理与法术伤害减少43%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.43,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> deals Arts damage and reduces Physical and Arts damage taken by 46% <@ba.talpu>(+3%)</>",
+                    "zh": "<替身>攻击造成法术伤害且受到的物理与法术伤害减少46%<@ba.talpu>（+3）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.46,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 280,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> deals Arts damage and reduces Physical and Arts damage taken by 45%",
+                    "zh": "<替身>攻击造成法术伤害且受到的物理与法术伤害减少45%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.45,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> deals Arts damage and reduces Physical and Arts damage taken by 48% <@ba.talpu>(+3%)</>",
+                    "zh": "<替身>攻击造成法术伤害且受到的物理与法术伤害减少48%<@ba.talpu>（+3）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.48,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

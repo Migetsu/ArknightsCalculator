@@ -1114,7 +1114,194 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 120,
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 8% of Whisperain's ATK (Unaffected by this unit's Trait)",
+                    "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力8%的生命（不受特性影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_to_hp_recovery_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 9% <@ba.talpu>(+1%)</> of Whisperain's ATK (Unaffected by this unit's Trait)",
+                    "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力9%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_to_hp_recovery_ratio": 0.09
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 140,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <$ba.buffres>status resistance</>, and become less likely to be attacked",
+                    "zh": "自身获得<$ba.buffres>抵抗</>且更不容易受到敌人的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.8,
+                    "taunt_level": -1,
+                    "one_minus_status_resistance": -0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 9% of Whisperain's ATK (Unaffected by this unit's Trait)",
+                    "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力9%的生命（不受特性影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_to_hp_recovery_ratio": 0.09
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Allied units with <$ba.buffres>status resistance</> within this unit's Attack Range will restore HP per second equal to 10% <@ba.talpu>(+1%)</> of Whisperain's ATK (Unaffected by this unit's Trait)",
+                    "zh": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力10%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_to_hp_recovery_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30074",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1066,7 +1066,204 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 36,
+            "def": 10
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "zh": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "atk": 42,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "zh": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "技能结束后，治疗自身和攻击范围内最多3名干员相当于岳羽由加莉攻击力110%的生命值",
+                    "zh": "技能结束后，治疗自身和攻击范围内最多3名干员相当于岳羽由加莉攻击力110%的生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_target": 3,
+                    "heal_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 160,
+            "atk": 48,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "zh": "攻击范围内有干员处于技能持续期间时，自身攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "技能结束后，治疗自身和攻击范围内最多3名干员相当于岳羽由加莉攻击力120%的生命值",
+                    "zh": "技能结束后，治疗自身和攻击范围内最多3名干员相当于岳羽由加莉攻击力120%的生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_target": 3,
+                    "heal_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31104",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

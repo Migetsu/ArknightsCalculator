@@ -1496,7 +1496,208 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 250,
+            "atk": 63,
+            "def": 21
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 320,
+            "atk": 75,
+            "def": 26
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "特性溅射造成的物理伤害提升32%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力24%的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "zh": "特性溅射造成的物理伤害提升32%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力24%的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.32,
+                    "attack@splash_atk_scale": 0.24,
+                    "attack@sluggish": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "特性溅射造成的物理伤害提升32%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力27%<@ba.talpu>（+3%）</>的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "zh": "特性溅射造成的物理伤害提升32%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力27%<@ba.talpu>（+3%）</>的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.32,
+                    "attack@splash_atk_scale": 0.27,
+                    "attack@sluggish": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 380,
+            "atk": 83,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "特性溅射造成的物理伤害提升40%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力24%的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "zh": "特性溅射造成的物理伤害提升40%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力24%的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.4,
+                    "attack@splash_atk_scale": 0.24,
+                    "attack@sluggish": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "特性溅射造成的物理伤害提升40%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力27%<@ba.talpu>（+3%）</>的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "zh": "特性溅射造成的物理伤害提升40%，且溅射到的每个高台对周围四格所有地面敌人造成相当于攻击力27%<@ba.talpu>（+3%）</>的物理伤害和0.5秒<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.4,
+                    "attack@splash_atk_scale": 0.27,
+                    "attack@sluggish": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

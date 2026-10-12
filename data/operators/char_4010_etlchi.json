@@ -1500,7 +1500,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 60,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When HP drops below 25% for the first time, immediately recovers 70% of Max HP and reduces Physical damage taken by 15% from that point onwards",
+                    "zh": "生命值低于25%时，仅一次立刻回复70%最大生命值，且自身之后受到的物理伤害降低15%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "damage_resistance": 0.15,
+                    "etlchi_t_2[heal].hp_ratio": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When HP drops below 25% for the first time, immediately recovers 75% <@ba.talpu>(+5%)</> of Max HP and reduces Physical damage taken by 20% <@ba.talpu>(+5%)</> from that point onwards",
+                    "zh": "生命值低于25%时，仅一次立刻回复75%<@ba.talpu>（+5%）最大生命值，且自身之后受到的物理伤害降低20%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "damage_resistance": 0.2,
+                    "etlchi_t_2[heal].hp_ratio": 0.75
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 70,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When HP drops below 25% for the first time, immediately recovers 85% of Max HP and reduces Physical damage taken by 20% from that point onwards",
+                    "zh": "生命值低于25%时，仅一次立刻回复85%最大生命值，且自身之后受到的物理伤害降低20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "damage_resistance": 0.2,
+                    "etlchi_t_2[heal].hp_ratio": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When HP drops below 25% for the first time, immediately recovers 90% <@ba.talpu>(+5%)</> of Max HP and reduces Physical damage taken by 25% <@ba.talpu>(+5%)</> from that point onwards",
+                    "zh": "生命值低于25%时，仅一次立刻回复90%<@ba.talpu>（+5%）最大生命值，且自身之后受到的物理伤害降低25%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "damage_resistance": 0.25,
+                    "etlchi_t_2[heal].hp_ratio": 0.9
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_etlchi",
@@ -1568,7 +1757,217 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 220,
+            "atk": 62,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "cnt": 2,
+                    "value": 50
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 270,
+            "atk": 70,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "cnt": 2,
+                    "value": 50
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "每次攻击敌人时<$ba.steal>偷取</>目标100点生命上限（最高1800）并使目标每秒受到350点法术伤害持续5秒，场上存在该法术伤害效果时，自身每秒回复2.5%最大生命值",
+                    "zh": "每次攻击敌人时<$ba.steal>偷取</>目标100点生命上限（最高1800）并使目标每秒受到350点法术伤害持续5秒，场上存在该法术伤害效果时，自身每秒回复2.5%最大生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_hp": 100,
+                    "attack@steal_hp_max": 1800,
+                    "magic_value": 350,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.025,
+                    "interval": 1,
+                    "dot_duration": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "每次攻击敌人时<$ba.steal>偷取</>目标100点生命上限（最高1800）并使目标每秒受到400<@ba.talpu>（+50）</>点法术伤害持续5秒，场上存在该法术伤害效果时，自身每秒回复2.5%最大生命值",
+                    "zh": "每次攻击敌人时<$ba.steal>偷取</>目标100点生命上限（最高1800）并使目标每秒受到400<@ba.talpu>（+50）</>点法术伤害持续5秒，场上存在该法术伤害效果时，自身每秒回复2.5%最大生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_hp": 100,
+                    "attack@steal_hp_max": 1800,
+                    "magic_value": 400,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.025,
+                    "interval": 1,
+                    "dot_duration": 5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30165",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 75,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "cnt": 2,
+                    "value": 50
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "每次攻击敌人时<$ba.steal>偷取</>目标120点生命上限（最高2160）并使目标每秒受到450点法术伤害持续6秒，场上存在该法术伤害效果时，自身每秒回复3.5%最大生命值",
+                    "zh": "每次攻击敌人时<$ba.steal>偷取</>目标120点生命上限（最高2160）并使目标每秒受到450点法术伤害持续6秒，场上存在该法术伤害效果时，自身每秒回复3.5%最大生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_hp": 120,
+                    "attack@steal_hp_max": 2160,
+                    "magic_value": 450,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+                    "interval": 1,
+                    "dot_duration": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "每次攻击敌人时<$ba.steal>偷取</>目标120点生命上限（最高2160）并使目标每秒受到500<@ba.talpu>（+50）</>点法术伤害持续6秒，场上存在该法术伤害效果时，自身每秒回复3.5%最大生命值",
+                    "zh": "每次攻击敌人时<$ba.steal>偷取</>目标120点生命上限（最高2160）并使目标每秒受到500<@ba.talpu>（+50）</>点法术伤害持续6秒，场上存在该法术伤害效果时，自身每秒回复3.5%最大生命值",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_hp": 120,
+                    "attack@steal_hp_max": 2160,
+                    "magic_value": 500,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+                    "interval": 1,
+                    "dot_duration": 6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

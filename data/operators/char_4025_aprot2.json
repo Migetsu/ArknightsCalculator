@@ -1125,7 +1125,196 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 45,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "zh": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 60,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "zh": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时有35%的几率使目标法术抗性-30%，持续3秒",
+                    "zh": "攻击时有35%的几率使目标法术抗性-30%，持续3秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "magic_resistance": -0.3,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时有40%<@ba.talpu>（+5%）</>的几率使目标法术抗性-30%，持续3秒",
+                    "zh": "攻击时有40%<@ba.talpu>（+5%）</>的几率使目标法术抗性-30%，持续3秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.4,
+                    "magic_resistance": -0.3,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 70,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "zh": "技能开启时普通攻击会造成法术伤害，且攻击和受到攻击时对目标额外造成10％攻击力的法术伤害",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时有40%的几率使目标法术抗性-30%，持续6秒",
+                    "zh": "攻击时有40%的几率使目标法术抗性-30%，持续6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.4,
+                    "magic_resistance": -0.3,
+                    "duration": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时有45%<@ba.talpu>（+5%）</>的几率使目标法术抗性-30%，持续6秒",
+                    "zh": "攻击时有45%<@ba.talpu>（+5%）</>的几率使目标法术抗性-30%，持续6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.45,
+                    "magic_resistance": -0.3,
+                    "duration": 6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31064",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

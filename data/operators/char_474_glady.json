@@ -1470,7 +1470,174 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While being pulled, enemies take Arts damage proportional to the distance traveled",
+                    "zh": "拖拽期间敌人受到正比于距离的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "dist": 1,
+                    "value": 800,
+                    "interval": 0.066
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 59
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While being pulled, enemies take Arts damage proportional to the distance traveled",
+                    "zh": "拖拽期间敌人受到正比于距离的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "dist": 1,
+                    "value": 800,
+                    "interval": 0.066
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all [Abyssal Hunter] Operators recover 3% of their Max HP every second and receive 28% less Physical and Arts damage from enemies",
+                    "zh": "在场时，所有【深海猎人】干员每秒回复3%最大生命值且受到敌人的物理与法术伤害降低28%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.03,
+                    "damage_resistance": 0.28
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While being pulled, enemies take Arts damage proportional to the distance traveled",
+                    "zh": "拖拽期间敌人受到正比于距离的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "dist": 1,
+                    "value": 800,
+                    "interval": 0.066
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all [Abyssal Hunter] Operators recover 3.5% of their Max HP every second and receive 30% less Physical and Arts damage from enemies",
+                    "zh": "在场时，所有【深海猎人】干员每秒回复3.5%最大生命值且受到敌人的物理与法术伤害降低30%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+                    "damage_resistance": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_glady",
@@ -1538,7 +1705,225 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Can <@ba.kw>Shift</> enemies by using skills; increases the strength of the shift by 1 degree when dragging enemies far away towards herself\nCan be deployed on Ranged tiles",
+                    "zh": "技能可以使敌人产生<@ba.kw>位移</>，向自身拖拽较远的敌人时力度提升一个等级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "skill@range_radius": 2.5,
+                    "skill@delta_force": 1,
+                    "attack@range_radius": 2.5,
+                    "attack@delta_force": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 63,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Can <@ba.kw>Shift</> enemies by using skills; increases the strength of the shift by 1 degree when dragging enemies far away towards herself\nCan be deployed on Ranged tiles",
+                    "zh": "技能可以使敌人产生<@ba.kw>位移</>，向自身拖拽较远的敌人时力度提升一个等级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "skill@range_radius": 2.5,
+                    "skill@delta_force": 1,
+                    "attack@range_radius": 2.5,
+                    "attack@delta_force": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking enemies with 3 or less weight, increase ATK to 140%",
+                    "zh": "攻击重量小于等于3的敌人时攻击力提升至140%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.4,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking enemies with 3 or less weight, increase ATK to 146% <@ba.talpu>(+6%)</>",
+                    "zh": "攻击重量小于等于3的敌人时攻击力提升至146%<@ba.talpu>（+6%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.46,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 74,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Can <@ba.kw>Shift</> enemies by using skills; increases the strength of the shift by 1 degree when dragging enemies far away towards herself\nCan be deployed on Ranged tiles",
+                    "zh": "技能可以使敌人产生<@ba.kw>位移</>，向自身拖拽较远的敌人时力度提升一个等级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "skill@range_radius": 2.5,
+                    "skill@delta_force": 1,
+                    "attack@range_radius": 2.5,
+                    "attack@delta_force": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking enemies with 3 or less weight, increase ATK to 145%",
+                    "zh": "攻击重量小于等于3的敌人时攻击力提升至145%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.45,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking enemies with 3 or less weight, increase ATK to 151% <@ba.talpu>(+6%)</>",
+                    "zh": "攻击重量小于等于3的敌人时攻击力提升至151%<@ba.talpu>（+6%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.51,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

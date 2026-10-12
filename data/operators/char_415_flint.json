@@ -1103,7 +1103,188 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deals 45% more damage to enemies that are not blocked by this unit",
+                    "zh": "对未被自身阻挡的敌人造成的伤害提升45%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deals 50% <@ba.talpu>(+5%)</> more damage to enemies that are not blocked by this unit",
+                    "zh": "对未被自身阻挡的敌人造成的伤害提升50%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 185,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deals 50% more damage to enemies that are not blocked by this unit",
+                    "zh": "对未被自身阻挡的敌人造成的伤害提升50%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deals 55% <@ba.talpu>(+5%)</> more damage to enemies that are not blocked by this unit",
+                    "zh": "对未被自身阻挡的敌人造成的伤害提升55%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.55
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

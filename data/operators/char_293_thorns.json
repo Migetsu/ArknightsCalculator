@@ -1475,7 +1475,206 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 39,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 215,
+            "atk": 48,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 125 Arts damage per second for 3 seconds and stacking up to 3 times (damage is doubled against ranged enemies).",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到125点法术伤害，可叠加3次（对会远程攻击的目标伤害加倍）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 3,
+                    "damage[normal]": 125,
+                    "damage[ranged]": 250,
+                    "max_cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 140 <@ba.talpu>(+15)</> Arts damage per second for 3 seconds and stacking up to 3 times (damage is doubled against ranged enemies).",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到140<@ba.talpu>（+15）</>点法术伤害，可叠加3次（对会远程攻击的目标伤害加倍）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 3,
+                    "damage[normal]": 140,
+                    "damage[ranged]": 280,
+                    "max_cnt": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 260,
+            "atk": 55,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 135 Arts damage per second for 3 seconds and stacking up to 4 times (damage is doubled against ranged enemies).",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到135点法术伤害，可叠加4次（对会远程攻击的目标伤害加倍）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 3,
+                    "damage[normal]": 135,
+                    "damage[ranged]": 270,
+                    "max_cnt": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 150 <@ba.talpu>(+15)</> Arts damage per second for 3 seconds and stacking up to 4 times (damage is doubled against ranged enemies).",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到150<@ba.talpu>（+15）</>点法术伤害，可叠加4次（对会远程攻击的目标伤害加倍）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 3,
+                    "damage[normal]": 150,
+                    "damage[ranged]": 300,
+                    "max_cnt": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_thorns",
@@ -1543,7 +1742,236 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 60,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing damage, deals an additional <@ba.kw>10%</> as <$ba.dt.neural2>Nervous Impairment</>",
+                    "zh": "造成伤害时附带相当于<@ba.kw>10%</>伤害的<$ba.dt.neural2>神经损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 120,
+            "atk": 69,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing damage, deals an additional <@ba.kw>10%</> as <$ba.dt.neural2>Nervous Impairment</>",
+                    "zh": "造成伤害时附带相当于<@ba.kw>10%</>伤害的<$ba.dt.neural2>神经损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 200 Arts damage per second for 3 seconds (damage is doubled against Ranged enemies); if enemy is under the burst effect of <$ba.dt.neural2>Nervous Impairment</>, deals Elemental damage instead of poison damage with 2x damage amount",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到200点法术伤害（对会远程攻击的目标伤害加倍）。如果敌方单位处于<$ba.dt.neural2>神经损伤</>爆发期间，中毒伤害变为2倍且类型改为元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage[normal]": 200,
+                    "damage[ranged]": 400,
+                    "duration": 3,
+                    "ep_break_multi": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 215 <@ba.talpu>(+15)</> Arts damage per second for 3 seconds (damage is doubled against Ranged enemies); if enemy is under the burst effect of <$ba.dt.neural2>Nervous Impairment</>, deals Elemental damage instead of poison damage with 2x damage amount",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到215<@ba.talpu>（+15）</>点法术伤害（对会远程攻击的目标伤害加倍）。如果敌方单位处于<$ba.dt.neural2>神经损伤</>爆发期间，中毒伤害变为2倍且类型改为元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage[normal]": 215,
+                    "damage[ranged]": 430,
+                    "duration": 3,
+                    "ep_break_multi": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 75,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing damage, deals an additional <@ba.kw>10%</> as <$ba.dt.neural2>Nervous Impairment</>",
+                    "zh": "造成伤害时附带相当于<@ba.kw>10%</>伤害的<$ba.dt.neural2>神经损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 300 Arts damage per second for 3 seconds (damage is doubled against Ranged enemies); if enemy is under the burst effect of <$ba.dt.neural2>Nervous Impairment</>, deals Elemental damage instead of poison damage with 2.5x damage amount",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到300点法术伤害（对会远程攻击的目标伤害加倍）。如果敌方单位处于<$ba.dt.neural2>神经损伤</>爆发期间，中毒伤害变为2.5倍且类型改为元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage[normal]": 300,
+                    "damage[ranged]": 600,
+                    "duration": 3,
+                    "ep_break_multi": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks poison the target, dealing 315 <@ba.talpu>(+15)</> Arts damage per second for 3 seconds (damage is doubled against ranged enemies); if enemy is under the burst effect of <$ba.dt.neural2>Nervous Impairment</>, deals Elemental damage instead of poison damage with 2.5x damage amount",
+                    "zh": "攻击使目标中毒，在3秒内每秒受到315<@ba.talpu>（+15）</>点法术伤害（对会远程攻击的目标伤害加倍）。如果敌方单位处于<$ba.dt.neural2>神经损伤</>爆发期间，中毒伤害变为2.5倍且类型改为元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage[normal]": 315,
+                    "damage[ranged]": 630,
+                    "duration": 3,
+                    "ep_break_multi": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

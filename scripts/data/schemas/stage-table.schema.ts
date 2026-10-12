@@ -10,9 +10,9 @@ export const RawStageSchema = z
     stageType: z.string().optional(),
     difficulty: z.string().optional(),
     zoneId: z.string().optional(),
-    code: z.string(),
-    name: z.string().optional(),
-    description: z.string().optional(),
+    code: z.string().nullable().optional(),
+    name: z.string().nullable().optional(),
+    description: z.string().nullable().optional(),
     apCost: z.number().default(0),
     stageDropInfo: z
       .object({

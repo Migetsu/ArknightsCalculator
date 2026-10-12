@@ -1129,7 +1129,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 250,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 310,
+            "atk": 74
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +55% ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+                    "zh": "在场时，自身获得最高+55%攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_atk": 0.55,
+                    "min_hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +57% <@ba.talpu>(+2%)</> ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+                    "zh": "在场时，自身获得最高+57%<@ba.talpu>（+2%）</>攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_atk": 0.57,
+                    "min_hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 350,
+            "atk": 82
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +58% ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+                    "zh": "在场时，自身获得最高+58%攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_atk": 0.58,
+                    "min_hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +60% <@ba.talpu>(+2%)</> ATK <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 70% Max HP)",
+                    "zh": "在场时，自身获得最高+60%<@ba.talpu>（+2%）</>攻击力的<$ba.berserk>坚忍</>（损失70%生命值时达最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_atk": 0.6,
+                    "min_hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

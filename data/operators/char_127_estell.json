@@ -1070,7 +1070,191 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 70,
+            "atk": 32
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "31013",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 100,
+            "atk": 43
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 14% of Max HP whenever an enemy is defeated in the surrounding 8 tiles",
+                    "zh": "周围8格内有敌人倒下时，恢复自身最大生命值14%的生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.14
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 16% <@ba.talpu>(+2%)</> of Max HP whenever an enemy is defeated in the surrounding 8 tiles",
+                    "zh": "周围8格内有敌人倒下时，恢复自身最大生命值16%<@ba.talpu>（+2%）</>的生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.16
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30063",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 52
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 16% of Max HP whenever an enemy is defeated in the surrounding 8 tiles",
+                    "zh": "周围8格内有敌人倒下时，恢复自身最大生命值16%的生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.16
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 18% <@ba.talpu>(+2%)</> of Max HP whenever an enemy is defeated in the surrounding 8 tiles",
+                    "zh": "周围8格内有敌人倒下时，恢复自身最大生命值18%<@ba.talpu>（+2%）</>的生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.18
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30073",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1584,7 +1584,240 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.03,
+                    "max_valid_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 62,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.03,
+                    "max_valid_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力90%的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失）",
+                    "zh": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力90%的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "max_cast_cnt": 5,
+                    "move_speed": -0.12,
+                    "talent_magic_scale": 0.9,
+                    "first_snow": 0
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力95%<@ba.talpu>（+5%）</>的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失）",
+                    "zh": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力95%<@ba.talpu>（+5%）</>的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "max_cast_cnt": 5,
+                    "move_speed": -0.12,
+                    "talent_magic_scale": 0.95,
+                    "first_snow": 0
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 75,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "范围内敌人越多造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.03,
+                    "max_valid_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力100%的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失），部署后立刻使攻击范围内的地面产生一层积雪",
+                    "zh": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力100%的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失），部署后立刻使攻击范围内的地面产生一层积雪",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "max_cast_cnt": 5,
+                    "move_speed": -0.12,
+                    "talent_magic_scale": 1,
+                    "first_snow": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力105%<@ba.talpu>（+5%）</>的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失），部署后立刻使攻击范围内的地面产生一层积雪",
+                    "zh": "攻击范围内的地面每隔5秒产生一层积雪，地面敌人经过时立即受到相当于攻击力105%<@ba.talpu>（+5%）</>的法术伤害，每层积雪使经过的所有敌人移动速度下降12%，最多叠加5层（首个敌人离开该地块时积雪消失），部署后立刻使攻击范围内的地面产生一层积雪",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "max_cast_cnt": 5,
+                    "move_speed": -0.12,
+                    "talent_magic_scale": 1.05,
+                    "first_snow": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

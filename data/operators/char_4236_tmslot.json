@@ -1091,7 +1091,205 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 50,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 70,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+11%，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "zh": "攻击力+11%，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.11,
+                    "prob": 0.15,
+                    "sluggish": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+14%<@ba.talpu>（+3%）</>，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "zh": "攻击力+14%<@ba.talpu>（+3%）</>，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.14,
+                    "prob": 0.15,
+                    "sluggish": 1.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 90,
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（单元初始伤害提高，最高造成干员110%攻击力的伤害）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.35,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.1,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+13%，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "zh": "攻击力+13%，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.13,
+                    "prob": 0.15,
+                    "sluggish": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+16%<@ba.talpu>（+3%）</>，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "zh": "攻击力+16%<@ba.talpu>（+3%）</>，浮游单元攻击时有15%概率使目标<$ba.sluggish>停顿</>1.5秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.16,
+                    "prob": 0.15,
+                    "sluggish": 1.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

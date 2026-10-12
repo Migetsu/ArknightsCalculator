@@ -1063,7 +1063,192 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "31053",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 145,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each consecutive attack on the same target increases ATK by 6%, stacking up to 5 times. Stacks will be lost upon switching targets",
+                    "zh": "攻击相同目标时每次攻击可提高自身攻击力6%，最多可叠加5层。更换目标会失去之前叠加的效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "atk": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each consecutive attack on the same target increases ATK by 7% <@ba.talpu>(+1%)</>, stacking up to 5 times. Stacks will be lost upon switching targets",
+                    "zh": "攻击相同目标时每次攻击可提高自身攻击力7%<@ba.talpu>（+1%）</>，最多可叠加5层。更换目标会失去之前叠加的效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "atk": 0.07
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30043",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 170,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each consecutive attack on the same target increases ATK by 7%, stacking up to 5 times. Stacks will be lost upon switching targets",
+                    "zh": "攻击相同目标时每次攻击可提高自身攻击力7%，最多可叠加5层。更换目标会失去之前叠加的效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "atk": 0.07
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each consecutive attack on the same target increases ATK by 8% <@ba.talpu>(+1%)</>, stacking up to 5 times. Stacks will be lost upon switching targets",
+                    "zh": "攻击相同目标时每次攻击可提高自身攻击力8%<@ba.talpu>（+1%）</>，最多可叠加5层。更换目标会失去之前叠加的效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30013",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1474,7 +1474,191 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 175,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@times": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@times": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks ignore 190 DEF",
+                    "zh": "攻击无视目标190防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 190
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks ignore 205 <@ba.talpu>(+15)</> DEF",
+                    "zh": "攻击无视目标205<@ba.talpu>（+15）</>防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 205
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 275,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@times": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks ignore 220 DEF",
+                    "zh": "攻击无视目标220防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 220
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks ignore 235 <@ba.talpu>(+15)</> DEF",
+                    "zh": "攻击无视目标235<@ba.talpu>（+15）</>防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 235
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_rosmon",
@@ -1510,7 +1694,197 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 45,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, attacks deal <@ba.kw>1</> additional instance of <@ba.kw>100%</> ATK as Arts damage",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击额外造成<@ba.kw>一次</>攻击力<@ba.kw>100%</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "equip_atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 70,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, attacks deal <@ba.kw>1</> additional instance of <@ba.kw>100%</> ATK as Arts damage",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击额外造成<@ba.kw>一次</>攻击力<@ba.kw>100%</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "OVERWRITE_BATTLE_DATA",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "game_tag_meta": 0,
+                    "extra_profession": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "equip_atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, grants +8% ATK to this unit and a random deployed [Caster] Operator; in <@ba.kw>Integrated Strategies</>, Rosmontis also benefits from [Caster] Collectibles, and when any [Sniper] or [Caster] Operator is deployed, 1 piece of Tactical Equipment will be summoned within their Attack Range",
+                    "zh": "部署后随机选择一名在场的【术师】干员，自身和其的攻击力+8%；在<@ba.kw>集成战略</>中，迷迭香可同时享受【术师】收藏品加成，部署【狙击】【术师】干员时在该干员范围内召唤1个战术装备",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 90,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, attacks deal <@ba.kw>1</> additional instance of <@ba.kw>100%</> ATK as Arts damage",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击额外造成<@ba.kw>一次</>攻击力<@ba.kw>100%</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 2 enemies. In <@ba.kw>Integrated Strategies</>, its Stun effect extends to 5s, and its ability of reducing the DEF of blocked enemies changes to reducing the DEF of ground enemies on the surrounding 8 tiles by <@ba.kw>400</>, and their RES by <@ba.kw>20</> (does not stack)",
+                    "zh": "能够阻挡两个敌人，在<@ba.kw>集成战略</>中，出现造成的晕眩时间延长至5秒，降低阻挡敌人防御力的效果改为使周围8格的地面敌人防御力<@ba.kw>-400</>，法术抗性<@ba.kw>-20</>（不叠加）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def": -400,
+                    "magic_resistance": -20,
+                    "stun": 5,
+                    "rosmon_e_003_token[passive].max_hp": 1750,
+                    "rosmon_e_003_token[passive].def": 330,
+                    "rosmon_e_003_token[passive].magic_resistance": 35
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "OVERWRITE_BATTLE_DATA",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "game_tag_meta": 0,
+                    "extra_profession": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "equip_atk_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, grants +8% ATK to this unit and a random deployed [Caster] Operator; in <@ba.kw>Integrated Strategies</>, Rosmontis also benefits from [Caster] Collectibles, and when any [Sniper] or [Caster] Operator is deployed, 1 stronger piece of Tactical Equipment with special effects will be summoned within their Attack Range",
+                    "zh": "部署后随机选择一名在场的【术师】干员，自身和其的攻击力+8%；在<@ba.kw>集成战略</>中，迷迭香可同时享受【术师】收藏品加成，部署【狙击】【术师】干员时在该干员范围内召唤1个具有特殊效果且属性更强的战术装备",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

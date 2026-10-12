@@ -1551,7 +1551,172 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 100,
+            "atk": 100
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After being deployed for 20 seconds, ATK +15% and Lemuen's ammo-type skills have +2 Ammo capacity",
+                    "zh": "在场20秒后，攻击力+15%，自身弹药类技能弹药上限+2",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 20,
+                    "atk": 0.15,
+                    "add_count": 2,
+                    "ex_add_count": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30165",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 120
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After being deployed for 15 seconds, ATK +18%, Lemuen's ammo-type skills have +2 Ammo capacity, and other Laterano Operators' ammo-type skills have +1 Ammo capacity",
+                    "zh": "在场15秒后，攻击力+18%，自身弹药类技能弹药上限+2，其他拉特兰干员弹药类技能弹药上限+1",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 15,
+                    "atk": 0.18,
+                    "add_count": 2,
+                    "ex_add_count": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

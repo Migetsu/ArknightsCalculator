@@ -1524,7 +1524,204 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 245,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 325,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Every 9 seconds, gains 1 <$ba.shield>Shield</> (Can have up to 3 stacks, with 1 stack granted immediately when deployed). When a Shield is broken, restores 22% of Max HP and 1 SP",
+                    "zh": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身22%最大生命和1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 9,
+                    "times": 1,
+                    "max_times": 3,
+                    "hp_ratio": 0.22,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Every 9 seconds, gains 1 <$ba.shield>Shield</> (Can have up to 3 stacks, with 1 stack granted immediately when deployed). When a Shield is broken, restores 24% <@ba.talpu>(+2%)</> of Max HP and 1 SP",
+                    "zh": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身24%<@ba.talpu>（+2%）</>最大生命和1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 9,
+                    "times": 1,
+                    "max_times": 3,
+                    "hp_ratio": 0.24,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 400,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Every 9 seconds, gains 1 <$ba.shield>Shield</> (Can have up to 3 stacks, with 1 stack granted immediately when deployed). When a Shield is broken, restores 23% of Max HP and 2 SP",
+                    "zh": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身23%最大生命和2点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 9,
+                    "times": 1,
+                    "max_times": 3,
+                    "hp_ratio": 0.23,
+                    "sp": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Every 9 seconds, gains 1 <$ba.shield>Shield</> (Can have up to 3 stacks, with 1 stack granted immediately when deployed). When a Shield is broken, restores 25% <@ba.talpu>(+2%)</> of Max HP and 2 SP",
+                    "zh": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身25%<@ba.talpu>（+2%）</>最大生命和2点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 9,
+                    "times": 1,
+                    "max_times": 3,
+                    "hp_ratio": 0.25,
+                    "sp": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_mudrok",
@@ -1592,7 +1789,171 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 60,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 75,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Takes 33% less damage from Sarkaz enemies and deals 15% more damage to non-Sarkaz enemies",
+                    "zh": "受到来自【萨卡兹】敌人的伤害降低33%，对非【萨卡兹】敌人造成的伤害提升15%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.33,
+                    "damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 85,
+            "def": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Takes 35% less damage from Sarkaz enemies and deals 20% more damage to non-Sarkaz enemies",
+                    "zh": "受到来自【萨卡兹】敌人的伤害降低35%，对非【萨卡兹】敌人造成的伤害提升20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.35,
+                    "damage_scale": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1443,7 +1443,218 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 140,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 64
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Normal attacks and skills have +1 shift level; restores 1 SP per 2.5 seconds to Weedy if located within 4 tiles around her and additionally grants +15% ATK",
+                    "zh": "普通攻击和技能的推力增加一级，且在温蒂周围4格内时令其每2.5秒获得1点技力，攻击力额外+15%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "base_force_level": 1,
+                    "interval": 2.5,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the shift level of the Water Cannon's normal attacks and skills by 1; Weedy gains +15% ATK and restores 1 SP per 2.5 seconds if the Water Cannon is located within 4 tiles around her",
+                    "zh": "蓄水炮普通攻击和技能的推力增加一级，且在温蒂周围4格内时令其每2.5秒获得1点技力，攻击力额外+15%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 72
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>\nCan be deployed on ranged tiles, and refunds half the DP cost of this deployment",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位，并返还该次部署费用的一半",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Normal attacks and skills have +1 shift level; restores 1 SP per 2 seconds to Weedy if located within 4 tiles around her and additionally grants +20% ATK",
+                    "zh": "普通攻击和技能的推力增加一级，且在温蒂周围4格内时令其每2秒获得1点技力，攻击力额外+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "base_force_level": 1,
+                    "interval": 2,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the shift level of the Water Cannon's normal attacks and skills by 1; Weedy gains +20% ATK and restores 1 SP per 2 seconds if the Water Cannon is located within 4 tiles around her",
+                    "zh": "蓄水炮普通攻击和技能的推力增加一级，且在温蒂周围4格内时令其每2秒获得1点技力，攻击力额外+20%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_weedy",
@@ -1511,7 +1722,163 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 46,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>; When blocking 2 or more enemies, increases shift level by 1\nCan be deployed on ranged tiles",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，阻挡2个及以上敌人时自身推力增加一级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 2,
+                    "base_force_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 60,
+            "def": 36
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>; When blocking 2 or more enemies, increases shift level by 1\nCan be deployed on ranged tiles",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，阻挡2个及以上敌人时自身推力增加一级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 2,
+                    "base_force_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can deploy a Reserve Water Cannon that lasts for 20s; the Water Cannon can attack 1 target and push it away slightly; Water Cannon redeployment time reduced by 5s",
+                    "zh": "可以使用一个持续20秒的蓄水炮，能攻击单个敌人并将其小力度地推开，蓄水炮的再部署时间减少5秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 68,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Simultaneously attacks <@ba.kw>all blocked enemies</>; When blocking 2 or more enemies, increases shift level by 1\nCan be deployed on ranged tiles",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，阻挡2个及以上敌人时自身推力增加一级\\n可以放置于远程位",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 2,
+                    "base_force_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can deploy a Reserve Water Cannon that lasts for 20s; the Water Cannon can attack 1 target and push it away slightly; Water Cannon redeployment time reduced by 8s",
+                    "zh": "可以使用一个持续20秒的蓄水炮，能攻击单个敌人并将其小力度地推开，蓄水炮的再部署时间减少8秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

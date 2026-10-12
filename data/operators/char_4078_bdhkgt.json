@@ -1128,7 +1128,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 37
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 150,
+            "atk": 52
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed for the first time, ATK +16%, Cost -3",
+                    "zh": "首次部署时，攻击力+16%，费用-3",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.16,
+                    "runtime_cost": -3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed for the first time, ATK +18% <@ba.talpu>(+2%)</>, Cost -3",
+                    "zh": "首次部署时，攻击力+18%<@ba.talpu>（+2%）</>，费用-3",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "runtime_cost": -3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks ignore <@ba.vup>{def_penetrate_fixed}</> DEF",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 100
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed for the first time, ATK +18%, Cost -3",
+                    "zh": "首次部署时，攻击力+18%，费用-3",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "runtime_cost": -3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed for the first time, ATK +20% <@ba.talpu>(+2%)</>, Cost -3",
+                    "zh": "首次部署时，攻击力+20%<@ba.talpu>（+2%）</>，费用-3",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.2,
+                    "runtime_cost": -3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

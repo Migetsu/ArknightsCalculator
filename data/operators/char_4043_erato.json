@@ -1065,7 +1065,193 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 90,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 115,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.sleep>Sleeping</> enemies, and ignores 55% DEF when attacking <$ba.sleep>Sleeping</> enemies",
+                    "zh": "自身可以攻击<$ba.sleep>沉睡</>的敌人，并且攻击<$ba.sleep>沉睡</>敌人时无视其防御力的55%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.55
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 130,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can attack <$ba.sleep>Sleeping</> enemies, and ignores 60% DEF when attacking <$ba.sleep>Sleeping</> enemies",
+                    "zh": "自身可以攻击<$ba.sleep>沉睡</>的敌人，并且攻击<$ba.sleep>沉睡</>敌人时无视其防御力的60%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1444,7 +1444,227 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 75,
+            "atk": 45,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The first Deployment Cost -4",
+                    "zh": "首次部署时部署费用-4",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "runtime_cost": -4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 105,
+            "atk": 50,
+            "def": 18
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The first Deployment Cost -4",
+                    "zh": "首次部署时部署费用-4",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "runtime_cost": -4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When HP falls below 40%, gain 70% Physical Dodge and restore 5.5% Max HP every second, lasting for 17 seconds. Can only activate once",
+                    "zh": "生命值低于40%时，仅一次获得70%物理闪避和每秒回复5.5%的最大生命，持续17秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.055,
+                    "prob": 0.7,
+                    "duration": 17
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When HP falls below 40%, gain 70% Physical Dodge and restore 6.5% <@ba.talpu>(+1%)</> Max HP every second, lasting for 19 <@ba.talpu>(+2)</> seconds. Can only activate once",
+                    "zh": "生命值低于40%时，仅一次获得70%物理闪避和每秒回复6.5%<@ba.talpu>（+1%）</>的最大生命，持续19<@ba.talpu>（+2）</>秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.065,
+                    "prob": 0.7,
+                    "duration": 19
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 125,
+            "atk": 55,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The first Deployment Cost -4",
+                    "zh": "首次部署时部署费用-4",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "runtime_cost": -4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When HP falls below 40%, gain 70% Physical Dodge and restore 6% Max HP every second, lasting for 18 seconds. Can only activate once",
+                    "zh": "生命值低于40%时，仅一次获得70%物理闪避和每秒回复6%的最大生命，持续18秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.065,
+                    "prob": 0.7,
+                    "duration": 18
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When HP falls below 40%, gain 70% Physical Dodge and restore 7% <@ba.talpu>(+1%)</> Max HP every second, lasting for 20 <@ba.talpu>(+2)</> seconds. Can only activate once",
+                    "zh": "生命值低于40%时，仅一次获得70%物理闪避和每秒回复7%<@ba.talpu>（+1%）</>的最大生命，持续20<@ba.talpu>（+2）</>秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.07,
+                    "prob": 0.7,
+                    "duration": 20
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_saga",
@@ -1512,7 +1732,197 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "def": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 2 enemies; Gains +8% ATK and DEF while blocking enemies",
+                    "zh": "能够阻挡两个敌人，阻挡敌人时攻击力和防御力各+8％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 62,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 2 enemies; Gains +8% ATK and DEF while blocking enemies",
+                    "zh": "能够阻挡两个敌人，阻挡敌人时攻击力和防御力各+8％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below half HP by 10%; when dealing lethal damage, leaves the target with 1 HP and inflicts <$ba.dying>Critically Wounded</> (gives +2 SP to the attacker when killed); Saga will not attack <$ba.dying>Critically Wounded</> targets",
+                    "zh": "对生命值低于一半的单位造成的伤害提升10%；造成致命伤害时使敌人保留1点生命并使其<$ba.dying>重伤</>（击杀者技力+2）；嵯峨不攻击<$ba.dying>重伤</>单位",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "move_speed": -0.8,
+                    "sp": 2,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 70,
+            "def": 44
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 2 enemies; Gains +8% ATK and DEF while blocking enemies",
+                    "zh": "能够阻挡两个敌人，阻挡敌人时攻击力和防御力各+8％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below half HP by 15%; when dealing lethal damage, leaves the target with 1 HP and inflicts <$ba.dying>Critically Wounded</> (gives +2 SP to the attacker when killed); Saga will not attack <$ba.dying>Critically Wounded</> targets",
+                    "zh": "对生命值低于一半的单位造成的伤害提升15%；造成致命伤害时使敌人保留1点生命并使其<$ba.dying>重伤</>（击杀者技力+2）；嵯峨不攻击<$ba.dying>重伤</>单位",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "move_speed": -0.8,
+                    "sp": 2,
+                    "interval": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

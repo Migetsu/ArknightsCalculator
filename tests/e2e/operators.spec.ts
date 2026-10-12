@@ -10,7 +10,7 @@ test.describe('Operators Catalog (/operators)', () => {
     })
 
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     // Verify header and live counter
     await expect(page.locator('.ak-page-header__title')).toContainText('Operator Catalog')
@@ -29,10 +29,16 @@ test.describe('Operators Catalog (/operators)', () => {
 
   test('searches operator by name and updates URL query', async ({ page }) => {
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     const searchInput = page.locator('input[type="search"]')
-    await searchInput.fill("Kal'tsit")
+    await expect(searchInput).toBeVisible()
+    await expect(async () => {
+      await searchInput.fill("Kal'tsit")
+      await expect(page.locator('.ak-operator-card', { hasText: "Kal'tsit" })).toBeVisible({
+        timeout: 1000,
+      })
+    }).toPass({ timeout: 5000 })
 
     // Expect URL query to update
     await expect(page).toHaveURL(/q=Kal('?|%27)tsit/)
@@ -45,19 +51,21 @@ test.describe('Operators Catalog (/operators)', () => {
 
   test('filters by class and rarity (multi-select)', async ({ page }) => {
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     // Click Medic class chip
     const medicChip = page.getByRole('button', { name: 'Medic', exact: true })
-    await medicChip.click()
+    await expect(async () => {
+      await medicChip.click()
+      await expect(page).toHaveURL(/class=MEDIC/, { timeout: 1000 })
+    }).toPass({ timeout: 5000 })
 
     // Click 6★ rarity chip
     const sixStarChip = page.locator('.ak-operator-filters__chip--rarity-6')
-    await sixStarChip.click()
-
-    // Expect URL to have both parameters
-    await expect(page).toHaveURL(/class=MEDIC/)
-    await expect(page).toHaveURL(/rarity=6/)
+    await expect(async () => {
+      await sixStarChip.click()
+      await expect(page).toHaveURL(/rarity=6/, { timeout: 1000 })
+    }).toPass({ timeout: 5000 })
 
     // All displayed cards must be 6 stars
     const cards = page.locator('.ak-operator-card')
@@ -74,14 +82,17 @@ test.describe('Operators Catalog (/operators)', () => {
     page,
   }) => {
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     // Search for CN-exclusive operator Closure
     const searchInput = page.locator('input[type="search"]')
-    await searchInput.fill('Closure')
+    await expect(searchInput).toBeVisible()
 
     // Under Global server, this operator should not be displayed
-    await expect(page.locator('.operators-page__empty-state')).toBeVisible()
+    await expect(async () => {
+      await searchInput.fill('Closure')
+      await expect(page.locator('.operators-page__empty-state')).toBeVisible({ timeout: 1000 })
+    }).toPass({ timeout: 5000 })
 
     // Switch to CN server
     const cnServerBtn = page.locator('.ak-operator-filters__server-btn', { hasText: 'CN All' })
@@ -98,7 +109,6 @@ test.describe('Operators Catalog (/operators)', () => {
   test('restores filter state from shared URL link', async ({ page }) => {
     // Navigate directly with pre-filled query params
     await page.goto('/operators?q=chen&class=WARRIOR&rarity=6')
-    await page.waitForLoadState('networkidle')
 
     // Check search input value
     const searchInput = page.locator('input[type="search"]')
@@ -120,13 +130,15 @@ test.describe('Operators Catalog (/operators)', () => {
 
   test('handles empty state and reset button', async ({ page }) => {
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     const searchInput = page.locator('input[type="search"]')
-    await searchInput.fill('nonexistent_operator_zero_match')
+    await expect(async () => {
+      await searchInput.fill('nonexistent_operator_zero_match')
+      await expect(page.locator('.operators-page__empty-state')).toBeVisible({ timeout: 1000 })
+    }).toPass({ timeout: 5000 })
 
     const emptyBox = page.locator('.operators-page__empty-state')
-    await expect(emptyBox).toBeVisible()
     await expect(emptyBox).toContainText('NO OPERATORS FOUND')
 
     // Click reset button in empty state
@@ -140,11 +152,16 @@ test.describe('Operators Catalog (/operators)', () => {
 
   test('navigates to operator detail page stub on card click', async ({ page }) => {
     await page.goto('/operators')
-    await page.waitForLoadState('networkidle')
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
     // Search Kal'tsit
     const searchInput = page.locator('input[type="search"]')
-    await searchInput.fill("Kal'tsit")
+    await expect(async () => {
+      await searchInput.fill("Kal'tsit")
+      await expect(page.locator('.ak-operator-card', { hasText: "Kal'tsit" })).toBeVisible({
+        timeout: 1000,
+      })
+    }).toPass({ timeout: 5000 })
 
     const card = page.locator('.ak-operator-card', { hasText: "Kal'tsit" })
     await card.click()

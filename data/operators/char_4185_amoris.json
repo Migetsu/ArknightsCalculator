@@ -1230,7 +1230,218 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 139,
+            "atk": 56,
+            "def": 13
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@cnt": 3,
+                    "attack@e_002_atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 156,
+            "atk": 61,
+            "def": 18
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "祐天寺若麦可以进行<$ba.permanentatk>持续攻击</>；攻击时12%概率使敌人获得10%<$ba.fragile>脆弱</>，持续2.5秒",
+                    "zh": "祐天寺若麦可以进行<$ba.permanentatk>持续攻击</>；攻击时12%概率使敌人获得10%<$ba.fragile>脆弱</>，持续2.5秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.12,
+                    "weak[limit]": 2.5,
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@cnt": 3,
+                    "attack@e_002_atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 178,
+            "atk": 67,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "zh": "溅射范围内有大于或等于3个敌人时，使当次攻击力提升至<@ba.kw>{atk_scale_e:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@atk_scale_2": 0.5,
+                    "attack@ability_range_radius": 1,
+                    "atk_scale_e": 1.15,
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "祐天寺若麦可以进行<$ba.permanentatk>持续攻击</>；攻击时15%概率使敌人获得12%<$ba.fragile>脆弱</>，持续3秒",
+                    "zh": "祐天寺若麦可以进行<$ba.permanentatk>持续攻击</>；攻击时15%概率使敌人获得12%<$ba.fragile>脆弱</>，持续3秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.15,
+                    "weak[limit]": 3,
+                    "damage_scale": 1.12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@cnt": 3,
+                    "attack@e_002_atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31084",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

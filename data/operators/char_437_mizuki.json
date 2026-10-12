@@ -1459,7 +1459,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Slows the Movement Speed of enemies within this unit's attack range by <@ba.kw>20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Slows the Movement Speed of enemies within this unit's attack range by <@ba.kw>20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks deal an additional 55% ATK as Arts damage to the two targets with the lowest HP",
+                    "zh": "攻击时对攻击目标中生命值最少的2名敌人额外造成相当于攻击力55%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@mizuki_t_1.atk_scale": 0.55,
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 220,
+            "atk": 90
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Slows the Movement Speed of enemies within this unit's attack range by <@ba.kw>20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks deal an additional 60% ATK as Arts damage to the two targets with the lowest HP",
+                    "zh": "攻击时对攻击目标中生命值最少的2名敌人额外造成相当于攻击力60%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@mizuki_t_1.atk_scale": 0.6,
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_mizuki",
@@ -1527,7 +1712,214 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Damage to <@ba.kw>all targets</> within range\n65% chance to dodge Physical and Arts attacks and is less likely to be <@ba.kw>targeted</> by enemies",
+                    "zh": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 62,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Damage to <@ba.kw>all targets</> within range\n65% chance to dodge Physical and Arts attacks and is less likely to be <@ba.kw>targeted</> by enemies",
+                    "zh": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When there are enemies with less than 50% HP within Attack Range, ATK +15%; recover 5% of max HP for each kill",
+                    "zh": "攻击范围内存在生命值低于一半的敌人时，攻击力+15%；每击杀一名敌人，回复5%的最大生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When there are enemies with less than 50% HP within attack range, ATK +17%<@ba.talpu> (+2%)</>; recover 5% of max HP for each kill",
+                    "zh": "攻击范围内存在生命值低于一半的敌人时，攻击力+17%<@ba.talpu>（+2%）</>；每击杀一名敌人，回复5%的最大生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk": 0.17
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 70,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Damage to <@ba.kw>all targets</> within range\n65% chance to dodge Physical and Arts attacks and is less likely to be <@ba.kw>targeted</> by enemies",
+                    "zh": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When there are enemies with less than 50% HP within attack range, ATK +20%; recover 10% of max HP for each kill",
+                    "zh": "攻击范围内存在生命值低于一半的敌人时，攻击力+20%；每击杀一名敌人，回复10%的最大生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When there are enemies with less than 50% HP within attack range, ATK +22%<@ba.talpu> (+2%)</>; recover 10% of max HP for each kill",
+                    "zh": "攻击范围内存在生命值低于一半的敌人时，攻击力+22%<@ba.talpu>（+2%）</>；每击杀一名敌人，回复10%的最大生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk": 0.22
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_mizuki",
@@ -1563,7 +1955,207 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 140,
+            "atk": 85
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, ASPD +50 and recovers 4% HP per second",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击速度+50，每秒恢复4%生命值",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 50,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "sp_recovery_per_sec": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 110
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, ASPD +50 and recovers 4% HP per second",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击速度+50，每秒恢复4%生命值",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 50,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "sp_recovery_per_sec": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks deal an additional 50% ATK as Arts damage to the target with the lowest HP; in <@ba.kw>Integrated Strategies</>, target count +1, and attacks drag these targets towards this unit significantly",
+                    "zh": "攻击时对攻击目标中生命值最少的敌人额外造成相当于攻击力50%的法术伤害；在<@ba.kw>集成战略</>中，目标数+1并将其大力地拖拽至面前",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@mizuki_t_1.atk_scale": 0.5,
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "force_base": 3,
+                    "force_in_skill": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 240,
+            "atk": 125
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, ASPD +50 and recovers 4% HP per second",
+                    "zh": "在<@ba.kw>集成战略</>中，攻击速度+50，每秒恢复4%生命值",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 50,
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "sp_recovery_per_sec": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks deal an additional 50% ATK as Arts damage to the target with the lowest HP; in <@ba.kw>Integrated Strategies</>, target count +1, and attacks drag these targets towards this unit significantly; gains an additional target count +2 while skill is active",
+                    "zh": "攻击时对攻击目标中生命值最少的敌人额外造成相当于攻击力50%的法术伤害；在<@ba.kw>集成战略</>中，目标数+1并将其大力地拖拽至面前，技能期间目标数再+2",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@mizuki_t_1.atk_scale": 0.5,
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "force_base": 3,
+                    "force_in_skill": 3,
+                    "max_target_plus_in_skill": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

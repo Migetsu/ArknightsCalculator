@@ -1029,7 +1029,188 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 90,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30023",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 110,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Extends the duration of<$ba.sluggish>Slow</> caused by the Trait",
+                    "zh": "延长特性<$ba.sluggish>停顿</>的持续时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Extends the duration of<$ba.sluggish>Slow</> caused by the Trait greatly",
+                    "zh": "更加延长特性<$ba.sluggish>停顿</>的持续时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 0.23
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30083",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 130,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Further the duration of<$ba.sluggish>Slow</> caused by the Trait",
+                    "zh": "进一步延长特性<$ba.sluggish>停顿</>的持续时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Further the duration of<$ba.sluggish>Slow</> caused by the Trait significantly",
+                    "zh": "更进一步延长特性<$ba.sluggish>停顿</>的持续时间",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 0.33
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31033",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1409,7 +1409,168 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 58,
+            "attack_speed": 3
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 75,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Stored attacks deal 140% damage; Can store 1 extra charge that is only used when attacking elite or boss enemies",
+                    "zh": "储存的攻击能量造成的伤害提升至140%，可额外储存1份只用于攻击精英或领袖敌人的攻击能量",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.4,
+                    "times_2": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 90,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Stored attacks deal 143% damage; Can store 1 extra charge that is only used when attacking elite or boss enemies",
+                    "zh": "储存的攻击能量造成的伤害提升至143%，可额外储存1份只用于攻击精英或领袖敌人的攻击能量",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.43,
+                    "times_2": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_ebnhlz",
@@ -1477,7 +1638,224 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 88
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ASPD +30 when there are stored attacks",
+                    "zh": "拥有已储存的攻击能量时，攻击速度+30",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 30
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 120,
+            "atk": 112
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ASPD +30 when there are stored attacks",
+                    "zh": "拥有已储存的攻击能量时，攻击速度+30",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 30
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 18% ATK as Arts damage. Otherwise, attacks deal 25% ATK as Arts damage to enemies near the target",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力18%的法术伤害，反之则对其周围造成相当于攻击力25%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.18,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "atk_scale_2": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 20%<@ba.talpu>(+2%)</> ATK as Arts damage. Otherwise, attacks deal 25% ATK as Arts damage to enemies near the target",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力20%<@ba.talpu>（+2%）</>的法术伤害，反之则对其周围造成相当于攻击力25%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.2,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "atk_scale_2": 0.25
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 175,
+            "atk": 135
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ASPD +30 when there are stored attacks",
+                    "zh": "拥有已储存的攻击能量时，攻击速度+30",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 30
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 20% ATK as Arts damage. Otherwise, attacks deal 36% ATK as Arts damage to enemies near the target",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力20%的法术伤害，反之则对其周围造成相当于攻击力36%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.2,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "atk_scale_2": 0.36
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 22%<@ba.talpu>(+2%)</> ATK as Arts damage. Otherwise, attacks deal 36% ATK as Arts damage to enemies near the target",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力22%<@ba.talpu>（+2%）</>的法术伤害，反之则对其周围造成相当于攻击力36%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.22,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "atk_scale_2": 0.36
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_ebnhlz",
@@ -1545,7 +1923,224 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 76,
+            "magic_resistance": 4
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.apoptosis2>Necrosis damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.apoptosis2>凋亡损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 102,
+            "magic_resistance": 5
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.apoptosis2>Necrosis damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.apoptosis2>凋亡损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 24% ATK as Arts damage; if the target is under the burst effect from <$ba.dt.apoptosis2>Necrosis damage</>, the attack deals an additional 20% ATK as Elemental Damage",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力24%的法术伤害；若攻击目标处于<$ba.dt.apoptosis2>凋亡损伤</>爆发期间，攻击对其额外造成相当于攻击力20%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.24,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "element_atk_scale": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 26% <@ba.talpu>(+2%)</> ATK as Arts damage; if the target is under the burst effect of <$ba.dt.apoptosis2>Necrosis damage</>, the attack deals an additional 20% ATK as Elemental Damage",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力26%<@ba.talpu>（+2%）</>的法术伤害；若攻击目标处于<$ba.dt.apoptosis2>凋亡损伤</>爆发期间，攻击对其额外造成相当于攻击力20%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.26,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "element_atk_scale": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 124,
+            "magic_resistance": 5
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.apoptosis2>Necrosis damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.apoptosis2>凋亡损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 30% ATK as Arts damage; if the target is under the burst effect of <$ba.dt.apoptosis2>Necrosis damage</>, the attack deals an additional 30% ATK as Elemental Damage",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力30%的法术伤害；若攻击目标处于<$ba.dt.apoptosis2>凋亡损伤</>爆发期间，攻击对其额外造成相当于攻击力30%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.3,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "element_atk_scale": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "If there are no other enemies near the target, attacks deal an additional 32% <@ba.talpu>(+2%)</> ATK as Arts damage; if the target is under the burst effect of <$ba.dt.apoptosis2>Necrosis damage</>, the attack deals an additional 30% ATK as Elemental Damage",
+                    "zh": "若攻击目标周围没有其他敌人，攻击对其额外造成相当于攻击力32%<@ba.talpu>（+2%）</>的法术伤害；若攻击目标处于<$ba.dt.apoptosis2>凋亡损伤</>爆发期间，攻击对其额外造成相当于攻击力30%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.32,
+                    "cnt": 0,
+                    "range_radius": 1.1,
+                    "element_atk_scale": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

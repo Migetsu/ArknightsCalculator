@@ -1468,7 +1468,203 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 35,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 175,
+            "atk": 50,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 23% chance to increase ATK to 165% when attacking, and reduce the target's ATK by 15% for 3 seconds (Does not stack)",
+                    "zh": "攻击时有23%的几率攻击力提升至165%，并在3秒内使目标攻击力降低15%（不可叠加）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65,
+                    "prob": 0.23,
+                    "atk": -0.15,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 23% chance to increase ATK to 170% <@ba.talpu>(+5%)</> when attacking, and reduce the target's ATK by 15% for 3 seconds (Does not stack)",
+                    "zh": "攻击时有23%的几率攻击力提升至170%<@ba.talpu>（+5%）</>，并在3秒内使目标攻击力降低15%（不可叠加）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.7,
+                    "prob": 0.23,
+                    "atk": -0.15,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 60,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 25% chance to increase ATK to 170% when attacking, and reduce the target's ATK by 15% for 3 seconds (Does not stack)",
+                    "zh": "攻击时有25%的几率攻击力提升至170%，并在3秒内使目标攻击力降低15%（不可叠加）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.7,
+                    "prob": 0.25,
+                    "atk": -0.15,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 25% chance to increase ATK to 175% <@ba.talpu>(+5%)</> when attacking, and reduce the target's ATK by 15% for 3 seconds (Does not stack)",
+                    "zh": "攻击时有25%的几率攻击力提升至175%<@ba.talpu>（+5%）</>，并在3秒内使目标攻击力降低15%（不可叠加）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.75,
+                    "prob": 0.25,
+                    "atk": -0.15,
+                    "duration": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_f12yin",
@@ -1536,7 +1732,206 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 200,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +14%, Physical Dodge +20%; after dodging, the next attack Frightens the target for 1s",
+                    "zh": "防御力+14%，获得20%的物理闪避；触发闪避时下次攻击使目标<$ba.tremble>战栗</>1秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "prob": 0.2,
+                    "def": 0.14
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "not_combat": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 250,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +20%, Physical Dodge +25%; after dodging, the next attack Frightens the target for 3s",
+                    "zh": "防御力+20%，获得25%的物理闪避；触发闪避时下次攻击使目标<$ba.tremble>战栗</>3秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "prob": 0.25,
+                    "def": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "not_combat": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

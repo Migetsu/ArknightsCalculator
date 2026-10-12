@@ -1081,7 +1081,196 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 25,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30094",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 35,
+            "def": 31
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack has a 70% chance to trigger one of the following effects: the attack instead hits twice, the target is Stunned for 1 second, or the attack ignores 80% of the target's DEF; when this effect is triggered, the attack deals 110% damage",
+                    "zh": "每次攻击时有70%概率触发下列效果之一：攻击变为二连击；目标<$ba.stun>晕眩</>1秒；攻击无视目标防御力的80%；且触发时当次攻击的攻击力提升至110%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.7,
+                    "stun": 1,
+                    "def_penetrate": 0.8,
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 40,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack has a 70% chance to trigger one of the following effects: the attack instead hits twice, the target is Stunned for 1 second, or the attack ignores 80% of the target's DEF; when this effect is triggered, the attack deals 115% damage",
+                    "zh": "每次攻击时有70%概率触发下列效果之一：攻击变为二连击；目标<$ba.stun>晕眩</>1秒；攻击无视目标防御力的80%；且触发时当次攻击的攻击力提升至115%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.7,
+                    "stun": 1,
+                    "def_penetrate": 0.8,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

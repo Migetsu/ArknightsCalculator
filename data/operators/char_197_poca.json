@@ -1396,7 +1396,195 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 60,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 78,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking a heavy enemy, ignores 60% of its DEF and deals an additional 40% ATK as Physical damage (enemies with 3 weight or higher count for this effect)",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，无视其防御力的60%，并额外造成40%攻击力的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_atk_scale": 0.4,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 90,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking a heavy enemy (weight 3 or greater), ATK increased to <@ba.kw>115%</>",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<@ba.kw>115%</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking a heavy enemy, ignores 60% of its DEF and deals an additional 60% ATK as Physical damage (enemies with 3 weight or higher count for this effect)",
+                    "zh": "攻击重量较重（重量等级大于等于3）的敌人时，无视其防御力的60%，并额外造成60%攻击力的物理伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_atk_scale": 0.6,
+                    "value": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_poca",
@@ -1464,7 +1652,232 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 70,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 90,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+10%，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+11%（最多+33%）",
+                    "zh": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+10%，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+11%（最多+33%）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+12%<@ba.talpu>（+2%）</>，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+11%（最多+33%）",
+                    "zh": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+12%<@ba.talpu>（+2%）</>，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+11%（最多+33%）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.12
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 0.11,
+                    "max_atk": 0.33
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "init_atk": 0.11,
+                    "max_atk": 0.33
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 100,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+12%，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+15%（最多+45%）",
+                    "zh": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+12%，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+15%（最多+45%）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.12
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+14%<@ba.talpu>（+2%）</>，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+15%（最多+45%）",
+                    "zh": "编入队伍时，所有【乌萨斯学生自治团】干员攻击力+14%<@ba.talpu>（+2%）</>，每有一名【乌萨斯学生自治团】干员处于技能期间时，【乌萨斯学生自治团】干员的攻击力额外+15%（最多+45%）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.14
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 0.15,
+                    "max_atk": 0.45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "init_atk": 0.15,
+                    "max_atk": 0.45
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

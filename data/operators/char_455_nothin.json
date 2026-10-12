@@ -1153,7 +1153,199 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 200,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, increase the ATK of the next attack to 165% and <$ba.stun>Stun</> the target for 5 seconds",
+                    "zh": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至165%并<$ba.stun>晕眩</>目标5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "atk_scale": 1.65,
+                    "stun": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, increase the ATK of the next attack to 170% <@ba.talpu>(+5%)</> and <$ba.stun>Stun</> the target for 5 seconds",
+                    "zh": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至170%<@ba.talpu>（+5%）</>并<$ba.stun>晕眩</>目标5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "atk_scale": 1.7,
+                    "stun": 5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 240,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 3 seconds, increase the ATK of the next attack to 175% and <$ba.stun>Stun</> the target for 5 seconds",
+                    "zh": "如果3秒内没有主动攻击过，下一次攻击的攻击力提升至175%并<$ba.stun>晕眩</>目标5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 3,
+                    "atk_scale": 1.75,
+                    "stun": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 3 seconds, increase the ATK of the next attack to 180% <@ba.talpu>(+5%)</> and <$ba.stun>Stun</> the target for 5 seconds",
+                    "zh": "如果3秒内没有主动攻击过，下一次攻击的攻击力提升至180%<@ba.talpu>（+5%）</>并<$ba.stun>晕眩</>目标5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 3,
+                    "atk_scale": 1.8,
+                    "stun": 5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

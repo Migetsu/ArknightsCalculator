@@ -1078,7 +1078,235 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30083",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 95,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 15% chance to increase ATK by +100%. The chance increases to 35% when a skill is active.",
+                    "zh": "攻击时，15%几率当次攻击的攻击力+100%。技能中这个几率提高到35%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 1,
+                    "prob1": 0.15,
+                    "prob2": 0.35
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 15% chance to increase ATK by +110% <@ba.talpu>(+10%)</>. The chance increases to 35% when a skill is active.",
+                    "zh": "攻击时，15%几率当次攻击的攻击力+110%<@ba.talpu>（+10%）</>。技能中这个几率提高到35%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 1.1,
+                    "prob1": 0.15,
+                    "prob2": 0.35
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "31053",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 110,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to increase ATK by +100%. The chance increases to 40% when a skill is active.",
+                    "zh": "攻击时，20%几率当次攻击的攻击力+100%。技能中这个几率提高到40%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 1,
+                    "prob1": 0.2,
+                    "prob2": 0.4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to increase ATK by +110% <@ba.talpu>(+10%)</>. The chance increases to 40% when a skill is active.",
+                    "zh": "攻击时，20%几率当次攻击的攻击力+110%<@ba.talpu>（+10%）</>。技能中这个几率提高到40%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 1.1,
+                    "prob1": 0.2,
+                    "prob2": 0.4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31013",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

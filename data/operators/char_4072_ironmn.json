@@ -1417,7 +1417,217 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 25,
+            "def": 25,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases the max number of Support Devices that can be held by <@ba.kw>+{cnt}</> and <@ba.kw>reduces</> their Deployment Cost",
+                    "zh": "<支援装置>的持有上限<@ba.kw>+{cnt}</>且部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 35,
+            "def": 35,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases the max number of Support Devices that can be held by <@ba.kw>+{cnt}</> and <@ba.kw>reduces</> their Deployment Cost",
+                    "zh": "<支援装置>的持有上限<@ba.kw>+{cnt}</>且部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases SP recovery rate by +0.1/second if Stainless has one of his own Devices in the 8 surrounding tiles; when any of these Devices are destroyed, there is an 80% chance to recycle them, granting Stainless 1 additional Device",
+                    "zh": "当白铁周围8格存在自身装置时技力回复速度+0.1/秒，当这些装置损毁时有80%的几率回收使白铁额外获得1个装置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.8,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases SP recovery rate by +0.1/second if Stainless has one of his own Devices in the 8 surrounding tiles; when any of these Devices are destroyed, there is a 90% <@ba.talpu>(+10%)</> chance to recycle them, granting Stainless 1 additional Device",
+                    "zh": "当白铁周围8格存在自身装置时技力回复速度+0.1/秒，当这些装置损毁时有90%<@ba.talpu>（+10%）</>的几率回收使白铁额外获得1个装置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.9,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 45,
+            "def": 45,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases the max number of Support Devices that can be held by <@ba.kw>+{cnt}</> and <@ba.kw>reduces</> their Deployment Cost",
+                    "zh": "<支援装置>的持有上限<@ba.kw>+{cnt}</>且部署费用<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases SP recovery rate by +0.2/second if Stainless has one of his own Devices in the 8 surrounding tiles; when any of these Devices are destroyed, there is a 90% chance to recycle them, granting Stainless 1 additional Device",
+                    "zh": "当白铁周围8格存在自身装置时技力回复速度+0.2/秒，当这些装置损毁时有90%的几率回收使白铁额外获得1个装置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.9,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases SP recovery rate by +0.2/second if Stainless has one of his own Devices in the 8 surrounding tiles; when any of these Devices are destroyed, there is a 100% <@ba.talpu>(+10%)</> chance to recycle them, granting Stainless 1 additional Device",
+                    "zh": "当白铁周围8格存在自身装置时技力回复速度+0.2/秒，当这些装置损毁时有100%<@ba.talpu>（+10%）</>的几率回收使白铁额外获得1个装置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 1,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_ironmn",
@@ -1485,7 +1695,201 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 260,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "<Support Device>'s Redeployment Time <@ba.kw>reduced</>",
+                    "zh": "<支援装置>的再部署时间<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 340,
+            "def": 54
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "<Support Device>'s Redeployment Time <@ba.kw>reduced</>",
+                    "zh": "<支援装置>的再部署时间<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can carry 3 <Support Devices> (deploy up to 2), with different effects depending on Skill; Operators benefiting from his Devices gain ASPD +4 (unaffected by skill)",
+                    "zh": "可以携带3个<支援装置>(最多可部署2个)，效果根据技能改变而改变，自身装置天赋生效的干员攻击速度+4（此效果不受技能影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 400,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "<Support Device>'s Redeployment Time <@ba.kw>reduced</>",
+                    "zh": "<支援装置>的再部署时间<@ba.kw>减少</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can carry 3 <Support Devices> (deploy up to 2), with different effects depending on Skill; Operators benefiting from his Devices gain ASPD +6 (unaffected by skill)",
+                    "zh": "可以携带3个<支援装置>(最多可部署2个)，效果根据技能改变而改变，自身装置天赋生效的干员攻击速度+6（此效果不受技能影响）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

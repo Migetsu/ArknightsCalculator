@@ -1042,7 +1042,198 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 65,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30033",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 80,
+            "atk": 68
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 33% chance to Stun for 2.5 seconds when attacking an enemy outside this unit's normal Attack Range",
+                    "zh": "攻击原本攻击范围以外的目标时，有33%的几率使其<$ba.stun>晕眩</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "buff_prob": 0.33,
+                    "stun": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 36% <@ba.talpu>(+3%)</> chance to Stun for 2.5 seconds when attacking an enemy outside this unit's normal Attack Range",
+                    "zh": "攻击原本攻击范围以外的目标时，有36%<@ba.talpu>（+3%）</>的几率使其<$ba.stun>晕眩</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "buff_prob": 0.36,
+                    "stun": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30063",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 95,
+            "atk": 81
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 33% chance to stun for 3 seconds when attacking an enemy outside this unit's normal attack range",
+                    "zh": "攻击原本攻击范围以外的目标时，有33%的几率使其<$ba.stun>晕眩</>3秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "buff_prob": 0.33,
+                    "stun": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 36% <@ba.talpu>(+3%)</> chance to Stun for 3 seconds when attacking an enemy outside this unit's normal Attack Range",
+                    "zh": "攻击原本攻击范围以外的目标时，有36%<@ba.talpu>（+3%）</>的几率使其<$ba.stun>晕眩</>3秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "buff_prob": 0.36,
+                    "stun": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30013",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1088,7 +1088,201 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 60,
+            "atk": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 85,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, 30% chance to increase that attack's ATK to 155%",
+                    "zh": "攻击时，30％几率当次攻击的攻击力提升至155％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.55
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, 35% <@ba.talpu>(+5%)</> chance to increase that ATK to 155%",
+                    "zh": "攻击时，35％<@ba.talpu>（+5%）</>几率当次攻击的攻击力提升至155％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "atk_scale": 1.55
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 100,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, 30% chance to increase that attack's ATK to 160%",
+                    "zh": "攻击时，30％几率当次攻击的攻击力提升至160％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, 35% <@ba.talpu>(+5%)</> chance to increase that ATK to 160%",
+                    "zh": "攻击时，35％<@ba.talpu>（+5%）</>几率当次攻击的攻击力提升至160％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

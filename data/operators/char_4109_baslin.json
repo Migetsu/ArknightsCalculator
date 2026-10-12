@@ -1057,7 +1057,190 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 265,
+            "atk": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 345,
+            "atk": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "RES +12; if there are allied Operators in the 8 surrounding tiles, both this unit and them gain another RES +4",
+                    "zh": "法术抗性+12，周围8格有友方干员时，自身与其法术抗性额外+4",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "baslin_t[self].magic_resistance": 12,
+                    "baslin_t[ally].magic_resistance": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "magic_resistance": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 410,
+            "atk": 32
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "RES +14; if there are allied Operators in the 8 surrounding tiles, both this unit and them gain another RES +5",
+                    "zh": "法术抗性+14，周围8格有友方干员时，自身与其法术抗性额外+5",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "baslin_t[self].magic_resistance": 14,
+                    "baslin_t[ally].magic_resistance": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "magic_resistance": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

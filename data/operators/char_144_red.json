@@ -1084,7 +1084,188 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allied units in the four adjacent tiles, ATK <@ba.kw>+{atk:0%}</>",
+                    "zh": "周围四格没有友方干员时攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 65,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allied units in the four adjacent tiles, ATK <@ba.kw>+{atk:0%}</>",
+                    "zh": "周围四格没有友方干员时攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deals at least 37% of ATK damage every attack",
+                    "zh": "每次攻击至少造成37%攻击力的伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.37
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deals at least 40% <@ba.talpu>(+3%)</> of ATK damage every attack",
+                    "zh": "每次攻击至少造成40%<@ba.talpu>（+3%）</>攻击力的伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 74,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allied units in the four adjacent tiles, ATK <@ba.kw>+{atk:0%}</>",
+                    "zh": "周围四格没有友方干员时攻击力<@ba.kw>+{atk:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deals at least 40% of ATK damage every attack",
+                    "zh": "每次攻击至少造成40%攻击力的伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deals at least 43% <@ba.talpu>(+3%)</> of ATK damage every attack",
+                    "zh": "每次攻击至少造成43%<@ba.talpu>（+3%）</>攻击力的伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.43
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

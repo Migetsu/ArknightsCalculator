@@ -1080,7 +1080,239 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 145,
+            "atk": 15,
+            "def": 18
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "31083",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 185,
+            "atk": 18,
+            "def": 22
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Trait ATK increase reaches its maximum, each attack is followed by an additional attack of 45% ATK",
+                    "zh": "特性攻击力提升至最高时，每次攻击额外追加一次45%攻击力的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Trait ATK increase reaches its maximum, each attack is followed by an additional attack of 48% <@ba.talpu>(+3%)</> ATK",
+                    "zh": "特性攻击力提升至最高时，每次攻击额外追加一次48%<@ba.talpu>（+3%）</>攻击力的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.48
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30083",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 230,
+            "atk": 22,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Trait ATK increase reaches its maximum, each attack is followed by an additional attack of 52% ATK",
+                    "zh": "特性攻击力提升至最高时，每次攻击额外追加一次52%攻击力的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.52
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Trait ATK increase reaches its maximum, each attack is followed by an additional attack of 55% <@ba.talpu>(+3%)</> ATK",
+                    "zh": "特性攻击力提升至最高时，每次攻击额外追加一次55%<@ba.talpu>（+3%）</>攻击力的攻击",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.55
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31073",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

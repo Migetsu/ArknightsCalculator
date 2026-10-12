@@ -1081,7 +1081,198 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 145,
+            "atk": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "31033",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> restores 3.5% HP per second and gains +5 RES",
+                    "zh": "<替身>每秒回复3.5%生命值，法术抗性+5",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+                    "magic_resistance": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> restores 4% <@ba.talpu>(+0.5%)</> HP per second and gains +5 RES",
+                    "zh": "<替身>每秒回复4%<@ba.talpu>（+0.5%）</>生命值，法术抗性+5",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "magic_resistance": 5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "31023",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 185,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> restores 3.5% HP per second and gains +8 RES",
+                    "zh": "<替身>每秒回复3.5%生命值，法术抗性+8",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.035,
+                    "magic_resistance": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> restores 4% <@ba.talpu>(+0.5%)</> HP per second and gains +8 RES",
+                    "zh": "<替身>每秒回复4%<@ba.talpu>（+0.5%）</>生命值，法术抗性+8",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "magic_resistance": 8
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31053",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

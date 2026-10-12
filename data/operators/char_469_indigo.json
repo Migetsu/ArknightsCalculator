@@ -1104,7 +1104,192 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 45,
+            "attack_speed": 3
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30043",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 59,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 23% chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+                    "zh": "攻击时有23%的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.23,
+                    "duration": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 25% <@ba.talpu>(+2%)</> chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+                    "zh": "攻击时有25%<@ba.talpu>（+2%）</>的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.25,
+                    "duration": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30023",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 70,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>; When unable to find a target, attacks can be <@ba.kw>stored up</> and fired all at once (Up to 4 charges)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多4个）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "times": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 25% chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+                    "zh": "攻击时有25%的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.25,
+                    "duration": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 27% <@ba.talpu>(+2%)</> chance to <$ba.root>Bind</> the target for 4 seconds. Will not target Bound enemies",
+                    "zh": "攻击时有27%<@ba.talpu>（+2%）</>的几率使目标<$ba.root>束缚</>4秒，不以束缚状态的敌人为攻击目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.27,
+                    "duration": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31043",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

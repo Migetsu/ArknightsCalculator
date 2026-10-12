@@ -1415,7 +1415,201 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 300,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 400,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +18% ATK and +10% Max HP",
+                    "zh": "编入队伍时，所有【深海猎人】干员的攻击力+18%，生命值+10%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "max_hp": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +20% <@ba.talpu>(+2%)</> ATK and +10% Max HP",
+                    "zh": "编入队伍时，所有【深海猎人】干员的攻击力+20%<@ba.talpu>（+2%）</>，生命值+10%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.2,
+                    "max_hp": 0.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 450,
+            "atk": 85
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +22% ATK and +20% Max HP",
+                    "zh": "编入队伍时，所有【深海猎人】干员的攻击力+22%，生命值+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.22,
+                    "max_hp": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +24% <@ba.talpu>(+2%)</> ATK and +20% Max HP",
+                    "zh": "编入队伍时，所有【深海猎人】干员的攻击力+24%<@ba.talpu>（+2%）</>，生命值+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.24,
+                    "max_hp": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_skadi",
@@ -1483,7 +1677,166 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 270,
+            "atk": 90
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Redeployment Time -20 seconds",
+                    "zh": "自身再部署时间-20秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "respawn_time": -20
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 320,
+            "atk": 105
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.vup>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "攻击被阻挡的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Redeployment Time -30 seconds",
+                    "zh": "自身再部署时间-30秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "respawn_time": -30
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

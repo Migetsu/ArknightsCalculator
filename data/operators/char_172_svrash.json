@@ -1406,7 +1406,228 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 190,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 270,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +20%, and further increased to 110% when attacking elite and leader enemies; all allied units' Redeployment Time -10% when this unit is in the squad.",
+                    "zh": "攻击力+20%且攻击精英与领袖敌人时攻击力提升至110%，编入队伍时所有我方单位的再部署时间-10%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.2,
+                    "respawn_time": -0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +22% <@ba.talpu>(+2%)</>, and further increased to 110% when attacking elite and leader enemies; all allied units' Redeployment Time -12%<@ba.talpu> (+2%)</> when this unit is in the squad.",
+                    "zh": "攻击力+22%<@ba.talpu>（+2%）</>且攻击精英与领袖敌人时攻击力提升至110%，编入队伍时所有我方单位的再部署时间-12%<@ba.talpu>（+2%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.22,
+                    "respawn_time": -0.12
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 330,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +25%, and further increased to 115% when attacking elite and leader enemies; all allied units' Redeployment Time -10% when this unit is in the squad. SilverAsh and other allies in the 8 surrounding tiles gain an additional -10% Redeployment Time.",
+                    "zh": "攻击力+25%且攻击精英与领袖敌人时攻击力提升至115%，编入队伍时所有我方单位的再部署时间-10%，银灰及周围8格的其他友军再部署时间额外-10%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.25,
+                    "respawn_time": -0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +27% <@ba.talpu>(+2%)</>, and further increased to 115% when attacking elite and leader enemies; all allied units' Redeployment Time -12%<@ba.talpu> (+2%)</> when this unit is in the squad. SilverAsh and other allies in the 8 surrounding tiles gain an additional -10% Redeployment Time.",
+                    "zh": "攻击力+27%<@ba.talpu>（+2%）</>且攻击精英与领袖敌人时攻击力提升至115%，编入队伍时所有我方单位的再部署时间-12%<@ba.talpu>（+2%）</>，银灰及周围8格的其他友军再部署时间额外-10%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.27,
+                    "respawn_time": -0.12
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "respawn_time": -0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

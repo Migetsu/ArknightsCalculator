@@ -1404,7 +1404,214 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; When skill is active, attacks instead restore the HP of allies (heal amount is equal to <@ba.kw>{heal_scale:0%}</> of ATK)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，技能开启后改为治疗友方单位（治疗量相当于<@ba.kw>{heal_scale:0%}</>攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 130,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; When skill is active, attacks instead restore the HP of allies (heal amount is equal to <@ba.kw>{heal_scale:0%}</> of ATK)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，技能开启后改为治疗友方单位（治疗量相当于<@ba.kw>{heal_scale:0%}</>攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_hp": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of allies within Attack Range by +6%; Allies with less than 50% HP within this unit's Attack Range heal HP equal to 6% of this unit's ATK every second; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内友军的最大生命值+6%且生命低于50%时每秒恢复相当于淬羽赫默攻击力6%的生命，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of allies within Attack Range by +6%; Allies with less than 50% HP within this unit's Attack Range heal HP equal to 7% <@ba.talpu>(+1%)</> of this unit's ATK every second; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内友军的最大生命值+6%且生命低于50%时每秒恢复相当于淬羽赫默攻击力7%<@ba.talpu>（+1%）</>的生命，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.07
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals <@ba.kw>Arts damage</>; When skill is active, attacks instead restore the HP of allies (heal amount is equal to <@ba.kw>{heal_scale:0%}</> of ATK)",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，技能开启后改为治疗友方单位（治疗量相当于<@ba.kw>{heal_scale:0%}</>攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_hp": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of allies within Attack Range by +10%; Allies with less than 50% HP within this unit's Attack Range heal HP equal to 7% of this unit's ATK every second; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内友军的最大生命值+10%且生命低于50%时每秒恢复相当于淬羽赫默攻击力7%的生命，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.07
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of allies within Attack Range by +10%; Allies with less than 50% HP within this unit's Attack Range heal HP equal to 8% <@ba.talpu>(+1%)</> of this unit's ATK every second; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内友军的最大生命值+10%且生命低于50%时每秒恢复相当于淬羽赫默攻击力8%<@ba.talpu>（+1%）</>的生命，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_slent2",
@@ -1472,7 +1679,249 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Arts damage to <@ba.kw>2</> targets; when skill is active, attacks instead restore the HP of <@ba.kw>2</> allies (heal amount is equal to 75% of ATK)",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Arts damage to <@ba.kw>2</> targets; when skill is active, attacks instead restore the HP of <@ba.kw>2</> allies (heal amount is equal to 75% of ATK)",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Allies with less than 50% HP within this unit's Attack Range heal HP equal to 5% of this unit's ATK every second; the first time an Operator within range drops below 50% HP, grants that Operator a Barrier equal to 35% of this unit's Max HP; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内生命低于50%的友军每秒恢复相当于淬羽赫默攻击力5%的生命，且其中每个干员低于50%生命时仅一次立刻获得淬羽赫默生命上限35%的<$ba.barrier>屏障</>，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Allies with less than 50% HP within this unit's Attack Range heal HP equal to 6% <@ba.talpu>(+1%)</> of this unit's ATK every second; the first time an Operator within range drops below 50% HP, grants that Operator a Barrier equal to 35% of this unit's Max HP; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内生命低于50%的友军每秒恢复相当于淬羽赫默攻击力6%<@ba.talpu>（+1%）</>的生命，且其中每个干员低于50%生命时仅一次立刻获得淬羽赫默生命上限35%的<$ba.barrier>屏障</>，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.06
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "scale": 0.35
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 62
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Deals Arts damage to <@ba.kw>2</> targets; when skill is active, attacks instead restore the HP of <@ba.kw>2</> allies (heal amount is equal to 75% of ATK)",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Allies with less than 50% HP within this unit's Attack Range heal HP equal to 5% of this unit's ATK every second; the first time an Operator within range drops below 50% HP, grants that Operator a Barrier equal to 50% of this unit's Max HP; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内生命低于50%的友军每秒恢复相当于淬羽赫默攻击力5%的生命，且其中每个干员低于50%生命时仅一次立刻获得淬羽赫默生命上限50%的<$ba.barrier>屏障</>，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Allies with less than 50% HP within this unit's Attack Range heal HP equal to 6% <@ba.talpu>(+1%)</> of this unit's ATK every second; the first time an Operator within range drops below 50% HP, grants that Operator a Barrier equal to 50% of this unit's Max HP; effect doubles for [Rhine Lab] Operators",
+                    "zh": "攻击范围内生命低于50%的友军每秒恢复相当于淬羽赫默攻击力6%<@ba.talpu>（+1%）</>的生命，且其中每个干员低于50%生命时仅一次立刻获得淬羽赫默生命上限50%的<$ba.barrier>屏障</>，【莱茵生命】干员的效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "atk_to_hp_recovery_ratio": 0.06
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@max_target": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "scale": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1523,7 +1523,203 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 35,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 230,
+            "atk": 43,
+            "def": 26
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 60% Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 11% Max HP (Cannot exceed 300% Max HP)",
+                    "zh": "部署后立即获得相当于生命上限60%的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限11%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp_ratio": 3,
+                    "kill_hp_ratio": 0.11,
+                    "born_hp_ratio": 0.6,
+                    "higher_effect_hp_ratio": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 65% <@ba.talpu>(+5%)</> Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 11% Max HP (Cannot exceed 300% Max HP)",
+                    "zh": "部署后立即获得相当于生命上限65%<@ba.talpu>（+5%）</>的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限11%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp_ratio": 3,
+                    "kill_hp_ratio": 0.11,
+                    "born_hp_ratio": 0.65,
+                    "higher_effect_hp_ratio": 1
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 50,
+            "def": 33
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 70% Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 12% Max HP (Cannot exceed 300% Max HP)",
+                    "zh": "部署后立即获得相当于生命上限70%的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限12%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp_ratio": 3,
+                    "kill_hp_ratio": 0.12,
+                    "born_hp_ratio": 0.7,
+                    "higher_effect_hp_ratio": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, immediately gains a <$ba.barrier>Barrier</> equal to 75% <@ba.talpu>(+5%)</> Max HP; When defeating an enemy, gains a <$ba.barrier>Barrier</> equal to 12% Max HP (Cannot exceed 300% Max HP)",
+                    "zh": "部署后立即获得相当于生命上限75%<@ba.talpu>（+5%）</>的<$ba.barrier>屏障</>，每击倒一名敌人时获得相当于生命上限12%的<$ba.barrier>屏障</>（最多不超过生命上限300%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp_ratio": 3,
+                    "kill_hp_ratio": 0.12,
+                    "born_hp_ratio": 0.75,
+                    "higher_effect_hp_ratio": 1
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_judge",
@@ -1591,7 +1787,191 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 60,
+            "def": 48
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 75,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 55% ATK as Arts damage to the attacker",
+                    "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力55%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.55
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 58% <@ba.talpu>(+3%)</> ATK as Arts damage to the attacker",
+                    "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力58%<@ba.talpu>（+3%）</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.58
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 85,
+            "def": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When there are no allies in the surrounding 8 tiles, ATK and DEF <@ba.kw>+8%</>",
+                    "zh": "周围8格没有友方干员时攻击力和防御力<@ba.kw>+8%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.08,
+                    "def": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 58% ATK as Arts damage to the attacker",
+                    "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力58%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.58
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each time this unit is attacked while under the effect of her own <$ba.barrier>Barrier</>, deals 61% <@ba.talpu>(+3%)</> ATK as Arts damage to the attacker",
+                    "zh": "拥有来源于自身的<$ba.barrier>屏障</>时，每次受到攻击对目标造成相当于斥罪攻击力61%<@ba.talpu>（+3%）</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.61
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1114,7 +1114,239 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 178,
+            "atk": 13,
+            "def": 13
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 215,
+            "atk": 19,
+            "def": 19
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is inactive, deals 25% of Tequila's ATK as Arts damage to the attacker when Tequila or the unit behind him is attacked",
+                    "zh": "技能未开启时每次自身和身后一名单位受到攻击时对目标造成相当于龙舌兰攻击力25%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is inactive, deals 28% <@ba.talpu>(+3%)</> of Tequila's ATK as Arts damage to the attacker when Tequila or the unit behind is attacked",
+                    "zh": "技能未开启时每次自身和身后一名单位受到攻击时对目标造成相当于龙舌兰攻击力28%<@ba.talpu>（+3%）</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.28
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 260,
+            "atk": 25,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Directly gains <@ba.kw>+100%</> charge after deployment",
+                    "zh": "部署后获得<@ba.kw>+100%</>加成",
+                    "isMachineTranslation": false
+                  },
+                  "overrideDescription": {
+                    "en": "Normally does not attack and has 0 Block; when skill is inactive, ATK gradually increases up to <@ba.kw>+200%</> over <@ba.kw>40</> seconds; ATK is reset when the skill ends",
+                    "zh": "通常不攻击且阻挡数为0，技能未开启时<@ba.kw>40</>秒内攻击力逐渐提升至最高<@ba.kw>+200%</>且技能结束时重置攻击力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is inactive, deals 35% of Tequila's ATK as Arts damage to the attacker when Tequila or the unit behind him is attacked",
+                    "zh": "技能未开启时每次自身和身后一名单位受到攻击时对目标造成相当于龙舌兰攻击力35%的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.35
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is inactive, deals 38% <@ba.talpu>(+3%)</> of Tequila's ATK as Arts damage to the attacker when Tequila or the unit behind is attacked",
+                    "zh": "技能未开启时每次自身和身后一名单位受到攻击时对目标造成相当于龙舌兰攻击力38%<@ba.talpu>（+3%）</>的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.38
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "init_atk": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1089,7 +1089,201 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 300,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 370,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases Max HP by 60 after an enemy is defeated in the adjacent 4 tiles, stacking up to 30 times.",
+                    "zh": "周围四格每有一名敌人被击倒时自身的生命上限提高60，最多叠加30次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 60,
+                    "max_stack_cnt": 30
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases Max HP by 70 <@ba.talpu>(+10)</> after an enemy is defeated in the adjacent 4 tiles, stacking up to 30 times.",
+                    "zh": "周围四格每有一名敌人被击倒时自身的生命上限提高70<@ba.talpu>（+10）</>，最多可以叠加30次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 70,
+                    "max_stack_cnt": 30
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 430,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and recovers all HP instead. However, Max HP <@ba.vdown>-{value:0%}</> and ASPD <@ba.vup>+{attack_speed}</> (Can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复所有生命但生命上限<@ba.vdown>-{value:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 30,
+                    "max_hp": 0.4,
+                    "hp_ratio": 1,
+                    "value": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases Max HP by 70 after an enemy is defeated in the adjacent 4 tiles, stacking up to 30 times.",
+                    "zh": "周围四格每有一名敌人被击倒时自身的生命上限提高70，最多叠加30次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 70,
+                    "max_stack_cnt": 30
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases Max HP by 80 <@ba.talpu>(+10)</> after an enemy is defeated in the adjacent 4 tiles, stacking up to 30 times.",
+                    "zh": "周围四格每有一名敌人被击倒时自身的生命上限提高80<@ba.talpu>（+10）</>，最多可以叠加30次",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 80,
+                    "max_stack_cnt": 30
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

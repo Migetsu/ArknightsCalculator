@@ -1495,7 +1495,171 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 260,
+            "atk": 67
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When DP is consumed by this unit's Trait, if there is sufficient DP, consumes 5 DP instead to block the next <$ba.stun>Stun</>/<$ba.frozen>Freeze</> effect inflicted on this unit, and stuns the attacker for 4 seconds",
+                    "zh": "特性消耗费用时，若费用足够则改为消耗5费用，抵消自身受到的下一次<$ba.stun>晕眩</>/<$ba.frozen>冻结</>，并使攻击来源<$ba.stun>晕眩</>4秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_cost": -5,
+                    "stun": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 74
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When DP is consumed by this unit's Trait, if there is sufficient DP, consumes 4 DP instead to block the next <$ba.stun>Stun</>/<$ba.frozen>Freeze</> effect inflicted on this unit, and stuns the attacker for 4 seconds",
+                    "zh": "特性消耗费用时，若费用足够则改为消耗4费用，抵消自身受到的下一次<$ba.stun>晕眩</>/<$ba.frozen>冻结</>，并使攻击来源<$ba.stun>晕眩</>4秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "extra_cost": -4,
+                    "stun": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_lmlee",
@@ -1563,7 +1727,226 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 57,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 69,
+            "def": 43
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Lee is blocking an enemy, the enemy has ASPD -17 and Lee has ASPD +17; If there is only one enemy within the surrounding 8 tiles, this effect is doubled",
+                    "zh": "老鲤阻挡目标时，使其攻击速度-17，且自身攻击速度+17；当周围八格内仅存在一个敌人时效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "lmlee_t_1[enemy].attack_speed": -17,
+                    "lmlee_t_1[self].attack_speed": 17,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Lee is blocking an enemy, the enemy has ASPD -18 <@ba.talpu>(+1)</> and Lee has ASPD +18 <@ba.talpu>(+1)</>; If there is only one enemy within the surrounding 8 tiles, this effect is doubled",
+                    "zh": "老鲤阻挡目标时，使其攻击速度-18<@ba.talpu>（+1）</>，且自身攻击速度+18<@ba.talpu>（+1）</>；当周围八格内仅存在一个敌人时效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "lmlee_t_1[enemy].attack_speed": -18,
+                    "lmlee_t_1[self].attack_speed": 18,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 76,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Lee is blocking an enemy, the enemy has ASPD -20 and Lee has ASPD +20; If there is only one enemy within the surrounding 8 tiles, this effect is doubled",
+                    "zh": "老鲤阻挡目标时，使其攻击速度-20，且自身攻击速度+20；当周围八格内仅存在一个敌人时效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "lmlee_t_1[enemy].attack_speed": -20,
+                    "lmlee_t_1[self].attack_speed": 20,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Lee is blocking an enemy, the enemy has ASPD -21 <@ba.talpu>(+1)</> and Lee has ASPD +21 <@ba.talpu>(+1)</>; If there is only one enemy within the surrounding 8 tiles, this effect is doubled",
+                    "zh": "老鲤阻挡目标时，使其攻击速度-21<@ba.talpu>（+1）</>，且自身攻击速度+21<@ba.talpu>（+1）</>；当周围八格内仅存在一个敌人时效果翻倍",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "lmlee_t_1[enemy].attack_speed": -21,
+                    "lmlee_t_1[self].attack_speed": 21,
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

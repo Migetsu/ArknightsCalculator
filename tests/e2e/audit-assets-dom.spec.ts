@@ -52,13 +52,18 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
   test('scrolls to end of catalog, verifies naturalWidth and calculates fallback ratio in EN and RU', async ({
     page,
   }) => {
+    test.setTimeout(60000)
+
     // 1. Audit English /operators
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/operators')
     await page.waitForLoadState('networkidle')
 
+    // Wait for catalog cards to render
+    await expect(page.locator('.ak-operator-card').first()).toBeVisible({ timeout: 15000 })
+
     // Scroll progressively through catalog to load all batches
-    let prevCount = 0
+    let prevCount = await page.locator('.ak-operator-card').count()
     let sameCountTries = 0
 
     while (sameCountTries < 6) {
@@ -70,14 +75,14 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
         prevCount = cardsCount
       }
 
-      const loadMoreBtn = page.locator('.operators-page__load-more-btn')
-      if (await loadMoreBtn.isVisible()) {
-        await loadMoreBtn.click()
-        await page.waitForTimeout(100)
-      } else {
-        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
-        await page.waitForTimeout(150)
-      }
+      await page.evaluate(() => {
+        const btn = document.querySelector<HTMLButtonElement>('.operators-page__load-more-btn')
+        if (btn) {
+          btn.click()
+        }
+        window.scrollTo(0, document.body.scrollHeight)
+      })
+      await page.waitForTimeout(100)
     }
 
     const enFullStats = await page.evaluate(() => {

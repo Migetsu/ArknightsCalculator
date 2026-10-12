@@ -1390,7 +1390,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Restores the HP of allied units and recovers <$ba.dt.element>Elemental Injury</> by <@ba.kw>{ep_heal_ratio:0%}</> of ATK (can recover <$ba.dt.element>Elemental Injury</> of unhurt allied units)",
+                    "zh": "恢复友方单位生命，并回复相当于攻击力<@ba.kw>{ep_heal_ratio:0%}</>的<$ba.dt.element>元素损伤</>（可以回复未受伤友方单位的<$ba.dt.element>元素损伤</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_heal_ratio": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 125,
+            "atk": 36
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Restores the HP of allied units and recovers <$ba.dt.element>Elemental Injury</> by <@ba.kw>{ep_heal_ratio:0%}</> of ATK (can recover <$ba.dt.element>Elemental Injury</> of unhurt allied units)",
+                    "zh": "恢复友方单位生命，并回复相当于攻击力<@ba.kw>{ep_heal_ratio:0%}</>的<$ba.dt.element>元素损伤</>（可以回复未受伤友方单位的<$ba.dt.element>元素损伤</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_heal_ratio": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of friendly units within range by +6%, and reduces the <$ba.dt.element>Elemental Injury</> they take by 14%",
+                    "zh": "攻击范围内的友方单位生命上限+6%，且受到的<$ba.dt.element>元素损伤</>降低14%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.06,
+                    "ep_damage_resistance": 0.14
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of friendly units within range by +8% <@ba.talpu>(+2%)</>, and reduces the <$ba.dt.element>Elemental Injury</> they take by 14%",
+                    "zh": "攻击范围内的友方单位生命上限+8%<@ba.talpu>（+2%）</>，且受到的<$ba.dt.element>元素损伤</>降低14%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.08,
+                    "ep_damage_resistance": 0.14
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 140,
+            "atk": 44
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Restores the HP of allied units and recovers <$ba.dt.element>Elemental Injury</> by <@ba.kw>{ep_heal_ratio:0%}</> of ATK (can recover <$ba.dt.element>Elemental Injury</> of unhurt allied units)",
+                    "zh": "恢复友方单位生命，并回复相当于攻击力<@ba.kw>{ep_heal_ratio:0%}</>的<$ba.dt.element>元素损伤</>（可以回复未受伤友方单位的<$ba.dt.element>元素损伤</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_heal_ratio": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of friendly units within range by +8%, and reduces the <$ba.dt.element>Elemental Injury</> they take by 14%",
+                    "zh": "攻击范围内的友方单位生命上限+8%，且受到的<$ba.dt.element>元素损伤</>降低14%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.08,
+                    "ep_damage_resistance": 0.14
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of friendly units within range by +10% <@ba.talpu>(+2%)</>, and reduces the <$ba.dt.element>Elemental Injury</> they take by 14%",
+                    "zh": "攻击范围内的友方单位生命上限+10%<@ba.talpu>（+2%）</>，且受到的<$ba.dt.element>元素损伤</>降低14%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.1,
+                    "ep_damage_resistance": 0.14
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_agoat2",
@@ -1458,7 +1643,170 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 8,
+                    "ep_heal_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 48
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 8,
+                    "ep_heal_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "普通治疗使目标每秒额外受到一次治疗量和<$ba.dt.element>元素损伤</>回复量为12%的增益治疗，持续7秒（最多叠加3层）",
+                    "zh": "普通治疗使目标每秒额外受到一次治疗量和<$ba.dt.element>元素损伤</>回复量为12%的增益治疗，持续7秒（最多叠加3层）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.12,
+                    "duration": 7,
+                    "max_stack_cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "zh": "攻击范围内存在受到元素损伤的友方单位时，攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 8,
+                    "ep_heal_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "普通治疗使目标每秒额外受到一次治疗量和<$ba.dt.element>元素损伤</>回复量为13%的增益治疗，持续8秒（最多叠加3层）",
+                    "zh": "普通治疗使目标每秒额外受到一次治疗量和<$ba.dt.element>元素损伤</>回复量为13%的增益治疗，持续8秒（最多叠加3层）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.13,
+                    "duration": 8,
+                    "max_stack_cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

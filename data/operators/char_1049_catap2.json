@@ -1217,7 +1217,223 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "zh": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_stack_cnt": 10,
+                    "atk": 0.02
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "zh": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_stack_cnt": 10,
+                    "atk": 0.02
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加40%且攻击力增加2%",
+                    "zh": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加40%且攻击力增加2%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "extend_duration_ratio_each": 0.4,
+                    "catap2_s[atk_equip].atk": 0.02,
+                    "s2_damage_resistance": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加50%<@ba.talpu>（+10%）</>且攻击力增加3%<@ba.talpu>（+1%）</>",
+                    "zh": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加50%<@ba.talpu>（+10%）</>且攻击力增加3%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "extend_duration_ratio_each": 0.5,
+                    "catap2_s[atk_equip].atk": 0.03,
+                    "s2_damage_resistance": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31074",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 280,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "zh": "特性消耗费用时，每消耗1点费用使本次技能期间攻击力<@ba.kw>+2%</>（上限10层）",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max_stack_cnt": 10,
+                    "atk": 0.02
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加40%且攻击力增加3%",
+                    "zh": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加40%且攻击力增加3%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "extend_duration_ratio_each": 0.4,
+                    "catap2_s[atk_equip].atk": 0.03,
+                    "s2_damage_resistance": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加50%<@ba.talpu>（+10%）</>且攻击力增加4%<@ba.talpu>（+1%）</>",
+                    "zh": "技能期间攻击距离延长。开启技能时施展变形斩造成伤害，同时消耗所有充能，每层使技能持续时间增加50%<@ba.talpu>（+10%）</>且攻击力增加4%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "extend_duration_ratio_each": 0.5,
+                    "catap2_s[atk_equip].atk": 0.04,
+                    "s2_damage_resistance": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31014",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

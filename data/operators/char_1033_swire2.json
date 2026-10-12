@@ -1504,7 +1504,206 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 130,
+            "atk": 25,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 35,
+            "def": 43
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 1 Coin upon skill activation (can be spent through skills). While a skill is active, gains 1 Coin each time DP is consumed by this unit's Trait, and +5% ATK (stacks up to 8 times)",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身5%的攻击力（最多叠加8次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.05,
+                    "max_stack_cnt": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 1 Coin upon skill activation (can be spent through skills). While a skill is active, gains 1 Coin each time DP is consumed by this unit's Trait, and +5% ATK (stacks up to 9 <@ba.talpu>(+1)</> times)",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身5%的攻击力（最多叠加9<@ba.talpu>（+1）</>次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.05,
+                    "max_stack_cnt": 9
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 40,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>reduced</> Redeployment Time, but <@ba.kw>DP Cost</> is not refunded upon retreating; While deployed, <@ba.kw>2 DP</> are consumed every 3 seconds (automatically retreats without sufficient DP)",
+                    "zh": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒消耗<@ba.kw>2</>点部署费用（不足时自动撤退）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 3,
+                    "cost": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 2 Coins upon skill activation (can be spent through skills). While a skill is active, gains 1 Coin each time DP is consumed by this unit's Trait, and +5% ATK (stacks up to 8 times)",
+                    "zh": "开启技能时获得2枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身5%的攻击力（最多叠加8次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "trait_sp": 1,
+                    "atk": 0.05,
+                    "max_stack_cnt": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 2 Coins upon skill activation (can be spent through skills). While a skill is active, gains 1 Coin each time DP is consumed by this unit's Trait, and +5% ATK (stacks up to 9 <@ba.talpu>(+1)</> times)",
+                    "zh": "开启技能时获得2枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身5%的攻击力（最多叠加9<@ba.talpu>（+1）</>次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "trait_sp": 1,
+                    "atk": 0.05,
+                    "max_stack_cnt": 9
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_swire2",
@@ -1572,7 +1771,226 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 57,
+            "def": 44
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 71,
+            "def": 53
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Upon receiving lethal damage, as long as enough DP is available, consumes 5 DP to restore this unit's HP to 70%; the cost of this Talent increases by 5 every time it is activated",
+                    "zh": "受到致命伤害时，若费用足够则消耗5点部署费用使生命恢复到70%，每次触发该天赋时消耗的费用增加5点",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -5,
+                    "hp_ratio": 0.7,
+                    "cost_addition": -5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Upon receiving lethal damage, as long as enough DP is available, consumes 5 DP to restore this unit's HP to 80% <@ba.talpu>(+10%)</>; the cost of this Talent increases by 5 every time it is activated",
+                    "zh": "受到致命伤害时，若费用足够则消耗5点部署费用使生命恢复到80%<@ba.talpu>（+10%）</>，每次触发该天赋时消耗的费用增加5点",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -5,
+                    "hp_ratio": 0.8,
+                    "cost_addition": -5
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 81,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "ATK +4% whenever Trait cost is paid, stacking up to 5 times",
+                    "zh": "每次特性消耗费用时攻击力+4%，最多可以叠加5次",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Upon receiving lethal damage, as long as enough DP is available, consumes 3 DP to restore this unit's HP to 70%; the cost of this Talent increases by 3 every time it is activated",
+                    "zh": "受到致命伤害时，若费用足够则消耗3点部署费用使生命恢复到70%，每次触发该天赋时消耗的费用增加3点",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -3,
+                    "hp_ratio": 0.7,
+                    "cost_addition": -3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Upon receiving lethal damage, as long as enough DP is available, consumes 3 DP to restore this unit's HP to 80% <@ba.talpu>(+10%)</>; the cost of this Talent increases by 3 every time it is activated",
+                    "zh": "受到致命伤害时，若费用足够则消耗3点部署费用使生命恢复到80%<@ba.talpu>（+10%）</>，每次触发该天赋时消耗的费用增加3点",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -3,
+                    "hp_ratio": 0.8,
+                    "cost_addition": -3
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "interval": 3,
+                    "atk": 0.04,
+                    "max_stack_cnt": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_swire2",
@@ -1608,7 +2026,271 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "zh": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "respawn_time_ratio": 2,
+                    "interval": 3,
+                    "cost": -3,
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 260,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "zh": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "respawn_time_ratio": 2,
+                    "interval": 3,
+                    "cost": -3,
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 5,
+                    "sp_add": 1,
+                    "atk_per_coin": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加8次），在<@ba.kw>集成战略</>中金币上限+5，特性消耗费用时额外获得1枚金币并叠加2次攻击力",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加8次），在<@ba.kw>集成战略</>中金币上限+5，特性消耗费用时额外获得1枚金币并叠加2次攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.04,
+                    "max_stack_cnt": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加9<@ba.talpu>（+1）</>次），在<@ba.kw>集成战略</>中金币上限+5，特性消耗费用时额外获得1枚金币并叠加2次攻击力",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加9<@ba.talpu>（+1）</>次），在<@ba.kw>集成战略</>中金币上限+5，特性消耗费用时额外获得1枚金币并叠加2次攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.04,
+                    "max_stack_cnt": 9
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 320,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "zh": "在<@ba.kw>集成战略</>中，部署和在场消耗的部署费用-30%，自身每消耗1点费用会令正在再部署中剩余时间最短的干员再部署时间-2秒",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "respawn_time_ratio": 2,
+                    "interval": 3,
+                    "cost": -3,
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 5,
+                    "sp_add": 1,
+                    "atk_per_coin": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "max": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加8次），在<@ba.kw>集成战略</>中金币上限+5，每有1源石锭攻击力叠加上限+1次（最多60次），特性消耗费用时额外获得1枚金币并叠加3次攻击力",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加8次），在<@ba.kw>集成战略</>中金币上限+5，每有1源石锭攻击力叠加上限+1次（最多60次），特性消耗费用时额外获得1枚金币并叠加3次攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.04,
+                    "max_stack_cnt": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加9<@ba.talpu>（+1）</>次），在<@ba.kw>集成战略</>中金币上限+5，每有1源石锭攻击力叠加上限+1次（最多60次），特性消耗费用时额外获得1枚金币并叠加3次攻击力",
+                    "zh": "开启技能时获得1枚金币（可用于技能消耗），技能期间每次特性消耗费用时获得1枚金币，并提升自身4%的攻击力（最多叠加9<@ba.talpu>（+1）</>次），在<@ba.kw>集成战略</>中金币上限+5，每有1源石锭攻击力叠加上限+1次（最多60次），特性消耗费用时额外获得1枚金币并叠加3次攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "sp": 1,
+                    "trait_sp": 1,
+                    "atk": 0.04,
+                    "max_stack_cnt": 9
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "cost_scale": 0.7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

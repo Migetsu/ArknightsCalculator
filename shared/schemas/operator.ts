@@ -194,12 +194,51 @@ export const OperatorTalentSchema = z.object({
 export type OperatorTalent = z.infer<typeof OperatorTalentSchema>
 
 /**
- * Module / Uniequip item and unlock costs.
+ * Combat trait/talent modifications introduced by a module stage.
+ */
+export const OperatorModulePartCandidateSchema = z.object({
+  additionalDescription: I18nStringSchema.optional(),
+  upgradeDescription: I18nStringSchema.optional(),
+  overrideDescription: I18nStringSchema.optional(),
+  blackboard: z.record(z.string(), z.number()).optional(),
+  requiredPotentialRank: z.number().optional(),
+})
+
+export type OperatorModulePartCandidate = z.infer<typeof OperatorModulePartCandidateSchema>
+
+export const OperatorModulePartSchema = z.object({
+  target: z.string(),
+  candidates: z.array(OperatorModulePartCandidateSchema).optional(),
+})
+
+export type OperatorModulePart = z.infer<typeof OperatorModulePartSchema>
+
+/**
+ * Single upgrade stage of a combat module (Stage 1, 2, 3).
+ */
+export const OperatorModuleStageSchema = z.object({
+  stage: z.number().int().min(1).max(3),
+  stats: z.record(z.string(), z.number()),
+  parts: z.array(OperatorModulePartSchema).optional(),
+  cost: z
+    .array(
+      z.object({
+        id: z.string(),
+        count: z.number().positive(),
+      }),
+    )
+    .optional(),
+})
+
+export type OperatorModuleStage = z.infer<typeof OperatorModuleStageSchema>
+
+/**
+ * Module / Uniequip item, stages, combat stats, and unlock costs.
  */
 export const OperatorModuleSchema = z.object({
   id: z.string(),
   name: I18nStringSchema,
-  type: z.string(), // e.g. "ADVANCED"
+  type: z.string(), // e.g. "INITIAL" | "ADVANCED"
   typeName2: z.string(), // e.g. "CHG-X"
   icon: z.string(),
   description: I18nStringSchema.optional(),
@@ -214,6 +253,7 @@ export const OperatorModuleSchema = z.object({
       ),
     )
     .optional(),
+  stages: z.array(OperatorModuleStageSchema).optional(),
 })
 
 export type OperatorModule = z.infer<typeof OperatorModuleSchema>

@@ -1387,7 +1387,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "SP recovery +0.2/s when there are enemies within range",
+                    "zh": "攻击范围内存在敌人时技力自然恢复速度+0.2/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "SP recovery +0.2/s when there are enemies within range",
+                    "zh": "攻击范围内存在敌人时技力自然恢复速度+0.2/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, increases the SP recovery rate of all Supporter Operators by +0.4/second (only the highest effect of this type takes place) and ATK by +6%",
+                    "zh": "在场时所有【辅助】干员的技力自然回复速度+0.4/秒（同类效果取最高），攻击力+6%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.4,
+                    "atk": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "SP recovery +0.2/s when there are enemies within range",
+                    "zh": "攻击范围内存在敌人时技力自然恢复速度+0.2/秒",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, increases the SP recovery rate of all Supporter Operators by +0.4/second (only the highest effect of this type takes place) and ATK by +9%",
+                    "zh": "在场时所有【辅助】干员的技力自然回复速度+0.4/秒（同类效果取最高），攻击力+9%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp_recovery_per_sec": 0.4,
+                    "atk": 0.09
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_lisa",
@@ -1455,7 +1640,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 90,
+            "atk": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 110,
+            "atk": 43
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range that are <$ba.sluggish>Slowed</> also gain 21% <$ba.fragile>Fragile</> and 5% <$ba.weaken>Enfeeble</> for an equal duration",
+                    "zh": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的21%的<$ba.fragile>脆弱</>效果和5％<$ba.weaken>虚弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.21,
+                    "atk": 0.95
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range that are <$ba.sluggish>Slowed</> also gain 24% <@ba.talpu>(+3%)</> <$ba.fragile>Fragile</> and 5% <$ba.weaken>Enfeeble</> for an equal duration",
+                    "zh": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的24%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果和5％<$ba.weaken>虚弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.24,
+                    "atk": 0.95
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 46
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>Arts damage</>, and <$ba.sluggish>Slow</> the enemy for a <@ba.kw>moderate</> period of time",
+                    "zh": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成<@ba.kw>较长</>的<$ba.sluggish>停顿</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sluggish": 1.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range that are <$ba.sluggish>Slowed</> also gain 22% <$ba.fragile>Fragile</> and 8% <$ba.weaken>Enfeeble</> for an equal duration",
+                    "zh": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的22%的<$ba.fragile>脆弱</>效果和8％<$ba.weaken>虚弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.22,
+                    "atk": 0.92
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Enemies in range that are <$ba.sluggish>Slowed</> also gain 25% <@ba.talpu>(+3%)</> <$ba.fragile>Fragile</> and 8% <$ba.weaken>Enfeeble</> for an equal duration",
+                    "zh": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的25%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果和8％<$ba.weaken>虚弱</>效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.25,
+                    "atk": 0.92
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }
