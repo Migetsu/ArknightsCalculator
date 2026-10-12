@@ -120,16 +120,16 @@ function handleKeydown(event: KeyboardEvent, currentIndex: number): void {
     display: inline-flex;
     align-items: center;
     padding: var(--space-xs) var(--space-md);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: var(--letter-spacing-mono);
     transition:
       color var(--transition-fast),
       border-color var(--transition-fast);

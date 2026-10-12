@@ -35,15 +35,27 @@
 - Implemented responsive shell in `app/layouts/default.vue`: sticky header with PRTS branding, desktop navigation, accessible mobile drawer with focus trap/restore, Escape key support, body scroll lock, and localized footer disclaimer.
 - Created dev-only design system showcase page (`app/pages/_ui.vue`), excluded from production build and sitemap via `pages:extend` hook.
 - Added unit and component tests (`AkButton.test.ts`, `AkTabs.test.ts`, `dev-only-routes.test.ts`) and Playwright responsive E2E tests (360px mobile drawer, 1440px desktop, screenshot generation).
+- Implemented Rhodes Island Terminal HUD design system (Design V2) based on reference aesthetics (`docs/design-refs/`):
+  - Dark HUD color palette (`#0c0d10`, `#14161a`, `#1a1d22`), accents (Cyan `#00e5ff`, Amber `#ff9800`, Green `#00e676`, Red `#ff1744`), and 1★–6★ operator rarity palette.
+  - Vector background grid and radial vignette via CSS (`_reset.scss`, 0 KB external assets).
+  - Clipped focus ring mixin (`@mixin focus-ring-clipped`) ensuring high-contrast accessible keyboard focus across cut corners.
+  - Tactical UI component set without Nuxt UI: `AkPanel`, `AkButton` (with secondary variant and hover sweep), `AkBadge`, `AkStat`, `AkAlert` (responsive mobile stacking), `AkModal` (focus trap, Escape, accessible backdrop, Teleport), `AkDrawer` (tactical HUD drawer with modules DSH-00..SET-06), `AkAvatar` (colored rarity underline and initials fallback), `AkEmptyState`, `AkProgress` (segmented HUD progress bar), `AkInput`, `AkTabs`.
+  - Typed demo dashboard data in `shared/data/demo-dashboard.ts`.
+  - Interactive `SyncAccountModal` with Yostar email verification, JSON backup import, demo loader, and zero-storage account security advisory.
+  - Responsive Dashboard overview page (`app/pages/index.vue`): PRTS tactical status, header Doctor card, account standby alert, 4 stats tiles, Gacha Radar panel with live countdown timer and rate-up operators, Gacha Treasury panel with spark progress, and Promotion Targets panel with tactical empty state.
+  - Dev-only component showcase at `app/pages/_ui.vue` (excluded in production).
+  - Full localization in `en.json` and `ru.json` with 100% key parity verified by `npm run i18n:check`.
+  - Responsive Playwright screenshots captured at 360px, 768px, and 1440px viewports in `test-results/`.
+  - All quality gates passing: 39 unit/component tests in Vitest and 14 Playwright E2E tests in CI mode.
 
 ## In progress
 
-- None (Design system foundation and interface shell completed).
+- None (Design V2 implementation completed).
 
 ## Next
 
-- Configure Supabase client integration and state management.
-- Develop calculation core for operators and material requirements.
+- Configure Supabase client integration and state management for synchronized accounts.
+- Develop calculation core for operators, material requirements, and craft trees in `shared/`.
 - Build operator catalog and planner modules.
 
 ## Known issues
