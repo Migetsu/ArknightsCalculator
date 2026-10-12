@@ -140,7 +140,13 @@
     - Themed highlights with Arknights tactical colors (Cyan, Red, Amber, Green, Gold).
     - Accessible popover for terms: `role="button"`, `tabindex="0"`, `aria-expanded`, keyboard support (`Enter`, `Space`, `Escape`), touch/click toggle, and outside click dismiss.
   - Added rich text showcase section to `app/pages/_ui.vue` demonstrating skill interpolations, tactical terms, and nested highlights.
-  - Added 18 unit tests in `tests/unit/shared/richText/parseRichText.test.ts` (including formatting, blackboard resolution, AST validation, and a full dataset scanner test verifying 100% tag recognition across all operator files) and 5 component tests in `tests/unit/components/ui/AkRichText.test.ts`. Total 149 Vitest unit/component tests passing.
+- Audited operator stats calculation benchmarks, boundary validation, and attack speed interval scaling (`chore/stats-audit`):
+  - Audited benchmarks for SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, and Texas against live reference databases (PRTS Wiki and Fandom Arknights Wiki) on 2026-10-12 with cited URLs and verified breakdowns.
+  - Documented trust scaling to favorKeyFrames (0-100% attribute bonuses) and elite promotion limits by operator rarity (1★-2★ max E0, 3★ max E1, 4★-6★ max E2).
+  - Enforced strict validation: out-of-range levels or unavailable elite promotions throw explicit descriptive errors instead of silent clamping.
+  - Implemented Attack Speed (ASPD) modifier parsing from potentials (`ASPD +X`, `Attack Speed +X`, `攻击速度+X`) and modules (`stStats.attack_speed`), calculating effective attack interval `(baseAttackTime * 100) / (100 + totalAttackSpeed)`.
+  - Added unit test cases for 1★ and 3★ phase boundaries, level validation, ASPD modifiers, and effective attack intervals.
+  - Updated `docs/stats.md` with complete audit table, URL citations, and formulas.
 
 ## In progress
 

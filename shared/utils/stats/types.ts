@@ -34,6 +34,7 @@ export const StatBreakdownSchema = z.object({
   cost: z.number(),
   block: z.number(),
   baseAttackTime: z.number(),
+  attackSpeed: z.number().default(0),
   respawnTime: z.number(),
 })
 
@@ -55,8 +56,12 @@ export const CalculatedStatsResultSchema = z.object({
   cost: z.number().int(),
   /** Final block count */
   block: z.number().int(),
-  /** Base attack interval in seconds */
+  /** Base attack interval in seconds (before ASPD modifiers) */
   baseAttackTime: z.number(),
+  /** Final effective attack interval in seconds (scaled by ASPD: baseAttackTime * 100 / (100 + aspdMod)) */
+  attackInterval: z.number(),
+  /** Total Attack Speed modifier (baseline 0 bonus, e.g. +5 ASPD) */
+  attackSpeed: z.number(),
   /** Redeployment timer in seconds */
   respawnTime: z.number().int(),
   /** Granular attribute contributions per source */
