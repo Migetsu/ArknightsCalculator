@@ -192,6 +192,12 @@
     - Design showcase (`app/pages/_ui.vue`): updated with warning button variant and all refreshed components.
   - Verified 100% test passing: 171 Vitest unit tests, 104 Playwright E2E tests, zero ESLint/Stylelint warnings, and clean production build.
 
+- Audited operator detail page and removed test-only runtime artifact (`chore/audit-detail-page`):
+  - Verified benchmarks for all 5 reference operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) via live web requests in the current session against Fandom, Gamewith, and PRTS Wiki databases with 100% agreement.
+  - Measured mobile performance profile on `/operators/char_172_svrash` (FCP 168ms, LCP 1080ms, TBT 0ms) and `/operators/char_151_myrtle` (FCP 168ms, LCP 168ms, TBT 0ms).
+  - Removed `app/plugins/hydration.client.ts` which injected a test-only `data-hydrated="true"` DOM attribute; migrated test waiting logic in `tests/e2e/fixtures.ts` to standard public DOM readiness checks (`#__nuxt` selector and `domcontentloaded` state).
+  - Created `docs/known-issues.md` to track non-blocking deferred items per `AGENTS.md`.
+
 ## In progress
 
 - None.
@@ -204,4 +210,4 @@
 
 ## Known issues
 
-- None.
+- Tracked in `docs/known-issues.md`.
