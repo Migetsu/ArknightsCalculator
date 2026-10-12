@@ -195,10 +195,22 @@ withDefaults(defineProps<Props>(), {
 
   &--preset-operators {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-xs);
+    gap: var(--space-sm);
 
     @include mq(sm) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mq(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @include mq(xl) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
 }

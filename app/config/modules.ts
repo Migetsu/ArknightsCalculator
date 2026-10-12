@@ -54,7 +54,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '👥',
     nameKey: 'navigation.operators',
     descriptionKey: 'navigation.operatorsDesc',
-    status: 'soon',
+    status: 'ready',
   },
   {
     id: 'depot',

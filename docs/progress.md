@@ -90,15 +90,25 @@
   - Authored comprehensive documentation in `docs/assets.md` covering CDN hierarchy, Vercel quotas, asset registration guide, and intellectual property disclaimer.
   - Added unit test suite `tests/unit/shared/resolveAsset.test.ts` (9 tests) and updated component tests `tests/unit/components/ui/AkAvatar.test.ts` (6 tests). Total 97 Vitest tests passing.
 
+- Implemented Operator Catalog wiki module (`feat/operators-list`):
+  - Created `/operators` page with SSR/prerender SEO, Schema.org `ItemList`, and `@nuxtjs/sitemap` integration (excluding dev `/_ui` route).
+  - Authored pure filtering, sorting, and URL query serialization utilities in `shared/utils/operatorFilters.ts` with unit tests (20 tests).
+  - Authored `AkOperatorCard.vue` UI component featuring rarity stripe, avatar, localized name, class, subclass, stars, and CN-exclusive badge.
+  - Authored `AkOperatorFilters.vue` component with fuzzy punctuation-stripped search, class toggles, rarity chips, subclass & faction selects, and Global/CN server switch.
+  - Implemented high-performance batch chunking (36 initial items + infinite scroll observer and accessible fallback button) ensuring smooth interaction with 400+ operators.
+  - Added live results counter (`aria-live="polite"`), comprehensive keyboard accessibility, and standard loading (skeletons), empty, and error states.
+  - Created operator detail page stub (`/operators/[id]`) with `AkPageHeader`, avatar portrait, and metadata grid.
+  - Authored component tests (`AkOperatorCard`, `AkOperatorFilters`), unit tests, and Playwright E2E suite (`tests/e2e/operators.spec.ts`) validating search, multi-select, server toggle, URL restoration, empty state, and layout sanity on 5 breakpoints. Total 126 Vitest tests and 93 Playwright tests passing.
+
 ## In progress
 
-- None (Asset resolution, manifest builder, AkAvatar fallback, and documentation completed).
+- None (Operator Catalog module, filtering core, UI primitives, and tests completed).
 
 ## Next
 
 - Develop calculation core for operators (level exp, promotion materials, skill mastery tree, module unlock requirements) in `shared/`.
 - Build depot inventory models and craft decomposition tree core in `shared/`.
-- Build operator catalog UI and planner UI.
+- Build full operator detail page (`/operators/[id]`).
 
 ## Known issues
 
