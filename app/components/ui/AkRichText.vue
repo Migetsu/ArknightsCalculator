@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted } from 'vue'
-import { parseRichText, type RichTextNode } from '../../../shared/utils/richText'
-import constantsData from '../../../data/constants.json'
+import { parseRichText, type RichTextNode } from '~/../shared/utils/richText'
+import constantsData from '~/../data/constants.json'
 
 interface Props {
   /** Raw description string containing pseudo tags or plain text */

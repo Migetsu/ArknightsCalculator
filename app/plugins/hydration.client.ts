@@ -1,7 +1,10 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.hook('app:mounted', () => {
-    if (import.meta.client && typeof document !== 'undefined') {
-      document.documentElement.dataset.hydrated = 'true'
+  const markHydrated = () => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-hydrated', 'true')
     }
-  })
+  }
+
+  nuxtApp.hook('app:suspense:resolve', markHydrated)
+  nuxtApp.hook('page:finish', markHydrated)
 })

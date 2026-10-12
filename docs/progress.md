@@ -148,6 +148,22 @@
   - Added unit test cases for 1★ and 3★ phase boundaries, level validation, ASPD modifiers, and effective attack intervals.
   - Updated `docs/stats.md` with complete audit table, URL citations, and formulas.
 
+- Implemented comprehensive operator detail page and lazy per-operator chunk architecture (`feat/operator-detail`):
+  - Isomorphic lazy operator loader `useOperatorDetail` via dynamic imports (`data/operators/${id}.json`) and Nuxt `useAsyncData`, ensuring 0 KB bundle bloat for unvisited operators.
+  - Full operator page `/operators/[id]` with SSR/prerender SEO, Schema.org `Person` entity metadata, and all 434 operator paths in EN (`/operators/[id]`) and RU (`/ru/operators/[id]`) included in sitemap.
+  - UI components built strictly with BEM kebab-case without Nuxt UI:
+    - `AkOperatorPortrait`: responsive artwork frame with E0/E1 vs E2 variant switching and multi-CDN fallback.
+    - `AkOperatorStatsPanel`: interactive controls (elite capped by rarity, level slider/input, trust 0-100%, potentials 1-6, module stages 1-3), full stats table with calculated HP/ATK/DEF/RES/Cost/Block/ASPD and breakdown badges.
+    - `AkOperatorSkillsPanel`: interactive levels 1-7 and Masteries M1-M3, SP recovery badges, duration telemetry, and descriptions rendered via `AkRichText` with blackboard interpolation.
+    - `AkOperatorTalentsPanel`: talent candidate progression with elite/potential unlock condition badges and descriptions via `AkRichText`.
+    - `AkOperatorModulesPanel`: stages 1-3 selector, trait/talent stat and text upgrades via `AkRichText`, and material unlock costs with `AkAvatar`.
+    - `AkOperatorInfoPanel`: tactical personnel dossier grid (illustrator, VA, code, faction, tags, lore assignment & profile notes).
+  - Bidirectional URL query synchronization (`tab`, `elite`, `level`, `trust`, `pot`, `mod`, `stage`), allowing direct bookmarking and link sharing without reloading.
+  - Amber banner notification for CN-exclusive operators (`servers: ['cn']`).
+  - Tactical empty state 404 with back-to-catalog button for unknown IDs.
+  - Fixed client hydration timing via lifecycle hooks in `app/plugins/hydration.client.ts`.
+  - Verified bundle isolation in production build and Playwright tests: individual per-operator chunks (3–80 KB each) with 0 KB leak of unvisited operators.
+
 ## In progress
 
 - None.
@@ -156,7 +172,6 @@
 
 - Develop leveling EXP & promotion material requirements calculator core in `shared/`.
 - Build depot inventory models and craft decomposition tree core in `shared/`.
-- Build full operator detail page (`/operators/[id]`).
 - Move language switcher to settings page when implementing module `SET-06`.
 
 ## Known issues
