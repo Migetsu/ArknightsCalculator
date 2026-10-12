@@ -79,6 +79,7 @@ withDefaults(defineProps<Props>(), {
   position: relative;
   border: 1px solid var(--color-border-base);
   box-shadow: var(--shadow-panel);
+  min-width: 0;
 
   &--line-cyan {
     border-top: 2px solid var(--color-accent-primary);
@@ -129,10 +130,15 @@ withDefaults(defineProps<Props>(), {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
     border-bottom: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
+    min-width: 0;
+  }
+
+  &__actions {
+    flex-shrink: 0;
   }
 
   &__title-group {
@@ -140,6 +146,7 @@ withDefaults(defineProps<Props>(), {
     flex-direction: column;
     gap: var(--space-2xs);
     min-width: 0;
+    flex: 1;
   }
 
   &__tag {
@@ -185,13 +192,6 @@ withDefaults(defineProps<Props>(), {
     @include text-truncate;
   }
 
-  &__actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    flex-shrink: 0;
-  }
-
   &__badge {
     display: inline-flex;
     align-items: center;
@@ -234,12 +234,14 @@ withDefaults(defineProps<Props>(), {
     padding: var(--space-md);
     flex: 1;
     color: var(--color-text-primary);
+    min-width: 0;
   }
 
   &__footer {
     padding: var(--space-sm) var(--space-md);
     border-top: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
+    min-width: 0;
   }
 }
 </style>

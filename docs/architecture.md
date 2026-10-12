@@ -40,6 +40,11 @@ docs/           architectural decisions, module guides, progress tracking
   - Tests for `shared/` run in lightweight `node` environment without Nuxt overhead.
   - Component tests run in `nuxt` environment with `happy-dom` via `@nuxt/test-utils`.
 - `tests/e2e/`: End-to-end tests using Playwright (Chromium).
+  - `smoke.spec.ts`: Basic page health checks.
+  - `i18n.spec.ts`: Locale switching, URL prefixing, and preference persistence.
+  - `responsive.spec.ts`: Desktop, tablet, mobile viewports, drawers, modals.
+  - `layout-sanity.spec.ts`: Viewport-wide overflow defense (`scrollWidth <= clientWidth`), missing key detection, and component collision validation.
+  - `fixtures.ts`: Page error and `console.error` assertions, preventing regressions.
 
 ### Running Tests
 
@@ -50,4 +55,10 @@ docs/           architectural decisions, module guides, progress tracking
 ### Guidelines
 
 - All calculation core modules in `shared/` must be thoroughly covered by unit tests.
-- E2E tests focus on critical user flows (smoke tests, navigation, core workflows).
+- E2E tests focus on critical user flows (smoke tests, navigation, core workflows) and layout sanity without horizontal overflow.
+
+## 5. Development Server Isolation
+
+- **Owner Dev Server:** Port 3000 is reserved for live development by the project owner. Automated agents must never start, stop, or reload port 3000.
+- **Agent Dev Server:** Runs on `http://localhost:3001` via `npm run dev:agent` (`scripts/dev-agent.mjs`) with isolated `.nuxt-agent` build directory (`NUXT_BUILD_DIR=.nuxt-agent`).
+- Playwright tests locally target `http://localhost:3001` and reuse the agent server process (`reuseExistingServer: true`).

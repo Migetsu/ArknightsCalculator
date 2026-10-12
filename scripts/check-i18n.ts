@@ -1,10 +1,18 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import process from 'node:process'
+import { baseCompile } from '@intlify/message-compiler'
 
 export interface MismatchResult {
   missingInTarget: string[]
   extraInTarget: string[]
+}
+
+export interface MessageCompileError {
+  file: string
+  key: string
+  message: string
+  source: string
 }
 
 /**
@@ -57,7 +65,49 @@ export function compareLocaleRecords(
 }
 
 /**
- * CLI runner that reads en.json and ru.json files and checks their key symmetry.
+ * Validates message syntax by compiling every string with @intlify/message-compiler.
+ */
+export function validateMessageSyntax(
+  record: Record<string, unknown>,
+  fileLabel = '',
+  prefix = '',
+): MessageCompileError[] {
+  const errors: MessageCompileError[] = []
+
+  for (const [key, value] of Object.entries(record)) {
+    const fullKey = prefix ? `${prefix}.${key}` : key
+
+    if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+      errors.push(...validateMessageSyntax(value as Record<string, unknown>, fileLabel, fullKey))
+    } else if (typeof value === 'string') {
+      try {
+        baseCompile(value, {
+          onError: (err) => {
+            errors.push({
+              file: fileLabel,
+              key: fullKey,
+              message: err.message,
+              source: value,
+            })
+          },
+        })
+      } catch (err: unknown) {
+        errors.push({
+          file: fileLabel,
+          key: fullKey,
+          message: err instanceof Error ? err.message : String(err),
+          source: value,
+        })
+      }
+    }
+  }
+
+  return errors
+}
+
+/**
+ * CLI runner that reads en.json and ru.json files, checks their key symmetry
+ * and compiles every message syntax to prevent runtime intlify errors.
  */
 export function runI18nCheck(cwd = process.cwd()): void {
   const enPath = resolve(cwd, 'i18n/locales/en.json')
@@ -69,9 +119,9 @@ export function runI18nCheck(cwd = process.cwd()): void {
   const enData = JSON.parse(enRaw) as Record<string, unknown>
   const ruData = JSON.parse(ruRaw) as Record<string, unknown>
 
-  const result = compareLocaleRecords(enData, ruData)
-
   let hasError = false
+
+  const result = compareLocaleRecords(enData, ruData)
 
   if (result.missingInTarget.length > 0) {
     hasError = true
@@ -89,12 +139,28 @@ export function runI18nCheck(cwd = process.cwd()): void {
     }
   }
 
+  const enSyntaxErrors = validateMessageSyntax(enData, 'en.json')
+  const ruSyntaxErrors = validateMessageSyntax(ruData, 'ru.json')
+  const allSyntaxErrors = [...enSyntaxErrors, ...ruSyntaxErrors]
+
+  if (allSyntaxErrors.length > 0) {
+    hasError = true
+    console.error('\nI18n message syntax compilation errors detected:')
+    for (const err of allSyntaxErrors) {
+      console.error(
+        `  [${err.file}] key "${err.key}" failed compilation: ${err.message} (source: "${err.source}")`,
+      )
+    }
+  }
+
   if (hasError) {
-    console.error('\nI18n key mismatch detected!')
+    console.error('\nI18n check failed!')
     process.exit(1)
   }
 
-  console.log('I18n check passed: en.json and ru.json keys are identical.')
+  console.log(
+    'I18n check passed: en.json and ru.json keys are identical and all messages compile cleanly.',
+  )
 }
 
 const isDirectExecution =

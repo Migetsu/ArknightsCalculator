@@ -424,10 +424,11 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .dashboard-page {
-  padding: var(--space-md);
+  padding: var(--space-sm);
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 0;
 
   @include mq(md) {
     padding: var(--space-xl);
@@ -440,6 +441,7 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
+    min-width: 0;
   }
 
   // Header Section
@@ -449,6 +451,7 @@ onBeforeUnmount(() => {
     align-items: flex-start;
     gap: var(--space-md);
     flex-wrap: wrap;
+    min-width: 0;
   }
 
   &__header-main {
@@ -456,6 +459,7 @@ onBeforeUnmount(() => {
     flex-direction: column;
     gap: var(--space-2xs);
     max-width: 720px;
+    min-width: 0;
   }
 
   &__badge {
@@ -475,6 +479,7 @@ onBeforeUnmount(() => {
     color: var(--color-text-primary);
     text-transform: uppercase;
     margin: 0;
+    overflow-wrap: anywhere;
 
     @include mq(md) {
       font-size: var(--font-size-3xl);
@@ -486,6 +491,7 @@ onBeforeUnmount(() => {
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
     margin: 0;
+    overflow-wrap: anywhere;
   }
 
   &__doctor-card {
@@ -552,26 +558,33 @@ onBeforeUnmount(() => {
   // 4 Stats Grid
   &__stats-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-sm);
+    min-width: 0;
 
     @include mq(sm) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @include mq(lg) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 
   // 3 Panels Grid
   &__panels-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+    min-width: 0;
 
-    @include mq(lg) {
-      grid-template-columns: repeat(3, 1fr);
+    @include mq(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+    }
+
+    @include mq(xl) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
@@ -579,6 +592,17 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 0;
+
+    &:last-child {
+      @include mq(md) {
+        grid-column: span 2;
+      }
+
+      @include mq(xl) {
+        grid-column: auto;
+      }
+    }
   }
 
   &__panel-btn {
@@ -696,6 +720,7 @@ onBeforeUnmount(() => {
     padding: var(--space-2xs) var(--space-xs);
     border: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
+    min-width: 0;
   }
 
   &__rate-up-info {
@@ -767,28 +792,36 @@ onBeforeUnmount(() => {
 
   &__currency-row {
     display: grid;
-    grid-template-columns: 1.2fr 1.2fr 0.8fr;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.8fr);
     align-items: center;
+    gap: var(--space-2xs);
     padding: var(--space-xs);
     border: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
+    min-width: 0;
   }
 
   &__currency-name {
     color: var(--color-text-secondary);
     letter-spacing: var(--letter-spacing-mono);
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   &__currency-val {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-bold);
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   &__currency-equiv {
     color: var(--color-accent-primary);
     text-align: right;
+    white-space: nowrap;
+    min-width: 0;
   }
 
   &__monthly-card {
@@ -838,11 +871,12 @@ onBeforeUnmount(() => {
 
   &__quick-operators {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xs);
+    min-width: 0;
 
     @include mq(sm) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
@@ -853,6 +887,7 @@ onBeforeUnmount(() => {
     padding: var(--space-2xs) var(--space-xs);
     border: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
+    min-width: 0;
   }
 
   &__quick-name {

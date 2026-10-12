@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import { flattenKeys, compareLocaleRecords } from '../../../scripts/check-i18n'
+import {
+  flattenKeys,
+  compareLocaleRecords,
+  validateMessageSyntax,
+} from '../../../scripts/check-i18n'
 import enLocale from '../../../i18n/locales/en.json'
 import ruLocale from '../../../i18n/locales/ru.json'
 
@@ -89,7 +93,43 @@ describe('check-i18n', () => {
     })
   })
 
-  describe('project locale files parity', () => {
+  describe('validateMessageSyntax', () => {
+    it('passes for standard strings and valid interpolations', () => {
+      const input = {
+        simple: 'Standard text message',
+        interpolated: 'You have {count} rolls remaining.',
+        nested: {
+          inner: 'Inner message',
+        },
+      }
+      const errors = validateMessageSyntax(input, 'test.json')
+      expect(errors).toHaveLength(0)
+    })
+
+    it('catches invalid linked message syntax when raw @ is unescaped', () => {
+      const input = {
+        email: {
+          placeholder: 'doctor@example.com',
+        },
+      }
+      const errors = validateMessageSyntax(input, 'test.json')
+      expect(errors.length).toBeGreaterThan(0)
+      expect(errors[0]?.key).toBe('email.placeholder')
+      expect(errors[0]?.message).toMatch(/Invalid linked format/i)
+    })
+
+    it('passes when special characters like @ are properly escaped as literals', () => {
+      const input = {
+        email: {
+          escaped: "doctor{'@'}example.com",
+        },
+      }
+      const errors = validateMessageSyntax(input, 'test.json')
+      expect(errors).toHaveLength(0)
+    })
+  })
+
+  describe('project locale files parity and syntax integrity', () => {
     it('ensures en.json and ru.json have 100% identical key structures', () => {
       const result = compareLocaleRecords(
         enLocale as Record<string, unknown>,
@@ -97,6 +137,16 @@ describe('check-i18n', () => {
       )
       expect(result.missingInTarget).toEqual([])
       expect(result.extraInTarget).toEqual([])
+    })
+
+    it('ensures all en.json messages compile cleanly without syntax errors', () => {
+      const errors = validateMessageSyntax(enLocale as Record<string, unknown>, 'en.json')
+      expect(errors).toEqual([])
+    })
+
+    it('ensures all ru.json messages compile cleanly without syntax errors', () => {
+      const errors = validateMessageSyntax(ruLocale as Record<string, unknown>, 'ru.json')
+      expect(errors).toEqual([])
     })
   })
 })
