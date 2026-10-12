@@ -42,18 +42,36 @@ export const test = baseTest.extend({
       }
     })
 
-    // Automatically wait for Nuxt client hydration after page navigation or reload
+    const waitForHydration = async () => {
+      await page
+        .waitForFunction(
+          () => {
+            const nuxtEl = document.querySelector('#__nuxt') as unknown as {
+              __vue_app__?: unknown
+            } | null
+            const nuxtApp = (
+              window as unknown as { useNuxtApp?: () => { isHydrating?: boolean } }
+            ).useNuxtApp?.()
+            return Boolean(nuxtEl?.__vue_app__ && (!nuxtApp || !nuxtApp.isHydrating))
+          },
+          undefined,
+          { timeout: 15000 },
+        )
+        .catch(() => {})
+    }
+
+    // Automatically wait for Nuxt client hydration purely via public DOM markers
     const originalGoto = page.goto.bind(page)
     page.goto = (async (url: string, options?: Parameters<typeof originalGoto>[1]) => {
       const response = await originalGoto(url, options)
-      await page.waitForSelector('html[data-hydrated="true"]', { timeout: 15000 }).catch(() => {})
+      await waitForHydration()
       return response
     }) as typeof page.goto
 
     const originalReload = page.reload.bind(page)
     page.reload = (async (options?: Parameters<typeof originalReload>[0]) => {
       const response = await originalReload(options)
-      await page.waitForSelector('html[data-hydrated="true"]', { timeout: 15000 }).catch(() => {})
+      await waitForHydration()
       return response
     }) as typeof page.reload
 
