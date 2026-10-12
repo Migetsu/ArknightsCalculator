@@ -1477,7 +1477,251 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 15,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 20,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon a Flowing Shape to assist in combat. Flowing Shapes can partially copy an undeployed Operator's attributes (Max HP, ATK, DEF, RES, Block Count, Attack Interval, Attack Range, Damage Type, ability of obtaining a special trait depending on whether in melee or ranged form), gains 5 SP immediately after deployment, and will respawn 25 seconds after being defeated.",
+                    "zh": "可召唤流形来复制待部署干员的大部分属性（生命上限、攻击、防御、法抗、阻挡数、攻击间隔、攻击范围、伤害类型、根据近/远程位获得特殊特性）协助作战，首次部署后立即获得5点技力，其被击败后会在25秒后自动刷新",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "On skill activation, copies 90% of the target's HP, ATK, DEF, and RES, as well as Block Count, Attack Interval, Attack Range, and Initial Damage Type (Does not inherit 'does not attack' or healing type)",
+                    "zh": "技能开启时复制目标90%的生命值、攻击力、防御力、法抗，以及阻挡数、攻击间隔、攻击范围、初始伤害类型（不攻击、治疗类型则不继承）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 25,
+                    "block_cnt": 1,
+                    "scale": 0.9
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 25,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Reinforcements take <@ba.kw>15%</> less damage from units they are blocking, and this unit's ATK is increased to 150% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>，自身攻击援军阻挡的敌人时攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can summon a Flowing Shape to assist in combat. Flowing Shapes can copy all of an undeployed Operator's attributes (Max HP, ATK, DEF, RES, Block Count, Attack Interval, Attack Range, Damage Type, ability of obtaining a special trait depending on whether in melee or ranged form), gains 5 SP immediately after deployment, and will respawn 25 seconds after being defeated.",
+                    "zh": "可召唤流形来复制待部署干员的全部属性（生命上限、攻击、防御、法抗、阻挡数、攻击间隔、攻击范围、伤害类型、根据近/远程位获得特殊特性）协助作战，首次部署后立即获得5点技力，其被击败后会在25秒后自动刷新",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "On skill activation, copies 100% of the target's HP, ATK, DEF, and RES, as well as Block Count, Attack Interval, Attack Range, and Initial Damage Type (Does not inherit 'does not attack' or healing type)",
+                    "zh": "技能开启时复制目标100%的生命值、攻击力、防御力、法抗，以及阻挡数、攻击间隔、攻击范围、初始伤害类型（不攻击、治疗类型则不继承）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "interval": 25,
+                    "block_cnt": 1,
+                    "scale": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_mlyss",
@@ -1545,7 +1789,262 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 142,
+            "atk": 21,
+            "def": 17
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 155,
+            "atk": 25,
+            "def": 22
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When in squad, all [Rhine Lab] Operators have -2 DP Cost, and the first Rhine Lab Operator deployed has an additional -1 DP Cost; when Flowing Shape duplicates a [Rhine Lab] Operator, Muelsyse gains 8 SP",
+                    "zh": "携带时【莱茵生命】干员部署费用-2，首名【莱茵生命】干员部署费用额外-1。使用流形复制【莱茵生命】干员时，缪尔赛思立刻获得8技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -2,
+                    "runtime_cost": -1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When in squad, all [Rhine Lab] Operators have -2 DP Cost, and the first [Rhine Lab] Operator deployed has an additional -2 <@ba.talpu>(+1)</> DP Cost; when Flowing Shape duplicates a [Rhine Lab] Operator, Muelsyse gains 8 SP",
+                    "zh": "携带时【莱茵生命】干员部署费用-2，首名【莱茵生命】干员部署费用额外-2<@ba.talpu>（+1）</>。使用流形复制【莱茵生命】干员时，缪尔赛思立刻获得8技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -2,
+                    "runtime_cost": -2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 170,
+            "atk": 28,
+            "def": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "This unit can designate one <@ba.kw>Tactical Point</> within attack range to call Reinforcements; Enemies blocked by reinforcements are more likely to be attacked, and this unit's ATK is increased to 165% when attacking enemies blocked by Reinforcements",
+                    "zh": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，援军阻挡的敌人更容易受到我方的攻击，自身攻击援军阻挡的敌人时攻击力提升至165%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When in squad, all [Rhine Lab] Operators have -2 DP Cost, and the first Rhine Lab Operator deployed has an additional -1 DP Cost; when Flowing Shape duplicates a [Rhine Lab] Operator, Muelsyse gains 10 SP and the duplicated [Rhine Lab] Operator gains 10 SP when deployed",
+                    "zh": "携带时【莱茵生命】干员部署费用-2，首名【莱茵生命】干员部署费用额外-1。使用流形复制【莱茵生命】干员时，缪尔赛思立刻获得10技力；且部署当前复制的【莱茵生命】干员时使其立刻获得10技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -2,
+                    "runtime_cost": -1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When in squad, all [Rhine Lab] Operators have -2 DP Cost, and the first [Rhine Lab] Operator deployed has an additional -2 <@ba.talpu>(+1)</> DP Cost; when Flowing Shape duplicates a [Rhine Lab] Operator, Muelsyse gains 10 SP and the duplicated [Rhine Lab] Operator gains 10 SP when deployed",
+                    "zh": "携带时【莱茵生命】干员部署费用-2，首名【莱茵生命】干员部署费用额外-2<@ba.talpu>（+1）</>。使用流形复制【莱茵生命】干员时，缪尔赛思立刻获得10技力；且部署当前复制的【莱茵生命】干员时使其立刻获得10技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": -2,
+                    "runtime_cost": -2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "taunt_level": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 10,
+                    "sp_other": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

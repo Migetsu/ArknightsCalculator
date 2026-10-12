@@ -1140,7 +1140,231 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 38,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 50,
+            "def": 28
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "治疗会为目标干员附加相当于自身23%攻击力的<$ba.barrier>屏障</>，持续8秒",
+                    "zh": "治疗会为目标干员附加相当于自身23%攻击力的<$ba.barrier>屏障</>，持续8秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@scale": 0.23,
+                    "attack@shield_duration": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "治疗会为目标干员附加相当于自身25%<@ba.talpu>（+2%）</>攻击力的<$ba.barrier>屏障</>，持续8秒",
+                    "zh": "治疗会为目标干员附加相当于自身25%<@ba.talpu>（+2%）</>攻击力的<$ba.barrier>屏障</>，持续8秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@scale": 0.25,
+                    "attack@shield_duration": 8
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "def": 33
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "治疗会为目标干员附加相当于自身27%攻击力的<$ba.barrier>屏障</>，持续10秒",
+                    "zh": "治疗会为目标干员附加相当于自身27%攻击力的<$ba.barrier>屏障</>，持续10秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@scale": 0.27,
+                    "attack@shield_duration": 10
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "治疗会为目标干员附加相当于自身29%<@ba.talpu>（+2%）</>攻击力的<$ba.barrier>屏障</>，持续10秒",
+                    "zh": "治疗会为目标干员附加相当于自身29%<@ba.talpu>（+2%）</>攻击力的<$ba.barrier>屏障</>，持续10秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@scale": 0.29,
+                    "attack@shield_duration": 10
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

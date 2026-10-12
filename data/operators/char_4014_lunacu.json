@@ -1045,7 +1045,166 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 145,
+            "atk": 63
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains <$ba.camou>Camouflage</> while this unit's skill is not active; Attack Interval reduced slightly after skill activation",
+                    "zh": "未开启技能时，获得<$ba.camou>迷彩</>，开启技能后攻击间隔小幅度缩短",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "base_attack_time": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 160,
+            "atk": 68
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains <$ba.camou>Camouflage</> while this unit's skill is not active; Attack Interval reduced after skill activation",
+                    "zh": "未开启技能时，获得<$ba.camou>迷彩</>，开启技能后攻击间隔缩短",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "base_attack_time": -0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

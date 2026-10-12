@@ -1432,7 +1432,180 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 210,
+            "atk": 25,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 240,
+            "atk": 35,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Chongyue recovers 4 SP if he defeats at least one enemy with a skill",
+                    "zh": "若重岳释放一次技能击倒不少于一个敌人，则回复4点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 260,
+            "atk": 45,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Has <@ba.kw>15%</> Physical Dodge",
+                    "zh": "能够阻挡一个敌人，拥有<@ba.kw>15%</>的物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Chongyue recovers 4 SP if he defeats at least one enemy with a skill; if no enemy is defeated, Chongyue recovers 1 SP",
+                    "zh": "若重岳释放一次技能击倒不少于一个敌人，则回复4点技力，未击倒敌人时变为回复1点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_chyue",
@@ -1500,7 +1673,199 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 52,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 65,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "23% chance for normal attacks to increase the damage Chongyue deals to the target by 70% for 2.5s",
+                    "zh": "对目标普通攻击时，有23%的概率使重岳2.5秒内对其造成的伤害提升70%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.23,
+                    "damage_scale": 1.7,
+                    "up_duration": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "25% <@ba.talpu>(+2%)</> chance for normal attacks to increase the damage Chongyue deals to the target by 75% <@ba.talpu>(+5%)</> for 2.5s",
+                    "zh": "对目标普通攻击时，有25%<@ba.talpu>（+2%）</>的概率使重岳2.5秒内对其造成的伤害提升75%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.23,
+                    "damage_scale": 1.75,
+                    "up_duration": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 75,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "23% chance for normal attacks to increase the damage Chongyue deals to the target by 75% for 2.5s",
+                    "zh": "对目标普通攻击时，有23%的概率使重岳2.5秒内对其造成的伤害提升75%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.23,
+                    "damage_scale": 1.75,
+                    "up_duration": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "25% <@ba.talpu>(+2%)</> chance for normal attacks to increase the damage Chongyue deals to the target by 80% <@ba.talpu>(+5%)</> for 2.5s",
+                    "zh": "对目标普通攻击时，有25%<@ba.talpu>（+2%）</>的概率使重岳2.5秒内对其造成的伤害提升80%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.23,
+                    "damage_scale": 1.8,
+                    "up_duration": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

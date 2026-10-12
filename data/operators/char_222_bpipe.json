@@ -1448,7 +1448,225 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Generates <@ba.vup>{cost:0}</> DP after this unit defeats an enemy; Refunds the <@ba.kw>current</> DP Cost when retreated",
+                    "zh": "击杀敌人后获得<@ba.vup>{cost:0}</>点部署费用，撤退时返还<@ba.kw>该次</>部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 165,
+            "atk": 64
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Generates <@ba.vup>{cost:0}</> DP after this unit defeats an enemy; Refunds the <@ba.kw>current</> DP Cost when retreated",
+                    "zh": "击杀敌人后获得<@ba.vup>{cost:0}</>点部署费用，撤退时返还<@ba.kw>该次</>部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all Vanguard Operators gain +6 Initial SP. When deployed, Bagpipe gains 2 additional SP",
+                    "zh": "编入队伍时所有【先锋】干员的初始技力+6，自身部署时额外获得2点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 6,
+                    "bpipe_e_2[locate].sp": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all Vanguard Operators gain +8 <@ba.talpu>(+2)</> Initial SP. When deployed, Bagpipe gains 2 additional SP",
+                    "zh": "编入队伍时所有【先锋】干员的初始技力+8<@ba.talpu>（+2）</>，自身部署时额外获得2点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 8,
+                    "bpipe_e_2[locate].sp": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 73
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Generates <@ba.vup>{cost:0}</> DP after this unit defeats an enemy; Refunds the <@ba.kw>current</> DP Cost when retreated",
+                    "zh": "击杀敌人后获得<@ba.vup>{cost:0}</>点部署费用，撤退时返还<@ba.kw>该次</>部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "withdraw_cost_recover_ratio": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all Vanguard Operators gain +6 Initial SP. When deployed, Bagpipe gains 4 additional SP",
+                    "zh": "编入队伍时所有【先锋】干员的初始技力+6，自身部署时额外获得4点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 6,
+                    "bpipe_e_2[locate].sp": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all Vanguard Operators gain +8 <@ba.talpu>(+2)</> Initial SP. When deployed, Bagpipe gains 4 additional SP",
+                    "zh": "编入队伍时所有【先锋】干员的初始技力+8<@ba.talpu>（+2）</>，自身部署时额外获得4点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 8,
+                    "bpipe_e_2[locate].sp": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_bpipe",
@@ -1516,7 +1734,231 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 65,
+            "def": 13
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 75,
+            "def": 17
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 30% chance to increase ATK to 135% and strike an additional target",
+                    "zh": "每次攻击有30%的概率攻击力提升至135%，且额外攻击一个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.35,
+                    "prob": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 33% <@ba.talpu>(+3%)</> chance to increase ATK to 135% and strike an additional target",
+                    "zh": "每次攻击有33%<@ba.talpu>（+3%）</>的概率攻击力提升至135%，且额外攻击一个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.35,
+                    "prob": 0.33
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 85,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When attacking enemies with less than <@ba.vup>{hp_ratio:0%}</> of their max HP, increase ATK to <@ba.vup>{atk_scale:0%}</>",
+                    "zh": "攻击生命值低于<@ba.vup>{hp_ratio:0%}</>的敌人时攻击力提升至<@ba.vup>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "atk_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 33% chance to increase ATK to 140% and strike an additional target",
+                    "zh": "每次攻击有33%的概率攻击力提升至140%，且额外攻击一个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.4,
+                    "prob": 0.33
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 36% <@ba.talpu>(+3%)</>chance to increase ATK to 140% and strike an additional target",
+                    "zh": "每次攻击有36%<@ba.talpu>（+3%）</>的概率攻击力提升至140%，且额外攻击一个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.4,
+                    "prob": 0.36
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

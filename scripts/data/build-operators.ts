@@ -8,6 +8,9 @@ import {
   type OperatorClass,
   type OperatorDetail,
   type OperatorModule,
+  type OperatorModuleStage,
+  type OperatorModulePart,
+  type OperatorModulePartCandidate,
   type OperatorPhaseStat,
   type OperatorPosition,
   type OperatorSkill,
@@ -24,6 +27,7 @@ import type {
   RawCharacterTable,
   RawSkillTable,
   RawUniequipTable,
+  RawBattleEquipTable,
   RawCharPatchTable,
   RawHandbookInfoTable,
 } from './schemas'
@@ -99,6 +103,8 @@ interface LoadedRawBundle {
   enSkills: RawSkillTable
   cnEquips: RawUniequipTable
   enEquips: RawUniequipTable
+  cnBattleEquips: RawBattleEquipTable
+  enBattleEquips: RawBattleEquipTable
   cnHandbook: RawHandbookInfoTable
   enHandbook: RawHandbookInfoTable
   cnPatch: RawCharPatchTable
@@ -121,6 +127,8 @@ async function loadRawBundles(): Promise<LoadedRawBundle> {
     enSkills,
     cnEquips,
     enEquips,
+    cnBattleEquips,
+    enBattleEquips,
     cnHandbook,
     enHandbook,
     cnPatch,
@@ -132,6 +140,8 @@ async function loadRawBundles(): Promise<LoadedRawBundle> {
     readJsonFile<RawSkillTable>(path.join(enDir, 'skill_table.json')),
     readJsonFile<RawUniequipTable>(path.join(cnDir, 'uniequip_table.json')),
     readJsonFile<RawUniequipTable>(path.join(enDir, 'uniequip_table.json')),
+    readJsonFile<RawBattleEquipTable>(path.join(cnDir, 'battle_equip_table.json')),
+    readJsonFile<RawBattleEquipTable>(path.join(enDir, 'battle_equip_table.json')),
     readJsonFile<RawHandbookInfoTable>(path.join(cnDir, 'handbook_info_table.json')),
     readJsonFile<RawHandbookInfoTable>(path.join(enDir, 'handbook_info_table.json')),
     readJsonFile<RawCharPatchTable>(path.join(cnDir, 'char_patch_table.json')),
@@ -145,6 +155,8 @@ async function loadRawBundles(): Promise<LoadedRawBundle> {
     enSkills,
     cnEquips,
     enEquips,
+    cnBattleEquips,
+    enBattleEquips,
     cnHandbook,
     enHandbook,
     cnPatch,
@@ -228,6 +240,10 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
   let globalCount = 0
   let cnOnlyCount = 0
   let untranslatedCount = 0
+  let opsWithModulesCount = 0
+  let totalModulesCount = 0
+  let modulesWithBattleCount = 0
+  let modulesWithoutBattleCount = 0
 
   for (const [id, entry] of operatorMap.entries()) {
     const { cn, en, isClassChange } = entry
@@ -409,14 +425,19 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
       })
       .filter((t) => t.candidates.length > 0)
 
-    // 5. Build Modules from uniequip_table
+    // 5. Build Modules from uniequip_table and battle_equip_table
     const equipIds = bundle.cnEquips.charEquip?.[id] ?? []
     const modules: OperatorModule[] = []
+
+    if (equipIds.length > 0) {
+      opsWithModulesCount++
+    }
 
     for (const equipId of equipIds) {
       const cnEquip = bundle.cnEquips.equipDict[equipId]
       if (!cnEquip) continue
       const enEquip = bundle.enEquips.equipDict[equipId]
+      totalModulesCount++
 
       const modName = makeI18nString(
         enEquip?.uniEquipName,
@@ -436,6 +457,89 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         }
       }
 
+      // Check battle equip entry in battle_equip_table
+      const cnBattle = bundle.cnBattleEquips?.[equipId]
+      const enBattle = bundle.enBattleEquips?.[equipId]
+      let stages: OperatorModuleStage[] | undefined
+
+      if (cnBattle?.phases && cnBattle.phases.length > 0) {
+        modulesWithBattleCount++
+        stages = cnBattle.phases.map((rawPhase, pIdx) => {
+          const enPhase = enBattle?.phases?.[pIdx]
+
+          // 1. Stats from attributeBlackboard
+          const stats: Record<string, number> = {}
+          for (const item of rawPhase.attributeBlackboard ?? []) {
+            if (typeof item.value === 'number') {
+              stats[item.key] = item.value
+            }
+          }
+
+          // 2. Parts (Trait/Talent changes)
+          const parts: OperatorModulePart[] = (rawPhase.parts ?? []).map((rawPart, partIdx) => {
+            const enPart = enPhase?.parts?.[partIdx]
+            const target = rawPart.target
+
+            const cnCandidates =
+              rawPart.overrideTraitDataBundle?.candidates ??
+              rawPart.addOrOverrideTalentDataBundle?.candidates ??
+              []
+            const enCandidates =
+              enPart?.overrideTraitDataBundle?.candidates ??
+              enPart?.addOrOverrideTalentDataBundle?.candidates ??
+              []
+
+            const candidates: OperatorModulePartCandidate[] = cnCandidates.map((cnCand, cIdx) => {
+              const enCand = enCandidates[cIdx]
+
+              const candAddDesc = cnCand.additionalDescription
+                ? makeI18nString(enCand?.additionalDescription, cnCand.additionalDescription)
+                : undefined
+              const candUpDesc = cnCand.upgradeDescription
+                ? makeI18nString(enCand?.upgradeDescription, cnCand.upgradeDescription)
+                : undefined
+              const candOverDesc = cnCand.overrideDescripton
+                ? makeI18nString(enCand?.overrideDescripton, cnCand.overrideDescripton)
+                : undefined
+
+              const candBb: Record<string, number> = {}
+              for (const bb of cnCand.blackboard ?? []) {
+                if (typeof bb.value === 'number') {
+                  candBb[bb.key] = bb.value
+                }
+              }
+
+              return {
+                ...(candAddDesc ? { additionalDescription: candAddDesc } : {}),
+                ...(candUpDesc ? { upgradeDescription: candUpDesc } : {}),
+                ...(candOverDesc ? { overrideDescription: candOverDesc } : {}),
+                ...(Object.keys(candBb).length > 0 ? { blackboard: candBb } : {}),
+                ...(cnCand.requiredPotentialRank !== undefined
+                  ? { requiredPotentialRank: cnCand.requiredPotentialRank }
+                  : {}),
+              }
+            })
+
+            return {
+              target,
+              ...(candidates.length > 0 ? { candidates } : {}),
+            }
+          })
+
+          // 3. Stage unlock costs from uniequip_table itemCost
+          const stageCost = itemCost[String(rawPhase.equipLevel)]
+
+          return {
+            stage: rawPhase.equipLevel,
+            stats,
+            ...(parts.length > 0 ? { parts } : {}),
+            ...(stageCost && stageCost.length > 0 ? { cost: stageCost } : {}),
+          }
+        })
+      } else {
+        modulesWithoutBattleCount++
+      }
+
       modules.push({
         id: cnEquip.uniEquipId,
         name: modName,
@@ -444,6 +548,7 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         icon: cnEquip.uniEquipIcon ?? cnEquip.uniEquipId,
         description: modDesc,
         itemCost: Object.keys(itemCost).length > 0 ? itemCost : undefined,
+        stages: stages && stages.length > 0 ? stages : undefined,
       })
     }
 
@@ -552,6 +657,12 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
       global: globalCount,
       cnOnly: cnOnlyCount,
       untranslated: untranslatedCount,
+      modules: {
+        opsWithModules: opsWithModulesCount,
+        totalModules: totalModulesCount,
+        withBattleData: modulesWithBattleCount,
+        withoutBattleData: modulesWithoutBattleCount,
+      },
     },
   }
 }
@@ -614,6 +725,11 @@ async function main(): Promise<void> {
   console.log(`Global (EN + CN):         ${stats.global}`)
   console.log(`CN-Only Operators:        ${stats.cnOnly}`)
   console.log(`Untranslated (CN fallback): ${stats.untranslated}`)
+  console.log(`\nModules Breakdown:`)
+  console.log(`  Operators with modules:   ${stats.modules.opsWithModules}`)
+  console.log(`  Total module entries:     ${stats.modules.totalModules}`)
+  console.log(`  With combat data:         ${stats.modules.withBattleData}`)
+  console.log(`  Without combat data:      ${stats.modules.withoutBattleData}`)
   console.log(`\nFile Sizes:`)
   console.log(`  data/operators-index.json: ${indexSizeKb} KB`)
   console.log(`  data/operators/{id}.json:  ${details.length} files (${totalDetailMb} MB total)`)

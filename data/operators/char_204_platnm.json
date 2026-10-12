@@ -1085,7 +1085,200 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 90,
+            "atk": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30104",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 140,
+            "atk": 33
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "The longer the interval from the last attack is, the higher the ATK of the next attack will be (The longest interval is 2.5 seconds and the corresponding ATK increases to 190%)",
+                    "zh": "距离上次攻击的间隔越长，下次攻击的攻击力就越高（最长2.5秒，攻击力190%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@min_delta": 1,
+                    "attack@max_delta": 2.5,
+                    "attack@min_atk_scale": 1,
+                    "attack@max_atk_scale": 1.9
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "The longer the interval from the last attack is, the higher the ATK of the next attack will be (The longest interval is 2.5 seconds and the corresponding ATK increases to 200% <@ba.talpu>(+10%)</>)",
+                    "zh": "距离上次攻击的间隔越长，下次攻击的攻击力就越高（最长2.5秒，攻击力200%<@ba.talpu>（+10%）</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@min_delta": 1,
+                    "attack@max_delta": 2.5,
+                    "attack@min_atk_scale": 1,
+                    "attack@max_atk_scale": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 170,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "The longer the interval from the last attack is, the higher the ATK of the next attack will be (The longest interval is 2.5 seconds and the corresponding ATK increases to 200%)",
+                    "zh": "距离上次攻击的间隔越长，下次攻击的攻击力就越高（最长2.5秒，攻击力200%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@min_delta": 1,
+                    "attack@max_delta": 2.5,
+                    "attack@min_atk_scale": 1,
+                    "attack@max_atk_scale": 2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "The longer the interval from the last attack is, the higher the ATK of the next attack will be (The longest interval is 2.5 seconds and the corresponding ATK increases to 210% <@ba.talpu>(+10%)</>)",
+                    "zh": "距离上次攻击的间隔越长，下次攻击的攻击力就越高（最长2.5秒，攻击力210%<@ba.talpu>（+10%）</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@min_delta": 1,
+                    "attack@max_delta": 2.5,
+                    "attack@min_atk_scale": 1,
+                    "attack@max_atk_scale": 2.1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

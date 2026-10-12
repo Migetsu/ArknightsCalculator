@@ -1126,7 +1126,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "atk": 37
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 42
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "上场后每击倒过一种敌人，自身造成的伤害+8%，最多叠加3次",
+                    "zh": "上场后每击倒过一种敌人，自身造成的伤害+8%，最多叠加3次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.08,
+                    "max_stack_cnt": 3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "上场后每击倒过一种敌人，自身造成的伤害+9%<@ba.talpu>（+1%）</>，最多叠加3次",
+                    "zh": "上场后每击倒过一种敌人，自身造成的伤害+9%<@ba.talpu>（+1%）</>，最多叠加3次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.09,
+                    "max_stack_cnt": 3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 52
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "zh": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至<@ba.kw>160%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "上场后每击倒过一种敌人，自身造成的伤害+8%，最多叠加4次",
+                    "zh": "上场后每击倒过一种敌人，自身造成的伤害+8%，最多叠加4次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.08,
+                    "max_stack_cnt": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "上场后每击倒过一种敌人，自身造成的伤害+9%<@ba.talpu>（+1%）</>，最多叠加4次",
+                    "zh": "上场后每击倒过一种敌人，自身造成的伤害+9%<@ba.talpu>（+1%）</>，最多叠加4次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.09,
+                    "max_stack_cnt": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

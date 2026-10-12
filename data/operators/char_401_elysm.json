@@ -1138,7 +1138,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 130,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all Sniper Operators have -2 DP Cost and gain +23 ASPD while this unit's skill is active",
+                    "zh": "在场时，所有【狙击】干员的部署费用-2，且技能开启时所有【狙击】干员的攻击速度+23",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2,
+                    "attack_speed": 23
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all Sniper Operators have -2 DP Cost and gain +26 <@ba.talpu>(+3)</> ASPD while this unit's skill is active",
+                    "zh": "在场时，所有【狙击】干员的部署费用-2，且技能开启时所有【狙击】干员的攻击速度+26<@ba.talpu>（+3）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2,
+                    "attack_speed": 26
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30094",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all Sniper Operators have -2 DP Cost and gain +25 ASPD while this unit's skill is active",
+                    "zh": "在场时，所有【狙击】干员的部署费用-2，且技能开启时所有【狙击】干员的攻击速度+25",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2,
+                    "attack_speed": 25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all Sniper Operators have -2 DP Cost and gain +28 <@ba.talpu>(+3)</> ASPD while this unit's skill is active",
+                    "zh": "在场时，所有【狙击】干员的部署费用-2，且技能开启时所有【狙击】干员的攻击速度+28<@ba.talpu>（+3）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2,
+                    "attack_speed": 28
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

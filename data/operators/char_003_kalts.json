@@ -1425,7 +1425,279 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 35,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 50,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Mon3tr is defeated (excluding retreat) or if its HP drops below 50% for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3 seconds and receive 1200 True damage",
+                    "zh": "Mon3tr在生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3秒并对其造成1200点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Mon3tr is defeated (excluding retreat) or if its HP drops below 50% for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3.5 <@ba.talpu>(+0.5)</> seconds and receive 1400 <@ba.talpu>(+200)</> True damage",
+                    "zh": "Mon3tr在生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5<@ba.talpu>（+0.5）</>秒并对其造成1400<@ba.talpu>（+200）</>点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When defeated (excluding retreat) or on falling below 50% HP for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3 seconds and receive 1200 True damage",
+                    "zh": "生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3秒并对其造成1200点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "stun": 3,
+                    "value": 1200
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When defeated (excluding retreat) or on falling below 50% HP for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3.5 <@ba.talpu>(+0.5)</> seconds and receive 1400 <@ba.talpu>(+200)</> True damage",
+                    "zh": "生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5<@ba.talpu>（+0.5）</>秒并对其造成1400<@ba.talpu>（+200）</>点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "stun": 3.5,
+                    "value": 1400
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "stun": 3,
+                    "value": 1200,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "stun": 3.5,
+                    "value": 1400,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Mon3tr is defeated (excluding retreat) or if its HP drops below 50% for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3.5 seconds and receive 1500 True damage",
+                    "zh": "Mon3tr在生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5秒并对其造成1500点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When Mon3tr is defeated (excluding retreat) or if its HP drops below 50% for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 4 <@ba.talpu>(+0.5)</> seconds and receive 1700 <@ba.talpu>(+200)</> True damage",
+                    "zh": "Mon3tr在生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>4<@ba.talpu>（+0.5）</>秒并对其造成1700<@ba.talpu>（+200）</>点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When defeated (excluding retreat) or on falling below 50% HP for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 3.5. seconds and receive 1500 True damage",
+                    "zh": "生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5秒并对其造成1500点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "stun": 3.5,
+                    "value": 1500
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When defeated (excluding retreat) or on falling below 50% HP for the first time, all enemies in the surrounding 8 tiles are <$ba.stun>Stunned</> for 4 <@ba.talpu>(+0.5)</> seconds and receive 1700 <@ba.talpu>(+200)</> True damage",
+                    "zh": "生命值首次低于50%和被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>4<@ba.talpu>（+0.5）</>秒并对其造成1700<@ba.talpu>（+200）</>点真实伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "stun": 4,
+                    "value": 1700
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "stun": 3.5,
+                    "value": 1500,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "stun": 4,
+                    "value": 1700,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_kalts",
@@ -1493,7 +1765,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 115,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Healing increased by <@ba.kw>15%</> when healing a ground unit",
+                    "zh": "治疗地面单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 155,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Healing increased by <@ba.kw>15%</> when healing a ground unit",
+                    "zh": "治疗地面单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can use and heal Mon3tr, and Mon3tr has a 25 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; Mon3tr gains +12 ASPD and +15% DEF when in Kal'tsit's Attack Range; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0",
+                    "zh": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr在凯尔希攻击范围内时攻击速度提高12，防御力提高15％；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1,
+                    "def": 0.15,
+                    "attack_speed": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can be healed by Kal'tsit. When within Kal'tsit's Attack Range, gains +12 ASPD and +15% DEF; when not within Kal'tsit's Attack Range, DEF decreases to 0",
+                    "zh": "可以被凯尔希治疗，在凯尔希攻击范围内时攻击速度提高12且防御力提高15％，不在凯尔希攻击范围内时防御力降至0",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 195,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Healing increased by <@ba.kw>15%</> when healing a ground unit",
+                    "zh": "治疗地面单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can use and heal Mon3tr, and Mon3tr has a 25 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; Mon3tr gains +20 ASPD and +20% DEF when in Kal'tsit's Attack Range; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0",
+                    "zh": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr在凯尔希攻击范围内时攻击速度提高20，防御力提高20％；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1,
+                    "def": 0.2,
+                    "attack_speed": 20
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can be healed by Kal'tsit. When within Kal'tsit's Attack Range, gains +20 ASPD and +20% DEF; when not within Kal'tsit's Attack Range, DEF decreases to 0",
+                    "zh": "可以被凯尔希治疗，在凯尔希攻击范围内时攻击速度提高20且防御力提高20％，不在凯尔希攻击范围内时防御力降至0",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_kalts",
@@ -1529,7 +1990,192 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 24,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, heals <@ba.kw>2</> targets simultaneously",
+                    "zh": "在<@ba.kw>集成战略</>中，同时治疗<@ba.kw>两</>个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 38,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, heals <@ba.kw>2</> targets simultaneously",
+                    "zh": "在<@ba.kw>集成战略</>中，同时治疗<@ba.kw>两</>个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can use and heal Mon3tr, and Mon3tr has a 25 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0; in <@ba.kw>Integrated Strategies</>, Mon3tr does not take up a deployment slot and has +25% Max HP and ATK",
+                    "zh": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0；在<@ba.kw>集成战略</>中，Mon3tr不占用部署位，生命上限和攻击力+25%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1,
+                    "def": 0,
+                    "attack_speed": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.25,
+                    "max_hp": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can be healed by Kal'tsit; has 0 DEF when not within Kal'tsit's Attack Range; in <@ba.kw>Integrated Strategies</>, does not take up a deployment slot, and Max HP and ATK +25%",
+                    "zh": "可以被凯尔希治疗，不在凯尔希攻击范围内时防御力降至0；在<@ba.kw>集成战略</>中不占用部署位，生命上限和攻击力+25%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 50,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "In <@ba.kw>Integrated Strategies</>, heals <@ba.kw>2</> targets simultaneously",
+                    "zh": "在<@ba.kw>集成战略</>中，同时治疗<@ba.kw>两</>个目标",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can use and heal Mon3tr, and Mon3tr has a 25 second redeployment time. Kal'tsit will prioritize healing herself and Mon3tr; If Mon3tr is not within Kal'tsit's Attack Range, Mon3tr's DEF is reduced to 0; in <@ba.kw>Integrated Strategies</>, Mon3tr does not take up a deployment slot and has +50% Max HP and ATK, and receives 50% more healing",
+                    "zh": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0；在<@ba.kw>集成战略</>中，Mon3tr不占用部署位，生命上限和攻击力+50%且受到的治疗效果提升50%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cnt": 1,
+                    "def": 0,
+                    "attack_speed": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.5,
+                    "max_hp": 0.5,
+                    "heal_scale": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Can be healed by Kal'tsit; has 0 DEF when not within Kal'tsit's Attack Range; in <@ba.kw>Integrated Strategies</>, does not take up a deployment slot, and Max HP and ATK +50%, and receives 50% more healing",
+                    "zh": "可以被凯尔希治疗，不在凯尔希攻击范围内时防御力降至0；在<@ba.kw>集成战略</>中不占用部署位，生命上限和攻击力+50%且受到的治疗效果提升50%",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

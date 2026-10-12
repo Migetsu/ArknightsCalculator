@@ -1397,7 +1397,198 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 70,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 85,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 8 seconds, ATK +20%",
+                    "zh": "最近8秒内未受伤害时，攻击力+20%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.2,
+                    "delay": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 8 seconds, ATK +23% <@ba.talpu>(+3%)</>",
+                    "zh": "最近8秒内未受伤害时，攻击力+23%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.23,
+                    "delay": 8
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 100,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "The further away the enemy, the higher the damage dealt (up to an increase of <@ba.kw>{damage_scale:0%}</>)",
+                    "zh": "攻击越远的敌人造成的伤害越高（最高提升<@ba.kw>{damage_scale:0%}</>）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_dist": 4.5,
+                    "min_dist": 1,
+                    "damage_scale": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 6 seconds, ATK +22%",
+                    "zh": "最近6秒内未受伤害时，攻击力+22%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.22,
+                    "delay": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 6 seconds, ATK +25% <@ba.talpu>(+3%)</>",
+                    "zh": "最近6秒内未受伤害时，攻击力+25%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.25,
+                    "delay": 6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_fartth",
@@ -1465,7 +1656,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 100,
+            "atk": 100
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 5 seconds, ATK +15% and ASPD +4",
+                    "zh": "最近5秒内未受伤害时，攻击力+15%，攻击速度+4",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "delay": 5,
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 5 seconds, ATK +18% <@ba.talpu>(+3%)</> and ASPD +4",
+                    "zh": "最近5秒内未受伤害时，攻击力+18%<@ba.talpu>（+3%）</>，攻击速度+4",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "delay": 5,
+                    "attack_speed": 4
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 120
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 3 seconds, ATK +15% and ASPD +7",
+                    "zh": "最近3秒内未受伤害时，攻击力+15%，攻击速度+7",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "delay": 3,
+                    "attack_speed": 7
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When no damage is taken within the past 3 seconds, ATK +18% <@ba.talpu>(+3%)</> and ASPD +7",
+                    "zh": "最近3秒内未受伤害时，攻击力+18%<@ba.talpu>（+3%）</>，攻击速度+7",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "delay": 3,
+                    "attack_speed": 7
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1408,7 +1408,204 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 230,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain 25% <$ba.protect>Sanctuary</> when HP is below 50%",
+                    "zh": "生命值低于50%时，获得25%的<$ba.protect>庇护</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 300,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain 25% <$ba.protect>Sanctuary</> when HP is below 50%",
+                    "zh": "生命值低于50%时，获得25%的<$ba.protect>庇护</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +120 ASPD <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 60% Max HP)",
+                    "zh": "在场时，自身获得最高+120攻击速度的<$ba.berserk>坚忍</>（损失60%生命值时达到最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_hp_ratio": 0.4,
+                    "min_attack_speed": 120
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 350,
+            "atk": 90
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain 25% <$ba.protect>Sanctuary</> when HP is below 50%",
+                    "zh": "生命值低于50%时，获得25%的<$ba.protect>庇护</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains up to +130 ASPD <$ba.berserk>Tenacity</> (reaches maximum bonus when losing 50% Max HP)",
+                    "zh": "在场时，自身获得最高+130攻击速度的<$ba.berserk>坚忍</>（损失50%生命值时达到最大加成）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_hp_ratio": 0.5,
+                    "min_attack_speed": 130
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_helage",
@@ -1476,7 +1673,229 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 55,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and instead recovers <@ba.kw>{hp_ratio:0%}</> HP (can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复<@ba.kw>{hp_ratio:0%}</>生命（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70,
+                    "hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 75,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and instead recovers <@ba.kw>{hp_ratio:0%}</> HP (can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复<@ba.kw>{hp_ratio:0%}</>生命（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70,
+                    "hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.3,
+                    "hp_recovery_per_sec": 70
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.3,
+                    "hp_recovery_per_sec": 80
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Regenerates 70 HP per second when not blocking an enemy, or when HP is below 30%",
+                    "zh": "未阻挡敌人或生命值低于30%时每秒回复70生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 70
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Regenerates 80 <@ba.talpu>(+10)</> HP per second when not blocking an enemy, or when HP is below 30%",
+                    "zh": "未阻挡敌人或生命值低于30%时每秒回复80<@ba.talpu>（+10）</>生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 80
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 90,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When defeated, does not retreat and instead recovers <@ba.kw>{hp_ratio:0%}</> HP (can only activate once every deployment)",
+                    "zh": "被击倒时不撤退且回复<@ba.kw>{hp_ratio:0%}</>生命（单次部署只触发1次）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 70,
+                    "hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.3,
+                    "hp_recovery_per_sec": 80
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.3,
+                    "hp_recovery_per_sec": 90
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Regenerates 80 HP per second when not blocking an enemy, or when HP is below 30%",
+                    "zh": "未阻挡敌人或生命值低于30%时每秒回复80生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 80
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Regenerates 90 <@ba.talpu>(+10)</> HP per second when not blocking an enemy, or when HP is below 30%",
+                    "zh": "未阻挡敌人或生命值低于30%时每秒回复90<@ba.talpu>（+10）</>生命",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 90
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

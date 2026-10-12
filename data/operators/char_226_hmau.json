@@ -1099,7 +1099,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 180,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 260,
+            "def": 38
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +10%, if the tile behind this unit is a high ground tile, the unit on the elevated tile receives +75% healing",
+                    "zh": "防御力+10%，自身身后一格内如果是高台单位，自己对其的治疗效果提高75%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.75,
+                    "def": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +12% <@ba.talpu>(+2%)</>, if the tile behind this unit is a high ground tile, the unit on the elevated tile receives +85% <@ba.talpu>(+10%)</> healing",
+                    "zh": "防御力+12%<@ba.talpu>（+2%）</>，自身身后一格内如果是高台单位，自己对其的治疗效果提高85%<@ba.talpu>（+10%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.85,
+                    "def": 0.12
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30034",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 330,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +13%, if the tile behind this unit is a high ground tile, the unit on the elevated tile receives +75% healing",
+                    "zh": "防御力+13%，自身身后一格内如果是高台单位，自己对其的治疗效果提高75%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.75,
+                    "def": 0.13
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "DEF +15% <@ba.talpu>(+2%)</>, if the tile behind this unit is a high ground tile, the unit on the elevated tile receives +85% <@ba.talpu>(+10%)</> healing",
+                    "zh": "防御力+15%<@ba.talpu>（+2%）</>，自身身后一格内如果是高台单位，自己对其的治疗效果提高85%<@ba.talpu>（+10%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.85,
+                    "def": 0.15
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

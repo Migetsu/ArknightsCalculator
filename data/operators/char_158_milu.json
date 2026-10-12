@@ -1074,7 +1074,188 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 110,
+            "atk": 75
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK increases to 145% when attacking ranged enemies and enemies that do not attack",
+                    "zh": "攻击使用远程武器或不攻击的敌人时，攻击力提升至145%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK increases to 150% <@ba.talpu>(+5%)</> when attacking ranged enemies and enemies that do not attack",
+                    "zh": "攻击使用远程武器或不攻击的敌人时，攻击力提升至150%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 130,
+            "atk": 87
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "If the attacked enemy remains alive, gain <@ba.kw>{sp}</> additional SP",
+                    "zh": "攻击的敌人未被击倒时自身额外获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK increases to 150% when attacking ranged enemies and enemies that do not attack",
+                    "zh": "攻击使用远程武器或不攻击的敌人时，攻击力提升至150%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK increases to 155% <@ba.talpu>(+5%)</> when attacking ranged enemies and enemies that do not attack",
+                    "zh": "攻击使用远程武器或不攻击的敌人时，攻击力提升至155%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.55
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1509,7 +1509,233 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 25,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 35,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "在场时，每次攻击到敌人<$ba.steal>偷取</>其25点攻击力（最高275点）与20点防御力（最高220点），攻击到周围8格的敌人时偷取触发2次",
+                    "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其25点攻击力（最高275点）与20点防御力（最高220点），攻击到周围8格的敌人时偷取触发2次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_atk": 25,
+                    "attack@steal_atk_max": 275,
+                    "attack@steal_def": 20,
+                    "attack@steal_def_max": 220
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "在场时，每次攻击到敌人<$ba.steal>偷取</>其27<@ba.talpu>（+2）</>点攻击力（最高297<@ba.talpu>（+22）</>点）与21<@ba.talpu>（+1）</>点防御力（最高231<@ba.talpu>（+11）</>点），攻击到周围8格的敌人时偷取触发2次",
+                    "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其27<@ba.talpu>（+2）</>点攻击力（最高297<@ba.talpu>（+22）</>点）与21<@ba.talpu>（+1）</>点防御力（最高231<@ba.talpu>（+11）</>点），攻击到周围8格的敌人时偷取触发2次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_atk": 27,
+                    "attack@steal_atk_max": 297,
+                    "attack@steal_def": 21,
+                    "attack@steal_def_max": 231
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 45,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "在场时，每次攻击到敌人<$ba.steal>偷取</>其25点攻击力（最高300点）与20点防御力（最高240点），攻击到周围8格的敌人时偷取触发2次",
+                    "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其25点攻击力（最高300点）与20点防御力（最高240点），攻击到周围8格的敌人时偷取触发2次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_atk": 25,
+                    "attack@steal_atk_max": 300,
+                    "attack@steal_def": 20,
+                    "attack@steal_def_max": 240
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "在场时，每次攻击到敌人<$ba.steal>偷取</>其27<@ba.talpu>（+2）</>点攻击力（最高324<@ba.talpu>（+24）</>点）与21<@ba.talpu>（+1）</>点防御力（最高252<@ba.talpu>（+12）</>点），攻击到周围8格的敌人时偷取触发2次",
+                    "zh": "在场时，每次攻击到敌人<$ba.steal>偷取</>其27<@ba.talpu>（+2）</>点攻击力（最高324<@ba.talpu>（+24）</>点）与21<@ba.talpu>（+1）</>点防御力（最高252<@ba.talpu>（+12）</>点），攻击到周围8格的敌人时偷取触发2次",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@steal_atk": 27,
+                    "attack@steal_atk_max": 324,
+                    "attack@steal_def": 21,
+                    "attack@steal_def_max": 252
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_narant",
@@ -1577,7 +1803,223 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 210,
+            "atk": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "zh": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "come_back_cnt": 5,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 260,
+            "atk": 32
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "zh": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "come_back_cnt": 5,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "获得35%的物理与法术闪避，周围8格内敌人的物理与法术命中率-25%；6秒内未受到伤害时，攻击力+10%",
+                    "zh": "获得35%的物理与法术闪避，周围8格内敌人的物理与法术命中率-25%；6秒内未受到伤害时，攻击力+10%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "damage_hitrate_physical": -0.25,
+                    "damage_hitrate_magical": -0.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "获得38%<@ba.talpu>（+3%）</>的物理与法术闪避，周围8格内敌人的物理与法术命中率-25%；6秒内未受到伤害时，攻击力+10%",
+                    "zh": "获得38%<@ba.talpu>（+3%）</>的物理与法术闪避，周围8格内敌人的物理与法术命中率-25%；6秒内未受到伤害时，攻击力+10%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.38,
+                    "damage_hitrate_physical": -0.25,
+                    "damage_hitrate_magical": -0.25
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.1,
+                    "interval": 6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "zh": "每回收5次<@ba.kw>回旋投射物</>时获得1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "come_back_cnt": 5,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "获得35%的物理与法术闪避，周围8格内敌人的物理与法术命中率-30%；6秒内未受到伤害时，攻击力+15%",
+                    "zh": "获得35%的物理与法术闪避，周围8格内敌人的物理与法术命中率-30%；6秒内未受到伤害时，攻击力+15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "damage_hitrate_physical": -0.3,
+                    "damage_hitrate_magical": -0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "获得38%<@ba.talpu>（+3%）</>的物理与法术闪避，周围8格内敌人的物理与法术命中率-30%；6秒内未受到伤害时，攻击力+15%",
+                    "zh": "获得38%<@ba.talpu>（+3%）</>的物理与法术闪避，周围8格内敌人的物理与法术命中率-30%；6秒内未受到伤害时，攻击力+15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.38,
+                    "damage_hitrate_physical": -0.3,
+                    "damage_hitrate_magical": -0.3
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.15,
+                    "interval": 6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

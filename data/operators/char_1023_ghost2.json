@@ -1430,7 +1430,210 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "max_hp": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 230,
+            "atk": 69,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "max_hp": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> reduces Movement Speed of nearby enemies by 50%, and deals 60% ATK as Arts damage to them per second. When swapping back, gain 8 SP",
+                    "zh": "<替身>使周围敌人移动速度-50%且每秒造成相当于60%攻击力的法术伤害，替换时自身额外获得8点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "move_speed": -0.5,
+                    "atk_scale": 0.6,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> reduces Movement Speed of nearby enemies by 50%, and deals 60% ATK as Arts damage to them per second. When swapping back, gain 8 SP",
+                    "zh": "<替身>使周围敌人移动速度-50%且每秒造成相当于60%攻击力的法术伤害，替换时自身额外获得8点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 250,
+            "atk": 83,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "max_hp": 0
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> reduces Movement Speed of nearby enemies by 60%, and deals 80% ATK as Arts damage to them per second. When swapping back, gain 15 SP",
+                    "zh": "<替身>使周围敌人移动速度-60%且每秒造成相当于80%攻击力的法术伤害，替换时自身额外获得15点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "move_speed": -0.6,
+                    "atk_scale": 0.8,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<Substitute> reduces Movement Speed of nearby enemies by 60%, and deals 80% ATK as Arts damage to them per second. When swapping back, gain 15 SP",
+                    "zh": "<替身>使周围敌人移动速度-60%且每秒造成相当于80%攻击力的法术伤害，替换时自身额外获得15点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_ghost2",
@@ -1498,7 +1701,204 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 200,
+            "atk": 25,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 230,
+            "atk": 33,
+            "def": 48
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +25% Max HP and +0.3 SP/second",
+                    "zh": "编入队伍时，所有【深海猎人】干员的生命值+25%，且技力回复+0.3/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.25,
+                    "sp_recovery_per_sec": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +28% <@ba.talpu>(+3%)</> Max HP and +0.3 SP/second (only the highest effect of this type takes place)",
+                    "zh": "编入队伍时，所有【深海猎人】干员的生命值+28%<@ba.talpu>（+3%）</>，且技力自然回复速度+0.3/秒（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.28,
+                    "sp_recovery_per_sec": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 250,
+            "atk": 40,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but HP is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但生命值<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0,
+                    "max_hp": 0.2,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +30% Max HP and +0.5 SP/second",
+                    "zh": "编入队伍时，所有【深海猎人】干员的生命值+30%，且技力回复+0.5/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.3,
+                    "sp_recovery_per_sec": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When this unit is in the squad, all [Abyssal Hunter] Operators gain +33% <@ba.talpu>(+3%)</> Max HP and +0.5 SP/second (only the highest effect of this type takes place)",
+                    "zh": "编入队伍时，所有【深海猎人】干员的生命值+33%<@ba.talpu>（+3%）</>，且技力自然回复速度+0.5/秒（同类效果取最高）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_hp": 0.33,
+                    "sp_recovery_per_sec": 0.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_004_ghost2",
@@ -1534,7 +1934,198 @@
             "count": 1
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 240,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "zh": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "output_damage_scale": 1.4,
+                    "take_damage_scale": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 275,
+            "atk": 57
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "zh": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "output_damage_scale": 1.4,
+                    "take_damage_scale": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<替身>使周围敌人移动速度-40%且每秒造成相当于40%攻击力的法术伤害；\\n在<@ba.kw>集成战略</>中，<替身>每秒额外造成一次100%攻击力的法术伤害",
+                    "zh": "<替身>使周围敌人移动速度-40%且每秒造成相当于40%攻击力的法术伤害；\\n在<@ba.kw>集成战略</>中，<替身>每秒额外造成一次100%攻击力的法术伤害",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.4,
+                    "atk_scale": 0.4,
+                    "talent_override_rangeid_flag": 1,
+                    "atk_scale_2": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "zh": "在<@ba.kw>集成战略</>中，自身和<替身>造成的物理和法术伤害提升40%，受到的物理和法术伤害减少40%",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "output_damage_scale": 1.4,
+                    "take_damage_scale": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "<替身>使周围敌人移动速度-40%且每秒造成相当于40%攻击力的法术伤害；\\n在<@ba.kw>集成战略</>中，<替身>每秒额外造成一次160%攻击力的法术伤害；周围8格地面上的其他干员被击倒时，若归溟幽灵鲨未处于<替身>状态则仅一次使该干员在8秒内生命值不会低于1，期间其周围敌人也受到与<替身>周围相同的效果，随后归溟幽灵鲨切换成<替身>作战，并在自身再次替换<替身>后刷新以上效果",
+                    "zh": "<替身>使周围敌人移动速度-40%且每秒造成相当于40%攻击力的法术伤害；\\n在<@ba.kw>集成战略</>中，<替身>每秒额外造成一次160%攻击力的法术伤害；周围8格地面上的其他干员被击倒时，若归溟幽灵鲨未处于<替身>状态则仅一次使该干员在8秒内生命值不会低于1，期间其周围敌人也受到与<替身>周围相同的效果，随后归溟幽灵鲨切换成<替身>作战，并在自身再次替换<替身>后刷新以上效果",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.4,
+                    "atk_scale": 0.4,
+                    "talent_override_rangeid_flag": 1,
+                    "atk_scale_2": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "protect_duration": 8,
+                    "undead_duration": 8,
+                    "atk_scale": 0.4,
+                    "atk_scale_2": 1.6,
+                    "move_speed": -0.4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

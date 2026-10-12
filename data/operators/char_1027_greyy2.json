@@ -1087,7 +1087,176 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 20,
+            "def": 10
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 200,
+            "atk": 30,
+            "def": 12
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 40% chance to <$ba.sluggish>Slow</> the target for 2 seconds, and <$ba.sluggish>Slowed</> enemies take +10% damage",
+                    "zh": "攻击时有40%的几率对攻击目标造成2秒的<$ba.sluggish>停顿</>，对处于<$ba.sluggish>停顿</>中的敌人造成的伤害提升10％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@prob": 0.4,
+                    "attack@sluggish": 2,
+                    "damage_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 240,
+            "atk": 40,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>three instances</> of Physical damage to <@ba.kw>ground</> enemies in a small area (The second and third instances are shockwaves that have half the normal ATK)",
+                    "zh": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>三次</>物理伤害（后两次为余震，伤害降低至攻击力的50％）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@append_atk_scale": 0.5,
+                    "attack@enable_third_attack": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks have a 40% chance to <$ba.sluggish>Slow</> the target for 2 seconds, and <$ba.sluggish>Slowed</> enemies take +15% damage",
+                    "zh": "攻击时有40%的几率对攻击目标造成2秒的<$ba.sluggish>停顿</>，对处于<$ba.sluggish>停顿</>中的敌人造成的伤害提升15％",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack@prob": 0.4,
+                    "attack@sluggish": 2,
+                    "damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30084",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

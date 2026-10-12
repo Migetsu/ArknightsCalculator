@@ -1105,7 +1105,195 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 150,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 30% ranged Physical resist, +3% DEF",
+                    "zh": "获得30%的远程物理抵挡，防御力+3%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "def": 0.03
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 33% <@ba.talpu>(+3%)</> ranged Physical resist, +3% DEF",
+                    "zh": "获得33%<@ba.talpu>（+3%）</>的远程物理抵挡，防御力+3%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.33,
+                    "def": 0.03
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "While above 50% HP, reduces the amount of Physical damage taken by <@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 32% ranged Physical resist, +6% DEF",
+                    "zh": "获得32%的远程物理抵挡，防御力+6%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.32,
+                    "def": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Gains 35% <@ba.talpu>(+3%)</> ranged Physical resist, +6% DEF",
+                    "zh": "获得35%<@ba.talpu>（+3%）</>的远程物理抵挡，防御力+6%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "def": 0.06
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

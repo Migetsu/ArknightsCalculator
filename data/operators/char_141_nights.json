@@ -1084,7 +1084,192 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 20,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30073",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 30,
+            "def": 20
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks reduce the target's RES by 24% for 1 second",
+                    "zh": "攻击使目标法术抗性-24%，持续1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 1,
+                    "magic_resistance": -0.24
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks reduce the target's RES by 27%<@ba.talpu> (+3%)</> for 1 second",
+                    "zh": "攻击使目标法术抗性-27%<@ba.talpu>（+3%）</>，持续1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 1,
+                    "magic_resistance": -0.27
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "31053",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 40,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks reduce the target's RES by 27% for 1 second",
+                    "zh": "攻击使目标法术抗性-27%，持续1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 1,
+                    "magic_resistance": -0.27
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks reduce the target's RES by -30%<@ba.talpu> (+3%)</> for 1 second",
+                    "zh": "攻击使目标法术抗性-30%<@ba.talpu>（+3%）</>，持续1秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 1,
+                    "magic_resistance": -0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30063",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

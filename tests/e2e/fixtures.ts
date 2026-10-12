@@ -34,6 +34,21 @@ export const test = baseTest.extend({
       }
     })
 
+    // Automatically wait for Nuxt client hydration after page navigation or reload
+    const originalGoto = page.goto.bind(page)
+    page.goto = (async (url: string, options?: Parameters<typeof originalGoto>[1]) => {
+      const response = await originalGoto(url, options)
+      await page.waitForSelector('html[data-hydrated="true"]', { timeout: 15000 }).catch(() => {})
+      return response
+    }) as typeof page.goto
+
+    const originalReload = page.reload.bind(page)
+    page.reload = (async (options?: Parameters<typeof originalReload>[0]) => {
+      const response = await originalReload(options)
+      await page.waitForSelector('html[data-hydrated="true"]', { timeout: 15000 }).catch(() => {})
+      return response
+    }) as typeof page.reload
+
     await use(page)
 
     expect(

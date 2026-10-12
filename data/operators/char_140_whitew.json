@@ -1074,7 +1074,202 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "atk": 20,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 150,
+            "atk": 32,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks disable the target's special abilities and inflict 4% <$ba.fragile>Fragile</> for 6s.",
+                    "zh": "攻击使目标的特殊能力失效并获得4%的<$ba.fragile>脆弱</>，持续6秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 6,
+                    "damage_scale": 1.04,
+                    "weak[limit]": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks disable the target's special abilities and inflict 4% <$ba.fragile>Fragile</> for 7 <@ba.talpu>(+1)</>s.",
+                    "zh": "攻击使目标的特殊能力失效并获得4%的<$ba.fragile>脆弱</>，持续7<@ba.talpu>（+1）</>秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 7,
+                    "damage_scale": 1.04,
+                    "weak[limit]": 7
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 175,
+            "atk": 40,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Attacks deal an additional <@ba.vup>{atk_scale_m:0%}</> ATK as Arts damage.",
+                    "zh": "攻击附带<@ba.vup>{atk_scale_m:0%}</>攻击力的法术伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 0.8,
+                    "atk_scale_m": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks disable the target's special abilities and inflict 8% <$ba.fragile>Fragile</> for 6s.",
+                    "zh": "攻击使目标的特殊能力失效并获得8%的<$ba.fragile>脆弱</>，持续6秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 6,
+                    "damage_scale": 1.08,
+                    "weak[limit]": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Attacks disable the target's special abilities and inflict 8% <$ba.fragile>Fragile</> for 7 <@ba.talpu>(+1)</>s.",
+                    "zh": "攻击使目标的特殊能力失效并获得8%的<$ba.fragile>脆弱</>，持续7<@ba.talpu>（+1）</>秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 7,
+                    "damage_scale": 1.08,
+                    "weak[limit]": 7
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1131,7 +1131,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 52
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +15%; while blocking enemies, increases this unit's DEF by +15%",
+                    "zh": "未阻挡敌人时使周围8格内近战干员防御力+15%，阻挡敌人时自身防御力+15%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "bryota_t_ally.def": 0.15,
+                    "bryota_t_self.def": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +17% <@ba.talpu>(+2%)</>; while blocking enemies, increases this unit's DEF by +17% <@ba.talpu>(+2%)</>",
+                    "zh": "未阻挡敌人时使周围8格内近战干员防御力+17%<@ba.talpu>（+2%）</>，阻挡敌人时自身防御力+17%<@ba.talpu>（+2%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "bryota_t_ally.def": 0.17,
+                    "bryota_t_self.def": 0.17
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31014",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +17%; while blocking enemies, increases this unit's DEF by +17%",
+                    "zh": "未阻挡敌人时使周围8格内近战干员防御力+17%，阻挡敌人时自身防御力+17%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "bryota_t_ally.def": 0.17,
+                    "bryota_t_self.def": 0.17
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "While not blocking an enemy, increases the DEF of melee Operators in the surrounding 8 tiles by +19% <@ba.talpu>(+2%)</>; while blocking enemies, increases this unit's DEF by +19% <@ba.talpu>(+2%)</>",
+                    "zh": "未阻挡敌人时使周围8格内近战干员防御力+19%<@ba.talpu>（+2%）</>，阻挡敌人时自身防御力+19%<@ba.talpu>（+2%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "bryota_t_ally.def": 0.19,
+                    "bryota_t_self.def": 0.19
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1120,7 +1120,214 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 210,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 300,
+            "def": 53
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is activated, immediately recovers 30% Max HP. Afterward, restores 4% Max HP per second and gains 25% Physical Melee Dodge while skill is active",
+                    "zh": "技能开启时，立即恢复30％最大生命值。之后技能持续期间每秒恢复最大生命值4%的生命，同时获得25%的近战物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "prob": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is activated, immediately recovers 30% Max HP. Afterward, restores 5% <@ba.talpu>(+1%)</> Max HP per second and gains 30% <@ba.talpu>(+5%)</> Physical Melee Dodge while skill is active",
+                    "zh": "技能开启时，立即恢复30％最大生命值。之后技能持续期间每秒恢复最大生命值5%<@ba.talpu>（+1%）</>的生命，同时获得30%<@ba.talpu>（+5%）</>的近战物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.05,
+                    "prob": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 385,
+            "def": 68
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Takes <@ba.kw>15%</> less damage from enemies blocked by this unit",
+                    "zh": "受到来自自身阻挡单位的伤害降低<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is activated, immediately recovers 60% Max HP. Afterward, restores 4% Max HP per second and gains 25% Physical Melee Dodge while skill is active",
+                    "zh": "技能开启时，立即恢复60％最大生命值。之后技能持续期间每秒恢复最大生命值4%的生命，同时获得25%的近战物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.04,
+                    "prob": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When skill is activated, immediately recovers 60% Max HP. Afterward, restores 5% <@ba.talpu>(+1%)</> Max HP per second and gains 30% <@ba.talpu>(+5%)</> Physical Melee Dodge while skill is active",
+                    "zh": "技能开启时，立即恢复60％最大生命值。之后技能持续期间每秒恢复最大生命值5%<@ba.talpu>（+1%）</>的生命，同时获得30%<@ba.talpu>（+5%）</>的近战物理闪避",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec_by_max_hp_ratio": 0.05,
+                    "prob": 0.3
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

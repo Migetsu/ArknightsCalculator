@@ -1076,7 +1076,172 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 170,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 30% chance of increasing the current attack's ATK to 156% when attacking. When deployed, this multiplier further increases by +6% for every enemy defeated within the 4 adjacent tiles of a [Glasgow] Operator (max 240%)",
+                    "zh": "攻击时有30%概率使当次攻击力提升至156%，自身在场时，【格拉斯哥帮】干员周围4格内每有一个敌人倒下，攻击力提升额外提升6%（最高提升至240%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.56,
+                    "atk_up_max_value": 2.4,
+                    "atk_up_each_time": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Blocks 1 enemy; Gains <@ba.vup>+{attack_speed}</> ASPD when above 50% HP",
+                    "zh": "能够阻挡一个敌人，生命值高于50%时攻击速度<@ba.vup>+{attack_speed}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "attack_speed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Has a 30% chance of increasing the current attack's ATK to 162% when attacking. When deployed, this multiplier further increases by +6% for every enemy defeated within the 4 adjacent tiles of a [Glasgow] Operator (max 240%)",
+                    "zh": "攻击时有30%概率使当次攻击力提升至162%，自身在场时，【格拉斯哥帮】干员周围4格内每有一个敌人倒下，攻击力提升额外提升6%（最高提升至240%）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.62,
+                    "atk_up_max_value": 2.4,
+                    "atk_up_each_time": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

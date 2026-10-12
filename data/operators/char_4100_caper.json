@@ -1073,7 +1073,225 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 130,
+            "atk": 15
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "30043",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 22
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时，28%几率当次攻击的攻击力提升至155%",
+                    "zh": "攻击时，28%几率当次攻击的攻击力提升至155%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.28,
+                    "atk_scale": 1.55
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时，28%几率当次攻击的攻击力提升至165%<@ba.talpu>（+10%）</>",
+                    "zh": "攻击时，28%几率当次攻击的攻击力提升至165%<@ba.talpu>（+10%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.28,
+                    "atk_scale": 1.65
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30013",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时，30%几率当次攻击的攻击力提升至160%",
+                    "zh": "攻击时，30%几率当次攻击的攻击力提升至160%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击时，30%几率当次攻击的攻击力提升至170%<@ba.talpu>（+10%）</>",
+                    "zh": "攻击时，30%几率当次攻击的攻击力提升至170%<@ba.talpu>（+10%）</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "atk_scale": 1.7
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "30093",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

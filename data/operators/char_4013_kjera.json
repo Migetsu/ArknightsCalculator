@@ -1102,7 +1102,205 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 65,
+            "atk": 18
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31044",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 90,
+            "atk": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +15%, when there are two or more ground tiles within Attack Range, the effect becomes ATK +21%",
+                    "zh": "攻击力+15%，攻击范围内存在2格以上的地面地形时，改为攻击力+21%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "cnt": 2,
+                    "kjera_t_1[high].atk": 0.21
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +18% <@ba.talpu>(+3%)</>, when there are two or more ground tiles within Attack Range, the effect becomes ATK +24% <@ba.talpu>(+3%)</>",
+                    "zh": "攻击力+18%<@ba.talpu>（+3%）</>，攻击范围内存在2格以上的地面地形时，改为攻击力+24%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "cnt": 2,
+                    "kjera_t_1[high].atk": 0.24
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 102,
+            "atk": 28
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attack with <@ba.kw>Drones</> to deal <@ba.kw>Arts damage</>\nDrone deals more damage when it attacks the same enemy again (deals up to 120% of Operator's ATK as damage)",
+                    "zh": "操作<@ba.kw>浮游单元</>造成<@ba.kw>法术伤害</>\\n单元攻击同一敌人伤害提升（最高造成干员120%攻击力的伤害）",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "init_atk_scale": 0.2,
+                    "delta_atk_scale": 0.15,
+                    "max_atk_scale": 1.2,
+                    "max_stack_cnt": 7
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +18%, when there are two or more ground tiles within Attack Range, the effect becomes ATK +24%",
+                    "zh": "攻击力+18%，攻击范围内存在2格以上的地面地形时，改为攻击力+24%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.18,
+                    "cnt": 2,
+                    "kjera_t_1[high].atk": 0.24
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "ATK +21% <@ba.talpu>(+3%)</>, when there two or more ground tiles within Attack Range, the effect becomes ATK +27% <@ba.talpu>(+3%)</>",
+                    "zh": "攻击力+21%<@ba.talpu>（+3%）</>，攻击范围内存在2格以上的地面地形时，改为攻击力+27%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.21,
+                    "cnt": 2,
+                    "kjera_t_1[high].atk": 0.27
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30024",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

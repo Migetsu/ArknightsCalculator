@@ -1077,7 +1077,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30054",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 130,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below 50% HP by 29%",
+                    "zh": "攻击生命值低于50%的敌人伤害提高29%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.29
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below 50% HP by 35% <@ba.talpu>(+6%)</>",
+                    "zh": "攻击生命值低于50%的敌人伤害提高35%<@ba.talpu>（+6%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.35
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below 50% HP by 32%",
+                    "zh": "攻击生命值低于50%的敌人伤害提高32%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.32
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases damage dealt to enemies below 50% HP by 38% <@ba.talpu>(+6%)</>",
+                    "zh": "攻击生命值低于50%的敌人伤害提高38%<@ba.talpu>（+6%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_scale": 1.38
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30094",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

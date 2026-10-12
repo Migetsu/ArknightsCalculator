@@ -1,4 +1,7 @@
 export * from './schemas/operator'
+export * from './schemas/gameConstants'
+export * from './schemas/item'
+export * from './schemas/recipe'
 export * from './utils/clamp'
 export * from './utils/resolveAsset'
 export * from './utils/operatorFilters'

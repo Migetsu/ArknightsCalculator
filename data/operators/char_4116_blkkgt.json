@@ -1524,7 +1524,202 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 35,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Deals <@ba.vup>{value:0%}</> more damage with skills",
+                    "zh": "技能造成的伤害提升<@ba.vup>{value:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1,
+                    "value": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 100,
+            "atk": 44,
+            "def": 44
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Deals <@ba.vup>{value:0%}</> more damage with skills",
+                    "zh": "技能造成的伤害提升<@ba.vup>{value:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1,
+                    "value": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When dealing damage, there is a 10% chance to increase ATK to 165% and <$ba.tremble>Frighten</> the target for 5s",
+                    "zh": "造成伤害时有10%的几率攻击力提升至165%，并使目标<$ba.tremble>战栗</>5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.1,
+                    "atk_scale": 1.65,
+                    "not_combat": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When dealing damage, there is a 10% chance to increase ATK to 170% <@ba.talpu>(+5%)</> and <$ba.tremble>Frighten</> the target for 5s",
+                    "zh": "造成伤害时有10%的几率攻击力提升至170%<@ba.talpu>（+5%）</>，并使目标<$ba.tremble>战栗</>5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.1,
+                    "atk_scale": 1.7,
+                    "not_combat": 5
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 50,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Deals <@ba.vup>{value:0%}</> more damage with skills",
+                    "zh": "技能造成的伤害提升<@ba.vup>{value:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.1,
+                    "value": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When dealing damage, there is a 10% chance to increase ATK to 170% and <$ba.tremble>Frighten</> the target for 5s.",
+                    "zh": "造成伤害时有10%的几率攻击力提升至170%，并使目标<$ba.tremble>战栗</>5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.1,
+                    "atk_scale": 1.7,
+                    "not_combat": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When dealing damage, there is a 10% chance to increase ATK to 175% <@ba.talpu>(+5%)</> and <$ba.tremble>Frighten</> the target for 5s",
+                    "zh": "造成伤害时有10%的几率攻击力提升至175%<@ba.talpu>（+5%）</>，并使目标<$ba.tremble>战栗</>5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.1,
+                    "atk_scale": 1.75,
+                    "not_combat": 5
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_blkkgt",
@@ -1592,7 +1787,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 130,
+            "atk": 67
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+5%，攻击被<$ba.tremble>战栗</>的目标时，无视目标30%的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "zh": "攻击力+5%，攻击被<$ba.tremble>战栗</>的目标时，无视目标30%的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.3,
+                    "atk": 0.05,
+                    "not_combat": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+5%，攻击被<$ba.tremble>战栗</>的目标时，无视目标35%<@ba.talpu>（+5%）</>的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "zh": "攻击力+5%，攻击被<$ba.tremble>战栗</>的目标时，无视目标35%<@ba.talpu>（+5%）</>的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.35,
+                    "atk": 0.05,
+                    "not_combat": 6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 150,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "zh": "攻击时无视敌人<@ba.vup>{def_penetrate_fixed}</>点的防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate_fixed": 70
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+8%，攻击被<$ba.tremble>战栗</>的目标时，无视目标33%的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "zh": "攻击力+8%，攻击被<$ba.tremble>战栗</>的目标时，无视目标33%的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.33,
+                    "atk": 0.08,
+                    "not_combat": 6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "攻击力+8%，攻击被<$ba.tremble>战栗</>的目标时，无视目标38%<@ba.talpu>（+5%）</>的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "zh": "攻击力+8%，攻击被<$ba.tremble>战栗</>的目标时，无视目标38%<@ba.talpu>（+5%）</>的防御力，地面敌人首次进入自身攻击范围时，使其<$ba.tremble>战栗</>6秒",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate": 0.38,
+                    "atk": 0.08,
+                    "not_combat": 6
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

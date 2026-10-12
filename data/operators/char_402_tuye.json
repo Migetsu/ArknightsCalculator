@@ -1107,7 +1107,195 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 40,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 65,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After 4 seconds without healing, increase the amount of the next heal to 170% ATK",
+                    "zh": "4秒内未进行治疗后，下次治疗时的治疗量提升至攻击力的170%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "heal_scale_2": 1.7
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After 4 seconds without healing, increase the amount of the next heal to 175%<@ba.talpu>(+5%)</> ATK",
+                    "zh": "4秒内未进行治疗后，下次治疗时的治疗量提升至攻击力的175%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "heal_scale_2": 1.75
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 80,
+            "atk": 47
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After 4 seconds without healing, increase the amount of the next heal to 180% ATK",
+                    "zh": "4秒内未进行治疗后，下次治疗时的治疗量提升至攻击力的180%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "heal_scale_2": 1.8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After 4 seconds without healing, increase the amount of the next heal to 185%<@ba.talpu>(+5%)</> ATK",
+                    "zh": "4秒内未进行治疗后，下次治疗时的治疗量提升至攻击力的185%<@ba.talpu>（+5%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "heal_scale_2": 1.85
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1133,7 +1133,206 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 45,
+            "def": 25
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 55,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, creates a Holographic Mirage at that location; the Mirage will not attack, but when attacked, inflicts 25% Fragile to the attacker and nullifies the attacker's Invisibility for 10s, and immediately switches to a <Substitute>",
+                    "zh": "部署时原地释放全息幻影，该幻影不会攻击，受到攻击时使攻击幻影的敌人在10秒内受到25%的<$ba.fragile>脆弱</>且隐匿效果失效，并立即切换为<替身>作战",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 10,
+                    "weak[limit]": 10,
+                    "damage_scale": 1.25,
+                    "block_cnt": -2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, creates a Holographic Mirage at that location; the Mirage will not attack, but when attacked, inflicts 27%<@ba.talpu>（+2%）</> Fragile to the attacker and nullifies the attacker's Invisibility for 10s, and immediately switches to a <Substitute>",
+                    "zh": "部署时原地释放全息幻影，该幻影不会攻击，受到攻击时使攻击幻影的敌人在10秒内受到27%<@ba.talpu>（+2%）</>的<$ba.fragile>脆弱</>且隐匿效果失效，并立即切换为<替身>作战",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 10,
+                    "weak[limit]": 10,
+                    "damage_scale": 1.27,
+                    "block_cnt": -2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 65,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Instead of retreating when defeated, switch to a <Substitute> (Substitute has 0 Block, but ATK is <@ba.kw>increased</>) for 20 seconds before switching back to the original",
+                    "zh": "受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0但攻击力<@ba.kw>提升</>），持续20秒后自身再次替换<替身>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 20,
+                    "atk": 0.15,
+                    "talent_override_rangeid_flag": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, creates a Holographic Mirage at that location; the Mirage will not attack, but when attacked, inflicts 28% Fragile to the attacker and nullifies the attacker's Invisibility for 10s, and immediately switches to a <Substitute>",
+                    "zh": "部署时原地释放全息幻影，该幻影不会攻击，受到攻击时使攻击幻影的敌人在10秒内受到28%的<$ba.fragile>脆弱</>且隐匿效果失效，并立即切换为<替身>作战",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 10,
+                    "weak[limit]": 10,
+                    "damage_scale": 1.28,
+                    "block_cnt": -2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, creates a Holographic Mirage at that location; the Mirage will not attack, but when attacked, inflicts 30%<@ba.talpu>（+2%）</> Fragile to the attacker and nullifies the attacker's Invisibility for 10s, and immediately switches to a <Substitute>",
+                    "zh": "部署时原地释放全息幻影，该幻影不会攻击，受到攻击时使攻击幻影的敌人在10秒内受到30%<@ba.talpu>（+2%）</>的<$ba.fragile>脆弱</>且隐匿效果失效，并立即切换为<替身>作战",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "duration": 10,
+                    "weak[limit]": 10,
+                    "damage_scale": 1.3,
+                    "block_cnt": -2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

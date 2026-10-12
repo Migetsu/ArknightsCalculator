@@ -1099,7 +1099,198 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 49
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 175,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "The first attack against each enemy has ATK increased to 115% and Levitates the target for 2.5s.",
+                    "zh": "对每个敌人首次进行攻击时攻击力提升至115%，并使目标<$ba.levitate>浮空</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.15,
+                    "levitate_duration": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "The first attack against each enemy has ATK increased to 120% <@ba.talpu>(+5%)</> and Levitates the target for 2.5s.",
+                    "zh": "对每个敌人首次进行攻击时攻击力提升至120%<@ba.talpu>（+5%）</>，并使目标<$ba.levitate>浮空</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.2,
+                    "levitate_duration": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30024",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "The first attack against each enemy has ATK increased to 120% and Levitates the target for 2.5s.",
+                    "zh": "对每个敌人首次进行攻击时攻击力提升至120%，并使目标<$ba.levitate>浮空</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.2,
+                    "levitate_duration": 2.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "The first attack against each enemy has ATK increased to 125% <@ba.talpu>(+5%)</> and Levitates the target for 2.5s.",
+                    "zh": "对每个敌人首次进行攻击时攻击力提升至125%<@ba.talpu>（+5%）</>，并使目标<$ba.levitate>浮空</>2.5秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_scale": 1.25,
+                    "levitate_duration": 2.5
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

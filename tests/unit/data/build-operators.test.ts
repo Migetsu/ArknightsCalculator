@@ -223,6 +223,58 @@ describe('Operator Data Builder & Schemas', () => {
         },
         charEquip: {},
       },
+      cnBattleEquips: {
+        uniequip_002_texas: {
+          phases: [
+            {
+              equipLevel: 1,
+              parts: [
+                {
+                  target: 'TRAIT',
+                  overrideTraitDataBundle: {
+                    candidates: [
+                      {
+                        additionalDescription: 'Initial DP +2',
+                        blackboard: [{ key: 'dp', value: 2 }],
+                      },
+                    ],
+                  },
+                },
+              ],
+              attributeBlackboard: [
+                { key: 'atk', value: 30 },
+                { key: 'max_hp', value: 120 },
+              ],
+            },
+          ],
+        },
+      },
+      enBattleEquips: {
+        uniequip_002_texas: {
+          phases: [
+            {
+              equipLevel: 1,
+              parts: [
+                {
+                  target: 'TRAIT',
+                  overrideTraitDataBundle: {
+                    candidates: [
+                      {
+                        additionalDescription: 'Initial DP +2',
+                        blackboard: [{ key: 'dp', value: 2 }],
+                      },
+                    ],
+                  },
+                },
+              ],
+              attributeBlackboard: [
+                { key: 'atk', value: 30 },
+                { key: 'max_hp', value: 120 },
+              ],
+            },
+          ],
+        },
+      },
       cnHandbook: {
         handbookDict: {
           char_102_texas: {
@@ -297,6 +349,9 @@ describe('Operator Data Builder & Schemas', () => {
       expect(texasDetail.artist).toBe('Ryuzaki Korichi')
       expect(texasDetail.va).toBe('Azusa Tadokoro')
       expect(texasDetail.modules?.[0]?.name.en).toBe('Delivery Bag')
+      expect(texasDetail.modules?.[0]?.stages?.[0]?.stage).toBe(1)
+      expect(texasDetail.modules?.[0]?.stages?.[0]?.stats.atk).toBe(30)
+      expect(texasDetail.modules?.[0]?.stages?.[0]?.parts?.[0]?.target).toBe('TRAIT')
       expect(texasDetail.skills[0]?.levels[0]?.name.en).toBe('Charge γ')
     })
 

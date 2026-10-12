@@ -1449,7 +1449,208 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 240,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 270,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "This unit gains <$ba.buffres>Status Resistance</> after being deployed for 15 seconds, +4% ATK after 30 seconds, and +7 ASPD after 45 seconds",
+                    "zh": "在战场停留15秒后获得<$ba.buffres>抵抗</>，30秒后攻击力+4%，45秒后攻速+7",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "huang_t_2[e_002_atk].atk": 0.04,
+                    "huang_t_2[e_002_atk_speed].attack_speed": 7,
+                    "huang_t_2.interval": 15,
+                    "huang_t_2.one_minus_status_resistance": -0.5,
+                    "huang_t_2[e_002_atk].interval": 30,
+                    "huang_t_2[e_002_atk_speed].interval": 45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "This unit gains <$ba.buffres>Status Resistance</> after being deployed for 12 <@ba.talpu>(-3)</> seconds, +4% ATK after 30 seconds, and +7 ASPD after 45 seconds",
+                    "zh": "在战场停留12<@ba.talpu>（-3）</>秒后获得<$ba.buffres>抵抗</>，30秒后攻击力+4%，45秒后攻速+7",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "huang_t_2[e_002_atk].atk": 0.04,
+                    "huang_t_2[e_002_atk_speed].attack_speed": 7,
+                    "huang_t_2.interval": 12,
+                    "huang_t_2.one_minus_status_resistance": -0.5,
+                    "huang_t_2[e_002_atk].interval": 30,
+                    "huang_t_2[e_002_atk_speed].interval": 45
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 285,
+            "atk": 86
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks <@ba.kw>all blocked enemies</>; ATK is increased to <@ba.kw>{atk_scale:0%}</> when attacking blocked enemies",
+                    "zh": "同时攻击阻挡的<@ba.kw>所有敌人</>，攻击被阻挡的敌人攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "This unit gains <$ba.buffres>Status Resistance</> after being deployed for 15 seconds, +6% ATK after 30 seconds, and +12 ASPD after 45 seconds",
+                    "zh": "在战场停留15秒后获得<$ba.buffres>抵抗</>，30秒后攻击力+6%，45秒后攻速+12",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "huang_t_2[e_002_atk].atk": 0.06,
+                    "huang_t_2[e_002_atk_speed].attack_speed": 12,
+                    "huang_t_2.interval": 15,
+                    "huang_t_2.one_minus_status_resistance": -0.5,
+                    "huang_t_2[e_002_atk].interval": 30,
+                    "huang_t_2[e_002_atk_speed].interval": 45
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "This unit gains <$ba.buffres>Status Resistance</> after being deployed for 12 <@ba.talpu>(-3)</> seconds, +6% ATK after 30 seconds, and +12 ASPD after 45 seconds",
+                    "zh": "在战场停留12<@ba.talpu>（-3）</>秒后获得<$ba.buffres>抵抗</>，30秒后攻击力+6%，45秒后攻速+12",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "huang_t_2[e_002_atk].atk": 0.06,
+                    "huang_t_2[e_002_atk_speed].attack_speed": 12,
+                    "huang_t_2.interval": 12,
+                    "huang_t_2.one_minus_status_resistance": -0.5,
+                    "huang_t_2[e_002_atk].interval": 30,
+                    "huang_t_2[e_002_atk_speed].interval": 45
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_huang",
@@ -1517,7 +1718,242 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 300,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 330,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "在生命值低于25%时，仅一次回复50%的生命值并在8秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "zh": "在生命值低于25%时，仅一次回复50%的生命值并在8秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "huang_t_1[heal].hp_ratio": 0.5,
+                    "huang_t_1[lock].min_hp_ratio": 0.5,
+                    "huang_t_1[lock].duration": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "在生命值低于25%时，仅一次回复50%的生命值并在9<@ba.talpu>（+1）</>秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "zh": "在生命值低于25%时，仅一次回复50%的生命值并在9<@ba.talpu>（+1）</>秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.25,
+                    "huang_t_1[heal].hp_ratio": 0.5,
+                    "huang_t_1[lock].min_hp_ratio": 0.5,
+                    "huang_t_1[lock].duration": 9
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "def_penetrate_fixed": 150
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 345,
+            "atk": 66
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "zh": "生命值高于50%时受到的物理伤害降低<@ba.kw>{damage_resistance:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "damage_resistance": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "在生命值首次低于25%、50%时，回复50%的生命值并在8秒内使生命值不低于50%，且生命值高于50%时攻击无视目标150点防御力",
+                    "zh": "在生命值首次低于25%、50%时，回复50%的生命值并在8秒内使生命值不低于50%，且生命值高于50%时攻击无视目标150点防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "huang_t_1[heal].hp_ratio": 0.5,
+                    "huang_t_1[lock].min_hp_ratio": 0.5,
+                    "huang_t_1[lock].duration": 8
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "在生命值首次低于25%、50%时，回复50%的生命值并在9<@ba.talpu>（+1）</>秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "zh": "在生命值首次低于25%、50%时，回复50%的生命值并在9<@ba.talpu>（+1）</>秒内使生命值不低于50%，且在生命值高于50%时攻击无视目标150点防御力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "huang_t_1[heal].hp_ratio": 0.5,
+                    "huang_t_1[lock].min_hp_ratio": 0.5,
+                    "huang_t_1[lock].duration": 9
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "def_penetrate_fixed": 150,
+                    "huang_e_003[lock].hp_ratio": 0.5,
+                    "huang_e_003[lock].duration": 8,
+                    "huang_e_003[lock].check_hp_ratio": 0.25,
+                    "huang_e_003[lock].min_hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "def_penetrate_fixed": 150,
+                    "huang_e_003[lock].hp_ratio": 0.5,
+                    "huang_e_003[lock].duration": 9,
+                    "huang_e_003[lock].check_hp_ratio": 0.25,
+                    "huang_e_003[lock].min_hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

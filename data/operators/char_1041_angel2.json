@@ -1611,7 +1611,206 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 100,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.01,
+                    "angel2_tr[e].hp_ratio": 0.8,
+                    "angel2_tr[e].sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 58
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.01,
+                    "angel2_tr[e].hp_ratio": 0.8,
+                    "angel2_tr[e].sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, recovers 6% HP whenever an allied Operator consumes ammo; in addition, there is a 30% chance to bombard the enemies within that Operator's Attack Range, dealing 165% of Exusiai the New Covenant's ATK as Physical splash damage",
+                    "zh": "在场时，每当有友方干员的弹药被消耗就会回复自身6%生命值，并有30%概率立即对该干员攻击范围的敌人召唤一次轰炸，造成相当于自身攻击力165%的物理溅射伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.06,
+                    "prob": 0.3,
+                    "aoe_atk_scale": 1.65,
+                    "damage_scale": 1.65
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, recovers 6% HP whenever an allied Operator consumes ammo; in addition, there is a 30% chance to bombard the enemies within that Operator's Attack Range, dealing 180% <@ba.talpu>(+15%)</> of Exusiai the New Covenant's ATK as Physical splash damage",
+                    "zh": "在场时，每当有友方干员的弹药被消耗就会回复自身6%生命值，并有30%概率立即对该干员攻击范围的敌人召唤一次轰炸，造成相当于自身攻击力180%<@ba.talpu>（+15%）</>的物理溅射伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.06,
+                    "prob": 0.3,
+                    "aoe_atk_scale": 1.8,
+                    "damage_scale": 1.8
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases SP recovery rate by +0.25/second while above 80% HP",
+                    "zh": "生命值高于80%时，技力自然回复速度+0.25/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.01,
+                    "angel2_tr[e].hp_ratio": 0.8,
+                    "angel2_tr[e].sp_recovery_per_sec": 0.25
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, recovers 6% HP whenever an allied Operator consumes ammo; in addition, there is a 35% chance to bombard the enemies within that Operator's Attack Range, dealing 185% of Exusiai the New Covenant's ATK as Physical splash damage",
+                    "zh": "在场时，每当有友方干员的弹药被消耗就会回复自身6%生命值，并有35%概率立即对该干员攻击范围的敌人召唤一次轰炸，造成相当于自身攻击力185%的物理溅射伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.06,
+                    "prob": 0.35,
+                    "aoe_atk_scale": 1.85,
+                    "damage_scale": 1.85
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, recovers 6% HP whenever an allied Operator consumes ammo; in addition, there is a 35% chance to bombard the enemies within that Operator's Attack Range, dealing 200% <@ba.talpu>(+15%)</> of Exusiai the New Covenant's ATK as Physical splash damage",
+                    "zh": "在场时，每当有友方干员的弹药被消耗就会回复自身6%生命值，并有35%概率立即对该干员攻击范围的敌人召唤一次轰炸，造成相当于自身攻击力200%<@ba.talpu>（+15%）</>的物理溅射伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.06,
+                    "prob": 0.35,
+                    "aoe_atk_scale": 2,
+                    "damage_scale": 2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

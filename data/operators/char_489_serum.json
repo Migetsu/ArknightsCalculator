@@ -1088,7 +1088,198 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 49
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 175,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, own SP recovery rate +0.6/second",
+                    "zh": "4秒内没有主动攻击过，技力自然回复速度+0.6/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "sp_recovery_per_sec": 0.6
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, own SP recovery rate +0.65 <@ba.talpu>(+0.05)</>/second",
+                    "zh": "4秒内没有主动攻击过，技力自然回复速度+0.65<@ba.talpu>（+0.05）</>/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "sp_recovery_per_sec": 0.65
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30064",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, own SP recovery rate +0.65/second",
+                    "zh": "4秒内没有主动攻击过，技力自然回复速度+0.65/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "sp_recovery_per_sec": 0.65
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "After not attacking for 4 seconds, own SP recovery rate +0.7 <@ba.talpu>(+0.05)</>/second",
+                    "zh": "4秒内没有主动攻击过，技力自然回复速度+0.7<@ba.talpu>（+0.05）</>/秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "delay": 4,
+                    "sp_recovery_per_sec": 0.7
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

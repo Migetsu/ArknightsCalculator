@@ -1083,7 +1083,195 @@
             "count": 30000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 50,
+            "attack_speed": 3
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "31053",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 20000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 80,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases healing effects by 23% on all Operators with DP Cost no more than 10 when Sussurro is in the squad",
+                    "zh": "编入队伍时，所有初始费用不超过10的干员受到的治疗效果提升23%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 10,
+                    "heal_scale": 1.23
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases healing effects by 26%<@ba.talpu>(+3%)</> on all Operators with DP Cost no more than 10 when Sussurro is in the squad",
+                    "zh": "编入队伍时，所有初始费用不超过10的干员受到的治疗效果提升26%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 10,
+                    "heal_scale": 1.26
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 15
+            },
+            {
+              "id": "30053",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 25000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 100,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases healing effects by 25% on all Operators with DP Cost no more than 10 when Sussurro is in the squad",
+                    "zh": "编入队伍时，所有初始费用不超过10的干员受到的治疗效果提升25%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 10,
+                    "heal_scale": 1.25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases healing effects by 28%<@ba.talpu>(+3%)</> on all Operators with DP Cost no more than 10 when Sussurro is in the squad",
+                    "zh": "编入队伍时，所有初始费用不超过10的干员受到的治疗效果提升28%<@ba.talpu>（+3%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "cost": 10,
+                    "heal_scale": 1.28
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 1
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 5
+            },
+            {
+              "id": "31023",
+              "count": 6
+            },
+            {
+              "id": "4001",
+              "count": 30000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

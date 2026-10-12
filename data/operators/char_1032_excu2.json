@@ -1509,7 +1509,199 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 40,
+            "def": 24,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 50,
+            "def": 32,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, there is a 30% chance to perform an additional attack that ignores 150 DEF; this chance increases by 5% for each ammo consumed while a skill is active, resetting when the skill ends",
+                    "zh": "攻击时有30%几率额外进行一次无视目标150点防御力的攻击，技能期间每消耗1颗弹药这个几率提升5%，技能结束时重置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.3,
+                    "prob_add": 0.05,
+                    "def_penetrate_fixed": 150
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, there is a 33% <@ba.talpu>(+3%)</> chance to perform an additional attack that ignores 150 DEF; this chance increases by 5% for each ammo consumed while a skill is active, resetting when the skill ends",
+                    "zh": "攻击时有33%<@ba.talpu>（+3%）</>几率额外进行一次无视目标150点防御力的攻击，技能期间每消耗1颗弹药这个几率提升5%，技能结束时重置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.33,
+                    "prob_add": 0.05,
+                    "def_penetrate_fixed": 150
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "def": 40,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot be healed by allies; Attacks deal <@ba.kw>AoE damage</>; Recovers <@ba.kw>{value}</> HP for every enemy hit during attacks, up to Block count",
+                    "zh": "无法被友方角色治疗，攻击造成<@ba.kw>群体伤害</>，每攻击到一个敌人回复自身<@ba.kw>{value}</>生命，最大生效数等于阻挡数",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, there is a 35% chance to perform an additional attack that ignores 300 DEF; this chance increases by 5% for each ammo consumed while a skill is active, resetting when the skill ends",
+                    "zh": "攻击时有35%几率额外进行一次无视目标300点防御力的攻击，技能期间每消耗1颗弹药这个几率提升5%，技能结束时重置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.35,
+                    "prob_add": 0.05,
+                    "def_penetrate_fixed": 300
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, there is a 38% <@ba.talpu>(+3%)</> chance to perform an additional attack that ignores 300 DEF; this chance increases by 5% for each ammo consumed while a skill is active, resetting when the skill ends",
+                    "zh": "攻击时有38%<@ba.talpu>（+3%）</>几率额外进行一次无视目标300点防御力的攻击，技能期间每消耗1颗弹药这个几率提升5%，技能结束时重置",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.38,
+                    "prob_add": 0.05,
+                    "def_penetrate_fixed": 300
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_excu2",
@@ -1577,7 +1769,210 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 280,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "trigger_cnt[equip]": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 320,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "trigger_cnt[equip]": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "每有一个【拉特兰】干员在场，自身的弹药类技能弹药上限+1（最多4层）；自身的弹药类技能期间攻击力+8%，且弹药数量不少于一半时获得20%的物理与法术闪避",
+                    "zh": "每有一个【拉特兰】干员在场，自身的弹药类技能弹药上限+1（最多4层）；自身的弹药类技能期间攻击力+8%，且弹药数量不少于一半时获得20%的物理与法术闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "add_count": 1,
+                    "add_count_max_stack": 4,
+                    "atk": 0.08,
+                    "prob": 0.2,
+                    "ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 350,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.kw>+{value}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "value": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "trigger_cnt[equip]": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "每有一个【拉特兰】干员在场，自身的弹药类技能弹药上限+1（最多4层）；自身的弹药类技能期间攻击力+12%，且弹药数量不少于一半时获得30%的物理与法术闪避",
+                    "zh": "每有一个【拉特兰】干员在场，自身的弹药类技能弹药上限+1（最多4层）；自身的弹药类技能期间攻击力+12%，且弹药数量不少于一半时获得30%的物理与法术闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "add_count": 1,
+                    "add_count_max_stack": 4,
+                    "atk": 0.12,
+                    "prob": 0.3,
+                    "ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

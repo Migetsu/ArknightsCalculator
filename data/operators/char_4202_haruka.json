@@ -1491,7 +1491,202 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 130,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2,
+                    "attack@max_target_heal": 2,
+                    "heal_scale": 0.75
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 175,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2,
+                    "attack@max_target_heal": 2,
+                    "heal_scale": 0.75
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "浮泡破碎时，为所在的单位治疗相当于遥攻击力25%的生命值，并有10%的概率回复1点技力",
+                    "zh": "浮泡破碎时，为所在的单位治疗相当于遥攻击力25%的生命值，并有10%的概率回复1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.25,
+                    "prob": 0.1,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "浮泡破碎时，为所在的单位治疗相当于遥攻击力28%<@ba.talpu>（+3%）</>的生命值，并有10%的概率回复1点技力",
+                    "zh": "浮泡破碎时，为所在的单位治疗相当于遥攻击力28%<@ba.talpu>（+3%）</>的生命值，并有10%的概率回复1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.28,
+                    "prob": 0.1,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 52
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "zh": "攻击对<@ba.kw>2</>个目标造成法术伤害，技能开启后改为治疗<@ba.kw>2</>个友方单位（治疗量相当于75%攻击力）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@max_target": 2,
+                    "attack@max_target_heal": 2,
+                    "heal_scale": 0.75
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "浮泡破碎时，为所在的单位治疗相当于遥攻击力25%的生命值，并有20%的概率回复1点技力",
+                    "zh": "浮泡破碎时，为所在的单位治疗相当于遥攻击力25%的生命值，并有20%的概率回复1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.25,
+                    "prob": 0.2,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "浮泡破碎时，为所在的单位治疗相当于遥攻击力28%<@ba.talpu>（+3%）</>的生命值，并有20%的概率回复1点技力",
+                    "zh": "浮泡破碎时，为所在的单位治疗相当于遥攻击力28%<@ba.talpu>（+3%）</>的生命值，并有20%的概率回复1点技力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "heal_scale": 0.28,
+                    "prob": 0.2,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1479,7 +1479,192 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 48
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deploys with a banner; within the surrounding 8 tiles of the banner, allies have ASPD +12 and enemies have ASPD -12",
+                    "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+12，敌人的攻击速度-12",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sleach_t_1[ally].attack_speed": 12,
+                    "sleach_t_1[enemy].attack_speed": -12
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deploys with a banner; within the surrounding 8 tiles of the banner, allies have ASPD +14 <@ba.talpu>(+2)</> and enemies have ASPD -14 <@ba.talpu>(+2)</>",
+                    "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+14<@ba.talpu>（+2）</>，敌人的攻击速度-14<@ba.talpu>（+2）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sleach_t_1[ally].attack_speed": 14,
+                    "sleach_t_1[enemy].attack_speed": -14
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 68
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Deploys with a banner; within the surrounding 8 tiles of the banner, allies have ASPD +13 and enemies have ASPD -13",
+                    "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+13，敌人的攻击速度-13",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sleach_t_1[ally].attack_speed": 13,
+                    "sleach_t_1[enemy].attack_speed": -13
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Deploys with a banner; within the surrounding 8 tiles of the banner, allies have ASPD +15 <@ba.talpu>(+2)</> and enemies have ASPD -15 <@ba.talpu>(+2)</>",
+                    "zh": "部署时自身持有军旗；军旗周围8格的干员攻击速度+15<@ba.talpu>（+2）</>，敌人的攻击速度-15<@ba.talpu>（+2）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sleach_t_1[ally].attack_speed": 15,
+                    "sleach_t_1[enemy].attack_speed": -15
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_sleach",
@@ -1547,7 +1732,179 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but gains <$ba.camou>Camouflage</>",
+                    "zh": "技能发动期间阻挡数变为0，但获得<$ba.camou>迷彩</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but gains <$ba.camou>Camouflage</>",
+                    "zh": "技能发动期间阻挡数变为0，但获得<$ba.camou>迷彩</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, the next Operator costs -2 DP; if that Operator is a Ground Operator, gain 1 DP after deployment",
+                    "zh": "部署后，下一名部署的干员费用-2, 若该干员为地面干员，则部署后获得1点部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "cost": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "def": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but gains <$ba.camou>Camouflage</>",
+                    "zh": "技能发动期间阻挡数变为0，但获得<$ba.camou>迷彩</>",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "After deployment, the next Operator costs -2 DP; if that Operator is a Ground Operator, gain 2 DP after deployment",
+                    "zh": "部署后，下一名部署的干员费用-2, 若该干员为地面干员，则部署后获得2点部署费用",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": -2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "cost": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

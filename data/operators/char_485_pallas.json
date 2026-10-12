@@ -1437,7 +1437,168 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 73
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all [Minos] Operators gain <$ba.strong>Vigor</> effect of +27% ATK when HP is above 50%",
+                    "zh": "在场时，所有【米诺斯】干员生命值高于50%时获得+27%攻击力的<$ba.strong>精力充沛</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "peak_performance.hp_ratio": 0.5,
+                    "peak_performance.atk": 0.27
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 83
+          },
+          "parts": [
+            {
+              "target": "TRAIT_DATA_ONLY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Has <@ba.kw>extended</> attack range; When attacking enemies not blocked by self, increase ATK to <@ba.kw>{atk_scale:0%}</>",
+                    "zh": "可以攻击到<@ba.kw>较远敌人</>，攻击自身未阻挡的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When deployed, all [Minos] Operators gain <$ba.strong>Vigor</> effect of +30% ATK when HP is above 50%",
+                    "zh": "在场时，所有【米诺斯】干员生命值高于50%时获得+30%攻击力的<$ba.strong>精力充沛</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "peak_performance.hp_ratio": 0.5,
+                    "peak_performance.atk": 0.3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_pallas",
@@ -1505,7 +1666,216 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 40,
+            "attack_speed": 3
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Can also be deployed on Ranged tiles",
+                    "zh": "可以额外部署在远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "buildable_type": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 50,
+            "attack_speed": 4
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Can also be deployed on Ranged tiles",
+                    "zh": "可以额外部署在远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "buildable_type": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Every hit against an enemy restores 50 HP to Pallas and the allied operator in the tile ahead; All [Minos] Operators also recover 25 HP",
+                    "zh": "每攻击一名敌人时为自身与身前一格的我方干员恢复50点生命值并使所有【米诺斯】干员额外恢复25点生命值",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 50,
+                    "pallas_e_t_2.value": 25
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Every hit against an enemy restores 55 <@ba.talpu>(+5)</> HP to Pallas and the allied operator in the tile ahead; All [Minos] Operators also recover 25 HP",
+                    "zh": "每攻击一名敌人时为自身与身前一格的我方干员恢复55<@ba.talpu>（+5）</>点生命值并使所有【米诺斯】干员额外恢复25点生命值",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 55,
+                    "pallas_e_t_2.value": 25
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Can also be deployed on Ranged tiles",
+                    "zh": "可以额外部署在远程位",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "buildable_type": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Every hit against an enemy restores 60 HP to Pallas and the allied operator in the tile ahead; All [Minos] Operators also recover 40 HP",
+                    "zh": "每攻击一名敌人时为自身与身前一格的我方干员恢复60点生命值并使所有【米诺斯】干员额外恢复40点生命值",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 60,
+                    "pallas_e_t_2.value": 40
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Every hit against an enemy restores 65 <@ba.talpu>(+5)</> HP to Pallas and the allied operator in the tile ahead; All [Minos] Operators also recover 40 HP",
+                    "zh": "每攻击一名敌人时为自身与身前一格的我方干员恢复65<@ba.talpu>（+5）</>点生命值并使所有【米诺斯】干员额外恢复40点生命值",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "value": 65,
+                    "pallas_e_t_2.value": 40
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

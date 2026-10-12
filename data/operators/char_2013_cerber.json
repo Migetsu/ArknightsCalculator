@@ -1405,7 +1405,204 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 130,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack deals additional Arts damage to the target equal to 45% of its DEF; percentage increases with repeated attacks against the same target, up to 70%",
+                    "zh": "攻击时对目标额外造成相当于其防御力45%的法术伤害，连续攻击同一目标时该比例逐次提升，最多提升至70%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "basic_atk_scale": 0.45,
+                    "atk_scale": 0.45,
+                    "max_atk_scale": 0.7,
+                    "delta_atk_scale": 0.05,
+                    "target_uid": 0
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack deals additional Arts damage to the target equal to 49% <@ba.talpu>(+4%)</> of its DEF; percentage increases with repeated attacks against the same target, up to 74% <@ba.talpu>(+4%)</>",
+                    "zh": "攻击时对目标额外造成相当于其防御力49%<@ba.talpu>（+4%）</>的法术伤害，连续攻击同一目标时该比例逐次提升，最多提升至74%<@ba.talpu>（+4%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "basic_atk_scale": 0.49,
+                    "atk_scale": 0.49,
+                    "max_atk_scale": 0.74,
+                    "delta_atk_scale": 0.05,
+                    "target_uid": 0
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 180,
+            "atk": 65
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Ignore <@ba.kw>{magic_resist_penetrate_fixed}</> of target's RES",
+                    "zh": "无视目标<@ba.kw>{magic_resist_penetrate_fixed}</>点法术抗性",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resist_penetrate_fixed": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack deals additional Arts damage to the target equal to 50% of its DEF; percentage increases with repeated attacks against the same target, up to 75%",
+                    "zh": "攻击时对目标额外造成相当于其防御力50%的法术伤害，连续攻击同一目标时该比例逐次提升，最多提升至75%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "basic_atk_scale": 0.5,
+                    "atk_scale": 0.5,
+                    "max_atk_scale": 0.75,
+                    "delta_atk_scale": 0.05,
+                    "target_uid": 0
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Each attack deals additional Arts damage to the target equal to 54% <@ba.talpu>(+4%)</> of its DEF; percentage increases with repeated attacks against the same target, up to 79% <@ba.talpu>(+4%)</>",
+                    "zh": "攻击时对目标额外造成相当于其防御力54%<@ba.talpu>（+4%）</>的法术伤害，连续攻击同一目标时该比例逐次提升，最多提升至79%<@ba.talpu>（+4%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "basic_atk_scale": 0.54,
+                    "atk_scale": 0.54,
+                    "max_atk_scale": 0.79,
+                    "delta_atk_scale": 0.05,
+                    "target_uid": 0
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_cerber",
@@ -1473,7 +1670,171 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 80,
+            "atk": 40,
+            "def": 17
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <@ba.kw>{sp}</> SP when normal attacks hit an elite or leader enemy.",
+                    "zh": "普通攻击命中精英或领袖敌人时获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 105,
+            "atk": 49,
+            "def": 21
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <@ba.kw>{sp}</> SP when normal attacks hit an elite or leader enemy.",
+                    "zh": "普通攻击命中精英或领袖敌人时获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +12% ATK and +12 ASPD when there are no allied units in the adjacent 4 tiles",
+                    "zh": "部署时若周围四格内没有其他友方单位，攻击力+12%，攻击速度+12",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.12,
+                    "attack_speed": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 120,
+            "atk": 56,
+            "def": 23
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Gain <@ba.kw>{sp}</> SP when normal attacks hit an elite or leader enemy.",
+                    "zh": "普通攻击命中精英或领袖敌人时获得<@ba.kw>{sp}</>点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Gains +15% ATK and +15 ASPD when there are no allied units in the adjacent 4 tiles",
+                    "zh": "部署时若周围四格内没有其他友方单位，攻击力+15%，攻击速度+15",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk": 0.15,
+                    "attack_speed": 15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

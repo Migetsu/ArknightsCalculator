@@ -20,7 +20,8 @@ test.describe('Layout Sanity & Responsiveness', () => {
       }) => {
         await page.setViewportSize({ width, height: 900 })
         await page.goto(path)
-        await page.waitForLoadState('networkidle')
+        await page.waitForLoadState('domcontentloaded')
+        await page.locator('.layout-default__main').waitFor({ state: 'attached' })
 
         // 1. Verify no horizontal scrollbar (scrollWidth <= clientWidth)
         const overflowCheck = await page.evaluate(() => {
@@ -120,12 +121,18 @@ test.describe('Layout Sanity & Responsiveness', () => {
     for (const locale of ['en', 'ru']) {
       await page.setViewportSize({ width: 360, height: 800 })
       await page.goto(locale === 'en' ? '/' : '/ru')
-      await page.waitForLoadState('networkidle')
+      await page.waitForLoadState('domcontentloaded')
+      await page.locator('.layout-default__burger').waitFor({ state: 'visible' })
 
       // Open drawer
-      await page.locator('.layout-default__burger').click()
+      const burger = page.locator('.layout-default__burger')
       const drawer = page.locator('.ak-drawer__panel')
-      await expect(drawer).toBeVisible()
+      await expect(async () => {
+        if (!(await drawer.isVisible())) {
+          await burger.click()
+        }
+        await expect(drawer).toBeVisible({ timeout: 1000 })
+      }).toPass({ timeout: 6000 })
 
       // Verify Doctor row elements do not collide or overflow drawer width
       const userCardCheck = await page.evaluate(() => {
@@ -173,12 +180,19 @@ test.describe('Layout Sanity & Responsiveness', () => {
     for (const locale of ['en', 'ru']) {
       await page.setViewportSize({ width: 768, height: 900 })
       await page.goto(locale === 'en' ? '/' : '/ru')
-      await page.waitForLoadState('networkidle')
+      await page.waitForLoadState('domcontentloaded')
 
       // Open modal via header Sync button
-      await page.locator('.layout-default__sync-btn').click()
+      const syncBtn = page.locator('.layout-default__sync-btn')
+      await expect(syncBtn).toBeVisible()
       const modal = page.locator('.ak-modal__panel')
-      await expect(modal).toBeVisible()
+
+      await expect(async () => {
+        if (!(await modal.isVisible())) {
+          await syncBtn.click()
+        }
+        await expect(modal).toBeVisible({ timeout: 1000 })
+      }).toPass({ timeout: 6000 })
 
       // Verify no horizontal overflow inside modal
       const modalOverflow = await page.evaluate(() => {

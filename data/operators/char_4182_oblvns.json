@@ -1565,7 +1565,196 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 180,
+            "atk": 38,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "atk_scale": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "atk": 54,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "atk_scale": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "丰川祥子可以<$ba.permanentatk>持续攻击</>且攻击会演奏追踪敌人的音符，音符飘出攻击范围一段时间后消失。每存在一个音符，<$ba.mujica>Ave Mujica</>成员无视敌人4%的防御力和2%法术抗性（最多可叠加12层）；技能期间远程攻击不再降低攻击力",
+                    "zh": "丰川祥子可以<$ba.permanentatk>持续攻击</>且攻击会演奏追踪敌人的音符，音符飘出攻击范围一段时间后消失。每存在一个音符，<$ba.mujica>Ave Mujica</>成员无视敌人4%的防御力和2%法术抗性（最多可叠加12层）；技能期间远程攻击不再降低攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate_ratio": 0.04,
+                    "magic_resist_penetrate_ratio": 0.02,
+                    "attack@angle": 20,
+                    "delay": 1,
+                    "max_cnt": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 63,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "zh": "攻击范围内存在2名及以上敌人时攻击速度<@ba.vup>+12</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": 12,
+                    "atk_scale": 0.8
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "丰川祥子可以<$ba.permanentatk>持续攻击</>且攻击会演奏追踪敌人的音符，音符飘出攻击范围一段时间后消失。每存在一个音符，<$ba.mujica>Ave Mujica</>成员无视敌人5%的防御力和2.5%法术抗性（最多可叠加12层）；技能期间远程攻击不再降低攻击力",
+                    "zh": "丰川祥子可以<$ba.permanentatk>持续攻击</>且攻击会演奏追踪敌人的音符，音符飘出攻击范围一段时间后消失。每存在一个音符，<$ba.mujica>Ave Mujica</>成员无视敌人5%的防御力和2.5%法术抗性（最多可叠加12层）；技能期间远程攻击不再降低攻击力",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "def_penetrate_ratio": 0.05,
+                    "magic_resist_penetrate_ratio": 0.025,
+                    "attack@angle": 20,
+                    "delay": 1,
+                    "max_cnt": 12
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

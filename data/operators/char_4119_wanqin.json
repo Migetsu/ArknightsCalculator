@@ -1129,7 +1129,192 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 105,
+            "def": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30084",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 120,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +7%, increased to +11% if they are deployed facing the same direction as Wanqing",
+                    "zh": "周围8格的干员最大生命值+7%，若部署方向与万顷相同，改为+11%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "wanqin_t_1[hp_common].max_hp": 0.07,
+                    "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +8% <@ba.talpu>(+1%)</>, increased to +12% <@ba.talpu>(+1%)</> if they are deployed facing the same direction as Wanqing",
+                    "zh": "周围8格的干员最大生命值+8%<@ba.talpu>（+1%）</>，若部署方向与万顷相同，改为+12%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "wanqin_t_1[hp_common].max_hp": 0.08,
+                    "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30074",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 135,
+            "def": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Cannot block enemies during the skill duration, but grants <@ba.kw>+1</> Block to an Operator in front of this unit",
+                    "zh": "技能发动期间阻挡数变为0，但使身前一名干员阻挡数<@ba.kw>+1</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "block_cnt": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +9%, increased to +13% if they are deployed facing the same direction as Wanqing",
+                    "zh": "周围8格的干员最大生命值+9%，若部署方向与万顷相同，改为+13%",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "wanqin_t_1[hp_common].max_hp": 0.09,
+                    "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Increases the Max HP of Operators in the surrounding 8 tiles by +10% <@ba.talpu>(+1%)</>, increased to +14% <@ba.talpu>(+1%)</> if they are deployed facing the same direction as Wanqing",
+                    "zh": "周围8格的干员最大生命值+10%<@ba.talpu>（+1%）</>，若部署方向与万顷相同，改为+14%<@ba.talpu>（+1%）</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "wanqin_t_1[hp_common].max_hp": 0.1,
+                    "wanqin_t_1[hp_common].wanqin_t_1[hp_extra].max_hp": 0.04
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

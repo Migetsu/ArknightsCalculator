@@ -21,17 +21,19 @@ function loadFixture(filename: string): unknown {
 describe('Raw Game Data Zod Schemas', () => {
   const registeredTables = Object.keys(RAW_TABLE_SCHEMAS)
 
-  it('registers all 9 core raw tables in the schema map', () => {
+  it('registers all 11 core raw tables in the schema map', () => {
     expect(registeredTables).toEqual([
       'character_table.json',
       'skill_table.json',
       'item_table.json',
       'uniequip_table.json',
+      'battle_equip_table.json',
       'building_data.json',
       'gacha_table.json',
       'stage_table.json',
       'handbook_info_table.json',
       'char_patch_table.json',
+      'gamedata_const.json',
     ])
   })
 
@@ -86,12 +88,12 @@ describe('Raw Game Data Zod Schemas', () => {
       expect(result.success).toBe(false)
     })
 
-    it('rejects stage_table when stage lacks required code', () => {
+    it('rejects stage_table when stage lacks required stageId', () => {
       const invalid = {
         stages: {
           stage_invalid: {
-            stageId: 'stage_invalid',
-            // missing code
+            // missing stageId
+            code: '1-7',
             apCost: 6,
           },
         },

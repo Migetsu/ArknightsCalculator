@@ -1081,7 +1081,196 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 110,
+            "atk": 22
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 160,
+            "atk": 27
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to deal 160% damage and <$ba.stun>Stun</> the target for 0.2 seconds",
+                    "zh": "攻击时，20%几率当次攻击的攻击力提升至160%，并使敌人<$ba.stun>晕眩</>0.2秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.2,
+                    "atk_scale": 1.6,
+                    "stun": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to deal 170% <@ba.talpu>(+10%)</> damage and <$ba.stun>Stun</> the target for 0.2 seconds",
+                    "zh": "攻击时，20%几率当次攻击的攻击力提升至170%<@ba.talpu>（+10%）</>，并使敌人<$ba.stun>晕眩</>0.2秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.2,
+                    "atk_scale": 1.7,
+                    "stun": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30104",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 190,
+            "atk": 31
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Increases ATK to <@ba.kw>{atk_scale:0%}</> when attacking aerial targets",
+                    "zh": "攻击空中单位时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to deal 165% damage and <$ba.stun>Stun</> the target for 0.2 seconds",
+                    "zh": "攻击时，20%几率当次攻击的攻击力提升至165%，并使敌人<$ba.stun>晕眩</>0.2秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.2,
+                    "atk_scale": 1.65,
+                    "stun": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When attacking, has a 20% chance to deal 175% <@ba.talpu>(+10%)</> damage and <$ba.stun>Stun</> the target for 0.2 seconds",
+                    "zh": "攻击时，20%几率当次攻击的攻击力提升至175%<@ba.talpu>（+10%）</>，并使敌人<$ba.stun>晕眩</>0.2秒",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "prob": 0.2,
+                    "atk_scale": 1.75,
+                    "stun": 0.2
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30064",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

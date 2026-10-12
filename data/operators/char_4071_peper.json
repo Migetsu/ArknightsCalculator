@@ -1088,7 +1088,231 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 36
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31094",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 51
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "治疗时，若目标生命少于40%则为其额外恢复170点生命",
+                    "zh": "治疗时，若目标生命少于40%则为其额外恢复170点生命",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "value": 170
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "治疗时，若目标生命少于40%则为其额外恢复180<@ba.talpu>（+10）</>点生命",
+                    "zh": "治疗时，若目标生命少于40%则为其额外恢复180<@ba.talpu>（+10）</>点生命",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.4,
+                    "value": 180
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 61
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "zh": "恢复友方单位生命，且会在<@ba.kw>3</>个友方单位间跳跃，每次跳跃治疗量降低15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "attack@chain.max_target": 3,
+                    "attack@chain.atk_scale": 0.85
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "治疗时，若目标生命少于50%则为其额外恢复200点生命",
+                    "zh": "治疗时，若目标生命少于50%则为其额外恢复200点生命",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "value": 200
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "治疗时，若目标生命少于50%则为其额外恢复210<@ba.talpu>（+10）</>点生命",
+                    "zh": "治疗时，若目标生命少于50%则为其额外恢复210<@ba.talpu>（+10）</>点生命",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "hp_ratio": 0.5,
+                    "value": 210
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30104",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

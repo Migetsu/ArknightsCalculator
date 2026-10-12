@@ -1474,7 +1474,200 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 30,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 210,
+            "atk": 40,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When healing an Operator, sows seeds on that tile and the adjacent 4 tiles, bestowing the following effects: Restores 80 HP/s, grants 10% <$ba.protect>Sanctuary</>",
+                    "zh": "治疗干员时对其与周围四格地块进行播种施加如下效果：每秒恢复80生命、获得10%<$ba.protect>庇护</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 80,
+                    "damage_resistance": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When healing an Operator, sows seeds on that tile and the adjacent 4 tiles, bestowing the following effects: Restores 85 <@ba.talpu>(+5)</> HP/s, grants 12% <@ba.talpu>(+2%)</> <$ba.protect>Sanctuary</>",
+                    "zh": "治疗干员时对其与周围四格地块进行播种施加如下效果：每秒恢复85<@ba.talpu>（+5）</>生命、获得12%<@ba.talpu>（+2%）</><$ba.protect>庇护</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 85,
+                    "damage_resistance": 0.12
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30135",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 270,
+            "atk": 50,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When healing an Operator, sows seeds on that tile and the adjacent 4 tiles, bestowing the following effects: Restores 80 HP/s, grants 15% <$ba.protect>Sanctuary</>; Immediately applies these effects on the tile when deployed",
+                    "zh": "治疗干员时对其与周围四格地块进行播种施加如下效果：每秒恢复80生命、获得15%<$ba.protect>庇护</>，部署时立即给所处地块播种该效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 80,
+                    "damage_resistance": 0.15,
+                    "born_range_id": 0
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "When healing an Operator, sows seeds on that tile and the adjacent 4 tiles, bestowing the following effects: Restores 85 <@ba.talpu>(+5)</> HP/s, grants 17% <@ba.talpu>(+2%)</> <$ba.protect>Sanctuary</>; Immediately applies these effects on the tile when deployed",
+                    "zh": "治疗干员时对其与周围四格地块进行播种施加如下效果：每秒恢复85<@ba.talpu>（+5）</>生命、获得17%<@ba.talpu>（+2%）</><$ba.protect>庇护</>，部署时立即给所处地块播种该效果",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "hp_recovery_per_sec": 85,
+                    "damage_resistance": 0.17,
+                    "born_range_id": 0
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_shu",
@@ -1542,7 +1735,199 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 190,
+            "atk": 25,
+            "def": 40
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "受到的伤害减少<@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 240,
+            "atk": 33,
+            "def": 48
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "受到的伤害减少<@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "场上有三名不同职业干员时所有干员生命上限+14%、三名相同职业干员时所有干员攻击速度+14，编队中有四名【岁】干员时所有干员攻击力+14%且4秒获得1点技力；上述三个条件达成两种或以上时，则额外使所有干员攻击力+3%",
+                    "zh": "场上有三名不同职业干员时所有干员生命上限+14%、三名相同职业干员时所有干员攻击速度+14，编队中有四名【岁】干员时所有干员攻击力+14%且4秒获得1点技力；上述三个条件达成两种或以上时，则额外使所有干员攻击力+3%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.14,
+                    "attack_speed": 14,
+                    "atk": 0.14,
+                    "interval": 4,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.03
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 300,
+            "atk": 40,
+            "def": 55
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "受到的伤害减少<@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "场上有三名不同职业干员时所有干员生命上限+16%、三名相同职业干员时所有干员攻击速度+16，编队中有四名【岁】干员时所有干员攻击力+16%且4秒获得1点技力；上述三个条件达成两种或以上时，则额外使所有干员攻击力+5%",
+                    "zh": "场上有三名不同职业干员时所有干员生命上限+16%、三名相同职业干员时所有干员攻击速度+16，编队中有四名【岁】干员时所有干员攻击力+16%且4秒获得1点技力；上述三个条件达成两种或以上时，则额外使所有干员攻击力+5%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.16,
+                    "attack_speed": 16,
+                    "atk": 0.16,
+                    "interval": 4,
+                    "sp": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

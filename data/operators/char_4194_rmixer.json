@@ -1464,7 +1464,198 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 210,
+            "atk": 40,
+            "def": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reveals <$ba.invisible>Invisible</> enemies within range",
+                    "zh": "攻击范围内敌人的<$ba.invisible>隐匿</>效果失效",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "atk": 48,
+            "def": 37
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reveals <$ba.invisible>Invisible</> enemies within range",
+                    "zh": "攻击范围内敌人的<$ba.invisible>隐匿</>效果失效",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Whenever Sankta Miksaparato deals damage, he gains DEF +40 and ASPD +4 for 10 seconds, stacking up to 3 times",
+                    "zh": "每次造成伤害使自身10秒内防御力+40，攻击速度+4，最多可叠加3层",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def": 40,
+                    "attack_speed": 4,
+                    "max_stack_cnt": 3,
+                    "duration": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30155",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 280,
+            "atk": 54,
+            "def": 43
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reveals <$ba.invisible>Invisible</> enemies within range",
+                    "zh": "攻击范围内敌人的<$ba.invisible>隐匿</>效果失效",
+                    "isMachineTranslation": false
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Whenever Sankta Miksaparato deals damage, he gains DEF +50 and ASPD +5 for 10 seconds, stacking up to 3 times; once at max stacks, all [Laterano] Operators on the field cannot have their ASPD decrease below their starting ASPD",
+                    "zh": "每次造成伤害使自身10秒内防御力+50，攻击速度+5，最多可叠加3层；层数叠满时，使场上所有【拉特兰】干员的攻击速度不会低于战斗开始时的攻击速度",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "def": 50,
+                    "attack_speed": 5,
+                    "max_stack_cnt": 3,
+                    "duration": 10
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_rmixer",
@@ -1532,7 +1723,214 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 60,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "zh": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ability_range_forward_extend": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 68,
+            "def": 57
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "zh": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ability_range_forward_extend": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "若5秒内未主动攻击，获得相当于生命上限15%的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+8%",
+                    "zh": "若5秒内未主动攻击，获得相当于生命上限15%的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+8%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "shield": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "若5秒内未主动攻击，获得相当于生命上限18%<@ba.talpu>（+3%）</>的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+8%",
+                    "zh": "若5秒内未主动攻击，获得相当于生命上限18%<@ba.talpu>（+3%）</>的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+8%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "shield": 0.18
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30165",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 74,
+            "def": 63
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "zh": "攻击距离+1（不受技能攻击范围变化影响）",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ability_range_forward_extend": 1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "若5秒内未主动攻击，获得相当于生命上限20%的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+15%",
+                    "zh": "若5秒内未主动攻击，获得相当于生命上限20%的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "shield": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "若5秒内未主动攻击，获得相当于生命上限23%<@ba.talpu>（+3%）</>的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+15%",
+                    "zh": "若5秒内未主动攻击，获得相当于生命上限23%<@ba.talpu>（+3%）</>的<$ba.barrier>屏障</>，失去屏障后重新计时；拥有来自自身的屏障时攻击力+15%",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "interval": 5,
+                    "shield": 0.23
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

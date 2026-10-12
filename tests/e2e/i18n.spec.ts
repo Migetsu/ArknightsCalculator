@@ -21,8 +21,11 @@ test.describe('I18n language switching', () => {
     await expect(ruButton).not.toHaveAttribute('aria-current')
 
     // 2. Click RU to switch locale
-    await ruButton.click()
-    await expect(page).toHaveURL(/\/ru/)
+    await expect(async () => {
+      await ruButton.click()
+      await expect(page).toHaveURL(/\/ru/, { timeout: 1000 })
+    }).toPass({ timeout: 5000 })
+
     await expect(page.locator('.dashboard-page__subtitle')).toContainText(
       'Центральный командный терминал Rhodes Island',
     )
@@ -34,7 +37,6 @@ test.describe('I18n language switching', () => {
 
     // 3. Reload page and verify language selection persists
     await page.reload()
-    await page.waitForLoadState('networkidle')
     await expect(page).toHaveURL(/\/ru/)
     await expect(page.locator('.dashboard-page__subtitle')).toContainText(
       'Центральный командный терминал Rhodes Island',
@@ -42,8 +44,11 @@ test.describe('I18n language switching', () => {
     await expect(ruButton).toHaveAttribute('aria-current', 'true')
 
     // 4. Switch back to EN
-    await enButton.click()
-    await expect(page).not.toHaveURL(/\/ru/)
+    await expect(async () => {
+      await enButton.click()
+      await expect(page).not.toHaveURL(/\/ru/, { timeout: 1000 })
+    }).toPass({ timeout: 5000 })
+
     await expect(page.locator('.dashboard-page__title')).toHaveText('DASHBOARD // OVERVIEW')
     await expect(page.locator('.language-switcher__btn', { hasText: 'EN' })).toHaveAttribute(
       'aria-current',

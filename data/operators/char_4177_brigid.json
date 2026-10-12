@@ -1127,7 +1127,229 @@
             "count": 60000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 18
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "30044",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 180,
+            "atk": 30
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "造成18次伤害后，攻击力+6%，获得40%物理闪避",
+                    "zh": "造成18次伤害后，攻击力+6%，获得40%物理闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.06,
+                    "prob": 0.4,
+                    "trigger_damage_count": 18
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "造成18次伤害后，攻击力+6%，获得43%<@ba.talpu>（+3%）</>物理闪避",
+                    "zh": "造成18次伤害后，攻击力+6%，获得43%<@ba.talpu>（+3%）</>物理闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.06,
+                    "prob": 0.43,
+                    "trigger_damage_count": 18
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 210,
+            "atk": 40
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "zh": "攻击周围8格的敌人时攻击力提升至<@ba.kw>{atk_scale:0%}</>",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "atk_scale": 1.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "造成16次伤害后，攻击力+10%，获得45%物理闪避",
+                    "zh": "造成16次伤害后，攻击力+10%，获得45%物理闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "prob": 0.45,
+                    "trigger_damage_count": 16
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "造成16次伤害后，攻击力+10%，获得48%<@ba.talpu>（+3%）</>物理闪避",
+                    "zh": "造成16次伤害后，攻击力+10%，获得48%<@ba.talpu>（+3%）</>物理闪避",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "atk": 0.1,
+                    "prob": 0.48,
+                    "trigger_damage_count": 16
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "31054",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

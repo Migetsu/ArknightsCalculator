@@ -1506,7 +1506,210 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 50,
+            "attack_speed": 5
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30125",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 64,
+            "attack_speed": 6
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 2 SP every 6 seconds, with a 20% chance to restore an additional 5 SP.",
+                    "zh": "每6秒额外回复2点技力，有20%概率额外回复5点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "interval": 6,
+                    "ifrit_e_002[dice_sp].prob": 0.2,
+                    "ifrit_e_002[dice_sp].interval": 6,
+                    "ifrit_e_002[dice_sp].sp": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 2 SP every 5.5 <@ba.talpu>(-0.5)</> seconds, with a 20% chance to restore an additional 5 SP.",
+                    "zh": "每5.5<@ba.talpu>（-0.5）</>秒额外回复2点技力，有20%概率额外回复5点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "interval": 5.5,
+                    "ifrit_e_002[dice_sp].prob": 0.2,
+                    "ifrit_e_002[dice_sp].interval": 5.5,
+                    "ifrit_e_002[dice_sp].sp": 5
+                  },
+                  "requiredPotentialRank": 5
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 72,
+            "attack_speed": 7
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "overrideDescription": {
+                    "en": "Attacks deal <@ba.kw>extremely long-ranged AoE Arts damage</>; damage dealt increases with distance, up to <@ba.kw>110%</>",
+                    "zh": "攻击造成<@ba.kw>超远距离的群体法术伤害</>，距离越远伤害越高，最高达到<@ba.kw>110%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "min_dist": 0,
+                    "max_dist": 4,
+                    "damage_scale": 0.1
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 2 SP every 6 seconds, with a 30% chance to restore an additional 5 SP.",
+                    "zh": "每6秒额外回复2点技力，有30%概率额外回复5点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "interval": 6,
+                    "ifrit_e_002[dice_sp].prob": 0.3,
+                    "ifrit_e_002[dice_sp].interval": 6,
+                    "ifrit_e_002[dice_sp].sp": 5
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Restores 2 SP every 5.5 <@ba.talpu>(-0.5)</> seconds, with a 30% chance to restore an additional 5 SP.",
+                    "zh": "每5.5<@ba.talpu>（-0.5）</>秒额外回复2点技力，有30%概率额外回复5点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2,
+                    "interval": 5.5,
+                    "ifrit_e_002[dice_sp].prob": 0.3,
+                    "ifrit_e_002[dice_sp].interval": 5.5,
+                    "ifrit_e_002[dice_sp].sp": 5
+                  },
+                  "requiredPotentialRank": 5
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_ifrit",
@@ -1574,7 +1777,210 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 120,
+            "atk": 45
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.burning2>Burn damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.burning2>灼燃损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 165,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.burning2>Burn damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.burning2>灼燃损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "RES of enemies within range -40%; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, attacks will deal an additional 40% ATK as Elemental Damage",
+                    "zh": "攻击范围内的敌军法术抗性-40%，若攻击目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间，攻击对其额外造成相当于攻击力40%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resistance": -0.4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "RES of enemies within range -44% <@ba.talpu>(+4%)</>; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, attacks will deal an additional 40% ATK as Elemental Damage",
+                    "zh": "攻击范围内的敌军法术抗性-44%<@ba.talpu>（+4%）</>，若攻击目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间，攻击对其额外造成相当于攻击力40%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resistance": -0.44
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "element_atk_scale": 0.4
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 200,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When dealing Arts damage, deals an additional <@ba.vup>8%</> as <$ba.dt.burning2>Burn damage</>",
+                    "zh": "造成法术伤害时附带相当于<@ba.vup>8%</>伤害的<$ba.dt.burning2>灼燃损伤</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "ep_damage_ratio": 0.08
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "RES of enemies within range -40%; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, attacks will deal an additional 50% ATK as Elemental Damage",
+                    "zh": "攻击范围内的敌军法术抗性-40%，若攻击目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间，攻击对其额外造成相当于攻击力50%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resistance": -0.4
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "RES of enemies within range -44% <@ba.talpu>(+4%)</>; if target is under the burst effect of <$ba.dt.burning2>Burn damage</>, attacks will deal an additional 50% ATK as Elemental Damage",
+                    "zh": "攻击范围内的敌军法术抗性-44%<@ba.talpu>（+4%）</>，若攻击目标处于<$ba.dt.burning2>灼燃损伤</>爆发期间，攻击对其额外造成相当于攻击力50%的元素伤害",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "magic_resistance": -0.44
+                  },
+                  "requiredPotentialRank": 2
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "element_atk_scale": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30115",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

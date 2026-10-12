@@ -1428,7 +1428,170 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 150,
+            "atk": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30115",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 250,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Saria restores an ally's HP, she also restores 2 extra SP to them",
+                    "zh": "每次回复友方单位生命值时额外回复该单位2点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "sp": 2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30125",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 350,
+            "atk": 70
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When healing allied units with less than 50% HP, increases heal amount by <@ba.kw>15%</>",
+                    "zh": "治疗生命值低于50%的友方单位时治疗量提升<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "heal_scale": 1.15,
+                    "hp_ratio": 0.5
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "When Saria restores an ally's HP, she also restores 2 extra SP to them; [Rhine Lab] Operators gain 3 SP instead",
+                    "zh": "每次回复友方单位生命值时额外回复该单位2点技力，【莱茵生命】干员单位回复3点技力",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "demkni_e_sp.sp": 2,
+                    "demkni_e_sp[rhine].sp": 3
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30135",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "uniequip_003_demkni",
@@ -1496,7 +1659,203 @@
             "count": 120000
           }
         ]
-      }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 160,
+            "atk": 35,
+            "def": 35
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30135",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 210,
+            "atk": 43,
+            "def": 43
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "For every 18 seconds Saria is deployed, ATK +6% and DEF +5%, stacking up to 5 times",
+                    "zh": "每在场上停留18秒，攻击力+6%，防御力+5%，最多叠加5层",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "interval": 18,
+                    "atk": 0.06,
+                    "def": 0.05
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "For every 18 seconds Saria is deployed, ATK +7%<@ba.talpu> (+1%)</> and DEF +6%<@ba.talpu> (+1%)</>, stacking up to 5 times",
+                    "zh": "每在场上停留18秒，攻击力+7%<@ba.talpu>（+1%）</>，防御力+6%<@ba.talpu>（+1%）</>，最多叠加5层",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "interval": 18,
+                    "atk": 0.07,
+                    "def": 0.06
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30115",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 270,
+            "atk": 50,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Reduces damage taken by <@ba.kw>15%</>",
+                    "zh": "受到的伤害减少<@ba.kw>15%</>",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "damage_resistance": 0.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "For every 18 seconds Saria is deployed, ATK +7% and DEF +6%, stacking up to 5 times",
+                    "zh": "每在场上停留18秒，攻击力+7%，防御力+6%，最多叠加5层",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "interval": 18,
+                    "atk": 0.07,
+                    "def": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "For every 18 seconds Saria is deployed, ATK +8%<@ba.talpu> (+1%)</> and DEF +7%<@ba.talpu> (+1%)</>, stacking up to 5 times",
+                    "zh": "每在场上停留18秒，攻击力+8%<@ba.talpu>（+1%）</>，防御力+7%<@ba.talpu>（+1%）</>，最多叠加5层",
+                    "isMachineTranslation": false
+                  },
+                  "blackboard": {
+                    "max_stack_cnt": 5,
+                    "interval": 18,
+                    "atk": 0.08,
+                    "def": 0.07
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30125",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
     }
   ]
 }

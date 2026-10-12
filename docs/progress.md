@@ -107,9 +107,19 @@
   - Manifest pipeline: updated `scripts/data/build-asset-manifest.ts` with real HTTP GET validation, concurrency throttling (10 workers), and `source: 'http' | 'tree'`. Re-generated `data/asset-manifest.json` achieving 434/434 (100%) verified avatars.
   - Visual DOM audit: authored `tests/e2e/audit-assets-dom.spec.ts` on port 3001. Confirmed `naturalWidth > 0` for all rendered `<img>` elements, captured responsive screenshots `docs/screenshots/operators-360.png` and `docs/screenshots/operators-1440.png`, and traversed full catalog (376 operators) with 0 fallbacks (`fallbackRatio = 0.0%`).
 
+- Implemented calculation constants, item registry, crafting recipes, module combat stats, and referential integrity validator (`feat/data-constants`):
+  - Updated data fetching pipeline: added `gamedata_const.json` and `battle_equip_table.json` (CN & EN) to `sources.config.ts`, `fetch-raw.ts`, and Zod schemas with `.passthrough()`. Added offline test fixtures and unit tests in `tests/unit/data/raw-schemas.test.ts` (17 tests passing, 0 network calls).
+  - Implemented `scripts/data/build-constants.ts` producing `data/constants.json` (75.7 KB): rarity caps (`maxLevel`), EXP thresholds (`characterExpMap`), leveling costs (`characterUpgradeCostMap`), elite promotion LMD (`evolveGoldCost`), skill mastery costs (`masteryCost`), EXP cards (`expItems`), and PRTS battle terms (`termDescriptionDict` with 147 terms and i18n descriptions).
+  - Implemented `scripts/data/build-items.ts` producing `data/items.json` (244.0 KB, 848 planner items): classified by table properties into types (`material`: 782, `currency`: 37, `chip`: 16, `chip_pack`: 8, `exp_card`: 4, `catalyst`: 1), with `sortId`, `iconId`, and calculation flags (`canDrop`, `canCraft`, `isModuleToken`).
+  - Implemented `scripts/data/build-recipes.ts` producing `data/recipes.json` (100.3 KB, 74 recipes: 66 workshop formulas + 8 factory dualchip formulas) with `extraOutcome` drop chances and costs.
+  - Dependency graph and cycle analysis: synthesis material promotion, skill books, building materials, and factory dualchips form a strict DAG with 0 cycles. Workshop chip conversions contain exactly 8 pairwise cycles (3:2 reciprocal conversion between class pairs) verified by tests in `tests/unit/data/recipes.test.ts`.
+  - Enriched operator details in `scripts/data/build-operators.ts`: integrated module combat progression (`battle_equip_table`) including stage attribute blackboards, trait/talent candidates, and unlock/upgrade costs. Evaluated 434 operators: 388 have modules (891 total module entries, 503 advanced combat modules, 388 base mission entries).
+  - Documented dataset specifications and schemas in `docs/data-formats.md`.
+  - Built referential integrity validator `scripts/data/validate-data.ts` (`npm run data:validate`) and integrated it into `.github/workflows/ci.yml`: verified 22,426 item references, 956 skill references, and 891 module references across all 434 operators and recipes with 0 violations.
+
 ## In progress
 
-- None (Audit batch 2 completed).
+- None (Data constants and calculation foundation completed).
 
 ## Next
 

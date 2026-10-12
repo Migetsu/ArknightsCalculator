@@ -8,6 +8,8 @@ import { RawGachaTableSchema, type RawGachaTable } from './gacha-table.schema'
 import { RawStageTableSchema, type RawStageTable } from './stage-table.schema'
 import { RawHandbookInfoTableSchema, type RawHandbookInfoTable } from './handbook-info-table.schema'
 import { RawCharPatchTableSchema, type RawCharPatchTable } from './char-patch-table.schema'
+import { RawGamedataConstSchema, type RawGamedataConst } from './gamedata-const.schema'
+import { RawBattleEquipTableSchema, type RawBattleEquipTable } from './battle-equip-table.schema'
 
 export * from './character-table.schema'
 export * from './skill-table.schema'
@@ -18,17 +20,21 @@ export * from './gacha-table.schema'
 export * from './stage-table.schema'
 export * from './handbook-info-table.schema'
 export * from './char-patch-table.schema'
+export * from './gamedata-const.schema'
+export * from './battle-equip-table.schema'
 
 export type RawTableMap = {
   'character_table.json': RawCharacterTable
   'skill_table.json': RawSkillTable
   'item_table.json': RawItemTable
   'uniequip_table.json': RawUniequipTable
+  'battle_equip_table.json': RawBattleEquipTable
   'building_data.json': RawBuildingData
   'gacha_table.json': RawGachaTable
   'stage_table.json': RawStageTable
   'handbook_info_table.json': RawHandbookInfoTable
   'char_patch_table.json': RawCharPatchTable
+  'gamedata_const.json': RawGamedataConst
 }
 
 export const RAW_TABLE_SCHEMAS: Record<string, ZodType<unknown>> = {
@@ -36,9 +42,12 @@ export const RAW_TABLE_SCHEMAS: Record<string, ZodType<unknown>> = {
   'skill_table.json': RawSkillTableSchema,
   'item_table.json': RawItemTableSchema,
   'uniequip_table.json': RawUniequipTableSchema,
+  'battle_equip_table.json': RawBattleEquipTableSchema,
   'building_data.json': RawBuildingDataSchema,
   'gacha_table.json': RawGachaTableSchema,
   'stage_table.json': RawStageTableSchema,
   'handbook_info_table.json': RawHandbookInfoTableSchema,
   'char_patch_table.json': RawCharPatchTableSchema,
+  'gamedata_const.json': RawGamedataConstSchema,
 }
+
