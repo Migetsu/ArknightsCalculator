@@ -122,6 +122,13 @@
   - Preserved `LanguageSwitcher.vue` component and unit tests for subsequent integration into the Settings page (`/settings`).
   - Updated E2E tests (`tests/e2e/i18n.spec.ts`) asserting language switcher absence in header and validating direct localized routing (`/ru`).
 
+- Implemented server availability flags, recipe kinds, and pure stats calculation core (`feat/stats-core`):
+  - Server availability flags: added `servers: ('cn' | 'global')[]` to `GameItem` and `OperatorModule`. Identified 92 CN-only items (756 Global) and 168 CN-only modules (723 Global). Updated schemas, data builders, and validator.
+  - Recipe classification: added `kind: 'synthesis' | 'conversion' | 'manufacture'` to `CraftRecipe`. Validated strict DAG on non-conversion formulas and verified exact 8 reciprocal chip cycles on conversion formulas.
+  - Operator Stats Core: created pure calculation engine in `shared/utils/stats/` (`calculateStats.ts`, `types.ts`). Implemented linear interpolation across keyframes, trust scaling (0–100%), potential ranks (1–6), module combat stat bonuses (stages 1–3), and breakdown by sources.
+  - Benchmark validation: pinned 5 benchmark operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) in unit tests matching PRTS / Terra Wiki data.
+  - Documented engine and mathematical equations in `docs/stats.md`.
+
 ## In progress
 
 - Implemented rich text parser, blackboard interpolation, and accessible AkRichText component (`feat/rich-text`):
@@ -141,7 +148,7 @@
 
 ## Next
 
-- Develop calculation core for operators (level exp, promotion materials, skill mastery tree, module unlock requirements) in `shared/`.
+- Develop leveling EXP & promotion material requirements calculator core in `shared/`.
 - Build depot inventory models and craft decomposition tree core in `shared/`.
 - Build full operator detail page (`/operators/[id]`).
 - Move language switcher to settings page when implementing module `SET-06`.

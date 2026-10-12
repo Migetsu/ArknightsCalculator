@@ -42,8 +42,12 @@ export async function buildRecipes(): Promise<{
       probability: totalWeight > 0 ? Number((rate * (ex.weight / totalWeight)).toFixed(6)) : 0,
     }))
 
+    const isChipConversion = wf.formulaType === 'F_ASC'
+    const kind = isChipConversion ? 'conversion' : 'synthesis'
+
     const recipe: CraftRecipe = {
       id: `wf_${wf.formulaId}`,
+      kind,
       resultId: wf.itemId,
       resultCount: wf.count,
       ingredients: wf.costs.map((c) => ({
@@ -71,6 +75,7 @@ export async function buildRecipes(): Promise<{
 
     const recipe: CraftRecipe = {
       id: `mf_${mf.formulaId}`,
+      kind: 'manufacture',
       resultId: mf.itemId,
       resultCount: mf.count,
       ingredients: mf.costs.map((c) => ({
