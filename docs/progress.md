@@ -64,13 +64,21 @@
   - Added component tests `AkContainer.test.ts`, `AkGrid.test.ts`, `AkPageHeader.test.ts`. Total 55 unit/component tests passing.
   - Automated `layout-sanity.spec.ts` to traverse all registry routes in EN and RU across 5 viewports (360, 768, 1024, 1440, 1920). Total 86 Playwright E2E tests passing.
 
+- Implemented raw game data sources research, audit documentation, and reproducible fetching pipeline:
+  - Audited external repositories and APIs with full findings documented in `docs/data-sources.md`.
+  - Identified critical discrepancies: `Kengxxiao/ArknightsGameData` contains only `zh_CN`; Global data is located in `Kengxxiao/ArknightsGameData_YoStar` (`en_US`, `ja_JP`, `ko_KR`). No official Russian localization exists in client data. Active assets are maintained in `yuanyan3060/ArknightsGameResource`.
+  - Authored `scripts/data/sources.config.ts` pinning commit SHAs for CN (`17759cc8cdf37388414145d16262a3a06f3ab25e`), EN (`57010cb5b2afea112cae57daa756b58676ba6850`), and assets (`9bf239661e37766fba585806fb9fa67e79bb679e`), with automatic primary (GitHub Raw) and mirror (jsDelivr) resolution.
+  - Implemented strict Zod schemas with `.passthrough()` in `scripts/data/schemas/` for all 9 core tables: `character_table`, `skill_table`, `item_table`, `uniequip_table`, `building_data`, `gacha_table`, `stage_table`, `handbook_info_table`, and `char_patch_table`.
+  - Built idempotent download script `scripts/data/fetch-raw.ts` (`npm run data:fetch`) with exponential retries, rate-limiting pauses, payload integrity verification, schema validation, and `.cache/raw/` caching.
+  - Authored offline mini-fixtures in `tests/fixtures/raw/` and 15 comprehensive unit tests in `tests/unit/data/raw-schemas.test.ts` (0 network calls in tests). Total 70 Vitest unit/component tests passing.
+
 ## In progress
 
-- None (Page templates, modules registry, and uniform layouts completed).
+- None (Raw data sources audit, Zod schemas, fixtures, and fetcher completed).
 
 ## Next
 
-- Configure Supabase client integration and state management for synchronized accounts.
+- Implement data normalization scripts to transform raw tables into typed application schemas in `data/`.
 - Develop calculation core for operators, material requirements, and craft trees in `shared/`.
 - Build operator catalog and planner modules.
 
