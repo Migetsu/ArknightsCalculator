@@ -2,51 +2,56 @@
 // Dark tactical palette, high-contrast accents, technical metrics
 
 :root {
-  // Background colors (Rhodes Island Terminal neutral dark)
-  --color-bg-base: #0c0d10;
-  --color-bg-surface: #14161a;
-  --color-bg-elevated: #1a1d22;
-  --color-bg-subtle: #23262c;
-  --color-bg-overlay: rgb(12 13 16 / 88%);
+  // Background colors (Rhodes Island Terminal deep obsidian dark)
+  --color-bg-base: #08090c;
+  --color-bg-surface: #101217;
+  --color-bg-elevated: #16181f;
+  --color-bg-card: #12141a;
+  --color-bg-subtle: #1c1f27;
+  --color-bg-highlight: rgb(255 255 255 / 3%);
+  --color-bg-overlay: rgb(8 9 12 / 92%);
 
   // Border & Grid line colors
-  --color-border-subtle: #23262c;
-  --color-border-base: rgb(255 255 255 / 8%);
-  --color-border-bold: rgb(255 255 255 / 14%);
-  --color-border-active: #00e5ff;
+  --color-border-subtle: #1f222b;
+  --color-border-base: rgb(255 255 255 / 10%);
+  --color-border-bold: rgb(255 255 255 / 18%);
+  --color-border-active: #00f0ff;
+  --color-border-cyan: rgb(0 240 255 / 35%);
+  --color-border-amber: rgb(243 144 0 / 35%);
 
   // Text colors (strict WCAG AA compliant >= 4.5:1 against dark surfaces)
-  --color-text-primary: #f2f3f5;
-  --color-text-secondary: #8b8f99;
-  --color-text-muted: #8b8f99;
-  --color-text-inverse: #0c0d10;
+  --color-text-primary: #f4f5f7;
+  --color-text-secondary: #8e93a0;
+  --color-text-muted: #8e93a0;
+  --color-text-dim: #5c6270;
+  --color-text-inverse: #08090c;
 
   // Tactical accents (Terminal HUD palette)
-  --color-accent-primary: #00e5ff; // Tactical Cyan
-  --color-accent-primary-hover: #33ebff;
-  --color-accent-primary-active: #00b8cc;
-  --color-accent-primary-subtle: rgb(0 229 255 / 12%);
-  --color-accent-warning: #ff9800; // Tactical Amber (warnings, standby, gacha)
+  --color-accent-primary: #00f0ff; // Tactical Cyan
+  --color-accent-primary-hover: #38f3ff;
+  --color-accent-primary-active: #00c8d6;
+  --color-accent-primary-subtle: rgb(0 240 255 / 10%);
+  --color-accent-warning: #f39000; // Tactical Amber
   --color-accent-warning-hover: #ffa726;
-  --color-accent-warning-active: #f57c00;
-  --color-accent-warning-subtle: rgb(255 152 0 / 12%);
-  --color-accent-success: #00e676; // Tactical Green (active, planning, success)
+  --color-accent-warning-active: #d67a00;
+  --color-accent-warning-subtle: rgb(243 144 0 / 10%);
+  --color-accent-success: #00e676; // Tactical Green
   --color-accent-success-hover: #33eb91;
   --color-accent-success-active: #00c853;
-  --color-accent-success-subtle: rgb(0 230 118 / 12%);
-  --color-accent-danger: #ff1744; // Tactical Red (danger, alerts)
-  --color-accent-danger-hover: #ff5252;
-  --color-accent-danger-active: #d50000;
-  --color-accent-danger-subtle: rgb(255 23 68 / 12%);
+  --color-accent-success-subtle: rgb(0 230 118 / 10%);
+  --color-accent-danger: #ff2a4d; // Tactical Crimson
+  --color-accent-danger-hover: #ff526b;
+  --color-accent-danger-active: #d61836;
+  --color-accent-danger-subtle: rgb(255 42 77 / 10%);
 
   // Operator Rarity Palette 1★ - 6★
-  --color-rarity-1: #8b8f99;
-  --color-rarity-2: #c5c8d1;
-  --color-rarity-3: #00b0ff;
-  --color-rarity-4: #b388ff;
-  --color-rarity-5: #ffab00;
-  --color-rarity-6: #ff6d00;
-  --color-rarity-6-gold: #ffd54f;
+  --color-rarity-1: #8e94a0;
+  --color-rarity-2: #d0d4de;
+  --color-rarity-3: #00b8ff;
+  --color-rarity-4: #c084fc;
+  --color-rarity-5: #ffb300;
+  --color-rarity-6: #ff5722;
+  --color-rarity-6-gold: #f59e0b;
 
   // Typography stacks (Latin & Cyrillic supported)
   --font-heading: 'Exo 2', system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
@@ -95,12 +100,12 @@
   --radius-sm: 4px;
   --radius-md: 6px;
 
-  // Shadows
-  --shadow-panel: 0 4px 24px rgb(0 0 0 / 55%);
-  --shadow-glow-cyan: 0 0 16px rgb(0 229 255 / 30%);
-  --shadow-glow-amber: 0 0 16px rgb(255 152 0 / 30%);
-  --shadow-glow-green: 0 0 16px rgb(0 230 118 / 30%);
-  --shadow-glow-danger: 0 0 16px rgb(255 23 68 / 30%);
+  // Shadows & Neon glows
+  --shadow-panel: 0 4px 28px rgb(0 0 0 / 65%);
+  --shadow-glow-cyan: 0 0 16px rgb(0 240 255 / 35%);
+  --shadow-glow-amber: 0 0 16px rgb(243 144 0 / 35%);
+  --shadow-glow-green: 0 0 16px rgb(0 230 118 / 35%);
+  --shadow-glow-danger: 0 0 16px rgb(255 42 77 / 35%);
 
   // Z-index scale
   --z-base: 1;

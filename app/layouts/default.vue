@@ -220,15 +220,33 @@ function isModuleActive(path: string): boolean {
   color: var(--color-text-primary);
 
   &__header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--space-xs) var(--space-md);
     background-color: var(--color-bg-surface);
     border-bottom: 1px solid var(--color-border-bold);
-    position: sticky;
-    top: 0;
-    z-index: var(--z-header);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 50%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        var(--color-accent-primary) 0%,
+        var(--color-accent-primary) 35%,
+        transparent 35%,
+        transparent 100%
+      );
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
+    }
 
     @include mq(md) {
       padding: var(--space-xs) var(--space-xl);
@@ -257,6 +275,7 @@ function isModuleActive(path: string): boolean {
     justify-content: center;
     color: var(--color-accent-primary);
     line-height: 1;
+    filter: drop-shadow(0 0 6px var(--color-accent-primary-glow));
   }
 
   &__brand-svg {
@@ -296,12 +315,14 @@ function isModuleActive(path: string): boolean {
     display: none;
     align-items: center;
     gap: var(--space-2xs);
-    padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-subtle);
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
     color: var(--color-text-secondary);
+
+    @include cut-corner(4px, top-right);
 
     @include mq(md) {
       display: inline-flex;
@@ -312,8 +333,8 @@ function isModuleActive(path: string): boolean {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--color-accent-warning);
-    box-shadow: 0 0 6px var(--color-accent-warning);
+    background-color: var(--color-accent-success);
+    box-shadow: 0 0 8px var(--color-accent-success-glow);
   }
 
   &__doctor-name {
@@ -366,7 +387,7 @@ function isModuleActive(path: string): boolean {
   &__footer {
     padding: var(--space-md);
     background-color: var(--color-bg-surface);
-    border-top: 1px solid var(--color-border-subtle);
+    border-top: 1px solid var(--color-border-bold);
   }
 
   &__footer-content {
@@ -388,9 +409,11 @@ function isModuleActive(path: string): boolean {
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-sm);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     min-width: 0;
+
+    @include cut-corner(8px, top-right);
   }
 
   &__user-avatar {
@@ -407,6 +430,8 @@ function isModuleActive(path: string): boolean {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xs);
     flex-shrink: 0;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__user-initials {
@@ -420,7 +445,8 @@ function isModuleActive(path: string): boolean {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--color-accent-warning);
+    background-color: var(--color-accent-success);
+    box-shadow: 0 0 6px var(--color-accent-success-glow);
   }
 
   &__user-meta {
@@ -457,6 +483,8 @@ function isModuleActive(path: string): boolean {
     color: var(--color-accent-primary);
     white-space: nowrap;
     flex-shrink: 0;
+
+    @include cut-corner(2px, top-right);
   }
 
   &__user-server {
@@ -508,6 +536,7 @@ function isModuleActive(path: string): boolean {
       background-color var(--transition-fast),
       box-shadow var(--transition-fast);
 
+    @include cut-corner(6px, top-right);
     @include focus-ring;
 
     &:hover {
@@ -518,12 +547,15 @@ function isModuleActive(path: string): boolean {
     &--active {
       border-color: var(--color-accent-primary);
       background-color: var(--color-accent-primary-subtle);
-      box-shadow: inset 2px 0 0 var(--color-accent-primary);
+      box-shadow:
+        inset 3px 0 0 var(--color-accent-primary),
+        0 0 10px rgb(0 240 255 / 15%);
 
       .layout-default__nav-icon-box {
         border-color: var(--color-accent-primary);
         color: var(--color-accent-primary);
         background-color: var(--color-bg-surface);
+        box-shadow: 0 0 6px var(--color-accent-primary-glow);
       }
 
       .layout-default__nav-code {

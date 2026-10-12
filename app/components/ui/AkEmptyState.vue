@@ -34,6 +34,7 @@ withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 .ak-empty-state {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,18 +43,46 @@ withDefaults(defineProps<Props>(), {
   padding: var(--space-xl) var(--space-md);
   gap: var(--space-sm);
   border: 1px dashed var(--color-border-bold);
-  background-color: rgb(20 22 26 / 50%);
+  background: linear-gradient(135deg, rgb(16 18 23 / 70%) 0%, rgb(8 9 12 / 80%) 100%);
+
+  @include cut-corner(12px, top-right);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: 4px;
+    left: 4px;
+    border-top: 2px solid var(--color-accent-primary);
+    border-left: 2px solid var(--color-accent-primary);
+  }
+
+  &::after {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 2px solid var(--color-accent-primary);
+    border-right: 2px solid var(--color-accent-primary);
+  }
 
   &__icon-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border: 1px solid var(--color-border-subtle);
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
-    color: var(--color-text-secondary);
+    color: var(--color-accent-primary);
     font-size: var(--font-size-lg);
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+
+    @include cut-corner(6px, top-right);
   }
 
   &__icon {
@@ -64,7 +93,7 @@ withDefaults(defineProps<Props>(), {
     display: flex;
     flex-direction: column;
     gap: var(--space-2xs);
-    max-width: 420px;
+    max-width: 440px;
   }
 
   &__title {
@@ -80,7 +109,7 @@ withDefaults(defineProps<Props>(), {
   &__description {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
-    line-height: var(--line-height-base);
+    line-height: var(--line-height-relaxed);
     margin: 0;
   }
 

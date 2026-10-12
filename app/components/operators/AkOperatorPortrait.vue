@@ -109,7 +109,7 @@ function handleImageError(): void {
     background:
       radial-gradient(circle at 50% 50%, rgb(255 255 255 / 4%) 0%, rgb(12 13 16 / 80%) 100%),
       var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     clip-path: polygon(
       0 var(--cut-corner-size),
       var(--cut-corner-size) 0,
@@ -142,7 +142,7 @@ function handleImageError(): void {
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-align: center;
     padding: var(--space-md);
   }
@@ -161,28 +161,31 @@ function handleImageError(): void {
     display: flex;
     gap: var(--space-xs);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     padding: 2px;
   }
 
   &__variant-btn {
     border: none;
     background: transparent;
-    color: var(--color-text-dim);
-    font-family: var(--font-family-mono);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
     padding: var(--space-xs) var(--space-sm);
     cursor: pointer;
     transition: all 0.2s ease;
 
+    @include cut-corner(4px, top-right);
+
     &:hover {
       color: var(--color-text-primary);
     }
 
     &--active {
-      background: var(--color-accent-amber);
+      background: var(--color-accent-warning);
       color: var(--color-bg-base);
+      box-shadow: 0 0 8px var(--color-accent-warning-glow);
     }
   }
 }

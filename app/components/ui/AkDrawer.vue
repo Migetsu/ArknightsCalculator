@@ -175,9 +175,9 @@ onBeforeUnmount(() => {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-bg-surface);
+    background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
     border-left: 1px solid var(--color-border-bold);
-    box-shadow: -4px 0 24px rgb(0 0 0 / 60%);
+    box-shadow: -6px 0 30px rgb(0 0 0 / 75%);
     z-index: 1;
     overflow-y: auto;
 
@@ -190,7 +190,7 @@ onBeforeUnmount(() => {
     justify-content: space-between;
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
   }
 
@@ -209,6 +209,7 @@ onBeforeUnmount(() => {
     color: var(--color-accent-primary);
     text-transform: uppercase;
     line-height: 1.2;
+    text-shadow: 0 0 6px var(--color-accent-primary-glow);
   }
 
   &__title {
@@ -227,7 +228,7 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-2xs);
     padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-base);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-subtle);
     color: var(--color-text-primary);
     font-family: var(--font-mono);
@@ -238,14 +239,17 @@ onBeforeUnmount(() => {
     transition:
       border-color var(--transition-fast),
       color var(--transition-fast),
-      background-color var(--transition-fast);
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
 
+    @include cut-corner(4px, top-right);
     @include focus-ring;
 
     &:hover {
       border-color: var(--color-accent-primary);
       color: var(--color-accent-primary);
       background-color: var(--color-accent-primary-subtle);
+      box-shadow: 0 0 8px var(--color-accent-primary-glow);
     }
   }
 
@@ -276,7 +280,7 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: space-between;
     padding: var(--space-sm) var(--space-lg);
-    border-top: 1px solid var(--color-border-subtle);
+    border-top: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
@@ -295,7 +299,7 @@ onBeforeUnmount(() => {
     height: 6px;
     border-radius: 50%;
     background-color: var(--color-accent-success);
-    box-shadow: 0 0 6px var(--color-accent-success);
+    box-shadow: 0 0 8px var(--color-accent-success-glow);
   }
 
   &__status-text {

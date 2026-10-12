@@ -97,7 +97,7 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-surface);
+  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
   border: 1px solid var(--color-border-subtle);
   text-decoration: none;
   color: inherit;
@@ -110,11 +110,15 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
   user-select: none;
   min-width: 0;
 
+  @include cut-corner(8px, top-right);
+
   &:hover {
     border-color: var(--color-accent-primary);
-    background-color: var(--color-bg-surface-raised);
+    background: linear-gradient(135deg, var(--color-bg-elevated) 0%, var(--color-bg-surface) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgb(0 0 0 / 40%);
+    box-shadow:
+      0 4px 16px rgb(0 0 0 / 60%),
+      0 0 8px rgb(0 240 255 / 15%);
   }
 
   &:focus-visible {
@@ -237,10 +241,12 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
 
     &--5 {
       color: var(--color-rarity-5);
+      text-shadow: 0 0 6px rgb(255 215 0 / 30%);
     }
 
     &--6 {
       color: var(--color-rarity-6);
+      text-shadow: 0 0 8px rgb(243 144 0 / 40%);
     }
   }
 
@@ -270,10 +276,12 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
 
     &--5 {
       background-color: var(--color-rarity-5);
+      box-shadow: 0 0 6px rgb(255 215 0 / 30%);
     }
 
     &--6 {
-      background-color: var(--color-rarity-6);
+      background: linear-gradient(90deg, var(--color-rarity-6), var(--color-rarity-6-gold));
+      box-shadow: 0 0 8px rgb(243 144 0 / 40%);
     }
   }
 }

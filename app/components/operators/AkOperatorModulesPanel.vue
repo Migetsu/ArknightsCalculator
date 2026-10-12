@@ -181,26 +181,20 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   gap: var(--space-lg);
 
   &__empty {
-    color: var(--color-text-dim);
-    font-family: var(--font-family-mono);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
     padding: var(--space-md);
   }
 
   &__module-card {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    clip-path: polygon(
-      0 var(--cut-corner-size),
-      var(--cut-corner-size) 0,
-      100% 0,
-      100% calc(100% - var(--cut-corner-size)),
-      calc(100% - var(--cut-corner-size)) 100%,
-      0 100%
-    );
+
+    @include cut-corner(8px, top-right);
   }
 
   &__header {
@@ -213,11 +207,13 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     width: 52px;
     height: 52px;
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__icon {
@@ -247,9 +243,9 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__code {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
   }
 
   &__stages-bar {
@@ -257,14 +253,16 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     gap: var(--space-xs);
     background: var(--color-bg-base);
     padding: var(--space-xs);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     flex-wrap: wrap;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__sub-title {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 
@@ -281,12 +279,14 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__stat-chip {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-cyan);
+    color: var(--color-accent-primary);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     padding: 2px var(--space-xs);
+
+    @include cut-corner(2px, top-right);
   }
 
   &__part-block {
@@ -302,16 +302,18 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__part-title {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-amber);
+    color: var(--color-accent-warning);
     text-transform: uppercase;
   }
 
   &__part-desc {
     background: var(--color-bg-base);
-    border-left: 2px solid var(--color-accent-amber);
+    border-left: 3px solid var(--color-accent-warning);
     padding: var(--space-sm) var(--space-md);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__cost-section {
@@ -331,8 +333,10 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     align-items: center;
     gap: var(--space-xs);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     padding: 2px var(--space-sm);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__cost-icon {
@@ -342,7 +346,7 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__cost-count {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--color-text-primary);
   }

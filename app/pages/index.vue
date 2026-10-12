@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkStat from '~/components/ui/AkStat.vue'
@@ -74,37 +75,41 @@ onBeforeUnmount(() => {
 <template>
   <div class="dashboard-page">
     <div class="dashboard-page__container">
-      <!-- Page Header -->
-      <section class="dashboard-page__header">
-        <div class="dashboard-page__header-main">
-          <div class="dashboard-page__badge">
-            {{ t('dashboard.commandBadge') }}
-          </div>
-          <h1 class="dashboard-page__title">
-            {{ t('dashboard.title') }}
-          </h1>
-          <p class="dashboard-page__subtitle">
-            {{ t('dashboard.subtitle') }}
-          </p>
-        </div>
-
-        <div class="dashboard-page__doctor-card">
-          <div class="dashboard-page__doctor-avatar" aria-hidden="true">
-            <span class="dashboard-page__doctor-dr">DR</span>
-          </div>
-          <div class="dashboard-page__doctor-info">
-            <div class="dashboard-page__doctor-top">
-              <span class="dashboard-page__doctor-name">
-                {{ t('common.doctor') }}
-              </span>
-              <span class="dashboard-page__doctor-settings" aria-hidden="true">⚙</span>
+      <!-- Standard Tactical Header -->
+      <AkPageHeader
+        code="DSH-00"
+        :tag-label="t('dashboard.commandBadge')"
+        :title="t('dashboard.title')"
+        :subtitle="t('dashboard.subtitle')"
+        watermark="PRTS TERMINAL"
+        :badge="t('modules.status.ready')"
+        badge-variant="cyan"
+      >
+        <template #title>
+          <span class="dashboard-page__title">{{ t('dashboard.title') }}</span>
+        </template>
+        <template #subtitle>
+          <span class="dashboard-page__subtitle">{{ t('dashboard.subtitle') }}</span>
+        </template>
+        <template #actions>
+          <div class="dashboard-page__doctor-card">
+            <div class="dashboard-page__doctor-avatar" aria-hidden="true">
+              <span class="dashboard-page__doctor-dr">DR</span>
             </div>
-            <span class="dashboard-page__doctor-status">
-              LV.1 // {{ t('common.server') }}: EN
-            </span>
+            <div class="dashboard-page__doctor-info">
+              <div class="dashboard-page__doctor-top">
+                <span class="dashboard-page__doctor-name">
+                  {{ t('common.doctor') }}
+                </span>
+                <span class="dashboard-page__doctor-settings" aria-hidden="true">⚙</span>
+              </div>
+              <span class="dashboard-page__doctor-status">
+                LV.1 // {{ t('common.server') }}: EN
+              </span>
+            </div>
           </div>
-        </div>
-      </section>
+        </template>
+      </AkPageHeader>
 
       <!-- Account Risk / Standby Alert -->
       <section class="dashboard-page__alert-section">
@@ -499,8 +504,10 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-bold);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-elevated) 100%);
+
+    @include cut-corner(6px, top-right);
 
     @include mq(lg) {
       display: flex;
@@ -519,6 +526,8 @@ onBeforeUnmount(() => {
     font-family: var(--font-mono);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xs);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__doctor-dr {
@@ -620,8 +629,10 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     padding: var(--space-md);
-    background: linear-gradient(135deg, rgb(255 152 0 / 10%) 0%, var(--color-bg-elevated) 100%);
+    background: linear-gradient(135deg, rgb(243 144 0 / 12%) 0%, var(--color-bg-elevated) 100%);
     border: 1px solid var(--color-border-bold);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__banner-name {
@@ -646,8 +657,10 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-sm);
-    border: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-bold);
+    background-color: var(--color-bg-base);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__countdown-label {
@@ -676,6 +689,7 @@ onBeforeUnmount(() => {
     font-weight: var(--font-weight-bold);
     color: var(--color-accent-primary);
     line-height: 1;
+    text-shadow: 0 0 10px var(--color-accent-primary-glow);
   }
 
   &__countdown-name {
@@ -718,9 +732,11 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     min-width: 0;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__rate-up-info {
@@ -775,6 +791,7 @@ onBeforeUnmount(() => {
     font-weight: var(--font-weight-bold);
     color: var(--color-accent-primary);
     line-height: 1;
+    text-shadow: 0 0 12px var(--color-accent-primary-glow);
   }
 
   &__treasury-pulls-label {
@@ -796,11 +813,18 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-2xs);
     padding: var(--space-xs);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
     min-width: 0;
+    transition: border-color var(--duration-fast) var(--ease-tactical);
+
+    @include cut-corner(4px, top-right);
+
+    &:hover {
+      border-color: var(--color-accent-primary);
+    }
   }
 
   &__currency-name {
@@ -829,8 +853,10 @@ onBeforeUnmount(() => {
     flex-direction: column;
     gap: var(--space-2xs);
     padding: var(--space-sm);
-    border: 1px solid rgb(0 230 118 / 30%);
+    border: 1px solid rgb(0 230 118 / 35%);
     background-color: var(--color-accent-success-subtle);
+
+    @include cut-corner(6px, top-right);
   }
 
   &__monthly-header {
@@ -844,7 +870,7 @@ onBeforeUnmount(() => {
     height: 6px;
     border-radius: 50%;
     background-color: var(--color-accent-success);
-    box-shadow: 0 0 6px var(--color-accent-success);
+    box-shadow: 0 0 6px var(--color-accent-success-glow);
   }
 
   &__monthly-title {
@@ -885,9 +911,11 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border-bold);
     background-color: var(--color-bg-elevated);
     min-width: 0;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__quick-name {

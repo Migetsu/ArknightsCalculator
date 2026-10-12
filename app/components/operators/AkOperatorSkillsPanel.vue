@@ -185,26 +185,20 @@ function getLevelLabel(idx: number): string {
   gap: var(--space-lg);
 
   &__empty {
-    color: var(--color-text-dim);
-    font-family: var(--font-family-mono);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
     padding: var(--space-md);
   }
 
   &__skill-card {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    clip-path: polygon(
-      0 var(--cut-corner-size),
-      var(--cut-corner-size) 0,
-      100% 0,
-      100% calc(100% - var(--cut-corner-size)),
-      calc(100% - var(--cut-corner-size)) 100%,
-      0 100%
-    );
+
+    @include cut-corner(8px, top-right);
   }
 
   &__header {
@@ -217,11 +211,13 @@ function getLevelLabel(idx: number): string {
     width: 52px;
     height: 52px;
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+
+    @include cut-corner(4px, top-right);
   }
 
   &__icon {
@@ -255,19 +251,21 @@ function getLevelLabel(idx: number): string {
     gap: 4px;
     background: var(--color-bg-base);
     padding: var(--space-xs);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__lvl-btn {
     min-width: 44px;
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
   }
 
   &__telemetry {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
   }
 
@@ -277,31 +275,34 @@ function getLevelLabel(idx: number): string {
   }
 
   &__telemetry-label {
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
   }
 
   &__telemetry-val {
-    color: var(--color-accent-cyan);
+    color: var(--color-accent-primary);
     font-weight: var(--font-weight-bold);
+    text-shadow: 0 0 6px var(--color-accent-primary-glow);
   }
 
   &__desc {
     background: var(--color-bg-base);
-    border-left: 2px solid var(--color-accent-cyan);
+    border-left: 3px solid var(--color-accent-primary);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__cost-section {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
   }
 
   &__cost-title {
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 
@@ -316,8 +317,10 @@ function getLevelLabel(idx: number): string {
     align-items: center;
     gap: var(--space-xs);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     padding: 2px var(--space-sm);
+
+    @include cut-corner(4px, top-right);
   }
 
   &__cost-icon {

@@ -320,9 +320,11 @@ const statsGridItems = computed(() => {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-bold);
     padding: var(--space-md);
+
+    @include cut-corner(8px, top-right);
   }
 
   &__control-group {
@@ -337,9 +339,9 @@ const statsGridItems = computed(() => {
   }
 
   &__control-label {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -359,28 +361,31 @@ const statsGridItems = computed(() => {
   &__num-input {
     width: 60px;
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-bold);
     color: var(--color-text-primary);
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-sm);
     padding: 2px var(--space-xs);
     text-align: right;
 
+    @include cut-corner(4px, top-right);
+
     &:focus {
-      outline: 1px solid var(--color-accent-cyan);
+      outline: 1px solid var(--color-accent-primary);
+      box-shadow: 0 0 6px var(--color-accent-primary-glow);
     }
   }
 
   &__val-badge {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-amber);
+    color: var(--color-accent-warning);
     font-weight: var(--font-weight-bold);
   }
 
   &__slider {
     width: 100%;
-    accent-color: var(--color-accent-cyan);
+    accent-color: var(--color-accent-primary);
     cursor: pointer;
   }
 
@@ -391,32 +396,26 @@ const statsGridItems = computed(() => {
   }
 
   &__stat-card {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    border: 1px solid var(--color-border-subtle);
     padding: var(--space-sm) var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
     position: relative;
-    clip-path: polygon(
-      0 var(--cut-corner-size),
-      var(--cut-corner-size) 0,
-      100% 0,
-      100% calc(100% - var(--cut-corner-size)),
-      calc(100% - var(--cut-corner-size)) 100%,
-      0 100%
-    );
+
+    @include cut-corner(8px, top-right);
   }
 
   &__stat-label {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 
   &__stat-value {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
@@ -426,22 +425,22 @@ const statsGridItems = computed(() => {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    font-family: var(--font-family-mono);
+    font-family: var(--font-mono);
     font-size: 10px;
-    color: var(--color-text-dim);
+    color: var(--color-text-secondary);
   }
 
   &__breakdown-part {
     &--trust {
-      color: var(--color-accent-amber);
+      color: var(--color-accent-warning);
     }
 
     &--pot {
-      color: var(--color-accent-green);
+      color: var(--color-accent-success);
     }
 
     &--mod {
-      color: var(--color-accent-cyan);
+      color: var(--color-accent-primary);
     }
   }
 }

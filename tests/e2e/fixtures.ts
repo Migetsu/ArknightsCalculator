@@ -15,6 +15,14 @@ export const test = baseTest.extend({
       if (text.includes('/broken-link.png') && text.includes('404')) {
         return true
       }
+      // 3. Harmless Vite dev server HMR websocket / overlay errors during headless browser testing
+      if (
+        text.includes('[vite]') ||
+        text.includes('WebSocket connection') ||
+        text.includes('Failed to send error to Vite server')
+      ) {
+        return true
+      }
       return false
     }
 
