@@ -223,7 +223,12 @@ function isModuleActive(path: string): boolean {
             </span>
           </div>
 
-          <AkButton variant="secondary" size="sm" @click="openSyncModal">
+          <AkButton
+            variant="secondary"
+            size="sm"
+            class="layout-default__user-sync-btn"
+            @click="openSyncModal"
+          >
             {{ t('common.sync') }}
           </AkButton>
         </div>
@@ -445,6 +450,7 @@ function isModuleActive(path: string): boolean {
     padding: var(--space-sm);
     border: 1px solid var(--color-border-subtle);
     background-color: var(--color-bg-elevated);
+    min-width: 0;
   }
 
   &__user-avatar {
@@ -460,6 +466,7 @@ function isModuleActive(path: string): boolean {
     font-family: var(--font-mono);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xs);
+    flex-shrink: 0;
   }
 
   &__user-initials {
@@ -488,6 +495,7 @@ function isModuleActive(path: string): boolean {
     display: flex;
     align-items: center;
     gap: var(--space-2xs);
+    min-width: 0;
   }
 
   &__user-title {
@@ -495,6 +503,10 @@ function isModuleActive(path: string): boolean {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 0;
   }
 
   &__user-level {
@@ -503,12 +515,22 @@ function isModuleActive(path: string): boolean {
     padding: 1px 4px;
     background-color: var(--color-accent-primary-subtle);
     color: var(--color-accent-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   &__user-server {
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
     color: var(--color-text-secondary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  &__user-sync-btn {
+    flex-shrink: 0;
   }
 
   // Drawer Navigation

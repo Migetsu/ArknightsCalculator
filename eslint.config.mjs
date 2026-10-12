@@ -4,6 +4,9 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default withNuxt(
   {
+    ignores: ['.nuxt-agent/**', 'scripts/dev-agent.mjs'],
+  },
+  {
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': [

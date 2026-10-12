@@ -46,11 +46,20 @@
   - Dev-only component showcase at `app/pages/_ui.vue` (excluded in production).
   - Full localization in `en.json` and `ru.json` with 100% key parity verified by `npm run i18n:check`.
   - Responsive Playwright screenshots captured at 360px, 768px, and 1440px viewports in `test-results/`.
-  - All quality gates passing: 39 unit/component tests in Vitest and 14 Playwright E2E tests in CI mode.
+  - Configured dev server isolation: port 3000 strictly reserved for project owner; automated agent runs on port 3001 using isolated `NUXT_BUILD_DIR=.nuxt-agent` via `npm run dev:agent` (`scripts/dev-agent.mjs`), documented in `AGENTS.md`.
+- Fixed i18n linked message compilation crash (Code 10: Invalid linked format) triggered by `@` in translation strings; moved non-translatable values to template props and added AST compilation checks to `scripts/check-i18n.ts` with 12 unit tests.
+- Added `i18n/i18n.config.ts` with `missing` translation handler logging missing keys to `console.error`.
+- Fixed horizontal layout overflows across 1024px, 360px, and 1920px viewports without masking `overflow-x` on html/body:
+  - Applied `minmax(0, 1fr)` to all CSS Grid templates (`&__panels-grid`, `&__stats-grid`).
+  - Added responsive breakpoint distribution: 1 column on `< md`, 2 columns on `md`–`xl`, 3 columns on `xl+`.
+  - Enforced `min-width: 0`, `flex-shrink: 0`, and `text-overflow: ellipsis` on panels, operator chips, currency bars, and Drawer Doctor profile card.
+- Implemented Playwright console/pageerror defense fixture (`tests/e2e/fixtures.ts`) to fail tests on unhandled errors or missing translation keys.
+- Implemented comprehensive E2E layout sanity suite (`tests/e2e/layout-sanity.spec.ts`) validating 0 horizontal overflow and no raw translation keys across 10 viewport/locale combinations (360px, 768px, 1024px, 1440px, 1920px in EN and RU).
+- All quality gates passing: 44 unit/component tests in Vitest and 26 Playwright E2E tests.
 
 ## In progress
 
-- None (Design V2 implementation completed).
+- None (Layout bugfixes, i18n defenses, and server isolation completed).
 
 ## Next
 

@@ -117,7 +117,7 @@ function handleLoadDemo(): void {
                   v-model="email"
                   type="email"
                   :label="t('syncModal.email.label')"
-                  :placeholder="t('syncModal.email.placeholder')"
+                  placeholder="doctor@example.com"
                   :hint="t('syncModal.email.hint')"
                 />
               </div>
@@ -133,7 +133,7 @@ function handleLoadDemo(): void {
                 v-model="verificationCode"
                 type="text"
                 :label="t('syncModal.code.label')"
-                :placeholder="t('syncModal.code.placeholder')"
+                placeholder="1 2 3 4 5 6"
                 :hint="t('syncModal.code.hint')"
               />
             </div>

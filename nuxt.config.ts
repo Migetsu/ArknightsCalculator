@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-11',
   devtools: { enabled: false },
+  buildDir: process.env.NUXT_BUILD_DIR ?? '.nuxt',
   future: {
     compatibilityVersion: 4,
   },
@@ -16,6 +17,7 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/styles/main.scss'],
   vite: {
+    cacheDir: process.env.NUXT_BUILD_DIR ? `${process.env.NUXT_BUILD_DIR}/vite` : undefined,
     css: {
       preprocessorOptions: {
         scss: {
@@ -47,6 +49,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
+    vueI18n: './i18n.config.ts',
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
     baseUrl: 'https://arkcalc.vercel.app',
