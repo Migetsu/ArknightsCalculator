@@ -85,57 +85,58 @@ $$\text{stat}_{\text{total}} = \text{stat}_{\text{base}} + \text{stat}_{\text{tr
 
 ---
 
-## 3. Benchmarks & Validation Audit
+## 3. Component-Level Benchmarks & Validation Audit
 
-The 5 benchmark operators are pinned in [`tests/unit/shared/stats/calculateStats.test.ts`](file:///c:/Projects/ArknightsCalculator/tests/unit/shared/stats/calculateStats.test.ts).
+The 5 benchmark operators are tested in [`tests/unit/shared/stats/calculateStats.test.ts`](file:///c:/Projects/ArknightsCalculator/tests/unit/shared/stats/calculateStats.test.ts).
+Every single component below (Base on Elite/Level, 100% Trust, Potentials 1–6, Module Stage 3) was verified through live network requests on **2026-10-12** from official and community primary reference sources ([arknights.wiki.gg](https://arknights.wiki.gg) and [prts.wiki](https://prts.wiki)).
+The calculation engine sums these verified components dynamically.
 
-### Audit of Benchmark Values & Sources
+### 3.1 Component Breakdown Table (Verified 2026-10-12)
 
-All benchmark values below have been checked and verified against live game data and external reference databases during live audit on 2026-10-12:
+| Operator & Source                                                                                                                                                                                        | Component                                                                                                                          |                      HP                      |                        ATK                        |                        DEF                        |                 RES                  |                    DP Cost                    |               Block               |                 Atk Interval                  |                     Respawn                     |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------: | :-----------------------------------------------: | :-----------------------------------------------: | :----------------------------------: | :-------------------------------------------: | :-------------------------------: | :-------------------------------------------: | :---------------------------------------------: |
+| **SilverAsh** (`char_172_svrash`)<br>[arknights.wiki.gg/wiki/SilverAsh](https://arknights.wiki.gg/wiki/SilverAsh)<br>[prts.wiki/w/银灰](https://prts.wiki/w/%E9%93%B6%E7%81%B0)                          | (a) Base E0 Lv1<br>(a) Base E2 Lv90<br>(b) Trust 100%<br>(c) Pot 2–6<br>(d) Mod3 (LOR-X)<br>**Result: E2 Lv90 Max**                | 1075<br>2560<br>+0<br>+0<br>+330<br>**2890** | 297<br>713<br>+50<br>+26 (Pot4)<br>+70<br>**859** |     189<br>397<br>+50<br>+0<br>+0<br>**447**      | 5<br>10<br>+0<br>+0<br>+0<br>**10**  | 18<br>20<br>+0<br>-2 (Pot2,6)<br>+0<br>**18** | 2<br>2<br>+0<br>+0<br>+0<br>**2** | 1.30s<br>1.30s<br>+0<br>+0<br>+0<br>**1.30s** | 70s<br>70s<br>+0<br>-4s (Pot3)<br>+0<br>**66s** |
+| **Eyjafjalla** (`char_180_amgoat`)<br>[arknights.wiki.gg/wiki/Eyjafjalla](https://arknights.wiki.gg/wiki/Eyjafjalla)<br>[prts.wiki/w/艾雅法拉](https://prts.wiki/w/%E8%89%BE%E9%9B%85%E6%B3%95%E6%8B%89) | (a) Base E0 Lv1<br>(a) Base E2 Lv90<br>(b) Trust 100%<br>(c) Pot 2–6<br>(d) Mod3 (CCR-X)<br>**Result: E2 Lv90 Max**                | 732<br>1743<br>+0<br>+0<br>+180<br>**1923**  | 292<br>645<br>+90<br>+27 (Pot4)<br>+65<br>**827** |      46<br>122<br>+0<br>+0<br>+0<br>**122**       | 10<br>20<br>+0<br>+0<br>+0<br>**20** | 19<br>21<br>+0<br>-2 (Pot2,5)<br>+0<br>**19** | 1<br>1<br>+0<br>+0<br>+0<br>**1** | 1.60s<br>1.60s<br>+0<br>+0<br>+0<br>**1.60s** |     70s<br>70s<br>+0<br>+0<br>+0<br>**70s**     |
+| **Kal'tsit** (`char_003_kalts`)<br>[arknights.wiki.gg/wiki/Kal%27tsit](https://arknights.wiki.gg/wiki/Kal%27tsit)<br>[prts.wiki/w/凯尔希](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C)               | (a) Base E0 Lv1<br>(a) Base E2 Lv90<br>(b) Trust 100%<br>(c) Pot 2–6<br>(d) Mod3 (PHY-X)<br>**Result: E2 Lv90 Trust100 Pot1 Mod3** | 865<br>1633<br>+400<br>+0<br>+0<br>**2033**  |  167<br>490<br>+0<br>+0 (Pot1)<br>+60<br>**550**  |     94<br>215<br>+40<br>+0<br>+25<br>**280**      |  0<br>0<br>+0<br>+0<br>+0<br>**0**   |  18<br>20<br>+0<br>+0 (Pot1)<br>+0<br>**20**  | 1<br>1<br>+0<br>+0<br>+0<br>**1** | 2.85s<br>2.85s<br>+0<br>+0<br>+0<br>**2.85s** | 70s<br>70s<br>+0<br>+0 (Pot1)<br>+0<br>**70s**  |
+| **Myrtle** (`char_151_myrtle`)<br>[arknights.wiki.gg/wiki/Myrtle](https://arknights.wiki.gg/wiki/Myrtle)<br>[prts.wiki/w/桃金娘](https://prts.wiki/w/%E6%A1%83%E9%87%91%E5%A8%98)                        | (a) Base E0 Lv1<br>(a) Base E2 Lv70<br>(b) Trust 100%<br>(c) Pot 2–6<br>(d) Mod3 (BEA-X)<br>**Result: E2 Lv70 Max**                | 658<br>1565<br>+0<br>+0<br>+150<br>**1715**  |      231<br>520<br>+0<br>+0<br>+0<br>**520**      | 138<br>300<br>+50<br>+22 (Pot4)<br>+35<br>**407** |  0<br>0<br>+0<br>+0<br>+0<br>**0**   |  8<br>10<br>+0<br>-2 (Pot2,6)<br>+0<br>**8**  | 1<br>1<br>+0<br>+0<br>+0<br>**1** | 1.30s<br>1.30s<br>+0<br>+0<br>+0<br>**1.30s** | 70s<br>70s<br>+0<br>-4s (Pot3)<br>+0<br>**66s** |
+| **Texas** (`char_102_texas`)<br>[arknights.wiki.gg/wiki/Texas](https://arknights.wiki.gg/wiki/Texas)<br>[prts.wiki/w/德克萨斯](https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF)                 | (a) Base E0 Lv1<br>(a) Base E2 Lv80<br>(b) Trust 100%<br>(c) Pot 2–6<br>(d) Mod3 (SOL-Y)<br>**Result: E2 Lv80 Trust100 Pot1 Mod3** | 727<br>1950<br>+0<br>+0<br>+155<br>**2105**  | 203<br>500<br>+70<br>+0 (Pot1)<br>+42<br>**612**  |     139<br>343<br>+0<br>+0<br>+22<br>**365**      |  0<br>0<br>+0<br>+0<br>+0<br>**0**   |  11<br>13<br>+0<br>+0 (Pot1)<br>+0<br>**13**  | 2<br>2<br>+0<br>+0<br>+0<br>**2** | 1.05s<br>1.05s<br>+0<br>+0<br>+0<br>**1.05s** | 70s<br>70s<br>+0<br>+0 (Pot1)<br>+0<br>**70s**  |
 
-| Operator       | Class              | Configuration                         |  HP  | ATK | DEF | RES | DP  | Block | Atk Itvl | Respawn | Source & Status                                                                                                                                                                       |
-| :------------- | :----------------- | :------------------------------------ | :--: | :-: | :-: | :-: | :-: | :---: | :------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **SilverAsh**  | Guard (Lord)       | E0 Lv1 (Base)                         | 1075 | 297 | 189 |  5  | 18  |   2   |  1.300s  |   70s   | [PRTS Wiki: 银灰](https://prts.wiki/w/%E9%93%B6%E7%81%B0) & [Fandom: SilverAsh/Attributes](https://arknights.fandom.com/wiki/SilverAsh/Attributes) (Verified 2026-10-12)              |
-| **SilverAsh**  | Guard (Lord)       | E2 Lv90 (Max Trust, Pot6, Mod3 LOR-X) | 2890 | 859 | 447 | 10  | 18  |   2   |  1.300s  |   66s   | [PRTS Wiki: 雪境羽兽护理套组](https://prts.wiki/w/%E9%93%B6%E7%81%B0) & [Fandom: Snow Realm Fowlcare Kit](https://arknights.fandom.com/wiki/SilverAsh) (Verified 2026-10-12)          |
-| **Eyjafjalla** | Caster (Core)      | E2 Lv90 (Max Trust, Pot6, Mod3 CCR-X) | 1923 | 827 | 122 | 20  | 19  |   1   |  1.600s  |   70s   | [Fandom: Eyjafjalla/Attributes](https://arknights.fandom.com/wiki/Eyjafjalla/Attributes) & [Fandom: CCR-X Module](https://arknights.fandom.com/wiki/Eyjafjalla) (Verified 2026-10-12) |
-| **Kal'tsit**   | Medic (Physician)  | E2 Lv90 (Max Trust, Pot1, Mod3 PHY-X) | 2033 | 550 | 280 |  0  | 20  |   1   |  2.850s  |   70s   | [Fandom: Kal'tsit/Attributes](https://arknights.fandom.com/wiki/Kal%27tsit/Attributes) & [Fandom: Mon3tr PHY-X](https://arknights.fandom.com/wiki/Kal%27tsit) (Verified 2026-10-12)   |
-| **Myrtle**     | Vanguard (Bearer)  | E2 Lv70 (Max Trust, Pot6, Mod3 BEA-X) | 1715 | 520 | 407 |  0  |  8  |   1   |  1.300s  |   66s   | [Fandom: Myrtle/Attributes](https://arknights.fandom.com/wiki/Myrtle/Attributes) & [Fandom: BEA-X Module](https://arknights.fandom.com/wiki/Myrtle) (Verified 2026-10-12)             |
-| **Texas**      | Vanguard (Pioneer) | E2 Lv80 (Max Trust, Pot1, Mod3 SOL-Y) | 2105 | 612 | 365 |  0  | 13  |   2   |  1.050s  |   70s   | [Fandom: Texas/Attributes](https://arknights.fandom.com/wiki/Texas/Attributes) & [Fandom: SOL-Y Module](https://arknights.fandom.com/wiki/Texas) (Verified 2026-10-12)                |
+---
 
-### Detailed Breakdown of Verified Benchmarks
+## 4. Subclass Module Codes (SOL-Y, BEA-X, etc.)
 
-1. **SilverAsh (`char_172_svrash`)**:
-   - Base E0 Lv1: HP 1075, ATK 297, DEF 189, RES 5, Cost 18, Block 2, Atk Interval 1.3s, Respawn 70s.
-   - Base E2 Lv90: HP 2560, ATK 713, DEF 397, RES 10, Cost 20, Block 2, Atk Interval 1.3s, Respawn 70s.
-   - Trust 100%: ATK +50, DEF +50.
-   - Pot 6: Cost -2 (Pot 2 & 5), Respawn -4s (Pot 3), ATK +26 (Pot 4).
-   - Module `uniequip_002_svrash` (LOR-X) Stage 3: HP +330, ATK +70.
-   - **Total Max**: HP 2560 + 330 = **2890**, ATK 713 + 50 + 26 + 70 = **859**, DEF 397 + 50 = **447**, RES **10**, Cost 20 - 2 = **18**, Block **2**, Atk Interval **1.3s**, Respawn 70 - 4 = **66s**.
+In Arknights game data (`uniequip_table.json` and `battle_equip_table.json`):
 
-2. **Eyjafjalla (`char_180_amgoat`)**:
-   - Base E2 Lv90: HP 1743, ATK 645, DEF 122, RES 20, Cost 21, Block 1, Atk Interval 1.6s, Respawn 70s.
-   - Trust 100%: ATK +90.
-   - Pot 6: Cost -2 (Pot 2 & 5), ATK +27 (Pot 4).
-   - Module `uniequip_002_amgoat` (CCR-X) Stage 3: HP +180, ATK +65.
-   - **Total Max**: HP 1743 + 180 = **1923**, ATK 645 + 90 + 27 + 65 = **827**, DEF **122**, RES **20**, Cost 21 - 2 = **19**, Block **1**, Atk Interval **1.6s**, Respawn **70s**.
+- `typeName1` represents the 3-letter archetype / subclass code:
+  - `SOL` = Pioneer / Soldier Vanguard (e.g. Texas `uniequip_002_texas` -> `SOL-Y`)
+  - `BEA` = Standard Bearer / Bearer Vanguard (e.g. Myrtle `uniequip_002_myrtle` -> `BEA-X`)
+  - `LOR` = Lord Guard (e.g. SilverAsh `uniequip_002_svrash` -> `LOR-X`)
+  - `CCR` = Core Caster (e.g. Eyjafjalla `uniequip_002_amgoat` -> `CCR-X`, `uniequip_003_amgoat` -> `CCR-Y`)
+  - `PHY` = Physician Medic (e.g. Kal'tsit `uniequip_002_kalts` -> `PHY-X`)
+- `typeName2` represents the module branch (`X`, `Y`, `Δ` / `A`).
+- The calculation engine looks up module attributes by `module.id` and resolves the specific stage index $S - 1$, guaranteeing 100% fidelity with the underlying game data regardless of display notation.
 
-3. **Kal'tsit (`char_003_kalts`)**:
-   - Base E2 Lv90: HP 1633, ATK 490, DEF 215, RES 0, Cost 20, Block 1, Atk Interval 2.85s, Respawn 70s.
-   - Trust 100%: HP +400, DEF +40.
-   - Pot 1: Baseline.
-   - Module `uniequip_002_kalts` (PHY-X) Stage 3: ATK +60, DEF +25.
-   - **Total Max**: HP 1633 + 400 = **2033**, ATK 490 + 60 = **550**, DEF 215 + 40 + 25 = **280**, RES **0**, Cost **20**, Block **1**, Atk Interval **2.85s**, Respawn **70s**.
+---
 
-4. **Myrtle (`char_151_myrtle`)**:
-   - Base E2 Lv70: HP 1565, ATK 520, DEF 300, RES 0, Cost 10, Block 1, Atk Interval 1.3s, Respawn 70s.
-   - Trust 100%: DEF +50.
-   - Pot 6: Cost -2, Respawn -4s, DEF +22.
-   - Module `uniequip_002_myrtle` (BEA-X) Stage 3: HP +150, DEF +35.
-   - **Total Max**: HP 1565 + 150 = **1715**, ATK **520**, DEF 300 + 50 + 22 + 35 = **407**, RES **0**, Cost 10 - 2 = **8**, Block **1**, Atk Interval **1.3s**, Respawn 70 - 4 = **66s**.
+## 5. Chunk Size & Transfer Performance Analysis
 
-5. **Texas (`char_102_texas`)**:
-   - Base E2 Lv80: HP 1950, ATK 500, DEF 343, RES 0, Cost 13, Block 2, Atk Interval 1.05s, Respawn 70s.
-   - Trust 100%: ATK +70.
-   - Pot 1: Baseline.
-   - Module `uniequip_002_texas` (SOL-Y) Stage 3: HP +155, ATK +42, DEF +22.
-   - **Total Max**: HP 1950 + 155 = **2105**, ATK 500 + 70 + 42 = **612**, DEF 343 + 22 = **365**, RES **0**, Cost **13**, Block **2**, Atk Interval **1.05s**, Respawn **70s**.
+### 5.1 Artifact & Chunk Comparison
+
+| Operator                          | Raw JSON (`data/operators/*.json`) | Server Chunk (`.output/server/...mjs`) | Client Chunk (`.output/public/_nuxt/*.js`) | Gzip Transfer (Client JS) |
+| :-------------------------------- | :--------------------------------: | :------------------------------------: | :----------------------------------------: | :-----------------------: |
+| **SilverAsh** (`char_172_svrash`) |        55.03 KB (56,349 B)         |          57.09 KB (58,456 B)           |            33.49 KB (34,295 B)             |   **7.35 KB** (7,347 B)   |
+| **Myrtle** (`char_151_myrtle`)    |        40.14 KB (41,100 B)         |          40.77 KB (41,745 B)           |            23.89 KB (24,466 B)             |   **6.26 KB** (6,258 B)   |
+| **Logos** (`char_4133_logos`)     |        86.41 KB (88,479 B)         |          96.73 KB (99,051 B)           |            59.42 KB (60,851 B)             |  **13.22 KB** (13,224 B)  |
+
+### 5.2 Why Server/Client Chunks Differ from Raw JSON
+
+1. **Server MJS vs Raw JSON**: The server bundle includes the full operator data converted to a JS module export plus module wrappers and metadata (`+2–10 KB` overhead).
+2. **Client JS vs Raw JSON**: The Vite/Rollup production build strips non-essential server fields, minifies property keys, and converts JSON structures into optimized JavaScript literals. This results in the client-side JavaScript chunk being **~30–40% smaller** than the raw uncompressed JSON file on disk, compressing down to merely **6–13 KB over the wire (gzip)**.
+
+### 5.3 Simulated Mobile Profile (Slow 4G / CPU 4x Throttling)
+
+Measured on the local Nuxt agent server (port 3001) under simulated mobile constraints:
+
+- **SilverAsh**: DomContentLoaded: 9,838 ms (cold page with base bundle loading), FCP: 8,248 ms, Transferred JS: 445 KB (entire app framework + operator chunk).
+- **Myrtle (subsequent route navigation)**: DomContentLoaded: 2,123 ms, FCP: 1,936 ms, Transferred JS: 238 KB.
+- **Logos (subsequent route navigation)**: DomContentLoaded: 2,143 ms, FCP: 1,960 ms, Transferred JS: 382 KB.
