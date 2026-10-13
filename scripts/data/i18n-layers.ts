@@ -11,16 +11,14 @@ export const ManualOverrideEntrySchema = z.object({
   text: z.string().min(1),
   author: z.string().min(1),
   note: z.string().min(1),
-  source: z.string().refine(
-    (s) => s === 'подтверждено владельцем' || /^https?:\/\//.test(s),
-    { message: 'source must be a valid URL or "подтверждено владельцем"' },
-  ),
+  source: z.string().url({ message: 'source must be a valid URL' }),
 })
 
 export type ManualOverrideEntry = z.infer<typeof ManualOverrideEntrySchema>
 
 export interface I18nLayersContext {
   overrides: Record<string, ManualOverrideEntry>
+  machine?: Record<string, string>
   wiki: Record<
     string,
     {
@@ -57,6 +55,7 @@ export interface I18nLayersTracker {
 export function createEmptyI18nLayersContext(): I18nLayersContext {
   return {
     overrides: {},
+    machine: {},
     wiki: {},
     categorizedGlossary: {},
     flatGlossary: {},
@@ -154,8 +153,29 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
     // Availability optional
   }
 
+  const machineDir = path.resolve(process.cwd(), 'data/i18n/machine')
+  const machine: Record<string, string> = {}
+  try {
+    const files = await fs.readdir(machineDir)
+    for (const file of files) {
+      if (!file.endsWith('.json')) continue
+      const raw = await fs.readFile(path.join(machineDir, file), 'utf-8')
+      const json = JSON.parse(raw) as Record<string, unknown>
+      for (const [k, v] of Object.entries(json)) {
+        if (typeof v === 'string') {
+          machine[k] = v.trim()
+        } else if (v && typeof v === 'object' && 'text' in v && typeof (v as { text: unknown }).text === 'string') {
+          machine[k] = (v as { text: string }).text.trim()
+        }
+      }
+    }
+  } catch (_e) {
+    // Machine translations optional
+  }
+
   return {
     overrides,
+    machine,
     wiki,
     categorizedGlossary,
     flatGlossary,
@@ -231,7 +251,18 @@ export function resolveLayeredI18nString(
     }
   }
 
-  // 4. Machine translation / Categorized Glossary
+  // 4. Machine translation layer (direct key mapping > categorized glossary > flat glossary)
+  if (options.key && context.machine?.[options.key]) {
+    const machText = context.machine[options.key]!.trim()
+    if (tracker) tracker.sources.machine++
+    return {
+      en: machText,
+      zh: zh || machText,
+      source: 'machine',
+      isMachineTranslation: true,
+    }
+  }
+
   if (zh.length > 0) {
     if (options.category && context.categorizedGlossary?.[options.category]?.[zh]) {
       const glossEn = context.categorizedGlossary[options.category]![zh]!.trim()
