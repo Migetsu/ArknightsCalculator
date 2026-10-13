@@ -102,7 +102,7 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
     })
 
     console.log('[AUDIT EN FULL SCROLL]', JSON.stringify(enFullStats, null, 2))
-    expect(enFullStats.totalCards).toBe(376) // 376 Global playable operators
+    expect(enFullStats.totalCards).toBe(434) // 434 playable operators in CN unified database
     expect(enFullStats.fallbackCount).toBe(0)
     expect(enFullStats.fallbackRatio).toBe(0)
     expect(enFullStats.loadedCount).toBe(enFullStats.completedCount)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { OperatorClass, ServerRegion } from '~/../shared/schemas/operator'
+import type { OperatorClass } from '~/../shared/schemas/operator'
 import { OperatorClassSchema } from '~/../shared/schemas/operator'
 import type { OperatorFilterState, OperatorSortOption } from '~/../shared/utils/operatorFilters'
 import { DEFAULT_OPERATOR_FILTERS } from '~/../shared/utils/operatorFilters'
@@ -36,11 +36,6 @@ const sortOptions: { value: OperatorSortOption; labelKey: string }[] = [
   { value: 'name_desc', labelKey: 'operators.sort.nameDesc' },
 ]
 
-const serverOptions: { value: ServerRegion; label: string }[] = [
-  { value: 'global', label: 'Global' },
-  { value: 'cn', label: 'CN All' },
-]
-
 const isDefault = computed(() => {
   return (
     !props.modelValue.search &&
@@ -48,7 +43,6 @@ const isDefault = computed(() => {
     !props.modelValue.subclass &&
     props.modelValue.rarities.length === 0 &&
     !props.modelValue.faction &&
-    props.modelValue.server === 'global' &&
     props.modelValue.sort === 'rarity_desc'
   )
 })
@@ -83,10 +77,6 @@ function toggleRarity(r: number): void {
   updateField('rarities', next)
 }
 
-function setServer(srv: ServerRegion): void {
-  updateField('server', srv)
-}
-
 function handleReset(): void {
   emit('update:modelValue', { ...DEFAULT_OPERATOR_FILTERS })
   emit('reset')
@@ -95,7 +85,7 @@ function handleReset(): void {
 
 <template>
   <div class="ak-operator-filters">
-    <!-- Top toolbar: Search, Server switch, Reset -->
+    <!-- Top toolbar: Search, Reset -->
     <div class="ak-operator-filters__top-bar">
       <div class="ak-operator-filters__search-field">
         <AkInput
@@ -107,28 +97,6 @@ function handleReset(): void {
           @update:model-value="handleSearchInput"
         />
       </div>
-
-      <!-- Server toggle: Global / CN -->
-      <fieldset class="ak-operator-filters__server-group">
-        <legend class="ak-operator-filters__label">
-          {{ t('operators.filters.server') }}
-        </legend>
-        <div class="ak-operator-filters__server-buttons" role="group">
-          <button
-            v-for="opt in serverOptions"
-            :key="opt.value"
-            type="button"
-            class="ak-operator-filters__server-btn"
-            :class="{
-              'ak-operator-filters__server-btn--active': modelValue.server === opt.value,
-            }"
-            :aria-pressed="modelValue.server === opt.value"
-            @click="setServer(opt.value)"
-          >
-            {{ opt.label }}
-          </button>
-        </div>
-      </fieldset>
 
       <!-- Reset button -->
       <div v-if="!isDefault" class="ak-operator-filters__reset-wrapper">
@@ -276,54 +244,6 @@ function handleReset(): void {
   &__search-field {
     flex: 1;
     min-width: 240px;
-  }
-
-  &__server-group {
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    min-width: 0;
-  }
-
-  &__server-buttons {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-deep);
-    border-radius: var(--radius-none);
-  }
-
-  &__server-btn {
-    border: none;
-    background: transparent;
-    color: var(--color-text-secondary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-mono);
-    text-transform: uppercase;
-    padding: var(--space-2xs) var(--space-sm);
-    cursor: pointer;
-    transition:
-      background-color var(--transition-fast),
-      color var(--transition-fast);
-
-    &:hover {
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-accent-primary);
-      outline-offset: -2px;
-    }
-
-    &--active {
-      background-color: var(--color-accent-primary);
-      color: var(--color-text-inverse);
-    }
   }
 
   &__reset-wrapper {

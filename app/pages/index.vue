@@ -116,9 +116,9 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="dashboard-page__stat-card">
-          <span class="dashboard-page__stat-label">SERVER</span>
+          <span class="dashboard-page__stat-label">DROP DATA</span>
           <div class="dashboard-page__stat-val dashboard-page__stat-val--server">
-            {{ settingsStore.defaultServer === 'cn' ? 'CN' : 'Global' }}
+            {{ settingsStore.dropDataServer === 'cn' ? 'CN' : 'Global' }}
           </div>
         </div>
       </section>

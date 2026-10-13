@@ -148,3 +148,56 @@
 2. **Локаль `zh_TW`** отсутствует в обоих официальных репозиториях Kengxxiao.
 3. Таблица смены класса называется **`char_patch_table.json`** (не `character_patch_table.json`).
 4. Репозиторий **`Aceship/AN-EN-Tags` заброшен** с конца 2025 года; в качестве актуального источника графики используется **`yuanyan3060/ArknightsGameResource`**.
+
+---
+
+## Freshness audit (2026-10-13)
+
+Аудит без изменений данных. Все цифры получены реальными запросами 2026-10-13 (UTC ~08:12–08:16).
+
+### 1. Репозитории: даты и версии данных
+
+Источник: GitHub API `GET /repos/{repo}/commits?sha={branch}&per_page=3` и `.../commits/{pinned}`; `data_version.txt` через `raw.githubusercontent.com` на закреплённом коммите.
+
+| Источник                                                                                                                    | Последний коммит (он же закреплённый в проекте) | Сообщение коммита                                 | `data_version.txt`                                |
+| :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------------------------------------------------ | :------------------------------------------------ |
+| [Kengxxiao/ArknightsGameData](https://api.github.com/repos/Kengxxiao/ArknightsGameData/commits?sha=master) (CN)             | `17759cc` — 2026-10-08 23:46 UTC                | `[CN UPDATE] Client:2.7.81 Data:26-10-08-...`     | `rel78.0`, `Change:124981 on 2026/10/08`, v78.0.0 |
+| [Kengxxiao/ArknightsGameData_YoStar](https://api.github.com/repos/Kengxxiao/ArknightsGameData_YoStar/commits?sha=main) (EN) | `57010cb` — 2025-11-13 15:53 UTC                | `[EN UPDATE] Client:31.5.80 Data:25-11-11-08-...` | `VersionControl:46.4.0` (даты в файле нет)        |
+
+Оба закреплённых коммита совпадают с последними коммитами веток на момент аудита: проект не отстаёт от репозиториев, отстают сами репозитории.
+
+### 2. EN: операторы Global, которых нет в `en_US/character_table.json`
+
+Источник списка: `arknights.wiki.gg`, MediaWiki API — [`Category:Operator`](https://arknights.wiki.gg/api.php?action=query&list=categorymembers&cmtitle=Category:Operator&cmlimit=500) (411 страниц, Global) и [`Category:CN Operator`](https://arknights.wiki.gg/api.php?action=query&list=categorymembers&cmtitle=Category%3ACN%20Operator&cmlimit=500) (22 страницы, только CN). Даты релиза на Global — Cargo-запрос `action=cargoquery` (таблицы `Operators` + `EventServerDetails`, `server = global`). Сравнение по нормализованному имени с `name`/`appellation` из закреплённого `en_US/character_table.json` (401 запись `char_*`).
+
+- Не найдено в `en_US`: **36** названий. Из них **35** — реальные релизы Global после даты репозитория (2025-11-13); даты релиза 2025-12-11 … 2026-09-16. Оставшееся одно — `Reserve Operator - Supporter (Ritualist)` (служебный режим, строки Cargo нет).
+- Первые 20 (по возрастанию даты релиза на Global): Leizi the Thunderbringer, Record Keeper (2025-12-11); Hoshiguma the Breacher, Matsukiri, Kichisei, Haruka (2026-01-16); Sakiko Togawa, Uika Misumi, Mutsumi Wakaba, Umiri Yahata, Nyamu Yūtenji (2026-02-10); Vetochki, Snegurochka, Mantra (2026-03-19); Snow Hunter, Hadiya, Pramanix the Prerita, Akkord, SilverAsh the Reignfrost, Astgenne the Lightchaser (2026-04-14).
+- Остальные 15: Skybox, Cairn, Nasti (2026-05-21); Varkáris, Perfumer the Distilled, Titi (2026-06-22); Ju, Taraxacum, Ch'en the Dawnstreak, Wang (2026-07-16); Ripresa, Bellone (2026-08-13); Ukusik, Botani, Zima the Raging Tide (2026-09-16).
+- Ближайший релиз на Global (страница `Operator` wiki.gg, 2026-10-13): 2026-10-14 — Kal'tsit Esperanta, Closure, Viy, Crackborne, GALLUS².
+
+### 3. Penguin Stats (`server=US`) против `en_US` stage_table / item_table
+
+Источник: [`/PenguinStats/api/v2/result/matrix?server=US&show_closed_zones=true`](https://penguin-stats.io/PenguinStats/api/v2/result/matrix?server=US&show_closed_zones=true): 7588 строк, 1133 этапа, 132 предмета.
+
+- Этапы вне `en_US/stage_table.json`: **303**. Разбор: 203 `*_rep` (у каждого базовый этап в таблице есть), 76 `*_perm` (у каждого базовый этап в таблице есть), 14 `randomMaterial*` (служебные), 2 служебных (`recruit`, `act24side_gacha`), **8 реально новых** — `act45side_01…08` (префикса `act45` в таблице нет).
+- Предметы вне `en_US/item_table.json`: **37**, все — псевдопредметы Penguin (`furni`, `4001_2000`, `charm_*`, `trap_oxygen_3`, `recruit_tag_*`). Реально новых игровых предметов: **0**.
+
+### 4. CN: `zh_CN` репозиторий против актуального списка prts.wiki
+
+Источник: [`prts.wiki` — «干员一览/干员id»](https://prts.wiki/api.php?action=parse&page=%E5%B9%B2%E5%91%98%E4%B8%80%E8%A7%88/%E5%B9%B2%E5%91%98id&prop=wikitext&format=json) (CSV `sortId,name,rarity,approach,date`): 434 оператора (`sortId >= 0`); самая поздняя дата выхода 2026-10-04 (旅骨, 德·托莱多, 克莱门莎).
+
+- Расхождений по имени с `zh_CN/character_table.json` (+ `char_patch_table`): **2**, оба — формы Амии (`阿米娅(近卫)`, `阿米娅(医疗)`), хранящиеся в таблице под другим именем; фактически отсутствующих операторов: **0**.
+- Penguin `server=CN` (1587 этапов, 148 предметов): вне `zh_CN` stage_table 539 (357 `_rep`, 153 `_perm`, 25 `randomMaterial*`, 4 служебных; из них новый реальный — `act50side_gacha`), вне item_table 41 (все — псевдопредметы Penguin). Для `_rep`/`_perm` в CN наличие базового этапа проверено только для `_rep` (356 из 357).
+
+### 5. Выводы
+
+| Источник                        | Отставание                                                                                                      | Доля отсутствующего                                                                        |
+| :------------------------------ | :-------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| `ArknightsGameData_YoStar` (EN) | по дате коммита 334 дня ≈ **47,7 недели** (2025-11-13 → 2026-10-13); первый пропущенный релиз Global 2025-12-11 | операторов: 35 из 411 Global = **8,5 %**; плюс событие `act45side` (8 этапов) и его тексты |
+| `ArknightsGameData` (CN)        | по дате коммита 5 дней ≈ **0,7 недели**; `data_version`: Change от 2026/10/08                                   | операторов: 0 из 434 по prts.wiki (2 формы Амии — артефакт сравнения имён)                 |
+
+Следствия для проекта:
+
+- Поле `servers`/`cnOnly` в `data/` вычислено по устаревшему EN-репозиторию: проект считает CN-only **58** операторов (`data/meta.json`), а по wiki.gg CN-only **22** (411 Global + 22 CN = 433 против 434 по PRTS). Разница 36 = 36 названий выше. Флаги недостоверны; в интерфейсе они не используются (см. `docs/design/DEVIATIONS.md`, п. 4).
+- Для английских названий и текстов 35 новых операторов нужен другой источник EN-данных (репозиторий не обновляется с 2025-11-13). Для CN-контента проблем с актуальностью нет.
+- Ограничения: сопоставление операторов — по нормализованному имени, а не по `charId` (wiki.gg ID не публикует); даты релиза Global взяты из Cargo wiki.gg (сторонний источник); `data_version.txt` EN-репозитория не содержит даты.

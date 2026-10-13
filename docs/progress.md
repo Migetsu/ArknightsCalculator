@@ -1,4 +1,4 @@
-# Project Progress
+﻿# Project Progress
 
 ## Done
 
@@ -36,7 +36,7 @@
 - Created dev-only design system showcase page (`app/pages/_ui.vue`), excluded from production build and sitemap via `pages:extend` hook.
 - Added unit and component tests (`AkButton.test.ts`, `AkTabs.test.ts`, `dev-only-routes.test.ts`) and Playwright responsive E2E tests (360px mobile drawer, 1440px desktop, screenshot generation).
 - Implemented Rhodes Island Terminal HUD design system (Design V2) based on reference aesthetics (`docs/design-refs/`):
-  - Dark HUD color palette (`#0c0d10`, `#14161a`, `#1a1d22`), accents (Cyan `#00e5ff`, Amber `#ff9800`, Green `#00e676`, Red `#ff1744`), and 1★–6★ operator rarity palette.
+  - Dark HUD color palette (`#0c0d10`, `#14161a`, `#1a1d22`), accents (Cyan `#00e5ff`, Amber `#ff9800`, Green `#00e676`, Red `#ff1744`), and 1в…вЂ“6в… operator rarity palette.
   - Vector background grid and radial vignette via CSS (`_reset.scss`, 0 KB external assets).
   - Clipped focus ring mixin (`@mixin focus-ring-clipped`) ensuring high-contrast accessible keyboard focus across cut corners.
   - Tactical UI component set without Nuxt UI: `AkPanel`, `AkButton` (with secondary variant and hover sweep), `AkBadge`, `AkStat`, `AkAlert` (responsive mobile stacking), `AkModal` (focus trap, Escape, accessible backdrop, Teleport), `AkDrawer` (tactical HUD drawer with modules DSH-00..SET-06), `AkAvatar` (colored rarity underline and initials fallback), `AkEmptyState`, `AkProgress` (segmented HUD progress bar), `AkInput`, `AkTabs`.
@@ -51,14 +51,14 @@
 - Added `i18n/i18n.config.ts` with `missing` translation handler logging missing keys to `console.error`.
 - Fixed horizontal layout overflows across 1024px, 360px, and 1920px viewports without masking `overflow-x` on html/body:
   - Applied `minmax(0, 1fr)` to all CSS Grid templates (`&__panels-grid`, `&__stats-grid`).
-  - Added responsive breakpoint distribution: 1 column on `< md`, 2 columns on `md`–`xl`, 3 columns on `xl+`.
+  - Added responsive breakpoint distribution: 1 column on `< md`, 2 columns on `md`вЂ“`xl`, 3 columns on `xl+`.
   - Enforced `min-width: 0`, `flex-shrink: 0`, and `text-overflow: ellipsis` on panels, operator chips, currency bars, and Drawer Doctor profile card.
 - Implemented Playwright console/pageerror defense fixture (`tests/e2e/fixtures.ts`) to fail tests on unhandled errors or missing translation keys.
 - Implemented UI consistency foundation and central module architecture:
-  - Added Section 13 «Единообразие интерфейса» to `AGENTS.md`.
+  - Added Section 13 В«Р•РґРёРЅРѕРѕР±СЂР°Р·РёРµ РёРЅС‚РµСЂС„РµР№СЃР°В» to `AGENTS.md`.
   - Created central typed modules registry `app/config/modules.ts` with `APP_MODULES` (`DSH-00`..`SET-06`), icons, routes, status (`ready` | `soon`), and i18n keys.
   - Refactored `app/layouts/default.vue` navigation drawer to build entirely from `APP_MODULES` without markup duplication.
-  - Created layout primitive components in `app/components/ui/`: `AkContainer` (size presets `sm`–`xl`, responsive padding), `AkGrid` (strict `minmax(0, 1fr)` columns, gap presets, responsive presets `panels`/`stats`/`operators`), and `AkPageHeader` (tactical code tag, title, subtitle, watermark, actions slot). Added them to `app/pages/_ui.vue` showcase.
+  - Created layout primitive components in `app/components/ui/`: `AkContainer` (size presets `sm`вЂ“`xl`, responsive padding), `AkGrid` (strict `minmax(0, 1fr)` columns, gap presets, responsive presets `panels`/`stats`/`operators`), and `AkPageHeader` (tactical code tag, title, subtitle, watermark, actions slot). Added them to `app/pages/_ui.vue` showcase.
   - Implemented uniform placeholder pages for all registered modules: `planner.vue`, `gacha.vue`, `recruit.vue`, `operators.vue`, `depot.vue`, `settings.vue` with `AkPageHeader`, `AkEmptyState`, and responsive 360px support for loading, error, and empty states.
   - Added unit test suite `tests/unit/config/modules.test.ts` validating uniqueness of id/route/code, regex formatting, lookup helpers, and 100% presence of keys in `en.json` and `ru.json`.
   - Added component tests `AkContainer.test.ts`, `AkGrid.test.ts`, `AkPageHeader.test.ts`. Total 55 unit/component tests passing.
@@ -102,7 +102,7 @@
 
 - Audited routes, live CDN asset delivery, Amiya class-change mappings, and visual DOM rendering (`fix/audit-batch2`):
   - Route audit: confirmed `pages/operators.vue` stub is removed and routing functions cleanly through `operators/index.vue` and `operators/[id].vue`. Added E2E tests validating direct access to `/operators/{id}` loads operator detail view, not catalog.
-  - Live asset verification: authored `scripts/data/verify-assets.ts` (`npm run data:verify-assets`) testing 60 operators (all rarities 1★–6★, 3 Amiya classes, CN operators). Validated 100% success rate on jsDelivr (avg 165ms) and Statically (avg 740ms) using real HTTP GET byte delivery.
+  - Live asset verification: authored `scripts/data/verify-assets.ts` (`npm run data:verify-assets`) testing 60 operators (all rarities 1в…вЂ“6в…, 3 Amiya classes, CN operators). Validated 100% success rate on jsDelivr (avg 165ms) and Statically (avg 740ms) using real HTTP GET byte delivery.
   - Amiya class change mapping: audited `yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e` repository tree. Added explicit mappings in `shared/utils/resolveAsset.ts` for Medic Amiya avatar (`char_1037_amiya3_2`) and Guard/Medic portrait variants (`'2'`). Unit tests passing in `tests/unit/shared/resolveAsset.test.ts`.
   - Manifest pipeline: updated `scripts/data/build-asset-manifest.ts` with real HTTP GET validation, concurrency throttling (10 workers), and `source: 'http' | 'tree'`. Re-generated `data/asset-manifest.json` achieving 434/434 (100%) verified avatars.
   - Visual DOM audit: authored `tests/e2e/audit-assets-dom.spec.ts` on port 3001. Confirmed `naturalWidth > 0` for all rendered `<img>` elements, captured responsive screenshots `docs/screenshots/operators-360.png` and `docs/screenshots/operators-1440.png`, and traversed full catalog (376 operators) with 0 fallbacks (`fallbackRatio = 0.0%`).
@@ -125,9 +125,16 @@
 - Implemented server availability flags, recipe kinds, and pure stats calculation core (`feat/stats-core`):
   - Server availability flags: added `servers: ('cn' | 'global')[]` to `GameItem` and `OperatorModule`. Identified 92 CN-only items (756 Global) and 168 CN-only modules (723 Global). Updated schemas, data builders, and validator.
   - Recipe classification: added `kind: 'synthesis' | 'conversion' | 'manufacture'` to `CraftRecipe`. Validated strict DAG on non-conversion formulas and verified exact 8 reciprocal chip cycles on conversion formulas.
-  - Operator Stats Core: created pure calculation engine in `shared/utils/stats/` (`calculateStats.ts`, `types.ts`). Implemented linear interpolation across keyframes, trust scaling (0–100%), potential ranks (1–6), module combat stat bonuses (stages 1–3), and breakdown by sources.
+  - Operator Stats Core: created pure calculation engine in `shared/utils/stats/` (`calculateStats.ts`, `types.ts`). Implemented linear interpolation across keyframes, trust scaling (0вЂ“100%), potential ranks (1вЂ“6), module combat stat bonuses (stages 1вЂ“3), and breakdown by sources.
   - Benchmark validation: pinned 5 benchmark operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) in unit tests matching PRTS / Terra Wiki data.
   - Documented engine and mathematical equations in `docs/stats.md`.
+
+### 2026-10-13: Server model change and data freshness audit (`chore/data-freshness-audit`)
+
+- Removed the server switcher and "CN only" badges from the operators catalog and module panel; the catalog lists all operators and ignores `?server=`. `servers` fields in data are untouched.
+- Settings: "Default server" replaced by "Drop data server" (CN / Global, default CN, `arkcalc_drop_data_server`); affects only future farming pages (Penguin Stats US/CN).
+- Freshness audit (no data changes): EN repo is ~47.7 weeks behind (last commit 2025-11-13), CN repo ~0.7 weeks. 35 of 411 Global operators lack EN text. Details in `docs/data-sources.md` ("Freshness audit").
+- Deviation recorded in `docs/design/DEVIATIONS.md` (no server switcher).
 
 ## In progress
 
@@ -135,17 +142,17 @@
   - Audited full game dataset across 29,324 active descriptions in `data/operators/*.json` via `scripts/data/scan-rich-text.ts`. Documented all 5 highlight tags (`ba.vup`, `ba.rem`, `ba.talpu`, `ba.kw`, `ba.vdown`), 60 unique battle term tags (100% matched against `constants.json`), and placeholder formats in `docs/rich-text.md`.
   - Authored pure, zero-HTML parser `shared/utils/richText/` with typed AST schema (`RichTextNode`, `text`, `break`, `highlight`, `term`):
     - Blackboard interpolation (`resolveBlackboardValue`) with formatters (`0%`, `0.0%`, `0`, `0.0`, default raw).
-    - Resilient parser handling unclosed tags, nested markup, unknown tags/keys (graceful fallback with console warning), and literal angle brackets (`<Substitute>`, `<替身>`).
+    - Resilient parser handling unclosed tags, nested markup, unknown tags/keys (graceful fallback with console warning), and literal angle brackets (`<Substitute>`, `<ж›їиє«>`).
   - Authored accessible UI component `AkRichText.vue` (`app/components/ui/AkRichText.vue`) rendering AST nodes without `v-html`:
     - Themed highlights with Arknights tactical colors (Cyan, Red, Amber, Green, Gold).
     - Accessible popover for terms: `role="button"`, `tabindex="0"`, `aria-expanded`, keyboard support (`Enter`, `Space`, `Escape`), touch/click toggle, and outside click dismiss.
   - Added rich text showcase section to `app/pages/_ui.vue` demonstrating skill interpolations, tactical terms, and nested highlights.
 - Audited operator stats calculation benchmarks, boundary validation, and attack speed interval scaling (`chore/stats-audit`):
   - Audited benchmarks for SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, and Texas against live reference databases (PRTS Wiki and Fandom Arknights Wiki) on 2026-10-12 with cited URLs and verified breakdowns.
-  - Documented trust scaling to favorKeyFrames (0-100% attribute bonuses) and elite promotion limits by operator rarity (1★-2★ max E0, 3★ max E1, 4★-6★ max E2).
+  - Documented trust scaling to favorKeyFrames (0-100% attribute bonuses) and elite promotion limits by operator rarity (1в…-2в… max E0, 3в… max E1, 4в…-6в… max E2).
   - Enforced strict validation: out-of-range levels or unavailable elite promotions throw explicit descriptive errors instead of silent clamping.
-  - Implemented Attack Speed (ASPD) modifier parsing from potentials (`ASPD +X`, `Attack Speed +X`, `攻击速度+X`) and modules (`stStats.attack_speed`), calculating effective attack interval `(baseAttackTime * 100) / (100 + totalAttackSpeed)`.
-  - Added unit test cases for 1★ and 3★ phase boundaries, level validation, ASPD modifiers, and effective attack intervals.
+  - Implemented Attack Speed (ASPD) modifier parsing from potentials (`ASPD +X`, `Attack Speed +X`, `ж”»е‡»йЂџеє¦+X`) and modules (`stStats.attack_speed`), calculating effective attack interval `(baseAttackTime * 100) / (100 + totalAttackSpeed)`.
+  - Added unit test cases for 1в… and 3в… phase boundaries, level validation, ASPD modifiers, and effective attack intervals.
   - Updated `docs/stats.md` with complete audit table, URL citations, and formulas.
 
 - Implemented comprehensive operator detail page and lazy per-operator chunk architecture (`feat/operator-detail`):
@@ -174,7 +181,7 @@
     - `AkBadge`: 4px cut-corner polygon, glowing dot indicators (`dot` prop).
     - `AkTabs`: Rhodes Island personnel dossier tab design with Chamfer cut-corner tab heads and neon indicator lines.
     - `AkInput`: Cut-corner technical input box with neon cyan focus ring and prefix/suffix slots.
-    - `AkPageHeader`: PRTS terminal page header with technical mark `■ `, code tags, watermarks, and neon cyan 64px indicator bar.
+    - `AkPageHeader`: PRTS terminal page header with technical mark `в–  `, code tags, watermarks, and neon cyan 64px indicator bar.
     - `AkStat`: Digital instrument tile with gradient surface, cut corner, and glowing technical monospace metrics.
     - `AkAlert`: Hazard-striped tactical status box with Chamfer clip and badge slot.
     - `AkProgress`: High-tech segmented progress bar with neon track glow.
@@ -199,10 +206,10 @@
   - Created `docs/known-issues.md` to track non-blocking deferred items per `AGENTS.md`.
 
 - Component-level stats audit and chunk telemetry audit (`chore/audit-fixes`):
-  - Completed component-by-component live audit for all 5 reference operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) against `arknights.wiki.gg` and `prts.wiki` (checked 2026-10-12): base stats on level/phase, Trust 100%, Potentials 1–6, and Module Stage 3.
+  - Completed component-by-component live audit for all 5 reference operators (SilverAsh, Eyjafjalla, Kal'tsit, Myrtle, Texas) against `arknights.wiki.gg` and `prts.wiki` (checked 2026-10-12): base stats on level/phase, Trust 100%, Potentials 1вЂ“6, and Module Stage 3.
   - Documented full component breakdown table in `docs/stats.md`, showing how the calculation engine dynamically sums verified parts into total stats.
   - Clarified subclass module abbreviations (`uniequip_table.json` and `battle_equip_table.json`): `SOL` (Soldier/Pioneer Vanguard, e.g. Texas `SOL-Y`), `BEA` (Bearer/Standard Bearer, e.g. Myrtle `BEA-X`), `LOR` (Lord Guard, e.g. SilverAsh `LOR-X`), `CCR` (Core Caster, e.g. Eyjafjalla `CCR-X`/`CCR-Y`), `PHY` (Physician Medic, e.g. Kal'tsit `PHY-X`).
-  - Audited operator chunk transfer and bundle telemetry: client-side chunks (`BpdH-CFf.js` for SilverAsh, `D7HbWlUc.js` for Myrtle, `BNpv6iik.js` for Logos) compress to 6–13 KB over the wire via Vite tree-shaking, compared to 40–88 KB raw JSON.
+  - Audited operator chunk transfer and bundle telemetry: client-side chunks (`BpdH-CFf.js` for SilverAsh, `D7HbWlUc.js` for Myrtle, `BNpv6iik.js` for Logos) compress to 6вЂ“13 KB over the wire via Vite tree-shaking, compared to 40вЂ“88 KB raw JSON.
   - Verified simulated mobile network profile (Fast 3G/Slow 4G + CPU 4x): FCP ~1.9s, DomContentLoaded ~2.1s on warm navigation, 0 script leaks.
 
 - Leveling EXP & promotion material requirements planner core (`feat/planner-core`):
@@ -219,8 +226,8 @@
   - Replaced design tokens (`_tokens.scss`) with authentic Ember Editorial palette:
     - Page background `#0e0a09` with radial glow `radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%)`.
     - Surface `#17110f` (`.pn`), deep input/cell surface `#0e0a09`, borders (`rgba(232,221,211,.08)`, `.12`, `.18`).
-    - Primary Ember accent `#ff6a3d`, Ember light `#ff8a5c`, Amber `#ff9d2b` (6★, warnings), Success `#8fd19e`, Gold accent text `#ffd9a8`.
-    - Flat 0–2px shapes, removed legacy `clip-path` (chamfer/cut-corner) and skew transforms.
+    - Primary Ember accent `#ff6a3d`, Ember light `#ff8a5c`, Amber `#ff9d2b` (6в…, warnings), Success `#8fd19e`, Gold accent text `#ffd9a8`.
+    - Flat 0вЂ“2px shapes, removed legacy `clip-path` (chamfer/cut-corner) and skew transforms.
   - Rewrote UI primitives in `app/components/ui/` to match HTML mockups:
     - `AkButton`: variants `primary` (Ember fill with dark text), `outline`, `gold-outline`, `danger`, `ghost`.
     - `AkPanel`: clean `.pn` surface without reticle corners.
@@ -236,7 +243,7 @@
   - Added new design system components:
     - `AkChip`: toggleable tag buttons (active Ember `#ff6a3d`).
     - `AkSegmented`: segmented control buttons (language, server switchers).
-    - `AkStepper`: numeric stepper with `−` and `+` buttons, hidden native spinners, keyboard `ArrowUp`/`ArrowDown` support, and accessible focus.
+    - `AkStepper`: numeric stepper with `в€’` and `+` buttons, hidden native spinners, keyboard `ArrowUp`/`ArrowDown` support, and accessible focus.
   - Updated showcase page `app/pages/_ui.vue` with all primitives and live interactive demonstrations.
   - Added unit test suites for `AkChip`, `AkSegmented`, `AkStepper` (30 test files, 198 Vitest tests passing).
   - Validated zero horizontal scroll across all breakpoints (360px up to 1920px) on EN and RU across all routes (72/72 passing).
@@ -245,24 +252,24 @@
 
 - Design System Icons & Asset Verification (`feat/design-icons`):
   - Pre-step:
-    - Realigned rarity tokens strictly to `docs/design/DESIGN.md`: 6★ `#ff9d2b`, 5★ `#ffd54f`, 4★ `#9b6bd6`, 3★ `#6fa3e0`, 2★ `#7fc48a`, 1★ `#8a8a8a`. Ember `#ff6a3d` reserved exclusively for primary action, active state, selected chips, sliders, and progress.
+    - Realigned rarity tokens strictly to `docs/design/DESIGN.md`: 6в… `#ff9d2b`, 5в… `#ffd54f`, 4в… `#9b6bd6`, 3в… `#6fa3e0`, 2в… `#7fc48a`, 1в… `#8a8a8a`. Ember `#ff6a3d` reserved exclusively for primary action, active state, selected chips, sliders, and progress.
     - Replaced cyan `#2bd4b8` with design mockup tokens.
     - Created `docs/design/DEVIATIONS.md` documenting differences between HTML mockups and project tokens.
     - Added `docs/screenshots/*` to `.gitignore` and removed screenshots from git tracking.
     - Documented all components using temporary no-op mixins in `docs/known-issues.md`.
   - Icon components & asset resolution:
     - Updated `AkAvatar`: supported sizes 44, 48, 52, 56, 64, 84px with 3px rarity underline, initials fallback, and explicit dimensions preventing CLS.
-    - Implemented `AkItemIcon`: tier borders (T1–T5), count badge, fallback state, and custom sizes.
-    - Implemented `AkSkillIcon`: circular 48px badge with gold border, skill rank (1–7) or mastery badge (M1–M3), and fallback state.
-    - Implemented `AkModuleIcon`: diamond shape with ember border, module stage badge (1–3), and fallback state.
+    - Implemented `AkItemIcon`: tier borders (T1вЂ“T5), count badge, fallback state, and custom sizes.
+    - Implemented `AkSkillIcon`: circular 48px badge with gold border, skill rank (1вЂ“7) or mastery badge (M1вЂ“M3), and fallback state.
+    - Implemented `AkModuleIcon`: diamond shape with ember border, module stage badge (1вЂ“3), and fallback state.
     - Extended `resolveAsset` to support `item` (with `iconId`), `skill` (with `iconId` and `skill_icon_` prefix), and `equip` (mapped to Aceship Arknight-Images repository with initial badge mapping).
     - Executed live CDN audit of 61 items, 60 skills, and 60 modules via `scripts/data/verify-new-assets.ts`: 100.0% availability on both jsDelivr and Statically CDNs; recorded in `data/new-assets-verification-report.json` and documented in `docs/assets.md`.
-    - Added comprehensive unit test suites: `AkAvatar.test.ts` (7 tests), `AkItemIcon.test.ts` (7 tests), `AkSkillIcon.test.ts` (5 tests), `AkModuleIcon.test.ts` (5 tests), and updated `resolveAsset.test.ts` (12 tests) — 33 files, 218 Vitest tests passing.
+    - Added comprehensive unit test suites: `AkAvatar.test.ts` (7 tests), `AkItemIcon.test.ts` (7 tests), `AkSkillIcon.test.ts` (5 tests), `AkModuleIcon.test.ts` (5 tests), and updated `resolveAsset.test.ts` (12 tests) вЂ” 33 files, 218 Vitest tests passing.
     - Updated `app/pages/_ui.vue` showcase with live interactive demonstrations of avatar sizes, items, skills, and modules.
 
 - Design System Shell & Navigation Foundation (`feat/design-shell`):
   - Pre-step:
-    - Item tiers T1–T5: added dedicated SCSS tokens in `_tokens.scss` (`T1 #8a8a8a, T2 #7fc48a, T3 #6fa3e0, T4 #a97be0, T5 #e0b44a`) per `docs/design/DESIGN.md`, decoupled from operator rarity tokens; connected to `AkItemIcon`.
+    - Item tiers T1вЂ“T5: added dedicated SCSS tokens in `_tokens.scss` (`T1 #8a8a8a, T2 #7fc48a, T3 #6fa3e0, T4 #a97be0, T5 #e0b44a`) per `docs/design/DESIGN.md`, decoupled from operator rarity tokens; connected to `AkItemIcon`.
     - Icons: aligned `AkSkillIcon` (2px solid `#ffd9a8` border) and `AkModuleIcon` (48px diamond, solid `#ff6a3d` border) with `planner.html` mockups.
     - Executed full repository git-tree audit across all 848 items, 900 skills, and 891 modules via `scripts/data/build-asset-manifest.ts`:
       - Items: 848/848 (100.0%, 0 missing on `yuanyan3060/ArknightsGameResource`).
@@ -273,7 +280,7 @@
     - `AkHeader`: logo `ARKCALC`, desktop horizontal navigation from `app/config/modules.ts`, dedicated right link to `Settings`, mobile drawer with focus trap, removed language switcher from header.
     - Layout: updated `app/layouts/default.vue` to use `AkHeader` and Ember Editorial radial gradient background with footer disclaimer.
     - Settings page (`/settings`, module `SET-06`, status `ready`):
-      - Language switcher: English / Русский with cookie and URL persistence.
+      - Language switcher: English / Р СѓСЃСЃРєРёР№ with cookie and URL persistence.
       - Default server: Global / CN selector persisted via `useSettingsStore` (`useLocalStorage('arkcalc_default_server', 'global')`) influencing operator catalog defaults.
       - Account & Local Data: UI stubs for account sync, export JSON backup, import backup, and reset local data.
       - Game data version: dynamic telemetry display from `data/meta.json` (commit hash, build date, total/global/CN operator counts).
@@ -299,7 +306,7 @@
     - Responsive states: loading skeletons, empty state, and error alert.
   - Operator Detail Page (`/operators/[id]`):
     - Redesigned according to `operator-detail.html`:
-      - Hero section: warm radial gradient background, Back to list button, tactical uppercase meta string (`6★ GUARD / LORD / KARLAN`), large operator heading (up to 68px clamp), and full portrait with E0/E1 vs E2 variant selector.
+      - Hero section: warm radial gradient background, Back to list button, tactical uppercase meta string (`6в… GUARD / LORD / KARLAN`), large operator heading (up to 68px clamp), and full portrait with E0/E1 vs E2 variant selector.
       - Key stats section: overlapping top card with large `Unbounded 800` figures for HP, ATK (ember highlight), DEF, and RES calculated reactively via calculation core.
       - Interactive tabs (`AkTabs`): Stats, Skills, Talents, Modules, Info.
       - Panel integration: `AkOperatorSkillsPanel.vue` (using `AkSkillIcon` and `AkItemIcon`), `AkOperatorModulesPanel.vue` (using `AkModuleIcon` and `AkItemIcon`), `AkOperatorTalentsPanel.vue`, `AkOperatorInfoPanel.vue`, `AkOperatorStatsPanel.vue` with sliders/steppers.
@@ -315,6 +322,13 @@
     - 226 Vitest unit tests passing (100%).
     - 123 Playwright E2E tests passing (100%).
     - `lint`, `stylelint`, `format:check`, `typecheck`, `i18n:check`, `data:validate`, `build` all clean (0 errors).
+
+### 2026-10-13: Server model change and data freshness audit (`chore/data-freshness-audit`)
+
+- Removed the server switcher and "CN only" badges from the operators catalog and module panel; the catalog lists all operators and ignores `?server=`. `servers` fields in data are untouched.
+- Settings: "Default server" replaced by "Drop data server" (CN / Global, default CN, `arkcalc_drop_data_server`); affects only future farming pages (Penguin Stats US/CN).
+- Freshness audit (no data changes): EN repo is ~47.7 weeks behind (last commit 2025-11-13), CN repo ~0.7 weeks. 35 of 411 Global operators lack EN text. Details in `docs/data-sources.md` ("Freshness audit").
+- Deviation recorded in `docs/design/DEVIATIONS.md` (no server switcher).
 
 ## In progress
 
