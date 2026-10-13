@@ -108,8 +108,7 @@ const pageState = ref<PageState>('empty')
     justify-content: center;
     align-items: center;
     min-width: 0;
-
-    @include cut-corner(12px, top-right);
+    border-radius: var(--radius-none);
   }
 
   &__state-box {
@@ -121,8 +120,7 @@ const pageState = ref<PageState>('empty')
     gap: var(--space-sm);
     background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
     border: 1px solid var(--color-border-bold);
-
-    @include cut-corner(12px, top-right);
+    border-radius: var(--radius-none);
   }
 
   &__spinner {

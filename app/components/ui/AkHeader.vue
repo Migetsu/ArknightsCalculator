@@ -60,12 +60,12 @@ function isModuleActive(path: string): boolean {
           :key="item.id"
           :to="localePath(item.route)"
           class="ak-header__nav-link"
-          :class="{ 'ak-header__nav-link--active': isModuleActive(item.route) }"
+          :class="{
+            'ak-header__nav-link--active': isModuleActive(item.route),
+            'ak-header__nav-link--soon': item.status === 'soon',
+          }"
         >
-          {{ t(item.nameKey) }}
-          <span v-if="item.status === 'soon'" class="ak-header__soon-badge">
-            {{ t('modules.status.soon') }}
-          </span>
+          {{ t(item.navKey ?? item.nameKey) }}
         </NuxtLink>
       </nav>
     </div>
@@ -77,18 +77,19 @@ function isModuleActive(path: string): boolean {
         class="ak-header__settings-link"
         :class="{ 'ak-header__settings-link--active': isModuleActive('/settings') }"
       >
-        {{ t('navigation.settings') }}
+        {{ t('nav.settings') }}
       </NuxtLink>
 
-      <!-- Sync Button for test compatibility -->
+      <!-- Sync Button with status dot -->
       <AkButton
-        variant="ghost"
+        variant="outline"
         size="sm"
         class="ak-header__sync-btn layout-default__sync-btn"
         :aria-label="t('common.sync')"
         @click="openSyncModal"
       >
-        {{ t('common.sync') }}
+        <span class="ak-header__sync-dot" aria-hidden="true" />
+        <span class="ak-header__sync-text">{{ t('common.sync') }}</span>
       </AkButton>
 
       <!-- Mobile drawer toggle -->
@@ -123,12 +124,13 @@ function isModuleActive(path: string): boolean {
             }}</span>
           </div>
           <AkButton
-            variant="secondary"
+            variant="outline"
             size="sm"
-            class="layout-default__user-sync-btn"
+            class="layout-default__user-sync-btn ak-header__drawer-sync-btn"
             @click="openSyncModal"
           >
-            {{ t('common.sync') }}
+            <span class="ak-header__sync-dot" aria-hidden="true" />
+            <span>{{ t('common.sync') }}</span>
           </AkButton>
         </div>
       </template>
@@ -228,6 +230,7 @@ function isModuleActive(path: string): boolean {
     display: none;
     align-items: center;
     gap: 24px;
+    height: 36px;
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
@@ -240,14 +243,15 @@ function isModuleActive(path: string): boolean {
   &__nav-link {
     color: var(--color-text-secondary);
     text-decoration: none;
-    padding-bottom: 4px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    border-bottom: 2px solid transparent;
+    height: 36px;
+    line-height: 36px;
+    position: relative;
+    box-shadow: none;
     transition:
       color var(--transition-fast),
-      border-color var(--transition-fast);
+      box-shadow var(--transition-fast);
 
     @include focus-ring;
 
@@ -255,44 +259,48 @@ function isModuleActive(path: string): boolean {
       color: var(--color-text-accent);
     }
 
+    &--soon {
+      color: var(--color-text-muted);
+      opacity: 0.75;
+
+      &:hover {
+        color: var(--color-text-secondary);
+        opacity: 1;
+      }
+    }
+
     &--active {
       color: var(--color-text-accent);
-      border-bottom-color: var(--color-accent-primary);
+      box-shadow: inset 0 -2px 0 0 var(--color-accent-primary);
     }
-  }
-
-  &__soon-badge {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    padding: 1px 4px;
-    background-color: var(--color-border-subtle);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    height: 36px;
+    gap: 16px;
     flex-shrink: 0;
   }
 
   &__settings-link {
     display: none;
+    align-items: center;
+    height: 36px;
+    line-height: 36px;
+    position: relative;
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     text-decoration: none;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
+    box-shadow: none;
     transition:
       color var(--transition-fast),
-      border-color var(--transition-fast);
+      box-shadow var(--transition-fast);
 
     @include mq(lg) {
-      display: inline-block;
+      display: inline-flex;
     }
 
     @include focus-ring;
@@ -303,8 +311,36 @@ function isModuleActive(path: string): boolean {
 
     &--active {
       color: var(--color-text-accent);
-      border-bottom-color: var(--color-accent-primary);
+      box-shadow: inset 0 -2px 0 0 var(--color-accent-primary);
     }
+  }
+
+  &__sync-btn {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-xs);
+    box-sizing: border-box;
+  }
+
+  &__sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent-primary);
+    flex-shrink: 0;
+  }
+
+  &__sync-text {
+    line-height: 1;
+  }
+
+  &__drawer-sync-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-size-xs);
   }
 
   &__burger {
