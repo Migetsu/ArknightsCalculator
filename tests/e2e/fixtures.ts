@@ -23,6 +23,10 @@ export const test = baseTest.extend({
       ) {
         return true
       }
+      // 4. Intentional 404 response check for excluded showcase route (_ui.vue) in CI production mode
+      if (text.includes('/_ui') && text.includes('404')) {
+        return true
+      }
       return false
     }
 
