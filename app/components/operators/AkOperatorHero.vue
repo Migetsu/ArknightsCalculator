@@ -190,6 +190,11 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
           <p class="ak-operator-hero__meta">{{ heroMeta }}</p>
           <h1 class="ak-operator-hero__name ak-page-header__title">
             {{ displayName }}
+            <AkTranslationBadge
+              v-if="operator.name?.source === 'machine' || operator.name?.stale"
+              :source="operator.name?.source"
+              :stale="operator.name?.stale"
+            />
           </h1>
 
           <!-- Meta Chips Row: Stars, Class, Subclass, Faction -->

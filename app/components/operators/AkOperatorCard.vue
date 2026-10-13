@@ -4,6 +4,7 @@ import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import { resolveAsset } from '~/../shared/utils/resolveAsset'
 import assetManifest from '~/../data/asset-manifest.json'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   operator: OperatorSummary
@@ -77,7 +78,14 @@ const artPosition = computed(() => {
       :class="`ak-operator-card__info--rarity-${operator.rarity}`"
     >
       <div class="ak-operator-card__title-row">
-        <b class="ak-operator-card__name" :title="displayName">{{ displayName }}</b>
+        <b class="ak-operator-card__name" :title="displayName">
+          {{ displayName }}
+          <AkTranslationBadge
+            v-if="operator.name?.source === 'machine' || operator.name?.stale"
+            :source="operator.name?.source"
+            :stale="operator.name?.stale"
+          />
+        </b>
         <span v-if="operator.displayNumber" class="ak-operator-card__code" aria-hidden="true">
           {{ operator.displayNumber }}
         </span>

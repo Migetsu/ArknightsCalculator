@@ -170,6 +170,14 @@ const stepperLmd = ref(150000)
             <AkBadge variant="rarity" :rarity="6">6★ SENIOR EXECUTIVE</AkBadge>
           </div>
         </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Translation Indicators (Machine / Stale)</span>
+          <div class="page-ui__row">
+            <span>Machine Translated Name: <AkTranslationBadge source="machine" /></span>
+            <span>Outdated Skill Desc: <AkTranslationBadge :stale="true" /></span>
+          </div>
+        </div>
       </AkPanel>
 
       <!-- Stats Tiles (Unbounded 800) -->

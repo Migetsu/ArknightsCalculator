@@ -46,6 +46,11 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
         <div class="ak-operator-talents-panel__header">
           <h4 class="ak-operator-talents-panel__name">
             {{ getCandidateName(candidate) }}
+            <AkTranslationBadge
+              v-if="candidate.name?.source === 'machine' || candidate.name?.stale"
+              :source="candidate.name?.source"
+              :stale="candidate.name?.stale"
+            />
           </h4>
 
           <div class="ak-operator-talents-panel__badges">
