@@ -185,6 +185,31 @@ describe('i18n-layers resolution', () => {
     expect(skillResult.en).toBe('Whip Sword')
   })
 
+  it('layer 4: resolves direct machine translation by key', () => {
+    const tracker = createI18nTracker()
+    const ctx: I18nLayersContext = {
+      ...mockContext,
+      overrides: {},
+      machine: {
+        'uniequip_004_phenxi.name': "Fiammetta's Specialized Badge",
+      },
+    }
+    const result = resolveLayeredI18nString(
+      {
+        key: 'uniequip_004_phenxi.name',
+        officialEn: null,
+        zhText: '菲亚梅塔特限证章',
+      },
+      ctx,
+      tracker,
+    )
+
+    expect(result.source).toBe('machine')
+    expect(result.en).toBe("Fiammetta's Specialized Badge")
+    expect(result.isMachineTranslation).toBe(true)
+    expect(tracker.sources.machine).toBe(1)
+  })
+
   it('layer 5: falls back to zh original when no translation exists', () => {
     const tracker = createI18nTracker()
     const result = resolveLayeredI18nString(

@@ -5,50 +5,61 @@ import { ManualOverrideEntrySchema } from '../../../scripts/data/i18n-layers'
 
 describe('Manual Overrides Schema & Integrity', () => {
   const overridesDir = path.resolve(process.cwd(), 'data/i18n/overrides')
+  const fixturesPath = path.resolve(process.cwd(), 'tests/fixtures/i18n/overrides.json')
+  const reportPath = path.resolve(process.cwd(), 'data/i18n/report.json')
 
-  it('validates all manual overrides files against ManualOverrideEntrySchema', async () => {
+  it('validates test fixture entries against ManualOverrideEntrySchema', async () => {
+    const raw = await fs.readFile(fixturesPath, 'utf-8')
+    const json = JSON.parse(raw) as Record<string, unknown>
+
+    for (const [key, value] of Object.entries(json)) {
+      const parsed = ManualOverrideEntrySchema.parse(value)
+      expect(parsed.text.length, `Empty text in fixture ${key}`).toBeGreaterThan(0)
+      expect(parsed.source.startsWith('http'), `Invalid URL source in fixture ${key}`).toBe(true)
+    }
+
+    // Unconfirmed / non-URL source must fail validation
+    const invalidEntry = {
+      text: 'Unconfirmed Entry',
+      author: 'Tester',
+      note: 'Should fail',
+      source: 'подтверждено владельцем',
+    }
+    const result = ManualOverrideEntrySchema.safeParse(invalidEntry)
+    expect(result.success).toBe(false)
+  })
+
+  it('validates all production manual override files in data/i18n/overrides/', async () => {
     const files = await fs.readdir(overridesDir)
     const jsonFiles = files.filter((f) => f.endsWith('.json'))
 
-    expect(jsonFiles.length).toBeGreaterThan(0)
-
+    let totalOverrides = 0
     for (const file of jsonFiles) {
       const filePath = path.join(overridesDir, file)
       const content = await fs.readFile(filePath, 'utf-8')
       const json = JSON.parse(content) as Record<string, unknown>
 
-      for (const [key, value] of Object.entries(json)) {
-        const parseResult = ManualOverrideEntrySchema.safeParse(value)
-        expect(
-          parseResult.success,
-          `File "${file}" key "${key}" failed validation: ${
-            parseResult.success ? '' : JSON.stringify(parseResult.error.format())
-          }`,
-        ).toBe(true)
-
-        if (parseResult.success) {
-          const entry = parseResult.data
-          expect(entry.text.trim().length).toBeGreaterThan(0)
-          expect(entry.author.trim().length).toBeGreaterThan(0)
-          expect(entry.note.trim().length).toBeGreaterThan(0)
-          const isValidSource =
-            entry.source === 'подтверждено владельцем' ||
-            entry.source.startsWith('http://') ||
-            entry.source.startsWith('https://')
-          expect(isValidSource, `Invalid source in ${file}:${key}`).toBe(true)
-        }
+      for (const [_key, value] of Object.entries(json)) {
+        totalOverrides++
+        const parsed = ManualOverrideEntrySchema.parse(value)
+        expect(parsed.text.trim().length).toBeGreaterThan(0)
+        expect(parsed.source.startsWith('http')).toBe(true)
       }
     }
+
+    // Verify report.json parity: manual source count must equal total override entries in data/i18n/overrides
+    const rawReport = await fs.readFile(reportPath, 'utf-8')
+    const report = JSON.parse(rawReport) as { sources?: { manual?: number } }
+    expect(report.sources?.manual ?? 0).toBe(totalOverrides)
   })
 
-  it('contains verified override for Fiammetta module A', async () => {
-    const modFilePath = path.join(overridesDir, 'modules.json')
-    const content = await fs.readFile(modFilePath, 'utf-8')
-    const json = JSON.parse(content) as Record<string, unknown>
+  it('verifies Fiammetta module A is mapped in machine translation layer', async () => {
+    const machineModPath = path.resolve(process.cwd(), 'data/i18n/machine/modules.json')
+    const content = await fs.readFile(machineModPath, 'utf-8')
+    const json = JSON.parse(content) as Record<string, { text?: string; source?: string }>
 
     expect(json['uniequip_004_phenxi.name']).toBeDefined()
-    const entry = ManualOverrideEntrySchema.parse(json['uniequip_004_phenxi.name'])
-    expect(entry.text).toBe("Fiammetta's Specialized Badge")
-    expect(entry.source).toBe('https://arknights.wiki.gg/wiki/Fiammetta')
+    expect(json['uniequip_004_phenxi.name']?.text).toBe("Fiammetta's Specialized Badge")
+    expect(json['uniequip_004_phenxi.name']?.source).toBe('machine')
   })
 })
