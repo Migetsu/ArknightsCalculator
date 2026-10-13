@@ -15,19 +15,20 @@
 1. **Основной CDN (Primary):**
    - **Провайдер:** jsDelivr (`https://cdn.jsdelivr.net/gh/`)
    - **Репозиторий операторов, навыков и предметов:** `yuanyan3060/ArknightsGameResource` (коммит `9bf239661e37766fba585806fb9fa67e79bb679e`)
-   - **Репозиторий эксклюзивных модулей (equip):** `Aceship/Arknight-Images` (коммит `0b28f9562fcadbd644c6225f8f8aefbb500b4d22`)
+   - **Репозиторий модулей (equip, 100% покрытие):** `fexli/ArknightsResource` (коммит `d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5`) с резервным зеркалом `Aceship/Arknight-Images` (коммит `0b28f9562fcadbd644c6225f8f8aefbb500b4d22`)
    - **Шаблоны URL:**
      - Аватары / портреты: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
      - Навыки: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/skill/skill_icon_{iconId}.png`
      - Предметы: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/item/{iconId}.png`
-     - Модули: `https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f9562fcadbd644c6225f8f8aefbb500b4d22/equip/icon/{id}.png`
+     - Модули (Fexli): `https://cdn.jsdelivr.net/gh/fexli/ArknightsResource@d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5/equip/{id}.png`
+     - Модули (Aceship fallback): `https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f9562fcadbd644c6225f8f8aefbb500b4d22/equip/icon/{id}.png`
    - **Характеристики:** Глобальный Anycast CDN, HTTP/2 и HTTP/3, автоматическое сжатие, высокая надежность, отсутствие авторизации.
 
 2. **Запасное зеркало (Secondary Mirror):**
    - **Провайдер:** Statically CDN (`https://cdn.statically.io/gh/`)
    - **Шаблоны URL:**
      - Операторы/предметы/навыки: `https://cdn.statically.io/gh/yuanyan3060/ArknightsGameResource/9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
-     - Модули: `https://cdn.statically.io/gh/Aceship/Arknight-Images/0b28f9562fcadbd644c6225f8f8aefbb500b4d22/equip/icon/{id}.png`
+     - Модули: `https://cdn.statically.io/gh/fexli/ArknightsResource/d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5/equip/{id}.png`
    - **Характеристики:** Автоматический fallback на клиенте, если основной CDN заблокирован или недоступен.
 
 3. **Локальный плейсхолдер (Fallback):**
@@ -37,13 +38,13 @@
 
 ## 2. Поддерживаемые типы ассетов (`AssetKind`)
 
-| Тип (`kind`) | Репозиторий CDN                     | Описание                      | Правило формирования пути                                     | Пример ID             |
-| :----------- | :---------------------------------- | :---------------------------- | :------------------------------------------------------------ | :-------------------- |
-| `avatar`     | `yuanyan3060/ArknightsGameResource` | Квадратные иконки операторов  | `avatar/{id}.png` (с учетом Amiya Medic `char_1037_amiya3_2`) | `char_102_texas`      |
-| `portrait`   | `yuanyan3060/ArknightsGameResource` | Вертикальные арты и портреты  | `portrait/{id}_{variant}.png`                                 | `char_102_texas`      |
-| `item`       | `yuanyan3060/ArknightsGameResource` | Иконки материалов и предметов | `item/{iconId ?? id}.png`                                     | `30012` (`MTL_SL_G2`) |
-| `skill`      | `yuanyan3060/ArknightsGameResource` | Иконки навыков                | `skill/skill_icon_{iconId ?? id}.png`                         | `skchr_texas_2`       |
-| `equip`      | `Aceship/Arknight-Images`           | Иконки модулей операторов     | `equip/icon/{id}.png` (для INITIAL: `original.png`)           | `uniequip_002_texas`  |
+| Тип (`kind`) | Репозиторий CDN                                       | Описание                      | Правило формирования пути                                              | Пример ID             |
+| :----------- | :---------------------------------------------------- | :---------------------------- | :--------------------------------------------------------------------- | :-------------------- |
+| `avatar`     | `yuanyan3060/ArknightsGameResource`                   | Квадратные иконки операторов  | `avatar/{id}.png` (с учетом Amiya Medic `char_1037_amiya3_2`)          | `char_102_texas`      |
+| `portrait`   | `yuanyan3060/ArknightsGameResource`                   | Вертикальные арты и портреты  | `portrait/{id}_{variant}.png`                                          | `char_102_texas`      |
+| `item`       | `yuanyan3060/ArknightsGameResource`                   | Иконки материалов и предметов | `item/{iconId ?? id}.png`                                              | `30012` (`MTL_SL_G2`) |
+| `skill`      | `yuanyan3060/ArknightsGameResource`                   | Иконки навыков                | `skill/skill_icon_{iconId ?? id}.png`                                  | `skchr_texas_2`       |
+| `equip`      | `fexli/ArknightsResource` + `Aceship/Arknight-Images` | Иконки модулей операторов     | `equip/{id}.png` / `equip/icon/{id}.png` (для INITIAL: `original.png`) | `uniequip_002_texas`  |
 
 ---
 
@@ -74,21 +75,61 @@ image: {
 
 ---
 
-## 4. Манифест доступности ассетов (`data/asset-manifest.json`)
+## 4. Манифест доступности и полное покрытие ассетов (`data/asset-manifest.json`)
 
-Скрипт `scripts/data/build-asset-manifest.ts` (`npm run data:assets`) проверяет доступность файлов на основном CDN для всех операторов через реальные HTTP GET-запросы с ограничением параллелизма (10 потоков) и формирует манифест с полем `source: 'http' | 'tree'`:
+Скрипт `scripts/data/build-asset-manifest.ts` (`npm run data:assets`) выполняет полный аудит покрытия ассетов по дереву репозиториев (GitHub Git Trees API) без массовых HTTP-запросов и формирует манифест с `source: 'tree'`:
 
 ```bash
 npm run data:assets
 ```
 
-Результаты проверки после аудита (12 октября 2026 г.):
+### 4.1. Результаты аудита покрытия по деревьям Git (13 октября 2026 г.)
 
-- **Всего операторов:** 434
-- **С подтверждёнными аватарами (`source: "http"`):** 434 (100.0%)
-- **Без аватара:** 0
+| Категория ассетов           | Всего в БД | Существует на основном источнике | Пропусков на основном | Доля пропусков | Итоговое покрытие с fallback |
+| :-------------------------- | :--------- | :------------------------------- | :-------------------- | :------------- | :--------------------------- |
+| **Операторы (аватары)**     | 434        | 434                              | 0                     | 0.00%          | **100.0%** (434 / 434)       |
+| **Предметы (`items.json`)** | 848        | 848                              | 0                     | 0.00%          | **100.0%** (848 / 848)       |
+| **Навыки (`skills`)**       | 900        | 900                              | 0                     | 0.00%          | **100.0%** (900 / 900)       |
+| **Модули (`modules`)**      | 891        | 632 (`Aceship`)                  | 259                   | 29.07%         | **100.0%** (891 / 891)       |
 
-Все 434 оператора имеют подтверждённую прямую отдачу аватара по HTTP GET.
+### 4.2. Анализ покрытия модулей и устранение пропусков
+
+- **Причина пропусков в Aceship:** Коммит `0b28f9562fcadbd644c6225f8f8aefbb500b4d22` в `Aceship/Arknight-Images` датирован **01.05.2024**. Ровно **259 модулей** вышли в игре после этой даты.
+- **Устранение:** Для модулей подключен актуальный репозиторий `fexli/ArknightsResource` (коммит `d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5`), содержащий иконки для всех вышедших модулей.
+- **Совокупный результат:** При комбинировании `fexli/ArknightsResource` и `Aceship/Arknight-Images` покрытие модулей составляет **891 / 891 (100.0%)** при 0 пропусков.
+
+#### Первые 30 модулей, отсутствующих в базовом коммите Aceship (вышли после 01.05.2024, покрыты через Fexli):
+
+1. `uniequip_004_kalts` — Kal'tsit's Specialized Badge (Kal'tsit)
+2. `uniequip_003_huang` — “稍后回来” (Blaze)
+3. `uniequip_002_amiya2` — Anger to be Tuned (Amiya Guard)
+4. `uniequip_002_skadi2` — An Exuvia of Her Past (Skadi the Corrupting Heart)
+5. `uniequip_003_skadi2` — 新生代 (Skadi the Corrupting Heart)
+6. `uniequip_002_chen2` — Beach Combat Suit (Ch'en the Holungday)
+7. `uniequip_003_chen2` — 假期的最后一天 (Ch'en the Holungday)
+8. `uniequip_002_agoat2` — Sounds I Want to Retain (Eyjafjalla the Hvít Aska)
+9. `uniequip_003_agoat2` — 想要留下的生命 (Eyjafjalla the Hvít Aska)
+10. `uniequip_002_siege2` — The Adventure of the Lioness (Vina Victoria)
+11. `uniequip_003_siege2` — 秩序圣“球” (Vina Victoria)
+12. `uniequip_002_sora` — 'Unison' (Sora)
+13. `uniequip_002_reed2` — 'A Floral Garland to the Red Dragon' (Reed the Flame-Shadow)
+14. `uniequip_003_reed2` — “独属自己的一隅” (Reed the Flame-Shadow)
+15. `uniequip_002_flwr2` — “双月的呼吸” (Muelsyse)
+16. `uniequip_004_ghost2` — 归溟幽灵鲨特限证章 (Specter the Unchained)
+17. `uniequip_002_hbisc2` — Crystal Corsage (Hibiscus the Purifier)
+18. `uniequip_003_gvial2` — 好锯多磨 (Gavial the Invincible)
+19. `uniequip_004_gvial2` — 百炼嘉维尔特限证章 (Gavial the Invincible)
+20. `uniequip_003_texas2` — “新车和新生活” (Texas the Omertosa)
+21. `uniequip_004_texas2` — 缄默德克萨斯特限证章 (Texas the Omertosa)
+22. `uniequip_002_penunc` — Silent Justice (Penance)
+23. `uniequip_003_penunc` — 荆棘的背面 (Penance)
+24. `uniequip_002_chongy` — 'Reflections of Sights and Sounds' (Chongyue)
+25. `uniequip_003_chongy` — “剑下有千山” (Chongyue)
+26. `uniequip_002_qiubai` — 'Drizzle on the Cape' (Qiubai)
+27. `uniequip_003_qiubai` — “听雨” (Qiubai)
+28. `uniequip_002_yato2` — Hunting Boots (Kirin R Yato)
+29. `uniequip_002_noirc2` — Rathalos S Armor (Rathalos S Noir Corne)
+30. `uniequip_002_ines` — Dead Leaves and Twigs (Ines)
 
 ---
 

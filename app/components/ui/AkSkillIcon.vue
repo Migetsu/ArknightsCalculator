@@ -158,7 +158,7 @@ const fallbackText = computed(() => {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid var(--color-border-gold);
+    border: 2px solid #ffd9a8; // Solid 2px gold border per planner.html
     background-color: var(--color-bg-deep);
     overflow: hidden;
     box-sizing: border-box;

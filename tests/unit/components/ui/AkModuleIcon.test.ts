@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import {
-  PRIMARY_EQUIP_CDN_BASE,
-  SECONDARY_EQUIP_CDN_BASE,
+  PRIMARY_FEXLI_CDN_BASE,
+  SECONDARY_FEXLI_CDN_BASE,
 } from '../../../../shared/utils/resolveAsset'
 
 describe('AkModuleIcon', () => {
@@ -18,9 +18,7 @@ describe('AkModuleIcon', () => {
 
     const img = wrapper.find('.ak-module-icon__image')
     expect(img.exists()).toBe(true)
-    expect(img.attributes('src')).toBe(
-      `${PRIMARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`,
-    )
+    expect(img.attributes('src')).toBe(`${PRIMARY_FEXLI_CDN_BASE}/equip/uniequip_002_texas.png`)
     expect(img.attributes('alt')).toBe('Private Field Supply Package')
   })
 
@@ -37,13 +35,13 @@ describe('AkModuleIcon', () => {
     await img.trigger('error')
 
     expect(wrapper.find('.ak-module-icon__image').attributes('src')).toBe(
-      `${SECONDARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`,
+      `${SECONDARY_FEXLI_CDN_BASE}/equip/uniequip_002_texas.png`,
     )
 
-    // Trigger error again until fallback
-    await wrapper.find('.ak-module-icon__image').trigger('error')
-    await wrapper.find('.ak-module-icon__image').trigger('error')
-    await wrapper.find('.ak-module-icon__image').trigger('error')
+    // Trigger error until all candidates are exhausted and fallback is shown
+    while (wrapper.find('.ak-module-icon__image').exists()) {
+      await wrapper.find('.ak-module-icon__image').trigger('error')
+    }
 
     expect(wrapper.find('.ak-module-icon__image').exists()).toBe(false)
     expect(wrapper.find('.ak-module-icon__fallback').exists()).toBe(true)
