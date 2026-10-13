@@ -172,8 +172,11 @@ const stepperLmd = ref(150000)
         </div>
 
         <div class="page-ui__group">
-          <span class="page-ui__group-label">Translation Indicators (Machine / Stale)</span>
+          <span class="page-ui__group-label"
+            >Translation Indicators (Community / Machine / Stale)</span
+          >
           <div class="page-ui__row">
+            <span>Community Pre-release: <AkTranslationBadge source="community" /></span>
             <span>Machine Translated Name: <AkTranslationBadge source="machine" /></span>
             <span>Outdated Skill Desc: <AkTranslationBadge :stale="true" /></span>
           </div>

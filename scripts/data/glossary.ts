@@ -3,21 +3,30 @@ import path from 'node:path'
 import { DATA_SOURCES_CONFIG } from './sources.config'
 import type { RawTableMap } from './schemas'
 
-export interface TermEntry {
-  en: string
-  category: string
-  id: string
-}
+export type GlossaryCategory =
+  | 'operators'
+  | 'classes'
+  | 'subclasses'
+  | 'factions'
+  | 'items'
+  | 'skills'
+  | 'talents'
+  | 'terms'
 
-export interface ConflictDetail {
+export interface IntraCategoryConflict {
+  category: GlossaryCategory
   zh: string
   selected: string
   options: {
     en: string
     count: number
-    categories: string[]
     examples: string[]
   }[]
+}
+
+export interface CrossCategoryDifferentiation {
+  zh: string
+  translations: Record<string, string>
 }
 
 export interface GlossaryData {
@@ -31,13 +40,10 @@ export interface GlossaryData {
   terms: Record<string, string>
   meta: {
     totalUniqueZh: number
-    conflictsCount: number
+    intraCategoryConflictsCount: number
+    crossCategoryDifferentiationsCount: number
     generatedAt: string
   }
-}
-
-interface RawPairCollector {
-  [zh: string]: Map<string, { count: number; categories: Set<string>; examples: Set<string> }>
 }
 
 const RAW_CACHE_DIR = path.resolve(process.cwd(), DATA_SOURCES_CONFIG.cacheDir)
@@ -50,7 +56,8 @@ async function readJsonFile<T>(filePath: string): Promise<T> {
 
 export async function buildGlossary(): Promise<{
   glossary: GlossaryData
-  conflicts: ConflictDetail[]
+  conflicts: IntraCategoryConflict[]
+  crossCategoryDiffs: CrossCategoryDifferentiation[]
 }> {
   const cnDir = path.join(RAW_CACHE_DIR, 'zh_CN')
   const enDir = path.join(RAW_CACHE_DIR, 'en_US')
@@ -83,36 +90,47 @@ export async function buildGlossary(): Promise<{
     readJsonFile<RawTableMap['gamedata_const.json']>(path.join(enDir, 'gamedata_const.json')),
   ])
 
-  const collector: RawPairCollector = {}
-  const categoryTerms: Record<string, Record<string, string>> = {
-    operators: {},
-    classes: {},
-    subclasses: {},
-    factions: {},
-    items: {},
-    skills: {},
-    talents: {},
-    terms: {},
+  // Category-specific collectors: category -> zh -> en -> { count, examples }
+  const categoryCollectors: Record<
+    GlossaryCategory,
+    Map<string, Map<string, { count: number; examples: Set<string> }>>
+  > = {
+    operators: new Map(),
+    classes: new Map(),
+    subclasses: new Map(),
+    factions: new Map(),
+    items: new Map(),
+    skills: new Map(),
+    talents: new Map(),
+    terms: new Map(),
   }
 
-  function addPair(zhRaw: string | undefined | null, enRaw: string | undefined | null, category: string, id: string) {
+  function addPair(
+    category: GlossaryCategory,
+    zhRaw: string | undefined | null,
+    enRaw: string | undefined | null,
+    id: string,
+  ) {
     const zh = (zhRaw ?? '').trim()
     const en = (enRaw ?? '').trim()
     if (!zh || !en) return
 
-    if (!collector[zh]) {
-      collector[zh] = new Map()
+    const catMap = categoryCollectors[category]
+    let zhEntry = catMap.get(zh)
+    if (!zhEntry) {
+      zhEntry = new Map()
+      catMap.set(zh, zhEntry)
     }
-    const map = collector[zh]!
-    let entry = map.get(en)
-    if (!entry) {
-      entry = { count: 0, categories: new Set(), examples: new Set() }
-      map.set(en, entry)
+
+    let enEntry = zhEntry.get(en)
+    if (!enEntry) {
+      enEntry = { count: 0, examples: new Set() }
+      zhEntry.set(en, enEntry)
     }
-    entry.count++
-    entry.categories.add(category)
-    if (entry.examples.size < 5) {
-      entry.examples.add(id)
+
+    enEntry.count++
+    if (enEntry.examples.size < 5) {
+      enEntry.examples.add(id)
     }
   }
 
@@ -129,30 +147,27 @@ export async function buildGlossary(): Promise<{
     SPECIALIST: { zh: '特种', en: 'Specialist' },
   }
   for (const [code, pair] of Object.entries(CLASS_MAP)) {
-    addPair(pair.zh, pair.en, 'classes', code)
-    categoryTerms.classes[pair.zh] = pair.en
+    addPair('classes', pair.zh, pair.en, code)
   }
 
-  // 2. Subclasses (from uniequip_table subProfDict)
+  // 2. Subclasses (uniequip_table subProfDict)
   const cnSubProf = (cnEquips as unknown as { subProfDict?: Record<string, { subProfessionName?: string }> }).subProfDict
   const enSubProf = (enEquips as unknown as { subProfDict?: Record<string, { subProfessionName?: string }> }).subProfDict
   if (cnSubProf && enSubProf) {
     for (const [subId, cnSub] of Object.entries(cnSubProf)) {
       const enSub = enSubProf[subId]
       if (cnSub?.subProfessionName && enSub?.subProfessionName) {
-        addPair(cnSub.subProfessionName, enSub.subProfessionName, 'subclasses', subId)
-        categoryTerms.subclasses[cnSub.subProfessionName] = enSub.subProfessionName
+        addPair('subclasses', cnSub.subProfessionName, enSub.subProfessionName, subId)
       }
     }
   }
 
-  // 3. Operators (from character_table)
+  // 3. Operators & Talents (character_table)
   for (const [charId, cnChar] of Object.entries(cnChars)) {
     if (!charId.startsWith('char_')) continue
     const enChar = enChars[charId]
     if (cnChar.name && enChar?.name) {
-      addPair(cnChar.name, enChar.name, 'operators', charId)
-      categoryTerms.operators[cnChar.name] = enChar.name
+      addPair('operators', cnChar.name, enChar.name, charId)
     }
 
     // Talents
@@ -167,14 +182,13 @@ export async function buildGlossary(): Promise<{
         const cnCand = cnCands[c]
         const enCand = enCands[c]
         if (cnCand?.name && enCand?.name) {
-          addPair(cnCand.name, enCand.name, 'talents', `${charId}_talent_${t}_${c}`)
-          categoryTerms.talents[cnCand.name] = enCand.name
+          addPair('talents', cnCand.name, enCand.name, `${charId}_talent_${t}_${c}`)
         }
       }
     }
   }
 
-  // 4. Skills (from skill_table)
+  // 4. Skills (skill_table)
   for (const [skillId, cnSkill] of Object.entries(cnSkills)) {
     const enSkill = enSkills[skillId]
     const cnLevels = cnSkill?.levels ?? []
@@ -183,128 +197,153 @@ export async function buildGlossary(): Promise<{
       const cnLvl = cnLevels[l]
       const enLvl = enLevels[l]
       if (cnLvl?.name && enLvl?.name) {
-        addPair(cnLvl.name, enLvl.name, 'skills', `${skillId}_lvl_${l}`)
-        categoryTerms.skills[cnLvl.name] = enLvl.name
+        addPair('skills', cnLvl.name, enLvl.name, `${skillId}_lvl_${l}`)
       }
     }
   }
 
-  // 5. Items (from item_table)
+  // 5. Items (item_table)
   const cnItemList = cnItems?.items ?? {}
   const enItemList = enItems?.items ?? {}
   for (const [itemId, cnItem] of Object.entries(cnItemList)) {
     const enItem = enItemList[itemId]
     if (cnItem?.name && enItem?.name) {
-      addPair(cnItem.name, enItem.name, 'items', itemId)
-      categoryTerms.items[cnItem.name] = enItem.name
+      addPair('items', cnItem.name, enItem.name, itemId)
     }
   }
 
-  // 6. Factions (from handbook_info_table)
+  // 6. Factions (handbook_info_table)
   const cnHandbookFull = cnHandbook as unknown as { teamList?: Record<string, { powerName?: string }> }
   const enHandbookFull = enHandbook as unknown as { teamList?: Record<string, { powerName?: string }> }
   if (cnHandbookFull?.teamList && enHandbookFull?.teamList) {
     for (const [teamId, cnTeam] of Object.entries(cnHandbookFull.teamList)) {
       const enTeam = enHandbookFull.teamList[teamId]
       if (cnTeam?.powerName && enTeam?.powerName) {
-        addPair(cnTeam.powerName, enTeam.powerName, 'factions', teamId)
-        categoryTerms.factions[cnTeam.powerName] = enTeam.powerName
+        addPair('factions', cnTeam.powerName, enTeam.powerName, teamId)
       }
     }
   }
 
-  // 7. Game terms (from gamedata_const termDescriptionDict)
+  // 7. Terms (gamedata_const termDescriptionDict)
   const cnConstFull = cnConst as unknown as { termDescriptionDict?: Record<string, { termName?: string }> }
   const enConstFull = enConst as unknown as { termDescriptionDict?: Record<string, { termName?: string }> }
   if (cnConstFull?.termDescriptionDict && enConstFull?.termDescriptionDict) {
     for (const [termId, cnTerm] of Object.entries(cnConstFull.termDescriptionDict)) {
       const enTerm = enConstFull.termDescriptionDict[termId]
       if (cnTerm?.termName && enTerm?.termName) {
-        addPair(cnTerm.termName, enTerm.termName, 'terms', termId)
-        categoryTerms.terms[cnTerm.termName] = enTerm.termName
+        addPair('terms', cnTerm.termName, enTerm.termName, termId)
       }
     }
   }
 
-  // Resolve conflicts and build final dictionary
-  const conflicts: ConflictDetail[] = []
-  const resolvedAll: Record<string, string> = {}
+  // Build categorized glossary dictionaries and detect intra-category conflicts
+  const conflicts: IntraCategoryConflict[] = []
+  const resolvedCategories: Record<GlossaryCategory, Record<string, string>> = {
+    operators: {},
+    classes: {},
+    subclasses: {},
+    factions: {},
+    items: {},
+    skills: {},
+    talents: {},
+    terms: {},
+  }
 
-  for (const [zh, transMap] of Object.entries(collector)) {
-    const options = Array.from(transMap.entries()).map(([en, meta]) => ({
-      en,
-      count: meta.count,
-      categories: Array.from(meta.categories),
-      examples: Array.from(meta.examples),
-    }))
+  const allZhSet = new Set<string>()
 
-    // Sort by count descending, then by priority of category, then alphabetically
-    options.sort((a, b) => {
-      if (b.count !== a.count) return b.count - a.count
-      return a.en.localeCompare(b.en)
-    })
+  for (const catKey of Object.keys(categoryCollectors) as GlossaryCategory[]) {
+    const catMap = categoryCollectors[catKey]
+    for (const [zh, enMap] of catMap.entries()) {
+      allZhSet.add(zh)
+      const options = Array.from(enMap.entries()).map(([en, meta]) => ({
+        en,
+        count: meta.count,
+        examples: Array.from(meta.examples),
+      }))
 
-    const best = options[0]!
-    resolvedAll[zh] = best.en
+      // Sort by occurrence count descending, then alphabetically
+      options.sort((a, b) => {
+        if (b.count !== a.count) return b.count - a.count
+        return a.en.localeCompare(b.en)
+      })
 
-    if (options.length > 1) {
-      conflicts.push({
+      const best = options[0]!
+      resolvedCategories[catKey][zh] = best.en
+
+      // Intra-category conflict detection
+      if (options.length > 1) {
+        conflicts.push({
+          category: catKey,
+          zh,
+          selected: best.en,
+          options,
+        })
+      }
+    }
+  }
+
+  // Cross-category differentiations (e.g., 鞭刃 as Whislash vs Whip Sword)
+  const crossCategoryDiffs: CrossCategoryDifferentiation[] = []
+  for (const zh of allZhSet) {
+    const distinctPerCategory: Record<string, string> = {}
+    for (const catKey of Object.keys(resolvedCategories) as GlossaryCategory[]) {
+      if (resolvedCategories[catKey][zh]) {
+        distinctPerCategory[catKey] = resolvedCategories[catKey][zh]!
+      }
+    }
+    const uniqueValues = new Set(Object.values(distinctPerCategory))
+    if (uniqueValues.size > 1) {
+      crossCategoryDiffs.push({
         zh,
-        selected: best.en,
-        options,
+        translations: distinctPerCategory,
       })
     }
   }
 
-  // Update categories with resolved best translations
-  for (const cat of Object.keys(categoryTerms)) {
-    for (const [zh] of Object.entries(categoryTerms[cat]!)) {
-      if (resolvedAll[zh]) {
-        categoryTerms[cat]![zh] = resolvedAll[zh]!
-      }
-    }
-  }
-
   const glossary: GlossaryData = {
-    operators: categoryTerms.operators!,
-    classes: categoryTerms.classes!,
-    subclasses: categoryTerms.subclasses!,
-    factions: categoryTerms.factions!,
-    items: categoryTerms.items!,
-    skills: categoryTerms.skills!,
-    talents: categoryTerms.talents!,
-    terms: categoryTerms.terms!,
+    operators: resolvedCategories.operators,
+    classes: resolvedCategories.classes,
+    subclasses: resolvedCategories.subclasses,
+    factions: resolvedCategories.factions,
+    items: resolvedCategories.items,
+    skills: resolvedCategories.skills,
+    talents: resolvedCategories.talents,
+    terms: resolvedCategories.terms,
     meta: {
-      totalUniqueZh: Object.keys(collector).length,
-      conflictsCount: conflicts.length,
+      totalUniqueZh: allZhSet.size,
+      intraCategoryConflictsCount: conflicts.length,
+      crossCategoryDifferentiationsCount: crossCategoryDiffs.length,
       generatedAt: new Date().toISOString(),
     },
   }
 
-  return { glossary, conflicts }
+  return { glossary, conflicts, crossCategoryDiffs }
 }
 
 async function main() {
-  console.log('Building Arknights official term glossary...')
-  const { glossary, conflicts } = await buildGlossary()
+  console.log('Building categorized Arknights official term glossary...')
+  const { glossary, conflicts, crossCategoryDiffs } = await buildGlossary()
 
   await fs.mkdir(DATA_I18N_DIR, { recursive: true })
   const glossaryPath = path.join(DATA_I18N_DIR, 'glossary.json')
   const conflictsPath = path.join(DATA_I18N_DIR, 'glossary-conflicts.json')
+  const diffsPath = path.join(DATA_I18N_DIR, 'glossary-cross-category.json')
 
   await fs.writeFile(glossaryPath, JSON.stringify(glossary, null, 2), 'utf-8')
   await fs.writeFile(conflictsPath, JSON.stringify(conflicts, null, 2), 'utf-8')
+  await fs.writeFile(diffsPath, JSON.stringify(crossCategoryDiffs, null, 2), 'utf-8')
 
-  console.log(`[PASS] Glossary saved to ${glossaryPath}`)
-  console.log(`Total unique Chinese terms: ${glossary.meta.totalUniqueZh}`)
+  console.log(`[PASS] Categorized glossary saved to ${glossaryPath}`)
+  console.log(`Total unique Chinese terms across categories: ${glossary.meta.totalUniqueZh}`)
   console.log(`Operators: ${Object.keys(glossary.operators).length}`)
   console.log(`Classes: ${Object.keys(glossary.classes).length}`)
   console.log(`Subclasses: ${Object.keys(glossary.subclasses).length}`)
   console.log(`Items: ${Object.keys(glossary.items).length}`)
   console.log(`Skills: ${Object.keys(glossary.skills).length}`)
   console.log(`Talents: ${Object.keys(glossary.talents).length}`)
-  console.log(`Game terms (termDescriptionDict): ${Object.keys(glossary.terms).length}`)
-  console.log(`Conflicts detected: ${conflicts.length} (saved to ${conflictsPath})`)
+  console.log(`Game terms: ${Object.keys(glossary.terms).length}`)
+  console.log(`Intra-category conflicts detected: ${conflicts.length} (saved to ${conflictsPath})`)
+  console.log(`Cross-category differentiations (e.g. 鞭刃): ${crossCategoryDiffs.length} (saved to ${diffsPath})`)
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]).includes('glossary')) {

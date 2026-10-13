@@ -13,16 +13,20 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useI18n()
 
-// Only show badge when source is 'machine' or translation is stale
-const isVisible = computed(() => props.source === 'machine' || props.stale)
+// Only show badge when source is 'machine', 'community', or translation is stale
+const isVisible = computed(
+  () => props.source === 'machine' || props.source === 'community' || props.stale,
+)
 
 const label = computed(() => {
   if (props.stale) return 'STALE'
+  if (props.source === 'community') return 'COMM'
   return 'MT'
 })
 
 const tooltipText = computed(() => {
   if (props.stale) return t('operators.detail.staleTranslation')
+  if (props.source === 'community') return t('operators.detail.communityTranslation')
   return t('operators.detail.machineTranslation')
 })
 </script>
@@ -33,6 +37,7 @@ const tooltipText = computed(() => {
     class="ak-translation-badge"
     :class="{
       'ak-translation-badge--stale': stale,
+      'ak-translation-badge--community': !stale && source === 'community',
       'ak-translation-badge--machine': !stale && source === 'machine',
     }"
     :title="tooltipText"
@@ -70,6 +75,12 @@ const tooltipText = computed(() => {
 
   &__label {
     line-height: 1;
+  }
+
+  &--community {
+    border: 1px solid rgb(0 229 255 / 40%);
+    background: rgb(0 229 255 / 10%);
+    color: var(--color-accent-cyan, #00e5ff);
   }
 
   &--machine {

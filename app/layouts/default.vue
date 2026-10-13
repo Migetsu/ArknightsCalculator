@@ -41,6 +41,9 @@ const isTransparentHeader = computed(() => {
         <p class="layout-default__disclaimer">
           {{ t('layout.footer.disclaimer') }}
         </p>
+        <p class="layout-default__attribution">
+          {{ t('layout.footer.attribution') }}
+        </p>
       </div>
     </footer>
   </div>
@@ -91,6 +94,13 @@ const isTransparentHeader = computed(() => {
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
     margin: 0;
+  }
+
+  &__attribution {
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+    margin: var(--space-3xs) 0 0;
   }
 }
 </style>

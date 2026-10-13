@@ -1,14 +1,23 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { z } from 'zod'
 import type {
   I18nString,
   I18nSource,
 } from '../../shared/schemas/operator'
+import type { GlossaryCategory, GlossaryData } from './glossary'
 
-export interface ManualOverrideEntry {
-  text: string
-  comment?: string
-}
+export const ManualOverrideEntrySchema = z.object({
+  text: z.string().min(1),
+  author: z.string().min(1),
+  note: z.string().min(1),
+  source: z.string().refine(
+    (s) => s === 'подтверждено владельцем' || /^https?:\/\//.test(s),
+    { message: 'source must be a valid URL or "подтверждено владельцем"' },
+  ),
+})
+
+export type ManualOverrideEntry = z.infer<typeof ManualOverrideEntrySchema>
 
 export interface I18nLayersContext {
   overrides: Record<string, ManualOverrideEntry>
@@ -21,16 +30,22 @@ export interface I18nLayersContext {
       modules?: Record<string, string>
     }
   >
-  glossary: Record<string, string>
+  categorizedGlossary?: Record<string, Record<string, string>>
+  flatGlossary?: Record<string, string>
+  glossary?: Record<string, string>
+  globalAvailability?: Record<string, boolean>
 }
 
 export interface I18nResolutionOptions {
   key?: string
+  charId?: string
+  category?: GlossaryCategory
   officialEn?: string | null
   zhText: string | null
   wikiEn?: string | null
   fallbackEn?: string | null
   isStale?: boolean
+  isGlobal?: boolean
 }
 
 export interface I18nLayersTracker {
@@ -39,12 +54,24 @@ export interface I18nLayersTracker {
   missingEnCount: number
 }
 
+export function createEmptyI18nLayersContext(): I18nLayersContext {
+  return {
+    overrides: {},
+    wiki: {},
+    categorizedGlossary: {},
+    flatGlossary: {},
+    glossary: {},
+    globalAvailability: {},
+  }
+}
+
 export function createI18nTracker(): I18nLayersTracker {
   return {
     sources: {
       manual: 0,
       official: 0,
       wiki: 0,
+      community: 0,
       machine: 0,
       zh: 0,
     },
@@ -58,8 +85,9 @@ export function createI18nTracker(): I18nLayersTracker {
  */
 export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
   const overridesDir = path.resolve(process.cwd(), 'data/i18n/overrides')
-  const wikiPath = path.resolve(process.cwd(), 'data/i18n/wiki-translations.json')
+  const wikiPath = path.resolve(process.cwd(), 'data/i18n/wiki/operators.json')
   const glossaryPath = path.resolve(process.cwd(), 'data/i18n/glossary.json')
+  const availabilityPath = path.resolve(process.cwd(), 'data/i18n/global-availability.json')
 
   const overrides: Record<string, ManualOverrideEntry> = {}
   try {
@@ -69,12 +97,8 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
       const raw = await fs.readFile(path.join(overridesDir, file), 'utf-8')
       const json = JSON.parse(raw) as Record<string, unknown>
       for (const [k, v] of Object.entries(json)) {
-        if (typeof v === 'string') {
-          overrides[k] = { text: v }
-        } else if (v && typeof v === 'object' && 'text' in v && typeof (v as { text: unknown }).text === 'string') {
-          const entry = v as { text: string; comment?: string }
-          overrides[k] = { text: entry.text, comment: entry.comment }
-        }
+        const parsed = ManualOverrideEntrySchema.parse(v)
+        overrides[k] = parsed
       }
     }
   } catch (_e) {
@@ -83,20 +107,33 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
 
   let wiki: I18nLayersContext['wiki'] = {}
   try {
-    wiki = JSON.parse(await fs.readFile(wikiPath, 'utf-8')) as I18nLayersContext['wiki']
+    const rawWiki = JSON.parse(await fs.readFile(wikiPath, 'utf-8'))
+    wiki = (rawWiki.operators || rawWiki) as I18nLayersContext['wiki']
   } catch (_e) {
     // Wiki translations optional
   }
 
-  const glossary: Record<string, string> = {}
+  const categorizedGlossary: Record<string, Record<string, string>> = {}
+  const flatGlossary: Record<string, string> = {}
   try {
-    const glossJson = JSON.parse(await fs.readFile(glossaryPath, 'utf-8'))
-    // Flatten all categories in glossary for fast lookup
-    for (const cat of ['terms', 'operators', 'classes', 'subclasses', 'factions', 'items', 'skills', 'talents']) {
+    const glossJson = (await JSON.parse(await fs.readFile(glossaryPath, 'utf-8'))) as GlossaryData
+    const categories: GlossaryCategory[] = [
+      'operators',
+      'classes',
+      'subclasses',
+      'factions',
+      'items',
+      'skills',
+      'talents',
+      'terms',
+    ]
+
+    for (const cat of categories) {
       if (glossJson[cat]) {
+        categorizedGlossary[cat] = glossJson[cat]
         for (const [zh, en] of Object.entries<string>(glossJson[cat])) {
-          if (!glossary[zh]) {
-            glossary[zh] = en
+          if (!flatGlossary[zh]) {
+            flatGlossary[zh] = en
           }
         }
       }
@@ -105,12 +142,31 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
     // Glossary optional
   }
 
-  return { overrides, wiki, glossary }
+  const globalAvailability: Record<string, boolean> = {}
+  try {
+    const availRaw = JSON.parse(await fs.readFile(availabilityPath, 'utf-8')) as {
+      operators?: Array<{ id: string; isGlobal: boolean }>
+    }
+    for (const op of availRaw.operators ?? []) {
+      globalAvailability[op.id] = op.isGlobal
+    }
+  } catch (_e) {
+    // Availability optional
+  }
+
+  return {
+    overrides,
+    wiki,
+    categorizedGlossary,
+    flatGlossary,
+    glossary: flatGlossary,
+    globalAvailability,
+  }
 }
 
 /**
  * Resolves localized string across priority layers:
- * manual > official-repo > wiki > machine > zh
+ * manual > official-repo > wiki / community > machine > zh
  */
 export function resolveLayeredI18nString(
   options: I18nResolutionOptions,
@@ -150,26 +206,54 @@ export function resolveLayeredI18nString(
     }
   }
 
-  // 3. Wiki (arknights.wiki.gg)
+  // 3. Wiki (arknights.wiki.gg) -> 'wiki' if released on Global, 'community' if CN-only
   if (wikiEn.length > 0) {
-    if (tracker) tracker.sources.wiki++
+    const isGlobal =
+      options.isGlobal !== undefined
+        ? options.isGlobal
+        : options.charId
+          ? (context.globalAvailability?.[options.charId] ?? true)
+          : true
+
+    const source: I18nSource = isGlobal ? 'wiki' : 'community'
+    if (tracker) {
+      if (source === 'community') {
+        tracker.sources.community++
+      } else {
+        tracker.sources.wiki++
+      }
+    }
     return {
       en: wikiEn,
       zh: zh || wikiEn,
-      source: 'wiki',
+      source,
       isMachineTranslation: false,
     }
   }
 
-  // 4. Machine translation / Glossary
-  if (zh.length > 0 && context.glossary[zh]) {
-    const glossEn = context.glossary[zh]!.trim()
-    if (tracker) tracker.sources.machine++
-    return {
-      en: glossEn,
-      zh,
-      source: 'machine',
-      isMachineTranslation: true,
+  // 4. Machine translation / Categorized Glossary
+  if (zh.length > 0) {
+    if (options.category && context.categorizedGlossary?.[options.category]?.[zh]) {
+      const glossEn = context.categorizedGlossary[options.category]![zh]!.trim()
+      if (tracker) tracker.sources.machine++
+      return {
+        en: glossEn,
+        zh,
+        source: 'machine',
+        isMachineTranslation: true,
+      }
+    }
+
+    const flatFallback = context.flatGlossary?.[zh] ?? context.glossary?.[zh]
+    if (flatFallback) {
+      const glossEn = flatFallback.trim()
+      if (tracker) tracker.sources.machine++
+      return {
+        en: glossEn,
+        zh,
+        source: 'machine',
+        isMachineTranslation: true,
+      }
     }
   }
 
@@ -196,7 +280,6 @@ export function resolveLayeredI18nString(
   }
 }
 
-/**
 export interface StaleSkillLevelInput {
   description?: string | null
   spData?: { spCost?: number; initSp?: number } | null

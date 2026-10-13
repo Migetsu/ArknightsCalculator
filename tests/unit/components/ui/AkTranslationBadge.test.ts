@@ -31,6 +31,23 @@ describe('AkTranslationBadge', () => {
     )
   })
 
+  it('renders COMM badge when source is community', async () => {
+    const wrapper = await mountSuspended(AkTranslationBadge, {
+      props: {
+        source: 'community',
+        stale: false,
+      },
+    })
+
+    const badge = wrapper.find('.ak-translation-badge')
+    expect(badge.exists()).toBe(true)
+    expect(badge.classes()).toContain('ak-translation-badge--community')
+    expect(badge.text()).toContain('COMM')
+    expect(badge.attributes('title')).toBe(
+      'Community translation from arknights.wiki.gg (unofficial pre-release)',
+    )
+  })
+
   it('renders STALE badge when translation is stale', async () => {
     const wrapper = await mountSuspended(AkTranslationBadge, {
       props: {
