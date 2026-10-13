@@ -4,6 +4,7 @@ import type { OperatorDetail } from '~/../shared/schemas/operator'
 import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import { resolveAsset, LOW_RARITY_OPERATOR_IDS } from '~/../shared/utils/resolveAsset'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkBadge from '~/components/ui/AkBadge.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -25,6 +26,8 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const localePath = useLocalePath()
 
+const operatorRarity = computed(() => (props.operator.rarity ?? 1) as 1 | 2 | 3 | 4 | 5 | 6)
+
 const hasElite2Art = computed(() => {
   return props.operator.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(props.operator.id)
 })
@@ -42,11 +45,12 @@ function handleOpenViewer(): void {
   emit('openViewer', currentStage.value)
 }
 
+// Hero uses medium WebP copy (width 1280px)
 const e0ArtUrls = computed(() =>
-  resolveAsset('art', props.operator.id, { variant: '1', thumbnail: true }),
+  resolveAsset('art', props.operator.id, { variant: '1', hero: true }),
 )
 const e2ArtUrls = computed(() =>
-  resolveAsset('art', props.operator.id, { variant: '2', thumbnail: true }),
+  resolveAsset('art', props.operator.id, { variant: '2', hero: true }),
 )
 
 const activeArtUrls = computed(() => {
@@ -55,6 +59,23 @@ const activeArtUrls = computed(() => {
 
 const primaryArtUrl = computed(() => activeArtUrls.value[0] || '')
 const secondaryArtUrl = computed(() => activeArtUrls.value[1] || '')
+
+// Preload primary hero image for fast LCP
+useHead({
+  link: computed(() =>
+    primaryArtUrl.value
+      ? [
+          {
+            rel: 'preload',
+            as: 'image',
+            href: primaryArtUrl.value,
+            type: 'image/webp',
+            fetchpriority: 'high',
+          },
+        ]
+      : [],
+  ),
+})
 
 // Thumbnails for art variant switcher
 const e0ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { variant: '1' })[0])
@@ -77,30 +98,18 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
       </div>
 
       <div class="ak-operator-hero__radial-glow" aria-hidden="true" />
-
-      <!-- Left gradient overlay for text readability -->
       <div class="ak-operator-hero__scrim" aria-hidden="true" />
 
-      <!-- Back to Catalog Button -->
+      <!-- Back to Catalog Link at top-left of hero -->
       <div class="ak-operator-hero__nav-back">
         <AkButton variant="ghost" size="sm" :to="localePath('/operators')">
           ← {{ t('operators.detail.backToList') }}
         </AkButton>
       </div>
 
-      <!-- Main Stage Grid: Title on Left, Artwork on Right -->
+      <!-- Main Stage Content -->
       <div class="ak-operator-hero__content">
-        <div class="ak-operator-hero__header-info">
-          <span class="ak-operator-hero__code ak-page-header__code">
-            {{ operatorCode }}
-          </span>
-          <p class="ak-operator-hero__meta">{{ heroMeta }}</p>
-          <h1 class="ak-operator-hero__name ak-page-header__title">
-            {{ displayName }}
-          </h1>
-        </div>
-
-        <!-- Interactive Character Artwork Container -->
+        <!-- Character Artwork Container -->
         <div class="ak-operator-hero__art-wrapper">
           <div
             class="ak-operator-hero__art-container"
@@ -172,6 +181,31 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
             </button>
           </div>
         </div>
+
+        <!-- Left Header Info -->
+        <div class="ak-operator-hero__header-info">
+          <span class="ak-operator-hero__code ak-page-header__code">
+            {{ operatorCode }}
+          </span>
+          <p class="ak-operator-hero__meta">{{ heroMeta }}</p>
+          <h1 class="ak-operator-hero__name ak-page-header__title">
+            {{ displayName }}
+          </h1>
+
+          <!-- Meta Chips Row: Stars, Class, Subclass, Faction -->
+          <div class="ak-operator-hero__chips">
+            <AkBadge variant="rarity" :rarity="operatorRarity"> {{ operator.rarity }}★ </AkBadge>
+            <AkBadge variant="neutral">
+              {{ t('operators.classes.' + operator.class) }}
+            </AkBadge>
+            <AkBadge v-if="operator.subclass" variant="neutral">
+              {{ operator.subclass }}
+            </AkBadge>
+            <AkBadge v-if="operator.faction" variant="neutral">
+              {{ t('operators.factions.' + operator.faction) }}
+            </AkBadge>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -218,22 +252,18 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
   &__stage {
     position: relative;
     width: 100%;
-    min-height: 520px;
     overflow: hidden;
     background-color: var(--color-bg-base);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding-top: 76px; // Offset for transparent header
+    padding-top: 64px;
 
     @include mq(md) {
-      min-height: 580px;
-      padding-top: 84px;
-    }
-
-    @include mq(xl) {
-      min-height: 640px;
-      padding-top: 92px;
+      height: clamp(420px, 56vh, 540px);
+      min-height: 420px;
+      max-height: 540px;
+      padding-top: 68px;
     }
   }
 
@@ -298,11 +328,14 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
 
   &__nav-back {
     position: relative;
-    z-index: 4;
-    padding: var(--space-sm) var(--space-lg);
+    z-index: 5;
+    padding: var(--space-xs) var(--space-md);
 
     @include mq(md) {
-      padding: var(--space-sm) 48px;
+      position: absolute;
+      top: 68px;
+      left: 48px;
+      padding: 0;
     }
   }
 
@@ -312,27 +345,31 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 var(--space-lg) var(--space-xl);
+    padding: 0 var(--space-md) var(--space-md);
     box-sizing: border-box;
 
     @include mq(md) {
       flex-direction: row;
-      justify-content: space-between;
       align-items: flex-end;
-      padding: 0 48px var(--space-xl);
+      justify-content: space-between;
+      height: 100%;
+      padding: 0 48px 24px;
     }
   }
 
   &__header-info {
-    max-width: 680px;
+    order: 2;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-lg);
+    gap: var(--space-2xs);
+    margin-top: var(--space-md);
 
     @include mq(md) {
-      margin-bottom: 32px;
+      order: 1;
+      max-width: calc(100% - 46vw);
+      margin-top: 0;
+      z-index: 4;
+      padding-bottom: 4px;
     }
   }
 
@@ -357,29 +394,54 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
   &__name {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(38px, 6vw, 84px);
+    font-size: clamp(32px, 4vw, 64px);
     font-weight: var(--font-weight-extrabold);
-    line-height: 0.95;
+    line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--color-text-primary);
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-xs);
   }
 
   &__art-wrapper {
+    order: 1;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 
     @include mq(md) {
+      order: 2;
+      position: absolute;
+      right: 48px;
+      bottom: 0;
+      height: 100%;
+      max-width: 45vw;
+      width: 45vw;
       align-items: flex-end;
+      justify-content: flex-end;
+      pointer-events: none;
+      z-index: 3;
     }
   }
 
   &__art-container {
     position: relative;
     width: 100%;
-    max-width: 440px;
-    height: 420px;
+    height: 380px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -389,15 +451,10 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
     @include focus-ring;
 
     @include mq(md) {
-      width: 520px;
-      max-width: none;
-      height: 560px;
+      height: 100%;
+      width: 100%;
       justify-content: flex-end;
-    }
-
-    @include mq(xl) {
-      width: 620px;
-      height: 620px;
+      pointer-events: auto;
     }
 
     &:hover .ak-operator-hero__art-inspect-hint {
@@ -407,8 +464,10 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
   }
 
   &__art-img {
-    max-width: 100%;
+    height: 100%;
     max-height: 100%;
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
     filter: drop-shadow(0 14px 28px rgb(0 0 0 / 65%));
@@ -457,8 +516,16 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
   &__stage-switcher {
     display: flex;
     gap: 8px;
-    margin-top: 12px;
-    z-index: 4;
+    margin-top: 8px;
+    z-index: 5;
+
+    @include mq(md) {
+      position: absolute;
+      bottom: 12px;
+      right: 0;
+      margin-top: 0;
+      pointer-events: auto;
+    }
   }
 
   &__stage-btn {
@@ -518,13 +585,13 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
 
   &__stat-card {
     background: var(--color-bg-deep);
-    padding: 20px 24px;
+    padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 
     @include mq(xl) {
-      padding: 24px 48px;
+      padding: 18px 48px;
     }
 
     &--highlight .ak-operator-hero__stat-val {
@@ -542,7 +609,7 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
 
   &__stat-val {
     font-family: var(--font-display);
-    font-size: clamp(32px, 3.5vw, 44px);
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: var(--font-weight-extrabold);
     line-height: 1;
     color: var(--color-text-primary);

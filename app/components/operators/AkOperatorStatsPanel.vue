@@ -5,6 +5,7 @@ import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/s
 import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
+import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -30,6 +31,13 @@ const { t } = useI18n()
 
 // Max available elite phases by operator rarity (0..2)
 const maxElitePhase = computed(() => props.operator.phases.length - 1)
+
+const eliteOptions = computed<SegmentOption<number>[]>(() => {
+  return Array.from({ length: maxElitePhase.value + 1 }, (_, i) => ({
+    value: i,
+    label: `E${i}`,
+  }))
+})
 
 // Max level for the current elite phase
 const maxLevelForPhase = computed(() => {
@@ -92,32 +100,98 @@ const calculatedStats = computed<CalculatedStatsResult | null>(() => {
   }
 })
 
-const statsGridItems = computed(() => {
+function formatDelta(val: number | undefined): string {
+  if (!val || val === 0) return '—'
+  return val > 0 ? `+${val}` : `${val}`
+}
+
+interface BreakdownRow {
+  key: string
+  label: string
+  base: string | number
+  trust: string | number
+  potential: string | number
+  module: string | number
+  total: string | number
+}
+
+const breakdownRows = computed<BreakdownRow[]>(() => {
   if (!calculatedStats.value) return []
   const s = calculatedStats.value
+  const b = s.breakdown
+
   return [
-    { key: 'hp', label: t('operators.detail.stats.hp'), value: s.hp, breakdown: s.breakdown },
-    { key: 'atk', label: t('operators.detail.stats.atk'), value: s.atk, breakdown: s.breakdown },
-    { key: 'def', label: t('operators.detail.stats.def'), value: s.def, breakdown: s.breakdown },
-    { key: 'res', label: t('operators.detail.stats.res'), value: s.res, breakdown: s.breakdown },
-    { key: 'cost', label: t('operators.detail.stats.cost'), value: s.cost, breakdown: s.breakdown },
+    {
+      key: 'hp',
+      label: t('operators.detail.stats.hp'),
+      base: b.base.hp,
+      trust: formatDelta(b.trust.hp),
+      potential: formatDelta(b.potential.hp),
+      module: formatDelta(b.module.hp),
+      total: s.hp,
+    },
+    {
+      key: 'atk',
+      label: t('operators.detail.stats.atk'),
+      base: b.base.atk,
+      trust: formatDelta(b.trust.atk),
+      potential: formatDelta(b.potential.atk),
+      module: formatDelta(b.module.atk),
+      total: s.atk,
+    },
+    {
+      key: 'def',
+      label: t('operators.detail.stats.def'),
+      base: b.base.def,
+      trust: formatDelta(b.trust.def),
+      potential: formatDelta(b.potential.def),
+      module: formatDelta(b.module.def),
+      total: s.def,
+    },
+    {
+      key: 'res',
+      label: t('operators.detail.stats.res'),
+      base: b.base.res,
+      trust: formatDelta(b.trust.res),
+      potential: formatDelta(b.potential.res),
+      module: formatDelta(b.module.res),
+      total: s.res,
+    },
+    {
+      key: 'cost',
+      label: t('operators.detail.stats.cost'),
+      base: b.base.cost,
+      trust: formatDelta(b.trust.cost),
+      potential: formatDelta(b.potential.cost),
+      module: formatDelta(b.module.cost),
+      total: s.cost,
+    },
     {
       key: 'block',
       label: t('operators.detail.stats.block'),
-      value: s.block,
-      breakdown: s.breakdown,
+      base: b.base.block,
+      trust: formatDelta(b.trust.block),
+      potential: formatDelta(b.potential.block),
+      module: formatDelta(b.module.block),
+      total: s.block,
     },
     {
       key: 'attackInterval',
       label: t('operators.detail.stats.attackInterval'),
-      value: `${s.attackInterval}s`,
-      breakdown: null,
+      base: `${s.baseAttackTime}s`,
+      trust: '—',
+      potential: '—',
+      module: s.attackSpeed !== 0 ? `${s.attackSpeed > 0 ? '+' : ''}${s.attackSpeed} ASPD` : '—',
+      total: `${s.attackInterval}s`,
     },
     {
       key: 'respawnTime',
-      label: t('operators.detail.stats.respawnTime'),
-      value: `${s.respawnTime}s`,
-      breakdown: s.breakdown,
+      label: t('operators.detail.stats.redeploy'),
+      base: `${b.base.respawnTime}s`,
+      trust: b.trust.respawnTime ? `${b.trust.respawnTime}s` : '—',
+      potential: b.potential.respawnTime ? `${b.potential.respawnTime}s` : '—',
+      module: b.module.respawnTime ? `${b.module.respawnTime}s` : '—',
+      total: `${s.respawnTime}s`,
     },
   ]
 })
@@ -125,73 +199,26 @@ const statsGridItems = computed(() => {
 
 <template>
   <div class="ak-operator-stats-panel">
-    <!-- 1. Dedicated Top Bar: Promotion (Elite) & Combat Module -->
-    <div class="ak-operator-stats-panel__top-row">
-      <!-- Elite Promotion -->
-      <div class="ak-operator-stats-panel__control-group">
-        <span class="ak-operator-stats-panel__control-label">
-          {{ t('operators.detail.stats.elite') }}
-        </span>
-        <div class="ak-operator-stats-panel__btn-group">
-          <AkButton
-            v-for="phase in maxElitePhase + 1"
-            :key="phase - 1"
-            size="sm"
-            :variant="elite === phase - 1 ? 'primary' : 'ghost'"
-            @click="setElite(phase - 1)"
-          >
-            E{{ phase - 1 }}
-          </AkButton>
-        </div>
-      </div>
-
-      <!-- Module Selector -->
-      <div v-if="combatModules.length > 0" class="ak-operator-stats-panel__control-group">
-        <span class="ak-operator-stats-panel__control-label">
-          {{ t('operators.detail.stats.module') }}
-        </span>
-        <div class="ak-operator-stats-panel__btn-group">
-          <AkButton
-            size="sm"
-            :variant="!selectedModuleId ? 'primary' : 'ghost'"
-            @click="clearModule"
-          >
-            None
-          </AkButton>
-          <AkButton
-            v-for="m in combatModules"
-            :key="m.id"
-            size="sm"
-            :variant="selectedModuleId === m.id ? 'primary' : 'ghost'"
-            @click="selectModule(m.id)"
-          >
-            {{ getModuleLabel(m) }}
-          </AkButton>
-        </div>
-      </div>
-
-      <!-- Module Stage -->
-      <div v-if="selectedModuleId" class="ak-operator-stats-panel__control-group">
-        <span class="ak-operator-stats-panel__control-label">
-          {{ t('operators.detail.stats.moduleStage') }}
-        </span>
-        <div class="ak-operator-stats-panel__btn-group">
-          <AkButton
-            v-for="st in 3"
-            :key="st"
-            size="sm"
-            :variant="moduleStage === st ? 'secondary' : 'ghost'"
-            @click="$emit('update:moduleStage', st)"
-          >
-            Stage {{ st }}
-          </AkButton>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Triplet Controls Grid: Level, Trust, Potential Cards -->
+    <!-- 1. Four Cards Control Grid: Elite, Level, Trust, Potential -->
     <div class="ak-operator-stats-panel__cards-grid">
-      <!-- Card 1: Level -->
+      <!-- Card 1: Elite (using AkSegmented) -->
+      <div class="ak-operator-stats-panel__card">
+        <div class="ak-operator-stats-panel__card-header">
+          <span class="ak-operator-stats-panel__card-title">
+            {{ t('operators.detail.stats.elite') }}
+          </span>
+        </div>
+        <div class="ak-operator-stats-panel__elite-wrap">
+          <AkSegmented
+            :model-value="elite"
+            :options="eliteOptions"
+            :aria-label="t('operators.detail.stats.elite')"
+            @update:model-value="setElite(Number($event))"
+          />
+        </div>
+      </div>
+
+      <!-- Card 2: Level -->
       <div class="ak-operator-stats-panel__card">
         <div class="ak-operator-stats-panel__card-header">
           <span class="ak-operator-stats-panel__card-title">
@@ -218,7 +245,7 @@ const statsGridItems = computed(() => {
         />
       </div>
 
-      <!-- Card 2: Trust -->
+      <!-- Card 3: Trust -->
       <div class="ak-operator-stats-panel__card">
         <div class="ak-operator-stats-panel__card-header">
           <span class="ak-operator-stats-panel__card-title">
@@ -245,7 +272,7 @@ const statsGridItems = computed(() => {
         />
       </div>
 
-      <!-- Card 3: Potential -->
+      <!-- Card 4: Potential -->
       <div class="ak-operator-stats-panel__card">
         <div class="ak-operator-stats-panel__card-header">
           <span class="ak-operator-stats-panel__card-title">
@@ -275,42 +302,114 @@ const statsGridItems = computed(() => {
       </div>
     </div>
 
-    <!-- Stats Display Grid -->
-    <div v-if="calculatedStats" class="ak-operator-stats-panel__stats-grid">
-      <div
-        v-for="item in statsGridItems"
-        :key="item.key"
-        class="ak-operator-stats-panel__stat-card"
-      >
-        <div class="ak-operator-stats-panel__stat-label">{{ item.label }}</div>
-        <div class="ak-operator-stats-panel__stat-value">{{ item.value }}</div>
-
-        <!-- Breakdown tooltip details if available -->
-        <div
-          v-if="item.breakdown && item.key in item.breakdown.base"
-          class="ak-operator-stats-panel__stat-breakdown"
+    <!-- 2. Compact Module Selector Row (Only if operator has modules) -->
+    <div v-if="combatModules.length > 0" class="ak-operator-stats-panel__module-row">
+      <span class="ak-operator-stats-panel__module-label">
+        {{ t('operators.detail.stats.module') }}:
+      </span>
+      <div class="ak-operator-stats-panel__module-buttons">
+        <AkButton size="sm" :variant="!selectedModuleId ? 'primary' : 'ghost'" @click="clearModule">
+          None
+        </AkButton>
+        <AkButton
+          v-for="m in combatModules"
+          :key="m.id"
+          size="sm"
+          :variant="selectedModuleId === m.id ? 'primary' : 'ghost'"
+          @click="selectModule(m.id)"
         >
-          <span class="ak-operator-stats-panel__breakdown-part">
-            Base: {{ item.breakdown.base[item.key as keyof typeof item.breakdown.base] }}
+          {{ getModuleLabel(m) }}
+        </AkButton>
+      </div>
+
+      <!-- Module Stage buttons (if module is active) -->
+      <div v-if="selectedModuleId" class="ak-operator-stats-panel__module-stages">
+        <span class="ak-operator-stats-panel__module-stage-label">Stage:</span>
+        <AkButton
+          v-for="st in 3"
+          :key="st"
+          size="sm"
+          :variant="moduleStage === st ? 'secondary' : 'ghost'"
+          @click="$emit('update:moduleStage', st)"
+        >
+          S{{ st }}
+        </AkButton>
+      </div>
+    </div>
+
+    <!-- 3. Source Breakdown Table (Desktop) -->
+    <div class="ak-operator-stats-panel__table-wrapper">
+      <table class="ak-operator-stats-panel__table">
+        <thead>
+          <tr class="ak-operator-stats-panel__thead-tr">
+            <th class="ak-operator-stats-panel__th ak-operator-stats-panel__th--attr">
+              {{ t('operators.detail.stats.colAttribute') }}
+            </th>
+            <th class="ak-operator-stats-panel__th">{{ t('operators.detail.stats.colBase') }}</th>
+            <th class="ak-operator-stats-panel__th">{{ t('operators.detail.stats.colTrust') }}</th>
+            <th class="ak-operator-stats-panel__th">
+              {{ t('operators.detail.stats.colPotential') }}
+            </th>
+            <th class="ak-operator-stats-panel__th">{{ t('operators.detail.stats.colModule') }}</th>
+            <th class="ak-operator-stats-panel__th ak-operator-stats-panel__th--total">
+              {{ t('operators.detail.stats.colTotal') }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in breakdownRows" :key="row.key" class="ak-operator-stats-panel__tr">
+            <td class="ak-operator-stats-panel__td ak-operator-stats-panel__td--attr">
+              {{ row.label }}
+            </td>
+            <td class="ak-operator-stats-panel__td">{{ row.base }}</td>
+            <td
+              class="ak-operator-stats-panel__td"
+              :class="{
+                'ak-operator-stats-panel__td--delta': row.trust !== '—',
+              }"
+            >
+              {{ row.trust }}
+            </td>
+            <td
+              class="ak-operator-stats-panel__td"
+              :class="{
+                'ak-operator-stats-panel__td--delta': row.potential !== '—',
+              }"
+            >
+              {{ row.potential }}
+            </td>
+            <td
+              class="ak-operator-stats-panel__td"
+              :class="{
+                'ak-operator-stats-panel__td--delta': row.module !== '—',
+              }"
+            >
+              {{ row.module }}
+            </td>
+            <td class="ak-operator-stats-panel__td ak-operator-stats-panel__td--total">
+              {{ row.total }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Source Breakdown Cards (Mobile, no horizontal overflow) -->
+    <div class="ak-operator-stats-panel__cards-mobile">
+      <div v-for="row in breakdownRows" :key="row.key" class="ak-operator-stats-panel__card-mobile">
+        <div class="ak-operator-stats-panel__card-mobile-header">
+          <span class="ak-operator-stats-panel__card-mobile-label">
+            {{ row.label }}
           </span>
-          <span
-            v-if="item.breakdown.trust[item.key as keyof typeof item.breakdown.trust]"
-            class="ak-operator-stats-panel__breakdown-part ak-operator-stats-panel__breakdown-part--trust"
-          >
-            +{{ item.breakdown.trust[item.key as keyof typeof item.breakdown.trust] }}
+          <span class="ak-operator-stats-panel__card-mobile-total">
+            {{ row.total }}
           </span>
-          <span
-            v-if="item.breakdown.potential[item.key as keyof typeof item.breakdown.potential]"
-            class="ak-operator-stats-panel__breakdown-part ak-operator-stats-panel__breakdown-part--pot"
-          >
-            +{{ item.breakdown.potential[item.key as keyof typeof item.breakdown.potential] }}
-          </span>
-          <span
-            v-if="item.breakdown.module[item.key as keyof typeof item.breakdown.module]"
-            class="ak-operator-stats-panel__breakdown-part ak-operator-stats-panel__breakdown-part--mod"
-          >
-            +{{ item.breakdown.module[item.key as keyof typeof item.breakdown.module] }}
-          </span>
+        </div>
+        <div class="ak-operator-stats-panel__card-mobile-breakdown">
+          <span>Base: {{ row.base }}</span>
+          <span v-if="row.trust !== '—'">Trust: {{ row.trust }}</span>
+          <span v-if="row.potential !== '—'">Pot: {{ row.potential }}</span>
+          <span v-if="row.module !== '—'">Mod: {{ row.module }}</span>
         </div>
       </div>
     </div>
@@ -321,53 +420,31 @@ const statsGridItems = computed(() => {
 .ak-operator-stats-panel {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 
-  &__top-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-md);
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
-  }
-
-  &__control-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  &__control-label {
-    font-family: var(--font-body);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  &__btn-group {
-    display: flex;
-    gap: var(--space-xs);
-    flex-wrap: wrap;
-  }
-
+  // 1. Four Cards Grid
   &__cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--space-md);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &__card {
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-xs);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: var(--space-sm);
   }
 
@@ -375,14 +452,21 @@ const statsGridItems = computed(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-sm);
   }
 
   &__card-title {
     font-family: var(--font-body);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  &__elite-wrap {
+    display: flex;
+    align-items: center;
+    padding-top: var(--space-xs);
   }
 
   &__slider {
@@ -391,60 +475,182 @@ const statsGridItems = computed(() => {
     cursor: pointer;
   }
 
-  &__stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  // 2. Compact Module Row
+  &__module-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-sm);
-  }
-
-  &__stat-card {
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    position: relative;
   }
 
-  &__stat-label {
+  &__module-label {
     font-family: var(--font-body);
     font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
   }
 
-  &__stat-value {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
+  &__module-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  &__module-stages {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-left: 0;
+    width: 100%;
+
+    @include mq(sm) {
+      margin-left: auto;
+      width: auto;
+    }
+  }
+
+  &__module-stage-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-right: 4px;
+  }
+
+  // 3. Desktop Table
+  &__table-wrapper {
+    display: none;
+    background: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+
+    @include mq(md) {
+      display: block;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    text-align: right;
+  }
+
+  &__thead-tr {
+    background: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  &__th {
+    padding: 12px 16px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+
+    &--attr {
+      text-align: left;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    &--total {
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-accent-primary);
+    }
+  }
+
+  &__tr {
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+      background: rgb(255 255 255 / 2%);
+    }
+
+    &:last-child .ak-operator-stats-panel__td {
+      border-bottom: none;
+    }
+  }
+
+  &__td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+
+    &--attr {
+      text-align: left;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    &--total {
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-accent-primary);
+    }
+
+    &--delta {
+      color: var(--color-accent-amber);
+    }
+  }
+
+  // 4. Mobile Cards
+  &__cards-mobile {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__card-mobile {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__card-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__card-mobile-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
   }
 
-  &__stat-breakdown {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--color-text-secondary);
+  &__card-mobile-total {
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-primary);
   }
 
-  &__breakdown-part {
-    &--trust {
-      color: var(--color-accent-amber);
-    }
-
-    &--pot {
-      color: var(--color-accent-success);
-    }
-
-    &--mod {
-      color: var(--color-accent-primary);
-    }
+  &__card-mobile-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
   }
 }
 </style>

@@ -1,27 +1,27 @@
-<script setup lang="ts">
-export interface SegmentOption<T extends string | number = string> {
-  value: T
+<script setup lang="ts" generic="T extends string | number = string">
+export interface SegmentOption<TVal extends string | number = string> {
+  value: TVal
   label: string
   disabled?: boolean
 }
 
-interface Props<T extends string | number = string> {
-  modelValue: T
-  options: SegmentOption<T>[]
+interface Props<TVal extends string | number = string> {
+  modelValue: TVal
+  options: SegmentOption<TVal>[]
   ariaLabel?: string
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props<T>>(), {
   ariaLabel: 'Segmented control',
   disabled: false,
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void
+  (e: 'update:modelValue', value: T): void
 }>()
 
-function select(val: string | number): void {
+function select(val: T): void {
   if (props.disabled) return
   emit('update:modelValue', val)
 }

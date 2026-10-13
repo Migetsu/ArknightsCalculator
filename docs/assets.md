@@ -16,13 +16,16 @@
    - **Провайдер:** jsDelivr (`https://cdn.jsdelivr.net/gh/`)
    - **Таблица зафиксированных внешних репозиториев ресурсов:**
 
-| Репозиторий                         | Зафиксированный SHA                        | Дата последнего коммита | Лицензия                                   | Назначение                          |
-| :---------------------------------- | :----------------------------------------- | :---------------------- | :----------------------------------------- | :---------------------------------- |
-| `yuanyan3060/ArknightsGameResource` | `9bf239661e37766fba585806fb9fa67e79bb679e` | 2026-10-09              | GNU AGPL-3.0                               | Аватары, портреты, предметы, навыки |
-| `fexli/ArknightsResource`           | `d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5` | 2026-10-10              | None / Custom (Game Fan Assets / Fair Use) | Модули операторов (100% покрытие)   |
-| `Aceship/Arknight-Images`           | `0b28f9562fcadbd644c6225f8f8aefbb500b4d22` | 2024-05-01              | None / Custom (Game Fan Assets / Fair Use) | Резервный источник модулей (legacy) |
+| Репозиторий                         | Зафиксированный SHA                        | Дата последнего коммита | Лицензия                                   | Назначение                                              |
+| :---------------------------------- | :----------------------------------------- | :---------------------- | :----------------------------------------- | :------------------------------------------------------ |
+| `Migetsu/arkcalc-assets`            | `e8031f907867066f1c76669f8ca3712f19de81b5` | 2026-10-13              | MIT / Game Fan Assets (Fair Use)           | Оптимизированные WebP (480px thumbs, 1280px hero арты)  |
+| `yuanyan3060/ArknightsGameResource` | `9bf239661e37766fba585806fb9fa67e79bb679e` | 2026-10-09              | GNU AGPL-3.0                               | Аватары, портреты, предметы, навыки, полноразмерный арт |
+| `fexli/ArknightsResource`           | `d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5` | 2026-10-10              | None / Custom (Game Fan Assets / Fair Use) | Модули операторов (100% покрытие)                       |
+| `Aceship/Arknight-Images`           | `0b28f9562fcadbd644c6225f8f8aefbb500b4d22` | 2024-05-01              | None / Custom (Game Fan Assets / Fair Use) | Резервный источник модулей (legacy)                     |
 
 - **Шаблоны URL:**
+  - Оптимизированные миниатюры WebP (480px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@e8031f907867066f1c76669f8ca3712f19de81b5/art/thumbs/{id}.webp`
+  - Оптимизированный арт для Hero WebP (1280px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@e8031f907867066f1c76669f8ca3712f19de81b5/art/hero/{id}.webp`
   - Аватары / портреты: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
   - Навыки: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/skill/skill_icon_{iconId}.png`
   - Предметы: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/item/{iconId}.png`

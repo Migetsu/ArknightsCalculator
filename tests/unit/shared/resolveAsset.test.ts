@@ -10,6 +10,7 @@ import {
   FEXLI_REPO_COMMIT,
   PRIMARY_FEXLI_CDN_BASE,
   SECONDARY_FEXLI_CDN_BASE,
+  OPTIMIZED_ASSETS_COMMIT,
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
@@ -149,10 +150,22 @@ describe('resolveAsset utility', () => {
       expect(candidates).toContain(`${PRIMARY_CDN_BASE}/avatar/char_285_medic2.png`)
     })
 
-    it('prioritizes local webp thumbnail when thumbnail: true is requested', () => {
+    it('prioritizes local webp thumbnail and optimized CDN when thumbnail: true is requested', () => {
       const candidates = resolveAsset('art', 'char_172_svrash', { thumbnail: true })
       expect(candidates[0]).toBe('/art/thumbs/char_172_svrash.webp')
-      expect(candidates[1]).toBe(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
+      expect(candidates[1]).toContain(
+        `cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/thumbs/char_172_svrash.webp`,
+      )
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
+    })
+
+    it('prioritizes medium 1280px webp copy and optimized CDN when hero: true is requested', () => {
+      const candidates = resolveAsset('art', 'char_172_svrash', { hero: true })
+      expect(candidates[0]).toBe('/art/hero/char_172_svrash_2.webp')
+      expect(candidates[1]).toContain(
+        `cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/hero/char_172_svrash_2.webp`,
+      )
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
     })
   })
 

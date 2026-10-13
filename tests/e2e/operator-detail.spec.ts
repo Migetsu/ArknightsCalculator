@@ -37,17 +37,88 @@ test.describe('Operator Detail (/operators/[id])', () => {
     await expect(page.locator('h1')).toContainText('Lancet-2')
 
     // Elite selector should only have E0
-    const eliteButtons = page.locator('.ak-operator-stats-panel .ak-button:has-text("E")')
+    const eliteButtons = page.locator('.ak-operator-stats-panel .ak-segmented__btn:has-text("E")')
     await expect(eliteButtons).toHaveCount(1)
     await expect(eliteButtons.first()).toContainText('E0')
   })
 
-  test('renders CN-exclusive operator with warning banner', async ({ page }) => {
-    // char_1015_aglna2 is CN-exclusive (servers: ['cn'])
+  test('does not show CN-exclusive warning banner per server model', async ({ page }) => {
+    // char_1015_aglna2 previously had CN-exclusive alert
     await page.goto('/operators/char_1015_aglna2')
+    await expect(page.locator('h1')).toBeVisible()
     const cnAlert = page.locator('.ak-operator-detail-page__cn-alert')
-    await expect(cnAlert).toBeVisible()
-    await expect(cnAlert).toContainText('CN EXCLUSIVE')
+    await expect(cnAlert).not.toBeVisible()
+  })
+
+  test('first screen density: hero, stats bar, and tabs are visible without scroll on 1440x900 and 1920x1080', async ({
+    page,
+  }) => {
+    const desktopViewports = [
+      { width: 1440, height: 900 },
+      { width: 1920, height: 1080 },
+    ]
+
+    for (const vp of desktopViewports) {
+      await page.setViewportSize(vp)
+      await page.goto('/operators/char_172_svrash')
+      await page.waitForLoadState('networkidle')
+
+      const hero = page.locator('.ak-operator-hero__stage')
+      const statsBar = page.locator('.ak-operator-hero__stats-bar')
+      const tabsList = page.locator('.ak-tabs__list')
+
+      await expect(hero).toBeVisible()
+      await expect(statsBar).toBeVisible()
+      await expect(tabsList).toBeVisible()
+
+      // Measure bottom position of the tabs row relative to viewport height
+      const tabsBounding = await tabsList.boundingBox()
+      expect(tabsBounding).not.toBeNull()
+      const bottom = tabsBounding!.y + tabsBounding!.height
+      expect(bottom).toBeLessThanOrEqual(vp.height)
+    }
+  })
+
+  test('mobile 360px layout displays art on top and header info below', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 })
+    await page.goto('/operators/char_172_svrash')
+    await page.waitForLoadState('networkidle')
+
+    const artWrapper = page.locator('.ak-operator-hero__art-wrapper')
+    const headerInfo = page.locator('.ak-operator-hero__header-info')
+
+    await expect(artWrapper).toBeVisible()
+    await expect(headerInfo).toBeVisible()
+
+    const artBox = await artWrapper.boundingBox()
+    const headerBox = await headerInfo.boundingBox()
+
+    expect(artBox).not.toBeNull()
+    expect(headerBox).not.toBeNull()
+    // Art is above header info in mobile vertical flow
+    expect(artBox!.y).toBeLessThan(headerBox!.y)
+  })
+
+  test('synchronizes elite promotion with hero character art stage', async ({ page }) => {
+    await page.goto('/operators/char_172_svrash')
+    await page.waitForLoadState('networkidle')
+
+    // Initial state: Elite 2, E2 art active
+    const stageBtnE2 = page.locator('.ak-operator-hero__stage-btn:has-text("E2")')
+    await expect(stageBtnE2).toHaveClass(/ak-operator-hero__stage-btn--active/)
+
+    // Click E0 in Elite segmented control
+    const btnE0 = page.locator('.ak-operator-stats-panel .ak-segmented__btn:has-text("E0")')
+    await btnE0.click()
+
+    // Hero art stage should synchronize to E0/E1
+    const stageBtnE0 = page.locator('.ak-operator-hero__stage-btn:has-text("E0")')
+    await expect(stageBtnE0).toHaveClass(/ak-operator-hero__stage-btn--active/)
+
+    // Click E2 in Elite segmented control
+    const btnE2 = page.locator('.ak-operator-stats-panel .ak-segmented__btn:has-text("E2")')
+    await btnE2.click()
+    await expect(stageBtnE2).toHaveClass(/ak-operator-hero__stage-btn--active/)
   })
 
   test('restores view and parameters from shared URL link', async ({ page }) => {
