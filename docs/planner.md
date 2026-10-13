@@ -59,6 +59,9 @@ The core calculation function [`calculateCost`](file:///c:/Projects/ArknightsCal
 
 ## 4. Arithmetic Reference Benchmarks
 
+> [!WARNING]
+> **Audit status:** The leveling and promotion benchmarks below (levels, elite promotions, LMD, EXP) have been verified arithmetically against `data/constants.json` and formulas. Skills (1–7), skill masteries (M1–M3), and module upgrade material requirements are currently without external benchmark verification against live databases and require external verification in future audit tasks.
+
 Verified against `data/constants.json` and `data/operators/*.json`:
 
 | Operator           | Stage Progression            | Required EXP  |   Level LMD   | Evolve LMD  |   Total LMD   |

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Settings</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 48px;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+      .pn {
+        background: #17110f;
+        border: 1px solid rgba(232, 221, 211, 0.08);
+      }
+      .av {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(160deg, #4a2418, #17110f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 12px Unbounded,
+          sans-serif;
+        border-bottom: 3px solid #ff9d2b;
+        flex: none;
+      }
+      .t {
+        margin: 0;
+        font:
+          800 34px Unbounded,
+          sans-serif;
+      }
+      .x {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 32px;
+        padding: 24px;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.07);
+      }
+      .ch {
+        display: inline-block;
+        padding: 3px 10px;
+        font:
+          600 11px 'Golos Text',
+          sans-serif;
+        letter-spacing: 0.08em;
+      }
+      h2 {
+        margin: 0;
+        font:
+          800 16px Unbounded,
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 900px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header>
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav>
+          <a href="#">Home</a><a href="#">Operators</a><a href="#">Planner</a><a href="#">Depot</a
+          ><a href="#">Farming</a><a href="#">Recruit</a><a href="#">Gacha</a>
+        </nav>
+        <a
+          href="#"
+          style="
+            margin-left: auto;
+            color: #ffd9a8;
+            text-decoration: none;
+            border-bottom: 2px solid #ff6a3d;
+            padding-bottom: 4px;
+          "
+          >Settings</a
+        >
+      </header>
+      <main
+        style="
+          padding: 36px 48px;
+          max-width: 960px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+        "
+      >
+        <h1 class="t">Settings</h1>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>Language</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Interface language. The site is shown in one language at a time.
+            </p>
+          </div>
+          <div
+            style="
+              display: flex;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            <button style="padding: 11px 26px; background: #ff6a3d; border: 0; color: #120d0b">
+              English</button
+            ><button
+              style="
+                padding: 11px 26px;
+                background: #0e0a09;
+                border: 1px solid rgba(232, 221, 211, 0.18);
+                color: #e8ddd3;
+              "
+            >
+              Русский
+            </button>
+          </div>
+        </section>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>Default server</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Controls which operators, items and banners are shown by default.
+            </p>
+          </div>
+          <div
+            style="
+              display: flex;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            <button style="padding: 11px 26px; background: #ff6a3d; border: 0; color: #120d0b">
+              Global</button
+            ><button
+              style="
+                padding: 11px 26px;
+                background: #0e0a09;
+                border: 1px solid rgba(232, 221, 211, 0.18);
+                color: #e8ddd3;
+              "
+            >
+              CN
+            </button>
+          </div>
+        </section>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>Account</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Not synced. Sync to import your roster, depot and goals.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px">
+            <button
+              style="
+                padding: 11px 22px;
+                background: #ff6a3d;
+                border: 0;
+                color: #120d0b;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Sync account</button
+            ><button
+              style="
+                padding: 11px 20px;
+                background: transparent;
+                border: 1px solid rgba(255, 217, 168, 0.4);
+                color: #ffd9a8;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Sign in for cloud backup
+            </button>
+          </div>
+        </section>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>Your data</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Everything is stored in this browser. Export a backup before clearing site data.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap">
+            <button
+              style="
+                padding: 11px 20px;
+                background: transparent;
+                border: 1px solid rgba(255, 217, 168, 0.4);
+                color: #ffd9a8;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Export backup (JSON)</button
+            ><button
+              style="
+                padding: 11px 20px;
+                background: transparent;
+                border: 1px solid rgba(255, 217, 168, 0.4);
+                color: #ffd9a8;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Import backup</button
+            ><button
+              style="
+                padding: 11px 20px;
+                background: transparent;
+                border: 1px solid rgba(255, 138, 92, 0.5);
+                color: #ff8a5c;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Reset all local data
+            </button>
+          </div>
+        </section>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>Game data</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Operators, items and recipes come from the game data below.
+            </p>
+          </div>
+          <div
+            style="
+              font:
+                400 14px/1.9 'Golos Text',
+                sans-serif;
+              color: #a8978a;
+            "
+          >
+            Data version: <b style="color: #e8ddd3">[commit / date]</b><br />Operators:
+            <b style="color: #e8ddd3">[n]</b> (Global [n], CN only [n])
+          </div>
+        </section>
+        <section class="pn" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <h2>About</h2>
+            <p
+              style="
+                margin: 6px 0 0;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Unofficial fan project. Arknights and all related assets belong to Hypergryph and
+              Yostar.
+            </p>
+          </div>
+          <button
+            style="
+              padding: 11px 20px;
+              background: transparent;
+              border: 1px solid rgba(255, 217, 168, 0.4);
+              color: #ffd9a8;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Open source and feedback
+          </button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Sync modal</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      .tab {
+        background: none;
+        border: 0;
+        border-bottom: 3px solid transparent;
+        padding: 0 0 12px;
+        color: #a8978a;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        cursor: pointer;
+      }
+      .reg {
+        flex: 1;
+        padding: 11px 0;
+        background: #0e0a09;
+        border: 1px solid rgba(232, 221, 211, 0.15);
+        color: #e8ddd3;
+        font:
+          600 13px 'Golos Text',
+          sans-serif;
+      }
+      label {
+        display: block;
+        font:
+          600 12px 'Golos Text',
+          sans-serif;
+        letter-spacing: 0.12em;
+        color: #a8978a;
+      }
+      label input {
+        display: block;
+        margin-top: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        background: #0e0a09;
+        border: 1px solid rgba(232, 221, 211, 0.2);
+        color: #e8ddd3;
+        font:
+          400 15px 'Golos Text',
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 820px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #07050a 62%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <div
+        role="dialog"
+        aria-label="Account synchronization"
+        style="
+          width: 100%;
+          max-width: 620px;
+          background: #17110f;
+          border: 1px solid rgba(232, 221, 211, 0.14);
+          border-left: 4px solid #ff6a3d;
+          padding: 28px 32px;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        "
+      >
+        <div style="display: flex; align-items: start">
+          <div>
+            <p
+              style="
+                margin: 0 0 6px;
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.2em;
+                color: #ffd9a8;
+              "
+            >
+              TERMINAL // SYNC
+            </p>
+            <h1
+              style="
+                margin: 0;
+                font:
+                  800 24px Unbounded,
+                  sans-serif;
+              "
+            >
+              Account synchronization
+            </h1>
+          </div>
+          <button
+            aria-label="Close"
+            style="
+              margin-left: auto;
+              background: none;
+              border: 0;
+              color: #a8978a;
+              font: 400 22px sans-serif;
+              cursor: pointer;
+            "
+          >
+            ×
+          </button>
+        </div>
+        <div
+          style="
+            margin: 20px 0;
+            padding: 14px 16px;
+            background: rgba(255, 157, 43, 0.08);
+            border: 1px solid rgba(255, 157, 43, 0.35);
+            font:
+              400 14px/1.55 'Golos Text',
+              sans-serif;
+          "
+        >
+          <b style="color: #ff9d2b">Unofficial login.</b> This uses the game's login servers and is
+          not endorsed by Yostar; use it at your own risk. Logging in here may sign you out of the
+          game on your device.<br /><span style="color: #a8978a"
+            >Your email, code and tokens are not stored on our servers. Data stays in this
+            browser.</span
+          >
+        </div>
+        <div
+          style="
+            display: flex;
+            gap: 24px;
+            border-bottom: 1px solid rgba(232, 221, 211, 0.12);
+            margin-bottom: 22px;
+          "
+        >
+          <button class="tab" style="color: #e8ddd3; border-bottom-color: #ff6a3d">
+            Yostar email code</button
+          ><button class="tab">Import JSON</button><button class="tab">Demo data</button>
+        </div>
+        <label>SERVER</label>
+        <div style="display: flex; gap: 8px; margin: 8px 0 20px">
+          <button class="reg" style="background: #ff6a3d; color: #120d0b; border-color: #ff6a3d">
+            EN</button
+          ><button class="reg">JP</button><button class="reg">KR</button
+          ><button class="reg">CN</button>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: end; margin-bottom: 6px">
+          <label style="flex: 1"
+            >YOSTAR ACCOUNT EMAIL<input type="email" placeholder="you@example.com" /></label
+          ><button
+            style="
+              padding: 13px 20px;
+              background: transparent;
+              border: 1px solid #ffd9a8;
+              color: #ffd9a8;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Send code
+          </button>
+        </div>
+        <p
+          style="
+            margin: 0 0 18px;
+            font:
+              400 13px 'Golos Text',
+              sans-serif;
+            color: #a8978a;
+          "
+        >
+          We will send a 6-digit code to this address.
+        </p>
+        <label
+          >6-DIGIT CODE<input
+            type="text"
+            inputmode="numeric"
+            placeholder="000000"
+            style="
+              letter-spacing: 0.5em;
+              text-align: center;
+              font:
+                600 20px 'Golos Text',
+                sans-serif;
+            "
+        /></label>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 26px">
+          <button
+            style="
+              padding: 12px 22px;
+              background: transparent;
+              border: 1px solid rgba(232, 221, 211, 0.3);
+              color: #e8ddd3;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Cancel</button
+          ><button
+            style="
+              padding: 12px 26px;
+              background: #ff6a3d;
+              border: 0;
+              color: #120d0b;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Start sync
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
