@@ -107,17 +107,10 @@ function handleImageError(): void {
     max-width: 380px;
     aspect-ratio: 1 / 1.25;
     background:
-      radial-gradient(circle at 50% 50%, rgb(255 255 255 / 4%) 0%, rgb(12 13 16 / 80%) 100%),
+      radial-gradient(circle at 50% 50%, rgb(255 255 255 / 4%) 0%, rgb(18 13 11 / 90%) 100%),
       var(--color-bg-surface);
-    border: 1px solid var(--color-border-bold);
-    clip-path: polygon(
-      0 var(--cut-corner-size),
-      var(--cut-corner-size) 0,
-      100% 0,
-      100% calc(100% - var(--cut-corner-size)),
-      calc(100% - var(--cut-corner-size)) 100%,
-      0 100%
-    );
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -161,31 +154,30 @@ function handleImageError(): void {
     display: flex;
     gap: var(--space-xs);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
+    border: 1px solid var(--color-border-subtle);
     padding: 2px;
+    border-radius: var(--radius-xs);
   }
 
   &__variant-btn {
     border: none;
     background: transparent;
     color: var(--color-text-secondary);
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-semibold);
     padding: var(--space-xs) var(--space-sm);
     cursor: pointer;
+    border-radius: var(--radius-xs);
     transition: all 0.2s ease;
-
-    @include cut-corner(4px, top-right);
 
     &:hover {
       color: var(--color-text-primary);
     }
 
     &--active {
-      background: var(--color-accent-warning);
+      background: var(--color-accent-primary);
       color: var(--color-bg-base);
-      box-shadow: 0 0 8px var(--color-accent-warning-glow);
     }
   }
 }

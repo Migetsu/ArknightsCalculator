@@ -97,14 +97,13 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
   }
 
   &__candidate-card {
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-
-    @include cut-corner(8px, top-right);
   }
 
   &__header {
@@ -130,11 +129,10 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
 
   &__desc {
     background: var(--color-bg-base);
-    border-left: 3px solid var(--color-accent-success);
+    border-left: 3px solid var(--color-accent-amber);
+    border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
-
-    @include cut-corner(4px, top-right);
   }
 }
 </style>

@@ -254,19 +254,19 @@ onMounted(() => {
           <template v-else>
             <AkGrid preset="operators" class="operators-page__grid">
               <AkOperatorCard v-for="op in displayedOperators" :key="op.id" :operator="op" />
-            </AkGrid>
 
-            <!-- Infinite Scroll Sentinel & Fallback Load More Button -->
-            <div v-if="hasMore" ref="sentinel" class="operators-page__load-more-box">
-              <AkButton
-                variant="secondary"
-                size="md"
-                class="operators-page__load-more-btn"
-                @click="loadMore"
-              >
-                {{ t('operators.results.loadMore', { remaining: remainingCount }) }}
-              </AkButton>
-            </div>
+              <!-- Mockup-spec Dashed Load More Tile in Grid -->
+              <div v-if="hasMore" ref="sentinel" class="operators-page__load-more-tile">
+                <AkButton
+                  variant="outline"
+                  size="md"
+                  class="operators-page__load-more-btn"
+                  @click="loadMore"
+                >
+                  {{ t('operators.results.loadMore', { remaining: remainingCount }) }}
+                </AkButton>
+              </div>
+            </AkGrid>
           </template>
         </template>
       </div>
@@ -325,15 +325,27 @@ onMounted(() => {
     padding: var(--space-xl) 0;
   }
 
-  &__load-more-box {
+  &__load-more-tile {
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-lg);
+    min-height: 310px;
+    padding: var(--space-lg);
+    background: transparent;
+    border: 1px dashed var(--color-border-bold);
+    box-sizing: border-box;
   }
 
   &__load-more-btn {
-    min-width: 220px;
+    width: 100%;
+    max-width: 220px;
+    color: var(--color-accent-amber);
+    border-color: rgb(255 217 168 / 40%);
+
+    &:hover {
+      background: rgb(255 217 168 / 10%);
+      border-color: var(--color-accent-amber);
+    }
   }
 }
 </style>

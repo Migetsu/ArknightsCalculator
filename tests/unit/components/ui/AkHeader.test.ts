@@ -24,4 +24,15 @@ describe('AkHeader', () => {
     expect(settingsLink.exists()).toBe(true)
     expect(settingsLink.attributes('href')).toContain('/settings')
   })
+
+  it('renders sync button with status dot and does not render soon badge in desktop nav', async () => {
+    const wrapper = await mountSuspended(AkHeader)
+    const syncBtn = wrapper.find('.ak-header__sync-btn')
+    expect(syncBtn.exists()).toBe(true)
+    expect(syncBtn.find('.ak-header__sync-dot').exists()).toBe(true)
+
+    // No soon badge in desktop navigation
+    const nav = wrapper.find('.ak-header__nav')
+    expect(nav.find('.ak-header__soon-badge').exists()).toBe(false)
+  })
 })

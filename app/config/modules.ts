@@ -7,6 +7,7 @@ export interface AppModuleConfig {
   icon: string
   nameKey: string
   descriptionKey: string
+  navKey: string
   status: ModuleStatus
 }
 
@@ -18,6 +19,17 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '⊞',
     nameKey: 'navigation.dashboard',
     descriptionKey: 'navigation.dashboardDesc',
+    navKey: 'nav.home',
+    status: 'ready',
+  },
+  {
+    id: 'operators',
+    route: '/operators',
+    code: 'OPS-04',
+    icon: '👥',
+    nameKey: 'navigation.operators',
+    descriptionKey: 'navigation.operatorsDesc',
+    navKey: 'nav.operators',
     status: 'ready',
   },
   {
@@ -27,15 +39,27 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '📋',
     nameKey: 'navigation.planner',
     descriptionKey: 'navigation.plannerDesc',
+    navKey: 'nav.planner',
     status: 'soon',
   },
   {
-    id: 'gacha',
-    route: '/gacha',
-    code: 'GCH-02',
-    icon: '✦',
-    nameKey: 'navigation.gacha',
-    descriptionKey: 'navigation.gachaDesc',
+    id: 'depot',
+    route: '/depot',
+    code: 'INV-05',
+    icon: '📦',
+    nameKey: 'navigation.depot',
+    descriptionKey: 'navigation.depotDesc',
+    navKey: 'nav.depot',
+    status: 'soon',
+  },
+  {
+    id: 'farming',
+    route: '/farming',
+    code: 'FRM-07',
+    icon: '🌾',
+    nameKey: 'navigation.farming',
+    descriptionKey: 'navigation.farmingDesc',
+    navKey: 'nav.farming',
     status: 'soon',
   },
   {
@@ -45,24 +69,17 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '🔍',
     nameKey: 'navigation.recruit',
     descriptionKey: 'navigation.recruitDesc',
+    navKey: 'nav.recruit',
     status: 'soon',
   },
   {
-    id: 'operators',
-    route: '/operators',
-    code: 'OPS-04',
-    icon: '👥',
-    nameKey: 'navigation.operators',
-    descriptionKey: 'navigation.operatorsDesc',
-    status: 'ready',
-  },
-  {
-    id: 'depot',
-    route: '/depot',
-    code: 'INV-05',
-    icon: '📦',
-    nameKey: 'navigation.depot',
-    descriptionKey: 'navigation.depotDesc',
+    id: 'gacha',
+    route: '/gacha',
+    code: 'GCH-02',
+    icon: '✦',
+    nameKey: 'navigation.gacha',
+    descriptionKey: 'navigation.gachaDesc',
+    navKey: 'nav.gacha',
     status: 'soon',
   },
   {
@@ -72,6 +89,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '⚙',
     nameKey: 'navigation.settings',
     descriptionKey: 'navigation.settingsDesc',
+    navKey: 'nav.settings',
     status: 'ready',
   },
 ] as const

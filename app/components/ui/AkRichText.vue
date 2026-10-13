@@ -255,7 +255,7 @@ function getHighlightClass(tag: string): string {
     }
 
     &:focus-visible {
-      @include focus-ring-clipped;
+      @include focus-ring;
     }
   }
 

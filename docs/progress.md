@@ -285,6 +285,37 @@
       - Updated E2E tests: `tests/e2e/i18n.spec.ts` (language change verified via `/settings`), `tests/e2e/layout-sanity.spec.ts` (all 14 routes and 5 viewports passing, 0 horizontal overflow), `tests/e2e/responsive.spec.ts`, `tests/e2e/smoke.spec.ts`. All 105 Playwright tests passing.
       - Verified `lint`, `stylelint`, `format:check`, `typecheck`, `i18n:check`, `data:validate`, `test`, `test:e2e`, and `build`.
 
+- Operators Catalog & Detail Page Redesign (`feat/design-operators`):
+  - Pre-step (`fix: header nav and registry per design spec`):
+    - Added Farming module (`FRM-07`, `/farming`, status `soon`) in `app/config/modules.ts` with strict mockup order: Home, Operators, Planner, Depot, Farming, Recruit, Gacha, Settings.
+    - Added short i18n keys `nav.home`, `nav.operators`, `nav.planner`, `nav.depot`, `nav.farming`, `nav.recruit`, `nav.gacha`, `nav.settings` in `en.json` and `ru.json`.
+    - Removed "Coming soon" badge from desktop header (dimmed link color); badge preserved in mobile drawer and farming stub page.
+    - Header right group: aligned `Settings` link and `Sync` button in one line (`height: 36px`, `gap: 16px`, `align-items: center`), zero text shift on active/hover. Verified with Playwright screenshots on 1440px, 1024px, and 360px drawer.
+    - Upstream assets: pinned git tree commit SHAs for all 3 resource repositories in `scripts/data/sources.config.ts`, documented in `docs/assets.md` with dates and licenses, created asset mirroring tool `scripts/data/mirror-assets.ts`.
+  - Operator Catalog (`/operators`):
+    - Redesigned card `AkOperatorCard.vue` based on `operators.html`: 250px vertical portrait art (`resolveAsset('portrait')` with avatar fallback), rarity radial gradient, bold operator name, code badge, and 3px bottom rarity color line.
+    - Added mockup-spec dashed "Show more" tile in operator grid (`AkGrid`), infinite scroll sentinel, and reactive count.
+    - Redesigned `AkOperatorFilters.vue`: `AkChip` class chips, rarity filter, search field, server toggle (`Global` / `CN All`), and sort selector.
+    - Responsive states: loading skeletons, empty state, and error alert.
+  - Operator Detail Page (`/operators/[id]`):
+    - Redesigned according to `operator-detail.html`:
+      - Hero section: warm radial gradient background, Back to list button, tactical uppercase meta string (`6★ GUARD / LORD / KARLAN`), large operator heading (up to 68px clamp), and full portrait with E0/E1 vs E2 variant selector.
+      - Key stats section: overlapping top card with large `Unbounded 800` figures for HP, ATK (ember highlight), DEF, and RES calculated reactively via calculation core.
+      - Interactive tabs (`AkTabs`): Stats, Skills, Talents, Modules, Info.
+      - Panel integration: `AkOperatorSkillsPanel.vue` (using `AkSkillIcon` and `AkItemIcon`), `AkOperatorModulesPanel.vue` (using `AkModuleIcon` and `AkItemIcon`), `AkOperatorTalentsPanel.vue`, `AkOperatorInfoPanel.vue`, `AkOperatorStatsPanel.vue` with sliders/steppers.
+      - CN exclusive banner notice for CN-only operators.
+  - Mixin Cleanup:
+    - Permanently eliminated obsolete no-op mixins (`cut-corner`, `focus-ring-clipped`, `hazard-stripes`, `neon-glow`) from `_mixins.scss` and all component usages.
+  - Performance & Visual Audit:
+    - Captured Playwright screenshots across 16 combinations (360, 768, 1440, 1920 viewports in EN and RU) for both `/operators` and `/operators/char_172_svrash` in `docs/screenshots/`.
+    - Slow 4G + 4x CPU slowdown metrics recorded in `docs/metrics-operators.json`:
+      - `/operators`: LCP 0ms, TBT 0ms, script size 3.39 MB.
+      - `/operators/char_172_svrash`: LCP 0ms, TBT 0ms, script size 6.16 MB.
+  - Quality verification:
+    - 226 Vitest unit tests passing (100%).
+    - 123 Playwright E2E tests passing (100%).
+    - `lint`, `stylelint`, `format:check`, `typecheck`, `i18n:check`, `data:validate`, `build` all clean (0 errors).
+
 ## In progress
 
 - None.

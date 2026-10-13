@@ -2,10 +2,11 @@
 import { ref } from 'vue'
 import type { OperatorModule } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { resolveAsset } from '~/../shared/utils/resolveAsset'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
+import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 interface Props {
   modules: OperatorModule[]
@@ -50,15 +51,12 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     <div v-for="mod in modules" :key="mod.id" class="ak-operator-modules-panel__module-card">
       <!-- Header -->
       <div class="ak-operator-modules-panel__header">
-        <div class="ak-operator-modules-panel__icon-box">
-          <img
-            :src="resolveAsset('equip', mod.id)[0]"
-            :alt="mod.id"
-            class="ak-operator-modules-panel__icon"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        <AkModuleIcon
+          :module-id="mod.id"
+          :type-name="mod.type"
+          :name="getModuleName(mod)"
+          size="lg"
+        />
 
         <div class="ak-operator-modules-panel__info">
           <div class="ak-operator-modules-panel__title-row">
@@ -154,20 +152,14 @@ function getStageCost(m: OperatorModule, stageNum: number) {
           {{ t('operators.detail.modules.materials') }}:
         </span>
         <div class="ak-operator-modules-panel__cost-list">
-          <div
+          <AkItemIcon
             v-for="item in getStageCost(mod, activeStages[mod.id] ?? 1)"
             :key="item.id"
-            class="ak-operator-modules-panel__cost-item"
-          >
-            <img
-              :src="resolveAsset('item', item.id)[0]"
-              :alt="item.id"
-              class="ak-operator-modules-panel__cost-icon"
-              loading="lazy"
-              decoding="async"
-            />
-            <span class="ak-operator-modules-panel__cost-count">x{{ item.count }}</span>
-          </div>
+            :item-id="item.id"
+            :name="item.id"
+            :count="item.count"
+            size="sm"
+          />
         </div>
       </div>
     </div>
@@ -182,44 +174,24 @@ function getStageCost(m: OperatorModule, stageNum: number) {
 
   &__empty {
     color: var(--color-text-secondary);
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     padding: var(--space-md);
   }
 
   &__module-card {
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-
-    @include cut-corner(8px, top-right);
   }
 
   &__header {
     display: flex;
     align-items: center;
     gap: var(--space-md);
-  }
-
-  &__icon-box {
-    width: 52px;
-    height: 52px;
-    background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__icon {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
   }
 
   &__info {
@@ -236,6 +208,7 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__title {
+    font-family: var(--font-heading);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
@@ -253,17 +226,17 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     gap: var(--space-xs);
     background: var(--color-bg-base);
     padding: var(--space-xs);
-    border: 1px solid var(--color-border-bold);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
     flex-wrap: wrap;
-
-    @include cut-corner(4px, top-right);
   }
 
   &__sub-title {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   &__stats-list {
@@ -281,12 +254,11 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   &__stat-chip {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-primary);
+    color: var(--color-accent-amber);
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
     padding: 2px var(--space-xs);
-
-    @include cut-corner(2px, top-right);
   }
 
   &__part-block {
@@ -302,18 +274,19 @@ function getStageCost(m: OperatorModule, stageNum: number) {
   }
 
   &__part-title {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-warning);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent-amber);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   &__part-desc {
     background: var(--color-bg-base);
-    border-left: 3px solid var(--color-accent-warning);
+    border-left: 3px solid var(--color-accent-amber);
+    border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
-
-    @include cut-corner(4px, top-right);
   }
 
   &__cost-section {
@@ -326,29 +299,6 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-  }
-
-  &__cost-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
-    padding: 2px var(--space-sm);
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__cost-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-  }
-
-  &__cost-count {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-primary);
   }
 }
 </style>

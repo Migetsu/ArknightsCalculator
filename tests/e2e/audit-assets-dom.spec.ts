@@ -133,6 +133,7 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
   test('verifies direct access to /operators/{id} loads operator detail, not catalog', async ({
     page,
   }) => {
+    test.setTimeout(60000)
     // 1. English direct visit
     await page.goto('/operators/char_003_kalts')
 

@@ -320,11 +320,10 @@ const statsGridItems = computed(() => {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     padding: var(--space-md);
-
-    @include cut-corner(8px, top-right);
   }
 
   &__control-group {
@@ -339,11 +338,12 @@ const statsGridItems = computed(() => {
   }
 
   &__control-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   &__btn-group {
@@ -361,25 +361,23 @@ const statsGridItems = computed(() => {
   &__num-input {
     width: 60px;
     background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
     color: var(--color-text-primary);
     font-family: var(--font-mono);
     font-size: var(--font-size-sm);
-    padding: 2px var(--space-xs);
+    padding: 3px var(--space-xs);
     text-align: right;
-
-    @include cut-corner(4px, top-right);
 
     &:focus {
       outline: 1px solid var(--color-accent-primary);
-      box-shadow: 0 0 6px var(--color-accent-primary-glow);
     }
   }
 
   &__val-badge {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-accent-warning);
+    color: var(--color-accent-amber);
     font-weight: var(--font-weight-bold);
   }
 
@@ -396,22 +394,23 @@ const statsGridItems = computed(() => {
   }
 
   &__stat-card {
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     padding: var(--space-sm) var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
     position: relative;
-
-    @include cut-corner(8px, top-right);
   }
 
   &__stat-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   &__stat-value {
@@ -432,7 +431,7 @@ const statsGridItems = computed(() => {
 
   &__breakdown-part {
     &--trust {
-      color: var(--color-accent-warning);
+      color: var(--color-accent-amber);
     }
 
     &--pot {

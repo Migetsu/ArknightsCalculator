@@ -74,25 +74,3 @@
     }
   }
 }
-
-// Deprecated compatibility mixins (no-op in Ember Editorial, prevents build breakage while pages transition)
-@mixin cut-corner($size: 10px, $corner: top-left) {
-  // Flat sharp borders in Ember Editorial design system
-  border-radius: var(--radius-none);
-}
-
-@mixin focus-ring-clipped {
-  @include focus-ring;
-}
-
-@mixin hazard-stripes(
-  $accent-color: var(--color-accent-warning),
-  $bg-color: var(--color-bg-surface),
-  $stripe-width: 10px
-) {
-  background-color: var(--color-bg-surface);
-}
-
-@mixin neon-glow($color: var(--color-accent-primary), $intensity: 12px) {
-  box-shadow: none;
-}
