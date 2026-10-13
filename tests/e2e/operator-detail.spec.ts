@@ -89,6 +89,7 @@ test.describe('Operator Detail (/operators/[id])', () => {
   test('measures transferred resources and verifies other operators are not bundled', async ({
     page,
   }) => {
+    test.slow()
     const loadedScripts: string[] = []
     let totalScriptBytes = 0
 

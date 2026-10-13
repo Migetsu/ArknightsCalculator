@@ -46,13 +46,47 @@ describe('AkOperatorStatsPanel', () => {
       },
     })
 
-    const input = wrapper.find('#op-level-input')
+    const input = wrapper.find('#op-level-slider')
     expect(input.exists()).toBe(true)
     await input.setValue('45')
-    await input.trigger('change')
+    await input.trigger('input')
 
     const emitted = wrapper.emitted('update:level')
     expect(emitted).toBeTruthy()
     expect(emitted?.[0]?.[0]).toBe(45)
+  })
+
+  it('renders branch codes and module names for operator with multiple modules and never shows ADVANCED', async () => {
+    const kaltsit = loadOperatorDetail('char_003_kalts')
+    const wrapper = await mountSuspended(AkOperatorStatsPanel, {
+      props: {
+        operator: kaltsit,
+        elite: 2,
+        level: 90,
+        trust: 100,
+        potential: 1,
+        selectedModuleId: 'uniequip_002_kalts',
+        moduleStage: 3,
+      },
+    })
+
+    const text = wrapper.text()
+    // Must never show legacy "ADVANCED" label
+    expect(text).not.toContain('ADVANCED')
+
+    // Must display branch codes and module names
+    expect(text).toContain('Mon2tr')
+    expect(text).toContain('Panacea')
+
+    // Module buttons rendered as AkButton
+    const buttons = wrapper.findAll('button')
+    const mon2trBtn = buttons.find((b) => b.text().includes('Mon2tr'))
+    expect(mon2trBtn).toBeDefined()
+    const panaceaBtn = buttons.find((b) => b.text().includes('Panacea'))
+    expect(panaceaBtn).toBeDefined()
+
+    await panaceaBtn!.trigger('click')
+    const emitted = wrapper.emitted('update:selectedModuleId')
+    expect(emitted).toBeTruthy()
   })
 })

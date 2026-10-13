@@ -1,7 +1,7 @@
 /**
  * Asset kinds supported by Arknights game resource repositories.
  */
-export type AssetKind = 'avatar' | 'portrait' | 'item' | 'skill' | 'equip'
+export type AssetKind = 'avatar' | 'portrait' | 'art' | 'item' | 'skill' | 'equip'
 
 export interface ResolveAssetOptions {
   /**
@@ -16,6 +16,10 @@ export interface ResolveAssetOptions {
    * Preferred format extension (defaults to 'png').
    */
   format?: 'png' | 'webp'
+  /**
+   * Whether to prioritize local WebP thumbnail for catalog grids.
+   */
+  thumbnail?: boolean
 }
 
 /**
@@ -64,10 +68,51 @@ export const SECONDARY_FEXLI_CDN_BASE = `https://cdn.statically.io/gh/${FEXLI_RE
 const KIND_DIR_MAP: Record<AssetKind, string> = {
   avatar: 'avatar',
   portrait: 'portrait',
+  art: 'skin',
   item: 'item',
   skill: 'skill',
   equip: 'equip',
 }
+
+/**
+ * 1-3 star operators that only possess Elite 0/1 forms (no Elite 2 art).
+ */
+export const LOW_RARITY_OPERATOR_IDS = new Set<string>([
+  'char_120_hibisc',
+  'char_121_lava',
+  'char_122_beagle',
+  'char_123_fang',
+  'char_124_kroos',
+  'char_192_falco',
+  'char_208_melan',
+  'char_209_ardign',
+  'char_210_stward',
+  'char_211_adnach',
+  'char_212_ansel',
+  'char_240_wyvern',
+  'char_278_orchid',
+  'char_281_popka',
+  'char_282_catap',
+  'char_283_midn',
+  'char_284_spot',
+  'char_009_12fce',
+  'char_500_noirc',
+  'char_501_durin',
+  'char_502_nblade',
+  'char_503_rang',
+  'char_285_medic2',
+  'char_286_cast3',
+  'char_376_therex',
+  'char_4000_jnight',
+  'char_4077_palico',
+  'char_4091_ulika',
+  'char_4093_frston',
+  'char_4136_phonor',
+  'char_4188_confes',
+  'char_4215_buddy',
+  'char_4220_kormr',
+  'char_4227_gallus',
+])
 
 /**
  * Known avatar overrides for operators whose base avatar has non-standard naming.
@@ -91,7 +136,7 @@ const PORTRAIT_DEFAULT_VARIANT_MAP: Record<string, string> = {
  * Pure function: strictly no network I/O, no runtime hotlinking to prts.wiki
  * or raw.githubusercontent.com.
  *
- * @param kind - The category of the asset (avatar, portrait, item, skill, equip).
+ * @param kind - The category of the asset (avatar, portrait, art, item, skill, equip).
  * @param id - The unique game asset identifier (e.g. 'char_102_texas', 'skchr_texas_2', '30012', 'uniequip_002_texas').
  * @param options - Formatting, iconId override, and variant options.
  * @returns Array of fallback URL candidates.
@@ -109,7 +154,59 @@ export function resolveAsset(
   const dir = KIND_DIR_MAP[kind] ?? 'avatar'
   const ext = options?.format ?? 'png'
 
-  // 1. Portrait kind handling
+  // 1. Full character artwork ('art') with thumbnail -> primary CDN -> fallback chain
+  if (kind === 'art') {
+    const isLowRarity = LOW_RARITY_OPERATOR_IDS.has(cleanId)
+    // Default to '2' (Elite 2) if operator has E2, otherwise '1' (E0/E1)
+    const primaryVariant =
+      options?.variant ??
+      (PORTRAIT_DEFAULT_VARIANT_MAP[cleanId]
+        ? PORTRAIT_DEFAULT_VARIANT_MAP[cleanId]!
+        : isLowRarity
+          ? '1'
+          : '2')
+
+    const fileSuffix = primaryVariant.endsWith('b') ? primaryVariant : `${primaryVariant}b`
+    const primaryFilename = `${cleanId}_${fileSuffix}.${ext}`
+
+    const candidates: string[] = []
+
+    // 1a. Prioritize local WebP thumbnail for list grids if requested
+    if (options?.thumbnail) {
+      candidates.push(`/art/thumbs/${cleanId}.webp`)
+    }
+
+    // 1b. Full artwork candidates (primary & secondary CDNs)
+    candidates.push(
+      `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+    )
+
+    // 1c. If requested E2 art, fallback to E1 art (_1b.png)
+    if (primaryVariant === '2') {
+      const e1Filename = `${cleanId}_1b.${ext}`
+      candidates.push(
+        `${PRIMARY_CDN_BASE}/${dir}/${e1Filename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${e1Filename}`,
+      )
+    }
+
+    // 1d. Fallback to waist-up portrait
+    const portraitCandidates = resolveAsset('portrait', cleanId, {
+      variant: primaryVariant,
+      format: ext,
+    })
+    candidates.push(...portraitCandidates)
+
+    // 1e. Final fallback to avatar icon
+    const avatarCandidates = resolveAsset('avatar', cleanId, { format: ext })
+    candidates.push(...avatarCandidates)
+
+    // Remove duplicates while preserving order
+    return Array.from(new Set(candidates))
+  }
+
+  // 2. Portrait kind handling
   if (kind === 'portrait') {
     if (options?.variant) {
       const filename = `${cleanId}_${options.variant}.${ext}`

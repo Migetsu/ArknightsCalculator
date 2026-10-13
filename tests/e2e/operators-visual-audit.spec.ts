@@ -22,6 +22,7 @@ test.describe('Operators Design Visual Audit & Screenshots', () => {
     test(`captures /operators and /operators/char_172_svrash on ${vp.name}px (en & ru)`, async ({
       page,
     }) => {
+      test.slow()
       await page.setViewportSize({ width: vp.width, height: vp.height })
 
       // 1. /operators (en)

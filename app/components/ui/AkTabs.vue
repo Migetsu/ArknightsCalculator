@@ -166,11 +166,23 @@ function handleKeydown(event: KeyboardEvent, currentIndex: number): void {
   &--underline {
     .ak-tabs__list {
       display: flex;
-      gap: 24px;
+      gap: 16px;
+      max-width: 100%;
       border-bottom: 1px solid var(--color-border-base);
+      overflow-x: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include mq(md) {
+        gap: 32px;
+      }
     }
 
     .ak-tabs__tab {
+      flex-shrink: 0;
       background: none;
       border: none;
       border-bottom: 3px solid transparent;

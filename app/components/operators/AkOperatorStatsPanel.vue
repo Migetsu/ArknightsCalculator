@@ -4,6 +4,7 @@ import type { OperatorDetail } from '~/../shared/schemas/operator'
 import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
 import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkStepper from '~/components/ui/AkStepper.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -46,14 +47,6 @@ function setElite(phase: number): void {
   }
 }
 
-function handleLevelInput(e: Event): void {
-  const input = e.target as HTMLInputElement
-  let val = parseInt(input.value, 10)
-  if (isNaN(val)) val = 1
-  val = Math.max(1, Math.min(maxLevelForPhase.value, val))
-  emit('update:level', val)
-}
-
 function clearModule(): void {
   emit('update:selectedModuleId', undefined)
   emit('update:moduleStage', 0)
@@ -64,6 +57,13 @@ function selectModule(moduleId: string): void {
   if (props.moduleStage === 0) {
     emit('update:moduleStage', 3)
   }
+}
+
+function getModuleLabel(m: NonNullable<OperatorDetail['modules']>[number]): string {
+  const code = m.typeName2 || ''
+  const name = m.name?.en || m.name?.zh || ''
+  if (code && name) return `${code} (${name})`
+  return code || name || m.id
 }
 
 // Available combat modules (excluding base mission entries if stages is 0)
@@ -125,13 +125,13 @@ const statsGridItems = computed(() => {
 
 <template>
   <div class="ak-operator-stats-panel">
-    <!-- Controls Section -->
-    <div class="ak-operator-stats-panel__controls">
-      <!-- 1. Elite Selector -->
+    <!-- 1. Dedicated Top Bar: Promotion (Elite) & Combat Module -->
+    <div class="ak-operator-stats-panel__top-row">
+      <!-- Elite Promotion -->
       <div class="ak-operator-stats-panel__control-group">
-        <label class="ak-operator-stats-panel__control-label">
+        <span class="ak-operator-stats-panel__control-label">
           {{ t('operators.detail.stats.elite') }}
-        </label>
+        </span>
         <div class="ak-operator-stats-panel__btn-group">
           <AkButton
             v-for="phase in maxElitePhase + 1"
@@ -145,90 +145,11 @@ const statsGridItems = computed(() => {
         </div>
       </div>
 
-      <!-- 2. Level Slider & Input -->
-      <div
-        class="ak-operator-stats-panel__control-group ak-operator-stats-panel__control-group--wide"
-      >
-        <div class="ak-operator-stats-panel__slider-header">
-          <label for="op-level-input" class="ak-operator-stats-panel__control-label">
-            {{ t('operators.detail.stats.level') }}
-          </label>
-          <input
-            id="op-level-input"
-            type="number"
-            class="ak-operator-stats-panel__num-input"
-            min="1"
-            :max="maxLevelForPhase"
-            :value="level"
-            @input="handleLevelInput"
-            @change="handleLevelInput"
-          />
-        </div>
-        <input
-          id="op-level-slider"
-          type="range"
-          class="ak-operator-stats-panel__slider"
-          min="1"
-          :max="maxLevelForPhase"
-          :value="level"
-          :aria-label="t('operators.detail.stats.level')"
-          :aria-valuemin="1"
-          :aria-valuemax="maxLevelForPhase"
-          :aria-valuenow="level"
-          :aria-valuetext="`Level ${level} of ${maxLevelForPhase}`"
-          @input="$emit('update:level', parseInt(($event.target as HTMLInputElement).value, 10))"
-        />
-      </div>
-
-      <!-- 3. Trust Slider -->
-      <div
-        class="ak-operator-stats-panel__control-group ak-operator-stats-panel__control-group--wide"
-      >
-        <div class="ak-operator-stats-panel__slider-header">
-          <label for="op-trust-slider" class="ak-operator-stats-panel__control-label">
-            {{ t('operators.detail.stats.trust') }}
-          </label>
-          <span class="ak-operator-stats-panel__val-badge">{{ trust }}%</span>
-        </div>
-        <input
-          id="op-trust-slider"
-          type="range"
-          class="ak-operator-stats-panel__slider"
-          min="0"
-          max="100"
-          :value="trust"
-          :aria-label="t('operators.detail.stats.trust')"
-          :aria-valuemin="0"
-          :aria-valuemax="100"
-          :aria-valuenow="trust"
-          :aria-valuetext="`${trust} percent trust`"
-          @input="$emit('update:trust', parseInt(($event.target as HTMLInputElement).value, 10))"
-        />
-      </div>
-
-      <!-- 4. Potential Selector -->
-      <div class="ak-operator-stats-panel__control-group">
-        <label class="ak-operator-stats-panel__control-label">
-          {{ t('operators.detail.stats.potential') }}
-        </label>
-        <div class="ak-operator-stats-panel__btn-group">
-          <AkButton
-            v-for="p in 6"
-            :key="p"
-            size="sm"
-            :variant="potential === p ? 'secondary' : 'ghost'"
-            @click="$emit('update:potential', p)"
-          >
-            P{{ p }}
-          </AkButton>
-        </div>
-      </div>
-
-      <!-- 5. Module Selector (if available) -->
+      <!-- Module Selector -->
       <div v-if="combatModules.length > 0" class="ak-operator-stats-panel__control-group">
-        <label class="ak-operator-stats-panel__control-label">
+        <span class="ak-operator-stats-panel__control-label">
           {{ t('operators.detail.stats.module') }}
-        </label>
+        </span>
         <div class="ak-operator-stats-panel__btn-group">
           <AkButton
             size="sm"
@@ -244,16 +165,16 @@ const statsGridItems = computed(() => {
             :variant="selectedModuleId === m.id ? 'primary' : 'ghost'"
             @click="selectModule(m.id)"
           >
-            {{ m.type }}
+            {{ getModuleLabel(m) }}
           </AkButton>
         </div>
       </div>
 
-      <!-- Module Stage (if module selected) -->
+      <!-- Module Stage -->
       <div v-if="selectedModuleId" class="ak-operator-stats-panel__control-group">
-        <label class="ak-operator-stats-panel__control-label">
+        <span class="ak-operator-stats-panel__control-label">
           {{ t('operators.detail.stats.moduleStage') }}
-        </label>
+        </span>
         <div class="ak-operator-stats-panel__btn-group">
           <AkButton
             v-for="st in 3"
@@ -265,6 +186,92 @@ const statsGridItems = computed(() => {
             Stage {{ st }}
           </AkButton>
         </div>
+      </div>
+    </div>
+
+    <!-- 2. Triplet Controls Grid: Level, Trust, Potential Cards -->
+    <div class="ak-operator-stats-panel__cards-grid">
+      <!-- Card 1: Level -->
+      <div class="ak-operator-stats-panel__card">
+        <div class="ak-operator-stats-panel__card-header">
+          <span class="ak-operator-stats-panel__card-title">
+            {{ t('operators.detail.stats.level') }}
+          </span>
+          <AkStepper
+            id="op-level-input"
+            :model-value="level"
+            :min="1"
+            :max="maxLevelForPhase"
+            :aria-label="t('operators.detail.stats.level')"
+            @update:model-value="$emit('update:level', $event)"
+          />
+        </div>
+        <input
+          id="op-level-slider"
+          type="range"
+          class="ak-operator-stats-panel__slider"
+          min="1"
+          :max="maxLevelForPhase"
+          :value="level"
+          :aria-label="t('operators.detail.stats.level')"
+          @input="$emit('update:level', parseInt(($event.target as HTMLInputElement).value, 10))"
+        />
+      </div>
+
+      <!-- Card 2: Trust -->
+      <div class="ak-operator-stats-panel__card">
+        <div class="ak-operator-stats-panel__card-header">
+          <span class="ak-operator-stats-panel__card-title">
+            {{ t('operators.detail.stats.trust') }} ({{ trust }}%)
+          </span>
+          <AkStepper
+            :model-value="trust"
+            :min="0"
+            :max="100"
+            :step="5"
+            :aria-label="t('operators.detail.stats.trust')"
+            @update:model-value="$emit('update:trust', $event)"
+          />
+        </div>
+        <input
+          id="op-trust-slider"
+          type="range"
+          class="ak-operator-stats-panel__slider"
+          min="0"
+          max="100"
+          :value="trust"
+          :aria-label="t('operators.detail.stats.trust')"
+          @input="$emit('update:trust', parseInt(($event.target as HTMLInputElement).value, 10))"
+        />
+      </div>
+
+      <!-- Card 3: Potential -->
+      <div class="ak-operator-stats-panel__card">
+        <div class="ak-operator-stats-panel__card-header">
+          <span class="ak-operator-stats-panel__card-title">
+            {{ t('operators.detail.stats.potential') }} (P{{ potential }})
+          </span>
+          <AkStepper
+            :model-value="potential"
+            :min="1"
+            :max="6"
+            :step="1"
+            :aria-label="t('operators.detail.stats.potential')"
+            @update:model-value="$emit('update:potential', $event)"
+          />
+        </div>
+        <input
+          id="op-potential-slider"
+          type="range"
+          class="ak-operator-stats-panel__slider"
+          min="1"
+          max="6"
+          :value="potential"
+          :aria-label="t('operators.detail.stats.potential')"
+          @input="
+            $emit('update:potential', parseInt(($event.target as HTMLInputElement).value, 10))
+          "
+        />
       </div>
     </div>
 
@@ -316,9 +323,10 @@ const statsGridItems = computed(() => {
   flex-direction: column;
   gap: var(--space-lg);
 
-  &__controls {
+  &__top-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-md);
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
@@ -330,11 +338,6 @@ const statsGridItems = computed(() => {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
-
-    &--wide {
-      flex: 1 1 200px;
-      min-width: 180px;
-    }
   }
 
   &__control-label {
@@ -352,33 +355,34 @@ const statsGridItems = computed(() => {
     flex-wrap: wrap;
   }
 
-  &__slider-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  &__cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
   }
 
-  &__num-input {
-    width: 60px;
-    background: var(--color-bg-base);
+  &__card {
+    background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-xs);
-    color: var(--color-text-primary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
-    padding: 3px var(--space-xs);
-    text-align: right;
-
-    &:focus {
-      outline: 1px solid var(--color-accent-primary);
-    }
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
   }
 
-  &__val-badge {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    color: var(--color-accent-amber);
-    font-weight: var(--font-weight-bold);
+  &__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  &__card-title {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
   }
 
   &__slider {

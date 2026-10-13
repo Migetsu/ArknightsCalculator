@@ -245,7 +245,12 @@ onMounted(() => {
           <!-- Operator Cards Grid -->
           <template v-else>
             <AkGrid preset="operators" class="operators-page__grid">
-              <AkOperatorCard v-for="op in displayedOperators" :key="op.id" :operator="op" />
+              <AkOperatorCard
+                v-for="(op, idx) in displayedOperators"
+                :key="op.id"
+                :operator="op"
+                :loading="idx < 8 ? 'eager' : 'lazy'"
+              />
 
               <!-- Mockup-spec Dashed Load More Tile in Grid -->
               <div v-if="hasMore" ref="sentinel" class="operators-page__load-more-tile">

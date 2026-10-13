@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import AkHeader from '~/components/ui/AkHeader.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 
 const head = useLocaleHead({
   seo: true,
@@ -15,10 +18,18 @@ useHead(() => ({
   link: [...(head.value.link || [])],
   meta: [...(head.value.meta || [])],
 }))
+
+const isTransparentHeader = computed(() => {
+  const p = route.path
+  return p.includes('/operators/') && !p.endsWith('/operators')
+})
 </script>
 
 <template>
-  <div class="layout-default">
+  <div
+    class="layout-default"
+    :class="{ 'layout-default--transparent-header': isTransparentHeader }"
+  >
     <AkHeader />
 
     <main class="layout-default__main">
@@ -44,6 +55,17 @@ useHead(() => ({
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
   font-family: var(--font-body);
+
+  &--transparent-header {
+    .ak-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
 
   &__main {
     flex: 1;
