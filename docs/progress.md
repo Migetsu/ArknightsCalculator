@@ -342,6 +342,36 @@
 - Freshness audit (no data changes): EN repo is ~47.7 weeks behind (last commit 2025-11-13), CN repo ~0.7 weeks. 35 of 411 Global operators lack EN text. Details in `docs/data-sources.md` ("Freshness audit").
 - Deviation recorded in `docs/design/DEVIATIONS.md` (no server switcher).
 
+### 2026-10-13: Operator detail hero density, stats breakdown and asset delivery (`fix/operator-hero-density`)
+
+- Hero Density & Viewport Sanity:
+  - Desktop hero height constrained to `clamp(420px, 56vh, 540px)` according to `operator-detail.html`.
+  - Guaranteed first-screen visibility: at 1440x900 and 1920x1080 viewports, the hero banner, key stats bar, and tabs list (`.ak-tabs__list`) are fully in view without scrolling.
+  - Mobile layout (360px): vertical stack with 380px art on top, stage toggle, and title + meta chips underneath without overlap.
+  - Heading scaled via `clamp(32px, 4vw, 64px)` with `line-height: 1.05`, up to 2 lines, `overflow-wrap: break-word`.
+- Stats Breakdown Table:
+  - Eliminated duplicate stats grid.
+  - Added clean BEM stats breakdown table: HP, ATK, DEF, RES, DP cost, Block, Interval, Redeploy x Base, Trust, Potential, Module, Total.
+  - Responsive cards on mobile without horizontal scrollbars.
+  - 4-card desktop control panel (from 1024px): Elite (`AkSegmented`), Level, Trust, Potential with steppers and sliders.
+  - Elite toggle synchronized with hero art (E0/E1 <-> E2) unless manual art was picked; URL query synced.
+- CDN Asset Infrastructure & WebP Delivery:
+  - Created public asset repository [`Migetsu/arkcalc-assets`](https://github.com/Migetsu/arkcalc-assets) on GitHub, pinned at commit `e8031f907867066f1c76669f8ca3712f19de81b5`.
+  - Updated `scripts/data/build-art-thumbs.ts` to generate both 480px thumbnails (average 66.1 KB) and 1280px hero copies (average 180.9 KB, within 150-250 KB target) for all 434 operators (with portrait fallback for low rarity / robot units).
+  - WebP delivery verified live via jsDelivr CDN (`200 OK`, `Cache-Control: public, max-age=31536000, immutable`).
+  - Added preload and `fetchpriority="high"` for hero image. Full-res original loaded only inside modal `AkArtViewer`.
+  - Documented asset update and disaster recovery procedures in `docs/assets.md` and `docs/data-update.md`.
+- Performance & Visual Audit:
+  - Performance metrics recorded in `docs/metrics-operators.json` on production build under Slow 4G + 4x CPU slowdown:
+    - Angelina the Mellow Wish: LCP 1.95s, TBT 6ms, Images 559 KB.
+    - SilverAsh: LCP 2.05s, TBT 66ms, Images 326 KB.
+    - Aak: LCP 1.99s, TBT 7ms, Images 331 KB.
+  - Screenshots captured across 1440x900, 1920x1080 (first screen and full page), and 360x800 for Angelina, SilverAsh, and Aak in `docs/screenshots/`.
+- Quality Verification:
+  - 233 unit tests passing in Vitest (100%).
+  - 10 E2E tests in `tests/e2e/operator-detail.spec.ts` passing (100%).
+  - All linters, type checks, formats, and builds clean.
+
 ## In progress
 
 - None.

@@ -4,7 +4,6 @@ import { resolveI18nString } from '~/../shared/schemas/operator'
 import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkTabs, { type TabItem } from '~/components/ui/AkTabs.vue'
-import AkBadge from '~/components/ui/AkBadge.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkOperatorHero from '~/components/operators/AkOperatorHero.vue'
 import AkArtViewer from '~/components/operators/AkArtViewer.vue'
@@ -38,10 +37,6 @@ const operatorCode = computed(() => operator.value?.displayNumber || 'OPS-04')
 const operatorSubclass = computed(() => operator.value?.subclass ?? '')
 const operatorClass = computed(() => operator.value?.class ?? 'PIONEER')
 const operatorRarity = computed(() => (operator.value?.rarity ?? 1) as 1 | 2 | 3 | 4 | 5 | 6)
-const isCnOnly = computed(() => {
-  const srvs = operator.value?.servers ?? []
-  return srvs.includes('cn') && !srvs.includes('global')
-})
 
 // State initialization helpers to guarantee identical SSR & client values
 const getInitialElite = (op: typeof operator.value) => {
@@ -85,7 +80,10 @@ const getInitialArt = (op: typeof operator.value): 'e0' | 'e2' => {
   const hasE2 = op.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(op.id)
   if (!hasE2) return 'e0'
   const qArt = route.query.art as string
-  return qArt === 'e0' ? 'e0' : 'e2'
+  if (qArt === 'e0' || qArt === 'e2') return qArt
+  // Default to E2 if elite >= 2, else E0
+  const initialElite = getInitialElite(op)
+  return initialElite >= 2 ? 'e2' : 'e0'
 }
 
 // URL Query State Synchronization
@@ -97,7 +95,23 @@ const potState = ref<number>(getInitialPot())
 const selectedModuleId = ref<string | undefined>(getInitialModule(operator.value))
 const moduleStage = ref<number>(getInitialStage())
 const artState = ref<'e0' | 'e2'>(getInitialArt(operator.value))
+const userSelectedArt = ref<boolean>(Boolean(route.query.art))
 const isViewerOpen = ref(false)
+
+function handleArtChange(val: 'e0' | 'e2') {
+  userSelectedArt.value = true
+  artState.value = val
+}
+
+// Sync art with elite level when user hasn't overridden art manually
+watch(eliteState, (newElite) => {
+  if (!operator.value) return
+  const hasE2 = operator.value.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(operator.value.id)
+  if (!hasE2) return
+  if (!userSelectedArt.value) {
+    artState.value = newElite >= 2 ? 'e2' : 'e0'
+  }
+})
 
 // Watch for changes if operator prop changes dynamically
 watch(operator, (op) => {
@@ -109,6 +123,7 @@ watch(operator, (op) => {
   selectedModuleId.value = getInitialModule(op)
   moduleStage.value = getInitialStage()
   artState.value = getInitialArt(op)
+  userSelectedArt.value = Boolean(route.query.art)
 })
 
 // Sync query back to router when state changes on client
@@ -136,8 +151,8 @@ watch(
       newQuery.stage = moduleStage.value.toString()
     }
     const hasE2 = operator.value.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(operator.value.id)
-    if (hasE2 && artState.value === 'e0') {
-      newQuery.art = 'e0'
+    if (hasE2 && userSelectedArt.value) {
+      newQuery.art = artState.value
     }
 
     // Compare with current query
@@ -235,29 +250,18 @@ useSchemaOrg([
     <div v-else-if="operator" class="ak-operator-detail-page__loaded">
       <!-- Full-bleed Hero and Key Stats Bar -->
       <AkOperatorHero
-        v-model:model-value-art="artState"
+        :model-value-art="artState"
         :operator="operator!"
         :display-name="displayName"
         :operator-code="operatorCode"
         :hero-meta="heroMeta"
         :stats="calculatedStats"
+        @update:model-value-art="handleArtChange"
         @open-viewer="isViewerOpen = true"
       />
 
       <!-- Main Content Area with Margins and Underline Tabs -->
       <div class="ak-operator-detail-page__main-content">
-        <!-- CN Exclusive Banner / Alert -->
-        <div v-if="isCnOnly" class="ak-operator-detail-page__cn-alert">
-          <div class="ak-operator-detail-page__cn-badge-wrap">
-            <AkBadge size="sm" variant="amber">
-              {{ t('operators.detail.cnExclusive') }}
-            </AkBadge>
-          </div>
-          <p class="ak-operator-detail-page__cn-text">
-            {{ t('operators.detail.cnNotice') }}
-          </p>
-        </div>
-
         <!-- Interactive Tabs Section -->
         <div class="ak-operator-detail-page__tabs-wrap">
           <AkTabs
@@ -384,28 +388,6 @@ useSchemaOrg([
       margin-top: 48px;
       padding: 0 var(--space-2xl);
     }
-  }
-
-  &__cn-alert {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    background: rgb(255 157 43 / 10%);
-    border: 1px solid var(--color-border-subtle);
-    border-left: 4px solid var(--color-accent-amber);
-    border-radius: var(--radius-xs);
-    padding: var(--space-sm) var(--space-md);
-  }
-
-  &__cn-badge-wrap {
-    flex-shrink: 0;
-  }
-
-  &__cn-text {
-    margin: 0;
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-normal);
   }
 
   &__tabs-wrap {

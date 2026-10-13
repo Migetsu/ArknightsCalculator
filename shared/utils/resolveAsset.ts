@@ -20,7 +20,17 @@ export interface ResolveAssetOptions {
    * Whether to prioritize local WebP thumbnail for catalog grids.
    */
   thumbnail?: boolean
+  /**
+   * Whether to prioritize medium WebP copy (1280px) for operator hero detail headers.
+   */
+  hero?: boolean
 }
+
+/**
+ * Pinned commit for pre-rendered optimized WebP assets repository (Migetsu/arkcalc-assets).
+ */
+export const OPTIMIZED_ASSETS_COMMIT = 'e8031f907867066f1c76669f8ca3712f19de81b5'
+export const OPTIMIZED_ASSETS_CDN = `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}`
 
 /**
  * Pinned resource commit from yuanyan3060/ArknightsGameResource.
@@ -171,9 +181,20 @@ export function resolveAsset(
 
     const candidates: string[] = []
 
-    // 1a. Prioritize local WebP thumbnail for list grids if requested
+    // 1a. Prioritize medium 1280px WebP copy for operator hero header if requested
+    if (options?.hero) {
+      candidates.push(
+        `/art/hero/${cleanId}_${primaryVariant}.webp`,
+        `${OPTIMIZED_ASSETS_CDN}/hero/${cleanId}_${primaryVariant}.webp`,
+      )
+    }
+
+    // 1b. Prioritize local WebP thumbnail for list grids if requested
     if (options?.thumbnail) {
-      candidates.push(`/art/thumbs/${cleanId}.webp`)
+      candidates.push(
+        `/art/thumbs/${cleanId}.webp`,
+        `${OPTIMIZED_ASSETS_CDN}/thumbs/${cleanId}.webp`,
+      )
     }
 
     // 1b. Full artwork candidates (primary & secondary CDNs)
