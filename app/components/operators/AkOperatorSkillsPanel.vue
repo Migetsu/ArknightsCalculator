@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 import type { OperatorSkill } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { resolveAsset } from '~/../shared/utils/resolveAsset'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
-import AkIcon from '~/components/ui/AkIcon.vue'
+import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
+import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 interface Props {
   skills: OperatorSkill[]
@@ -42,12 +42,6 @@ function getSkillBlackboard(skill: OperatorSkill, lvlIndex: number): Record<stri
   return lvlData?.blackboard ?? {}
 }
 
-function getSkillIconUrl(skill: OperatorSkill): string | null {
-  const iconId = skill.iconId || skill.skillId
-  const urls = resolveAsset('skill', iconId)
-  return urls[0] ?? null
-}
-
 function getLevelLabel(idx: number): string {
   if (idx <= 7) return `Lv ${idx}`
   return `M${idx - 7}`
@@ -63,17 +57,11 @@ function getLevelLabel(idx: number): string {
     <div v-for="skill in skills" :key="skill.skillId" class="ak-operator-skills-panel__skill-card">
       <!-- Skill Header -->
       <div class="ak-operator-skills-panel__header">
-        <div class="ak-operator-skills-panel__icon-box">
-          <img
-            v-if="getSkillIconUrl(skill)"
-            :src="getSkillIconUrl(skill)!"
-            :alt="skill.skillId"
-            class="ak-operator-skills-panel__icon"
-            loading="lazy"
-            decoding="async"
-          />
-          <AkIcon v-else name="lucide:zap" size="lg" />
-        </div>
+        <AkSkillIcon
+          :skill-id="skill.iconId || skill.skillId"
+          :name="getSkillName(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
+          size="lg"
+        />
 
         <div class="ak-operator-skills-panel__info">
           <h4 class="ak-operator-skills-panel__title">
@@ -157,21 +145,15 @@ function getLevelLabel(idx: number): string {
           {{ t('operators.detail.skills.materials') }}:
         </span>
         <div class="ak-operator-skills-panel__cost-list">
-          <div
+          <AkItemIcon
             v-for="item in skill.masteryCosts[(selectedLevels[skill.skillId] ?? 1) - 8]!
               .levelUpCost"
             :key="item.id"
-            class="ak-operator-skills-panel__cost-item"
-          >
-            <img
-              :src="resolveAsset('item', item.id)[0]"
-              :alt="item.id"
-              class="ak-operator-skills-panel__cost-icon"
-              loading="lazy"
-              decoding="async"
-            />
-            <span class="ak-operator-skills-panel__cost-count">x{{ item.count }}</span>
-          </div>
+            :item-id="item.id"
+            :name="item.id"
+            :count="item.count"
+            size="sm"
+          />
         </div>
       </div>
     </div>
@@ -186,44 +168,24 @@ function getLevelLabel(idx: number): string {
 
   &__empty {
     color: var(--color-text-secondary);
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     padding: var(--space-md);
   }
 
   &__skill-card {
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     padding: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-
-    @include cut-corner(8px, top-right);
   }
 
   &__header {
     display: flex;
     align-items: center;
     gap: var(--space-md);
-  }
-
-  &__icon-box {
-    width: 52px;
-    height: 52px;
-    background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__icon {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
   }
 
   &__info {
@@ -233,6 +195,7 @@ function getLevelLabel(idx: number): string {
   }
 
   &__title {
+    font-family: var(--font-heading);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
@@ -248,12 +211,11 @@ function getLevelLabel(idx: number): string {
   &__levels-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 6px;
     background: var(--color-bg-base);
     padding: var(--space-xs);
-    border: 1px solid var(--color-border-bold);
-
-    @include cut-corner(4px, top-right);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
   }
 
   &__lvl-btn {
@@ -265,7 +227,7 @@ function getLevelLabel(idx: number): string {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
   }
 
@@ -279,59 +241,35 @@ function getLevelLabel(idx: number): string {
   }
 
   &__telemetry-val {
-    color: var(--color-accent-primary);
-    font-weight: var(--font-weight-bold);
-    text-shadow: 0 0 6px var(--color-accent-primary-glow);
+    color: var(--color-accent-amber);
+    font-weight: var(--font-weight-semibold);
   }
 
   &__desc {
     background: var(--color-bg-base);
     border-left: 3px solid var(--color-accent-primary);
+    border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
-
-    @include cut-corner(4px, top-right);
   }
 
   &__cost-section {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
-    font-family: var(--font-mono);
   }
 
   &__cost-title {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   &__cost-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-  }
-
-  &__cost-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    background: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
-    padding: 2px var(--space-sm);
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__cost-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-  }
-
-  &__cost-count {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-primary);
   }
 }
 </style>

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
+import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
 import AkContainer from '~/components/ui/AkContainer.vue'
-import AkPageHeader from '~/components/ui/AkPageHeader.vue'
-import AkPanel from '~/components/ui/AkPanel.vue'
 import AkTabs, { type TabItem } from '~/components/ui/AkTabs.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
@@ -38,9 +36,6 @@ const displayName = computed(() => {
 const operatorCode = computed(() => operator.value?.displayNumber || 'OPS-04')
 const operatorSubclass = computed(() => operator.value?.subclass ?? '')
 const operatorClass = computed(() => operator.value?.class ?? 'PIONEER')
-const operatorWatermark = computed(
-  () => operator.value?.appellation || operator.value?.class || 'OPERATOR',
-)
 const operatorRarity = computed(() => (operator.value?.rarity ?? 1) as 1 | 2 | 3 | 4 | 5 | 6)
 const isCnOnly = computed(() => {
   const srvs = operator.value?.servers ?? []
@@ -133,6 +128,40 @@ watch(
   },
 )
 
+// Reactive key stats for the top banner
+const calculatedStats = computed(() => {
+  if (!operator.value) return null
+  try {
+    return calculateOperatorStats(operator.value, {
+      elite: eliteState.value as 0 | 1 | 2,
+      level: levelState.value,
+      trust: trustState.value,
+      potential: potState.value,
+      module:
+        selectedModuleId.value && moduleStage.value > 0
+          ? {
+              id: selectedModuleId.value,
+              stage: moduleStage.value as 1 | 2 | 3,
+            }
+          : undefined,
+    })
+  } catch (_err) {
+    return null
+  }
+})
+
+const heroMeta = computed(() => {
+  if (!operator.value) return ''
+  const faction = operator.value.faction ? t('operators.factions.' + operator.value.faction) : ''
+  const parts = [
+    `${operatorRarity.value}★`,
+    t('operators.classes.' + operatorClass.value),
+    operatorSubclass.value,
+    faction,
+  ].filter(Boolean)
+  return parts.join(' / ').toUpperCase()
+})
+
 const tabs = computed<TabItem[]>(() => [
   { id: 'stats', label: t('operators.detail.tabs.stats') },
   { id: 'skills', label: t('operators.detail.tabs.skills') },
@@ -170,30 +199,12 @@ useSchemaOrg([
       <!-- Loading State -->
       <div v-if="status === 'pending' && !operator" class="ak-operator-detail-page__loading">
         <div class="ak-operator-detail-page__skeleton-header" />
-        <div class="ak-operator-detail-page__skeleton-grid">
-          <div class="ak-operator-detail-page__skeleton-portrait" />
-          <div class="ak-operator-detail-page__skeleton-content" />
-        </div>
+        <div class="ak-operator-detail-page__skeleton-stats" />
+        <div class="ak-operator-detail-page__skeleton-content" />
       </div>
 
       <!-- Loaded Operator Detail -->
       <div v-else-if="operator" class="ak-operator-detail-page__loaded">
-        <AkPageHeader
-          :code="operatorCode"
-          :tag-label="t('operators.detail.profile')"
-          :title="displayName"
-          :subtitle="`${t('operators.classes.' + operatorClass)} // ${operatorSubclass}`"
-          :watermark="operatorWatermark"
-          :badge="`${operatorRarity}★`"
-          badge-variant="amber"
-        >
-          <template #actions>
-            <AkButton variant="ghost" size="sm" :to="localePath('/operators')">
-              {{ t('operators.detail.backToList') }}
-            </AkButton>
-          </template>
-        </AkPageHeader>
-
         <!-- CN Exclusive Banner / Alert -->
         <div v-if="isCnOnly" class="ak-operator-detail-page__cn-alert">
           <div class="ak-operator-detail-page__cn-badge-wrap">
@@ -206,60 +217,107 @@ useSchemaOrg([
           </p>
         </div>
 
-        <div class="ak-operator-detail-page__layout">
-          <!-- Left Column: Portrait & Elite Variants -->
-          <div class="ak-operator-detail-page__portrait-col">
-            <AkPanel variant="bordered" class="ak-operator-detail-page__portrait-panel">
+        <!-- Ember Editorial Hero Section -->
+        <section class="ak-operator-detail-page__hero">
+          <div class="ak-operator-detail-page__hero-back">
+            <AkButton variant="ghost" size="sm" :to="localePath('/operators')">
+              {{ t('operators.detail.backToList') }}
+            </AkButton>
+          </div>
+
+          <div class="ak-operator-detail-page__hero-body">
+            <div class="ak-operator-detail-page__hero-info">
+              <span class="ak-operator-detail-page__hero-code ak-page-header__code">
+                {{ operatorCode }}
+              </span>
+              <p class="ak-operator-detail-page__hero-meta">{{ heroMeta }}</p>
+              <h1 class="ak-operator-detail-page__hero-name ak-page-header__title">
+                {{ displayName }}
+              </h1>
+            </div>
+
+            <div class="ak-operator-detail-page__hero-portrait">
               <AkOperatorPortrait
                 :operator-id="operator!.id"
                 :name="displayName"
                 :elite="eliteState"
                 :max-elite="maxElitePhase"
               />
-            </AkPanel>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key Stats Overlapping Section -->
+        <section class="ak-operator-detail-page__key-stats">
+          <div class="ak-operator-detail-page__key-stat">
+            <span class="ak-operator-detail-page__key-stat-label">HP</span>
+            <div class="ak-operator-detail-page__key-stat-val">
+              {{ calculatedStats?.hp ?? '—' }}
+            </div>
           </div>
 
-          <!-- Right Column: Interactive Tabs -->
-          <div class="ak-operator-detail-page__tabs-col">
-            <AkPanel variant="bordered" class="ak-operator-detail-page__tabs-panel">
-              <AkTabs v-model="activeTab" :items="tabs" aria-label="Operator Sections">
-                <template #default="{ activeTab: currentTab }">
-                  <!-- Attributes / Stats Tab -->
-                  <div v-if="currentTab === 'stats'">
-                    <AkOperatorStatsPanel
-                      v-model:elite="eliteState"
-                      v-model:level="levelState"
-                      v-model:trust="trustState"
-                      v-model:potential="potState"
-                      v-model:selected-module-id="selectedModuleId"
-                      v-model:module-stage="moduleStage"
-                      :operator="operator!"
-                    />
-                  </div>
-
-                  <!-- Skills Tab -->
-                  <div v-else-if="currentTab === 'skills'">
-                    <AkOperatorSkillsPanel :skills="operator!.skills ?? []" />
-                  </div>
-
-                  <!-- Talents Tab -->
-                  <div v-else-if="currentTab === 'talents'">
-                    <AkOperatorTalentsPanel :talents="operator!.talents ?? []" />
-                  </div>
-
-                  <!-- Modules Tab -->
-                  <div v-else-if="currentTab === 'modules'">
-                    <AkOperatorModulesPanel :modules="operator!.modules ?? []" />
-                  </div>
-
-                  <!-- Dossier Info Tab -->
-                  <div v-else-if="currentTab === 'info'">
-                    <AkOperatorInfoPanel :operator="operator!" />
-                  </div>
-                </template>
-              </AkTabs>
-            </AkPanel>
+          <div
+            class="ak-operator-detail-page__key-stat ak-operator-detail-page__key-stat--highlight"
+          >
+            <span class="ak-operator-detail-page__key-stat-label">ATK</span>
+            <div class="ak-operator-detail-page__key-stat-val">
+              {{ calculatedStats?.atk ?? '—' }}
+            </div>
           </div>
+
+          <div class="ak-operator-detail-page__key-stat">
+            <span class="ak-operator-detail-page__key-stat-label">DEF</span>
+            <div class="ak-operator-detail-page__key-stat-val">
+              {{ calculatedStats?.def ?? '—' }}
+            </div>
+          </div>
+
+          <div class="ak-operator-detail-page__key-stat">
+            <span class="ak-operator-detail-page__key-stat-label">RES</span>
+            <div class="ak-operator-detail-page__key-stat-val">
+              {{ calculatedStats?.res ?? '—' }}
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Tabs Section -->
+        <div class="ak-operator-detail-page__tabs-wrap">
+          <AkTabs v-model="activeTab" :items="tabs" aria-label="Operator Sections">
+            <template #default="{ activeTab: currentTab }">
+              <!-- Attributes / Stats Tab -->
+              <div v-if="currentTab === 'stats'">
+                <AkOperatorStatsPanel
+                  v-model:elite="eliteState"
+                  v-model:level="levelState"
+                  v-model:trust="trustState"
+                  v-model:potential="potState"
+                  v-model:selected-module-id="selectedModuleId"
+                  v-model:module-stage="moduleStage"
+                  :operator="operator!"
+                />
+              </div>
+
+              <!-- Skills Tab -->
+              <div v-else-if="currentTab === 'skills'">
+                <AkOperatorSkillsPanel :skills="operator!.skills ?? []" />
+              </div>
+
+              <!-- Talents Tab -->
+              <div v-else-if="currentTab === 'talents'">
+                <AkOperatorTalentsPanel :talents="operator!.talents ?? []" />
+              </div>
+
+              <!-- Modules Tab -->
+              <div v-else-if="currentTab === 'modules'">
+                <AkOperatorModulesPanel :modules="operator!.modules ?? []" />
+              </div>
+
+              <!-- Dossier Info Tab -->
+              <div v-else-if="currentTab === 'info'">
+                <AkOperatorInfoPanel :operator="operator!" />
+              </div>
+            </template>
+          </AkTabs>
         </div>
       </div>
 
@@ -282,6 +340,7 @@ useSchemaOrg([
 
 <style lang="scss" scoped>
 .ak-operator-detail-page {
+  padding-top: var(--space-md);
   padding-bottom: var(--space-3xl);
 
   &__container {
@@ -297,46 +356,44 @@ useSchemaOrg([
   }
 
   &__skeleton-header {
-    height: 90px;
+    height: 320px;
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     animation: pulse 1.5s infinite;
   }
 
-  &__skeleton-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-
-    @include mq(lg) {
-      grid-template-columns: 360px 1fr;
-    }
-  }
-
-  &__skeleton-portrait {
-    height: 440px;
+  &__skeleton-stats {
+    height: 100px;
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     animation: pulse 1.5s infinite;
   }
 
   &__skeleton-content {
-    height: 440px;
+    height: 380px;
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
     animation: pulse 1.5s infinite;
+  }
+
+  &__loaded {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
   }
 
   &__cn-alert {
     display: flex;
     align-items: center;
     gap: var(--space-md);
-    background: rgb(243 144 0 / 10%);
+    background: rgb(255 157 43 / 10%);
     border: 1px solid var(--color-border-subtle);
-    border-left: 4px solid var(--color-accent-warning);
+    border-left: 4px solid var(--color-accent-amber);
+    border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
-
-    @include cut-corner(6px, top-right);
   }
 
   &__cn-badge-wrap {
@@ -350,32 +407,140 @@ useSchemaOrg([
     line-height: var(--line-height-normal);
   }
 
-  &__layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+  &__hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(
+      ellipse at 72% 40%,
+      rgb(255 106 61 / 45%) 0%,
+      rgb(122 42 20 / 28%) 38%,
+      #120d0b 78%
+    );
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg) var(--space-md);
 
-    @include mq(lg) {
-      grid-template-columns: 360px minmax(0, 1fr);
+    @include mq(md) {
+      padding: var(--space-xl) var(--space-2xl);
     }
   }
 
-  &__portrait-col {
+  &__hero-back {
+    margin-bottom: var(--space-md);
+  }
+
+  &__hero-body {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--space-xl);
+
+    @include mq(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  &__hero-info {
     display: flex;
     flex-direction: column;
+    gap: var(--space-xs);
+    z-index: 2;
   }
 
-  &__portrait-panel {
-    height: 100%;
+  &__hero-code {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
   }
 
-  &__tabs-col {
+  &__hero-meta {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.18em;
+    color: var(--color-accent-amber);
+    text-transform: uppercase;
+  }
+
+  &__hero-name {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 68px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  &__hero-portrait {
+    width: 100%;
+    max-width: 280px;
+    z-index: 1;
+
+    @include mq(md) {
+      max-width: 320px;
+    }
+  }
+
+  &__key-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    background: #1b1411;
+    border: 1px solid rgb(255 217 168 / 16%);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: var(--shadow-md);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(4, 1fr);
+      padding: var(--space-lg) var(--space-xl);
+      gap: var(--space-lg);
+    }
+
+    @include mq(md) {
+      margin-top: -36px;
+      margin-left: var(--space-lg);
+      margin-right: var(--space-lg);
+      position: relative;
+      z-index: 3;
+    }
+  }
+
+  &__key-stat {
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    gap: 2px;
+
+    &--highlight {
+      .ak-operator-detail-page__key-stat-val {
+        color: var(--color-accent-primary);
+      }
+    }
   }
 
-  &__tabs-panel {
+  &__key-stat-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.14em;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  &__key-stat-val {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+  }
+
+  &__tabs-wrap {
     min-width: 0;
   }
 

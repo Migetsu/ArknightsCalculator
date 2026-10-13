@@ -6,6 +6,7 @@ import type { OperatorFilterState, OperatorSortOption } from '~/../shared/utils/
 import { DEFAULT_OPERATOR_FILTERS } from '~/../shared/utils/operatorFilters'
 import AkInput from '~/components/ui/AkInput.vue'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkChip from '~/components/ui/AkChip.vue'
 
 interface Props {
   modelValue: OperatorFilterState
@@ -35,6 +36,11 @@ const sortOptions: { value: OperatorSortOption; labelKey: string }[] = [
   { value: 'name_desc', labelKey: 'operators.sort.nameDesc' },
 ]
 
+const serverOptions: { value: ServerRegion; label: string }[] = [
+  { value: 'global', label: 'Global' },
+  { value: 'cn', label: 'CN All' },
+]
+
 const isDefault = computed(() => {
   return (
     !props.modelValue.search &&
@@ -61,6 +67,10 @@ function handleSearchInput(val: string): void {
   updateField('search', val)
 }
 
+function toggleAllClasses(): void {
+  updateField('classes', [])
+}
+
 function toggleClass(cls: OperatorClass): void {
   const current = props.modelValue.classes
   const next = current.includes(cls) ? current.filter((c) => c !== cls) : [...current, cls]
@@ -85,7 +95,7 @@ function handleReset(): void {
 
 <template>
   <div class="ak-operator-filters">
-    <!-- Top row: Search input & Server selector & Reset button -->
+    <!-- Top toolbar: Search, Server switch, Reset -->
     <div class="ak-operator-filters__top-bar">
       <div class="ak-operator-filters__search-field">
         <AkInput
@@ -105,22 +115,17 @@ function handleReset(): void {
         </legend>
         <div class="ak-operator-filters__server-buttons" role="group">
           <button
+            v-for="opt in serverOptions"
+            :key="opt.value"
             type="button"
             class="ak-operator-filters__server-btn"
-            :class="{ 'ak-operator-filters__server-btn--active': modelValue.server === 'global' }"
-            :aria-pressed="modelValue.server === 'global'"
-            @click="setServer('global')"
+            :class="{
+              'ak-operator-filters__server-btn--active': modelValue.server === opt.value,
+            }"
+            :aria-pressed="modelValue.server === opt.value"
+            @click="setServer(opt.value)"
           >
-            {{ t('operators.filters.global') }}
-          </button>
-          <button
-            type="button"
-            class="ak-operator-filters__server-btn"
-            :class="{ 'ak-operator-filters__server-btn--active': modelValue.server === 'cn' }"
-            :aria-pressed="modelValue.server === 'cn'"
-            @click="setServer('cn')"
-          >
-            {{ t('operators.filters.cn') }}
+            {{ opt.label }}
           </button>
         </div>
       </fieldset>
@@ -138,25 +143,32 @@ function handleReset(): void {
       </div>
     </div>
 
-    <!-- Class filter buttons -->
+    <!-- Class filter chips -->
     <fieldset class="ak-operator-filters__group">
       <legend class="ak-operator-filters__label">
         {{ t('operators.filters.class') }}
       </legend>
       <div class="ak-operator-filters__chips-row" role="group">
-        <button
+        <AkChip
+          class="ak-operator-filters__chip"
+          :model-value="modelValue.classes.length === 0"
+          @click="toggleAllClasses"
+        >
+          {{ t('operators.filters.allClasses') }}
+        </AkChip>
+
+        <AkChip
           v-for="cls in classesList"
           :key="cls"
-          type="button"
           class="ak-operator-filters__chip"
           :class="{
             'ak-operator-filters__chip--active': modelValue.classes.includes(cls),
           }"
-          :aria-pressed="modelValue.classes.includes(cls)"
+          :model-value="modelValue.classes.includes(cls)"
           @click="toggleClass(cls)"
         >
           {{ t('operators.classes.' + cls) }}
-        </button>
+        </AkChip>
       </div>
     </fieldset>
 
@@ -166,20 +178,19 @@ function handleReset(): void {
         {{ t('operators.filters.rarity') }}
       </legend>
       <div class="ak-operator-filters__chips-row" role="group">
-        <button
+        <AkChip
           v-for="r in raritiesList"
           :key="r"
-          type="button"
           class="ak-operator-filters__chip ak-operator-filters__chip--rarity"
           :class="[
             `ak-operator-filters__chip--rarity-${r}`,
             { 'ak-operator-filters__chip--active': modelValue.rarities.includes(r) },
           ]"
-          :aria-pressed="modelValue.rarities.includes(r)"
+          :model-value="modelValue.rarities.includes(r)"
           @click="toggleRarity(r)"
         >
           {{ r }}★
-        </button>
+        </AkChip>
       </div>
     </fieldset>
 
@@ -249,11 +260,10 @@ function handleReset(): void {
   flex-direction: column;
   gap: var(--space-md);
   padding: var(--space-md);
-  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+  background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-bold);
+  border-radius: var(--radius-none);
   min-width: 0;
-
-  @include cut-corner(12px, top-right);
 
   &__top-bar {
     display: flex;
@@ -282,9 +292,8 @@ function handleReset(): void {
     display: flex;
     align-items: center;
     border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-subtle);
-
-    @include cut-corner(4px, top-right);
+    background-color: var(--color-bg-deep);
+    border-radius: var(--radius-none);
   }
 
   &__server-btn {
@@ -299,8 +308,8 @@ function handleReset(): void {
     padding: var(--space-2xs) var(--space-sm);
     cursor: pointer;
     transition:
-      background-color var(--duration-fast) var(--ease-tactical),
-      color var(--duration-fast) var(--ease-tactical);
+      background-color var(--transition-fast),
+      color var(--transition-fast);
 
     &:hover {
       color: var(--color-text-primary);
@@ -313,8 +322,7 @@ function handleReset(): void {
 
     &--active {
       background-color: var(--color-accent-primary);
-      color: var(--color-bg-root);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
+      color: var(--color-text-inverse);
     }
   }
 
@@ -340,7 +348,7 @@ function handleReset(): void {
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--letter-spacing-mono);
     text-transform: uppercase;
-    color: var(--color-text-tertiary);
+    color: var(--color-text-muted);
     margin-bottom: var(--space-2xs);
     display: block;
   }
@@ -353,77 +361,33 @@ function handleReset(): void {
   }
 
   &__chip {
-    border: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-subtle);
-    color: var(--color-text-secondary);
-    font-family: var(--font-body);
-    font-size: var(--font-size-xs);
-    padding: var(--space-2xs) var(--space-sm);
-    cursor: pointer;
-    line-height: var(--line-height-normal);
-    transition:
-      border-color var(--duration-fast) var(--ease-tactical),
-      background-color var(--duration-fast) var(--ease-tactical),
-      color var(--duration-fast) var(--ease-tactical),
-      box-shadow var(--duration-fast) var(--ease-tactical);
-    user-select: none;
-    white-space: nowrap;
-
-    @include cut-corner(4px, top-right);
-
-    &:hover {
-      border-color: var(--color-border-bold);
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: none;
-      border-color: var(--color-accent-primary);
-      box-shadow: var(--shadow-focus);
-    }
-
-    &--active {
-      border-color: var(--color-accent-primary);
-      background-color: var(--color-accent-primary-subtle);
-      color: var(--color-accent-primary);
-      font-weight: var(--font-weight-semibold);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
-    }
-
-    &--rarity {
-      font-family: var(--font-mono);
-      min-width: 44px;
-      text-align: center;
-    }
-
-    &--rarity-6.ak-operator-filters__chip--active {
+    // Custom rarity modifiers
+    &--rarity-6.ak-chip--active {
       border-color: var(--color-rarity-6);
       color: var(--color-rarity-6);
-      box-shadow: 0 0 8px rgb(243 144 0 / 40%);
     }
 
-    &--rarity-5.ak-operator-filters__chip--active {
+    &--rarity-5.ak-chip--active {
       border-color: var(--color-rarity-5);
       color: var(--color-rarity-5);
-      box-shadow: 0 0 6px rgb(255 215 0 / 30%);
     }
 
-    &--rarity-4.ak-operator-filters__chip--active {
+    &--rarity-4.ak-chip--active {
       border-color: var(--color-rarity-4);
       color: var(--color-rarity-4);
     }
 
-    &--rarity-3.ak-operator-filters__chip--active {
+    &--rarity-3.ak-chip--active {
       border-color: var(--color-rarity-3);
       color: var(--color-rarity-3);
     }
 
-    &--rarity-2.ak-operator-filters__chip--active {
+    &--rarity-2.ak-chip--active {
       border-color: var(--color-rarity-2);
       color: var(--color-rarity-2);
     }
 
-    &--rarity-1.ak-operator-filters__chip--active {
+    &--rarity-1.ak-chip--active {
       border-color: var(--color-rarity-1);
       color: var(--color-rarity-1);
     }
@@ -447,27 +411,25 @@ function handleReset(): void {
   &__select-wrapper {
     display: flex;
     flex-direction: column;
+    gap: var(--space-2xs);
     min-width: 0;
   }
 
   &__select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: var(--space-2xs) var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
     font-family: var(--font-body);
-    font-size: var(--font-size-xs);
-    background-color: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-bg-deep);
     color: var(--color-text-primary);
+    border: 1px solid var(--color-border-bold);
+    border-radius: var(--radius-none);
     cursor: pointer;
-    min-height: 2.25rem;
+    transition: border-color var(--transition-fast);
 
-    @include cut-corner(4px, top-right);
+    @include focus-ring;
 
-    &:focus-visible {
-      outline: none;
+    &:hover {
       border-color: var(--color-accent-primary);
-      box-shadow: var(--shadow-focus);
     }
   }
 }

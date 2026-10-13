@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import AkAvatar from '~/components/ui/AkAvatar.vue'
+import { resolveAsset } from '~/../shared/utils/resolveAsset'
 import AkBadge from '~/components/ui/AkBadge.vue'
 
 interface Props {
@@ -29,9 +29,16 @@ const rarityStars = computed(() => {
   return '★'.repeat(props.operator.rarity)
 })
 
-const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
-  return props.operator.rarity as 1 | 2 | 3 | 4 | 5 | 6
+const portraitUrls = computed(() => {
+  return resolveAsset('portrait', props.operator.id)
 })
+
+const avatarFallbackUrls = computed(() => {
+  return resolveAsset('avatar', props.operator.id)
+})
+
+const primaryPortrait = computed(() => portraitUrls.value[0] || avatarFallbackUrls.value[0] || '')
+const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallbackUrls.value[1] || '')
 </script>
 
 <template>
@@ -41,34 +48,42 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
     :class="`ak-operator-card--rarity-${operator.rarity}`"
     :aria-label="`${displayName}, ${operator.rarity} stars, ${t('operators.classes.' + operator.class)}`"
   >
-    <div class="ak-operator-card__inner">
-      <div class="ak-operator-card__top">
-        <div class="ak-operator-card__avatar">
-          <AkAvatar :id="operator.id" :name="displayName" :rarity="operatorRarity" size="md" />
-        </div>
+    <div
+      class="ak-operator-card__art-box"
+      :class="`ak-operator-card__art-box--rarity-${operator.rarity}`"
+    >
+      <img
+        :src="primaryPortrait"
+        :alt="displayName"
+        loading="lazy"
+        decoding="async"
+        class="ak-operator-card__art-img ak-avatar__image"
+        @error="
+          (e) => {
+            const target = e.target as HTMLImageElement
+            if (secondaryPortrait && target.src !== secondaryPortrait) {
+              target.src = secondaryPortrait
+            }
+          }
+        "
+      />
+      <AkBadge v-if="isCnOnly" variant="amber" size="sm" class="ak-operator-card__cn-badge">
+        CN
+      </AkBadge>
+    </div>
 
-        <div class="ak-operator-card__main">
-          <div class="ak-operator-card__name-wrapper">
-            <span class="ak-operator-card__name" :title="displayName">
-              {{ displayName }}
-            </span>
-            <span v-if="operator.displayNumber" class="ak-operator-card__code" aria-hidden="true">
-              {{ operator.displayNumber }}
-            </span>
-          </div>
-
-          <div class="ak-operator-card__tags">
-            <span class="ak-operator-card__class-label">
-              {{ t('operators.classes.' + operator.class) }}
-            </span>
-            <span v-if="operator.subclass" class="ak-operator-card__subclass-label">
-              {{ operator.subclass }}
-            </span>
-          </div>
-        </div>
+    <div
+      class="ak-operator-card__info"
+      :class="`ak-operator-card__info--rarity-${operator.rarity}`"
+    >
+      <div class="ak-operator-card__title-row">
+        <b class="ak-operator-card__name" :title="displayName">{{ displayName }}</b>
+        <span v-if="operator.displayNumber" class="ak-operator-card__code" aria-hidden="true">
+          {{ operator.displayNumber }}
+        </span>
       </div>
 
-      <div class="ak-operator-card__bottom">
+      <div class="ak-operator-card__meta">
         <span
           class="ak-operator-card__rarity"
           :class="`ak-operator-card__rarity--${operator.rarity}`"
@@ -76,213 +91,187 @@ const operatorRarity = computed<1 | 2 | 3 | 4 | 5 | 6>(() => {
         >
           {{ rarityStars }}
         </span>
-
-        <AkBadge v-if="isCnOnly" variant="amber" size="sm" class="ak-operator-card__cn-badge">
-          CN
-        </AkBadge>
+        <span class="ak-operator-card__class ak-operator-card__class-label">
+          {{ t('operators.classes.' + operator.class) }}
+        </span>
       </div>
     </div>
-
-    <!-- Rarity stripe -->
-    <div
-      class="ak-operator-card__stripe"
-      :class="`ak-operator-card__stripe--${operator.rarity}`"
-      aria-hidden="true"
-    />
   </NuxtLink>
 </template>
 
 <style lang="scss" scoped>
 .ak-operator-card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-  border: 1px solid var(--color-border-subtle);
   text-decoration: none;
   color: inherit;
-  transition:
-    border-color var(--duration-fast) var(--ease-tactical),
-    background-color var(--duration-fast) var(--ease-tactical),
-    box-shadow var(--duration-fast) var(--ease-tactical),
-    transform var(--duration-fast) var(--ease-tactical);
+  background-color: var(--color-bg-deep);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-none);
   overflow: hidden;
-  user-select: none;
-  min-width: 0;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 
-  @include cut-corner(8px, top-right);
+  @include focus-ring;
 
   &:hover {
-    border-color: var(--color-accent-primary);
-    background: linear-gradient(135deg, var(--color-bg-elevated) 0%, var(--color-bg-surface) 100%);
     transform: translateY(-2px);
-    box-shadow:
-      0 4px 16px rgb(0 0 0 / 60%),
-      0 0 8px rgb(0 240 255 / 15%);
+    border-color: var(--color-border-bold);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 45%);
   }
 
-  &:focus-visible {
-    outline: none;
-    border-color: var(--color-accent-primary);
-    box-shadow: var(--shadow-focus);
-  }
-
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    padding: var(--space-sm);
-    min-width: 0;
-  }
-
-  &__top {
+  &__art-box {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    min-width: 0;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--color-bg-surface), var(--color-bg-deep));
+
+    &--rarity-6 {
+      background: linear-gradient(180deg, #3a1d14 0%, #17110f 100%);
+    }
+
+    &--rarity-5 {
+      background: linear-gradient(180deg, #2d2418 0%, #17110f 100%);
+    }
+
+    &--rarity-4 {
+      background: linear-gradient(180deg, #25202e 0%, #17110f 100%);
+    }
+
+    &--rarity-3 {
+      background: linear-gradient(180deg, #1b222d 0%, #17110f 100%);
+    }
+
+    &--rarity-2 {
+      background: linear-gradient(180deg, #18261e 0%, #17110f 100%);
+    }
+
+    &--rarity-1 {
+      background: linear-gradient(180deg, #22201f 0%, #17110f 100%);
+    }
   }
 
-  &__avatar {
-    flex-shrink: 0;
+  &__art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform var(--transition-base);
   }
 
-  &__main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    min-width: 0;
-    flex: 1;
+  &:hover &__art-img {
+    transform: scale(1.03);
   }
 
-  &__name-wrapper {
+  &__cn-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+  }
+
+  &__info {
+    padding: 14px 16px;
+    border-bottom: 3px solid var(--color-border-bold);
+    background-color: var(--color-bg-deep);
+
+    &--rarity-6 {
+      border-bottom-color: var(--color-rarity-6);
+    }
+
+    &--rarity-5 {
+      border-bottom-color: var(--color-rarity-5);
+    }
+
+    &--rarity-4 {
+      border-bottom-color: var(--color-rarity-4);
+    }
+
+    &--rarity-3 {
+      border-bottom-color: var(--color-rarity-3);
+    }
+
+    &--rarity-2 {
+      border-bottom-color: var(--color-rarity-2);
+    }
+
+    &--rarity-1 {
+      border-bottom-color: var(--color-rarity-1);
+    }
+  }
+
+  &__title-row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-xs);
-    min-width: 0;
   }
 
   &__name {
-    font-family: var(--font-header);
-    font-size: var(--font-size-sm);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    line-height: var(--line-height-tight);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 0;
+    letter-spacing: var(--letter-spacing-display);
+    line-height: 1.2;
+
+    @include text-truncate;
   }
 
   &__code {
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
-    color: var(--color-text-tertiary);
+    color: var(--color-text-muted);
     letter-spacing: var(--letter-spacing-mono);
-    flex-shrink: 0;
   }
 
-  &__tags {
+  &__meta {
+    margin-top: 4px;
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  &__class-label {
+    gap: 6px;
     font-family: var(--font-body);
-    font-size: var(--font-size-xs);
-    color: var(--color-accent-primary);
-    white-space: nowrap;
-  }
-
-  &__subclass-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    color: var(--color-text-tertiary);
-    text-transform: capitalize;
-    white-space: nowrap;
-  }
-
-  &__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 0;
-    margin-top: 0.125rem;
+    font-size: 13px;
+    color: var(--color-text-secondary);
   }
 
   &__rarity {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.1em;
-    line-height: 1;
+    font-size: 12px;
+    letter-spacing: 1px;
 
-    &--1 {
-      color: var(--color-rarity-1);
+    &--6 {
+      color: var(--color-rarity-6);
     }
 
-    &--2 {
-      color: var(--color-rarity-2);
-    }
-
-    &--3 {
-      color: var(--color-rarity-3);
+    &--5 {
+      color: var(--color-rarity-5);
     }
 
     &--4 {
       color: var(--color-rarity-4);
     }
 
-    &--5 {
-      color: var(--color-rarity-5);
-      text-shadow: 0 0 6px rgb(255 215 0 / 30%);
-    }
-
-    &--6 {
-      color: var(--color-rarity-6);
-      text-shadow: 0 0 8px rgb(243 144 0 / 40%);
-    }
-  }
-
-  &__cn-badge {
-    margin-left: auto;
-  }
-
-  &__stripe {
-    height: 3px;
-    width: 100%;
-
-    &--1 {
-      background-color: var(--color-rarity-1);
+    &--3 {
+      color: var(--color-rarity-3);
     }
 
     &--2 {
-      background-color: var(--color-rarity-2);
+      color: var(--color-rarity-2);
     }
 
-    &--3 {
-      background-color: var(--color-rarity-3);
+    &--1 {
+      color: var(--color-rarity-1);
     }
+  }
 
-    &--4 {
-      background-color: var(--color-rarity-4);
-    }
-
-    &--5 {
-      background-color: var(--color-rarity-5);
-      box-shadow: 0 0 6px rgb(255 215 0 / 30%);
-    }
-
-    &--6 {
-      background: linear-gradient(90deg, var(--color-rarity-6), var(--color-rarity-6-gold));
-      box-shadow: 0 0 8px rgb(243 144 0 / 40%);
-    }
+  &__class {
+    font-size: 13px;
   }
 }
 </style>
