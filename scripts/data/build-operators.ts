@@ -4,7 +4,6 @@ import {
   DATA_SOURCES_CONFIG,
 } from './sources.config'
 import {
-  type I18nString,
   type OperatorClass,
   type OperatorDetail,
   type OperatorModule,
@@ -31,6 +30,16 @@ import type {
   RawCharPatchTable,
   RawHandbookInfoTable,
 } from './schemas'
+import {
+  type I18nLayersContext,
+  type I18nLayersTracker,
+  createI18nTracker,
+  loadI18nLayersContext,
+  resolveLayeredI18nString,
+  checkSkillLevelStale,
+  checkTalentCandidateStale,
+  checkModuleStale,
+} from './i18n-layers'
 
 const RAW_CACHE_DIR = path.resolve(process.cwd(), DATA_SOURCES_CONFIG.cacheDir)
 const DATA_OUTPUT_DIR = path.resolve(process.cwd(), 'data')
@@ -164,35 +173,13 @@ async function loadRawBundles(): Promise<LoadedRawBundle> {
   }
 }
 
-/**
- * Builds localized text from CN and EN sources.
- * Marks isMachineTranslation if EN text is missing and falls back to CN appellation / transliteration.
- */
-function makeI18nString(
-  enText: string | null | undefined,
-  zhText: string | null | undefined,
-  defaultEnFallback: string | null | undefined = '',
-): I18nString {
-  const zh = (zhText ?? '').trim()
-  const en = (enText ?? '').trim()
-  const fallback = (defaultEnFallback ?? '').trim()
 
-  if (en.length > 0) {
-    return {
-      en,
-      zh: zh.length > 0 ? zh : en,
-      isMachineTranslation: false,
-    }
-  }
 
-  return {
-    en: fallback.length > 0 ? fallback : zh,
-    zh,
-    isMachineTranslation: true,
-  }
-}
-
-export function buildOperatorData(bundle: LoadedRawBundle): {
+export function buildOperatorData(
+  bundle: LoadedRawBundle,
+  context?: I18nLayersContext,
+  tracker?: I18nLayersTracker,
+): {
   summaries: OperatorSummary[]
   details: OperatorDetail[]
   stats: {
@@ -200,8 +187,17 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
     global: number
     cnOnly: number
     untranslated: number
+    modules: {
+      opsWithModules: number
+      totalModules: number
+      withBattleData: number
+      withoutBattleData: number
+    }
+    i18nTracker: I18nLayersTracker
   }
 } {
+  const ctx = context ?? { overrides: {}, wiki: {}, glossary: {} }
+  const trk = tracker ?? createI18nTracker()
   const operatorMap = new Map<
     string,
     {
@@ -261,7 +257,17 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
       untranslatedCount++
     }
 
-    const name = makeI18nString(en?.name, cn.name, cn.appellation ?? cn.name)
+    const name = resolveLayeredI18nString(
+      {
+        key: `${id}.name`,
+        officialEn: en?.name,
+        zhText: cn.name,
+        wikiEn: ctx.wiki[id]?.name,
+        fallbackEn: cn.appellation ?? cn.name,
+      },
+      ctx,
+      trk,
+    )
     const appellation = en?.appellation ?? cn.appellation ?? undefined
     const displayNumber = en?.displayNumber ?? cn.displayNumber ?? null
     const rarity = normalizeRarity(cn.rarity)
@@ -335,11 +341,27 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         const levels: OperatorSkillLevel[] = (cnSkillData?.levels ?? []).map(
           (cnLvl, lvlIdx) => {
             const enLvl = enSkillData?.levels?.[lvlIdx]
-            const lvlName = makeI18nString(enLvl?.name, cnLvl.name, cnLvl.name)
-            const lvlDesc = makeI18nString(
-              enLvl?.description,
-              cnLvl.description,
-              cnLvl.description,
+            const isStale = checkSkillLevelStale(cnLvl, enLvl)
+            const lvlName = resolveLayeredI18nString(
+              {
+                key: `${skillId}.lvl.${lvlIdx}.name`,
+                officialEn: enLvl?.name,
+                zhText: cnLvl.name,
+                wikiEn: ctx.wiki[id]?.skills?.[skillId],
+                isStale,
+              },
+              ctx,
+              trk,
+            )
+            const lvlDesc = resolveLayeredI18nString(
+              {
+                key: `${skillId}.lvl.${lvlIdx}.desc`,
+                officialEn: enLvl?.description,
+                zhText: cnLvl.description,
+                isStale,
+              },
+              ctx,
+              trk,
             )
 
             const blackboard: Record<string, number> = {}
@@ -390,11 +412,27 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         const enTalent = en?.talents?.[tIdx]
         const candidates = (rawTalent.candidates ?? []).map((cnCand, cIdx) => {
           const enCand = enTalent?.candidates?.[cIdx]
-          const candName = makeI18nString(enCand?.name, cnCand.name, cnCand.name)
-          const candDesc = makeI18nString(
-            enCand?.description,
-            cnCand.description,
-            cnCand.description,
+          const isStale = checkTalentCandidateStale(cnCand, enCand)
+          const candName = resolveLayeredI18nString(
+            {
+              key: `${id}.talent.${tIdx}.${cIdx}.name`,
+              officialEn: enCand?.name,
+              zhText: cnCand.name,
+              wikiEn: ctx.wiki[id]?.talents?.[tIdx],
+              isStale,
+            },
+            ctx,
+            trk,
+          )
+          const candDesc = resolveLayeredI18nString(
+            {
+              key: `${id}.talent.${tIdx}.${cIdx}.desc`,
+              officialEn: enCand?.description,
+              zhText: cnCand.description,
+              isStale,
+            },
+            ctx,
+            trk,
           )
 
           const blackboard: Record<string, number> = {}
@@ -439,13 +477,33 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
       const enEquip = bundle.enEquips.equipDict[equipId]
       totalModulesCount++
 
-      const modName = makeI18nString(
-        enEquip?.uniEquipName,
-        cnEquip.uniEquipName,
-        cnEquip.uniEquipName,
+      // Check battle equip entry in battle_equip_table
+      const cnBattle = bundle.cnBattleEquips?.[equipId]
+      const enBattle = bundle.enBattleEquips?.[equipId]
+      const isStale = checkModuleStale(cnEquip, enEquip, cnBattle, enBattle)
+
+      const modName = resolveLayeredI18nString(
+        {
+          key: `${cnEquip.uniEquipId}.name`,
+          officialEn: enEquip?.uniEquipName,
+          zhText: cnEquip.uniEquipName,
+          wikiEn: ctx.wiki[id]?.modules?.[cnEquip.uniEquipId],
+          isStale,
+        },
+        ctx,
+        trk,
       )
       const modDesc = cnEquip.uniEquipDesc
-        ? makeI18nString(enEquip?.uniEquipDesc, cnEquip.uniEquipDesc, cnEquip.uniEquipDesc)
+        ? resolveLayeredI18nString(
+            {
+              key: `${cnEquip.uniEquipId}.desc`,
+              officialEn: enEquip?.uniEquipDesc,
+              zhText: cnEquip.uniEquipDesc,
+              isStale,
+            },
+            ctx,
+            trk,
+          )
         : undefined
 
       const itemCost: Record<string, { id: string; count: number }[]> = {}
@@ -457,9 +515,6 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         }
       }
 
-      // Check battle equip entry in battle_equip_table
-      const cnBattle = bundle.cnBattleEquips?.[equipId]
-      const enBattle = bundle.enBattleEquips?.[equipId]
       let stages: OperatorModuleStage[] | undefined
 
       if (cnBattle?.phases && cnBattle.phases.length > 0) {
@@ -493,13 +548,40 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
               const enCand = enCandidates[cIdx]
 
               const candAddDesc = cnCand.additionalDescription
-                ? makeI18nString(enCand?.additionalDescription, cnCand.additionalDescription)
+                ? resolveLayeredI18nString(
+                    {
+                      key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.addDesc`,
+                      officialEn: enCand?.additionalDescription,
+                      zhText: cnCand.additionalDescription,
+                      isStale,
+                    },
+                    ctx,
+                    trk,
+                  )
                 : undefined
               const candUpDesc = cnCand.upgradeDescription
-                ? makeI18nString(enCand?.upgradeDescription, cnCand.upgradeDescription)
+                ? resolveLayeredI18nString(
+                    {
+                      key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.upgDesc`,
+                      officialEn: enCand?.upgradeDescription,
+                      zhText: cnCand.upgradeDescription,
+                      isStale,
+                    },
+                    ctx,
+                    trk,
+                  )
                 : undefined
               const candOverDesc = cnCand.overrideDescripton
-                ? makeI18nString(enCand?.overrideDescripton, cnCand.overrideDescripton)
+                ? resolveLayeredI18nString(
+                    {
+                      key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.ovrDesc`,
+                      officialEn: enCand?.overrideDescripton,
+                      zhText: cnCand.overrideDescripton,
+                      isStale,
+                    },
+                    ctx,
+                    trk,
+                  )
                 : undefined
 
               const candBb: Record<string, number> = {}
@@ -570,10 +652,14 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
     // 7. Potential ranks
     const potentialRanks = (cn.potentialRanks ?? []).map((cnPot, pIdx) => {
       const enPot = en?.potentialRanks?.[pIdx]
-      const potDesc = makeI18nString(
-        enPot?.description,
-        cnPot.description,
-        cnPot.description,
+      const potDesc = resolveLayeredI18nString(
+        {
+          key: `${id}.potential.${pIdx}.desc`,
+          officialEn: enPot?.description,
+          zhText: cnPot.description,
+        },
+        ctx,
+        trk,
       )
       return {
         type: cnPot.type,
@@ -627,8 +713,28 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
       position,
       tagList,
       servers,
-      itemUsage: cn.itemUsage ? makeI18nString(en?.itemUsage, cn.itemUsage) : undefined,
-      itemDesc: cn.itemDesc ? makeI18nString(en?.itemDesc, cn.itemDesc) : undefined,
+      itemUsage: cn.itemUsage
+        ? resolveLayeredI18nString(
+            {
+              key: `${id}.itemUsage`,
+              officialEn: en?.itemUsage,
+              zhText: cn.itemUsage,
+            },
+            ctx,
+            trk,
+          )
+        : undefined,
+      itemDesc: cn.itemDesc
+        ? resolveLayeredI18nString(
+            {
+              key: `${id}.itemDesc`,
+              officialEn: en?.itemDesc,
+              zhText: cn.itemDesc,
+            },
+            ctx,
+            trk,
+          )
+        : undefined,
       artist,
       va,
       phases,
@@ -672,17 +778,22 @@ export function buildOperatorData(bundle: LoadedRawBundle): {
         withBattleData: modulesWithBattleCount,
         withoutBattleData: modulesWithoutBattleCount,
       },
+      i18nTracker: trk,
     },
   }
 }
 
 async function main(): Promise<void> {
   console.log('=== Arknights Operator Data Builder ===\n')
-  console.log('1. Loading raw tables from .cache/raw...')
-  const bundle = await loadRawBundles()
+  console.log('1. Loading raw tables and i18n layers...')
+  const [bundle, i18nContext] = await Promise.all([
+    loadRawBundles(),
+    loadI18nLayersContext(),
+  ])
 
-  console.log('2. Transforming and normalizing operators...')
-  const { summaries, details, stats } = buildOperatorData(bundle)
+  console.log('2. Transforming and normalizing operators with i18n fallback chain...')
+  const tracker = createI18nTracker()
+  const { summaries, details, stats } = buildOperatorData(bundle, i18nContext, tracker)
 
   console.log('3. Validating output schemas...')
   // Validate index array
@@ -729,11 +840,44 @@ async function main(): Promise<void> {
 
   const totalDetailMb = (totalDetailBytes / (1024 * 1024)).toFixed(2)
 
+  // Write data/i18n/report.json
+  const reportDir = path.join(process.cwd(), 'data', 'i18n')
+  await fs.mkdir(reportDir, { recursive: true })
+  const reportPath = path.join(reportDir, 'report.json')
+  const totalStrings =
+    tracker.sources.official +
+    tracker.sources.wiki +
+    tracker.sources.manual +
+    tracker.sources.machine +
+    tracker.sources.zh
+  const i18nReport = {
+    generatedAt: new Date().toISOString(),
+    sources: tracker.sources,
+    staleCount: tracker.staleCount,
+    missingEnCount: tracker.missingEnCount,
+    totalStrings,
+    percentage: {
+      official: ((tracker.sources.official / totalStrings) * 100).toFixed(2) + '%',
+      wiki: ((tracker.sources.wiki / totalStrings) * 100).toFixed(2) + '%',
+      manual: ((tracker.sources.manual / totalStrings) * 100).toFixed(2) + '%',
+      machine: ((tracker.sources.machine / totalStrings) * 100).toFixed(2) + '%',
+      zh: ((tracker.sources.zh / totalStrings) * 100).toFixed(2) + '%',
+    },
+  }
+  await fs.writeFile(reportPath, JSON.stringify(i18nReport, null, 2), 'utf-8')
+
   console.log('\n=== Build Report ===')
   console.log(`Total Playable Operators: ${stats.total}`)
   console.log(`Global (EN + CN):         ${stats.global}`)
   console.log(`CN-Only Operators:        ${stats.cnOnly}`)
   console.log(`Untranslated (CN fallback): ${stats.untranslated}`)
+  console.log(`\nI18n String Sources:`)
+  console.log(`  Official:  ${tracker.sources.official} (${i18nReport.percentage.official})`)
+  console.log(`  Wiki:      ${tracker.sources.wiki} (${i18nReport.percentage.wiki})`)
+  console.log(`  Manual:    ${tracker.sources.manual} (${i18nReport.percentage.manual})`)
+  console.log(`  Machine:   ${tracker.sources.machine} (${i18nReport.percentage.machine})`)
+  console.log(`  ZH only:   ${tracker.sources.zh} (${i18nReport.percentage.zh})`)
+  console.log(`  Stale:     ${tracker.staleCount}`)
   console.log(`\nModules Breakdown:`)
   console.log(`  Operators with modules:   ${stats.modules.opsWithModules}`)
   console.log(`  Total module entries:     ${stats.modules.totalModules}`)
@@ -743,6 +887,7 @@ async function main(): Promise<void> {
   console.log(`  data/operators-index.json: ${indexSizeKb} KB`)
   console.log(`  data/operators/{id}.json:  ${details.length} files (${totalDetailMb} MB total)`)
   console.log(`  data/meta.json:            0.3 KB`)
+  console.log(`  data/i18n/report.json:     saved`)
   console.log('\nBuild finished successfully!')
 }
 

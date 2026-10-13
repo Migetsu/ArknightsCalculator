@@ -60,7 +60,14 @@ function getStageCost(m: OperatorModule, stageNum: number) {
 
         <div class="ak-operator-modules-panel__info">
           <div class="ak-operator-modules-panel__title-row">
-            <h4 class="ak-operator-modules-panel__title">{{ getModuleName(mod) }}</h4>
+            <h4 class="ak-operator-modules-panel__title">
+              {{ getModuleName(mod) }}
+              <AkTranslationBadge
+                v-if="mod.name?.source === 'machine' || mod.name?.stale"
+                :source="mod.name?.source"
+                :stale="mod.name?.stale"
+              />
+            </h4>
             <AkBadge size="sm" variant="cyan">{{ mod.type }}</AkBadge>
           </div>
           <span class="ak-operator-modules-panel__code">{{ mod.id }}</span>

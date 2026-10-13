@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { OperatorDetail } from '~/../shared/schemas/operator'
+import type { OperatorDetail, I18nString } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import AkBadge from '~/components/ui/AkBadge.vue'
 
@@ -11,24 +11,9 @@ defineProps<Props>()
 
 const { t, locale } = useI18n()
 
-function getLocalizedField(
-  field?: { en: string; zh: string; isMachineTranslation?: boolean; ru?: string } | null,
-): string {
+function getLocalizedField(field?: I18nString | null): string {
   if (!field) return '—'
-  return (
-    resolveI18nString(
-      {
-        en: field.en,
-        zh: field.zh,
-        ru: field.ru,
-        isMachineTranslation: field.isMachineTranslation ?? false,
-      },
-      locale.value as 'en' | 'ru' | 'zh',
-    ) ||
-    field.en ||
-    field.zh ||
-    '—'
-  )
+  return resolveI18nString(field, locale.value as 'en' | 'ru' | 'zh') || field.en || field.zh || '—'
 }
 </script>
 

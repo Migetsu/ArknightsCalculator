@@ -1,6 +1,15 @@
 # Project Progress
 
-## Done
+- **Multi-layered I18n String Source System & Provenance (`feat/i18n-layers`):**
+  - Designed and implemented 5-tier string provenance priority in `scripts/data/i18n-layers.ts`: `manual` (overrides in `data/i18n/overrides/`) > `official` (official EN game repo) > `wiki` (parsed community wiki translations from `arknights.wiki.gg`) > `machine` > `zh` (Chinese source text).
+  - Built bidirectional game terminology glossary builder in `scripts/data/glossary.ts` generating `data/i18n/glossary.json` (3,377 unique Chinese terms mapped across 392 operators, 8 classes, 70 subclasses, 1,104 items, 1,127 skills, 564 talents, and 118 UI terms) and `data/i18n/glossary-conflicts.json` resolving conflicts by occurrence frequency.
+  - Added wiki translations scraper `scripts/data/fetch-wiki-translations.ts` fetching official names, skills, talents, and modules for 58 operators missing from frozen EN repository (`data/i18n/wiki-translations.json`).
+  - Added formatting & placeholder parity validator `scripts/data/validate-translation.ts` checking tag consistency (`<@ba...>`, `</>`), format placeholders (`{atk:0%}`), newlines, and numbers.
+  - Implemented stale detection (`checkSkillLevelStale`, `checkTalentCandidateStale`, `checkModuleStale`): flags `stale: true` for 330 string instances where CN mechanics, blackboard parameters, or tag sets updated after the EN repository freeze date (2025-11-13).
+  - Fixed Fiammetta (`char_300_phenxi`) Module A (`uniequip_004_phenxi`): previously displayed Chinese `菲亚梅塔特限证章`, now resolved to `"Fiammetta's Specialized Badge"` (`source: 'manual'`).
+  - Generated full provenance report `data/i18n/report.json`: 26,515 official (84.54%), 1,456 wiki (4.64%), 1 manual (0.00%), 2 machine (0.01%), 3,391 ZH fallback (10.81%), 330 stale instances.
+  - Created accessible `AkTranslationBadge.vue` component with tooltip advisories for machine (`MT`) and outdated (`STALE`) translations, showcased in `app/pages/_ui.vue` and integrated across operator detail panels and operator cards.
+  - 100% test pass rate (248 unit tests, 126 Playwright E2E tests), typecheck, lint, stylelint, format, i18n, data integrity, and production build clean.
 
 - **Operator Art & Detail Hero Redesign (`fix/operator-art`):**
   - Completed upstream resource repository exploration (`yuanyan3060/ArknightsGameResource`) for `avatar` (180x180 px, avg 52.9 KB), `portrait` (180x360 px, avg 106-113 KB), and `skin` (full arts, avg 2.07 MB, up to 4.2 MB; skins avg 2.43 MB, up to 5.7 MB) with live Range GET measurements across 30 operators, documented in `docs/assets.md`.

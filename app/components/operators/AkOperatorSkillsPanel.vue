@@ -66,6 +66,14 @@ function getLevelLabel(idx: number): string {
         <div class="ak-operator-skills-panel__info">
           <h4 class="ak-operator-skills-panel__title">
             {{ getSkillName(skill, (selectedLevels[skill.skillId] ?? 1) - 1) }}
+            <AkTranslationBadge
+              v-if="
+                skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.source ===
+                  'machine' || skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.stale
+              "
+              :source="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.source"
+              :stale="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.stale"
+            />
           </h4>
           <div class="ak-operator-skills-panel__badges">
             <AkBadge size="sm" variant="cyan">
