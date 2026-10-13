@@ -1,81 +1,158 @@
-# Регламент обновления игровых данных и ассетов (Data & Assets Update Guide)
+# Game Data Update Guide (`docs/data-update.md`)
 
-Документ описывает процедуру регулярного обновления игровых данных (операторы, предметы, навыки, модули, шансы выпадения) и синхронизации оптимизированных WebP-ассетов при выходе новых игровых событий и персонажей.
-
----
-
-## 1. Обзор конвейера данных
-
-Данные игры не парсятся в рантайме браузера. Типизированные JSON-файлы генерируются скриптами в директории `scripts/data/` и сохраняются в `data/`:
-
-| Команда                  | Скрипт                                 | Описание                                                                                             |
-| :----------------------- | :------------------------------------- | :--------------------------------------------------------------------------------------------------- |
-| `npm run data:sync`      | `scripts/data/sync.ts`                 | Загрузка сырых данных Hypergryph/Kael's (CN) и YoStar (EN), генерация `operators.json`, `items.json` |
-| `npm run data:benchmark` | `scripts/data/sync-penguin.ts`         | Загрузка матриц шансов выпадения предметов Penguin Stats (CN и Global)                               |
-| `npm run data:assets`    | `scripts/data/build-asset-manifest.ts` | Проверка целостности и покрытие ассетов по деревьям Git-репозиториев (`asset-manifest.json`)         |
-| `npm run data:thumbs`    | `scripts/data/build-art-thumbs.ts`     | Генерация WebP миниатюр (480px) и Hero-копий (1280px) через Sharp                                    |
-| `npm run data:validate`  | `scripts/data/validate.ts`             | Валидация всех сгенерированных JSON-файлов по Zod-схемам                                             |
+This guide outlines the standard operating procedure for synchronizing, updating, and validating game data, translations, assets, and farming stages for every new game patch.
 
 ---
 
-## 2. Обновление оптимизированных WebP-ассетов (`Migetsu/arkcalc-assets`)
+## 1. Prerequisites
 
-Для быстрой загрузки каталога и первого экрана страницы оператора в продакшене используется репозиторий оптимизированных ассетов [`Migetsu/arkcalc-assets`](https://github.com/Migetsu/arkcalc-assets) с раздачей через jsDelivr CDN.
-
-### Порядок действий при добавлении новых операторов:
-
-1. **Генерация новых WebP-изображений:**
-   Запустите скрипт генерации миниатюр:
-
-   ```bash
-   npm run data:thumbs
-   ```
-
-   Скрипт загружает оригинальные арты из апстрим-репозитория `yuanyan3060/ArknightsGameResource`, масштабирует их и конвертирует в WebP:
-   - `public/art/thumbs/{id}.webp` — 480px по ширине, сжатие `quality: 80` (средний вес ~66 КБ).
-   - `public/art/hero/{id}.webp` — 1280px по ширине, сжатие `quality: 82` (средний вес ~180 КБ, диапазон 150–250 КБ).
-   - Для роботов и 1★–2★ операторов без скинов `_1b.png` скрипт автоматически использует fallback на `portrait/*_1.png`.
-
-2. **Синхронизация с репозиторием ассетов:**
-   Перенесите сгенерированные файлы из `public/art/thumbs/` и `public/art/hero/` в локальный клон репозитория `Migetsu/arkcalc-assets`:
-
-   ```bash
-   git add art/thumbs/ art/hero/
-   git commit -m "feat(assets): add webp thumbnails and hero copies for new operators"
-   git push origin main
-   ```
-
-3. **Фиксация нового commit SHA:**
-   Скопируйте полученный полный SHA коммита (40 символов) и обновите константу `OPTIMIZED_ASSETS_COMMIT` в файле [`shared/utils/resolveAsset.ts`](file:///c:/Projects/ArknightsCalculator/shared/utils/resolveAsset.ts):
-
-   ```typescript
-   export const OPTIMIZED_ASSETS_COMMIT = '<НОВЫЙ_COMMIT_SHA>'
-   ```
-
-4. **Проверка отдачи через jsDelivr CDN:**
-   Проверьте реальным HTTP GET-запросом, что jsDelivr отдаёт новые файлы с кодом `200 OK` и типом `image/webp`:
-
-   ```bash
-   curl -I https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@<НОВЫЙ_COMMIT_SHA>/art/hero/char_172_svrash.webp
-   ```
-
-   Убедитесь в наличии заголовков:
-   - `HTTP/2 200`
-   - `content-type: image/webp`
-   - `cache-control: public, max-age=31536000, immutable`
-
-5. **Тестирование и валидация:**
-   ```bash
-   npm run test
-   npm run test:e2e
-   ```
+- **Node.js**: `v22.x` or higher (`.nvmrc`).
+- **Clean Working Tree**: Ensure your git working tree is clean. Create a new branch:
+  ```bash
+  git checkout main
+  git pull
+  git checkout -b chore/data-update-<patch_name>
+  ```
 
 ---
 
-## 3. Политика оформления обновлений данных в Git
+## 2. Step-by-Step Update Pipeline
 
-В соответствии с правилом `AGENTS.md` (раздел 3):
+### Step 2.1: Fetch Raw Game Data
 
-- Обновления данных игры **не коммитятся напрямую в main**.
-- Каждое обновление оформляется отдельной веткой (например, `chore/data-update-2026-11`) и Pull Request с подробным отчетом о различиях (`git diff --stat data/`).
-- Все тесты, валидация схем (`npm run data:validate`) и E2E тесты должны быть зелеными перед слиянием.
+Fetch the latest Excel tables from upstream game data repositories (CN: `Kengxxiao/ArknightsGameData`, EN: `Kengxxiao/ArknightsGameData_YoStar`):
+
+```bash
+npm run data:fetch
+```
+
+- Tables are cached in `.cache/raw/zh_CN/` and `.cache/raw/en_US/`.
+- Validates downloaded tables against Zod schemas in `scripts/data/schemas.ts`.
+
+---
+
+### Step 2.2: Scrape Community Wiki Translations
+
+Fetch official English translations for newly released Global operators and community translations for CN-only operators from `arknights.wiki.gg`:
+
+```bash
+jiti scripts/data/fetch-wiki-translations.ts
+```
+
+- Verifies operator presence against `Category:CN_Operator` and saves global availability status into `data/i18n/global-availability.json`.
+- Stores CC-BY-SA 4.0 translation caches under `data/i18n/wiki/operators.json` with attribution headers.
+
+---
+
+### Step 2.3: Rebuild Terminology Glossary
+
+Update the bidirectional categorized glossary from official game data:
+
+```bash
+jiti scripts/data/glossary.ts
+```
+
+- Generates `data/i18n/glossary.json` across categories: `operators`, `classes`, `subclasses`, `factions`, `items`, `skills`, `talents`, `terms`.
+- Detects intra-category conflicts (`data/i18n/glossary-conflicts.json`) and cross-category homonyms (`data/i18n/glossary-cross-category.json`).
+
+---
+
+### Step 2.4: Synchronize Farming Stages
+
+Cross-match Penguin Stats API (US & CN) against the game's `stage_table.json`:
+
+```bash
+npm run data:stages
+```
+
+- Generates `data/stages.json`.
+- Matched stages receive official localized titles and `matchedGameData: true`.
+- Unmatched stages (lottery boxes, supply events, rerun pseudo-stages) are flagged with `matchedGameData: false` and hidden from farming recommendations.
+
+---
+
+### Step 2.5: Machine Translation Pipeline for Missing Strings
+
+1. **Analyze untranslated volume & deduplicate templates**:
+   ```bash
+   jiti scripts/data/translate-missing.ts --analyze
+   ```
+2. **Export batches for offline translation**:
+   ```bash
+   jiti scripts/data/translate-missing.ts --export 60
+   ```
+   Outputs JSONL batches into `.cache/translate/in/batch_*.jsonl`.
+3. **Perform translations** (following priority: operator names > skill/talent/module names > skill descriptions > talent descriptions > module descriptions):
+   Save translated JSONL files into `.cache/translate/out/`.
+4. **Import & validate translations**:
+   ```bash
+   jiti scripts/data/translate-missing.ts --import
+   ```
+   - Automatically executes `validateTranslation()` ensuring tag parity (`<@ba.vup>`, `</>`), placeholder parity (`{atk:0%}`), and newline integrity.
+   - Saves verified translations to `data/i18n/machine/*.json`.
+
+---
+
+### Step 2.6: Compile Derived Game Datasets
+
+Compile the core runtime JSON files used by the web client:
+
+```bash
+npm run data:constants
+npm run data:items
+npm run data:recipes
+npm run data:build
+```
+
+- `data:build` processes all 434 operators through the 5-tier fallback chain (`manual` > `official` > `wiki` > `community` > `machine` > `zh`).
+- Generates `data/operators-index.json`, `data/operators/{id}.json`, `data/meta.json`, and `data/i18n/report.json`.
+
+---
+
+### Step 2.7: Asset Manifest & Thumbnail Generation
+
+Update asset CDN URLs and local thumbnails:
+
+```bash
+npm run data:assets
+npm run data:thumbs
+```
+
+---
+
+## 3. Verification & Quality Gates
+
+Run the mandatory quality assurance checks before submitting a PR:
+
+```bash
+# 1. Referential integrity (operators, recipes, items, skills, modules)
+npm run data:validate
+
+# 2. Locale keys parity
+npm run i18n:check
+
+# 3. Static analysis & linting
+npm run lint
+npm run stylelint
+npm run typecheck
+npm run format:check
+
+# 4. Unit & E2E test suites
+npm run test
+npm run test:e2e
+
+# 5. Production build test
+npm run build
+```
+
+---
+
+## 4. Submitting Changes
+
+1. Review `data/i18n/report.json` to verify that string counts align with expectations.
+2. Ensure no unintended diffs or secrets exist via `git diff`.
+3. Create a Conventional Commit:
+   ```bash
+   git commit -m "chore(data): sync patch data for <event/patch_name>"
+   ```
+4. Open a Pull Request for review.

@@ -1,5 +1,14 @@
 # Project Progress
 
+- **Machine Translation Pipeline, Deduplication & Farming Stages (`feat/i18n-machine`):**
+  - Removed unconfirmed manual overrides from `data/i18n/overrides/`, strictly enforcing valid URL sources in `ManualOverrideEntrySchema`. Moved Fiammetta Module A (`uniequip_004_phenxi.name`) to `data/i18n/machine/modules.json`.
+  - Clarified licensing scope in `README.md`: `data/i18n/wiki/*.json` files are licensed under CC-BY-SA 4.0; all application code, cores, and scripts are licensed under MIT.
+  - Built automated pipeline in `scripts/data/translate-missing.ts` with `--analyze`, `--export`, and `--import` modes. Implemented template deduplication collapsing 2,139 raw string instances to 493 unique templates (139k chars, ~209k tokens).
+  - Translated and validated Priority 1 & 2 categories (100% of operator names, 19 skill names, 15 talent names, 83 module names, plus high-priority skill descriptions), bringing machine-translated keys to 336 (1.07%) and decreasing remaining ZH strings to 2,981.
+  - Cross-matched 1,620 Penguin Stats farming stages (US & CN) against game client `stage_table.json`: 1,067 matched with official localized titles; 553 pseudo-stages (gachaboxes, supply crates, reruns) flagged with `matchedGameData: false` in `data/stages.json`.
+  - Documented patch-by-patch data update workflow in `docs/data-update.md`.
+  - All tests passing: 257 unit tests, 126 E2E tests, typecheck, lint, stylelint, format, i18n, and production build clean.
+
 - **I18n Wiki Licensing, Community Source Semantics & Glossary Isolation (`fix/i18n-wiki-audit`):**
   - Conducted legal and licensing audit of `arknights.wiki.gg`: verified CC-BY-SA 4.0 license (checked 2026-10-13 on `https://arknights.wiki.gg/wiki/Arknights_Terra_Wiki:Copyrights`), confirmed API harvesting allowed under `robots.txt` and Terms of Service with identified `User-Agent`.
   - Added CC-BY-SA 4.0 attribution blocks to `README.md`, `docs/data-sources.md`, default layout footer (`app/layouts/default.vue`), and localized string dictionaries (`i18n/locales/{en,ru}.json`).
