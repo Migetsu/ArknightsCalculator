@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import AkPageHeader from '~/components/ui/AkPageHeader.vue'
-import AkAlert from '~/components/ui/AkAlert.vue'
-import AkButton from '~/components/ui/AkButton.vue'
-import AkStat from '~/components/ui/AkStat.vue'
-import AkPanel from '~/components/ui/AkPanel.vue'
-import AkAvatar from '~/components/ui/AkAvatar.vue'
-import AkProgress from '~/components/ui/AkProgress.vue'
-import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import { DEMO_DASHBOARD_DATA } from '~/../shared/data/demo-dashboard'
+import { useSettingsStore } from '~/stores/settings'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const settingsStore = useSettingsStore()
 
 const isSyncModalOpen = ref(false)
 const dashboardData = ref(DEMO_DASHBOARD_DATA)
@@ -75,368 +69,123 @@ onBeforeUnmount(() => {
 <template>
   <div class="dashboard-page">
     <div class="dashboard-page__container">
-      <!-- Standard Tactical Header -->
-      <AkPageHeader
-        code="DSH-00"
-        :tag-label="t('dashboard.commandBadge')"
-        :title="t('dashboard.title')"
-        :subtitle="t('dashboard.subtitle')"
-        watermark="PRTS TERMINAL"
-        :badge="t('modules.status.ready')"
-        badge-variant="cyan"
-      >
-        <template #title>
-          <span class="dashboard-page__title">{{ t('dashboard.title') }}</span>
-        </template>
-        <template #subtitle>
-          <span class="dashboard-page__subtitle">{{ t('dashboard.subtitle') }}</span>
-        </template>
-        <template #actions>
-          <div class="dashboard-page__doctor-card">
-            <div class="dashboard-page__doctor-avatar" aria-hidden="true">
-              <span class="dashboard-page__doctor-dr">DR</span>
-            </div>
-            <div class="dashboard-page__doctor-info">
-              <div class="dashboard-page__doctor-top">
-                <span class="dashboard-page__doctor-name">
-                  {{ t('common.doctor') }}
-                </span>
-                <span class="dashboard-page__doctor-settings" aria-hidden="true">⚙</span>
-              </div>
-              <span class="dashboard-page__doctor-status">
-                LV.1 // {{ t('common.server') }}: EN
-              </span>
-            </div>
-          </div>
-        </template>
-      </AkPageHeader>
-
-      <!-- Account Risk / Standby Alert -->
-      <section class="dashboard-page__alert-section">
-        <AkAlert
-          variant="warning"
-          :title="t('dashboard.alert.title')"
-          :badge="t('dashboard.alert.badge')"
-        >
-          <p>{{ t('dashboard.alert.body') }}</p>
-
-          <template #actions>
-            <AkButton variant="ghost" size="md" @click="handleLoadDemo">
-              {{ t('dashboard.alert.loadDemo') }}
-            </AkButton>
-            <AkButton variant="primary" size="md" @click="isSyncModalOpen = true">
-              {{ t('dashboard.alert.syncAccount') }}
-            </AkButton>
-          </template>
-        </AkAlert>
+      <!-- 1. Hero Terminal Banner -->
+      <section class="dashboard-page__hero">
+        <p class="dashboard-page__hero-tag">TERMINAL // NO ACCOUNT SYNCED</p>
+        <h1 class="dashboard-page__hero-title dashboard-page__title">
+          {{ isDemoLoaded ? t('dashboard.title') : 'Welcome back, Doctor' }}
+        </h1>
+        <p class="dashboard-page__hero-desc dashboard-page__subtitle">
+          {{
+            isDemoLoaded
+              ? t('dashboard.subtitle')
+              : 'Sync your account to import your roster, depot and goals, or explore with demo data first.'
+          }}
+        </p>
+        <div class="dashboard-page__hero-actions">
+          <button type="button" class="dashboard-page__btn-primary" @click="isSyncModalOpen = true">
+            {{ t('settings.account.syncBtn') }}
+          </button>
+          <button type="button" class="dashboard-page__btn-outline" @click="handleLoadDemo">
+            {{ t('dashboard.alert.loadDemo') }}
+          </button>
+        </div>
       </section>
 
-      <!-- 4 Stats Tiles Grid -->
+      <!-- 2. Four Metric Tiles Grid -->
       <section class="dashboard-page__stats-grid">
-        <AkStat
-          :label="t('dashboard.stats.availablePulls')"
-          :value="`${dashboardData.stats.availablePulls} ${t('dashboard.stats.rolls')}`"
-          variant="cyan"
-        />
-        <AkStat
-          :label="t('dashboard.stats.activeTargets')"
-          :value="`${dashboardData.stats.activeTargets} ${t('dashboard.stats.operators')}`"
-          variant="neutral"
-        />
-        <AkStat
-          :label="t('dashboard.stats.sparkReadiness')"
-          :value="`${Math.round((dashboardData.stats.sparkCurrent / dashboardData.stats.sparkGoal) * 100)}%`"
-          :subvalue="`(${dashboardData.stats.sparkCurrent}/${dashboardData.stats.sparkGoal})`"
-          variant="amber"
-        />
-        <AkStat
-          :label="t('dashboard.stats.monthlyCard')"
-          :value="t('dashboard.stats.activeRate')"
-          variant="green"
-        />
+        <div class="dashboard-page__stat-card">
+          <span class="dashboard-page__stat-label">PULLS</span>
+          <div class="dashboard-page__stat-val">
+            {{ dashboardData.stats.availablePulls }}
+          </div>
+        </div>
+
+        <div class="dashboard-page__stat-card">
+          <span class="dashboard-page__stat-label">SPARK</span>
+          <div class="dashboard-page__stat-val">
+            {{ dashboardData.stats.sparkCurrent }} / {{ dashboardData.stats.sparkGoal }}
+          </div>
+        </div>
+
+        <div class="dashboard-page__stat-card">
+          <span class="dashboard-page__stat-label">ACTIVE PLANS</span>
+          <div class="dashboard-page__stat-val">
+            {{ dashboardData.stats.activeTargets }}
+          </div>
+        </div>
+
+        <div class="dashboard-page__stat-card">
+          <span class="dashboard-page__stat-label">SERVER</span>
+          <div class="dashboard-page__stat-val dashboard-page__stat-val--server">
+            {{ settingsStore.defaultServer === 'cn' ? 'CN' : 'Global' }}
+          </div>
+        </div>
       </section>
 
-      <!-- 3 Tactical Panels Grid -->
-      <section class="dashboard-page__panels-grid">
-        <!-- Panel 1: Next Banner Radar -->
-        <AkPanel
-          :tag="t('dashboard.banner.tag')"
-          :title="t('dashboard.banner.title')"
-          :badge="dashboardData.nextBanner.tag"
-          badge-variant="amber"
-          line-color="amber"
-          class="dashboard-page__panel"
-        >
-          <div class="dashboard-page__banner-box">
-            <div class="dashboard-page__banner-card">
-              <div class="dashboard-page__banner-meta">
-                <h3 class="dashboard-page__banner-name">
-                  {{ dashboardData.nextBanner.title }}
-                </h3>
-                <span class="dashboard-page__banner-dates">
-                  {{ dashboardData.nextBanner.startDate }} → {{ dashboardData.nextBanner.endDate }}
-                </span>
-              </div>
-            </div>
+      <!-- 3. Two Columns: 3fr 2fr Widgets -->
+      <section class="dashboard-page__widgets-grid dashboard-page__panels-grid">
+        <!-- Next Headhunting Widget (3fr) -->
+        <div class="dashboard-page__widget">
+          <h2 class="dashboard-page__widget-title">Next headhunting</h2>
+          <p class="dashboard-page__widget-desc">
+            {{ dashboardData.nextBanner.title }} / {{ dashboardData.nextBanner.startDate }} to
+            {{ dashboardData.nextBanner.endDate }}
+          </p>
 
-            <!-- Countdown Timer -->
-            <div class="dashboard-page__countdown">
-              <span class="dashboard-page__countdown-label">
-                {{ t('dashboard.banner.commencingIn') }}
-              </span>
-              <div class="dashboard-page__countdown-grid">
-                <div class="dashboard-page__countdown-unit">
-                  <span class="dashboard-page__countdown-digits">
-                    {{ String(remainingTime.days).padStart(2, '0') }}
-                  </span>
-                  <span class="dashboard-page__countdown-name">
-                    {{ t('dashboard.banner.days') }}
-                  </span>
-                </div>
-                <span class="dashboard-page__countdown-sep">:</span>
-                <div class="dashboard-page__countdown-unit">
-                  <span class="dashboard-page__countdown-digits">
-                    {{ String(remainingTime.hours).padStart(2, '0') }}
-                  </span>
-                  <span class="dashboard-page__countdown-name">
-                    {{ t('dashboard.banner.hrs') }}
-                  </span>
-                </div>
-                <span class="dashboard-page__countdown-sep">:</span>
-                <div class="dashboard-page__countdown-unit">
-                  <span class="dashboard-page__countdown-digits">
-                    {{ String(remainingTime.minutes).padStart(2, '0') }}
-                  </span>
-                  <span class="dashboard-page__countdown-name">
-                    {{ t('dashboard.banner.min') }}
-                  </span>
-                </div>
-                <span class="dashboard-page__countdown-sep">:</span>
-                <div class="dashboard-page__countdown-unit">
-                  <span class="dashboard-page__countdown-digits">
-                    {{ String(remainingTime.seconds).padStart(2, '0') }}
-                  </span>
-                  <span class="dashboard-page__countdown-name">
-                    {{ t('dashboard.banner.sec') }}
-                  </span>
-                </div>
+          <div class="dashboard-page__countdown-row">
+            <div class="dashboard-page__countdown-box">
+              <div class="dashboard-page__countdown-num">
+                {{ String(remainingTime.days).padStart(2, '0') }}
               </div>
+              <span class="dashboard-page__countdown-unit">DAYS</span>
             </div>
-
-            <!-- Rate-up Operators -->
-            <div class="dashboard-page__rate-up">
-              <span class="dashboard-page__rate-up-label">
-                {{ t('dashboard.banner.featuredRateUp') }}
-              </span>
-              <div class="dashboard-page__rate-up-list">
-                <div
-                  v-for="op in dashboardData.nextBanner.operators"
-                  :key="op.id"
-                  class="dashboard-page__rate-up-item"
-                >
-                  <AkAvatar :name="op.name" :rarity="op.rarity" size="sm" />
-                  <div class="dashboard-page__rate-up-info">
-                    <span class="dashboard-page__rate-up-name" :title="op.name">
-                      {{ op.name }}
-                    </span>
-                    <span
-                      class="dashboard-page__rate-up-stars"
-                      :class="`dashboard-page__rate-up-stars--${op.rarity}`"
-                    >
-                      {{ '★'.repeat(op.rarity) }}
-                    </span>
-                  </div>
-                </div>
+            <div class="dashboard-page__countdown-box">
+              <div class="dashboard-page__countdown-num">
+                {{ String(remainingTime.hours).padStart(2, '0') }}
               </div>
+              <span class="dashboard-page__countdown-unit">HRS</span>
+            </div>
+            <div class="dashboard-page__countdown-box">
+              <div class="dashboard-page__countdown-num">
+                {{ String(remainingTime.minutes).padStart(2, '0') }}
+              </div>
+              <span class="dashboard-page__countdown-unit">MIN</span>
             </div>
           </div>
+        </div>
 
-          <template #footer>
-            <AkButton
-              variant="secondary"
-              size="md"
-              :to="localePath('/gacha')"
-              class="dashboard-page__panel-btn"
-            >
-              {{ t('dashboard.banner.archiveButton') }}
-            </AkButton>
-          </template>
-        </AkPanel>
-
-        <!-- Panel 2: Gacha Treasury -->
-        <AkPanel
-          :tag="t('dashboard.treasury.tag')"
-          :title="t('dashboard.treasury.title')"
-          :badge="t('dashboard.treasury.sparkBadge')"
-          badge-variant="cyan"
-          line-color="cyan"
-          class="dashboard-page__panel"
-        >
-          <div class="dashboard-page__treasury-box">
-            <div class="dashboard-page__treasury-main">
-              <span class="dashboard-page__treasury-pulls">
-                {{ dashboardData.treasury.totalPulls }}
-              </span>
-              <span class="dashboard-page__treasury-pulls-label">
-                {{ t('dashboard.treasury.pullsAvailable') }}
-              </span>
-            </div>
-
-            <AkProgress
-              :value="dashboardData.treasury.totalPulls"
-              :max="dashboardData.treasury.sparkGoal"
-              :label="t('dashboard.treasury.sparkProgress')"
-              :show-percentage="true"
-              variant="cyan"
-              :segments="3"
-            />
-
-            <!-- Currency Breakdown -->
-            <div class="dashboard-page__currency-list">
-              <div class="dashboard-page__currency-row">
-                <span class="dashboard-page__currency-name">
-                  {{ t('dashboard.treasury.orundum') }}
-                </span>
-                <span class="dashboard-page__currency-val">
-                  {{ dashboardData.treasury.orundum.toLocaleString() }}
-                </span>
-                <span class="dashboard-page__currency-equiv">
-                  {{
-                    t('dashboard.treasury.rollsEquivalent', {
-                      count: Math.floor(dashboardData.treasury.orundum / 600),
-                    })
-                  }}
-                </span>
-              </div>
-
-              <div class="dashboard-page__currency-row">
-                <span class="dashboard-page__currency-name">
-                  {{ t('dashboard.treasury.originitePrime') }}
-                </span>
-                <span class="dashboard-page__currency-val">
-                  {{ dashboardData.treasury.originitePrime }} OP
-                </span>
-                <span class="dashboard-page__currency-equiv">
-                  {{
-                    t('dashboard.treasury.rollsEquivalent', {
-                      count: Math.floor((dashboardData.treasury.originitePrime * 180) / 600),
-                    })
-                  }}
-                </span>
-              </div>
-
-              <div class="dashboard-page__currency-row">
-                <span class="dashboard-page__currency-name">
-                  {{ t('dashboard.treasury.permits') }}
-                </span>
-                <span class="dashboard-page__currency-val">
-                  {{
-                    t('dashboard.treasury.singleTenRoll', {
-                      single: dashboardData.treasury.permitsSingle,
-                      ten: dashboardData.treasury.permitsTen,
-                    })
-                  }}
-                </span>
-                <span class="dashboard-page__currency-equiv">
-                  {{
-                    t('dashboard.treasury.rollsEquivalent', {
-                      count:
-                        dashboardData.treasury.permitsSingle +
-                        dashboardData.treasury.permitsTen * 10,
-                    })
-                  }}
-                </span>
-              </div>
-            </div>
-
-            <!-- Monthly Card Callout -->
-            <div class="dashboard-page__monthly-card">
-              <div class="dashboard-page__monthly-header">
-                <span class="dashboard-page__monthly-dot" />
-                <span class="dashboard-page__monthly-title">
-                  {{ t('dashboard.treasury.monthlyCardNote') }}
-                </span>
-              </div>
-              <p class="dashboard-page__monthly-desc">
-                {{ t('dashboard.treasury.monthlyCardDesc') }}
-              </p>
-            </div>
+        <!-- Your Plans Widget (2fr) -->
+        <div class="dashboard-page__widget">
+          <h2 class="dashboard-page__widget-title">Your plans</h2>
+          <div class="dashboard-page__plans-empty">
+            <span v-if="!isDemoLoaded">No plans yet.</span>
+            <span v-else>Active plans loaded: {{ dashboardData.stats.activeTargets }}</span>
+            <br />
+            <NuxtLink :to="localePath('/operators')" class="dashboard-page__plans-link">
+              Pick an operator to start
+            </NuxtLink>
           </div>
-
-          <template #footer>
-            <AkButton
-              variant="secondary"
-              size="md"
-              :to="localePath('/gacha')"
-              class="dashboard-page__panel-btn"
-            >
-              {{ t('dashboard.treasury.calculatorButton') }}
-            </AkButton>
-          </template>
-        </AkPanel>
-
-        <!-- Panel 3: Promotion Targets -->
-        <AkPanel
-          :tag="t('dashboard.targets.tag')"
-          :title="t('dashboard.targets.title')"
-          :badge="t('dashboard.targets.activeCount', { count: dashboardData.stats.activeTargets })"
-          badge-variant="green"
-          line-color="green"
-          class="dashboard-page__panel"
-        >
-          <div class="dashboard-page__targets-box">
-            <AkEmptyState
-              :title="t('dashboard.targets.emptyTitle')"
-              :description="t('dashboard.targets.emptyDesc')"
-            />
-
-            <!-- Quick Add Operators -->
-            <div class="dashboard-page__quick-operators">
-              <div
-                v-for="op in dashboardData.quickOperators"
-                :key="op.id"
-                class="dashboard-page__quick-item"
-              >
-                <AkAvatar :name="op.name" :rarity="op.rarity" size="sm" />
-                <span class="dashboard-page__quick-name" :title="op.name">
-                  {{ op.name }}
-                </span>
-                <AkButton variant="ghost" size="sm" class="dashboard-page__plan-btn">
-                  {{ t('dashboard.targets.planButton') }}
-                </AkButton>
-              </div>
-            </div>
-          </div>
-
-          <template #footer>
-            <AkButton
-              variant="secondary"
-              size="md"
-              :to="localePath('/planner')"
-              class="dashboard-page__panel-btn"
-            >
-              {{ t('dashboard.targets.plannerButton') }}
-            </AkButton>
-          </template>
-        </AkPanel>
+        </div>
       </section>
     </div>
 
-    <!-- Sync Modal -->
+    <!-- Account Sync Modal -->
     <SyncAccountModal v-model="isSyncModalOpen" @load-demo="handleLoadDemo" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .dashboard-page {
-  padding: var(--space-sm);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 0;
+  box-sizing: border-box;
 
   @include mq(md) {
-    padding: var(--space-xl);
+    padding: 40px 48px;
   }
 
   &__container {
@@ -445,130 +194,104 @@ onBeforeUnmount(() => {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: 28px;
     min-width: 0;
   }
 
-  // Header Section
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    min-width: 0;
-  }
-
-  &__header-main {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    max-width: 720px;
-    min-width: 0;
-  }
-
-  &__badge {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-primary);
-    text-transform: uppercase;
-  }
-
-  &__title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-text-primary);
-    text-transform: uppercase;
-    margin: 0;
-    overflow-wrap: anywhere;
+  // Hero Section
+  &__hero {
+    padding: 24px;
+    border: 1px solid var(--color-border-subtle);
+    background: linear-gradient(120deg, rgb(255 106 61 / 14%), rgb(23 17 15 / 90%) 60%);
+    box-sizing: border-box;
 
     @include mq(md) {
-      font-size: var(--font-size-3xl);
+      padding: 36px;
     }
   }
 
-  &__subtitle {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+  &__hero-tag {
+    margin: 0 0 10px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--color-text-accent);
+    text-transform: uppercase;
+  }
+
+  &__hero-title {
     margin: 0;
-    overflow-wrap: anywhere;
-  }
+    font-family: var(--font-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
 
-  &__doctor-card {
-    display: none;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--color-border-bold);
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-elevated) 100%);
-
-    @include cut-corner(6px, top-right);
-
-    @include mq(lg) {
-      display: flex;
+    @include mq(md) {
+      font-size: 44px;
     }
   }
 
-  &__doctor-avatar {
+  &__hero-desc {
+    margin: 12px 0 22px;
+    max-width: 560px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-base);
+    color: var(--color-text-secondary);
+  }
+
+  &__hero-actions {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border: 1px solid var(--color-accent-primary);
-    background-color: var(--color-bg-elevated);
-    color: var(--color-accent-primary);
-    font-family: var(--font-mono);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-xs);
-
-    @include cut-corner(4px, top-right);
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  &__doctor-dr {
-    line-height: 1;
+  &__btn-primary {
+    border: 0;
+    padding: 13px 26px;
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-inverse);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--color-accent-primary-hover);
+    }
   }
 
-  &__doctor-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  &__doctor-top {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-  }
-
-  &__doctor-name {
-    font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-sm);
+  &__btn-outline {
+    padding: 13px 26px;
+    background-color: transparent;
     color: var(--color-text-primary);
+    border: 1px solid var(--color-border-bold);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-text-accent);
+      background-color: var(--color-bg-highlight);
+    }
   }
 
-  &__doctor-settings {
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-xs);
-  }
-
-  &__doctor-status {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    color: var(--color-text-secondary);
-  }
-
-  // 4 Stats Grid
+  // Four Stats Grid
   &__stats-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-sm);
+    gap: 16px;
     min-width: 0;
 
     @include mq(sm) {
@@ -580,364 +303,124 @@ onBeforeUnmount(() => {
     }
   }
 
-  // 3 Panels Grid
-  &__panels-grid {
+  &__stat-card {
+    padding: 18px 20px;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__stat-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-mono);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+
+  &__stat-val {
+    font-family: var(--font-display);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-top: 4px;
+    line-height: var(--line-height-tight);
+
+    &--server {
+      color: var(--color-text-accent);
+    }
+  }
+
+  // Two columns: 3fr 2fr Widgets
+  &__widgets-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-md);
+    gap: 20px;
     min-width: 0;
 
     @include mq(md) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-lg);
-    }
-
-    @include mq(xl) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 3fr 2fr;
     }
   }
 
-  &__panel {
+  &__widget {
+    padding: 24px;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
     display: flex;
     flex-direction: column;
-    height: 100%;
     min-width: 0;
-
-    &:last-child {
-      @include mq(md) {
-        grid-column: span 2;
-      }
-
-      @include mq(xl) {
-        grid-column: auto;
-      }
-    }
   }
 
-  &__panel-btn {
-    width: 100%;
-  }
-
-  // Panel 1: Banner Box
-  &__banner-box {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  &__banner-card {
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-md);
-    background: linear-gradient(135deg, rgb(243 144 0 / 12%) 0%, var(--color-bg-elevated) 100%);
-    border: 1px solid var(--color-border-bold);
-
-    @include cut-corner(8px, top-right);
-  }
-
-  &__banner-name {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-sm);
+  &__widget-title {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    margin: 0;
   }
 
-  &__banner-dates {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    color: var(--color-accent-warning);
-    letter-spacing: var(--letter-spacing-mono);
-  }
-
-  // Countdown Grid
-  &__countdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-sm);
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-base);
-
-    @include cut-corner(8px, top-right);
-  }
-
-  &__countdown-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-mono);
+  &__widget-desc {
+    margin: 0 0 16px;
+    font-family: var(--font-body);
+    font-size: 15px;
     color: var(--color-text-secondary);
   }
 
-  &__countdown-grid {
+  &__countdown-row {
     display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__countdown-box {
+    padding: 14px 20px;
+    background-color: var(--color-bg-deep);
+    text-align: center;
+    border: 1px solid var(--color-border-subtle);
+    min-width: 72px;
+  }
+
+  &__countdown-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1;
   }
 
   &__countdown-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__countdown-digits {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent-primary);
-    line-height: 1;
-    text-shadow: 0 0 10px var(--color-accent-primary-glow);
-  }
-
-  &__countdown-name {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    color: var(--color-text-secondary);
-    letter-spacing: var(--letter-spacing-mono);
-  }
-
-  &__countdown-sep {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-border-bold);
-  }
-
-  // Rate-up Operators
-  &__rate-up {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  &__rate-up-label {
-    font-family: var(--font-mono);
+    display: inline-block;
+    margin-top: 4px;
+    font-family: var(--font-body);
     font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-mono);
     color: var(--color-text-secondary);
+    letter-spacing: 0.1em;
   }
 
-  &__rate-up-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-  }
-
-  &__rate-up-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-    min-width: 0;
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__rate-up-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-    min-width: 0;
-    gap: var(--space-xs);
-  }
-
-  &__rate-up-name {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-
-    @include text-truncate;
-  }
-
-  &__rate-up-stars {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    letter-spacing: 1px;
-    flex-shrink: 0;
-
-    &--6 {
-      color: var(--color-rarity-6-gold);
-    }
-
-    &--5 {
-      color: var(--color-rarity-5);
-    }
-  }
-
-  // Panel 2: Treasury
-  &__treasury-box {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  &__treasury-main {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-xs);
-  }
-
-  &__treasury-pulls {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent-primary);
-    line-height: 1;
-    text-shadow: 0 0 12px var(--color-accent-primary-glow);
-  }
-
-  &__treasury-pulls-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+  &__plans-empty {
+    padding: 28px 12px;
+    border: 1px dashed var(--color-border-bold);
+    text-align: center;
     color: var(--color-text-secondary);
-    letter-spacing: var(--letter-spacing-mono);
-  }
-
-  &__currency-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-  }
-
-  &__currency-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.8fr);
-    align-items: center;
-    gap: var(--space-2xs);
-    padding: var(--space-xs);
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    min-width: 0;
-    transition: border-color var(--duration-fast) var(--ease-tactical);
-
-    @include cut-corner(4px, top-right);
-
-    &:hover {
-      border-color: var(--color-accent-primary);
-    }
-  }
-
-  &__currency-name {
-    color: var(--color-text-secondary);
-    letter-spacing: var(--letter-spacing-mono);
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  &__currency-val {
-    color: var(--color-text-primary);
-    font-weight: var(--font-weight-bold);
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  &__currency-equiv {
-    color: var(--color-accent-primary);
-    text-align: right;
-    white-space: nowrap;
-    min-width: 0;
-  }
-
-  &__monthly-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    padding: var(--space-sm);
-    border: 1px solid rgb(0 230 118 / 35%);
-    background-color: var(--color-accent-success-subtle);
-
-    @include cut-corner(6px, top-right);
-  }
-
-  &__monthly-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-  }
-
-  &__monthly-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--color-accent-success);
-    box-shadow: 0 0 6px var(--color-accent-success-glow);
-  }
-
-  &__monthly-title {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-success);
-  }
-
-  &__monthly-desc {
-    font-size: var(--font-size-2xs);
-    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
     line-height: var(--line-height-base);
-    margin: 0;
   }
 
-  // Panel 3: Targets
-  &__targets-box {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  &__quick-operators {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-xs);
-    min-width: 0;
-
-    @include mq(sm) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  &__quick-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-    min-width: 0;
-
-    @include cut-corner(4px, top-right);
-  }
-
-  &__quick-name {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xs);
+  &__plans-link {
+    color: var(--color-accent-ember-light);
+    text-decoration: none;
     font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-    flex: 1;
-    min-width: 0;
 
-    @include text-truncate;
-  }
-
-  &__plan-btn {
-    font-size: var(--font-size-2xs);
-    color: var(--color-accent-success);
-    border-color: rgb(0 230 118 / 40%);
-    flex-shrink: 0;
+    @include focus-ring;
 
     &:hover {
-      background-color: var(--color-accent-success-subtle);
-      border-color: var(--color-accent-success);
+      text-decoration: underline;
     }
   }
 }

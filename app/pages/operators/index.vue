@@ -22,11 +22,14 @@ import AkOperatorCardSkeleton from '~/components/operators/AkOperatorCardSkeleto
 import AkOperatorFilters from '~/components/operators/AkOperatorFilters.vue'
 import { getModuleById } from '~/config/modules'
 
+import { useSettingsStore } from '~/stores/settings'
+
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
 const moduleConfig = getModuleById('operators')
+const settingsStore = useSettingsStore()
 
 // Dataset reference
 const allOperators = shallowRef<readonly OperatorSummary[]>(
@@ -37,8 +40,12 @@ const allOperators = shallowRef<readonly OperatorSummary[]>(
 type PageState = 'ready' | 'loading' | 'error'
 const pageState = ref<PageState>('ready')
 
-// Filter state initialized from URL query
-const filters = ref<OperatorFilterState>(parseOperatorFilterQuery(route.query))
+// Filter state initialized from URL query (with fallback to default server from settings store)
+const initialFilters = parseOperatorFilterQuery(route.query)
+if (!route.query.server && settingsStore.defaultServer) {
+  initialFilters.server = settingsStore.defaultServer
+}
+const filters = ref<OperatorFilterState>(initialFilters)
 
 // Extract available unique subclasses and factions for filter dropdowns
 const availableSubclasses = computed<string[]>(() => {

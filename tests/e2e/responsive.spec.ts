@@ -55,6 +55,12 @@ test.describe('Rhodes Island Terminal Design V2 Responsive & States', () => {
     test(`renders and interacts with Navigation Drawer on ${vp.name}px viewport`, async ({
       page,
     }) => {
+      // In Ember Editorial, desktop headers show full horizontal navigation links;
+      // the tactical drawer burger is reserved for mobile and tablet viewports (< 1024px)
+      if (vp.width >= 1024) {
+        return
+      }
+
       await page.setViewportSize({ width: vp.width, height: vp.height })
       await page.goto('/')
       await page.waitForLoadState('networkidle')

@@ -72,7 +72,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     icon: '⚙',
     nameKey: 'navigation.settings',
     descriptionKey: 'navigation.settingsDesc',
-    status: 'soon',
+    status: 'ready',
   },
 ] as const
 

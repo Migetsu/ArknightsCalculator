@@ -260,6 +260,31 @@
     - Added comprehensive unit test suites: `AkAvatar.test.ts` (7 tests), `AkItemIcon.test.ts` (7 tests), `AkSkillIcon.test.ts` (5 tests), `AkModuleIcon.test.ts` (5 tests), and updated `resolveAsset.test.ts` (12 tests) — 33 files, 218 Vitest tests passing.
     - Updated `app/pages/_ui.vue` showcase with live interactive demonstrations of avatar sizes, items, skills, and modules.
 
+- Design System Shell & Navigation Foundation (`feat/design-shell`):
+  - Pre-step:
+    - Item tiers T1–T5: added dedicated SCSS tokens in `_tokens.scss` (`T1 #8a8a8a, T2 #7fc48a, T3 #6fa3e0, T4 #a97be0, T5 #e0b44a`) per `docs/design/DESIGN.md`, decoupled from operator rarity tokens; connected to `AkItemIcon`.
+    - Icons: aligned `AkSkillIcon` (2px solid `#ffd9a8` border) and `AkModuleIcon` (48px diamond, solid `#ff6a3d` border) with `planner.html` mockups.
+    - Executed full repository git-tree audit across all 848 items, 900 skills, and 891 modules via `scripts/data/build-asset-manifest.ts`:
+      - Items: 848/848 (100.0%, 0 missing on `yuanyan3060/ArknightsGameResource`).
+      - Skills: 900/900 (100.0%, 0 missing on `yuanyan3060/ArknightsGameResource`).
+      - Modules: connected fallback upstream repository `fexli/ArknightsResource` to cover 259 modules added after Aceship commit 01.05.2024, achieving 891/891 (100.0%) total coverage.
+      - Saved manifest to `data/asset-manifest.json` (`source: 'tree'`) and updated `docs/assets.md`.
+  - Application Shell & Settings (`feat/design-shell`):
+    - `AkHeader`: logo `ARKCALC`, desktop horizontal navigation from `app/config/modules.ts`, dedicated right link to `Settings`, mobile drawer with focus trap, removed language switcher from header.
+    - Layout: updated `app/layouts/default.vue` to use `AkHeader` and Ember Editorial radial gradient background with footer disclaimer.
+    - Settings page (`/settings`, module `SET-06`, status `ready`):
+      - Language switcher: English / Русский with cookie and URL persistence.
+      - Default server: Global / CN selector persisted via `useSettingsStore` (`useLocalStorage('arkcalc_default_server', 'global')`) influencing operator catalog defaults.
+      - Account & Local Data: UI stubs for account sync, export JSON backup, import backup, and reset local data.
+      - Game data version: dynamic telemetry display from `data/meta.json` (commit hash, build date, total/global/CN operator counts).
+      - About: project disclaimer and link to open-source repository.
+    - `SyncAccountModal`: styled according to `sync-modal.html` with 4px left Ember accent bar, unofficial login advisory alert, tabbed navigation (Yostar email code / Import JSON / Demo data), server selector buttons (EN/JP/KR/CN), and 6-digit verification code input.
+    - Dashboard page (`/`): styled according to `dashboard.html` with hero banner (`radial-gradient`), 4 metric cards (`PULLS`, `SPARK`, `ACTIVE PLANS`, `SERVER`), and two columns (`Next headhunting` with countdown timer, `Your plans` with empty state).
+    - Testing & Quality:
+      - Added unit tests: `tests/unit/stores/settings.test.ts`, `tests/unit/components/ui/AkHeader.test.ts`, `tests/unit/pages/settings.test.ts`. Total 35 test files, 223 Vitest tests passing.
+      - Updated E2E tests: `tests/e2e/i18n.spec.ts` (language change verified via `/settings`), `tests/e2e/layout-sanity.spec.ts` (all 14 routes and 5 viewports passing, 0 horizontal overflow), `tests/e2e/responsive.spec.ts`, `tests/e2e/smoke.spec.ts`. All 105 Playwright tests passing.
+      - Verified `lint`, `stylelint`, `format:check`, `typecheck`, `i18n:check`, `data:validate`, `test`, `test:e2e`, and `build`.
+
 ## In progress
 
 - None.
@@ -268,7 +293,6 @@
 
 - Module `PLN-02`: Operator planner store & target state persistence via Pinia.
 - Module `DEP-01`: Depot inventory management & craft tree decomposition core.
-- Move language switcher to settings page when implementing module `SET-06`.
 
 ## Known issues
 
