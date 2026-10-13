@@ -1,6 +1,18 @@
 # Project Progress
 
-- **Machine Translation Pipeline, Deduplication & Farming Stages (`feat/i18n-machine`):**
+- **Workshop Crafting Engine Core (`feat/workshop-engine`):**
+  - Implemented pure TypeScript calculation core in `shared/utils/workshop/` (`recipeGraph.ts`, `resolveDemand.ts`, `types.ts`, `index.ts`) with zero Vue/Pinia/network dependencies.
+  - Built `RecipeGraph` indexing formulas from `data/recipes.json` and item tiers from `data/items.json`. Defaulted allowed kinds strictly to `'synthesis'` and `'manufacture'`; chip conversions disabled by default and enabled via `allowConversions: true`.
+  - Implemented cycle detection in `RecipeGraph` using DFS traversal, `visited` path tracking, and `maxDepth` limit (default 15). Verified cycle detection across all 8 reciprocal chip pairs.
+  - Implemented hierarchical top-down demand resolution (`resolveDemand`) traversing from tier 5 down to tier 1. Satisfies requirements from warehouse stock first, computes craft batches (`times = ceil(deficit / resultCount)`), returns surplus output to `leftoverStock`, sums crafting LMD costs (`lmdForCrafting`), and propagates raw ingredients to `rawDeficit`.
+  - Accounted explicitly for Dualchips (Factory manufacture), Chip Catalysts (`32001`, uncraftable shop items entering `rawDeficit`), and class Chip / Chip Pack reciprocal conversions (executed up to available donor stock at 3:2 ratio).
+  - Calculated expected mathematical value ($\mathbb{E}[\text{count}]$) of Workshop byproducts when `byproducts: true` is enabled, rounded to 6 decimal places.
+  - Verified core mathematical monotonicity invariant: $\text{rawDeficit}_{\text{no-stock}} \ge \text{rawDeficit}_{\text{with-stock}}$ across multi-tier material trees.
+  - Documented complete architecture, formulas, conversion pairs, and edge cases in `docs/workshop.md`.
+  - Added 3 deferred tracking entries to `docs/known-issues.md`: Penguin stage suffix matching (`_rep`, `_perm`), chunked translation of descriptions, and code licensing owner decision.
+  - Added comprehensive test suite in `tests/unit/shared/workshop/workshop.test.ts` (33 tests covering T2->T3 chains, mixed stock, surplus leftovers, all 8 cycle pairs, monotonicity invariant, determinism, byproducts, and array/map inputs).
+  - All verification suites passing cleanly: 290 unit tests (42 files), 126 E2E tests, typecheck, lint, stylelint, format, i18n, and production build.
+
   - Removed unconfirmed manual overrides from `data/i18n/overrides/`, strictly enforcing valid URL sources in `ManualOverrideEntrySchema`. Moved Fiammetta Module A (`uniequip_004_phenxi.name`) to `data/i18n/machine/modules.json`.
   - Clarified licensing scope in `README.md`: `data/i18n/wiki/*.json` files are licensed under CC-BY-SA 4.0; all application code, cores, and scripts are licensed under MIT.
   - Built automated pipeline in `scripts/data/translate-missing.ts` with `--analyze`, `--export`, and `--import` modes. Implemented template deduplication collapsing 2,139 raw string instances to 493 unique templates (139k chars, ~209k tokens).
