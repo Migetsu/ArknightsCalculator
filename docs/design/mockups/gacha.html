@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Gacha</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 48px;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+      .pn {
+        background: #17110f;
+        border: 1px solid rgba(232, 221, 211, 0.08);
+      }
+      .av {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(160deg, #4a2418, #17110f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 15px Unbounded,
+          sans-serif;
+        border-bottom: 3px solid #ff9d2b;
+      }
+      .t {
+        margin: 0;
+        font:
+          800 34px Unbounded,
+          sans-serif;
+      }
+      h2 {
+        margin: 0 0 14px;
+        font:
+          800 15px Unbounded,
+          sans-serif;
+      }
+      label {
+        display: block;
+        font:
+          600 13px 'Golos Text',
+          sans-serif;
+        color: #a8978a;
+      }
+      label input {
+        display: block;
+        margin-top: 6px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        background: #0e0a09;
+        border: 1px solid rgba(232, 221, 211, 0.15);
+        color: #e8ddd3;
+        font:
+          600 15px 'Golos Text',
+          sans-serif;
+      }
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+      .st {
+        display: inline-flex;
+        align-items: stretch;
+        border: 1px solid rgba(232, 221, 211, 0.2);
+        background: #0e0a09;
+      }
+      .st button {
+        width: 28px;
+        border: 0;
+        background: #1d1511;
+        color: #ffd9a8;
+        font:
+          600 16px 'Golos Text',
+          sans-serif;
+        cursor: pointer;
+        padding: 0;
+      }
+      .st button:hover {
+        background: #ff6a3d;
+        color: #120d0b;
+      }
+      .st button:focus-visible {
+        outline: 2px solid #ffd9a8;
+        outline-offset: -2px;
+      }
+      .st input {
+        width: 56px !important;
+        min-width: 0;
+        margin: 0 !important;
+        border: 0 !important;
+        border-left: 1px solid rgba(232, 221, 211, 0.12) !important;
+        border-right: 1px solid rgba(232, 221, 211, 0.12) !important;
+        padding: 7px 0 !important;
+        text-align: center;
+        background: transparent !important;
+        color: #e8ddd3;
+        font:
+          600 14px 'Golos Text',
+          sans-serif !important;
+      }
+      label .st {
+        display: flex;
+        margin-top: 6px;
+      }
+      .st input {
+        flex: 1;
+        width: auto !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 900px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header>
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav>
+          <a href="#">Home</a><a href="#">Operators</a><a href="#">Planner</a><a href="#">Depot</a
+          ><a href="#">Farming</a><a href="#">Recruit</a
+          ><a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Gacha</a
+          >
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 36px 48px; display: grid; grid-template-columns: 3fr 2fr; gap: 24px">
+        <section style="display: flex; flex-direction: column; gap: 20px">
+          <h1 class="t">Gacha and Spark</h1>
+          <div
+            class="pn"
+            style="position: relative; overflow: hidden; padding: 24px; min-height: 230px"
+          >
+            <div
+              aria-hidden="true"
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 65%;
+                background: radial-gradient(
+                  ellipse at 70% 30%,
+                  #ff8a5c 0,
+                  #7a2a14 38%,
+                  #2a1510 75%
+                );
+              "
+            ></div>
+            <div
+              aria-hidden="true"
+              style="
+                position: absolute;
+                top: 14px;
+                right: 18px;
+                font: 500 11px monospace;
+                letter-spacing: 0.2em;
+                color: #ffd9a8;
+                opacity: 0.8;
+              "
+            >
+              [ BANNER ART ]
+            </div>
+            <div
+              aria-hidden="true"
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(
+                  90deg,
+                  #17110f 22%,
+                  rgba(23, 17, 15, 0.7) 52%,
+                  rgba(23, 17, 15, 0.1)
+                );
+              "
+            ></div>
+            <div style="position: relative">
+              <p
+                style="
+                  margin: 0 0 6px;
+                  font:
+                    600 12px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.18em;
+                  color: #ffd9a8;
+                "
+              >
+                NEXT BANNER // [TYPE]
+              </p>
+              <h2 style="font-size: 22px">[Banner name]</h2>
+              <p
+                style="
+                  margin: 0 0 18px;
+                  color: #a8978a;
+                  font:
+                    400 14px 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [start date] to [end date], starts in [n] days
+              </p>
+              <div style="display: flex; gap: 10px; align-items: center">
+                <div class="av">SA</div>
+                <div class="av">EY</div>
+                <div class="av">KA</div>
+                <div class="av" style="border-color: #ffd54f">TX</div>
+                <div class="av" style="border-color: #ffd54f">AM</div>
+                <span
+                  style="
+                    margin-left: 8px;
+                    font:
+                      400 13px 'Golos Text',
+                      sans-serif;
+                    color: #a8978a;
+                  "
+                  >Rate-up operators</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="pn" style="padding: 24px">
+            <h2>Chance to get your target 6★</h2>
+            <svg
+              viewBox="0 0 600 160"
+              width="100%"
+              role="img"
+              aria-label="Probability curve placeholder"
+            >
+              <path
+                d="M0 150 C120 140 220 120 300 95 C420 55 520 25 600 12"
+                fill="none"
+                stroke="#ff6a3d"
+                stroke-width="3"
+              />
+              <line x1="0" y1="150" x2="600" y2="150" stroke="rgba(232,221,211,.2)" />
+            </svg>
+            <div
+              style="
+                display: flex;
+                gap: 28px;
+                margin-top: 10px;
+                font:
+                  400 14px 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              <span>50 pulls <b style="color: #e8ddd3">[n]%</b></span
+              ><span>150 pulls <b style="color: #e8ddd3">[n]%</b></span
+              ><span>300 pulls <b style="color: #e8ddd3">100%</b></span>
+            </div>
+          </div>
+        </section>
+        <aside style="display: flex; flex-direction: column; gap: 20px">
+          <div class="pn" style="padding: 22px; display: flex; flex-direction: column; gap: 14px">
+            <h2>Your resources</h2>
+            <label
+              >Orundum<span class="st"
+                ><button type="button" aria-label="Decrease">&minus;</button
+                ><input type="number" value="0" /><button type="button" aria-label="Increase">
+                  +
+                </button></span
+              ></label
+            ><label
+              >Originite Prime<span class="st"
+                ><button type="button" aria-label="Decrease">&minus;</button
+                ><input type="number" value="0" /><button type="button" aria-label="Increase">
+                  +
+                </button></span
+              ></label
+            ><label
+              >Headhunting permits<span class="st"
+                ><button type="button" aria-label="Decrease">&minus;</button
+                ><input type="number" value="0" /><button type="button" aria-label="Increase">
+                  +
+                </button></span
+              ></label
+            >
+          </div>
+          <div class="pn" style="padding: 22px">
+            <h2>Spark progress</h2>
+            <div
+              style="
+                font:
+                  800 30px Unbounded,
+                  sans-serif;
+              "
+            >
+              0 / 300
+            </div>
+            <div style="height: 8px; background: #0e0a09; margin: 12px 0">
+              <div style="width: 0; height: 100%; background: #ff6a3d"></div>
+            </div>
+            <p
+              style="
+                margin: 0;
+                font:
+                  400 14px/1.6 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              Estimated: [n] days to reach 300 pulls
+            </p>
+            <button
+              style="
+                margin-top: 16px;
+                width: 100%;
+                padding: 12px;
+                background: #ff6a3d;
+                border: 0;
+                color: #120d0b;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Run pull simulator
+            </button>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>

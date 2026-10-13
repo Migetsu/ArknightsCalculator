@@ -4,7 +4,7 @@ import { computed } from 'vue'
 interface Props {
   value: number
   max?: number
-  variant?: 'cyan' | 'amber' | 'green'
+  variant?: 'ember' | 'cyan' | 'amber' | 'green'
   label?: string
   showPercentage?: boolean
   segments?: number
@@ -12,10 +12,10 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   max: 100,
-  variant: 'cyan',
+  variant: 'ember',
   label: undefined,
   showPercentage: false,
-  segments: 3,
+  segments: 1,
 })
 
 const percentage = computed(() => {
@@ -57,17 +57,17 @@ const percentage = computed(() => {
 .ak-progress {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
+  gap: 6px;
   width: 100%;
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-mono);
+    letter-spacing: var(--letter-spacing-caption);
     text-transform: uppercase;
     color: var(--color-text-secondary);
   }
@@ -84,14 +84,16 @@ const percentage = computed(() => {
 
   &__track {
     position: relative;
-    height: 8px;
-    background-color: var(--color-bg-base);
-    border: 1px solid var(--color-border-bold);
+    height: 6px;
+    background-color: var(--color-bg-deep);
+    border: none;
+    border-radius: var(--radius-none);
     overflow: hidden;
   }
 
   &__fill {
     height: 100%;
+    background-color: var(--color-accent-primary);
     transition: width var(--transition-base);
 
     @include reduced-motion;
@@ -108,40 +110,26 @@ const percentage = computed(() => {
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: var(--color-bg-surface);
+    background-color: var(--color-bg-base);
+    transform: translateX(-50%);
   }
 
-  // Variants
+  &--ember,
   &--cyan {
     .ak-progress__fill {
       background-color: var(--color-accent-primary);
-      box-shadow: 0 0 10px var(--color-accent-primary-glow);
-    }
-
-    .ak-progress__percentage {
-      color: var(--color-accent-primary);
     }
   }
 
   &--amber {
     .ak-progress__fill {
       background-color: var(--color-accent-warning);
-      box-shadow: 0 0 10px var(--color-accent-warning-glow);
-    }
-
-    .ak-progress__percentage {
-      color: var(--color-accent-warning);
     }
   }
 
   &--green {
     .ak-progress__fill {
       background-color: var(--color-accent-success);
-      box-shadow: 0 0 10px var(--color-accent-success-glow);
-    }
-
-    .ak-progress__percentage {
-      color: var(--color-accent-success);
     }
   }
 }

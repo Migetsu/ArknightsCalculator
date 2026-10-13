@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Dashboard</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 960px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header
+        style="
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding: 22px 48px;
+          font:
+            600 14px 'Golos Text',
+            sans-serif;
+          border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+        "
+      >
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav style="display: flex; gap: 24px">
+          <a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Home</a
+          ><a href="#">Operators</a><a href="#">Planner</a><a href="#">Depot</a
+          ><a href="#">Farming</a><a href="#">Recruit</a><a href="#">Gacha</a>
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 40px 48px; display: flex; flex-direction: column; gap: 28px">
+        <section
+          style="
+            padding: 36px;
+            border: 1px solid rgba(232, 221, 211, 0.1);
+            background: linear-gradient(
+              120deg,
+              rgba(255, 106, 61, 0.14),
+              rgba(23, 17, 15, 0.9) 60%
+            );
+          "
+        >
+          <p
+            style="
+              margin: 0 0 10px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.2em;
+              color: #ffd9a8;
+            "
+          >
+            TERMINAL // NO ACCOUNT SYNCED
+          </p>
+          <h1
+            style="
+              margin: 0;
+              font:
+                800 44px/1.1 Unbounded,
+                sans-serif;
+            "
+          >
+            Welcome back, Doctor
+          </h1>
+          <p
+            style="
+              margin: 12px 0 22px;
+              max-width: 560px;
+              font:
+                400 16px/1.5 'Golos Text',
+                sans-serif;
+              color: #a8978a;
+            "
+          >
+            Sync your account to import your roster, depot and goals, or explore with demo data
+            first.
+          </p>
+          <div style="display: flex; gap: 12px">
+            <button
+              style="
+                border: 0;
+                padding: 13px 26px;
+                background: #ff6a3d;
+                color: #120d0b;
+                font:
+                  600 15px 'Golos Text',
+                  sans-serif;
+                cursor: pointer;
+              "
+            >
+              Sync account</button
+            ><button
+              style="
+                padding: 13px 26px;
+                background: transparent;
+                color: #e8ddd3;
+                border: 1px solid rgba(232, 221, 211, 0.3);
+                font:
+                  600 15px 'Golos Text',
+                  sans-serif;
+                cursor: pointer;
+              "
+            >
+              Load demo data
+            </button>
+          </div>
+        </section>
+        <section style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px">
+          <div
+            style="
+              padding: 18px 20px;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+          >
+            <span
+              style="
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.14em;
+                color: #a8978a;
+              "
+              >PULLS</span
+            >
+            <div
+              style="
+                font:
+                  800 32px Unbounded,
+                  sans-serif;
+                margin-top: 4px;
+              "
+            >
+              0
+            </div>
+          </div>
+          <div
+            style="
+              padding: 18px 20px;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+          >
+            <span
+              style="
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.14em;
+                color: #a8978a;
+              "
+              >SPARK</span
+            >
+            <div
+              style="
+                font:
+                  800 32px Unbounded,
+                  sans-serif;
+                margin-top: 4px;
+              "
+            >
+              0 / 300
+            </div>
+          </div>
+          <div
+            style="
+              padding: 18px 20px;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+          >
+            <span
+              style="
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.14em;
+                color: #a8978a;
+              "
+              >ACTIVE PLANS</span
+            >
+            <div
+              style="
+                font:
+                  800 32px Unbounded,
+                  sans-serif;
+                margin-top: 4px;
+              "
+            >
+              0
+            </div>
+          </div>
+          <div
+            style="
+              padding: 18px 20px;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+          >
+            <span
+              style="
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.14em;
+                color: #a8978a;
+              "
+              >SERVER</span
+            >
+            <div
+              style="
+                font:
+                  800 32px Unbounded,
+                  sans-serif;
+                margin-top: 4px;
+                color: #ffd9a8;
+              "
+            >
+              Global
+            </div>
+          </div>
+        </section>
+        <section style="display: grid; grid-template-columns: 3fr 2fr; gap: 20px">
+          <div
+            style="padding: 24px; background: #17110f; border: 1px solid rgba(232, 221, 211, 0.08)"
+          >
+            <h2
+              style="
+                margin: 0 0 14px;
+                font:
+                  800 18px Unbounded,
+                  sans-serif;
+              "
+            >
+              Next headhunting
+            </h2>
+            <p
+              style="
+                margin: 0 0 16px;
+                font:
+                  400 15px 'Golos Text',
+                  sans-serif;
+                color: #a8978a;
+              "
+            >
+              [Banner name] / [start date] to [end date]
+            </p>
+            <div style="display: flex; gap: 12px">
+              <div style="padding: 14px 20px; background: #0e0a09; text-align: center">
+                <div
+                  style="
+                    font:
+                      800 28px Unbounded,
+                      sans-serif;
+                  "
+                >
+                  24
+                </div>
+                <span
+                  style="
+                    font:
+                      600 11px 'Golos Text',
+                      sans-serif;
+                    color: #a8978a;
+                  "
+                  >DAYS</span
+                >
+              </div>
+              <div style="padding: 14px 20px; background: #0e0a09; text-align: center">
+                <div
+                  style="
+                    font:
+                      800 28px Unbounded,
+                      sans-serif;
+                  "
+                >
+                  19
+                </div>
+                <span
+                  style="
+                    font:
+                      600 11px 'Golos Text',
+                      sans-serif;
+                    color: #a8978a;
+                  "
+                  >HRS</span
+                >
+              </div>
+              <div style="padding: 14px 20px; background: #0e0a09; text-align: center">
+                <div
+                  style="
+                    font:
+                      800 28px Unbounded,
+                      sans-serif;
+                  "
+                >
+                  07
+                </div>
+                <span
+                  style="
+                    font:
+                      600 11px 'Golos Text',
+                      sans-serif;
+                    color: #a8978a;
+                  "
+                  >MIN</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            style="padding: 24px; background: #17110f; border: 1px solid rgba(232, 221, 211, 0.08)"
+          >
+            <h2
+              style="
+                margin: 0 0 14px;
+                font:
+                  800 18px Unbounded,
+                  sans-serif;
+              "
+            >
+              Your plans
+            </h2>
+            <div
+              style="
+                padding: 28px 12px;
+                border: 1px dashed rgba(232, 221, 211, 0.25);
+                text-align: center;
+                color: #a8978a;
+                font:
+                  400 14px/1.5 'Golos Text',
+                  sans-serif;
+              "
+            >
+              No plans yet.<br /><a href="#" style="color: #ff8a5c">Pick an operator to start</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Banners</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 48px;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+      .pn {
+        background: #17110f;
+        border: 1px solid rgba(232, 221, 211, 0.08);
+      }
+      .av {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(160deg, #4a2418, #17110f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 12px Unbounded,
+          sans-serif;
+        border-bottom: 3px solid #ff9d2b;
+        flex: none;
+      }
+      .t {
+        margin: 0;
+        font:
+          800 34px Unbounded,
+          sans-serif;
+      }
+      .bn {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 32px;
+        padding: 24px;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.07);
+      }
+      .ch {
+        display: inline-block;
+        padding: 3px 10px;
+        font:
+          600 11px 'Golos Text',
+          sans-serif;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 1120px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header>
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav>
+          <a href="#">Home</a><a href="#">Operators</a><a href="#">Planner</a><a href="#">Depot</a
+          ><a href="#">Farming</a><a href="#">Recruit</a
+          ><a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Gacha</a
+          >
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 36px 48px; display: flex; flex-direction: column; gap: 22px">
+        <div style="display: flex; align-items: center; gap: 20px">
+          <h1 class="t">Banners</h1>
+          <div
+            style="
+              display: flex;
+              font:
+                600 13px 'Golos Text',
+                sans-serif;
+            "
+          >
+            <button
+              style="
+                padding: 9px 18px;
+                background: #17110f;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+                color: #e8ddd3;
+              "
+            >
+              CN dates</button
+            ><button style="padding: 9px 18px; background: #ff6a3d; border: 0; color: #120d0b">
+              Estimated Global
+            </button>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 6px;
+              margin-left: 12px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+            "
+          >
+            <button
+              style="
+                padding: 8px 14px;
+                background: #17110f;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+                color: #e8ddd3;
+              "
+            >
+              Standard</button
+            ><button
+              style="
+                padding: 8px 14px;
+                background: #17110f;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+                color: #e8ddd3;
+              "
+            >
+              Limited</button
+            ><button
+              style="
+                padding: 8px 14px;
+                background: #17110f;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+                color: #e8ddd3;
+              "
+            >
+              Joint Operation
+            </button>
+          </div>
+        </div>
+        <section class="pn">
+          <div
+            class="bn"
+            style="
+              grid-template-columns: 340px 1fr;
+              padding: 14px 24px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.16em;
+              color: #a8978a;
+            "
+          >
+            <span style="text-align: center">BANNER</span><span>RATE-UP OPERATORS</span>
+          </div>
+          <div class="bn">
+            <div>
+              <div
+                style="
+                  background: #ff9d2b;
+                  color: #120d0b;
+                  padding: 9px 12px;
+                  text-align: center;
+                  font:
+                    800 13px/1.35 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Standard Headhunting] Orienteering #7
+              </div>
+              <div
+                style="
+                  height: 150px;
+                  background: linear-gradient(120deg, #4a2418, #17110f);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font: 500 11px monospace;
+                  letter-spacing: 0.2em;
+                  color: #a8978a;
+                "
+              >
+                [ BANNER ART ]
+              </div>
+              <div
+                style="
+                  padding: 12px 4px 0;
+                  text-align: center;
+                  font:
+                    400 13px/1.7 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                CN: <b style="color: #e8ddd3">2026/05/15 to 05/29</b><br />Est. Global:
+                <b style="color: #e8ddd3">2026/11/06 to 11/20</b><br /><span
+                  class="ch"
+                  style="
+                    background: #0e0a09;
+                    border: 1px solid #ffd9a8;
+                    color: #ffd9a8;
+                    margin-top: 6px;
+                  "
+                  >IN ~24 DAYS</span
+                >
+              </div>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 14px;
+                  font:
+                    400 14px/1.5 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                Choose 3 of the 6★ operators: only these 6★ appear on this banner. Choose 3 of the
+                5★ operators: each has a 60% chance to be the 5★ you get.
+              </p>
+              <p
+                style="
+                  margin: 0 0 8px;
+                  font:
+                    600 11px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.14em;
+                  color: #ffd9a8;
+                "
+              >
+                6★ OPERATORS
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px">
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+              </div>
+              <p
+                style="
+                  margin: 0 0 8px;
+                  font:
+                    600 11px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.14em;
+                  color: #ffd9a8;
+                "
+              >
+                5★ OPERATORS
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px">
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+              </div>
+            </div>
+          </div>
+          <div class="bn">
+            <div>
+              <div
+                style="
+                  background: #ff6a3d;
+                  color: #120d0b;
+                  padding: 9px 12px;
+                  text-align: center;
+                  font:
+                    800 13px/1.35 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Limited Headhunting, Crossover] Hunters of the Umbral Wilds
+              </div>
+              <div
+                style="
+                  height: 150px;
+                  background: linear-gradient(120deg, #4a2418, #17110f);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font: 500 11px monospace;
+                  letter-spacing: 0.2em;
+                  color: #a8978a;
+                "
+              >
+                [ BANNER ART ]
+              </div>
+              <div
+                style="
+                  padding: 12px 4px 0;
+                  text-align: center;
+                  font:
+                    400 13px/1.7 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                CN: <b style="color: #e8ddd3">2026/06/01 to 06/15</b><br />Est. Global:
+                <b style="color: #e8ddd3">2026/11/23 to 12/07</b><br /><span
+                  class="ch"
+                  style="
+                    background: #0e0a09;
+                    border: 1px solid #ffd9a8;
+                    color: #ffd9a8;
+                    margin-top: 6px;
+                  "
+                  >IN ~41 DAYS</span
+                >
+              </div>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 8px;
+                  font:
+                    600 11px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.14em;
+                  color: #ffd9a8;
+                "
+              >
+                RATE-UP
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px">
+                <div class="av">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+              </div>
+            </div>
+          </div>
+          <div class="bn">
+            <div>
+              <div
+                style="
+                  background: #ff6a3d;
+                  color: #120d0b;
+                  padding: 9px 12px;
+                  text-align: center;
+                  font:
+                    800 13px/1.35 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Limited Headhunting, Triumphant Hunt] Sharpened by Flame Rerun
+              </div>
+              <div
+                style="
+                  height: 150px;
+                  background: linear-gradient(120deg, #4a2418, #17110f);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font: 500 11px monospace;
+                  letter-spacing: 0.2em;
+                  color: #a8978a;
+                "
+              >
+                [ BANNER ART ]
+              </div>
+              <div
+                style="
+                  padding: 12px 4px 0;
+                  text-align: center;
+                  font:
+                    400 13px/1.7 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                CN: <b style="color: #e8ddd3">2026/06/15 to 06/29</b><br />Est. Global:
+                <b style="color: #e8ddd3">2026/12/07 to 12/21</b><br /><span
+                  class="ch"
+                  style="
+                    background: #0e0a09;
+                    border: 1px solid #ffd9a8;
+                    color: #ffd9a8;
+                    margin-top: 6px;
+                  "
+                  >IN ~55 DAYS</span
+                >
+              </div>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 8px;
+                  font:
+                    600 11px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.14em;
+                  color: #ffd9a8;
+                "
+              >
+                RATE-UP
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px">
+                <div class="av">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+              </div>
+            </div>
+          </div>
+          <div class="bn">
+            <div>
+              <div
+                style="
+                  background: #ff9d2b;
+                  color: #120d0b;
+                  padding: 9px 12px;
+                  text-align: center;
+                  font:
+                    800 13px/1.35 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Standard Headhunting] Joint Operation #22
+              </div>
+              <div
+                style="
+                  height: 150px;
+                  background: linear-gradient(120deg, #4a2418, #17110f);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font: 500 11px monospace;
+                  letter-spacing: 0.2em;
+                  color: #a8978a;
+                "
+              >
+                [ BANNER ART ]
+              </div>
+              <div
+                style="
+                  padding: 12px 4px 0;
+                  text-align: center;
+                  font:
+                    400 13px/1.7 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                CN: <b style="color: #e8ddd3">2026/06/26 to 07/10</b><br />Est. Global:
+                <b style="color: #e8ddd3">2026/12/18 to 2027/01/01</b><br /><span
+                  class="ch"
+                  style="
+                    background: #0e0a09;
+                    border: 1px solid #ffd9a8;
+                    color: #ffd9a8;
+                    margin-top: 6px;
+                  "
+                  >IN ~66 DAYS</span
+                >
+              </div>
+            </div>
+            <div>
+              <p
+                style="
+                  margin: 0 0 14px;
+                  font:
+                    400 14px/1.5 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+              >
+                Only the following 6★ and 5★ operators can appear on this banner.
+              </p>
+              <p
+                style="
+                  margin: 0 0 8px;
+                  font:
+                    600 11px 'Golos Text',
+                    sans-serif;
+                  letter-spacing: 0.14em;
+                  color: #ffd9a8;
+                "
+              >
+                6★ AND 5★ OPERATORS
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px">
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+                <div class="av" style="border-color: #ffd54f">OP</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <p
+          style="
+            margin: 0;
+            font:
+              400 13px 'Golos Text',
+              sans-serif;
+            color: #a8978a;
+          "
+        >
+          Global dates are estimates based on the CN schedule and may change.
+        </p>
+      </main>
+    </div>
+  </body>
+</html>

@@ -14,7 +14,6 @@ describe('AkButton', () => {
     expect(wrapper.classes()).toContain('ak-button')
     expect(wrapper.classes()).toContain('ak-button--primary')
     expect(wrapper.classes()).toContain('ak-button--md')
-    expect(wrapper.classes()).toContain('ak-button--cut')
   })
 
   it('applies variant and size modifier classes correctly', async () => {

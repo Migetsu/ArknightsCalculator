@@ -14,6 +14,9 @@ import AkModal from '~/components/ui/AkModal.vue'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkGrid from '~/components/ui/AkGrid.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
+import AkChip from '~/components/ui/AkChip.vue'
+import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
+import AkStepper from '~/components/ui/AkStepper.vue'
 
 const { t } = useI18n()
 
@@ -23,9 +26,32 @@ const sampleTabs: TabItem[] = [
   { id: 'tab3', label: 'OFFLINE ARCHIVE', disabled: true },
 ]
 const activeTab = ref('tab1')
+const activeUnderlineTab = ref('tab1')
+
 const inputValue = ref('')
 const inputError = ref('PRTS cryptographic key invalid')
 const isModalOpen = ref(false)
+
+// AkChip & AkSegmented demo states
+const chipActive1 = ref(true)
+const chipActive2 = ref(false)
+const chipActive3 = ref(true)
+
+const serverOptions: SegmentOption[] = [
+  { value: 'global', label: 'Global' },
+  { value: 'cn', label: 'CN' },
+]
+const selectedServer = ref('global')
+
+const langOptions: SegmentOption[] = [
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'Русский' },
+]
+const selectedLang = ref('en')
+
+// AkStepper demo state
+const stepperCount = ref(42)
+const stepperLmd = ref(150000)
 </script>
 
 <template>
@@ -36,40 +62,39 @@ const isModalOpen = ref(false)
         tag-label="DEV SHOWCASE"
         :title="t('ui.title')"
         :subtitle="t('ui.subtitle')"
-        watermark="PRTS"
+        watermark="ARKCALC"
         badge="DEV-ONLY"
-        badge-variant="cyan"
+        badge-variant="amber"
       >
         <template #title>
           <span class="page-ui__title">{{ t('ui.title') }}</span>
         </template>
         <template #actions>
-          <AkButton variant="secondary" size="sm" @click="isModalOpen = true">
+          <AkButton variant="outline" size="sm" @click="isModalOpen = true">
             Launch Modal
           </AkButton>
         </template>
       </AkPageHeader>
 
-      <!-- Buttons -->
-      <AkPanel title="AkButton Component" tag="UI // 01" line-color="cyan">
+      <!-- Buttons (Ember Editorial) -->
+      <AkPanel title="AkButton Component" tag="UI // 01" line-color="ember">
         <div class="page-ui__group">
-          <span class="page-ui__group-label">Variants</span>
+          <span class="page-ui__group-label">Ember Editorial Variants</span>
           <div class="page-ui__row">
-            <AkButton variant="primary">Deploy (Primary)</AkButton>
-            <AkButton variant="secondary">Radar Scan (Secondary)</AkButton>
-            <AkButton variant="ghost">Inspect (Ghost)</AkButton>
-            <AkButton variant="warning">Alert (Warning)</AkButton>
-            <AkButton variant="danger">Retreat (Danger)</AkButton>
+            <AkButton variant="primary">Sync account (Primary Ember)</AkButton>
+            <AkButton variant="outline">Load demo data (Outline)</AkButton>
+            <AkButton variant="gold-outline">Export backup (Gold Outline)</AkButton>
+            <AkButton variant="danger">Reset data (Danger)</AkButton>
+            <AkButton variant="ghost">Settings (Ghost)</AkButton>
           </div>
         </div>
 
         <div class="page-ui__group">
-          <span class="page-ui__group-label">Sizes & Shapes</span>
+          <span class="page-ui__group-label">Sizes</span>
           <div class="page-ui__row">
-            <AkButton size="sm">Small Unit</AkButton>
-            <AkButton size="md">Medium Unit</AkButton>
-            <AkButton size="lg">Large Command</AkButton>
-            <AkButton :cut-corner="true">Cut Corner</AkButton>
+            <AkButton size="sm">Small Unit (sm)</AkButton>
+            <AkButton size="md">Medium Action (md)</AkButton>
+            <AkButton size="lg">Large Command (lg)</AkButton>
           </div>
         </div>
 
@@ -82,15 +107,54 @@ const isModalOpen = ref(false)
         </div>
       </AkPanel>
 
+      <!-- AkChip, AkSegmented, AkStepper (New Primitives) -->
+      <AkPanel title="AkChip, AkSegmented & AkStepper" tag="UI // 02" line-color="ember">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">AkChip: Toggleable Filters & Tags</span>
+          <div class="page-ui__row">
+            <AkChip v-model="chipActive1">All classes</AkChip>
+            <AkChip v-model="chipActive2">Guard</AkChip>
+            <AkChip v-model="chipActive3">Caster</AkChip>
+            <AkChip :disabled="true">Medic (Disabled)</AkChip>
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">AkSegmented: Server / Language Switchers</span>
+          <div class="page-ui__row">
+            <AkSegmented v-model="selectedServer" :options="serverOptions" />
+            <AkSegmented v-model="selectedLang" :options="langOptions" />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">AkStepper: Inventory Number Controls</span>
+          <div class="page-ui__row">
+            <div class="page-ui__stepper-demo">
+              <span class="page-ui__stepper-label">Item Quantity:</span>
+              <AkStepper v-model="stepperCount" :min="0" :max="999" />
+            </div>
+            <div class="page-ui__stepper-demo">
+              <span class="page-ui__stepper-label">LMD Stock:</span>
+              <AkStepper v-model="stepperLmd" :min="0" :max="9999999" :step="1000" />
+            </div>
+            <div class="page-ui__stepper-demo">
+              <span class="page-ui__stepper-label">Disabled:</span>
+              <AkStepper :model-value="10" :disabled="true" />
+            </div>
+          </div>
+        </div>
+      </AkPanel>
+
       <!-- Badges & Rarities -->
-      <AkPanel title="AkBadge & Operator Rarities" tag="UI // 02" line-color="amber">
+      <AkPanel title="AkBadge & Operator Rarities" tag="UI // 03" line-color="amber">
         <div class="page-ui__group">
           <span class="page-ui__group-label">HUD Variants</span>
           <div class="page-ui__row">
-            <AkBadge variant="cyan">CYAN // TECH</AkBadge>
             <AkBadge variant="amber">AMBER // STANDBY</AkBadge>
             <AkBadge variant="green">GREEN // OPTIMAL</AkBadge>
             <AkBadge variant="red">RED // COMBAT</AkBadge>
+            <AkBadge variant="cyan">CYAN // INFO</AkBadge>
             <AkBadge variant="neutral">NEUTRAL</AkBadge>
           </div>
         </div>
@@ -108,43 +172,44 @@ const isModalOpen = ref(false)
         </div>
       </AkPanel>
 
-      <!-- Stats Tiles -->
-      <AkPanel title="AkStat Component" tag="UI // 03" line-color="green">
+      <!-- Stats Tiles (Unbounded 800) -->
+      <AkPanel title="AkStat Component (32px Unbounded)" tag="UI // 04" line-color="green">
         <div class="page-ui__stats-grid">
-          <AkStat label="AVAILABLE PULLS:" value="142 ROLLS" variant="cyan" />
-          <AkStat label="ACTIVE TARGETS:" value="4 OPERATORS" variant="neutral" />
-          <AkStat label="SPARK READINESS:" value="47%" subvalue="(142/300)" variant="amber" />
-          <AkStat label="MONTHLY CARD:" value="ACTIVE (+200/D)" variant="green" />
+          <AkStat label="PULLS" value="142" variant="ember" />
+          <AkStat label="SPARK" value="142 / 300" variant="neutral" />
+          <AkStat label="ACTIVE PLANS" value="4" variant="amber" />
+          <AkStat label="SERVER" value="Global" variant="green" />
         </div>
       </AkPanel>
 
       <!-- Alerts -->
-      <AkPanel title="AkAlert Component" tag="UI // 04" line-color="red">
+      <AkPanel title="AkAlert Component" tag="UI // 05" line-color="amber">
         <div class="page-ui__column">
-          <AkAlert variant="warning" title="NO GAME ACCOUNT SYNCHRONIZED" badge="PRTS // STANDBY">
-            Depot stock, gacha currency, and operator promotion goals are currently empty.
+          <AkAlert variant="warning" title="Unofficial login." badge="TERMINAL // SYNC">
+            This uses the game's login servers and is not endorsed by Yostar; use it at your own
+            risk. Logging in here may sign you out of the game on your device.
             <template #actions>
-              <AkButton variant="ghost" size="sm">LOAD DEMO</AkButton>
-              <AkButton variant="primary" size="sm">SYNC ACCOUNT →</AkButton>
+              <AkButton variant="outline" size="sm">Learn more</AkButton>
+              <AkButton variant="primary" size="sm">Start sync</AkButton>
             </template>
           </AkAlert>
 
-          <AkAlert variant="info" title="TERMINAL SYSTEM UPDATE" badge="PRTS // NOTICE">
+          <AkAlert variant="info" title="TERMINAL SYSTEM UPDATE" badge="TERMINAL // NOTICE">
             PRTS kernel system v4.12 loaded with real-time Penguin Stats sync protocol.
           </AkAlert>
 
-          <AkAlert variant="success" title="PROMOTION PLAN COMPLETED" badge="PRTS // SUCCESS">
+          <AkAlert variant="success" title="PROMOTION PLAN COMPLETED" badge="TERMINAL // SUCCESS">
             Materials for Blaze the Igniting Spark E2 promotion synthesized successfully.
           </AkAlert>
 
-          <AkAlert variant="danger" title="SECURITY ADVISORY" badge="PRTS // ALERT">
+          <AkAlert variant="danger" title="SECURITY ADVISORY" badge="TERMINAL // ALERT">
             Cryptographic handshake mismatch detected on auxiliary socket.
           </AkAlert>
         </div>
       </AkPanel>
 
       <!-- Avatars -->
-      <AkPanel title="AkAvatar Component" tag="UI // 05" line-color="cyan">
+      <AkPanel title="AkAvatar Component" tag="UI // 06" line-color="ember">
         <div class="page-ui__group">
           <span class="page-ui__group-label">Operator Rarity Underlines (1★ - 6★)</span>
           <div class="page-ui__row">
@@ -158,24 +223,24 @@ const isModalOpen = ref(false)
         </div>
 
         <div class="page-ui__group">
-          <span class="page-ui__group-label">Broken Image Fallback</span>
+          <span class="page-ui__group-label">Initials Fallback (When Art Unavailable)</span>
           <div class="page-ui__row">
-            <AkAvatar src="/broken-link.png" name="Doctor" :rarity="6" size="lg" />
-            <AkAvatar src="/broken-link.png" name="SilverAsh" :rarity="6" size="md" />
-            <AkAvatar src="/broken-link.png" name="Eyjafjalla" :rarity="6" size="sm" />
+            <AkAvatar name="Doctor" :rarity="6" size="lg" />
+            <AkAvatar name="SilverAsh" :rarity="6" size="md" />
+            <AkAvatar name="Eyjafjalla" :rarity="6" size="sm" />
           </div>
         </div>
       </AkPanel>
 
       <!-- Progress & Empty State -->
-      <AkPanel title="AkProgress & AkEmptyState" tag="UI // 06" line-color="amber">
+      <AkPanel title="AkProgress & AkEmptyState" tag="UI // 07" line-color="amber">
         <div class="page-ui__column">
           <AkProgress
             :value="142"
             :max="300"
-            label="300-SPARK PROGRESS"
+            label="SPARK PROGRESS"
             :show-percentage="true"
-            variant="cyan"
+            variant="ember"
             :segments="3"
           />
 
@@ -189,18 +254,18 @@ const isModalOpen = ref(false)
           />
 
           <AkEmptyState
-            title="NO OPERATOR TARGETS PLANNED YET."
-            description="Click an elite operator below to add to promotion plan."
+            title="No plans yet."
+            description="Pick an operator to start planning promotion requirements and farming runs."
           >
             <template #action>
-              <AkButton variant="secondary" size="sm">+ ADD OPERATOR</AkButton>
+              <AkButton variant="outline" size="sm">+ Add operator</AkButton>
             </template>
           </AkEmptyState>
         </div>
       </AkPanel>
 
       <!-- Modal & Inputs -->
-      <AkPanel title="AkModal & AkInput" tag="UI // 07" line-color="green">
+      <AkPanel title="AkModal & AkInput" tag="UI // 08" line-color="green">
         <div class="page-ui__column">
           <div class="page-ui__row">
             <AkButton variant="primary" @click="isModalOpen = true">
@@ -224,26 +289,41 @@ const isModalOpen = ref(false)
         </div>
       </AkPanel>
 
-      <!-- Tabs -->
-      <AkPanel title="AkTabs Component" tag="UI // 08" line-color="cyan">
-        <AkTabs v-model="activeTab" :items="sampleTabs">
-          <template #default="{ activeTab: currentTab }">
-            <div class="page-ui__tab-panel">
-              <p v-if="currentTab === 'tab1'">
-                PRTS Terminal Alpha online. Tactical command systems responsive.
-              </p>
-              <p v-else-if="currentTab === 'tab2'">
-                Radar logs updated: Next Standard Headhunting scheduled in 24 days.
-              </p>
-            </div>
-          </template>
-        </AkTabs>
+      <!-- Tabs (Buttons & Underline) -->
+      <AkPanel title="AkTabs Component" tag="UI // 09" line-color="ember">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Variant: Buttons</span>
+          <AkTabs v-model="activeTab" :items="sampleTabs" variant="buttons">
+            <template #default="{ activeTab: currentTab }">
+              <div class="page-ui__tab-panel">
+                <p v-if="currentTab === 'tab1'">
+                  PRTS Terminal Alpha online. Tactical command systems responsive.
+                </p>
+                <p v-else-if="currentTab === 'tab2'">
+                  Radar logs updated: Next Standard Headhunting scheduled in 24 days.
+                </p>
+              </div>
+            </template>
+          </AkTabs>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Variant: Underline</span>
+          <AkTabs v-model="activeUnderlineTab" :items="sampleTabs" variant="underline">
+            <template #default="{ activeTab: currentTab }">
+              <div class="page-ui__tab-panel">
+                <p v-if="currentTab === 'tab1'">Underline tab 1 active.</p>
+                <p v-else-if="currentTab === 'tab2'">Underline tab 2 active.</p>
+              </div>
+            </template>
+          </AkTabs>
+        </div>
       </AkPanel>
 
       <!-- Layout Primitives -->
       <AkPanel
         title="Layout Primitives (AkContainer, AkGrid, AkPageHeader)"
-        tag="UI // 09"
+        tag="UI // 10"
         line-color="green"
       >
         <div class="page-ui__group">
@@ -251,7 +331,7 @@ const isModalOpen = ref(false)
             AkGrid: Preset Panels (1 col mobile, 2 col md, 3 col xl)
           </span>
           <AkGrid preset="panels">
-            <AkPanel title="Module Grid Card 1" tag="DEMO // 01" line-color="cyan">
+            <AkPanel title="Module Grid Card 1" tag="DEMO // 01" line-color="ember">
               <p>Responsive content card automatically constrained with minmax(0, 1fr).</p>
             </AkPanel>
             <AkPanel title="Module Grid Card 2" tag="DEMO // 02" line-color="amber">
@@ -266,7 +346,7 @@ const isModalOpen = ref(false)
         <div class="page-ui__group">
           <span class="page-ui__group-label">AkGrid: Preset Stats (4 columns with minmax)</span>
           <AkGrid preset="stats">
-            <AkStat label="DEPLOYED OPERATORS" value="48" variant="cyan" />
+            <AkStat label="DEPLOYED OPERATORS" value="48" variant="ember" />
             <AkStat label="ORUNDUM RESERVE" value="73,200" variant="amber" />
             <AkStat label="MASTERY TARGETS" value="12" variant="green" />
             <AkStat label="SYSTEM TELEMETRY" value="OPTIMAL" variant="neutral" />
@@ -275,7 +355,7 @@ const isModalOpen = ref(false)
       </AkPanel>
 
       <!-- Rich Text Formatting -->
-      <AkPanel title="AkRichText Component" tag="UI // 10" line-color="cyan">
+      <AkPanel title="AkRichText Component" tag="UI // 11" line-color="ember">
         <div class="page-ui__column">
           <div class="page-ui__group">
             <span class="page-ui__group-label"
@@ -318,21 +398,19 @@ const isModalOpen = ref(false)
     </AkContainer>
 
     <!-- Interactive Showcase Modal -->
-    <AkModal
-      v-model="isModalOpen"
-      title="Tactical Security Override"
-      tag="PRTS.SECURITY // CONFIRM"
-    >
+    <AkModal v-model="isModalOpen" title="Account synchronization" tag="TERMINAL // SYNC">
       <div class="page-ui__modal-inner">
-        <AkAlert variant="warning" title="OVERRIDE PROTOCOL ACTIVE">
-          Manual override modifies tactical telemetry for simulated missions.
+        <AkAlert variant="warning" title="Unofficial login.">
+          This uses the game's login servers and is not endorsed by Yostar; use it at your own risk.
         </AkAlert>
-        <p>Confirm authorization credentials before continuing.</p>
+        <p>
+          Your email, code and tokens are not stored on our servers. Data stays in this browser.
+        </p>
       </div>
 
       <template #footer>
-        <AkButton variant="ghost" @click="isModalOpen = false">Cancel</AkButton>
-        <AkButton variant="primary" @click="isModalOpen = false">Authorize</AkButton>
+        <AkButton variant="outline" @click="isModalOpen = false">Cancel</AkButton>
+        <AkButton variant="primary" @click="isModalOpen = false">Start sync</AkButton>
       </template>
     </AkModal>
   </div>
@@ -364,15 +442,15 @@ const isModalOpen = ref(false)
   }
 
   &__badge {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
     color: var(--color-accent-primary);
   }
 
   &__title {
-    font-family: var(--font-heading);
+    font-family: var(--font-display);
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-heading);
@@ -399,10 +477,10 @@ const isModalOpen = ref(false)
   }
 
   &__group-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
     color: var(--color-text-secondary);
     text-transform: uppercase;
   }
@@ -412,6 +490,19 @@ const isModalOpen = ref(false)
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-sm);
+  }
+
+  &__stepper-demo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  &__stepper-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
   }
 
   &__column {
@@ -446,7 +537,7 @@ const isModalOpen = ref(false)
 
   &__tab-panel {
     padding: var(--space-md);
-    background-color: var(--color-bg-elevated);
+    background-color: var(--color-bg-deep);
     border: 1px solid var(--color-border-subtle);
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);

@@ -5,8 +5,8 @@ interface Props {
   subtitle?: string
   badge?: string
   badgeVariant?: 'cyan' | 'amber' | 'green' | 'red' | 'neutral'
-  lineColor?: 'cyan' | 'amber' | 'green' | 'red' | 'none'
-  cutCorner?: 'top-left' | 'top-right' | 'bottom-right' | 'none'
+  lineColor?: 'cyan' | 'amber' | 'green' | 'red' | 'ember' | 'none'
+  cutCorner?: 'top-left' | 'top-right' | 'bottom-right' | 'none' // Kept for API compatibility
   variant?: 'base' | 'surface' | 'elevated' | 'bordered'
 }
 
@@ -23,18 +23,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <section
-    class="ak-panel"
-    :class="[
-      `ak-panel--${variant}`,
-      `ak-panel--line-${lineColor}`,
-      {
-        'ak-panel--cut-top-left': cutCorner === 'top-left',
-        'ak-panel--cut-top-right': cutCorner === 'top-right',
-        'ak-panel--cut-bottom-right': cutCorner === 'bottom-right',
-      },
-    ]"
-  >
+  <section class="ak-panel" :class="[`ak-panel--${variant}`, `ak-panel--line-${lineColor}`]">
     <header
       v-if="tag || title || subtitle || badge || $slots.header || $slots.actions"
       class="ak-panel__header"
@@ -77,73 +66,15 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid var(--color-border-base);
   background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-none);
   box-shadow: var(--shadow-panel);
   min-width: 0;
 
-  // Technical corner tick in top-left
-  &::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 6px;
-    height: 6px;
-    border-top: 2px solid var(--color-border-bold);
-    border-left: 2px solid var(--color-border-bold);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  // Technical corner tick in bottom-right
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 6px;
-    height: 6px;
-    border-bottom: 2px solid var(--color-border-bold);
-    border-right: 2px solid var(--color-border-bold);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  &--line-cyan {
-    border-top: 2px solid var(--color-accent-primary);
-
-    &::before {
-      border-top-color: var(--color-accent-primary);
-      border-left-color: var(--color-accent-primary);
-    }
-  }
-
-  &--line-amber {
-    border-top: 2px solid var(--color-accent-warning);
-
-    &::before {
-      border-top-color: var(--color-accent-warning);
-      border-left-color: var(--color-accent-warning);
-    }
-  }
-
-  &--line-green {
-    border-top: 2px solid var(--color-accent-success);
-
-    &::before {
-      border-top-color: var(--color-accent-success);
-      border-left-color: var(--color-accent-success);
-    }
-  }
-
-  &--line-red {
-    border-top: 2px solid var(--color-accent-danger);
-
-    &::before {
-      border-top-color: var(--color-accent-danger);
-      border-left-color: var(--color-accent-danger);
-    }
+  // Variants
+  &--base {
+    background-color: var(--color-bg-deep);
   }
 
   &--surface {
@@ -152,51 +83,42 @@ withDefaults(defineProps<Props>(), {
 
   &--elevated {
     background-color: var(--color-bg-elevated);
-  }
-
-  &--base {
-    background-color: var(--color-bg-base);
+    border-color: var(--color-border-base);
   }
 
   &--bordered {
-    background-color: var(--color-bg-card);
-    border-color: var(--color-border-subtle);
+    background-color: transparent;
+    border-color: var(--color-border-bold);
   }
 
-  &--cut-top-left {
-    @include cut-corner(14px, top-left);
-
-    &::before {
-      display: none;
-    }
+  // Accent edge indicators (left edge)
+  &--line-ember {
+    border-left: 3px solid var(--color-accent-primary);
   }
 
-  &--cut-top-right {
-    @include cut-corner(14px, top-right);
+  &--line-amber {
+    border-left: 3px solid var(--color-accent-warning);
   }
 
-  &--cut-bottom-right {
-    @include cut-corner(14px, bottom-right);
+  &--line-cyan {
+    border-left: 3px solid var(--color-accent-primary);
+  }
 
-    &::after {
-      display: none;
-    }
+  &--line-green {
+    border-left: 3px solid var(--color-accent-success);
+  }
+
+  &--line-red {
+    border-left: 3px solid var(--color-accent-danger);
   }
 
   &__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
     border-bottom: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-elevated);
-    min-width: 0;
-    position: relative;
-  }
-
-  &__actions {
-    flex-shrink: 0;
   }
 
   &__title-group {
@@ -204,102 +126,90 @@ withDefaults(defineProps<Props>(), {
     flex-direction: column;
     gap: var(--space-2xs);
     min-width: 0;
-    flex: 1;
   }
 
   &__tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--color-text-accent);
     text-transform: uppercase;
     line-height: 1.2;
-
-    .ak-panel--line-amber & {
-      color: var(--color-accent-warning);
-    }
-
-    .ak-panel--line-green & {
-      color: var(--color-accent-success);
-    }
-
-    .ak-panel--line-red & {
-      color: var(--color-accent-danger);
-    }
   }
 
   &__title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-md);
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
-    letter-spacing: var(--letter-spacing-heading);
-    text-transform: uppercase;
+    line-height: var(--line-height-tight);
     margin: 0;
-    line-height: 1.2;
-
-    @include text-truncate;
   }
 
   &__subtitle {
-    font-size: var(--font-size-xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
     margin: 0;
+  }
 
-    @include text-truncate;
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-shrink: 0;
   }
 
   &__badge {
     display: inline-flex;
     align-items: center;
-    padding: var(--space-2xs) var(--space-xs);
-    font-family: var(--font-mono);
+    padding: 3px 10px;
+    font-family: var(--font-body);
     font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--letter-spacing-mono);
     text-transform: uppercase;
-    border: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-base);
+    background-color: var(--color-bg-deep);
     color: var(--color-text-secondary);
 
-    &--cyan {
-      border-color: var(--color-accent-primary-subtle);
-      background-color: var(--color-accent-primary-subtle);
-      color: var(--color-accent-primary);
-    }
-
     &--amber {
-      border-color: var(--color-accent-warning-subtle);
-      background-color: var(--color-accent-warning-subtle);
+      border-color: var(--color-border-amber);
       color: var(--color-accent-warning);
     }
 
     &--green {
-      border-color: var(--color-accent-success-subtle);
-      background-color: var(--color-accent-success-subtle);
+      border-color: var(--color-accent-success);
       color: var(--color-accent-success);
     }
 
     &--red {
-      border-color: var(--color-accent-danger-subtle);
-      background-color: var(--color-accent-danger-subtle);
-      color: var(--color-accent-danger);
+      border-color: var(--color-border-danger);
+      color: var(--color-accent-ember-light);
+    }
+
+    &--cyan {
+      border-color: var(--color-accent-primary);
+      color: var(--color-accent-primary);
     }
   }
 
   &__body {
-    padding: var(--space-md);
+    padding: var(--space-lg);
     flex: 1;
-    color: var(--color-text-primary);
     min-width: 0;
   }
 
   &__footer {
-    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
     border-top: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-elevated);
-    min-width: 0;
+    background-color: rgb(0 0 0 / 15%);
   }
 }
 </style>

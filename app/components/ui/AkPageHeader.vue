@@ -67,7 +67,7 @@ withDefaults(defineProps<Props>(), {
   position: relative;
   width: 100%;
   padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-border-bold);
+  border-bottom: 1px solid var(--color-border-subtle);
   overflow: hidden;
   box-sizing: border-box;
   min-width: 0;
@@ -80,30 +80,34 @@ withDefaults(defineProps<Props>(), {
     width: 64px;
     height: 2px;
     background-color: var(--color-accent-primary);
-    box-shadow: 0 0 8px var(--color-accent-primary-glow);
   }
 
   &__watermark {
+    display: none;
     position: absolute;
     right: -1rem;
     bottom: -0.75rem;
     font-family: var(--font-display);
     font-size: clamp(3.5rem, 11vw, 7.5rem);
-    font-weight: var(--font-weight-black);
-    letter-spacing: var(--letter-spacing-wide);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-display);
     text-transform: uppercase;
     color: var(--color-text-primary);
-    opacity: 0.04;
+    opacity: 0.03;
     pointer-events: none;
     user-select: none;
     line-height: 0.75;
     white-space: nowrap;
     z-index: var(--z-base);
+
+    @include mq(md) {
+      display: block;
+    }
   }
 
   &__container {
     position: relative;
-    z-index: var(--z-raised);
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -136,21 +140,12 @@ withDefaults(defineProps<Props>(), {
   &__code {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--color-text-accent);
     text-transform: uppercase;
-    overflow-wrap: anywhere;
-
-    &::before {
-      content: '■';
-      font-size: 0.6em;
-      color: var(--color-accent-primary);
-      box-shadow: 0 0 6px var(--color-accent-primary-glow);
-    }
   }
 
   &__badge {
@@ -162,11 +157,8 @@ withDefaults(defineProps<Props>(), {
     font-family: var(--font-display);
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-wide);
     color: var(--color-text-primary);
-    text-transform: uppercase;
     line-height: var(--line-height-tight);
-    overflow-wrap: anywhere;
 
     @include mq(md) {
       font-size: var(--font-size-3xl);
@@ -179,7 +171,6 @@ withDefaults(defineProps<Props>(), {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
-    overflow-wrap: anywhere;
   }
 
   &__actions {

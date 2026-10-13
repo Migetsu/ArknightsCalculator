@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Operators</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 900px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header
+        style="
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding: 22px 48px;
+          font:
+            600 14px 'Golos Text',
+            sans-serif;
+          border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+        "
+      >
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav style="display: flex; gap: 24px">
+          <a href="#">Home</a
+          ><a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Operators</a
+          ><a href="#">Planner</a><a href="#">Depot</a><a href="#">Farming</a><a href="#">Recruit</a
+          ><a href="#">Gacha</a>
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 36px 48px">
+        <div style="display: flex; align-items: end; gap: 20px; margin-bottom: 22px">
+          <h1
+            style="
+              margin: 0;
+              font:
+                800 40px Unbounded,
+                sans-serif;
+            "
+          >
+            Operators
+          </h1>
+          <span
+            style="
+              color: #a8978a;
+              font:
+                400 14px 'Golos Text',
+                sans-serif;
+              padding-bottom: 8px;
+            "
+            >Showing 8 of 376 on Global</span
+          >
+        </div>
+        <div
+          style="
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 26px;
+            font:
+              600 13px 'Golos Text',
+              sans-serif;
+          "
+        >
+          <input
+            type="search"
+            placeholder="Search by name"
+            aria-label="Search"
+            style="
+              width: 260px;
+              padding: 11px 14px;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.15);
+              color: #e8ddd3;
+              font:
+                400 14px 'Golos Text',
+                sans-serif;
+            "
+          />
+          <button
+            style="
+              padding: 10px 16px;
+              background: #ff6a3d;
+              color: #120d0b;
+              border: 0;
+              cursor: pointer;
+            "
+          >
+            All classes</button
+          ><button
+            style="
+              padding: 10px 16px;
+              background: #17110f;
+              color: #e8ddd3;
+              border: 1px solid rgba(232, 221, 211, 0.15);
+              cursor: pointer;
+            "
+          >
+            Guard</button
+          ><button
+            style="
+              padding: 10px 16px;
+              background: #17110f;
+              color: #e8ddd3;
+              border: 1px solid rgba(232, 221, 211, 0.15);
+              cursor: pointer;
+            "
+          >
+            Caster</button
+          ><button
+            style="
+              padding: 10px 16px;
+              background: #17110f;
+              color: #e8ddd3;
+              border: 1px solid rgba(232, 221, 211, 0.15);
+              cursor: pointer;
+            "
+          >
+            Medic</button
+          ><button
+            style="
+              padding: 10px 16px;
+              background: #17110f;
+              color: #e8ddd3;
+              border: 1px solid rgba(232, 221, 211, 0.15);
+              cursor: pointer;
+            "
+          >
+            Defender
+          </button>
+          <span style="margin-left: auto; color: #a8978a">Rarity 3-6 / Sort: Rarity</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px">
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #3a1d14, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ff9d2b">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >SilverAsh</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                6★ Guard
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #3a1d14, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ff9d2b">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Eyjafjalla</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                6★ Caster
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #3a1d14, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ff9d2b">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Kal'tsit</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                6★ Medic
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #3a1d14, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ff9d2b">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Saria</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                6★ Defender
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #2d2418, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ffd54f">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Texas</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                5★ Vanguard
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #2d2418, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #ffd54f">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Amiya</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                5★ Caster
+              </div>
+            </div></a
+          >
+          <a
+            href="#"
+            style="
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              background: #17110f;
+              border: 1px solid rgba(232, 221, 211, 0.08);
+            "
+            ><div
+              style="height: 250px; background: linear-gradient(180deg, #25202e, #17110f)"
+            ></div>
+            <div style="padding: 14px 16px; border-bottom: 3px solid #9b6bd6">
+              <b
+                style="
+                  font:
+                    800 16px Unbounded,
+                    sans-serif;
+                "
+                >Myrtle</b
+              >
+              <div
+                style="
+                  font:
+                    400 13px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin-top: 4px;
+                "
+              >
+                4★ Vanguard
+              </div>
+            </div></a
+          >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 1px dashed rgba(232, 221, 211, 0.25);
+              color: #a8978a;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+              min-height: 300px;
+            "
+          >
+            <button
+              style="
+                padding: 12px 22px;
+                background: transparent;
+                color: #ffd9a8;
+                border: 1px solid rgba(255, 217, 168, 0.4);
+                cursor: pointer;
+                font:
+                  600 14px 'Golos Text',
+                  sans-serif;
+              "
+            >
+              Show more (368 left)
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

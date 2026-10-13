@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Recruit</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 48px;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+      .pn {
+        background: #17110f;
+        border: 1px solid rgba(232, 221, 211, 0.08);
+      }
+      .av {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(160deg, #4a2418, #17110f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 13px Unbounded,
+          sans-serif;
+        border-bottom: 3px solid #ff9d2b;
+      }
+      .tg {
+        padding: 9px 16px;
+        background: #0e0a09;
+        border: 1px solid rgba(232, 221, 211, 0.15);
+        color: #e8ddd3;
+        font:
+          600 13px 'Golos Text',
+          sans-serif;
+      }
+      .on {
+        background: #ff6a3d;
+        color: #120d0b;
+        border-color: #ff6a3d;
+      }
+      .t {
+        margin: 0;
+        font:
+          800 34px Unbounded,
+          sans-serif;
+      }
+      h2 {
+        margin: 0 0 14px;
+        font:
+          800 15px Unbounded,
+          sans-serif;
+      }
+      .grp {
+        padding: 18px 20px;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.06);
+      }
+      .gr {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .gr .tg {
+        width: 100%;
+        padding: 10px 4px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 900px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header>
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav>
+          <a href="#">Home</a><a href="#">Operators</a><a href="#">Planner</a><a href="#">Depot</a
+          ><a href="#">Farming</a
+          ><a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Recruit</a
+          ><a href="#">Gacha</a>
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 36px 48px; display: grid; grid-template-columns: 2fr 3fr; gap: 24px">
+        <section class="pn" style="padding: 24px; align-self: start">
+          <h1 class="t" style="font-size: 28px; margin-bottom: 14px">Recruitment</h1>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 20px;
+              font:
+                600 13px 'Golos Text',
+                sans-serif;
+              color: #a8978a;
+            "
+          >
+            <span>Select up to 5 tags</span><b style="color: #ffd9a8">3 / 5</b>
+          </div>
+          <p
+            style="
+              margin: 0 0 8px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.14em;
+              color: #a8978a;
+            "
+          >
+            QUALIFICATION
+          </p>
+          <div class="gr" style="grid-template-columns: repeat(3, 1fr)">
+            <button class="tg">Starter</button><button class="tg on">Senior Operator</button
+            ><button class="tg on">Top Operator</button>
+          </div>
+          <p
+            style="
+              margin: 0 0 8px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.14em;
+              color: #a8978a;
+            "
+          >
+            POSITION
+          </p>
+          <div class="gr" style="grid-template-columns: repeat(2, 1fr)">
+            <button class="tg">Melee</button><button class="tg">Ranged</button>
+          </div>
+          <p
+            style="
+              margin: 0 0 8px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.14em;
+              color: #a8978a;
+            "
+          >
+            CLASS
+          </p>
+          <div class="gr" style="grid-template-columns: repeat(4, 1fr)">
+            <button class="tg">Guard</button><button class="tg">Medic</button
+            ><button class="tg">Vanguard</button><button class="tg">Caster</button
+            ><button class="tg">Sniper</button><button class="tg">Defender</button
+            ><button class="tg">Supporter</button><button class="tg">Specialist</button>
+          </div>
+          <p
+            style="
+              margin: 0 0 8px;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.14em;
+              color: #a8978a;
+            "
+          >
+            AFFIX
+          </p>
+          <div class="gr" style="grid-template-columns: repeat(3, 1fr)">
+            <button class="tg">Healing</button><button class="tg">Support</button
+            ><button class="tg on">DPS</button><button class="tg">AOE</button
+            ><button class="tg">Slow</button><button class="tg">Survival</button
+            ><button class="tg">Defense</button><button class="tg">Debuff</button
+            ><button class="tg">Shift</button><button class="tg">Nuker</button
+            ><button class="tg">Summon</button><button class="tg">Fast-Redeploy</button>
+          </div>
+          <button
+            style="
+              padding: 10px 18px;
+              background: transparent;
+              border: 1px solid rgba(255, 217, 168, 0.4);
+              color: #ffd9a8;
+              font:
+                600 13px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Reset tags
+          </button>
+        </section>
+        <section class="pn">
+          <div style="padding: 18px 20px; border-bottom: 1px solid rgba(232, 221, 211, 0.08)">
+            <h2 style="margin: 0">Best combinations</h2>
+          </div>
+          <div class="grp">
+            <p
+              style="
+                margin: 0 0 12px;
+                font:
+                  600 13px 'Golos Text',
+                  sans-serif;
+                color: #ff9d2b;
+              "
+            >
+              GUARANTEED 6★ // Top Operator + DPS
+            </p>
+            <div style="display: flex; gap: 10px">
+              <div class="av">[SA]</div>
+              <div class="av">[CH]</div>
+            </div>
+          </div>
+          <div class="grp">
+            <p
+              style="
+                margin: 0 0 12px;
+                font:
+                  600 13px 'Golos Text',
+                  sans-serif;
+                color: #ffd54f;
+              "
+            >
+              GUARANTEED 5★+ // Senior Operator + DPS
+            </p>
+            <div style="display: flex; gap: 10px">
+              <div class="av" style="border-color: #ffd54f">[TX]</div>
+              <div class="av" style="border-color: #ffd54f">[AM]</div>
+              <div class="av" style="border-color: #ffd54f">[..]</div>
+            </div>
+          </div>
+          <div class="grp" style="border: 0">
+            <p
+              style="
+                margin: 0 0 12px;
+                font:
+                  600 13px 'Golos Text',
+                  sans-serif;
+                color: #9b6bd6;
+              "
+            >
+              GUARANTEED 4★+ // DPS
+            </p>
+            <div style="display: flex; gap: 10px">
+              <div class="av" style="border-color: #9b6bd6">[MY]</div>
+              <div class="av" style="border-color: #9b6bd6">[..]</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

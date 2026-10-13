@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>C: Planner</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+      nav a {
+        color: #a8978a;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #ffd9a8;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 48px;
+        font:
+          600 14px 'Golos Text',
+          sans-serif;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.1);
+      }
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+      .pn {
+        background: #17110f;
+        border: 1px solid rgba(232, 221, 211, 0.08);
+      }
+      .av {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(160deg, #4a2418, #17110f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 14px Unbounded,
+          sans-serif;
+        border-bottom: 3px solid #ff9d2b;
+        flex: none;
+      }
+      .it {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #6fa3e0;
+        background: #0e0a09;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          600 10px 'Golos Text',
+          sans-serif;
+        color: #a8978a;
+        flex: none;
+      }
+      .sk {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        border: 2px solid #ffd9a8;
+        background: #0e0a09;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 13px Unbounded,
+          sans-serif;
+        flex: none;
+      }
+      .md {
+        width: 48px;
+        height: 48px;
+        border: 2px solid #ff6a3d;
+        background: #0e0a09;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font:
+          800 12px Unbounded,
+          sans-serif;
+        flex: none;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+      }
+      .t {
+        margin: 0;
+        font:
+          800 30px Unbounded,
+          sans-serif;
+      }
+      h2 {
+        margin: 0 0 14px;
+        font:
+          800 15px Unbounded,
+          sans-serif;
+      }
+      .mt {
+        display: grid;
+        grid-template-columns: 1fr 90px 90px 90px;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(232, 221, 211, 0.06);
+        font:
+          400 14px 'Golos Text',
+          sans-serif;
+      }
+      .bar {
+        height: 5px;
+        background: #0e0a09;
+      }
+      .bar div {
+        height: 100%;
+        background: #ff6a3d;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        min-height: 960px;
+        box-sizing: border-box;
+        background: radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%);
+        color: #e8ddd3;
+        font-family: 'Golos Text', sans-serif;
+      "
+    >
+      <header>
+        <b
+          style="
+            font:
+              800 16px Unbounded,
+              sans-serif;
+            letter-spacing: 0.06em;
+          "
+          >ARKCALC</b
+        >
+        <nav>
+          <a href="#">Home</a><a href="#">Operators</a
+          ><a href="#" style="color: #ffd9a8; border-bottom: 2px solid #ff6a3d; padding-bottom: 4px"
+            >Planner</a
+          ><a href="#">Depot</a><a href="#">Farming</a><a href="#">Recruit</a><a href="#">Gacha</a>
+        </nav>
+        <a href="#" style="margin-left: auto; color: #a8978a; text-decoration: none">Settings</a>
+      </header>
+      <main style="padding: 36px 48px; display: grid; grid-template-columns: 300px 1fr; gap: 28px">
+        <aside style="display: flex; flex-direction: column; gap: 12px">
+          <h1 class="t">Planner</h1>
+          <button
+            style="
+              padding: 13px;
+              background: #ff6a3d;
+              color: #120d0b;
+              border: 0;
+              font:
+                600 15px 'Golos Text',
+                sans-serif;
+              cursor: pointer;
+            "
+          >
+            Add operator
+          </button>
+          <div class="pn" style="padding: 14px; display: flex; gap: 12px; border-color: #ff6a3d">
+            <div class="av">SA</div>
+            <div style="flex: 1">
+              <b
+                style="
+                  font:
+                    800 14px Unbounded,
+                    sans-serif;
+                "
+                >SilverAsh</b
+              >
+              <div
+                style="
+                  font:
+                    400 12px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin: 3px 0 8px;
+                "
+              >
+                E1 Lv60 to E2 Lv90
+              </div>
+              <div class="bar"><div style="width: 42%"></div></div>
+            </div>
+          </div>
+          <div class="pn" style="padding: 14px; display: flex; gap: 12px">
+            <div class="av">EY</div>
+            <div style="flex: 1">
+              <b
+                style="
+                  font:
+                    800 14px Unbounded,
+                    sans-serif;
+                "
+                >Eyjafjalla</b
+              >
+              <div
+                style="
+                  font:
+                    400 12px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                  margin: 3px 0 8px;
+                "
+              >
+                Skill 3 to M3
+              </div>
+              <div class="bar"><div style="width: 15%"></div></div>
+            </div>
+          </div>
+          <p
+            style="
+              margin: 8px 0 0;
+              font:
+                600 12px 'Golos Text',
+                sans-serif;
+              letter-spacing: 0.14em;
+              color: #a8978a;
+            "
+          >
+            TOTAL NEEDED
+          </p>
+          <div
+            class="pn"
+            style="
+              padding: 14px 16px;
+              font:
+                400 14px/2 'Golos Text',
+                sans-serif;
+            "
+          >
+            LMD <b style="float: right">[amount]</b><br />EXP cards
+            <b style="float: right">[amount]</b><br />Missing items
+            <b style="float: right; color: #ff8a5c">[count]</b>
+          </div>
+        </aside>
+        <section style="display: flex; flex-direction: column; gap: 20px; min-width: 0">
+          <div
+            style="
+              display: flex;
+              gap: 6px;
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            <button style="padding: 10px 20px; background: #ff6a3d; color: #120d0b; border: 0">
+              Goals</button
+            ><button
+              style="
+                padding: 10px 20px;
+                background: #17110f;
+                color: #e8ddd3;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+              "
+            >
+              Materials</button
+            ><button
+              style="
+                padding: 10px 20px;
+                background: #17110f;
+                color: #e8ddd3;
+                border: 1px solid rgba(232, 221, 211, 0.15);
+              "
+            >
+              Roadmap
+            </button>
+          </div>
+          <div class="pn" style="padding: 22px; display: flex; gap: 20px; align-items: center">
+            <div class="av" style="width: 84px; height: 84px; font-size: 20px">SA</div>
+            <div>
+              <h2 style="margin: 0 0 6px; font-size: 20px">SilverAsh</h2>
+              <span
+                style="
+                  font:
+                    400 14px 'Golos Text',
+                    sans-serif;
+                  color: #a8978a;
+                "
+                >Elite 1 to 2 / Level 60 to 90</span
+              >
+            </div>
+            <label
+              style="
+                margin-left: auto;
+                font:
+                  600 13px 'Golos Text',
+                  sans-serif;
+                width: 220px;
+              "
+              >Target level<input
+                type="range"
+                min="1"
+                max="90"
+                value="90"
+                style="width: 100%; margin-top: 8px; accent-color: #ff6a3d"
+            /></label>
+          </div>
+          <div
+            class="pn"
+            style="padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px"
+          >
+            <div style="display: flex; gap: 12px; align-items: center">
+              <div class="sk">S1</div>
+              <div
+                style="
+                  font:
+                    600 13px 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Skill 1 name]<br /><span style="color: #a8978a">Rank 4 to 7</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center">
+              <div class="sk">S2</div>
+              <div
+                style="
+                  font:
+                    600 13px 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Skill 2 name]<br /><span style="color: #a8978a">M0 to M3</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center">
+              <div class="md">X</div>
+              <div
+                style="
+                  font:
+                    600 13px 'Golos Text',
+                    sans-serif;
+                "
+              >
+                [Module name]<br /><span style="color: #a8978a">Stage 2 to 3</span>
+              </div>
+            </div>
+          </div>
+          <div class="pn">
+            <div
+              class="mt"
+              style="
+                color: #a8978a;
+                font:
+                  600 12px 'Golos Text',
+                  sans-serif;
+                letter-spacing: 0.12em;
+              "
+            >
+              <span>MATERIAL</span><span>NEED</span><span>HAVE</span><span>MISSING</span>
+            </div>
+            <div class="mt">
+              <span style="display: flex; gap: 12px; align-items: center"
+                ><div class="it" style="border-color: #a97be0">T4</div>
+                [Material name]</span
+              ><span>[n]</span><span>[n]</span><b style="color: #ff8a5c">[n]</b>
+            </div>
+            <div class="mt">
+              <span style="display: flex; gap: 12px; align-items: center"
+                ><div class="it">T3</div>
+                [Material name]</span
+              ><span>[n]</span><span>[n]</span><b style="color: #ff8a5c">[n]</b>
+            </div>
+            <div class="mt">
+              <span style="display: flex; gap: 12px; align-items: center"
+                ><div class="it" style="border-color: #e0b44a">LMD</div>
+                LMD</span
+              ><span>[n]</span><span>[n]</span><b style="color: #8fd19e">0</b>
+            </div>
+          </div>
+          <button
+            style="
+              align-self: flex-start;
+              padding: 12px 22px;
+              background: transparent;
+              color: #ffd9a8;
+              border: 1px solid rgba(255, 217, 168, 0.4);
+              font:
+                600 14px 'Golos Text',
+                sans-serif;
+            "
+          >
+            Find farming stages for missing items
+          </button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
