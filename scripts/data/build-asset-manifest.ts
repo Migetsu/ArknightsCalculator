@@ -1,12 +1,25 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import {
-  ASSET_REPO_COMMIT,
-  resolveAsset,
-} from '../../shared/utils/resolveAsset'
+import { ASSET_REPO_COMMIT, resolveAsset } from '../../shared/utils/resolveAsset'
 import type { OperatorSummary } from '../../shared/schemas/operator'
 
-interface AssetAvailability {
+export interface AssetCoverageSummary {
+  total: number
+  existingPrimary: number
+  missingPrimary: number
+  missingPrimaryRatio: number
+  existingTotal: number
+  missingTotal: number
+  missingTotalRatio: number
+  first30Missing: Array<{ id: string; name: string; extra?: string }>
+}
+
+export interface ModuleCoverageSummary extends AssetCoverageSummary {
+  postAceshipCommitCount: number
+  preAceshipMissingCount: number
+}
+
+export interface AssetAvailability {
   avatar: boolean
   portrait: boolean
 }
@@ -19,168 +32,305 @@ export interface AssetManifest {
   operatorsWithAvatar: number
   operatorsWithoutAvatar: number
   missingAvatarIds: string[]
+  coverage: {
+    items: AssetCoverageSummary
+    skills: AssetCoverageSummary
+    modules: ModuleCoverageSummary
+  }
   assets: Record<string, AssetAvailability>
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-/**
- * Checks whether an asset actually exists and delivers valid image content via HTTP GET.
- */
-async function checkAssetHttp(url: string, timeoutMs = 8000): Promise<boolean> {
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), timeoutMs)
+async function fetchGitTree(
+  cacheName: string,
+  repo: string,
+  treeSha: string,
+): Promise<Set<string>> {
+  const cacheFile = path.resolve(process.cwd(), `.cache/trees/${cacheName}.json`)
   try {
-    const res = await fetch(url, {
-      method: 'GET',
-      signal: controller.signal,
-      headers: {
-        'User-Agent': 'ArknightsCalculator-AssetManifest/1.0',
-        Accept: 'image/webp,image/png,image/*,*/*;q=0.8',
-      },
-    })
-    if (res.status !== 200) return false
-    const contentType = res.headers.get('content-type')
-    if (!contentType?.toLowerCase().includes('image/')) return false
-    const buf = await res.arrayBuffer()
-    return buf.byteLength > 0
+    const raw = await fs.readFile(cacheFile, 'utf-8')
+    const list = JSON.parse(raw) as Array<{ path: string }>
+    return new Set(list.map((t) => t.path))
   } catch {
-    return false
-  } finally {
-    clearTimeout(timer)
-  }
-}
-
-/**
- * Runs tasks in concurrent batches with delay between batches.
- */
-async function runInBatches<T, R>(
-  items: T[],
-  batchSize: number,
-  batchDelayMs: number,
-  task: (item: T) => Promise<R>,
-): Promise<R[]> {
-  const results: R[] = []
-  for (let i = 0; i < items.length; i += batchSize) {
-    const batch = items.slice(i, i + batchSize)
-    const batchResults = await Promise.all(batch.map((item) => task(item)))
-    results.push(...batchResults)
-    if (i + batchSize < items.length && batchDelayMs > 0) {
-      await sleep(batchDelayMs)
+    // If cache not found, fetch from GitHub API and persist
+    const url = `https://api.github.com/repos/${repo}/git/trees/${treeSha}?recursive=1`
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'ArknightsCalculator-AssetManifest/1.0' },
+    })
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tree from ${repo}@${treeSha}: ${res.status}`)
     }
+    const data = (await res.json()) as { tree: Array<{ path: string }> }
+    await fs.mkdir(path.dirname(cacheFile), { recursive: true })
+    await fs.writeFile(cacheFile, JSON.stringify(data.tree), 'utf-8')
+    return new Set(data.tree.map((t) => t.path))
   }
-  return results
 }
 
 async function main(): Promise<void> {
-  console.log('=== Arknights Asset Manifest Builder ===\n')
+  console.log('=== Arknights Asset Tree & Coverage Manifest Builder ===\n')
 
   const indexPath = path.resolve(process.cwd(), 'data/operators-index.json')
+  const itemsPath = path.resolve(process.cwd(), 'data/items.json')
+  const operatorsDir = path.resolve(process.cwd(), 'data/operators')
   const manifestPath = path.resolve(process.cwd(), 'data/asset-manifest.json')
 
   const rawIndex = await fs.readFile(indexPath, 'utf-8')
   const operators = JSON.parse(rawIndex) as OperatorSummary[]
 
-  console.log(`Loaded ${operators.length} operators from data/operators-index.json.`)
-  console.log(`Checking CDN asset availability against commit ${ASSET_REPO_COMMIT.slice(0, 7)}...`)
+  const rawItems = await fs.readFile(itemsPath, 'utf-8')
+  const items = JSON.parse(rawItems) as Array<{
+    id: string
+    name: { en?: string; zh?: string }
+    iconId?: string
+    servers?: string[]
+  }>
 
-  const args = process.argv.slice(2)
-  const useTree = args.includes('--tree')
-  const sourceMode: 'http' | 'tree' = useTree ? 'tree' : 'http'
+  const opFiles = (await fs.readdir(operatorsDir)).filter((f) => f.endsWith('.json'))
 
+  console.log(`Loaded ${operators.length} operators, ${items.length} items.`)
+  console.log('Querying GitHub Git Trees for primary & fallback repositories...')
+
+  // 1. Yuanyan3060 tree
+  const yuanPaths = await fetchGitTree(
+    'yuan_tree',
+    'yuanyan3060/ArknightsGameResource',
+    ASSET_REPO_COMMIT,
+  )
+  console.log(`- Yuanyan3060 tree: ${yuanPaths.size} paths`)
+
+  // 2. Aceship tree (commit 0b28f9562fcadbd644c6225f8f8aefbb500b4d22 -> tree 2e8167a7085504a277d478af66430aa0ed98e65e)
+  const acePaths = await fetchGitTree(
+    'ace_tree',
+    'Aceship/Arknight-Images',
+    '2e8167a7085504a277d478af66430aa0ed98e65e',
+  )
+  console.log(`- Aceship tree: ${acePaths.size} paths`)
+
+  // 3. Fexli tree (subfolder equip: tree 4c35d3792136d00fc1d0c0ac4b4e0c493a91de2a)
+  const fexliEquipTree = await fetchGitTree(
+    'fexli_equip_tree',
+    'fexli/ArknightsResource',
+    '4c35d3792136d00fc1d0c0ac4b4e0c493a91de2a',
+  )
+  const fexliPaths = new Set(Array.from(fexliEquipTree).map((p) => `equip/${p}`))
+  console.log(`- Fexli equip tree: ${fexliPaths.size} paths`)
+
+  // --- Audit Operators (Avatars & Portraits) ---
   const manifestAssets: Record<string, AssetAvailability> = {}
   const missingAvatarIds: string[] = []
   let withAvatarCount = 0
 
-  const startTime = Date.now()
+  for (const op of operators) {
+    const avatarCandidates = resolveAsset('avatar', op.id)
+    const portraitCandidates = resolveAsset('portrait', op.id)
 
-  if (useTree) {
-    console.log('Mode: GitHub repository tree query (fast)...')
-    const treeUrl = `https://api.github.com/repos/yuanyan3060/ArknightsGameResource/git/trees/${ASSET_REPO_COMMIT}?recursive=1`
-    const treeRes = await fetch(treeUrl, {
-      headers: { 'User-Agent': 'ArknightsCalculator-AssetManifest/1.0' },
-    })
-    if (!treeRes.ok) {
-      throw new Error(`Failed to fetch repo tree: ${treeRes.status}`)
+    const avatarRelPath = avatarCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
+    const portraitRelPath = portraitCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
+
+    const hasAvatar = yuanPaths.has(avatarRelPath)
+    const hasPortrait = yuanPaths.has(portraitRelPath)
+
+    manifestAssets[op.id] = { avatar: hasAvatar, portrait: hasPortrait }
+    if (hasAvatar) {
+      withAvatarCount++
+    } else {
+      missingAvatarIds.push(op.id)
     }
-    const treeData = (await treeRes.json()) as { tree: Array<{ path: string }> }
-    const pathSet = new Set(treeData.tree.map((f) => f.path))
+  }
 
-    for (const op of operators) {
-      const avatarCandidates = resolveAsset('avatar', op.id)
-      const portraitCandidates = resolveAsset('portrait', op.id)
+  // --- Audit Items ---
+  const missingItemsPrimary: Array<{ id: string; name: string; extra?: string }> = []
+  let existingItemsPrimary = 0
 
-      // Extract repository relative path from primary CDN URL
-      const avatarRelPath = avatarCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
-      const portraitRelPath = portraitCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
-
-      const hasAvatar = pathSet.has(avatarRelPath)
-      const hasPortrait = pathSet.has(portraitRelPath)
-
-      manifestAssets[op.id] = { avatar: hasAvatar, portrait: hasPortrait }
-      if (hasAvatar) {
-        withAvatarCount++
-      } else {
-        missingAvatarIds.push(op.id)
-      }
+  for (const it of items) {
+    const iconId = it.iconId || it.id
+    const hasItem = yuanPaths.has(`item/${iconId}.png`) || yuanPaths.has(`item/${it.id}.png`)
+    if (hasItem) {
+      existingItemsPrimary++
+    } else {
+      missingItemsPrimary.push({
+        id: it.id,
+        name: it.name?.en || it.name?.zh || it.id,
+        extra: `iconId: ${it.iconId}`,
+      })
     }
-  } else {
-    console.log('Mode: Real HTTP GET checks with concurrency limit...')
-    // Check in batches of 10 with 50ms pause
-    const checkResults = await runInBatches(
-      operators,
-      10,
-      50,
-      async (op) => {
-        const avatarUrl = resolveAsset('avatar', op.id)[0] ?? ''
-        const portraitUrl = resolveAsset('portrait', op.id)[0] ?? ''
+  }
 
-        const [hasAvatar, hasPortrait] = await Promise.all([
-          checkAssetHttp(avatarUrl),
-          checkAssetHttp(portraitUrl),
-        ])
+  const itemsSummary: AssetCoverageSummary = {
+    total: items.length,
+    existingPrimary: existingItemsPrimary,
+    missingPrimary: missingItemsPrimary.length,
+    missingPrimaryRatio: missingItemsPrimary.length / items.length,
+    existingTotal: existingItemsPrimary,
+    missingTotal: missingItemsPrimary.length,
+    missingTotalRatio: missingItemsPrimary.length / items.length,
+    first30Missing: missingItemsPrimary.slice(0, 30),
+  }
 
-        return {
-          id: op.id,
-          avatar: hasAvatar,
-          portrait: hasPortrait,
+  // --- Collect & Audit Skills ---
+  interface SkillData {
+    skillId: string
+    name: string
+    iconId: string | null
+    operatorId: string
+  }
+  const skillsMap = new Map<string, SkillData>()
+
+  interface ModuleData {
+    id: string
+    name: string
+    type: string
+    icon: string | null
+    servers?: string[]
+    operatorId: string
+  }
+  const modulesMap = new Map<string, ModuleData>()
+
+  for (const f of opFiles) {
+    const op = JSON.parse(await fs.readFile(path.join(operatorsDir, f), 'utf-8'))
+    if (op.skills && Array.isArray(op.skills)) {
+      for (const sk of op.skills) {
+        if (sk.skillId && !skillsMap.has(sk.skillId)) {
+          skillsMap.set(sk.skillId, {
+            skillId: sk.skillId,
+            name: sk.levels?.[0]?.name?.en || sk.levels?.[0]?.name?.zh || sk.skillId,
+            iconId: sk.iconId ?? null,
+            operatorId: op.id,
+          })
         }
-      },
-    )
-
-    for (const res of checkResults) {
-      manifestAssets[res.id] = {
-        avatar: res.avatar,
-        portrait: res.portrait,
       }
+    }
 
-      if (res.avatar) {
-        withAvatarCount++
-      } else {
-        missingAvatarIds.push(res.id)
+    if (op.modules && Array.isArray(op.modules)) {
+      for (const mod of op.modules) {
+        if (mod.id && !modulesMap.has(mod.id)) {
+          modulesMap.set(mod.id, {
+            id: mod.id,
+            name: mod.name?.en || mod.name?.zh || mod.id,
+            type: mod.type,
+            icon: mod.icon ?? null,
+            servers: mod.servers,
+            operatorId: op.id,
+          })
+        }
       }
     }
   }
 
-  const durationSec = ((Date.now() - startTime) / 1000).toFixed(1)
-  console.log(`\nCompleted asset checks in ${durationSec}s.`)
-  console.log(`Operators with valid avatar: ${withAvatarCount}/${operators.length}`)
-  console.log(`Operators without avatar:    ${missingAvatarIds.length}`)
+  const missingSkillsPrimary: Array<{ id: string; name: string; extra?: string }> = []
+  let existingSkillsPrimary = 0
 
-  if (missingAvatarIds.length > 0) {
-    console.log('\nMissing avatar IDs:', missingAvatarIds.join(', '))
+  for (const sk of skillsMap.values()) {
+    const target = sk.iconId || sk.skillId
+    const hasSkill =
+      yuanPaths.has(`skill/skill_icon_${target}.png`) ||
+      yuanPaths.has(`skill/${target}.png`) ||
+      yuanPaths.has(`skill/skill_icon_${sk.skillId}.png`)
+
+    if (hasSkill) {
+      existingSkillsPrimary++
+    } else {
+      missingSkillsPrimary.push({
+        id: sk.skillId,
+        name: sk.name,
+        extra: `operator: ${sk.operatorId}`,
+      })
+    }
   }
+
+  const skillsSummary: AssetCoverageSummary = {
+    total: skillsMap.size,
+    existingPrimary: existingSkillsPrimary,
+    missingPrimary: missingSkillsPrimary.length,
+    missingPrimaryRatio: missingSkillsPrimary.length / skillsMap.size,
+    existingTotal: existingSkillsPrimary,
+    missingTotal: missingSkillsPrimary.length,
+    missingTotalRatio: missingSkillsPrimary.length / skillsMap.size,
+    first30Missing: missingSkillsPrimary.slice(0, 30),
+  }
+
+  // --- Audit Modules ---
+  const missingModulesAceship: Array<{ id: string; name: string; extra?: string }> = []
+  let existingModulesAceship = 0
+  let existingModulesCombined = 0
+  const missingModulesCombined: Array<{ id: string; name: string; extra?: string }> = []
+  let postAceshipCommitCount = 0
+
+  for (const mod of modulesMap.values()) {
+    const isInitial = mod.id.includes('_001_') || mod.type === 'INITIAL'
+    const filename = `${mod.icon || mod.id}.png`
+
+    const hasAce = isInitial
+      ? acePaths.has('equip/icon/original.png') || acePaths.has('equip/icon/default.png')
+      : acePaths.has(`equip/icon/${filename}`) || acePaths.has(`equip/${filename}`)
+
+    const hasFexli = isInitial
+      ? fexliPaths.has('equip/default.png')
+      : fexliPaths.has(`equip/${filename}`)
+
+    if (hasAce) {
+      existingModulesAceship++
+    } else {
+      missingModulesAceship.push({
+        id: mod.id,
+        name: mod.name,
+        extra: `operator: ${mod.operatorId}, servers: ${mod.servers?.join('/')}`,
+      })
+      postAceshipCommitCount++
+    }
+
+    if (hasAce || hasFexli) {
+      existingModulesCombined++
+    } else {
+      missingModulesCombined.push({
+        id: mod.id,
+        name: mod.name,
+        extra: `operator: ${mod.operatorId}`,
+      })
+    }
+  }
+
+  const modulesSummary: ModuleCoverageSummary = {
+    total: modulesMap.size,
+    existingPrimary: existingModulesAceship,
+    missingPrimary: missingModulesAceship.length,
+    missingPrimaryRatio: missingModulesAceship.length / modulesMap.size,
+    existingTotal: existingModulesCombined,
+    missingTotal: missingModulesCombined.length,
+    missingTotalRatio: missingModulesCombined.length / modulesMap.size,
+    postAceshipCommitCount,
+    preAceshipMissingCount: 0,
+    first30Missing: missingModulesAceship.slice(0, 30),
+  }
+
+  console.log('\n--- COVERAGE AUDIT RESULTS ---')
+  console.log(
+    `Items:   ${existingItemsPrimary}/${items.length} (missing: ${missingItemsPrimary.length}, ${(itemsSummary.missingPrimaryRatio * 100).toFixed(2)}%)`,
+  )
+  console.log(
+    `Skills:  ${existingSkillsPrimary}/${skillsMap.size} (missing: ${missingSkillsPrimary.length}, ${(skillsSummary.missingPrimaryRatio * 100).toFixed(2)}%)`,
+  )
+  console.log(
+    `Modules (Aceship primary): ${existingModulesAceship}/${modulesMap.size} (missing: ${missingModulesAceship.length}, ${(modulesSummary.missingPrimaryRatio * 100).toFixed(2)}%)`,
+  )
+  console.log(`Modules post-Aceship commit (May 2024): ${postAceshipCommitCount}`)
+  console.log(
+    `Modules (Aceship + Fexli combined): ${existingModulesCombined}/${modulesMap.size} (missing: ${missingModulesCombined.length}, ${(modulesSummary.missingTotalRatio * 100).toFixed(2)}%)`,
+  )
 
   const manifest: AssetManifest = {
     version: ASSET_REPO_COMMIT,
-    source: sourceMode,
+    source: 'tree',
     updatedAt: new Date().toISOString(),
     totalOperators: operators.length,
     operatorsWithAvatar: withAvatarCount,
     operatorsWithoutAvatar: missingAvatarIds.length,
     missingAvatarIds,
+    coverage: {
+      items: itemsSummary,
+      skills: skillsSummary,
+      modules: modulesSummary,
+    },
     assets: manifestAssets,
   }
 

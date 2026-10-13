@@ -7,12 +7,16 @@ import {
   EQUIP_REPO_COMMIT,
   PRIMARY_EQUIP_CDN_BASE,
   SECONDARY_EQUIP_CDN_BASE,
+  FEXLI_REPO_COMMIT,
+  PRIMARY_FEXLI_CDN_BASE,
+  SECONDARY_FEXLI_CDN_BASE,
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
   it('pins the asset repository commits to verified commit SHAs', () => {
     expect(ASSET_REPO_COMMIT).toBe('9bf239661e37766fba585806fb9fa67e79bb679e')
     expect(EQUIP_REPO_COMMIT).toBe('0b28f9562fcadbd644c6225f8f8aefbb500b4d22')
+    expect(FEXLI_REPO_COMMIT).toBe('d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5')
 
     expect(PRIMARY_CDN_BASE).toContain(
       'cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf2396',
@@ -23,6 +27,10 @@ describe('resolveAsset utility', () => {
     expect(PRIMARY_EQUIP_CDN_BASE).toContain('cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f95')
     expect(SECONDARY_EQUIP_CDN_BASE).toContain(
       'cdn.statically.io/gh/Aceship/Arknight-Images/0b28f95',
+    )
+    expect(PRIMARY_FEXLI_CDN_BASE).toContain('cdn.jsdelivr.net/gh/fexli/ArknightsResource@d7bdc01')
+    expect(SECONDARY_FEXLI_CDN_BASE).toContain(
+      'cdn.statically.io/gh/fexli/ArknightsResource/d7bdc01',
     )
   })
 
@@ -67,8 +75,10 @@ describe('resolveAsset utility', () => {
 
     it('generates equip candidates for unique modules and initial badges', () => {
       const uniqueMod = resolveAsset('equip', 'uniequip_002_texas')
-      expect(uniqueMod[0]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
-      expect(uniqueMod[1]).toBe(`${SECONDARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
+      expect(uniqueMod[0]).toBe(`${PRIMARY_FEXLI_CDN_BASE}/equip/uniequip_002_texas.png`)
+      expect(uniqueMod[1]).toBe(`${SECONDARY_FEXLI_CDN_BASE}/equip/uniequip_002_texas.png`)
+      expect(uniqueMod[2]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
+      expect(uniqueMod[3]).toBe(`${SECONDARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
 
       const initialMod = resolveAsset('equip', 'uniequip_001_texas')
       expect(initialMod[0]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/icon/original.png`)

@@ -1,152 +1,446 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import AkContainer from '~/components/ui/AkContainer.vue'
-import AkPageHeader from '~/components/ui/AkPageHeader.vue'
-import AkEmptyState from '~/components/ui/AkEmptyState.vue'
-import AkAlert from '~/components/ui/AkAlert.vue'
-import AkButton from '~/components/ui/AkButton.vue'
-import { getModuleById } from '~/config/modules'
+import { useSettingsStore } from '~/stores/settings'
+import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
+import metaData from '~/../data/meta.json'
+import type { ServerRegion } from '~/../shared/schemas/operator'
 
-const { t } = useI18n()
-const localePath = useLocalePath()
-const moduleConfig = getModuleById('settings')
+const { t, locale, setLocale } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const router = useRouter()
+const settingsStore = useSettingsStore()
 
-type PageState = 'empty' | 'loading' | 'error'
-const pageState = ref<PageState>('empty')
+const isSyncModalOpen = ref(false)
+const notificationMessage = ref<string | null>(null)
+
+function changeLanguage(lang: 'en' | 'ru'): void {
+  if (locale.value === lang) return
+  setLocale(lang)
+  const targetPath = switchLocalePath(lang)
+  if (targetPath) {
+    router.push(targetPath)
+  }
+}
+
+function selectServer(server: ServerRegion): void {
+  settingsStore.setDefaultServer(server)
+}
+
+function handleExport(): void {
+  const exportPayload = {
+    arkcalcVersion: '1.0.0',
+    exportDate: new Date().toISOString(),
+    settings: {
+      defaultServer: settingsStore.defaultServer,
+      locale: locale.value,
+    },
+  }
+  const blob = new Blob([JSON.stringify(exportPayload, null, 2)], {
+    type: 'application/json',
+  })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `arkcalc-backup-${new Date().toISOString().slice(0, 10)}.json`
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
+function handleImport(): void {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = '.json,application/json'
+  input.onchange = async (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    if (!file) return
+    try {
+      const text = await file.text()
+      const data = JSON.parse(text) as { settings?: { defaultServer?: ServerRegion } }
+      if (data?.settings?.defaultServer) {
+        settingsStore.setDefaultServer(data.settings.defaultServer)
+      }
+      notificationMessage.value = t('settings.yourData.importBackup') + ' OK'
+      setTimeout(() => {
+        notificationMessage.value = null
+      }, 3000)
+    } catch {
+      notificationMessage.value = 'Invalid JSON file format'
+      setTimeout(() => {
+        notificationMessage.value = null
+      }, 3000)
+    }
+  }
+  input.click()
+}
+
+function handleResetData(): void {
+  if (typeof window !== 'undefined' && window.confirm(t('settings.yourData.resetConfirm'))) {
+    settingsStore.resetAllSettings()
+    notificationMessage.value = t('settings.yourData.resetSuccess')
+    setTimeout(() => {
+      notificationMessage.value = null
+    }, 4000)
+  }
+}
+
+function openSyncModal(): void {
+  isSyncModalOpen.value = true
+}
+
+function openSource(): void {
+  if (typeof window !== 'undefined') {
+    window.open('https://github.com/dmitry-k/ArknightsCalculator', '_blank', 'noopener,noreferrer')
+  }
+}
 </script>
 
 <template>
-  <div class="module-page">
-    <AkContainer size="lg" class="module-page__container">
-      <AkPageHeader
-        :code="moduleConfig?.code ?? 'SET-06'"
-        :tag-label="t('modules.tag')"
-        :title="moduleConfig ? t(moduleConfig.nameKey) : 'Settings'"
-        :subtitle="moduleConfig ? t(moduleConfig.descriptionKey) : ''"
-        watermark="SETTINGS"
-        :badge="t('modules.status.soon')"
-        badge-variant="amber"
-      >
-        <template #actions>
-          <AkButton variant="ghost" size="sm" :to="localePath('/')">
-            {{ t('common.backToDashboard') }}
-          </AkButton>
-        </template>
-      </AkPageHeader>
+  <div class="settings-page">
+    <div class="settings-page__container">
+      <h1 class="settings-page__title">{{ t('settings.title') }}</h1>
 
-      <div class="module-page__content">
-        <!-- Loading State -->
-        <div v-if="pageState === 'loading'" class="module-page__state-box">
-          <span class="module-page__spinner" aria-hidden="true" />
-          <p class="module-page__state-text">{{ t('common.loading') }}</p>
-        </div>
-
-        <!-- Error State -->
-        <AkAlert
-          v-else-if="pageState === 'error'"
-          variant="danger"
-          :title="t('modules.error.title')"
-        >
-          <p>{{ t('modules.error.description') }}</p>
-          <template #actions>
-            <AkButton variant="secondary" size="sm" @click="pageState = 'empty'">
-              {{ t('common.retry') }}
-            </AkButton>
-          </template>
-        </AkAlert>
-
-        <!-- Empty / Coming Soon State -->
-        <div v-else class="module-page__empty-box">
-          <AkEmptyState
-            :title="t('modules.empty.title')"
-            :description="t('modules.empty.description')"
-          >
-            <template #actions>
-              <AkButton variant="secondary" size="md" :to="localePath('/')">
-                {{ t('common.backToDashboard') }}
-              </AkButton>
-            </template>
-          </AkEmptyState>
-        </div>
+      <!-- Notification pill if an action occurred -->
+      <div v-if="notificationMessage" class="settings-page__notification" role="status">
+        {{ notificationMessage }}
       </div>
-    </AkContainer>
+
+      <!-- 1. Language Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.language.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.language.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__button-group">
+          <button
+            type="button"
+            class="settings-page__toggle-btn"
+            :class="{ 'settings-page__toggle-btn--active': locale === 'en' }"
+            @click="changeLanguage('en')"
+          >
+            {{ t('settings.language.en') }}
+          </button>
+          <button
+            type="button"
+            class="settings-page__toggle-btn"
+            :class="{ 'settings-page__toggle-btn--active': locale === 'ru' }"
+            @click="changeLanguage('ru')"
+          >
+            {{ t('settings.language.ru') }}
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. Default Server Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.defaultServer.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.defaultServer.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__button-group">
+          <button
+            type="button"
+            class="settings-page__toggle-btn"
+            :class="{
+              'settings-page__toggle-btn--active': settingsStore.defaultServer === 'global',
+            }"
+            @click="selectServer('global')"
+          >
+            {{ t('settings.defaultServer.global') }}
+          </button>
+          <button
+            type="button"
+            class="settings-page__toggle-btn"
+            :class="{ 'settings-page__toggle-btn--active': settingsStore.defaultServer === 'cn' }"
+            @click="selectServer('cn')"
+          >
+            {{ t('settings.defaultServer.cn') }}
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. Account Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.account.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.account.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__action-row">
+          <button type="button" class="settings-page__btn-primary" @click="openSyncModal">
+            {{ t('settings.account.syncBtn') }}
+          </button>
+          <button type="button" class="settings-page__btn-outline" @click="openSyncModal">
+            {{ t('settings.account.cloudBtn') }}
+          </button>
+        </div>
+      </section>
+
+      <!-- 4. Your Data Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.yourData.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.yourData.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__action-row">
+          <button type="button" class="settings-page__btn-outline" @click="handleExport">
+            {{ t('settings.yourData.exportJson') }}
+          </button>
+          <button type="button" class="settings-page__btn-outline" @click="handleImport">
+            {{ t('settings.yourData.importBackup') }}
+          </button>
+          <button type="button" class="settings-page__btn-danger" @click="handleResetData">
+            {{ t('settings.yourData.resetLocal') }}
+          </button>
+        </div>
+      </section>
+
+      <!-- 5. Game Data Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.gameData.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.gameData.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__meta-content">
+          <div class="settings-page__meta-row">
+            <span class="settings-page__meta-label">{{ t('settings.gameData.versionLabel') }}</span>
+            <b class="settings-page__meta-val">
+              {{ metaData.enCommit.slice(0, 7) }} / {{ metaData.buildDate.slice(0, 10) }}
+            </b>
+          </div>
+          <div class="settings-page__meta-row">
+            <span class="settings-page__meta-label"
+              >{{ t('settings.gameData.operatorsLabel') }}
+            </span>
+            <b class="settings-page__meta-val">
+              {{ metaData.totalOperators }} ({{
+                t('settings.gameData.globalCount', { count: metaData.globalOperators })
+              }}, {{ t('settings.gameData.cnOnlyCount', { count: metaData.cnOnlyOperators }) }})
+            </b>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. About Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.about.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.about.desc') }}
+          </p>
+        </div>
+        <div>
+          <button type="button" class="settings-page__btn-outline" @click="openSource">
+            {{ t('settings.about.openSourceBtn') }}
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Account Sync Modal -->
+    <SyncAccountModal v-model="isSyncModalOpen" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.module-page {
-  padding-top: var(--space-md);
-  padding-bottom: var(--space-2xl);
+.settings-page {
+  padding: var(--space-xl) var(--space-md);
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 0;
 
   @include mq(md) {
-    padding-top: var(--space-xl);
+    padding: 36px 48px;
   }
 
   &__container {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: 18px;
     min-width: 0;
   }
 
-  &__content {
+  &__title {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-display);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+
+    @include mq(md) {
+      font-size: 34px;
+    }
+  }
+
+  &__notification {
+    padding: 10px 16px;
+    background-color: var(--color-accent-primary-subtle);
+    border: 1px solid var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__section {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    min-width: 0;
+    gap: 14px;
+    box-sizing: border-box;
   }
 
-  &__empty-box {
-    padding: var(--space-xl) var(--space-md);
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 0;
-
-    @include cut-corner(12px, top-right);
-  }
-
-  &__state-box {
-    padding: var(--space-2xl) var(--space-md);
+  &__section-header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-sm);
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
-    border: 1px solid var(--color-border-bold);
-
-    @include cut-corner(12px, top-right);
+    gap: 6px;
   }
 
-  &__spinner {
-    width: 2rem;
-    height: 2rem;
-    border: 2px solid var(--color-border-subtle);
-    border-top-color: var(--color-accent-primary);
-    border-radius: var(--radius-full);
-    box-shadow: 0 0 10px var(--color-accent-primary-glow);
-    animation: module-spin 0.8s linear infinite;
-  }
-
-  &__state-text {
+  &__section-title {
     margin: 0;
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    letter-spacing: var(--letter-spacing-mono);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+  }
+
+  &__section-desc {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
     color: var(--color-text-secondary);
   }
-}
 
-@keyframes module-spin {
-  to {
-    transform: rotate(360deg);
+  &__button-group {
+    display: flex;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__toggle-btn {
+    padding: 11px 26px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-bold);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+
+    @include focus-ring;
+
+    &--active {
+      background-color: var(--color-accent-primary);
+      border-color: var(--color-accent-primary);
+      color: var(--color-text-inverse);
+    }
+  }
+
+  &__action-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__btn-primary {
+    padding: 11px 22px;
+    background-color: var(--color-accent-primary);
+    border: 0;
+    color: var(--color-text-inverse);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--color-accent-primary-hover);
+    }
+  }
+
+  &__btn-outline {
+    padding: 11px 20px;
+    background-color: transparent;
+    border: 1px solid var(--color-border-gold);
+    color: var(--color-text-accent);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-text-accent);
+    }
+  }
+
+  &__btn-danger {
+    padding: 11px 20px;
+    background-color: transparent;
+    border: 1px solid var(--color-border-danger);
+    color: var(--color-accent-ember-light);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-accent-primary);
+    }
+  }
+
+  &__meta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  &__meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  &__meta-label {
+    color: var(--color-text-secondary);
+  }
+
+  &__meta-val {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
   }
 }
 </style>

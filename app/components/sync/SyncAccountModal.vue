@@ -2,11 +2,6 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AkModal from '~/components/ui/AkModal.vue'
-import AkAlert from '~/components/ui/AkAlert.vue'
-import AkTabs, { type TabItem } from '~/components/ui/AkTabs.vue'
-import AkButton from '~/components/ui/AkButton.vue'
-import AkInput from '~/components/ui/AkInput.vue'
-import AkBadge from '~/components/ui/AkBadge.vue'
 
 interface Props {
   modelValue: boolean
@@ -21,16 +16,17 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-const activeTab = ref('yostar')
+type SyncTab = 'yostar' | 'json' | 'demo'
+const activeTab = ref<SyncTab>('yostar')
 const selectedRegion = ref('EN')
 const email = ref('')
 const verificationCode = ref('')
 const isCodeSent = ref(false)
 
-const tabs: TabItem[] = [
-  { id: 'yostar', label: t('syncModal.tabs.yostar') },
-  { id: 'json', label: t('syncModal.tabs.json') },
-  { id: 'demo', label: t('syncModal.tabs.demo') },
+const tabs: { id: SyncTab; labelKey: string }[] = [
+  { id: 'yostar', labelKey: 'syncModal.tabs.yostar' },
+  { id: 'json', labelKey: 'syncModal.tabs.json' },
+  { id: 'demo', labelKey: 'syncModal.tabs.demo' },
 ]
 
 const regions = ['EN', 'JP', 'KR', 'CN']
@@ -60,124 +56,126 @@ function handleLoadDemo(): void {
     :model-value="modelValue"
     :title="t('syncModal.title')"
     :tag="t('syncModal.tag')"
-    width="580px"
+    width="620px"
     @update:model-value="emit('update:modelValue', $event)"
   >
     <div class="sync-modal">
-      <AkAlert variant="warning" class="sync-modal__alert">
-        <template #badge>
-          <span class="sync-modal__alert-title"> ⚠ {{ t('syncModal.risk.title') }} </span>
-          <AkBadge variant="green" size="sm"> 🔒 {{ t('syncModal.risk.zeroStorage') }} </AkBadge>
-        </template>
-        <div class="sync-modal__alert-text">
-          <p class="sync-modal__alert-p">
-            <strong class="sync-modal__alert-strong">{{ t('syncModal.risk.safetyLabel') }}:</strong>
-            {{ t('syncModal.risk.safetyDesc') }}
-          </p>
-          <p class="sync-modal__alert-p">
-            <strong class="sync-modal__alert-strong"
-              >{{ t('syncModal.risk.privacyLabel') }}:</strong
-            >
-            {{ t('syncModal.risk.privacyDesc') }}
-          </p>
+      <!-- Unofficial login advisory (4px Ember border on panel, advisory amber box) -->
+      <div class="sync-modal__alert" role="alert">
+        <strong class="sync-modal__alert-strong">{{ t('syncModal.risk.safetyLabel') }}.</strong>
+        <span> {{ t('syncModal.risk.safetyDesc') }}</span>
+        <br />
+        <span class="sync-modal__alert-muted">{{ t('syncModal.risk.privacyDesc') }}</span>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="sync-modal__tabs" role="tablist">
+        <button
+          v-for="tab in tabs"
+          :key="tab.id"
+          type="button"
+          role="tab"
+          :aria-selected="activeTab === tab.id"
+          class="sync-modal__tab"
+          :class="{ 'sync-modal__tab--active': activeTab === tab.id }"
+          @click="activeTab = tab.id"
+        >
+          {{ t(tab.labelKey) }}
+        </button>
+      </div>
+
+      <!-- Yostar Email Code Tab -->
+      <div v-if="activeTab === 'yostar'" class="sync-modal__content">
+        <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
+        <div
+          class="sync-modal__regions"
+          role="radiogroup"
+          :aria-label="t('syncModal.region.label')"
+        >
+          <button
+            v-for="reg in regions"
+            :key="reg"
+            type="button"
+            role="radio"
+            :aria-checked="selectedRegion === reg"
+            class="sync-modal__reg-btn"
+            :class="{ 'sync-modal__reg-btn--active': selectedRegion === reg }"
+            @click="selectedRegion = reg"
+          >
+            {{ reg }}
+          </button>
         </div>
-      </AkAlert>
 
-      <AkTabs v-model="activeTab" :items="tabs" aria-label="Sync options">
-        <template #default="{ activeTab: currentTab }">
-          <!-- Yostar Email Code Tab -->
-          <div v-if="currentTab === 'yostar'" class="sync-modal__tab-content">
-            <div class="sync-modal__field-group">
-              <span class="sync-modal__field-label">
-                {{ t('syncModal.region.label') }}
-              </span>
-              <div
-                class="sync-modal__regions"
-                role="radiogroup"
-                :aria-label="t('syncModal.region.label')"
-              >
-                <button
-                  v-for="region in regions"
-                  :key="region"
-                  type="button"
-                  role="radio"
-                  :aria-checked="selectedRegion === region"
-                  class="sync-modal__region-btn"
-                  :class="{ 'sync-modal__region-btn--active': selectedRegion === region }"
-                  @click="selectedRegion = region"
-                >
-                  {{ region }}
-                </button>
-              </div>
-            </div>
+        <div class="sync-modal__email-group">
+          <label class="sync-modal__field-label">
+            {{ t('syncModal.email.label') }}
+            <input
+              v-model="email"
+              type="email"
+              placeholder="you@example.com"
+              class="sync-modal__input"
+            />
+          </label>
+          <button
+            type="button"
+            class="sync-modal__send-btn"
+            :disabled="!email"
+            @click="handleSendCode"
+          >
+            {{ isCodeSent ? t('syncModal.code.sent') : t('syncModal.code.send') }}
+          </button>
+        </div>
 
-            <div class="sync-modal__email-row">
-              <div class="sync-modal__email-input">
-                <AkInput
-                  v-model="email"
-                  type="email"
-                  :label="t('syncModal.email.label')"
-                  placeholder="doctor@example.com"
-                  :hint="t('syncModal.email.hint')"
-                />
-              </div>
-              <div class="sync-modal__send-btn-wrap">
-                <AkButton variant="secondary" size="md" :disabled="!email" @click="handleSendCode">
-                  {{ isCodeSent ? t('syncModal.code.sent') : t('syncModal.code.send') }}
-                </AkButton>
-              </div>
-            </div>
+        <p class="sync-modal__hint">{{ t('syncModal.email.hint') }}</p>
 
-            <div class="sync-modal__field-group">
-              <AkInput
-                v-model="verificationCode"
-                type="text"
-                :label="t('syncModal.code.label')"
-                placeholder="1 2 3 4 5 6"
-                :hint="t('syncModal.code.hint')"
-              />
-            </div>
-          </div>
+        <label class="sync-modal__field-label">
+          {{ t('syncModal.code.label') }}
+          <input
+            v-model="verificationCode"
+            type="text"
+            inputmode="numeric"
+            maxlength="6"
+            placeholder="000000"
+            class="sync-modal__input sync-modal__input--code"
+          />
+        </label>
+      </div>
 
-          <!-- Manual JSON Import Tab -->
-          <div v-else-if="currentTab === 'json'" class="sync-modal__tab-content">
-            <div class="sync-modal__json-box">
-              <p class="sync-modal__json-desc">
-                {{ t('syncModal.json.description') }}
-              </p>
-              <AkButton variant="secondary" size="md">
-                {{ t('syncModal.json.selectFile') }}
-              </AkButton>
-            </div>
-          </div>
+      <!-- JSON File Import Tab -->
+      <div v-else-if="activeTab === 'json'" class="sync-modal__content">
+        <div class="sync-modal__placeholder-box">
+          <p class="sync-modal__placeholder-desc">{{ t('syncModal.json.description') }}</p>
+          <button type="button" class="sync-modal__btn-outline">
+            {{ t('syncModal.json.selectFile') }}
+          </button>
+        </div>
+      </div>
 
-          <!-- Demo Preview Tab -->
-          <div v-else-if="currentTab === 'demo'" class="sync-modal__tab-content">
-            <div class="sync-modal__demo-box">
-              <p class="sync-modal__demo-desc">
-                {{ t('syncModal.demo.description') }}
-              </p>
-              <AkButton variant="primary" size="md" @click="handleLoadDemo">
-                {{ t('syncModal.demo.loadButton') }}
-              </AkButton>
-            </div>
-          </div>
-        </template>
-      </AkTabs>
+      <!-- Demo Data Tab -->
+      <div v-else-if="activeTab === 'demo'" class="sync-modal__content">
+        <div class="sync-modal__placeholder-box">
+          <p class="sync-modal__placeholder-desc">{{ t('syncModal.demo.description') }}</p>
+          <button type="button" class="sync-modal__btn-primary" @click="handleLoadDemo">
+            {{ t('syncModal.demo.loadButton') }}
+          </button>
+        </div>
+      </div>
     </div>
 
     <template #footer>
-      <AkButton variant="ghost" size="md" @click="handleClose">
-        {{ t('common.cancel') }}
-      </AkButton>
-      <AkButton
-        variant="primary"
-        size="md"
-        :disabled="activeTab === 'yostar' && (!email || !verificationCode)"
-        @click="handleStartSync"
-      >
-        {{ t('syncModal.startSync') }}
-      </AkButton>
+      <div class="sync-modal__footer-actions">
+        <button type="button" class="sync-modal__btn-cancel" @click="handleClose">
+          {{ t('common.cancel') }}
+        </button>
+        <button
+          type="button"
+          class="sync-modal__btn-primary"
+          :disabled="activeTab === 'yostar' && (!email || !verificationCode)"
+          @click="handleStartSync"
+        >
+          {{ t('syncModal.startSync') }}
+        </button>
+      </div>
     </template>
   </AkModal>
 </template>
@@ -186,138 +184,241 @@ function handleLoadDemo(): void {
 .sync-modal {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  box-sizing: border-box;
 
   &__alert {
-    width: 100%;
-  }
-
-  &__alert-title {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-warning);
-    text-transform: uppercase;
-  }
-
-  &__alert-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-relaxed);
-  }
-
-  &__alert-p {
-    margin: 0;
-  }
-
-  &__alert-strong {
+    margin: 0 0 20px;
+    padding: 14px 16px;
+    background-color: var(--color-accent-warning-subtle);
+    border: 1px solid var(--color-border-amber);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    line-height: 1.55;
     color: var(--color-text-primary);
   }
 
-  &__tab-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    padding-top: var(--space-xs);
+  &__alert-strong {
+    color: var(--color-accent-warning);
+    font-weight: var(--font-weight-bold);
   }
 
-  &__field-group {
+  &__alert-muted {
+    color: var(--color-text-secondary);
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 24px;
+    border-bottom: 1px solid var(--color-border-base);
+    margin-bottom: 22px;
+  }
+
+  &__tab {
+    background: none;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 0 0 12px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &--active {
+      color: var(--color-text-primary);
+      border-bottom-color: var(--color-accent-primary);
+    }
+  }
+
+  &__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xs);
   }
 
   &__field-label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-mono);
+    letter-spacing: var(--letter-spacing-caption);
     color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 
   &__regions {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-xs);
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 20px;
   }
 
-  &__region-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xs);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
+  &__reg-btn {
+    flex: 1;
+    padding: 11px 0;
+    background-color: var(--color-bg-deep);
     border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
     transition:
-      border-color var(--transition-fast),
-      color var(--transition-fast),
       background-color var(--transition-fast),
-      box-shadow var(--transition-fast);
+      border-color var(--transition-fast),
+      color var(--transition-fast);
 
-    @include cut-corner(4px, top-right);
     @include focus-ring;
 
-    &:hover {
-      border-color: var(--color-accent-primary);
-      color: var(--color-text-primary);
-    }
-
     &--active {
+      background-color: var(--color-accent-primary);
       border-color: var(--color-accent-primary);
-      background-color: var(--color-accent-primary-subtle);
-      color: var(--color-accent-primary);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
+      color: var(--color-text-inverse);
     }
   }
 
-  &__email-row {
+  &__email-group {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
+    gap: 10px;
+    align-items: flex-end;
+    margin-bottom: 6px;
+
+    .sync-modal__field-label {
+      flex: 1;
+    }
   }
 
-  &__email-input {
-    flex: 1;
-    min-width: 0;
+  &__input {
+    display: block;
+    margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-bold);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+
+    @include focus-ring;
+
+    &--code {
+      letter-spacing: 0.5em;
+      text-align: center;
+      font-size: 20px;
+      font-weight: var(--font-weight-semibold);
+    }
   }
 
-  &__send-btn-wrap {
-    margin-top: 1.35rem; // aligns with the input field below its label
-    flex-shrink: 0;
+  &__send-btn {
+    padding: 13px 20px;
+    background-color: transparent;
+    border: 1px solid var(--color-text-accent);
+    color: var(--color-text-accent);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-bg-highlight);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
-  &__json-box,
-  &__demo-box {
+  &__hint {
+    margin: 0 0 18px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+
+  &__placeholder-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 36px 20px;
     text-align: center;
-    padding: var(--space-xl) var(--space-md);
-    gap: var(--space-md);
+    gap: 16px;
     border: 1px dashed var(--color-border-bold);
-    background: linear-gradient(135deg, rgb(16 18 23 / 60%) 0%, rgb(8 9 12 / 70%) 100%);
-
-    @include cut-corner(8px, top-right);
+    background-color: var(--color-bg-deep);
   }
 
-  &__json-desc,
-  &__demo-desc {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    max-width: 440px;
+  &__placeholder-desc {
     margin: 0;
+    max-width: 440px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+  }
+
+  &__footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__btn-cancel {
+    padding: 12px 22px;
+    background-color: transparent;
+    border: 1px solid var(--color-border-bold);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+
+    @include focus-ring;
+  }
+
+  &__btn-primary {
+    padding: 12px 26px;
+    background-color: var(--color-accent-primary);
+    border: 0;
+    color: var(--color-text-inverse);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-accent-primary-hover);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__btn-outline {
+    padding: 12px 22px;
+    background-color: transparent;
+    border: 1px solid var(--color-border-gold);
+    color: var(--color-text-accent);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+
+    @include focus-ring;
   }
 }
 </style>

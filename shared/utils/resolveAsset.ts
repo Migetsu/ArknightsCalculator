@@ -48,6 +48,17 @@ export const PRIMARY_EQUIP_CDN_BASE = `https://cdn.jsdelivr.net/gh/${EQUIP_REPO_
 export const SECONDARY_EQUIP_CDN_BASE = `https://cdn.statically.io/gh/${EQUIP_REPO_OWNER}/${EQUIP_REPO_NAME}/${EQUIP_REPO_COMMIT}`
 
 /**
+ * Pinned commit for comprehensive equipment / module icons from fexli/ArknightsResource.
+ * Ensures 100% coverage for modules released after May 2024.
+ */
+export const FEXLI_REPO_OWNER = 'fexli'
+export const FEXLI_REPO_NAME = 'ArknightsResource'
+export const FEXLI_REPO_COMMIT = 'd7bdc0146f99f6fa88ecdc1bbf79021c012c21c5'
+
+export const PRIMARY_FEXLI_CDN_BASE = `https://cdn.jsdelivr.net/gh/${FEXLI_REPO_OWNER}/${FEXLI_REPO_NAME}@${FEXLI_REPO_COMMIT}`
+export const SECONDARY_FEXLI_CDN_BASE = `https://cdn.statically.io/gh/${FEXLI_REPO_OWNER}/${FEXLI_REPO_NAME}/${FEXLI_REPO_COMMIT}`
+
+/**
  * Map of asset kinds to repository subdirectories.
  */
 const KIND_DIR_MAP: Record<AssetKind, string> = {
@@ -210,14 +221,20 @@ export function resolveAsset(
       return [
         `${PRIMARY_EQUIP_CDN_BASE}/equip/icon/original.png`,
         `${SECONDARY_EQUIP_CDN_BASE}/equip/icon/original.png`,
+        `${PRIMARY_FEXLI_CDN_BASE}/equip/default.png`,
+        `${SECONDARY_FEXLI_CDN_BASE}/equip/default.png`,
         `${PRIMARY_EQUIP_CDN_BASE}/equip/icon/default.png`,
         `${SECONDARY_EQUIP_CDN_BASE}/equip/icon/default.png`,
       ]
     }
 
     return [
+      `${PRIMARY_FEXLI_CDN_BASE}/equip/${filename}`,
+      `${SECONDARY_FEXLI_CDN_BASE}/equip/${filename}`,
       `${PRIMARY_EQUIP_CDN_BASE}/equip/icon/${filename}`,
       `${SECONDARY_EQUIP_CDN_BASE}/equip/icon/${filename}`,
+      `${PRIMARY_FEXLI_CDN_BASE}/equip/default.png`,
+      `${SECONDARY_FEXLI_CDN_BASE}/equip/default.png`,
       `${PRIMARY_EQUIP_CDN_BASE}/equip/icon/default.png`,
       `${SECONDARY_EQUIP_CDN_BASE}/equip/icon/default.png`,
     ]
