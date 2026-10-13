@@ -2,6 +2,25 @@
 import { ref, computed, watch } from 'vue'
 import { resolveAsset } from '~/../shared/utils/resolveAsset'
 
+export type AkAvatarSize =
+  | 44
+  | 48
+  | 52
+  | 56
+  | 64
+  | 84
+  | '44'
+  | '48'
+  | '52'
+  | '56'
+  | '64'
+  | '84'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+
 interface Props {
   /**
    * Optional operator identifier (e.g. 'char_102_texas').
@@ -21,16 +40,16 @@ interface Props {
    */
   rarity?: 1 | 2 | 3 | 4 | 5 | 6
   /**
-   * Avatar display size: sm (32px), md (44px), lg (56px).
+   * Avatar display size: 44, 48, 52, 56, 64, 84px (or standard t-shirt sizes).
    */
-  size?: 'sm' | 'md' | 'lg'
+  size?: AkAvatarSize
 }
 
 const props = withDefaults(defineProps<Props>(), {
   id: undefined,
   src: undefined,
   rarity: 6,
-  size: 'md',
+  size: 48,
 })
 
 const candidateUrls = computed(() => {
@@ -74,15 +93,26 @@ function handleError(): void {
   }
 }
 
-const pixelDimensions = computed(() => {
-  switch (props.size) {
+const normalizedSize = computed<number>(() => {
+  const s = props.size
+  if (typeof s === 'number') return s
+  const numeric = Number.parseInt(s, 10)
+  if (!Number.isNaN(numeric) && [44, 48, 52, 56, 64, 84].includes(numeric)) {
+    return numeric
+  }
+  switch (s) {
     case 'sm':
-      return 32
+      return 44
+    case 'md':
+      return 48
     case 'lg':
       return 56
-    case 'md':
+    case 'xl':
+      return 64
+    case '2xl':
+      return 84
     default:
-      return 44
+      return 48
   }
 })
 
@@ -101,16 +131,20 @@ const initials = computed(() => {
 <template>
   <div
     class="ak-avatar"
-    :class="[`ak-avatar--size-${size}`, `ak-avatar--rarity-${rarity}`]"
+    :class="[`ak-avatar--size-${normalizedSize}`, `ak-avatar--rarity-${rarity}`]"
     :title="name"
+    :style="{
+      width: `${normalizedSize}px`,
+      height: `${normalizedSize}px`,
+    }"
   >
     <div class="ak-avatar__frame">
       <img
         v-if="activeSrc"
         :src="activeSrc"
         :alt="name"
-        :width="pixelDimensions"
-        :height="pixelDimensions"
+        :width="normalizedSize"
+        :height="normalizedSize - 3"
         class="ak-avatar__image"
         loading="lazy"
         decoding="async"
@@ -130,21 +164,26 @@ const initials = computed(() => {
   flex-direction: column;
   position: relative;
   flex-shrink: 0;
+  box-sizing: border-box;
 
   &__frame {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: calc(100% - 3px);
     background-color: var(--color-bg-elevated);
     border: 1px solid var(--color-border-subtle);
     border-bottom: none;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
   &__fallback {
@@ -162,61 +201,40 @@ const initials = computed(() => {
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-mono);
     text-transform: uppercase;
+    user-select: none;
   }
 
+  // Exact 3px bottom line of operator rarity per DESIGN.md
   &__rarity-bar {
     height: 3px;
     width: 100%;
     background-color: var(--color-border-subtle);
+    flex-shrink: 0;
   }
 
-  // Sizes (44/48/52/56/64/84 per DESIGN.md with backward compatibility)
-  &--size-sm {
-    width: 2.25rem; // 36px
-
-    .ak-avatar__frame {
-      height: 2.25rem;
-    }
-
-    .ak-avatar__initials {
-      font-size: var(--font-size-2xs);
-    }
-
-    .ak-avatar__rarity-bar {
-      height: 2px;
-    }
+  // Font sizing according to avatar dimensions
+  &--size-44 .ak-avatar__initials {
+    font-size: var(--font-size-2xs);
   }
 
-  &--size-md {
-    width: 2.75rem; // 44px
-
-    .ak-avatar__frame {
-      height: 2.75rem;
-    }
-
-    .ak-avatar__initials {
-      font-size: var(--font-size-xs);
-    }
-
-    .ak-avatar__rarity-bar {
-      height: 3px;
-    }
+  &--size-48 .ak-avatar__initials {
+    font-size: var(--font-size-xs);
   }
 
-  &--size-lg {
-    width: 3.5rem; // 56px
+  &--size-52 .ak-avatar__initials {
+    font-size: var(--font-size-xs);
+  }
 
-    .ak-avatar__frame {
-      height: 3.5rem;
-    }
+  &--size-56 .ak-avatar__initials {
+    font-size: var(--font-size-sm);
+  }
 
-    .ak-avatar__initials {
-      font-size: var(--font-size-sm);
-    }
+  &--size-64 .ak-avatar__initials {
+    font-size: var(--font-size-md);
+  }
 
-    .ak-avatar__rarity-bar {
-      height: 3px;
-    }
+  &--size-84 .ak-avatar__initials {
+    font-size: var(--font-size-lg);
   }
 
   // Rarity styling (3px bottom line in DESIGN.md)

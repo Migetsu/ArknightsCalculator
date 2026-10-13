@@ -4,16 +4,25 @@ import {
   ASSET_REPO_COMMIT,
   PRIMARY_CDN_BASE,
   SECONDARY_CDN_BASE,
+  EQUIP_REPO_COMMIT,
+  PRIMARY_EQUIP_CDN_BASE,
+  SECONDARY_EQUIP_CDN_BASE,
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
-  it('pins the asset repository commit to the verified commit SHA', () => {
+  it('pins the asset repository commits to verified commit SHAs', () => {
     expect(ASSET_REPO_COMMIT).toBe('9bf239661e37766fba585806fb9fa67e79bb679e')
+    expect(EQUIP_REPO_COMMIT).toBe('0b28f9562fcadbd644c6225f8f8aefbb500b4d22')
+
     expect(PRIMARY_CDN_BASE).toContain(
       'cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf2396',
     )
     expect(SECONDARY_CDN_BASE).toContain(
       'cdn.statically.io/gh/yuanyan3060/ArknightsGameResource/9bf2396',
+    )
+    expect(PRIMARY_EQUIP_CDN_BASE).toContain('cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f95')
+    expect(SECONDARY_EQUIP_CDN_BASE).toContain(
+      'cdn.statically.io/gh/Aceship/Arknight-Images/0b28f95',
     )
   })
 
@@ -33,19 +42,39 @@ describe('resolveAsset utility', () => {
       ])
     })
 
-    it('generates standard item, skill, and equip candidates', () => {
-      expect(resolveAsset('item', '30012')).toEqual([
-        `${PRIMARY_CDN_BASE}/item/30012.png`,
-        `${SECONDARY_CDN_BASE}/item/30012.png`,
+    it('generates item candidates preferring iconId when provided', () => {
+      const withIcon = resolveAsset('item', '30012', { iconId: 'MTL_SL_G2' })
+      expect(withIcon[0]).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_G2.png`)
+      expect(withIcon[1]).toBe(`${SECONDARY_CDN_BASE}/item/MTL_SL_G2.png`)
+      expect(withIcon[2]).toBe(`${PRIMARY_CDN_BASE}/item/30012.png`)
+
+      const raw = resolveAsset('item', 'mod_unlock_token')
+      expect(raw).toEqual([
+        `${PRIMARY_CDN_BASE}/item/mod_unlock_token.png`,
+        `${SECONDARY_CDN_BASE}/item/mod_unlock_token.png`,
       ])
-      expect(resolveAsset('skill', 'skchr_texas_2')).toEqual([
-        `${PRIMARY_CDN_BASE}/skill/skchr_texas_2.png`,
-        `${SECONDARY_CDN_BASE}/skill/skchr_texas_2.png`,
-      ])
-      expect(resolveAsset('equip', 'uniequip_002_texas')).toEqual([
-        `${PRIMARY_CDN_BASE}/equip/uniequip_002_texas.png`,
-        `${SECONDARY_CDN_BASE}/equip/uniequip_002_texas.png`,
-      ])
+    })
+
+    it('generates skill candidates with skill_icon_ prefix and iconId fallback', () => {
+      const candidates = resolveAsset('skill', 'skchr_texas_2')
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skill/skill_icon_skchr_texas_2.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skill/skill_icon_skchr_texas_2.png`)
+      expect(candidates[2]).toBe(`${PRIMARY_CDN_BASE}/skill/skchr_texas_2.png`)
+
+      const withIcon = resolveAsset('skill', 'skchr_huang_1', { iconId: 'skcom_powerstrike[3]' })
+      expect(withIcon[0]).toBe(`${PRIMARY_CDN_BASE}/skill/skill_icon_skcom_powerstrike[3].png`)
+    })
+
+    it('generates equip candidates for unique modules and initial badges', () => {
+      const uniqueMod = resolveAsset('equip', 'uniequip_002_texas')
+      expect(uniqueMod[0]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
+      expect(uniqueMod[1]).toBe(`${SECONDARY_EQUIP_CDN_BASE}/equip/icon/uniequip_002_texas.png`)
+
+      const initialMod = resolveAsset('equip', 'uniequip_001_texas')
+      expect(initialMod[0]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/icon/original.png`)
+
+      const typeMod = resolveAsset('equip', 'sub_pioneer')
+      expect(typeMod[0]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/equip/type/sub_pioneer.png`)
     })
 
     it('generates portrait candidates with default _1 variant and _2 fallback', () => {
@@ -98,10 +127,18 @@ describe('resolveAsset utility', () => {
   })
 
   it('strictly prohibits direct runtime requests to prts.wiki or raw.githubusercontent.com', () => {
-    const candidates = resolveAsset('avatar', 'char_102_texas')
-    for (const url of candidates) {
+    const all = [
+      ...resolveAsset('avatar', 'char_102_texas'),
+      ...resolveAsset('portrait', 'char_102_texas'),
+      ...resolveAsset('item', '30012'),
+      ...resolveAsset('skill', 'skchr_texas_2'),
+      ...resolveAsset('equip', 'uniequip_002_texas'),
+    ]
+
+    for (const url of all) {
       expect(url).not.toContain('prts.wiki')
       expect(url).not.toContain('raw.githubusercontent.com')
+      expect(url).not.toContain('fandom.com')
     }
   })
 })

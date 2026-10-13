@@ -14,36 +14,36 @@
 
 1. **Основной CDN (Primary):**
    - **Провайдер:** jsDelivr (`https://cdn.jsdelivr.net/gh/`)
-   - **Репозиторий:** `yuanyan3060/ArknightsGameResource`
-   - **Зафиксированный коммит:** `9bf239661e37766fba585806fb9fa67e79bb679e`
-   - **Шаблон URL:**
-     ```
-     https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png
-     ```
+   - **Репозиторий операторов, навыков и предметов:** `yuanyan3060/ArknightsGameResource` (коммит `9bf239661e37766fba585806fb9fa67e79bb679e`)
+   - **Репозиторий эксклюзивных модулей (equip):** `Aceship/Arknight-Images` (коммит `0b28f9562fcadbd644c6225f8f8aefbb500b4d22`)
+   - **Шаблоны URL:**
+     - Аватары / портреты: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
+     - Навыки: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/skill/skill_icon_{iconId}.png`
+     - Предметы: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/item/{iconId}.png`
+     - Модули: `https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f9562fcadbd644c6225f8f8aefbb500b4d22/equip/icon/{id}.png`
    - **Характеристики:** Глобальный Anycast CDN, HTTP/2 и HTTP/3, автоматическое сжатие, высокая надежность, отсутствие авторизации.
 
 2. **Запасное зеркало (Secondary Mirror):**
    - **Провайдер:** Statically CDN (`https://cdn.statically.io/gh/`)
-   - **Шаблон URL:**
-     ```
-     https://cdn.statically.io/gh/yuanyan3060/ArknightsGameResource/9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png
-     ```
+   - **Шаблоны URL:**
+     - Операторы/предметы/навыки: `https://cdn.statically.io/gh/yuanyan3060/ArknightsGameResource/9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
+     - Модули: `https://cdn.statically.io/gh/Aceship/Arknight-Images/0b28f9562fcadbd644c6225f8f8aefbb500b4d22/equip/icon/{id}.png`
    - **Характеристики:** Автоматический fallback на клиенте, если основной CDN заблокирован или недоступен.
 
 3. **Локальный плейсхолдер (Fallback):**
-   - Если все внешние кандидаты вернули ошибку сети или 404, компонент (например, `AkAvatar`) не ломает верстку, а рендерит стилизованный плейсхолдер: моноширинные инициалы оператора на тёмном фоне с цветной полосой редкости (1★–6★).
+   - Если все внешние кандидаты вернули ошибку сети или 404, компоненты (`AkAvatar`, `AkItemIcon`, `AkSkillIcon`, `AkModuleIcon`) не ломают верстку, а рендерят стилизованные плейсхолдеры в стилистике Ember Editorial.
 
 ---
 
 ## 2. Поддерживаемые типы ассетов (`AssetKind`)
 
-| Тип (`kind`) | Директория  | Описание                      | Пример ID             | Пример URL                          |
-| :----------- | :---------- | :---------------------------- | :-------------------- | :---------------------------------- |
-| `avatar`     | `avatar/`   | Квадратные иконки операторов  | `char_102_texas`      | `.../avatar/char_102_texas.png`     |
-| `portrait`   | `portrait/` | Вертикальные арты и портреты  | `char_102_texas`      | `.../portrait/char_102_texas.png`   |
-| `item`       | `item/`     | Иконки материалов и предметов | `30012`               | `.../item/30012.png`                |
-| `skill`      | `skill/`    | Иконки навыков                | `skcom_charge_cost_2` | `.../skill/skcom_charge_cost_2.png` |
-| `equip`      | `equip/`    | Иконки модулей (Uniequip)     | `uniequip_002_texas`  | `.../equip/uniequip_002_texas.png`  |
+| Тип (`kind`) | Репозиторий CDN                     | Описание                      | Правило формирования пути                                     | Пример ID             |
+| :----------- | :---------------------------------- | :---------------------------- | :------------------------------------------------------------ | :-------------------- |
+| `avatar`     | `yuanyan3060/ArknightsGameResource` | Квадратные иконки операторов  | `avatar/{id}.png` (с учетом Amiya Medic `char_1037_amiya3_2`) | `char_102_texas`      |
+| `portrait`   | `yuanyan3060/ArknightsGameResource` | Вертикальные арты и портреты  | `portrait/{id}_{variant}.png`                                 | `char_102_texas`      |
+| `item`       | `yuanyan3060/ArknightsGameResource` | Иконки материалов и предметов | `item/{iconId ?? id}.png`                                     | `30012` (`MTL_SL_G2`) |
+| `skill`      | `yuanyan3060/ArknightsGameResource` | Иконки навыков                | `skill/skill_icon_{iconId ?? id}.png`                         | `skchr_texas_2`       |
+| `equip`      | `Aceship/Arknight-Images`           | Иконки модулей операторов     | `equip/icon/{id}.png` (для INITIAL: `original.png`)           | `uniequip_002_texas`  |
 
 ---
 
@@ -92,9 +92,9 @@ npm run data:assets
 
 ---
 
-## 5. Аудит и живая проверка доставки (12 октября 2026 г.)
+## 5. Аудит и живая проверка доставки (12–13 октября 2026 г.)
 
-### 5.1. Сравнение CDN (jsDelivr vs Statically CDN)
+### 5.1. Сравнение CDN для операторов (jsDelivr vs Statically CDN)
 
 Скрипт `scripts/data/verify-assets.ts` (`npm run data:verify-assets`) выполняет реальные HTTP GET-запросы к выборке из 60 операторов (все редкости 1★–6★, все 3 формы Амии, CN-операторы из манифеста):
 
@@ -102,12 +102,6 @@ npm run data:assets
 | :------------------------- | :------------------- | :----------- | :--------- | :--------------- |
 | **jsDelivr (Primary)**     | **60 / 60 (100.0%)** | `image/png`  | 100%       | **165 мс**       |
 | **Statically (Secondary)** | **60 / 60 (100.0%)** | `image/png`  | 100%       | **740 мс**       |
-
-**Выводы:**
-
-- Оба CDN обеспечивают 100% отдачу байтов без 403/404/429.
-- jsDelivr работает быстрее примерно в **4.5 раза** (165 мс против 740 мс) и остаётся приоритетным CDN.
-- При запросах используется метод `GET` с заголовками `User-Agent` и `Accept: image/*` (метод `HEAD` не используется, так как CDN могут отдавать 403/429 на частые HEAD-проверки).
 
 ### 5.2. Амия со сменой класса (Class Change)
 
@@ -133,14 +127,21 @@ npm run data:assets
 В тесте Playwright `tests/e2e/audit-assets-dom.spec.ts` выполнена визуальная и DOM-проверка каталога `/operators`:
 
 - Проверено наличие реальных изображений: `naturalWidth > 0` для всех отрендеренных `<img>`.
-- Сохранены снимки экрана:
-  - `docs/screenshots/operators-360.png` (мобильный экран, 360px)
-  - `docs/screenshots/operators-1440.png` (десктоп, 1440px)
 - Полный скролл каталога (376 доступных глобальных операторов):
   - Отрендерено карточек: **376 / 376**
   - Загружено аватаров: **376 / 376**
   - Плейсхолдеров-инициалов (`fallbackCount`): **0**
   - **Доля fallback-аватаров (`fallbackRatio`): 0.0%**
+
+### 5.4. Аудит предметов, навыков и модулей (13 октября 2026 г.)
+
+Скрипт `scripts/data/verify-new-assets.ts` выполнил живую проверку (HTTP GET) выборки из **61 предмета**, **60 навыков** и **60 модулей** операторов:
+
+| Категория ассетов     | Выборка | jsDelivr (Primary)   | Statically (Secondary) | Средняя задержка jsDelivr | Особенности путей / исправленные расхождения                                                                                                                                                                                         |
+| :-------------------- | :------ | :------------------- | :--------------------- | :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Предметы (`item`)** | 61      | **61 / 61 (100.0%)** | **61 / 61 (100.0%)**   | 418 мс                    | В игровых данных предметы имеют `iconId` (например, `30012` -> `MTL_SL_G2.png`, `4001` -> `GOLD.png`). `resolveAsset` отдает приоритет `options.iconId`.                                                                             |
+| **Навыки (`skill`)**  | 60      | **60 / 60 (100.0%)** | **60 / 60 (100.0%)**   | 432 мс                    | Файлы навыков в репозитории игры обязательно имеют префикс `skill_icon_` (`skill_icon_{iconId}.png`). Общие навыки (например, Power Strike у Блейз) имеют свой `iconId` (`skcom_powerstrike[3]`).                                    |
+| **Модули (`equip`)**  | 60      | **60 / 60 (100.0%)** | **60 / 60 (100.0%)**   | 362 мс                    | Модули доставляются из зафиксированного репозитория `Aceship/Arknight-Images@0b28f9562fcadbd644c6225f8f8aefbb500b4d22`. Уникальные модули берутся из `equip/icon/{id}.png`, а начальные бейджи (`_001_`) маппятся на `original.png`. |
 
 ---
 
@@ -150,13 +151,7 @@ npm run data:assets
    ```typescript
    export type AssetKind = 'avatar' | 'portrait' | 'item' | 'skill' | 'equip' | 'enemy'
    ```
-2. Зарегистрировать поддиректорию в `KIND_DIR_MAP`:
-   ```typescript
-   const KIND_DIR_MAP: Record<AssetKind, string> = {
-     // ...
-     enemy: 'enemy',
-   }
-   ```
+2. Зарегистрировать поддиректорию в `KIND_DIR_MAP`.
 3. Покрыть новый тип unit-тестом в `tests/unit/shared/resolveAsset.test.ts`.
 
 ---
