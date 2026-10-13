@@ -23,7 +23,7 @@ function changeLanguage(lang: 'en' | 'ru'): void {
 }
 
 function selectServer(server: ServerRegion): void {
-  settingsStore.setDefaultServer(server)
+  settingsStore.setDropDataServer(server)
 }
 
 function handleExport(): void {
@@ -31,7 +31,7 @@ function handleExport(): void {
     arkcalcVersion: '1.0.0',
     exportDate: new Date().toISOString(),
     settings: {
-      defaultServer: settingsStore.defaultServer,
+      dropDataServer: settingsStore.dropDataServer,
       locale: locale.value,
     },
   }
@@ -55,9 +55,12 @@ function handleImport(): void {
     if (!file) return
     try {
       const text = await file.text()
-      const data = JSON.parse(text) as { settings?: { defaultServer?: ServerRegion } }
-      if (data?.settings?.defaultServer) {
-        settingsStore.setDefaultServer(data.settings.defaultServer)
+      const data = JSON.parse(text) as {
+        settings?: { dropDataServer?: ServerRegion; defaultServer?: ServerRegion }
+      }
+      const srv = data?.settings?.dropDataServer || data?.settings?.defaultServer
+      if (srv) {
+        settingsStore.setDropDataServer(srv)
       }
       notificationMessage.value = t('settings.yourData.importBackup') + ' OK'
       setTimeout(() => {
@@ -132,32 +135,32 @@ function openSource(): void {
         </div>
       </section>
 
-      <!-- 2. Default Server Section -->
+      <!-- 2. Drop Data Server Section -->
       <section class="settings-page__section">
         <div class="settings-page__section-header">
-          <h2 class="settings-page__section-title">{{ t('settings.defaultServer.title') }}</h2>
+          <h2 class="settings-page__section-title">{{ t('settings.dropDataServer.title') }}</h2>
           <p class="settings-page__section-desc">
-            {{ t('settings.defaultServer.desc') }}
+            {{ t('settings.dropDataServer.desc') }}
           </p>
         </div>
         <div class="settings-page__button-group">
           <button
             type="button"
             class="settings-page__toggle-btn"
-            :class="{
-              'settings-page__toggle-btn--active': settingsStore.defaultServer === 'global',
-            }"
-            @click="selectServer('global')"
+            :class="{ 'settings-page__toggle-btn--active': settingsStore.dropDataServer === 'cn' }"
+            @click="selectServer('cn')"
           >
-            {{ t('settings.defaultServer.global') }}
+            {{ t('settings.dropDataServer.cn') }}
           </button>
           <button
             type="button"
             class="settings-page__toggle-btn"
-            :class="{ 'settings-page__toggle-btn--active': settingsStore.defaultServer === 'cn' }"
-            @click="selectServer('cn')"
+            :class="{
+              'settings-page__toggle-btn--active': settingsStore.dropDataServer === 'global',
+            }"
+            @click="selectServer('global')"
           >
-            {{ t('settings.defaultServer.cn') }}
+            {{ t('settings.dropDataServer.global') }}
           </button>
         </div>
       </section>

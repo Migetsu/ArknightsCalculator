@@ -59,16 +59,14 @@ describe('AkOperatorCard', () => {
     expect(link.attributes('href')).toBe('/operators/char_003_kalts')
   })
 
-  it('displays CN badge only for CN-exclusive operators', async () => {
+  it('never displays a CN badge (server flags are unreliable)', async () => {
     const wrapper = await mountSuspended(AkOperatorCard, {
       props: {
         operator: cnOperator,
       },
     })
 
-    const cnBadge = wrapper.find('.ak-operator-card__cn-badge')
-    expect(cnBadge.exists()).toBe(true)
-    expect(cnBadge.text()).toBe('CN')
+    expect(wrapper.find('.ak-operator-card__cn-badge').exists()).toBe(false)
   })
 
   it('has comprehensive aria-label for screen reader accessibility', async () => {

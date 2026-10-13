@@ -57,19 +57,14 @@ describe('AkOperatorFilters', () => {
     expect(updateEvents?.[0]?.[0]).toMatchObject({ rarities: [6] })
   })
 
-  it('switches server between global and cn', async () => {
+  it('does not render a server switcher', async () => {
     const wrapper = await mountSuspended(AkOperatorFilters, {
       props: {
         modelValue: { ...DEFAULT_OPERATOR_FILTERS },
       },
     })
 
-    const cnBtn = wrapper.findAll('.ak-operator-filters__server-btn')[1]
-    await cnBtn?.trigger('click')
-
-    const updateEvents = wrapper.emitted('update:modelValue')
-    expect(updateEvents).toBeTruthy()
-    expect(updateEvents?.[0]?.[0]).toMatchObject({ server: 'cn' })
+    expect(wrapper.findAll('.ak-operator-filters__server-btn')).toHaveLength(0)
   })
 
   it('displays and handles reset filters button when filters are active', async () => {

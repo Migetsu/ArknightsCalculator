@@ -127,11 +127,11 @@ describe('operatorFilters', () => {
       expect(parsed.faction).toBe('rhodes')
     })
 
-    it('parses server parameter with fallback to global', () => {
-      expect(parseOperatorFilterQuery({ server: 'cn' }).server).toBe('cn')
-      expect(parseOperatorFilterQuery({ server: 'CN' }).server).toBe('cn')
-      expect(parseOperatorFilterQuery({ server: 'global' }).server).toBe('global')
-      expect(parseOperatorFilterQuery({ server: 'unknown' }).server).toBe('global')
+    it('ignores server parameter per server model spec', () => {
+      const parsedCn = parseOperatorFilterQuery({ server: 'cn' })
+      const parsedGlobal = parseOperatorFilterQuery({ server: 'global' })
+      expect(parsedCn).toEqual(DEFAULT_OPERATOR_FILTERS)
+      expect(parsedGlobal).toEqual(DEFAULT_OPERATOR_FILTERS)
     })
 
     it('parses sort options with fallback to rarity_desc', () => {
@@ -153,7 +153,6 @@ describe('operatorFilters', () => {
         rarities: [5, 6],
         subclass: 'physician',
         faction: 'rhodes',
-        server: 'cn',
         sort: 'name_asc',
       })
 
@@ -163,16 +162,14 @@ describe('operatorFilters', () => {
         rarity: '6,5',
         subclass: 'physician',
         faction: 'rhodes',
-        server: 'cn',
         sort: 'name_asc',
       })
     })
 
-    it('omits server if global and sort if rarity_desc', () => {
+    it('omits sort if rarity_desc', () => {
       const serialized = serializeOperatorFilterQuery({
         ...DEFAULT_OPERATOR_FILTERS,
         search: 'chen',
-        server: 'global',
         sort: 'rarity_desc',
       })
 
@@ -181,17 +178,8 @@ describe('operatorFilters', () => {
   })
 
   describe('filterOperators', () => {
-    it('filters by global server by default, excluding CN-only operators', () => {
+    it('includes all operators from database without server filtering', () => {
       const result = filterOperators(mockOperators, DEFAULT_OPERATOR_FILTERS)
-      expect(result.some((op) => op.id === 'char_1037_amiya3')).toBe(false)
-      expect(result.length).toBe(5)
-    })
-
-    it('includes CN-only operators when server is set to cn', () => {
-      const result = filterOperators(mockOperators, {
-        ...DEFAULT_OPERATOR_FILTERS,
-        server: 'cn',
-      })
       expect(result.some((op) => op.id === 'char_1037_amiya3')).toBe(true)
       expect(result.length).toBe(6)
     })
@@ -225,7 +213,7 @@ describe('operatorFilters', () => {
         classes: ['MEDIC', 'WARRIOR'],
       })
       expect(result.map((o) => o.id).sort()).toEqual(
-        ['char_003_kalts', 'char_010_chen', 'char_500_breeze'].sort(),
+        ['char_003_kalts', 'char_010_chen', 'char_1037_amiya3', 'char_500_breeze'].sort(),
       )
     })
 
@@ -286,7 +274,6 @@ describe('operatorFilters', () => {
         {
           ...DEFAULT_OPERATOR_FILTERS,
           classes: ['MEDIC'],
-          server: 'cn',
           sort: 'name_asc',
         },
         'en',

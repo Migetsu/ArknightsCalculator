@@ -1,9 +1,4 @@
-import type {
-  ContentLocale,
-  OperatorClass,
-  OperatorSummary,
-  ServerRegion,
-} from '../schemas/operator'
+import type { ContentLocale, OperatorClass, OperatorSummary } from '../schemas/operator'
 import { OperatorClassSchema, resolveI18nString } from '../schemas/operator'
 
 export type OperatorSortOption = 'rarity_desc' | 'rarity_asc' | 'name_asc' | 'name_desc'
@@ -14,7 +9,6 @@ export interface OperatorFilterState {
   subclass?: string
   rarities: number[]
   faction?: string
-  server: ServerRegion
   sort: OperatorSortOption
 }
 
@@ -24,7 +18,6 @@ export const DEFAULT_OPERATOR_FILTERS: Readonly<OperatorFilterState> = Object.fr
   subclass: undefined,
   rarities: [],
   faction: undefined,
-  server: 'global',
   sort: 'rarity_desc',
 })
 
@@ -38,6 +31,7 @@ const VALID_SORTS = new Set<OperatorSortOption>([
 
 /**
  * Parses query params from URL into a typed OperatorFilterState.
+ * Note: server query parameter is intentionally ignored per server model spec.
  */
 export function parseOperatorFilterQuery(
   query: Record<string, unknown> | null | undefined,
@@ -79,10 +73,6 @@ export function parseOperatorFilterQuery(
       ? query.faction.trim().toLowerCase()
       : undefined
 
-  // Server: default 'global', switchable to 'cn'
-  const server: ServerRegion =
-    typeof query.server === 'string' && query.server.trim().toLowerCase() === 'cn' ? 'cn' : 'global'
-
   // Sort
   const rawSort = typeof query.sort === 'string' ? query.sort.trim() : ''
   const sort: OperatorSortOption =
@@ -96,7 +86,6 @@ export function parseOperatorFilterQuery(
     subclass: rawSubclass,
     rarities,
     faction: rawFaction,
-    server,
     sort,
   }
 }
@@ -128,10 +117,6 @@ export function serializeOperatorFilterQuery(state: OperatorFilterState): Record
     query.faction = state.faction
   }
 
-  if (state.server === 'cn') {
-    query.server = 'cn'
-  }
-
   if (state.sort !== 'rarity_desc') {
     query.sort = state.sort
   }
@@ -141,6 +126,7 @@ export function serializeOperatorFilterQuery(state: OperatorFilterState): Record
 
 /**
  * Pure filter function matching operators against filter criteria.
+ * Note: Displays all operators from the database without server filtering per spec.
  */
 export function filterOperators(
   operators: readonly OperatorSummary[],
@@ -156,15 +142,7 @@ export function filterOperators(
   const requiredFaction = filters.faction?.toLowerCase()
 
   return operators.filter((op) => {
-    // 1. Server filter
-    if (filters.server === 'global' && !op.servers.includes('global')) {
-      return false
-    }
-    if (filters.server === 'cn' && !op.servers.includes('cn')) {
-      return false
-    }
-
-    // 2. Class filter
+    // 1. Class filter
     if (hasClasses && !classSet.has(op.class)) {
       return false
     }
@@ -231,6 +209,7 @@ export function sortOperators(
   locale: ContentLocale = 'en',
 ): OperatorSummary[] {
   const result = [...operators]
+  const collatorLocale = locale === 'ru' ? 'ru' : locale === 'zh' ? 'zh' : 'en'
 
   result.sort((a, b) => {
     const nameA = resolveI18nString(a.name, locale) || a.name.en
@@ -239,18 +218,24 @@ export function sortOperators(
     switch (sort) {
       case 'rarity_asc': {
         const rarityDiff = a.rarity - b.rarity
-        return rarityDiff !== 0 ? rarityDiff : nameA.localeCompare(nameB)
+        if (rarityDiff !== 0) return rarityDiff
+        const nameDiff = nameA.localeCompare(nameB, collatorLocale)
+        return nameDiff !== 0 ? nameDiff : a.id.localeCompare(b.id, 'en')
       }
       case 'name_asc': {
-        return nameA.localeCompare(nameB)
+        const nameDiff = nameA.localeCompare(nameB, collatorLocale)
+        return nameDiff !== 0 ? nameDiff : a.id.localeCompare(b.id, 'en')
       }
       case 'name_desc': {
-        return nameB.localeCompare(nameA)
+        const nameDiff = nameB.localeCompare(nameA, collatorLocale)
+        return nameDiff !== 0 ? nameDiff : b.id.localeCompare(a.id, 'en')
       }
       case 'rarity_desc':
       default: {
         const rarityDiff = b.rarity - a.rarity
-        return rarityDiff !== 0 ? rarityDiff : nameA.localeCompare(nameB)
+        if (rarityDiff !== 0) return rarityDiff
+        const nameDiff = nameA.localeCompare(nameB, collatorLocale)
+        return nameDiff !== 0 ? nameDiff : a.id.localeCompare(b.id, 'en')
       }
     }
   })

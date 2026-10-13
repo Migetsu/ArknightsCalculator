@@ -34,17 +34,17 @@ test.describe('Operators Catalog (/operators)', () => {
     const searchInput = page.locator('input[type="search"]')
     await expect(searchInput).toBeVisible()
     await expect(async () => {
-      await searchInput.fill("Kal'tsit")
-      await expect(page.locator('.ak-operator-card', { hasText: "Kal'tsit" })).toBeVisible({
+      await searchInput.fill('Myrtle')
+      await expect(page.locator('.ak-operator-card', { hasText: 'Myrtle' })).toBeVisible({
         timeout: 1000,
       })
     }).toPass({ timeout: 5000 })
 
     // Expect URL query to update
-    await expect(page).toHaveURL(/q=Kal('?|%27)tsit/)
+    await expect(page).toHaveURL(/q=Myrtle/i)
 
     // Expect filtered results
-    const card = page.locator('.ak-operator-card', { hasText: "Kal'tsit" })
+    const card = page.locator('.ak-operator-card', { hasText: 'Myrtle' })
     await expect(card).toBeVisible()
     await expect(page.locator('.operators-page__counter-badge')).toContainText(/1 of 1/i)
   })
@@ -78,32 +78,19 @@ test.describe('Operators Catalog (/operators)', () => {
     }
   })
 
-  test('switches server between Global and CN (revealing CN-exclusive operators)', async ({
+  test('has no server switcher, shows all operators without CN badges, ignores ?server=', async ({
     page,
   }) => {
-    await page.goto('/operators')
+    await page.goto('/operators?server=global')
     await expect(page.locator('.ak-operator-card').first()).toBeVisible()
 
-    // Search for CN-exclusive operator Closure
+    await expect(page.locator('.ak-operator-filters__server-btn')).toHaveCount(0)
+    await expect(page.locator('.ak-operator-card__cn-badge')).toHaveCount(0)
+
+    // CN-exclusive operator must be listed regardless of the query param
     const searchInput = page.locator('input[type="search"]')
-    await expect(searchInput).toBeVisible()
-
-    // Under Global server, this operator should not be displayed
-    await expect(async () => {
-      await searchInput.fill('Closure')
-      await expect(page.locator('.operators-page__empty-state')).toBeVisible({ timeout: 1000 })
-    }).toPass({ timeout: 5000 })
-
-    // Switch to CN server
-    const cnServerBtn = page.locator('.ak-operator-filters__server-btn', { hasText: 'CN All' })
-    await cnServerBtn.click()
-
-    await expect(page).toHaveURL(/server=cn/)
-
-    // Now Closure must appear with CN badge
-    const card = page.locator('.ak-operator-card', { hasText: 'Closure' })
-    await expect(card).toBeVisible()
-    await expect(card.locator('.ak-operator-card__cn-badge')).toHaveText('CN')
+    await searchInput.fill('Closure')
+    await expect(page.locator('.ak-operator-card', { hasText: 'Closure' })).toBeVisible()
   })
 
   test('restores filter state from shared URL link', async ({ page }) => {
@@ -122,10 +109,10 @@ test.describe('Operators Catalog (/operators)', () => {
     const sixStarChip = page.locator('.ak-operator-filters__chip--rarity-6')
     await expect(sixStarChip).toHaveClass(/--active/)
 
-    // Result card must be Ch'en
-    const card = page.locator('.ak-operator-card')
-    await expect(card).toHaveCount(1)
-    await expect(card).toContainText("Ch'en")
+    // Result cards: Ch'en and Ch'en the Dawnstreak in CN unified catalog
+    const cards = page.locator('.ak-operator-card')
+    await expect(cards).toHaveCount(2)
+    await expect(cards.first()).toContainText("Ch'en")
   })
 
   test('handles empty state and reset button', async ({ page }) => {
@@ -158,12 +145,12 @@ test.describe('Operators Catalog (/operators)', () => {
     const searchInput = page.locator('input[type="search"]')
     await expect(async () => {
       await searchInput.fill("Kal'tsit")
-      await expect(page.locator('.ak-operator-card', { hasText: "Kal'tsit" })).toBeVisible({
+      await expect(page.locator('.ak-operator-card[href$="/char_003_kalts"]')).toBeVisible({
         timeout: 1000,
       })
     }).toPass({ timeout: 5000 })
 
-    const card = page.locator('.ak-operator-card', { hasText: "Kal'tsit" })
+    const card = page.locator('.ak-operator-card[href$="/char_003_kalts"]')
     await card.click()
 
     // Navigate to /operators/char_003_kalts

@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import { resolveAsset } from '~/../shared/utils/resolveAsset'
-import AkBadge from '~/components/ui/AkBadge.vue'
 
 interface Props {
   operator: OperatorSummary
@@ -19,10 +18,6 @@ const displayName = computed(() => {
     resolveI18nString(props.operator.name, locale.value as 'en' | 'ru' | 'zh') ||
     props.operator.name.en
   )
-})
-
-const isCnOnly = computed(() => {
-  return props.operator.servers.length === 1 && props.operator.servers[0] === 'cn'
 })
 
 const rarityStars = computed(() => {
@@ -67,9 +62,6 @@ const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallback
           }
         "
       />
-      <AkBadge v-if="isCnOnly" variant="amber" size="sm" class="ak-operator-card__cn-badge">
-        CN
-      </AkBadge>
     </div>
 
     <div
@@ -167,13 +159,6 @@ const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallback
 
   &:hover &__art-img {
     transform: scale(1.03);
-  }
-
-  &__cn-badge {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 1;
   }
 
   &__info {
