@@ -153,12 +153,12 @@ const initials = computed(() => {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-bg-surface), var(--color-bg-subtle));
-    color: var(--color-text-secondary);
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-primary);
   }
 
   &__initials {
-    font-family: var(--font-mono);
+    font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-mono);
     text-transform: uppercase;
@@ -170,12 +170,12 @@ const initials = computed(() => {
     background-color: var(--color-border-subtle);
   }
 
-  // Sizes
+  // Sizes (44/48/52/56/64/84 per DESIGN.md with backward compatibility)
   &--size-sm {
-    width: 2rem;
+    width: 2.25rem; // 36px
 
     .ak-avatar__frame {
-      height: 2rem;
+      height: 2.25rem;
     }
 
     .ak-avatar__initials {
@@ -188,7 +188,7 @@ const initials = computed(() => {
   }
 
   &--size-md {
-    width: 2.75rem;
+    width: 2.75rem; // 44px
 
     .ak-avatar__frame {
       height: 2.75rem;
@@ -204,7 +204,7 @@ const initials = computed(() => {
   }
 
   &--size-lg {
-    width: 3.5rem;
+    width: 3.5rem; // 56px
 
     .ak-avatar__frame {
       height: 3.5rem;
@@ -215,11 +215,11 @@ const initials = computed(() => {
     }
 
     .ak-avatar__rarity-bar {
-      height: 4px;
+      height: 3px;
     }
   }
 
-  // Rarity styling
+  // Rarity styling (3px bottom line in DESIGN.md)
   &--rarity-1 .ak-avatar__rarity-bar {
     background-color: var(--color-rarity-1);
   }
@@ -241,8 +241,7 @@ const initials = computed(() => {
   }
 
   &--rarity-6 .ak-avatar__rarity-bar {
-    background: linear-gradient(90deg, var(--color-rarity-6), var(--color-rarity-6-gold));
-    box-shadow: 0 0 6px rgb(255 109 0 / 40%);
+    background-color: var(--color-rarity-6);
   }
 }
 </style>

@@ -49,14 +49,23 @@ export default defineNuxtConfig({
   },
   fonts: {
     defaults: {
-      weights: [400, 500, 600, 700],
+      weights: [400, 500, 600, 800],
       styles: ['normal'],
       subsets: ['latin', 'cyrillic'],
     },
     families: [
-      { name: 'Exo 2', provider: 'google', subsets: ['latin', 'cyrillic'] },
-      { name: 'Inter', provider: 'google', subsets: ['latin', 'cyrillic'] },
-      { name: 'JetBrains Mono', provider: 'google', subsets: ['latin', 'cyrillic'] },
+      {
+        name: 'Unbounded',
+        provider: 'google',
+        weights: [500, 800],
+        subsets: ['latin', 'cyrillic'],
+      },
+      {
+        name: 'Golos Text',
+        provider: 'google',
+        weights: [400, 600],
+        subsets: ['latin', 'cyrillic'],
+      },
     ],
   },
   hooks: {

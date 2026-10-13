@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 export interface TabItem {
   id: string
   label: string
@@ -8,10 +10,12 @@ export interface TabItem {
 interface Props {
   modelValue: string
   items: TabItem[]
+  variant?: 'buttons' | 'underline'
   ariaLabel?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  variant: 'buttons',
   ariaLabel: 'Tabs',
 })
 
@@ -66,7 +70,7 @@ function handleKeydown(event: KeyboardEvent, currentIndex: number): void {
 </script>
 
 <template>
-  <div class="ak-tabs">
+  <div class="ak-tabs" :class="`ak-tabs--${variant}`">
     <div class="ak-tabs__list" role="tablist" :aria-label="ariaLabel">
       <button
         v-for="(item, idx) in items"
@@ -109,61 +113,94 @@ function handleKeydown(event: KeyboardEvent, currentIndex: number): void {
   flex-direction: column;
   gap: var(--space-md);
 
-  &__list {
-    display: flex;
-    gap: var(--space-xs);
-    border-bottom: 2px solid var(--color-border-subtle);
-    overflow-x: auto;
-    padding-bottom: 1px;
-  }
+  // Variant: buttons (Active Ember #ff6a3d, inactive transparent/panel with border)
+  &--buttons {
+    .ak-tabs__list {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
 
-  &__tab {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-xs) var(--space-md);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-secondary);
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
-    border-bottom: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-mono);
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
-    position: relative;
-    top: 2px;
-    transition:
-      color var(--transition-fast),
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
-    white-space: nowrap;
-
-    @include focus-ring-clipped;
-
-    &:hover:not(:disabled, .ak-tabs__tab--active) {
+    .ak-tabs__tab {
+      padding: 10px 20px;
+      font-family: var(--font-body);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
       color: var(--color-text-primary);
-      background-color: var(--color-bg-subtle);
-      border-color: var(--color-border-base);
-    }
+      background-color: var(--color-bg-surface);
+      border: 1px solid var(--color-border-bold);
+      border-radius: var(--radius-none);
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
 
-    &--active {
-      color: var(--color-text-inverse);
-      background-color: var(--color-accent-primary);
-      border-color: var(--color-accent-primary);
-      box-shadow: 0 0 12px rgb(0 240 255 / 35%);
-    }
+      @include focus-ring;
 
-    &--disabled {
-      cursor: not-allowed;
-      opacity: 0.35;
+      &:hover:not(:disabled, .ak-tabs__tab--active) {
+        border-color: var(--color-text-accent);
+        color: var(--color-text-accent);
+      }
+
+      &--active {
+        background-color: var(--color-accent-primary);
+        border-color: var(--color-accent-primary);
+        color: var(--color-text-inverse);
+
+        &:hover:not(:disabled) {
+          background-color: var(--color-accent-primary-hover);
+          color: var(--color-text-inverse);
+        }
+      }
+
+      &--disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
     }
   }
 
-  &__label {
-    display: inline-block;
+  // Variant: underline (Used in sync-modal and operator-detail)
+  &--underline {
+    .ak-tabs__list {
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid var(--color-border-base);
+    }
+
+    .ak-tabs__tab {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 0 0 12px;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        color var(--transition-fast),
+        border-bottom-color var(--transition-fast);
+
+      @include focus-ring;
+
+      &:hover:not(:disabled, .ak-tabs__tab--active) {
+        color: var(--color-text-accent);
+      }
+
+      &--active {
+        color: var(--color-text-primary);
+        border-bottom-color: var(--color-accent-primary);
+      }
+
+      &--disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+    }
   }
 
   &__content {

@@ -3,7 +3,7 @@ interface Props {
   label: string
   value: string | number
   subvalue?: string
-  variant?: 'cyan' | 'amber' | 'green' | 'red' | 'neutral'
+  variant?: 'cyan' | 'amber' | 'green' | 'red' | 'ember' | 'neutral'
 }
 
 withDefaults(defineProps<Props>(), {
@@ -24,21 +24,18 @@ withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 .ak-stat {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  padding: var(--space-sm) var(--space-md);
+  padding: 18px 20px;
+  background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-subtle);
-  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+  border-radius: var(--radius-none);
   min-width: 0;
-  transition: border-color var(--duration-fast) var(--ease-tactical);
-
-  @include cut-corner(8px, top-right);
 
   &__label {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--letter-spacing-mono);
     color: var(--color-text-secondary);
@@ -53,68 +50,52 @@ withDefaults(defineProps<Props>(), {
     align-items: baseline;
     gap: var(--space-xs);
     min-width: 0;
+    margin-top: 4px;
   }
 
   &__value {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.04em;
+    font-family: var(--font-display);
+    font-size: var(--font-size-3xl); // 32px
+    font-weight: var(--font-weight-bold); // 800
     color: var(--color-text-primary);
-    text-transform: uppercase;
-    line-height: 1.2;
+    line-height: 1.1;
 
     @include text-truncate;
   }
 
   &__subvalue {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
     color: var(--color-text-secondary);
     line-height: 1.2;
 
     @include text-truncate;
   }
 
+  &--ember,
   &--cyan {
-    border-left: 3px solid var(--color-accent-primary);
-
     .ak-stat__value {
       color: var(--color-accent-primary);
-      text-shadow: 0 0 10px var(--color-accent-primary-glow);
     }
   }
 
   &--amber {
-    border-left: 3px solid var(--color-accent-warning);
-
     .ak-stat__value {
       color: var(--color-accent-warning);
-      text-shadow: 0 0 10px var(--color-accent-warning-glow);
     }
   }
 
   &--green {
-    border-left: 3px solid var(--color-accent-success);
-
     .ak-stat__value {
       color: var(--color-accent-success);
-      text-shadow: 0 0 10px var(--color-accent-success-glow);
     }
   }
 
   &--red {
-    border-left: 3px solid var(--color-accent-danger);
-
     .ak-stat__value {
       color: var(--color-accent-danger);
-      text-shadow: 0 0 10px var(--color-accent-danger-glow);
     }
-  }
-
-  &--neutral {
-    border-left: 3px solid var(--color-border-bold);
   }
 }
 </style>

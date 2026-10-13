@@ -1,12 +1,12 @@
 <script setup lang="ts">
 interface Props {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'warning'
+  variant?: 'primary' | 'outline' | 'gold-outline' | 'danger' | 'ghost' | 'secondary' | 'warning'
   size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit' | 'reset'
   to?: string
   disabled?: boolean
   loading?: boolean
-  cutCorner?: boolean
+  cutCorner?: boolean // Kept for API compatibility, renders flat border-radius in Ember Editorial
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
   to: undefined,
   disabled: false,
   loading: false,
-  cutCorner: true,
+  cutCorner: false,
 })
 
 const emit = defineEmits<{
@@ -91,12 +91,12 @@ function handleClick(event: MouseEvent): void {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-mono);
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
   text-decoration: none;
   border: 1px solid transparent;
+  border-radius: var(--radius-none);
   cursor: pointer;
   position: relative;
   user-select: none;
@@ -105,35 +105,29 @@ function handleClick(event: MouseEvent): void {
     background-color var(--transition-fast),
     border-color var(--transition-fast),
     color var(--transition-fast),
-    box-shadow var(--transition-fast),
-    filter var(--transition-fast);
+    opacity var(--transition-fast);
 
   @include focus-ring;
 
-  &--cut {
-    @include cut-corner(8px, bottom-right);
-    @include focus-ring-clipped;
-  }
-
   &--sm {
-    padding: var(--space-2xs) var(--space-sm);
+    padding: 7px var(--space-sm);
     font-size: var(--font-size-xs);
-    height: 1.875rem;
+    min-height: 2rem;
   }
 
   &--md {
-    padding: var(--space-xs) var(--space-md);
-    font-size: var(--font-size-xs);
-    height: 2.25rem;
+    padding: 11px var(--space-md);
+    font-size: var(--font-size-sm);
+    min-height: 2.5rem;
   }
 
   &--lg {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--font-size-sm);
-    height: 2.75rem;
+    padding: 13px 26px;
+    font-size: 0.9375rem; // 15px
+    min-height: 3rem;
   }
 
-  // Primary: solid cyan fill with dark text
+  // Primary: Ember #ff6a3d fill with dark text #120d0b
   &--primary {
     background-color: var(--color-accent-primary);
     border-color: var(--color-accent-primary);
@@ -142,123 +136,122 @@ function handleClick(event: MouseEvent): void {
     &:hover:not(:disabled, .ak-button--disabled) {
       background-color: var(--color-accent-primary-hover);
       border-color: var(--color-accent-primary-hover);
-      box-shadow: var(--shadow-glow-cyan);
     }
 
     &:active:not(:disabled, .ak-button--disabled) {
       background-color: var(--color-accent-primary-active);
+      border-color: var(--color-accent-primary-active);
     }
   }
 
-  // Secondary: outlined cyan / tactical outline
+  // Outline: Transparent with border rgba(232,221,211,.3) and text #e8ddd3
+  &--outline,
   &--secondary {
     background-color: transparent;
-    border-color: var(--color-accent-primary);
-    color: var(--color-accent-primary);
+    border-color: var(--color-border-bold);
+    color: var(--color-text-primary);
 
     &:hover:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-accent-primary-subtle);
-      box-shadow: var(--shadow-glow-cyan);
+      border-color: var(--color-text-accent);
+      color: var(--color-text-accent);
     }
 
     &:active:not(:disabled, .ak-button--disabled) {
-      background-color: rgb(0 229 255 / 20%);
+      background-color: rgb(232 221 211 / 6%);
     }
   }
 
-  // Ghost: subtle transparent
+  // Gold Outline: border rgba(255,217,168,.4) and text #ffd9a8
+  &--gold-outline {
+    background-color: transparent;
+    border-color: var(--color-border-gold);
+    color: var(--color-text-accent);
+
+    &:hover:not(:disabled, .ak-button--disabled) {
+      background-color: rgb(255 217 168 / 8%);
+      border-color: var(--color-text-accent);
+    }
+
+    &:active:not(:disabled, .ak-button--disabled) {
+      background-color: rgb(255 217 168 / 14%);
+    }
+  }
+
+  // Danger: border rgba(255,138,92,.5) and text #ff8a5c
+  &--danger {
+    background-color: transparent;
+    border-color: var(--color-border-danger);
+    color: var(--color-accent-ember-light);
+
+    &:hover:not(:disabled, .ak-button--disabled) {
+      background-color: rgb(255 138 92 / 10%);
+      border-color: var(--color-accent-ember-light);
+    }
+
+    &:active:not(:disabled, .ak-button--disabled) {
+      background-color: rgb(255 138 92 / 18%);
+    }
+  }
+
+  // Warning: amber border and text
+  &--warning {
+    background-color: transparent;
+    border-color: var(--color-border-amber);
+    color: var(--color-accent-warning);
+
+    &:hover:not(:disabled, .ak-button--disabled) {
+      background-color: rgb(255 157 43 / 10%);
+    }
+  }
+
+  // Ghost: transparent, text #a8978a, hover #ffd9a8
   &--ghost {
     background-color: transparent;
-    border-color: var(--color-border-subtle);
-    color: var(--color-text-primary);
+    border-color: transparent;
+    color: var(--color-text-secondary);
 
     &:hover:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-bg-subtle);
-      border-color: var(--color-border-base);
-    }
-  }
-
-  // Danger: solid or bordered combat red
-  &--danger {
-    background-color: var(--color-accent-danger);
-    border-color: var(--color-accent-danger);
-    color: var(--color-text-primary);
-
-    &:hover:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-accent-danger-hover);
-      border-color: var(--color-accent-danger-hover);
-      box-shadow: var(--shadow-glow-danger);
+      color: var(--color-text-accent);
+      background-color: rgb(232 221 211 / 5%);
     }
 
     &:active:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-accent-danger-active);
+      background-color: rgb(232 221 211 / 10%);
     }
   }
 
-  // Warning: industrial amber
-  &--warning {
-    background-color: var(--color-accent-warning);
-    border-color: var(--color-accent-warning);
-    color: var(--color-text-inverse);
-
-    &:hover:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-accent-warning-hover);
-      border-color: var(--color-accent-warning-hover);
-      box-shadow: var(--shadow-glow-amber);
-    }
-
-    &:active:not(:disabled, .ak-button--disabled) {
-      background-color: var(--color-accent-warning-active);
-    }
-  }
-
-  &:active:not(:disabled, .ak-button--disabled) {
-    transform: translateY(1px);
-  }
-
-  &--disabled,
-  &:disabled {
-    opacity: 0.45;
+  // Disabled state
+  &:disabled,
+  &--disabled {
     cursor: not-allowed;
+    opacity: 0.4;
     pointer-events: none;
-    box-shadow: none !important;
   }
 
-  &--loading {
-    cursor: wait;
-    opacity: 0.8;
-  }
+  // Loading spinner
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentcolor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ak-btn-spin 600ms linear infinite;
 
-  &__content {
-    display: inline-flex;
-    align-items: center;
-    line-height: 1;
+    @include reduced-motion;
   }
 
   &__icon {
     display: inline-flex;
     align-items: center;
-    line-height: 1;
   }
 
-  &__spinner {
-    display: inline-block;
-    width: 0.875rem;
-    height: 0.875rem;
-    border: 2px solid currentcolor;
-    border-right-color: transparent;
-    border-radius: 50%;
-    animation: ak-button-spin 0.6s linear infinite;
-
-    @include reduced-motion;
+  &__content {
+    display: inline-flex;
+    align-items: center;
   }
 }
 
-@keyframes ak-button-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
+@keyframes ak-btn-spin {
   to {
     transform: rotate(360deg);
   }

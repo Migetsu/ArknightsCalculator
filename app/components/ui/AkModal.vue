@@ -12,7 +12,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   title: undefined,
   tag: undefined,
-  width: '560px',
+  width: '620px',
   teleport: true,
 })
 
@@ -107,50 +107,45 @@ onMounted(() => {
 onBeforeUnmount(() => {
   if (typeof window !== 'undefined') {
     window.removeEventListener('keydown', handleKeydown)
+  }
+  if (typeof document !== 'undefined') {
     document.body.style.overflow = ''
   }
 })
 </script>
 
 <template>
-  <Teleport to="body" :disabled="!teleport">
+  <Teleport :to="teleport ? 'body' : undefined" :disabled="!teleport">
     <div
       v-if="modelValue"
       class="ak-modal"
       role="dialog"
       aria-modal="true"
-      :aria-label="title || tag || 'Modal Dialog'"
+      :aria-label="title ?? 'Dialog'"
     >
-      <div class="ak-modal__backdrop" @click="closeModal" />
+      <div class="ak-modal__backdrop" aria-hidden="true" @click="closeModal" />
 
       <div ref="modalPanelRef" class="ak-modal__panel" :style="{ maxWidth: width }" tabindex="-1">
-        <div class="ak-modal__strip" />
-
-        <div class="ak-modal__container">
-          <header class="ak-modal__header">
+        <header v-if="tag || title || $slots.header" class="ak-modal__header">
+          <slot name="header">
             <div class="ak-modal__title-group">
               <span v-if="tag" class="ak-modal__tag">{{ tag }}</span>
               <h2 v-if="title" class="ak-modal__title">{{ title }}</h2>
             </div>
+          </slot>
 
-            <button
-              type="button"
-              class="ak-modal__close"
-              aria-label="Close dialog"
-              @click="closeModal"
-            >
-              <span class="ak-modal__close-icon">✕</span>
-            </button>
-          </header>
+          <button type="button" class="ak-modal__close" aria-label="Close" @click="closeModal">
+            &times;
+          </button>
+        </header>
 
-          <div class="ak-modal__body">
-            <slot />
-          </div>
-
-          <footer v-if="$slots.footer" class="ak-modal__footer">
-            <slot name="footer" />
-          </footer>
+        <div class="ak-modal__body">
+          <slot />
         </div>
+
+        <footer v-if="$slots.footer" class="ak-modal__footer">
+          <slot name="footer" />
+        </footer>
       </div>
     </div>
   </Teleport>
@@ -169,7 +164,7 @@ onBeforeUnmount(() => {
   &__backdrop {
     position: absolute;
     inset: 0;
-    background-color: var(--color-bg-overlay);
+    background-color: rgb(7 5 10 / 80%);
     backdrop-filter: blur(4px);
     transition: opacity var(--transition-base);
   }
@@ -177,122 +172,90 @@ onBeforeUnmount(() => {
   &__panel {
     position: relative;
     width: 100%;
-    display: flex;
-    background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+    background-color: var(--color-bg-surface); // #17110f
     border: 1px solid var(--color-border-bold);
-    box-shadow:
-      var(--shadow-panel),
-      0 0 35px rgb(0 0 0 / 80%);
-    max-height: calc(100vh - var(--space-xl));
-    overflow-y: auto;
-    z-index: 1;
-
-    @include cut-corner(16px, top-right);
-    @include focus-ring-clipped;
-  }
-
-  &__strip {
-    width: 5px;
-    background-color: var(--color-accent-primary);
-    box-shadow: 0 0 10px var(--color-accent-primary-glow);
-    flex-shrink: 0;
-  }
-
-  &__container {
+    border-left: 4px solid var(--color-accent-primary); // 4px ember bar per DESIGN.md
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-modal);
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-width: 0;
+    max-height: calc(100vh - 2 * var(--space-lg));
+    z-index: 1;
+
+    @include focus-ring;
   }
 
   &__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
+    padding: 24px 28px 18px;
+    border-bottom: 1px solid var(--color-border-subtle);
   }
 
   &__title-group {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xs);
+    gap: 4px;
     min-width: 0;
   }
 
   &__tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--color-text-accent);
     text-transform: uppercase;
-    line-height: 1.2;
-
-    @include text-truncate;
   }
 
   &__title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-lg);
+    font-family: var(--font-display);
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-heading);
     color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
     margin: 0;
-    line-height: 1.2;
-
-    @include text-truncate;
   }
 
   &__close {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-subtle);
-    color: var(--color-text-primary);
-    font-size: var(--font-size-sm);
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+    line-height: 1;
     cursor: pointer;
-    flex-shrink: 0;
-    transition:
-      border-color var(--transition-fast),
-      color var(--transition-fast),
-      background-color var(--transition-fast),
-      box-shadow var(--transition-fast);
+    padding: 4px;
+    transition: color var(--transition-fast);
 
-    @include cut-corner(4px, top-right);
     @include focus-ring;
 
     &:hover {
-      border-color: var(--color-accent-primary);
-      color: var(--color-accent-primary);
-      background-color: var(--color-accent-primary-subtle);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
+      color: var(--color-text-accent);
     }
   }
 
-  &__close-icon {
-    line-height: 1;
-  }
-
   &__body {
-    padding: var(--space-lg);
-    flex: 1;
+    padding: 24px 28px;
     overflow-y: auto;
+    flex: 1;
+    min-width: 0;
+
+    @include tech-scrollbar;
   }
 
   &__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
+    gap: var(--space-sm);
+    padding: 18px 28px;
     border-top: 1px solid var(--color-border-subtle);
-    background-color: var(--color-bg-elevated);
+    background-color: rgb(0 0 0 / 15%);
   }
 }
 </style>

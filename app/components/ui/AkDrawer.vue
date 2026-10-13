@@ -8,7 +8,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  tag: 'PRTS // TACTICAL HUD',
+  tag: 'TERMINAL // NAVIGATION',
   title: 'NAVIGATION',
 })
 
@@ -102,6 +102,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   if (typeof window !== 'undefined') {
     window.removeEventListener('keydown', handleKeydown)
+  }
+  if (typeof document !== 'undefined') {
     document.body.style.overflow = ''
   }
 })
@@ -109,14 +111,21 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport to="body">
-    <div v-if="modelValue" class="ak-drawer" role="dialog" aria-modal="true" :aria-label="title">
-      <div class="ak-drawer__backdrop" @click="closeDrawer" />
+    <div
+      v-if="modelValue"
+      id="tactical-drawer"
+      class="ak-drawer"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="title"
+    >
+      <div class="ak-drawer__backdrop" aria-hidden="true" @click="closeDrawer" />
 
       <aside ref="drawerRef" class="ak-drawer__panel" tabindex="-1">
         <header class="ak-drawer__header">
-          <div class="ak-drawer__title-group">
-            <span v-if="tag" class="ak-drawer__tag">{{ tag }}</span>
-            <h2 v-if="title" class="ak-drawer__title">{{ title }}</h2>
+          <div class="ak-drawer__header-meta">
+            <span class="ak-drawer__tag">{{ tag }}</span>
+            <h2 class="ak-drawer__title">{{ title }}</h2>
           </div>
 
           <button
@@ -125,27 +134,20 @@ onBeforeUnmount(() => {
             aria-label="Close navigation"
             @click="closeDrawer"
           >
-            <span class="ak-drawer__close-label">CLOSE</span>
-            <span class="ak-drawer__close-icon">✕</span>
+            &times;
           </button>
         </header>
 
-        <div v-if="$slots.user" class="ak-drawer__user">
+        <div v-if="$slots.user" class="ak-drawer__user-slot">
           <slot name="user" />
         </div>
 
-        <nav class="ak-drawer__body" aria-label="Tactical Navigation">
+        <nav class="ak-drawer__body" aria-label="Mobile navigation">
           <slot />
         </nav>
 
-        <footer class="ak-drawer__footer">
-          <slot name="footer">
-            <div class="ak-drawer__status">
-              <span class="ak-drawer__status-dot" />
-              <span class="ak-drawer__status-text">PRTS KERNEL v4.12</span>
-            </div>
-            <span class="ak-drawer__status-label">STATUS: OPTIMAL</span>
-          </slot>
+        <footer v-if="$slots.footer" class="ak-drawer__footer">
+          <slot name="footer" />
         </footer>
       </aside>
     </div>
@@ -163,152 +165,94 @@ onBeforeUnmount(() => {
   &__backdrop {
     position: absolute;
     inset: 0;
-    background-color: var(--color-bg-overlay);
-    backdrop-filter: blur(2px);
+    background-color: rgb(7 5 10 / 80%);
+    backdrop-filter: blur(4px);
     transition: opacity var(--transition-base);
   }
 
   &__panel {
     position: relative;
-    width: 380px;
-    max-width: 88vw;
+    width: 100%;
+    max-width: 380px;
     height: 100%;
+    background-color: var(--color-bg-surface); // #17110f
+    border-left: 1px solid var(--color-border-bold);
+    box-shadow: var(--shadow-modal);
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
-    border-left: 1px solid var(--color-border-bold);
-    box-shadow: -6px 0 30px rgb(0 0 0 / 75%);
     z-index: 1;
-    overflow-y: auto;
 
     @include focus-ring;
   }
 
   &__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    border-bottom: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-  }
-
-  &__title-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    min-width: 0;
-  }
-
-  &__tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-accent-primary);
-    text-transform: uppercase;
-    line-height: 1.2;
-    text-shadow: 0 0 6px var(--color-accent-primary-glow);
-  }
-
-  &__title {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-heading);
-    color: var(--color-text-primary);
-    text-transform: uppercase;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  &__close {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2xs);
-    padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-subtle);
-    color: var(--color-text-primary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
-    cursor: pointer;
-    transition:
-      border-color var(--transition-fast),
-      color var(--transition-fast),
-      background-color var(--transition-fast),
-      box-shadow var(--transition-fast);
-
-    @include cut-corner(4px, top-right);
-    @include focus-ring;
-
-    &:hover {
-      border-color: var(--color-accent-primary);
-      color: var(--color-accent-primary);
-      background-color: var(--color-accent-primary-subtle);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
-    }
-  }
-
-  &__close-label {
-    line-height: 1;
-  }
-
-  &__close-icon {
-    line-height: 1;
-  }
-
-  &__user {
-    padding: var(--space-md) var(--space-lg);
+    padding: 20px 24px;
     border-bottom: 1px solid var(--color-border-subtle);
   }
 
-  &__body {
+  &__header-meta {
     display: flex;
     flex-direction: column;
-    padding: var(--space-md) var(--space-lg);
-    gap: var(--space-xs);
+    gap: 4px;
+  }
+
+  &__tag {
+    font-family: var(--font-body);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    color: var(--color-text-accent);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+    transition: color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      color: var(--color-text-accent);
+    }
+  }
+
+  &__user-slot {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-deep);
+  }
+
+  &__body {
     flex: 1;
     overflow-y: auto;
+    padding: 16px 24px;
+
+    @include tech-scrollbar;
   }
 
   &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-sm) var(--space-lg);
-    border-top: 1px solid var(--color-border-bold);
-    background-color: var(--color-bg-elevated);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    letter-spacing: var(--letter-spacing-mono);
-    color: var(--color-text-secondary);
-  }
-
-  &__status {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-  }
-
-  &__status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--color-accent-success);
-    box-shadow: 0 0 8px var(--color-accent-success-glow);
-  }
-
-  &__status-text {
-    line-height: 1;
-  }
-
-  &__status-label {
-    line-height: 1;
-    color: var(--color-accent-primary);
+    padding: 16px 24px;
+    border-top: 1px solid var(--color-border-subtle);
   }
 }
 </style>

@@ -14,7 +14,6 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="ak-alert" :class="`ak-alert--${variant}`" role="alert">
-    <div class="ak-alert__strip" />
     <div class="ak-alert__content">
       <div v-if="badge || title || $slots.badge" class="ak-alert__header">
         <div class="ak-alert__badge-group">
@@ -41,44 +40,31 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   position: relative;
   flex-direction: column;
+  padding: 14px 16px;
+  background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-subtle);
-  background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
+  border-radius: var(--radius-none);
   box-shadow: var(--shadow-panel);
-
-  @include cut-corner(8px, top-right);
+  gap: var(--space-sm);
 
   @include mq(md) {
     flex-direction: row;
-    align-items: stretch;
-  }
-
-  &__strip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 5px;
-    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    padding: var(--space-md) var(--space-md) var(--space-sm) calc(var(--space-md) + 6px);
+    gap: 6px;
     flex: 1;
     min-width: 0;
-
-    @include mq(md) {
-      padding: var(--space-md);
-      padding-left: calc(var(--space-md) + 6px);
-    }
   }
 
   &__header {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
   }
 
   &__badge-group {
@@ -91,110 +77,102 @@ withDefaults(defineProps<Props>(), {
   &__badge {
     display: inline-flex;
     align-items: center;
-    padding: var(--space-2xs) var(--space-xs);
-    font-family: var(--font-mono);
+    padding: 2px 8px;
+    font-family: var(--font-body);
     font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-mono);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
     text-transform: uppercase;
-    line-height: 1;
-    white-space: nowrap;
-
-    @include cut-corner(3px, top-right);
+    line-height: 1.2;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-base);
+    color: var(--color-text-secondary);
   }
 
   &__title {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-heading);
-    text-transform: uppercase;
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
   }
 
   &__body {
-    font-size: var(--font-size-xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    line-height: 1.55;
     color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
   }
 
   &__actions {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-xs);
-    padding: var(--space-sm) var(--space-md) var(--space-md) calc(var(--space-md) + 6px);
-    border-top: 1px solid var(--color-border-subtle);
-    flex-shrink: 0;
+    width: 100%;
 
     @include mq(md) {
-      padding: var(--space-md);
-      border-top: none;
-      border-left: 1px solid var(--color-border-subtle);
-      justify-content: flex-end;
+      width: auto;
+      flex-shrink: 0;
     }
   }
 
-  // Variants
-  &--info {
-    border-color: rgb(0 240 255 / 35%);
-
-    .ak-alert__strip {
-      background-color: var(--color-accent-primary);
-      box-shadow: 0 0 8px var(--color-accent-primary-glow);
-    }
-
-    .ak-alert__badge {
-      background-color: var(--color-accent-primary-subtle);
-      color: var(--color-accent-primary);
-      border: 1px solid rgb(0 240 255 / 40%);
-    }
-  }
-
+  // Variant: Warning (Amber by DESIGN.md: background rgba(255,157,43,.08), border 1px solid rgba(255,157,43,.35))
   &--warning {
-    border-color: rgb(243 144 0 / 35%);
+    background-color: rgb(255 157 43 / 8%);
+    border-color: var(--color-border-amber);
 
-    .ak-alert__strip {
-      @include hazard-stripes(var(--color-accent-warning), var(--color-bg-base), 6px);
-
-      box-shadow: 0 0 8px var(--color-accent-warning-glow);
-    }
-
-    .ak-alert__badge {
-      background-color: var(--color-accent-warning-subtle);
+    .ak-alert__title {
       color: var(--color-accent-warning);
-      border: 1px solid rgb(243 144 0 / 40%);
-    }
-  }
-
-  &--success {
-    border-color: rgb(0 230 118 / 35%);
-
-    .ak-alert__strip {
-      background-color: var(--color-accent-success);
-      box-shadow: 0 0 8px var(--color-accent-success-glow);
     }
 
     .ak-alert__badge {
-      background-color: var(--color-accent-success-subtle);
-      color: var(--color-accent-success);
-      border: 1px solid rgb(0 230 118 / 40%);
+      border-color: var(--color-border-amber);
+      color: var(--color-accent-warning);
     }
   }
 
+  // Variant: Danger
   &--danger {
-    border-color: rgb(255 42 77 / 35%);
+    background-color: rgb(255 138 92 / 8%);
+    border-color: var(--color-border-danger);
 
-    .ak-alert__strip {
-      @include hazard-stripes(var(--color-accent-danger), var(--color-bg-base), 6px);
-
-      box-shadow: 0 0 8px var(--color-accent-danger-glow);
+    .ak-alert__title {
+      color: var(--color-accent-ember-light);
     }
 
     .ak-alert__badge {
-      background-color: var(--color-accent-danger-subtle);
-      color: var(--color-accent-danger);
-      border: 1px solid rgb(255 42 77 / 40%);
+      border-color: var(--color-border-danger);
+      color: var(--color-accent-ember-light);
+    }
+  }
+
+  // Variant: Info
+  &--info {
+    background-color: rgb(255 217 168 / 6%);
+    border-color: var(--color-border-bold);
+
+    .ak-alert__title {
+      color: var(--color-text-accent);
+    }
+
+    .ak-alert__badge {
+      border-color: var(--color-border-bold);
+      color: var(--color-text-accent);
+    }
+  }
+
+  // Variant: Success
+  &--success {
+    background-color: rgb(143 209 158 / 8%);
+    border-color: rgb(143 209 158 / 35%);
+
+    .ak-alert__title {
+      color: var(--color-accent-success);
+    }
+
+    .ak-alert__badge {
+      border-color: rgb(143 209 158 / 35%);
+      color: var(--color-accent-success);
     }
   }
 }

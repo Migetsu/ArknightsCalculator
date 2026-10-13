@@ -18,6 +18,10 @@
     @media (min-width: #{$breakpoint-xl}) {
       @content;
     }
+  } @else if $bp == '2xl' {
+    @media (min-width: #{$breakpoint-2xl}) {
+      @content;
+    }
   } @else {
     @media (min-width: #{$bp}) {
       @content;
@@ -25,42 +29,11 @@
   }
 }
 
-// Tactical cut corner via clip-path
-@mixin cut-corner($size: 10px, $corner: top-left) {
-  @if $corner == top-left {
-    clip-path: polygon(#{$size} 0, 100% 0, 100% 100%, 0 100%, 0 #{$size});
-  } @else if $corner == top-right {
-    clip-path: polygon(0 0, calc(100% - #{$size}) 0, 100% #{$size}, 100% 100%, 0 100%);
-  } @else if $corner == bottom-right {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0 100%);
-  } @else if $corner == bottom-left {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, #{$size} 100%, 0 calc(100% - #{$size}));
-  } @else if $corner == dual-diagonal {
-    clip-path: polygon(
-      #{$size} 0,
-      100% 0,
-      100% calc(100% - #{$size}),
-      calc(100% - #{$size}) 100%,
-      0 100%,
-      0 #{$size}
-    );
-  }
-}
-
-// High-contrast tactical focus ring for standard elements
+// Accessible high-contrast focus ring (light gold #ffd9a8 from DESIGN.md)
 @mixin focus-ring {
   &:focus-visible {
-    outline: 2px solid var(--color-accent-primary);
+    outline: 2px solid var(--color-text-accent);
     outline-offset: 2px;
-  }
-}
-
-// Focus ring for clip-path cut-corner elements (where outline is clipped)
-@mixin focus-ring-clipped {
-  &:focus-visible {
-    outline: none;
-    filter: drop-shadow(0 0 2px var(--color-accent-primary))
-      drop-shadow(0 0 4px var(--color-accent-primary));
   }
 }
 
@@ -81,38 +54,7 @@
   white-space: nowrap;
 }
 
-// Subtle tactical terminal grid background (CSS-only vector grid)
-@mixin terminal-grid {
-  background-color: var(--color-bg-base);
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 2.5%) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 2.5%) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-// Industrial warning diagonal hazard stripes
-@mixin hazard-stripes(
-  $accent-color: var(--color-accent-warning),
-  $bg-color: var(--color-bg-surface),
-  $stripe-width: 10px
-) {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    $accent-color,
-    $accent-color $stripe-width,
-    $bg-color $stripe-width,
-    $bg-color ($stripe-width * 2)
-  );
-}
-
-// Glowing neon rim effect
-@mixin neon-glow($color: var(--color-accent-primary), $intensity: 12px) {
-  box-shadow:
-    0 0 $intensity rgb(0 240 255 / 35%),
-    inset 0 0 calc($intensity / 2) rgb(0 240 255 / 15%);
-}
-
-// Technical custom scrollbar for panels and drawers
+// Clean custom scrollbar for panels, drawers and dialogs
 @mixin tech-scrollbar {
   &::-webkit-scrollbar {
     width: 6px;
@@ -120,7 +62,7 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--color-bg-surface);
+    background: var(--color-bg-base);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -131,4 +73,26 @@
       background: var(--color-accent-primary);
     }
   }
+}
+
+// Deprecated compatibility mixins (no-op in Ember Editorial, prevents build breakage while pages transition)
+@mixin cut-corner($size: 10px, $corner: top-left) {
+  // Flat sharp borders in Ember Editorial design system
+  border-radius: var(--radius-none);
+}
+
+@mixin focus-ring-clipped {
+  @include focus-ring;
+}
+
+@mixin hazard-stripes(
+  $accent-color: var(--color-accent-warning),
+  $bg-color: var(--color-bg-surface),
+  $stripe-width: 10px
+) {
+  background-color: var(--color-bg-surface);
+}
+
+@mixin neon-glow($color: var(--color-accent-primary), $intensity: 12px) {
+  box-shadow: none;
 }

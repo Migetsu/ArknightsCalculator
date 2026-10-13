@@ -214,6 +214,35 @@
   - Documented complete architecture, formulas, and verified benchmarks in `docs/planner.md`.
   - Added 15 comprehensive unit tests in `tests/unit/shared/planner/planner.test.ts` verifying boundary validation, zero cost on identical states, arithmetic benchmarks (e.g. 6* SilverAsh E0L1->E2L90 = 1,111,400 EXP and 1,334,796 LMD), monotonicity, and additivity.
 
+- Design Foundation: Ember Editorial direction C implementation (`feat/design-foundation`):
+  - Self-hosted typography via `@nuxt/fonts`: configured `Unbounded` (500, 800) and `Golos Text` (400, 600) with full Latin & Cyrillic character subsets, font-display swap, removing Exo 2, Inter, and JetBrains Mono.
+  - Replaced design tokens (`_tokens.scss`) with authentic Ember Editorial palette:
+    - Page background `#0e0a09` with radial glow `radial-gradient(ellipse at 80% 0, #2a1510 0, #0e0a09 55%)`.
+    - Surface `#17110f` (`.pn`), deep input/cell surface `#0e0a09`, borders (`rgba(232,221,211,.08)`, `.12`, `.18`).
+    - Primary Ember accent `#ff6a3d`, Ember light `#ff8a5c`, Amber `#ff9d2b` (6★, warnings), Success `#8fd19e`, Gold accent text `#ffd9a8`.
+    - Flat 0–2px shapes, removed legacy `clip-path` (chamfer/cut-corner) and skew transforms.
+  - Rewrote UI primitives in `app/components/ui/` to match HTML mockups:
+    - `AkButton`: variants `primary` (Ember fill with dark text), `outline`, `gold-outline`, `danger`, `ghost`.
+    - `AkPanel`: clean `.pn` surface without reticle corners.
+    - `AkBadge`: flat border badges with rarity colors.
+    - `AkStat`: 32px `Unbounded` 800 value + uppercase `Golos Text` label.
+    - `AkTabs`: `buttons` (Ember active fill) and `underline` variants with full WAI-ARIA keyboard support.
+    - `AkInput`: deep background `#0e0a09` with subtle border and gold focus outline.
+    - `AkProgress`: Ember progress bar without borders.
+    - `AkAlert`: Amber warning background and borders per DESIGN.md.
+    - `AkEmptyState`: dashed border state per DESIGN.md.
+    - `AkModal`: 4px Ember left accent bar with clean dialog panel and focus trap.
+    - `AkDrawer`: dark panel with accessible navigation.
+  - Added new design system components:
+    - `AkChip`: toggleable tag buttons (active Ember `#ff6a3d`).
+    - `AkSegmented`: segmented control buttons (language, server switchers).
+    - `AkStepper`: numeric stepper with `−` and `+` buttons, hidden native spinners, keyboard `ArrowUp`/`ArrowDown` support, and accessible focus.
+  - Updated showcase page `app/pages/_ui.vue` with all primitives and live interactive demonstrations.
+  - Added unit test suites for `AkChip`, `AkSegmented`, `AkStepper` (30 test files, 198 Vitest tests passing).
+  - Validated zero horizontal scroll across all breakpoints (360px up to 1920px) on EN and RU across all routes (72/72 passing).
+  - Captured responsive Playwright screenshots on 360px and 1440px viewports (`test-results/ui-showcase-360.png`, `test-results/ui-showcase-1440.png`).
+  - All 104 Playwright E2E tests, Stylelint, ESLint, TypeScript, i18n checks passing.
+
 ## In progress
 
 - None.
