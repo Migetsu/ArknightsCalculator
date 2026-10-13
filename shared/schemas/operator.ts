@@ -7,9 +7,9 @@ export type ContentLocale = 'ru' | 'en' | 'zh'
 
 /**
  * Provenance source for localized strings.
- * Priority: manual > official > wiki > machine > zh
+ * Priority: manual > official > wiki > community > machine > zh
  */
-export const I18nSourceSchema = z.enum(['manual', 'official', 'wiki', 'machine', 'zh'])
+export const I18nSourceSchema = z.enum(['manual', 'official', 'wiki', 'community', 'machine', 'zh'])
 export type I18nSource = z.infer<typeof I18nSourceSchema>
 
 /**
@@ -20,7 +20,7 @@ export const I18nStringSchema = z.object({
   en: z.string(),
   zh: z.string(),
   ru: z.string().optional(),
-  source: I18nSourceSchema.optional().default('official'),
+  source: I18nSourceSchema,
   isMachineTranslation: z.boolean().optional().default(false),
   stale: z.boolean().optional(),
 })
@@ -33,6 +33,14 @@ export type I18nString = z.infer<typeof I18nStringSchema>
 export function isMachineTranslated(text: I18nString | undefined | null): boolean {
   if (!text) return false
   return text.source === 'machine' || text.isMachineTranslation === true
+}
+
+/**
+ * Checks whether the localized string is an unverified community translation.
+ */
+export function isCommunityTranslated(text: I18nString | undefined | null): boolean {
+  if (!text) return false
+  return text.source === 'community'
 }
 
 /**

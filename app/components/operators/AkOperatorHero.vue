@@ -5,6 +5,7 @@ import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import { resolveAsset, LOW_RARITY_OPERATOR_IDS } from '~/../shared/utils/resolveAsset'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   operator: OperatorDetail

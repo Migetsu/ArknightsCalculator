@@ -93,10 +93,12 @@ export async function buildConstants(): Promise<GameConstants> {
       name: {
         en: enTerm?.termName || cnTerm?.termName || termKey,
         zh: cnTerm?.termName || enTerm?.termName || termKey,
+        source: enTerm?.termName ? 'official' : 'zh',
       },
       description: {
         en: enTerm?.description || cnTerm?.description || '',
         zh: cnTerm?.description || enTerm?.description || '',
+        source: enTerm?.description ? 'official' : 'zh',
       },
     }
   }

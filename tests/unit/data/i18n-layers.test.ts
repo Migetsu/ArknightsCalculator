@@ -10,7 +10,9 @@ describe('i18n-layers resolution', () => {
     overrides: {
       'uniequip_004_phenxi.name': {
         text: "Fiammetta's Specialized Badge",
-        comment: 'Manual override',
+        author: 'Arknights Community / Danil',
+        note: 'Official Global module A title',
+        source: 'https://arknights.wiki.gg/wiki/Fiammetta',
       },
     },
     wiki: {
@@ -24,10 +26,37 @@ describe('i18n-layers resolution', () => {
           uniequip_002_leizi2: 'Within a Thought',
         },
       },
+      char_4218_aigis: {
+        name: 'Aegis',
+        skills: {
+          skchr_aigis_1: 'Heavy Iron Shield',
+        },
+      },
+    },
+    categorizedGlossary: {
+      operators: {
+        鞭刃: 'Whislash',
+      },
+      skills: {
+        鞭刃: 'Whip Sword',
+        点燃: 'Ignition',
+      },
+      classes: {
+        术师: 'Caster',
+        狙击: 'Sniper',
+      },
+    },
+    flatGlossary: {
+      术师: 'Caster',
+      狙击: 'Sniper',
     },
     glossary: {
       术师: 'Caster',
       狙击: 'Sniper',
+    },
+    globalAvailability: {
+      char_1043_leizi2: true,
+      char_4218_aigis: false,
     },
   }
 
@@ -87,11 +116,12 @@ describe('i18n-layers resolution', () => {
     expect(tracker.staleCount).toBe(1)
   })
 
-  it('layer 3: falls back to wiki translations when official is missing', () => {
+  it('layer 3: distinguishes released Global operators as wiki source', () => {
     const tracker = createI18nTracker()
     const result = resolveLayeredI18nString(
       {
         key: 'char_1043_leizi2.name',
+        charId: 'char_1043_leizi2',
         officialEn: null,
         zhText: '司霆惊蛰',
         wikiEn: mockContext.wiki.char_1043_leizi2?.name,
@@ -104,6 +134,55 @@ describe('i18n-layers resolution', () => {
     expect(result.en).toBe('Leizi the Thunderbringer')
     expect(result.isMachineTranslation).toBe(false)
     expect(tracker.sources.wiki).toBe(1)
+    expect(tracker.sources.community).toBe(0)
+  })
+
+  it('layer 3: distinguishes CN-only pre-release operators as community source', () => {
+    const tracker = createI18nTracker()
+    const result = resolveLayeredI18nString(
+      {
+        key: 'char_4218_aigis.name',
+        charId: 'char_4218_aigis',
+        officialEn: null,
+        zhText: '埃癸斯',
+        wikiEn: mockContext.wiki.char_4218_aigis?.name,
+      },
+      mockContext,
+      tracker,
+    )
+
+    expect(result.source).toBe('community')
+    expect(result.en).toBe('Aegis')
+    expect(result.isMachineTranslation).toBe(false)
+    expect(tracker.sources.community).toBe(1)
+    expect(tracker.sources.wiki).toBe(0)
+  })
+
+  it('layer 4: resolves contextually via categorized glossary (category, zh)', () => {
+    const tracker = createI18nTracker()
+    // Test operator category
+    const opResult = resolveLayeredI18nString(
+      {
+        zhText: '鞭刃',
+        category: 'operators',
+      },
+      mockContext,
+      tracker,
+    )
+    expect(opResult.source).toBe('machine')
+    expect(opResult.en).toBe('Whislash')
+
+    // Test skill category
+    const skillResult = resolveLayeredI18nString(
+      {
+        zhText: '鞭刃',
+        category: 'skills',
+      },
+      mockContext,
+      tracker,
+    )
+    expect(skillResult.source).toBe('machine')
+    expect(skillResult.en).toBe('Whip Sword')
   })
 
   it('layer 5: falls back to zh original when no translation exists', () => {

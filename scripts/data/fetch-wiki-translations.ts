@@ -67,26 +67,34 @@ async function main() {
   const translations: WikiTranslationsMap = {}
 
   // Existing file if present to preserve or avoid unnecessary requests
-  const outPath = path.join(DATA_I18N_DIR, 'wiki-translations.json')
+  const wikiDir = path.join(DATA_I18N_DIR, 'wiki')
+  const outPath = path.join(wikiDir, 'operators.json')
   let existing: WikiTranslationsMap = {}
   try {
-    existing = JSON.parse(await fs.readFile(outPath, 'utf-8'))
+    const raw = JSON.parse(await fs.readFile(outPath, 'utf-8'))
+    existing = (raw.operators || raw) as WikiTranslationsMap
   } catch (_e) {
     // Ignore
+  }
+
+  const WIKI_PAGE_ALIASES: Record<string, string> = {
+    char_1052_kalts2: "Kal'tsit Esperanta",
+    char_4226_veen: 'Viy',
   }
 
   for (const op of missingOps) {
     const charId = op.id
     const cnChar = rawCnChars[charId]
     const enName = op.name.en
+    const wikiPageTitle = WIKI_PAGE_ALIASES[charId] || enName
 
     if (existing[charId]?.name && existing[charId]?.skills) {
       translations[charId] = existing[charId]!
       continue
     }
 
-    console.log(`Querying wiki.gg for ${enName} (${charId})...`)
-    const wikiData = await fetchOperatorWikiData(enName)
+    console.log(`Querying wiki.gg for ${wikiPageTitle} (${charId})...`)
+    const wikiData = await fetchOperatorWikiData(wikiPageTitle)
     if (!wikiData) {
       console.log(` -> Not found on wiki.gg, skipping.`)
       continue
@@ -126,8 +134,20 @@ async function main() {
     await new Promise((r) => setTimeout(r, 200))
   }
 
-  await fs.mkdir(DATA_I18N_DIR, { recursive: true })
-  await fs.writeFile(outPath, JSON.stringify(translations, null, 2), 'utf-8')
+  await fs.mkdir(wikiDir, { recursive: true })
+  const payload = {
+    _attribution: {
+      source: 'arknights.wiki.gg',
+      url: 'https://arknights.wiki.gg/',
+      license: 'Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA 4.0)',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      retrievedAt: new Date().toISOString(),
+      notice:
+        'Data contains translations derived from arknights.wiki.gg and is licensed under CC-BY-SA 4.0. Reuse must provide appropriate attribution and maintain the CC-BY-SA license.',
+    },
+    operators: translations,
+  }
+  await fs.writeFile(outPath, JSON.stringify(payload, null, 2), 'utf-8')
   console.log(`[PASS] Wiki translations written to ${outPath} (${Object.keys(translations).length} operators)`)
 }
 

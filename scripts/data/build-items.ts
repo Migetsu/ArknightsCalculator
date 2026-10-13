@@ -136,6 +136,7 @@ export async function buildItems(): Promise<{
       name: {
         en: rawEn?.name || rawCn?.name || id,
         zh: rawCn?.name || rawEn?.name || id,
+        source: rawEn?.name ? 'official' : 'zh',
       },
       rarity,
       type: classifiedType,

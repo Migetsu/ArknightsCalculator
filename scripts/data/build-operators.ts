@@ -34,6 +34,7 @@ import {
   type I18nLayersContext,
   type I18nLayersTracker,
   createI18nTracker,
+  createEmptyI18nLayersContext,
   loadI18nLayersContext,
   resolveLayeredI18nString,
   checkSkillLevelStale,
@@ -196,7 +197,7 @@ export function buildOperatorData(
     i18nTracker: I18nLayersTracker
   }
 } {
-  const ctx = context ?? { overrides: {}, wiki: {}, glossary: {} }
+  const ctx = context ?? createEmptyI18nLayersContext()
   const trk = tracker ?? createI18nTracker()
   const operatorMap = new Map<
     string,
@@ -260,6 +261,8 @@ export function buildOperatorData(
     const name = resolveLayeredI18nString(
       {
         key: `${id}.name`,
+        charId: id,
+        category: 'operators',
         officialEn: en?.name,
         zhText: cn.name,
         wikiEn: ctx.wiki[id]?.name,
@@ -345,6 +348,8 @@ export function buildOperatorData(
             const lvlName = resolveLayeredI18nString(
               {
                 key: `${skillId}.lvl.${lvlIdx}.name`,
+                charId: id,
+                category: 'skills',
                 officialEn: enLvl?.name,
                 zhText: cnLvl.name,
                 wikiEn: ctx.wiki[id]?.skills?.[skillId],
@@ -356,6 +361,8 @@ export function buildOperatorData(
             const lvlDesc = resolveLayeredI18nString(
               {
                 key: `${skillId}.lvl.${lvlIdx}.desc`,
+                charId: id,
+                category: 'skills',
                 officialEn: enLvl?.description,
                 zhText: cnLvl.description,
                 isStale,
@@ -416,6 +423,8 @@ export function buildOperatorData(
           const candName = resolveLayeredI18nString(
             {
               key: `${id}.talent.${tIdx}.${cIdx}.name`,
+              charId: id,
+              category: 'talents',
               officialEn: enCand?.name,
               zhText: cnCand.name,
               wikiEn: ctx.wiki[id]?.talents?.[tIdx],
@@ -427,6 +436,8 @@ export function buildOperatorData(
           const candDesc = resolveLayeredI18nString(
             {
               key: `${id}.talent.${tIdx}.${cIdx}.desc`,
+              charId: id,
+              category: 'talents',
               officialEn: enCand?.description,
               zhText: cnCand.description,
               isStale,
@@ -485,6 +496,7 @@ export function buildOperatorData(
       const modName = resolveLayeredI18nString(
         {
           key: `${cnEquip.uniEquipId}.name`,
+          charId: id,
           officialEn: enEquip?.uniEquipName,
           zhText: cnEquip.uniEquipName,
           wikiEn: ctx.wiki[id]?.modules?.[cnEquip.uniEquipId],
@@ -497,6 +509,7 @@ export function buildOperatorData(
         ? resolveLayeredI18nString(
             {
               key: `${cnEquip.uniEquipId}.desc`,
+              charId: id,
               officialEn: enEquip?.uniEquipDesc,
               zhText: cnEquip.uniEquipDesc,
               isStale,
@@ -551,6 +564,7 @@ export function buildOperatorData(
                 ? resolveLayeredI18nString(
                     {
                       key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.addDesc`,
+                      charId: id,
                       officialEn: enCand?.additionalDescription,
                       zhText: cnCand.additionalDescription,
                       isStale,
@@ -563,6 +577,7 @@ export function buildOperatorData(
                 ? resolveLayeredI18nString(
                     {
                       key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.upgDesc`,
+                      charId: id,
                       officialEn: enCand?.upgradeDescription,
                       zhText: cnCand.upgradeDescription,
                       isStale,
@@ -575,6 +590,7 @@ export function buildOperatorData(
                 ? resolveLayeredI18nString(
                     {
                       key: `${cnEquip.uniEquipId}.stage.${rawPhase.equipLevel}.cand.${cIdx}.ovrDesc`,
+                      charId: id,
                       officialEn: enCand?.overrideDescripton,
                       zhText: cnCand.overrideDescripton,
                       isStale,
@@ -655,6 +671,7 @@ export function buildOperatorData(
       const potDesc = resolveLayeredI18nString(
         {
           key: `${id}.potential.${pIdx}.desc`,
+          charId: id,
           officialEn: enPot?.description,
           zhText: cnPot.description,
         },
@@ -717,6 +734,7 @@ export function buildOperatorData(
         ? resolveLayeredI18nString(
             {
               key: `${id}.itemUsage`,
+              charId: id,
               officialEn: en?.itemUsage,
               zhText: cn.itemUsage,
             },
@@ -728,6 +746,7 @@ export function buildOperatorData(
         ? resolveLayeredI18nString(
             {
               key: `${id}.itemDesc`,
+              charId: id,
               officialEn: en?.itemDesc,
               zhText: cn.itemDesc,
             },
@@ -847,6 +866,7 @@ async function main(): Promise<void> {
   const totalStrings =
     tracker.sources.official +
     tracker.sources.wiki +
+    tracker.sources.community +
     tracker.sources.manual +
     tracker.sources.machine +
     tracker.sources.zh
@@ -859,6 +879,7 @@ async function main(): Promise<void> {
     percentage: {
       official: ((tracker.sources.official / totalStrings) * 100).toFixed(2) + '%',
       wiki: ((tracker.sources.wiki / totalStrings) * 100).toFixed(2) + '%',
+      community: ((tracker.sources.community / totalStrings) * 100).toFixed(2) + '%',
       manual: ((tracker.sources.manual / totalStrings) * 100).toFixed(2) + '%',
       machine: ((tracker.sources.machine / totalStrings) * 100).toFixed(2) + '%',
       zh: ((tracker.sources.zh / totalStrings) * 100).toFixed(2) + '%',
@@ -874,6 +895,7 @@ async function main(): Promise<void> {
   console.log(`\nI18n String Sources:`)
   console.log(`  Official:  ${tracker.sources.official} (${i18nReport.percentage.official})`)
   console.log(`  Wiki:      ${tracker.sources.wiki} (${i18nReport.percentage.wiki})`)
+  console.log(`  Community: ${tracker.sources.community} (${i18nReport.percentage.community})`)
   console.log(`  Manual:    ${tracker.sources.manual} (${i18nReport.percentage.manual})`)
   console.log(`  Machine:   ${tracker.sources.machine} (${i18nReport.percentage.machine})`)
   console.log(`  ZH only:   ${tracker.sources.zh} (${i18nReport.percentage.zh})`)

@@ -1,5 +1,18 @@
 # Project Progress
 
+- **I18n Wiki Licensing, Community Source Semantics & Glossary Isolation (`fix/i18n-wiki-audit`):**
+  - Conducted legal and licensing audit of `arknights.wiki.gg`: verified CC-BY-SA 4.0 license (checked 2026-10-13 on `https://arknights.wiki.gg/wiki/Arknights_Terra_Wiki:Copyrights`), confirmed API harvesting allowed under `robots.txt` and Terms of Service with identified `User-Agent`.
+  - Added CC-BY-SA 4.0 attribution blocks to `README.md`, `docs/data-sources.md`, default layout footer (`app/layouts/default.vue`), and localized string dictionaries (`i18n/locales/{en,ru}.json`).
+  - Added `'community'` provenance to `I18nSourceSchema`: distinguished official Global EN strings scraped from wiki.gg (`source: 'wiki'`) from unofficial fan-translated CN-only content (`source: 'community'`) based on `global-availability.json` (22 CN-only operators identified via `Category:CN_Operator`).
+  - Made `I18nStringSchema.source` strictly required (no defaults/optionals), enforcing explicit provenance throughout all data generation pipelines (`build-operators.ts`, `build-items.ts`, `build-constants.ts`).
+  - Implemented strict `ManualOverrideEntrySchema` and validation rules for `data/i18n/overrides/` ensuring mandatory `text`, `author`, `note`, and valid verifiable `source` URL or owner confirmation (tested in `tests/unit/data/overrides-rules.test.ts`).
+  - Segmented terminology glossary (`scripts/data/glossary.ts`) into isolated functional categories: `operators`, `classes`, `subclasses`, `factions`, `items`, `skills`, `talents`, and `terms`.
+  - Audited glossary collisions: identified single intra-category conflict `点燃` under `skills` (`Ignition` vs `Ignite`, saved in `data/i18n/glossary-conflicts.json`), and isolated cross-category polysemy `鞭刃` (`Whislash` in `operators` vs `Whip Sword` in `skills`, saved in `data/i18n/glossary-cross-category.json`).
+  - Reached 100% wiki coverage across all 60 operators missing from frozen EN repository (including aliases `Kal'tsit Esperanta` and `Viy`), storing structured translation cache in `data/i18n/wiki/operators.json`.
+  - Added visual `'COMM'` badge variant to `AkTranslationBadge.vue` (`ak-translation-badge--community`, cyan accent `#00e5ff`) with localized explanatory tooltip and showcase entry in `app/pages/_ui.vue`.
+  - Provenance distribution: Official 26,515 (84.54%), Wiki 901 (2.87%), Community 632 (2.01%), Manual 1 (0.00%), Machine 0 (0.00%), ZH only 3,316 (10.57%), Stale 330.
+  - Verified 100% test pass rate across unit tests (253 tests), Playwright E2E tests (126 tests), lint, stylelint, typecheck, format, i18n, and production build.
+
 - **Multi-layered I18n String Source System & Provenance (`feat/i18n-layers`):**
   - Designed and implemented 5-tier string provenance priority in `scripts/data/i18n-layers.ts`: `manual` (overrides in `data/i18n/overrides/`) > `official` (official EN game repo) > `wiki` (parsed community wiki translations from `arknights.wiki.gg`) > `machine` > `zh` (Chinese source text).
   - Built bidirectional game terminology glossary builder in `scripts/data/glossary.ts` generating `data/i18n/glossary.json` (3,377 unique Chinese terms mapped across 392 operators, 8 classes, 70 subclasses, 1,104 items, 1,127 skills, 564 talents, and 118 UI terms) and `data/i18n/glossary-conflicts.json` resolving conflicts by occurrence frequency.
