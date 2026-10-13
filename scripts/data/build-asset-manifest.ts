@@ -22,6 +22,7 @@ export interface ModuleCoverageSummary extends AssetCoverageSummary {
 export interface AssetAvailability {
   avatar: boolean
   portrait: boolean
+  art: boolean
 }
 
 export interface AssetManifest {
@@ -32,11 +33,16 @@ export interface AssetManifest {
   operatorsWithAvatar: number
   operatorsWithoutAvatar: number
   missingAvatarIds: string[]
+  operatorsWithArt: number
+  operatorsWithoutArt: number
+  missingArtIds: string[]
   coverage: {
+    art: AssetCoverageSummary
     items: AssetCoverageSummary
     skills: AssetCoverageSummary
     modules: ModuleCoverageSummary
   }
+  artPositions?: Record<string, string>
   assets: Record<string, AssetAvailability>
 }
 
@@ -115,27 +121,49 @@ async function main(): Promise<void> {
   const fexliPaths = new Set(Array.from(fexliEquipTree).map((p) => `equip/${p}`))
   console.log(`- Fexli equip tree: ${fexliPaths.size} paths`)
 
-  // --- Audit Operators (Avatars & Portraits) ---
+  // --- Audit Operators (Avatars, Portraits, and Full Art) ---
   const manifestAssets: Record<string, AssetAvailability> = {}
   const missingAvatarIds: string[] = []
+  const missingArtIds: string[] = []
   let withAvatarCount = 0
+  let withArtCount = 0
 
   for (const op of operators) {
     const avatarCandidates = resolveAsset('avatar', op.id)
     const portraitCandidates = resolveAsset('portrait', op.id)
+    const artCandidates = resolveAsset('art', op.id)
 
     const avatarRelPath = avatarCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
     const portraitRelPath = portraitCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
+    const artRelPath = artCandidates[0]?.split(ASSET_REPO_COMMIT + '/')[1] ?? ''
 
     const hasAvatar = yuanPaths.has(avatarRelPath)
     const hasPortrait = yuanPaths.has(portraitRelPath)
+    const hasArt = yuanPaths.has(artRelPath)
 
-    manifestAssets[op.id] = { avatar: hasAvatar, portrait: hasPortrait }
+    manifestAssets[op.id] = { avatar: hasAvatar, portrait: hasPortrait, art: hasArt }
     if (hasAvatar) {
       withAvatarCount++
     } else {
       missingAvatarIds.push(op.id)
     }
+
+    if (hasArt) {
+      withArtCount++
+    } else {
+      missingArtIds.push(op.id)
+    }
+  }
+
+  const artSummary: AssetCoverageSummary = {
+    total: operators.length,
+    existingPrimary: withArtCount,
+    missingPrimary: missingArtIds.length,
+    missingPrimaryRatio: missingArtIds.length / operators.length,
+    existingTotal: withArtCount,
+    missingTotal: missingArtIds.length,
+    missingTotalRatio: missingArtIds.length / operators.length,
+    first30Missing: missingArtIds.map((id) => ({ id, name: id })).slice(0, 30),
   }
 
   // --- Audit Items ---
@@ -305,6 +333,9 @@ async function main(): Promise<void> {
 
   console.log('\n--- COVERAGE AUDIT RESULTS ---')
   console.log(
+    `Art:     ${withArtCount}/${operators.length} (missing: ${missingArtIds.length}, ${(artSummary.missingPrimaryRatio * 100).toFixed(2)}%)`,
+  )
+  console.log(
     `Items:   ${existingItemsPrimary}/${items.length} (missing: ${missingItemsPrimary.length}, ${(itemsSummary.missingPrimaryRatio * 100).toFixed(2)}%)`,
   )
   console.log(
@@ -318,6 +349,21 @@ async function main(): Promise<void> {
     `Modules (Aceship + Fexli combined): ${existingModulesCombined}/${modulesMap.size} (missing: ${missingModulesCombined.length}, ${(modulesSummary.missingTotalRatio * 100).toFixed(2)}%)`,
   )
 
+  // Calibrated object-positions for catalog card vertical crop
+  // Default fallback is 'center 15%'. Specific adjustments for atypical operator poses:
+  const artPositions: Record<string, string> = {
+    char_225_haak: 'center 22%', // Aak crouched silhouette
+    char_264_f124: 'center 12%', // Mountain towering silhouette
+    char_311_mudrok: 'center 18%', // Mudrock bulky armor
+    char_285_medic2: 'center 28%', // Lancet-2 compact robot
+    char_286_cast3: 'center 26%', // Castle-3 compact robot
+    char_151_myrtle: 'center 16%', // Myrtle petite height
+    char_501_durin: 'center 20%', // Durin short height
+    char_172_svrash: 'center 14%', // SilverAsh tall posture
+    char_188_helage: 'center 10%', // Hellagur tall posture
+    char_400_weedy: 'center 16%', // Weedy dynamic canon pose
+  }
+
   const manifest: AssetManifest = {
     version: ASSET_REPO_COMMIT,
     source: 'tree',
@@ -326,11 +372,16 @@ async function main(): Promise<void> {
     operatorsWithAvatar: withAvatarCount,
     operatorsWithoutAvatar: missingAvatarIds.length,
     missingAvatarIds,
+    operatorsWithArt: withArtCount,
+    operatorsWithoutArt: missingArtIds.length,
+    missingArtIds,
     coverage: {
+      art: artSummary,
       items: itemsSummary,
       skills: skillsSummary,
       modules: modulesSummary,
     },
+    artPositions,
     assets: manifestAssets,
   }
 

@@ -23,7 +23,7 @@
   min-width: 0;
 
   &__art-box {
-    height: 250px;
+    height: 340px;
     background-color: var(--color-bg-subtle);
     animation: ak-skeleton-pulse 1.5s ease-in-out infinite;
   }

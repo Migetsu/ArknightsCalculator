@@ -126,6 +126,36 @@ describe('resolveAsset utility', () => {
     })
   })
 
+  describe('art kind handling and fallback chain', () => {
+    it('resolves Elite 2 art by default for higher rarity operators with full fallback chain', () => {
+      const candidates = resolveAsset('art', 'char_172_svrash')
+      // 1. E2 art on primary and secondary CDN
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
+      // 2. Fallback to E1 art
+      expect(candidates[2]).toBe(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_1b.png`)
+      expect(candidates[3]).toBe(`${SECONDARY_CDN_BASE}/skin/char_172_svrash_1b.png`)
+      // 3. Fallback to portrait
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/portrait/char_172_svrash_2.png`)
+      // 4. Fallback to avatar
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/avatar/char_172_svrash.png`)
+    })
+
+    it('resolves Elite 1 art by default for 1-3 star operators', () => {
+      const candidates = resolveAsset('art', 'char_285_medic2') // Lancet-2
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_285_medic2_1b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_285_medic2_1b.png`)
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/portrait/char_285_medic2_1.png`)
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/avatar/char_285_medic2.png`)
+    })
+
+    it('prioritizes local webp thumbnail when thumbnail: true is requested', () => {
+      const candidates = resolveAsset('art', 'char_172_svrash', { thumbnail: true })
+      expect(candidates[0]).toBe('/art/thumbs/char_172_svrash.webp')
+      expect(candidates[1]).toBe(`${PRIMARY_CDN_BASE}/skin/char_172_svrash_2b.png`)
+    })
+  })
+
   it('supports custom variants and extensions', () => {
     const candidates = resolveAsset('portrait', 'char_102_texas', {
       variant: '2',
@@ -140,6 +170,7 @@ describe('resolveAsset utility', () => {
     const all = [
       ...resolveAsset('avatar', 'char_102_texas'),
       ...resolveAsset('portrait', 'char_102_texas'),
+      ...resolveAsset('art', 'char_102_texas'),
       ...resolveAsset('item', '30012'),
       ...resolveAsset('skill', 'skchr_texas_2'),
       ...resolveAsset('equip', 'uniequip_002_texas'),

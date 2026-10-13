@@ -1,6 +1,18 @@
-﻿# Project Progress
+# Project Progress
 
 ## Done
+
+- **Operator Art & Detail Hero Redesign (`fix/operator-art`):**
+  - Completed upstream resource repository exploration (`yuanyan3060/ArknightsGameResource`) for `avatar` (180x180 px, avg 52.9 KB), `portrait` (180x360 px, avg 106-113 KB), and `skin` (full arts, avg 2.07 MB, up to 4.2 MB; skins avg 2.43 MB, up to 5.7 MB) with live Range GET measurements across 30 operators, documented in `docs/assets.md`.
+  - Added new `'art'` asset type in `shared/utils/resolveAsset.ts` with multi-tier fallback (`thumbnail` -> E2 art `_2b.png` / E1 `_1b.png` -> fallback E1 -> portrait -> avatar). Verified 100% coverage (434/434 operators, 0 missing) in `data/asset-manifest.json`.
+  - Implemented offline thumbnail generator `scripts/data/build-art-thumbs.ts` (`npm run data:thumbs`) creating WebP 480px (q=80, avg 66.1 KB) for all 434 operators in `public/art/thumbs/` (ignored in `.gitignore`).
+  - Redesigned `AkOperatorCard`: vertical 3:4 ratio (height 340px), rarity-colored radial background, `object-position: center 15%`, eager loading for top 8 cards.
+  - Implemented full-bleed `AkOperatorHero`: transparent header overlay on desktop, dynamic artwork blur ambient background, artwork stage switcher (E0/E1 vs E2) with crossfade animation and URL query sync (`?art=e0|e2`), and full-width key stats bar.
+  - Created modal `AkArtViewer` component: fullscreen pointer drag & multi-touch pinch zoom (50%-400%), reset button, keyboard navigation, Esc close, focus trap, and WAI-ARIA accessibility.
+  - Aligned `AkOperatorStatsPanel` with Ember Editorial design mockup: 3 parameter cards (Level, Trust, Potential) with `AkStepper` (native spin arrows hidden) and range sliders; top row promotion and module selector; displays branch codes (e.g. `X (Snow Realm Fowlcare Kit)`) and names instead of `ADVANCED`.
+  - Enhanced `AkTabs` underline variant with touch-friendly horizontal scrolling (`scrollbar-width: none`) ensuring 100% layout sanity on 360px viewports.
+  - Measured production preview performance on Slow 4G (1.6 Mbps, 150ms RTT) and CPU 4x throttling: Catalog LCP 1.95s (< 3s budget), TBT 109ms, Total JS 637 KB, Image transfer 476 KB; Detail TBT 13ms, Total JS 593 KB; documented in `docs/metrics-operators.json`.
+  - Updated `docs/design/DEVIATIONS.md` and `docs/known-issues.md` (operator skins deferred until `skin_table`).
 
 - Initialized Nuxt 4 scaffold with TypeScript.
 - Configured directory layout: `app/`, `server/`, `shared/`, `data/`, `scripts/`, `tests/unit/`, `tests/e2e/`, `docs/`.

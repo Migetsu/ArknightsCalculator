@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 interface Props {
   modelValue: number
+  id?: string
   min?: number
   max?: number
   step?: number
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  id: undefined,
   min: 0,
   max: 999999,
   step: 1,
@@ -72,6 +74,7 @@ function handleKeydown(event: KeyboardEvent): void {
     </button>
 
     <input
+      :id="id"
       type="number"
       class="ak-stepper__input"
       :value="modelValue"

@@ -3,12 +3,16 @@ import { computed } from 'vue'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import { resolveAsset } from '~/../shared/utils/resolveAsset'
+import assetManifest from '~/../data/asset-manifest.json'
 
 interface Props {
   operator: OperatorSummary
+  loading?: 'lazy' | 'eager'
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  loading: 'lazy',
+})
 
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
@@ -24,16 +28,17 @@ const rarityStars = computed(() => {
   return '★'.repeat(props.operator.rarity)
 })
 
-const portraitUrls = computed(() => {
-  return resolveAsset('portrait', props.operator.id)
+const artUrls = computed(() => {
+  return resolveAsset('art', props.operator.id, { thumbnail: true })
 })
 
-const avatarFallbackUrls = computed(() => {
-  return resolveAsset('avatar', props.operator.id)
-})
+const primaryArt = computed(() => artUrls.value[0] || '')
+const secondaryArt = computed(() => artUrls.value[1] || '')
 
-const primaryPortrait = computed(() => portraitUrls.value[0] || avatarFallbackUrls.value[0] || '')
-const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallbackUrls.value[1] || '')
+const artPosition = computed(() => {
+  const positions = (assetManifest as { artPositions?: Record<string, string> }).artPositions
+  return positions?.[props.operator.id] ?? 'center 15%'
+})
 </script>
 
 <template>
@@ -48,16 +53,19 @@ const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallback
       :class="`ak-operator-card__art-box--rarity-${operator.rarity}`"
     >
       <img
-        :src="primaryPortrait"
+        :src="primaryArt"
         :alt="displayName"
-        loading="lazy"
+        :loading="loading"
         decoding="async"
+        width="280"
+        height="340"
         class="ak-operator-card__art-img ak-avatar__image"
+        :style="{ objectPosition: artPosition }"
         @error="
           (e) => {
             const target = e.target as HTMLImageElement
-            if (secondaryPortrait && target.src !== secondaryPortrait) {
-              target.src = secondaryPortrait
+            if (secondaryArt && target.src !== secondaryArt) {
+              target.src = secondaryArt
             }
           }
         "
@@ -116,35 +124,35 @@ const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallback
 
   &__art-box {
     position: relative;
-    height: 250px;
+    height: 340px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, var(--color-bg-surface), var(--color-bg-deep));
+    background: radial-gradient(circle at 50% 30%, var(--color-bg-surface), var(--color-bg-deep));
 
     &--rarity-6 {
-      background: linear-gradient(180deg, #3a1d14 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #542718 0%, #20130f 70%, #120d0b 100%);
     }
 
     &--rarity-5 {
-      background: linear-gradient(180deg, #2d2418 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #423218 0%, #1c150e 70%, #120d0b 100%);
     }
 
     &--rarity-4 {
-      background: linear-gradient(180deg, #25202e 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #352347 0%, #1a1322 70%, #120d0b 100%);
     }
 
     &--rarity-3 {
-      background: linear-gradient(180deg, #1b222d 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #1f2d45 0%, #111824 70%, #120d0b 100%);
     }
 
     &--rarity-2 {
-      background: linear-gradient(180deg, #18261e 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #1f3825 0%, #111f16 70%, #120d0b 100%);
     }
 
     &--rarity-1 {
-      background: linear-gradient(180deg, #22201f 0%, #17110f 100%);
+      background: radial-gradient(circle at 50% 30%, #2e2b29 0%, #1a1817 70%, #120d0b 100%);
     }
   }
 
@@ -152,7 +160,7 @@ const secondaryPortrait = computed(() => portraitUrls.value[1] || avatarFallback
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center 15%;
     display: block;
     transition: transform var(--transition-base);
   }
