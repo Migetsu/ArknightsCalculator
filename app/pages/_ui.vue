@@ -208,26 +208,192 @@ const stepperLmd = ref(150000)
         </div>
       </AkPanel>
 
-      <!-- Avatars -->
+      <!-- Avatars & Icons (AkAvatar, AkItemIcon, AkSkillIcon, AkModuleIcon) -->
       <AkPanel title="AkAvatar Component" tag="UI // 06" line-color="ember">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label"
+            >Sizes (44, 48, 52, 56, 64, 84px) with 3px Rarity Line</span
+          >
+          <div class="page-ui__row">
+            <AkAvatar id="char_172_svrash" name="SilverAsh" :rarity="6" :size="44" />
+            <AkAvatar id="char_102_texas" name="Texas" :rarity="5" :size="48" />
+            <AkAvatar id="char_151_myrtle" name="Myrtle" :rarity="4" :size="52" />
+            <AkAvatar id="char_124_kroos" name="Kroos" :rarity="3" :size="56" />
+            <AkAvatar id="char_500_noirc" name="Noir Corne" :rarity="2" :size="64" />
+            <AkAvatar id="char_285_medic2" name="Lancet-2" :rarity="1" :size="84" />
+          </div>
+        </div>
+
         <div class="page-ui__group">
           <span class="page-ui__group-label">Operator Rarity Underlines (1★ - 6★)</span>
           <div class="page-ui__row">
-            <AkAvatar name="Thermal-EX" :rarity="1" size="md" />
-            <AkAvatar name="Yato" :rarity="2" size="md" />
-            <AkAvatar name="Kroos" :rarity="3" size="md" />
-            <AkAvatar name="Myrtle" :rarity="4" size="md" />
-            <AkAvatar name="Amiya" :rarity="5" size="md" />
-            <AkAvatar name="Blaze" :rarity="6" size="md" />
+            <AkAvatar name="Thermal-EX" :rarity="1" :size="48" />
+            <AkAvatar name="Yato" :rarity="2" :size="48" />
+            <AkAvatar name="Kroos" :rarity="3" :size="48" />
+            <AkAvatar name="Myrtle" :rarity="4" :size="48" />
+            <AkAvatar name="Amiya" :rarity="5" :size="48" />
+            <AkAvatar name="Blaze" :rarity="6" :size="48" />
           </div>
         </div>
 
         <div class="page-ui__group">
           <span class="page-ui__group-label">Initials Fallback (When Art Unavailable)</span>
           <div class="page-ui__row">
-            <AkAvatar name="Doctor" :rarity="6" size="lg" />
-            <AkAvatar name="SilverAsh" :rarity="6" size="md" />
-            <AkAvatar name="Eyjafjalla" :rarity="6" size="sm" />
+            <AkAvatar name="Doctor" :rarity="6" :size="56" />
+            <AkAvatar name="SilverAsh" :rarity="6" :size="48" />
+            <AkAvatar name="Eyjafjalla" :rarity="6" :size="44" />
+          </div>
+        </div>
+      </AkPanel>
+
+      <!-- AkItemIcon Component -->
+      <AkPanel title="AkItemIcon Component" tag="UI // 07" line-color="ember">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Tiers T1 - T5 with Quantity Badges</span>
+          <div class="page-ui__row">
+            <AkItemIcon
+              item-id="30011"
+              icon-id="MTL_SL_G1"
+              name="Orirock"
+              :tier="1"
+              count="×240"
+              :size="48"
+            />
+            <AkItemIcon
+              item-id="30012"
+              icon-id="MTL_SL_G2"
+              name="Orirock Cube"
+              :tier="2"
+              count="×85"
+              :size="48"
+            />
+            <AkItemIcon
+              item-id="30013"
+              icon-id="MTL_SL_G3"
+              name="Orirock Cluster"
+              :tier="3"
+              count="×14"
+              :size="48"
+            />
+            <AkItemIcon
+              item-id="30014"
+              icon-id="MTL_SL_G4"
+              name="Orirock Concentration"
+              :tier="4"
+              count="×5"
+              :size="48"
+            />
+            <AkItemIcon
+              item-id="30115"
+              icon-id="MTL_SL_DI1"
+              name="D32 Steel"
+              :tier="5"
+              count="×2"
+              :size="48"
+            />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label"
+            >Currencies & Module Tokens (Sizes 40px, 48px, 56px)</span
+          >
+          <div class="page-ui__row">
+            <AkItemIcon
+              item-id="4001"
+              icon-id="GOLD"
+              name="LMD"
+              :tier="4"
+              count="1.2M"
+              :size="40"
+            />
+            <AkItemIcon
+              item-id="mod_unlock_token"
+              icon-id="mod_unlock_token"
+              name="Module Data Block"
+              :tier="5"
+              count="12"
+              :size="48"
+            />
+            <AkItemIcon
+              item-id="4002"
+              icon-id="DIAMOND_SHD"
+              name="Orundum"
+              :tier="4"
+              count="34,800"
+              :size="56"
+            />
+            <AkItemIcon name="Unknown Sample" :tier="3" count="×1" :size="48" />
+          </div>
+        </div>
+      </AkPanel>
+
+      <!-- AkSkillIcon & AkModuleIcon -->
+      <AkPanel title="AkSkillIcon & AkModuleIcon" tag="UI // 08" line-color="amber">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label"
+            >AkSkillIcon (48px Circle, Gold Border, Rank & Mastery Badges)</span
+          >
+          <div class="page-ui__row">
+            <AkSkillIcon
+              skill-id="skchr_svrash_3"
+              name="Truesilver Slash"
+              :skill-index="3"
+              mastery="M3"
+              :size="48"
+            />
+            <AkSkillIcon
+              skill-id="skchr_texas_2"
+              name="Sword Rain"
+              :skill-index="2"
+              mastery="M2"
+              :size="48"
+            />
+            <AkSkillIcon
+              skill-id="skchr_myrtle_1"
+              name="Support γ"
+              :skill-index="1"
+              mastery="M1"
+              :size="48"
+            />
+            <AkSkillIcon
+              skill-id="skcom_charge_cost[3]"
+              name="Charge γ"
+              :skill-index="1"
+              rank="7"
+              :size="48"
+            />
+            <AkSkillIcon name="Tactical Command" :skill-index="2" :size="48" />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label"
+            >AkModuleIcon (Diamond Shape, Ember Border, Upgrade Stages 1-3)</span
+          >
+          <div class="page-ui__row">
+            <AkModuleIcon
+              module-id="uniequip_002_texas"
+              name="Private Field Supply Package"
+              type-code="Y"
+              :stage="3"
+              :size="48"
+            />
+            <AkModuleIcon
+              module-id="uniequip_001_svrash"
+              name="Leader's Cloak"
+              type-code="X"
+              :stage="2"
+              :size="48"
+            />
+            <AkModuleIcon
+              module-id="uniequip_002_myrtle"
+              name="General's Apple"
+              type-code="X"
+              :stage="1"
+              :size="48"
+            />
+            <AkModuleIcon name="Advanced Tactical Unit" type-code="D" :size="48" />
           </div>
         </div>
       </AkPanel>

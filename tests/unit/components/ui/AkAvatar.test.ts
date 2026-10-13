@@ -64,16 +64,30 @@ describe('AkAvatar', () => {
       props: {
         id: 'char_102_texas',
         name: 'Texas',
-        size: 'lg',
+        size: 56,
         rarity: 5,
       },
     })
 
     const img = wrapper.find('.ak-avatar__image')
     expect(img.attributes('width')).toBe('56')
-    expect(img.attributes('height')).toBe('56')
+    expect(img.attributes('height')).toBe('53')
     expect(img.attributes('loading')).toBe('lazy')
     expect(img.attributes('decoding')).toBe('async')
+  })
+
+  it('supports sizes 44, 48, 52, 56, 64, 84 and renders correct root classes and styles', async () => {
+    const wrapper = await mountSuspended(AkAvatar, {
+      props: {
+        name: 'SilverAsh',
+        size: 84,
+        rarity: 6,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('ak-avatar--size-84')
+    expect(wrapper.attributes('style')).toContain('width: 84px')
+    expect(wrapper.attributes('style')).toContain('height: 84px')
   })
 
   it('renders initials fallback when neither src nor id is provided', async () => {

@@ -243,6 +243,23 @@
   - Captured responsive Playwright screenshots on 360px and 1440px viewports (`test-results/ui-showcase-360.png`, `test-results/ui-showcase-1440.png`).
   - All 104 Playwright E2E tests, Stylelint, ESLint, TypeScript, i18n checks passing.
 
+- Design System Icons & Asset Verification (`feat/design-icons`):
+  - Pre-step:
+    - Realigned rarity tokens strictly to `docs/design/DESIGN.md`: 6★ `#ff9d2b`, 5★ `#ffd54f`, 4★ `#9b6bd6`, 3★ `#6fa3e0`, 2★ `#7fc48a`, 1★ `#8a8a8a`. Ember `#ff6a3d` reserved exclusively for primary action, active state, selected chips, sliders, and progress.
+    - Replaced cyan `#2bd4b8` with design mockup tokens.
+    - Created `docs/design/DEVIATIONS.md` documenting differences between HTML mockups and project tokens.
+    - Added `docs/screenshots/*` to `.gitignore` and removed screenshots from git tracking.
+    - Documented all components using temporary no-op mixins in `docs/known-issues.md`.
+  - Icon components & asset resolution:
+    - Updated `AkAvatar`: supported sizes 44, 48, 52, 56, 64, 84px with 3px rarity underline, initials fallback, and explicit dimensions preventing CLS.
+    - Implemented `AkItemIcon`: tier borders (T1–T5), count badge, fallback state, and custom sizes.
+    - Implemented `AkSkillIcon`: circular 48px badge with gold border, skill rank (1–7) or mastery badge (M1–M3), and fallback state.
+    - Implemented `AkModuleIcon`: diamond shape with ember border, module stage badge (1–3), and fallback state.
+    - Extended `resolveAsset` to support `item` (with `iconId`), `skill` (with `iconId` and `skill_icon_` prefix), and `equip` (mapped to Aceship Arknight-Images repository with initial badge mapping).
+    - Executed live CDN audit of 61 items, 60 skills, and 60 modules via `scripts/data/verify-new-assets.ts`: 100.0% availability on both jsDelivr and Statically CDNs; recorded in `data/new-assets-verification-report.json` and documented in `docs/assets.md`.
+    - Added comprehensive unit test suites: `AkAvatar.test.ts` (7 tests), `AkItemIcon.test.ts` (7 tests), `AkSkillIcon.test.ts` (5 tests), `AkModuleIcon.test.ts` (5 tests), and updated `resolveAsset.test.ts` (12 tests) — 33 files, 218 Vitest tests passing.
+    - Updated `app/pages/_ui.vue` showcase with live interactive demonstrations of avatar sizes, items, skills, and modules.
+
 ## In progress
 
 - None.
