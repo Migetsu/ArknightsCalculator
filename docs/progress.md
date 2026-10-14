@@ -1,5 +1,30 @@
 # Project Progress
 
+- **Depot Inventory Module (`INV-05: ready`) & Workshop Audit (`feat/depot`):**
+  - Completed workshop engine audit in preparatory commit `fix: workshop engine audit`:
+    - Resolved e2e test count accounting (investigated 126 vs 125, confirmed 126 full tests across 9 files, logged Slow 4G throttling timeout observation in `docs/known-issues.md`).
+    - Upgraded `resolveDemand` recipe traversal to strict DAG topological order using Kahn's algorithm (`getTopologicalOrder`); added unit tests verifying same-tier recipe ordering (`Light Building Material` 3131 and `Carbon Stick` 3112, both T2) and consumer-before-ingredient DAG invariant.
+    - Updated `docs/workshop.md` with explicit `data/recipes.json` ID references (`mf_5`..`mf_12`, `wf_39`..`wf_54`) and full field citations.
+    - Verified Orirock Concentration (`30014`) and White Horse Kohl (`30074`) synthesis formulas against live `arknights.wiki.gg` (2026-10-14 queries) and documented full comparison table.
+    - Documented Nuxt 4 `.nuxt/build.lock` concurrency mechanics and isolation via `NUXT_BUILD_DIR` and `NUXT_IGNORE_LOCK=1`.
+  - Built pure `StorageAdapter` abstraction layer in `app/utils/storage/` (`IndexedDbAdapter` using zero external dependencies, native Promise-based `window.indexedDB`, and automatic SSR fallback to `MemoryStorageAdapter`).
+  - Created versioned depot schema with migrations and validation in `app/schemas/depot.ts` (`CURRENT_DEPOT_SCHEMA_VERSION = 1`, automated legacy v0 flat map migration, corruption detection with automated preservation backup `arkcalc_depot_corrupted_<timestamp>`).
+  - Implemented Pinia store `useDepotStore` in `app/stores/depot.ts` with asynchronous initialization, reactive currencies (`lmd`, `orundum`, `originitePrime`), item stock manipulation, and JSON export/import.
+  - Implemented UI components:
+    - `DepotItemCard.vue`: responsive card with `AkItemIcon`, localized item name via `resolveI18nString` (ru -> en -> zh), `AkTranslationBadge` for machine/community/stale strings, and `AkStepper`.
+    - `DepotJsonModal.vue`: modal with Export (copy to clipboard, download `.json`) and Import (file upload, syntax validation, change diff preview showing currency and item quantity deltas, and confirmation).
+  - Built `/depot` page in `app/pages/depot.vue` matching `docs/design/mockups/depot.html`:
+    - Left aside with search input, disabled plan toggles with "Soon" badge and explanatory tooltip, item type filter (`All`, `Materials`, `Chips`, `EXP`), and JSON modal trigger.
+    - Top currency bar displaying LMD (`4001`), Orundum (`4003`), and Originite Prime (`4002`) with quantity steppers.
+    - Grouped inventory grid partitioned by tiers (Tier 5 down to Tier 1) and sorted by canonical game `sortId`.
+    - Loading, empty, and storage error states.
+    - 100% layout sanity across all viewports from 360px up to 1920px without horizontal overflow.
+  - Synchronized localization keys in `i18n/locales/en.json` and `ru.json` (`npm run i18n:check` passing).
+  - Updated module status in `app/config/modules.ts` to `'ready'` (`INV-05: ready`).
+  - Added unit test suite `tests/unit/schemas/depot.test.ts`, `tests/unit/stores/depot.test.ts`, `tests/unit/components/depot/DepotItemCard.test.ts` (all passing).
+  - Added E2E Playwright test suite `tests/e2e/depot.spec.ts` (4 tests: header/currency bar, item increment and persistence across page reload in IndexedDB, filters/search, JSON export/import with diff preview). Total E2E tests grew to 130 (100% passing).
+  - All CI verification suites green: lint, stylelint, typecheck, format:check, i18n:check, data:validate, test (295 unit tests), test:e2e (130 tests), and build.
+
 - **Workshop Crafting Engine Core (`feat/workshop-engine`):**
   - Implemented pure TypeScript calculation core in `shared/utils/workshop/` (`recipeGraph.ts`, `resolveDemand.ts`, `types.ts`, `index.ts`) with zero Vue/Pinia/network dependencies.
   - Built `RecipeGraph` indexing formulas from `data/recipes.json` and item tiers from `data/items.json`. Defaulted allowed kinds strictly to `'synthesis'` and `'manufacture'`; chip conversions disabled by default and enabled via `allowConversions: true`.

@@ -27,10 +27,19 @@ export const I18nStringSchema = z.object({
 
 export type I18nString = z.infer<typeof I18nStringSchema>
 
+export interface I18nInput {
+  en: string
+  zh: string
+  ru?: string
+  source?: I18nSource
+  isMachineTranslation?: boolean
+  stale?: boolean
+}
+
 /**
  * Checks whether the localized string is unofficial / machine-translated.
  */
-export function isMachineTranslated(text: I18nString | undefined | null): boolean {
+export function isMachineTranslated(text: I18nInput | undefined | null): boolean {
   if (!text) return false
   return text.source === 'machine' || text.isMachineTranslation === true
 }
@@ -38,7 +47,7 @@ export function isMachineTranslated(text: I18nString | undefined | null): boolea
 /**
  * Checks whether the localized string is an unverified community translation.
  */
-export function isCommunityTranslated(text: I18nString | undefined | null): boolean {
+export function isCommunityTranslated(text: I18nInput | undefined | null): boolean {
   if (!text) return false
   return text.source === 'community'
 }
@@ -48,7 +57,7 @@ export function isCommunityTranslated(text: I18nString | undefined | null): bool
  * ru -> en -> zh.
  */
 export function resolveI18nString(
-  text: I18nString | undefined | null,
+  text: I18nInput | undefined | null,
   locale: ContentLocale = 'en',
 ): string {
   if (!text) return ''
