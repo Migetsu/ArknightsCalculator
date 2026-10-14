@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
+import fs from 'node:fs'
+import path from 'node:path'
 import { setActivePinia, createPinia } from 'pinia'
 import {
   usePlannerStore,
@@ -181,5 +183,33 @@ describe('usePlannerStore', () => {
     await store.removePlan(p2.id)
     expect(store.plans.length).toBe(1)
     expect(store.selectedPlanId).toBe(p1.id)
+  })
+
+  it('calculates roadmap and applies step progression to plan', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    const silverAsh = JSON.parse(
+      fs.readFileSync(path.resolve(process.cwd(), 'data/operators/char_172_svrash.json'), 'utf-8'),
+    )
+    store.operatorDetailsCache.set('char_172_svrash', silverAsh)
+
+    const plan = await store.addPlan(
+      'char_172_svrash',
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      { elite: 1, level: 50, skillLevel: 1, skills: {}, modules: {} },
+    )
+
+    expect(store.selectedPlanRoadmap).toBeDefined()
+    expect(store.selectedPlanRoadmap?.steps.length).toBeGreaterThan(0)
+
+    const step = store.selectedPlanRoadmap!.steps[0]!
+    expect(step.kind).toBe('level')
+    expect(step.resultingState.level).toBe(50)
+
+    await store.applyRoadmapStep(plan.id, step)
+
+    const updated = store.plans.find((p) => p.id === plan.id)
+    expect(updated?.current.level).toBe(50)
   })
 })

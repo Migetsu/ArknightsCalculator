@@ -1,4 +1,5 @@
 export * from './types'
 export * from './calculateCost'
+export * from './calculateRoadmap'
 export * from './planExpCards'
 export * from './sumCosts'

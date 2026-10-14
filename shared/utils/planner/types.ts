@@ -78,3 +78,43 @@ export interface ExpCardPlan {
   /** Overcapped / wasted EXP beyond the required amount */
   wasteExp: number
 }
+
+export type RoadmapStepKind =
+  'level' | 'promotion' | 'skill_rank' | 'skill_mastery' | 'module_stage'
+
+export interface RoadmapStepCosts {
+  lmd: number
+  exp: number
+  items: Array<{ id: string; count: number }>
+}
+
+export interface RoadmapStepReadiness {
+  isReady: boolean
+  missingLmd: number
+  missingExp: number
+  missingItems: Array<{ id: string; count: number }>
+  completionPercent: number
+}
+
+export interface RoadmapStep {
+  id: string
+  kind: RoadmapStepKind
+  title: string
+  subtitle: string
+  phase: number
+  levelRange?: { from: number; to: number }
+  skillId?: string
+  masteryLevel?: number
+  moduleId?: string
+  moduleStage?: number
+  costs: RoadmapStepCosts
+  resultingState: OperatorState
+  readiness: RoadmapStepReadiness
+}
+
+export interface RoadmapPlan {
+  operatorId: string
+  steps: RoadmapStep[]
+  totalSteps: number
+  readyStepsCount: number
+}

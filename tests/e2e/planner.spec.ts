@@ -4,6 +4,7 @@ test.describe('Planner Page (PLN-01)', () => {
   test('full planner workflow: add 2 operators, recalculate materials, depot integration, reload persistence', async ({
     page,
   }) => {
+    test.setTimeout(60000)
     // 1. Visit Planner and ensure clean state for the test
     await page.goto('/planner')
     await page.evaluate(async () => {
@@ -85,6 +86,21 @@ test.describe('Planner Page (PLN-01)', () => {
     // 7. Check Roadmap tab
     await page.getByRole('tab', { name: 'Roadmap' }).click()
     await expect(page.locator('.planner-roadmap')).toBeVisible()
+    await expect(page.locator('.planner-roadmap__step-card').first()).toBeVisible()
+
+    // Verify filter can be toggled
+    const readyFilter = page.getByRole('button', { name: 'Ready to Complete' })
+    if (await readyFilter.isVisible()) {
+      await readyFilter.click()
+      await page.waitForTimeout(100)
+    }
+
+    // Click apply on first step
+    const firstApplyBtn = page.locator('.planner-roadmap__step-action button').first()
+    if (await firstApplyBtn.isVisible()) {
+      await firstApplyBtn.click()
+      await page.waitForTimeout(300)
+    }
   })
 
   test('layout sanity: no horizontal scrollbar across breakpoints', async ({ page }) => {
