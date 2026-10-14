@@ -170,4 +170,10 @@ export interface RecipeGraph {
    * Retrieve all registered craft recipes.
    */
   getAllRecipes(): CraftRecipe[]
+
+  /**
+   * Return a topological sort of item IDs ordered from products (consumers) to ingredients (dependencies).
+   * Guarantees that if item A consumes item B in a crafting recipe, A precedes B in the list.
+   */
+  getTopologicalOrder(entryItemIds?: Iterable<string>): string[]
 }

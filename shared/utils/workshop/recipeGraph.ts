@@ -137,11 +137,107 @@ export function buildRecipeGraph(
     return all
   }
 
+  function getTopologicalOrder(entryItemIds?: Iterable<string>): string[] {
+    // 1. Identify all nodes reachable from entry items (or all canonical recipe items)
+    const reachable = new Set<string>()
+    const queue: string[] = []
+
+    if (entryItemIds) {
+      for (const id of entryItemIds) {
+        if (!reachable.has(id)) {
+          reachable.add(id)
+          queue.push(id)
+        }
+      }
+    } else {
+      for (const id of canonicalRecipes.keys()) {
+        reachable.add(id)
+        queue.push(id)
+      }
+    }
+
+    while (queue.length > 0) {
+      const curr = queue.shift()!
+      const recipe = canonicalRecipes.get(curr)
+      if (recipe) {
+        for (const ing of recipe.ingredients) {
+          if (!reachable.has(ing.id)) {
+            reachable.add(ing.id)
+            queue.push(ing.id)
+          }
+        }
+      }
+    }
+
+    // 2. Build DAG adjacency: product -> ingredients (A consumes B => edge A -> B)
+    const inDegree = new Map<string, number>()
+    const adj = new Map<string, Set<string>>()
+
+    for (const id of reachable) {
+      inDegree.set(id, 0)
+      adj.set(id, new Set())
+    }
+
+    for (const id of reachable) {
+      const recipe = canonicalRecipes.get(id)
+      if (recipe) {
+        for (const ing of recipe.ingredients) {
+          if (reachable.has(ing.id)) {
+            if (!adj.get(id)!.has(ing.id)) {
+              adj.get(id)!.add(ing.id)
+              inDegree.set(ing.id, (inDegree.get(ing.id) ?? 0) + 1)
+            }
+          }
+        }
+      }
+    }
+
+    // 3. Kahn's algorithm: start with nodes having inDegree == 0 (top products)
+    const zeroQueue: string[] = []
+    for (const [id, deg] of inDegree.entries()) {
+      if (deg === 0) {
+        zeroQueue.push(id)
+      }
+    }
+
+    // Deterministic tie-breaking: higher rarity first, then lexicographical ID
+    zeroQueue.sort((a, b) => getItemTier(b) - getItemTier(a) || a.localeCompare(b))
+
+    const order: string[] = []
+    while (zeroQueue.length > 0) {
+      const node = zeroQueue.shift()!
+      order.push(node)
+
+      const neighbors = Array.from(adj.get(node) ?? []).sort(
+        (a, b) => getItemTier(b) - getItemTier(a) || a.localeCompare(b),
+      )
+
+      for (const next of neighbors) {
+        const curDeg = inDegree.get(next)! - 1
+        inDegree.set(next, curDeg)
+        if (curDeg === 0) {
+          zeroQueue.push(next)
+          zeroQueue.sort((a, b) => getItemTier(b) - getItemTier(a) || a.localeCompare(b))
+        }
+      }
+    }
+
+    // Append any unreached nodes (for robustness)
+    for (const id of reachable) {
+      if (!order.includes(id)) {
+        order.push(id)
+      }
+    }
+
+    return order
+  }
+
   return {
     getRecipe,
     getConversions,
     getItemTier,
     hasCycle,
     getAllRecipes,
+    getTopologicalOrder,
   }
 }
