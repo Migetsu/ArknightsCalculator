@@ -18,6 +18,15 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testIgnore: [/.*throttling\.spec\.ts/],
+    },
+    {
+      name: 'throttled',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: [/.*throttling\.spec\.ts/],
+      retries: 0,
+      timeout: 120 * 1000,
+      fullyParallel: false,
     },
   ],
   webServer: {

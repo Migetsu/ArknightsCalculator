@@ -74,3 +74,10 @@ For operator details (`/operators/[id]`), the data loading strategy is evaluated
 - **Owner Dev Server:** Port 3000 is reserved for live development by the project owner. Automated agents must never start, stop, or reload port 3000.
 - **Agent Dev Server:** Runs on `http://localhost:3001` via `npm run dev:agent` (`scripts/dev-agent.mjs`) with isolated `.nuxt-agent` build directory (`NUXT_BUILD_DIR=.nuxt-agent`).
 - Playwright tests locally target `http://localhost:3001` and reuse the agent server process (`reuseExistingServer: true`).
+
+## 7. Storage Architecture & Versioned Migrations
+
+- **StorageAdapter Layer:** Abstract async key-value interface (`app/utils/storage/`) implemented via native `IndexedDbAdapter` (zero bundle overhead) with isomorphic SSR fallback to `MemoryStorageAdapter`.
+- **Schema Versioning:** State payloads (Depot, Planner) define explicit `CURRENT_SCHEMA_VERSION`.
+- **Legacy v0 Compatibility:** The `v0` fallback migration branch in `app/schemas/depot.ts` supports unversioned prototyping structures (flat item dictionaries) from early development experiments before formal versioning. While production storage writes strictly versioned schemas (`schemaVersion: 1`), this migration routine is preserved to ensure seamless upgrades for early developer local environments.
+- **Corruption Resilience:** If data cannot be validated or migrated, an emergency backup is saved (`arkcalc_depot_corrupted_<timestamp>`), alerting the user and safely re-initializing clean storage without crashes.

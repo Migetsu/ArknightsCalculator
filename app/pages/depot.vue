@@ -14,6 +14,8 @@ import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 
+import { isPlanItem } from '~/../shared/constants/planItems'
+
 const { t, locale } = useI18n()
 const depotStore = useDepotStore()
 
@@ -27,10 +29,17 @@ useHead({
   ],
 })
 
+// Progressive tier hydration for high performance on slow mobile devices
+const visibleTiers = ref<Set<number>>(new Set([5, 4]))
+
 onMounted(async () => {
   if (depotStore.status === 'idle') {
     await depotStore.init()
   }
+  // Schedule remaining tiers after first paint
+  requestAnimationFrame(() => {
+    visibleTiers.value = new Set([5, 4, 3, 2, 1])
+  })
 })
 
 // Item catalog
@@ -40,7 +49,7 @@ const allItems = shallowRef<readonly DepotItemEntry[]>(
 
 // Filters
 const searchQuery = ref('')
-type FilterType = 'all' | 'material' | 'chip' | 'exp'
+type FilterType = 'all' | 'material' | 'chip' | 'exp' | 'other'
 const activeType = ref<FilterType>('all')
 const isJsonModalOpen = ref(false)
 
@@ -49,6 +58,7 @@ const typeOptions: { value: FilterType; labelKey: string }[] = [
   { value: 'material', labelKey: 'depot.types.materials' },
   { value: 'chip', labelKey: 'depot.types.chips' },
   { value: 'exp', labelKey: 'depot.types.exp' },
+  { value: 'other', labelKey: 'depot.types.other' },
 ]
 
 // Exclude standalone top-bar currencies from main inventory grid
@@ -65,7 +75,14 @@ const filteredItems = computed<DepotItemEntry[]>(() => {
       return false
     }
 
-    // Type filter
+    // Default filters show items needed for plans; 'other' shows tokens and non-plan items
+    if (filterType === 'other') {
+      if (isPlanItem(item.id)) return false
+    } else {
+      if (!isPlanItem(item.id)) return false
+    }
+
+    // Sub-type filters
     if (filterType === 'material' && item.type !== 'material' && item.type !== 'catalyst') {
       return false
     }
@@ -292,7 +309,7 @@ const filteredItemsCount = computed(() => filteredItems.value.length)
           <div v-else class="ak-depot__tiers">
             <template v-for="tier in tiers" :key="tier">
               <section
-                v-if="itemsByTier[tier]?.length"
+                v-if="itemsByTier[tier]?.length && visibleTiers.has(tier)"
                 class="ak-depot__tier-panel"
                 :aria-label="t('depot.tier', { n: tier })"
               >
