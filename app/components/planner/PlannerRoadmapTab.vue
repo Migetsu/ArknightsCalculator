@@ -210,6 +210,7 @@ function as123(n?: number): 1 | 2 | 3 {
           class="planner-roadmap__step-card"
           :class="{
             'planner-roadmap__step-card--ready': step.readiness.isReady,
+            'planner-roadmap__step-card--next': step.isNextStep,
           }"
         >
           <!-- Step Order & Badge -->
@@ -256,13 +257,18 @@ function as123(n?: number): 1 | 2 | 3 {
           <div class="planner-roadmap__step-body">
             <div class="planner-roadmap__step-head">
               <h3 class="planner-roadmap__step-title">{{ step.title }}</h3>
-              <AkBadge :variant="step.readiness.isReady ? 'green' : 'amber'" size="sm">
-                {{
-                  step.readiness.isReady
-                    ? t('planner.roadmapReadyBadge')
-                    : t('planner.roadmapMissingBadge')
-                }}
-              </AkBadge>
+              <div class="planner-roadmap__step-badges">
+                <AkBadge v-if="step.isNextStep" variant="amber" size="sm">
+                  {{ t('planner.roadmapNextStep') }}
+                </AkBadge>
+                <AkBadge :variant="step.readiness.isReady ? 'green' : 'amber'" size="sm">
+                  {{
+                    step.readiness.isReady
+                      ? t('planner.roadmapReadyBadge')
+                      : t('planner.roadmapMissingBadge')
+                  }}
+                </AkBadge>
+              </div>
             </div>
             <p class="planner-roadmap__step-subtitle">{{ step.subtitle }}</p>
 
@@ -315,6 +321,25 @@ function as123(n?: number): 1 | 2 | 3 {
                   </span>
                 </div>
               </div>
+            </div>
+
+            <!-- Cumulative Cost Indicator -->
+            <div class="planner-roadmap__cumulative">
+              <span class="planner-roadmap__cumulative-title"
+                >{{ t('planner.roadmapCumulative') }}:</span
+              >
+              <span v-if="step.cumulativeCosts.lmd > 0" class="planner-roadmap__cumulative-val">
+                {{ step.cumulativeCosts.lmd.toLocaleString() }} LMD
+              </span>
+              <span v-if="step.cumulativeCosts.exp > 0" class="planner-roadmap__cumulative-val">
+                {{ step.cumulativeCosts.exp.toLocaleString() }} EXP
+              </span>
+              <span
+                v-if="step.cumulativeCosts.items.length > 0"
+                class="planner-roadmap__cumulative-val"
+              >
+                {{ step.cumulativeCosts.items.length }} {{ t('planner.material') }}
+              </span>
             </div>
           </div>
 
@@ -420,6 +445,11 @@ function as123(n?: number): 1 | 2 | 3 {
       border-left: 3px solid var(--color-accent-primary);
     }
 
+    &--next {
+      border-color: var(--color-brand-ember, #ff6a3d);
+      box-shadow: 0 0 0 1px var(--color-brand-ember, #ff6a3d);
+    }
+
     @media (width <= 768px) {
       grid-template-columns: 1fr;
       gap: var(--space-md);
@@ -491,6 +521,12 @@ function as123(n?: number): 1 | 2 | 3 {
     align-items: center;
     gap: var(--space-sm);
     flex-wrap: wrap;
+  }
+
+  &__step-badges {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
   }
 
   &__step-title {
@@ -575,6 +611,25 @@ function as123(n?: number): 1 | 2 | 3 {
       color: var(--color-accent-primary);
       font-weight: 600;
     }
+  }
+
+  &__cumulative {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2xs);
+  }
+
+  &__cumulative-title {
+    font-weight: 600;
+  }
+
+  &__cumulative-val {
+    font-family: var(--font-family-mono);
+    color: var(--color-text-primary);
   }
 
   &__step-action {

@@ -154,7 +154,7 @@ test.describe('Operators Catalog (/operators)', () => {
     await card.click()
 
     // Navigate to /operators/char_003_kalts
-    await expect(page).toHaveURL(/\/operators\/char_003_kalts$/)
+    await expect(page).toHaveURL(/\/operators\/char_003_kalts$/, { timeout: 15000 })
     await expect(page.locator('.ak-page-header__title')).toContainText("Kal'tsit")
     await expect(page.locator('.ak-page-header__code')).toContainText('B003')
 

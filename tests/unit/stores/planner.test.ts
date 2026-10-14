@@ -212,4 +212,77 @@ describe('usePlannerStore', () => {
     const updated = store.plans.find((p) => p.id === plan.id)
     expect(updated?.current.level).toBe(50)
   })
+
+  it('supports exportJson and importJson with merge and replace modes', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    // Plan A
+    await store.addPlan(
+      'char_172_svrash',
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      { elite: 2, level: 90, skillLevel: 7, skills: {}, modules: {} },
+    )
+
+    const exported = store.exportJson()
+    expect(exported).toContain('char_172_svrash')
+
+    // Add Plan B
+    await store.addPlan(
+      'char_102_texas',
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      { elite: 1, level: 50, skillLevel: 1, skills: {}, modules: {} },
+    )
+    expect(store.plans).toHaveLength(2)
+
+    // Replace mode with original export (only Plan A)
+    const replaceRes = await store.importJson(exported, 'replace')
+    expect(replaceRes.success).toBe(true)
+    expect(store.plans).toHaveLength(1)
+    expect(store.plans[0]?.operatorId).toBe('char_172_svrash')
+
+    // Merge mode with incoming Plan B
+    const incomingPlanBJson = JSON.stringify({
+      schemaVersion: 1,
+      updatedAt: new Date().toISOString(),
+      plans: [
+        {
+          id: 'plan-texas-imported',
+          operatorId: 'char_102_texas',
+          current: { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+          target: { elite: 2, level: 80, skillLevel: 7, skills: {}, modules: {} },
+          priority: 1,
+          note: 'Imported note',
+          createdAt: new Date().toISOString(),
+        },
+      ],
+    })
+
+    const mergeRes = await store.importJson(incomingPlanBJson, 'merge')
+    expect(mergeRes.success).toBe(true)
+    expect(store.plans).toHaveLength(2)
+  })
+
+  it('exports and imports share codes successfully', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    await store.addPlan(
+      'char_172_svrash',
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      { elite: 2, level: 90, skillLevel: 7, skills: {}, modules: {} },
+    )
+
+    const shareCode = await store.exportShareCode()
+    expect(typeof shareCode).toBe('string')
+    expect(shareCode.length).toBeGreaterThan(10)
+
+    store.clearPlans()
+    expect(store.plans).toHaveLength(0)
+
+    const importRes = await store.importShareCode(shareCode)
+    expect(importRes.success).toBe(true)
+    expect(store.plans).toHaveLength(1)
+    expect(store.plans[0]?.operatorId).toBe('char_172_svrash')
+  })
 })

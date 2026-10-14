@@ -14,14 +14,19 @@ import PlannerGoalsTab from '~/components/planner/PlannerGoalsTab.vue'
 import PlannerMaterialsTab from '~/components/planner/PlannerMaterialsTab.vue'
 import PlannerRoadmapTab from '~/components/planner/PlannerRoadmapTab.vue'
 import OperatorSelectModal from '~/components/planner/OperatorSelectModal.vue'
+import PlannerJsonModal from '~/components/planner/PlannerJsonModal.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 const localePath = useLocalePath()
 const plannerStore = usePlannerStore()
 const depotStore = useDepotStore()
 const moduleConfig = getModuleById('planner')
 
 const isAddModalOpen = ref(false)
+const isJsonModalOpen = ref(false)
+const jsonModalInitialTab = ref<'export' | 'import' | 'share'>('export')
+const sharedCodeFromUrl = ref('')
 const activeTab = ref<'goals' | 'materials' | 'roadmap'>('goals')
 
 const tabs = computed<TabItem[]>(() => [
@@ -37,7 +42,21 @@ onMounted(async () => {
   if (plannerStore.status === 'idle') {
     await plannerStore.init()
   }
+
+  // Check URL ?plan=<code query for shared plan link without auto-applying
+  const planQuery = route.query.plan
+  if (typeof planQuery === 'string' && planQuery.trim()) {
+    sharedCodeFromUrl.value = planQuery.trim()
+    jsonModalInitialTab.value = 'import'
+    isJsonModalOpen.value = true
+  }
 })
+
+function openJsonModal(tab: 'export' | 'import' | 'share' = 'export'): void {
+  sharedCodeFromUrl.value = ''
+  jsonModalInitialTab.value = tab
+  isJsonModalOpen.value = true
+}
 
 // Current selected operator detail
 const currentDetail = computed(() => {
@@ -75,6 +94,12 @@ function handleAddOperator(opId: string): void {
         badge-variant="green"
       >
         <template #actions>
+          <AkButton variant="secondary" size="sm" @click="openJsonModal('export')">
+            {{ t('planner.importExportJson') }}
+          </AkButton>
+          <AkButton variant="ghost" size="sm" @click="openJsonModal('share')">
+            {{ t('planner.shareCode') }}
+          </AkButton>
           <AkButton variant="ghost" size="sm" :to="localePath('/')">
             {{ t('common.backToDashboard') }}
           </AkButton>
@@ -118,9 +143,14 @@ function handleAddOperator(opId: string): void {
       <div v-else-if="plannerStore.plans.length === 0" class="planner-page__empty-box">
         <AkEmptyState :title="t('planner.emptyTitle')" :description="t('planner.emptyDescription')">
           <template #action>
-            <AkButton variant="primary" size="md" @click="isAddModalOpen = true">
-              {{ t('planner.addOperator') }}
-            </AkButton>
+            <div class="planner-page__empty-actions">
+              <AkButton variant="primary" size="md" @click="isAddModalOpen = true">
+                {{ t('planner.addOperator') }}
+              </AkButton>
+              <AkButton variant="secondary" size="md" @click="openJsonModal('import')">
+                {{ t('planner.importExportJson') }}
+              </AkButton>
+            </div>
           </template>
         </AkEmptyState>
       </div>
@@ -181,6 +211,13 @@ function handleAddOperator(opId: string): void {
 
     <!-- Modal to Search & Add Operator -->
     <OperatorSelectModal v-model="isAddModalOpen" @select="handleAddOperator" />
+
+    <!-- Modal for JSON Import/Export and Share Code -->
+    <PlannerJsonModal
+      v-model="isJsonModalOpen"
+      :initial-tab="jsonModalInitialTab"
+      :initial-share-code="sharedCodeFromUrl"
+    />
   </div>
 </template>
 
@@ -244,6 +281,14 @@ function handleAddOperator(opId: string): void {
     justify-content: center;
     align-items: center;
     min-width: 0;
+  }
+
+  &__empty-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__state-box {

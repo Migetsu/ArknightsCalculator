@@ -1,29 +1,32 @@
 # Project Progress
 
-- **Planner Roadmap Milestones & Training Path (`feat/planner-roadmap`):**
+- **Planner Roadmap Milestones, Share Code & JSON Import/Export (`feat/planner-roadmap`):**
   - Completed preparatory commit `fix: audit planner and data inspection` (`60cbba3`):
     - Added operator data inspection script `npm run data:inspect -- <operatorId>` (`scripts/data/inspect-operator.ts`).
     - Verified translations and keys for SilverAsh (`char_172_svrash`), Fiammetta (`char_300_phenxi`), and Makoto Yuki (`char_4217_makoto`). Documented discrepancies with past reports (canonical ID `char_4217_makoto`, official Latin skill names `'Provocate'`, `'Paenitete'`, `'Reponite'`, talents `Sufferer of Tribulations`, `Herald of Revelations`).
     - Verified promotion, leveling and mastery costs against live `arknights.wiki.gg` (2026-10-14 queries): SilverAsh E1->E2 (180,000 LMD, 4 Dualchips, 4 D32 Steel, 6 White Horse Kohl), E2 Lv1->Lv90 (750,000 EXP, 744,955 LMD), Truesilver Slash M1 (6 Skill Summary - 3, 3 Optimized Device, 4 Manganese Trihydrate). All 100% matched `calculateCost`.
     - Updated comparative design table for `/depot` and `/planner` in `docs/design/DEVIATIONS.md` and documented depot v0 migration rationale (compatibility with flat external JSON dumps).
     - Captured audit screenshots (`depot-1440x900.png`, `depot-360x800.png`, `planner-1440x900.png`, `planner-360x800.png`).
-  - Implemented Roadmap core calculation `calculateRoadmap` in `shared/utils/planner/calculateRoadmap.ts` and types in `types.ts`:
-    - Generates ordered milestones: leveling to phase max, promotions (E0->E1, E1->E2), common skill ranks (Rank 1->7), masteries (M1->M3), and module stages (Stage 1->3).
+  - Implemented Roadmap core calculation in `shared/utils/planner/roadmap.ts` (`calculateRoadmap`) and updated types in `types.ts`:
+    - Strict chronological step order: level up to current elite phase maximum, promotion, level up to target, common skill ranks (1..7), skill masteries (M1..M3), and module stages (1..3).
+    - Added cumulative cost tracking (`cumulativeCosts`) aggregating LMD, EXP, and material requirements monotonically at every step.
+    - Added next step detection (`isNextStep` on immediate step, `nextStepId` on root roadmap object).
     - Computes readiness based on warehouse stock (`isReady`, `missingItems`, `missingLmd`, `missingExp`, `completionPercent`).
-    - Emits resulting state for each step to enable step progression.
-  - Integrated roadmap with `usePlannerStore` (`app/stores/planner.ts`):
-    - `selectedPlanRoadmap`: reactive computed roadmap for active plan evaluated against live depot stock.
-    - `applyRoadmapStep`: advances operator plan current state to step resulting state.
-  - Implemented interactive Roadmap UI in `PlannerRoadmapTab.vue`:
-    - Summary header with operator avatar, progress indicator, and filter controls (`All`, `Ready to Complete`, `Missing Resources`).
-    - Milestone step cards with visual badges, resource breakdown, depot availability indicators, and "Mark as Done" action buttons.
-    - Zero horizontal scroll from 360px up to 1920px.
+  - Implemented Plan JSON Import/Export & Share Code Engine:
+    - Versioned schemas (`app/schemas/planner.ts`): Zod validation, change preview calculation (`computePlannerImportPreview`), and merge/replace import modes.
+    - Compact share code engine (`shared/utils/planner/shareCode.ts`): JSON serialization, `CompressionStream('deflate-raw')` compression, base64url encoding, IEEE 802.3 CRC-32 checksum verification, and `MAX_SHARE_CODE_LENGTH = 8192` safety guards.
+    - URL query sharing: navigating to `/planner?plan=<shareCode>` displays the import confirmation dialog with live plan change preview without auto-applying.
+  - Interactive UI Components:
+    - `PlannerRoadmapTab.vue`: milestone cards with "Next Step" accent badge, cumulative cost summary, shortage indicators, readiness filtering, and "Mark as Done" action.
+    - `PlannerJsonModal.vue`: 3-tab modal for JSON Export (copy/download), Share Code (copy code/share link), and Import (paste JSON or share code, change preview, merge vs. replace selection).
+  - Deferred Canvas infographic recorded in `docs/known-issues.md`.
   - Test suites:
-    - `tests/unit/shared/planner/calculateRoadmap.test.ts`: core calculation and readiness test suite.
+    - `tests/unit/shared/planner/roadmap.test.ts`: step ordering, next step marking, cumulative costs monotonicity.
+    - `tests/unit/shared/planner/shareCode.test.ts`: round-trip encoding/decoding, checksum mismatch detection on tampered payloads, unsupported version rejection, max length enforcement.
+    - `tests/unit/components/planner/PlannerJsonModal.test.ts`: modal tabs rendering, export display, share code generation, import preview.
     - `tests/unit/components/planner/PlannerRoadmapTab.test.ts`: component rendering, filtering and step apply events.
-    - `tests/unit/stores/planner.test.ts`: roadmap calculation and step progression in store.
-    - `tests/e2e/planner.spec.ts`: full workflow e2e test with roadmap tab interaction.
-  - All CI suites 100% green: `lint`, `stylelint`, `typecheck`, `format:check`, `i18n:check`, `data:validate`, `test` (326 passed), `test:e2e` (132 passed), and `build`.
+    - `tests/unit/stores/planner.test.ts`: import/export JSON (merge/replace), exportShareCode/importShareCode, roadmap step application.
+    - `tests/e2e/planner.spec.ts`: full planner workflow, share code URL import query flow, and multi-breakpoint layout sanity.
 
 - **Operator Planner Module (`PLN-01: ready`) & Depot Polish (`feat/planner-ui`):**
   - Completed preparatory commit `fix: depot polish and test stability` (`a71afdd`):
