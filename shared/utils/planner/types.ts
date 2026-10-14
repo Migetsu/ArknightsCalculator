@@ -38,6 +38,35 @@ export const OperatorStateSchema = z.object({
 
 export type OperatorState = z.infer<typeof OperatorStateSchema>
 
+export const CURRENT_PLANNER_SCHEMA_VERSION = 1
+
+/**
+ * Single operator training goal plan.
+ */
+export const PlanItemSchema = z.object({
+  id: z.string(),
+  operatorId: z.string(),
+  current: OperatorStateSchema,
+  target: OperatorStateSchema,
+  priority: z.number().int().default(1),
+  note: z.string().default(''),
+  createdAt: z.string(),
+  updatedAt: z.string().optional(),
+})
+
+export type PlanItem = z.infer<typeof PlanItemSchema>
+
+/**
+ * Root versioned schema for persistent operator planner state.
+ */
+export const PlannerDataSchema = z.object({
+  schemaVersion: z.literal(CURRENT_PLANNER_SCHEMA_VERSION),
+  updatedAt: z.string(),
+  plans: z.array(PlanItemSchema).default([]),
+})
+
+export type PlannerData = z.infer<typeof PlannerDataSchema>
+
 /**
  * Breakdown of item costs by category.
  */
@@ -108,6 +137,8 @@ export interface RoadmapStep {
   moduleId?: string
   moduleStage?: number
   costs: RoadmapStepCosts
+  cumulativeCosts: RoadmapStepCosts
+  isNextStep: boolean
   resultingState: OperatorState
   readiness: RoadmapStepReadiness
 }
@@ -117,4 +148,5 @@ export interface RoadmapPlan {
   steps: RoadmapStep[]
   totalSteps: number
   readyStepsCount: number
+  nextStepId?: string
 }

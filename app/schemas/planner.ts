@@ -1,34 +1,17 @@
-import { z } from 'zod'
-import { OperatorStateSchema } from '~/../shared/utils/planner/types'
-
-export const CURRENT_PLANNER_SCHEMA_VERSION = 1
-
-/**
- * Single operator training goal plan.
- */
-export const PlanItemSchema = z.object({
-  id: z.string(),
-  operatorId: z.string(),
-  current: OperatorStateSchema,
-  target: OperatorStateSchema,
-  priority: z.number().int().default(1),
-  note: z.string().default(''),
-  createdAt: z.string(),
-  updatedAt: z.string().optional(),
-})
-
-export type PlanItem = z.infer<typeof PlanItemSchema>
-
-/**
- * Root versioned schema for persistent operator planner state.
- */
-export const PlannerDataSchema = z.object({
-  schemaVersion: z.literal(CURRENT_PLANNER_SCHEMA_VERSION),
-  updatedAt: z.string(),
-  plans: z.array(PlanItemSchema).default([]),
-})
-
-export type PlannerData = z.infer<typeof PlannerDataSchema>
+import {
+  CURRENT_PLANNER_SCHEMA_VERSION,
+  PlanItemSchema,
+  PlannerDataSchema,
+  type PlanItem,
+  type PlannerData,
+} from '#shared/utils/planner/types'
+export {
+  CURRENT_PLANNER_SCHEMA_VERSION,
+  PlanItemSchema,
+  PlannerDataSchema,
+  type PlanItem,
+  type PlannerData,
+} from '#shared/utils/planner/types'
 
 /**
  * Create a fresh, empty planner data payload.
@@ -150,5 +133,41 @@ export function validatePlannerImport(jsonString: string): {
       success: false,
       error: err instanceof Error ? `JSON syntax error: ${err.message}` : 'Failed to parse JSON',
     }
+  }
+}
+
+export interface PlannerImportPreview {
+  plansToAdd: PlanItem[]
+  plansToUpdate: PlanItem[]
+  totalIncoming: number
+}
+
+/**
+ * Calculates which plans will be newly added vs existing plans updated.
+ */
+export function computePlannerImportPreview(
+  currentPlans: PlanItem[],
+  incomingPlans: PlanItem[],
+): PlannerImportPreview {
+  const currentMap = new Map<string, PlanItem>()
+  for (const p of currentPlans) {
+    currentMap.set(p.operatorId, p)
+  }
+
+  const plansToAdd: PlanItem[] = []
+  const plansToUpdate: PlanItem[] = []
+
+  for (const incoming of incomingPlans) {
+    if (currentMap.has(incoming.operatorId)) {
+      plansToUpdate.push(incoming)
+    } else {
+      plansToAdd.push(incoming)
+    }
+  }
+
+  return {
+    plansToAdd,
+    plansToUpdate,
+    totalIncoming: incomingPlans.length,
   }
 }

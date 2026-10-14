@@ -21,6 +21,7 @@ import { calculateCost } from '~/../shared/utils/planner/calculateCost'
 import { calculateRoadmap } from '~/../shared/utils/planner/calculateRoadmap'
 import { planExpCards } from '~/../shared/utils/planner/planExpCards'
 import { resolveDemand } from '~/../shared/utils/workshop/resolveDemand'
+import { encodeShareCode, decodeShareCode } from '~/../shared/utils/planner/shareCode'
 import { fetchOperatorDetail } from '~/composables/useOperatorDetail'
 import { useDepotStore } from '~/stores/depot'
 import { createDefaultStorageAdapter, type StorageAdapter } from '~/utils/storage'
@@ -583,14 +584,35 @@ export const usePlannerStore = defineStore('planner', () => {
     return JSON.stringify(data, null, 2)
   }
 
-  async function importJson(jsonString: string): Promise<{ success: boolean; error?: string }> {
-    const validated = validatePlannerImport(jsonString)
-    if (!validated.success || !validated.data) {
-      return { success: false, error: validated.error }
+  async function importPlans(
+    incomingPlans: PlanItem[],
+    mode: 'replace' | 'merge' = 'merge',
+  ): Promise<void> {
+    if (mode === 'replace') {
+      plans.value = [...incomingPlans]
+    } else {
+      const existingIndexMap = new Map<string, number>()
+      plans.value.forEach((p, idx) => {
+        existingIndexMap.set(p.operatorId, idx)
+      })
+
+      const merged = [...plans.value]
+      for (const inc of incomingPlans) {
+        const idx = existingIndexMap.get(inc.operatorId)
+        if (idx !== undefined) {
+          merged[idx] = { ...inc }
+        } else {
+          merged.push({ ...inc })
+          existingIndexMap.set(inc.operatorId, merged.length - 1)
+        }
+      }
+      plans.value = merged
     }
 
-    plans.value = validated.data.plans
-    selectedPlanId.value = plans.value[0]?.id ?? null
+    if (plans.value.length > 0 && !selectedPlanId.value) {
+      selectedPlanId.value = plans.value[0]?.id ?? null
+    }
+
     costMemoCache.clear()
     isCorrupted.value = false
 
@@ -599,6 +621,39 @@ export const usePlannerStore = defineStore('planner', () => {
     }
 
     await save()
+  }
+
+  async function importJson(
+    jsonString: string,
+    mode: 'replace' | 'merge' = 'merge',
+  ): Promise<{ success: boolean; error?: string }> {
+    const validated = validatePlannerImport(jsonString)
+    if (!validated.success || !validated.data) {
+      return { success: false, error: validated.error }
+    }
+
+    await importPlans(validated.data.plans, mode)
+    return { success: true }
+  }
+
+  async function exportShareCode(selectedOnly = false): Promise<string> {
+    const targetPlans = selectedOnly && selectedPlan.value ? [selectedPlan.value] : plans.value
+    if (targetPlans.length === 0) {
+      throw new Error('No plans available to export')
+    }
+    return await encodeShareCode({ plans: targetPlans })
+  }
+
+  async function importShareCode(
+    code: string,
+    mode: 'replace' | 'merge' = 'merge',
+  ): Promise<{ success: boolean; error?: string }> {
+    const decoded = await decodeShareCode(code)
+    if (!decoded.success) {
+      return { success: false, error: decoded.message }
+    }
+
+    await importPlans(decoded.payload.plans, mode)
     return { success: true }
   }
 
@@ -636,5 +691,8 @@ export const usePlannerStore = defineStore('planner', () => {
     dismissCorruptionAlert,
     exportJson,
     importJson,
+    importPlans,
+    exportShareCode,
+    importShareCode,
   }
 })

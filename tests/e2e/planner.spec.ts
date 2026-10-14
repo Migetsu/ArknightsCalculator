@@ -103,6 +103,56 @@ test.describe('Planner Page (PLN-01)', () => {
     }
   })
 
+  test('share code import flow: open via ?plan=<code query parameter and apply', async ({
+    page,
+  }) => {
+    test.setTimeout(60000)
+    // 1. Visit Planner and create a plan
+    await page.goto('/planner')
+    await page.evaluate(async () => {
+      localStorage.clear()
+      const dbs = await window.indexedDB.databases?.()
+      for (const db of dbs || []) {
+        if (db.name) window.indexedDB.deleteDatabase(db.name)
+      }
+    })
+    await page.reload()
+
+    await page.getByRole('button', { name: 'Add operator' }).first().click()
+    const searchInput = page.locator('.op-modal input[type="text"]')
+    await searchInput.fill('SilverAsh')
+    await page.waitForTimeout(100)
+    await page.locator('.op-modal__item').first().click()
+    await expect(page.locator('.op-modal')).not.toBeVisible()
+    await expect(page.locator('.planner-sidebar__plan-card')).toHaveCount(1)
+
+    // 2. Open Share modal
+    await page.getByRole('button', { name: 'Share Code' }).click()
+    await expect(page.locator('.planner-modal')).toBeVisible()
+
+    const codeArea = page.locator('.planner-modal__textarea--code')
+    await expect(codeArea).toBeVisible()
+    await expect(codeArea).not.toHaveValue('', { timeout: 10000 })
+    const shareCode = (await codeArea.inputValue()).trim()
+    expect(shareCode.length).toBeGreaterThan(10)
+
+    // 3. Clear storage and navigate with ?plan=<code URL query
+    await page.evaluate(() => localStorage.clear())
+    await page.goto(`/planner?plan=${shareCode}`)
+
+    // 4. Modal opens automatically with preview, without auto-applying
+    await expect(page.locator('.planner-modal')).toBeVisible()
+    await expect(page.locator('.planner-modal__preview')).toBeVisible()
+
+    // 5. Apply import
+    await page.getByRole('button', { name: 'Apply Import' }).click()
+    await expect(page.locator('.planner-modal')).not.toBeVisible({ timeout: 5000 })
+
+    // 6. Verify plan is present in planner sidebar
+    await expect(page.locator('.planner-sidebar__plan-card')).toHaveCount(1)
+    await expect(page.locator('.planner-sidebar__plan-name').first()).toContainText('SilverAsh')
+  })
+
   test('layout sanity: no horizontal scrollbar across breakpoints', async ({ page }) => {
     const viewports = [
       { width: 360, height: 740 },
