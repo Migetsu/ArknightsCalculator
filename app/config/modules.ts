@@ -40,7 +40,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     nameKey: 'navigation.planner',
     descriptionKey: 'navigation.plannerDesc',
     navKey: 'nav.planner',
-    status: 'soon',
+    status: 'ready',
   },
   {
     id: 'depot',

@@ -20,9 +20,10 @@ test.describe('Depot Module', () => {
     await expect(currenciesBar).toContainText('Orundum')
     await expect(currenciesBar).toContainText('Originite Prime')
 
-    // 3. Verify disabled plan checkboxes with badge
-    const planBadges = page.locator('.ak-depot__badge-soon')
-    await expect(planBadges.first()).toBeVisible()
+    // 3. Verify active plan filter checkboxes
+    const planCheckboxes = page.locator('.ak-depot__checkbox-input')
+    await expect(planCheckboxes.first()).toBeVisible()
+    await expect(planCheckboxes.first()).toBeEnabled()
 
     // 4. Verify tier sections are present
     const tierTitles = page.locator('.ak-depot__tier-title')

@@ -1,6 +1,34 @@
 # Project Progress
 
-- **Depot Inventory Module (`INV-05: ready`) & Workshop Audit (`feat/depot`):**
+- **Operator Planner Module (`PLN-01: ready`) & Depot Polish (`feat/planner-ui`):**
+  - Completed preparatory commit `fix: depot polish and test stability` (`a71afdd`):
+    - Stabilized network & CPU throttled Playwright tests in `tests/e2e/throttling.spec.ts` (dedicated `throttled` project, `workers: 1`, `timeout: 180s`, verified 5 consecutive passes).
+    - Refined depot filtering to hide non-progression items by default via `isPlanItem` (`shared/constants/planItems.ts`).
+    - Documented workshop formula for synthesis LMD costs and EXP card conversion in `docs/workshop.md`.
+  - Implemented typed Zod schemas and versioning in `app/schemas/planner.ts` (`CURRENT_PLANNER_SCHEMA_VERSION = 1`, `PlanItemSchema`, `PlannerDataSchema`, automated v0 migration, automated corrupted payload backups `arkcalc_planner_corrupted_<timestamp>`).
+  - Created Pinia store `usePlannerStore` (`app/stores/planner.ts`):
+    - Multi-plan management backed by `StorageAdapter` (`IndexedDbAdapter` / `MemoryStorageAdapter`).
+    - Operator details cache (`operatorDetailsCache`) and hash-based plan cost memoization (`costMemoCache`).
+    - Aggregated demand calculation (`aggregatedDemand`) using calculation core `calculateCost` (`shared/utils/planner`).
+    - Automated EXP card distribution using `planExpCards`.
+    - Integrated warehouse inventory and multi-tier crafting deficit calculation via `resolveDemand` (`shared/utils/workshop`).
+    - Recalculation benchmark: 35+ plans recalculate in <90ms (well under the 100ms threshold).
+  - Built planner UI components:
+    - `OperatorSelectModal.vue`: search and class filter modal for adding operators to plans.
+    - `PlannerSidebar.vue`: plan cards with `AkAvatar`, progress indicators, delete buttons, and TOTAL NEEDED summary (LMD, EXP cards, Missing items).
+    - `PlannerGoalsTab.vue`: hero card, steppers and sliders for Level, Elite (0..2), Skills (1..7), Masteries (M1..M3), Modules (Stage 1..3), and "Max Target" / "Next Goal" quick actions.
+    - `PlannerMaterialsTab.vue`: NEED / HAVE / MISSING breakdown table, crafting toggle ("Crafting included" vs "Direct deficit"), and navigation to farming.
+    - `PlannerRoadmapTab.vue`: roadmap placeholder tab matching design specifications.
+  - Page integration:
+    - `app/pages/planner.vue`: full-featured planner page with loading, empty, ready, and corrupted storage states, zero horizontal scroll from 360px to 1920px.
+    - `app/pages/depot.vue`: connected active plan filters ("Only needed in plans", "Only missing"), added dev-only "Fill from plans" helper (`import.meta.dev`).
+    - `app/pages/index.vue`: connected "Your plans" dashboard widget to `usePlannerStore` showing active training goals.
+  - Updated module registry in `app/config/modules.ts` (`PLN-01: ready`).
+  - Added comprehensive test suites:
+    - `tests/unit/stores/planner.test.ts`: 10 unit tests covering CRUD, deficit calculation, crafting toggle, 35+ plans benchmark, and corrupted data recovery.
+    - `tests/e2e/planner.spec.ts`: full workflow e2e test (add 2 operators, materials recalculation, depot integration, reload persistence) and multi-breakpoint layout sanity.
+  - All CI verification suites 100% green: `lint`, `stylelint`, `typecheck`, `format:check`, `i18n:check`, `data:validate`, `test` (319 passed), `test:e2e` (132 passed), and `build`.
+
   - Completed workshop engine audit in preparatory commit `fix: workshop engine audit`:
     - Resolved e2e test count accounting (investigated 126 vs 125, confirmed 126 full tests across 9 files, logged Slow 4G throttling timeout observation in `docs/known-issues.md`).
     - Upgraded `resolveDemand` recipe traversal to strict DAG topological order using Kahn's algorithm (`getTopologicalOrder`); added unit tests verifying same-tier recipe ordering (`Light Building Material` 3131 and `Carbon Stick` 3112, both T2) and consumer-before-ingredient DAG invariant.

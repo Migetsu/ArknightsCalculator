@@ -14,8 +14,14 @@ import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 
+import { isPlanItem } from '~/../shared/constants/planItems'
+
+import { usePlannerStore } from '~/stores/planner'
+
 const { t, locale } = useI18n()
 const depotStore = useDepotStore()
+const plannerStore = usePlannerStore()
+const isDev = import.meta.dev
 
 useHead({
   title: computed(() => `${t('depot.title')} | ArkCalc`),
@@ -27,10 +33,20 @@ useHead({
   ],
 })
 
+// Progressive tier hydration for high performance on slow mobile devices
+const visibleTiers = ref<Set<number>>(new Set([5, 4]))
+
 onMounted(async () => {
   if (depotStore.status === 'idle') {
     await depotStore.init()
   }
+  if (plannerStore.status === 'idle') {
+    await plannerStore.init()
+  }
+  // Schedule remaining tiers after first paint
+  requestAnimationFrame(() => {
+    visibleTiers.value = new Set([5, 4, 3, 2, 1])
+  })
 })
 
 // Item catalog
@@ -40,7 +56,9 @@ const allItems = shallowRef<readonly DepotItemEntry[]>(
 
 // Filters
 const searchQuery = ref('')
-type FilterType = 'all' | 'material' | 'chip' | 'exp'
+const onlyNeededInPlans = ref(false)
+const onlyMissing = ref(false)
+type FilterType = 'all' | 'material' | 'chip' | 'exp' | 'other'
 const activeType = ref<FilterType>('all')
 const isJsonModalOpen = ref(false)
 
@@ -49,6 +67,7 @@ const typeOptions: { value: FilterType; labelKey: string }[] = [
   { value: 'material', labelKey: 'depot.types.materials' },
   { value: 'chip', labelKey: 'depot.types.chips' },
   { value: 'exp', labelKey: 'depot.types.exp' },
+  { value: 'other', labelKey: 'depot.types.other' },
 ]
 
 // Exclude standalone top-bar currencies from main inventory grid
@@ -65,7 +84,14 @@ const filteredItems = computed<DepotItemEntry[]>(() => {
       return false
     }
 
-    // Type filter
+    // Default filters show items needed for plans; 'other' shows tokens and non-plan items
+    if (filterType === 'other') {
+      if (isPlanItem(item.id)) return false
+    } else {
+      if (!isPlanItem(item.id)) return false
+    }
+
+    // Sub-type filters
     if (filterType === 'material' && item.type !== 'material' && item.type !== 'catalyst') {
       return false
     }
@@ -73,6 +99,14 @@ const filteredItems = computed<DepotItemEntry[]>(() => {
       return false
     }
     if (filterType === 'exp' && item.type !== 'exp_card') {
+      return false
+    }
+
+    // Planner-based filters
+    if (onlyNeededInPlans.value && !plannerStore.planRequiredItemIds.has(item.id)) {
+      return false
+    }
+    if (onlyMissing.value && !plannerStore.missingItemIds.has(item.id)) {
       return false
     }
 
@@ -95,6 +129,8 @@ const filteredItems = computed<DepotItemEntry[]>(() => {
     return true
   })
 })
+
+const filteredItemsCount = computed(() => filteredItems.value.length)
 
 const tiers = [5, 4, 3, 2, 1] as const
 
@@ -122,7 +158,14 @@ const itemsByTier = computed(() => {
   return map
 })
 
-const filteredItemsCount = computed(() => filteredItems.value.length)
+async function handleFillFromPlans(): Promise<void> {
+  for (const item of plannerStore.aggregatedDemand.items) {
+    await depotStore.setItemCount(item.id, item.count)
+  }
+  if (plannerStore.aggregatedDemand.lmd > depotStore.currencies.lmd) {
+    await depotStore.setCurrency('lmd', plannerStore.aggregatedDemand.lmd)
+  }
+}
 </script>
 
 <template>
@@ -158,24 +201,20 @@ const filteredItemsCount = computed(() => filteredItems.value.length)
               />
             </div>
 
-            <!-- Future plan filters (disabled with clear notice) -->
+            <!-- Active plan filters -->
             <div class="ak-depot__plan-filters">
-              <label
-                class="ak-depot__checkbox-label ak-depot__checkbox-label--disabled"
-                :title="t('depot.plansComingSoon')"
-              >
-                <input type="checkbox" disabled class="ak-depot__checkbox-input" />
+              <label class="ak-depot__checkbox-label">
+                <input
+                  v-model="onlyNeededInPlans"
+                  type="checkbox"
+                  class="ak-depot__checkbox-input"
+                />
                 <span class="ak-depot__checkbox-text">{{ t('depot.onlyNeededInPlans') }}</span>
-                <span class="ak-depot__badge-soon">{{ t('depot.comingSoon') }}</span>
               </label>
 
-              <label
-                class="ak-depot__checkbox-label ak-depot__checkbox-label--disabled"
-                :title="t('depot.plansComingSoon')"
-              >
-                <input type="checkbox" disabled class="ak-depot__checkbox-input" />
+              <label class="ak-depot__checkbox-label">
+                <input v-model="onlyMissing" type="checkbox" class="ak-depot__checkbox-input" />
                 <span class="ak-depot__checkbox-text">{{ t('depot.onlyMissing') }}</span>
-                <span class="ak-depot__badge-soon">{{ t('depot.comingSoon') }}</span>
               </label>
             </div>
 
@@ -205,6 +244,16 @@ const filteredItemsCount = computed(() => filteredItems.value.length)
                 @click="isJsonModalOpen = true"
               >
                 {{ t('depot.importExportJson') }}
+              </AkButton>
+
+              <AkButton
+                v-if="isDev"
+                variant="ghost"
+                size="sm"
+                class="ak-depot__action-btn ak-depot__dev-btn"
+                @click="handleFillFromPlans"
+              >
+                {{ t('depot.fillFromPlans') }}
               </AkButton>
             </div>
           </div>
@@ -292,7 +341,7 @@ const filteredItemsCount = computed(() => filteredItems.value.length)
           <div v-else class="ak-depot__tiers">
             <template v-for="tier in tiers" :key="tier">
               <section
-                v-if="itemsByTier[tier]?.length"
+                v-if="itemsByTier[tier]?.length && visibleTiers.has(tier)"
                 class="ak-depot__tier-panel"
                 :aria-label="t('depot.tier', { n: tier })"
               >
@@ -464,11 +513,18 @@ const filteredItemsCount = computed(() => filteredItems.value.length)
 
   &__actions {
     margin-top: var(--space-xs, 6px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 6px);
   }
 
   &__action-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  &__dev-btn {
+    border: 1px dashed var(--color-border-subtle);
   }
 
   &__main {

@@ -1,31 +1,78 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { usePlannerStore } from '~/stores/planner'
+import { useDepotStore } from '~/stores/depot'
+import { getModuleById } from '~/config/modules'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
-import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
 import AkButton from '~/components/ui/AkButton.vue'
-import { getModuleById } from '~/config/modules'
+import AkTabs, { type TabItem } from '~/components/ui/AkTabs.vue'
+import AkEmptyState from '~/components/ui/AkEmptyState.vue'
+import PlannerSidebar from '~/components/planner/PlannerSidebar.vue'
+import PlannerGoalsTab from '~/components/planner/PlannerGoalsTab.vue'
+import PlannerMaterialsTab from '~/components/planner/PlannerMaterialsTab.vue'
+import PlannerRoadmapTab from '~/components/planner/PlannerRoadmapTab.vue'
+import OperatorSelectModal from '~/components/planner/OperatorSelectModal.vue'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const plannerStore = usePlannerStore()
+const depotStore = useDepotStore()
 const moduleConfig = getModuleById('planner')
 
-type PageState = 'empty' | 'loading' | 'error'
-const pageState = ref<PageState>('empty')
+const isAddModalOpen = ref(false)
+const activeTab = ref<'goals' | 'materials' | 'roadmap'>('goals')
+
+const tabs = computed<TabItem[]>(() => [
+  { id: 'goals', label: t('planner.tabs.goals') },
+  { id: 'materials', label: t('planner.tabs.materials') },
+  { id: 'roadmap', label: t('planner.tabs.roadmap') },
+])
+
+onMounted(async () => {
+  if (depotStore.status === 'idle') {
+    void depotStore.init()
+  }
+  if (plannerStore.status === 'idle') {
+    await plannerStore.init()
+  }
+})
+
+// Current selected operator detail
+const currentDetail = computed(() => {
+  const plan = plannerStore.selectedPlan
+  if (!plan) return null
+  return plannerStore.operatorDetailsCache.get(plan.operatorId) ?? null
+})
+
+// Automatically fetch detail if missing
+watch(
+  () => plannerStore.selectedPlan?.operatorId,
+  (opId) => {
+    if (opId) {
+      void plannerStore.ensureOperatorDetail(opId)
+    }
+  },
+  { immediate: true },
+)
+
+function handleAddOperator(opId: string): void {
+  void plannerStore.addPlan(opId)
+}
 </script>
 
 <template>
-  <div class="module-page">
-    <AkContainer size="lg" class="module-page__container">
+  <div class="planner-page">
+    <AkContainer size="lg" class="planner-page__container">
       <AkPageHeader
         :code="moduleConfig?.code ?? 'PLN-01'"
         :tag-label="t('modules.tag')"
         :title="moduleConfig ? t(moduleConfig.nameKey) : 'Operator Planner'"
         :subtitle="moduleConfig ? t(moduleConfig.descriptionKey) : ''"
         watermark="PLANNER"
-        :badge="t('modules.status.soon')"
-        badge-variant="amber"
+        :badge="t('modules.status.ready')"
+        badge-variant="green"
       >
         <template #actions>
           <AkButton variant="ghost" size="sm" :to="localePath('/')">
@@ -34,47 +81,103 @@ const pageState = ref<PageState>('empty')
         </template>
       </AkPageHeader>
 
-      <div class="module-page__content">
-        <!-- Loading State -->
-        <div v-if="pageState === 'loading'" class="module-page__state-box">
-          <span class="module-page__spinner" aria-hidden="true" />
-          <p class="module-page__state-text">{{ t('common.loading') }}</p>
-        </div>
+      <!-- Alert when storage corrupted -->
+      <AkAlert
+        v-if="plannerStore.isCorrupted"
+        variant="warning"
+        closable
+        @close="plannerStore.dismissCorruptionAlert"
+      >
+        {{ t('planner.corruptedAlert', { backup: plannerStore.corruptedBackupKey }) }}
+      </AkAlert>
 
-        <!-- Error State -->
-        <AkAlert
-          v-else-if="pageState === 'error'"
-          variant="danger"
-          :title="t('modules.error.title')"
-        >
-          <p>{{ t('modules.error.description') }}</p>
-          <template #actions>
-            <AkButton variant="secondary" size="sm" @click="pageState = 'empty'">
-              {{ t('common.retry') }}
+      <!-- Error State -->
+      <AkAlert
+        v-if="plannerStore.status === 'error'"
+        variant="danger"
+        :title="t('modules.error.title')"
+      >
+        <p>{{ plannerStore.error || t('modules.error.description') }}</p>
+        <template #actions>
+          <AkButton variant="secondary" size="sm" @click="plannerStore.init()">
+            {{ t('common.retry') }}
+          </AkButton>
+        </template>
+      </AkAlert>
+
+      <!-- Loading State -->
+      <div
+        v-else-if="plannerStore.status === 'loading' || plannerStore.status === 'idle'"
+        class="planner-page__state-box"
+      >
+        <span class="planner-page__spinner" aria-hidden="true" />
+        <p class="planner-page__state-text">{{ t('common.loading') }}</p>
+      </div>
+
+      <!-- Empty State (No plans) -->
+      <div v-else-if="plannerStore.plans.length === 0" class="planner-page__empty-box">
+        <AkEmptyState :title="t('planner.emptyTitle')" :description="t('planner.emptyDescription')">
+          <template #action>
+            <AkButton variant="primary" size="md" @click="isAddModalOpen = true">
+              {{ t('planner.addOperator') }}
             </AkButton>
           </template>
-        </AkAlert>
+        </AkEmptyState>
+      </div>
 
-        <!-- Empty / Coming Soon State -->
-        <div v-else class="module-page__empty-box">
-          <AkEmptyState
-            :title="t('modules.empty.title')"
-            :description="t('modules.empty.description')"
-          >
-            <template #actions>
-              <AkButton variant="secondary" size="md" :to="localePath('/')">
-                {{ t('common.backToDashboard') }}
-              </AkButton>
+      <!-- Main Planner Grid -->
+      <div v-else class="planner-page__layout">
+        <!-- Left Sidebar -->
+        <PlannerSidebar :is-modal-open="isAddModalOpen" @open-add-modal="isAddModalOpen = true" />
+
+        <!-- Right Content Area -->
+        <main class="planner-page__main">
+          <!-- Navigation Tabs -->
+          <div class="planner-page__tabs">
+            <AkTabs
+              v-model="activeTab"
+              :items="tabs"
+              variant="buttons"
+              aria-label="Planner Views"
+            />
+          </div>
+
+          <!-- Tab Content Views -->
+          <div class="planner-page__view">
+            <!-- Goals Tab -->
+            <template v-if="activeTab === 'goals'">
+              <PlannerGoalsTab
+                v-if="plannerStore.selectedPlan && currentDetail"
+                :plan-id="plannerStore.selectedPlan.id"
+                :detail="currentDetail"
+              />
+              <div v-else class="planner-page__state-box">
+                <span class="planner-page__spinner" aria-hidden="true" />
+                <p class="planner-page__state-text">{{ t('common.loading') }}</p>
+              </div>
             </template>
-          </AkEmptyState>
-        </div>
+
+            <!-- Materials Tab -->
+            <template v-else-if="activeTab === 'materials'">
+              <PlannerMaterialsTab />
+            </template>
+
+            <!-- Roadmap Tab (Placeholder) -->
+            <template v-else-if="activeTab === 'roadmap'">
+              <PlannerRoadmapTab />
+            </template>
+          </div>
+        </main>
       </div>
     </AkContainer>
+
+    <!-- Modal to Search & Add Operator -->
+    <OperatorSelectModal v-model="isAddModalOpen" @select="handleAddOperator" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.module-page {
+.planner-page {
   padding-top: var(--space-md);
   padding-bottom: var(--space-2xl);
   display: flex;
@@ -93,22 +196,46 @@ const pageState = ref<PageState>('empty')
     min-width: 0;
   }
 
-  &__content {
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    min-width: 0;
+
+    @include mq(lg) {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: 28px;
+    }
+  }
+
+  &__main {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
     min-width: 0;
   }
 
+  &__tabs {
+    display: flex;
+    align-items: center;
+  }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
   &__empty-box {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
     background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
     border: 1px solid var(--color-border-bold);
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 0;
-    border-radius: var(--radius-none);
   }
 
   &__state-box {
@@ -120,7 +247,6 @@ const pageState = ref<PageState>('empty')
     gap: var(--space-sm);
     background: linear-gradient(135deg, var(--color-bg-surface) 0%, var(--color-bg-card) 100%);
     border: 1px solid var(--color-border-bold);
-    border-radius: var(--radius-none);
   }
 
   &__spinner {
@@ -130,7 +256,7 @@ const pageState = ref<PageState>('empty')
     border-top-color: var(--color-accent-primary);
     border-radius: var(--radius-full);
     box-shadow: 0 0 10px var(--color-accent-primary-glow);
-    animation: module-spin 0.8s linear infinite;
+    animation: planner-spin 0.8s linear infinite;
   }
 
   &__state-text {
@@ -142,7 +268,7 @@ const pageState = ref<PageState>('empty')
   }
 }
 
-@keyframes module-spin {
+@keyframes planner-spin {
   to {
     transform: rotate(360deg);
   }

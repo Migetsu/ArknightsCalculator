@@ -7,14 +7,14 @@ export default defineConfig({
       {
         test: {
           name: 'unit',
-          include: ['tests/unit/{shared,scripts,routes,config,data}/**/*.{test,spec}.ts'],
+          include: ['tests/unit/{shared,scripts,routes,config,data,schemas}/**/*.{test,spec}.ts'],
           environment: 'node',
         },
       },
       await defineVitestProject({
         test: {
           name: 'nuxt',
-          include: ['tests/unit/{components,pages,composables}/**/*.{test,spec}.ts'],
+          include: ['tests/unit/{components,pages,composables,stores}/**/*.{test,spec}.ts'],
           environmentOptions: {
             nuxt: {
               domEnvironment: 'happy-dom',
