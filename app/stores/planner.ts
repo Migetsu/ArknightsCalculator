@@ -11,8 +11,14 @@ import {
 import type { OperatorDetail } from '~/../shared/schemas/operator'
 import type { GameConstants } from '~/../shared/schemas/gameConstants'
 import type { CraftRecipe } from '~/../shared/schemas/recipe'
-import type { CalculatedCost, OperatorState } from '~/../shared/utils/planner/types'
+import type {
+  CalculatedCost,
+  OperatorState,
+  RoadmapPlan,
+  RoadmapStep,
+} from '~/../shared/utils/planner/types'
 import { calculateCost } from '~/../shared/utils/planner/calculateCost'
+import { calculateRoadmap } from '~/../shared/utils/planner/calculateRoadmap'
 import { planExpCards } from '~/../shared/utils/planner/planExpCards'
 import { resolveDemand } from '~/../shared/utils/workshop/resolveDemand'
 import { fetchOperatorDetail } from '~/composables/useOperatorDetail'
@@ -531,6 +537,39 @@ export const usePlannerStore = defineStore('planner', () => {
     }
   }
 
+  /**
+   * Roadmap milestones and ordered steps for the currently selected operator plan.
+   */
+  const selectedPlanRoadmap = computed<RoadmapPlan | null>(() => {
+    const plan = selectedPlan.value
+    if (!plan) return null
+    const detail = operatorDetailsCache.value.get(plan.operatorId)
+    if (!detail) return null
+
+    const depotStore = useDepotStore()
+    const depotSnapshot = {
+      items: depotStore.items,
+      lmd: depotStore.currencies.lmd,
+    }
+
+    return calculateRoadmap(detail, plan.current, plan.target, constants, depotSnapshot)
+  })
+
+  /**
+   * Applies a roadmap step by updating the plan current state to the step resulting state.
+   */
+  async function applyRoadmapStep(planId: string, step: RoadmapStep): Promise<void> {
+    await updatePlan(planId, {
+      current: {
+        elite: step.resultingState.elite,
+        level: step.resultingState.level,
+        skillLevel: step.resultingState.skillLevel,
+        skills: { ...step.resultingState.skills },
+        modules: { ...step.resultingState.modules },
+      },
+    })
+  }
+
   function dismissCorruptionAlert(): void {
     isCorrupted.value = false
   }
@@ -591,6 +630,8 @@ export const usePlannerStore = defineStore('planner', () => {
     missingItemIds,
     missingItemsCount,
     plannedExpCards,
+    selectedPlanRoadmap,
+    applyRoadmapStep,
     benchmarkRecalculation,
     dismissCorruptionAlert,
     exportJson,

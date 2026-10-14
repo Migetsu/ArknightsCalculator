@@ -162,9 +162,17 @@ function handleAddOperator(opId: string): void {
               <PlannerMaterialsTab />
             </template>
 
-            <!-- Roadmap Tab (Placeholder) -->
+            <!-- Roadmap Tab -->
             <template v-else-if="activeTab === 'roadmap'">
-              <PlannerRoadmapTab />
+              <PlannerRoadmapTab
+                v-if="plannerStore.selectedPlan && currentDetail"
+                :plan-id="plannerStore.selectedPlan.id"
+                :detail="currentDetail"
+              />
+              <div v-else class="planner-page__state-box">
+                <span class="planner-page__spinner" aria-hidden="true" />
+                <p class="planner-page__state-text">{{ t('common.loading') }}</p>
+              </div>
             </template>
           </div>
         </main>
