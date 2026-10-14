@@ -93,196 +93,167 @@ export function resolveDemand(
   // Track item chain to detect mutual conversion recursion
   const activeChain = new Set<string>()
 
-  // Continue decomposing tier-by-tier until all demands are fully resolved
-  // Maximum possible tier in Arknights is 5 (Dualchips, T5 materials)
-  const maxTier = 5
+  // Obtain topological order from products (top-level consumers) to ingredients (base materials).
+  // Guarantees DAG invariant: no item is evaluated before all its consumers have been processed.
+  const topoOrder = graph.getTopologicalOrder(pendingDemand.keys())
 
-  for (let currentTier = maxTier; currentTier >= 1; currentTier--) {
-    // Collect all pending items at the current tier
-    let tierIterations = 0
+  for (const itemId of topoOrder) {
+    let needed = pendingDemand.get(itemId) ?? 0
+    if (needed <= 0) {
+      pendingDemand.delete(itemId)
+      continue
+    }
 
-    while (true) {
-      tierIterations++
-      if (tierIterations > 50) {
-        warnings.push({
-          code: 'MAX_DEPTH_EXCEEDED',
-          message: `Exceeded tier iteration limit at tier ${currentTier}`,
-          details: { tier: currentTier },
-        })
-        break
-      }
-
-      const itemsAtTier: string[] = []
-      for (const [id, count] of pendingDemand.entries()) {
-        if (count > 0 && graph.getItemTier(id) === currentTier) {
-          itemsAtTier.push(id)
-        }
-      }
-
-      if (itemsAtTier.length === 0) {
-        break
-      }
-
-      // Sort items deterministically
-      itemsAtTier.sort()
-
-      for (const itemId of itemsAtTier) {
-        let needed = pendingDemand.get(itemId) ?? 0
-        if (needed <= 0) {
-          pendingDemand.delete(itemId)
-          continue
-        }
-
-        // Step 1: Satisfy from stock first
-        if (useStock) {
-          const availableStock = currentStock.get(itemId) ?? 0
-          if (availableStock > 0) {
-            const used = Math.min(needed, availableStock)
-            needed -= used
-            const remainingStock = availableStock - used
-            if (remainingStock > 0) {
-              currentStock.set(itemId, remainingStock)
-            } else {
-              currentStock.delete(itemId)
-            }
-          }
-        }
-
-        if (needed === 0) {
-          pendingDemand.delete(itemId)
-          continue
-        }
-
-        // Step 2: Check craftability
-        const canCraftTier = craftableTiers.has(currentTier)
-        const canonicalRecipe = graph.getRecipe(itemId)
-
-        if (canCraftTier && canonicalRecipe) {
-          // Standard synthesis or manufacture craft
-          const times = Math.ceil(needed / canonicalRecipe.resultCount)
-          const totalProduced = times * canonicalRecipe.resultCount
-          const surplus = totalProduced - needed
-
-          // Surplus becomes stock
-          if (surplus > 0) {
-            currentStock.set(itemId, (currentStock.get(itemId) ?? 0) + surplus)
-          }
-
-          // Record craft
-          const existing = craftsAggregated.get(canonicalRecipe.id)
-          if (existing) {
-            existing.times += times
-          } else {
-            craftsAggregated.set(canonicalRecipe.id, { recipe: canonicalRecipe, times })
-          }
-
-          lmdForCrafting += times * canonicalRecipe.goldCost
-
-          // Accumulate byproducts if enabled
-          if (calculateByproducts && canonicalRecipe.extraOutcomes) {
-            for (const extra of canonicalRecipe.extraOutcomes) {
-              const expectedVal = times * extra.count * extra.probability
-              byproductsMap.set(extra.id, (byproductsMap.get(extra.id) ?? 0) + expectedVal)
-            }
-          }
-
-          // Add ingredients to pending demand
-          for (const ing of canonicalRecipe.ingredients) {
-            const ingCount = times * ing.count
-            pendingDemand.set(ing.id, (pendingDemand.get(ing.id) ?? 0) + ingCount)
-          }
-
-          pendingDemand.delete(itemId)
-        } else if (canCraftTier && allowConversions && graph.getConversions(itemId).length > 0) {
-          // Chip conversion branch
-          const conversionRecipes = graph.getConversions(itemId)
-          const convRecipe = conversionRecipes[0]
-
-          if (!convRecipe || convRecipe.ingredients.length === 0) {
-            rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
-            pendingDemand.delete(itemId)
-            continue
-          }
-
-          const donorIng = convRecipe.ingredients[0]
-          if (!donorIng) {
-            rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
-            pendingDemand.delete(itemId)
-            continue
-          }
-          const donorId = donorIng.id
-
-          // Cycle detection in conversion chain
-          if (activeChain.has(itemId) || activeChain.has(donorId)) {
-            warnings.push({
-              code: 'CYCLE_DETECTED',
-              message: `Reciprocal conversion cycle detected between ${itemId} and ${donorId}`,
-              details: { itemId, donorId, recipeId: convRecipe.id },
-            })
-            rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
-            pendingDemand.delete(itemId)
-            continue
-          }
-
-          // Conversion uses available donor stock
-          const donorStock = currentStock.get(donorId) ?? 0
-          const timesNeeded = Math.ceil(needed / convRecipe.resultCount)
-          const timesPossible = Math.floor(donorStock / donorIng.count)
-          const timesToRun = Math.min(timesNeeded, timesPossible)
-
-          if (timesToRun > 0) {
-            activeChain.add(itemId)
-            activeChain.add(donorId)
-
-            const consumedDonors = timesToRun * donorIng.count
-            const remDonorStock = donorStock - consumedDonors
-            if (remDonorStock > 0) {
-              currentStock.set(donorId, remDonorStock)
-            } else {
-              currentStock.delete(donorId)
-            }
-
-            const produced = timesToRun * convRecipe.resultCount
-            const satisfied = Math.min(produced, needed)
-            needed -= satisfied
-            const surplus = produced - satisfied
-
-            if (surplus > 0) {
-              currentStock.set(itemId, (currentStock.get(itemId) ?? 0) + surplus)
-            }
-
-            const existing = craftsAggregated.get(convRecipe.id)
-            if (existing) {
-              existing.times += timesToRun
-            } else {
-              craftsAggregated.set(convRecipe.id, { recipe: convRecipe, times: timesToRun })
-            }
-
-            lmdForCrafting += timesToRun * convRecipe.goldCost
-
-            if (calculateByproducts && convRecipe.extraOutcomes) {
-              for (const extra of convRecipe.extraOutcomes) {
-                const expectedVal = timesToRun * extra.count * extra.probability
-                byproductsMap.set(extra.id, (byproductsMap.get(extra.id) ?? 0) + expectedVal)
-              }
-            }
-
-            activeChain.delete(itemId)
-            activeChain.delete(donorId)
-          }
-
-          // Remaining deficit that could not be converted from stock becomes raw deficit
-          if (needed > 0) {
-            rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
-          }
-
-          pendingDemand.delete(itemId)
+    // Step 1: Satisfy from stock first
+    if (useStock) {
+      const availableStock = currentStock.get(itemId) ?? 0
+      if (availableStock > 0) {
+        const used = Math.min(needed, availableStock)
+        needed -= used
+        const remainingStock = availableStock - used
+        if (remainingStock > 0) {
+          currentStock.set(itemId, remainingStock)
         } else {
-          // Uncraftable item or tier not craftable
-          rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
-          pendingDemand.delete(itemId)
+          currentStock.delete(itemId)
         }
       }
+    }
+
+    if (needed === 0) {
+      pendingDemand.delete(itemId)
+      continue
+    }
+
+    // Step 2: Check craftability
+    const itemTier = graph.getItemTier(itemId)
+    const canCraftTier = craftableTiers.has(itemTier)
+    const canonicalRecipe = graph.getRecipe(itemId)
+
+    if (canCraftTier && canonicalRecipe) {
+      // Standard synthesis or manufacture craft
+      const times = Math.ceil(needed / canonicalRecipe.resultCount)
+      const totalProduced = times * canonicalRecipe.resultCount
+      const surplus = totalProduced - needed
+
+      // Surplus becomes stock
+      if (surplus > 0) {
+        currentStock.set(itemId, (currentStock.get(itemId) ?? 0) + surplus)
+      }
+
+      // Record craft
+      const existing = craftsAggregated.get(canonicalRecipe.id)
+      if (existing) {
+        existing.times += times
+      } else {
+        craftsAggregated.set(canonicalRecipe.id, { recipe: canonicalRecipe, times })
+      }
+
+      lmdForCrafting += times * canonicalRecipe.goldCost
+
+      // Accumulate byproducts if enabled
+      if (calculateByproducts && canonicalRecipe.extraOutcomes) {
+        for (const extra of canonicalRecipe.extraOutcomes) {
+          const expectedVal = times * extra.count * extra.probability
+          byproductsMap.set(extra.id, (byproductsMap.get(extra.id) ?? 0) + expectedVal)
+        }
+      }
+
+      // Add ingredients to pending demand.
+      // Because topoOrder orders products before ingredients, all ingredients appear later in the loop.
+      for (const ing of canonicalRecipe.ingredients) {
+        const ingCount = times * ing.count
+        pendingDemand.set(ing.id, (pendingDemand.get(ing.id) ?? 0) + ingCount)
+      }
+
+      pendingDemand.delete(itemId)
+    } else if (canCraftTier && allowConversions && graph.getConversions(itemId).length > 0) {
+      // Chip conversion branch
+      const conversionRecipes = graph.getConversions(itemId)
+      const convRecipe = conversionRecipes[0]
+
+      if (!convRecipe || convRecipe.ingredients.length === 0) {
+        rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
+        pendingDemand.delete(itemId)
+        continue
+      }
+
+      const donorIng = convRecipe.ingredients[0]
+      if (!donorIng) {
+        rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
+        pendingDemand.delete(itemId)
+        continue
+      }
+      const donorId = donorIng.id
+
+      // Cycle detection in conversion chain
+      if (activeChain.has(itemId) || activeChain.has(donorId)) {
+        warnings.push({
+          code: 'CYCLE_DETECTED',
+          message: `Reciprocal conversion cycle detected between ${itemId} and ${donorId}`,
+          details: { itemId, donorId, recipeId: convRecipe.id },
+        })
+        rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
+        pendingDemand.delete(itemId)
+        continue
+      }
+
+      // Conversion uses available donor stock
+      const donorStock = currentStock.get(donorId) ?? 0
+      const timesNeeded = Math.ceil(needed / convRecipe.resultCount)
+      const timesPossible = Math.floor(donorStock / donorIng.count)
+      const timesToRun = Math.min(timesNeeded, timesPossible)
+
+      if (timesToRun > 0) {
+        activeChain.add(itemId)
+        activeChain.add(donorId)
+
+        const consumedDonors = timesToRun * donorIng.count
+        const remDonorStock = donorStock - consumedDonors
+        if (remDonorStock > 0) {
+          currentStock.set(donorId, remDonorStock)
+        } else {
+          currentStock.delete(donorId)
+        }
+
+        const produced = timesToRun * convRecipe.resultCount
+        const satisfied = Math.min(produced, needed)
+        needed -= satisfied
+        const surplus = produced - satisfied
+
+        if (surplus > 0) {
+          currentStock.set(itemId, (currentStock.get(itemId) ?? 0) + surplus)
+        }
+
+        const existing = craftsAggregated.get(convRecipe.id)
+        if (existing) {
+          existing.times += timesToRun
+        } else {
+          craftsAggregated.set(convRecipe.id, { recipe: convRecipe, times: timesToRun })
+        }
+
+        lmdForCrafting += timesToRun * convRecipe.goldCost
+
+        if (calculateByproducts && convRecipe.extraOutcomes) {
+          for (const extra of convRecipe.extraOutcomes) {
+            const expectedVal = timesToRun * extra.count * extra.probability
+            byproductsMap.set(extra.id, (byproductsMap.get(extra.id) ?? 0) + expectedVal)
+          }
+        }
+
+        activeChain.delete(itemId)
+        activeChain.delete(donorId)
+      }
+
+      // Remaining deficit that could not be converted from stock becomes raw deficit
+      if (needed > 0) {
+        rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
+      }
+
+      pendingDemand.delete(itemId)
+    } else {
+      // Uncraftable item or tier not craftable
+      rawDeficitMap.set(itemId, (rawDeficitMap.get(itemId) ?? 0) + needed)
+      pendingDemand.delete(itemId)
     }
   }
 

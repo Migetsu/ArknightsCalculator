@@ -8,19 +8,19 @@ It contains no UI dependencies, no Pinia stores, and no network I/O, ensuring un
 ### Core Modules
 
 - `types.ts`: TypeScript contracts for demand inputs, warehouse inventory, resolve options, and structured results (`ResolveDemandResult`).
-- `recipeGraph.ts`: Dependency graph builder that indexes recipes from `data/recipes.json` and item metadata from `data/items.json`. Provides cycle detection, tier indexing, and kind-based recipe filtering.
-- `resolveDemand.ts`: Hierarchical top-down demand resolution algorithm that decomposes multi-tier crafting requirements down to base raw materials while accounting for existing inventory.
+- `recipeGraph.ts`: Dependency graph builder that indexes recipes from `data/recipes.json` and item metadata from `data/items.json`. Provides topological DAG sorting (products to ingredients), cycle detection, tier indexing, and kind-based recipe filtering.
+- `resolveDemand.ts`: Linear topological demand resolution algorithm that processes nodes in strict consumer-to-dependency order, guaranteeing the DAG invariant: **no item is evaluated before all of its consumers have been processed**.
 - `index.ts`: Public API re-exporting all workshop utilities and types.
 
 ---
 
 ## 2. Recipe Graph & Formulas
 
-Recipes in `data/recipes.json` are classified into three distinct categories:
+Recipes in `data/recipes.json` (74 total recipes) are classified into three distinct categories:
 
-1. `synthesis`: Standard Workshop formulas for elite materials, skill summaries, and building components (tiers T2–T5).
-2. `manufacture`: Base Factory formulas used for producing Dualchips (tier T5).
-3. `conversion`: Workshop formulas for reciprocal 3-to-2 class chip conversions (tiers T3 and T4).
+1. `synthesis` (50 recipes): Standard Workshop formulas for elite materials, skill summaries, and building components (tiers T2–T5).
+2. `manufacture` (8 recipes): Base Factory formulas used for producing Dualchips (tier T5).
+3. `conversion` (16 recipes): Workshop formulas for reciprocal 3-to-2 class chip conversions (tiers T3 and T4).
 
 ### Default Behavior
 
@@ -31,102 +31,127 @@ Chip conversions are disabled by default because reciprocal conversions carry a 
 
 ## 3. Demand Resolution Algorithm (`resolveDemand`)
 
-The engine processes item requirements top-down from highest tier (T5) to lowest tier (T1):
+The engine processes item requirements in topological order from products (top-level consumers) to base ingredients (dependencies):
 
 ```mermaid
 flowchart TD
-    A["Input Demand & Warehouse Stock"] --> B["Start at Highest Tier (T5 down to T1)"]
-    B --> C{"Item Available in Stock?"}
-    C -- "Yes" --> D["Consume from Stock; Deduct from Demand"]
-    C -- "No / Deficit Remaining" --> E{"Can Craft Item? (Tier craftable & Recipe exists)"}
-    D --> E
-    E -- "Yes (synthesis / manufacture)" --> F["Calculate Craft Count: times = ceil(deficit / resultCount)"]
-    F --> G["Surplus (resultCount * times - deficit) added to Stock"]
-    F --> H["Add Gold Cost (times * goldCost) to lmdForCrafting"]
-    F --> I["Add Ingredients to Lower-Tier Demand Queue"]
-    F --> J["If byproducts enabled: Accumulate E[byproducts]"]
-    E -- "Yes (allowConversions & Donor in Stock)" --> K["Convert up to available donor stock (times = min(needed, donorStock / 3))"]
-    K --> L["Unconverted remainder added to rawDeficit"]
-    E -- "No (No Recipe / Lower-tier drop / Excluded tier)" --> M["Add to rawDeficit"]
-    I --> N["Proceed to Next Lower Tier"]
-    M --> N
-    N --> O{"All Tiers Processed?"}
-    O -- "No" --> B
-    O -- "Yes" --> P["Sort Crafts (Bottom-Up) & Compile leftoverStock"]
+    A["Input Demand & Warehouse Stock"] --> B["Compute Topological Order from Entry Items"]
+    B --> C["Take Next Item in Topological Order"]
+    C --> D{"Item Available in Stock?"}
+    D -- "Yes" --> E["Consume from Stock; Deduct from Demand"]
+    D -- "No / Deficit Remaining" --> F{"Can Craft Item? (Tier craftable & Recipe exists)"}
+    E --> F
+    F -- "Yes (synthesis / manufacture)" --> G["Calculate Craft Count: times = ceil(deficit / resultCount)"]
+    G --> H["Surplus (resultCount * times - deficit) added to Stock"]
+    G --> I["Add Gold Cost (times * goldCost) to lmdForCrafting"]
+    G --> J["Add Ingredients to Downstream Demand Queue"]
+    G --> K["If byproducts enabled: Accumulate E[byproducts]"]
+    F -- "Yes (allowConversions & Donor in Stock)" --> L["Convert up to available donor stock: times = min(needed / 2, donorStock / 3)"]
+    L --> M["Unconverted remainder added to rawDeficit"]
+    F -- "No (No Recipe / Lower-tier drop / Excluded tier)" --> N["Add to rawDeficit"]
+    J --> O{"More Items in Topological Order?"}
+    M --> O
+    N --> O
+    O -- "Yes" --> C
+    O -- "No" --> P["Sort Crafts (Bottom-Up) & Compile leftoverStock"]
 ```
 
-### Execution Order
+### DAG Invariant Guarantee
 
-The resulting `crafts` array is sorted in execution-ready (bottom-up) order:
+Because items are traversed in topological order:
 
-- Lower-tier synthesis operations occur first (e.g. T2 -> T3), ensuring intermediate components are crafted before higher-tier assemblies consume them (e.g. T3 -> T4, T4 -> T5).
-- Operations within the same tier are sorted deterministically by `recipeId`.
-
----
-
-## 4. Chips, Chip Packs, and Catalysts
-
-### Dualchips (T5)
-
-- Produced exclusively via `manufacture` in the Factory (`mf_5` through `mf_12`).
-- Each Dualchip recipe requires:
-  - 2× corresponding class Chip Pack (T4)
-  - 1× Chip Catalyst (`32001`, T4)
-- Gold cost (`goldCost`) is 0.
-
-### Chip Catalysts (`32001`, T4)
-
-- Chip Catalysts cannot be crafted in the Workshop or Factory (`canCraft: false`).
-- They are exclusively purchased from the Shop using Purchase Certificates (Red Certificates).
-- When resolving demand, any needed Chip Catalysts not present in `stock` immediately become part of `rawDeficit`.
-
-### Chips (T3) and Chip Packs (T4)
-
-- Regular class chips (T3, `3211`–`3281`) and chip packs (T4, `3212`–`3282`) have no synthesis formulas: they only drop from PR stages.
-- The only available recipes for them are 16 reciprocal conversions (8 pairs).
-
-### The 8 Reciprocal Conversion Pairs
-
-When `allowConversions: true` is set, the following 8 reciprocal pairs become accessible:
-
-| Pair # | Class A (Target/Donor)          | Class B (Target/Donor)            | Formula A -> B         | Formula B -> A         |
-| :----- | :------------------------------ | :-------------------------------- | :--------------------- | :--------------------- |
-| 1      | Vanguard Chip (`3211`, T3)      | Supporter Chip (`3271`, T3)       | `wf_44` (3× A -> 2× B) | `wf_43` (3× B -> 2× A) |
-| 2      | Vanguard Chip Pack (`3212`, T4) | Supporter Chip Pack (`3272`, T4)  | `wf_52` (3× A -> 2× B) | `wf_51` (3× B -> 2× A) |
-| 3      | Guard Chip (`3221`, T3)         | Specialist Chip (`3281`, T3)      | `wf_46` (3× A -> 2× B) | `wf_45` (3× B -> 2× A) |
-| 4      | Guard Chip Pack (`3222`, T4)    | Specialist Chip Pack (`3282`, T4) | `wf_54` (3× A -> 2× B) | `wf_53` (3× B -> 2× A) |
-| 5      | Defender Chip (`3231`, T3)      | Medic Chip (`3261`, T3)           | `wf_40` (3× A -> 2× B) | `wf_39` (3× B -> 2× A) |
-| 6      | Defender Chip Pack (`3232`, T4) | Medic Chip Pack (`3262`, T4)      | `wf_48` (3× A -> 2× B) | `wf_47` (3× B -> 2× A) |
-| 7      | Sniper Chip (`3241`, T3)        | Caster Chip (`3251`, T3)          | `wf_42` (3× A -> 2× B) | `wf_41` (3× B -> 2× A) |
-| 8      | Sniper Chip Pack (`3242`, T4)   | Caster Chip Pack (`3252`, T4)     | `wf_50` (3× A -> 2× B) | `wf_49` (3× B -> 2× A) |
-
-### Cycle Safety & Conversion Rules
-
-Because each pair forms a directed cycle of length 2:
-
-1. **Stock-Bounded Conversion**: A conversion recipe is only executed to the extent that donor chips are **actually present in warehouse stock** (`donorStock >= 3`).
-2. **Deficit Isolation**: The engine never generates artificial demand for donor chips that are not in stock. Faming a donor chip to convert at a 33% penalty is sub-optimal; unconvertible deficits remain in `rawDeficit` of the required chip.
-3. **Graph Cycle Detection**: `RecipeGraph.hasCycle(startId, targetId)` and active traversal stack checks prevent recursive loops and emit structured `CYCLE_DETECTED` warnings if circular dependencies are introduced.
+- If item $A$ consumes item $B$ ($A \to B$), $A$ is guaranteed to be processed **strictly before** $B$.
+- When $B$ is reached, its total required quantity includes all demands generated by all upstream crafts of $A$.
+- This holds true even when product and ingredient share the **same tier** (e.g. `wf_1`: `Light Building Material` (T2) requires `Carbon Stick` (T2)).
 
 ---
 
-## 5. Mathematical Expectations for Byproducts
+## 4. Chips, Chip Packs, and Catalysts (Data Audit)
 
-When `byproducts: true` is enabled, the engine calculates the expected mathematical quantity $\mathbb{E}[\text{count}]$ for each byproduct item:
+All statements below are verified against `data/recipes.json` and `data/items.json`:
 
-$$\mathbb{E}[\text{count}_i] = \sum_{\text{crafts}} \text{times} \times \text{extraOutcome.count}_i \times \text{extraOutcome.probability}_i$$
+### Dualchips (T5): Factory Manufacture (`mf_5`–`mf_12`)
 
-- Probabilities in `data/recipes.json` take into account base workshop extra outcome rates (typically 10% or 5%).
-- Expected values are rounded to 6 decimal places to prevent IEEE 754 floating-point precision artifacts.
+Every Dualchip formula has `kind: "manufacture"`, `roomType: "MANUFACTURE"`, `formulaType: "F_ASC"`, `goldCost: 0`, and produces `resultCount: 1`:
+
+| Formula ID | Result Item         | Result ID | Ingredients (Exact Data)                                      | goldCost |
+| :--------- | :------------------ | :-------- | :------------------------------------------------------------ | :------- |
+| `mf_5`     | Vanguard Dualchip   | `3213`    | 2× `3212` (Vanguard Chip Pack) + 1× `32001` (Chip Catalyst)   | 0        |
+| `mf_6`     | Guard Dualchip      | `3223`    | 2× `3222` (Guard Chip Pack) + 1× `32001` (Chip Catalyst)      | 0        |
+| `mf_7`     | Defender Dualchip   | `3233`    | 2× `3232` (Defender Chip Pack) + 1× `32001` (Chip Catalyst)   | 0        |
+| `mf_8`     | Sniper Dualchip     | `3243`    | 2× `3242` (Sniper Chip Pack) + 1× `32001` (Chip Catalyst)     | 0        |
+| `mf_9`     | Caster Dualchip     | `3253`    | 2× `3252` (Caster Chip Pack) + 1× `32001` (Chip Catalyst)     | 0        |
+| `mf_10`    | Medic Dualchip      | `3263`    | 2× `3262` (Medic Chip Pack) + 1× `32001` (Chip Catalyst)      | 0        |
+| `mf_11`    | Supporter Dualchip  | `3273`    | 2× `3272` (Supporter Chip Pack) + 1× `32001` (Chip Catalyst)  | 0        |
+| `mf_12`    | Specialist Dualchip | `3283`    | 2× `3282` (Specialist Chip Pack) + 1× `32001` (Chip Catalyst) | 0        |
+
+### Chip Catalyst (`32001`, T4)
+
+In `data/items.json`:
+
+- `id`: `"32001"`, `name.en`: `"Chip Catalyst"`, `rarity`: `4`, `type`: `"catalyst"`.
+- `flags`: `{"canDrop": false, "canCraft": false}`.
+- `data/recipes.json` contains 0 recipes with `resultId: "32001"`.
+- Therefore, Chip Catalyst is **uncraftable** and is purchased exclusively from the store (Red Certificates). When absent from warehouse stock, it directly enters `rawDeficit`.
+
+### The 8 Reciprocal Chip Conversion Pairs (`wf_39`–`wf_54`)
+
+When `allowConversions: true` is enabled, the 8 reciprocal conversion pairs are accessible. All 16 formulas have `kind: "conversion"`, `roomType: "WORKSHOP"`, `formulaType: "F_ASC"`, `goldCost: 0`, `resultCount: 2`, and `ingredients: [{ count: 3 }]`:
+
+| Pair # | Class Pair           | Tier       | Formula A -> B (3 to 2)        | Formula B -> A (3 to 2)        |
+| :----- | :------------------- | :--------- | :----------------------------- | :----------------------------- |
+| 1      | Vanguard ↔ Supporter | T3 (Chips) | `wf_44`: 3× `3211` → 2× `3271` | `wf_43`: 3× `3271` → 2× `3211` |
+| 2      | Vanguard ↔ Supporter | T4 (Packs) | `wf_52`: 3× `3212` → 2× `3272` | `wf_51`: 3× `3272` → 2× `3212` |
+| 3      | Guard ↔ Specialist   | T3 (Chips) | `wf_46`: 3× `3221` → 2× `3281` | `wf_45`: 3× `3281` → 2× `3221` |
+| 4      | Guard ↔ Specialist   | T4 (Packs) | `wf_54`: 3× `3222` → 2× `3282` | `wf_53`: 3× `3282` → 2× `3222` |
+| 5      | Defender ↔ Medic     | T3 (Chips) | `wf_40`: 3× `3231` → 2× `3261` | `wf_39`: 3× `3261` → 2× `3231` |
+| 6      | Defender ↔ Medic     | T4 (Packs) | `wf_48`: 3× `3232` → 2× `3262` | `wf_47`: 3× `3262` → 2× `3232` |
+| 7      | Sniper ↔ Caster      | T3 (Chips) | `wf_42`: 3× `3241` → 2× `3251` | `wf_41`: 3× `3251` → 2× `3241` |
+| 8      | Sniper ↔ Caster      | T4 (Packs) | `wf_50`: 3× `3242` → 2× `3252` | `wf_49`: 3× `3252` → 2× `3242` |
 
 ---
 
-## 6. Mathematical Invariants & Guarantees
+## 5. External Benchmark Comparison (arknights.wiki.gg)
 
-1. **Monotonicity with Inventory**:
-   $$\forall i: \text{rawDeficit}_{\text{no-stock}}(i) \ge \text{rawDeficit}_{\text{with-stock}}(i)$$
-   Having additional inventory never increases the raw material deficit for any item.
-2. **Strict Determinism**:
-   Identical inputs always yield identical outputs, with all map keys and craft lists sorted deterministically.
-3. **Surplus Conservation**:
-   When batch formulas produce extra units (e.g. `resultCount = 16`), excess units are added directly to `leftoverStock` and can satisfy downstream requirements.
+Two crafting chains verified against live `arknights.wiki.gg` pages on **2026-10-14**:
+
+### Chain 1: Orirock Concentration (`30014`, T4)
+
+- Source URL: `https://arknights.wiki.gg/wiki/Orirock_Concentration` (Checked 2026-10-14)
+- Recipe `wf_36`: 1× `30014` requires 4× `30013` (Orirock Cluster, T3) + 300 LMD.
+- Intermediate `wf_35`: 1× `30013` requires 5× `30012` (Orirock Cube, T2) + 200 LMD.
+- Intermediate `wf_34`: 1× `30012` requires 3× `30011` (Orirock, T1) + 100 LMD.
+
+| Inventory Scenario            | Required Demand | Stock Available | Total Crafts Executed                 | LMD Cost  | Resulting Deficit | Status vs Wiki |
+| :---------------------------- | :-------------- | :-------------- | :------------------------------------ | :-------- | :---------------- | :------------- |
+| **From T3 (Stock Available)** | 1× `30014`      | 4× `30013`      | 1× `wf_36`                            | 300 LMD   | 0                 | Exact Match    |
+| **From T2 (No T3 Stock)**     | 1× `30014`      | 20× `30012`     | 4× `wf_35` + 1× `wf_36`               | 1,100 LMD | 0                 | Exact Match    |
+| **From T1 (No T3/T2 Stock)**  | 1× `30014`      | Empty           | 20× `wf_34` + 4× `wf_35` + 1× `wf_36` | 3,100 LMD | 60× `30011`       | Exact Match    |
+
+### Chain 2: White Horse Kohl (`30074`, T4)
+
+- Source URL: `https://arknights.wiki.gg/wiki/White_Horse_Kohl` (Checked 2026-10-14)
+- Recipe `wf_18`: 1× `30074` requires 1× `30073` (Loxic Kohl, T3) + 1× `30023` (Sugar Pack, T3) + 1× `30103` (RMA70-12, T3) + 300 LMD.
+- Intermediate `wf_32`: 1× `30023` requires 4× `30022` (Sugar Cube, T2) + 200 LMD.
+- `30073` (Loxic Kohl) and `30103` (RMA70-12) are stage drops without T2 synthesis formulas (`canCraft: false`).
+
+| Inventory Scenario                  | Required Demand | Stock Available                    | Total Crafts Executed   | LMD Cost | Resulting Deficit      | Status vs Wiki |
+| :---------------------------------- | :-------------- | :--------------------------------- | :---------------------- | :------- | :--------------------- | :------------- |
+| **From T3 (Stock Available)**       | 1× `30074`      | 1× `30073`, 1× `30023`, 1× `30103` | 1× `wf_18`              | 300 LMD  | 0                      | Exact Match    |
+| **From T2 (Only Sugar Cube Stock)** | 1× `30074`      | 4× `30022`                         | 1× `wf_32` + 1× `wf_18` | 500 LMD  | 1× `30073`, 1× `30103` | Exact Match    |
+
+---
+
+## 6. Build Locking & `NUXT_IGNORE_LOCK=1`
+
+### Root Cause
+
+Nuxt uses `.nuxt/build.lock` to prevent concurrent write collisions during client/server bundling. When an agent or developer process runs `nuxt dev` on port 3001 or 3000, `.nuxt/build.lock` remains active. Executing a parallel `nuxt build` fails with an active build lock exception.
+
+### Resolution & Prevention
+
+1. **Isolated Build Directories**:
+   `nuxt.config.ts` configures `buildDir: process.env.NUXT_BUILD_DIR ?? '.nuxt'`.
+   The agent dev server (`npm run dev:agent`) sets `NUXT_BUILD_DIR=.nuxt-agent`, completely isolating dev artifacts from production builds.
+2. **`NUXT_IGNORE_LOCK=1`**:
+   Used in non-interactive verification runs where the dev server and production builder target distinct build directories or sequential tasks.

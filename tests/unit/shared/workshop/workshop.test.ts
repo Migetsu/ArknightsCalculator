@@ -288,6 +288,48 @@ describe('Workshop Core Engine (shared/utils/workshop)', () => {
     })
   })
 
+  describe('DAG Invariant & Same-Tier Recipe Processing', () => {
+    it('correctly processes recipe where product and ingredient share identical tier (3131 and 3112 both T2)', () => {
+      // 3131 (Light Building Material, rarity 2) crafts via wf_1 from 2x 3112 (Carbon Stick, rarity 2)
+      // Both share tier 2. Top-down ordering must evaluate 3131 BEFORE 3112 so ingredients can be consumed from stock.
+      const result = resolveDemand({ '3131': 2 }, { '3131': 1, '3112': 2 })
+
+      // 1x 3131 satisfied from stock, 1x needed
+      // 1x 3131 crafted via wf_1 requiring 2x 3112
+      // 2x 3112 satisfied from stock -> 0 raw deficit
+      expect(result.crafts).toEqual([{ recipeId: 'wf_1', times: 1 }])
+      expect(result.rawDeficit).toEqual({})
+      expect(result.leftoverStock).toEqual({})
+      expect(result.lmdForCrafting).toBe(800)
+    })
+
+    it('satisfies DAG invariant: no item is evaluated before all of its consumers', () => {
+      const graph = buildRecipeGraph()
+      const allRecipes = graph.getAllRecipes()
+      const canonicalRecipes = allRecipes.filter(
+        (r) => r.kind === 'synthesis' || r.kind === 'manufacture',
+      )
+
+      const topoOrder = graph.getTopologicalOrder()
+      const indexMap = new Map<string, number>()
+      topoOrder.forEach((id, idx) => indexMap.set(id, idx))
+
+      // For every canonical recipe: index(product) must be strictly less than index(ingredient)
+      for (const recipe of canonicalRecipes) {
+        const productIndex = indexMap.get(recipe.resultId)
+        expect(productIndex).toBeDefined()
+
+        for (const ing of recipe.ingredients) {
+          const ingredientIndex = indexMap.get(ing.id)
+          expect(ingredientIndex).toBeDefined()
+
+          // DAG invariant assertion: Consumer/Product ALWAYS precedes Ingredient
+          expect(productIndex!).toBeLessThan(ingredientIndex!)
+        }
+      }
+    })
+  })
+
   describe('Input Shape Flexibility', () => {
     it('accepts array format for demand and Map for stock', () => {
       const arrayDemand = [{ id: '30013', count: 2 }]
