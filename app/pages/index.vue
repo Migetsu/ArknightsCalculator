@@ -1,12 +1,41 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import { DEMO_DASHBOARD_DATA } from '~/../shared/data/demo-dashboard'
 import { useSettingsStore } from '~/stores/settings'
+import { usePlannerStore } from '~/stores/planner'
+import rawOperatorsData from '~/../data/operators-index.json'
+import {
+  resolveI18nString,
+  type OperatorSummary,
+  type ContentLocale,
+} from '~/../shared/schemas/operator'
+import AkAvatar from '~/components/ui/AkAvatar.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const settingsStore = useSettingsStore()
+const plannerStore = usePlannerStore()
+
+const allOperators = rawOperatorsData as unknown as readonly OperatorSummary[]
+const operatorsMap = computed(() => {
+  const map = new Map<string, OperatorSummary>()
+  for (const op of allOperators) {
+    map.set(op.id, op)
+  }
+  return map
+})
+
+function getOperatorName(operatorId: string): string {
+  const op = operatorsMap.value.get(operatorId)
+  if (!op) return operatorId
+  return resolveI18nString(op.name, locale.value as ContentLocale)
+}
+
+function getOperatorRarity(operatorId: string): 1 | 2 | 3 | 4 | 5 | 6 {
+  const r = operatorsMap.value.get(operatorId)?.rarity ?? 5
+  return (r >= 1 && r <= 6 ? r : 5) as 1 | 2 | 3 | 4 | 5 | 6
+}
 
 const isSyncModalOpen = ref(false)
 const dashboardData = ref(DEMO_DASHBOARD_DATA)
@@ -55,6 +84,9 @@ function handleLoadDemo(): void {
 }
 
 onMounted(() => {
+  if (plannerStore.status === 'idle') {
+    void plannerStore.init()
+  }
   updateCountdown()
   timerInterval = setInterval(updateCountdown, 1000)
 })
@@ -157,13 +189,51 @@ onBeforeUnmount(() => {
 
         <!-- Your Plans Widget (2fr) -->
         <div class="dashboard-page__widget">
-          <h2 class="dashboard-page__widget-title">Your plans</h2>
-          <div class="dashboard-page__plans-empty">
-            <span v-if="!isDemoLoaded">No plans yet.</span>
-            <span v-else>Active plans loaded: {{ dashboardData.stats.activeTargets }}</span>
+          <div class="dashboard-page__widget-head">
+            <h2 class="dashboard-page__widget-title">{{ t('dashboard.yourPlans') }}</h2>
+            <NuxtLink
+              v-if="plannerStore.plans.length > 0"
+              :to="localePath('/planner')"
+              class="dashboard-page__plans-link"
+            >
+              {{ t('dashboard.viewAllPlans', { count: plannerStore.plans.length }) }}
+            </NuxtLink>
+          </div>
+
+          <!-- If plans exist -->
+          <div v-if="plannerStore.plans.length > 0" class="dashboard-page__plans-list">
+            <NuxtLink
+              v-for="plan in plannerStore.plans.slice(0, 3)"
+              :key="plan.id"
+              :to="localePath('/planner')"
+              class="dashboard-page__plan-item"
+            >
+              <AkAvatar
+                :id="plan.operatorId"
+                :name="getOperatorName(plan.operatorId)"
+                :rarity="getOperatorRarity(plan.operatorId)"
+                size="44"
+              />
+              <div class="dashboard-page__plan-info">
+                <span class="dashboard-page__plan-name">
+                  {{ getOperatorName(plan.operatorId) }}
+                </span>
+                <span class="dashboard-page__plan-target">
+                  E{{ plan.current.elite }} Lv{{ plan.current.level }} → E{{
+                    plan.target.elite
+                  }}
+                  Lv{{ plan.target.level }}
+                </span>
+              </div>
+            </NuxtLink>
+          </div>
+
+          <!-- Empty plans -->
+          <div v-else class="dashboard-page__plans-empty">
+            <span>{{ t('dashboard.noPlansYet') }}</span>
             <br />
-            <NuxtLink :to="localePath('/operators')" class="dashboard-page__plans-link">
-              Pick an operator to start
+            <NuxtLink :to="localePath('/planner')" class="dashboard-page__plans-link">
+              {{ t('dashboard.pickOperatorToStart') }}
             </NuxtLink>
           </div>
         </div>
@@ -400,6 +470,60 @@ onBeforeUnmount(() => {
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     letter-spacing: 0.1em;
+  }
+
+  &__widget-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+
+  &__plans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__plan-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    text-decoration: none;
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-card-hover);
+      border-color: var(--color-accent-primary);
+    }
+  }
+
+  &__plan-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__plan-name {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__plan-target {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
   }
 
   &__plans-empty {
