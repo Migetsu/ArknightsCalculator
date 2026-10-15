@@ -66,6 +66,8 @@ test.describe('Layout Sanity & Responsiveness', () => {
             'arkcalc.vercel.app',
             'arknights.wiki.gg',
             'wiki.gg',
+            'penguin-stats.io',
+            'stats.io',
             'v4.12',
             'LV.1',
           ])

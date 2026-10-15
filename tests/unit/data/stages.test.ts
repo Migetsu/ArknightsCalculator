@@ -33,8 +33,8 @@ describe('Stages Data Integrity & Cross-matching', () => {
       }
     }
 
-    expect(matched).toBe(1067)
-    expect(unmatched).toBe(553)
+    expect(matched).toBe(1590)
+    expect(unmatched).toBe(30)
   })
 
   it('correctly maps canonical main story stage 1-7', async () => {

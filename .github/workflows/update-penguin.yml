@@ -1,0 +1,66 @@
+name: Update Penguin Stats Data
+
+on:
+  schedule:
+    # Run weekly on Monday at 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: update-penguin-data
+  cancel-in-progress: true
+
+jobs:
+  update-penguin:
+    name: Fetch & Refresh Drop Matrix
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch and normalize Penguin Stats matrix
+        run: npm run data:penguin
+
+      - name: Check for data changes
+        id: git-diff
+        run: |
+          if [ -n "$(git status --porcelain data/penguin)" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Pull Request with updated data
+        if: steps.git-diff.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(data): weekly update of Penguin Stats drop matrix'
+          branch: chore/update-penguin-data
+          delete-branch: true
+          title: 'chore(data): weekly update of Penguin Stats drop data'
+          body: |
+            ## Automated Penguin Stats Drop Matrix Sync
+
+            This automated weekly PR was triggered by scheduled GitHub Action (`.github/workflows/update-penguin.yml`).
+
+            - **Updated Datasets:** `data/penguin/cn.json`, `data/penguin/us.json`, `data/penguin/benchmark.json`
+            - **Filter criteria:** Min sample size 300, positive AP cost, real game data matching.
+
+            All CI checks and data validation must pass before merging.
+          labels: |
+            automated
+            data-sync

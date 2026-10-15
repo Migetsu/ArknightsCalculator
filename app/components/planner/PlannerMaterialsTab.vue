@@ -117,16 +117,28 @@ const lmdMissing = computed(() => Math.max(0, lmdDemand.value - lmdStock.value))
         <AkSegmented v-model="craftingMode" :options="craftingSegmentOptions" size="sm" />
       </div>
 
-      <div class="planner-materials__summary-badge">
-        <span class="planner-materials__missing-label"> {{ t('planner.missingItems') }}: </span>
-        <b
-          class="planner-materials__missing-value"
-          :class="{
-            'planner-materials__missing-value--alert': plannerStore.missingItemsCount > 0,
-          }"
+      <div class="planner-materials__header-actions">
+        <AkButton
+          v-if="plannerStore.missingItemsCount > 0"
+          variant="secondary"
+          size="sm"
+          :to="localePath('/farming')"
+          class="planner-materials__farming-btn"
         >
-          {{ plannerStore.missingItemsCount }}
-        </b>
+          {{ t('planner.findFarmingStages') }}
+        </AkButton>
+
+        <div class="planner-materials__summary-badge">
+          <span class="planner-materials__missing-label"> {{ t('planner.missingItems') }}: </span>
+          <b
+            class="planner-materials__missing-value"
+            :class="{
+              'planner-materials__missing-value--alert': plannerStore.missingItemsCount > 0,
+            }"
+          >
+            {{ plannerStore.missingItemsCount }}
+          </b>
+        </div>
       </div>
     </div>
 
@@ -345,6 +357,13 @@ const lmdMissing = computed(() => Math.max(0, lmdDemand.value - lmdStock.value))
   &__switch-wrap {
     display: flex;
     align-items: center;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
   }
 
   &__summary-badge {

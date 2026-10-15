@@ -1,5 +1,27 @@
 # Project Progress
 
+- **Farming Efficiency Module (`FRM-07: ready`) (`feat/farming`):**
+  - **Data Pipelines & Integration:**
+    - Created `scripts/data/fetch-penguin.ts` (`npm run data:penguin`): fetches, filters (sample size >= 300, positive apCost), and normalizes Penguin Stats drop matrix into `data/penguin/cn.json` and `data/penguin/us.json`, with fallback `data/penguin/benchmark.json`.
+    - Fixed stage ID normalization in `scripts/data/build-stages.ts` for stages ending in `_rep` and `_perm` to resolve against base stage code/name. Mapped 1,590 stages (+523) and marked resolved in `docs/known-issues.md`.
+    - Created `.github/workflows/update-penguin.yml` for weekly scheduled & manual dispatch updates via PR, documented in `docs/data-update.md`.
+    - Documented Penguin Stats CC BY-NC 4.0 license attribution and server reset timezones in `docs/data-sources.md`.
+  - **Optimization Core & Schedule Engine (`shared/utils/farming/`):**
+    - Pure calculation engine `optimizeFarming` (`shared/utils/farming/optimize.ts`): models stage recommendations with byproduct deductions, expected sanity costs, natural sanity regen days, and OP equivalents with monotonicity guarantee.
+    - Weekly supply stage schedule engine `schedule.ts`: extracts open stages based on `zone_table.json` weekly schedules, server local time with 04:00 daily reset (CN UTC+8, Global UTC-7), and boundary tests.
+    - Documented mathematical formulation and assumptions in `docs/farming.md`.
+  - **State Management & UI:**
+    - Created `app/stores/farming.ts` managing offline local snapshots, active server matrix, and schedule selection.
+    - Added user settings in `app/stores/settings.ts` and `app/pages/settings.vue` for max sanity (default 135) and regen rate (default 6 min).
+    - Built Ember Editorial farming view `app/pages/farming.vue` matching `docs/design/mockups/farming.html`: best stages list, run counts, total cost summary cards, interactive supply schedule, empty/loading/error states, and CC BY-NC 4.0 footer attribution.
+    - Added direct navigation button from `app/components/planner/PlannerMaterialsTab.vue` to `/farming`.
+    - Marked `farming` status as `'ready'` in `app/config/modules.ts`.
+  - **Design & Quality Assurance:**
+    - Documented mockup comparison in `docs/design/DEVIATIONS.md`.
+    - Unit tests: `schedule.test.ts` (11 tests), `optimize.test.ts` (7 tests), `stores/farming.test.ts` (4 tests), `pages/farming.test.ts` (3 tests).
+    - Playwright e2e tests: `tests/e2e/farming.spec.ts` (navigation, calculation, schedule interactions) and `layout-sanity.spec.ts` (verified all 10 viewports and locales without overflow or raw i18n keys).
+    - Captured artifacts: `farming-1440x900.png`, `farming-360x800.png`, `farming-empty-1440x900.png`.
+
 - **Planner Audit & Precision Polish (`fix/planner-audit`):**
   - **6★ Module Unlock Cost & Skills Live Verification (`docs/planner.md`):**
     - Verified Stage 0→1 6★ module unlock cost against official data and live Terra Wiki (`https://arknights.wiki.gg/wiki/Fiammetta`, `Operator_Module` on 2026-10-15): 4× Module Data Block, 2× T5 Material, 80,000 LMD. 100% matched.
