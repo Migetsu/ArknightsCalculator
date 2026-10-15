@@ -91,6 +91,13 @@ describe('PlannerRoadmapTab', () => {
     await applyBtn.trigger('click')
     await flushPromises()
 
+    const confirmBtn = document.body.querySelector(
+      '.planner-roadmap__modal-footer button:last-child',
+    ) as HTMLButtonElement | null
+    expect(confirmBtn).not.toBeNull()
+    confirmBtn?.click()
+    await flushPromises()
+
     const emitted = wrapper.emitted('apply-step')
     expect(emitted).toBeTruthy()
     const appliedStep = emitted?.[0]?.[0]

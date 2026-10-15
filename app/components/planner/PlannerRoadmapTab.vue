@@ -22,6 +22,8 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
+import AkModal from '~/components/ui/AkModal.vue'
+import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   planId?: string
@@ -119,16 +121,43 @@ const filteredSteps = computed<RoadmapStep[]>(() => {
 })
 
 const applyingStepId = ref<string | null>(null)
+const stepToApply = ref<RoadmapStep | null>(null)
+const showDeductModal = ref(false)
+const deductStock = ref(true)
 
-async function handleApplyStep(step: RoadmapStep): Promise<void> {
-  emit('apply-step', step)
-  if (!activePlan.value) return
+const canUndo = computed(() => {
+  if (!activePlan.value) return false
+  return plannerStore.canUndoRoadmapStep(activePlan.value.id)
+})
+
+function handleApplyStep(step: RoadmapStep): void {
+  stepToApply.value = step
+  deductStock.value = true
+  showDeductModal.value = true
+}
+
+async function confirmApplyStep(): Promise<void> {
+  if (!stepToApply.value || !activePlan.value) {
+    showDeductModal.value = false
+    return
+  }
+  const step = stepToApply.value
+  showDeductModal.value = false
   applyingStepId.value = step.id
   try {
-    await plannerStore.applyRoadmapStep(activePlan.value.id, step)
+    await plannerStore.applyRoadmapStep(activePlan.value.id, step, {
+      deductStock: deductStock.value,
+    })
+    emit('apply-step', step)
   } finally {
     applyingStepId.value = null
+    stepToApply.value = null
   }
+}
+
+async function handleUndoStep(): Promise<void> {
+  if (!activePlan.value) return
+  await plannerStore.undoRoadmapStep(activePlan.value.id)
 }
 
 // Helpers for skill and module visuals
@@ -178,7 +207,9 @@ function as123(n?: number): 1 | 2 | 3 {
           />
           <div class="planner-roadmap__hero-info">
             <h2 class="planner-roadmap__operator-name">
-              {{ resolveI18nString(activeDetail.name, locale as ContentLocale) }}
+              <AkOperatorName
+                :name="resolveI18nString(activeDetail.name, locale as ContentLocale)"
+              />
             </h2>
             <p class="planner-roadmap__progress-text">
               {{
@@ -191,8 +222,11 @@ function as123(n?: number): 1 | 2 | 3 {
           </div>
         </div>
 
-        <!-- Filter Segment -->
+        <!-- Filter Segment & Undo -->
         <div class="planner-roadmap__controls">
+          <AkButton v-if="canUndo" variant="secondary" size="sm" @click="handleUndoStep">
+            {{ t('planner.undoStep') }}
+          </AkButton>
           <AkSegmented
             v-model="currentFilter"
             :options="filterOptions"
@@ -365,6 +399,36 @@ function as123(n?: number): 1 | 2 | 3 {
           :description="t('planner.roadmapNoStepsDesc')"
         />
       </div>
+
+      <!-- Deduct confirmation modal -->
+      <AkModal
+        v-model="showDeductModal"
+        :title="t('planner.deductPromptTitle')"
+        tag="CONFIRMATION"
+        width="480px"
+      >
+        <div class="planner-roadmap__modal-content">
+          <p class="planner-roadmap__modal-desc">
+            {{ t('planner.deductPromptDesc') }}
+          </p>
+
+          <label class="planner-roadmap__checkbox-label">
+            <input v-model="deductStock" type="checkbox" class="planner-roadmap__checkbox" />
+            <span>{{ t('planner.deductConfirm') }}</span>
+          </label>
+        </div>
+
+        <template #footer>
+          <div class="planner-roadmap__modal-footer">
+            <AkButton variant="ghost" size="sm" @click="showDeductModal = false">
+              {{ t('common.cancel') }}
+            </AkButton>
+            <AkButton variant="primary" size="sm" @click="confirmApplyStep">
+              {{ deductStock ? t('planner.deductConfirm') : t('planner.applyOnly') }}
+            </AkButton>
+          </div>
+        </template>
+      </AkModal>
     </template>
   </div>
 </template>
@@ -423,6 +487,8 @@ function as123(n?: number): 1 | 2 | 3 {
   &__controls {
     display: flex;
     align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
   }
 
   &__steps {
@@ -646,6 +712,43 @@ function as123(n?: number): 1 | 2 | 3 {
     @media (width <= 768px) {
       width: 100%;
     }
+  }
+
+  &__modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+  }
+
+  &__modal-desc {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  &__checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    accent-color: var(--color-accent-primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
   }
 }
 </style>

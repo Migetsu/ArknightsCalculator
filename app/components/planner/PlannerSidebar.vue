@@ -9,6 +9,7 @@ import {
 import { usePlannerStore } from '~/stores/planner'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   isModalOpen: boolean
@@ -70,7 +71,6 @@ const totalExpCardCount = computed<number>(() => {
 <template>
   <aside class="planner-sidebar">
     <div class="planner-sidebar__header">
-      <h1 class="planner-sidebar__title">{{ t('planner.title') }}</h1>
       <AkButton
         variant="primary"
         size="md"
@@ -100,7 +100,7 @@ const totalExpCardCount = computed<number>(() => {
         <div class="planner-sidebar__plan-body">
           <div class="planner-sidebar__plan-top">
             <span class="planner-sidebar__plan-name">
-              {{ getOperatorName(plan.operatorId) }}
+              <AkOperatorName :name="getOperatorName(plan.operatorId)" />
             </span>
             <button
               type="button"
@@ -180,15 +180,6 @@ const totalExpCardCount = computed<number>(() => {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-  }
-
-  &__title {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: var(--font-size-2xl);
-    font-weight: 800;
-    color: var(--color-text-primary);
-    letter-spacing: var(--letter-spacing-heading);
   }
 
   &__add-btn {

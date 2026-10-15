@@ -97,10 +97,10 @@ function handleAddOperator(opId: string): void {
           <AkButton variant="secondary" size="sm" @click="openJsonModal('export')">
             {{ t('planner.importExportJson') }}
           </AkButton>
-          <AkButton variant="ghost" size="sm" @click="openJsonModal('share')">
+          <AkButton variant="secondary" size="sm" @click="openJsonModal('share')">
             {{ t('planner.shareCode') }}
           </AkButton>
-          <AkButton variant="ghost" size="sm" :to="localePath('/')">
+          <AkButton variant="secondary" size="sm" :to="localePath('/')">
             {{ t('common.backToDashboard') }}
           </AkButton>
         </template>

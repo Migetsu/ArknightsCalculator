@@ -5,12 +5,14 @@ import {
   type OperatorDetail,
   type ContentLocale,
 } from '~/../shared/schemas/operator'
+import { getPlannerModules } from '~/../shared/utils/planner'
 import { usePlannerStore } from '~/stores/planner'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   planId: string
@@ -23,6 +25,7 @@ const { t, locale } = useI18n()
 const plannerStore = usePlannerStore()
 
 const plan = computed(() => plannerStore.plans.find((p) => p.id === props.planId) ?? null)
+const plannerModules = computed(() => getPlannerModules(props.detail.modules ?? []))
 
 const maxElite = computed(() => Math.max(0, props.detail.phases.length - 1))
 
@@ -241,7 +244,7 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
 
       <div class="planner-goals__hero-info">
         <h2 class="planner-goals__hero-name">
-          {{ resolveI18nString(detail.name, locale as ContentLocale) }}
+          <AkOperatorName :name="resolveI18nString(detail.name, locale as ContentLocale)" />
         </h2>
         <span class="planner-goals__hero-sub">
           Elite {{ plan.current.elite }} → {{ plan.target.elite }} // Level
@@ -437,13 +440,13 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
     </div>
 
     <!-- Operator Modules -->
-    <div v-if="detail.modules && detail.modules.length > 0" class="planner-goals__section">
+    <div v-if="plannerModules.length > 0" class="planner-goals__section">
       <h3 class="planner-goals__section-title">
         {{ t('planner.operatorModules') }}
       </h3>
 
       <div class="planner-goals__skills-grid">
-        <div v-for="mod in detail.modules" :key="mod.id" class="planner-goals__skill-card">
+        <div v-for="mod in plannerModules" :key="mod.id" class="planner-goals__skill-card">
           <div class="planner-goals__skill-header">
             <AkModuleIcon
               :module-id="mod.id"

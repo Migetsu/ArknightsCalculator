@@ -285,4 +285,106 @@ describe('usePlannerStore', () => {
     expect(store.plans).toHaveLength(1)
     expect(store.plans[0]?.operatorId).toBe('char_172_svrash')
   })
+
+  it('initializes 4-module operator with 0 module targets and excludes initial module', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    // Fiammetta has 4 modules: 1 initial (_001_), 2 combat (_002_, _003_), 1 special (_004_)
+    const plan = await store.addPlan('char_300_phenxi')
+    expect(plan.target.modules).toBeDefined()
+    expect(plan.target.modules['uniequip_001_phenxi']).toBeUndefined()
+    expect(plan.target.modules['uniequip_002_phenxi']).toBe(0)
+    expect(plan.target.modules['uniequip_003_phenxi']).toBe(0)
+    expect(plan.target.modules['uniequip_004_phenxi']).toBe(0)
+
+    // Max target when none selected picks the first main module
+    await store.setPlanTargetMax(plan.id)
+    const updatedPlan = store.plans.find((p) => p.id === plan.id)
+    expect(updatedPlan?.target.modules['uniequip_002_phenxi']).toBe(3)
+    expect(updatedPlan?.target.modules['uniequip_003_phenxi']).toBe(0)
+    expect(updatedPlan?.target.modules['uniequip_004_phenxi']).toBe(0)
+
+    // If user specifically selected module _003_, max target raises only that selected module
+    await store.updatePlan(plan.id, {
+      target: {
+        ...updatedPlan!.target,
+        modules: {
+          uniequip_002_phenxi: 0,
+          uniequip_003_phenxi: 1,
+          uniequip_004_phenxi: 0,
+        },
+      },
+    })
+    await store.setPlanTargetMax(plan.id)
+    const updatedPlan2 = store.plans.find((p) => p.id === plan.id)
+    expect(updatedPlan2?.target.modules['uniequip_002_phenxi']).toBe(0)
+    expect(updatedPlan2?.target.modules['uniequip_003_phenxi']).toBe(3)
+    expect(updatedPlan2?.target.modules['uniequip_004_phenxi']).toBe(0)
+  })
+
+  it('applies roadmap step with depot deduction and supports undo refund', async () => {
+    const store = usePlannerStore()
+    const depot = useDepotStore()
+    await store.init(memoryAdapter)
+    await depot.init(depotAdapter)
+
+    // Set initial depot stock
+    await depot.setCurrency('lmd', 100000)
+    await depot.setItemCount('30012', 10)
+
+    const plan = await store.addPlan('char_102_texas')
+
+    const mockStep = {
+      id: 'step_e1',
+      kind: 'promotion' as const,
+      phase: 1,
+      title: 'Elite 1 Promotion',
+      subtitle: 'Promote Texas to Elite 1',
+      resultingState: {
+        elite: 1,
+        level: 1,
+        skillLevel: 1,
+        skills: {},
+        modules: {},
+      },
+      costs: {
+        lmd: 30000,
+        exp: 0,
+        items: [{ id: '30012', count: 4 }],
+      },
+      cumulativeCosts: {
+        lmd: 30000,
+        exp: 0,
+        items: [{ id: '30012', count: 4 }],
+      },
+      readiness: {
+        isReady: true,
+        missingLmd: 0,
+        missingItems: [],
+      },
+      isNextStep: true,
+    }
+
+    expect(store.canUndoRoadmapStep(plan.id)).toBe(false)
+
+    // Apply step with deduction
+    await store.applyRoadmapStep(plan.id, mockStep, { deductStock: true })
+
+    const planAfter = store.plans.find((p) => p.id === plan.id)
+    expect(planAfter?.current.elite).toBe(1)
+    expect(depot.currencies.lmd).toBe(70000)
+    expect(depot.getItemCount('30012')).toBe(6)
+    expect(store.canUndoRoadmapStep(plan.id)).toBe(true)
+
+    // Undo step
+    const undone = await store.undoRoadmapStep(plan.id)
+    expect(undone).toBe(true)
+
+    const planRestored = store.plans.find((p) => p.id === plan.id)
+    expect(planRestored?.current.elite).toBe(0)
+    expect(depot.currencies.lmd).toBe(100000)
+    expect(depot.getItemCount('30012')).toBe(10)
+    expect(store.canUndoRoadmapStep(plan.id)).toBe(false)
+  })
 })
