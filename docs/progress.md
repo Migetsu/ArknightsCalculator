@@ -1,6 +1,32 @@
 # Project Progress
 
-- **Planner Roadmap Milestones, Share Code & JSON Import/Export (`feat/planner-roadmap`):**
+- **Planner Audit & Precision Polish (`fix/planner-audit`):**
+  - **6★ Module Unlock Cost & Skills Live Verification (`docs/planner.md`):**
+    - Verified Stage 0→1 6★ module unlock cost against official data and live Terra Wiki (`https://arknights.wiki.gg/wiki/Fiammetta`, `Operator_Module` on 2026-10-15): 4× Module Data Block, 2× T5 Material, 80,000 LMD. 100% matched.
+    - Verified Ranks 1→7 and Truesilver Slash M1→M3 against live `https://arknights.wiki.gg/wiki/SilverAsh` (2026-10-15). Noted wiki erratum: Truesilver Slash M1 on wiki.gg lists 8 Skill Summary - 3, but official CN/EN game data is 6.
+  - **Initial Module Exclusion & Multi-Module Goal Management:**
+    - Excluded non-combat initial/mission badges (`*_001_*` / `type === 'INITIAL'`) via `isPlannerModule` / `getPlannerModules` in `shared/utils/planner/modules.ts`.
+    - Initial target module stages default to 0. "Max Target" maximizes ONLY user-selected modules (or picks the first main combat module if none selected).
+    - Verified against 4-module operator (Fiammetta `char_300_phenxi`: 1 initial badge, 2 combat modules X/Y, 1 special module ISW-α).
+  - **Operator Selection Localization & Filter Correction:**
+    - Corrected specialist filter key in `OperatorSelectModal.vue` from `SPECIAL` to `SPECIALIST`.
+    - Localized operator class names in filter tabs and operator cards via `t('operators.classes.' + op.class)`.
+  - **Materials Breakdown: Craft & Farm Separation:**
+    - Under "Crafting included" mode, separated materials into dedicated **Workshop Crafting** block (recipes, run count, target item yield, ingredients, and LMD cost) and **Farming Deficit** block (raw materials required from stages).
+    - Main table shows direct deficit (`Missing = Math.max(0, need - have)`) for that specific item along with a "Craftable" badge (`AkBadge`).
+    - Top header "Missing items" counter tracks only raw items that require farming.
+  - **Roadmap Interactivity: Depot Stock Deduction & Undo:**
+    - "Mark as Done" prompts user with a confirmation modal (`AkModal`): "Deduct materials from depot?" (default: checked).
+    - Added "Undo" button and history tracking (`undoRoadmapStep`), cleanly refunding deducted materials and LMD back to depot and restoring previous state.
+  - **UI & Typography Polish:**
+    - Removed duplicate "Planner" title above sidebar list in `PlannerSidebar.vue`.
+    - Updated "Return to Command" to "Home" (`common.backToDashboard`) in `en.json` and `ru.json`.
+    - Harmonized page header action buttons to unified `AkButton variant="secondary" size="sm"`.
+    - Implemented `formatWordDigits` utility (`app/utils/typography.ts`) and `.u-font-alt-num` styling to render numbers inside words (e.g. `Mon3tr`) in `Golos Text` font, avoiding distorted numerals in `Unbounded`.
+  - **Documentation & Tests:**
+    - Updated `docs/design/DEVIATIONS.md` with `/depot` and `/planner` mockup vs. implementation tables and depot v0 migration explanation.
+    - Added unit tests: `modules.test.ts`, `typography.test.ts`, `OperatorSelectModal.test.ts`, `PlannerMaterialsTab.test.ts`, and updated `planner.test.ts` & `PlannerRoadmapTab.test.ts`.
+
   - Completed preparatory commit `fix: audit planner and data inspection` (`60cbba3`):
     - Added operator data inspection script `npm run data:inspect -- <operatorId>` (`scripts/data/inspect-operator.ts`).
     - Verified translations and keys for SilverAsh (`char_172_svrash`), Fiammetta (`char_300_phenxi`), and Makoto Yuki (`char_4217_makoto`). Documented discrepancies with past reports (canonical ID `char_4217_makoto`, official Latin skill names `'Provocate'`, `'Paenitete'`, `'Reponite'`, talents `Sufferer of Tribulations`, `Herald of Revelations`).

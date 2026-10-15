@@ -7,6 +7,7 @@ import type {
   RoadmapStepCosts,
   RoadmapStepReadiness,
 } from './types'
+import { isPlannerModule } from './modules'
 
 export interface DepotInventorySnapshot {
   items?: Record<string, number>
@@ -280,15 +281,20 @@ export function calculateRoadmap(
   // 3. Module Stages (Stage 1, Stage 2, Stage 3)
   if (op.modules && op.modules.length > 0) {
     op.modules.forEach((mod, modIdx) => {
+      if (!isPlannerModule(mod)) return
+
       const curStage = current.modules[mod.id] ?? 0
       const tgtStage = target.modules[mod.id] ?? 0
-      if (tgtStage <= curStage || !mod.itemCost) return
+      if (tgtStage <= curStage) return
 
       const modName = mod.name.en || `Module ${modIdx + 1}`
 
       for (let s = curStage; s < tgtStage; s++) {
         const stageNum = s + 1
-        const stageCosts = mod.itemCost[String(stageNum)] ?? []
+        const stageCosts =
+          mod.itemCost?.[String(stageNum)] ??
+          mod.stages?.find((st) => st.stage === stageNum)?.cost ??
+          []
         let modLmd = 0
         const items: Array<{ id: string; count: number }> = []
 

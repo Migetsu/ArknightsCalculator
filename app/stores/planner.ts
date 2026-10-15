@@ -22,6 +22,7 @@ import { calculateRoadmap } from '~/../shared/utils/planner/calculateRoadmap'
 import { planExpCards } from '~/../shared/utils/planner/planExpCards'
 import { resolveDemand } from '~/../shared/utils/workshop/resolveDemand'
 import { encodeShareCode, decodeShareCode } from '~/../shared/utils/planner/shareCode'
+import { getPlannerModules } from '~/../shared/utils/planner/modules'
 import { fetchOperatorDetail } from '~/composables/useOperatorDetail'
 import { useDepotStore } from '~/stores/depot'
 import { createDefaultStorageAdapter, type StorageAdapter } from '~/utils/storage'
@@ -45,6 +46,15 @@ export interface MaterialRow {
   need: number
   have: number
   missing: number
+  isCraftable?: boolean
+}
+
+export interface RoadmapHistoryEntry {
+  planId: string
+  stepId: string
+  previousCurrent: OperatorState
+  deductedLmd: number
+  deductedItems: Array<{ id: string; count: number }>
 }
 
 export const usePlannerStore = defineStore('planner', () => {
@@ -58,6 +68,7 @@ export const usePlannerStore = defineStore('planner', () => {
   const error = ref<string | null>(null)
   const isCorrupted = ref<boolean>(false)
   const corruptedBackupKey = ref<string | null>(null)
+  const roadmapHistory = ref<RoadmapHistoryEntry[]>([])
 
   // In-memory cache for operator details to avoid repeated network/JSON chunks fetching
   const operatorDetailsCache = shallowRef<Map<string, OperatorDetail>>(new Map())
@@ -187,9 +198,12 @@ export const usePlannerStore = defineStore('planner', () => {
     }
 
     const defaultModules: Record<string, number> = {}
+    const targetModules: Record<string, number> = {}
     if (detail?.modules) {
-      for (const md of detail.modules) {
+      const plannerMods = getPlannerModules(detail.modules)
+      for (const md of plannerMods) {
         defaultModules[md.id] = 0
+        targetModules[md.id] = 0 // By default 0: user selects desired modules
       }
     }
 
@@ -206,13 +220,6 @@ export const usePlannerStore = defineStore('planner', () => {
     if (detail?.skills) {
       for (const sk of detail.skills) {
         targetSkills[sk.skillId] = 3
-      }
-    }
-
-    const targetModules: Record<string, number> = {}
-    if (detail?.modules) {
-      for (const md of detail.modules) {
-        targetModules[md.id] = 3
       }
     }
 
@@ -293,9 +300,28 @@ export const usePlannerStore = defineStore('planner', () => {
       maxSkills[sk.skillId] = 3
     }
 
+    const plannerMods = getPlannerModules(detail.modules ?? [])
     const maxModules: Record<string, number> = {}
-    for (const md of detail.modules ?? []) {
-      maxModules[md.id] = 3
+
+    // Find modules explicitly selected by user (either current > 0 or target > 0)
+    const selectedIds = plannerMods
+      .map((m) => m.id)
+      .filter((id) => (plan.target.modules[id] ?? 0) > 0 || (plan.current.modules[id] ?? 0) > 0)
+
+    if (selectedIds.length > 0) {
+      for (const m of plannerMods) {
+        maxModules[m.id] = selectedIds.includes(m.id) ? 3 : 0
+      }
+    } else if (plannerMods.length > 0) {
+      // None selected: pick the first main combat module
+      const firstMain = plannerMods[0]
+      if (firstMain) {
+        maxModules[firstMain.id] = 3
+      }
+      for (let i = 1; i < plannerMods.length; i++) {
+        const m = plannerMods[i]
+        if (m) maxModules[m.id] = 0
+      }
     }
 
     await updatePlan(planId, {
@@ -358,7 +384,8 @@ export const usePlannerStore = defineStore('planner', () => {
 
       // Step: if all skills maxed, find first module below Stage 3
       if (!advancedSkill) {
-        for (const md of detail.modules ?? []) {
+        const plannerMods = getPlannerModules(detail.modules ?? [])
+        for (const md of plannerMods) {
           const curSt = nextTarget.modules[md.id] ?? 0
           if (curSt < 3) {
             nextTarget.modules[md.id] = curSt + 1
@@ -430,48 +457,58 @@ export const usePlannerStore = defineStore('planner', () => {
   })
 
   /**
+   * Workshop resolution for active aggregated demand.
+   */
+  const workshopResolution = computed(() => {
+    const depotStore = useDepotStore()
+    const demand = aggregatedDemand.value.items
+    return resolveDemand(demand, depotStore.items, {
+      recipes,
+      useStock: true,
+    })
+  })
+
+  /**
+   * List of crafts to run in the Workshop.
+   */
+  const resolvedCrafts = computed(() => workshopResolution.value.crafts)
+
+  /**
+   * Raw materials required to be farmed after all possible crafts are executed.
+   */
+  const resolvedRawDeficit = computed<Array<{ id: string; count: number }>>(() => {
+    return Object.entries(workshopResolution.value.rawDeficit)
+      .filter(([_, count]) => count > 0)
+      .map(([id, count]) => ({ id, count }))
+  })
+
+  /**
+   * Total LMD required for workshop crafts.
+   */
+  const resolvedCraftLmdCost = computed(() => workshopResolution.value.lmdForCrafting)
+
+  /**
+   * Set of items that can be crafted in the workshop.
+   */
+  const craftableItemIds = computed<Set<string>>(() => {
+    const set = new Set<string>()
+    for (const r of recipes) {
+      if (r.resultId) {
+        set.add(r.resultId)
+      }
+    }
+    return set
+  })
+
+  /**
    * Materials breakdown compared against depot inventory.
+   * Under crafting included mode: shows direct Need, Have, Missing for THIS item before crafting,
+   * along with isCraftable tag.
    */
   const materialRows = computed<MaterialRow[]>(() => {
     const depotStore = useDepotStore()
     const demand = aggregatedDemand.value.items
 
-    if (includeCrafting.value) {
-      const result = resolveDemand(demand, depotStore.items, {
-        recipes,
-        useStock: true,
-      })
-
-      // Combine direct demand with resolved deficit
-      const map = new Map<string, MaterialRow>()
-
-      for (const it of demand) {
-        const have = depotStore.getItemCount(it.id)
-        const missing = result.rawDeficit[it.id] ?? 0
-        map.set(it.id, {
-          id: it.id,
-          need: it.count,
-          have,
-          missing,
-        })
-      }
-
-      // Also include intermediate materials that need to be farmed
-      for (const [missingId, missingCount] of Object.entries(result.rawDeficit)) {
-        if (!map.has(missingId)) {
-          map.set(missingId, {
-            id: missingId,
-            need: missingCount,
-            have: depotStore.getItemCount(missingId),
-            missing: missingCount,
-          })
-        }
-      }
-
-      return Array.from(map.values())
-    }
-
-    // Direct base deficit without crafting decomposition
     return demand.map((it) => {
       const have = depotStore.getItemCount(it.id)
       const missing = Math.max(0, it.count - have)
@@ -480,27 +517,41 @@ export const usePlannerStore = defineStore('planner', () => {
         need: it.count,
         have,
         missing,
+        isCraftable: craftableItemIds.value.has(it.id),
       }
     })
   })
 
   /**
    * Set of item IDs that have a positive deficit (>0).
+   * In crafting mode: tracks raw materials that need farming.
+   * In direct mode: tracks directly missing items.
    */
   const missingItemIds = computed<Set<string>>(() => {
     const set = new Set<string>()
-    for (const row of materialRows.value) {
-      if (row.missing > 0) {
-        set.add(row.id)
+    if (includeCrafting.value) {
+      for (const item of resolvedRawDeficit.value) {
+        set.add(item.id)
+      }
+    } else {
+      for (const row of materialRows.value) {
+        if (row.missing > 0) {
+          set.add(row.id)
+        }
       }
     }
     return set
   })
 
   /**
-   * Total number of distinct missing item types.
+   * Total number of distinct missing item types (only raw deficit when crafting included).
    */
-  const missingItemsCount = computed<number>(() => missingItemIds.value.size)
+  const missingItemsCount = computed<number>(() => {
+    if (includeCrafting.value) {
+      return resolvedRawDeficit.value.length
+    }
+    return materialRows.value.filter((r) => r.missing > 0).length
+  })
 
   /**
    * Recommended battle records (EXP cards) plan based on total EXP demand and depot inventory.
@@ -558,8 +609,48 @@ export const usePlannerStore = defineStore('planner', () => {
 
   /**
    * Applies a roadmap step by updating the plan current state to the step resulting state.
+   * Optionally deducts materials and LMD from depot inventory (defaults to true).
    */
-  async function applyRoadmapStep(planId: string, step: RoadmapStep): Promise<void> {
+  async function applyRoadmapStep(
+    planId: string,
+    step: RoadmapStep,
+    options: { deductStock?: boolean } = { deductStock: true },
+  ): Promise<void> {
+    const plan = plans.value.find((p) => p.id === planId)
+    if (!plan) return
+
+    const previousCurrent: OperatorState = JSON.parse(JSON.stringify(plan.current))
+    let deductedLmd = 0
+    const deductedItems: Array<{ id: string; count: number }> = []
+
+    if (options.deductStock !== false) {
+      const depotStore = useDepotStore()
+      if (step.costs.lmd > 0) {
+        deductedLmd = Math.min(depotStore.currencies.lmd, step.costs.lmd)
+        if (deductedLmd > 0) {
+          await depotStore.setCurrency('lmd', depotStore.currencies.lmd - deductedLmd)
+        }
+      }
+      if (step.costs.items.length > 0) {
+        for (const item of step.costs.items) {
+          const curStock = depotStore.getItemCount(item.id)
+          const toDeduct = Math.min(curStock, item.count)
+          if (toDeduct > 0) {
+            await depotStore.setItemCount(item.id, curStock - toDeduct)
+            deductedItems.push({ id: item.id, count: toDeduct })
+          }
+        }
+      }
+    }
+
+    roadmapHistory.value.push({
+      planId,
+      stepId: step.id,
+      previousCurrent,
+      deductedLmd,
+      deductedItems,
+    })
+
     await updatePlan(planId, {
       current: {
         elite: step.resultingState.elite,
@@ -569,6 +660,41 @@ export const usePlannerStore = defineStore('planner', () => {
         modules: { ...step.resultingState.modules },
       },
     })
+  }
+
+  /**
+   * Reverts the most recent roadmap step applied to the specified plan,
+   * restoring previous state and refunding deducted materials back to the depot.
+   */
+  async function undoRoadmapStep(planId: string): Promise<boolean> {
+    const lastIndex = roadmapHistory.value.findLastIndex((h) => h.planId === planId)
+    if (lastIndex === -1) return false
+
+    const [entry] = roadmapHistory.value.splice(lastIndex, 1)
+    if (!entry) return false
+
+    const plan = plans.value.find((p) => p.id === planId)
+    if (!plan) return false
+
+    if (entry.deductedLmd > 0 || entry.deductedItems.length > 0) {
+      const depotStore = useDepotStore()
+      if (entry.deductedLmd > 0) {
+        await depotStore.setCurrency('lmd', depotStore.currencies.lmd + entry.deductedLmd)
+      }
+      for (const item of entry.deductedItems) {
+        const curStock = depotStore.getItemCount(item.id)
+        await depotStore.setItemCount(item.id, curStock + item.count)
+      }
+    }
+
+    await updatePlan(planId, {
+      current: entry.previousCurrent,
+    })
+    return true
+  }
+
+  function canUndoRoadmapStep(planId: string): boolean {
+    return roadmapHistory.value.some((h) => h.planId === planId)
   }
 
   function dismissCorruptionAlert(): void {
@@ -685,8 +811,16 @@ export const usePlannerStore = defineStore('planner', () => {
     missingItemIds,
     missingItemsCount,
     plannedExpCards,
+    workshopResolution,
+    resolvedCrafts,
+    resolvedRawDeficit,
+    resolvedCraftLmdCost,
+    craftableItemIds,
     selectedPlanRoadmap,
     applyRoadmapStep,
+    undoRoadmapStep,
+    canUndoRoadmapStep,
+    roadmapHistory,
     benchmarkRecalculation,
     dismissCorruptionAlert,
     exportJson,

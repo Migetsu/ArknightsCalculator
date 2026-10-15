@@ -10,6 +10,7 @@ import AkModal from '~/components/ui/AkModal.vue'
 import AkInput from '~/components/ui/AkInput.vue'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
+import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   modelValue: boolean
@@ -37,7 +38,7 @@ const classOptions = [
   { value: 'CASTER', labelKey: 'operators.classes.CASTER' },
   { value: 'MEDIC', labelKey: 'operators.classes.MEDIC' },
   { value: 'SUPPORT', labelKey: 'operators.classes.SUPPORT' },
-  { value: 'SPECIAL', labelKey: 'operators.classes.SPECIAL' },
+  { value: 'SPECIALIST', labelKey: 'operators.classes.SPECIALIST' },
 ]
 
 const filteredOperators = computed<OperatorSummary[]>(() => {
@@ -120,11 +121,11 @@ function handleSelect(id: string): void {
           />
           <div class="op-modal__item-info">
             <span class="op-modal__item-name">
-              {{ resolveI18nString(op.name, locale as ContentLocale) }}
+              <AkOperatorName :name="resolveI18nString(op.name, locale as ContentLocale)" />
             </span>
             <div class="op-modal__item-tags">
               <AkBadge variant="neutral" size="sm">★{{ op.rarity }}</AkBadge>
-              <span class="op-modal__item-class">{{ op.class }}</span>
+              <span class="op-modal__item-class">{{ t('operators.classes.' + op.class) }}</span>
             </div>
           </div>
         </button>

@@ -1,6 +1,7 @@
 import type { GameConstants } from '../../schemas/gameConstants'
 import type { OperatorDetail } from '../../schemas/operator'
 import type { CalculatedCost, CostCategoryBreakdown, OperatorState } from './types'
+import { isPlannerModule } from './modules'
 
 /**
  * Validates that elite phase and level are within valid bounds for the operator.
@@ -207,14 +208,18 @@ function calculateModuleProgression(
   let lmd = 0
 
   for (const mod of op.modules) {
+    if (!isPlannerModule(mod)) continue
+
     const curStage = currentModules[mod.id] ?? 0
     const tgtStage = targetModules[mod.id] ?? 0
-    if (tgtStage <= curStage || !mod.stages) continue
+    if (tgtStage <= curStage) continue
 
     for (let st = curStage; st < tgtStage; st++) {
-      const stageData = mod.stages.find((s) => s.stage === st + 1)
-      if (stageData?.cost) {
-        for (const costItem of stageData.cost) {
+      const stageNum = st + 1
+      const stageData = mod.stages?.find((s) => s.stage === stageNum)
+      const costList = stageData?.cost ?? mod.itemCost?.[String(stageNum)]
+      if (costList) {
+        for (const costItem of costList) {
           if (costItem.id === lmdItemId) {
             lmd += costItem.count
           } else {
