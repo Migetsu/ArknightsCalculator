@@ -12,7 +12,6 @@ import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 import AkButton from '~/components/ui/AkButton.vue'
-import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   planId: string
@@ -244,7 +243,7 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
 
       <div class="planner-goals__hero-info">
         <h2 class="planner-goals__hero-name">
-          <AkOperatorName :name="resolveI18nString(detail.name, locale as ContentLocale)" />
+          {{ resolveI18nString(detail.name, locale as ContentLocale) }}
         </h2>
         <span class="planner-goals__hero-sub">
           Elite {{ plan.current.elite }} → {{ plan.target.elite }} // Level

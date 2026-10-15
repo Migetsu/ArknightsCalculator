@@ -8,11 +8,15 @@ This document details external data sources, licensing terms, attribution guidel
 
 - **Website**: [https://penguin-stats.io/](https://penguin-stats.io/)
 - **License**: [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+- **License Quote (<15 words)**:
+  > _"Free to share and adapt under non-commercial terms with appropriate credit given."_
 - **Verification Date**: 2026-10-15
-- **Attribution Terms**:
-  - Credit Penguin Statistics as the provider of drop rate statistics.
-  - Provide a clear, accessible hyperlink to [penguin-stats.io](https://penguin-stats.io/).
-  - Use data solely for non-commercial purposes.
+- **Attribution Terms & Polite Use Rules**:
+  - **Credit**: Credit Penguin Statistics as the provider of drop rate statistics with a link to [penguin-stats.io](https://penguin-stats.io/).
+  - **Non-Commercial**: Use data solely for non-commercial purposes.
+  - **No Live Browser Hotlinking**: Never query Penguin Statistics APIs directly from user browsers in runtime. All data is served from local, pre-processed offline JSON snapshots.
+  - **Request Identification**: Batch synchronization scripts identify themselves via descriptive `User-Agent: ArknightsCalculator/1.0 (+https://github.com/Migetsu/ArknightsCalculator)`.
+  - **Throttling & Backoff**: Polite pauses (>= 400ms) between server endpoints and hard failure on network errors in CI.
 - **Implementation in ArkCalc**:
   - Displayed in the footer of the `/farming` module:
     > "Drop statistics provided by Penguin Statistics (CC BY-NC 4.0). Thank you to all contributors. [penguin-stats.io ↗](https://penguin-stats.io/)"

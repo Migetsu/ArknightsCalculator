@@ -1,17 +1,34 @@
 import type { OperatorModule } from '../../schemas/operator'
 
 /**
- * Checks whether an operator module is an actionable combat module (X / Y / Δ / Specialized)
- * with upgrade stages 1–3, excluding initial mission badges.
+ * Checks whether an operator module is an actionable combat module (X / Y / Δ)
+ * with upgrade stages 1–3, excluding initial mission badges and IS specialized badges.
  *
  * Rules:
- * 1. Must NOT be an initial/mission module (type !== 'INITIAL' and id does not contain '_001_').
- * 2. Must have upgrade stages/costs defined.
+ * 1. Must be an ADVANCED combat module (type === 'ADVANCED').
+ * 2. Must be a standard combat module branch: typeName2 in ['X', 'Y', 'D', 'Δ'] (or typeIcon ending in -x, -y, -d).
+ * 3. Excludes initial mission badges (type === 'INITIAL', typeIcon === 'original') and IS specialized badges (typeName2 'A', 'B' or typeIcon 'isw-*').
+ * 4. Must have upgrade stages/costs defined.
  */
 export function isPlannerModule(mod: OperatorModule): boolean {
-  if (mod.type === 'INITIAL' || /_001_/.test(mod.id)) {
+  if (mod.type === 'INITIAL' || mod.icon === 'original') {
     return false
   }
+
+  // Combat modules in Arknights are strictly X, Y, and Delta (D / Δ)
+  const branch = (mod.typeName2 ?? '').trim().toUpperCase()
+  const isCombatBranch =
+    branch === 'X' ||
+    branch === 'Y' ||
+    branch === 'D' ||
+    branch === 'Δ' ||
+    /-[XYDΔ]$/i.test(branch) ||
+    /-[XYDΔ]$/i.test(mod.icon ?? '')
+
+  if (!isCombatBranch) {
+    return false
+  }
+
   const hasItemCost = Boolean(mod.itemCost && Object.keys(mod.itemCost).length > 0)
   const hasStages = Boolean(mod.stages && mod.stages.length > 0)
   return hasItemCost || hasStages

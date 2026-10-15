@@ -290,20 +290,20 @@ describe('usePlannerStore', () => {
     const store = usePlannerStore()
     await store.init(memoryAdapter)
 
-    // Fiammetta has 4 modules: 1 initial (_001_), 2 combat (_002_, _003_), 1 special (_004_)
+    // Fiammetta has 4 modules: 1 initial (_001_), 2 combat (_002_, _003_), 1 IS specialized (_004_)
     const plan = await store.addPlan('char_300_phenxi')
     expect(plan.target.modules).toBeDefined()
     expect(plan.target.modules['uniequip_001_phenxi']).toBeUndefined()
+    expect(plan.target.modules['uniequip_004_phenxi']).toBeUndefined()
     expect(plan.target.modules['uniequip_002_phenxi']).toBe(0)
     expect(plan.target.modules['uniequip_003_phenxi']).toBe(0)
-    expect(plan.target.modules['uniequip_004_phenxi']).toBe(0)
 
     // Max target when none selected picks the first main module
     await store.setPlanTargetMax(plan.id)
     const updatedPlan = store.plans.find((p) => p.id === plan.id)
     expect(updatedPlan?.target.modules['uniequip_002_phenxi']).toBe(3)
     expect(updatedPlan?.target.modules['uniequip_003_phenxi']).toBe(0)
-    expect(updatedPlan?.target.modules['uniequip_004_phenxi']).toBe(0)
+    expect(updatedPlan?.target.modules['uniequip_004_phenxi']).toBeUndefined()
 
     // If user specifically selected module _003_, max target raises only that selected module
     await store.updatePlan(plan.id, {
@@ -312,7 +312,6 @@ describe('usePlannerStore', () => {
         modules: {
           uniequip_002_phenxi: 0,
           uniequip_003_phenxi: 1,
-          uniequip_004_phenxi: 0,
         },
       },
     })
@@ -320,7 +319,7 @@ describe('usePlannerStore', () => {
     const updatedPlan2 = store.plans.find((p) => p.id === plan.id)
     expect(updatedPlan2?.target.modules['uniequip_002_phenxi']).toBe(0)
     expect(updatedPlan2?.target.modules['uniequip_003_phenxi']).toBe(3)
-    expect(updatedPlan2?.target.modules['uniequip_004_phenxi']).toBe(0)
+    expect(updatedPlan2?.target.modules['uniequip_004_phenxi']).toBeUndefined()
   })
 
   it('applies roadmap step with depot deduction and supports undo refund', async () => {
@@ -386,5 +385,67 @@ describe('usePlannerStore', () => {
     expect(depot.currencies.lmd).toBe(100000)
     expect(depot.getItemCount('30012')).toBe(10)
     expect(store.canUndoRoadmapStep(plan.id)).toBe(false)
+  })
+
+  it('initializes Kaltsit modules with target 0 and excludes non-combat badges', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    const plan = await store.addPlan('char_003_kalts')
+    // Out of 4 entries (initial badge, X, Y, IS specialized badge), only 2 combat modules must be present
+    expect(Object.keys(plan.target.modules)).toEqual(['uniequip_002_kalts', 'uniequip_003_kalts'])
+    expect(plan.target.modules['uniequip_002_kalts']).toBe(0)
+    expect(plan.target.modules['uniequip_003_kalts']).toBe(0)
+
+    // With targets at 0, no module data blocks required
+    const initialDemand = store.aggregatedDemand
+    const initialModBlocks =
+      initialDemand.items.find((i) => i.id === 'mod_unlock_token')?.count ?? 0
+    expect(initialModBlocks).toBe(0)
+
+    // Max Target without prior selection: sets ONLY the first combat module (X) to 3, keeping Y at 0
+    await store.setPlanTargetMax(plan.id)
+    const updatedPlan = store.plans.find((p) => p.id === plan.id)
+    expect(updatedPlan?.target.modules['uniequip_002_kalts']).toBe(3)
+    expect(updatedPlan?.target.modules['uniequip_003_kalts']).toBe(0)
+
+    // Only 1 combat module (X, 6-star) at stage 3 requires 12 Module Data Blocks (4 + 4 + 4), not 27
+    const maxDemand = store.aggregatedDemand
+    const maxModBlocks = maxDemand.items.find((i) => i.id === 'mod_unlock_token')?.count ?? 0
+    expect(maxModBlocks).toBe(12)
+  })
+
+  it('includes workshop crafting costs in totalLmdNeeded and missingLmd when crafting is enabled', async () => {
+    const store = usePlannerStore()
+    await store.init(memoryAdapter)
+
+    // Plan with some upgrades that require craftable materials
+    const plan = await store.addPlan('char_172_svrash')
+    await store.updatePlan(plan.id, {
+      current: { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      target: { elite: 2, level: 1, skillLevel: 1, skills: {}, modules: {} },
+    })
+
+    const directLmd = store.aggregatedDemand.lmd
+    const craftLmd = store.resolvedCraftLmdCost
+    expect(directLmd).toBeGreaterThan(0)
+    expect(craftLmd).toBeGreaterThan(0)
+
+    // Direct mode: totalLmdNeeded is strictly direct demand
+    store.includeCrafting = false
+    expect(store.totalLmdNeeded).toBe(directLmd)
+
+    // Crafting mode: totalLmdNeeded includes workshop craft costs
+    store.includeCrafting = true
+    expect(store.totalLmdNeeded).toBe(directLmd + craftLmd)
+
+    // Check missingLmd against depot stock
+    const depot = useDepotStore()
+    depot.currencies.lmd = directLmd // has enough for direct, but not for crafting
+    store.includeCrafting = false
+    expect(store.missingLmd).toBe(0)
+
+    store.includeCrafting = true
+    expect(store.missingLmd).toBe(craftLmd)
   })
 })

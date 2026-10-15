@@ -9,7 +9,6 @@ import {
 import { usePlannerStore } from '~/stores/planner'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkButton from '~/components/ui/AkButton.vue'
-import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   isModalOpen: boolean
@@ -100,7 +99,7 @@ const totalExpCardCount = computed<number>(() => {
         <div class="planner-sidebar__plan-body">
           <div class="planner-sidebar__plan-top">
             <span class="planner-sidebar__plan-name">
-              <AkOperatorName :name="getOperatorName(plan.operatorId)" />
+              {{ getOperatorName(plan.operatorId) }}
             </span>
             <button
               type="button"
@@ -141,7 +140,7 @@ const totalExpCardCount = computed<number>(() => {
         <div class="planner-sidebar__summary-row">
           <span>LMD</span>
           <b class="planner-sidebar__summary-val">
-            {{ plannerStore.aggregatedDemand.lmd.toLocaleString() }}
+            {{ plannerStore.totalLmdNeeded.toLocaleString() }}
           </b>
         </div>
 

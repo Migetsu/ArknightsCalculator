@@ -488,6 +488,27 @@ export const usePlannerStore = defineStore('planner', () => {
   const resolvedCraftLmdCost = computed(() => workshopResolution.value.lmdForCrafting)
 
   /**
+   * Total LMD needed considering crafting mode:
+   * In crafting included mode: includes workshop crafting costs (aggregatedDemand.lmd + resolvedCraftLmdCost).
+   * In direct deficit mode: only direct promotion/level/skill demand (aggregatedDemand.lmd).
+   */
+  const totalLmdNeeded = computed<number>(() => {
+    const baseLmd = aggregatedDemand.value.lmd
+    if (includeCrafting.value) {
+      return baseLmd + resolvedCraftLmdCost.value
+    }
+    return baseLmd
+  })
+
+  /**
+   * Missing LMD considering depot stock and current crafting mode.
+   */
+  const missingLmd = computed<number>(() => {
+    const depotStore = useDepotStore()
+    return Math.max(0, totalLmdNeeded.value - depotStore.currencies.lmd)
+  })
+
+  /**
    * Set of items that can be crafted in the workshop.
    */
   const craftableItemIds = computed<Set<string>>(() => {
@@ -815,6 +836,8 @@ export const usePlannerStore = defineStore('planner', () => {
     resolvedCrafts,
     resolvedRawDeficit,
     resolvedCraftLmdCost,
+    totalLmdNeeded,
+    missingLmd,
     craftableItemIds,
     selectedPlanRoadmap,
     applyRoadmapStep,

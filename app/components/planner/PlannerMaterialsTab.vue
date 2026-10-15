@@ -104,9 +104,9 @@ const sortedFarmDeficit = computed(() => {
   })
 })
 
-const lmdDemand = computed(() => plannerStore.aggregatedDemand.lmd)
+const lmdDemand = computed(() => plannerStore.totalLmdNeeded)
 const lmdStock = computed(() => depotStore.currencies.lmd)
-const lmdMissing = computed(() => Math.max(0, lmdDemand.value - lmdStock.value))
+const lmdMissing = computed(() => plannerStore.missingLmd)
 </script>
 
 <template>

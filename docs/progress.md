@@ -1,5 +1,33 @@
 # Project Progress
 
+- **Audit Followup, CI/CD Stop-List, Kal'tsit Modules & Typography Polish (`fix/audit-followup`):**
+  - **CI/CD Stop-List & Workflow Hardening:**
+    - Confirmed `.github/**`, repository secrets, and token permissions belong to the manual approval stop-list (§14). Created `.github/pull_request_template.md` with explicit stop-list quality gates.
+    - Documented GitHub Actions security suppression where PRs created by `GITHUB_TOKEN` do not trigger CI workflows; explained why a PAT (`REPO_AUTOMATION_PAT`) or GitHub App installation token is required to trigger downstream CI on automated PRs.
+    - Updated `scripts/data/fetch-penguin.ts`: fails loudly in CI on network error or HTTP 4xx/5xx (no silent cache fallback in CI), and preserves `fetchedAt` timestamp when drop matrix data is unchanged to prevent spurious empty PRs.
+  - **Kal'tsit Combat Modules & Multi-Module Filtering:**
+    - Inspected `char_003_kalts`: identified that `uniequip_004_kalts` ("Kal'tsit's Specialized Badge") was an Integrated Strategies mode badge (`type: ADVANCED`, `typeName2: A`, `typeIcon: isw-a`) with 1-block stages costing 0 LMD.
+    - Replaced fragile ID regex `/_001_/` with domain branch validation in `shared/utils/planner/modules.ts`: requires standard combat branches strictly in `X`, `Y`, `D`/`Δ` (`typeName2` / `typeIcon`) and non-INITIAL type. Across the entire operator dataset, 482 combat modules are accepted and 409 non-combat/initial badges are rejected.
+    - Kal'tsit now has default targets = 0 (0 Module Data Blocks, 1,534,796 LMD). Max Target without prior selection maximizes only the first combat module (X: 12 Module Data Blocks, 1,734,796 LMD).
+  - **Crafting Included LMD Accounting:**
+    - Implemented `totalLmdNeeded` and `missingLmd` in `app/stores/planner.ts`. In crafting included mode, workshop craft fees (`resolvedCraftLmdCost`) are included in both the LMD row (`Need`/`Missing`) and sidebar `Total needed`, while direct deficit mode reflects raw promotion/skill LMD.
+    - Added unit test in `tests/unit/stores/planner.test.ts` covering switching between direct deficit and crafting included modes.
+  - **Unbounded Font Numerals & AkOperatorName Cleanup:**
+    - Configured `@font-face` for `Unbounded` in `app/assets/styles/_fonts.scss` with `unicode-range: U+0020-002C, U+002E-002F, U+003A-00B6, U+00B8-00D6, U+00D8-FFFF`, strictly restricting Unbounded to letters and symbols.
+    - Numerals `0-9`, hyphen `-`, middle dot `·`, and multiplication `×` fall back cleanly to `Golos Text` / system font stack.
+    - Downloaded local offline font TTFs to `public/fonts/` for offline PWA compliance. Removed temporary `AkOperatorName.vue` component and updated all call sites to direct text bindings.
+  - **Dual-Source Live Skill Verification (`docs/planner.md`):**
+    - Performed live HTTP queries to `arknights.wiki.gg` (MediaWiki API) and `prts.wiki` (2026-10-15) for SilverAsh (1->7, S1-S3 M1-M3) and Kal'tsit (S1-S3 M1-M3).
+    - Resolved the D32 Steel discrepancy: SilverAsh S3 M1 costs 6× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster, and does NOT use D32 Steel. D32 Steel is used on E2 (4), S1 M3 (6), and S2 M3 (6). The "8" on wiki referred to Skill Summary - 3 on later 6★s (like Kal'tsit) vs 6 on release 6★s.
+  - **Depot v0 Migration & DEVIATIONS.md / Known Issues:**
+    - Updated `docs/design/DEVIATIONS.md` with comparative tables for `/depot` and `/farming`. Resolved depot v0 migration item in `docs/known-issues.md`.
+  - **Farming Metrics, Optimizer Math & Data Sources Documentation:**
+    - Audited Penguin Stats drop matrix: CN discarded 706 / 8,091 (8.73%); US discarded 2,948 / 5,079 (58.04%) by threshold < 300. Listed first 26 unmatched pseudo-stages (all random boxes/recruit).
+    - Documented greedy with byproduct deduction mathematical model in `docs/farming.md` and explained why LP simplex solver is unsuitable for integer stage clustering.
+    - Documented Penguin Stats CC BY-NC 4.0 license quote and polite crawler policy in `docs/data-sources.md`. Documented server reset timezones (CN UTC+8 04:00, US UTC-7 04:00).
+    - Documented data staleness warning (>30 days) and sanity estimate disclaimer (* Estimate).
+  - **Screenshots:** Captured 8 required screenshots (`planner-goals-1440x900.png`, `planner-goals-360x800.png`, `planner-materials-1440x900.png`, `planner-materials-360x800.png`, `depot-filtered-1440x900.png`, `depot-filtered-360x800.png`, `farming-plan-1440x900.png`, `farming-plan-360x800.png`).
+
 - **Farming Efficiency Module (`FRM-07: ready`) (`feat/farming`):**
   - **Data Pipelines & Integration:**
     - Created `scripts/data/fetch-penguin.ts` (`npm run data:penguin`): fetches, filters (sample size >= 300, positive apCost), and normalizes Penguin Stats drop matrix into `data/penguin/cn.json` and `data/penguin/us.json`, with fallback `data/penguin/benchmark.json`.

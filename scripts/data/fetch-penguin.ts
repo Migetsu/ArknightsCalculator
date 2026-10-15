@@ -38,6 +38,7 @@ async function sleep(ms: number): Promise<void> {
 
 async function fetchWithCache<T>(url: string, cacheFilename: string): Promise<T> {
   const cachePath = path.join(CACHE_DIR, cacheFilename)
+  const isCI = Boolean(process.env.CI)
 
   try {
     const res = await fetch(url, {
@@ -52,17 +53,29 @@ async function fetchWithCache<T>(url: string, cacheFilename: string): Promise<T>
       await fs.writeFile(cachePath, JSON.stringify(data, null, 2), 'utf-8')
       return data
     }
+    const errorMsg = `Penguin Stats API error: HTTP ${res.status} ${res.statusText} (${url})`
+    if (isCI) {
+      throw new Error(errorMsg)
+    }
+    console.warn(`[Penguin] ${errorMsg}`)
   } catch (err) {
+    if (isCI) {
+      throw new Error(`[Penguin] Network fetch failed in CI for ${url}: ${(err as Error).message}`, {
+        cause: err,
+      })
+    }
     console.warn(`[Penguin] Network fetch failed for ${url}:`, (err as Error).message)
   }
 
-  // Fallback to cache
+  // Fallback to cache (only allowed in local development)
   try {
     const cached = await fs.readFile(cachePath, 'utf-8')
     console.log(`[Penguin] Using cached file: ${cacheFilename}`)
     return JSON.parse(cached) as T
-  } catch {
-    throw new Error(`Failed to fetch ${url} and no cache available at ${cachePath}`)
+  } catch (cacheErr) {
+    throw new Error(`Failed to fetch ${url} and no cache available at ${cachePath}`, {
+      cause: cacheErr,
+    })
   }
 }
 
@@ -133,6 +146,24 @@ export async function fetchAndNormalizePenguin(
   return PenguinMatrixSnapshotSchema.parse(snapshot)
 }
 
+async function writeSnapshotIfChanged(
+  filePath: string,
+  newSnapshot: PenguinMatrixSnapshot,
+): Promise<void> {
+  try {
+    const existingRaw = await fs.readFile(filePath, 'utf-8')
+    const existing = JSON.parse(existingRaw) as PenguinMatrixSnapshot
+    if (JSON.stringify(existing.stages) === JSON.stringify(newSnapshot.stages)) {
+      // Drops have not changed: preserve existing timestamp to prevent spurious git diffs
+      newSnapshot.fetchedAt = existing.fetchedAt
+    }
+  } catch {
+    // File did not exist or was unreadable, proceed with current timestamp
+  }
+
+  await fs.writeFile(filePath, JSON.stringify(newSnapshot, null, 2) + '\n', 'utf-8')
+}
+
 export async function runPenguinPipeline(): Promise<void> {
   await fs.mkdir(DATA_DIR, { recursive: true })
 
@@ -144,11 +175,7 @@ export async function runPenguinPipeline(): Promise<void> {
 
   // 1. Fetch CN
   const cnSnapshot = await fetchAndNormalizePenguin('CN', stagesMap)
-  await fs.writeFile(
-    path.join(DATA_DIR, 'cn.json'),
-    JSON.stringify(cnSnapshot, null, 2) + '\n',
-    'utf-8',
-  )
+  await writeSnapshotIfChanged(path.join(DATA_DIR, 'cn.json'), cnSnapshot)
   console.log(
     `[Penguin] Written data/penguin/cn.json (${Object.keys(cnSnapshot.stages).length} active stages)`,
   )
@@ -157,21 +184,13 @@ export async function runPenguinPipeline(): Promise<void> {
 
   // 2. Fetch US
   const usSnapshot = await fetchAndNormalizePenguin('US', stagesMap)
-  await fs.writeFile(
-    path.join(DATA_DIR, 'us.json'),
-    JSON.stringify(usSnapshot, null, 2) + '\n',
-    'utf-8',
-  )
+  await writeSnapshotIfChanged(path.join(DATA_DIR, 'us.json'), usSnapshot)
   console.log(
     `[Penguin] Written data/penguin/us.json (${Object.keys(usSnapshot.stages).length} active stages)`,
   )
 
   // 3. Fallback benchmark snapshot (US curated baseline)
-  await fs.writeFile(
-    path.join(DATA_DIR, 'benchmark.json'),
-    JSON.stringify(usSnapshot, null, 2) + '\n',
-    'utf-8',
-  )
+  await writeSnapshotIfChanged(path.join(DATA_DIR, 'benchmark.json'), usSnapshot)
   console.log('[Penguin] Written fallback data/penguin/benchmark.json')
 }
 

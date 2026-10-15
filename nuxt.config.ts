@@ -55,12 +55,6 @@ export default defineNuxtConfig({
     },
     families: [
       {
-        name: 'Unbounded',
-        provider: 'google',
-        weights: [500, 800],
-        subsets: ['latin', 'cyrillic'],
-      },
-      {
         name: 'Golos Text',
         provider: 'google',
         weights: [400, 600],

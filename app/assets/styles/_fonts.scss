@@ -1,0 +1,26 @@
+// Custom Unbounded font-face with unicode-range restricting to letters/symbols,
+// excluding digits (0-9: U+0030-0039), hyphen (-: U+002D), middle dot (·: U+00B7),
+// and multiplication sign (×: U+00D7), which fall back to Golos Text / system fonts.
+@font-face {
+  font-family: Unbounded;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    local('Unbounded Medium'),
+    local('Unbounded-Medium'),
+    url('/fonts/unbounded-500.ttf') format('truetype');
+  unicode-range: U+0020-002C, U+002E-002F, U+003A-00B6, U+00B8-00D6, U+00D8-04FF, U+0500-FFFF;
+}
+
+@font-face {
+  font-family: Unbounded;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    local('Unbounded ExtraBold'),
+    local('Unbounded-ExtraBold'),
+    url('/fonts/unbounded-800.ttf') format('truetype');
+  unicode-range: U+0020-002C, U+002E-002F, U+003A-00B6, U+00B8-00D6, U+00D8-04FF, U+0500-FFFF;
+}
