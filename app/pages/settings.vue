@@ -165,7 +165,53 @@ function openSource(): void {
         </div>
       </section>
 
-      <!-- 3. Account Section -->
+      <!-- 3. Farming Sanity Section -->
+      <section class="settings-page__section">
+        <div class="settings-page__section-header">
+          <h2 class="settings-page__section-title">{{ t('settings.farmingSanity.title') }}</h2>
+          <p class="settings-page__section-desc">
+            {{ t('settings.farmingSanity.desc') }}
+          </p>
+        </div>
+        <div class="settings-page__input-grid">
+          <div class="settings-page__field">
+            <label class="settings-page__label" for="max-sanity-input">
+              {{ t('settings.farmingSanity.maxSanityLabel') }}
+            </label>
+            <input
+              id="max-sanity-input"
+              type="number"
+              min="1"
+              max="200"
+              class="settings-page__number-input"
+              :value="settingsStore.farmingMaxSanity"
+              @input="
+                settingsStore.setFarmingMaxSanity(Number(($event.target as HTMLInputElement).value))
+              "
+            />
+          </div>
+          <div class="settings-page__field">
+            <label class="settings-page__label" for="regen-minutes-input">
+              {{ t('settings.farmingSanity.regenMinutesLabel') }}
+            </label>
+            <input
+              id="regen-minutes-input"
+              type="number"
+              min="1"
+              max="60"
+              class="settings-page__number-input"
+              :value="settingsStore.farmingRegenMinutes"
+              @input="
+                settingsStore.setFarmingRegenMinutes(
+                  Number(($event.target as HTMLInputElement).value),
+                )
+              "
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Account Section -->
       <section class="settings-page__section">
         <div class="settings-page__section-header">
           <h2 class="settings-page__section-title">{{ t('settings.account.title') }}</h2>
@@ -335,6 +381,41 @@ function openSource(): void {
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
+  }
+
+  &__input-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(2, minmax(0, 260px));
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  &__label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__number-input {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-bold);
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    box-sizing: border-box;
+
+    @include focus-ring;
   }
 
   &__toggle-btn {

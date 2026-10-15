@@ -104,8 +104,9 @@ export async function buildStages(): Promise<StagesBuildResult> {
   const outputStages: Record<string, Stage> = {}
 
   for (const [stageId, { item: pStage, inUS, inCN }] of allPenguin.entries()) {
-    const cnStage = cnTable.stages[stageId]
-    const enStage = enTable.stages[stageId]
+    const baseStageId = stageId.replace(/_(rep|perm)$/, '')
+    const cnStage = cnTable.stages[stageId] ?? cnTable.stages[baseStageId]
+    const enStage = enTable.stages[stageId] ?? enTable.stages[baseStageId]
 
     const servers: ServerRegion[] = []
     if (inCN || pStage.existence?.CN?.exist) servers.push('cn')

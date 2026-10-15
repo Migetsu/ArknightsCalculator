@@ -60,7 +60,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     nameKey: 'navigation.farming',
     descriptionKey: 'navigation.farmingDesc',
     navKey: 'nav.farming',
-    status: 'soon',
+    status: 'ready',
   },
   {
     id: 'recruit',

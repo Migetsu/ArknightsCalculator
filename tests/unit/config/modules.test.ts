@@ -74,7 +74,7 @@ describe('modules registry', () => {
     expect(farming).toBeDefined()
     expect(farming?.code).toBe('FRM-07')
     expect(farming?.route).toBe('/farming')
-    expect(farming?.status).toBe('soon')
+    expect(farming?.status).toBe('ready')
   })
 
   it('finds module by id via getModuleById', () => {

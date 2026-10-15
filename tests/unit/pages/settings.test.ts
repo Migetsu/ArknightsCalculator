@@ -8,7 +8,7 @@ describe('SettingsPage', () => {
     expect(wrapper.find('.settings-page__title').text()).toBe('Settings')
 
     const sections = wrapper.findAll('.settings-page__section')
-    expect(sections.length).toBe(6) // Language, Server, Account, Your data, Game data, About
+    expect(sections.length).toBe(7) // Language, Server, Farming Sanity, Account, Your data, Game data, About
   })
 
   it('renders language toggle buttons', async () => {
