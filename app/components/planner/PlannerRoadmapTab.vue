@@ -23,6 +23,7 @@ import AkBadge from '~/components/ui/AkBadge.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkModal from '~/components/ui/AkModal.vue'
+import AkModuleType from '~/components/ui/AkModuleType.vue'
 
 interface Props {
   planId?: string
@@ -287,7 +288,14 @@ function as123(n?: number): 1 | 2 | 3 {
           <!-- Step Details -->
           <div class="planner-roadmap__step-body">
             <div class="planner-roadmap__step-head">
-              <h3 class="planner-roadmap__step-title">{{ step.title }}</h3>
+              <h3 class="planner-roadmap__step-title">
+                {{ step.title }}
+                <AkModuleType
+                  v-if="step.kind === 'module_stage' && step.moduleId"
+                  :type="getModuleType(step.moduleId)"
+                  size="xs"
+                />
+              </h3>
               <div class="planner-roadmap__step-badges">
                 <AkBadge v-if="step.isNextStep" variant="amber" size="sm">
                   {{ t('planner.roadmapNextStep') }}

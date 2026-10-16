@@ -114,9 +114,38 @@ The core calculation function [`calculateCost`](file:///c:/Projects/ArknightsCal
 |                            |  M2   | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl | **Совпадает** |
 |                            |  M3   | 15× Skill Summary - 3, 6× Bipolar Nanoflake, 5× Sugar Lump             | 15× Skill Summary - 3, 6× Bipolar Nanoflake, 5× Sugar Lump             | **Совпадает** |
 
+##### Raw `levelUpCostCond` Snippet (`character_table.json` / `char_172_svrash.json`)
+
+Path: `skills[2].levelUpCostCond[0].levelUpCost` / `data/operators/char_172_svrash.json` -> `skills[2].masteryCosts[0]`
+
+```json
+{
+  "unlockCond": {
+    "phase": 2,
+    "level": 1
+  },
+  "lvlUpTime": 28800,
+  "levelUpCost": [
+    {
+      "id": "3303",
+      "count": 6
+    },
+    {
+      "id": "30064",
+      "count": 3
+    },
+    {
+      "id": "30043",
+      "count": 4
+    }
+  ]
+}
+```
+
 > [!IMPORTANT]
-> **Разбор вопроса по SilverAsh S3 M1:**
-> В SilverAsh S3 M1 материал D32 Steel **не используется вовсе** (расход: 6× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster). D32 Steel у SilverAsh требуется на **Elite 2** (4 шт.), **S1 M3** (6 шт.) и **S2 M3** (6 шт.), а на S3 M3 расходуется **Bipolar Nanoflake** (6 шт.). Число «8», встречавшееся в ранних шаблонах Terra Wiki, относилось к количеству Skill Summary - 3 у операторов более поздних волн (как у Kal'tsit), тогда как у релизных 6★ (SilverAsh, Exusiai, Eyjafjalla) M1 стоит ровно **6** книг. Расчёт калькулятора полностью идентичен raw-данным и обоим вики-источникам.
+> **Разбор вопроса по SilverAsh S3 M1 (6 vs 8 Skill Summary - 3):**
+> Релизные 6★ операторы 2019 года (SilverAsh, Exusiai, Eyjafjalla, Hoshiguma, Siege, Shining, Angelina) имеют стоимость M1 ровно **6** книг `Skill Summary - 3` (`3303`) во всех трёх навыках. Операторы более поздних волн (начиная со 2-й волны и Kal'tsit) требуют **8** книг.
+> В англоязычной вики `arknights.wiki.gg` шаблон `{{Skill upgrade cell}}` исторически захардкодил параметр `summary=8`, тогда как официальный клиент Hypergryph (`character_table.json`) и авторитетная китайская база [PRTS Wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) содержат точное значение: `技巧概要·卷3 × 6`.
 
 #### 4.2.2. Kal'tsit (`char_003_kalts`)
 
@@ -124,7 +153,7 @@ The core calculation function [`calculateCost`](file:///c:/Projects/ArknightsCal
 
 | Skill                                      | Level | Cost in Game Data (`character_table.json`)                                        | PRTS / Terra Wiki                                                                 | Status        |
 | :----------------------------------------- | :---: | :-------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- | :------------ |
-| **S1 (Command: Structural Consolidation)** |  M1   | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | **Совпадает** |
+| **S1 (Command: Structural Fortification)** |  M1   | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | **Совпадает** |
 |                                            |  M2   | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl            | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl            | **Совпадает** |
 |                                            |  M3   | 15× Skill Summary - 3, 6× Polymerization Preparation, 5× Oriron Block             | 15× Skill Summary - 3, 6× Polymerization Preparation, 5× Oriron Block             | **Совпадает** |
 | **S2 (Command: Tactical Coordination)**    |  M1   | 8× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster                      | 8× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster                      | **Совпадает** |
@@ -133,6 +162,63 @@ The core calculation function [`calculateCost`](file:///c:/Projects/ArknightsCal
 | **S3 (Command: Meltdown)**                 |  M1   | 8× Skill Summary - 3, 4× White Horse Kohl, 8× Aketon                              | 8× Skill Summary - 3, 4× White Horse Kohl, 8× Aketon                              | **Совпадает** |
 |                                            |  M2   | 12× Skill Summary - 3, 4× Crystalline Circuit, 8× Polymerized Gel                 | 12× Skill Summary - 3, 4× Crystalline Circuit, 8× Polymerized Gel                 | **Совпадает** |
 |                                            |  M3   | 15× Skill Summary - 3, 6× Crystalline Electronic Unit, 4× Grindstone Pentahydrate | 15× Skill Summary - 3, 6× Crystalline Electronic Unit, 4× Grindstone Pentahydrate | **Совпадает** |
+
+##### Raw `levelUpCostCond` Snippet for Kal'tsit S3 M1 (`char_003_kalts.json`)
+
+```json
+{
+  "unlockCond": {
+    "phase": 2,
+    "level": 1
+  },
+  "levelUpCost": [
+    {
+      "id": "3303",
+      "count": 8
+    },
+    {
+      "id": "30074",
+      "count": 4
+    },
+    {
+      "id": "30053",
+      "count": 8
+    }
+  ]
+}
+```
+
+#### 4.2.3. Tactical Modules: Kal'tsit & Fiammetta Stage Costs
+
+##### Kal'tsit (`char_003_kalts`)
+
+- **Module X (`uniequip_002_kalts`) — "Mon2tr"**:
+  - Stage 1: 80,000 LMD | 4× Module Data Block, 2× D32 Steel (`30135`)
+  - Stage 2: 100,000 LMD | 4× Module Data Block, 60× Data Supplement Stick, 3× Crystalline Electronic Unit (`30145`)
+  - Stage 3: 120,000 LMD | 4× Module Data Block, 20× Data Supplement Instrument, 4× Polymerization Preparation (`30115`)
+  - **Total Module X**: 300,000 LMD, 12× Module Data Block.
+- **Module Y (`uniequip_003_kalts`) — "Panacea"**:
+  - Stage 1: 80,000 LMD | 4× Module Data Block, 2× Crystalline Electronic Unit (`30145`)
+  - Stage 2: 100,000 LMD | 4× Module Data Block, 60× Data Supplement Stick, 3× Polymerization Preparation (`30115`)
+  - Stage 3: 120,000 LMD | 4× Module Data Block, 20× Data Supplement Instrument, 4× Bipolar Nanoflake (`30125`)
+  - **Total Module Y**: 300,000 LMD, 12× Module Data Block.
+- **Module A (`uniequip_004_kalts`) — "Kal'tsit's Specialized Badge"**:
+  - Stage 1-3: 0 LMD, 1× Module Data Block each (IS game mode badge, excluded from tactical planner).
+
+##### Fiammetta (`char_300_phenxi`)
+
+- **Module Y (`uniequip_002_phenxi`) — "'Out-Law' Special Ammunition Surplus"**:
+  - Stage 1: 80,000 LMD | 4× Module Data Block, 2× Bipolar Nanoflake (`30125`)
+  - Stage 2: 100,000 LMD | 4× Module Data Block, 60× Data Supplement Stick, 3× Crystalline Electronic Unit (`30145`)
+  - Stage 3: 120,000 LMD | 4× Module Data Block, 20× Data Supplement Instrument, 4× Polymerization Preparation (`30115`)
+  - **Total Module Y**: 300,000 LMD, 12× Module Data Block.
+- **Module X (`uniequip_003_phenxi`) — "A Long Journey"**:
+  - Stage 1: 80,000 LMD | 4× Module Data Block, 2× Crystalline Electronic Unit (`30145`)
+  - Stage 2: 100,000 LMD | 4× Module Data Block, 60× Data Supplement Stick, 3× Bipolar Nanoflake (`30125`)
+  - Stage 3: 120,000 LMD | 4× Module Data Block, 20× Data Supplement Instrument, 4× D32 Steel (`30135`)
+  - **Total Module X**: 300,000 LMD, 12× Module Data Block.
+- **Module A (`uniequip_004_phenxi`) — "Fiammetta's Specialized Badge"**:
+  - Stage 1-3: 0 LMD, 1× Module Data Block each (IS game mode badge, excluded from tactical planner).
 
 ---
 

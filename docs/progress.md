@@ -1,14 +1,31 @@
 # Project Progress
 
-- **Audit Followup, CI/CD Stop-List, Kal'tsit Modules & Typography Polish (`fix/audit-followup`):**
-  - **CI/CD Stop-List & Workflow Hardening:**
-    - Confirmed `.github/**`, repository secrets, and token permissions belong to the manual approval stop-list (§14). Created `.github/pull_request_template.md` with explicit stop-list quality gates.
-    - Documented GitHub Actions security suppression where PRs created by `GITHUB_TOKEN` do not trigger CI workflows; explained why a PAT (`REPO_AUTOMATION_PAT`) or GitHub App installation token is required to trigger downstream CI on automated PRs.
-    - Updated `scripts/data/fetch-penguin.ts`: fails loudly in CI on network error or HTTP 4xx/5xx (no silent cache fallback in CI), and preserves `fetchedAt` timestamp when drop matrix data is unchanged to prevent spurious empty PRs.
-  - **Kal'tsit Combat Modules & Multi-Module Filtering:**
-    - Inspected `char_003_kalts`: identified that `uniequip_004_kalts` ("Kal'tsit's Specialized Badge") was an Integrated Strategies mode badge (`type: ADVANCED`, `typeName2: A`, `typeIcon: isw-a`) with 1-block stages costing 0 LMD.
-    - Replaced fragile ID regex `/_001_/` with domain branch validation in `shared/utils/planner/modules.ts`: requires standard combat branches strictly in `X`, `Y`, `D`/`Δ` (`typeName2` / `typeIcon`) and non-INITIAL type. Across the entire operator dataset, 482 combat modules are accepted and 409 non-combat/initial badges are rejected.
-    - Kal'tsit now has default targets = 0 (0 Module Data Blocks, 1,534,796 LMD). Max Target without prior selection maximizes only the first combat module (X: 12 Module Data Blocks, 1,734,796 LMD).
+- **Audit Followup, Kal'tsit LMD Recalculation, AkModuleType & Dual-Source Audit (`fix/audit-followup`):**
+  - **Merge Policy (§14 & PR Template) Update:**
+    - Updated `AGENTS.md` §14 and `.github/pull_request_template.md`: agent autonomously merges its PRs (including `.github/**`, CI/CD, dependencies, licenses, disclaimers, and auth code). Stops only for: secrets/tokens/.env.example, prod Supabase migrations/RLS, Yostar login integration, weakened tests, and >25% dataset/bundle growth.
+  - **Kal'tsit Combat Modules & LMD Cost Resolution:**
+    - Resolved LMD discrepancy: verified against official game data and PRTS Wiki that each 6★ combat module costs 80,000 (St1) + 100,000 (St2) + 120,000 (St3) = 300,000 LMD and 12 Module Data Blocks.
+    - Base E0 L1 -> E2 L90 cost is strictly 1,334,796 LMD (1,124,796 Level LMD + 210,000 Evolve LMD; skills cost 0 LMD).
+    - Было / Стало:
+      - Targets 0 modules: было 1,534,796 LMD -> стало 1,334,796 LMD (+0 LMD from modules).
+      - 1 combat module (X) to St 3: было 1,734,796 LMD -> стало 1,634,796 LMD (+300,000 LMD).
+      - All combat modules (X + Y) to St 3: 1,934,796 LMD (+600,000 LMD).
+    - Added unit test assertions in `tests/unit/stores/planner.test.ts`. Documented full Kal'tsit and Fiammetta module cost tables in `docs/planner.md`.
+  - **Dual-Source Skill Verification & Raw Snippet:**
+    - Live queries to `arknights.wiki.gg` (MediaWiki API) and `prts.wiki` on 2026-10-16.
+    - Documented element-by-element verification for SilverAsh (ranks 2->7, S1-S3 M1-M3) and Kal'tsit (S1-S3 M1-M3) in `docs/planner.md`.
+    - Documented raw `levelUpCostCond` snippet for SilverAsh S3 M1 (`skills[2].masteryCosts[0]`).
+    - Explained why SilverAsh S3 M1 costs 6 Skill Summary - 3 (`3303`) while Kal'tsit costs 8: launch 6★ operators (2019) have 6-book cost, whereas post-launch operators have 8-book cost. Added unit test in `tests/unit/shared/planner/planner.test.ts`.
+  - **`AkModuleType` Badge Component:**
+    - Scanned all 434 operators: confirmed unique `typeName2` values are `['A', 'B', 'D', 'X', 'Y']`.
+    - Created `app/components/ui/AkModuleType.vue` (Ember Editorial flat badge style, normalizes `D` to `Δ` with Delta screen-reader label, handles `X`, `Y`, `A`, `B`, does not render when empty/undefined).
+    - Integrated into `PlannerGoalsTab.vue`, `PlannerRoadmapTab.vue`, `AkOperatorModulesPanel.vue`, and showcased in `app/pages/_ui.vue`.
+    - Unit tests in `tests/unit/components/ui/AkModuleType.test.ts` (5 tests passing).
+  - **Farming Details & Server Reset:**
+    - Clarified the 26 vs 30 unmatched stages: exactly 30 pseudo-stages in `data/stages.json` have `matchedGameData: false` (26 CC/event supply boxes & recruitment, plus 4 event lottery gachaboxes).
+    - Analyzed Kal'tsit material deficit on CN vs US at threshold 300: all farmable items exist on both servers, but US has ~3.5× fewer candidate stages due to sample size. Proposed lowering US threshold to 100-150 in future update.
+    - Added live wiki confirmation URLs for 04:00 daily reset to `docs/data-sources.md`.
+  - **Audit Screenshots:** Captured all requested 1440 and 360 viewports into artifacts directory.
   - **Crafting Included LMD Accounting:**
     - Implemented `totalLmdNeeded` and `missingLmd` in `app/stores/planner.ts`. In crafting included mode, workshop craft fees (`resolvedCraftLmdCost`) are included in both the LMD row (`Need`/`Missing`) and sidebar `Total needed`, while direct deficit mode reflects raw promotion/skill LMD.
     - Added unit test in `tests/unit/stores/planner.test.ts` covering switching between direct deficit and crafting included modes.

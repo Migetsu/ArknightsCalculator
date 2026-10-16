@@ -17,6 +17,11 @@ import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 import AkChip from '~/components/ui/AkChip.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
+import AkModuleType from '~/components/ui/AkModuleType.vue'
+import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
+import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
+import AkItemIcon from '~/components/ui/AkItemIcon.vue'
+import AkRichText from '~/components/ui/AkRichText.vue'
 
 const { t } = useI18n()
 
@@ -405,6 +410,22 @@ const stepperLmd = ref(150000)
               :size="48"
             />
             <AkModuleIcon name="Advanced Tactical Unit" type-code="D" :size="48" />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label"
+            >AkModuleType (Ember Editorial Flat Badge: X, Y, Δ, A, B)</span
+          >
+          <div class="page-ui__row">
+            <AkModuleType type="X" size="sm" />
+            <AkModuleType type="Y" size="sm" />
+            <AkModuleType type="D" size="sm" />
+            <AkModuleType type="Δ" size="sm" />
+            <AkModuleType type="A" size="sm" />
+            <AkModuleType type="B" size="sm" />
+            <AkModuleType type="X" size="md" />
+            <AkModuleType type="Y" size="xs" />
           </div>
         </div>
       </AkPanel>
