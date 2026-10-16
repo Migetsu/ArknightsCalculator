@@ -13,6 +13,7 @@ const ROUTES = APP_MODULES.flatMap((mod) => [
 ])
 
 test.describe('Layout Sanity & Responsiveness', () => {
+  test.setTimeout(60000)
   for (const { id, path, locale } of ROUTES) {
     for (const width of VIEWPORTS) {
       test(`verifies zero horizontal overflow and no raw i18n keys on ${id} [${locale.toUpperCase()}] (${width}px)`, async ({

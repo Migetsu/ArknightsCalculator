@@ -7,6 +7,7 @@ import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
+import AkModuleType from '~/components/ui/AkModuleType.vue'
 
 interface Props {
   modules: OperatorModule[]
@@ -53,6 +54,7 @@ function getStageCost(m: OperatorModule, stageNum: number) {
       <div class="ak-operator-modules-panel__header">
         <AkModuleIcon
           :module-id="mod.id"
+          :type-code="mod.typeName2"
           :type-name="mod.type"
           :name="getModuleName(mod)"
           size="lg"
@@ -62,6 +64,7 @@ function getStageCost(m: OperatorModule, stageNum: number) {
           <div class="ak-operator-modules-panel__title-row">
             <h4 class="ak-operator-modules-panel__title">
               {{ getModuleName(mod) }}
+              <AkModuleType :type="mod.typeName2" size="xs" />
               <AkTranslationBadge
                 v-if="mod.name?.source === 'machine' || mod.name?.stale"
                 :source="mod.name?.source"

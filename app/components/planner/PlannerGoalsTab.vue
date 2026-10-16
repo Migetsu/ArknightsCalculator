@@ -12,6 +12,7 @@ import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 import AkButton from '~/components/ui/AkButton.vue'
+import AkModuleType from '~/components/ui/AkModuleType.vue'
 
 interface Props {
   planId: string
@@ -456,6 +457,7 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
             <div class="planner-goals__skill-info">
               <span class="planner-goals__skill-name">
                 {{ resolveI18nString(mod.name, locale as ContentLocale) }}
+                <AkModuleType :type="mod.typeName2" size="xs" />
               </span>
               <span class="planner-goals__skill-sub">
                 Stage {{ plan.current.modules[mod.id] ?? 0 }} → Stage

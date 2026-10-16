@@ -405,4 +405,42 @@ describe('Planner Core (shared/utils/planner)', () => {
       expect(plan550.wasteExp).toBe(50)
     })
   })
+
+  describe('Skill Mastery Dual-Source Audit: SilverAsh vs Kaltsit M1', () => {
+    const kaltsit = loadOperator('char_003_kalts')
+
+    it('verifies SilverAsh M1 requires 6 Skill Summary - 3 (launch 6*) while Kaltsit requires 8 (post-launch 6*)', () => {
+      // SilverAsh S1, S2, S3 M1
+      for (const skill of silverAsh.skills) {
+        const m1 = skill.masteryCosts[0]
+        expect(m1).toBeDefined()
+        const books = m1?.levelUpCost.find((c) => c.id === '3303')
+        expect(books?.count).toBe(6) // 6 Skill Summary - 3
+      }
+
+      // Kaltsit S1, S2, S3 M1
+      for (const skill of kaltsit.skills) {
+        const m1 = skill.masteryCosts[0]
+        expect(m1).toBeDefined()
+        const books = m1?.levelUpCost.find((c) => c.id === '3303')
+        expect(books?.count).toBe(8) // 8 Skill Summary - 3
+      }
+
+      // SilverAsh S3 M1 items check
+      const s3m1 = silverAsh.skills[2]?.masteryCosts[0]?.levelUpCost ?? []
+      expect(s3m1).toEqual([
+        { id: '3303', count: 6 }, // Skill Summary - 3
+        { id: '30064', count: 3 }, // Optimized Device
+        { id: '30043', count: 4 }, // Oriron Cluster
+      ])
+
+      // Kaltsit S3 M1 items check
+      const kS3m1 = kaltsit.skills[2]?.masteryCosts[0]?.levelUpCost ?? []
+      expect(kS3m1).toEqual([
+        { id: '3303', count: 8 }, // Skill Summary - 3
+        { id: '30074', count: 4 }, // White Horse Kohl
+        { id: '30053', count: 8 }, // Aketon
+      ])
+    })
+  })
 })

@@ -397,11 +397,12 @@ describe('usePlannerStore', () => {
     expect(plan.target.modules['uniequip_002_kalts']).toBe(0)
     expect(plan.target.modules['uniequip_003_kalts']).toBe(0)
 
-    // With targets at 0, no module data blocks required
+    // With targets at 0, no module data blocks required and LMD is strictly base E0L1->E2L90 (1,334,796)
     const initialDemand = store.aggregatedDemand
     const initialModBlocks =
       initialDemand.items.find((i) => i.id === 'mod_unlock_token')?.count ?? 0
     expect(initialModBlocks).toBe(0)
+    expect(initialDemand.lmd).toBe(1334796)
 
     // Max Target without prior selection: sets ONLY the first combat module (X) to 3, keeping Y at 0
     await store.setPlanTargetMax(plan.id)
@@ -409,10 +410,26 @@ describe('usePlannerStore', () => {
     expect(updatedPlan?.target.modules['uniequip_002_kalts']).toBe(3)
     expect(updatedPlan?.target.modules['uniequip_003_kalts']).toBe(0)
 
-    // Only 1 combat module (X, 6-star) at stage 3 requires 12 Module Data Blocks (4 + 4 + 4), not 27
+    // 1 combat module (X, 6-star) at stage 3 requires 12 Module Data Blocks (4 + 4 + 4) and +300,000 LMD (80k+100k+120k)
     const maxDemand = store.aggregatedDemand
     const maxModBlocks = maxDemand.items.find((i) => i.id === 'mod_unlock_token')?.count ?? 0
     expect(maxModBlocks).toBe(12)
+    expect(maxDemand.lmd).toBe(1634796)
+
+    // Setting all combat modules (X and Y) to stage 3: 24 Module Data Blocks and +600,000 LMD -> 1,934,796 LMD
+    await store.updatePlan(plan.id, {
+      target: {
+        ...updatedPlan!.target,
+        modules: {
+          uniequip_002_kalts: 3,
+          uniequip_003_kalts: 3,
+        },
+      },
+    })
+    const bothModsDemand = store.aggregatedDemand
+    const bothModsBlocks = bothModsDemand.items.find((i) => i.id === 'mod_unlock_token')?.count ?? 0
+    expect(bothModsBlocks).toBe(24)
+    expect(bothModsDemand.lmd).toBe(1934796)
   })
 
   it('includes workshop crafting costs in totalLmdNeeded and missingLmd when crafting is enabled', async () => {

@@ -29,10 +29,10 @@ This document details external data sources, licensing terms, attribution guidel
 
 In Arknights, the in-game day rolls over daily at **04:00:00 local server time**.
 
-| Server Region   | Operator / Publisher | Timezone                         | UTC Equivalent of 04:00 Reset     | Verification Source & Date                                                                                                                          |
-| :-------------- | :------------------- | :------------------------------- | :-------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CN (China)**  | Hypergryph           | UTC+8 (Beijing/Shanghai)         | 20:00 UTC (previous calendar day) | [Game Data zone_table.json](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/zone_table.json) (2026-10-15) |
-| **Global / EN** | Yostar               | UTC-7 (Standard Pacific, no DST) | 11:00 UTC (same calendar day)     | [Official Yostar Maintenance & Reset Notices](https://arknights.global/) (2026-10-15)                                                               |
+| Server Region   | Operator / Publisher | Timezone                         | UTC Equivalent of 04:00 Reset     | Verification Source & Date                                                                                                                                                                                               |
+| :-------------- | :------------------- | :------------------------------- | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CN (China)**  | Hypergryph           | UTC+8 (Beijing/Shanghai)         | 20:00 UTC (previous calendar day) | [PRTS Daily Reset](https://prts.wiki/w/%E6%97%A5%E5%B8%B8%E4%BB%BB%E5%8A%A1) & [zone_table.json](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/zone_table.json) (2026-10-16) |
+| **Global / EN** | Yostar               | UTC-7 (Standard Pacific, no DST) | 11:00 UTC (same calendar day)     | [Terra Wiki Missions](https://arknights.wiki.gg/wiki/Missions) & [Yostar Reset Notices](https://arknights.global/) (2026-10-16)                                                                                          |
 
 ### Boundary Behavior:
 
