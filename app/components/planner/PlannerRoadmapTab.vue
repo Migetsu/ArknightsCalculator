@@ -23,7 +23,6 @@ import AkBadge from '~/components/ui/AkBadge.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkModal from '~/components/ui/AkModal.vue'
-import AkOperatorName from '~/components/ui/AkOperatorName.vue'
 
 interface Props {
   planId?: string
@@ -207,9 +206,7 @@ function as123(n?: number): 1 | 2 | 3 {
           />
           <div class="planner-roadmap__hero-info">
             <h2 class="planner-roadmap__operator-name">
-              <AkOperatorName
-                :name="resolveI18nString(activeDetail.name, locale as ContentLocale)"
-              />
+              {{ resolveI18nString(activeDetail.name, locale as ContentLocale) }}
             </h2>
             <p class="planner-roadmap__progress-text">
               {{

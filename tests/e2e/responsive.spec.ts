@@ -97,7 +97,7 @@ test.describe('Rhodes Island Terminal Design V2 Responsive & States', () => {
 
       await page.setViewportSize({ width: vp.width, height: vp.height })
       await page.goto('/_ui')
-      await page.waitForLoadState('networkidle')
+      await page.waitForLoadState('domcontentloaded')
 
       await expect(page.locator('.page-ui__title')).toBeVisible()
       await expect(page.locator('.ak-button--primary').first()).toBeVisible()

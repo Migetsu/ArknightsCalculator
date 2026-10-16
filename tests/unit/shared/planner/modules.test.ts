@@ -35,8 +35,8 @@ describe('planner modules filter', () => {
     },
     {
       id: 'uniequip_004_phenxi',
-      typeName2: 'ISW-α',
-      name: { en: 'Catastrophe Relief', zh: '天灾救援' },
+      typeName2: 'A',
+      name: { en: "Fiammetta's Specialized Badge", zh: '菲亚梅塔特限证章' },
       type: 'ADVANCED',
       stages: [
         { stage: 1, parts: [] },
@@ -46,27 +46,63 @@ describe('planner modules filter', () => {
     },
   ]
 
-  it('rejects initial and mission badges with _001_ or type INITIAL', () => {
+  it('rejects initial and mission badges with type INITIAL', () => {
     expect(isPlannerModule(fiammettaModules[0]!)).toBe(false)
-    expect(isPlannerModule({ id: 'uniequip_001_svrash', typeName2: 'ORIGINAL' })).toBe(false)
     expect(
-      isPlannerModule({ id: 'uniequip_002_svrash', typeName2: 'SWD-X', type: 'INITIAL' }),
+      isPlannerModule({
+        id: 'uniequip_001_svrash',
+        typeName2: '',
+        type: 'INITIAL',
+      } as OperatorModule),
+    ).toBe(false)
+    expect(
+      isPlannerModule({
+        id: 'uniequip_002_svrash',
+        typeName2: 'X',
+        type: 'INITIAL',
+      } as OperatorModule),
     ).toBe(false)
   })
 
-  it('accepts combat modules and special equipment with stages', () => {
-    expect(isPlannerModule(fiammettaModules[1]!)).toBe(true)
-    expect(isPlannerModule(fiammettaModules[2]!)).toBe(true)
-    expect(isPlannerModule(fiammettaModules[3]!)).toBe(true)
+  it('rejects specialized IS badges (typeName2 A / B or ISW)', () => {
+    expect(isPlannerModule(fiammettaModules[3]!)).toBe(false)
+    expect(
+      isPlannerModule({
+        id: 'uniequip_004_kalts',
+        typeName2: 'A',
+        name: { en: "Kal'tsit's Specialized Badge", zh: '凯尔希特限证章' },
+        type: 'ADVANCED',
+        stages: [{ stage: 1, parts: [] }],
+      } as OperatorModule),
+    ).toBe(false)
   })
 
-  it('filters 4-module operator to only 3 planner modules', () => {
+  it('accepts only standard combat modules X, Y, D', () => {
+    expect(isPlannerModule(fiammettaModules[1]!)).toBe(true)
+    expect(isPlannerModule(fiammettaModules[2]!)).toBe(true)
+    expect(
+      isPlannerModule({
+        id: 'uniequip_002_kalts',
+        typeName2: 'X',
+        name: { en: 'Mon2tr', zh: 'Mon2tr' },
+        type: 'ADVANCED',
+        stages: [{ stage: 1, parts: [] }],
+      } as OperatorModule),
+    ).toBe(true)
+  })
+
+  it('filters 4-module operator (Fiammetta) to only 2 combat modules (X and Y)', () => {
     const filtered = getPlannerModules(fiammettaModules)
-    expect(filtered).toHaveLength(3)
-    expect(filtered.map((m) => m.id)).toEqual([
-      'uniequip_002_phenxi',
-      'uniequip_003_phenxi',
-      'uniequip_004_phenxi',
-    ])
+    expect(filtered).toHaveLength(2)
+    expect(filtered.map((m) => m.id)).toEqual(['uniequip_002_phenxi', 'uniequip_003_phenxi'])
+  })
+
+  it('filters Kaltsit real operator modules to exactly 2 combat modules (Mon2tr & Panacea)', async () => {
+    const kaltsitData = (await import('../../../../data/operators/char_003_kalts.json'))
+      .default as { modules: OperatorModule[] }
+    expect(kaltsitData.modules).toHaveLength(4)
+    const filtered = getPlannerModules(kaltsitData.modules)
+    expect(filtered).toHaveLength(2)
+    expect(filtered.map((m) => m.id)).toEqual(['uniequip_002_kalts', 'uniequip_003_kalts'])
   })
 })

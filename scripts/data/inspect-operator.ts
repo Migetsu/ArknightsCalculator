@@ -72,11 +72,23 @@ async function inspectOperator(query: string): Promise<void> {
 
   // Modules
   operator.modules.forEach((mod, idx) => {
+    const costSummary = mod.stages
+      ? mod.stages
+          .map(
+            (s) =>
+              `Stage ${s.stage}: ` +
+              (s.cost && s.cost.length > 0
+                ? s.cost.map((c) => `${c.count}× ${c.id}`).join(', ')
+                : 'Free'),
+          )
+          .join(' | ')
+      : 'No stages'
+    const typeLabel = mod.typeName2 ? `${mod.type} (${mod.typeName2})` : mod.type
     rows.push({
-      category: 'Module',
+      category: `Module [${typeLabel}]`,
       keyId: mod.id,
       index: String(idx + 1),
-      enText: mod.name.en,
+      enText: `${mod.name.en} — ${costSummary}`,
       source: mod.name.source,
     })
   })
