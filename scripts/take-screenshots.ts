@@ -379,9 +379,14 @@ async function main(): Promise<void> {
     await page.goto(`${BASE_URL}/recruit`, { waitUntil: 'domcontentloaded' })
     await saveShot(page, '10-recruit-1440.png')
 
-    // 11. Gacha (1440x900)
+    // 11. Gacha (1440x900 & 360x800)
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
+    await waitForPageReady(page)
     await saveShot(page, '11-gacha-1440.png')
+
+    await page.setViewportSize({ width: 360, height: 800 })
+    await saveShot(page, '11-gacha-360.png')
 
     // 12. Settings (1440x900)
     await page.goto(`${BASE_URL}/settings`, { waitUntil: 'domcontentloaded' })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { resolveAsset } from '~/../shared/utils/resolveAsset'
+import { resolveAsset, ITEM_ICON_DEFAULT_MAP } from '~/../shared/utils/resolveAsset'
 
 export type AkItemIconSize = 36 | 40 | 48 | 56 | 64 | 'sm' | 'md' | 'lg'
 
@@ -41,8 +41,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const candidateUrls = computed(() => {
   if (!props.itemId && !props.iconId) return []
+  const resolvedIconId =
+    props.iconId || (props.itemId ? ITEM_ICON_DEFAULT_MAP[props.itemId] : undefined)
   const targetId = props.itemId || props.iconId || ''
-  return resolveAsset('item', targetId, { iconId: props.iconId })
+  return resolveAsset('item', targetId, { iconId: resolvedIconId })
 })
 
 const currentCandidateIndex = ref(0)

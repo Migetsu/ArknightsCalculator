@@ -133,6 +133,31 @@ const AVATAR_DEFAULT_OVERRIDE_MAP: Record<string, string> = {
 }
 
 /**
+ * Known default icon ID mappings for items whose icon asset name differs from their item ID.
+ * e.g. 4001 -> GOLD (LMD), 4002 -> DIAMOND (Originite Prime), 4003 -> DIAMOND_SHD (Orundum).
+ */
+export const ITEM_ICON_DEFAULT_MAP: Record<string, string> = {
+  '4001': 'GOLD',
+  '4002': 'DIAMOND',
+  '4003': 'DIAMOND_SHD',
+  '4004': 'HGG_SHD',
+  '4005': 'LGG_SHD',
+  '4006': 'EXGG_SHD',
+  '3003': 'MTL_GOLD3',
+  '3141': 'MTL_DIAMOND_SHD',
+  '2001': 'sprite_exp_card_t1',
+  '2002': 'sprite_exp_card_t2',
+  '2003': 'sprite_exp_card_t3',
+  '2004': 'sprite_exp_card_t4',
+  '3301': 'MTL_SKILL1',
+  '3302': 'MTL_SKILL2',
+  '3303': 'MTL_SKILL3',
+  '7001': 'TKT_RECRUIT',
+  '7003': 'TKT_GACHA',
+  '7004': 'TKT_GACHA_10',
+}
+
+/**
  * Known portrait default variant overrides.
  * Class changes (Amiya Guard, Amiya Medic) only exist in Elite 2 form, so their base portrait is _2.
  */
@@ -300,24 +325,41 @@ export function resolveAsset(
     return candidates
   }
 
-  // 4. Item kind handling (prefers iconId if provided, then cleanId)
+  // 4. Item kind handling (prefers iconId if provided, then default icon map, then cleanId)
   if (kind === 'item') {
-    const primaryTarget = options?.iconId?.trim() || cleanId
+    const defaultIcon = ITEM_ICON_DEFAULT_MAP[cleanId]
+    const primaryTarget = options?.iconId?.trim() || defaultIcon || cleanId
     const primaryFilename = `${primaryTarget}.${ext}`
     const candidates = [
       `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
       `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      `${PRIMARY_EQUIP_CDN_BASE}/items/${primaryFilename}`,
+      `${SECONDARY_EQUIP_CDN_BASE}/items/${primaryFilename}`,
     ]
 
-    if (options?.iconId && options.iconId.trim() !== cleanId) {
-      const fallbackFilename = `${cleanId}.${ext}`
+    // Fallbacks if default mapping or cleanId is different
+    const fallbackTargets = new Set<string>()
+    if (defaultIcon && defaultIcon !== primaryTarget) {
+      fallbackTargets.add(defaultIcon)
+    }
+    if (cleanId !== primaryTarget) {
+      fallbackTargets.add(cleanId)
+    }
+    if (options?.iconId && options.iconId.trim() !== primaryTarget) {
+      fallbackTargets.add(options.iconId.trim())
+    }
+
+    for (const fb of fallbackTargets) {
+      const fbFilename = `${fb}.${ext}`
       candidates.push(
-        `${PRIMARY_CDN_BASE}/${dir}/${fallbackFilename}`,
-        `${SECONDARY_CDN_BASE}/${dir}/${fallbackFilename}`,
+        `${PRIMARY_CDN_BASE}/${dir}/${fbFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${fbFilename}`,
+        `${PRIMARY_EQUIP_CDN_BASE}/items/${fbFilename}`,
+        `${SECONDARY_EQUIP_CDN_BASE}/items/${fbFilename}`,
       )
     }
 
-    return candidates
+    return Array.from(new Set(candidates))
   }
 
   // 5. Equip kind handling (module icons via Aceship/Arknight-Images)
