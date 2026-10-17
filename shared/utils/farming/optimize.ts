@@ -26,6 +26,135 @@ const DEFAULT_MAX_SANITY = 135
 const DEFAULT_REGEN_MINUTES = 6
 const EPS = 1e-7
 
+/**
+ * EXP card equivalence relative to Drill Battle Record ('2001' = 200 EXP):
+ * - 2001 (Drill Battle Record): 200 EXP = 1x '2001'
+ * - 2002 (Frontline Battle Record): 400 EXP = 2x '2001'
+ * - 2003 (Tactical Battle Record): 1000 EXP = 5x '2001'
+ * - 2004 (Strategic Battle Record): 2000 EXP = 10x '2001'
+ */
+export const EXP_CARD_BASE_ID = '2001'
+export const EXP_CARD_EQUIV_TO_2001: Readonly<Record<string, number>> = {
+  '2001': 1,
+  '2002': 2,
+  '2003': 5,
+  '2004': 10,
+}
+
+/**
+ * Guaranteed deterministic 3-star outputs for Cargo Escort (CE-1..CE-6, LMD '4001')
+ * and Tactical Drill (LS-1..LS-6, Battle Records '2001'–'2004'), verified against
+ * stage_table.json and arknights.wiki.gg/wiki/Operation/Supply.
+ */
+export const GUARANTEED_SUPPLY_STAGES: readonly PenguinStageMatrix[] = [
+  {
+    stageId: 'wk_melee_1',
+    code: 'CE-1',
+    apCost: 10,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 1700, times: 1, dropRate: 1700 }],
+  },
+  {
+    stageId: 'wk_melee_2',
+    code: 'CE-2',
+    apCost: 15,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 2800, times: 1, dropRate: 2800 }],
+  },
+  {
+    stageId: 'wk_melee_3',
+    code: 'CE-3',
+    apCost: 20,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 4100, times: 1, dropRate: 4100 }],
+  },
+  {
+    stageId: 'wk_melee_4',
+    code: 'CE-4',
+    apCost: 25,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 5700, times: 1, dropRate: 5700 }],
+  },
+  {
+    stageId: 'wk_melee_5',
+    code: 'CE-5',
+    apCost: 30,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 7500, times: 1, dropRate: 7500 }],
+  },
+  {
+    stageId: 'wk_melee_6',
+    code: 'CE-6',
+    apCost: 36,
+    exist: true,
+    drops: [{ itemId: '4001', quantity: 10000, times: 1, dropRate: 10000 }],
+  },
+  {
+    stageId: 'wk_kc_1',
+    code: 'LS-1',
+    apCost: 10,
+    exist: true,
+    drops: [
+      { itemId: '2002', quantity: 3, times: 1, dropRate: 3 },
+      { itemId: '2001', quantity: 2, times: 1, dropRate: 2 },
+    ],
+  },
+  {
+    stageId: 'wk_kc_2',
+    code: 'LS-2',
+    apCost: 15,
+    exist: true,
+    drops: [
+      { itemId: '2002', quantity: 5, times: 1, dropRate: 5 },
+      { itemId: '2001', quantity: 4, times: 1, dropRate: 4 },
+    ],
+  },
+  {
+    stageId: 'wk_kc_3',
+    code: 'LS-3',
+    apCost: 20,
+    exist: true,
+    drops: [
+      { itemId: '2003', quantity: 3, times: 1, dropRate: 3 },
+      { itemId: '2002', quantity: 175, times: 100, dropRate: 1.75 },
+      { itemId: '2001', quantity: 2, times: 1, dropRate: 2 },
+    ],
+  },
+  {
+    stageId: 'wk_kc_4',
+    code: 'LS-4',
+    apCost: 25,
+    exist: true,
+    drops: [
+      { itemId: '2004', quantity: 1, times: 1, dropRate: 1 },
+      { itemId: '2003', quantity: 2, times: 1, dropRate: 2 },
+      { itemId: '2002', quantity: 3, times: 1, dropRate: 3 },
+      { itemId: '2001', quantity: 2, times: 1, dropRate: 2 },
+    ],
+  },
+  {
+    stageId: 'wk_kc_5',
+    code: 'LS-5',
+    apCost: 30,
+    exist: true,
+    drops: [
+      { itemId: '2004', quantity: 3, times: 1, dropRate: 3 },
+      { itemId: '2003', quantity: 1, times: 1, dropRate: 1 },
+      { itemId: '2002', quantity: 1, times: 1, dropRate: 1 },
+    ],
+  },
+  {
+    stageId: 'wk_kc_6',
+    code: 'LS-6',
+    apCost: 36,
+    exist: true,
+    drops: [
+      { itemId: '2004', quantity: 4, times: 1, dropRate: 4 },
+      { itemId: '2003', quantity: 2, times: 1, dropRate: 2 },
+    ],
+  },
+]
+
 function isMatrixSnapshot(
   obj: PenguinMatrixSnapshot | Record<string, PenguinStageMatrix>,
 ): obj is PenguinMatrixSnapshot {
@@ -39,6 +168,7 @@ function isMatrixSnapshot(
  * - 30013 (Orirock Cluster) -> { '30011': 15 }
  * - 3302 (Skill Summary - 2) -> { '3301': 3 }
  * - 3303 (Skill Summary - 3) -> { '3301': 9 }
+ * - 2001..2004 (Battle Records) -> { '2001': 1 | 2 | 5 | 10 }
  */
 export function buildBaseEquivalenceMap(
   recipes: readonly CraftRecipe[] = defaultRecipes,
@@ -55,6 +185,9 @@ export function buildBaseEquivalenceMap(
   }
 
   const memo = new Map<string, Record<string, number>>()
+  for (const [cardId, factor] of Object.entries(EXP_CARD_EQUIV_TO_2001)) {
+    memo.set(cardId, { [EXP_CARD_BASE_ID]: factor })
+  }
 
   function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
     const cached = memo.get(itemId)
@@ -241,9 +374,26 @@ export function optimizeFarming(
   const allowCrafting = options.allowCrafting ?? true
   const now = options.now ?? Date.now()
 
-  const stageMatrices: Record<string, PenguinStageMatrix> = isMatrixSnapshot(matrixSnapshot)
+  const rawStageMatrices: Record<string, PenguinStageMatrix> = isMatrixSnapshot(matrixSnapshot)
     ? matrixSnapshot.stages
     : matrixSnapshot
+
+  const stageMatrices: Record<string, PenguinStageMatrix> = { ...rawStageMatrices }
+  for (const supplyStage of GUARANTEED_SUPPLY_STAGES) {
+    const existing = stageMatrices[supplyStage.stageId]
+    if (!existing) {
+      stageMatrices[supplyStage.stageId] = supplyStage
+    } else if (existing.code === supplyStage.code) {
+      const dropMap = new Map(existing.drops.map((d) => [d.itemId, d]))
+      for (const gDrop of supplyStage.drops) {
+        dropMap.set(gDrop.itemId, gDrop)
+      }
+      stageMatrices[supplyStage.stageId] = {
+        ...existing,
+        drops: Array.from(dropMap.values()),
+      }
+    }
+  }
 
   // 1. Filter positive deficit items
   const positiveDeficit: Record<string, number> = {}
@@ -305,7 +455,10 @@ export function optimizeFarming(
 
   const fullEquivFn = allowCrafting
     ? buildBaseEquivalenceMap(options.recipes ?? defaultRecipes)
-    : (itemId: string) => ({ [itemId]: 1 })
+    : (itemId: string) => {
+        const expFactor = EXP_CARD_EQUIV_TO_2001[itemId]
+        return expFactor !== undefined ? { [EXP_CARD_BASE_ID]: expFactor } : { [itemId]: 1 }
+      }
 
   // Check which items have direct stage drops
   const directlyDroppedItems = new Set<string>()
@@ -318,7 +471,7 @@ export function optimizeFarming(
   }
 
   // Decide whether a demanded item should be decomposed to its base ingredients:
-  // Decompose if allowCrafting is true AND either:
+  // Decompose if item is an EXP card ('2001'–'2004') OR if allowCrafting is true AND either:
   // (a) one of its base ingredients is also in positiveDeficit, or
   // (b) no candidate stage drops the item directly (e.g. T4/T5 crafted items).
   const baseDeficitMap = new Map<string, number>()
@@ -330,8 +483,10 @@ export function optimizeFarming(
     const isComposite = baseKeys.length > 1 || baseKeys[0] !== itemId
     const hasBaseInDeficit =
       isComposite && baseKeys.some((k) => k !== itemId && positiveDeficit[k] !== undefined)
+    const isExpCard = EXP_CARD_EQUIV_TO_2001[itemId] !== undefined
     const shouldDecomposeDemand =
-      allowCrafting && isComposite && (hasBaseInDeficit || !directlyDroppedItems.has(itemId))
+      isExpCard ||
+      (allowCrafting && isComposite && (hasBaseInDeficit || !directlyDroppedItems.has(itemId)))
 
     const eq = shouldDecomposeDemand ? fullEq : { [itemId]: 1 }
     const keys: string[] = []
@@ -347,6 +502,10 @@ export function optimizeFarming(
   // Resolve how any stage drop itemId decomposes into keys present in baseDeficitMap
   const dropEquivMemo = new Map<string, Record<string, number>>()
   function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
+    const expFactor = EXP_CARD_EQUIV_TO_2001[itemId]
+    if (expFactor !== undefined && baseDeficitMap.has(EXP_CARD_BASE_ID)) {
+      return { [EXP_CARD_BASE_ID]: expFactor }
+    }
     if (!allowCrafting) {
       return { [itemId]: 1 }
     }
@@ -385,11 +544,19 @@ export function optimizeFarming(
   const coverableBaseKeys: string[] = []
   const uncoveredBaseKeySet = new Set<string>()
 
+  const hasDedicatedLsStage = candidateStages.some(
+    (s) => s.stageId.startsWith('wk_kc_') || s.code.startsWith('LS-'),
+  )
+
   // Precompute stage -> baseId yield per run
   const stageBaseYields = candidateStages.map((stage) => {
     const yields: Record<string, number> = {}
+    const isLsStage = stage.stageId.startsWith('wk_kc_') || stage.code.startsWith('LS-')
     for (const drop of stage.drops) {
       if (drop.dropRate <= 0) continue
+      if (hasDedicatedLsStage && !isLsStage && EXP_CARD_EQUIV_TO_2001[drop.itemId] !== undefined) {
+        continue
+      }
       const eq = getEquiv(drop.itemId)
       for (const [baseId, factor] of Object.entries(eq)) {
         if (baseDeficitMap.has(baseId) && factor > 0) {
@@ -466,7 +633,7 @@ export function optimizeFarming(
     return Math.max(0, b - covered)
   })
 
-  // Greedy integer residual completion
+  // Greedy integer residual completion (prioritize LP-selected basis stages first)
   let guard = 0
   while (guard++ < 10000) {
     let maxRem = 0
@@ -480,23 +647,27 @@ export function optimizeFarming(
     let bestCol = -1
     let bestScore = -1
 
-    for (let j = 0; j < n; j++) {
-      let usefulYield = 0
-      for (let i = 0; i < m; i++) {
-        const rem = remDeficit[i]!
-        if (rem > EPS) {
-          const a = matrixA[i]![j]!
-          if (a > 0) {
-            usefulYield += Math.min(rem, a)
+    for (const basisOnly of [true, false]) {
+      for (let j = 0; j < n; j++) {
+        if (basisOnly && xCont[j]! <= EPS) continue
+        let usefulYield = 0
+        for (let i = 0; i < m; i++) {
+          const rem = remDeficit[i]!
+          if (rem > EPS) {
+            const a = matrixA[i]![j]!
+            if (a > 0) {
+              usefulYield += Math.min(rem, a)
+            }
           }
         }
+        if (usefulYield <= 0) continue
+        const score = usefulYield / costs[j]!
+        if (score > bestScore + 1e-11) {
+          bestScore = score
+          bestCol = j
+        }
       }
-      if (usefulYield <= 0) continue
-      const score = usefulYield / costs[j]!
-      if (score > bestScore + 1e-11) {
-        bestScore = score
-        bestCol = j
-      }
+      if (bestCol !== -1) break
     }
 
     if (bestCol === -1) break
@@ -561,8 +732,12 @@ export function optimizeFarming(
       targetQty: number
     }> = []
 
+    const isLsStage = stage.stageId.startsWith('wk_kc_') || stage.code.startsWith('LS-')
     for (const drop of stage.drops) {
       if (drop.dropRate <= 0) continue
+      if (hasDedicatedLsStage && !isLsStage && EXP_CARD_EQUIV_TO_2001[drop.itemId] !== undefined) {
+        continue
+      }
       const eq = getEquiv(drop.itemId)
       let baseValuePerRun = 0
       let equivTarget = 0

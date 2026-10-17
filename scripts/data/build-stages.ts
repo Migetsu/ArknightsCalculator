@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { DATA_SOURCES_CONFIG } from './sources.config'
 import {
   StageSchema,
   type Stage,
@@ -67,8 +68,18 @@ async function fetchPenguinStages(server: 'US' | 'CN'): Promise<PenguinStageItem
 }
 
 export async function buildStages(): Promise<StagesBuildResult> {
-  const cnRawPath = path.resolve(process.cwd(), '.cache/raw/zh_CN/stage_table.json')
-  const enRawPath = path.resolve(process.cwd(), '.cache/raw/en_US/stage_table.json')
+  const cnRawPath = path.resolve(
+    process.cwd(),
+    DATA_SOURCES_CONFIG.cacheDir,
+    DATA_SOURCES_CONFIG.sources.cn.locale,
+    'stage_table.json',
+  )
+  const enRawPath = path.resolve(
+    process.cwd(),
+    DATA_SOURCES_CONFIG.cacheDir,
+    DATA_SOURCES_CONFIG.sources.en.locale,
+    'stage_table.json',
+  )
 
   const cnTable = JSON.parse(await fs.readFile(cnRawPath, 'utf-8')) as RawStageTable
   let enTable: RawStageTable = { stages: {} }

@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { DATA_SOURCES_CONFIG } from './sources.config'
 
 interface WikiTranslationEntry {
   name?: string
@@ -49,20 +50,44 @@ async function main() {
   const index = JSON.parse(indexRaw) as { id: string; name: { en: string; zh: string } }[]
 
   const rawEnChars = JSON.parse(
-    await fs.readFile(path.resolve(process.cwd(), '.cache/raw/en_US/character_table.json'), 'utf-8'),
+    await fs.readFile(
+      path.resolve(
+        process.cwd(),
+        DATA_SOURCES_CONFIG.cacheDir,
+        DATA_SOURCES_CONFIG.sources.en.locale,
+        'character_table.json',
+      ),
+      'utf-8',
+    ),
   )
 
   const rawCnChars = JSON.parse(
-    await fs.readFile(path.resolve(process.cwd(), '.cache/raw/zh_CN/character_table.json'), 'utf-8'),
+    await fs.readFile(
+      path.resolve(
+        process.cwd(),
+        DATA_SOURCES_CONFIG.cacheDir,
+        DATA_SOURCES_CONFIG.sources.cn.locale,
+        'character_table.json',
+      ),
+      'utf-8',
+    ),
   )
 
   const rawCnEquips = JSON.parse(
-    await fs.readFile(path.resolve(process.cwd(), '.cache/raw/zh_CN/uniequip_table.json'), 'utf-8'),
+    await fs.readFile(
+      path.resolve(
+        process.cwd(),
+        DATA_SOURCES_CONFIG.cacheDir,
+        DATA_SOURCES_CONFIG.sources.cn.locale,
+        'uniequip_table.json',
+      ),
+      'utf-8',
+    ),
   )
 
-  // Find operators not in en_US
+  // Find operators not in EN raw table
   const missingOps = index.filter((o) => !rawEnChars[o.id])
-  console.log(`Found ${missingOps.length} operators missing from frozen en_US repository.`)
+  console.log(`Found ${missingOps.length} operators missing from EN repository.`)
 
   const translations: WikiTranslationsMap = {}
 

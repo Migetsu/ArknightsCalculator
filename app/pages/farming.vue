@@ -74,9 +74,12 @@ const activeCraftingModel = computed<'crafting' | 'direct'>({
   set: (val: 'crafting' | 'direct') => settingsStore.setFarmingAllowCrafting(val === 'crafting'),
 })
 
-function formatDropRate(rate?: number): string {
-  if (rate === undefined || rate <= 0) return '0'
-  return String(Math.round(rate * 1000) / 10)
+function formatDropRate(rate?: number, itemId?: string): string {
+  if (rate === undefined || rate <= 0) return '0%'
+  if (itemId === '4001' || rate >= 100) {
+    return Math.round(rate).toLocaleString('en-US')
+  }
+  return `${Math.round(rate * 1000) / 10}%`
 }
 
 const weekDays = [
@@ -247,7 +250,7 @@ const snapshotDateFormatted = computed(() => {
                     v-for="item in plan.contributions"
                     :key="item.itemId"
                     class="farming-page__item-badge"
-                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity} drops (${formatDropRate(item.dropRate)}%/run)`"
+                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity.toLocaleString('en-US')} (${formatDropRate(item.dropRate, item.itemId)}/run)`"
                   >
                     <AkItemIcon
                       :item-id="item.itemId"
@@ -257,9 +260,15 @@ const snapshotDateFormatted = computed(() => {
                       :size="40"
                     />
                     <div class="farming-page__item-meta">
-                      <span class="farming-page__item-qty">x{{ item.expectedQuantity }}</span>
+                      <span class="farming-page__item-qty"
+                        >x{{ item.expectedQuantity.toLocaleString('en-US') }}</span
+                      >
                       <span v-if="item.dropRate !== undefined" class="farming-page__item-rate">
-                        {{ t('farming.dropRatePerRun', { rate: formatDropRate(item.dropRate) }) }}
+                        {{
+                          t('farming.dropRatePerRun', {
+                            rate: formatDropRate(item.dropRate, item.itemId),
+                          })
+                        }}
                       </span>
                     </div>
                   </div>

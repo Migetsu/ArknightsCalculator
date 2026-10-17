@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { DATA_SOURCES_CONFIG } from './sources.config'
 import {
   GameItemSchema,
   type GameItem,
@@ -11,7 +12,7 @@ import type { RawBuildingData } from './schemas/building-data.schema'
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const OUTPUT_PATH = path.resolve(process.cwd(), 'data/items.json')
 
-async function loadRawJson<T>(locale: 'en_US' | 'zh_CN', filename: string): Promise<T> {
+async function loadRawJson<T>(locale: 'en' | 'en_US' | 'zh_CN', filename: string): Promise<T> {
   const filePath = path.join(CACHE_DIR, locale, filename)
   const raw = await fs.readFile(filePath, 'utf-8')
   return JSON.parse(raw) as T
@@ -82,10 +83,12 @@ export async function buildItems(): Promise<{
   unclassifiedItems: Array<{ id: string; name: string; itemType: string; classifyType: string }>
 }> {
   console.log('Loading raw item tables and recipe data...')
+  const enLocale = DATA_SOURCES_CONFIG.sources.en.locale
+  const cnLocale = DATA_SOURCES_CONFIG.sources.cn.locale
   const [itemTableEn, itemTableCn, buildingDataEn] = await Promise.all([
-    loadRawJson<RawItemTable>('en_US', 'item_table.json'),
-    loadRawJson<RawItemTable>('zh_CN', 'item_table.json'),
-    loadRawJson<RawBuildingData>('en_US', 'building_data.json'),
+    loadRawJson<RawItemTable>(enLocale, 'item_table.json'),
+    loadRawJson<RawItemTable>(cnLocale, 'item_table.json'),
+    loadRawJson<RawBuildingData>(enLocale, 'building_data.json'),
   ])
 
   // Collect craftable product IDs from workshop and factory

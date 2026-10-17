@@ -184,6 +184,20 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
   }
 }
 
+const LATIN_APPELLATION_REGEX = /^[\x20-\x7E\u00A0-\u024F]+$/
+const HAS_LATIN_LETTER_REGEX = /[A-Za-z]/
+
+/**
+ * Validates that an appellation/fallback string contains only printable ASCII/Latin
+ * characters (no Cyrillic or CJK) and at least one Latin letter.
+ */
+export function isValidLatinAppellation(value: string | null | undefined): boolean {
+  if (!value) return false
+  const trimmed = value.trim()
+  if (trimmed.length === 0) return false
+  return LATIN_APPELLATION_REGEX.test(trimmed) && HAS_LATIN_LETTER_REGEX.test(trimmed)
+}
+
 /**
  * Resolves localized string across priority layers:
  * manual > official-repo > wiki / community > machine > zh
@@ -288,7 +302,7 @@ export function resolveLayeredI18nString(
     }
   }
 
-  if (fallbackEn.length > 0 && fallbackEn !== zh) {
+  if (fallbackEn.length > 0 && fallbackEn !== zh && isValidLatinAppellation(fallbackEn)) {
     if (tracker) tracker.sources.machine++
     return {
       en: fallbackEn,

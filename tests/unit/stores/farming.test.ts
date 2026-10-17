@@ -2,6 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useFarmingStore } from '../../../app/stores/farming'
 import { useSettingsStore } from '../../../app/stores/settings'
+import { usePlannerStore } from '../../../app/stores/planner'
+import { useDepotStore } from '../../../app/stores/depot'
 
 describe('useFarmingStore', () => {
   beforeEach(() => {
@@ -60,5 +62,30 @@ describe('useFarmingStore', () => {
 
     settings.setFarmingAllowCrafting(false)
     expect(farming.optimizationResult.stages[0]?.code).toBe('S2-5')
+  })
+
+  it('includes LMD (4001) and EXP (2001-2004) deficits from planner minus depot stock and recommends CE-6 and LS-6', async () => {
+    const planner = usePlannerStore()
+    const depot = useDepotStore()
+    const settings = useSettingsStore()
+    const farming = useFarmingStore()
+
+    await planner.addPlan('char_003_kalts')
+    settings.setFarmingAllowCrafting(true)
+
+    // Default Kal'tsit plan (0 modules): 1,334,796 LMD + 225,900 craft LMD = 1,560,696 LMD; 1,111,400 EXP
+    expect(farming.activeDeficit['4001']).toBe(1560696)
+    const stageCodes = farming.optimizationResult.stages.map((s) => s.code)
+    expect(stageCodes).toContain('CE-6')
+    expect(stageCodes).toContain('LS-6')
+
+    // Deduct depot LMD and EXP cards
+    await depot.setCurrency('lmd', 560696)
+    await depot.setItemCount('2004', 500) // 1,000,000 EXP
+    expect(farming.activeDeficit['4001']).toBe(1000000)
+    const ce6 = farming.optimizationResult.stages.find((s) => s.code === 'CE-6')
+    const ls6 = farming.optimizationResult.stages.find((s) => s.code === 'LS-6')
+    expect(ce6?.runs).toBe(100) // 1,000,000 / 10,000 = 100 runs
+    expect(ls6?.runs).toBe(12) // ceil(111,400 / 10,000) = 12 runs
   })
 })

@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { DATA_SOURCES_CONFIG } from './sources.config'
 import {
   GameConstantsSchema,
   type GameConstants,
@@ -11,7 +12,7 @@ import type { RawItemTable } from './schemas/item-table.schema'
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const OUTPUT_PATH = path.resolve(process.cwd(), 'data/constants.json')
 
-async function loadRawJson<T>(locale: 'en_US' | 'zh_CN', filename: string): Promise<T> {
+async function loadRawJson<T>(locale: 'en' | 'en_US' | 'zh_CN', filename: string): Promise<T> {
   const filePath = path.join(CACHE_DIR, locale, filename)
   const raw = await fs.readFile(filePath, 'utf-8')
   return JSON.parse(raw) as T
@@ -19,10 +20,12 @@ async function loadRawJson<T>(locale: 'en_US' | 'zh_CN', filename: string): Prom
 
 export async function buildConstants(): Promise<GameConstants> {
   console.log('Loading raw gamedata_const and item_table...')
+  const enLocale = DATA_SOURCES_CONFIG.sources.en.locale
+  const cnLocale = DATA_SOURCES_CONFIG.sources.cn.locale
   const [constEn, constCn, itemTableEn] = await Promise.all([
-    loadRawJson<RawGamedataConst>('en_US', 'gamedata_const.json'),
-    loadRawJson<RawGamedataConst>('zh_CN', 'gamedata_const.json'),
-    loadRawJson<RawItemTable>('en_US', 'item_table.json'),
+    loadRawJson<RawGamedataConst>(enLocale, 'gamedata_const.json'),
+    loadRawJson<RawGamedataConst>(cnLocale, 'gamedata_const.json'),
+    loadRawJson<RawItemTable>(enLocale, 'item_table.json'),
   ])
 
   // 1. maxLevel by rarity ('1'..'6') and elite phase

@@ -59,8 +59,8 @@ export async function buildGlossary(): Promise<{
   conflicts: IntraCategoryConflict[]
   crossCategoryDiffs: CrossCategoryDifferentiation[]
 }> {
-  const cnDir = path.join(RAW_CACHE_DIR, 'zh_CN')
-  const enDir = path.join(RAW_CACHE_DIR, 'en_US')
+  const cnDir = path.join(RAW_CACHE_DIR, DATA_SOURCES_CONFIG.sources.cn.locale)
+  const enDir = path.join(RAW_CACHE_DIR, DATA_SOURCES_CONFIG.sources.en.locale)
 
   const [
     cnChars,

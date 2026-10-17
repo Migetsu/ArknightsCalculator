@@ -502,3 +502,51 @@ For **Kal'tsit** (E0 L1 $\to$ E2 L90, Skill 1$\to$7, S1–S3 M3, Module X Stage 
 | `main_17-09`        | **17-10** | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 21`, `exist: true`, `openTime: 1777608000000`, `closeTime: null`, 15 drops)        | **Absent (`undefined`)** | Absent from `us.json` matrix AND `stages["main_17-09"].servers` is `["cn"]` (does not include `"global"`).                |
 | `act16side_04_perm` | **GA-4**  | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 12`, `exist: true`, `openTime: 1678132800000`, `closeTime: null`, 7 drops)         | **Absent (`undefined`)** | Absent from `us.json` matrix AND `stages["act16side_04_perm"].servers` is `["cn"]`.                                       |
 | `act52side_02`      | **YW-2**  | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 9`, `exist: true`, `openTime: 1791518400000`, `closeTime: 1792699200000`, 7 drops) | **Absent (`undefined`)** | Absent from `us.json`, `servers` is `["cn"]`, and `isStageCurrentlyOpen` also rejects it outside `[openTime, closeTime)`. |
+
+---
+
+## 4. LMD (`CE-1..CE-6`) & EXP (`LS-1..LS-6`) Supply Stages Verification & Kal'tsit Sanity Recalculation
+
+**Verification Date**: `2026-10-17`
+
+- **Raw Game Data**: `.cache/raw/en/stage_table.json` (`SanityGoneAK/arknights-gamedata`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, `$["stages"]["wk_melee_1..6"]` & `$["stages"]["wk_kc_1..6"]`) and `data/constants.json` (`expItems`).
+- **Live Wiki Queries (`2026-10-17`)**:
+  - `https://arknights.wiki.gg/wiki/Operation/Supply` (`https://arknights.wiki.gg/api.php?action=parse&page=Operation/Supply&prop=wikitext&format=json`, HTTP `200 OK`)
+    - Quote: `"'''Tactical Drill''' ('''LS''') operations mainly award {{I|Battle Record|2=Battle Records}}."`
+  - `https://arknights.wiki.gg/wiki/LMD` (`https://arknights.wiki.gg/api.php?action=parse&page=LMD&prop=wikitext&format=json`, HTTP `200 OK`)
+    - Quote: `"Every [[operation]] awards LMD... equal to 10 times of the {{I|Sanity|g=0}} spent... increased by 20% when it is cleared with 3 stars"`
+  - `https://arknights.wiki.gg/wiki/Battle_Record` (`https://arknights.wiki.gg/api.php?action=parse&page=Battle_Record&prop=wikitext&format=json`, HTTP `200 OK`)
+    - EXP equivalents: `2001` (Drill) = `200` EXP, `2002` (Frontline) = `400` EXP, `2003` (Tactical) = `1,000` EXP, `2004` (Strategic) = `2,000` EXP.
+  - `https://arknights.wiki.gg/wiki/CE-6` & `https://arknights.wiki.gg/wiki/LS-6` (queried `2026-10-17`, HTTP `200 OK`):
+    - `CE-6` quote: `"|cost=36 ... |reg drop={{I|LMD|10000}}"`
+    - `LS-6` quote: `"|cost=36 ... |reg drop={{I|Strategic Battle Record|4}}{{I|Tactical Battle Record|2}}"`
+
+### 4.1. Verified `CE-1..CE-6` & `LS-1..LS-6` Parameters
+
+| `stageId`    | Code     | `apCost` | 2★ `goldGain` (`stage_table.json`) | Guaranteed 3★ Clear Output                                           | Efficiency (`per AP`) |
+| :----------- | :------- | :------: | :--------------------------------: | :------------------------------------------------------------------- | :-------------------- |
+| `wk_melee_1` | **CE-1** |    10    |               1,410                | `1,700` LMD (`4001`)                                                 | `170.00` LMD / AP     |
+| `wk_melee_2` | **CE-2** |    15    |               2,325                | `2,800` LMD (`4001`)                                                 | `186.67` LMD / AP     |
+| `wk_melee_3` | **CE-3** |    20    |               3,410                | `4,100` LMD (`4001`)                                                 | `205.00` LMD / AP     |
+| `wk_melee_4` | **CE-4** |    25    |               4,740                | `5,700` LMD (`4001`)                                                 | `228.00` LMD / AP     |
+| `wk_melee_5` | **CE-5** |    30    |               6,240                | `7,500` LMD (`4001`)                                                 | `250.00` LMD / AP     |
+| `wk_melee_6` | **CE-6** |  **36**  |             **8,325**              | **`10,000` LMD (`4001`)**                                            | **`277.78` LMD / AP** |
+| `wk_kc_1`    | **LS-1** |    10    |                100                 | `3× 2002` + `2× 2001` = `1,600` EXP                                  | `160.00` EXP / AP     |
+| `wk_kc_2`    | **LS-2** |    15    |                150                 | `5× 2002` + `4× 2001` = `2,800` EXP                                  | `186.67` EXP / AP     |
+| `wk_kc_3`    | **LS-3** |    20    |                200                 | `3× 2003` + `1.75× 2002` + `2× 2001` = `4,100` EXP                   | `205.00` EXP / AP     |
+| `wk_kc_4`    | **LS-4** |    25    |                250                 | `1× 2004` + `2× 2003` + `3× 2002` + `2× 2001` = `5,600` EXP          | `224.00` EXP / AP     |
+| `wk_kc_5`    | **LS-5** |    30    |                300                 | `3× 2004` + `1× 2003` + `1× 2002` = `7,400` EXP                      | `246.67` EXP / AP     |
+| `wk_kc_6`    | **LS-6** |  **36**  |              **360**               | **`4× 2004` (`8,000` EXP) + `2× 2003` (`2,000` EXP) = `10,000` EXP** | **`277.78` EXP / AP** |
+
+### 4.2. Kal'tsit Full Plan Sanity Recalculation (Before vs After LMD & EXP Integration)
+
+For **Kal'tsit** (`char_003_kalts`, E0 L1 $\to$ E2 L90, Skill 1$\to$7, S1–S3 M3, Module X `uniequip_002_kalts` Stage 3, empty depot, `allowCrafting = true`):
+
+| Component                           | Demand                                                      | Selected Stage(s)           |    Runs (CN / US)     |     Sanity Cost (CN / US)     |
+| :---------------------------------- | :---------------------------------------------------------- | :-------------------------- | :-------------------: | :---------------------------: |
+| **Materials Only (Before LMD/EXP)** | Post-workshop raw material deficit (`resolvedRawDeficit`)   | `1-7`, `CA-5`, `14-12`, ... |    `840` / `1,073`    | **`17,265` AP / `18,783` AP** |
+| **LMD (`4001`, +Crafting LMD)**     | `1,634,796` upgrade + `279,500` craft = **`1,914,296` LMD** | **`CE-6` (`wk_melee_6`)**   |     `192` / `192`     |  **`6,912` AP / `6,912` AP**  |
+| **EXP (`2001`–`2004` Equivalent)**  | **`1,111,400` EXP** (`555× 2004 + 1× 2003 + 1× 2002`)       | **`LS-6` (`wk_kc_6`)**      |     `112` / `112`     |  **`4,032` AP / `4,032` AP**  |
+| **Full Plan Total (After)**         | Materials + LMD + EXP                                       | Materials + `CE-6` + `LS-6` | **`1,144` / `1,377`** | **`28,209` AP / `29,727` AP** |
+
+_(Note: With default 0 modules selected in the Planner UI, upgrade LMD is `1,334,796` + `225,900` craft LMD = `1,560,696` LMD $\to$ `157` runs of `CE-6` (`5,652` AP) + `112` runs of `LS-6` (`4,032` AP) + materials (`15,825` AP on CN / `17,250` AP on US) = **`25,509` AP on CN (`1,047` runs)** and **`26,934` AP on US (`1,260` runs)**.)_

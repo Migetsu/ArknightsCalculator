@@ -37,6 +37,7 @@ import {
   createEmptyI18nLayersContext,
   loadI18nLayersContext,
   resolveLayeredI18nString,
+  isValidLatinAppellation,
   checkSkillLevelStale,
   checkTalentCandidateStale,
   checkModuleStale,
@@ -127,8 +128,8 @@ async function readJsonFile<T>(filePath: string): Promise<T> {
 }
 
 async function loadRawBundles(): Promise<LoadedRawBundle> {
-  const cnDir = path.join(RAW_CACHE_DIR, 'zh_CN')
-  const enDir = path.join(RAW_CACHE_DIR, 'en_US')
+  const cnDir = path.join(RAW_CACHE_DIR, DATA_SOURCES_CONFIG.sources.cn.locale)
+  const enDir = path.join(RAW_CACHE_DIR, DATA_SOURCES_CONFIG.sources.en.locale)
 
   const [
     cnChars,
@@ -173,8 +174,6 @@ async function loadRawBundles(): Promise<LoadedRawBundle> {
     enPatch,
   }
 }
-
-
 
 export function buildOperatorData(
   bundle: LoadedRawBundle,
@@ -258,6 +257,10 @@ export function buildOperatorData(
       untranslatedCount++
     }
 
+    const validLatinAppellation = isValidLatinAppellation(cn.appellation)
+      ? cn.appellation!.trim()
+      : undefined
+
     const name = resolveLayeredI18nString(
       {
         key: `${id}.name`,
@@ -266,12 +269,13 @@ export function buildOperatorData(
         officialEn: en?.name,
         zhText: cn.name,
         wikiEn: ctx.wiki[id]?.name,
-        fallbackEn: cn.appellation ?? cn.name,
+        fallbackEn: validLatinAppellation,
       },
       ctx,
       trk,
     )
-    const appellation = en?.appellation ?? cn.appellation ?? undefined
+    const rawAppellation = (en?.appellation ?? cn.appellation)?.trim()
+    const appellation = isValidLatinAppellation(rawAppellation) ? rawAppellation : undefined
     const displayNumber = en?.displayNumber ?? cn.displayNumber ?? null
     const rarity = normalizeRarity(cn.rarity)
     const opClass = normalizeClass(cn.profession)

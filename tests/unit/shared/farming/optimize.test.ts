@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { optimizeFarming } from '../../../../shared/utils/farming/optimize'
 import { calculateCost } from '../../../../shared/utils/planner/calculateCost'
+import { planExpCards } from '../../../../shared/utils/planner/planExpCards'
 import { resolveDemand } from '../../../../shared/utils/workshop/resolveDemand'
 import type { PenguinMatrixSnapshot, PenguinStageMatrix } from '../../../../shared/schemas/farming'
 import type { Stage } from '../../../../shared/schemas/stage'
@@ -372,5 +373,83 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
 
     expect(cnPartial.totalSanity).toBeLessThan(cnNew.totalSanity)
     expect(usPartial.totalSanity).toBeLessThan(usNew.totalSanity)
+  })
+
+  it('optimizes standalone LMD (4001) and EXP (2001-2004) deficits via CE-6 and LS-6 without uncovered items', () => {
+    // 25,000 LMD -> 3 runs of CE-6 (3 * 10,000 = 30,000 LMD, 108 Sanity)
+    const lmdRes = optimizeFarming({ '4001': 25000 }, usSnapshot, {
+      server: 'global',
+      stagesMap: realStagesMap,
+    })
+    expect(lmdRes.uncoveredItems).toHaveLength(0)
+    expect(lmdRes.stages).toHaveLength(1)
+    expect(lmdRes.stages[0]?.code).toBe('CE-6')
+    expect(lmdRes.stages[0]?.runs).toBe(3)
+    expect(lmdRes.stages[0]?.sanity).toBe(108)
+    expect(lmdRes.stages[0]?.contributions[0]?.itemId).toBe('4001')
+    expect(lmdRes.stages[0]?.contributions[0]?.expectedQuantity).toBe(30000)
+
+    // Mixed EXP cards: 10x 2004 (20,000) + 3x 2003 (3,000) + 3x 2002 (1,200) + 4x 2001 (800) = 25,000 EXP
+    // LS-6 yields 4x 2004 + 2x 2003 = 10,000 EXP/run -> 3 runs of LS-6 (30,000 EXP, 108 Sanity)
+    const expRes = optimizeFarming({ '2004': 10, '2003': 3, '2002': 3, '2001': 4 }, usSnapshot, {
+      server: 'global',
+      stagesMap: realStagesMap,
+    })
+    expect(expRes.uncoveredItems).toHaveLength(0)
+    expect(expRes.stages).toHaveLength(1)
+    expect(expRes.stages[0]?.code).toBe('LS-6')
+    expect(expRes.stages[0]?.runs).toBe(3)
+    expect(expRes.stages[0]?.sanity).toBe(108)
+    expect(expRes.stages[0]?.contributions.map((c) => c.itemId)).toEqual(['2004', '2003'])
+  })
+
+  it("includes CE-6 and LS-6 for Kal'tsit full plan (materials + LMD + EXP) on both CN and US", () => {
+    const cost = calculateCost(
+      kaltsitOp,
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      {
+        elite: 2,
+        level: 90,
+        skillLevel: 7,
+        skills: { skchr_kalts_1: 3, skchr_kalts_2: 3, skchr_kalts_3: 3 },
+        modules: { uniequip_002_kalts: 3 },
+      },
+      gameConstants,
+    )
+    const workshopRes = resolveDemand(cost.items, {}, { recipes: gameRecipes, useStock: true })
+    const expPlan = planExpCards(cost.exp, gameConstants.expItems)
+
+    // Total LMD = 1,634,796 + 279,500 = 1,914,296 -> 192 runs of CE-6 (6,912 AP)
+    // Total EXP = 1,111,400 -> 112 runs of LS-6 (4,032 AP)
+    const fullDeficit: Record<string, number> = {
+      ...workshopRes.rawDeficit,
+      '4001': cost.lmd + workshopRes.lmdForCrafting,
+      ...expPlan.cards,
+    }
+
+    const cnFull = optimizeFarming(fullDeficit, cnSnapshot, {
+      server: 'cn',
+      stagesMap: realStagesMap,
+      allowCrafting: true,
+    })
+    const usFull = optimizeFarming(fullDeficit, usSnapshot, {
+      server: 'global',
+      stagesMap: realStagesMap,
+      allowCrafting: true,
+    })
+
+    for (const res of [cnFull, usFull]) {
+      const ce6 = res.stages.find((s) => s.code === 'CE-6')
+      const ls6 = res.stages.find((s) => s.code === 'LS-6')
+      expect(ce6?.runs).toBe(192)
+      expect(ce6?.sanity).toBe(6912)
+      expect(ls6?.runs).toBe(112)
+      expect(ls6?.sanity).toBe(4032)
+      expect(res.uncoveredItems.map((u) => u.itemId)).not.toContain('4001')
+      expect(res.uncoveredItems.map((u) => u.itemId)).not.toContain('2004')
+    }
+
+    expect(cnFull.totalSanity).toBe(28209) // 17,265 materials + 6,912 CE-6 + 4,032 LS-6
+    expect(usFull.totalSanity).toBe(29727) // 18,783 materials + 6,912 CE-6 + 4,032 LS-6
   })
 })

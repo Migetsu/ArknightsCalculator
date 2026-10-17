@@ -228,4 +228,33 @@ describe('i18n-layers resolution', () => {
     expect(result.isMachineTranslation).toBe(true)
     expect(tracker.sources.zh).toBe(1)
   })
+
+  it('rejects Cyrillic or CJK appellations as English fallback', () => {
+    const tracker = createI18nTracker()
+    const cyrillicRes = resolveLayeredI18nString(
+      {
+        key: 'char_4226_veen.name',
+        officialEn: null,
+        zhText: '维伊',
+        fallbackEn: 'Вий',
+      },
+      mockContext,
+      tracker,
+    )
+    expect(cyrillicRes.source).toBe('zh')
+    expect(cyrillicRes.en).toBe('维伊')
+
+    const latinRes = resolveLayeredI18nString(
+      {
+        key: 'char_1015_aglna2.name',
+        officialEn: null,
+        zhText: '予愿安洁莉娜',
+        fallbackEn: 'Angelina the Mellow Wish',
+      },
+      mockContext,
+      tracker,
+    )
+    expect(latinRes.source).toBe('machine')
+    expect(latinRes.en).toBe('Angelina the Mellow Wish')
+  })
 })
