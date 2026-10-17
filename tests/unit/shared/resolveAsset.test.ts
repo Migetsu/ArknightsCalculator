@@ -11,6 +11,7 @@ import {
   PRIMARY_FEXLI_CDN_BASE,
   SECONDARY_FEXLI_CDN_BASE,
   OPTIMIZED_ASSETS_COMMIT,
+  ITEM_ICON_DEFAULT_MAP,
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
@@ -55,13 +56,26 @@ describe('resolveAsset utility', () => {
       const withIcon = resolveAsset('item', '30012', { iconId: 'MTL_SL_G2' })
       expect(withIcon[0]).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_G2.png`)
       expect(withIcon[1]).toBe(`${SECONDARY_CDN_BASE}/item/MTL_SL_G2.png`)
-      expect(withIcon[2]).toBe(`${PRIMARY_CDN_BASE}/item/30012.png`)
+      expect(withIcon[2]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/items/MTL_SL_G2.png`)
+      expect(withIcon).toContain(`${PRIMARY_CDN_BASE}/item/30012.png`)
 
       const raw = resolveAsset('item', 'mod_unlock_token')
-      expect(raw).toEqual([
-        `${PRIMARY_CDN_BASE}/item/mod_unlock_token.png`,
-        `${SECONDARY_CDN_BASE}/item/mod_unlock_token.png`,
-      ])
+      expect(raw[0]).toBe(`${PRIMARY_CDN_BASE}/item/mod_unlock_token.png`)
+      expect(raw[1]).toBe(`${SECONDARY_CDN_BASE}/item/mod_unlock_token.png`)
+      expect(raw[2]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/items/mod_unlock_token.png`)
+    })
+
+    it('resolves currency 4001 LMD to GOLD.png with Aceship fallback chain', () => {
+      expect(ITEM_ICON_DEFAULT_MAP['4001']).toBe('GOLD')
+      expect(ITEM_ICON_DEFAULT_MAP['4002']).toBe('DIAMOND')
+      expect(ITEM_ICON_DEFAULT_MAP['4003']).toBe('DIAMOND_SHD')
+
+      const lmdCandidates = resolveAsset('item', '4001')
+      expect(lmdCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/item/GOLD.png`)
+      expect(lmdCandidates[1]).toBe(`${SECONDARY_CDN_BASE}/item/GOLD.png`)
+      expect(lmdCandidates[2]).toBe(`${PRIMARY_EQUIP_CDN_BASE}/items/GOLD.png`)
+      expect(lmdCandidates[3]).toBe(`${SECONDARY_EQUIP_CDN_BASE}/items/GOLD.png`)
+      expect(lmdCandidates).toContain(`${PRIMARY_CDN_BASE}/item/4001.png`)
     })
 
     it('generates skill candidates with skill_icon_ prefix and iconId fallback', () => {
@@ -194,5 +208,13 @@ describe('resolveAsset utility', () => {
       expect(url).not.toContain('raw.githubusercontent.com')
       expect(url).not.toContain('fandom.com')
     }
+  })
+
+  it('maps known default item icons like LMD, Orundum, and Headhunting Permits', () => {
+    expect(ITEM_ICON_DEFAULT_MAP['4001']).toBe('GOLD')
+    expect(ITEM_ICON_DEFAULT_MAP['4002']).toBe('DIAMOND')
+    expect(ITEM_ICON_DEFAULT_MAP['4003']).toBe('DIAMOND_SHD')
+    expect(ITEM_ICON_DEFAULT_MAP['7003']).toBe('TKT_GACHA')
+    expect(ITEM_ICON_DEFAULT_MAP['7004']).toBe('TKT_GACHA_10')
   })
 })

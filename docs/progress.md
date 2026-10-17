@@ -1,5 +1,25 @@
 # Project Progress
 
+- **UI Audit Fixes & Gacha Banners Module (`fix/ui-audit-and-gacha`):**
+  - **LMD & Currency Asset Resolution (`shared/utils/resolveAsset.ts`, `app/components/ui/AkItemIcon.vue`):**
+    - Added `ITEM_ICON_DEFAULT_MAP` mapping currency and permit item IDs (`4001: 'GOLD'`, `4002: 'DIAMOND'`, `4003: 'DIAMOND_SHD'`, `7001: 'TKT_RECRUIT'`, `7003: 'TKT_GACHA'`, `7004: 'TKT_GACHA_10'`).
+    - Added fallback candidate to Aceship items CDN (`PRIMARY_EQUIP_CDN_BASE/items/`).
+    - Fixed LMD (`4001`) asset resolution in Planner and Depot to render official currency icon rather than text fallback.
+    - Unit tests in `tests/unit/shared/resolveAsset.test.ts` (18 tests passing) and `tests/unit/components/ui/AkItemIcon.test.ts` (8 tests passing).
+  - **Module Details Rich-Text & Lore Dossier (`app/components/operators/AkOperatorModulesPanel.vue`):**
+    - Eliminated empty blocks in advanced module stages (Stage 2/3): filtered out parts without textual descriptions (`getVisibleStageParts`), merged stage blackboard variables (`getStageBlackboard`) for tag interpolation (`{atk_scale_m:0%}`, `{value}`).
+    - Fixed prop name from `:raw-text` to `:text` on `<AkRichText>`.
+    - Added module lore dossier section (`mod.description` from `uniequip_table.json`) for initial badges (`INITIAL`) and combat modules (`ADVANCED`).
+    - Unit tests in `tests/unit/components/operators/AkOperatorModulesPanel.test.ts` (4 tests passing).
+  - **Gacha & Banners Module (`GCH-02: ready`) (`app/pages/gacha.vue`):**
+    - Implemented `/gacha` in Ember Editorial style according to `docs/design/mockups/banners.html`.
+    - Banner cards (`app/components/gacha/GachaBannerCard.vue`): banner type ribbon header, banner art with watermark, CN dates, estimated Global dates (+175 days offset), countdown badge `IN ~X DAYS`, and rate-up operators list (6★ and 5★ avatars with rarity borders and links).
+    - Segmented date switcher (`CN dates` vs `Estimated Global`) and type filter buttons (`All`, `Standard`, `Limited`, `Joint Operation`).
+    - Headhunting treasury & spark calculator (`app/components/gacha/GachaCalculator.vue`): Orundum, OP, Single Permits (`TKT_GACHA`), Ten-roll Permits (`TKT_GACHA_10`) steppers, "Fill from Depot" integration, spark progress bar (`0 / 300`), exact Markov chain pity rate-up probability curve, simulation stepper, and milestone cards.
+    - Mobile layout sanity: vertical stacking on `<= 480px` to guarantee zero horizontal overflow across 360px viewport in both EN and RU.
+    - Registered `gacha` module as `ready` in `app/config/modules.ts`.
+    - Unit and page tests in `tests/unit/shared/gacha.test.ts` (13 tests), `tests/unit/components/gacha/GachaBannerCard.test.ts` (3 tests), `tests/unit/components/gacha/GachaCalculator.test.ts` (3 tests), `tests/unit/pages/gacha.test.ts` (4 tests).
+
 - **EN Source Switch (`SanityGoneAK`), `CE-6`/`LS-6` Farming Integration & Full UI Screenshot Suite (`feat/farming-lmd-exp-and-en-source`):**
   - **EN Game Data Switch & `appellation` Validation (`scripts/data/sources.config.ts`, `scripts/data/i18n-layers.ts`, `scripts/data/build-operators.ts`):**
     - Replaced frozen `Kengxxiao/ArknightsGameData_YoStar` (`2025-11-13`) with `SanityGoneAK/arknights-gamedata` (`en/gamedata/excel/`, pinned commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`).

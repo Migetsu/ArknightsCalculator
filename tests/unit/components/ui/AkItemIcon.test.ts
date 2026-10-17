@@ -33,7 +33,7 @@ describe('AkItemIcon', () => {
     expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_G2.png`)
   })
 
-  it('cycles to secondary CDN candidate and then fallback initials on error', async () => {
+  it('cycles through CDN candidates and then fallback initials on error', async () => {
     const wrapper = await mountSuspended(AkItemIcon, {
       props: {
         itemId: '30012',
@@ -49,10 +49,28 @@ describe('AkItemIcon', () => {
       `${SECONDARY_CDN_BASE}/item/30012.png`,
     )
 
+    // Trigger error on all remaining candidate URLs
     await wrapper.find('.ak-item-icon__image').trigger('error')
+    await wrapper.find('.ak-item-icon__image').trigger('error')
+    await wrapper.find('.ak-item-icon__image').trigger('error')
+
     expect(wrapper.find('.ak-item-icon__image').exists()).toBe(false)
     expect(wrapper.find('.ak-item-icon__fallback').exists()).toBe(true)
     expect(wrapper.find('.ak-item-icon__initials').text()).toBe('OC')
+  })
+
+  it('automatically resolves currency 4001 LMD to GOLD.png without explicit iconId', async () => {
+    const wrapper = await mountSuspended(AkItemIcon, {
+      props: {
+        itemId: '4001',
+        name: 'LMD',
+        tier: 4,
+      },
+    })
+
+    const img = wrapper.find('.ak-item-icon__image')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/item/GOLD.png`)
   })
 
   it('renders count badge when count prop is provided', async () => {

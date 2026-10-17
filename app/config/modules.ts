@@ -80,7 +80,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     nameKey: 'navigation.gacha',
     descriptionKey: 'navigation.gachaDesc',
     navKey: 'nav.gacha',
-    status: 'soon',
+    status: 'ready',
   },
   {
     id: 'settings',

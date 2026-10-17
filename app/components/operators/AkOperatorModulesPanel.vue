@@ -1,21 +1,41 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { OperatorModule } from '~/../shared/schemas/operator'
+import type {
+  OperatorModule,
+  OperatorModulePartCandidate,
+  I18nString,
+} from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
+import rawItemsData from '~/../data/items.json'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkModuleType from '~/components/ui/AkModuleType.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   modules: OperatorModule[]
 }
 
+interface ItemEntry {
+  id: string
+  name: I18nString
+}
+
 const props = defineProps<Props>()
 
 const { t, locale } = useI18n()
+
+const itemsMap = new Map((rawItemsData as unknown as ItemEntry[]).map((it) => [it.id, it]))
+
+function getItemName(id: string): string {
+  if (id === '4001') return 'LMD'
+  const it = itemsMap.get(id)
+  if (!it) return id
+  return resolveI18nString(it.name, locale.value as 'en' | 'ru' | 'zh') || it.name?.en || id
+}
 
 // Track active stage per module (1..3)
 const activeStages = ref<Record<string, number>>(
@@ -26,6 +46,16 @@ function getModuleName(m: OperatorModule): string {
   return resolveI18nString(m.name, locale.value as 'en' | 'ru' | 'zh') || m.name?.en || m.type
 }
 
+function getModuleDescription(m: OperatorModule): string {
+  if (!m.description) return ''
+  return (
+    resolveI18nString(m.description, locale.value as 'en' | 'ru' | 'zh') ||
+    m.description.en ||
+    m.description.zh ||
+    ''
+  ).trim()
+}
+
 function getStageStats(m: OperatorModule, stageNum: number): Record<string, number> {
   const stage = (m.stages ?? []).find((s) => s.stage === stageNum)
   return stage?.stats ?? {}
@@ -34,6 +64,63 @@ function getStageStats(m: OperatorModule, stageNum: number): Record<string, numb
 function getStageParts(m: OperatorModule, stageNum: number) {
   const stage = (m.stages ?? []).find((s) => s.stage === stageNum)
   return stage?.parts ?? []
+}
+
+function getCandidateText(cand: OperatorModulePartCandidate, currentLocale: string): string {
+  return (
+    (cand.upgradeDescription &&
+      resolveI18nString(cand.upgradeDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+    (cand.additionalDescription &&
+      resolveI18nString(cand.additionalDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+    (cand.overrideDescription &&
+      resolveI18nString(cand.overrideDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+    cand.upgradeDescription?.en ||
+    cand.additionalDescription?.en ||
+    cand.overrideDescription?.en ||
+    cand.upgradeDescription?.zh ||
+    cand.additionalDescription?.zh ||
+    cand.overrideDescription?.zh ||
+    ''
+  ).trim()
+}
+
+function hasCandidateText(cand: OperatorModulePartCandidate, currentLocale: string): boolean {
+  return getCandidateText(cand, currentLocale).length > 0
+}
+
+interface VisiblePart {
+  target: string
+  visibleCandidates: OperatorModulePartCandidate[]
+}
+
+function getVisibleStageParts(
+  m: OperatorModule,
+  stageNum: number,
+  currentLocale: string,
+): VisiblePart[] {
+  const parts = getStageParts(m, stageNum)
+  return parts
+    .map((part) => ({
+      target: part.target,
+      visibleCandidates: (part.candidates ?? []).filter((cand) =>
+        hasCandidateText(cand, currentLocale),
+      ),
+    }))
+    .filter((part) => part.visibleCandidates.length > 0)
+}
+
+function getStageBlackboard(m: OperatorModule, stageNum: number): Record<string, number> {
+  const stage = (m.stages ?? []).find((s) => s.stage === stageNum)
+  if (!stage?.parts) return {}
+  const merged: Record<string, number> = {}
+  for (const part of stage.parts) {
+    for (const cand of part.candidates ?? []) {
+      if (cand.blackboard) {
+        Object.assign(merged, cand.blackboard)
+      }
+    }
+  }
+  return merged
 }
 
 function getStageCost(m: OperatorModule, stageNum: number) {
@@ -77,6 +164,16 @@ function getStageCost(m: OperatorModule, stageNum: number) {
         </div>
       </div>
 
+      <!-- Module Lore Dossier (for Initial Badges without stages or Advanced Modules) -->
+      <div v-if="getModuleDescription(mod)" class="ak-operator-modules-panel__dossier-box">
+        <div class="ak-operator-modules-panel__dossier-header">
+          <span class="ak-operator-modules-panel__sub-title">
+            {{ t('operators.detail.modules.story') }}
+          </span>
+        </div>
+        <p class="ak-operator-modules-panel__dossier-text">{{ getModuleDescription(mod) }}</p>
+      </div>
+
       <!-- Stage Switcher (1..3) -->
       <div v-if="(mod.stages?.length ?? 0) > 0" class="ak-operator-modules-panel__stages-bar">
         <AkButton
@@ -109,13 +206,13 @@ function getStageCost(m: OperatorModule, stageNum: number) {
         </div>
       </div>
 
-      <!-- Trait and Talent Upgrades (Parts) -->
+      <!-- Trait and Talent Upgrades (Parts with non-empty descriptions only) -->
       <div
-        v-for="(part, pIdx) in getStageParts(mod, activeStages[mod.id] ?? 1)"
+        v-for="(part, pIdx) in getVisibleStageParts(mod, activeStages[mod.id] ?? 1, locale)"
         :key="pIdx"
         class="ak-operator-modules-panel__part-block"
       >
-        <div v-if="part.candidates?.length" class="ak-operator-modules-panel__part-item">
+        <div class="ak-operator-modules-panel__part-item">
           <span class="ak-operator-modules-panel__part-title">
             {{
               part.target === 'TRAIT'
@@ -124,23 +221,16 @@ function getStageCost(m: OperatorModule, stageNum: number) {
             }}
           </span>
           <div
-            v-for="(cand, cIdx) in part.candidates"
+            v-for="(cand, cIdx) in part.visibleCandidates"
             :key="cIdx"
             class="ak-operator-modules-panel__part-desc"
           >
             <AkRichText
-              :raw-text="
-                (cand.upgradeDescription &&
-                  resolveI18nString(cand.upgradeDescription, locale as 'en' | 'ru' | 'zh')) ||
-                (cand.additionalDescription &&
-                  resolveI18nString(cand.additionalDescription, locale as 'en' | 'ru' | 'zh')) ||
-                (cand.overrideDescription &&
-                  resolveI18nString(cand.overrideDescription, locale as 'en' | 'ru' | 'zh')) ||
-                cand.upgradeDescription?.en ||
-                cand.additionalDescription?.en ||
-                ''
-              "
-              :blackboard="cand.blackboard ?? {}"
+              :text="getCandidateText(cand, locale)"
+              :blackboard="{
+                ...getStageBlackboard(mod, activeStages[mod.id] ?? 1),
+                ...(cand.blackboard ?? {}),
+              }"
             />
           </div>
         </div>
@@ -159,7 +249,7 @@ function getStageCost(m: OperatorModule, stageNum: number) {
             v-for="item in getStageCost(mod, activeStages[mod.id] ?? 1)"
             :key="item.id"
             :item-id="item.id"
-            :name="item.id"
+            :name="getItemName(item.id)"
             :count="item.count"
             size="sm"
           />
@@ -290,6 +380,32 @@ function getStageCost(m: OperatorModule, stageNum: number) {
     border-left: 3px solid var(--color-accent-amber);
     border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
+  }
+
+  &__dossier-box {
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border-subtle);
+    border-left: 3px solid var(--color-status-info);
+    border-radius: var(--radius-xs);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__dossier-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__dossier-text {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    white-space: pre-line;
   }
 
   &__cost-section {
