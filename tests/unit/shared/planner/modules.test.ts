@@ -64,8 +64,10 @@ describe('planner modules filter', () => {
     ).toBe(false)
   })
 
-  it('rejects specialized IS badges (typeName2 A / B or ISW)', () => {
-    expect(isPlannerModule(fiammettaModules[3]!)).toBe(false)
+  it('accepts all combat modules with stages (X, Y, D, A, B)', () => {
+    expect(isPlannerModule(fiammettaModules[1]!)).toBe(true)
+    expect(isPlannerModule(fiammettaModules[2]!)).toBe(true)
+    expect(isPlannerModule(fiammettaModules[3]!)).toBe(true)
     expect(
       isPlannerModule({
         id: 'uniequip_004_kalts',
@@ -74,12 +76,7 @@ describe('planner modules filter', () => {
         type: 'ADVANCED',
         stages: [{ stage: 1, parts: [] }],
       } as OperatorModule),
-    ).toBe(false)
-  })
-
-  it('accepts only standard combat modules X, Y, D', () => {
-    expect(isPlannerModule(fiammettaModules[1]!)).toBe(true)
-    expect(isPlannerModule(fiammettaModules[2]!)).toBe(true)
+    ).toBe(true)
     expect(
       isPlannerModule({
         id: 'uniequip_002_kalts',
@@ -91,18 +88,26 @@ describe('planner modules filter', () => {
     ).toBe(true)
   })
 
-  it('filters 4-module operator (Fiammetta) to only 2 combat modules (X and Y)', () => {
+  it('filters 4-module operator (Fiammetta) to all 3 combat modules (Y, X, A)', () => {
     const filtered = getPlannerModules(fiammettaModules)
-    expect(filtered).toHaveLength(2)
-    expect(filtered.map((m) => m.id)).toEqual(['uniequip_002_phenxi', 'uniequip_003_phenxi'])
+    expect(filtered).toHaveLength(3)
+    expect(filtered.map((m) => m.id)).toEqual([
+      'uniequip_002_phenxi',
+      'uniequip_003_phenxi',
+      'uniequip_004_phenxi',
+    ])
   })
 
-  it('filters Kaltsit real operator modules to exactly 2 combat modules (Mon2tr & Panacea)', async () => {
+  it('filters Kaltsit real operator modules to exactly 3 combat modules (X, Y, A)', async () => {
     const kaltsitData = (await import('../../../../data/operators/char_003_kalts.json'))
       .default as { modules: OperatorModule[] }
     expect(kaltsitData.modules).toHaveLength(4)
     const filtered = getPlannerModules(kaltsitData.modules)
-    expect(filtered).toHaveLength(2)
-    expect(filtered.map((m) => m.id)).toEqual(['uniequip_002_kalts', 'uniequip_003_kalts'])
+    expect(filtered).toHaveLength(3)
+    expect(filtered.map((m) => m.id)).toEqual([
+      'uniequip_002_kalts',
+      'uniequip_003_kalts',
+      'uniequip_004_kalts',
+    ])
   })
 })

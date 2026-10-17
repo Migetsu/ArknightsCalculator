@@ -231,7 +231,12 @@ const snapshotDateFormatted = computed(() => {
             <div class="farming-page__card-header">
               <h2 class="farming-page__card-title">{{ t('farming.bestStagesTitle') }}</h2>
               <div class="farming-page__crafting-switch">
-                <AkSegmented v-model="activeCraftingModel" :options="craftingOptions" size="sm" />
+                <AkSegmented
+                  v-model="activeCraftingModel"
+                  :options="craftingOptions"
+                  size="sm"
+                  class="farming-page__crafting-segmented"
+                />
               </div>
             </div>
 
@@ -405,7 +410,7 @@ const snapshotDateFormatted = computed(() => {
 
 <style lang="scss" scoped>
 .farming-page {
-  padding-top: var(--space-md);
+  padding-top: var(--space-lg);
   padding-bottom: var(--space-2xl);
   display: flex;
   flex-direction: column;
@@ -528,6 +533,18 @@ const snapshotDateFormatted = computed(() => {
   &__crafting-switch {
     display: flex;
     align-items: center;
+
+    @media (width <= 480px) {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  &__crafting-segmented {
+    @media (width <= 480px) {
+      display: flex;
+      width: 100%;
+    }
   }
 
   &__card-title {

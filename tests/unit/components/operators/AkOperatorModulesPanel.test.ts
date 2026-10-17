@@ -135,13 +135,18 @@ describe('AkOperatorModulesPanel', () => {
     )
   })
 
-  it('renders module lore dossier for advanced modules', async () => {
+  it('renders module lore dossier for advanced modules when toggled', async () => {
     const wrapper = await mountSuspended(AkOperatorModulesPanel, {
       props: { modules: mockModules },
     })
 
     const advancedCard = wrapper.findAll('.ak-operator-modules-panel__module-card')[1]
     expect(advancedCard?.find('.ak-operator-modules-panel__dossier-box').exists()).toBe(true)
+    // By default, advanced module lore is collapsed behind toggle
+    expect(advancedCard?.find('.ak-operator-modules-panel__dossier-text').exists()).toBe(false)
+    const toggleBtn = advancedCard?.find('.ak-operator-modules-panel__lore-toggle')
+    expect(toggleBtn?.exists()).toBe(true)
+    await toggleBtn?.trigger('click')
     expect(advancedCard?.find('.ak-operator-modules-panel__dossier-text').text()).toContain(
       'The wind and sand kissed the sky',
     )

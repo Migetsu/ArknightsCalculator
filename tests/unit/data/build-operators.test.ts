@@ -4,6 +4,7 @@ import path from 'node:path'
 import {
   isPlayableOperator,
   buildOperatorData,
+  resolveSubclassName,
 } from '../../../scripts/data/build-operators'
 import {
   OperatorSummarySchema,
@@ -13,6 +14,7 @@ import {
   type I18nString,
 } from '../../../shared/schemas/operator'
 import type { RawCharacter } from '../../../scripts/data/schemas'
+import type { RawUniequipTable } from '../../../scripts/data/schemas/uniequip-table.schema'
 
 describe('Operator Data Builder & Schemas', () => {
   describe('isPlayableOperator filter', () => {
@@ -70,6 +72,44 @@ describe('Operator Data Builder & Schemas', () => {
         displayNumber: null,
       }
       expect(isPlayableOperator('char_504_rguard', tempIsChar)).toBe(false)
+    })
+  })
+
+  describe('resolveSubclassName', () => {
+    const mockEnEquips: RawUniequipTable = {
+      equipDict: {},
+      subProfDict: {
+        primcaster: { subProfessionId: 'primcaster', subProfessionName: 'Primal Caster' },
+        wandermedic: { subProfessionId: 'wandermedic', subProfessionName: 'Wandering Medic' },
+        physician: { subProfessionId: 'physician', subProfessionName: 'Medic' },
+      },
+    }
+    const mockCnEquips: RawUniequipTable = {
+      equipDict: {},
+      subProfDict: {
+        primcaster: { subProfessionId: 'primcaster', subProfessionName: '本源术师' },
+        cnonly: { subProfessionId: 'cnonly', subProfessionName: 'CN Only Subclass' },
+      },
+    }
+
+    it('resolves official English subclass name when present', () => {
+      expect(resolveSubclassName('primcaster', mockEnEquips, mockCnEquips)).toBe('Primal Caster')
+      expect(resolveSubclassName('wandermedic', mockEnEquips, mockCnEquips)).toBe('Wandering Medic')
+      expect(resolveSubclassName('physician', mockEnEquips, mockCnEquips)).toBe('Medic')
+    })
+
+    it('falls back to Supportive Ranger for supportiveranger', () => {
+      expect(resolveSubclassName('supportiveranger', mockEnEquips, mockCnEquips)).toBe(
+        'Supportive Ranger',
+      )
+    })
+
+    it('falls back to CN subProfDict if missing in EN', () => {
+      expect(resolveSubclassName('cnonly', mockEnEquips, mockCnEquips)).toBe('CN Only Subclass')
+    })
+
+    it('returns raw subId if missing in both', () => {
+      expect(resolveSubclassName('unknown_sub', mockEnEquips, mockCnEquips)).toBe('unknown_sub')
     })
   })
 

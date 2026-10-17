@@ -15,9 +15,16 @@ const { t } = useI18n()
 
 const displayType = computed(() => {
   if (!props.type) return ''
-  const trimmed = props.type.trim().toUpperCase()
-  if (trimmed === 'D') return 'Δ'
-  return trimmed
+  const trimmed = props.type.trim()
+  if (trimmed.toUpperCase() === 'D') return 'Δ'
+  if (trimmed.toLowerCase() === 'alpha' || trimmed === 'α') return 'α'
+  return trimmed.toUpperCase()
+})
+
+const typeClass = computed(() => {
+  if (displayType.value === 'Δ') return 'delta'
+  if (displayType.value === 'α') return 'alpha'
+  return displayType.value.toLowerCase().replace(/[^a-z0-9]/g, '-')
 })
 
 const accessibleLabel = computed(() => {
@@ -31,10 +38,7 @@ const accessibleLabel = computed(() => {
   <span
     v-if="displayType"
     class="ak-module-type"
-    :class="[
-      `ak-module-type--size-${size}`,
-      `ak-module-type--${displayType === 'Δ' ? 'delta' : displayType.toLowerCase()}`,
-    ]"
+    :class="[`ak-module-type--size-${size}`, `ak-module-type--${typeClass}`]"
     :title="accessibleLabel"
     :aria-label="accessibleLabel"
   >
@@ -96,6 +100,25 @@ const accessibleLabel = computed(() => {
   }
 
   &--delta {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    background-color: var(--color-accent-primary-subtle);
+  }
+
+  &--a {
+    border-color: var(--color-accent-amber);
+    color: var(--color-accent-amber);
+    background-color: var(--color-accent-warning-subtle);
+  }
+
+  &--b {
+    border-color: var(--color-accent-cyan, #00e5ff);
+    color: var(--color-accent-cyan, #00e5ff);
+    background-color: rgb(0 229 255 / 10%);
+  }
+
+  &--sp,
+  &--alpha {
     border-color: var(--color-accent-primary);
     color: var(--color-accent-primary);
     background-color: var(--color-accent-primary-subtle);

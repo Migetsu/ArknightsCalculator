@@ -610,7 +610,8 @@ async function handleFillFromPlans(): Promise<void> {
     gap: var(--space-2xs, 8px);
 
     @media (width <= 480px) {
-      grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
     }
   }
 }

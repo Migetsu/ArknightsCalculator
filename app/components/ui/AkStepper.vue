@@ -107,12 +107,14 @@ function handleKeydown(event: KeyboardEvent): void {
   border: 1px solid var(--color-border-bold);
   border-radius: var(--radius-none);
   user-select: none;
+  max-width: 100%;
 
   &__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 28px;
+    flex-shrink: 0;
     padding: 0;
     background-color: var(--color-bg-elevated);
     border: none;

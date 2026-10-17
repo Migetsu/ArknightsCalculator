@@ -57,6 +57,10 @@ function select(val: T): void {
   padding: 0;
 
   &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
     padding: 10px 22px;
     font-family: var(--font-body);
     font-size: var(--font-size-sm);

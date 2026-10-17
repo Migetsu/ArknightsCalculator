@@ -290,20 +290,20 @@ describe('usePlannerStore', () => {
     const store = usePlannerStore()
     await store.init(memoryAdapter)
 
-    // Fiammetta has 4 modules: 1 initial (_001_), 2 combat (_002_, _003_), 1 IS specialized (_004_)
+    // Fiammetta has 4 modules: 1 initial (_001_), 3 combat (_002_, _003_, _004_)
     const plan = await store.addPlan('char_300_phenxi')
     expect(plan.target.modules).toBeDefined()
     expect(plan.target.modules['uniequip_001_phenxi']).toBeUndefined()
-    expect(plan.target.modules['uniequip_004_phenxi']).toBeUndefined()
     expect(plan.target.modules['uniequip_002_phenxi']).toBe(0)
     expect(plan.target.modules['uniequip_003_phenxi']).toBe(0)
+    expect(plan.target.modules['uniequip_004_phenxi']).toBe(0)
 
     // Max target when none selected picks the first main module
     await store.setPlanTargetMax(plan.id)
     const updatedPlan = store.plans.find((p) => p.id === plan.id)
     expect(updatedPlan?.target.modules['uniequip_002_phenxi']).toBe(3)
     expect(updatedPlan?.target.modules['uniequip_003_phenxi']).toBe(0)
-    expect(updatedPlan?.target.modules['uniequip_004_phenxi']).toBeUndefined()
+    expect(updatedPlan?.target.modules['uniequip_004_phenxi']).toBe(0)
 
     // If user specifically selected module _003_, max target raises only that selected module
     await store.updatePlan(plan.id, {
@@ -312,6 +312,7 @@ describe('usePlannerStore', () => {
         modules: {
           uniequip_002_phenxi: 0,
           uniequip_003_phenxi: 1,
+          uniequip_004_phenxi: 0,
         },
       },
     })
@@ -319,7 +320,7 @@ describe('usePlannerStore', () => {
     const updatedPlan2 = store.plans.find((p) => p.id === plan.id)
     expect(updatedPlan2?.target.modules['uniequip_002_phenxi']).toBe(0)
     expect(updatedPlan2?.target.modules['uniequip_003_phenxi']).toBe(3)
-    expect(updatedPlan2?.target.modules['uniequip_004_phenxi']).toBeUndefined()
+    expect(updatedPlan2?.target.modules['uniequip_004_phenxi']).toBe(0)
   })
 
   it('applies roadmap step with depot deduction and supports undo refund', async () => {
@@ -392,10 +393,15 @@ describe('usePlannerStore', () => {
     await store.init(memoryAdapter)
 
     const plan = await store.addPlan('char_003_kalts')
-    // Out of 4 entries (initial badge, X, Y, IS specialized badge), only 2 combat modules must be present
-    expect(Object.keys(plan.target.modules)).toEqual(['uniequip_002_kalts', 'uniequip_003_kalts'])
+    // Out of 4 entries (initial badge, X, Y, IS specialized badge), all 3 combat modules must be present
+    expect(Object.keys(plan.target.modules)).toEqual([
+      'uniequip_002_kalts',
+      'uniequip_003_kalts',
+      'uniequip_004_kalts',
+    ])
     expect(plan.target.modules['uniequip_002_kalts']).toBe(0)
     expect(plan.target.modules['uniequip_003_kalts']).toBe(0)
+    expect(plan.target.modules['uniequip_004_kalts']).toBe(0)
 
     // With targets at 0, no module data blocks required and LMD is strictly base E0L1->E2L90 (1,334,796)
     const initialDemand = store.aggregatedDemand
@@ -404,11 +410,12 @@ describe('usePlannerStore', () => {
     expect(initialModBlocks).toBe(0)
     expect(initialDemand.lmd).toBe(1334796)
 
-    // Max Target without prior selection: sets ONLY the first combat module (X) to 3, keeping Y at 0
+    // Max Target without prior selection: sets ONLY the first combat module (X) to 3, keeping Y and A at 0
     await store.setPlanTargetMax(plan.id)
     const updatedPlan = store.plans.find((p) => p.id === plan.id)
     expect(updatedPlan?.target.modules['uniequip_002_kalts']).toBe(3)
     expect(updatedPlan?.target.modules['uniequip_003_kalts']).toBe(0)
+    expect(updatedPlan?.target.modules['uniequip_004_kalts']).toBe(0)
 
     // 1 combat module (X, 6-star) at stage 3 requires 12 Module Data Blocks (4 + 4 + 4) and +300,000 LMD (80k+100k+120k)
     const maxDemand = store.aggregatedDemand

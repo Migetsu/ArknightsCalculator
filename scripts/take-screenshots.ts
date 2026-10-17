@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync } from 'node:fs'
+import { existsSync, mkdirSync, rmSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { spawn, type ChildProcess } from 'node:child_process'
 import { chromium, type Page } from '@playwright/test'
@@ -169,40 +169,6 @@ const DEMO_DEPOT_STORAGE = {
   },
 }
 
-async function clearStorage(page: Page): Promise<void> {
-  await page.evaluate(async () => {
-    localStorage.clear()
-    await new Promise<void>((resolve) => {
-      const req = window.indexedDB.open('arkcalc', 1)
-      req.onupgradeneeded = () => {
-        const db = req.result
-        if (!db.objectStoreNames.contains('depot')) {
-          db.createObjectStore('depot')
-        }
-      }
-      req.onsuccess = () => {
-        const db = req.result
-        if (!db.objectStoreNames.contains('depot')) {
-          db.close()
-          resolve()
-          return
-        }
-        const tx = db.transaction('depot', 'readwrite')
-        tx.objectStore('depot').clear()
-        tx.oncomplete = () => {
-          db.close()
-          resolve()
-        }
-        tx.onerror = () => {
-          db.close()
-          resolve()
-        }
-      }
-      req.onerror = () => resolve()
-    })
-  })
-}
-
 async function seedStorage(
   page: Page,
   plannerData: unknown,
@@ -244,9 +210,10 @@ async function seedStorage(
 }
 
 async function main(): Promise<void> {
-  if (!existsSync(OUTPUT_DIR)) {
-    mkdirSync(OUTPUT_DIR, { recursive: true })
+  if (existsSync(OUTPUT_DIR)) {
+    rmSync(OUTPUT_DIR, { recursive: true, force: true })
   }
+  mkdirSync(OUTPUT_DIR, { recursive: true })
 
   const spawnedServer = await ensureAgentServer()
   const browser = await chromium.launch()
@@ -258,147 +225,106 @@ async function main(): Promise<void> {
     })
     const page = await context.newPage()
 
-    // 01. Dashboard empty (1440x900)
+    // Seed planner and depot with Kal'tsit demo data
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' })
-    await clearStorage(page)
-    await page.reload({ waitUntil: 'domcontentloaded' })
-    await saveShot(page, '01-dashboard-empty-1440.png')
-
-    // 02. Dashboard demo (1440x900 & 360x800)
     await seedStorage(page, DEMO_PLANNER_STORAGE, DEMO_DEPOT_STORAGE, 'global')
-    await page.reload({ waitUntil: 'domcontentloaded' })
+
+    // 01. Blaze the Igniting Spark hero (1440x900)
+    // Shows Primal Caster subclass badge, stage switcher at bottom, inspect hint at top right
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto(`${BASE_URL}/operators/char_1040_blaze2`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    const demoBtn = page.locator('.dashboard-page__btn-outline').first()
-    if (await demoBtn.isVisible()) {
-      await demoBtn.click()
+    const artBox = page.locator('.ak-operator-hero__art-container').first()
+    if (await artBox.isVisible()) {
+      await artBox.hover()
+      await page.waitForTimeout(300)
     }
-    await saveShot(page, '02-dashboard-demo-1440.png')
+    await saveShot(page, '01-operator-blaze-alter-hero-1440.png')
 
-    await page.setViewportSize({ width: 360, height: 800 })
-    await saveShot(page, '02-dashboard-demo-360.png')
-
-    // 03. Operators catalog with Mon3tr visible (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto(`${BASE_URL}/operators?q=Mon3tr`, { waitUntil: 'domcontentloaded' })
+    // 02. Kal'tsit talents tab (1440x900)
+    // Shows non-empty talent descriptions and no dummy talent card
+    await page.goto(`${BASE_URL}/operators/char_003_kalts?tab=talents`, {
+      waitUntil: 'domcontentloaded',
+    })
     await waitForPageReady(page)
-    await page.evaluate(() => window.scrollTo(0, 220))
-    await saveShot(page, '03-operators-1440.png')
-
-    await page.setViewportSize({ width: 360, height: 800 })
     await page.evaluate(() => window.scrollTo(0, 320))
-    await saveShot(page, '03-operators-360.png')
+    await saveShot(page, '02-operator-kaltsit-talents-1440.png')
 
-    // 04. Operator detail char_003_kalts (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
+    // 03. Kal'tsit modules tab (1440x900)
+    // Shows combat stats, attribute modifiers, and collapsed lore button
     await page.goto(`${BASE_URL}/operators/char_003_kalts?tab=modules`, {
       waitUntil: 'domcontentloaded',
     })
     await waitForPageReady(page)
-    await page.evaluate(() => window.scrollTo(0, 260))
-    await saveShot(page, '04-operator-detail-1440.png')
+    await page.evaluate(() => window.scrollTo(0, 320))
+    await saveShot(page, '03-operator-kaltsit-modules-1440.png')
 
-    await page.setViewportSize({ width: 360, height: 800 })
-    await page.evaluate(() => window.scrollTo(0, 420))
-    await saveShot(page, '04-operator-detail-360.png')
-
-    // 05. Planner Goals tab with AkModuleType X/Y/Delta badges visible (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
+    // 04. Planner goals with modules (1440x900)
+    // Shows all 3 combat modules (X, Y, A) in PlannerGoalsTab
     await page.goto(`${BASE_URL}/planner`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    const moduleBadge1440 = page.locator('.ak-module-type').first()
-    if (await moduleBadge1440.isVisible()) {
-      await moduleBadge1440.scrollIntoViewIfNeeded()
+    const modulesSection = page
+      .locator('.planner-goals__section')
+      .filter({ hasText: /Module/i })
+      .first()
+    if (await modulesSection.isVisible()) {
+      await modulesSection.scrollIntoViewIfNeeded()
+      await page.waitForTimeout(200)
     }
-    await saveShot(page, '05-planner-goals-1440.png')
+    await saveShot(page, '04-planner-goals-modules-1440.png')
 
+    // 05. Depot mobile (360x800)
+    // Shows 2-column grid and stepper controls without overflow
     await page.setViewportSize({ width: 360, height: 800 })
-    await waitForPageReady(page)
-    const moduleSection = page.locator('.ak-module-type').first()
-    if (await moduleSection.isVisible()) {
-      await moduleSection.scrollIntoViewIfNeeded()
-    }
-    await saveShot(page, '05-planner-goals-360.png')
-
-    // 06. Planner Materials tab in Crafting included mode (1440x900)
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto(`${BASE_URL}/planner`, { waitUntil: 'domcontentloaded' })
-    await waitForPageReady(page)
-    const materialsTab = page.getByRole('tab', { name: /Materials/i }).first()
-    await materialsTab.click()
-    await saveShot(page, '06-planner-materials-1440.png')
-
-    // 07. Planner Roadmap tab with visible module step (1440x900)
-    const roadmapTab = page.getByRole('tab', { name: /Roadmap/i }).first()
-    await roadmapTab.click()
-    await waitForPageReady(page)
-    const roadmapModuleBadge = page.locator('.ak-module-type').first()
-    if (await roadmapModuleBadge.isVisible()) {
-      await roadmapModuleBadge.scrollIntoViewIfNeeded()
-    }
-    await saveShot(page, '07-planner-roadmap-1440.png')
-
-    // 08. Depot with populated items and filter (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto(`${BASE_URL}/depot`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    const neededCheck = page.locator('input[type="checkbox"]').first()
-    if (await neededCheck.isVisible()) {
-      await neededCheck.check()
-    }
-    await saveShot(page, '08-depot-1440.png')
+    await page.evaluate(() => window.scrollTo(0, 260))
+    await saveShot(page, '05-depot-mobile-360.png')
 
-    await page.setViewportSize({ width: 360, height: 800 })
-    await saveShot(page, '08-depot-360.png')
-
-    // 09. Farming on CN and US servers showing CE-6, LS-6, and materials (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await seedStorage(page, DEMO_PLANNER_STORAGE, DEMO_DEPOT_STORAGE, 'cn')
+    // 06. Farming mobile (360x800)
+    // Shows top margin and responsive crafting toggle
     await page.goto(`${BASE_URL}/farming`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    const cnBtn = page.locator('.ak-segmented__btn').filter({ hasText: /^CN$/i }).first()
-    if (await cnBtn.isVisible()) {
-      await cnBtn.click()
-    }
-    await saveShot(page, '09-farming-cn-1440.png')
+    await saveShot(page, '06-farming-mobile-360.png')
 
-    await page.setViewportSize({ width: 360, height: 800 })
-    await saveShot(page, '09-farming-cn-360.png')
-
-    await page.setViewportSize({ width: 1440, height: 900 })
-    const usBtn = page
-      .locator('.ak-segmented__btn')
-      .filter({ hasText: /Global/i })
-      .first()
-    if (await usBtn.isVisible()) {
-      await usBtn.click()
-    }
-    await saveShot(page, '09-farming-us-1440.png')
-
-    // 10. Recruit (1440x900)
-    await page.goto(`${BASE_URL}/recruit`, { waitUntil: 'domcontentloaded' })
-    await saveShot(page, '10-recruit-1440.png')
-
-    // 11. Gacha (1440x900 & 360x800)
-    await page.setViewportSize({ width: 1440, height: 900 })
+    // 07. Gacha mobile calculator (360x800)
+    // Shows treasury inputs with no horizontal overflow
     await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    await saveShot(page, '11-gacha-1440.png')
+    await saveShot(page, '07-gacha-mobile-360.png')
 
-    await page.setViewportSize({ width: 360, height: 800 })
-    await saveShot(page, '11-gacha-360.png')
+    // 08. Gacha mobile banners section (360x800)
+    const bannersSection = page
+      .locator('.gacha-page__banners-section, .gacha-page__banners, .gacha-calc__milestones-grid')
+      .first()
+    if (await bannersSection.isVisible()) {
+      await bannersSection.scrollIntoViewIfNeeded()
+      await page.waitForTimeout(200)
+    } else {
+      await page.evaluate(() => window.scrollTo(0, 600))
+    }
+    await saveShot(page, '08-gacha-banners-mobile-360.png')
 
-    // 12. Settings (1440x900)
+    // 09. Sync Account modal on mobile (360x800)
     await page.goto(`${BASE_URL}/settings`, { waitUntil: 'domcontentloaded' })
-    await saveShot(page, '12-settings-1440.png')
-
-    // 13. Sync Account Modal (1440x900)
+    await waitForPageReady(page)
     const syncBtn = page
       .getByRole('button', { name: /Sync account/i })
       .or(page.locator('.settings-page__sync-btn'))
       .first()
-    await syncBtn.click()
-    await saveShot(page, '13-sync-modal-1440.png')
+    if (await syncBtn.isVisible()) {
+      await syncBtn.click()
+      await page.waitForSelector('.ak-modal', { state: 'visible' })
+      await page.waitForTimeout(300)
+    }
+    await saveShot(page, '09-sync-modal-mobile-360.png')
+
+    // 10. Gacha desktop full page (1440x900)
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
+    await waitForPageReady(page)
+    await saveShot(page, '10-gacha-desktop-1440.png')
 
     await context.close()
   } finally {

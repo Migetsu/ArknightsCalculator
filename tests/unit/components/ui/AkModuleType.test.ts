@@ -98,4 +98,27 @@ describe('AkModuleType', () => {
     })
     expect(wrapperMd.find('.ak-module-type').classes()).toContain('ak-module-type--size-md')
   })
+
+  it('renders A, B, SP, alpha module type badges correctly', async () => {
+    const wrapperA = await mountSuspended(AkModuleType, {
+      props: { type: 'A' },
+    })
+    const badgeA = wrapperA.find('.ak-module-type')
+    expect(badgeA.text()).toBe('A')
+    expect(badgeA.classes()).toContain('ak-module-type--a')
+
+    const wrapperB = await mountSuspended(AkModuleType, {
+      props: { type: 'B' },
+    })
+    const badgeB = wrapperB.find('.ak-module-type')
+    expect(badgeB.text()).toBe('B')
+    expect(badgeB.classes()).toContain('ak-module-type--b')
+
+    const wrapperAlpha = await mountSuspended(AkModuleType, {
+      props: { type: 'α' },
+    })
+    const badgeAlpha = wrapperAlpha.find('.ak-module-type')
+    expect(badgeAlpha.text()).toBe('α')
+    expect(badgeAlpha.classes()).toContain('ak-module-type--alpha')
+  })
 })

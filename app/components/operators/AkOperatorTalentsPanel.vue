@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { OperatorTalent } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import AkRichText from '~/components/ui/AkRichText.vue'
@@ -8,7 +9,7 @@ interface Props {
   talents: OperatorTalent[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const { t, locale } = useI18n()
 
@@ -25,16 +26,29 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
     ''
   )
 }
+
+const visibleTalents = computed(() => {
+  return props.talents
+    .map((talent) => ({
+      ...talent,
+      candidates: talent.candidates.filter((cand) => {
+        const name = (cand.name?.en || cand.name?.zh || '').trim()
+        const desc = (cand.description?.en || cand.description?.zh || '').trim()
+        return name.length > 0 && desc.length > 0 && desc !== '-'
+      }),
+    }))
+    .filter((talent) => talent.candidates.length > 0)
+})
 </script>
 
 <template>
   <div class="ak-operator-talents-panel">
-    <div v-if="talents.length === 0" class="ak-operator-talents-panel__empty">
+    <div v-if="visibleTalents.length === 0" class="ak-operator-talents-panel__empty">
       {{ t('operators.detail.talents.noTalents') }}
     </div>
 
     <div
-      v-for="(talent, tIdx) in talents"
+      v-for="(talent, tIdx) in visibleTalents"
       :key="tIdx"
       class="ak-operator-talents-panel__talent-block"
     >
@@ -74,7 +88,7 @@ function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
 
         <div class="ak-operator-talents-panel__desc">
           <AkRichText
-            :raw-text="getCandidateDesc(candidate)"
+            :text="getCandidateDesc(candidate)"
             :blackboard="candidate.blackboard ?? {}"
           />
         </div>

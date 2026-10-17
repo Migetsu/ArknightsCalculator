@@ -30,12 +30,22 @@ export const RawEquipDictItemSchema = z
   })
   .passthrough()
 
+export const RawSubProfItemSchema = z
+  .object({
+    subProfessionId: z.string(),
+    subProfessionName: z.string(),
+    subProfessionCatagory: z.number().optional(),
+  })
+  .passthrough()
+
 export const RawUniequipTableSchema = z
   .object({
     equipDict: z.record(z.string(), RawEquipDictItemSchema),
     charEquip: z.record(z.string(), z.array(z.string())).optional(),
+    subProfDict: z.record(z.string(), RawSubProfItemSchema).optional(),
   })
   .passthrough()
 
 export type RawEquipDictItem = z.infer<typeof RawEquipDictItemSchema>
+export type RawSubProfItem = z.infer<typeof RawSubProfItemSchema>
 export type RawUniequipTable = z.infer<typeof RawUniequipTableSchema>

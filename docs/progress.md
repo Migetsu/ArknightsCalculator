@@ -1,5 +1,28 @@
 # Project Progress
 
+- **Mobile Layout Sanity, Official Subclasses, Module Lore Collapse & Combat Badges (`fix/mobile-layout-talents-archetypes-modules`):**
+  - **Official Subclasses / Archetypes (`scripts/data/build-operators.ts`, `app/components/operators/`):**
+    - Integrated `subProfDict` from `SanityGoneAK/arknights-gamedata` with `supportiveranger` fallback (`"Supportive Ranger"`).
+    - Mapped `subclass` to human-readable names across all 434 operator summaries and details (e.g. `primcaster` $\to$ `Primal Caster`, `wandermedic` $\to$ `Wandering Medic`, `centurion` $\to$ `Centurion`, `lord` $\to$ `Lord`, `physician` $\to$ `Medic`).
+    - Displayed human-readable subclass in `AkOperatorHero`, `AkOperatorCard`, `AkOperatorInfoPanel`, and the `/operators` filter dropdown.
+  - **Talent Rendering & Dummy Talent Filtering (`AkOperatorTalentsPanel.vue`, `AkOperatorSkillsPanel.vue`, `scripts/data/build-operators.ts`):**
+    - Fixed prop name from `:raw-text` to `:text` on `<AkRichText>` in `AkOperatorTalentsPanel.vue` and `AkOperatorSkillsPanel.vue`.
+    - Filtered out technical/dummy talent candidates (`isHideTalent: true` or empty name/description or `"-"`) in `build-operators.ts` and `AkOperatorTalentsPanel.vue` (Blaze Alter now has 0 dummy talent cards).
+  - **Modules Lore Toggle, Inspect Hint & Combat Module Types (`AkOperatorModulesPanel.vue`, `AkOperatorHero.vue`, `shared/utils/planner/modules.ts`, `AkModuleType.vue`, `PlannerGoalsTab.vue`):**
+    - Collapsed lore (`mod.description`) behind `Show Lore / Story` toggle button for advanced modules (`ADVANCED`), keeping stats and stage upgrades immediately visible. Initial badges keep lore open.
+    - Repositioned `&__art-inspect-hint` in `AkOperatorHero.vue` to `top: 16px; right: 16px;` (desktop) and `top: 12px; right: 12px;` (mobile) to avoid colliding with the stage switcher.
+    - Included all combat modules with stages 1–3 in `shared/utils/planner/modules.ts` (types `X`, `Y`, `D`/`Δ`, `A`, `B`, including `uniequip_004_kalts` and `uniequip_004_phenxi`), excluding only `INITIAL`.
+    - Added support and styling for all module types (`X`, `Y`, `Δ`, `A`, `B`, `SP`/`α`) in `AkModuleType.vue` and `PlannerGoalsTab.vue`.
+  - **Mobile Layout Sanity (360px) on 4 Pages:**
+    - `depot.vue` / `DepotItemCard.vue` / `AkStepper.vue`: exactly 2 columns on $\le 480$px (`grid-template-columns: repeat(2, minmax(0, 1fr))`), `AkStepper` with `max-width: 100%`, `flex-shrink: 0` buttons, zero button overlapping.
+    - `farming.vue`: increased mobile header top padding; responsive crafting switch (`width: 100%`, flex).
+    - `gacha.vue` / `GachaCalculator.vue`: responsive single column cards at $\le 480$px without horizontal scroll.
+    - `SyncAccountModal.vue` / `AkModal.vue`: responsive internal vertical scrolling (`max-height: calc(100dvh - 32px)`, padding reduction), responsive email group (`flex-direction: column` on mobile).
+  - **Screenshots Suite (`scripts/take-screenshots.ts`):**
+    - Output directory auto-cleaned on startup; generated all 10 target screenshots (`01-operator-blaze-alter-hero-1440.png` through `10-gacha-desktop-1440.png`) on port `3001`.
+  - **Verification & Testing:**
+    - `lint`, `stylelint`, `typecheck`, `format:check`, `i18n:check`, `data:validate`, `test` (425/425 passed across 66 suites), `test:e2e` (135/135 passed across desktop/mobile/throttled), and `build` (production bundle 35 MB) all 100% green.
+
 - **UI Audit Fixes & Gacha Banners Module (`fix/ui-audit-and-gacha`):**
   - **LMD & Currency Asset Resolution (`shared/utils/resolveAsset.ts`, `app/components/ui/AkItemIcon.vue`):**
     - Added `ITEM_ICON_DEFAULT_MAP` mapping currency and permit item IDs (`4001: 'GOLD'`, `4002: 'DIAMOND'`, `4003: 'DIAMOND_SHD'`, `7001: 'TKT_RECRUIT'`, `7003: 'TKT_GACHA'`, `7004: 'TKT_GACHA_10'`).

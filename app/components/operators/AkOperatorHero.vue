@@ -493,7 +493,7 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
 
   &__art-inspect-hint {
     position: absolute;
-    bottom: 16px;
+    top: 16px;
     right: 16px;
     display: inline-flex;
     align-items: center;
@@ -507,11 +507,16 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(-6px);
     transition:
       opacity var(--transition-fast),
       transform var(--transition-fast);
     pointer-events: none;
+
+    @include mq(sm) {
+      top: 16px;
+      right: 16px;
+    }
   }
 
   &__inspect-icon {
