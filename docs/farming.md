@@ -54,26 +54,51 @@ When `allowCrafting` is enabled (default `true`, configurable in UI/Settings):
    - `30023` / `30033` / `30043` / `30053` / `30063` (Tier 3) $= 4 \times \text{Tier 2} = 12 \times \text{Tier 1}$
    - `3302` (Skill Summary - 2) $= 3 \times \text{3301}$ (Skill Summary - 1)
    - `3303` (Skill Summary - 3) $= 3 \times \text{3302} = 9 \times \text{3301}$
+   - `2001`–`2004` (Battle Records) $\to$ base EXP unit `'2001'` ($1\text{ unit} = 200\text{ EXP}$): `2001` $= 1$, `2002` $= 2$ ($400\text{ EXP}$), `2003` $= 5$ ($1,000\text{ EXP}$), `2004` $= 10$ ($2,000\text{ EXP}$).
 
-2. **Effective Yield Matrix ($A$)**:
+2. **Guaranteed Supply Stage Outputs (`CE-1..CE-6` LMD & `LS-1..LS-6` EXP)**:
+   Verified on `2026-10-17` against raw `.cache/raw/en/stage_table.json` (`SanityGoneAK/arknights-gamedata`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`), `https://arknights.wiki.gg/wiki/Operation/Supply`, `https://arknights.wiki.gg/wiki/LMD`, `https://arknights.wiki.gg/wiki/Battle_Record`, `https://arknights.wiki.gg/wiki/CE-6`, and `https://arknights.wiki.gg/wiki/LS-6`:
+   - **Cargo Escort (`wk_melee_1..6` / `CE-1..CE-6`, open Tue/Thu/Sat/Sun)**:
+     - `CE-1` (`wk_melee_1`, `10` AP): `1,700` LMD (`4001`, $170.0\text{ LMD/AP}$)
+     - `CE-2` (`wk_melee_2`, `15` AP): `2,800` LMD (`4001`, $186.67\text{ LMD/AP}$)
+     - `CE-3` (`wk_melee_3`, `20` AP): `4,100` LMD (`4001`, $205.0\text{ LMD/AP}$)
+     - `CE-4` (`wk_melee_4`, `25` AP): `5,700` LMD (`4001`, $228.0\text{ LMD/AP}$)
+     - `CE-5` (`wk_melee_5`, `30` AP): `7,500` LMD (`4001`, $250.0\text{ LMD/AP}$)
+     - **`CE-6` (`wk_melee_6`, `36` AP): `10,000` LMD (`4001`, $277.78\text{ LMD/AP}$)**
+   - **Tactical Drill (`wk_kc_1..6` / `LS-1..LS-6`, open Mon–Sun)**:
+     - `LS-1` (`wk_kc_1`, `10` AP): `3× 2002 + 2× 2001 = 1,600 EXP` ($160.0\text{ EXP/AP}$)
+     - `LS-2` (`wk_kc_2`, `15` AP): `5× 2002 + 4× 2001 = 2,800 EXP` ($186.67\text{ EXP/AP}$)
+     - `LS-3` (`wk_kc_3`, `20` AP): `3× 2003 + 1.75× 2002 + 2× 2001 = 4,100 EXP` ($205.0\text{ EXP/AP}$)
+     - `LS-4` (`wk_kc_4`, `25` AP): `1× 2004 + 2× 2003 + 3× 2002 + 2× 2001 = 5,600 EXP` ($224.0\text{ EXP/AP}$)
+     - `LS-5` (`wk_kc_5`, `30` AP): `3× 2004 + 1× 2003 + 1× 2002 = 7,400 EXP` ($246.67\text{ EXP/AP}$)
+     - **`LS-6` (`wk_kc_6`, `36` AP): `4× 2004 + 2× 2003 = 10,000 EXP` ($277.78\text{ EXP/AP}$)**
+
+3. **Effective Yield Matrix ($A$)**:
    For each demanded base item $i \in \{1, \dots, m\}$ with required quantity $b_i > 0$ and each open candidate stage $j \in \{1, \dots, n\}$ with sanity cost $c_j = \text{apCost}_j > 0$:
    $$A_{i, j} = \sum_{d \in \text{drops}(j)} R_{j, d} \cdot E(d)_i$$
    where $R_{j, d} = \frac{\text{quantity}_{j, d}}{\text{times}_{j, d}}$ is the expected drop per run and $E(d)_i$ is the number of units of base item $i$ represented by 1 unit of dropped item $d$.
 
-3. **Dual Simplex Linear Program**:
+4. **Dual Simplex Linear Program**:
    We solve the primal linear program:
    $$\min_{x \ge 0} \sum_{j=1}^{n} c_j x_j \quad \text{subject to} \quad \sum_{j=1}^{n} A_{i, j} x_j \ge b_i \quad \forall i \in \{1, \dots, m\}$$
    Because $c_j > 0$ for all stages, the initial tableau with basic surplus variables $s_i = -b_i < 0$ is immediately **dual feasible**. The pure TypeScript Dual Simplex solver (`solveContinuousLpDualSimplex`) pivots to the exact global optimum $x^* \ge 0$ in $< 2\text{ ms}$ with zero external dependencies.
    By the fundamental theorem of linear programming, the number of basic stages with $x^*_j > 0$ is at most $m$ (the number of distinct missing materials), so the solution naturally concentrates runs onto the single best stage per bottleneck material while simultaneously accounting for all cross-stage T1/T2/T3 byproducts.
 
-4. **Integer Run Rounding & Redundancy Pruning**:
+5. **Integer Run Rounding & Redundancy Pruning**:
    - Initialize integer runs $N_j = \lfloor x^*_j \rfloor$.
-   - Greedily increment runs for any residual fractional deficit $b_i - \sum_j A_{i, j} N_j > 0$ using highest marginal coverage per sanity.
+   - Greedily increment runs for any residual fractional deficit $b_i - \sum_j A_{i, j} N_j > 0$ prioritizing active LP basis stages ($x^*_j > 0$) by highest marginal coverage per sanity.
    - Perform a descending-cost redundancy pass to decrement any $N_j$ whose removal keeps all constraints $\sum_j A_{i, j} N_j \ge b_i$ satisfied.
 
-5. **Impact on Kal'tsit Full Deficit**:
-   - **CN Server**: Reduced from **33,969 AP (2,240 runs)** to **17,373 AP (841 runs)** — selecting `1-7`, `CA-5`, `14-12`, `10-3`, `14-18`, `12-16`, `11-12`, `14-20`, `14-8`, etc.
-   - **US (Global) Server**: Reduced from **116,222 AP (7,798 runs)** to **18,864 AP (1,068 runs)** — selecting `1-7`, `CA-5`, `14-12`, `11-12`, `12-16`, `14-18`, `10-12`, etc.
+6. **Impact on Kal'tsit Full Deficit (E0 L1 $\to$ E2 L90, S1–S3 M3, Module X Stage 3, Empty Depot)**:
+   - **Materials Only**:
+     - **CN Server**: Reduced from **33,969 AP (2,240 runs)** to **17,265 AP (840 runs)** — selecting `1-7`, `CA-5`, `14-12`, `10-3`, `14-18`, `12-16`, `11-12`, `14-20`, `14-8`, etc.
+     - **US (Global) Server**: Reduced from **116,222 AP (7,798 runs)** to **18,783 AP (1,073 runs)** — selecting `1-7`, `CA-5`, `14-12`, `11-12`, `12-16`, `14-18`, `10-12`, etc.
+   - **Full Plan Including LMD (`CE-6`) and EXP (`LS-6`)**:
+     - **LMD (`4001`)**: `1,634,796` upgrade LMD + `279,500` workshop crafting LMD = **`1,914,296` LMD** $\to$ **`192` runs of `CE-6` (`6,912` AP, `1,920,000` LMD)** (or with 0 modules: `1,334,796 + 225,900 = 1,560,696` LMD $\to$ **`157` runs of `CE-6` (`5,652` AP)**).
+     - **EXP (`2001`–`2004`)**: **`1,111,400` EXP** (`555× 2004 + 1× 2003 + 1× 2002`) $\to$ **`112` runs of `LS-6` (`4,032` AP, `448× 2004 + 224× 2003 = 1,120,000` EXP)**.
+     - **Combined Total Sanity (Module X Stage 3)**:
+       - **CN Server**: $17,265 + 6,912 + 4,032 = \mathbf{28,209\text{ AP}}$ (**`1,144` runs**, `117.5` days / `209` OP).
+       - **US (Global) Server**: $18,783 + 6,912 + 4,032 = \mathbf{29,727\text{ AP}}$ (**`1,377` runs**, `123.9` days / `221` OP).
 
 ---
 

@@ -1,5 +1,20 @@
 # Project Progress
 
+- **EN Source Switch (`SanityGoneAK`), `CE-6`/`LS-6` Farming Integration & Full UI Screenshot Suite (`feat/farming-lmd-exp-and-en-source`):**
+  - **EN Game Data Switch & `appellation` Validation (`scripts/data/sources.config.ts`, `scripts/data/i18n-layers.ts`, `scripts/data/build-operators.ts`):**
+    - Replaced frozen `Kengxxiao/ArknightsGameData_YoStar` (`2025-11-13`) with `SanityGoneAK/arknights-gamedata` (`en/gamedata/excel/`, pinned commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`).
+    - Added strict `isValidLatinAppellation` ASCII/Latin filter (`[\u0400-\u04FF]` and CJK rejected) in `scripts/data/i18n-layers.ts` and `scripts/data/build-operators.ts`.
+    - Cleaned Cyrillic fallback names (`Вий` $\to$ `Viy`, `Снегурочка` $\to$ `Snow Maiden`, `Ботани` $\to$ `Botany`, `Укусик`, `Веточки` $\to$ `Twig`) in `data/i18n/wiki/operators.json` and `data/i18n/global-availability.json`.
+    - Rebuilt `data/**`: Global operators increased `376` $\to$ `417` (`0` missing official EN names, `0` Cyrillic in EN names); `data/i18n/report.json` `official` strings increased `26,515 (84.54%)` $\to$ `30,055 (95.82%)`, `zh` decreased `2,981 (9.50%)` $\to$ `811 (2.59%)`; `data/` directory size grew `+0.37%` (`27.04 MB` $\to$ `27.14 MB`, well under 25% limit).
+  - **`CE-6` (LMD) & `LS-6` (EXP) in Farming Optimizer (`shared/utils/farming/optimize.ts`, `shared/utils/farming/schedule.ts`, `app/stores/farming.ts`, `app/pages/farming.vue`):**
+    - Verified `CE-1..CE-6` (`wk_melee_1..6`, 10–36 AP, `1,700..10,000` LMD `4001`) and `LS-1..LS-6` (`wk_kc_1..6`, 10–36 AP, `1,600..10,000` EXP `2001`–`2004`) against raw `stage_table.json` and live `arknights.wiki.gg` (`2026-10-17`).
+    - Added `GUARANTEED_SUPPLY_STAGES` and `EXP_CARD_EQUIV_TO_2001` (`2001`: 1, `2002`: 2, `2003`: 5, `2004`: 10) to `shared/utils/farming/optimize.ts`, fixed `wk_kc_*` / `wk_toxic_*` IDs in `shared/utils/farming/schedule.ts`, and prioritized LP basis stages during integer rounding.
+    - Updated `app/stores/farming.ts` (`activeDeficit`) to include LMD (`4001`, plus `resolvedCraftLmdCost` when `farmingAllowCrafting` is enabled) and EXP (`2001`–`2004` minus depot EXP stock in EXP-equivalent).
+    - Kal'tsit full plan (`E0 L1 -> E2 L90`, `S1–S3 M3`, Module X Stage 3, empty depot) now includes `CE-6` (`192` runs / `6,912` AP for `1,914,296` LMD) and `LS-6` (`112` runs / `4,032` AP for `1,111,400` EXP), bringing total Sanity from `17,265` $\to$ `28,209` AP (`1,144` runs) on CN and `18,783` $\to$ `29,727` AP (`1,377` runs) on US.
+    - Added unit tests in `tests/unit/shared/farming/optimize.test.ts` and `tests/unit/stores/farming.test.ts`; updated `docs/farming.md` and `docs/farming-audit.md`.
+  - **UI Screenshot Suite (`scripts/take-screenshots.ts`):**
+    - Added `screenshots/` to `.gitignore` and `npm run screenshots` (`scripts/take-screenshots.ts`) generating all 20 required desktop (`1440×900`) and mobile (`360×800`) screenshots on port `3001`.
+
 - **Alternative Game Data Source Probe & Farming Audit Follow-up (`chore/data-source-probe`):**
   - **Alternative Game Data Repositories Audit (`docs/data-source-probe.md`):**
     - Audited 3 candidate repositories (`ArknightsAssets/ArknightsGamedata`, `ArknightsAssets/ArknightsAssets2`, `SanityGoneAK/arknights-gamedata`) against the current control (`Kengxxiao/ArknightsGameData` + `Kengxxiao/ArknightsGameData_YoStar`) via live GitHub API and raw HTTP requests (`2026-10-17`).
