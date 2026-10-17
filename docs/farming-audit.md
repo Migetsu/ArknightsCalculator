@@ -124,3 +124,381 @@ For **Kal'tsit** (E0 L1 $\to$ E2 L90, Skill 1$\to$7, S1–S3 M3, Module X Stage 
   - Because `optimizeFarming` did not know that 1x `30012` dropped on `1-7` satisfies 3x `30011` (or 1x `30013` satisfies 15x `30011`), it farmed **318 runs of `S2-5` (3,816 Sanity)** instead of `1-7` (**~1,854 Sanity** standalone, or even less with Chapter 11/14 T3 byproducts).
   - Similarly, it farmed `MN-4` (6,888 Sanity for T1 `30041`), `GA-4` (4,476 Sanity for T1 `30061`), `S2-9` (3,588 Sanity for T1 `30051`), and `CA-2` (3,300 Sanity for T1 `3301` instead of `CA-5` at 1,380 Sanity).
   - Total sanity inflated to **33,969 Sanity on CN** and **116,222 Sanity on US**, whereas Linear Programming with recipe substitution reduces this to **~17,298 Sanity on CN** and **~18,750 Sanity on US**.
+
+---
+
+## 2. Skill Leveling (Ranks 2→7) & Mastery (M1–M3) Cost Audit: SilverAsh & Kal'tsit
+
+**Live Verification Timestamp**: `2026-10-17T10:02:07.541Z`
+
+- **SilverAsh Wiki URL**: `https://arknights.wiki.gg/wiki/SilverAsh` (`https://arknights.wiki.gg/api.php?action=parse&page=SilverAsh&prop=wikitext&format=json`, HTTP `200 OK`)
+  - Quote ($\le 15$ words): `{{Skill upgrade cell|level=8|...|skill3=Truesilver Slash|summary=8|...|m31=Optimized Device,3|m32=Oriron Cluster,4}}`
+- **Kal'tsit Wiki URL**: `https://arknights.wiki.gg/wiki/Kal%27tsit` (`https://arknights.wiki.gg/api.php?action=parse&page=Kal%27tsit&prop=wikitext&format=json`, HTTP `200 OK`)
+  - Quote ($\le 15$ words): `{{Skill upgrade cell|level=8|...|skill3=Command: Meltdown|m31=White Horse Kohl,4|m32=Aketon,8}}`
+
+### 2.1. Raw JSON Fragments from `data/operators/char_172_svrash.json` & `data/operators/char_003_kalts.json`
+
+#### A. `char_172_svrash` (SilverAsh)
+
+```json
+{
+  "allSkillLvlup": [
+    { "unlockCond": { "phase": 0, "level": 1 }, "lvlUpCost": [{ "id": "3301", "count": 5 }] },
+    {
+      "unlockCond": { "phase": 0, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3301", "count": 5 },
+        { "id": "30031", "count": 6 },
+        { "id": "30041", "count": 4 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 0, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30042", "count": 4 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30052", "count": 4 },
+        { "id": "30012", "count": 5 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30023", "count": 7 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3303", "count": 8 },
+        { "id": "30033", "count": 4 },
+        { "id": "30083", "count": 5 }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_svrash_1",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 6 },
+            { "id": "30044", "count": 4 },
+            { "id": "30023", "count": 4 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "30074", "count": 4 },
+            { "id": "30054", "count": 8 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30135", "count": 6 },
+            { "id": "30074", "count": 7 }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_svrash_2",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 6 },
+            { "id": "30054", "count": 4 },
+            { "id": "30033", "count": 6 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "30084", "count": 4 },
+            { "id": "30064", "count": 5 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30135", "count": 6 },
+            { "id": "30024", "count": 6 }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_svrash_3",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 6 },
+            { "id": "30064", "count": 3 },
+            { "id": "30043", "count": 4 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "30094", "count": 4 },
+            { "id": "30074", "count": 9 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30125", "count": 6 },
+            { "id": "30024", "count": 5 }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### B. `char_003_kalts` (Kal'tsit)
+
+```json
+{
+  "allSkillLvlup": [
+    { "unlockCond": { "phase": 0, "level": 1 }, "lvlUpCost": [{ "id": "3301", "count": 5 }] },
+    {
+      "unlockCond": { "phase": 0, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3301", "count": 5 },
+        { "id": "30061", "count": 4 },
+        { "id": "30031", "count": 4 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 0, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30012", "count": 7 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30022", "count": 4 },
+        { "id": "30052", "count": 4 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3302", "count": 8 },
+        { "id": "30043", "count": 6 }
+      ]
+    },
+    {
+      "unlockCond": { "phase": 1, "level": 1 },
+      "lvlUpCost": [
+        { "id": "3303", "count": 8 },
+        { "id": "30053", "count": 3 },
+        { "id": "30073", "count": 6 }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_kalts_1",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 8 },
+            { "id": "30054", "count": 4 },
+            { "id": "31013", "count": 4 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "30094", "count": 4 },
+            { "id": "30074", "count": 9 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30115", "count": 6 },
+            { "id": "30044", "count": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kalts_2",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 8 },
+            { "id": "30064", "count": 3 },
+            { "id": "30043", "count": 4 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "30104", "count": 4 },
+            { "id": "30084", "count": 7 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30135", "count": 6 },
+            { "id": "30054", "count": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_kalts_3",
+      "masteryCosts": [
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 8 },
+            { "id": "30074", "count": 4 },
+            { "id": "30053", "count": 8 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 12 },
+            { "id": "31034", "count": 4 },
+            { "id": "31014", "count": 8 }
+          ]
+        },
+        {
+          "unlockCond": { "phase": 2, "level": 1 },
+          "levelUpCost": [
+            { "id": "3303", "count": 15 },
+            { "id": "30145", "count": 6 },
+            { "id": "30094", "count": 4 }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 2.2. Verification Table: Raw JSON vs `calculateCost` vs `arknights.wiki.gg`
+
+| Оператор      | Уровень                       | Предмет                                                                                    | Сырой JSON        | Наш расчёт `calculateCost` | Wiki.gg (`2026-10-17`) | Совпадает (Да/Нет)                                                 |
+| :------------ | :---------------------------- | :----------------------------------------------------------------------------------------- | :---------------- | :------------------------- | :--------------------- | :----------------------------------------------------------------- |
+| **SilverAsh** | **Rank 2 → 3**                | Skill Summary - 1 (`3301`) / Ester (`30031`) / Oriron Shard (`30041`)                      | `5 / 6 / 4`       | `5 / 6 / 4`                | `5 / 6 / 4`            | **Да**                                                             |
+| **SilverAsh** | **Rank 3 → 4**                | Skill Summary - 2 (`3302`) / Oriron (`30042`)                                              | `8 / 4`           | `8 / 4`                    | `8 / 4`                | **Да**                                                             |
+| **SilverAsh** | **Rank 4 → 5**                | Skill Summary - 2 (`3302`) / Polyketon (`30052`) / Orirock Cube (`30012`)                  | `8 / 4 / 5`       | `8 / 4 / 5`                | `8 / 4 / 5`            | **Да**                                                             |
+| **SilverAsh** | **Rank 5 → 6**                | Skill Summary - 2 (`3302`) / Sugar Pack (`30023`)                                          | `8 / 7`           | `8 / 7`                    | `8 / 7`                | **Да**                                                             |
+| **SilverAsh** | **Rank 6 → 7**                | Skill Summary - 3 (`3303`) / Polyester Pack (`30033`) / Manganese Ore (`30083`)            | `8 / 4 / 5`       | `8 / 4 / 5`                | `8 / 4 / 5`            | **Да**                                                             |
+| **SilverAsh** | **S1 M1**                     | Skill Summary - 3 (`3303`) / Oriron Block (`30044`) / Sugar Pack (`30023`)                 | **`6`**` / 4 / 4` | **`6`**` / 4 / 4`          | **`8`**` / 4 / 4`      | **Нет по `3303` (опечатка на Wiki.gg: `8` вместо клиентских `6`)** |
+| **SilverAsh** | **S1 M2**                     | Skill Summary - 3 (`3303`) / White Horse Kohl (`30074`) / Keton Colloid (`30054`)          | `12 / 4 / 8`      | `12 / 4 / 8`               | `12 / 4 / 8`           | **Да**                                                             |
+| **SilverAsh** | **S1 M3**                     | Skill Summary - 3 (`3303`) / D32 Steel (`30135`) / White Horse Kohl (`30074`)              | `15 / 6 / 7`      | `15 / 6 / 7`               | `15 / 6 / 7`           | **Да**                                                             |
+| **SilverAsh** | **S2 M1**                     | Skill Summary - 3 (`3303`) / Keton Colloid (`30054`) / Polyester Pack (`30033`)            | **`6`**` / 4 / 6` | **`6`**` / 4 / 6`          | **`8`**` / 4 / 6`      | **Нет по `3303` (опечатка на Wiki.gg: `8` вместо клиентских `6`)** |
+| **SilverAsh** | **S2 M2**                     | Skill Summary - 3 (`3303`) / Manganese Trihydrate (`30084`) / Optimized Device (`30064`)   | `12 / 4 / 5`      | `12 / 4 / 5`               | `12 / 4 / 5`           | **Да**                                                             |
+| **SilverAsh** | **S2 M3**                     | Skill Summary - 3 (`3303`) / D32 Steel (`30135`) / Sugar Lump (`30024`)                    | `15 / 6 / 6`      | `15 / 6 / 6`               | `15 / 6 / 6`           | **Да**                                                             |
+| **SilverAsh** | **S3 M1 (Truesilver Slash)**  | Skill Summary - 3 (`3303`) / Optimized Device (`30064`) / Oriron Cluster (`30043`)         | **`6`**` / 3 / 4` | **`6`**` / 3 / 4`          | **`8`**` / 3 / 4`      | **Нет по `3303` (опечатка на Wiki.gg: `8` вместо клиентских `6`)** |
+| **SilverAsh** | **S3 M2 (Truesilver Slash)**  | Skill Summary - 3 (`3303`) / Grindstone Pent. (`30094`) / White Horse Kohl (`30074`)       | `12 / 4 / 9`      | `12 / 4 / 9`               | `12 / 4 / 9`           | **Да**                                                             |
+| **SilverAsh** | **S3 M3 (Truesilver Slash)**  | Skill Summary - 3 (`3303`) / Bipolar Nanoflake (`30125`) / Sugar Lump (`30024`)            | `15 / 6 / 5`      | `15 / 6 / 5`               | `15 / 6 / 5`           | **Да**                                                             |
+| **Kal'tsit**  | **Rank 2 → 3**                | Skill Summary - 1 (`3301`) / Damaged Device (`30061`) / Ester (`30031`)                    | `5 / 4 / 4`       | `5 / 4 / 4`                | `5 / 4 / 4`            | **Да**                                                             |
+| **Kal'tsit**  | **Rank 3 → 4**                | Skill Summary - 2 (`3302`) / Orirock Cube (`30012`)                                        | `8 / 7`           | `8 / 7`                    | `8 / 7`                | **Да**                                                             |
+| **Kal'tsit**  | **Rank 4 → 5**                | Skill Summary - 2 (`3302`) / Sugar (`30022`) / Polyketon (`30052`)                         | `8 / 4 / 4`       | `8 / 4 / 4`                | `8 / 4 / 4`            | **Да**                                                             |
+| **Kal'tsit**  | **Rank 5 → 6**                | Skill Summary - 2 (`3302`) / Oriron Cluster (`30043`)                                      | `8 / 6`           | `8 / 6`                    | `8 / 6`                | **Да**                                                             |
+| **Kal'tsit**  | **Rank 6 → 7**                | Skill Summary - 3 (`3303`) / Aketon (`30053`) / Loxic Kohl (`30073`)                       | `8 / 3 / 6`       | `8 / 3 / 6`                | `8 / 3 / 6`            | **Да**                                                             |
+| **Kal'tsit**  | **S1 M1**                     | Skill Summary - 3 (`3303`) / Keton Colloid (`30054`) / Coagulating Gel (`31013`)           | `8 / 4 / 4`       | `8 / 4 / 4`                | `8 / 4 / 4`            | **Да**                                                             |
+| **Kal'tsit**  | **S1 M2**                     | Skill Summary - 3 (`3303`) / Grindstone Pent. (`30094`) / White Horse Kohl (`30074`)       | `12 / 4 / 9`      | `12 / 4 / 9`               | `12 / 4 / 9`           | **Да**                                                             |
+| **Kal'tsit**  | **S1 M3**                     | Skill Summary - 3 (`3303`) / Polymerization Prep. (`30115`) / Oriron Block (`30044`)       | `15 / 6 / 5`      | `15 / 6 / 5`               | `15 / 6 / 5`           | **Да**                                                             |
+| **Kal'tsit**  | **S2 M1**                     | Skill Summary - 3 (`3303`) / Optimized Device (`30064`) / Oriron Cluster (`30043`)         | `8 / 3 / 4`       | `8 / 3 / 4`                | `8 / 3 / 4`            | **Да**                                                             |
+| **Kal'tsit**  | **S2 M2**                     | Skill Summary - 3 (`3303`) / RMA70-24 (`30104`) / Manganese Trihydrate (`30084`)           | `12 / 4 / 7`      | `12 / 4 / 7`               | `12 / 4 / 7`           | **Да**                                                             |
+| **Kal'tsit**  | **S2 M3**                     | Skill Summary - 3 (`3303`) / D32 Steel (`30135`) / Keton Colloid (`30054`)                 | `15 / 6 / 5`      | `15 / 6 / 5`               | `15 / 6 / 5`           | **Да**                                                             |
+| **Kal'tsit**  | **S3 M1 (Command: Meltdown)** | Skill Summary - 3 (`3303`) / White Horse Kohl (`30074`) / Aketon (`30053`)                 | `8 / 4 / 8`       | `8 / 4 / 8`                | `8 / 4 / 8`            | **Да**                                                             |
+| **Kal'tsit**  | **S3 M2 (Command: Meltdown)** | Skill Summary - 3 (`3303`) / Crystalline Circuit (`31034`) / Polymerized Gel (`31014`)     | `12 / 4 / 8`      | `12 / 4 / 8`               | `12 / 4 / 8`           | **Да**                                                             |
+| **Kal'tsit**  | **S3 M3 (Command: Meltdown)** | Skill Summary - 3 (`3303`) / Crystalline Elec. Unit (`30145`) / Grindstone Pent. (`30094`) | `15 / 6 / 4`      | `15 / 6 / 4`               | `15 / 6 / 4`           | **Да**                                                             |
+
+### 2.3. Proof on SilverAsh S3 M1 (`3303` Skill Summary - 3 Count)
+
+- **Our JSON (`data/operators/char_172_svrash.json`, `$.skills[2].masteryCosts[0].levelUpCost[0]`)**: `{"id": "3303", "count": 6}` (**6** шт.).
+- **Raw CN `Kengxxiao/ArknightsGameData` (`zh_CN/gamedata/excel/character_table.json`, HEAD commit `bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d` `2026-10-16` & pinned `17759cc8` `2026-10-08`, `$["char_172_svrash"].skills[2].levelUpCostCond[0].levelUpCost[0]`)**: `{"id": "3303", "count": 6, "type": "MATERIAL"}` (**6** шт.).
+- **Raw EN `SanityGoneAK/arknights-gamedata` (`en/gamedata/excel/character_table.json`, commit `a85e3a9d` `2026-10-14`) & `Kengxxiao/ArknightsGameData_YoStar` (`57010cb5`, `2025-11-13`)**: `{"id": "3303", "count": 6, "type": "MATERIAL"}` (**6** шт.).
+- **CN Wiki `prts.wiki` (`https://prts.wiki/w/%E9%93%B6%E7%81%B0`, queried `2026-10-17`)**: `{{材料消耗|技巧概要·卷3|6}}` (**6** шт.).
+- **Global Wiki `arknights.wiki.gg` (`https://arknights.wiki.gg/wiki/SilverAsh`, queried `2026-10-17`)**: `summary=8` (**8** шт.).
+- **Exact Conclusion**: All official CN and EN game client tables and `prts.wiki` specify **6× `3303`** for SilverAsh S1–S3 M1. Our `calculateCost` output (`6`) is 100% faithful to the game client data; `summary=8` on `arknights.wiki.gg/wiki/SilverAsh` is a wiki typo on that page.
+
+---
+
+## 3. Proof of CN-Exclusive Stage Exclusion for US (`global`)
+
+### 3.1. Exact Code Lines Enforcing Server Filtering
+
+1. **[`scripts/data/build-stages.ts`](file:///c:/Projects/ArknightsCalculator/scripts/data/build-stages.ts#L111-L115) (lines 111–115)**:
+   Assigns `servers` strictly from Penguin Statistics `existence.{CN,US}.exist`:
+   ```ts
+   const servers: ServerRegion[] = []
+   if (pStage.existence?.CN?.exist) servers.push('cn')
+   if (pStage.existence?.US?.exist) servers.push('global')
+   if (servers.length === 0) servers.push('cn')
+   ```
+2. **[`scripts/data/fetch-penguin.ts`](file:///c:/Projects/ArknightsCalculator/scripts/data/fetch-penguin.ts#L139-L154) (lines 139–154)**:
+   Excludes any drop entry whose stage is not in `stage.servers` for the target server or has `ex.exist === false`, and records `exist`, `openTime`, `closeTime`:
+   ```ts
+   const serverKey = server === 'CN' ? 'cn' : 'global'
+   if (!stage.servers.includes(serverKey)) continue
+
+   const ex = existenceByStageId.get(entry.stageId)
+   if (ex && ex.exist === false) continue
+   ```
+3. **[`shared/utils/farming/optimize.ts`](file:///c:/Projects/ArknightsCalculator/shared/utils/farming/optimize.ts#L92-L97) (lines 92–97 & 268–288)**:
+   Verifies both `isStageCurrentlyOpen(stage, now)` and `meta.servers.includes(server)` at runtime:
+   ```ts
+   export function isStageCurrentlyOpen(stage: PenguinStageMatrix, now: number): boolean {
+     if (stage.exist === false) return false
+     if (typeof stage.openTime === 'number' && stage.openTime > now) return false
+     if (typeof stage.closeTime === 'number' && stage.closeTime <= now) return false
+     return true
+   }
+   ```
+   ```ts
+   if (stagesMap) {
+     const meta = stagesMap[stage.stageId]
+     if (!meta || meta.matchedGameData === false) continue
+     if (!meta.servers.includes(server)) continue
+   }
+   ```
+
+### 3.2. Trace of 3 Real CN-Exclusive Stages in `data/stages.json`, `data/penguin/cn.json`, and `data/penguin/us.json`
+
+| `stageId`           | Code      | `data/stages.json` (`servers`)         | `data/penguin/cn.json`                                                                               | `data/penguin/us.json`   | Why Excluded on `server=global` (`us`)                                                                                    |
+| :------------------ | :-------- | :------------------------------------- | :--------------------------------------------------------------------------------------------------- | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `main_17-09`        | **17-10** | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 21`, `exist: true`, `openTime: 1777608000000`, `closeTime: null`, 15 drops)        | **Absent (`undefined`)** | Absent from `us.json` matrix AND `stages["main_17-09"].servers` is `["cn"]` (does not include `"global"`).                |
+| `act16side_04_perm` | **GA-4**  | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 12`, `exist: true`, `openTime: 1678132800000`, `closeTime: null`, 7 drops)         | **Absent (`undefined`)** | Absent from `us.json` matrix AND `stages["act16side_04_perm"].servers` is `["cn"]`.                                       |
+| `act52side_02`      | **YW-2**  | `["cn"]` (`existence.US.exist: false`) | Present (`apCost: 9`, `exist: true`, `openTime: 1791518400000`, `closeTime: 1792699200000`, 7 drops) | **Absent (`undefined`)** | Absent from `us.json`, `servers` is `["cn"]`, and `isStageCurrentlyOpen` also rejects it outside `[openTime, closeTime)`. |
