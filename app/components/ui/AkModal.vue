@@ -200,6 +200,10 @@ onBeforeUnmount(() => {
     @media (width <= 640px) {
       padding: 16px 16px 12px;
     }
+
+    @media (width <= 480px) {
+      padding: 12px 14px 8px;
+    }
   }
 
   &__title-group {
@@ -225,6 +229,10 @@ onBeforeUnmount(() => {
     color: var(--color-text-primary);
     line-height: var(--line-height-tight);
     margin: 0;
+
+    @media (width <= 480px) {
+      font-size: var(--font-size-md, 16px);
+    }
   }
 
   &__close {
@@ -258,6 +266,10 @@ onBeforeUnmount(() => {
     @media (width <= 640px) {
       padding: 16px;
     }
+
+    @media (width <= 480px) {
+      padding: 10px 14px;
+    }
   }
 
   &__footer {
@@ -272,6 +284,10 @@ onBeforeUnmount(() => {
 
     @media (width <= 640px) {
       padding: 12px 16px;
+    }
+
+    @media (width <= 480px) {
+      padding: 10px 14px;
     }
   }
 }

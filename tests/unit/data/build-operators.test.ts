@@ -95,7 +95,9 @@ describe('Operator Data Builder & Schemas', () => {
     it('resolves official English subclass name when present', () => {
       expect(resolveSubclassName('primcaster', mockEnEquips, mockCnEquips)).toBe('Primal Caster')
       expect(resolveSubclassName('wandermedic', mockEnEquips, mockCnEquips)).toBe('Wandering Medic')
-      expect(resolveSubclassName('physician', mockEnEquips, mockCnEquips)).toBe('Medic')
+      expect(resolveSubclassName('physician', mockEnEquips, mockCnEquips)).toBe(
+        'Single-target Medic',
+      )
     })
 
     it('falls back to Supportive Ranger for supportiveranger', () => {

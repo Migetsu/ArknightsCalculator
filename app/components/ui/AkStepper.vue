@@ -9,6 +9,7 @@ interface Props {
   step?: number
   disabled?: boolean
   ariaLabel?: string
+  wide?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
   step: 1,
   disabled: false,
   ariaLabel: 'Quantity',
+  wide: false,
 })
 
 const emit = defineEmits<{
@@ -77,6 +79,7 @@ function handleKeydown(event: KeyboardEvent): void {
       :id="id"
       type="number"
       class="ak-stepper__input"
+      :class="{ 'ak-stepper__input--wide': wide }"
       :value="modelValue"
       :min="min"
       :max="max"
@@ -158,6 +161,11 @@ function handleKeydown(event: KeyboardEvent): void {
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
+
+    &--wide {
+      width: 92px;
+      padding: 6px 8px;
+    }
 
     // Hide native number spinner arrows
     appearance: textfield;

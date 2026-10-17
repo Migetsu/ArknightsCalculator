@@ -4,14 +4,15 @@ import type { GameItem } from '../../shared/schemas/item'
 import type { CraftRecipe } from '../../shared/schemas/recipe'
 import type { GameConstants } from '../../shared/schemas/gameConstants'
 import type { OperatorDetail, OperatorSummary } from '../../shared/schemas/operator'
+import { RecruitDataSchema } from '../../shared/schemas/recruit'
 
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
 
 interface ValidationIssue {
-  entityType: 'operator' | 'recipe' | 'constants' | 'asset'
+  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit'
   entityId: string
-  referenceType: 'item' | 'skill' | 'module'
+  referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema'
   referenceId: string
   message: string
 }
@@ -23,23 +24,26 @@ export async function validateDataIntegrity(): Promise<{
   totalItemReferences: number
   totalSkillReferences: number
   totalModuleReferences: number
+  totalRecruitPoolChecked: number
   issues: ValidationIssue[]
 }> {
   console.log('=== Arknights Data Integrity & Referential Validator ===\n')
 
   // 1. Load items, recipes, constants, and index
   console.log('1. Loading datasets...')
-  const [itemsRaw, recipesRaw, constantsRaw, indexRaw] = await Promise.all([
+  const [itemsRaw, recipesRaw, constantsRaw, indexRaw, recruitRaw] = await Promise.all([
     fs.readFile(path.join(DATA_DIR, 'items.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'recipes.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'constants.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'operators-index.json'), 'utf-8'),
+    fs.readFile(path.join(DATA_DIR, 'recruit.json'), 'utf-8'),
   ])
 
   const items = JSON.parse(itemsRaw) as GameItem[]
   const recipes = JSON.parse(recipesRaw) as CraftRecipe[]
   const constants = JSON.parse(constantsRaw) as GameConstants
   const index = JSON.parse(indexRaw) as OperatorSummary[]
+  const recruit = JSON.parse(recruitRaw) as unknown
 
   const itemMap = new Map<string, GameItem>()
   for (const it of items) {
@@ -270,6 +274,48 @@ export async function validateDataIntegrity(): Promise<{
     }
   }
 
+  // 5. Validate Recruitment Data
+  console.log('5. Validating recruitment data...')
+  let totalRecruitPoolChecked = 0
+  try {
+    const parsedRecruit = RecruitDataSchema.parse(recruit)
+    if (parsedRecruit.tags.length !== 29) {
+      issues.push({
+        entityType: 'recruit',
+        entityId: 'recruit.json',
+        referenceType: 'schema',
+        referenceId: 'tags',
+        message: `Expected 29 recruitment tags, found ${parsedRecruit.tags.length}`,
+      })
+    }
+
+    const validatePool = (poolName: 'global' | 'cn', pool: typeof parsedRecruit.pools.global) => {
+      for (const op of pool) {
+        totalRecruitPoolChecked++
+        if (!indexedIds.has(op.id)) {
+          issues.push({
+            entityType: 'recruit',
+            entityId: `recruit.json:pools.${poolName}`,
+            referenceType: 'operator',
+            referenceId: op.id,
+            message: `Operator '${op.id}' (${op.name.en}) does not exist in operators-index.json`,
+          })
+        }
+      }
+    }
+
+    validatePool('global', parsedRecruit.pools.global)
+    validatePool('cn', parsedRecruit.pools.cn)
+  } catch (err: unknown) {
+    issues.push({
+      entityType: 'recruit',
+      entityId: 'recruit.json',
+      referenceType: 'schema',
+      referenceId: 'root',
+      message: err instanceof Error ? err.message : String(err),
+    })
+  }
+
   return {
     totalOperatorsChecked: opFiles.length,
     totalRecipesChecked: recipes.length,
@@ -277,6 +323,7 @@ export async function validateDataIntegrity(): Promise<{
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
+    totalRecruitPoolChecked,
     globalReferencingCnOnlyCount,
     issues,
   }
@@ -289,6 +336,7 @@ async function main(): Promise<void> {
   console.log(`Operators checked:         ${result.totalOperatorsChecked}`)
   console.log(`Recipes checked:           ${result.totalRecipesChecked}`)
   console.log(`Items in dictionary:       ${result.totalItemsChecked}`)
+  console.log(`Recruit pool checked:      ${result.totalRecruitPoolChecked}`)
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
   console.log(`Total module references:   ${result.totalModuleReferences}`)

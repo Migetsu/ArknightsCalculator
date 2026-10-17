@@ -10,11 +10,13 @@ interface Props<TVal extends string | number = string> {
   options: SegmentOption<TVal>[]
   ariaLabel?: string
   disabled?: boolean
+  size?: 'sm' | 'md'
 }
 
 const props = withDefaults(defineProps<Props<T>>(), {
   ariaLabel: 'Segmented control',
   disabled: false,
+  size: 'md',
 })
 
 const emit = defineEmits<{
@@ -37,6 +39,7 @@ function select(val: T): void {
       :class="{
         'ak-segmented__btn--active': opt.value === modelValue,
         'ak-segmented__btn--disabled': opt.disabled || disabled,
+        'ak-segmented__btn--sm': size === 'sm',
       }"
       :aria-pressed="opt.value === modelValue"
       :disabled="opt.disabled || disabled"
@@ -94,6 +97,13 @@ function select(val: T): void {
         background-color: var(--color-accent-primary-hover);
         color: var(--color-text-inverse);
       }
+    }
+
+    &--sm {
+      padding: 8px 6px;
+      font-size: var(--font-size-xs, 12px);
+      flex: 1 1 50%;
+      min-width: 0;
     }
 
     &--disabled {

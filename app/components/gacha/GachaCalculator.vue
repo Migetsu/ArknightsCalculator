@@ -349,16 +349,12 @@ const milestones = computed(() => {
     min-width: 0;
 
     @media (width <= 480px) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--space-xs, 8px);
+      padding: 10px 12px;
     }
   }
 
   &__stepper {
-    @media (width <= 480px) {
-      width: 100%;
-    }
+    flex-shrink: 0;
   }
 
   &__item-info {

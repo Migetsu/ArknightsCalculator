@@ -77,6 +77,14 @@ describe('modules registry', () => {
     expect(farming?.status).toBe('ready')
   })
 
+  it('validates recruit module configuration', () => {
+    const recruit = getModuleById('recruit')
+    expect(recruit).toBeDefined()
+    expect(recruit?.code).toBe('RCR-03')
+    expect(recruit?.route).toBe('/recruit')
+    expect(recruit?.status).toBe('ready')
+  })
+
   it('finds module by id via getModuleById', () => {
     const planner = getModuleById('planner')
     expect(planner).toBeDefined()
