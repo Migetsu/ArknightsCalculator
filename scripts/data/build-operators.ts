@@ -293,8 +293,14 @@ export function buildOperatorData(
       ctx,
       trk,
     )
-    const rawAppellation = (en?.appellation ?? cn.appellation)?.trim()
-    const appellation = isValidLatinAppellation(rawAppellation) ? rawAppellation : undefined
+    const enApp = en?.appellation?.trim()
+    const cnApp = cn.appellation?.trim()
+    const appellation =
+      enApp && isValidLatinAppellation(enApp)
+        ? enApp
+        : cnApp && isValidLatinAppellation(cnApp)
+          ? cnApp
+          : undefined
     const displayNumber = en?.displayNumber ?? cn.displayNumber ?? null
     const rarity = normalizeRarity(cn.rarity)
     const opClass = normalizeClass(cn.profession)

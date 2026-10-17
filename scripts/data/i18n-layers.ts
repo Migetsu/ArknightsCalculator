@@ -184,18 +184,19 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
   }
 }
 
-const LATIN_APPELLATION_REGEX = /^[\x20-\x7E\u00A0-\u024F]+$/
-const HAS_LATIN_LETTER_REGEX = /[A-Za-z]/
+export const VALID_APPELLATION_REGEX = /^[\x20-\x7E\u00C0-\u024F]+$/
+export const HAS_LATIN_LETTER_REGEX = /[A-Za-z]/
 
 /**
  * Validates that an appellation/fallback string contains only printable ASCII/Latin
  * characters (no Cyrillic or CJK) and at least one Latin letter.
+ * Appellation is strictly used as a last-resort fallback.
  */
 export function isValidLatinAppellation(value: string | null | undefined): boolean {
   if (!value) return false
   const trimmed = value.trim()
   if (trimmed.length === 0) return false
-  return LATIN_APPELLATION_REGEX.test(trimmed) && HAS_LATIN_LETTER_REGEX.test(trimmed)
+  return VALID_APPELLATION_REGEX.test(trimmed) && HAS_LATIN_LETTER_REGEX.test(trimmed)
 }
 
 /**
