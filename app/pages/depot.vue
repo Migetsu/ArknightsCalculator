@@ -273,6 +273,7 @@ async function handleFillFromPlans(): Promise<void> {
                   :min="0"
                   :max="999999999"
                   :step="1000"
+                  wide
                   aria-label="LMD"
                   @update:model-value="depotStore.setCurrency('lmd', $event)"
                 />
@@ -295,6 +296,7 @@ async function handleFillFromPlans(): Promise<void> {
                   :min="0"
                   :max="999999999"
                   :step="100"
+                  wide
                   aria-label="Orundum"
                   @update:model-value="depotStore.setCurrency('orundum', $event)"
                 />
@@ -317,6 +319,7 @@ async function handleFillFromPlans(): Promise<void> {
                   :min="0"
                   :max="999999"
                   :step="1"
+                  wide
                   aria-label="Originite Prime"
                   @update:model-value="depotStore.setCurrency('originitePrime', $event)"
                 />

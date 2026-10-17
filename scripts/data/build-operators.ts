@@ -97,9 +97,10 @@ export function resolveSubclassName(
   cnEquips?: RawUniequipTable,
 ): string {
   if (!subId) return 'Unknown'
+  if (subId === 'physician') return 'Single-target Medic'
+  if (subId === 'supportiveranger') return 'Supportive Ranger'
   const enName = enEquips?.subProfDict?.[subId]?.subProfessionName?.trim()
   if (enName) return enName
-  if (subId === 'supportiveranger') return 'Supportive Ranger'
   const cnName = cnEquips?.subProfDict?.[subId]?.subProfessionName?.trim()
   if (cnName) return cnName
   return subId

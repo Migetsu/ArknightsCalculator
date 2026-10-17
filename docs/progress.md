@@ -1,5 +1,26 @@
 # Project Progress
 
+- **Recruitment Matrix (RCR-03) & 5 UI Polish Fixes (`feat/recruit-and-ui-polish`):**
+  - **5 UI Visual Defects Fixed:**
+    1. _`MEDIC / MEDIC` duplicate:_ In `scripts/data/build-operators.ts`, mapped `physician` subclass $\to$ `'Single-target Medic'`, updated operator details and index JSONs (Kal'tsit now displays `6★ / MEDIC / SINGLE-TARGET MEDIC / RHODES ISLAND`).
+    2. _LMD `450000` truncation on `/depot` (`360px`):_ Added `wide` prop to `AkStepper.vue` (`width: 92px; padding: 6px 8px`), applied to LMD, Orundum, and Originite Prime steppers on `/depot`.
+    3. _`Direct drops only` button overflow on `/farming` (`360px`):_ Added `size="sm"` prop to `AkSegmented.vue` (`padding: 8px 6px; font-size: 12px; flex: 1 1 50%; min-width: 0`), perfectly fitting the mobile switch.
+    4. _Gacha filters & calculator mobile:_ Fixed `.gacha-page__filter-btn--active` to use `var(--color-accent-primary)` and `var(--color-text-inverse)`. Removed mobile column wrapping on stepper so treasury items stay in a clean single row with `flex-shrink: 0` stepper on the right.
+    5. _SyncAccountModal mobile:_ Tightened padding, margins, and font sizes on $\le 480$px in `SyncAccountModal.vue` and `AkModal.vue`, keeping `YOSTAR ACCOUNT EMAIL`, `SEND CODE`, and `6-DIGIT VERIFICATION CODE` entirely on screen without vertical scrolling.
+  - **Recruitment Data & Calculator Engine (`RCR-03`):**
+    - `scripts/data/build-recruit.ts` $\to$ `data/recruit.json`: Parsed `recruitDetail` for CN (`160` operators) and Global (`158` operators) with `29` canonical tags across 4 groups (Qualification, Position, Class, Affix).
+    - `shared/schemas/recruit.ts`: Zod schemas and TypeScript types for tags, operators, pools, and combination results.
+    - `shared/utils/recruit/calculateRecruit.ts`: Pure combination engine generating 1-, 2-, and 3-tag combinations, enforcing 6★ `Top Operator` requirement, 1★ Robot threshold, and guarantee tier evaluation (`6_star`, `5_star`, `4_star`, `robot`, `starter`, `3_star_plus`).
+    - `tests/unit/shared/recruit/calculateRecruit.test.ts`: 10/10 unit tests covering edge cases, tag combinations, guarantee tiers, and real dataset validation.
+  - **Recruitment Matrix UI & Verification:**
+    - `app/stores/recruit.ts`: Reactive Pinia store managing selected tags (up to 5), server pool (`global` vs `cn`), and combinations.
+    - `app/pages/recruit.vue`: Responsive Ember Editorial UI with tag selector, server pool toggle, guarantee tier badges, and operator avatar chips with rarity bars.
+    - `app/config/modules.ts`: Registered `recruit: 'ready'` (`RCR-03`).
+    - `tests/e2e/recruit.spec.ts`: 3 Playwright e2e tests covering header, tag selection, combination rendering, tag reset, and 360px layout sanity.
+    - `scripts/take-screenshots.ts`: Output exactly the 8 required screenshots on port 3001 (`01-operator-kaltsit-header-1440.png` through `08-recruit-mobile-360.png`).
+  - **Full Suite Verification:**
+    - `lint`, `stylelint`, `typecheck`, `format:check`, `i18n:check`, `data:validate`, `test` (437/437 passed across 67 suites), `test:e2e` (138/138 passed), and `build` (production bundle 35.1 MB) all 100% green.
+
 - **Mobile Layout Sanity, Official Subclasses, Module Lore Collapse & Combat Badges (`fix/mobile-layout-talents-archetypes-modules`):**
   - **Official Subclasses / Archetypes (`scripts/data/build-operators.ts`, `app/components/operators/`):**
     - Integrated `subProfDict` from `SanityGoneAK/arknights-gamedata` with `supportiveranger` fallback (`"Supportive Ranger"`).

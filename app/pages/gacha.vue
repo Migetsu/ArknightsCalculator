@@ -279,13 +279,13 @@ const filteredBanners = computed<GachaBanner[]>(() => {
     }
 
     &--active {
-      background-color: var(--color-accent-amber);
-      border-color: var(--color-accent-amber);
-      color: var(--color-bg-deep);
+      background-color: var(--color-accent-primary);
+      border-color: var(--color-accent-primary);
+      color: var(--color-text-inverse);
 
       &:hover {
-        background-color: var(--color-accent-amber);
-        color: var(--color-bg-deep);
+        background-color: var(--color-accent-primary-hover);
+        color: var(--color-text-inverse);
       }
     }
   }

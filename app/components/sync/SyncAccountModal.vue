@@ -195,6 +195,13 @@ function handleLoadDemo(): void {
     font-size: var(--font-size-sm);
     line-height: 1.55;
     color: var(--color-text-primary);
+
+    @media (width <= 480px) {
+      margin: 0 0 10px;
+      padding: 8px 10px;
+      font-size: var(--font-size-xs, 12px);
+      line-height: 1.35;
+    }
   }
 
   &__alert-strong {
@@ -211,6 +218,11 @@ function handleLoadDemo(): void {
     gap: 24px;
     border-bottom: 1px solid var(--color-border-base);
     margin-bottom: 22px;
+
+    @media (width <= 480px) {
+      gap: 12px;
+      margin-bottom: 12px;
+    }
   }
 
   &__tab {
@@ -228,6 +240,12 @@ function handleLoadDemo(): void {
       border-color var(--transition-fast);
 
     @include focus-ring;
+
+    @media (width <= 480px) {
+      padding: 0 0 6px;
+      font-size: var(--font-size-xs, 12px);
+      white-space: nowrap;
+    }
 
     &--active {
       color: var(--color-text-primary);
@@ -254,6 +272,11 @@ function handleLoadDemo(): void {
     display: flex;
     gap: 8px;
     margin: 8px 0 20px;
+
+    @media (width <= 480px) {
+      gap: 6px;
+      margin: 4px 0 10px;
+    }
   }
 
   &__reg-btn {
@@ -273,6 +296,11 @@ function handleLoadDemo(): void {
 
     @include focus-ring;
 
+    @media (width <= 480px) {
+      padding: 6px 0;
+      font-size: 12px;
+    }
+
     &--active {
       background-color: var(--color-accent-primary);
       border-color: var(--color-accent-primary);
@@ -287,12 +315,13 @@ function handleLoadDemo(): void {
     margin-bottom: 6px;
 
     @media (width <= 480px) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
+      gap: 6px;
+      margin-bottom: 4px;
 
       .sync-modal__send-btn {
-        width: 100%;
+        padding: 8px 12px;
+        font-size: 12px;
+        height: 38px;
       }
     }
 
@@ -315,11 +344,25 @@ function handleLoadDemo(): void {
 
     @include focus-ring;
 
+    @media (width <= 480px) {
+      margin-top: 4px;
+      padding: 8px 10px;
+      font-size: 13px;
+      height: 38px;
+    }
+
     &--code {
       letter-spacing: 0.5em;
       text-align: center;
       font-size: 20px;
       font-weight: var(--font-weight-semibold);
+
+      @media (width <= 480px) {
+        font-size: 17px;
+        height: 38px;
+        padding: 6px 8px;
+        letter-spacing: 0.35em;
+      }
     }
   }
 
@@ -352,6 +395,11 @@ function handleLoadDemo(): void {
     font-family: var(--font-body);
     font-size: 13px;
     color: var(--color-text-secondary);
+
+    @media (width <= 480px) {
+      margin: 0 0 10px;
+      font-size: 11px;
+    }
   }
 
   &__placeholder-box {
@@ -380,6 +428,10 @@ function handleLoadDemo(): void {
     justify-content: flex-end;
     gap: 12px;
     width: 100%;
+
+    @media (width <= 480px) {
+      gap: 8px;
+    }
   }
 
   &__btn-cancel {
@@ -393,6 +445,11 @@ function handleLoadDemo(): void {
     cursor: pointer;
 
     @include focus-ring;
+
+    @media (width <= 480px) {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
   }
 
   &__btn-primary {
@@ -407,6 +464,11 @@ function handleLoadDemo(): void {
     transition: background-color var(--transition-fast);
 
     @include focus-ring;
+
+    @media (width <= 480px) {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
 
     &:hover:not(:disabled) {
       background-color: var(--color-accent-primary-hover);
@@ -429,6 +491,11 @@ function handleLoadDemo(): void {
     cursor: pointer;
 
     @include focus-ring;
+
+    @media (width <= 480px) {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
   }
 }
 </style>

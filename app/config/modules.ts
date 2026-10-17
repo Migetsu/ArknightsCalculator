@@ -70,7 +70,7 @@ export const APP_MODULES: readonly AppModuleConfig[] = [
     nameKey: 'navigation.recruit',
     descriptionKey: 'navigation.recruitDesc',
     navKey: 'nav.recruit',
-    status: 'soon',
+    status: 'ready',
   },
   {
     id: 'gacha',

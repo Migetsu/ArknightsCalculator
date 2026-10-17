@@ -88,4 +88,16 @@ describe('AkStepper', () => {
     await input.trigger('keydown', { key: 'ArrowDown' })
     expect(wrapper.emitted('update:modelValue')?.[1]).toEqual([4])
   })
+
+  it('applies wide modifier class when wide prop is true', async () => {
+    const wrapper = await mountSuspended(AkStepper, {
+      props: {
+        modelValue: 450000,
+        wide: true,
+      },
+    })
+
+    const input = wrapper.find('.ak-stepper__input--wide')
+    expect(input.exists()).toBe(true)
+  })
 })

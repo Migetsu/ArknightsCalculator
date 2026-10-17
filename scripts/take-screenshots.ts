@@ -230,83 +230,43 @@ async function main(): Promise<void> {
     await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' })
     await seedStorage(page, DEMO_PLANNER_STORAGE, DEMO_DEPOT_STORAGE, 'global')
 
-    // 01. Blaze the Igniting Spark hero (1440x900)
-    // Shows Primal Caster subclass badge, stage switcher at bottom, inspect hint at top right
+    // 01. Kal'tsit header (1440x900) - shows Single-target Medic without MEDIC/MEDIC duplication
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto(`${BASE_URL}/operators/char_1040_blaze2`, { waitUntil: 'domcontentloaded' })
+    await page.goto(`${BASE_URL}/operators/char_003_kalts`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    const artBox = page.locator('.ak-operator-hero__art-container').first()
-    if (await artBox.isVisible()) {
-      await artBox.hover()
-      await page.waitForTimeout(300)
-    }
-    await saveShot(page, '01-operator-blaze-alter-hero-1440.png')
+    await saveShot(page, '01-operator-kaltsit-header-1440.png')
 
-    // 02. Kal'tsit talents tab (1440x900)
-    // Shows non-empty talent descriptions and no dummy talent card
-    await page.goto(`${BASE_URL}/operators/char_003_kalts?tab=talents`, {
-      waitUntil: 'domcontentloaded',
-    })
-    await waitForPageReady(page)
-    await page.evaluate(() => window.scrollTo(0, 320))
-    await saveShot(page, '02-operator-kaltsit-talents-1440.png')
-
-    // 03. Kal'tsit modules tab (1440x900)
-    // Shows combat stats, attribute modifiers, and collapsed lore button
-    await page.goto(`${BASE_URL}/operators/char_003_kalts?tab=modules`, {
-      waitUntil: 'domcontentloaded',
-    })
-    await waitForPageReady(page)
-    await page.evaluate(() => window.scrollTo(0, 320))
-    await saveShot(page, '03-operator-kaltsit-modules-1440.png')
-
-    // 04. Planner goals with modules (1440x900)
-    // Shows all 3 combat modules (X, Y, A) in PlannerGoalsTab
-    await page.goto(`${BASE_URL}/planner`, { waitUntil: 'domcontentloaded' })
-    await waitForPageReady(page)
-    const modulesSection = page
-      .locator('.planner-goals__section')
-      .filter({ hasText: /Module/i })
-      .first()
-    if (await modulesSection.isVisible()) {
-      await modulesSection.scrollIntoViewIfNeeded()
-      await page.waitForTimeout(200)
-    }
-    await saveShot(page, '04-planner-goals-modules-1440.png')
-
-    // 05. Depot mobile (360x800)
-    // Shows 2-column grid and stepper controls without overflow
+    // 02. Depot mobile (360x800) - shows 450000 LMD input without truncation
     await page.setViewportSize({ width: 360, height: 800 })
     await page.goto(`${BASE_URL}/depot`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    await page.evaluate(() => window.scrollTo(0, 260))
-    await saveShot(page, '05-depot-mobile-360.png')
+    await saveShot(page, '02-depot-mobile-360.png')
 
-    // 06. Farming mobile (360x800)
-    // Shows top margin and responsive crafting toggle
+    // 03. Farming mobile (360x800) - shows compact Direct drops only segmented control without overflow
     await page.goto(`${BASE_URL}/farming`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    await saveShot(page, '06-farming-mobile-360.png')
+    await saveShot(page, '03-farming-mobile-360.png')
 
-    // 07. Gacha mobile calculator (360x800)
-    // Shows treasury inputs with no horizontal overflow
+    // 04. Gacha mobile calculator (360x800) - shows compact stepper row
     await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    await saveShot(page, '07-gacha-mobile-360.png')
+    await saveShot(page, '04-gacha-mobile-360.png')
 
-    // 08. Gacha mobile banners section (360x800)
+    // 05. Gacha desktop filters (1440x900) - shows readable active filter button
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
+    await waitForPageReady(page)
     const bannersSection = page
-      .locator('.gacha-page__banners-section, .gacha-page__banners, .gacha-calc__milestones-grid')
+      .locator('.gacha-page__banners-section, .gacha-page__filters')
       .first()
     if (await bannersSection.isVisible()) {
       await bannersSection.scrollIntoViewIfNeeded()
       await page.waitForTimeout(200)
-    } else {
-      await page.evaluate(() => window.scrollTo(0, 600))
     }
-    await saveShot(page, '08-gacha-banners-mobile-360.png')
+    await saveShot(page, '05-gacha-filters-1440.png')
 
-    // 09. Sync Account modal on mobile (360x800)
+    // 06. Sync Account modal on mobile (360x800) - compact email and verification code
+    await page.setViewportSize({ width: 360, height: 800 })
     await page.goto(`${BASE_URL}/settings`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
     const syncBtn = page
@@ -318,13 +278,37 @@ async function main(): Promise<void> {
       await page.waitForSelector('.ak-modal', { state: 'visible' })
       await page.waitForTimeout(300)
     }
-    await saveShot(page, '09-sync-modal-mobile-360.png')
+    await saveShot(page, '06-sync-modal-mobile-360.png')
 
-    // 10. Gacha desktop full page (1440x900)
+    // 07. Recruit desktop (1440x900) - select Top Operator and DPS tags
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto(`${BASE_URL}/gacha`, { waitUntil: 'domcontentloaded' })
+    await page.goto(`${BASE_URL}/recruit`, { waitUntil: 'domcontentloaded' })
     await waitForPageReady(page)
-    await saveShot(page, '10-gacha-desktop-1440.png')
+    const topOpBtn = page.locator('.recruit-page__tag-btn', { hasText: 'Top Operator' })
+    if (await topOpBtn.isVisible()) {
+      await topOpBtn.click()
+    }
+    const dpsBtn = page.locator('.recruit-page__tag-btn', { hasText: 'DPS' })
+    if (await dpsBtn.isVisible()) {
+      await dpsBtn.click()
+    }
+    await page.waitForTimeout(300)
+    await saveShot(page, '07-recruit-desktop-1440.png')
+
+    // 08. Recruit mobile (360x800) - responsive layout without horizontal scroll
+    await page.setViewportSize({ width: 360, height: 800 })
+    await page.goto(`${BASE_URL}/recruit`, { waitUntil: 'domcontentloaded' })
+    await waitForPageReady(page)
+    const topOpBtnMobile = page.locator('.recruit-page__tag-btn', { hasText: 'Top Operator' })
+    if (await topOpBtnMobile.isVisible()) {
+      await topOpBtnMobile.click()
+    }
+    const dpsBtnMobile = page.locator('.recruit-page__tag-btn', { hasText: 'DPS' })
+    if (await dpsBtnMobile.isVisible()) {
+      await dpsBtnMobile.click()
+    }
+    await page.waitForTimeout(300)
+    await saveShot(page, '08-recruit-mobile-360.png')
 
     await context.close()
   } finally {
