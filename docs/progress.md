@@ -1,5 +1,19 @@
 # Project Progress
 
+- **Alternative Game Data Source Probe & Farming Audit Follow-up (`chore/data-source-probe`):**
+  - **Alternative Game Data Repositories Audit (`docs/data-source-probe.md`):**
+    - Audited 3 candidate repositories (`ArknightsAssets/ArknightsGamedata`, `ArknightsAssets/ArknightsAssets2`, `SanityGoneAK/arknights-gamedata`) against the current control (`Kengxxiao/ArknightsGameData` + `Kengxxiao/ArknightsGameData_YoStar`) via live GitHub API and raw HTTP requests (`2026-10-17`).
+    - Confirmed `SanityGoneAK/arknights-gamedata` (`main` commit `b5ff1ff3`, EN `character_table.json` commit `a85e3a9d` `2026-10-14T11:35:27Z`) covers **36 / 36 (100%)** missing Global operators with official YoStar EN names, skills, talents, and modules, and passes **11 / 11 (100%)** of our Zod schemas (`scripts/data/schemas/`) in memory without changes.
+    - Confirmed `ArknightsAssets/ArknightsGamedata` covers 36/36 operators (`3aaa25b6` `2026-10-14`), but fails 6/11 Zod schemas due to `arkprts` FlatBuffer serialization (`{}` instead of `[]` for empty arrays and keyed objects for `itemCost`).
+    - Confirmed `ArknightsAssets/ArknightsAssets2` is a binary asset repository (`cn`, `en`, `voice` branches, `.png` sprites/avatars) with no JSON excel tables.
+  - **CN `appellation` Field Reliability Audit (`docs/data-source-probe.md`):**
+    - Audited `appellation` in CN `character_table.json` across 14+ operators (`char_1015_aglna2`, `char_4226_veen`, `char_4208_wintim`, `char_4223_botany`, Ursus operators, alters) and scanned all 434 playable operators.
+    - Found 11 Ursus operators where CN `appellation` stores Russian Cyrillic strings (`"Вий"`, `"Снегурочка"`, `"Ботани"`, `"Роса"`, `"Истина"`, `"Зима"`, `"Гум"`, `"Лето"`, `"Абсент"`, `"Веточки"`, `"Позёмка"`), making unvalidated `appellation` unsuitable as an English display name without ASCII validation and `arknights.wiki.gg` override for CN-only operators.
+  - **SilverAsh & Kal'tsit Skill Cost Audit & US Stage Filtering Proof (`docs/farming-audit.md`):**
+    - Appended full raw JSON fragments (`allSkillLvlup` and `levelUpCostCond`), live `arknights.wiki.gg` API query results (`2026-10-17`), and 28-row comparison table (`Уровень | Предмет | Сырой JSON | Наш расчёт calculateCost | Wiki.gg | Совпадает`) for `char_172_svrash` and `char_003_kalts`.
+    - Proved `3303` (Skill Summary - 3) count on SilverAsh S3 M1 is `6` in our JSON, `6` in raw CN (`Kengxxiao` `bee3f83c`) and EN (`SanityGoneAK` `a85e3a9d`, `Kengxxiao_YoStar` `57010cb5`), vs `8` on `arknights.wiki.gg/wiki/SilverAsh`.
+    - Documented 3-layer CN-exclusive stage exclusion for `server = 'global'` (`build-stages.ts`, `fetch-penguin.ts`, `optimize.ts`) with 3 concrete stage proofs (`main_17-09` `17-10`, `act16side_04_perm` `GA-4`, `act52side_02` `YW-2`).
+
 - **Farming Audit, Dual Simplex LP with Crafting Substitution & Dual-Source Skill Audit (`fix/farming-audit`):**
   - **Skill Verification & Upstream CN/EN Audit (`docs/planner.md`):**
     - Completed full line-by-line verification table (`wiki.gg` / `prts.wiki` / our calculation / matches) for SilverAsh (ranks 2→7, S1–S3 M1–M3) and Kal'tsit (S1–S3 M1–M3) with live query URLs and dates (`2026-10-17`).
