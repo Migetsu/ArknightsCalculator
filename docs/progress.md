@@ -1,5 +1,23 @@
 # Project Progress
 
+- **Farming Audit, Dual Simplex LP with Crafting Substitution & Dual-Source Skill Audit (`fix/farming-audit`):**
+  - **Skill Verification & Upstream CN/EN Audit (`docs/planner.md`):**
+    - Completed full line-by-line verification table (`wiki.gg` / `prts.wiki` / our calculation / matches) for SilverAsh (ranks 2→7, S1–S3 M1–M3) and Kal'tsit (S1–S3 M1–M3) with live query URLs and dates (`2026-10-17`).
+    - Extracted raw `levelUpCostCond` / `masteryCosts` JSON fragments from 4 sources: `data/operators/char_172_svrash.json`, cached CN (`.cache/raw/zh_CN/character_table.json`), fresh upstream CN (`Kengxxiao/ArknightsGameData` commit `bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d` `2026-10-16`), and frozen EN (`Kengxxiao/ArknightsGameData_YoStar` commit `57010cb5b2afea112cae57daa756b58676ba6850` `2025-11-13`).
+    - Refuted stale-snapshot hypothesis: both fresh CN (`2026-10-16`) and frozen EN have `count: 6` Skill Summary - 3 (`3303`) for SilverAsh S1–S3 M1, while `arknights.wiki.gg/wiki/SilverAsh` has an erratum (`summary=8`).
+    - Documented PR #41 resolution (`f5935c5c`) and PR #42 follow-up (`b260df5`).
+  - **Farming Diagnostic & Root-Cause Audit (`docs/farming-audit.md`):**
+    - Audited `S2-5`, `MN-4`, `GA-4`, `GT-4`, `CA-2`, `9-19`, `1-7`, `14-8`, `17-10` against live Penguin Stats API (`2026-10-17`) and `data/penguin/cn.json`.
+    - Confirmed `1-7` (`main_01-07`) was present in `cn.json` and `stages.json`, and explained why `S2-5` was chosen over `1-7`: `resolveDemand` unrolled 397× `30012` (Orirock Cube) into 1,191× `30011` (Orirock), while `optimizeFarming` v1 matched only exact `itemId === '30011'` without crafting substitution.
+    - Fixed server attribution bug in `scripts/data/build-stages.ts` (286 CN-only stages were marked `global`) and stored `exist`, `openTime`, `closeTime` in `data/penguin/{cn,us,benchmark}.json`.
+  - **Dual Simplex LP + Crafting Substitution (`shared/utils/farming/optimize.ts`, `docs/farming.md`):**
+    - Replaced v1 single-item greedy selector with a Dual Simplex Linear Programming solver (`solveContinuousLpDualSimplex`) + Workshop recipe equivalence (`Cube = 3 Orirock`, `Cluster = 15 Orirock`, `Skill Summary 2 = 3 × Summary 1`, `Summary 3 = 9 × Summary 1`, T3 = 12 × T1) and `allowCrafting` toggle (default `true`).
+    - Excluded closed temporary events (`openTime > now` or `closeTime <= now`) and non-existent stages (`exist === false`).
+    - Reduced Kal'tsit full deficit farming cost from **33,969 AP (2,240 runs)** to **17,373 AP (841 runs)** on CN, and from **116,222 AP (7,798 runs)** to **18,864 AP (1,068 runs)** on US, recommending `1-7` and `CA-5`.
+  - **Farming UI & Unit Tests (`app/pages/farming.vue`, `tests/unit/shared/farming/optimize.test.ts`):**
+    - Added `allowCrafting` segmented toggle, per-item drop rate (`%/run`) and expected yield on stage cards, and item icons in the uncovered items block.
+    - Added unit tests for closed stage filtering, recipe substitution (`1-7` vs `S2-5`, `CA-5` vs `CA-2`), and Kal'tsit comparative sanity & monotonicity on CN and US.
+
 - **Audit Followup, Kal'tsit LMD Recalculation, AkModuleType & Dual-Source Audit (`fix/audit-followup`):**
   - **Merge Policy (§14 & PR Template) Update:**
     - Updated `AGENTS.md` §14 and `.github/pull_request_template.md`: agent autonomously merges its PRs (including `.github/**`, CI/CD, dependencies, licenses, disclaimers, and auth code). Stops only for: secrets/tokens/.env.example, prod Supabase migrations/RLS, Yostar login integration, weakened tests, and >25% dataset/bundle growth.

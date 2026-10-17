@@ -82,88 +82,100 @@ The core calculation function [`calculateCost`](file:///c:/Projects/ArknightsCal
 ### 4.2. Dual-Source Skill Leveling & Mastery Verification (SilverAsh & Kal'tsit)
 
 > [!NOTE]
-> **Independent Live Verification (2026-10-15):**
+> **Independent Live Verification (2026-10-17):**
 >
-> - **Source 1 (Global):** [Arknights Terra Wiki: SilverAsh](https://arknights.wiki.gg/wiki/SilverAsh), [Arknights Terra Wiki: Kal'tsit](https://arknights.wiki.gg/wiki/Kal%27tsit)
-> - **Source 2 (CN):** [PRTS Wiki: 银灰](https://prts.wiki/w/%E9%93%B6%E7%81%B0), [PRTS Wiki: 凯尔希](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C)
+> - **Source 1 (Global Wiki):** [https://arknights.wiki.gg/wiki/SilverAsh](https://arknights.wiki.gg/wiki/SilverAsh), [https://arknights.wiki.gg/wiki/Kal%27tsit](https://arknights.wiki.gg/wiki/Kal%27tsit) (queried 2026-10-17 via MediaWiki API `action=parse&prop=wikitext`)
+> - **Source 2 (CN Wiki):** [https://prts.wiki/w/%E9%93%B6%E7%81%B0](https://prts.wiki/w/%E9%93%B6%E7%81%B0), [https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (queried 2026-10-17 via MediaWiki API `action=parse&prop=wikitext`)
+> - **Source 3 (Fresh CN Game Data):** `Kengxxiao/ArknightsGameData` commit `bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d` (`2026-10-16T08:02:27Z`, Client `2.7.81 Data:26-10-14-13-45-10-99469376`) and pinned commit `17759cc8cdf37388414145d16262a3a06f3ab25e` (`2026-10-08T23:46:48Z`)
+> - **Source 4 (Frozen EN Game Data):** `Kengxxiao/ArknightsGameData_YoStar` commit `57010cb5b2afea112cae57daa756b58676ba6850` (`2025-11-13`)
 
-#### 4.2.1. SilverAsh (`char_172_svrash`)
+#### 4.2.1. Complete Verification Table: SilverAsh (`char_172_svrash`) & Kal'tsit (`char_003_kalts`)
 
-##### Common Skill Ranks (1 → 7)
+| Operator      | Skill / Transition                    | `wiki.gg` (Terra Wiki)                                                                              | `prts.wiki` (CN Wiki)                                                         | Наш расчёт (`data/`)                  | Совпадает                                        | URL & Дата запроса                                                                                                               |
+| :------------ | :------------------------------------ | :-------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- | :------------------------------------ | :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| **SilverAsh** | **Rank 2 → 3**                        | 5× Skill Summary - 1 (`3301`), 6× Ester (`30031`), 4× Oriron Shard (`30041`)                        | 5× 技巧概要·卷1 (`3301`), 6× 酯原料 (`30031`), 4× 异铁碎片 (`30041`)          | 5× `3301`, 6× `30031`, 4× `30041`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **Rank 3 → 4**                        | 8× Skill Summary - 2 (`3302`), 4× Oriron (`30042`)                                                  | 8× 技巧概要·卷2 (`3302`), 4× 异铁 (`30042`)                                   | 8× `3302`, 4× `30042`                 | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **Rank 4 → 5**                        | 8× Skill Summary - 2 (`3302`), 4× Polyketon (`30052`), 5× Orirock Cube (`30012`)                    | 8× 技巧概要·卷2 (`3302`), 4× 酮凝集 (`30052`), 5× 固源岩 (`30012`)            | 8× `3302`, 4× `30052`, 5× `30012`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **Rank 5 → 6**                        | 8× Skill Summary - 2 (`3302`), 7× Sugar Pack (`30023`)                                              | 8× 技巧概要·卷2 (`3302`), 7× 糖组 (`30023`)                                   | 8× `3302`, 7× `30023`                 | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **Rank 6 → 7**                        | 8× Skill Summary - 3 (`3303`), 4× Polyester Pack (`30033`), 5× Manganese Ore (`30083`)              | 8× 技巧概要·卷3 (`3303`), 4× 聚酸酯组 (`30033`), 5× 轻锰矿 (`30083`)          | 8× `3303`, 4× `30033`, 5× `30083`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S1 (Power Strike γ) M1**            | **8×** Skill Summary - 3 (`3303`), 4× Oriron Block (`30044`), 4× Sugar Pack (`30023`)               | **6×** 技巧概要·卷3 (`3303`), 4× 异铁块 (`30044`), 4× 糖组 (`30023`)          | **6×** `3303`, 4× `30044`, 4× `30023` | **Да с CN/PRTS; расхождение с wiki.gg (8 vs 6)** | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S1 (Power Strike γ) M2**            | 12× Skill Summary - 3 (`3303`), 4× White Horse Kohl (`30074`), 8× Keton Colloid (`30054`)           | 12× 技巧概要·卷3 (`3303`), 4× 白马醇 (`30074`), 8× 酮阵列 (`30054`)           | 12× `3303`, 4× `30074`, 8× `30054`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S1 (Power Strike γ) M3**            | 15× Skill Summary - 3 (`3303`), 6× D32 Steel (`30135`), 7× White Horse Kohl (`30074`)               | 15× 技巧概要·卷3 (`3303`), 6× D32钢 (`30135`), 7× 白马醇 (`30074`)            | 15× `3303`, 6× `30135`, 7× `30074`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S2 (Rules of Survival) M1**         | **8×** Skill Summary - 3 (`3303`), 4× Keton Colloid (`30054`), 6× Polyester Pack (`30033`)          | **6×** 技巧概要·卷3 (`3303`), 4× 酮阵列 (`30054`), 6× 聚酸酯组 (`30033`)      | **6×** `3303`, 4× `30054`, 6× `30033` | **Да с CN/PRTS; расхождение с wiki.gg (8 vs 6)** | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S2 (Rules of Survival) M2**         | 12× Skill Summary - 3 (`3303`), 4× Manganese Trihydrate (`30084`), 5× Optimized Device (`30064`)    | 12× 技巧概要·卷3 (`3303`), 4× 三水锰矿 (`30084`), 5× 改量装置 (`30064`)       | 12× `3303`, 4× `30084`, 5× `30064`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S2 (Rules of Survival) M3**         | 15× Skill Summary - 3 (`3303`), 6× D32 Steel (`30135`), 6× Sugar Lump (`30024`)                     | 15× 技巧概要·卷3 (`3303`), 6× D32钢 (`30135`), 6× 糖聚块 (`30024`)            | 15× `3303`, 6× `30135`, 6× `30024`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S3 (Truesilver Slash) M1**          | **8×** Skill Summary - 3 (`3303`), 3× Optimized Device (`30064`), 4× Oriron Cluster (`30043`)       | **6×** 技巧概要·卷3 (`3303`), 3× 改量装置 (`30064`), 4× 异铁组 (`30043`)      | **6×** `3303`, 3× `30064`, 4× `30043` | **Да с CN/PRTS; расхождение с wiki.gg (8 vs 6)** | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S3 (Truesilver Slash) M2**          | 12× Skill Summary - 3 (`3303`), 4× Grindstone Pentahydrate (`30094`), 9× White Horse Kohl (`30074`) | 12× 技巧概要·卷3 (`3303`), 4× 五水研磨石 (`30094`), 9× 白马醇 (`30074`)       | 12× `3303`, 4× `30094`, 9× `30074`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **SilverAsh** | **S3 (Truesilver Slash) M3**          | 15× Skill Summary - 3 (`3303`), 6× Bipolar Nanoflake (`30125`), 5× Sugar Lump (`30024`)             | 15× 技巧概要·卷3 (`3303`), 6× 双极纳米片 (`30125`), 5× 糖聚块 (`30024`)       | 15× `3303`, 6× `30125`, 5× `30024`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/SilverAsh) / [prts.wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) (2026-10-17)           |
+| **Kal'tsit**  | **S1 (Command: Structural Fort.) M1** | 8× Skill Summary - 3 (`3303`), 4× Keton Colloid (`30054`), 4× Coagulating Gel (`31013`)             | 8× 技巧概要·卷3 (`3303`), 4× 酮阵列 (`30054`), 4× 凝胶 (`31013`)              | 8× `3303`, 4× `30054`, 4× `31013`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S1 (Command: Structural Fort.) M2** | 12× Skill Summary - 3 (`3303`), 4× Grindstone Pentahydrate (`30094`), 9× White Horse Kohl (`30074`) | 12× 技巧概要·卷3 (`3303`), 4× 五水研磨石 (`30094`), 9× 白马醇 (`30074`)       | 12× `3303`, 4× `30094`, 9× `30074`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S1 (Command: Structural Fort.) M3** | 15× Skill Summary - 3 (`3303`), 6× Polymerization Prep. (`30115`), 5× Oriron Block (`30044`)        | 15× 技巧概要·卷3 (`3303`), 6× 聚合剂 (`30115`), 5× 异铁块 (`30044`)           | 15× `3303`, 6× `30115`, 5× `30044`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S2 (Command: Tactical Coord.) M1**  | 8× Skill Summary - 3 (`3303`), 3× Optimized Device (`30064`), 4× Oriron Cluster (`30043`)           | 8× 技巧概要·卷3 (`3303`), 3× 改量装置 (`30064`), 4× 异铁组 (`30043`)          | 8× `3303`, 3× `30064`, 4× `30043`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S2 (Command: Tactical Coord.) M2**  | 12× Skill Summary - 3 (`3303`), 4× RMA70-24 (`30104`), 7× Manganese Trihydrate (`30084`)            | 12× 技巧概要·卷3 (`3303`), 4× RMA70-24 (`30104`), 7× 三水锰矿 (`30084`)       | 12× `3303`, 4× `30104`, 7× `30084`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S2 (Command: Tactical Coord.) M3**  | 15× Skill Summary - 3 (`3303`), 6× D32 Steel (`30135`), 5× Keton Colloid (`30054`)                  | 15× 技巧概要·卷3 (`3303`), 6× D32钢 (`30135`), 5× 酮阵列 (`30054`)            | 15× `3303`, 6× `30135`, 5× `30054`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S3 (Command: Meltdown) M1**         | 8× Skill Summary - 3 (`3303`), 4× White Horse Kohl (`30074`), 8× Aketon (`30053`)                   | 8× 技巧概要·卷3 (`3303`), 4× 白马醇 (`30074`), 8× 酮凝集组 (`30053`)          | 8× `3303`, 4× `30074`, 8× `30053`     | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S3 (Command: Meltdown) M2**         | 12× Skill Summary - 3 (`3303`), 4× Crystalline Circuit (`31034`), 8× Polymerized Gel (`31014`)      | 12× 技巧概要·卷3 (`3303`), 4× 晶体电路 (`31034`), 8× 聚合凝胶 (`31014`)       | 12× `3303`, 4× `31034`, 8× `31014`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
+| **Kal'tsit**  | **S3 (Command: Meltdown) M3**         | 15× Skill Summary - 3 (`3303`), 6× Crystalline Elec. Unit (`30145`), 4× Grindstone Pent. (`30094`)  | 15× 技巧概要·卷3 (`3303`), 6× 晶体电子单元 (`30145`), 4× 五水研磨石 (`30094`) | 15× `3303`, 6× `30145`, 4× `30094`    | **Да**                                           | [wiki.gg](https://arknights.wiki.gg/wiki/Kal%27tsit) / [prts.wiki](https://prts.wiki/w/%E5%87%AF%E5%B0%94%E5%B8%8C) (2026-10-17) |
 
-| Transition     | Requirements (Local Data & PRTS / Terra Wiki)                                          | Status               |
-| :------------- | :------------------------------------------------------------------------------------- | :------------------- |
-| **Rank 1 → 2** | 5× Skill Summary - 1 (`3301`)                                                          | **Совпадает (100%)** |
-| **Rank 2 → 3** | 5× Skill Summary - 1 (`3301`), 6× Ester (`30031`), 4× Oriron Shard (`30041`)           | **Совпадает (100%)** |
-| **Rank 3 → 4** | 8× Skill Summary - 2 (`3302`), 4× Oriron (`30042`)                                     | **Совпадает (100%)** |
-| **Rank 4 → 5** | 8× Skill Summary - 2 (`3302`), 4× Polyketon (`30052`), 5× Orirock Cube (`30012`)       | **Совпадает (100%)** |
-| **Rank 5 → 6** | 8× Skill Summary - 2 (`3302`), 7× Sugar Pack (`30023`)                                 | **Совпадает (100%)** |
-| **Rank 6 → 7** | 8× Skill Summary - 3 (`3303`), 4× Polyester Pack (`30033`), 5× Manganese Ore (`30083`) | **Совпадает (100%)** |
+---
 
-##### Mastery Progression (M1 → M3)
+#### 4.2.2. Raw `levelUpCostCond` / `masteryCosts` Fragments Across All Sources
 
-| Skill                      | Level | Cost in Game Data (`character_table.json`)                             | PRTS / Terra Wiki                                                      | Status        |
-| :------------------------- | :---: | :--------------------------------------------------------------------- | :--------------------------------------------------------------------- | :------------ |
-| **S1 (Power Strike γ)**    |  M1   | 6× Skill Summary - 3, 4× Oriron Block, 4× Sugar Pack                   | 6× Skill Summary - 3, 4× Oriron Block, 4× Sugar Pack                   | **Совпадает** |
-|                            |  M2   | 12× Skill Summary - 3, 4× White Horse Kohl, 8× Keton Colloid           | 12× Skill Summary - 3, 4× White Horse Kohl, 8× Keton Colloid           | **Совпадает** |
-|                            |  M3   | 15× Skill Summary - 3, 6× D32 Steel, 7× White Horse Kohl               | 15× Skill Summary - 3, 6× D32 Steel, 7× White Horse Kohl               | **Совпадает** |
-| **S2 (Rules of Survival)** |  M1   | 6× Skill Summary - 3, 4× Keton Colloid, 6× Polyester Pack              | 6× Skill Summary - 3, 4× Keton Colloid, 6× Polyester Pack              | **Совпадает** |
-|                            |  M2   | 12× Skill Summary - 3, 4× Manganese Trihydrate, 5× Optimized Device    | 12× Skill Summary - 3, 4× Manganese Trihydrate, 5× Optimized Device    | **Совпадает** |
-|                            |  M3   | 15× Skill Summary - 3, 6× D32 Steel, 6× Sugar Lump                     | 15× Skill Summary - 3, 6× D32 Steel, 6× Sugar Lump                     | **Совпадает** |
-| **S3 (Truesilver Slash)**  |  M1   | 6× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster           | 6× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster           | **Совпадает** |
-|                            |  M2   | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl | **Совпадает** |
-|                            |  M3   | 15× Skill Summary - 3, 6× Bipolar Nanoflake, 5× Sugar Lump             | 15× Skill Summary - 3, 6× Bipolar Nanoflake, 5× Sugar Lump             | **Совпадает** |
+##### A. SilverAsh (`char_172_svrash`, Skill 3 `skchr_svrash_3` M1)
 
-##### Raw `levelUpCostCond` Snippet (`character_table.json` / `char_172_svrash.json`)
-
-Path: `skills[2].levelUpCostCond[0].levelUpCost` / `data/operators/char_172_svrash.json` -> `skills[2].masteryCosts[0]`
+1. **Our Built Data (`data/operators/char_172_svrash.json`, JSON path: `$.skills[2].masteryCosts[0]`)**:
 
 ```json
 {
   "unlockCond": {
     "phase": 2,
+    "level": 1
+  },
+  "levelUpCost": [
+    { "id": "3303", "count": 6 },
+    { "id": "30064", "count": 3 },
+    { "id": "30043", "count": 4 }
+  ]
+}
+```
+
+2. **Fresh Upstream CN (`Kengxxiao/ArknightsGameData`, file: `zh_CN/gamedata/excel/character_table.json`, commit `bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d` dated `2026-10-16T08:02:27Z`, Client `2.7.81 Data:26-10-14`, and local `.cache/raw/zh_CN/character_table.json` commit `17759cc8cdf37388414145d16262a3a06f3ab25e` dated `2026-10-08T23:46:48Z`, JSON path: `$["char_172_svrash"].skills[2].levelUpCostCond[0]`)**:
+
+```json
+{
+  "unlockCond": {
+    "phase": "PHASE_2",
     "level": 1
   },
   "lvlUpTime": 28800,
   "levelUpCost": [
-    {
-      "id": "3303",
-      "count": 6
-    },
-    {
-      "id": "30064",
-      "count": 3
-    },
-    {
-      "id": "30043",
-      "count": 4
-    }
+    { "id": "3303", "count": 6, "type": "MATERIAL" },
+    { "id": "30064", "count": 3, "type": "MATERIAL" },
+    { "id": "30043", "count": 4, "type": "MATERIAL" }
   ]
 }
 ```
 
-> [!IMPORTANT]
-> **Разбор вопроса по SilverAsh S3 M1 (6 vs 8 Skill Summary - 3):**
-> Релизные 6★ операторы 2019 года (SilverAsh, Exusiai, Eyjafjalla, Hoshiguma, Siege, Shining, Angelina) имеют стоимость M1 ровно **6** книг `Skill Summary - 3` (`3303`) во всех трёх навыках. Операторы более поздних волн (начиная со 2-й волны и Kal'tsit) требуют **8** книг.
-> В англоязычной вики `arknights.wiki.gg` шаблон `{{Skill upgrade cell}}` исторически захардкодил параметр `summary=8`, тогда как официальный клиент Hypergryph (`character_table.json`) и авторитетная китайская база [PRTS Wiki](https://prts.wiki/w/%E9%93%B6%E7%81%B0) содержат точное значение: `技巧概要·卷3 × 6`.
+3. **Frozen Upstream EN (`Kengxxiao/ArknightsGameData_YoStar`, file: `en_US/gamedata/excel/character_table.json` / `.cache/raw/en_US/character_table.json`, commit `57010cb5b2afea112cae57daa756b58676ba6850` dated `2025-11-13`, JSON path: `$["char_172_svrash"].skills[2].levelUpCostCond[0]`)**:
 
-#### 4.2.2. Kal'tsit (`char_003_kalts`)
+```json
+{
+  "unlockCond": {
+    "phase": "PHASE_2",
+    "level": 1
+  },
+  "lvlUpTime": 28800,
+  "levelUpCost": [
+    { "id": "3303", "count": 6, "type": "MATERIAL" },
+    { "id": "30064", "count": 3, "type": "MATERIAL" },
+    { "id": "30043", "count": 4, "type": "MATERIAL" }
+  ]
+}
+```
 
-##### Mastery Progression (M1 → M3)
+##### B. Kal'tsit (`char_003_kalts`, Skill 3 `skchr_kalts_3` M1)
 
-| Skill                                      | Level | Cost in Game Data (`character_table.json`)                                        | PRTS / Terra Wiki                                                                 | Status        |
-| :----------------------------------------- | :---: | :-------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- | :------------ |
-| **S1 (Command: Structural Fortification)** |  M1   | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | 8× Skill Summary - 3, 4× Keton Colloid, 4× Coagulating Gel                        | **Совпадает** |
-|                                            |  M2   | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl            | 12× Skill Summary - 3, 4× Grindstone Pentahydrate, 9× White Horse Kohl            | **Совпадает** |
-|                                            |  M3   | 15× Skill Summary - 3, 6× Polymerization Preparation, 5× Oriron Block             | 15× Skill Summary - 3, 6× Polymerization Preparation, 5× Oriron Block             | **Совпадает** |
-| **S2 (Command: Tactical Coordination)**    |  M1   | 8× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster                      | 8× Skill Summary - 3, 3× Optimized Device, 4× Oriron Cluster                      | **Совпадает** |
-|                                            |  M2   | 12× Skill Summary - 3, 4× RMA70-24, 7× Manganese Trihydrate                       | 12× Skill Summary - 3, 4× RMA70-24, 7× Manganese Trihydrate                       | **Совпадает** |
-|                                            |  M3   | 15× Skill Summary - 3, 6× D32 Steel, 5× Keton Colloid                             | 15× Skill Summary - 3, 6× D32 Steel, 5× Keton Colloid                             | **Совпадает** |
-| **S3 (Command: Meltdown)**                 |  M1   | 8× Skill Summary - 3, 4× White Horse Kohl, 8× Aketon                              | 8× Skill Summary - 3, 4× White Horse Kohl, 8× Aketon                              | **Совпадает** |
-|                                            |  M2   | 12× Skill Summary - 3, 4× Crystalline Circuit, 8× Polymerized Gel                 | 12× Skill Summary - 3, 4× Crystalline Circuit, 8× Polymerized Gel                 | **Совпадает** |
-|                                            |  M3   | 15× Skill Summary - 3, 6× Crystalline Electronic Unit, 4× Grindstone Pentahydrate | 15× Skill Summary - 3, 6× Crystalline Electronic Unit, 4× Grindstone Pentahydrate | **Совпадает** |
-
-##### Raw `levelUpCostCond` Snippet for Kal'tsit S3 M1 (`char_003_kalts.json`)
+1. **Our Built Data (`data/operators/char_003_kalts.json`, JSON path: `$.skills[2].masteryCosts[0]`)**:
 
 ```json
 {
@@ -172,21 +184,44 @@ Path: `skills[2].levelUpCostCond[0].levelUpCost` / `data/operators/char_172_svra
     "level": 1
   },
   "levelUpCost": [
-    {
-      "id": "3303",
-      "count": 8
-    },
-    {
-      "id": "30074",
-      "count": 4
-    },
-    {
-      "id": "30053",
-      "count": 8
-    }
+    { "id": "3303", "count": 8 },
+    { "id": "30074", "count": 4 },
+    { "id": "30053", "count": 8 }
   ]
 }
 ```
+
+2. **Fresh Upstream CN (`Kengxxiao/ArknightsGameData`, commit `bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d` `2026-10-16` & `.cache/raw/zh_CN/character_table.json` commit `17759cc8` `2026-10-08`) AND Frozen Upstream EN (`.cache/raw/en_US/character_table.json`, commit `57010cb5` `2025-11-13`), JSON path: `$["char_003_kalts"].skills[2].levelUpCostCond[0]`**:
+
+```json
+{
+  "unlockCond": {
+    "phase": "PHASE_2",
+    "level": 1
+  },
+  "lvlUpTime": 28800,
+  "levelUpCost": [
+    { "id": "3303", "count": 8, "type": "MATERIAL" },
+    { "id": "30074", "count": 4, "type": "MATERIAL" },
+    { "id": "30053", "count": 8, "type": "MATERIAL" }
+  ]
+}
+```
+
+---
+
+#### 4.2.3. Hypothesis Check & Source Attribution (SilverAsh S3 M1: 6 vs 8 `3303`)
+
+1. **Where we source mastery costs (`scripts/data/build-operators.ts`)**:
+   - `buildSkills()` in `scripts/data/build-operators.ts` extracts `masteryCosts` directly from `rawChar.skills[i].levelUpCostCond` in `.cache/raw/zh_CN/character_table.json` (`Kengxxiao/ArknightsGameData`, branch `master`, pinned commit `17759cc8cdf37388414145d16262a3a06f3ab25e`, `2026-10-08T23:46:48Z`).
+2. **Hypothesis Verification (Outdated Snapshot vs Wiki Discrepancy)**:
+   - We queried the latest upstream `HEAD` of `Kengxxiao/ArknightsGameData` (`bee3f83c5d60590b5e1cd42b8d09d00ce32ab10d`, `2026-10-16T08:02:27Z`, Client `2.7.81 Data:26-10-14-13-45-10-99469376`) and compared it against frozen EN (`57010cb5`, `2025-11-13`), `prts.wiki`, and `arknights.wiki.gg`.
+   - **Result**: Both the freshest CN client (`2026-10-16`) and the EN client (`2025-11-13`) have `"id": "3303", "count": 6` for SilverAsh (`char_172_svrash`) S1–S3 M1, and `"id": "3303", "count": 8` for Kal'tsit (`char_003_kalts`) S1–S3 M1.
+   - In `prts.wiki` (`https://prts.wiki/w/%E9%93%B6%E7%81%B0`), SilverAsh's wikitext is `|三8={{材料消耗|技巧概要·卷3|6}} {{材料消耗|改量装置|3}} {{材料消耗|异铁组|4}}` (**6** books).
+   - In `arknights.wiki.gg` (`https://arknights.wiki.gg/wiki/SilverAsh`), the wikitext is `{{Skill upgrade cell|level=8|skill1=Power Strike γ|skill2=Rules of Survival|skill3=Truesilver Slash|summary=8|...}}` (**8** books), whereas other launch 6★ operators on `arknights.wiki.gg` (`https://arknights.wiki.gg/wiki/Exusiai` and `https://arknights.wiki.gg/wiki/Siege`) have `summary=6` matching `character_table.json`.
+   - Therefore, our data (`6`) matches the latest CN client (`2026-10-16`), the EN client, and `prts.wiki`; the value `8` on `arknights.wiki.gg/wiki/SilverAsh` is a manual wiki template typo on that page.
+3. **Status of PR #41**:
+   - PR #41 was merged and closed by the repository owner (`2026-10-16T16:16:00Z`, merge commit `f5935c5c`), and the follow-up commits from the same branch were subsequently merged via PR #42 (`b260df5`).
 
 #### 4.2.3. Tactical Modules: Kal'tsit & Fiammetta Stage Costs
 

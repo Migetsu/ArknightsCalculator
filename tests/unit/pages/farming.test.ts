@@ -28,14 +28,17 @@ describe('FarmingPage', () => {
     expect(dayButtons.length).toBe(7)
   })
 
-  it('renders best stages, total cost, and supply schedule when deficit exists', async () => {
+  it('renders best stages, drop rate per run, total cost, and uncovered items when deficit exists', async () => {
     const wrapper = await mountSuspended(FarmingPage)
     const farming = useFarmingStore()
-    farming.setCustomDeficit({ '30012': 10 }) // 10 Rock T2
+    farming.setCustomDeficit({ '30011': 30, mod_unlock_token: 4 }) // 30 Orirock T1 + 4 Module Data Block
     await nextTick()
 
     expect(wrapper.find('.farming-page__stages-card').exists()).toBe(true)
     expect(wrapper.find('.farming-page__cost-card').exists()).toBe(true)
     expect(wrapper.find('.farming-page__stage-row').exists()).toBe(true)
+    expect(wrapper.find('.farming-page__item-rate').exists()).toBe(true)
+    expect(wrapper.find('.farming-page__uncovered-box').exists()).toBe(true)
+    expect(wrapper.find('.farming-page__uncovered-name').text()).toContain('Module Data Block')
   })
 })

@@ -6,6 +6,10 @@ import type {
   FarmedItemContribution,
 } from '../../schemas/farming'
 import type { Stage } from '../../schemas/stage'
+import type { CraftRecipe } from '../../schemas/recipe'
+import defaultRecipesData from '../../../data/recipes.json'
+
+const defaultRecipes = defaultRecipesData as unknown as readonly CraftRecipe[]
 
 export interface FarmingOptimizationOptions {
   server?: 'cn' | 'global'
@@ -13,10 +17,14 @@ export interface FarmingOptimizationOptions {
   regenMinutes?: number
   stagesMap?: Record<string, Stage>
   availableStageIds?: Set<string> | string[]
+  allowCrafting?: boolean
+  recipes?: readonly CraftRecipe[]
+  now?: number
 }
 
 const DEFAULT_MAX_SANITY = 135
 const DEFAULT_REGEN_MINUTES = 6
+const EPS = 1e-7
 
 function isMatrixSnapshot(
   obj: PenguinMatrixSnapshot | Record<string, PenguinStageMatrix>,
@@ -25,7 +33,199 @@ function isMatrixSnapshot(
 }
 
 /**
- * Optimizes sanity farming to satisfy raw item deficit.
+ * Builds a base-material equivalence map from Workshop synthesis recipes.
+ * For example:
+ * - 30012 (Orirock Cube) -> { '30011': 3 }
+ * - 30013 (Orirock Cluster) -> { '30011': 15 }
+ * - 3302 (Skill Summary - 2) -> { '3301': 3 }
+ * - 3303 (Skill Summary - 3) -> { '3301': 9 }
+ */
+export function buildBaseEquivalenceMap(
+  recipes: readonly CraftRecipe[] = defaultRecipes,
+): (itemId: string) => Record<string, number> {
+  const recipeByResult = new Map<string, CraftRecipe>()
+  for (const r of recipes) {
+    // Only use hierarchical Workshop synthesis recipes (exclude chip conversions, dualchip manufacture, and furniture dismantling)
+    if (r.kind !== 'synthesis') continue
+    if (r.resultId === '3401') continue
+    if (r.resultId.startsWith('311') || r.resultId.startsWith('313')) continue
+    if (r.ingredients.length > 0 && !recipeByResult.has(r.resultId)) {
+      recipeByResult.set(r.resultId, r)
+    }
+  }
+
+  const memo = new Map<string, Record<string, number>>()
+
+  function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
+    const cached = memo.get(itemId)
+    if (cached) return cached
+
+    const recipe = recipeByResult.get(itemId)
+    if (!recipe || visited.has(itemId)) {
+      const selfEq = { [itemId]: 1 }
+      memo.set(itemId, selfEq)
+      return selfEq
+    }
+
+    const nextVisited = new Set(visited)
+    nextVisited.add(itemId)
+
+    const resultCount = recipe.resultCount > 0 ? recipe.resultCount : 1
+    const eq: Record<string, number> = {}
+    for (const ing of recipe.ingredients) {
+      const sub = getEquiv(ing.id, nextVisited)
+      for (const [baseId, qty] of Object.entries(sub)) {
+        eq[baseId] = (eq[baseId] ?? 0) + (ing.count / resultCount) * qty
+      }
+    }
+
+    memo.set(itemId, eq)
+    return eq
+  }
+
+  return (itemId: string) => getEquiv(itemId)
+}
+
+/**
+ * Checks whether a candidate stage exists on the server and is currently open.
+ */
+export function isStageCurrentlyOpen(stage: PenguinStageMatrix, now: number): boolean {
+  if (stage.exist === false) return false
+  if (typeof stage.openTime === 'number' && stage.openTime > now) return false
+  if (typeof stage.closeTime === 'number' && stage.closeTime <= now) return false
+  return true
+}
+
+/**
+ * Solves min c^T x subject to A x >= b, x >= 0 via the Dual Simplex algorithm.
+ * Returns continuous stage run counts x >= 0.
+ */
+function solveContinuousLpDualSimplex(
+  costs: readonly number[],
+  matrixA: readonly (readonly number[])[],
+  rhsB: readonly number[],
+): number[] {
+  const m = rhsB.length
+  const n = costs.length
+  if (m === 0 || n === 0) return new Array(n).fill(0)
+
+  // Tableau of size (m + 1) x (n + 1)
+  // Row i (0..m-1): basic variable = surplus_i = sum_j A[i][j] * x_j - b_i
+  // Standard form: x_{basic_i} + sum_j (-A[i][j]) * x_{nonbasic_j} = -b_i
+  // Row m: objective reduced costs c_j >= 0 (dual feasible)
+  const T: number[][] = Array.from({ length: m + 1 }, () => new Array<number>(n + 1).fill(0))
+
+  for (let i = 0; i < m; i++) {
+    const row = T[i]!
+    const srcRow = matrixA[i]!
+    for (let j = 0; j < n; j++) {
+      row[j] = -(srcRow[j] ?? 0)
+    }
+    row[n] = -(rhsB[i] ?? 0)
+  }
+
+  const objRow = T[m]!
+  for (let j = 0; j < n; j++) {
+    objRow[j] = costs[j] ?? 0
+  }
+  objRow[n] = 0
+
+  // Variable IDs: 0..m-1 are surplus variables, m..m+n-1 are stage variables
+  const basicVar = Array.from({ length: m }, (_, i) => i)
+  const nonBasicVar = Array.from({ length: n }, (_, j) => m + j)
+
+  const maxIterations = 600
+  for (let iter = 0; iter < maxIterations; iter++) {
+    // 1. Choose leaving row r with most negative RHS
+    let pivotRow = -1
+    let minRhs = -EPS
+    for (let i = 0; i < m; i++) {
+      const val = T[i]![n]!
+      if (val < minRhs) {
+        minRhs = val
+        pivotRow = i
+      }
+    }
+
+    if (pivotRow === -1) {
+      // Primal feasible and dual feasible -> optimal!
+      break
+    }
+
+    // 2. Choose entering column k minimizing dual ratio T[m][j] / (-T[pivotRow][j]) for T[pivotRow][j] < -1e-9
+    let pivotCol = -1
+    let minRatio = Infinity
+    const pRow = T[pivotRow]!
+
+    for (let j = 0; j < n; j++) {
+      const a = pRow[j]!
+      if (a < -1e-9) {
+        const reducedCost = Math.max(0, T[m]![j]!)
+        const ratio = reducedCost / -a
+        if (
+          ratio < minRatio - 1e-11 ||
+          (Math.abs(ratio - minRatio) <= 1e-11 &&
+            pivotCol !== -1 &&
+            nonBasicVar[j]! < nonBasicVar[pivotCol]!)
+        ) {
+          minRatio = ratio
+          pivotCol = j
+        }
+      }
+    }
+
+    if (pivotCol === -1) {
+      // Numerical guard: mark row satisfied if no negative entry exists
+      pRow[n] = 0
+      continue
+    }
+
+    // 3. Pivot on (pivotRow, pivotCol)
+    const pivotVal = pRow[pivotCol]!
+
+    const leavingId = basicVar[pivotRow]!
+    basicVar[pivotRow] = nonBasicVar[pivotCol]!
+    nonBasicVar[pivotCol] = leavingId
+
+    for (let j = 0; j <= n; j++) {
+      if (j !== pivotCol) {
+        pRow[j] = pRow[j]! / pivotVal
+      }
+    }
+    pRow[pivotCol] = 1 / pivotVal
+
+    for (let i = 0; i <= m; i++) {
+      if (i === pivotRow) continue
+      const rowI = T[i]!
+      const factor = rowI[pivotCol]!
+      if (Math.abs(factor) < 1e-13) {
+        rowI[pivotCol] = 0
+        continue
+      }
+      for (let j = 0; j <= n; j++) {
+        if (j !== pivotCol) {
+          rowI[j] = rowI[j]! - factor * pRow[j]!
+        }
+      }
+      rowI[pivotCol] = -factor / pivotVal
+    }
+  }
+
+  const x = new Array<number>(n).fill(0)
+  for (let i = 0; i < m; i++) {
+    const varId = basicVar[i]!
+    if (varId >= m) {
+      const stageIdx = varId - m
+      x[stageIdx] = Math.max(0, T[i]![n]!)
+    }
+  }
+
+  return x
+}
+
+/**
+ * Optimizes sanity farming to satisfy item deficit using Linear Programming (Simplex)
+ * with Workshop crafting substitution (T1-equivalents) and byproduct deduction.
  * Pure calculation logic (no Vue, no network, deterministic).
  */
 export function optimizeFarming(
@@ -38,21 +238,22 @@ export function optimizeFarming(
   const regenMinutes = options.regenMinutes ?? DEFAULT_REGEN_MINUTES
   const stagesMap = options.stagesMap
   const availableSet = options.availableStageIds ? new Set(options.availableStageIds) : null
+  const allowCrafting = options.allowCrafting ?? true
+  const now = options.now ?? Date.now()
 
   const stageMatrices: Record<string, PenguinStageMatrix> = isMatrixSnapshot(matrixSnapshot)
     ? matrixSnapshot.stages
     : matrixSnapshot
 
-  // 1. Filter needed items (deficit > 0)
-  const remainingDeficit: Record<string, number> = {}
+  // 1. Filter positive deficit items
+  const positiveDeficit: Record<string, number> = {}
   for (const [itemId, count] of Object.entries(rawDeficit)) {
     if (count > 0) {
-      remainingDeficit[itemId] = count
+      positiveDeficit[itemId] = count
     }
   }
 
-  const neededItemIds = Object.keys(remainingDeficit)
-  if (neededItemIds.length === 0) {
+  if (Object.keys(positiveDeficit).length === 0) {
     return {
       stages: [],
       totalRuns: 0,
@@ -63,10 +264,17 @@ export function optimizeFarming(
     }
   }
 
-  // 2. Pre-filter candidate stages
+  // 2. Filter open & server-valid candidate stages
   const candidateStages: PenguinStageMatrix[] = []
   for (const stage of Object.values(stageMatrices)) {
     if (stage.apCost <= 0) continue
+    if (!isStageCurrentlyOpen(stage, now)) continue
+
+    // Deduplicate tough_* stages when canonical main_* exists
+    if (stage.stageId.startsWith('tough_')) {
+      const mainId = stage.stageId.replace(/^tough_/, 'main_')
+      if (stageMatrices[mainId]) continue
+    }
 
     if (stagesMap) {
       const meta = stagesMap[stage.stageId]
@@ -79,104 +287,322 @@ export function optimizeFarming(
     candidateStages.push(stage)
   }
 
-  // 3. Find best stage for each missing item (highest dropRate / apCost)
-  function getBestStageForItem(
-    itemId: string,
-  ): { stage: PenguinStageMatrix; dropRate: number } | null {
-    let bestStage: PenguinStageMatrix | null = null
-    let maxEff = 0
-    let bestDropRate = 0
+  // Deterministic stage ordering
+  candidateStages.sort((a, b) => a.stageId.localeCompare(b.stageId))
 
-    for (const stage of candidateStages) {
-      const drop = stage.drops.find((d) => d.itemId === itemId)
-      if (!drop || drop.dropRate <= 0) continue
-
-      const eff = drop.dropRate / stage.apCost
-      if (eff > maxEff) {
-        maxEff = eff
-        bestStage = stage
-        bestDropRate = drop.dropRate
+  // 3. Build recipe lookup for hierarchical synthesis when allowCrafting = true
+  const recipeByResult = new Map<string, CraftRecipe>()
+  if (allowCrafting) {
+    for (const r of options.recipes ?? defaultRecipes) {
+      if (r.kind !== 'synthesis') continue
+      if (r.resultId === '3401') continue
+      if (r.resultId.startsWith('311') || r.resultId.startsWith('313')) continue
+      if (r.ingredients.length > 0 && !recipeByResult.has(r.resultId)) {
+        recipeByResult.set(r.resultId, r)
       }
     }
-
-    if (!bestStage) return null
-    return { stage: bestStage, dropRate: bestDropRate }
   }
 
-  // 4. Iteratively cover items by best stages, reducing deficit for byproducts
-  const plannedRunsByStage = new Map<
-    string,
-    { stage: PenguinStageMatrix; runs: number; primaryItemId?: string }
-  >()
-  const uncoveredSet = new Set<string>()
+  const fullEquivFn = allowCrafting
+    ? buildBaseEquivalenceMap(options.recipes ?? defaultRecipes)
+    : (itemId: string) => ({ [itemId]: 1 })
 
-  // Sort items to process items with few drop alternatives or higher demand first
-  while (true) {
-    const activeItemIds = Object.keys(remainingDeficit).filter(
-      (id) => (remainingDeficit[id] ?? 0) > 0 && !uncoveredSet.has(id),
-    )
-    if (activeItemIds.length === 0) break
+  // Check which items have direct stage drops
+  const directlyDroppedItems = new Set<string>()
+  for (const stage of candidateStages) {
+    for (const drop of stage.drops) {
+      if (drop.dropRate > 0) {
+        directlyDroppedItems.add(drop.itemId)
+      }
+    }
+  }
 
-    // Sort active items: highest remaining quantity first
-    activeItemIds.sort((a, b) => (remainingDeficit[b] ?? 0) - (remainingDeficit[a] ?? 0))
-    const currentItemId = activeItemIds[0]
-    if (!currentItemId) break
+  // Decide whether a demanded item should be decomposed to its base ingredients:
+  // Decompose if allowCrafting is true AND either:
+  // (a) one of its base ingredients is also in positiveDeficit, or
+  // (b) no candidate stage drops the item directly (e.g. T4/T5 crafted items).
+  const baseDeficitMap = new Map<string, number>()
+  const itemToBaseKeys = new Map<string, string[]>()
 
-    const best = getBestStageForItem(currentItemId)
-    if (!best) {
-      uncoveredSet.add(currentItemId)
-      continue
+  for (const [itemId, count] of Object.entries(positiveDeficit)) {
+    const fullEq = fullEquivFn(itemId)
+    const baseKeys = Object.keys(fullEq)
+    const isComposite = baseKeys.length > 1 || baseKeys[0] !== itemId
+    const hasBaseInDeficit =
+      isComposite && baseKeys.some((k) => k !== itemId && positiveDeficit[k] !== undefined)
+    const shouldDecomposeDemand =
+      allowCrafting && isComposite && (hasBaseInDeficit || !directlyDroppedItems.has(itemId))
+
+    const eq = shouldDecomposeDemand ? fullEq : { [itemId]: 1 }
+    const keys: string[] = []
+    for (const [baseId, factor] of Object.entries(eq)) {
+      if (factor > 0) {
+        baseDeficitMap.set(baseId, (baseDeficitMap.get(baseId) ?? 0) + count * factor)
+        keys.push(baseId)
+      }
+    }
+    itemToBaseKeys.set(itemId, keys)
+  }
+
+  // Resolve how any stage drop itemId decomposes into keys present in baseDeficitMap
+  const dropEquivMemo = new Map<string, Record<string, number>>()
+  function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
+    if (!allowCrafting) {
+      return { [itemId]: 1 }
+    }
+    const cached = dropEquivMemo.get(itemId)
+    if (cached) return cached
+
+    if (baseDeficitMap.has(itemId)) {
+      const direct = { [itemId]: 1 }
+      dropEquivMemo.set(itemId, direct)
+      return direct
     }
 
-    const neededQty = remainingDeficit[currentItemId] ?? 0
-    const runsForCurrent = Math.ceil(neededQty / best.dropRate)
-
-    if (runsForCurrent <= 0) {
-      remainingDeficit[currentItemId] = 0
-      continue
+    const recipe = recipeByResult.get(itemId)
+    if (!recipe || visited.has(itemId)) {
+      const selfEq = { [itemId]: 1 }
+      dropEquivMemo.set(itemId, selfEq)
+      return selfEq
     }
 
-    // Add runs to planned stages
-    const existing = plannedRunsByStage.get(best.stage.stageId)
-    if (existing) {
-      existing.runs += runsForCurrent
+    const nextVisited = new Set(visited)
+    nextVisited.add(itemId)
+    const resultCount = recipe.resultCount > 0 ? recipe.resultCount : 1
+    const eq: Record<string, number> = {}
+    for (const ing of recipe.ingredients) {
+      const sub = getEquiv(ing.id, nextVisited)
+      for (const [baseId, factor] of Object.entries(sub)) {
+        eq[baseId] = (eq[baseId] ?? 0) + (ing.count / resultCount) * factor
+      }
+    }
+    dropEquivMemo.set(itemId, eq)
+    return eq
+  }
+
+  // 4. Identify coverable vs uncovered base items
+  const allBaseKeys = Array.from(baseDeficitMap.keys()).sort()
+  const coverableBaseKeys: string[] = []
+  const uncoveredBaseKeySet = new Set<string>()
+
+  // Precompute stage -> baseId yield per run
+  const stageBaseYields = candidateStages.map((stage) => {
+    const yields: Record<string, number> = {}
+    for (const drop of stage.drops) {
+      if (drop.dropRate <= 0) continue
+      const eq = getEquiv(drop.itemId)
+      for (const [baseId, factor] of Object.entries(eq)) {
+        if (baseDeficitMap.has(baseId) && factor > 0) {
+          yields[baseId] = (yields[baseId] ?? 0) + drop.dropRate * factor
+        }
+      }
+    }
+    return yields
+  })
+
+  for (const baseId of allBaseKeys) {
+    const hasStage = stageBaseYields.some((y) => (y[baseId] ?? 0) > 0)
+    if (hasStage) {
+      coverableBaseKeys.push(baseId)
     } else {
-      plannedRunsByStage.set(best.stage.stageId, {
-        stage: best.stage,
-        runs: runsForCurrent,
-        primaryItemId: currentItemId,
+      uncoveredBaseKeySet.add(baseId)
+    }
+  }
+
+  // Determine uncovered original items
+  const uncoveredItems: Array<{ itemId: string; remainingQuantity: number }> = []
+  for (const [itemId, count] of Object.entries(positiveDeficit)) {
+    const keys = itemToBaseKeys.get(itemId) ?? [itemId]
+    if (keys.some((k) => uncoveredBaseKeySet.has(k))) {
+      uncoveredItems.push({
+        itemId,
+        remainingQuantity: count,
       })
     }
+  }
 
-    // Deduct all items dropped by this stage (including byproducts)
-    for (const drop of best.stage.drops) {
-      if (remainingDeficit[drop.itemId] !== undefined) {
-        const covered = runsForCurrent * drop.dropRate
-        remainingDeficit[drop.itemId] = Math.max(0, remainingDeficit[drop.itemId]! - covered)
+  if (coverableBaseKeys.length === 0) {
+    return {
+      stages: [],
+      totalRuns: 0,
+      totalSanity: 0,
+      naturalRegenDays: 0,
+      originitePrimeCost: 0,
+      uncoveredItems,
+    }
+  }
+
+  // Filter candidate stages to those that yield at least one coverable base item
+  const activeStageIndices: number[] = []
+  for (let j = 0; j < candidateStages.length; j++) {
+    const y = stageBaseYields[j]!
+    if (coverableBaseKeys.some((k) => (y[k] ?? 0) > 0)) {
+      activeStageIndices.push(j)
+    }
+  }
+
+  const m = coverableBaseKeys.length
+  const n = activeStageIndices.length
+  const costs = activeStageIndices.map((j) => candidateStages[j]!.apCost)
+  const rhsB = coverableBaseKeys.map((k) => baseDeficitMap.get(k) ?? 0)
+  const matrixA: number[][] = coverableBaseKeys.map((k) =>
+    activeStageIndices.map((j) => stageBaseYields[j]![k] ?? 0),
+  )
+
+  // 5. Solve continuous LP relaxation via Dual Simplex
+  const xCont = solveContinuousLpDualSimplex(costs, matrixA, rhsB)
+
+  // 6. Convert continuous runs to integer runs:
+  // Start from floor(xCont), then greedily add runs for remaining fractional deficit, then prune any redundant runs.
+  const intRuns = xCont.map((val) => (val > EPS ? Math.floor(val + 1e-9) : 0))
+
+  const remDeficit = rhsB.map((b, i) => {
+    let covered = 0
+    for (let j = 0; j < n; j++) {
+      if (intRuns[j]! > 0) {
+        covered += matrixA[i]![j]! * intRuns[j]!
+      }
+    }
+    return Math.max(0, b - covered)
+  })
+
+  // Greedy integer residual completion
+  let guard = 0
+  while (guard++ < 10000) {
+    let maxRem = 0
+    for (let i = 0; i < m; i++) {
+      if (remDeficit[i]! > maxRem) {
+        maxRem = remDeficit[i]!
+      }
+    }
+    if (maxRem <= EPS) break
+
+    let bestCol = -1
+    let bestScore = -1
+
+    for (let j = 0; j < n; j++) {
+      let usefulYield = 0
+      for (let i = 0; i < m; i++) {
+        const rem = remDeficit[i]!
+        if (rem > EPS) {
+          const a = matrixA[i]![j]!
+          if (a > 0) {
+            usefulYield += Math.min(rem, a)
+          }
+        }
+      }
+      if (usefulYield <= 0) continue
+      const score = usefulYield / costs[j]!
+      if (score > bestScore + 1e-11) {
+        bestScore = score
+        bestCol = j
+      }
+    }
+
+    if (bestCol === -1) break
+
+    intRuns[bestCol] = intRuns[bestCol]! + 1
+    for (let i = 0; i < m; i++) {
+      remDeficit[i] = Math.max(0, remDeficit[i]! - matrixA[i]![bestCol]!)
+    }
+  }
+
+  // Redundancy pruning (most expensive stage first) to ensure minimal integer plan
+  const activeCols = Array.from({ length: n }, (_, j) => j)
+    .filter((j) => intRuns[j]! > 0)
+    .sort((a, b) => costs[b]! - costs[a]! || a - b)
+
+  const totalCovered = new Array<number>(m).fill(0)
+  for (let i = 0; i < m; i++) {
+    let sum = 0
+    for (const j of activeCols) {
+      sum += matrixA[i]![j]! * intRuns[j]!
+    }
+    totalCovered[i] = sum
+  }
+
+  for (const j of activeCols) {
+    while (intRuns[j]! > 0) {
+      let canDecrement = true
+      for (let i = 0; i < m; i++) {
+        const a = matrixA[i]![j]!
+        if (a > 0 && totalCovered[i]! - a < rhsB[i]! - EPS) {
+          canDecrement = false
+          break
+        }
+      }
+      if (!canDecrement) break
+      intRuns[j] = intRuns[j]! - 1
+      for (let i = 0; i < m; i++) {
+        totalCovered[i] = totalCovered[i]! - matrixA[i]![j]!
       }
     }
   }
 
-  // 5. Build output stage plans and contributions
+  // 7. Build output stage plans and contributions
   const stagePlans: FarmingStagePlan[] = []
   let totalRuns = 0
   let totalSanity = 0
 
-  for (const { stage, runs, primaryItemId } of plannedRunsByStage.values()) {
+  for (let j = 0; j < n; j++) {
+    const runs = intRuns[j]!
     if (runs <= 0) continue
 
+    const stage = candidateStages[activeStageIndices[j]!]!
     const sanity = runs * stage.apCost
     totalRuns += runs
     totalSanity += sanity
 
-    const contributions: FarmedItemContribution[] = []
+    // Identify primary contributing drop and meaningful drop contributions
+    const contributingDrops: Array<{
+      itemId: string
+      dropRate: number
+      baseValuePerRun: number
+      targetQty: number
+    }> = []
+
     for (const drop of stage.drops) {
-      const origTarget = rawDeficit[drop.itemId]
-      if (origTarget && origTarget > 0) {
-        contributions.push({
+      if (drop.dropRate <= 0) continue
+      const eq = getEquiv(drop.itemId)
+      let baseValuePerRun = 0
+      let equivTarget = 0
+
+      for (const [baseId, factor] of Object.entries(eq)) {
+        const neededBase = baseDeficitMap.get(baseId) ?? 0
+        if (neededBase > 0 && factor > 0) {
+          baseValuePerRun += drop.dropRate * factor
+          equivTarget += neededBase / factor
+        }
+      }
+
+      if (baseValuePerRun > 0) {
+        const directTarget = positiveDeficit[drop.itemId]
+        contributingDrops.push({
           itemId: drop.itemId,
-          expectedQuantity: Math.round(runs * drop.dropRate * 10) / 10,
-          targetQuantity: origTarget,
+          dropRate: drop.dropRate,
+          baseValuePerRun,
+          targetQty:
+            directTarget !== undefined && directTarget > 0 ? directTarget : Math.ceil(equivTarget),
+        })
+      }
+    }
+
+    contributingDrops.sort(
+      (a, b) => b.baseValuePerRun - a.baseValuePerRun || b.dropRate - a.dropRate,
+    )
+
+    const primaryItemId = contributingDrops[0]?.itemId
+
+    const contributions: FarmedItemContribution[] = []
+    for (const cd of contributingDrops) {
+      // Include primary drop, direct deficit drops, or drops with >= 15% rate per run
+      const isDirectDeficit = (positiveDeficit[cd.itemId] ?? 0) > 0
+      if (cd.itemId === primaryItemId || cd.dropRate >= 0.15 || isDirectDeficit) {
+        contributions.push({
+          itemId: cd.itemId,
+          expectedQuantity: Math.round(runs * cd.dropRate * 10) / 10,
+          targetQuantity: cd.targetQty,
+          dropRate: cd.dropRate,
         })
       }
     }
@@ -192,18 +618,13 @@ export function optimizeFarming(
     })
   }
 
-  // Sort plans: highest sanity cost first
-  stagePlans.sort((a, b) => b.sanity - a.sanity)
+  // Sort plans: highest sanity cost first, then stageId
+  stagePlans.sort((a, b) => b.sanity - a.sanity || a.stageId.localeCompare(b.stageId))
 
-  // 6. Equivalents
+  // 8. Equivalents
   const naturalRegenPerDay = (24 * 60) / regenMinutes // 240 by default
   const naturalRegenDays = Math.round((totalSanity / naturalRegenPerDay) * 10) / 10
   const originitePrimeCost = Math.ceil(totalSanity / maxSanity)
-
-  const uncoveredItems = Array.from(uncoveredSet).map((itemId) => ({
-    itemId,
-    remainingQuantity: rawDeficit[itemId] ?? 0,
-  }))
 
   return {
     stages: stagePlans,
