@@ -1,5 +1,28 @@
 # Project Progress
 
+- **Official EN Game Data Migration to SanityGoneAK & Appellation Hardening (`feat/en-source-migration-sanitygone`):**
+  - **Data Source & Priority Chain (`scripts/data/sources.config.ts`, `scripts/data/i18n-layers.ts`, `scripts/data/build-operators.ts`):**
+    - Pinned official EN source to `SanityGoneAK/arknights-gamedata`, branch `main`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, locale `en`.
+    - Enforced strict priority chain: `official EN client data > arknights.wiki.gg (for CN-only) > validated appellation (last resort) > machine > zh`.
+    - Hardened `appellation` validation with `VALID_APPELLATION_REGEX` (`/^[\x20-\x7E\u00C0-\u024F]+$/`) and `HAS_LATIN_LETTER_REGEX` (`/[A-Za-z]/`), trimming strings and rejecting all Cyrillic subtitles (`Снегурочка`, `Ботани`, `Укусик`, `Вий`, `Веточки`, `Гум`, `Зима`, `Роса`, `Позёмка`).
+  - **Pruning Obsolete Machine Translations (`data/i18n/machine/`):**
+    - Purged 190 skill entries (now 0, all official).
+    - Purged 58 talent entries (only 4 remain for CN-only `char_4218_aigis`).
+    - Purged 74 module entries (only 10 remain for unreleased CN-only 3rd/4th modules).
+    - All 36 Global operators previously lacking official EN data now have 100% official EN names, skills, talents, and modules.
+    - Official string coverage rose to 30,053 strings (96.07%), while machine translations dropped to 14 strings (0.04%).
+  - **Regression Test Suite (`tests/unit/data/en-migration-regression.test.ts`):**
+    - Added 7 unit tests covering official EN resolution for Snegurochka, Botani, Ukusik, Sakiko Togawa (not "Togawa Sakiko" and not machine), and Viy (not Cyrillic).
+    - Verified entire `data/operators-index.json` (434 operators) contains zero Cyrillic characters in `name.en`.
+    - Verified regex validation and rejection rules for `appellation`.
+  - **Verification:**
+    - `data:validate`: 434 operators, 76 recipes, 848 items, 318 recruit pool — 0 integrity issues.
+    - `i18n:check`: identical keys, clean compilation.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 100% clean.
+    - `test`: 444/444 passed across 68 test files.
+    - `build`: production bundle compiled in 1m 15s.
+
 - **Recruitment Matrix (RCR-03) & 5 UI Polish Fixes (`feat/recruit-and-ui-polish`):**
   - **5 UI Visual Defects Fixed:**
     1. _`MEDIC / MEDIC` duplicate:_ In `scripts/data/build-operators.ts`, mapped `physician` subclass $\to$ `'Single-target Medic'`, updated operator details and index JSONs (Kal'tsit now displays `6★ / MEDIC / SINGLE-TARGET MEDIC / RHODES ISLAND`).
