@@ -136,7 +136,7 @@ function getLevelLabel(idx: number): string {
       <!-- Description using AkRichText -->
       <div class="ak-operator-skills-panel__desc">
         <AkRichText
-          :raw-text="getSkillDesc(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
+          :text="getSkillDesc(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
           :blackboard="getSkillBlackboard(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
         />
       </div>

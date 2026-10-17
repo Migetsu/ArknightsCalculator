@@ -42,6 +42,13 @@ const activeStages = ref<Record<string, number>>(
   Object.fromEntries(props.modules.map((m) => [m.id, Math.max(1, m.stages?.length ?? 1)])),
 )
 
+// Track expanded lore/story for advanced modules (collapsed by default)
+const expandedStories = ref<Record<string, boolean>>({})
+
+function toggleStory(id: string): void {
+  expandedStories.value[id] = !expandedStories.value[id]
+}
+
 function getModuleName(m: OperatorModule): string {
   return resolveI18nString(m.name, locale.value as 'en' | 'ru' | 'zh') || m.name?.en || m.type
 }
@@ -170,8 +177,26 @@ function getStageCost(m: OperatorModule, stageNum: number) {
           <span class="ak-operator-modules-panel__sub-title">
             {{ t('operators.detail.modules.story') }}
           </span>
+          <AkButton
+            v-if="mod.type !== 'INITIAL'"
+            size="sm"
+            variant="ghost"
+            class="ak-operator-modules-panel__lore-toggle"
+            @click="toggleStory(mod.id)"
+          >
+            {{
+              expandedStories[mod.id]
+                ? t('operators.detail.modules.hideStory')
+                : t('operators.detail.modules.showStory')
+            }}
+          </AkButton>
         </div>
-        <p class="ak-operator-modules-panel__dossier-text">{{ getModuleDescription(mod) }}</p>
+        <p
+          v-if="mod.type === 'INITIAL' || expandedStories[mod.id]"
+          class="ak-operator-modules-panel__dossier-text"
+        >
+          {{ getModuleDescription(mod) }}
+        </p>
       </div>
 
       <!-- Stage Switcher (1..3) -->

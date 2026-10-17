@@ -101,6 +101,7 @@ const artPosition = computed(() => {
         </span>
         <span class="ak-operator-card__class ak-operator-card__class-label">
           {{ t('operators.classes.' + operator.class) }}
+          <template v-if="operator.subclass"> · {{ operator.subclass }}</template>
         </span>
       </div>
     </div>

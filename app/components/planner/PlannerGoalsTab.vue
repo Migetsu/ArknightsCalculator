@@ -455,10 +455,15 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
               :size="48"
             />
             <div class="planner-goals__skill-info">
-              <span class="planner-goals__skill-name">
-                {{ resolveI18nString(mod.name, locale as ContentLocale) }}
-                <AkModuleType :type="mod.typeName2" size="xs" />
-              </span>
+              <div class="planner-goals__skill-title-row">
+                <span
+                  class="planner-goals__skill-name"
+                  :title="resolveI18nString(mod.name, locale as ContentLocale)"
+                >
+                  {{ resolveI18nString(mod.name, locale as ContentLocale) }}
+                </span>
+                <AkModuleType :type="mod.typeName2" size="xs" class="planner-goals__module-badge" />
+              </div>
               <span class="planner-goals__skill-sub">
                 Stage {{ plan.current.modules[mod.id] ?? 0 }} → Stage
                 {{ plan.target.modules[mod.id] ?? 0 }}
@@ -641,6 +646,17 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
     min-width: 0;
   }
 
+  &__skill-title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    min-width: 0;
+  }
+
+  &__module-badge {
+    flex-shrink: 0;
+  }
+
   &__skill-name {
     font-family: var(--font-heading);
     font-size: var(--font-size-sm);
@@ -649,6 +665,7 @@ function getSkillIndex(idx: number): 1 | 2 | 3 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
   }
 
   &__skill-sub {

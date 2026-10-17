@@ -183,6 +183,10 @@ onBeforeUnmount(() => {
     z-index: 1;
 
     @include focus-ring;
+
+    @media (width <= 640px) {
+      max-height: calc(100dvh - 32px);
+    }
   }
 
   &__header {
@@ -192,6 +196,10 @@ onBeforeUnmount(() => {
     gap: var(--space-md);
     padding: 24px 28px 18px;
     border-bottom: 1px solid var(--color-border-subtle);
+
+    @media (width <= 640px) {
+      padding: 16px 16px 12px;
+    }
   }
 
   &__title-group {
@@ -246,6 +254,10 @@ onBeforeUnmount(() => {
     min-width: 0;
 
     @include tech-scrollbar;
+
+    @media (width <= 640px) {
+      padding: 16px;
+    }
   }
 
   &__footer {
@@ -256,6 +268,11 @@ onBeforeUnmount(() => {
     padding: 18px 28px;
     border-top: 1px solid var(--color-border-subtle);
     background-color: rgb(0 0 0 / 15%);
+    flex-shrink: 0;
+
+    @media (width <= 640px) {
+      padding: 12px 16px;
+    }
   }
 }
 </style>

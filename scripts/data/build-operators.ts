@@ -88,6 +88,24 @@ function normalizeRarity(raw: string | number): number {
 }
 
 /**
+ * Resolves raw subProfessionId to official localized archetype / subclass name.
+ * Priority: EN subProfDict -> CN-only fallback ("Supportive Ranger") -> CN subProfDict -> raw subId.
+ */
+export function resolveSubclassName(
+  subId: string | undefined | null,
+  enEquips?: RawUniequipTable,
+  cnEquips?: RawUniequipTable,
+): string {
+  if (!subId) return 'Unknown'
+  const enName = enEquips?.subProfDict?.[subId]?.subProfessionName?.trim()
+  if (enName) return enName
+  if (subId === 'supportiveranger') return 'Supportive Ranger'
+  const cnName = cnEquips?.subProfDict?.[subId]?.subProfessionName?.trim()
+  if (cnName) return cnName
+  return subId
+}
+
+/**
  * Filter criteria for playable characters.
  * Excludes:
  * 1. Tokens (prefix token_, isToken === true, profession === TOKEN).
@@ -279,7 +297,7 @@ export function buildOperatorData(
     const displayNumber = en?.displayNumber ?? cn.displayNumber ?? null
     const rarity = normalizeRarity(cn.rarity)
     const opClass = normalizeClass(cn.profession)
-    const subclass = cn.subProfessionId ?? 'unknown'
+    const subclass = resolveSubclassName(cn.subProfessionId, bundle.enEquips, bundle.cnEquips)
     const faction = cn.nationId ?? cn.groupId ?? cn.teamId ?? null
     const position = (cn.position ?? 'MELEE') as OperatorPosition
     const tagList = en?.tagList ?? cn.tagList ?? []
@@ -421,58 +439,69 @@ export function buildOperatorData(
     const talents: OperatorTalent[] = (cn.talents ?? [])
       .map((rawTalent, tIdx) => {
         const enTalent = en?.talents?.[tIdx]
-        const candidates = (rawTalent.candidates ?? []).map((cnCand, cIdx) => {
-          const enCand = enTalent?.candidates?.[cIdx]
-          const isStale = checkTalentCandidateStale(cnCand, enCand)
-          const candName = resolveLayeredI18nString(
-            {
-              key: `${id}.talent.${tIdx}.${cIdx}.name`,
-              charId: id,
-              category: 'talents',
-              officialEn: enCand?.name,
-              zhText: cnCand.name,
-              wikiEn: ctx.wiki[id]?.talents?.[tIdx],
-              isStale,
-            },
-            ctx,
-            trk,
-          )
-          const candDesc = resolveLayeredI18nString(
-            {
-              key: `${id}.talent.${tIdx}.${cIdx}.desc`,
-              charId: id,
-              category: 'talents',
-              officialEn: enCand?.description,
-              zhText: cnCand.description,
-              isStale,
-            },
-            ctx,
-            trk,
-          )
+        const candidates = (rawTalent.candidates ?? [])
+          .map((cnCand, cIdx) => {
+            if (cnCand.isHideTalent) return null
+            const hasRawName = Boolean(cnCand.name && cnCand.name.trim())
+            const hasRawDesc = Boolean(
+              cnCand.description &&
+                cnCand.description.trim() &&
+                cnCand.description.trim() !== '-',
+            )
+            if (!hasRawName || !hasRawDesc) return null
 
-          const blackboard: Record<string, number> = {}
-          for (const item of cnCand.blackboard ?? []) {
-            if (typeof item.value === 'number') {
-              blackboard[item.key] = item.value
+            const enCand = enTalent?.candidates?.[cIdx]
+            const isStale = checkTalentCandidateStale(cnCand, enCand)
+            const candName = resolveLayeredI18nString(
+              {
+                key: `${id}.talent.${tIdx}.${cIdx}.name`,
+                charId: id,
+                category: 'talents',
+                officialEn: enCand?.name,
+                zhText: cnCand.name,
+                wikiEn: ctx.wiki[id]?.talents?.[tIdx],
+                isStale,
+              },
+              ctx,
+              trk,
+            )
+            const candDesc = resolveLayeredI18nString(
+              {
+                key: `${id}.talent.${tIdx}.${cIdx}.desc`,
+                charId: id,
+                category: 'talents',
+                officialEn: enCand?.description,
+                zhText: cnCand.description,
+                isStale,
+              },
+              ctx,
+              trk,
+            )
+
+            const blackboard: Record<string, number> = {}
+            for (const item of cnCand.blackboard ?? []) {
+              if (typeof item.value === 'number') {
+                blackboard[item.key] = item.value
+              }
             }
-          }
 
-          const phaseNum =
-            typeof cnCand.unlockCondition.phase === 'number'
-              ? cnCand.unlockCondition.phase
-              : parseInt(String(cnCand.unlockCondition.phase).replace(/\D/g, '') || '0', 10)
+            const phaseNum =
+              typeof cnCand.unlockCondition.phase === 'number'
+                ? cnCand.unlockCondition.phase
+                : parseInt(String(cnCand.unlockCondition.phase).replace(/\D/g, '') || '0', 10)
 
-          return {
-            name: candName,
-            description: candDesc,
-            unlockCond: {
-              phase: phaseNum,
-              level: cnCand.unlockCondition.level,
-              potential: cnCand.requiredPotentialRank,
-            },
-            blackboard: Object.keys(blackboard).length > 0 ? blackboard : undefined,
-          }
-        })
+            return {
+              name: candName,
+              description: candDesc,
+              unlockCond: {
+                phase: phaseNum,
+                level: cnCand.unlockCondition.level,
+                potential: cnCand.requiredPotentialRank,
+              },
+              blackboard: Object.keys(blackboard).length > 0 ? blackboard : undefined,
+            }
+          })
+          .filter((c): c is NonNullable<typeof c> => c !== null)
 
         return { candidates }
       })

@@ -15,20 +15,6 @@ export function isPlannerModule(mod: OperatorModule): boolean {
     return false
   }
 
-  // Combat modules in Arknights are strictly X, Y, and Delta (D / Δ)
-  const branch = (mod.typeName2 ?? '').trim().toUpperCase()
-  const isCombatBranch =
-    branch === 'X' ||
-    branch === 'Y' ||
-    branch === 'D' ||
-    branch === 'Δ' ||
-    /-[XYDΔ]$/i.test(branch) ||
-    /-[XYDΔ]$/i.test(mod.icon ?? '')
-
-  if (!isCombatBranch) {
-    return false
-  }
-
   const hasItemCost = Boolean(mod.itemCost && Object.keys(mod.itemCost).length > 0)
   const hasStages = Boolean(mod.stages && mod.stages.length > 0)
   return hasItemCost || hasStages

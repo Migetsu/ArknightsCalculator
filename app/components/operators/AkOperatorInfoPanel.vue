@@ -34,6 +34,11 @@ function getLocalizedField(field?: I18nString | null): string {
         </span>
       </div>
 
+      <div v-if="operator.subclass" class="ak-operator-info-panel__item">
+        <span class="ak-operator-info-panel__label">{{ t('operators.filters.subclass') }}</span>
+        <span class="ak-operator-info-panel__value">{{ operator.subclass }}</span>
+      </div>
+
       <div class="ak-operator-info-panel__item">
         <span class="ak-operator-info-panel__label">{{
           t('operators.detail.info.illustrator')

@@ -286,6 +286,16 @@ function handleLoadDemo(): void {
     align-items: flex-end;
     margin-bottom: 6px;
 
+    @media (width <= 480px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+
+      .sync-modal__send-btn {
+        width: 100%;
+      }
+    }
+
     .sync-modal__field-label {
       flex: 1;
     }
