@@ -9,6 +9,7 @@ export const useSettingsStore = defineStore('settings', () => {
   const dropDataServer = useLocalStorage<ServerRegion>('arkcalc_drop_data_server', 'cn')
   const farmingMaxSanity = useLocalStorage<number>('arkcalc_farming_max_sanity', 135)
   const farmingRegenMinutes = useLocalStorage<number>('arkcalc_farming_regen_minutes', 6)
+  const farmingAllowCrafting = useLocalStorage<boolean>('arkcalc_farming_allow_crafting', true)
 
   function setDropDataServer(server: ServerRegion): void {
     dropDataServer.value = server
@@ -22,10 +23,15 @@ export const useSettingsStore = defineStore('settings', () => {
     farmingRegenMinutes.value = Math.max(1, Math.min(60, Math.round(val)))
   }
 
+  function setFarmingAllowCrafting(val: boolean): void {
+    farmingAllowCrafting.value = Boolean(val)
+  }
+
   function resetAllSettings(): void {
     dropDataServer.value = 'cn'
     farmingMaxSanity.value = 135
     farmingRegenMinutes.value = 6
+    farmingAllowCrafting.value = true
   }
 
   return {
@@ -35,6 +41,8 @@ export const useSettingsStore = defineStore('settings', () => {
     setFarmingMaxSanity,
     farmingRegenMinutes,
     setFarmingRegenMinutes,
+    farmingAllowCrafting,
+    setFarmingAllowCrafting,
     // Backward compatibility aliases
     defaultServer: computed(() => dropDataServer.value),
     setDefaultServer: setDropDataServer,

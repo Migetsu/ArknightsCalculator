@@ -27,6 +27,20 @@ interface RawMatrixResponse {
   matrix: RawMatrixEntry[]
 }
 
+interface RawPenguinStageExistence {
+  exist?: boolean
+  openTime?: number
+  closeTime?: number | null
+}
+
+interface RawPenguinStageMeta {
+  stageId: string
+  existence?: {
+    CN?: RawPenguinStageExistence
+    US?: RawPenguinStageExistence
+  }
+}
+
 interface FetchOptions {
   minSampleSize?: number
   forceNetwork?: boolean
@@ -87,7 +101,21 @@ export async function fetchAndNormalizePenguin(
   const minSampleSize = options.minSampleSize ?? DEFAULT_MIN_SAMPLE_SIZE
   const serverParam = server === 'CN' ? 'CN' : 'US'
 
-  console.log(`[Penguin] Fetching drop matrix for server: ${server}...`)
+  console.log(`[Penguin] Fetching stages and drop matrix for server: ${server}...`)
+  const penguinStages = await fetchWithCache<RawPenguinStageMeta[]>(
+    `https://penguin-stats.io/PenguinStats/api/v2/stages?server=${serverParam}`,
+    `stages_${server}.json`,
+  )
+  await sleep(300)
+
+  const existenceByStageId = new Map<string, RawPenguinStageExistence>()
+  for (const ps of penguinStages) {
+    const ex = ps.existence?.[serverParam]
+    if (ex) {
+      existenceByStageId.set(ps.stageId, ex)
+    }
+  }
+
   const matrixData = await fetchWithCache<RawMatrixResponse>(
     `https://penguin-stats.io/PenguinStats/api/v2/result/matrix?server=${serverParam}`,
     `matrix_${server}.json`,
@@ -111,11 +139,17 @@ export async function fetchAndNormalizePenguin(
     const serverKey = server === 'CN' ? 'cn' : 'global'
     if (!stage.servers.includes(serverKey)) continue
 
+    const ex = existenceByStageId.get(entry.stageId)
+    if (ex && ex.exist === false) continue
+
     if (!stagesResult[entry.stageId]) {
       stagesResult[entry.stageId] = {
         stageId: entry.stageId,
         code: stage.code,
         apCost,
+        exist: ex?.exist ?? true,
+        openTime: ex?.openTime,
+        closeTime: ex?.closeTime ?? null,
         drops: [],
       }
     }

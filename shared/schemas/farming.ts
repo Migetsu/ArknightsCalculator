@@ -14,6 +14,9 @@ export const PenguinStageMatrixSchema = z.object({
   stageId: z.string(),
   code: z.string(),
   apCost: z.number().nonnegative(),
+  exist: z.boolean().optional(),
+  openTime: z.number().optional(),
+  closeTime: z.number().nullable().optional(),
   drops: z.array(PenguinDropItemSchema),
 })
 
@@ -32,6 +35,7 @@ export const FarmedItemContributionSchema = z.object({
   itemId: z.string(),
   expectedQuantity: z.number().nonnegative(),
   targetQuantity: z.number().nonnegative(),
+  dropRate: z.number().nonnegative().optional(),
 })
 
 export type FarmedItemContribution = z.infer<typeof FarmedItemContributionSchema>

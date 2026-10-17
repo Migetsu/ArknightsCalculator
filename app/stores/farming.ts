@@ -70,6 +70,7 @@ export const useFarmingStore = defineStore('farming', () => {
       server: activeServer.value,
       maxSanity: settingsStore.farmingMaxSanity,
       regenMinutes: settingsStore.farmingRegenMinutes,
+      allowCrafting: settingsStore.farmingAllowCrafting,
       stagesMap,
     })
   })

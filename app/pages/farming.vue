@@ -64,6 +64,21 @@ const activeServerModel = computed<'global' | 'cn'>({
   set: (val: ServerRegion) => settingsStore.setDropDataServer(val),
 })
 
+const craftingOptions = computed(() => [
+  { value: 'crafting', label: t('farming.craftingEnabled') },
+  { value: 'direct', label: t('farming.craftingDisabled') },
+])
+
+const activeCraftingModel = computed<'crafting' | 'direct'>({
+  get: () => (settingsStore.farmingAllowCrafting ? 'crafting' : 'direct'),
+  set: (val: 'crafting' | 'direct') => settingsStore.setFarmingAllowCrafting(val === 'crafting'),
+})
+
+function formatDropRate(rate?: number): string {
+  if (rate === undefined || rate <= 0) return '0'
+  return String(Math.round(rate * 1000) / 10)
+}
+
 const weekDays = [
   { id: 1, key: 'mon' },
   { id: 2, key: 'tue' },
@@ -212,6 +227,9 @@ const snapshotDateFormatted = computed(() => {
           <div class="farming-page__card farming-page__stages-card">
             <div class="farming-page__card-header">
               <h2 class="farming-page__card-title">{{ t('farming.bestStagesTitle') }}</h2>
+              <div class="farming-page__crafting-switch">
+                <AkSegmented v-model="activeCraftingModel" :options="craftingOptions" size="sm" />
+              </div>
             </div>
 
             <div class="farming-page__stage-list">
@@ -229,7 +247,7 @@ const snapshotDateFormatted = computed(() => {
                     v-for="item in plan.contributions"
                     :key="item.itemId"
                     class="farming-page__item-badge"
-                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity} drops`"
+                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity} drops (${formatDropRate(item.dropRate)}%/run)`"
                   >
                     <AkItemIcon
                       :item-id="item.itemId"
@@ -238,7 +256,12 @@ const snapshotDateFormatted = computed(() => {
                       :tier="getItemRarity(item.itemId)"
                       :size="40"
                     />
-                    <span class="farming-page__item-qty">x{{ item.expectedQuantity }}</span>
+                    <div class="farming-page__item-meta">
+                      <span class="farming-page__item-qty">x{{ item.expectedQuantity }}</span>
+                      <span v-if="item.dropRate !== undefined" class="farming-page__item-rate">
+                        {{ t('farming.dropRatePerRun', { rate: formatDropRate(item.dropRate) }) }}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -259,13 +282,22 @@ const snapshotDateFormatted = computed(() => {
             >
               <b class="farming-page__uncovered-title">{{ t('farming.uncoveredTitle') }}</b>
               <div class="farming-page__uncovered-list">
-                <span
+                <div
                   v-for="u in farmingStore.optimizationResult.uncoveredItems"
                   :key="u.itemId"
                   class="farming-page__uncovered-tag"
                 >
-                  {{ getItemName(u.itemId) }} (x{{ u.remainingQuantity }})
-                </span>
+                  <AkItemIcon
+                    :item-id="u.itemId"
+                    :icon-id="getItemIconId(u.itemId)"
+                    :name="getItemName(u.itemId)"
+                    :tier="getItemRarity(u.itemId)"
+                    :size="36"
+                  />
+                  <span class="farming-page__uncovered-name">
+                    {{ getItemName(u.itemId) }} (x{{ u.remainingQuantity }})
+                  </span>
+                </div>
               </div>
               <p class="farming-page__uncovered-desc">{{ t('farming.uncoveredDesc') }}</p>
             </div>
@@ -474,9 +506,19 @@ const snapshotDateFormatted = computed(() => {
   }
 
   &__card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
     padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--color-border-subtle);
     margin-bottom: var(--space-sm);
+  }
+
+  &__crafting-switch {
+    display: flex;
+    align-items: center;
   }
 
   &__card-title {
@@ -530,16 +572,31 @@ const snapshotDateFormatted = computed(() => {
   &__item-badge {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-2xs);
     background: var(--color-bg-card);
     padding: 2px 6px 2px 2px;
     border: 1px solid var(--color-border-subtle);
   }
 
+  &__item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
   &__item-qty {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+  }
+
+  &__item-rate {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    color: var(--color-text-muted);
+    line-height: 1.1;
   }
 
   &__stage-runs {
@@ -707,12 +764,19 @@ const snapshotDateFormatted = computed(() => {
   }
 
   &__uncovered-tag {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
-    padding: 2px 6px;
+    padding: 2px 6px 2px 2px;
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
     color: var(--color-text-secondary);
+  }
+
+  &__uncovered-name {
+    white-space: nowrap;
   }
 
   &__uncovered-desc {

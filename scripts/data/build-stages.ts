@@ -103,14 +103,14 @@ export async function buildStages(): Promise<StagesBuildResult> {
   const unmatchedTop30: Array<{ stageId: string; code: string; type: string }> = []
   const outputStages: Record<string, Stage> = {}
 
-  for (const [stageId, { item: pStage, inUS, inCN }] of allPenguin.entries()) {
+  for (const [stageId, { item: pStage }] of allPenguin.entries()) {
     const baseStageId = stageId.replace(/_(rep|perm)$/, '')
     const cnStage = cnTable.stages[stageId] ?? cnTable.stages[baseStageId]
     const enStage = enTable.stages[stageId] ?? enTable.stages[baseStageId]
 
     const servers: ServerRegion[] = []
-    if (inCN || pStage.existence?.CN?.exist) servers.push('cn')
-    if (inUS || pStage.existence?.US?.exist) servers.push('global')
+    if (pStage.existence?.CN?.exist) servers.push('cn')
+    if (pStage.existence?.US?.exist) servers.push('global')
     if (servers.length === 0) servers.push('cn')
 
     if (cnStage) {

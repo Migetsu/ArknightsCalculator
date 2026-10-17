@@ -49,4 +49,16 @@ describe('useFarmingStore', () => {
     const prefixes = farming.openSupplyGroups.map((g) => g.codePrefix).sort()
     expect(prefixes).toEqual(['CA', 'LS', 'PR-C', 'PR-D', 'SK'])
   })
+
+  it('toggles allowCrafting to switch between crafting substitution (1-7) and direct drop (S2-5)', () => {
+    const settings = useSettingsStore()
+    const farming = useFarmingStore()
+    farming.setCustomDeficit({ '30011': 90 }) // 90 Orirock T1
+
+    settings.setFarmingAllowCrafting(true)
+    expect(farming.optimizationResult.stages[0]?.code).toBe('1-7')
+
+    settings.setFarmingAllowCrafting(false)
+    expect(farming.optimizationResult.stages[0]?.code).toBe('S2-5')
+  })
 })
