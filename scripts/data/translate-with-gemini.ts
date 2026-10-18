@@ -6,10 +6,16 @@ import {
 } from './lib/gemini-client'
 import {
   BATCH_IN_DIR,
+  BATCH_OUT_DIR,
   PROMPT_DIR,
+  countOutBatches,
   listBatchFiles,
   readBatchItems,
+  readOutIds,
+  toBatchItem,
   toUntranslatedItem,
+  writeFailures,
+  writeOutBatch,
   writePromptFile,
 } from './lib/mt-batch'
 import {
@@ -20,6 +26,7 @@ import {
   MT_RESPONSE_SCHEMA,
 } from './lib/mt-prompt'
 import { collectUntranslatedItems } from './translate-missing'
+import { runTranslation } from './lib/mt-run'
 import type { UntranslatedItem } from './translate-missing'
 
 /**
@@ -41,10 +48,16 @@ Modes:
   --check              Verify GEMINI_API_KEY and GEMINI_MODEL with one minimal translation request.
   --dry-run            Build prompts for the untranslated strings and report what would be sent.
                        Makes no API requests.
+  --run                Translate the untranslated strings and write the results to
+                       .cache/translate/out/. Every returned string is validated; failures are
+                       re-sent once with the specific diff, and whatever still fails is written
+                       to .cache/translate/failed.jsonl instead of the output.
 
 Options:
   --limit <n>          Only process the first n items.
-  --batch <n>          Items per request (default: ${DEFAULT_BATCH_SIZE}).`
+  --batch <n>          Items per request (default: ${DEFAULT_BATCH_SIZE}).
+  --resume             Skip items already present in .cache/translate/out/.
+  --no-repair          Do not send the corrective retry; quarantine failures immediately.`
 
 const CHECK_SYSTEM_INSTRUCTION =
   'You are a professional EN localizer for the mobile game Arknights. ' +
@@ -61,9 +74,11 @@ const CHECK_ITEM = [
 ]
 
 interface CliOptions {
-  mode: '--check' | '--dry-run'
+  mode: '--check' | '--dry-run' | '--run'
   limit: number | null
   batchSize: number
+  resume: boolean
+  repair: boolean
 }
 
 /** Loads `.env` from the project root when present. Never throws. */
@@ -77,15 +92,27 @@ function loadDotEnv(): void {
 
 function parseArgs(argv: string[]): CliOptions {
   const mode = argv[0]
-  if (mode !== '--check' && mode !== '--dry-run') {
+  if (mode !== '--check' && mode !== '--dry-run' && mode !== '--run') {
     throw new Error(`Unknown mode: ${mode ?? '(none)'}`)
   }
 
   let limit: number | null = null
   let batchSize = DEFAULT_BATCH_SIZE
+  let resume = false
+  let repair = true
 
-  for (let index = 1; index < argv.length; index += 2) {
+  for (let index = 1; index < argv.length; index++) {
     const flag = argv[index]
+
+    if (flag === '--resume') {
+      resume = true
+      continue
+    }
+    if (flag === '--no-repair') {
+      repair = false
+      continue
+    }
+
     const rawValue = argv[index + 1]
     if (rawValue === undefined) throw new Error(`Missing value for ${flag}`)
 
@@ -97,9 +124,11 @@ function parseArgs(argv: string[]): CliOptions {
     if (flag === '--limit') limit = value
     else if (flag === '--batch') batchSize = value
     else throw new Error(`Unknown option: ${flag}`)
+
+    index += 1
   }
 
-  return { mode, limit, batchSize }
+  return { mode, limit, batchSize, resume, repair }
 }
 
 function requireApiKey(): string {
@@ -218,6 +247,83 @@ async function runDryRun(options: CliOptions): Promise<DryRunSummary> {
   }
 }
 
+interface RunSummary {
+  translated: number
+  repaired: number
+  failed: number
+  requests: number
+  batches: number
+  skipped: number
+  outFiles: number
+  failedFile: string
+}
+
+async function runRun(options: CliOptions): Promise<RunSummary> {
+  const client = createGeminiClient({ apiKey: requireApiKey(), model: resolveModel() })
+  const { items: liveItems } = await collectUntranslatedItems()
+
+  const source = options.limit ? liveItems.slice(0, options.limit) : liveItems
+  const alreadyTranslated = options.resume ? await readOutIds() : new Set<string>()
+
+  console.log(
+    `Translating ${source.length} item(s) with ${client.model} (batch ${options.batchSize})`,
+  )
+  if (alreadyTranslated.size > 0) {
+    console.log(`  resume: ${alreadyTranslated.size} id(s) already present in ${BATCH_OUT_DIR}`)
+  }
+
+  const result = await runTranslation({
+    client,
+    items: source,
+    batchSize: options.batchSize,
+    alreadyTranslated,
+    repair: options.repair,
+    onProgress: (message) => console.log(`  ${message}`),
+  })
+
+  // Continue numbering after any existing output so a resumed run appends
+  // instead of overwriting the previous run's translations.
+  const startIndex = (await countOutBatches()) + 1
+  let index = startIndex
+  for (const chunk of chunkItems(result.entries, options.batchSize)) {
+    await writeOutBatch(
+      index,
+      chunk.map((entry) => ({ ...toBatchItem(entry.item), en: entry.en })),
+    )
+    index += 1
+  }
+  const outFiles = index - startIndex
+
+  const failedFile = await writeFailures(result.failures)
+
+  const repaired = result.entries.filter((entry) => entry.repaired).length
+  console.log('')
+  console.log('[RUN] Machine translation complete')
+  console.log(`  model        : ${client.model}`)
+  console.log(`  translated   : ${result.entries.length} (${repaired} after a corrective retry)`)
+  console.log(`  quarantined  : ${result.failures.length}`)
+  console.log(`  skipped      : ${result.skipped} (already translated)`)
+  console.log(`  requests     : ${result.requests} for ${result.batches} batch(es)`)
+  console.log(`  output       : ${BATCH_OUT_DIR}/ (batches up to ${outFiles})`)
+  if (result.failures.length > 0) {
+    console.log(`  failures     : ${failedFile}`)
+    for (const failure of result.failures.slice(0, 5)) {
+      console.log(`    ${failure.item.id}: ${failure.issues.join('; ')}`)
+    }
+  }
+
+  return {
+    translated: result.entries.length,
+    repaired,
+    failed: result.failures.length,
+    requests: result.requests,
+    batches: result.batches,
+    skipped: result.skipped,
+    outFiles,
+    failedFile,
+  }
+}
+
 async function main(): Promise<void> {
   let options: CliOptions
   try {
@@ -233,8 +339,10 @@ async function main(): Promise<void> {
   try {
     if (options.mode === '--check') {
       await runCheck()
-    } else {
+    } else if (options.mode === '--dry-run') {
       await runDryRun(options)
+    } else {
+      await runRun(options)
     }
   } catch (error) {
     const message =
