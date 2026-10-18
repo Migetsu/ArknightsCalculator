@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { DATA_SOURCES_CONFIG } from './sources.config'
 import {
   type RecruitData,
   type RecruitOperator,
@@ -8,8 +9,18 @@ import {
 } from '../../shared/schemas/recruit'
 import type { OperatorSummary } from '../../shared/schemas/operator'
 
-const RAW_EN_GACHA_PATH = path.resolve(process.cwd(), '.cache/raw/en/gacha_table.json')
-const RAW_CN_GACHA_PATH = path.resolve(process.cwd(), '.cache/raw/zh_CN/gacha_table.json')
+const RAW_EN_GACHA_PATH = path.resolve(
+  process.cwd(),
+  DATA_SOURCES_CONFIG.cacheDir,
+  DATA_SOURCES_CONFIG.sources.en.locale,
+  'gacha_table.json',
+)
+const RAW_CN_GACHA_PATH = path.resolve(
+  process.cwd(),
+  DATA_SOURCES_CONFIG.cacheDir,
+  DATA_SOURCES_CONFIG.sources.cn.locale,
+  'gacha_table.json',
+)
 const OPERATORS_INDEX_PATH = path.resolve(process.cwd(), 'data/operators-index.json')
 const OUTPUT_RECRUIT_PATH = path.resolve(process.cwd(), 'data/recruit.json')
 

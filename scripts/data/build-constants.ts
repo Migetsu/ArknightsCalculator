@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { DATA_SOURCES_CONFIG } from './sources.config'
+import { DATA_SOURCES_CONFIG, type RawDataSourceConfig } from './sources.config'
 import {
   GameConstantsSchema,
   type GameConstants,
@@ -12,7 +12,7 @@ import type { RawItemTable } from './schemas/item-table.schema'
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const OUTPUT_PATH = path.resolve(process.cwd(), 'data/constants.json')
 
-async function loadRawJson<T>(locale: 'en' | 'en_US' | 'zh_CN', filename: string): Promise<T> {
+async function loadRawJson<T>(locale: RawDataSourceConfig['locale'], filename: string): Promise<T> {
   const filePath = path.join(CACHE_DIR, locale, filename)
   const raw = await fs.readFile(filePath, 'utf-8')
   return JSON.parse(raw) as T

@@ -109,14 +109,14 @@ describe('Raw Game Data Zod Schemas', () => {
       const urls = getRawTableUrls(cnConfig, 'character_table.json')
 
       expect(urls.primaryUrl).toContain('raw.githubusercontent.com')
-      expect(urls.primaryUrl).toContain('Kengxxiao/ArknightsGameData')
+      expect(urls.primaryUrl).toContain('SanityGoneAK/arknights-gamedata')
       expect(urls.primaryUrl).toContain(cnConfig.commit)
-      expect(urls.primaryUrl).toContain('zh_CN/gamedata/excel/character_table.json')
+      expect(urls.primaryUrl).toContain('cn/gamedata/excel/character_table.json')
 
       expect(urls.fallbackUrl).toContain('cdn.jsdelivr.net/gh')
-      expect(urls.fallbackUrl).toContain('Kengxxiao/ArknightsGameData')
+      expect(urls.fallbackUrl).toContain('SanityGoneAK/arknights-gamedata')
       expect(urls.fallbackUrl).toContain(cnConfig.commit)
-      expect(urls.fallbackUrl).toContain('zh_CN/gamedata/excel/character_table.json')
+      expect(urls.fallbackUrl).toContain('cn/gamedata/excel/character_table.json')
     })
   })
 })
