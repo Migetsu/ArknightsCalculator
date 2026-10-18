@@ -73,6 +73,118 @@ describe('Gacha Utility Engine', () => {
         }),
       ).toBe(0)
     })
+
+    it('jointly converts orundum and OP remainders into pulls', () => {
+      // 420 Orundum + 1 OP = 600 Orundum => 1 pull
+      expect(
+        calculateTotalPulls({
+          orundum: 420,
+          originitePrime: 1,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 300 Orundum + 2 OP = 660 Orundum => 1 pull
+      expect(
+        calculateTotalPulls({
+          orundum: 300,
+          originitePrime: 2,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 600 Orundum + 0 OP => 1 pull
+      expect(
+        calculateTotalPulls({
+          orundum: 600,
+          originitePrime: 0,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 540 Orundum + 0 OP => 0 pulls
+      expect(
+        calculateTotalPulls({
+          orundum: 540,
+          originitePrime: 0,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(0)
+
+      // 0 Orundum + 3 OP = 540 Orundum => 0 pulls
+      expect(
+        calculateTotalPulls({
+          orundum: 0,
+          originitePrime: 3,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(0)
+
+      // 0 Orundum + 4 OP = 720 Orundum => 1 pull
+      expect(
+        calculateTotalPulls({
+          orundum: 0,
+          originitePrime: 4,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 600 Orundum + 1 OP = 780 Orundum => 1 pull
+      expect(
+        calculateTotalPulls({
+          orundum: 600,
+          originitePrime: 1,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 0 Orundum + 0 OP + permitsSingle=5 + permitsTen=2 => 25 pulls
+      expect(
+        calculateTotalPulls({
+          orundum: 0,
+          originitePrime: 0,
+          permitsSingle: 5,
+          permitsTen: 2,
+        }),
+      ).toBe(25)
+
+      // 0 Orundum + 0 OP + permitsSingle=0 + permitsTen=0 => 0 pulls
+      expect(
+        calculateTotalPulls({
+          orundum: 0,
+          originitePrime: 0,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(0)
+
+      // 1 199 Orundum + 0 OP => 1 pull (remainder of 599 does not yield a pull)
+      expect(
+        calculateTotalPulls({
+          orundum: 1199,
+          originitePrime: 0,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(1)
+
+      // 1 200 Orundum + 0 OP => 2 pulls
+      expect(
+        calculateTotalPulls({
+          orundum: 1200,
+          originitePrime: 0,
+          permitsSingle: 0,
+          permitsTen: 0,
+        }),
+      ).toBe(2)
+    })
   })
 
   describe('calculateSparkProgress', () => {

@@ -88,9 +88,16 @@ export function getBannerStatus(
 
 /**
  * Calculates total available headhunting pulls from currency treasury resources.
- * 1 pull = 600 Orundum or 1 single permit.
- * 1 10-roll permit = 10 pulls.
- * 1 Originite Prime (OP) = 180 Orundum (3.33 OP = 1 pull).
+ *
+ * Conversion rules:
+ * - 1 pull = 600 Orundum.
+ * - 1 Originite Prime (OP) = 180 Orundum (converted jointly with Orundum).
+ * - 1 single Headhunting Permit = 1 pull.
+ * - 1 Ten-roll Headhunting Permit = 10 pulls.
+ * - Any joint currency remainder less than 600 Orundum-equivalent does not yield a pull.
+ *
+ * @param treasury Treasury resources object containing orundum, originitePrime, permitsSingle, and permitsTen
+ * @returns Total number of whole pulls available
  */
 export function calculateTotalPulls(treasury: TreasuryResources): number {
   const orundum = Math.max(0, treasury.orundum || 0)
@@ -98,11 +105,10 @@ export function calculateTotalPulls(treasury: TreasuryResources): number {
   const single = Math.max(0, treasury.permitsSingle || 0)
   const ten = Math.max(0, treasury.permitsTen || 0)
 
-  const pullsFromOrundum = Math.floor(orundum / 600)
-  const pullsFromOp = Math.floor((op * 180) / 600)
+  const pullsFromCurrency = Math.floor((orundum + op * 180) / 600)
   const pullsFromPermits = single + ten * 10
 
-  return pullsFromOrundum + pullsFromOp + pullsFromPermits
+  return pullsFromCurrency + pullsFromPermits
 }
 
 /**
