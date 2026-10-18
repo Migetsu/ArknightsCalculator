@@ -175,42 +175,76 @@ prompt), listing batches and writing built prompts for inspection.
 untranslated set live and reports the drift against the cache, because a stale
 cache means paying for strings that are already translated upstream.
 
-## Known coverage gaps
+## Coverage
 
-The import put 479 strings into `data/i18n/machine/`, and the badge flips PENDING -> MT
-in the UI (verified live: the Skills tab shows an `MT` badge and real English, the
-Dossier tab still shows `PENDING`). 271 strings remain pending, in two distinct groups.
+The collector covers every localized field the builder resolves:
 
-**1. Fields the collector never collected (261 strings).** The collector only covers
-operator/skill/talent/module _names_ and skill/talent/module _descriptions_. These are
-outside that set:
+| Type                          | Field                                                                                    |
+| :---------------------------- | :--------------------------------------------------------------------------------------- |
+| `operator_name`               | operator name                                                                            |
+| `skill_name` / `skill_desc`   | skill level name / description                                                           |
+| `talent_name` / `talent_desc` | talent candidate name / description                                                      |
+| `module_name` / `module_desc` | module name / `uniEquipDesc`                                                             |
+| `module_stage_desc`           | module stage part `additionalDescription` / `upgradeDescription` / `overrideDescription` |
+| `potential_desc`              | `potentialRanks[].description`                                                           |
+| `profile_text`                | `itemUsage` / `itemDesc` (operator dossier)                                              |
 
-| Count | Field                                                           |
-| :---- | :-------------------------------------------------------------- |
-| 85    | `potentialRanks[].description`                                  |
-| 76    | `modules[].stages[].parts[].candidates[].upgradeDescription`    |
-| 54    | `modules[].stages[].parts[].candidates[].additionalDescription` |
-| 17    | `itemUsage` (operator dossier)                                  |
-| 17    | `itemDesc` (operator dossier)                                   |
-| 12    | `modules[].stages[].parts[].candidates[].overrideDescription`   |
+As of the 2026-10-18 run this leaves **0 pending strings** in `data/operators/`, with
+750 strings resolved by the machine layer.
 
-**2. A talent index mismatch (10 strings).** `char_4215_buddy` and `char_4218_aigis`
-have talent descriptions that are translated in `machine/talents.json` but still resolve
-as `pending`. The collector and the builder disagree on what `tIdx` means:
+### The talent index bug
 
-- the builder keys candidates by their index in the **raw CN table**, and filters out
-  hidden talents (`isHideTalent`) afterwards, so a hidden talent at index 0 makes the
-  real candidates `talent.1.*`;
-- the collector reads the **already-built** operator file, where that hidden talent is
-  already gone, so it numbers the same candidates `talent.0.*`.
+Talent keys are positional, and the collector and the builder disagreed about what the
+position meant:
 
-When a hidden or empty talent precedes a real one, every talent key after it is off, and
-the translation is silently not found. Skills and modules are unaffected because they are
-keyed by `skillId` / `uniEquipId` rather than by position.
+- the builder keyed candidates by their index in the **raw CN table** and filtered
+  hidden/empty talents _afterwards_, so a hidden talent at index 0 pushed the real
+  candidates to `talent.1.*`;
+- the collector reads the **already-built** file, where that hidden talent is gone, so it
+  numbered the same candidates `talent.0.*`.
 
-The visible symptom was a name resolving as `machine` while its sibling description
-resolved as `pending` in the same candidate — the name matched because it happened to
-carry a legacy key from an earlier run.
+Every talent key after a hidden one was therefore off, and the translation was silently
+never found — the symptom was one candidate whose name resolved as `machine` while its
+own description resolved as `pending`. The builder now computes keys from the position in
+the **final** array (`talentFinalIndex` / `candidateFinalIndex`), which is what the
+collector and the built file use. EN lookups still use the raw indices, because the EN
+table is aligned with the CN table.
+
+Skills and modules were never affected: they are keyed by `skillId` / `uniEquipId` rather
+than by position.
+
+### Resume is keyed on `keys`, not `id`
+
+Item ids are positional (`skill_desc_7`) and shift whenever the upstream data changes, so
+an id-keyed resume would skip the wrong strings after an update. `--resume` therefore
+matches on the stable `keys` array and skips an item only when every one of its keys is
+already in the output directory.
+
+## Updating after a new game release
+
+```bash
+# 1. refresh the source data
+npm run data:fetch && npm run data:build
+# (+ data:constants / data:items / data:recipes / data:stages as needed)
+
+# 2. translate whatever became untranslated, and import it
+npm run data:translate:all      # export -> run --resume -> import
+
+# 3. rebuild so the machine layer is baked into data/operators/, then verify
+npm run data:build
+npm run data:validate && npm run test && npm run lint
+```
+
+`data:translate:all` is idempotent: when nothing is untranslated it exports 0 batches,
+makes 0 API requests and the import re-merges what is already there. A typical release
+costs a handful of requests.
+
+`data:translate:dry` in between prints the request count and estimated tokens without
+spending anything.
+
+> **Not automated yet.** There is no CI job for this. `.github/workflows/update-penguin.yml`
+> is the existing precedent for a scheduled data refresh that opens a PR, and a
+> translation job would follow the same shape.
 
 ## Cost and quota
 
