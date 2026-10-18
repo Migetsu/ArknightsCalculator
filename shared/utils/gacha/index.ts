@@ -1,4 +1,4 @@
-import type { BannerType } from '../../schemas/banner'
+import type { BannerType, GachaBanner } from '../../schemas/banner'
 
 export interface TreasuryResources {
   orundum: number
@@ -142,19 +142,72 @@ export const DEFAULT_RATE_UP_SHARES: Record<BannerType, number> = {
 }
 
 /**
+ * Calculates the individual target rate-up share for a 6★ operator on a banner.
+ *
+ * Rules:
+ * - 'manual': Uses banner.rateUpShare directly as the individual target's share.
+ *   If banner.rateUpShare is not provided, returns null (cannot be evaluated).
+ * - 'single': Uses banner.rateUpShare ?? DEFAULT_RATE_UP_SHARES[banner.type].
+ * - 'equal_split' (or undefined/default):
+ *   - For 'joint_operation', 100% of 6★ pulls are guaranteed to be from the featured 4 operators.
+ *     Target share = (banner.rateUpShare ?? 1.0) / max(1, rateUp6.length) (e.g. 1.0 / 4 = 0.25).
+ *   - For other banner types, target share = (banner.rateUpShare ?? DEFAULT_RATE_UP_SHARES[banner.type]) / max(1, rateUp6.length).
+ *   - If rateUp6 is empty, returns null.
+ *
+ * @param banner The gacha banner object
+ * @returns Target rate-up share between 0 and 1, or null if insufficient data
+ */
+export function getTargetRateUpShare(banner: GachaBanner): number | null {
+  if (!banner) return null
+
+  // 1. Manual mode: individual target share must be explicitly provided
+  if (banner.rateUpShareMode === 'manual') {
+    if (typeof banner.rateUpShare === 'number' && !Number.isNaN(banner.rateUpShare)) {
+      return Math.min(1, Math.max(0, banner.rateUpShare))
+    }
+    return null
+  }
+
+  // 2. Single target mode: entire pool share allocated to one target
+  if (banner.rateUpShareMode === 'single') {
+    const share = banner.rateUpShare ?? DEFAULT_RATE_UP_SHARES[banner.type] ?? 0.5
+    return Math.min(1, Math.max(0, share))
+  }
+
+  // 3. Equal split mode (default): divide pool share equally among featured 6-stars
+  const count = banner.rateUp6?.length ?? 0
+  if (count === 0) return null
+
+  // In Joint Operation, 100% of 6-star drops are guaranteed to be rate-up (1.0 total pool)
+  const defaultPoolShare =
+    banner.type === 'joint_operation' ? 1.0 : (DEFAULT_RATE_UP_SHARES[banner.type] ?? 0.5)
+  const totalShare = banner.rateUpShare ?? defaultPoolShare
+
+  return Math.min(1, Math.max(0, totalShare / count))
+}
+
+/**
  * Calculates exact cumulative probability of pulling at least one copy of a target rate-up 6-star
  * in N pulls, using the standard Arknights pity model:
  * - Base rate for 6-star: 2.0% (pulls 1..50)
  * - Pity rate increase: +2.0% per pull starting at pull 51 (100% at pull 99)
  * - Pity resets to 0 upon any 6-star drop
- * - Target rate-up share: r (e.g. 50% on standard, 70% on limited)
+ * - Target rate-up share: r (e.g. 50% on standard, 70% on limited, or individual target share)
  * - Limited spark guarantee at 300 pulls: 100%
+ *
+ * @param pulls Number of pulls
+ * @param bannerType Standard, limited, or joint_operation
+ * @param targetRateUpShare Optional individual target rate-up share. If null, returns 0 (evaluation unavailable).
  */
 export function calculateRateUpProbability(
   pulls: number,
   bannerType: BannerType = 'standard',
-  targetRateUpShare?: number,
+  targetRateUpShare?: number | null,
 ): number {
+  if (targetRateUpShare === null) {
+    return 0
+  }
+
   const safePulls = Math.max(0, Math.floor(pulls || 0))
   if (safePulls === 0) return 0
 
@@ -163,7 +216,11 @@ export function calculateRateUpProbability(
     return 1.0
   }
 
-  const r = targetRateUpShare ?? DEFAULT_RATE_UP_SHARES[bannerType] ?? 0.5
+  const rawR =
+    targetRateUpShare !== undefined
+      ? targetRateUpShare
+      : (DEFAULT_RATE_UP_SHARES[bannerType] ?? 0.5)
+  const r = Math.min(1.0, Math.max(0, rawR))
 
   // Probability distribution of current pity counter (0..98) where target has NOT been pulled yet
   let pityDist = new Float64Array(99)
@@ -205,18 +262,27 @@ export function calculateRateUpProbability(
 
 /**
  * Returns probability milestones (50, 100, 150, 200, 300 pulls) for UI probability curves.
+ *
+ * @param bannerType Standard, limited, or joint_operation
+ * @param targetRateUpShare Optional individual target rate-up share
  */
 export function getProbabilityMilestones(
   bannerType: BannerType = 'standard',
+  targetRateUpShare?: number | null,
 ): ProbabilityMilestone[] {
   const pullSteps = [50, 100, 150, 200, 300]
   return pullSteps.map((pulls) => {
     const isSpark = bannerType === 'limited' && pulls >= 300
-    const probability = isSpark ? 1.0 : calculateRateUpProbability(pulls, bannerType)
+    const probability =
+      targetRateUpShare === null
+        ? 0
+        : isSpark
+          ? 1.0
+          : calculateRateUpProbability(pulls, bannerType, targetRateUpShare)
     return {
       pulls,
       probability: Math.round(probability * 1000) / 10, // e.g. 77.8%
-      isSpark,
+      isSpark: targetRateUpShare !== null && isSpark,
     }
   })
 }

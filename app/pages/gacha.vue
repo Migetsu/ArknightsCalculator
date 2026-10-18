@@ -78,6 +78,35 @@ const filteredBanners = computed<GachaBanner[]>(() => {
   }
   return banners.value.filter((b) => b.type === selectedFilter.value)
 })
+
+const activeBannerId = ref<string | null>(null)
+
+watch(
+  filteredBanners,
+  (list) => {
+    if (list.length > 0) {
+      if (!activeBannerId.value || !list.some((b) => b.id === activeBannerId.value)) {
+        activeBannerId.value = list[0]?.id ?? null
+      }
+    } else {
+      activeBannerId.value = null
+    }
+  },
+  { immediate: true },
+)
+
+const activeBanner = computed<GachaBanner | null>(() => {
+  if (!activeBannerId.value) return filteredBanners.value[0] ?? null
+  return (
+    filteredBanners.value.find((b) => b.id === activeBannerId.value) ??
+    filteredBanners.value[0] ??
+    null
+  )
+})
+
+function selectBanner(id: string): void {
+  activeBannerId.value = id
+}
 </script>
 
 <template>
@@ -132,7 +161,11 @@ const filteredBanners = computed<GachaBanner[]>(() => {
         <div v-else class="gacha-page__body">
           <!-- Treasury and Spark Calculator -->
           <div v-if="isCalculatorVisible" class="gacha-page__calculator-section">
-            <GachaCalculator :active-banner-type="filteredBanners[0]?.type ?? 'standard'" />
+            <GachaCalculator
+              :banner="activeBanner"
+              :active-banner-type="activeBanner?.type ?? 'standard'"
+              :operators-map="operatorsMap"
+            />
           </div>
 
           <!-- Controls Bar: Date Switcher & Type Filters -->
@@ -169,6 +202,8 @@ const filteredBanners = computed<GachaBanner[]>(() => {
               :banner="banner"
               :date-mode="dateMode"
               :operators-map="operatorsMap"
+              :is-selected="activeBanner?.id === banner.id"
+              @select="selectBanner"
             />
 
             <!-- Empty Filter State -->

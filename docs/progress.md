@@ -1,6 +1,29 @@
 # Project Progress
 
-- **Gacha Pulls Calculation Fix (`fix/gacha-pulls-calculation`):**
+- **Gacha Target 6★ Operator Selection & Rate-up Share Calculation (`feat/gacha-target-share-selection`):**
+  - **Schema & Math Engine (`shared/schemas/banner.ts`, `shared/utils/gacha/index.ts`):**
+    - Extended `GachaBannerSchema` with optional `rateUpShareMode` (`'single' | 'equal_split' | 'manual'`) and `rateUpShare` (`0..1`).
+    - Implemented `getTargetRateUpShare(banner: GachaBanner): number | null`:
+      - `manual`: uses `banner.rateUpShare` directly, or returns `null` when omitted.
+      - `single`: uses `banner.rateUpShare ?? DEFAULT_RATE_UP_SHARES[banner.type]`.
+      - `equal_split` (default): for `joint_operation`, featured pool is 1.0 (100% of 6★ are rate-up) divided equally by `rateUp6.length` (0.25 for 4 operators); for standard/limited banners, pool share (0.5 or 0.7) is divided equally by `rateUp6.length` (e.g. 0.35 for 2 limited operators); returns `null` if `rateUp6` is empty.
+    - Updated `calculateRateUpProbability(pulls, bannerType, targetRateUpShare?)` and `getProbabilityMilestones`:
+      - Third parameter is optional for full backward compatibility.
+      - Returns `0` when `targetRateUpShare === null` (evaluation unavailable).
+      - Correctly accounts for pity accumulation and 300 spark guarantee.
+  - **Component & Page Polish (`app/components/gacha/GachaCalculator.vue`, `app/components/gacha/GachaBannerCard.vue`, `app/pages/gacha.vue`):**
+    - Added target 6★ operator dropdown selector in `GachaCalculator.vue` with responsive styling and design tokens.
+    - Added dynamic probability label reflecting chosen target: `"Вероятность для <Имя>"` / `"Probability for <Name>"`.
+    - Handled `banner: null` state by hiding misleading percentages and showing placeholder (`—`) and helper hint.
+    - Handled `share === null` state with explicit `"Оценка недоступна для этого баннера"` / `"Estimate unavailable for this banner"`.
+    - Integrated banner selection via click on banner cards with visual active highlight (`--selected`) in `gacha.vue`.
+  - **Localization (`i18n/locales/en.json`, `i18n/locales/ru.json`):**
+    - Added keys: `targetLabel`, `targetPlaceholder`, `unavailable`, `selectTargetHint`, `probabilityTarget`.
+  - **Test Suite & Verification:**
+    - `tests/unit/shared/gacha.test.ts`: Added tests covering all branches of `getTargetRateUpShare` and `calculateRateUpProbability` / milestones.
+    - `tests/unit/components/gacha/GachaCalculator.test.ts`: Added tests for `banner: null`, target operator name in label, unavailable status, and target switching.
+    - Verified: `i18n:check` passed, `typecheck` passed, `test` (462/462 passed across 68 suites), `lint` passed (0 errors, 0 warnings), `build` passed, Playwright `layout-sanity` passed on 360px–1920px (zero horizontal overflow, no raw i18n keys).
+
   - **Shared Math Engine (`shared/utils/gacha/index.ts`):**
     - Corrected joint currency conversion in `calculateTotalPulls`: `pullsFromCurrency = Math.floor((orundum + originitePrime * 180) / 600)`.
     - Solved remainder loss bug where fractions like 420 Orundum + 1 OP (600 eq.) or 300 Orundum + 2 OP (660 eq.) failed to yield a pull.

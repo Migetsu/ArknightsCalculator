@@ -7,7 +7,9 @@ import {
   calculateSparkProgress,
   calculateRateUpProbability,
   getProbabilityMilestones,
+  getTargetRateUpShare,
 } from '../../../shared/utils/gacha'
+import type { GachaBanner } from '../../../shared/schemas/banner'
 
 describe('Gacha Utility Engine', () => {
   describe('calculateEstimatedGlobalDate', () => {
@@ -249,6 +251,143 @@ describe('Gacha Utility Engine', () => {
       expect(milestones[4]?.pulls).toBe(300)
       expect(milestones[4]?.probability).toBe(100)
       expect(milestones[4]?.isSpark).toBe(true)
+    })
+
+    it('returns 0 probability when targetRateUpShare is explicitly null', () => {
+      expect(calculateRateUpProbability(50, 'standard', null)).toBe(0)
+      expect(calculateRateUpProbability(100, 'limited', null)).toBe(0)
+      expect(calculateRateUpProbability(300, 'limited', null)).toBe(0)
+    })
+
+    it('returns milestones with 0% probability and isSpark=false when targetRateUpShare is null', () => {
+      const milestones = getProbabilityMilestones('limited', null)
+      expect(milestones.length).toBe(5)
+      expect(milestones[0]?.probability).toBe(0)
+      expect(milestones[4]?.probability).toBe(0)
+      expect(milestones[4]?.isSpark).toBe(false)
+    })
+
+    it('uses provided custom targetRateUpShare value correctly', () => {
+      // 0.35 share (e.g. 2 rate-up 6★ on limited banner)
+      const p100Split = calculateRateUpProbability(100, 'limited', 0.35)
+      const p100Full = calculateRateUpProbability(100, 'limited', 0.7)
+      expect(p100Split).toBeLessThan(p100Full)
+      expect(p100Split).toBeGreaterThan(0.5)
+    })
+  })
+
+  describe('getTargetRateUpShare', () => {
+    it('returns 0.35 for limited banner with 2 rateUp6 operators (equal_split default)', () => {
+      const banner: GachaBanner = {
+        id: 'b1',
+        type: 'limited',
+        title: 'Limited Banner',
+        cnStartDate: '2026/06/01',
+        cnEndDate: '2026/06/15',
+        rateUp6: ['char_1', 'char_2'],
+        rateUp5: [],
+      }
+      expect(getTargetRateUpShare(banner)).toBeCloseTo(0.35, 5)
+    })
+
+    it('returns 0.25 for joint_operation banner with 4 rateUp6 operators (1.0 / 4)', () => {
+      const banner: GachaBanner = {
+        id: 'b2',
+        type: 'joint_operation',
+        title: 'Joint Operation',
+        cnStartDate: '2026/06/26',
+        cnEndDate: '2026/07/10',
+        rateUp6: ['char_1', 'char_2', 'char_3', 'char_4'],
+        rateUp5: [],
+      }
+      expect(getTargetRateUpShare(banner)).toBeCloseTo(0.25, 5)
+    })
+
+    it('returns 0.5 for standard banner with 1 rateUp6 operator', () => {
+      const banner: GachaBanner = {
+        id: 'b3',
+        type: 'standard',
+        title: 'Standard Banner',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: ['char_1'],
+        rateUp5: [],
+      }
+      expect(getTargetRateUpShare(banner)).toBeCloseTo(0.5, 5)
+    })
+
+    it('returns null for manual mode without rateUpShare', () => {
+      const banner: GachaBanner = {
+        id: 'b4',
+        type: 'standard',
+        title: 'Manual Banner Without Share',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: ['char_1'],
+        rateUp5: [],
+        rateUpShareMode: 'manual',
+      }
+      expect(getTargetRateUpShare(banner)).toBeNull()
+    })
+
+    it('returns configured value for manual mode with rateUpShare', () => {
+      const banner: GachaBanner = {
+        id: 'b5',
+        type: 'standard',
+        title: 'Manual Banner With Share',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: ['char_1'],
+        rateUp5: [],
+        rateUpShareMode: 'manual',
+        rateUpShare: 0.42,
+      }
+      expect(getTargetRateUpShare(banner)).toBeCloseTo(0.42, 5)
+    })
+
+    it('returns entire pool share for single mode', () => {
+      const bannerDefault: GachaBanner = {
+        id: 'b6',
+        type: 'standard',
+        title: 'Single Banner Default',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: ['char_1', 'char_2'],
+        rateUp5: [],
+        rateUpShareMode: 'single',
+      }
+      expect(getTargetRateUpShare(bannerDefault)).toBe(0.5)
+
+      const bannerCustom: GachaBanner = {
+        id: 'b7',
+        type: 'limited',
+        title: 'Single Banner Custom',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: ['char_1'],
+        rateUp5: [],
+        rateUpShareMode: 'single',
+        rateUpShare: 0.6,
+      }
+      expect(getTargetRateUpShare(bannerCustom)).toBe(0.6)
+    })
+
+    it('returns null if rateUp6 is empty in equal_split mode', () => {
+      const banner: GachaBanner = {
+        id: 'b8',
+        type: 'standard',
+        title: 'Empty RateUp Banner',
+        cnStartDate: '2026/05/15',
+        cnEndDate: '2026/05/29',
+        rateUp6: [],
+        rateUp5: [],
+      }
+      expect(getTargetRateUpShare(banner)).toBeNull()
+    })
+
+    it('returns null for null or undefined banner', () => {
+      expect(getTargetRateUpShare(null as unknown as GachaBanner)).toBeNull()
+      expect(getTargetRateUpShare(undefined as unknown as GachaBanner)).toBeNull()
     })
   })
 })
