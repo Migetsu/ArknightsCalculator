@@ -10,11 +10,17 @@ interface Props {
   banner: GachaBanner
   dateMode?: 'cn' | 'global'
   operatorsMap: Map<string, OperatorSummary>
+  isSelected?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   dateMode: 'global',
+  isSelected: false,
 })
+
+const emit = defineEmits<{
+  (e: 'select', id: string): void
+}>()
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -65,7 +71,15 @@ const isLimited = computed(() => props.banner.type === 'limited')
 </script>
 
 <template>
-  <div class="gacha-banner" :class="[`gacha-banner--${banner.type}`]">
+  <div
+    class="gacha-banner"
+    :class="[`gacha-banner--${banner.type}`, { 'gacha-banner--selected': isSelected }]"
+    role="button"
+    tabindex="0"
+    :aria-pressed="isSelected"
+    @click="emit('select', banner.id)"
+    @keydown.enter.space.prevent="emit('select', banner.id)"
+  >
     <!-- Left Column: Banner Card -->
     <div class="gacha-banner__card">
       <div
@@ -174,6 +188,25 @@ const isLimited = computed(() => props.banner.type === 'limited')
   border: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid rgb(232 221 211 / 7%);
   min-width: 0;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-border-bold);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &--selected {
+    border-color: var(--color-accent-amber);
+    box-shadow:
+      0 0 0 1px var(--color-accent-amber),
+      0 4px 16px rgb(255 157 43 / 15%);
+  }
 
   @media (width <= 820px) {
     grid-template-columns: 1fr;

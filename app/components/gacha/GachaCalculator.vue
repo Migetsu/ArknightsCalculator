@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import type { BannerType } from '~/../shared/schemas/banner'
+import { ref, computed, onMounted, watch } from 'vue'
+import rawOperatorsIndex from '~/../data/operators-index.json'
+import type { BannerType, GachaBanner } from '~/../shared/schemas/banner'
+import type { OperatorSummary } from '~/../shared/schemas/operator'
+import { resolveI18nString } from '~/../shared/schemas/operator'
 import {
   calculateTotalPulls,
   calculateSparkProgress,
   calculateRateUpProbability,
   getProbabilityMilestones,
+  getTargetRateUpShare,
 } from '~/../shared/utils/gacha'
 import { useDepotStore } from '~/stores/depot'
 import AkProgress from '~/components/ui/AkProgress.vue'
@@ -15,14 +19,70 @@ import AkStepper from '~/components/ui/AkStepper.vue'
 
 interface Props {
   activeBannerType?: BannerType
+  banner?: GachaBanner | null
+  operatorsMap?: Map<string, OperatorSummary>
 }
 
 const props = withDefaults(defineProps<Props>(), {
   activeBannerType: 'standard',
+  banner: null,
+  operatorsMap: undefined,
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const depotStore = useDepotStore()
+
+// Fallback index for operator names when operatorsMap is not provided (e.g. in unit tests)
+const fallbackOperatorsMap = new Map<string, OperatorSummary>()
+for (const op of rawOperatorsIndex as OperatorSummary[]) {
+  fallbackOperatorsMap.set(op.id, op)
+}
+
+function getOperatorName(id: string): string {
+  const op = props.operatorsMap?.get(id) ?? fallbackOperatorsMap.get(id)
+  if (!op) return id
+  return resolveI18nString(op.name, locale.value as 'en' | 'ru' | 'zh') || op.name.en || id
+}
+
+// Available rate-up 6★ targets for selected banner
+const availableTargets = computed<{ id: string; name: string }[]>(() => {
+  if (!props.banner?.rateUp6) return []
+  return props.banner.rateUp6.map((id) => ({
+    id,
+    name: getOperatorName(id),
+  }))
+})
+
+// Selected target operator ID
+const selectedTargetId = ref<string | null>(props.banner?.rateUp6?.[0] ?? null)
+
+watch(
+  () => props.banner,
+  (newBanner) => {
+    if (newBanner?.rateUp6 && newBanner.rateUp6.length > 0) {
+      if (!selectedTargetId.value || !newBanner.rateUp6.includes(selectedTargetId.value)) {
+        selectedTargetId.value = newBanner.rateUp6[0] ?? null
+      }
+    } else {
+      selectedTargetId.value = null
+    }
+  },
+  { immediate: true },
+)
+
+const selectedTargetName = computed<string>(() => {
+  if (!selectedTargetId.value) return ''
+  return getOperatorName(selectedTargetId.value)
+})
+
+const targetRateUpShare = computed<number | null>(() => {
+  if (!props.banner) return null
+  return getTargetRateUpShare(props.banner)
+})
+
+const effectiveBannerType = computed<BannerType>(() => {
+  return props.banner?.type ?? props.activeBannerType
+})
 
 // Treasury state
 const orundum = ref<number>(0)
@@ -59,17 +119,35 @@ const sparkProgress = computed(() => {
 const simPulls = ref<number>(50)
 
 const currentProb = computed<number>(() => {
-  const prob = calculateRateUpProbability(totalAvailablePulls.value, props.activeBannerType)
+  if (!props.banner || targetRateUpShare.value === null) return 0
+  const prob = calculateRateUpProbability(
+    totalAvailablePulls.value,
+    effectiveBannerType.value,
+    targetRateUpShare.value,
+  )
   return Math.round(prob * 1000) / 10
 })
 
 const simProb = computed<number>(() => {
-  const prob = calculateRateUpProbability(simPulls.value, props.activeBannerType)
+  if (!props.banner || targetRateUpShare.value === null) return 0
+  const prob = calculateRateUpProbability(
+    simPulls.value,
+    effectiveBannerType.value,
+    targetRateUpShare.value,
+  )
   return Math.round(prob * 1000) / 10
 })
 
 const milestones = computed(() => {
-  return getProbabilityMilestones(props.activeBannerType)
+  const share = props.banner ? targetRateUpShare.value : undefined
+  return getProbabilityMilestones(effectiveBannerType.value, share)
+})
+
+const probabilityLabel = computed<string>(() => {
+  if (props.banner && selectedTargetName.value) {
+    return t('gacha.calculator.probabilityTarget', { name: selectedTargetName.value })
+  }
+  return t('gacha.calculator.probabilityTitle')
 })
 </script>
 
@@ -88,6 +166,25 @@ const milestones = computed(() => {
       <AkButton variant="ghost" size="sm" class="gacha-calc__depot-btn" @click="fillFromDepot">
         {{ t('gacha.calculator.fillFromDepot') }}
       </AkButton>
+    </div>
+
+    <!-- Target 6★ Operator Selection -->
+    <div v-if="props.banner && availableTargets.length > 0" class="gacha-calc__target-section">
+      <div class="gacha-calc__target-control">
+        <label class="gacha-calc__target-label" for="gacha-target-select">
+          {{ t('gacha.calculator.targetLabel') }}:
+        </label>
+        <select
+          id="gacha-target-select"
+          v-model="selectedTargetId"
+          class="gacha-calc__target-select"
+          :aria-label="t('gacha.calculator.targetLabel')"
+        >
+          <option v-for="target in availableTargets" :key="target.id" :value="target.id">
+            {{ target.name }}
+          </option>
+        </select>
+      </div>
     </div>
 
     <!-- Treasury Inputs Grid -->
@@ -202,12 +299,27 @@ const milestones = computed(() => {
         </div>
 
         <div class="gacha-calc__stat-block">
-          <span class="gacha-calc__stat-label">{{ t('gacha.calculator.probabilityTitle') }}</span>
-          <span class="gacha-calc__stat-value gacha-calc__stat-value--prob">
+          <span class="gacha-calc__stat-label gacha-calc__stat-label--prob">
+            {{ probabilityLabel }}
+          </span>
+          <span v-if="!banner" class="gacha-calc__stat-value gacha-calc__stat-value--none">
+            —
+          </span>
+          <span
+            v-else-if="targetRateUpShare === null"
+            class="gacha-calc__stat-value gacha-calc__stat-value--unavailable"
+          >
+            {{ t('gacha.calculator.unavailable') }}
+          </span>
+          <span v-else class="gacha-calc__stat-value gacha-calc__stat-value--prob">
             {{ currentProb }}%
           </span>
         </div>
       </div>
+
+      <p v-if="!banner" class="gacha-calc__banner-hint">
+        {{ t('gacha.calculator.selectTargetHint') }}
+      </p>
 
       <!-- Spark Progress Bar -->
       <div class="gacha-calc__spark-bar">
@@ -251,8 +363,17 @@ const milestones = computed(() => {
           aria-label="Simulation Rolls"
           @update:model-value="simPulls = $event"
         />
-        <span class="gacha-calc__sim-result">
+        <span v-if="props.banner && targetRateUpShare !== null" class="gacha-calc__sim-result">
           {{ t('gacha.calculator.probabilityCurrent', { percent: simProb, pulls: simPulls }) }}
+        </span>
+        <span
+          v-else-if="props.banner && targetRateUpShare === null"
+          class="gacha-calc__sim-result gacha-calc__sim-result--unavailable"
+        >
+          {{ t('gacha.calculator.unavailable') }}
+        </span>
+        <span v-else class="gacha-calc__sim-result gacha-calc__sim-result--hint">
+          {{ t('gacha.calculator.selectTargetHint') }}
         </span>
       </div>
 
@@ -269,7 +390,13 @@ const milestones = computed(() => {
         >
           <span class="gacha-calc__milestone-rolls">{{ m.pulls }} ROLLS</span>
           <span class="gacha-calc__milestone-prob">
-            {{ m.isSpark ? '100% SPARK' : `${m.probability}%` }}
+            {{
+              props.banner && targetRateUpShare === null
+                ? '—'
+                : m.isSpark
+                  ? '100% SPARK'
+                  : `${m.probability}%`
+            }}
           </span>
         </div>
       </div>
@@ -326,6 +453,66 @@ const milestones = computed(() => {
 
   &__depot-btn {
     align-self: flex-start;
+  }
+
+  &__target-section {
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+
+    @media (width <= 640px) {
+      padding: var(--space-xs) var(--space-sm);
+      gap: var(--space-xs);
+    }
+  }
+
+  &__target-control {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
+    max-width: 460px;
+
+    @media (width <= 480px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+    }
+  }
+
+  &__target-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  &__target-select {
+    flex: 1;
+    min-width: 0;
+    padding: var(--space-xs) var(--space-sm);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm, 14px);
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-bold);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-accent-amber);
+    }
   }
 
   &__treasury-grid {
@@ -430,6 +617,24 @@ const milestones = computed(() => {
     &--prob {
       color: var(--color-accent-amber);
     }
+
+    &--none {
+      color: var(--color-text-muted);
+    }
+
+    &--unavailable {
+      color: var(--color-status-warning);
+      font-size: var(--font-size-sm, 14px);
+      line-height: 1.4;
+    }
+  }
+
+  &__banner-hint {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs, 12px);
+    color: var(--color-text-muted);
+    line-height: 1.5;
   }
 
   &__spark-bar {
@@ -474,6 +679,14 @@ const milestones = computed(() => {
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     color: var(--color-accent-amber);
+
+    &--unavailable {
+      color: var(--color-status-warning);
+    }
+
+    &--hint {
+      color: var(--color-text-muted);
+    }
   }
 
   &__milestones-grid {
