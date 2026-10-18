@@ -78,6 +78,18 @@ describe('resolveAsset utility', () => {
       expect(lmdCandidates).toContain(`${PRIMARY_CDN_BASE}/item/4001.png`)
     })
 
+    it('resolves materials 30165 and 30115 to their icon assets via ITEM_ICON_DEFAULT_MAP', () => {
+      expect(ITEM_ICON_DEFAULT_MAP['30165']).toBe('MTL_SL_DYT')
+      expect(ITEM_ICON_DEFAULT_MAP['30115']).toBe('MTL_SL_PP')
+      expect(ITEM_ICON_DEFAULT_MAP['31044']).toBe('MTL_SL_RS')
+
+      const dytCandidates = resolveAsset('item', '30165')
+      expect(dytCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_DYT.png`)
+
+      const ppCandidates = resolveAsset('item', '30115')
+      expect(ppCandidates[0]).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_PP.png`)
+    })
+
     it('generates skill candidates with skill_icon_ prefix and iconId fallback', () => {
       const candidates = resolveAsset('skill', 'skchr_texas_2')
       expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skill/skill_icon_skchr_texas_2.png`)

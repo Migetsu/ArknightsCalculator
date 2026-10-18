@@ -106,28 +106,6 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
     expect(enFullStats.fallbackCount).toBe(0)
     expect(enFullStats.fallbackRatio).toBe(0)
     expect(enFullStats.loadedCount).toBe(enFullStats.completedCount)
-
-    // 2. Audit Russian /ru/operators
-    await page.goto('/ru/operators')
-    await page.waitForLoadState('networkidle')
-
-    const ruInitialStats = await page.evaluate(() => {
-      const images = Array.from(document.querySelectorAll<HTMLImageElement>('.ak-avatar__image'))
-      const completedImages = images.filter((img) => img.complete)
-      const validLoaded = completedImages.filter((img) => img.naturalWidth > 0)
-      const fallbacks = document.querySelectorAll('.ak-avatar__fallback')
-      return {
-        totalImages: images.length,
-        completedCount: completedImages.length,
-        validLoaded: validLoaded.length,
-        fallbackCount: fallbacks.length,
-      }
-    })
-
-    expect(ruInitialStats.totalImages).toBeGreaterThan(0)
-    expect(ruInitialStats.completedCount).toBeGreaterThan(0)
-    expect(ruInitialStats.validLoaded).toBe(ruInitialStats.completedCount)
-    expect(ruInitialStats.fallbackCount).toBe(0)
   })
 
   test('verifies direct access to /operators/{id} loads operator detail, not catalog', async ({
@@ -138,14 +116,6 @@ test.describe('Audit Batch 2: DOM Asset Rendering & Visual Verification', () => 
     await page.goto('/operators/char_003_kalts')
 
     // Detail page must be loaded, NOT the catalog list
-    await expect(page.locator('.operator-detail-page')).toBeVisible()
-    await expect(page.locator('.operators-page')).toHaveCount(0)
-    await expect(page.locator('.ak-page-header__title')).toContainText("Kal'tsit")
-    await expect(page.locator('.ak-page-header__code')).toContainText('B003')
-
-    // 2. Russian direct visit
-    await page.goto('/ru/operators/char_003_kalts')
-
     await expect(page.locator('.operator-detail-page')).toBeVisible()
     await expect(page.locator('.operators-page')).toHaveCount(0)
     await expect(page.locator('.ak-page-header__title')).toContainText("Kal'tsit")

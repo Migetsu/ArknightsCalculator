@@ -1,6 +1,120 @@
 # Project Progress
 
-- **Gacha Target 6★ Operator Selection & Rate-up Share Calculation (`feat/gacha-target-share-selection`):**
+- **Fix Operator Detail Item Icons & Skill SP Badges (`fix/operator-detail-item-icons`):**
+  - **Issue:**
+    - In operator skill and module upgrade requirements, material images failed to load, falling back to dark boxes displaying initials with IDs (e.g. `301` with count `6` for `30165` Rephasic Enantiomer; `PP` with count `4` for `30115` Polymerization Preparation).
+    - In operator skills panel, passive skills with `spType: 8` rendered an untranslated key `OPERATORS.DETAIL.SKILLS.SPTYPES.8` alongside duplicate `[PASSIVE]` badge.
+  - **Root Cause:**
+    - In Arknights game assets, material sprites are named by `iconId` (e.g. `MTL_SL_DYT.png`, `MTL_SL_PP.png`, `MTL_SL_RS.png`), not by numeric `id`.
+    - `ITEM_ICON_DEFAULT_MAP` in `resolveAsset.ts` only had 18 hardcoded mappings, lacking regular crafting materials and chips.
+    - `AkOperatorSkillsPanel.vue` and `AkOperatorModulesPanel.vue` only bound `:item-id="item.id"` without `icon-id` or `tier`, and passed `:name="item.id"` in skills.
+    - Skills panel unconditionally concatenated `operators.detail.skills.spTypes.` with numeric `spType: 8`.
+  - **Fix:**
+    - Populated `ITEM_ICON_DEFAULT_MAP` in `shared/utils/resolveAsset.ts` with all 114 item mappings from `data/items.json`.
+    - Enhanced `AkItemIcon.vue` to automatically resolve `iconId`, `effectiveName`, and `effectiveTier` using `data/items.json` and `ITEM_ICON_DEFAULT_MAP` whenever they are omitted or equal to `itemId`.
+    - Updated `AkOperatorSkillsPanel.vue` and `AkOperatorModulesPanel.vue` to explicitly bind `:icon-id`, `:name`, and `:tier` for all levelUpCost / stage upgrade items.
+    - Updated `AkOperatorSkillsPanel.vue` to suppress the redundant cyan badge when `spType === 8`, and added `"8": "Passive"` to `i18n/locales/en.json`.
+  - **Verification:**
+    - `i18n:check`: 589 valid keys.
+    - `typecheck`: 0 errors.
+    - `test`: 474/474 passed across 70 test suites (added new test suite `AkOperatorSkillsPanel.test.ts`, expanded `AkItemIcon.test.ts` and `AkOperatorModulesPanel.test.ts`).
+    - `lint`: 0 errors, 0 warnings.
+    - `build`: production build completed successfully in 53s.
+    - Captured verification screenshots on port 3001:
+      - `docs/screenshots/angelina-skills-m3-fixed.png`
+      - `docs/screenshots/civilight-eterna-module-stage3-fixed.png`
+
+- **Russian Localization Removal & Community Translation Audit (`chore/remove-ru-and-audit-community-translations`):**
+  - **Community Translations Audit (`MusicOnline/AK-Dataknights`, `Jetroyz`, etc.):**
+    - Audited `MusicOnline/AK-Dataknights`: The repository mirrors upstream raw game data and only provides UI translations (`locales/`) and user data overrides. It does NOT maintain machine-readable English skill/talent descriptions for unreleased CN units.
+    - Audited `Jetroyz` and community resources: No public structured JSON repository is maintained (translations are published as human-readable posts on Reddit/Discord). Older repositories like `Aceship/AN-EN-Tags` have been abandoned since 2021-2022.
+    - Conclusion: Maintained official pipeline integrity with `[Pending Translation]` and `• PENDING` tactical badges for CN-only units rather than importing unverified or non-machine-readable sources.
+  - **Russian Localization (RU) Purge:**
+    - Removed `i18n/locales/ru.json`, `app/components/layout/LanguageSwitcher.vue`, and `tests/unit/components/layout/LanguageSwitcher.test.ts`.
+    - Configured `@nuxtjs/i18n` in `nuxt.config.ts` for English-only (`locales: [{ code: 'en', name: 'English', language: 'en-US', file: 'en.json' }]`, `strategy: 'no_prefix'`, `defaultLocale: 'en'`, `detectBrowserLanguage: false`, removed `/ru` routes from sitemap).
+    - Removed language switcher section from `app/pages/settings.vue` (reduced to 6 canonical sections) and updated `tests/unit/pages/settings.test.ts`.
+    - Updated `app/components/ui/AkHeader.vue` and `app/pages/_ui.vue` to remove Russian locale selectors and path checks.
+    - Updated `shared/schemas/operator.ts` (`ContentLocale = 'en' | 'zh'`), `shared/utils/operatorFilters.ts`, and `shared/utils/richText/` to remove `ru` fallback chains.
+    - Updated all component locale casts (`GachaBannerCard`, `GachaCalculator`, `AkOperatorCard`, panels, operator pages).
+    - Updated `scripts/check-i18n.ts` and its test `tests/unit/scripts/check-i18n.test.ts` to validate English keys (588 valid keys).
+    - Updated E2E and unit tests (`tests/e2e/i18n.spec.ts`, `tests/e2e/layout-sanity.spec.ts`, `tests/e2e/audit-assets-dom.spec.ts`, `tests/e2e/operators-visual-audit.spec.ts`, `tests/unit/config/modules.test.ts`, `tests/unit/data/build-operators.test.ts`, `tests/unit/routes/dev-only-routes.test.ts`).
+    - Updated project documentation: `AGENTS.md` (§6), `docs/architecture.md`, `docs/design/DESIGN.md`.
+  - **Visual Verification & Screenshots (Port 3001):**
+    - Removed all obsolete `*-ru.png` screenshots from `docs/screenshots/`.
+    - Captured fresh verification screenshots:
+      - `docs/screenshots/home-1440.png`: Clean English home interface without language switcher.
+      - `docs/screenshots/operator-makoto-360.png` & `docs/screenshots/operator-makoto-360-fullpage.png`: Mobile 360px viewport on CN-only operator Makoto Yuki (`char_4217_makoto`).
+      - `docs/screenshots/operator-makoto-skills-360.png`: Skills panel showing English skill names and `[Pending Translation]` with intact 360px layout.
+  - **Quality Gates:**
+    - `i18n:check`: 588 keys valid.
+    - `typecheck`: 0 errors.
+    - `test`: 468/468 passed across 69 test suites.
+    - `lint`: 0 errors, 0 warnings.
+    - `build`: production build completed successfully.
+
+- **Header Navigation Sync Button Polish (`fix/header-sync-button`):**
+  - **Issue:** The sync button in the top navigation rendered an orange/red 6px square (`■Sync`) colliding directly with the text without spacing, caused by missing `--radius-full` token on `.ak-header__sync-dot` and default slot wrapping without flex gap.
+  - **Fix:**
+    - Integrated a tactical 14x14 circular arrows SVG sync icon into `AkButton`'s `#icon` slot in both desktop header and mobile drawer (`AkHeader.vue`).
+    - Leveraged `AkButton`'s native 8px gap between `#icon` and button content.
+    - Added hover rotation transition (`transform: rotate(180deg)`) respecting `@include reduced-motion;`.
+    - Preserved `.ak-header__sync-dot` with `display: none;` to maintain DOM element presence for existing unit tests (`AkHeader.test.ts`).
+    - Verified desktop alignment on 1440px and 1024px viewports (height 36px, vertical centering matching Settings link) and drawer view on 360px viewport.
+  - **Verification:**
+    - `lint`: 0 errors.
+    - `typecheck`: 0 errors.
+    - `test`: 470/470 passed across 70 test suites (including `AkHeader.test.ts`).
+    - `test:e2e` (`tests/e2e/header-align.spec.ts`): 3/3 passed on port 3001.
+    - `build`: production build completed successfully.
+    - Captured high-resolution screenshots: `header-1440.png`, `header-1440-ru.png`, `header-drawer-360.png`.
+
+- **I18n Cleanup, Chinese Characters Eradication & Dead Code Removal (`chore/i18n-cleanup-and-deadcode`):**
+  - **Audit & Chinese Characters Eradication (`scripts/data/i18n-layers.ts`, `data/operators/`):**
+    - Audited all `.en` localized strings: found 736 instances of raw Chinese text across 27 unreleased CN operators and 3rd/4th modules caused by layer 5 falling back to raw Chinese text.
+    - Updated `scripts/data/i18n-layers.ts` layer 5 fallback: missing translations now return `en: '[Pending Translation]'` with `source: 'pending'`, strictly eradicating Chinese text from the English field.
+    - Updated `scripts/data/build-operators.ts`: included `tracker.sources.pending` in build reporting and `data/i18n/report.json`.
+    - Regenerated dataset via `npm run data:build`: verified exactly **0** Chinese characters remain in any `.en` field across all 434 operator files and `data/operators-index.json`.
+    - Added permanent regression test `tests/unit/data/en-no-chinese.test.ts`.
+  - **I18n Pipeline & Schema Support (`shared/schemas/operator.ts`, `scripts/data/`):**
+    - Extended `I18nSourceSchema` to include `'pending'`.
+    - Added `isPendingTranslation(text: I18nInput | string | undefined | null): boolean` pure helper.
+    - Updated `scripts/data/validate-translation.ts`: accepted `[Pending Translation]` as a valid placeholder.
+    - Updated `scripts/data/translate-missing.ts`: detected untranslated strings with `source: 'zh'` or `'pending'` or `[Pending Translation]`.
+  - **UI & Design Polish (`app/components/ui/`, `app/components/operators/`, `app/pages/_ui.vue`):**
+    - Updated `AkTranslationBadge.vue` to render `• PENDING` with tactical danger outline (`rgb(235 87 87 / 40%)`) and tooltip.
+    - Added localized tooltip messages in `i18n/locales/en.json` and `ru.json` (`operators.detail.pendingTranslation`).
+    - Updated `AkOperatorInfoPanel.vue`: added `AkTranslationBadge` to `itemUsage` and `itemDesc`, with italicized muted text for pending entries.
+    - Updated `AkOperatorSkillsPanel.vue`, `AkOperatorTalentsPanel.vue`, and `AkOperatorModulesPanel.vue`: added translation badges and styling for pending descriptions and names.
+    - Updated `AkRichText.vue`: added `.ak-rich-text--pending` styling for `[Pending Translation]`.
+    - Showcased PENDING badge in `app/pages/_ui.vue`.
+  - **Dead Code & Mockups Cleanup:**
+    - Archived 11 static HTML mockups in `docs/design/mockups/*.html` to `docs/archive/mockups/`.
+    - Removed unused/dead scripts: `scripts/data/mirror-assets.ts`, `scripts/data/process-translations.ts`, `scripts/data/verify-new-assets.ts`.
+    - Removed `"data:mirror-assets"` script from `package.json`.
+  - **Testing & Verification:**
+    - `i18n:check`, `typecheck`, `test` (470/470 passed across 70 suites), `lint` (0 errors), and `build` (complete production build) all 100% green.
+    - Captured 4 high-resolution Playwright screenshots on port 3001 and copied to artifacts.
+
+- **Official CN Game Data Migration to SanityGoneAK & Decommissioning of Kengxxiao (`feat/migrate-cn-source`):**
+  - **Data Source Unification (`scripts/data/sources.config.ts`):**
+    - Pinned CN source to `SanityGoneAK/arknights-gamedata`, branch `main`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, locale `cn`.
+    - Both Global (EN) and China (CN) are now unified under `SanityGoneAK/arknights-gamedata`, eliminating upstream drift, dual-source maintenance, and dependency on frozen Kengxxiao repository.
+    - Updated `RawDataSourceConfig` type to include `'cn'`.
+  - **Build Pipeline Alignment (`scripts/data/`):**
+    - Updated `build-constants.ts`, `build-items.ts`, `build-recipes.ts` to accept `RawDataSourceConfig['locale']` (including `'cn'`).
+    - Updated `build-recruit.ts` to resolve `gacha_table.json` dynamically via `DATA_SOURCES_CONFIG.sources.cn.locale` and `en.locale`.
+    - Re-fetched and regenerated all data (`npm run data:fetch -- --source=cn`, `npm run data:build`, `npm run data:constants`, `npm run data:items`, `npm run data:recipes`, `npm run data:recruit`, `npm run data:stages`).
+    - Verified operator Clement (`char_4231_clemnt`) S3 projectile lifetime received fresh upstream balance update (5s -> 3.5s).
+    - Preserved 100% of operators (434) and items (848), with zero missing mappings between EN and CN.
+  - **Testing & Verification:**
+    - Added unit test suite `tests/unit/scripts/sources-config.test.ts` checking upstream repo parity, canonical locales (`en`, `cn`), and URL helpers.
+    - Updated `tests/unit/data/raw-schemas.test.ts` URL assertions.
+    - Ran `data:validate`: 434 operators, 76 recipes, 848 items, 318 recruit pool — 0 integrity issues.
+    - Ran `i18n:check`: en.json and ru.json keys identical.
+    - Ran `typecheck`, `test` (467/467 passed across 69 suites), `lint` (0 errors), `build` (production bundle complete in 1m 35s).
+  - **Documentation (`docs/data-sources.md`, `docs/data-source-probe.md`):**
+    - Updated source tables and declared formal deprecation/decommissioning of Kengxxiao.
+    - Added "Conclusion / Migration Done" block in `docs/data-source-probe.md`.
   - **Schema & Math Engine (`shared/schemas/banner.ts`, `shared/utils/gacha/index.ts`):**
     - Extended `GachaBannerSchema` with optional `rateUpShareMode` (`'single' | 'equal_split' | 'manual'`) and `rateUpShare` (`0..1`).
     - Implemented `getTargetRateUpShare(banner: GachaBanner): number | null`:

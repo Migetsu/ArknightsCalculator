@@ -7,16 +7,16 @@ describe('AkItemIcon', () => {
   it('renders image element when itemId is provided', async () => {
     const wrapper = await mountSuspended(AkItemIcon, {
       props: {
-        itemId: '30012',
-        name: 'Orirock Cube',
-        tier: 2,
+        itemId: 'mod_unlock_token',
+        name: 'Data Update Chip',
+        tier: 5,
       },
     })
 
     const img = wrapper.find('.ak-item-icon__image')
     expect(img.exists()).toBe(true)
-    expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/item/30012.png`)
-    expect(img.attributes('alt')).toBe('Orirock Cube')
+    expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/item/mod_unlock_token.png`)
+    expect(img.attributes('alt')).toBe('Data Update Chip')
   })
 
   it('prefers iconId over itemId when provided', async () => {
@@ -36,9 +36,9 @@ describe('AkItemIcon', () => {
   it('cycles through CDN candidates and then fallback initials on error', async () => {
     const wrapper = await mountSuspended(AkItemIcon, {
       props: {
-        itemId: '30012',
-        name: 'Orirock Cube',
-        tier: 2,
+        itemId: 'mod_unlock_token',
+        name: 'Data Update Chip',
+        tier: 5,
       },
     })
 
@@ -46,7 +46,7 @@ describe('AkItemIcon', () => {
     await img.trigger('error')
 
     expect(wrapper.find('.ak-item-icon__image').attributes('src')).toBe(
-      `${SECONDARY_CDN_BASE}/item/30012.png`,
+      `${SECONDARY_CDN_BASE}/item/mod_unlock_token.png`,
     )
 
     // Trigger error on all remaining candidate URLs
@@ -56,7 +56,21 @@ describe('AkItemIcon', () => {
 
     expect(wrapper.find('.ak-item-icon__image').exists()).toBe(false)
     expect(wrapper.find('.ak-item-icon__fallback').exists()).toBe(true)
-    expect(wrapper.find('.ak-item-icon__initials').text()).toBe('OC')
+    expect(wrapper.find('.ak-item-icon__initials').text()).toBe('DUC')
+  })
+
+  it('automatically resolves material 30012 to MTL_SL_G2.png without explicit iconId or tier', async () => {
+    const wrapper = await mountSuspended(AkItemIcon, {
+      props: {
+        itemId: '30012',
+      },
+    })
+
+    const img = wrapper.find('.ak-item-icon__image')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_G2.png`)
+    expect(img.attributes('alt')).toBe('Orirock Cube')
+    expect(wrapper.classes()).toContain('ak-item-icon--tier-2')
   })
 
   it('automatically resolves currency 4001 LMD to GOLD.png without explicit iconId', async () => {

@@ -2,7 +2,7 @@ export interface RawDataSourceConfig {
   repo: string
   branch: string
   commit: string
-  locale: 'zh_CN' | 'en' | 'en_US'
+  locale: 'zh_CN' | 'en' | 'en_US' | 'cn'
   tables: readonly string[]
 }
 
@@ -62,10 +62,10 @@ export const DATA_SOURCES_CONFIG: DataSourcesConfig = {
   politeDelayMs: 300,
   sources: {
     cn: {
-      repo: 'Kengxxiao/ArknightsGameData',
-      branch: 'master',
-      commit: '17759cc8cdf37388414145d16262a3a06f3ab25e',
-      locale: 'zh_CN',
+      repo: 'SanityGoneAK/arknights-gamedata',
+      branch: 'main',
+      commit: 'b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74',
+      locale: 'cn',
       tables: [
         'character_table.json',
         'skill_table.json',

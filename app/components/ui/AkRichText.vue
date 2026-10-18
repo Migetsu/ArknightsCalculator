@@ -12,8 +12,8 @@ interface Props {
   blackboard?: Record<string, number>
   /** Render wrapper element ('span' or 'div') */
   as?: 'span' | 'div'
-  /** Locale for term descriptions ('en' | 'ru' | 'zh') */
-  locale?: 'en' | 'ru' | 'zh'
+  /** Locale for term descriptions ('en' | 'zh') */
+  locale?: 'en' | 'zh'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,10 +26,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { locale: i18nLocale } = useI18n()
 
-const effectiveLocale = computed<'en' | 'ru' | 'zh'>(() => {
+const effectiveLocale = computed<'en' | 'zh'>(() => {
   if (props.locale) return props.locale
   const cur = String(i18nLocale.value)
-  if (cur === 'ru' || cur === 'zh') return cur
+  if (cur === 'zh') return cur
   return 'en'
 })
 
@@ -42,6 +42,10 @@ const parsedNodes = computed<RichTextNode[]>(() => {
     terms: constantsData.terms,
     locale: effectiveLocale.value,
   })
+})
+
+const isPending = computed(() => {
+  return props.text?.trim() === '[Pending Translation]'
 })
 
 // Popover state for active term tooltip
@@ -100,7 +104,12 @@ function getHighlightClass(tag: string): string {
 </script>
 
 <template>
-  <component :is="as" ref="rootRef" class="ak-rich-text">
+  <component
+    :is="as"
+    ref="rootRef"
+    class="ak-rich-text"
+    :class="{ 'ak-rich-text--pending': isPending }"
+  >
     <template v-for="(node, index) in parsedNodes" :key="index">
       <!-- 1. Text node -->
       <template v-if="node.type === 'text'">{{ node.text }}</template>
@@ -202,6 +211,12 @@ function getHighlightClass(tag: string): string {
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
   overflow-wrap: break-word;
+
+  &--pending {
+    font-style: italic;
+    color: var(--color-text-muted);
+    opacity: 0.85;
+  }
 
   &__break {
     display: block;

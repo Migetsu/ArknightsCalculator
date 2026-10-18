@@ -29,10 +29,10 @@ This document details external data sources, licensing terms, attribution guidel
 
 In Arknights, the in-game day rolls over daily at **04:00:00 local server time**.
 
-| Server Region   | Operator / Publisher | Timezone                         | UTC Equivalent of 04:00 Reset     | Verification Source & Date                                                                                                                                                                                               |
-| :-------------- | :------------------- | :------------------------------- | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CN (China)**  | Hypergryph           | UTC+8 (Beijing/Shanghai)         | 20:00 UTC (previous calendar day) | [PRTS Daily Reset](https://prts.wiki/w/%E6%97%A5%E5%B8%B8%E4%BB%BB%E5%8A%A1) & [zone_table.json](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/zone_table.json) (2026-10-16) |
-| **Global / EN** | Yostar               | UTC-7 (Standard Pacific, no DST) | 11:00 UTC (same calendar day)     | [Terra Wiki Missions](https://arknights.wiki.gg/wiki/Missions) & [Yostar Reset Notices](https://arknights.global/) (2026-10-16)                                                                                          |
+| Server Region   | Operator / Publisher | Timezone                         | UTC Equivalent of 04:00 Reset     | Verification Source & Date                                                                                                                                                                                              |
+| :-------------- | :------------------- | :------------------------------- | :-------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CN (China)**  | Hypergryph           | UTC+8 (Beijing/Shanghai)         | 20:00 UTC (previous calendar day) | [PRTS Daily Reset](https://prts.wiki/w/%E6%97%A5%E5%B8%B8%E4%BB%BB%E5%8A%A1) & [zone_table.json](https://raw.githubusercontent.com/SanityGoneAK/arknights-gamedata/main/cn/gamedata/excel/zone_table.json) (2026-10-18) |
+| **Global / EN** | Yostar               | UTC-7 (Standard Pacific, no DST) | 11:00 UTC (same calendar day)     | [Terra Wiki Missions](https://arknights.wiki.gg/wiki/Missions) & [Yostar Reset Notices](https://arknights.global/) (2026-10-16)                                                                                         |
 
 ### Boundary Behavior:
 
@@ -42,7 +42,26 @@ In Arknights, the in-game day rolls over daily at **04:00:00 local server time**
 
 ---
 
-## 3. Game Data & Intellectual Property
+## 3. Game Data Sources & Upstream Alignment
+
+Both Global (EN) and China (CN) game client tables are unified under a single, actively-maintained repository:
+
+| Server          | Repository                        | Branch | Locale Folder | Path Format                | Pinned Commit                              | Upstream Status                   |
+| :-------------- | :-------------------------------- | :----- | :------------ | :------------------------- | :----------------------------------------- | :-------------------------------- |
+| **Global (EN)** | `SanityGoneAK/arknights-gamedata` | `main` | `en`          | `en/gamedata/excel/*.json` | `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74` | **Active** (YoStar EN client)     |
+| **China (CN)**  | `SanityGoneAK/arknights-gamedata` | `main` | `cn`          | `cn/gamedata/excel/*.json` | `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74` | **Active** (Hypergryph CN client) |
+
+> [!IMPORTANT]
+> **Decommissioning of Kengxxiao**:
+> `Kengxxiao/ArknightsGameData` and `Kengxxiao/ArknightsGameData_YoStar` are **fully decommissioned and no longer used** in Arknights Calculator.
+>
+> - The YoStar repo was frozen since 2025-11-13 (missing 36 Global operators).
+> - The main CN repo created unnecessary dual-source overhead and fragmentation.
+> - `SanityGoneAK/arknights-gamedata` serves as the sole canonical source for all server data.
+
+---
+
+## 4. Game Data & Intellectual Property
 
 - **Copyright Holders**: All character portraits, illustrations, skill icons, item graphics, and game text belong to **Shanghai Hypergryph Network Technology Co., Ltd.** and **Yostar (Hong Kong) Limited**.
 - **Usage Context**: Arknights Calculator is a non-commercial, open-source fan companion. Game assets and game data tables are not licensed under the project code repository and are displayed under fair community informational usage.

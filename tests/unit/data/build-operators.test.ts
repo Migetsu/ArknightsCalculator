@@ -116,33 +116,35 @@ describe('Operator Data Builder & Schemas', () => {
   })
 
   describe('resolveI18nString fallback chain', () => {
-    it('prefers ru when available and requested', () => {
+    it('prefers en when available and requested', () => {
       const text: I18nString = {
         en: 'Texas',
         zh: '德克萨斯',
-        ru: 'Техас',
+        source: 'official',
       }
-      expect(resolveI18nString(text, 'ru')).toBe('Техас')
+      expect(resolveI18nString(text, 'en')).toBe('Texas')
     })
 
-    it('falls back to en when ru is missing', () => {
+    it('prefers zh when requested', () => {
       const text: I18nString = {
         en: 'Texas',
         zh: '德克萨斯',
+        source: 'official',
       }
-      expect(resolveI18nString(text, 'ru')).toBe('Texas')
+      expect(resolveI18nString(text, 'zh')).toBe('德克萨斯')
     })
 
-    it('falls back to zh when both ru and en are empty', () => {
+    it('falls back to zh when en is empty', () => {
       const text: I18nString = {
         en: '',
         zh: '德克萨斯',
+        source: 'official',
       }
-      expect(resolveI18nString(text, 'ru')).toBe('德克萨斯')
+      expect(resolveI18nString(text, 'en')).toBe('德克萨斯')
     })
 
     it('returns empty string on null or undefined input', () => {
-      expect(resolveI18nString(null, 'ru')).toBe('')
+      expect(resolveI18nString(null, 'en')).toBe('')
       expect(resolveI18nString(undefined, 'en')).toBe('')
     })
   })

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { OperatorDetail, I18nString } from '~/../shared/schemas/operator'
-import { resolveI18nString } from '~/../shared/schemas/operator'
+import { resolveI18nString, isPendingTranslation } from '~/../shared/schemas/operator'
 import AkBadge from '~/components/ui/AkBadge.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -13,7 +14,7 @@ const { t, locale } = useI18n()
 
 function getLocalizedField(field?: I18nString | null): string {
   if (!field) return '—'
-  return resolveI18nString(field, locale.value as 'en' | 'ru' | 'zh') || field.en || field.zh || '—'
+  return resolveI18nString(field, locale.value as 'en' | 'zh') || field.en || field.zh || '—'
 }
 </script>
 
@@ -66,19 +67,45 @@ function getLocalizedField(field?: I18nString | null): string {
 
     <!-- Lore / Usage Text -->
     <div v-if="operator.itemUsage" class="ak-operator-info-panel__dossier-card">
-      <span class="ak-operator-info-panel__dossier-title">
-        {{ t('operators.detail.info.itemUsage') }}
-      </span>
-      <p class="ak-operator-info-panel__dossier-text">
+      <div class="ak-operator-info-panel__dossier-header">
+        <span class="ak-operator-info-panel__dossier-title">
+          {{ t('operators.detail.info.itemUsage') }}
+        </span>
+        <AkTranslationBadge
+          v-if="operator.itemUsage.source"
+          :source="operator.itemUsage.source"
+          :stale="operator.itemUsage.stale"
+        />
+      </div>
+      <p
+        class="ak-operator-info-panel__dossier-text"
+        :class="{
+          'ak-operator-info-panel__dossier-text--pending':
+            operator.itemUsage.source === 'pending' || isPendingTranslation(operator.itemUsage),
+        }"
+      >
         {{ getLocalizedField(operator.itemUsage) }}
       </p>
     </div>
 
     <div v-if="operator.itemDesc" class="ak-operator-info-panel__dossier-card">
-      <span class="ak-operator-info-panel__dossier-title">
-        {{ t('operators.detail.info.itemDesc') }}
-      </span>
-      <p class="ak-operator-info-panel__dossier-text">
+      <div class="ak-operator-info-panel__dossier-header">
+        <span class="ak-operator-info-panel__dossier-title">
+          {{ t('operators.detail.info.itemDesc') }}
+        </span>
+        <AkTranslationBadge
+          v-if="operator.itemDesc.source"
+          :source="operator.itemDesc.source"
+          :stale="operator.itemDesc.stale"
+        />
+      </div>
+      <p
+        class="ak-operator-info-panel__dossier-text"
+        :class="{
+          'ak-operator-info-panel__dossier-text--pending':
+            operator.itemDesc.source === 'pending' || isPendingTranslation(operator.itemDesc),
+        }"
+      >
         {{ getLocalizedField(operator.itemDesc) }}
       </p>
     </div>
@@ -145,6 +172,13 @@ function getLocalizedField(field?: I18nString | null): string {
     gap: var(--space-xs);
   }
 
+  &__dossier-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
   &__dossier-title {
     font-family: var(--font-body);
     font-size: var(--font-size-xs);
@@ -159,6 +193,11 @@ function getLocalizedField(field?: I18nString | null): string {
     line-height: var(--line-height-relaxed);
     color: var(--color-text-primary);
     font-size: var(--font-size-sm);
+
+    &--pending {
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
   }
 }
 </style>

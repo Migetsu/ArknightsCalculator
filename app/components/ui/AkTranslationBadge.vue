@@ -13,19 +13,25 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useI18n()
 
-// Only show badge when source is 'machine', 'community', or translation is stale
+// Only show badge when source is 'machine', 'community', 'pending', or translation is stale
 const isVisible = computed(
-  () => props.source === 'machine' || props.source === 'community' || props.stale,
+  () =>
+    props.source === 'machine' ||
+    props.source === 'community' ||
+    props.source === 'pending' ||
+    props.stale,
 )
 
 const label = computed(() => {
   if (props.stale) return 'STALE'
+  if (props.source === 'pending') return 'PENDING'
   if (props.source === 'community') return 'COMM'
   return 'MT'
 })
 
 const tooltipText = computed(() => {
   if (props.stale) return t('operators.detail.staleTranslation')
+  if (props.source === 'pending') return t('operators.detail.pendingTranslation')
   if (props.source === 'community') return t('operators.detail.communityTranslation')
   return t('operators.detail.machineTranslation')
 })
@@ -37,6 +43,7 @@ const tooltipText = computed(() => {
     class="ak-translation-badge"
     :class="{
       'ak-translation-badge--stale': stale,
+      'ak-translation-badge--pending': !stale && source === 'pending',
       'ak-translation-badge--community': !stale && source === 'community',
       'ak-translation-badge--machine': !stale && source === 'machine',
     }"
@@ -87,6 +94,12 @@ const tooltipText = computed(() => {
     border: 1px solid rgb(255 184 77 / 35%);
     background: rgb(255 184 77 / 10%);
     color: var(--color-accent-warning, #ffb84d);
+  }
+
+  &--pending {
+    border: 1px solid rgb(235 87 87 / 40%);
+    background: rgb(235 87 87 / 10%);
+    color: var(--color-accent-danger, #eb5757);
   }
 
   &--stale {

@@ -106,47 +106,28 @@ export function validateMessageSyntax(
 }
 
 /**
- * CLI runner that reads en.json and ru.json files, checks their key symmetry
- * and compiles every message syntax to prevent runtime intlify errors.
+ * CLI runner that reads en.json, validates its message syntax and key structure
+ * to prevent runtime intlify errors.
  */
 export function runI18nCheck(cwd = process.cwd()): void {
   const enPath = resolve(cwd, 'i18n/locales/en.json')
-  const ruPath = resolve(cwd, 'i18n/locales/ru.json')
-
   const enRaw = readFileSync(enPath, 'utf-8')
-  const ruRaw = readFileSync(ruPath, 'utf-8')
-
   const enData = JSON.parse(enRaw) as Record<string, unknown>
-  const ruData = JSON.parse(ruRaw) as Record<string, unknown>
 
   let hasError = false
 
-  const result = compareLocaleRecords(enData, ruData)
-
-  if (result.missingInTarget.length > 0) {
-    hasError = true
-    console.error('Keys present in en.json but missing in ru.json:')
-    for (const key of result.missingInTarget) {
-      console.error(`  - ${key}`)
-    }
-  }
-
-  if (result.extraInTarget.length > 0) {
-    hasError = true
-    console.error('Keys present in ru.json but missing in en.json:')
-    for (const key of result.extraInTarget) {
-      console.error(`  - ${key}`)
-    }
+  const enKeys = flattenKeys(enData)
+  if (enKeys.length === 0) {
+    console.error('en.json contains no keys!')
+    process.exit(1)
   }
 
   const enSyntaxErrors = validateMessageSyntax(enData, 'en.json')
-  const ruSyntaxErrors = validateMessageSyntax(ruData, 'ru.json')
-  const allSyntaxErrors = [...enSyntaxErrors, ...ruSyntaxErrors]
 
-  if (allSyntaxErrors.length > 0) {
+  if (enSyntaxErrors.length > 0) {
     hasError = true
-    console.error('\nI18n message syntax compilation errors detected:')
-    for (const err of allSyntaxErrors) {
+    console.error('\nI18n message syntax compilation errors detected in en.json:')
+    for (const err of enSyntaxErrors) {
       console.error(
         `  [${err.file}] key "${err.key}" failed compilation: ${err.message} (source: "${err.source}")`,
       )
@@ -159,7 +140,7 @@ export function runI18nCheck(cwd = process.cwd()): void {
   }
 
   console.log(
-    'I18n check passed: en.json and ru.json keys are identical and all messages compile cleanly.',
+    `I18n check passed: en.json contains ${enKeys.length} valid keys and all messages compile cleanly.`,
   )
 }
 

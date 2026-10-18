@@ -52,8 +52,8 @@ export function validateTranslation(
   const zh = originalZh ?? ''
   const en = translatedEn ?? ''
 
-  // If translation is identical to original or empty, only check basic structure
-  if (!en.trim() || en === zh) {
+  // If translation is identical to original, empty, or pending placeholder, return valid
+  if (!en.trim() || en === zh || en === '[Pending Translation]') {
     return { valid: true, issues: [] }
   }
 

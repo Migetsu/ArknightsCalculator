@@ -62,4 +62,19 @@ describe('AkTranslationBadge', () => {
     expect(badge.text()).toContain('STALE')
     expect(badge.attributes('title')).toBe('Outdated translation (CN source text has been updated)')
   })
+
+  it('renders PENDING badge when source is pending', async () => {
+    const wrapper = await mountSuspended(AkTranslationBadge, {
+      props: {
+        source: 'pending',
+        stale: false,
+      },
+    })
+
+    const badge = wrapper.find('.ak-translation-badge')
+    expect(badge.exists()).toBe(true)
+    expect(badge.classes()).toContain('ak-translation-badge--pending')
+    expect(badge.text()).toContain('PENDING')
+    expect(badge.attributes('title')).toBe('Translation pending (preliminary placeholder)')
+  })
 })

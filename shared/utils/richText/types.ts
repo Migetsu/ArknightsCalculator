@@ -98,8 +98,8 @@ export interface ParseRichTextOptions {
       description: { en: string; zh: string; ru?: string }
     }
   >
-  /** Content locale for term names and descriptions ('en' | 'zh' | 'ru') */
-  locale?: 'en' | 'zh' | 'ru'
+  /** Content locale for term names and descriptions ('en' | 'zh') */
+  locale?: 'en' | 'zh'
   /** Collect warnings regarding unresolved placeholders or unknown tags */
   onWarning?: (warning: string) => void
 }

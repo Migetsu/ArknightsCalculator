@@ -20,8 +20,7 @@ const localePath = useLocalePath()
 
 const displayName = computed(() => {
   return (
-    resolveI18nString(props.operator.name, locale.value as 'en' | 'ru' | 'zh') ||
-    props.operator.name.en
+    resolveI18nString(props.operator.name, locale.value as 'en' | 'zh') || props.operator.name.en
   )
 })
 

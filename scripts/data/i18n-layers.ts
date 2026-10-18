@@ -73,6 +73,7 @@ export function createI18nTracker(): I18nLayersTracker {
       community: 0,
       machine: 0,
       zh: 0,
+      pending: 0,
     },
     staleCount: 0,
     missingEnCount: 0,
@@ -313,16 +314,16 @@ export function resolveLayeredI18nString(
     }
   }
 
-  // 5. ZH fallback (no English)
+  // 5. Pending fallback (no English available)
   if (tracker) {
-    tracker.sources.zh++
+    tracker.sources.pending++
     tracker.missingEnCount++
   }
   return {
-    en: zh,
+    en: zh ? '[Pending Translation]' : '',
     zh,
-    source: 'zh',
-    isMachineTranslation: true,
+    source: 'pending',
+    isMachineTranslation: false,
   }
 }
 

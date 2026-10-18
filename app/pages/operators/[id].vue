@@ -27,7 +27,7 @@ const { data: operator, status } = await useOperatorDetail(id)
 const displayName = computed(() => {
   if (!operator.value) return ''
   return (
-    resolveI18nString(operator.value.name, locale.value as 'en' | 'ru' | 'zh') ||
+    resolveI18nString(operator.value.name, locale.value as 'en' | 'zh') ||
     operator.value.name.en ||
     operator.value.name.zh
   )

@@ -3,14 +3,11 @@ import { APP_MODULES } from '../../app/config/modules'
 
 const VIEWPORTS = [360, 768, 1024, 1440, 1920]
 
-const ROUTES = APP_MODULES.flatMap((mod) => [
-  { id: mod.id, path: mod.route, locale: 'en' as const },
-  {
-    id: mod.id,
-    path: mod.route === '/' ? '/ru' : `/ru${mod.route}`,
-    locale: 'ru' as const,
-  },
-])
+const ROUTES = APP_MODULES.map((mod) => ({
+  id: mod.id,
+  path: mod.route,
+  locale: 'en' as const,
+}))
 
 test.describe('Layout Sanity & Responsiveness', () => {
   test.setTimeout(60000)
@@ -122,99 +119,92 @@ test.describe('Layout Sanity & Responsiveness', () => {
     }
   }
 
-  test('validates Drawer and Doctor card layout in EN and RU', async ({ page }) => {
-    for (const locale of ['en', 'ru']) {
-      await page.setViewportSize({ width: 360, height: 800 })
-      await page.goto(locale === 'en' ? '/' : '/ru')
-      await page.waitForLoadState('domcontentloaded')
-      await page.locator('.layout-default__burger').waitFor({ state: 'visible' })
+  test('validates Drawer and Doctor card layout in EN', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 })
+    await page.goto('/')
+    await page.waitForLoadState('domcontentloaded')
+    await page.locator('.layout-default__burger').waitFor({ state: 'visible' })
 
-      // Open drawer
-      const burger = page.locator('.layout-default__burger')
-      const drawer = page.locator('.ak-drawer__panel')
-      await expect(async () => {
-        if (!(await drawer.isVisible())) {
-          await burger.click()
-        }
-        await expect(drawer).toBeVisible({ timeout: 1000 })
-      }).toPass({ timeout: 6000 })
+    // Open drawer
+    const burger = page.locator('.layout-default__burger')
+    const drawer = page.locator('.ak-drawer__panel')
+    await expect(async () => {
+      if (!(await drawer.isVisible())) {
+        await burger.click()
+      }
+      await expect(drawer).toBeVisible({ timeout: 1000 })
+    }).toPass({ timeout: 6000 })
 
-      // Verify Doctor row elements do not collide or overflow drawer width
-      const userCardCheck = await page.evaluate(() => {
-        const drawerPanel = document.querySelector('.ak-drawer__panel')
-        const userCard = document.querySelector('.layout-default__user-card')
-        const level = document.querySelector('.layout-default__user-level')
-        const syncBtn = document.querySelector('.layout-default__user-sync-btn')
+    // Verify Doctor row elements do not collide or overflow drawer width
+    const userCardCheck = await page.evaluate(() => {
+      const drawerPanel = document.querySelector('.ak-drawer__panel')
+      const userCard = document.querySelector('.layout-default__user-card')
+      const level = document.querySelector('.layout-default__user-level')
+      const syncBtn = document.querySelector('.layout-default__user-sync-btn')
 
-        if (!drawerPanel || !userCard || !level || !syncBtn) {
-          return { exists: false, collides: false }
-        }
+      if (!drawerPanel || !userCard || !level || !syncBtn) {
+        return { exists: false, collides: false }
+      }
 
-        const cardRect = userCard.getBoundingClientRect()
-        const levelRect = level.getBoundingClientRect()
-        const syncRect = syncBtn.getBoundingClientRect()
+      const cardRect = userCard.getBoundingClientRect()
+      const levelRect = level.getBoundingClientRect()
+      const syncRect = syncBtn.getBoundingClientRect()
 
-        // Check horizontal collision between level and sync button
-        const collides = levelRect.right > syncRect.left
+      // Check horizontal collision between level and sync button
+      const collides = levelRect.right > syncRect.left
 
-        return {
-          exists: true,
-          collides,
-          cardWidth: cardRect.width,
-          drawerWidth: drawerPanel.getBoundingClientRect().width,
-        }
-      })
+      return {
+        exists: true,
+        collides,
+        cardWidth: cardRect.width,
+        drawerWidth: drawerPanel.getBoundingClientRect().width,
+      }
+    })
 
-      expect(userCardCheck.exists).toBe(true)
-      expect(
-        userCardCheck.collides,
-        `Doctor level collided with Sync button in ${locale} drawer`,
-      ).toBe(false)
+    expect(userCardCheck.exists).toBe(true)
+    expect(userCardCheck.collides, 'Doctor level collided with Sync button in drawer').toBe(false)
 
-      await page.screenshot({
-        path: `test-results/drawer-${locale}.png`,
-      })
+    await page.screenshot({
+      path: 'test-results/drawer-en.png',
+    })
 
-      // Close drawer
-      await page.locator('.ak-drawer__close').click()
-      await expect(drawer).not.toBeVisible()
-    }
+    // Close drawer
+    await page.locator('.ak-drawer__close').click()
+    await expect(drawer).not.toBeVisible()
   })
 
-  test('validates Sync Account Modal layout in EN and RU', async ({ page }) => {
-    for (const locale of ['en', 'ru']) {
-      await page.setViewportSize({ width: 768, height: 900 })
-      await page.goto(locale === 'en' ? '/' : '/ru')
-      await page.waitForLoadState('domcontentloaded')
+  test('validates Sync Account Modal layout in EN', async ({ page }) => {
+    await page.setViewportSize({ width: 768, height: 900 })
+    await page.goto('/')
+    await page.waitForLoadState('domcontentloaded')
 
-      // Open modal via header Sync button
-      const syncBtn = page.locator('.layout-default__sync-btn')
-      await expect(syncBtn).toBeVisible()
-      const modal = page.locator('.ak-modal__panel')
+    // Open modal via header Sync button
+    const syncBtn = page.locator('.layout-default__sync-btn')
+    await expect(syncBtn).toBeVisible()
+    const modal = page.locator('.ak-modal__panel')
 
-      await expect(async () => {
-        if (!(await modal.isVisible())) {
-          await syncBtn.click()
-        }
-        await expect(modal).toBeVisible({ timeout: 1000 })
-      }).toPass({ timeout: 6000 })
+    await expect(async () => {
+      if (!(await modal.isVisible())) {
+        await syncBtn.click()
+      }
+      await expect(modal).toBeVisible({ timeout: 1000 })
+    }).toPass({ timeout: 6000 })
 
-      // Verify no horizontal overflow inside modal
-      const modalOverflow = await page.evaluate(() => {
-        const panel = document.querySelector('.ak-modal__panel')
-        if (!panel) return false
-        return panel.scrollWidth > panel.clientWidth
-      })
+    // Verify no horizontal overflow inside modal
+    const modalOverflow = await page.evaluate(() => {
+      const panel = document.querySelector('.ak-modal__panel')
+      if (!panel) return false
+      return panel.scrollWidth > panel.clientWidth
+    })
 
-      expect(modalOverflow, `Modal content overflowed in ${locale}`).toBe(false)
+    expect(modalOverflow, 'Modal content overflowed in modal').toBe(false)
 
-      await page.screenshot({
-        path: `test-results/modal-${locale}.png`,
-      })
+    await page.screenshot({
+      path: 'test-results/modal-en.png',
+    })
 
-      // Close modal
-      await page.locator('.ak-modal__close').click()
-      await expect(modal).not.toBeVisible()
-    }
+    // Close modal
+    await page.locator('.ak-modal__close').click()
+    await expect(modal).not.toBeVisible()
   })
 })

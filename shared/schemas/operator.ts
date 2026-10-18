@@ -3,13 +3,21 @@ import { z } from 'zod'
 /**
  * Supported UI and content locales.
  */
-export type ContentLocale = 'ru' | 'en' | 'zh'
+export type ContentLocale = 'en' | 'zh'
 
 /**
  * Provenance source for localized strings.
- * Priority: manual > official > wiki > community > machine > zh
+ * Priority: manual > official > wiki > community > machine > pending > zh
  */
-export const I18nSourceSchema = z.enum(['manual', 'official', 'wiki', 'community', 'machine', 'zh'])
+export const I18nSourceSchema = z.enum([
+  'manual',
+  'official',
+  'wiki',
+  'community',
+  'machine',
+  'pending',
+  'zh',
+])
 export type I18nSource = z.infer<typeof I18nSourceSchema>
 
 /**
@@ -53,8 +61,19 @@ export function isCommunityTranslated(text: I18nInput | undefined | null): boole
 }
 
 /**
+ * Checks whether the localized string is a pending translation placeholder.
+ */
+export function isPendingTranslation(text: I18nInput | string | undefined | null): boolean {
+  if (!text) return false
+  if (typeof text === 'string') {
+    return text.trim() === '[Pending Translation]'
+  }
+  return text.source === 'pending' || text.en === '[Pending Translation]'
+}
+
+/**
  * Pure helper to resolve localized text following the fallback chain:
- * ru -> en -> zh.
+ * en -> zh.
  */
 export function resolveI18nString(
   text: I18nInput | undefined | null,
@@ -62,16 +81,13 @@ export function resolveI18nString(
 ): string {
   if (!text) return ''
 
-  if (locale === 'ru' && text.ru && text.ru.trim().length > 0) {
-    return text.ru
-  }
   if (locale === 'zh' && text.zh && text.zh.trim().length > 0) {
     return text.zh
   }
   if (text.en && text.en.trim().length > 0) {
     return text.en
   }
-  return text.zh || text.ru || ''
+  return text.zh || ''
 }
 
 /**

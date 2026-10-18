@@ -138,7 +138,26 @@ Across the 434 playable operators in `.cache/raw/zh_CN/character_table.json`, `a
    - `Kengxxiao/ArknightsGameData_YoStar` has been abandoned since `2025-11-13` (missing 36 Global operators and all recent events/modules).
    - **`SanityGoneAK/arknights-gamedata`** is actively maintained (`2026-10-14` EN client update, `2026-10-16` repo HEAD), contains **all 36/36 missing Global operators** with official YoStar EN names, skill names/descriptions, talents, and modules, and passes **11/11 of our existing Zod schemas** without a single schema change (only changing `repo: 'SanityGoneAK/arknights-gamedata'` and `locale: 'en'` in `scripts/data/sources.config.ts`).
    - Do **not** use `ArknightsAssets/ArknightsGamedata` as primary EN source because its `arkprts` FlatBuffer serializer converts empty JSON arrays into `{}` objects and array dicts into numeric-keyed objects, failing 6 of our 11 Zod schemas.
-2. **Keep `Kengxxiao/ArknightsGameData` (`zh_CN`) + `arknights.wiki.gg` for CN-Only Content**:
-   - Keep `Kengxxiao/ArknightsGameData` (`zh_CN`) as the canonical full-roster source (434 operators) and `arknights.wiki.gg` (CC-BY-SA 4.0) as the translation layer for the 22 unreleased CN-only operators (e.g., `char_4226_veen` $\to$ `Viy`).
+2. **Decommission `Kengxxiao/ArknightsGameData` (`zh_CN`) in Favor of Unified `SanityGoneAK/arknights-gamedata` (`cn`)**:
+   - `Kengxxiao/ArknightsGameData` has been frozen since 2025 and introduced technical debt and dual-upstream maintenance overhead.
+   - `SanityGoneAK/arknights-gamedata` contains identical, up-to-date CN game tables under the `cn/gamedata/excel/` path, fully compatible with all 11 Zod schemas.
 3. **Restrict `appellation` Usage**:
    - Only use `appellation.trim()` as a last-resort fallback when both the official EN client and `arknights.wiki.gg` lack an entry, and strictly guard it with `/^[\x20-\x7E\u00C0-\u024F]+$/` so Cyrillic/non-Latin subtitles never leak into English UI.
+
+---
+
+## 4. Conclusion / Migration Done
+
+On **2026-10-18**, the migration from legacy control repositories (`Kengxxiao/ArknightsGameData` & `Kengxxiao/ArknightsGameData_YoStar`) to **`SanityGoneAK/arknights-gamedata`** was officially completed across both server environments:
+
+1. **Unified Upstream Repository**:
+   - **Global (EN)**: `SanityGoneAK/arknights-gamedata`, branch `main`, folder `en/gamedata/excel/`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
+   - **China (CN)**: `SanityGoneAK/arknights-gamedata`, branch `main`, folder `cn/gamedata/excel/`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
+2. **Decommissioning Legacy Control**:
+   - Both `Kengxxiao/ArknightsGameData` and `Kengxxiao/ArknightsGameData_YoStar` are **officially deprecated and fully decommissioned**.
+   - No data fetch scripts, build pipelines, or CI workflows point to Kengxxiao repositories.
+3. **Validation & Integrity Sign-Off**:
+   - All 11 CN tables downloaded and validated via `scripts/data/schemas/` with **0 errors**.
+   - Full operator dataset integrity confirmed: **434 / 434 playable operators** preserved, **848 items**, **76 recipes**, and **1620 stages** verified.
+   - Zero referential integrity issues reported by `npm run data:validate`.
+   - Complete 100% ID parity between EN and CN rosters (`char_XXX` cross-linking verified).

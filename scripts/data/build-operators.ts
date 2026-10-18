@@ -909,7 +909,8 @@ async function main(): Promise<void> {
     tracker.sources.community +
     tracker.sources.manual +
     tracker.sources.machine +
-    tracker.sources.zh
+    tracker.sources.zh +
+    tracker.sources.pending
   const i18nReport = {
     generatedAt: new Date().toISOString(),
     sources: tracker.sources,
@@ -923,6 +924,7 @@ async function main(): Promise<void> {
       manual: ((tracker.sources.manual / totalStrings) * 100).toFixed(2) + '%',
       machine: ((tracker.sources.machine / totalStrings) * 100).toFixed(2) + '%',
       zh: ((tracker.sources.zh / totalStrings) * 100).toFixed(2) + '%',
+      pending: ((tracker.sources.pending / totalStrings) * 100).toFixed(2) + '%',
     },
   }
   await fs.writeFile(reportPath, JSON.stringify(i18nReport, null, 2), 'utf-8')
@@ -939,6 +941,7 @@ async function main(): Promise<void> {
   console.log(`  Manual:    ${tracker.sources.manual} (${i18nReport.percentage.manual})`)
   console.log(`  Machine:   ${tracker.sources.machine} (${i18nReport.percentage.machine})`)
   console.log(`  ZH only:   ${tracker.sources.zh} (${i18nReport.percentage.zh})`)
+  console.log(`  Pending:   ${tracker.sources.pending} (${i18nReport.percentage.pending})`)
   console.log(`  Stale:     ${tracker.staleCount}`)
   console.log(`\nModules Breakdown:`)
   console.log(`  Operators with modules:   ${stats.modules.opsWithModules}`)

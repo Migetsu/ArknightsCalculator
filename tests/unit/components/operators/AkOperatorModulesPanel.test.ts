@@ -170,7 +170,7 @@ describe('AkOperatorModulesPanel', () => {
     expect(partBlocks?.[1]?.text()).toContain('1200')
   })
 
-  it('resolves item name LMD for currency 4001 in upgrade requirements', async () => {
+  it('resolves item name, iconId, and tier for upgrade requirements', async () => {
     const wrapper = await mountSuspended(AkOperatorModulesPanel, {
       props: { modules: mockModules },
     })
@@ -181,5 +181,7 @@ describe('AkOperatorModulesPanel', () => {
 
     expect(lmdIcon?.exists()).toBe(true)
     expect(lmdIcon?.props('name')).toBe('LMD')
+    expect(lmdIcon?.props('iconId')).toBe('GOLD')
+    expect(lmdIcon?.props('tier')).toBe(4)
   })
 })

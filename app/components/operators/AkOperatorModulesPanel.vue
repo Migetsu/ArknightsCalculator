@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type {
-  OperatorModule,
-  OperatorModulePartCandidate,
-  I18nString,
-} from '~/../shared/schemas/operator'
+import type { OperatorModule, OperatorModulePartCandidate } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
+import type { GameItem } from '~/../shared/schemas/item'
 import rawItemsData from '~/../data/items.json'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
@@ -19,22 +16,26 @@ interface Props {
   modules: OperatorModule[]
 }
 
-interface ItemEntry {
-  id: string
-  name: I18nString
-}
-
 const props = defineProps<Props>()
 
 const { t, locale } = useI18n()
 
-const itemsMap = new Map((rawItemsData as unknown as ItemEntry[]).map((it) => [it.id, it]))
+const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
 
 function getItemName(id: string): string {
   if (id === '4001') return 'LMD'
   const it = itemsMap.get(id)
   if (!it) return id
-  return resolveI18nString(it.name, locale.value as 'en' | 'ru' | 'zh') || it.name?.en || id
+  return resolveI18nString(it.name, locale.value as 'en' | 'zh') || it.name?.en || id
+}
+
+function getItemIconId(id: string): string | undefined {
+  return itemsMap.get(id)?.iconId
+}
+
+function getItemRarity(id: string): 1 | 2 | 3 | 4 | 5 {
+  const r = itemsMap.get(id)?.rarity ?? 1
+  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
 }
 
 // Track active stage per module (1..3)
@@ -50,13 +51,13 @@ function toggleStory(id: string): void {
 }
 
 function getModuleName(m: OperatorModule): string {
-  return resolveI18nString(m.name, locale.value as 'en' | 'ru' | 'zh') || m.name?.en || m.type
+  return resolveI18nString(m.name, locale.value as 'en' | 'zh') || m.name?.en || m.type
 }
 
 function getModuleDescription(m: OperatorModule): string {
   if (!m.description) return ''
   return (
-    resolveI18nString(m.description, locale.value as 'en' | 'ru' | 'zh') ||
+    resolveI18nString(m.description, locale.value as 'en' | 'zh') ||
     m.description.en ||
     m.description.zh ||
     ''
@@ -76,11 +77,11 @@ function getStageParts(m: OperatorModule, stageNum: number) {
 function getCandidateText(cand: OperatorModulePartCandidate, currentLocale: string): string {
   return (
     (cand.upgradeDescription &&
-      resolveI18nString(cand.upgradeDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.upgradeDescription, currentLocale as 'en' | 'zh')) ||
     (cand.additionalDescription &&
-      resolveI18nString(cand.additionalDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.additionalDescription, currentLocale as 'en' | 'zh')) ||
     (cand.overrideDescription &&
-      resolveI18nString(cand.overrideDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.overrideDescription, currentLocale as 'en' | 'zh')) ||
     cand.upgradeDescription?.en ||
     cand.additionalDescription?.en ||
     cand.overrideDescription?.en ||
@@ -160,7 +161,11 @@ function getStageCost(m: OperatorModule, stageNum: number) {
               {{ getModuleName(mod) }}
               <AkModuleType :type="mod.typeName2" size="xs" />
               <AkTranslationBadge
-                v-if="mod.name?.source === 'machine' || mod.name?.stale"
+                v-if="
+                  mod.name?.source === 'machine' ||
+                  mod.name?.source === 'pending' ||
+                  mod.name?.stale
+                "
                 :source="mod.name?.source"
                 :stale="mod.name?.stale"
               />
@@ -176,6 +181,15 @@ function getStageCost(m: OperatorModule, stageNum: number) {
         <div class="ak-operator-modules-panel__dossier-header">
           <span class="ak-operator-modules-panel__sub-title">
             {{ t('operators.detail.modules.story') }}
+            <AkTranslationBadge
+              v-if="
+                mod.description?.source === 'machine' ||
+                mod.description?.source === 'pending' ||
+                mod.description?.stale
+              "
+              :source="mod.description?.source"
+              :stale="mod.description?.stale"
+            />
           </span>
           <AkButton
             v-if="mod.type !== 'INITIAL'"
@@ -274,7 +288,9 @@ function getStageCost(m: OperatorModule, stageNum: number) {
             v-for="item in getStageCost(mod, activeStages[mod.id] ?? 1)"
             :key="item.id"
             :item-id="item.id"
+            :icon-id="getItemIconId(item.id)"
             :name="getItemName(item.id)"
+            :tier="getItemRarity(item.id)"
             :count="item.count"
             size="sm"
           />

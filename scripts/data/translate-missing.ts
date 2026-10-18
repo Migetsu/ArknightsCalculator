@@ -187,13 +187,20 @@ export async function collectUntranslatedItems(): Promise<{
     }
   }
 
+  function isUntranslated(field?: { en?: string; zh?: string; source?: string } | null): boolean {
+    if (!field) return false
+    if (field.source === 'zh' || field.source === 'pending') return true
+    if (!field.en || field.en === field.zh || field.en === '[Pending Translation]') return true
+    return false
+  }
+
   for (const file of files) {
     const raw = await fs.readFile(path.join(opsDir, file), 'utf-8')
     const op = JSON.parse(raw) as RawOperatorFile
     const charId = op.id
     const charNameZh = op.name?.zh || charId
 
-    if (op.name && op.name.source === 'zh') {
+    if (isUntranslated(op.name)) {
       registerString('operator_name', charId, charNameZh, `${charId}.name`, op.name.zh, 'operators')
     }
 
@@ -203,7 +210,7 @@ export async function collectUntranslatedItems(): Promise<{
       const levels = skill.levels || []
       for (let lIdx = 0; lIdx < levels.length; lIdx++) {
         const lvl = levels[lIdx]!
-        if (lvl.name && lvl.name.source === 'zh') {
+        if (isUntranslated(lvl.name)) {
           registerString(
             'skill_name',
             charId,
@@ -213,7 +220,7 @@ export async function collectUntranslatedItems(): Promise<{
             'skills',
           )
         }
-        if (lvl.description && lvl.description.source === 'zh') {
+        if (isUntranslated(lvl.description)) {
           registerString(
             'skill_desc',
             charId,
@@ -232,7 +239,7 @@ export async function collectUntranslatedItems(): Promise<{
       const candidates = talents[tIdx]?.candidates || []
       for (let cIdx = 0; cIdx < candidates.length; cIdx++) {
         const cand = candidates[cIdx]!
-        if (cand.name && cand.name.source === 'zh') {
+        if (isUntranslated(cand.name)) {
           registerString(
             'talent_name',
             charId,
@@ -242,7 +249,7 @@ export async function collectUntranslatedItems(): Promise<{
             'talents',
           )
         }
-        if (cand.description && cand.description.source === 'zh') {
+        if (isUntranslated(cand.description)) {
           registerString(
             'talent_desc',
             charId,
@@ -260,10 +267,10 @@ export async function collectUntranslatedItems(): Promise<{
       const equipId = (mod as { id?: string; uniEquipId?: string }).id || (mod as { id?: string; uniEquipId?: string }).uniEquipId
       if (!equipId) continue
 
-      if (mod.name && mod.name.source === 'zh') {
+      if (isUntranslated(mod.name)) {
         registerString('module_name', charId, charNameZh, `${equipId}.name`, mod.name.zh, 'terms')
       }
-      if (mod.description && mod.description.source === 'zh') {
+      if (isUntranslated(mod.description)) {
         registerString('module_desc', charId, charNameZh, `${equipId}.desc`, mod.description.zh, 'terms')
       }
     }

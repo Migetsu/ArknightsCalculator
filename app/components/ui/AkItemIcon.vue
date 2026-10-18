@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { resolveAsset, ITEM_ICON_DEFAULT_MAP } from '~/../shared/utils/resolveAsset'
+import rawItemsData from '~/../data/items.json'
+import type { GameItem } from '~/../shared/schemas/item'
 
 export type AkItemIconSize = 36 | 40 | 48 | 56 | 64 | 'sm' | 'md' | 'lg'
 
@@ -16,7 +18,7 @@ interface Props {
   /**
    * Item name for accessible alt text and fallback display.
    */
-  name: string
+  name?: string
   /**
    * Item material tier or rarity (1..5). Determines 1px border color.
    */
@@ -34,17 +36,44 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   itemId: undefined,
   iconId: undefined,
-  tier: 1,
+  name: undefined,
+  tier: undefined,
   count: undefined,
   size: 48,
 })
 
+const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
+
+const itemMeta = computed(() => (props.itemId ? itemsMap.get(props.itemId) : undefined))
+
+const effectiveIconId = computed(() => {
+  return (
+    props.iconId ||
+    itemMeta.value?.iconId ||
+    (props.itemId ? ITEM_ICON_DEFAULT_MAP[props.itemId] : undefined)
+  )
+})
+
+const effectiveTier = computed<1 | 2 | 3 | 4 | 5>(() => {
+  if (props.tier !== undefined) return props.tier
+  const r = itemMeta.value?.rarity ?? 1
+  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
+})
+
+const effectiveName = computed<string>(() => {
+  if (props.name && props.name !== props.itemId) {
+    return props.name
+  }
+  if (itemMeta.value) {
+    return itemMeta.value.name?.en || itemMeta.value.name?.zh || props.itemId || 'Item'
+  }
+  return props.name || props.itemId || 'Item'
+})
+
 const candidateUrls = computed(() => {
   if (!props.itemId && !props.iconId) return []
-  const resolvedIconId =
-    props.iconId || (props.itemId ? ITEM_ICON_DEFAULT_MAP[props.itemId] : undefined)
   const targetId = props.itemId || props.iconId || ''
-  return resolveAsset('item', targetId, { iconId: resolvedIconId })
+  return resolveAsset('item', targetId, { iconId: effectiveIconId.value })
 })
 
 const currentCandidateIndex = ref(0)
@@ -86,8 +115,9 @@ const normalizedSize = computed<number>(() => {
 })
 
 const initials = computed(() => {
-  if (!props.name) return 'ITM'
-  const trimmed = props.name.trim()
+  const label = effectiveName.value
+  if (!label) return 'ITM'
+  const trimmed = label.trim()
   if (trimmed.length <= 4) return trimmed.toUpperCase()
   const words = trimmed.split(/\s+/)
   if (words.length > 1) {
@@ -104,8 +134,8 @@ const initials = computed(() => {
 <template>
   <div
     class="ak-item-icon"
-    :class="[`ak-item-icon--tier-${tier}`, `ak-item-icon--size-${normalizedSize}`]"
-    :title="name"
+    :class="[`ak-item-icon--tier-${effectiveTier}`, `ak-item-icon--size-${normalizedSize}`]"
+    :title="effectiveName"
     :style="{
       width: `${normalizedSize}px`,
       height: `${normalizedSize}px`,
@@ -115,7 +145,7 @@ const initials = computed(() => {
       <img
         v-if="activeSrc"
         :src="activeSrc"
-        :alt="name"
+        :alt="effectiveName"
         :width="normalizedSize"
         :height="normalizedSize"
         class="ak-item-icon__image"
