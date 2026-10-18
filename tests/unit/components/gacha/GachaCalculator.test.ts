@@ -35,6 +35,38 @@ describe('GachaCalculator', () => {
     expect(rollsVal.text()).toBe('23')
   })
 
+  it('correctly calculates total rolls when filling from depot with joint currency remainder (420 Orundum + 1 OP = 1 pull)', async () => {
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: { activeBannerType: 'standard' },
+    })
+
+    const depotStore = useDepotStore()
+    depotStore.currencies.orundum = 420
+    depotStore.currencies.originitePrime = 1
+
+    const fillBtn = wrapper.find('.gacha-calc__depot-btn')
+    await fillBtn.trigger('click')
+
+    const rollsVal = wrapper.find('.gacha-calc__stat-value--rolls')
+    expect(rollsVal.text()).toBe('1')
+  })
+
+  it('correctly calculates total rolls when filling from depot with only OP yielding whole pulls (0 Orundum + 4 OP = 1 pull)', async () => {
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: { activeBannerType: 'standard' },
+    })
+
+    const depotStore = useDepotStore()
+    depotStore.currencies.orundum = 0
+    depotStore.currencies.originitePrime = 4
+
+    const fillBtn = wrapper.find('.gacha-calc__depot-btn')
+    await fillBtn.trigger('click')
+
+    const rollsVal = wrapper.find('.gacha-calc__stat-value--rolls')
+    expect(rollsVal.text()).toBe('1')
+  })
+
   it('renders probability milestones cards including 300-spark milestone', async () => {
     const wrapper = await mountSuspended(GachaCalculator, {
       props: { activeBannerType: 'limited' },

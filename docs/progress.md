@@ -1,5 +1,18 @@
 # Project Progress
 
+- **Gacha Pulls Calculation Fix (`fix/gacha-pulls-calculation`):**
+  - **Shared Math Engine (`shared/utils/gacha/index.ts`):**
+    - Corrected joint currency conversion in `calculateTotalPulls`: `pullsFromCurrency = Math.floor((orundum + originitePrime * 180) / 600)`.
+    - Solved remainder loss bug where fractions like 420 Orundum + 1 OP (600 eq.) or 300 Orundum + 2 OP (660 eq.) failed to yield a pull.
+    - Added JSDoc detailing roll conversion ratios and remainder rules.
+  - **Component Verification (`app/components/gacha/GachaCalculator.vue`):**
+    - Confirmed single source of truth via `calculateTotalPulls` without any duplicate formula in UI.
+    - Stepper step 600 preserved for Orundum.
+  - **Test Coverage:**
+    - `tests/unit/shared/gacha.test.ts`: Added 11 test cases covering exact currency addition, zero-treasury, OP only, single/ten permits, remainder discard.
+    - `tests/unit/components/gacha/GachaCalculator.test.ts`: Added Fill from Depot test cases for 420 Orundum + 1 OP = 1 pull and 0 Orundum + 4 OP = 1 pull.
+  - **Verification:** `typecheck`, `test` (447/447 passed across 68 suites), `lint` all 100% green.
+
 - **Official EN Game Data Migration to SanityGoneAK & Appellation Hardening (`feat/en-source-migration-sanitygone`):**
   - **Data Source & Priority Chain (`scripts/data/sources.config.ts`, `scripts/data/i18n-layers.ts`, `scripts/data/build-operators.ts`):**
     - Pinned official EN source to `SanityGoneAK/arknights-gamedata`, branch `main`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, locale `en`.
