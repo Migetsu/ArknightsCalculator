@@ -2,11 +2,14 @@
 import { ref } from 'vue'
 import type { OperatorSkill } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
+import rawItemsData from '~/../data/items.json'
+import type { GameItem } from '~/../shared/schemas/item'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   skills: OperatorSkill[]
@@ -15,6 +18,24 @@ interface Props {
 const props = defineProps<Props>()
 
 const { t, locale } = useI18n()
+
+const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
+
+function getItemName(id: string): string {
+  if (id === '4001') return 'LMD'
+  const it = itemsMap.get(id)
+  if (!it) return id
+  return resolveI18nString(it.name, locale.value as 'en' | 'zh') || it.name.en || id
+}
+
+function getItemIconId(id: string): string | undefined {
+  return itemsMap.get(id)?.iconId
+}
+
+function getItemRarity(id: string): 1 | 2 | 3 | 4 | 5 {
+  const r = itemsMap.get(id)?.rarity ?? 1
+  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
+}
 
 // Track chosen level per skill (default: max level/mastery)
 const selectedLevels = ref<Record<string, number>>(
@@ -79,7 +100,11 @@ function getLevelLabel(idx: number): string {
             />
           </h4>
           <div class="ak-operator-skills-panel__badges">
-            <AkBadge size="sm" variant="cyan">
+            <AkBadge
+              v-if="skill.levels[0]?.spType !== 8 && skill.levels[0]?.spType !== '8'"
+              size="sm"
+              variant="cyan"
+            >
               {{ t('operators.detail.skills.spTypes.' + (skill.levels[0]?.spType ?? 'PASSIVE')) }}
             </AkBadge>
             <AkBadge size="sm" variant="amber">
@@ -176,7 +201,9 @@ function getLevelLabel(idx: number): string {
               .levelUpCost"
             :key="item.id"
             :item-id="item.id"
-            :name="item.id"
+            :icon-id="getItemIconId(item.id)"
+            :name="getItemName(item.id)"
+            :tier="getItemRarity(item.id)"
             :count="item.count"
             size="sm"
           />

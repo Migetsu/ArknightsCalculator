@@ -1,5 +1,29 @@
 # Project Progress
 
+- **Fix Operator Detail Item Icons & Skill SP Badges (`fix/operator-detail-item-icons`):**
+  - **Issue:**
+    - In operator skill and module upgrade requirements, material images failed to load, falling back to dark boxes displaying initials with IDs (e.g. `301` with count `6` for `30165` Rephasic Enantiomer; `PP` with count `4` for `30115` Polymerization Preparation).
+    - In operator skills panel, passive skills with `spType: 8` rendered an untranslated key `OPERATORS.DETAIL.SKILLS.SPTYPES.8` alongside duplicate `[PASSIVE]` badge.
+  - **Root Cause:**
+    - In Arknights game assets, material sprites are named by `iconId` (e.g. `MTL_SL_DYT.png`, `MTL_SL_PP.png`, `MTL_SL_RS.png`), not by numeric `id`.
+    - `ITEM_ICON_DEFAULT_MAP` in `resolveAsset.ts` only had 18 hardcoded mappings, lacking regular crafting materials and chips.
+    - `AkOperatorSkillsPanel.vue` and `AkOperatorModulesPanel.vue` only bound `:item-id="item.id"` without `icon-id` or `tier`, and passed `:name="item.id"` in skills.
+    - Skills panel unconditionally concatenated `operators.detail.skills.spTypes.` with numeric `spType: 8`.
+  - **Fix:**
+    - Populated `ITEM_ICON_DEFAULT_MAP` in `shared/utils/resolveAsset.ts` with all 114 item mappings from `data/items.json`.
+    - Enhanced `AkItemIcon.vue` to automatically resolve `iconId`, `effectiveName`, and `effectiveTier` using `data/items.json` and `ITEM_ICON_DEFAULT_MAP` whenever they are omitted or equal to `itemId`.
+    - Updated `AkOperatorSkillsPanel.vue` and `AkOperatorModulesPanel.vue` to explicitly bind `:icon-id`, `:name`, and `:tier` for all levelUpCost / stage upgrade items.
+    - Updated `AkOperatorSkillsPanel.vue` to suppress the redundant cyan badge when `spType === 8`, and added `"8": "Passive"` to `i18n/locales/en.json`.
+  - **Verification:**
+    - `i18n:check`: 589 valid keys.
+    - `typecheck`: 0 errors.
+    - `test`: 474/474 passed across 70 test suites (added new test suite `AkOperatorSkillsPanel.test.ts`, expanded `AkItemIcon.test.ts` and `AkOperatorModulesPanel.test.ts`).
+    - `lint`: 0 errors, 0 warnings.
+    - `build`: production build completed successfully in 53s.
+    - Captured verification screenshots on port 3001:
+      - `docs/screenshots/angelina-skills-m3-fixed.png`
+      - `docs/screenshots/civilight-eterna-module-stage3-fixed.png`
+
 - **Russian Localization Removal & Community Translation Audit (`chore/remove-ru-and-audit-community-translations`):**
   - **Community Translations Audit (`MusicOnline/AK-Dataknights`, `Jetroyz`, etc.):**
     - Audited `MusicOnline/AK-Dataknights`: The repository mirrors upstream raw game data and only provides UI translations (`locales/`) and user data overrides. It does NOT maintain machine-readable English skill/talent descriptions for unreleased CN units.
