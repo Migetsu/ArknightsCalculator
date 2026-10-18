@@ -210,7 +210,7 @@ describe('i18n-layers resolution', () => {
     expect(tracker.sources.machine).toBe(1)
   })
 
-  it('layer 5: falls back to zh original when no translation exists', () => {
+  it('layer 5: falls back to pending placeholder when no translation exists', () => {
     const tracker = createI18nTracker()
     const result = resolveLayeredI18nString(
       {
@@ -222,11 +222,11 @@ describe('i18n-layers resolution', () => {
       tracker,
     )
 
-    expect(result.source).toBe('zh')
-    expect(result.en).toBe('神秘物品')
+    expect(result.source).toBe('pending')
+    expect(result.en).toBe('[Pending Translation]')
     expect(result.zh).toBe('神秘物品')
-    expect(result.isMachineTranslation).toBe(true)
-    expect(tracker.sources.zh).toBe(1)
+    expect(result.isMachineTranslation).toBe(false)
+    expect(tracker.sources.pending).toBe(1)
   })
 
   it('rejects Cyrillic or CJK appellations as English fallback', () => {
@@ -241,8 +241,8 @@ describe('i18n-layers resolution', () => {
       mockContext,
       tracker,
     )
-    expect(cyrillicRes.source).toBe('zh')
-    expect(cyrillicRes.en).toBe('维伊')
+    expect(cyrillicRes.source).toBe('pending')
+    expect(cyrillicRes.en).toBe('[Pending Translation]')
 
     const latinRes = resolveLayeredI18nString(
       {

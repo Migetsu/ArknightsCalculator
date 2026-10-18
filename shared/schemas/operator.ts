@@ -7,9 +7,17 @@ export type ContentLocale = 'ru' | 'en' | 'zh'
 
 /**
  * Provenance source for localized strings.
- * Priority: manual > official > wiki > community > machine > zh
+ * Priority: manual > official > wiki > community > machine > pending > zh
  */
-export const I18nSourceSchema = z.enum(['manual', 'official', 'wiki', 'community', 'machine', 'zh'])
+export const I18nSourceSchema = z.enum([
+  'manual',
+  'official',
+  'wiki',
+  'community',
+  'machine',
+  'pending',
+  'zh',
+])
 export type I18nSource = z.infer<typeof I18nSourceSchema>
 
 /**
@@ -50,6 +58,17 @@ export function isMachineTranslated(text: I18nInput | undefined | null): boolean
 export function isCommunityTranslated(text: I18nInput | undefined | null): boolean {
   if (!text) return false
   return text.source === 'community'
+}
+
+/**
+ * Checks whether the localized string is a pending translation placeholder.
+ */
+export function isPendingTranslation(text: I18nInput | string | undefined | null): boolean {
+  if (!text) return false
+  if (typeof text === 'string') {
+    return text.trim() === '[Pending Translation]'
+  }
+  return text.source === 'pending' || text.en === '[Pending Translation]'
 }
 
 /**
