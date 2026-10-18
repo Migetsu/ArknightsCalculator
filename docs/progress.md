@@ -875,10 +875,16 @@
 
 ## In progress
 
-- None.
+- Machine translation of CN-only content via Gemini API (`feat/mt-gemini-client`).
+  Step 1 of 5: REST client (`scripts/data/lib/gemini-client.ts`) + `--check` mode.
+  Pipeline and model-choice rationale: `docs/i18n-machine-translation.md`.
 
 ## Next
 
+- Machine translation step 2: prompt builder with glossary injection and `--dry-run`
+  (regenerate `.cache/translate/in/` with `--export` first — existing batches are stale).
+- Machine translation step 3: `--run [--limit N]` with per-string validation and
+  corrective retry, `--resume`, and `failed.jsonl` for strings that never validate.
 - Module `PLN-02`: Operator planner store & target state persistence via Pinia.
 - Module `DEP-01`: Depot inventory management & craft tree decomposition core.
 
