@@ -80,7 +80,7 @@ function isModuleActive(path: string): boolean {
         {{ t('nav.settings') }}
       </NuxtLink>
 
-      <!-- Sync Button with status dot -->
+      <!-- Sync Button with tactical SVG icon -->
       <AkButton
         variant="outline"
         size="sm"
@@ -88,6 +88,25 @@ function isModuleActive(path: string): boolean {
         :aria-label="t('common.sync')"
         @click="openSyncModal"
       >
+        <template #icon>
+          <svg
+            class="ak-header__sync-icon"
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+            <path d="M21 3v5h-5" />
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+            <path d="M3 21v-5h5" />
+          </svg>
+        </template>
         <span class="ak-header__sync-dot" aria-hidden="true" />
         <span class="ak-header__sync-text">{{ t('common.sync') }}</span>
       </AkButton>
@@ -129,6 +148,25 @@ function isModuleActive(path: string): boolean {
             class="layout-default__user-sync-btn ak-header__drawer-sync-btn"
             @click="openSyncModal"
           >
+            <template #icon>
+              <svg
+                class="ak-header__sync-icon"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                <path d="M21 3v5h-5" />
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                <path d="M3 21v-5h5" />
+              </svg>
+            </template>
             <span class="ak-header__sync-dot" aria-hidden="true" />
             <span>{{ t('common.sync') }}</span>
           </AkButton>
@@ -317,19 +355,26 @@ function isModuleActive(path: string): boolean {
 
   &__sync-btn {
     height: 36px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--font-size-xs);
     box-sizing: border-box;
+    font-size: var(--font-size-xs);
+
+    &:hover .ak-header__sync-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sync-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: transform var(--transition-normal);
+
+    @include reduced-motion;
   }
 
   &__sync-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-accent-primary);
-    flex-shrink: 0;
+    display: none;
   }
 
   &__sync-text {
@@ -337,10 +382,11 @@ function isModuleActive(path: string): boolean {
   }
 
   &__drawer-sync-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
     font-size: var(--font-size-xs);
+
+    &:hover .ak-header__sync-icon {
+      transform: rotate(180deg);
+    }
   }
 
   &__burger {
