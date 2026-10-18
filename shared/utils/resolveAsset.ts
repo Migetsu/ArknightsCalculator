@@ -288,6 +288,13 @@ const PORTRAIT_DEFAULT_VARIANT_MAP: Record<string, string> = {
  * @param options - Formatting, iconId override, and variant options.
  * @returns Array of fallback URL candidates.
  */
+/**
+ * URL-encodes asset filename characters such as '#' to '%23' to ensure valid CDN request paths.
+ */
+function encodeAssetPath(filename: string): string {
+  return filename.replace(/#/g, '%23')
+}
+
 export function resolveAsset(
   kind: AssetKind,
   id: string | null | undefined,
@@ -303,10 +310,50 @@ export function resolveAsset(
 
   // 1. Full character artwork ('art') with thumbnail -> primary CDN -> fallback chain
   if (kind === 'art') {
+    // Check if cleanId or options.variant specifies an alternate skin
+    let skinBaseId: string | null = null
+    const rawVariant = options?.variant?.trim()
+
+    if (cleanId.includes('@') || cleanId.includes('#')) {
+      skinBaseId = cleanId.replace(/@/g, '_')
+    } else if (rawVariant && (rawVariant.includes('@') || rawVariant.includes('#'))) {
+      const normalizedVariant = rawVariant.replace(/@/g, '_')
+      skinBaseId = normalizedVariant.startsWith(`${cleanId}_`)
+        ? normalizedVariant
+        : `${cleanId}_${normalizedVariant}`
+    }
+
+    if (skinBaseId) {
+      const skinFileBase = skinBaseId.endsWith('b') ? skinBaseId : `${skinBaseId}b`
+      const skinFilename = `${skinFileBase}.${ext}`
+      const encodedFilename = encodeAssetPath(skinFilename)
+
+      const candidates: string[] = [
+        `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,
+      ]
+
+      // Fallback to portrait
+      const portraitId = skinBaseId.endsWith('b') ? skinBaseId.slice(0, -1) : skinBaseId
+      const encodedPortrait = encodeAssetPath(`${portraitId}.${ext}`)
+      candidates.push(
+        `${PRIMARY_CDN_BASE}/portrait/${encodedPortrait}`,
+        `${SECONDARY_CDN_BASE}/portrait/${encodedPortrait}`,
+      )
+
+      // Fallback to avatar
+      candidates.push(
+        `${PRIMARY_CDN_BASE}/avatar/${encodedPortrait}`,
+        `${SECONDARY_CDN_BASE}/avatar/${encodedPortrait}`,
+      )
+
+      return Array.from(new Set(candidates))
+    }
+
     const isLowRarity = LOW_RARITY_OPERATOR_IDS.has(cleanId)
     // Default to '2' (Elite 2) if operator has E2, otherwise '1' (E0/E1)
     const primaryVariant =
-      options?.variant ??
+      rawVariant ??
       (PORTRAIT_DEFAULT_VARIANT_MAP[cleanId]
         ? PORTRAIT_DEFAULT_VARIANT_MAP[cleanId]!
         : isLowRarity
@@ -315,6 +362,7 @@ export function resolveAsset(
 
     const fileSuffix = primaryVariant.endsWith('b') ? primaryVariant : `${primaryVariant}b`
     const primaryFilename = `${cleanId}_${fileSuffix}.${ext}`
+    const encodedPrimaryFilename = encodeAssetPath(primaryFilename)
 
     const candidates: string[] = []
 
@@ -336,13 +384,13 @@ export function resolveAsset(
 
     // 1b. Full artwork candidates (primary & secondary CDNs)
     candidates.push(
-      `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
-      `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      `${PRIMARY_CDN_BASE}/${dir}/${encodedPrimaryFilename}`,
+      `${SECONDARY_CDN_BASE}/${dir}/${encodedPrimaryFilename}`,
     )
 
     // 1c. If requested E2 art, fallback to E1 art (_1b.png)
     if (primaryVariant === '2') {
-      const e1Filename = `${cleanId}_1b.${ext}`
+      const e1Filename = encodeAssetPath(`${cleanId}_1b.${ext}`)
       candidates.push(
         `${PRIMARY_CDN_BASE}/${dir}/${e1Filename}`,
         `${SECONDARY_CDN_BASE}/${dir}/${e1Filename}`,
@@ -366,23 +414,44 @@ export function resolveAsset(
 
   // 2. Portrait kind handling
   if (kind === 'portrait') {
-    if (options?.variant) {
-      const filename = `${cleanId}_${options.variant}.${ext}`
-      return [`${PRIMARY_CDN_BASE}/${dir}/${filename}`, `${SECONDARY_CDN_BASE}/${dir}/${filename}`]
+    let targetId = cleanId.replace(/@/g, '_')
+    const rawVariant = options?.variant?.trim()
+
+    if (rawVariant) {
+      const normalizedVariant = rawVariant.replace(/@/g, '_')
+      if (normalizedVariant.startsWith(`${targetId}_`)) {
+        targetId = normalizedVariant
+      } else if (normalizedVariant.includes('#') || normalizedVariant.includes('_')) {
+        targetId = `${targetId}_${normalizedVariant}`
+      } else {
+        const filename = encodeAssetPath(`${targetId}_${normalizedVariant}.${ext}`)
+        return [
+          `${PRIMARY_CDN_BASE}/${dir}/${filename}`,
+          `${SECONDARY_CDN_BASE}/${dir}/${filename}`,
+        ]
+      }
+    }
+
+    const primaryFilename = encodeAssetPath(`${targetId}.${ext}`)
+    if (targetId.includes('#')) {
+      return [
+        `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      ]
     }
 
     // Default portrait naming in ArknightsGameResource uses _1 (or _2 for class changes)
-    const primaryVariant = PORTRAIT_DEFAULT_VARIANT_MAP[cleanId] ?? '1'
+    const primaryVariant = PORTRAIT_DEFAULT_VARIANT_MAP[targetId] ?? '1'
     const altVariant = primaryVariant === '1' ? '2' : undefined
 
-    const primaryFilename = `${cleanId}_${primaryVariant}.${ext}`
+    const defaultFilename = encodeAssetPath(`${targetId}_${primaryVariant}.${ext}`)
     const candidates = [
-      `${PRIMARY_CDN_BASE}/${dir}/${primaryFilename}`,
-      `${SECONDARY_CDN_BASE}/${dir}/${primaryFilename}`,
+      `${PRIMARY_CDN_BASE}/${dir}/${defaultFilename}`,
+      `${SECONDARY_CDN_BASE}/${dir}/${defaultFilename}`,
     ]
 
     if (altVariant) {
-      const altFilename = `${cleanId}_${altVariant}.${ext}`
+      const altFilename = encodeAssetPath(`${targetId}_${altVariant}.${ext}`)
       candidates.push(
         `${PRIMARY_CDN_BASE}/${dir}/${altFilename}`,
         `${SECONDARY_CDN_BASE}/${dir}/${altFilename}`,
@@ -392,15 +461,30 @@ export function resolveAsset(
     return candidates
   }
 
-  // 2. Avatar kind handling with Amiya class change mapping
-  if (kind === 'avatar' && !options?.variant) {
-    const overrideName = AVATAR_DEFAULT_OVERRIDE_MAP[cleanId]
+  // 3. Avatar kind handling with Amiya class change mapping
+  if (kind === 'avatar') {
+    let targetId = cleanId.replace(/@/g, '_')
+    const rawVariant = options?.variant?.trim()
+
+    if (rawVariant) {
+      const normalizedVariant = rawVariant.replace(/@/g, '_')
+      targetId = normalizedVariant.startsWith(`${targetId}_`)
+        ? normalizedVariant
+        : `${targetId}_${normalizedVariant}`
+    }
+
+    if (targetId.includes('#')) {
+      const filename = encodeAssetPath(`${targetId}.${ext}`)
+      return [`${PRIMARY_CDN_BASE}/${dir}/${filename}`, `${SECONDARY_CDN_BASE}/${dir}/${filename}`]
+    }
+
+    const overrideName = AVATAR_DEFAULT_OVERRIDE_MAP[targetId]
     if (overrideName) {
       return [
         `${PRIMARY_CDN_BASE}/${dir}/${overrideName}.${ext}`,
         `${SECONDARY_CDN_BASE}/${dir}/${overrideName}.${ext}`,
-        `${PRIMARY_CDN_BASE}/${dir}/${cleanId}.${ext}`,
-        `${SECONDARY_CDN_BASE}/${dir}/${cleanId}.${ext}`,
+        `${PRIMARY_CDN_BASE}/${dir}/${targetId}.${ext}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${targetId}.${ext}`,
       ]
     }
   }

@@ -1,5 +1,43 @@
 # Project Progress
 
+- **Operator Skins Ingestion Pipeline (`feat/operator-skins`):**
+  - **Raw Data Ingestion (`scripts/data/sources.config.ts`, `scripts/data/fetch-raw.ts`):**
+    - Added `skin_table.json` to both `cn` and `en` source table configurations from `SanityGoneAK/arknights-gamedata` at commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
+    - Downloaded and cached `.cache/raw/cn/skin_table.json` (4.54 MB, 2410 entries) and `.cache/raw/en/skin_table.json` (4.11 MB, 2114 entries).
+  - **Raw Price Investigation & Analysis:**
+    - Thoroughly investigated raw game data across all 60 client tables (`skin_table.json`, `shop_client_table.json`, `activity_table.json`, `item_table.json`, `gamedata_const.json`).
+    - Proved with concrete data that numeric Originite Prime price does not exist as a static column in client configuration dumps; skin store offerings are served dynamically by game server network packets (`/shop/getSkinShop`).
+    - Implemented a deterministic, pure price calculation function (`calculateSkinPrice` in `shared/utils/skin.ts`) matching official game rules:
+      - 24 OP for Dynamic Live2D skins with unique deployment entrance animation (`dynEntranceId !== null`) or dynamic voice (`dynIllustId !== null && voiceType === 'ALL'`).
+      - 21 OP for Live2D skins (`dynIllustId !== null`).
+      - 15 OP for known early effectless store skins (`KNOWN_15_OP_SKIN_IDS`).
+      - 18 OP for standard store outfits.
+      - `null` price for free reward outfits (Event Rewards, Quest Rewards, Integrated Strategies, Reclamation Algorithm, Gift packs, and default appearances).
+  - **Zod Schemas & Barrel Export (`shared/schemas/skin.ts`, `shared/schemas/index.ts`):**
+    - Created `SkinSchema`, `SkinListSchema`, and `SkinRecordMapSchema` covering all required fields (`skinId`, `charId`, `skinName: I18nStringSchema`, `brandId`, `brandName`, `drawerList`, `description`, `dialog`, `obtainApproach`, `isBuySkin`, `price`, `currency`, `illustId`, `avatarId`, `portraitId`, `isCnOnly`, `servers`).
+    - Created `shared/schemas/index.ts` re-exporting all domain schemas.
+    - Extended `ServerRegionSchema` to include `'en'`.
+  - **Generator Script & Build Command (`scripts/data/build-skins.ts`, `package.json`):**
+    - Created `scripts/data/build-skins.ts` merging CN and EN tables with multi-layer i18n name resolution (`skin.<skinId>.name`).
+    - Output `data/skins.json` contains 1359 playable operator skins (526 cosmetic outfits and 833 default appearances).
+    - Added `"data:skins": "tsx scripts/data/build-skins.ts"` in `package.json`.
+  - **Asset Resolution & URL-Encoding (`shared/utils/resolveAsset.ts`):**
+    - Enhanced `resolveAsset()` for `art`, `portrait`, and `avatar` to support skin variants (e.g. `resolveAsset('art', charId, { variant: skinId })`, `resolveAsset('art', skinId)`).
+    - Added automatic percent-encoding of `#` to `%23` for all asset URLs to resolve HTTP 404 hash truncation on CDN requests.
+  - **Integrity Validation & Testing:**
+    - Updated `scripts/data/validate-data.ts` to validate `data/skins.json` against `SkinListSchema` and verify all operator references.
+    - Added comprehensive unit test suite `tests/unit/schemas/skin.test.ts` (12 tests) covering schema parsing, default skin detection, and all price tiers.
+    - Expanded `tests/unit/shared/resolveAsset.test.ts` (23 tests) verifying skin art, portrait, and avatar resolution.
+    - Updated `docs/known-issues.md` (marked skin variants resolved) and created `docs/data-skins.md`.
+  - **Quality Gates:**
+    - `data:skins`: passed (1359 skins generated).
+    - `data:validate`: passed (0 integrity issues).
+    - `i18n:check`: passed (589 valid keys).
+    - `lint`: passed (0 errors, 0 warnings).
+    - `typecheck`: passed.
+    - `test`: passed (486/486 across 71 suites).
+    - `build`: passed (production bundle ready).
+
 - **Fix Operator Detail Item Icons & Skill SP Badges (`fix/operator-detail-item-icons`):**
   - **Issue:**
     - In operator skill and module upgrade requirements, material images failed to load, falling back to dark boxes displaying initials with IDs (e.g. `301` with count `6` for `30165` Rephasic Enantiomer; `PP` with count `4` for `30115` Polymerization Preparation).

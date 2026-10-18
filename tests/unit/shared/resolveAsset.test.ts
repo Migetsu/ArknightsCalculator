@@ -229,4 +229,40 @@ describe('resolveAsset utility', () => {
     expect(ITEM_ICON_DEFAULT_MAP['7003']).toBe('TKT_GACHA')
     expect(ITEM_ICON_DEFAULT_MAP['7004']).toBe('TKT_GACHA_10')
   })
+
+  describe('skin asset resolution', () => {
+    it('resolves skin art when passed as charId with full skinId variant', () => {
+      const candidates = resolveAsset('art', 'char_002_amiya', {
+        variant: 'char_002_amiya@winter#1',
+      })
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+      expect(candidates).toContain(`${PRIMARY_CDN_BASE}/avatar/char_002_amiya_winter%231.png`)
+    })
+
+    it('resolves skin art when passed as charId with short variant', () => {
+      const candidates = resolveAsset('art', 'char_002_amiya', {
+        variant: 'winter#1',
+      })
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+    })
+
+    it('resolves skin art directly by skinId', () => {
+      const candidates = resolveAsset('art', 'char_002_amiya@winter#1')
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+    })
+
+    it('resolves skin portrait and avatar with %23 URL-encoding', () => {
+      const portrait = resolveAsset('portrait', 'char_002_amiya@winter#1')
+      expect(portrait[0]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+      expect(portrait[1]).toBe(`${SECONDARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+
+      const avatar = resolveAsset('avatar', 'char_002_amiya_winter#1')
+      expect(avatar[0]).toBe(`${PRIMARY_CDN_BASE}/avatar/char_002_amiya_winter%231.png`)
+      expect(avatar[1]).toBe(`${SECONDARY_CDN_BASE}/avatar/char_002_amiya_winter%231.png`)
+    })
+  })
 })
