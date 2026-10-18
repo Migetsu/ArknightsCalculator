@@ -8,6 +8,11 @@ import {
 } from '../../shared/schemas/gameConstants'
 import type { RawGamedataConst } from './schemas/gamedata-const.schema'
 import type { RawItemTable } from './schemas/item-table.schema'
+import {
+  createI18nTracker,
+  loadI18nLayersContext,
+  resolveLayeredI18nString,
+} from './i18n-layers'
 
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const OUTPUT_PATH = path.resolve(process.cwd(), 'data/constants.json')
@@ -87,21 +92,47 @@ export async function buildConstants(): Promise<GameConstants> {
   ).sort()
 
   const terms: Record<string, GameTerm> = {}
+  // Terms go through the same i18n layer chain as everything else, so the machine
+  // translation layer can fill the tooltips that only exist in CN.
+  const ctx = await loadI18nLayersContext()
+  const trk = createI18nTracker()
+
   for (const termKey of allTermKeys) {
     const enTerm = constEn.termDescriptionDict?.[termKey]
     const cnTerm = constCn.termDescriptionDict?.[termKey]
 
+    const name = resolveLayeredI18nString(
+      {
+        key: `term.${termKey}.name`,
+        officialEn: enTerm?.termName,
+        zhText: cnTerm?.termName,
+      },
+      ctx,
+      trk,
+    )
+    const description = resolveLayeredI18nString(
+      {
+        key: `term.${termKey}.desc`,
+        officialEn: enTerm?.description,
+        zhText: cnTerm?.description,
+      },
+      ctx,
+      trk,
+    )
+
     terms[termKey] = {
       id: termKey,
       name: {
-        en: enTerm?.termName || cnTerm?.termName || termKey,
-        zh: cnTerm?.termName || enTerm?.termName || termKey,
-        source: enTerm?.termName ? 'official' : 'zh',
+        en: name.en,
+        zh: name.zh || termKey,
+        source: name.source,
+        isMachineTranslation: name.isMachineTranslation,
       },
       description: {
-        en: enTerm?.description || cnTerm?.description || '',
-        zh: cnTerm?.description || enTerm?.description || '',
-        source: enTerm?.description ? 'official' : 'zh',
+        en: description.en,
+        zh: description.zh,
+        source: description.source,
+        isMachineTranslation: description.isMachineTranslation,
       },
     }
   }

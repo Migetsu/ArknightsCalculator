@@ -27,6 +27,9 @@ export const UNTRANSLATED_TYPES = [
   'module_stage_desc',
   'potential_desc',
   'profile_text',
+  'term_name',
+  'term_desc',
+  'operator_tag',
 ] as const satisfies readonly UntranslatedType[]
 
 /**

@@ -187,6 +187,11 @@ export async function loadI18nLayersContext(): Promise<I18nLayersContext> {
 
 export const VALID_APPELLATION_REGEX = /^[\x20-\x7E\u00C0-\u024F]+$/
 export const HAS_LATIN_LETTER_REGEX = /[A-Za-z]/
+/**
+ * Matches a CJK ideograph (Han character), not fullwidth punctuation. A source
+ * string without one needs no translation.
+ */
+export const HAS_CJK_IDEOGRAPH_REGEX = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/
 
 /**
  * Validates that an appellation/fallback string contains only printable ASCII/Latin
@@ -314,7 +319,20 @@ export function resolveLayeredI18nString(
     }
   }
 
-  // 5. Pending fallback (no English available)
+  // 5. A source string with no CJK ideograph needs no translation: it is already the
+  //    correct text (a codename like `12F`, a term like `S.E.E.S.`). Returning the
+  //    pending placeholder for it would be wrong.
+  if (zh.length > 0 && !HAS_CJK_IDEOGRAPH_REGEX.test(zh)) {
+    if (tracker) tracker.sources.zh++
+    return {
+      en: zh,
+      zh,
+      source: 'zh',
+      isMachineTranslation: false,
+    }
+  }
+
+  // 6. Pending fallback (no English available)
   if (tracker) {
     tracker.sources.pending++
     tracker.missingEnCount++

@@ -19,6 +19,9 @@ export type UntranslatedType =
   | 'module_stage_desc'
   | 'potential_desc'
   | 'profile_text'
+  | 'term_name'
+  | 'term_desc'
+  | 'operator_tag'
 
 /**
  * Matches a CJK ideograph (Han character), not fullwidth punctuation.
@@ -78,6 +81,7 @@ interface RawOperatorFile {
   name: { en: string; zh: string; source: string }
   itemUsage?: I18nField
   itemDesc?: I18nField
+  tagList?: string[]
   potentialRanks?: Array<{ description?: I18nField }>
   skills?: Array<{
     skillId: string
@@ -179,6 +183,9 @@ export async function collectUntranslatedItems(): Promise<{
     module_stage_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     potential_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     profile_text: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    term_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    term_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    operator_tag: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
   })
 
   const byType = emptyStatsByType()
@@ -378,6 +385,40 @@ export async function collectUntranslatedItems(): Promise<{
     if (isUntranslated(op.itemDesc) && op.itemDesc?.zh) {
       registerString('profile_text', charId, charNameZh, `${charId}.itemDesc`, op.itemDesc.zh, 'operators')
     }
+
+    // Operator role tags are plain strings in the built file. The builder recovers
+    // the official EN name from the parallel EN/CN arrays, so this is only a
+    // fallback for a tag that has no English counterpart yet.
+    const tagList = op.tagList ?? []
+    for (let tagIdx = 0; tagIdx < tagList.length; tagIdx++) {
+      const tag = tagList[tagIdx]
+      if (typeof tag === 'string' && hasCjkIdeograph(tag)) {
+        registerString('operator_tag', charId, charNameZh, `${charId}.tag.${tagIdx}`, tag, 'terms')
+      }
+    }
+  }
+
+  // Terminology dictionary (buff/debuff names and their tooltip descriptions) lives
+  // in data/constants.json rather than in the operator files.
+  try {
+    const constantsPath = path.resolve(process.cwd(), 'data/constants.json')
+    const constantsRaw = await fs.readFile(constantsPath, 'utf-8')
+    const constants = JSON.parse(constantsRaw) as {
+      terms?: Record<string, { name?: I18nField; description?: I18nField }>
+    }
+
+    for (const [termId, term] of Object.entries(constants.terms ?? {})) {
+      const name = term.name
+      if (isUntranslated(name) && name?.zh) {
+        registerString('term_name', '', '', `term.${termId}.name`, name.zh, 'terms')
+      }
+      const description = term.description
+      if (isUntranslated(description) && description?.zh) {
+        registerString('term_desc', '', '', `term.${termId}.desc`, description.zh, 'terms')
+      }
+    }
+  } catch {
+    // constants.json is optional; the operator pass alone is still valid.
   }
 
   const items: UntranslatedItem[] = []
@@ -415,11 +456,14 @@ const PRIORITY_ORDER: Record<UntranslatedType, number> = {
   talent_name: 3,
   module_name: 4,
   potential_desc: 5,
-  skill_desc: 6,
-  talent_desc: 7,
-  module_stage_desc: 8,
-  module_desc: 9,
-  profile_text: 10,
+  term_name: 6,
+  skill_desc: 7,
+  talent_desc: 8,
+  module_stage_desc: 9,
+  module_desc: 10,
+  profile_text: 11,
+  term_desc: 12,
+  operator_tag: 13,
 }
 
 /**
@@ -486,6 +530,7 @@ export async function importBatches(): Promise<{
   const skillsMach: Record<string, { text: string; source: 'machine' }> = {}
   const talentsMach: Record<string, { text: string; source: 'machine' }> = {}
   const modulesMach: Record<string, { text: string; source: 'machine' }> = {}
+  const termsMach: Record<string, { text: string; source: 'machine' }> = {}
 
   // Load existing machine files to preserve existing translations
   async function loadExisting(file: string, target: Record<string, { text: string; source: 'machine' }>) {
@@ -505,6 +550,7 @@ export async function importBatches(): Promise<{
   await loadExisting('skills.json', skillsMach)
   await loadExisting('talents.json', talentsMach)
   await loadExisting('modules.json', modulesMach)
+  await loadExisting('terms.json', termsMach)
 
   let importedCount = 0
   let invalidCount = 0
@@ -553,6 +599,7 @@ export async function importBatches(): Promise<{
           case 'operator_name':
           case 'potential_desc':
           case 'profile_text':
+          case 'operator_tag':
             return operatorsMach
           case 'skill_name':
           case 'skill_desc':
@@ -560,6 +607,9 @@ export async function importBatches(): Promise<{
           case 'talent_name':
           case 'talent_desc':
             return talentsMach
+          case 'term_name':
+          case 'term_desc':
+            return termsMach
           case 'module_name':
           case 'module_desc':
           case 'module_stage_desc':
@@ -595,6 +645,16 @@ export async function importBatches(): Promise<{
     JSON.stringify(modulesMach, null, 2) + '\n',
     'utf-8',
   )
+
+  // Only written when there is something to say, so an empty terms.json is not
+  // created for trees that have no CN-only terminology.
+  if (Object.keys(termsMach).length > 0) {
+    await fs.writeFile(
+      path.join(machineDir, 'terms.json'),
+      JSON.stringify(termsMach, null, 2) + '\n',
+      'utf-8',
+    )
+  }
 
   return { importedCount, invalidCount, invalidItems }
 }
