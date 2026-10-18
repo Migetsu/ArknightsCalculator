@@ -16,6 +16,9 @@ export type UntranslatedType =
   | 'skill_desc'
   | 'talent_desc'
   | 'module_desc'
+  | 'module_stage_desc'
+  | 'potential_desc'
+  | 'profile_text'
 
 /**
  * Matches a CJK ideograph (Han character), not fullwidth punctuation.
@@ -64,9 +67,18 @@ export interface UntranslatedStats {
   >
 }
 
+interface I18nField {
+  en?: string
+  zh?: string
+  source?: string
+}
+
 interface RawOperatorFile {
   id: string
   name: { en: string; zh: string; source: string }
+  itemUsage?: I18nField
+  itemDesc?: I18nField
+  potentialRanks?: Array<{ description?: I18nField }>
   skills?: Array<{
     skillId: string
     levels?: Array<{
@@ -84,6 +96,16 @@ interface RawOperatorFile {
     uniEquipId?: string
     name?: { en: string; zh: string; source: string }
     description?: { en: string; zh: string; source: string }
+    stages?: Array<{
+      stage?: number
+      parts?: Array<{
+        candidates?: Array<{
+          additionalDescription?: I18nField
+          upgradeDescription?: I18nField
+          overrideDescription?: I18nField
+        }>
+      }>
+    }>
   }>
 }
 
@@ -154,6 +176,9 @@ export async function collectUntranslatedItems(): Promise<{
     skill_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     talent_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     module_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    module_stage_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    potential_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    profile_text: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
   })
 
   const byType = emptyStatsByType()
@@ -283,15 +308,75 @@ export async function collectUntranslatedItems(): Promise<{
 
     // Modules
     for (const mod of op.modules || []) {
-      const equipId = (mod as { id?: string; uniEquipId?: string }).id || (mod as { id?: string; uniEquipId?: string }).uniEquipId
+      const equipId =
+        (mod as { id?: string; uniEquipId?: string }).id ||
+        (mod as { id?: string; uniEquipId?: string }).uniEquipId
       if (!equipId) continue
 
-      if (isUntranslated(mod.name)) {
+      if (isUntranslated(mod.name) && mod.name?.zh) {
         registerString('module_name', charId, charNameZh, `${equipId}.name`, mod.name.zh, 'terms')
       }
-      if (isUntranslated(mod.description)) {
+      if (isUntranslated(mod.description) && mod.description?.zh) {
         registerString('module_desc', charId, charNameZh, `${equipId}.desc`, mod.description.zh, 'terms')
       }
+
+      // Module stage combat text. The builder keys these by the stage's
+      // `equipLevel` (emitted as `stage`) and the candidate index within the
+      // part, so the key is reconstructed from the built file.
+      for (const stage of mod.stages || []) {
+        if (typeof stage.stage !== 'number') continue
+
+        const parts = stage.parts || []
+        for (let partIdx = 0; partIdx < parts.length; partIdx++) {
+          const candidates = parts[partIdx]?.candidates || []
+          for (let cIdx = 0; cIdx < candidates.length; cIdx++) {
+            const cand = candidates[cIdx]!
+
+            const variants: Array<[keyof typeof cand, string]> = [
+              ['additionalDescription', 'addDesc'],
+              ['upgradeDescription', 'upgDesc'],
+              ['overrideDescription', 'ovrDesc'],
+            ]
+            for (const [field, suffix] of variants) {
+              const value = cand[field] as I18nField | undefined
+              if (isUntranslated(value) && value?.zh) {
+                registerString(
+                  'module_stage_desc',
+                  charId,
+                  charNameZh,
+                  `${equipId}.stage.${stage.stage}.cand.${cIdx}.${suffix}`,
+                  value.zh,
+                  'terms',
+                )
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Potential rank descriptions and the operator dossier text. Both live on the
+    // operator itself and are keyed directly off its id.
+    const potentialRanks = op.potentialRanks || []
+    for (let pIdx = 0; pIdx < potentialRanks.length; pIdx++) {
+      const description = potentialRanks[pIdx]?.description
+      if (isUntranslated(description) && description?.zh) {
+        registerString(
+          'potential_desc',
+          charId,
+          charNameZh,
+          `${charId}.potential.${pIdx}.desc`,
+          description.zh,
+          'terms',
+        )
+      }
+    }
+
+    if (isUntranslated(op.itemUsage) && op.itemUsage?.zh) {
+      registerString('profile_text', charId, charNameZh, `${charId}.itemUsage`, op.itemUsage.zh, 'operators')
+    }
+    if (isUntranslated(op.itemDesc) && op.itemDesc?.zh) {
+      registerString('profile_text', charId, charNameZh, `${charId}.itemDesc`, op.itemDesc.zh, 'operators')
     }
   }
 
@@ -329,9 +414,12 @@ const PRIORITY_ORDER: Record<UntranslatedType, number> = {
   skill_name: 2,
   talent_name: 3,
   module_name: 4,
-  skill_desc: 5,
-  talent_desc: 6,
-  module_desc: 7,
+  potential_desc: 5,
+  skill_desc: 6,
+  talent_desc: 7,
+  module_stage_desc: 8,
+  module_desc: 9,
+  profile_text: 10,
 }
 
 /**
@@ -460,14 +548,24 @@ export async function importBatches(): Promise<{
       }
 
       importedCount++
-      const targetDict =
-        item.type === 'operator_name'
-          ? operatorsMach
-          : item.type.startsWith('skill')
-            ? skillsMach
-            : item.type.startsWith('talent')
-              ? talentsMach
-              : modulesMach
+      const targetDict = ((): Record<string, { text: string; source: 'machine' }> => {
+        switch (item.type) {
+          case 'operator_name':
+          case 'potential_desc':
+          case 'profile_text':
+            return operatorsMach
+          case 'skill_name':
+          case 'skill_desc':
+            return skillsMach
+          case 'talent_name':
+          case 'talent_desc':
+            return talentsMach
+          case 'module_name':
+          case 'module_desc':
+          case 'module_stage_desc':
+            return modulesMach
+        }
+      })()
 
       // Map each associated key
       for (const key of item.keys) {

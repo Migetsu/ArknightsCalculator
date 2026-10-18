@@ -11,7 +11,7 @@ import {
   countOutBatches,
   listBatchFiles,
   readBatchItems,
-  readOutIds,
+  readOutKeys,
   toBatchItem,
   toUntranslatedItem,
   writeFailures,
@@ -263,20 +263,22 @@ async function runRun(options: CliOptions): Promise<RunSummary> {
   const { items: liveItems } = await collectUntranslatedItems()
 
   const source = options.limit ? liveItems.slice(0, options.limit) : liveItems
-  const alreadyTranslated = options.resume ? await readOutIds() : new Set<string>()
+  const alreadyTranslatedKeys = options.resume ? await readOutKeys() : new Set<string>()
 
   console.log(
     `Translating ${source.length} item(s) with ${client.model} (batch ${options.batchSize})`,
   )
-  if (alreadyTranslated.size > 0) {
-    console.log(`  resume: ${alreadyTranslated.size} id(s) already present in ${BATCH_OUT_DIR}`)
+  if (alreadyTranslatedKeys.size > 0) {
+    console.log(
+      `  resume: ${alreadyTranslatedKeys.size} key(s) already present in ${BATCH_OUT_DIR}`,
+    )
   }
 
   const result = await runTranslation({
     client,
     items: source,
     batchSize: options.batchSize,
-    alreadyTranslated,
+    alreadyTranslatedKeys,
     repair: options.repair,
     onProgress: (message) => console.log(`  ${message}`),
   })
@@ -304,7 +306,7 @@ async function runRun(options: CliOptions): Promise<RunSummary> {
   console.log(`  quarantined  : ${result.failures.length}`)
   console.log(`  skipped      : ${result.skipped} (already translated)`)
   console.log(`  requests     : ${result.requests} for ${result.batches} batch(es)`)
-  console.log(`  output       : ${BATCH_OUT_DIR}/ (batches up to ${outFiles})`)
+  console.log(`  output       : ${BATCH_OUT_DIR}/ (${outFiles} new file(s))`)
   if (result.failures.length > 0) {
     console.log(`  failures     : ${failedFile}`)
     for (const failure of result.failures.slice(0, 5)) {

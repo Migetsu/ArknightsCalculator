@@ -39,8 +39,12 @@ export interface TranslationRunOptions {
   client: GeminiClient
   items: UntranslatedItem[]
   batchSize: number
-  /** Ids already present in the output directory; skipped entirely. */
-  alreadyTranslated?: ReadonlySet<string>
+  /**
+   * Keys already present in the output directory; an item is skipped when every
+   * one of its keys is here. Keys are stable across data updates, unlike the
+   * positional `id`, so resume survives an update that shifts item numbering.
+   */
+  alreadyTranslatedKeys?: ReadonlySet<string>
   /** Send the corrective retry for validation failures. Defaults to true. */
   repair?: boolean
   onProgress?: (message: string) => void
@@ -101,11 +105,13 @@ export async function runTranslation(
   options: TranslationRunOptions,
 ): Promise<TranslationRunResult> {
   const { client, items, batchSize } = options
-  const alreadyTranslated = options.alreadyTranslated ?? new Set<string>()
+  const alreadyTranslatedKeys = options.alreadyTranslatedKeys ?? new Set<string>()
   const repairEnabled = options.repair ?? true
   const report = options.onProgress ?? ((): void => {})
 
-  const pending = items.filter((item) => !alreadyTranslated.has(item.id))
+  const pending = items.filter(
+    (item) => !(item.keys.length > 0 && item.keys.every((key) => alreadyTranslatedKeys.has(key))),
+  )
   const chunks = chunkItems(pending, batchSize)
 
   const entries: TranslatedEntry[] = []

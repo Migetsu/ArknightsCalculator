@@ -875,18 +875,16 @@
 
 ## In progress
 
-- Machine translation of CN-only content via Gemini API (`feat/mt-run`).
-  Steps 1-3 of 5 done: REST client + `--check`, prompt builder + `--dry-run`, and the
-  translation loop `--run` with validation, corrective retry and quarantine. The full
-  backlog (169 strings) translated with 0 quarantined in 6 requests.
-  Remaining: import into `data/i18n/machine/` and the UI check.
-  Pipeline and model-choice rationale: `docs/i18n-machine-translation.md`.
+- Machine translation of CN-only content via Gemini API (`feat/mt-coverage`).
+  Steps 1-5 done. The pipeline is complete and **no `[Pending Translation]` string
+  remains** in `data/operators/` (750 strings resolved by the machine layer).
+  Runbook and rationale: `docs/i18n-machine-translation.md`.
 
 ## Next
 
-- Machine translation step 4: `--import` end-to-end on the produced batches, verify
-  `data/i18n/machine/*.json`, confirm the badge flips PENDING -> MT in the UI, and
-  re-run `data:validate`.
+- Optional: a scheduled `update-translations.yml` GitHub Action that runs
+  `data:translate:all` after a data refresh and opens a PR, mirroring the existing
+  `update-penguin.yml`.
 - Module `PLN-02`: Operator planner store & target state persistence via Pinia.
 - Module `DEP-01`: Depot inventory management & craft tree decomposition core.
 
