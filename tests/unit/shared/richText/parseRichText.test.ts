@@ -282,4 +282,38 @@ describe('Rich Text Parser & Formatter Core (shared/utils/richText)', () => {
       expect(unknownTags).toEqual([])
     })
   })
+
+  describe('line breaks', () => {
+    const REAL_NEWLINE = String.fromCharCode(10)
+    const LITERAL_ESCAPE = String.fromCharCode(92) + 'n'
+
+    it('turns a real newline into a break node', () => {
+      const nodes = parseRichText('first line' + REAL_NEWLINE + 'second line')
+
+      expect(nodes.map((n) => n.type)).toEqual(['text', 'break', 'text'])
+    })
+
+    it('turns a literal backslash-n into a break node', () => {
+      // The game data encodes some line breaks as the two-character escape backslash-n
+      // instead of a real newline; both must render as a line break.
+      const nodes = parseRichText('first line' + LITERAL_ESCAPE + 'second line')
+
+      expect(nodes.map((n) => n.type)).toEqual(['text', 'break', 'text'])
+      expect(JSON.stringify(nodes)).not.toContain(LITERAL_ESCAPE)
+    })
+
+    it('handles both encodings inside one string', () => {
+      const nodes = parseRichText('a' + LITERAL_ESCAPE + 'b' + REAL_NEWLINE + 'c')
+
+      expect(nodes.filter((n) => n.type === 'break')).toHaveLength(2)
+    })
+
+    it('turns a break inside a highlight into a break node', () => {
+      const nodes = parseRichText('<@ba.rem>first' + LITERAL_ESCAPE + 'second</>')
+
+      const highlight = nodes.find((n) => n.type === 'highlight')
+      expect(highlight).toBeDefined()
+      expect(highlight?.children.some((c) => c.type === 'break')).toBe(true)
+    })
+  })
 })

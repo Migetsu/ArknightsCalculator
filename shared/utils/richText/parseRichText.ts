@@ -162,8 +162,12 @@ export function parseRichText(
     }
   }
 
-  // Regex matching pseudo tags: <@...>, <$...>, </>, or \n
-  const tokenRegex = /(<(\/?)([@$]?)([a-zA-Z0-9_.-]+)?>)|\n/g
+  // Regex matching pseudo tags: <@...>, <$...>, </>, or a line break.
+  //
+  // The game data encodes line breaks inconsistently: some strings carry a real
+  // newline, others the two-character escape `\n` (the client decodes the latter).
+  // Both are matched here so neither leaks into the rendered text as literal `\n`.
+  const tokenRegex = /(<(\/?)([@$]?)([a-zA-Z0-9_.-]+)?>)|\r?\n|\\n/g
   let lastIndex = 0
   let match: RegExpExecArray | null
 
@@ -177,7 +181,7 @@ export function parseRichText(
     const fullMatch = match[0]
 
     // Line break
-    if (fullMatch === '\n') {
+    if (fullMatch === '\n' || fullMatch === '\r\n' || fullMatch === '\\n') {
       currentChildren().push({ type: 'break' })
       continue
     }

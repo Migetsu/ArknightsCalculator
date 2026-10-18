@@ -48,17 +48,18 @@ const isPending = computed(() => {
   return props.text?.trim() === '[Pending Translation]'
 })
 
-// Popover state for active term tooltip
-const activeTermId = ref<string | null>(null)
+// Popover state for the active term tooltip. Shared across every AkRichText
+// instance so only one tooltip is open at a time anywhere on the page.
+const { activeTermId, toggle: toggleTerm, close: closeTerm } = useActiveTermPopover()
+
+// Term ids are positional within one description, so they collide between
+// instances; this prefix makes each instance's keys globally unique.
+const instanceId = nextRichTextInstanceId()
+function termKey(suffix: string): string {
+  return `${instanceId}:${suffix}`
+}
+
 const rootRef = ref<HTMLElement | null>(null)
-
-function toggleTerm(termId: string) {
-  activeTermId.value = activeTermId.value === termId ? null : termId
-}
-
-function closeTerm() {
-  activeTermId.value = null
-}
 
 function handleKeyDown(event: KeyboardEvent, termId: string) {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -140,13 +141,13 @@ function getHighlightClass(tag: string): string {
           <span
             v-else-if="child.type === 'term'"
             class="ak-rich-text__term"
-            :class="{ 'ak-rich-text__term--active': activeTermId === `${index}-${cIdx}` }"
+            :class="{ 'ak-rich-text__term--active': activeTermId === termKey(`${index}-${cIdx}`) }"
             role="button"
             tabindex="0"
-            :aria-expanded="activeTermId === `${index}-${cIdx}`"
+            :aria-expanded="activeTermId === termKey(`${index}-${cIdx}`)"
             :aria-label="child.termName || child.termId"
-            @click.stop="toggleTerm(`${index}-${cIdx}`)"
-            @keydown="handleKeyDown($event, `${index}-${cIdx}`)"
+            @click.stop="toggleTerm(termKey(`${index}-${cIdx}`))"
+            @keydown="handleKeyDown($event, termKey(`${index}-${cIdx}`))"
           >
             <span class="ak-rich-text__term-label">
               <template v-for="(termChild, tcIdx) in child.children" :key="tcIdx">
@@ -154,7 +155,7 @@ function getHighlightClass(tag: string): string {
               </template>
             </span>
             <span
-              v-if="child.description && activeTermId === `${index}-${cIdx}`"
+              v-if="child.description && activeTermId === termKey(`${index}-${cIdx}`)"
               class="ak-rich-text__term-popover"
               role="tooltip"
             >
@@ -169,13 +170,13 @@ function getHighlightClass(tag: string): string {
       <span
         v-else-if="node.type === 'term'"
         class="ak-rich-text__term"
-        :class="{ 'ak-rich-text__term--active': activeTermId === String(index) }"
+        :class="{ 'ak-rich-text__term--active': activeTermId === termKey(String(index)) }"
         role="button"
         tabindex="0"
-        :aria-expanded="activeTermId === String(index)"
+        :aria-expanded="activeTermId === termKey(String(index))"
         :aria-label="node.termName || node.termId"
-        @click.stop="toggleTerm(String(index))"
-        @keydown="handleKeyDown($event, String(index))"
+        @click.stop="toggleTerm(termKey(String(index)))"
+        @keydown="handleKeyDown($event, termKey(String(index)))"
       >
         <span class="ak-rich-text__term-label">
           <template v-for="(child, tcIdx) in node.children" :key="tcIdx">
@@ -192,7 +193,7 @@ function getHighlightClass(tag: string): string {
           </template>
         </span>
         <span
-          v-if="node.description && activeTermId === String(index)"
+          v-if="node.description && activeTermId === termKey(String(index))"
           class="ak-rich-text__term-popover"
           role="tooltip"
         >
