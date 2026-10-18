@@ -121,3 +121,108 @@ export function toUntranslatedItem(item: BatchItem): UntranslatedItem {
     relevantGlossary: item.relevantGlossary,
   }
 }
+
+/**
+ * One translated string as written to `.cache/translate/out/`. This is the shape
+ * `importBatches()` in `translate-missing.ts` consumes: the original item plus `en`.
+ */
+export interface OutItem extends BatchItem {
+  en: string
+}
+
+/** Ids already translated in `.cache/translate/out/`, so a re-run can skip them. */
+export async function readOutIds(dir: string = BATCH_OUT_DIR): Promise<Set<string>> {
+  const ids = new Set<string>()
+
+  let entries: string[]
+  try {
+    entries = await fs.readdir(resolveFromCwd(dir))
+  } catch {
+    return ids
+  }
+
+  for (const entry of entries) {
+    if (!entry.endsWith('.jsonl')) continue
+    const raw = await fs.readFile(path.join(resolveFromCwd(dir), entry), 'utf-8')
+    for (const line of raw.split(/\r?\n/)) {
+      if (!line.trim()) continue
+      try {
+        const parsed = JSON.parse(line) as { id?: unknown; en?: unknown }
+        if (typeof parsed.id === 'string' && typeof parsed.en === 'string' && parsed.en.trim()) {
+          ids.add(parsed.id)
+        }
+      } catch {
+        // A corrupt line simply does not count as translated; it will be redone.
+      }
+    }
+  }
+
+  return ids
+}
+
+/** Writes one translated batch to `.cache/translate/out/`. */
+export async function writeOutBatch(index: number, items: OutItem[]): Promise<string> {
+  const dir = resolveFromCwd(BATCH_OUT_DIR)
+  await fs.mkdir(dir, { recursive: true })
+  const file = path.join(dir, `batch_${String(index).padStart(3, '0')}.jsonl`)
+  await fs.writeFile(file, items.map((item) => JSON.stringify(item)).join('\n') + '\n', 'utf-8')
+  return file
+}
+
+/**
+ * Number of batch files already in `.cache/translate/out/`. A resumed run
+ * continues numbering from here so it never clobbers an earlier run's output.
+ */
+export async function countOutBatches(dir: string = BATCH_OUT_DIR): Promise<number> {
+  try {
+    const entries = await fs.readdir(resolveFromCwd(dir))
+    return entries.filter((entry) => entry.endsWith('.jsonl')).length
+  } catch {
+    return 0
+  }
+}
+
+/** Inverse of `toUntranslatedItem`, for writing the output batches. */
+export function toBatchItem(item: UntranslatedItem): BatchItem {
+  return {
+    id: item.id,
+    type: item.type,
+    charId: item.charId,
+    charNameZh: item.charNameZh,
+    zh: item.zh,
+    tags: item.tags,
+    placeholders: item.placeholders,
+    keys: item.keys,
+    relevantGlossary: item.relevantGlossary,
+  }
+}
+
+/** Appends quarantined strings to `.cache/translate/failed.jsonl`, replacing any previous run. */
+export async function writeFailures(
+  failures: Array<{ item: UntranslatedItem; en: string; issues: string[] }>,
+): Promise<string> {
+  const file = resolveFromCwd(FAILED_FILE)
+  await fs.mkdir(path.dirname(file), { recursive: true })
+
+  if (failures.length === 0) {
+    try {
+      await fs.rm(file)
+    } catch {
+      // Nothing to clear.
+    }
+    return file
+  }
+
+  const lines = failures.map((failure) =>
+    JSON.stringify({
+      id: failure.item.id,
+      type: failure.item.type,
+      charId: failure.item.charId,
+      zh: failure.item.zh,
+      en: failure.en,
+      issues: failure.issues,
+    }),
+  )
+  await fs.writeFile(file, lines.join('\n') + '\n', 'utf-8')
+  return file
+}

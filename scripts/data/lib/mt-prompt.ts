@@ -135,6 +135,54 @@ export interface BatchFreshness {
   isFresh: boolean
 }
 
+export const MT_REPAIR_SYSTEM_INSTRUCTION = [
+  'You are fixing markup errors in English translations of Chinese game strings for Arknights.',
+  'Each item below carries the Chinese source, your previous English attempt, and the exact',
+  'markup problems found in that attempt.',
+  '',
+  'Fix ONLY what the listed problems describe:',
+  '- Remove any inline tag that is not present in the Chinese source.',
+  '- Restore any tag or {placeholder} token that the source has but the attempt dropped,',
+  '  in the same position and order.',
+  '- Restore newlines so the count matches the source.',
+  '- Translate any Chinese characters that were left untranslated in the attempt.',
+  'Do not otherwise rewrite, reword or "improve" the translation, and do not change the meaning.',
+  '',
+  'Return a JSON array with exactly one {"id","en"} object per item, in the same order as the input.',
+].join('\n')
+
+export interface MtRepairFailure {
+  item: UntranslatedItem
+  /** The translation that failed validation. */
+  en: string
+  /** Human-readable issue messages from the validator. */
+  issues: string[]
+}
+
+export interface MtRepairItem {
+  id: string
+  zh: string
+  previous: string
+  problems: string[]
+}
+
+/** Builds a corrective request carrying the specific validation diff for each failure. */
+export function buildRepairPrompt(failures: MtRepairFailure[]): MtPrompt {
+  const repairItems: MtRepairItem[] = failures.map((failure) => ({
+    id: failure.item.id,
+    zh: failure.item.zh,
+    previous: failure.en,
+    problems: failure.issues,
+  }))
+
+  return {
+    systemInstruction: MT_REPAIR_SYSTEM_INSTRUCTION,
+    userPrompt: JSON.stringify(repairItems),
+    responseSchema: MT_RESPONSE_SCHEMA,
+    itemIds: repairItems.map((item) => item.id),
+  }
+}
+
 /**
  * Compares a cached batch against a freshly collected set.
  *

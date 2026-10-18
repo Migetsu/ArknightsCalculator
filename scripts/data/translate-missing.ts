@@ -17,6 +17,21 @@ export type UntranslatedType =
   | 'talent_desc'
   | 'module_desc'
 
+/**
+ * Matches a CJK ideograph (Han character), not fullwidth punctuation.
+ *
+ * A string with no ideograph needs no translation: an operator codename like
+ * `12F`, a module code like `DWDB-221E`, a talent name like `Mon3tr`, or a
+ * masked value like `？？？`. For those, `en === zh` is correct rather than a
+ * missing translation, and collecting them produced bogus machine-translation
+ * entries that were then quarantined as failures.
+ */
+const CJK_IDEOGRAPH_REGEX = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/
+
+export function hasCjkIdeograph(text: string): boolean {
+  return CJK_IDEOGRAPH_REGEX.test(text)
+}
+
 export interface UntranslatedItem {
   id: string
   type: UntranslatedType
@@ -154,6 +169,10 @@ export async function collectUntranslatedItems(): Promise<{
   ) {
     const zh = (zhText || '').trim()
     if (!zh) return
+    // Nothing to translate: the source has no Han character (e.g. `12F`, `Mon3tr`,
+    // `DWDB-221E`, `？？？`). Collecting these produced bogus MT entries that were
+    // then quarantined as failures.
+    if (!hasCjkIdeograph(zh)) return
 
     totalInstances++
     byType[type].instances++
@@ -337,6 +356,10 @@ export async function exportBatches(
   })
 
   const inDir = path.resolve(process.cwd(), '.cache/translate/in')
+  // Clear the directory first: a previous export with a larger set (or a smaller
+  // batch size) leaves higher-numbered batch files behind, and those stale strings
+  // would be translated again alongside the fresh ones.
+  await fs.rm(inDir, { recursive: true, force: true })
   await fs.mkdir(inDir, { recursive: true })
 
   const createdFiles: string[] = []
