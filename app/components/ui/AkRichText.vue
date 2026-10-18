@@ -44,6 +44,10 @@ const parsedNodes = computed<RichTextNode[]>(() => {
   })
 })
 
+const isPending = computed(() => {
+  return props.text?.trim() === '[Pending Translation]'
+})
+
 // Popover state for active term tooltip
 const activeTermId = ref<string | null>(null)
 const rootRef = ref<HTMLElement | null>(null)
@@ -100,7 +104,12 @@ function getHighlightClass(tag: string): string {
 </script>
 
 <template>
-  <component :is="as" ref="rootRef" class="ak-rich-text">
+  <component
+    :is="as"
+    ref="rootRef"
+    class="ak-rich-text"
+    :class="{ 'ak-rich-text--pending': isPending }"
+  >
     <template v-for="(node, index) in parsedNodes" :key="index">
       <!-- 1. Text node -->
       <template v-if="node.type === 'text'">{{ node.text }}</template>
@@ -202,6 +211,12 @@ function getHighlightClass(tag: string): string {
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
   overflow-wrap: break-word;
+
+  &--pending {
+    font-style: italic;
+    color: var(--color-text-muted);
+    opacity: 0.85;
+  }
 
   &__break {
     display: block;

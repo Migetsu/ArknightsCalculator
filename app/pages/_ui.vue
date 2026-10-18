@@ -22,6 +22,7 @@ import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkRichText from '~/components/ui/AkRichText.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 const { t } = useI18n()
 
@@ -183,6 +184,7 @@ const stepperLmd = ref(150000)
           <div class="page-ui__row">
             <span>Community Pre-release: <AkTranslationBadge source="community" /></span>
             <span>Machine Translated Name: <AkTranslationBadge source="machine" /></span>
+            <span>Pending Translation: <AkTranslationBadge source="pending" /></span>
             <span>Outdated Skill Desc: <AkTranslationBadge :stale="true" /></span>
           </div>
         </div>

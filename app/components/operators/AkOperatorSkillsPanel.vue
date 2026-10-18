@@ -69,7 +69,10 @@ function getLevelLabel(idx: number): string {
             <AkTranslationBadge
               v-if="
                 skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.source ===
-                  'machine' || skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.stale
+                  'machine' ||
+                skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.source ===
+                  'pending' ||
+                skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.stale
               "
               :source="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.source"
               :stale="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.name?.stale"
@@ -135,6 +138,21 @@ function getLevelLabel(idx: number): string {
 
       <!-- Description using AkRichText -->
       <div class="ak-operator-skills-panel__desc">
+        <div
+          v-if="
+            skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.description?.source ===
+              'pending' ||
+            skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.description?.source ===
+              'machine' ||
+            skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.description?.stale
+          "
+          class="ak-operator-skills-panel__desc-badge"
+        >
+          <AkTranslationBadge
+            :source="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.description?.source"
+            :stale="skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.description?.stale"
+          />
+        </div>
         <AkRichText
           :text="getSkillDesc(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
           :blackboard="getSkillBlackboard(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
@@ -259,6 +277,10 @@ function getLevelLabel(idx: number): string {
     border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
+  }
+
+  &__desc-badge {
+    margin-bottom: var(--space-xs);
   }
 
   &__cost-section {

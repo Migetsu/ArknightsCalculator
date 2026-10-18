@@ -61,7 +61,11 @@ const visibleTalents = computed(() => {
           <h4 class="ak-operator-talents-panel__name">
             {{ getCandidateName(candidate) }}
             <AkTranslationBadge
-              v-if="candidate.name?.source === 'machine' || candidate.name?.stale"
+              v-if="
+                candidate.name?.source === 'machine' ||
+                candidate.name?.source === 'pending' ||
+                candidate.name?.stale
+              "
               :source="candidate.name?.source"
               :stale="candidate.name?.stale"
             />
@@ -87,6 +91,19 @@ const visibleTalents = computed(() => {
         </div>
 
         <div class="ak-operator-talents-panel__desc">
+          <div
+            v-if="
+              candidate.description?.source === 'pending' ||
+              candidate.description?.source === 'machine' ||
+              candidate.description?.stale
+            "
+            class="ak-operator-talents-panel__desc-badge"
+          >
+            <AkTranslationBadge
+              :source="candidate.description?.source"
+              :stale="candidate.description?.stale"
+            />
+          </div>
           <AkRichText
             :text="getCandidateDesc(candidate)"
             :blackboard="candidate.blackboard ?? {}"
@@ -152,6 +169,10 @@ const visibleTalents = computed(() => {
     border-radius: var(--radius-xs);
     padding: var(--space-sm) var(--space-md);
     line-height: var(--line-height-relaxed);
+  }
+
+  &__desc-badge {
+    margin-bottom: var(--space-xs);
   }
 }
 </style>
