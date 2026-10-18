@@ -175,6 +175,43 @@ prompt), listing batches and writing built prompts for inspection.
 untranslated set live and reports the drift against the cache, because a stale
 cache means paying for strings that are already translated upstream.
 
+## Known coverage gaps
+
+The import put 479 strings into `data/i18n/machine/`, and the badge flips PENDING -> MT
+in the UI (verified live: the Skills tab shows an `MT` badge and real English, the
+Dossier tab still shows `PENDING`). 271 strings remain pending, in two distinct groups.
+
+**1. Fields the collector never collected (261 strings).** The collector only covers
+operator/skill/talent/module _names_ and skill/talent/module _descriptions_. These are
+outside that set:
+
+| Count | Field                                                           |
+| :---- | :-------------------------------------------------------------- |
+| 85    | `potentialRanks[].description`                                  |
+| 76    | `modules[].stages[].parts[].candidates[].upgradeDescription`    |
+| 54    | `modules[].stages[].parts[].candidates[].additionalDescription` |
+| 17    | `itemUsage` (operator dossier)                                  |
+| 17    | `itemDesc` (operator dossier)                                   |
+| 12    | `modules[].stages[].parts[].candidates[].overrideDescription`   |
+
+**2. A talent index mismatch (10 strings).** `char_4215_buddy` and `char_4218_aigis`
+have talent descriptions that are translated in `machine/talents.json` but still resolve
+as `pending`. The collector and the builder disagree on what `tIdx` means:
+
+- the builder keys candidates by their index in the **raw CN table**, and filters out
+  hidden talents (`isHideTalent`) afterwards, so a hidden talent at index 0 makes the
+  real candidates `talent.1.*`;
+- the collector reads the **already-built** operator file, where that hidden talent is
+  already gone, so it numbers the same candidates `talent.0.*`.
+
+When a hidden or empty talent precedes a real one, every talent key after it is off, and
+the translation is silently not found. Skills and modules are unaffected because they are
+keyed by `skillId` / `uniEquipId` rather than by position.
+
+The visible symptom was a name resolving as `machine` while its sibling description
+resolved as `pending` in the same candidate — the name matched because it happened to
+carry a legacy key from an earlier run.
+
 ## Cost and quota
 
 The whole current backlog (188 unique strings, ~35k Chinese characters) fits in
