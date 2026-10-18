@@ -22,11 +22,11 @@ export default defineNuxtConfig({
     name: 'Arknights Companion',
   },
   sitemap: {
-    exclude: ['/_ui', '/ru/_ui'],
+    exclude: ['/_ui'],
     urls: async () => {
       const raw = await import('./data/operators-index.json', { with: { type: 'json' } })
       const operators = (raw.default ?? raw) as Array<{ id: string }>
-      return operators.flatMap((op) => [`/operators/${op.id}`, `/ru/operators/${op.id}`])
+      return operators.map((op) => `/operators/${op.id}`)
     },
   },
   image: {
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './i18n.config.ts',
     defaultLocale: 'en',
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
     baseUrl: 'https://arkcalc.vercel.app',
     locales: [
       {
@@ -84,20 +84,8 @@ export default defineNuxtConfig({
         language: 'en-US',
         file: 'en.json',
       },
-      {
-        code: 'ru',
-        name: 'Русский',
-        language: 'ru-RU',
-        file: 'ru.json',
-      },
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-      alwaysRedirect: false,
-      fallbackLocale: 'en',
-    },
+    detectBrowserLanguage: false,
   },
   typescript: {
     strict: true,

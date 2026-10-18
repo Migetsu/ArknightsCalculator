@@ -209,7 +209,7 @@ export function sortOperators(
   locale: ContentLocale = 'en',
 ): OperatorSummary[] {
   const result = [...operators]
-  const collatorLocale = locale === 'ru' ? 'ru' : locale === 'zh' ? 'zh' : 'en'
+  const collatorLocale = locale === 'zh' ? 'zh' : 'en'
 
   result.sort((a, b) => {
     const nameA = resolveI18nString(a.name, locale) || a.name.en

@@ -1,5 +1,33 @@
 # Project Progress
 
+- **Russian Localization Removal & Community Translation Audit (`chore/remove-ru-and-audit-community-translations`):**
+  - **Community Translations Audit (`MusicOnline/AK-Dataknights`, `Jetroyz`, etc.):**
+    - Audited `MusicOnline/AK-Dataknights`: The repository mirrors upstream raw game data and only provides UI translations (`locales/`) and user data overrides. It does NOT maintain machine-readable English skill/talent descriptions for unreleased CN units.
+    - Audited `Jetroyz` and community resources: No public structured JSON repository is maintained (translations are published as human-readable posts on Reddit/Discord). Older repositories like `Aceship/AN-EN-Tags` have been abandoned since 2021-2022.
+    - Conclusion: Maintained official pipeline integrity with `[Pending Translation]` and `• PENDING` tactical badges for CN-only units rather than importing unverified or non-machine-readable sources.
+  - **Russian Localization (RU) Purge:**
+    - Removed `i18n/locales/ru.json`, `app/components/layout/LanguageSwitcher.vue`, and `tests/unit/components/layout/LanguageSwitcher.test.ts`.
+    - Configured `@nuxtjs/i18n` in `nuxt.config.ts` for English-only (`locales: [{ code: 'en', name: 'English', language: 'en-US', file: 'en.json' }]`, `strategy: 'no_prefix'`, `defaultLocale: 'en'`, `detectBrowserLanguage: false`, removed `/ru` routes from sitemap).
+    - Removed language switcher section from `app/pages/settings.vue` (reduced to 6 canonical sections) and updated `tests/unit/pages/settings.test.ts`.
+    - Updated `app/components/ui/AkHeader.vue` and `app/pages/_ui.vue` to remove Russian locale selectors and path checks.
+    - Updated `shared/schemas/operator.ts` (`ContentLocale = 'en' | 'zh'`), `shared/utils/operatorFilters.ts`, and `shared/utils/richText/` to remove `ru` fallback chains.
+    - Updated all component locale casts (`GachaBannerCard`, `GachaCalculator`, `AkOperatorCard`, panels, operator pages).
+    - Updated `scripts/check-i18n.ts` and its test `tests/unit/scripts/check-i18n.test.ts` to validate English keys (588 valid keys).
+    - Updated E2E and unit tests (`tests/e2e/i18n.spec.ts`, `tests/e2e/layout-sanity.spec.ts`, `tests/e2e/audit-assets-dom.spec.ts`, `tests/e2e/operators-visual-audit.spec.ts`, `tests/unit/config/modules.test.ts`, `tests/unit/data/build-operators.test.ts`, `tests/unit/routes/dev-only-routes.test.ts`).
+    - Updated project documentation: `AGENTS.md` (§6), `docs/architecture.md`, `docs/design/DESIGN.md`.
+  - **Visual Verification & Screenshots (Port 3001):**
+    - Removed all obsolete `*-ru.png` screenshots from `docs/screenshots/`.
+    - Captured fresh verification screenshots:
+      - `docs/screenshots/home-1440.png`: Clean English home interface without language switcher.
+      - `docs/screenshots/operator-makoto-360.png` & `docs/screenshots/operator-makoto-360-fullpage.png`: Mobile 360px viewport on CN-only operator Makoto Yuki (`char_4217_makoto`).
+      - `docs/screenshots/operator-makoto-skills-360.png`: Skills panel showing English skill names and `[Pending Translation]` with intact 360px layout.
+  - **Quality Gates:**
+    - `i18n:check`: 588 keys valid.
+    - `typecheck`: 0 errors.
+    - `test`: 468/468 passed across 69 test suites.
+    - `lint`: 0 errors, 0 warnings.
+    - `build`: production build completed successfully.
+
 - **Header Navigation Sync Button Polish (`fix/header-sync-button`):**
   - **Issue:** The sync button in the top navigation rendered an orange/red 6px square (`■Sync`) colliding directly with the text without spacing, caused by missing `--radius-full` token on `.ak-header__sync-dot` and default slot wrapping without flex gap.
   - **Fix:**

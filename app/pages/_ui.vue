@@ -49,10 +49,7 @@ const serverOptions: SegmentOption[] = [
 ]
 const selectedServer = ref('global')
 
-const langOptions: SegmentOption[] = [
-  { value: 'en', label: 'English' },
-  { value: 'ru', label: 'Русский' },
-]
+const langOptions: SegmentOption[] = [{ value: 'en', label: 'English' }]
 const selectedLang = ref('en')
 
 // AkStepper demo state

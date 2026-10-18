@@ -14,7 +14,7 @@ const { t, locale } = useI18n()
 
 function getLocalizedField(field?: I18nString | null): string {
   if (!field) return '—'
-  return resolveI18nString(field, locale.value as 'en' | 'ru' | 'zh') || field.en || field.zh || '—'
+  return resolveI18nString(field, locale.value as 'en' | 'zh') || field.en || field.zh || '—'
 }
 </script>
 

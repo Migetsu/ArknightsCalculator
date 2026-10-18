@@ -14,16 +14,12 @@ const props = defineProps<Props>()
 const { t, locale } = useI18n()
 
 function getCandidateName(cand: OperatorTalent['candidates'][number]): string {
-  return (
-    resolveI18nString(cand.name, locale.value as 'en' | 'ru' | 'zh') || cand.name?.en || 'Talent'
-  )
+  return resolveI18nString(cand.name, locale.value as 'en' | 'zh') || cand.name?.en || 'Talent'
 }
 
 function getCandidateDesc(cand: OperatorTalent['candidates'][number]): string {
   return (
-    resolveI18nString(cand.description, locale.value as 'en' | 'ru' | 'zh') ||
-    cand.description?.en ||
-    ''
+    resolveI18nString(cand.description, locale.value as 'en' | 'zh') || cand.description?.en || ''
   )
 }
 

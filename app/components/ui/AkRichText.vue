@@ -12,8 +12,8 @@ interface Props {
   blackboard?: Record<string, number>
   /** Render wrapper element ('span' or 'div') */
   as?: 'span' | 'div'
-  /** Locale for term descriptions ('en' | 'ru' | 'zh') */
-  locale?: 'en' | 'ru' | 'zh'
+  /** Locale for term descriptions ('en' | 'zh') */
+  locale?: 'en' | 'zh'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,10 +26,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { locale: i18nLocale } = useI18n()
 
-const effectiveLocale = computed<'en' | 'ru' | 'zh'>(() => {
+const effectiveLocale = computed<'en' | 'zh'>(() => {
   if (props.locale) return props.locale
   const cur = String(i18nLocale.value)
-  if (cur === 'ru' || cur === 'zh') return cur
+  if (cur === 'zh') return cur
   return 'en'
 })
 

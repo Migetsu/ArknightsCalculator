@@ -32,7 +32,7 @@ function isModuleActive(path: string): boolean {
   const currentPath = route.path
   const localizedTarget = localePath(path)
   if (path === '/') {
-    return currentPath === localizedTarget || currentPath === '/ru'
+    return currentPath === localizedTarget
   }
   return currentPath.startsWith(localizedTarget)
 }

@@ -6,7 +6,6 @@ import {
   type AppModuleConfig,
 } from '../../../app/config/modules'
 import enLocale from '../../../i18n/locales/en.json'
-import ruLocale from '../../../i18n/locales/ru.json'
 
 function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
   return path.split('.').reduce<unknown>((acc, part) => {
@@ -37,21 +36,15 @@ describe('modules registry', () => {
     }
   })
 
-  it('ensures all nameKey, descriptionKey, and navKey exist in both en.json and ru.json', () => {
+  it('ensures all nameKey, descriptionKey, and navKey exist in en.json', () => {
     for (const module of APP_MODULES) {
       const enName = getNestedValue(enLocale as Record<string, unknown>, module.nameKey)
-      const ruName = getNestedValue(ruLocale as Record<string, unknown>, module.nameKey)
       const enDesc = getNestedValue(enLocale as Record<string, unknown>, module.descriptionKey)
-      const ruDesc = getNestedValue(ruLocale as Record<string, unknown>, module.descriptionKey)
       const enNav = getNestedValue(enLocale as Record<string, unknown>, module.navKey)
-      const ruNav = getNestedValue(ruLocale as Record<string, unknown>, module.navKey)
 
       expect(typeof enName).toBe('string')
-      expect(typeof ruName).toBe('string')
       expect(typeof enDesc).toBe('string')
-      expect(typeof ruDesc).toBe('string')
       expect(typeof enNav).toBe('string')
-      expect(typeof ruNav).toBe('string')
     }
   })
 

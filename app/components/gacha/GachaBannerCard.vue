@@ -42,7 +42,7 @@ function formatDisplayDate(dateStr: string): string {
 function getOperatorName(id: string): string {
   const op = props.operatorsMap.get(id)
   if (!op) return id
-  return resolveI18nString(op.name, locale.value as 'en' | 'ru' | 'zh') || op.name.en || id
+  return resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en || id
 }
 
 interface BannerOp {

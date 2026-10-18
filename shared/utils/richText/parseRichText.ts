@@ -199,14 +199,9 @@ export function parseRichText(
         } else if (frame.type === 'term') {
           const termDef = terms?.[frame.termId!]
           const termName =
-            (locale === 'ru' ? termDef?.name.ru : undefined) ??
-            (locale === 'zh' ? termDef?.name.zh : undefined) ??
-            termDef?.name.en ??
-            frame.termId!
+            (locale === 'zh' ? termDef?.name.zh : undefined) ?? termDef?.name.en ?? frame.termId!
           const termDesc =
-            (locale === 'ru' ? termDef?.description.ru : undefined) ??
-            (locale === 'zh' ? termDef?.description.zh : undefined) ??
-            termDef?.description.en
+            (locale === 'zh' ? termDef?.description.zh : undefined) ?? termDef?.description.en
 
           currentChildren().push({
             type: 'term',
@@ -268,14 +263,9 @@ export function parseRichText(
     } else {
       const termDef = terms?.[frame.termId!]
       const termName =
-        (locale === 'ru' ? termDef?.name.ru : undefined) ??
-        (locale === 'zh' ? termDef?.name.zh : undefined) ??
-        termDef?.name.en ??
-        frame.termId!
+        (locale === 'zh' ? termDef?.name.zh : undefined) ?? termDef?.name.en ?? frame.termId!
       const termDesc =
-        (locale === 'ru' ? termDef?.description.ru : undefined) ??
-        (locale === 'zh' ? termDef?.description.zh : undefined) ??
-        termDef?.description.en
+        (locale === 'zh' ? termDef?.description.zh : undefined) ?? termDef?.description.en
 
       currentChildren().push({
         type: 'term',

@@ -32,27 +32,11 @@ test.describe('Operators Design Visual Audit & Screenshots', () => {
         fullPage: false,
       })
 
-      // 2. /operators (ru)
-      await page.goto('/ru/operators')
-      await page.waitForLoadState('networkidle')
-      await page.screenshot({
-        path: `docs/screenshots/operators-${vp.name}-ru.png`,
-        fullPage: false,
-      })
-
-      // 3. /operators/char_172_svrash (en)
+      // 2. /operators/char_172_svrash (en)
       await page.goto('/operators/char_172_svrash')
       await page.waitForLoadState('networkidle')
       await page.screenshot({
         path: `docs/screenshots/operator-detail-${vp.name}-en.png`,
-        fullPage: false,
-      })
-
-      // 4. /operators/char_172_svrash (ru)
-      await page.goto('/ru/operators/char_172_svrash')
-      await page.waitForLoadState('networkidle')
-      await page.screenshot({
-        path: `docs/screenshots/operator-detail-${vp.name}-ru.png`,
         fullPage: false,
       })
 

@@ -5,7 +5,6 @@ import {
   validateMessageSyntax,
 } from '../../../scripts/check-i18n'
 import enLocale from '../../../i18n/locales/en.json'
-import ruLocale from '../../../i18n/locales/ru.json'
 
 describe('check-i18n', () => {
   describe('flattenKeys', () => {
@@ -129,23 +128,14 @@ describe('check-i18n', () => {
     })
   })
 
-  describe('project locale files parity and syntax integrity', () => {
-    it('ensures en.json and ru.json have 100% identical key structures', () => {
-      const result = compareLocaleRecords(
-        enLocale as Record<string, unknown>,
-        ruLocale as Record<string, unknown>,
-      )
-      expect(result.missingInTarget).toEqual([])
-      expect(result.extraInTarget).toEqual([])
+  describe('project locale files syntax integrity', () => {
+    it('ensures en.json contains non-empty keys', () => {
+      const keys = flattenKeys(enLocale as Record<string, unknown>)
+      expect(keys.length).toBeGreaterThan(100)
     })
 
     it('ensures all en.json messages compile cleanly without syntax errors', () => {
       const errors = validateMessageSyntax(enLocale as Record<string, unknown>, 'en.json')
-      expect(errors).toEqual([])
-    })
-
-    it('ensures all ru.json messages compile cleanly without syntax errors', () => {
-      const errors = validateMessageSyntax(ruLocale as Record<string, unknown>, 'ru.json')
       expect(errors).toEqual([])
     })
   })

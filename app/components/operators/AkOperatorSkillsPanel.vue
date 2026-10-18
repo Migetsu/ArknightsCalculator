@@ -24,14 +24,14 @@ const selectedLevels = ref<Record<string, number>>(
 function getSkillName(skill: OperatorSkill, lvlIndex: number): string {
   const lvlData = skill.levels[lvlIndex]
   if (!lvlData) return skill.skillId
-  return resolveI18nString(lvlData.name, locale.value as 'en' | 'ru' | 'zh') || lvlData.name.en
+  return resolveI18nString(lvlData.name, locale.value as 'en' | 'zh') || lvlData.name.en
 }
 
 function getSkillDesc(skill: OperatorSkill, lvlIndex: number): string {
   const lvlData = skill.levels[lvlIndex]
   if (!lvlData) return ''
   return (
-    resolveI18nString(lvlData.description, locale.value as 'en' | 'ru' | 'zh') ||
+    resolveI18nString(lvlData.description, locale.value as 'en' | 'zh') ||
     lvlData.description?.en ||
     ''
   )

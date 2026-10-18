@@ -61,11 +61,7 @@ const availableFactions = computed<string[]>(() => {
 
 // Filtered and sorted dataset
 const filteredOperators = computed<OperatorSummary[]>(() => {
-  return applyOperatorFiltersAndSort(
-    allOperators.value,
-    filters.value,
-    locale.value as 'en' | 'ru' | 'zh',
-  )
+  return applyOperatorFiltersAndSort(allOperators.value, filters.value, locale.value as 'en' | 'zh')
 })
 
 // Pagination / chunking parameters for non-blocking rendering
@@ -156,7 +152,7 @@ useSchemaOrg([
     itemListElement: displayedOperators.value.map((op, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      name: resolveI18nString(op.name, locale.value as 'en' | 'ru' | 'zh') || op.name.en,
+      name: resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en,
       url: `https://arkcalc.vercel.app/operators/${op.id}`,
     })),
   }),

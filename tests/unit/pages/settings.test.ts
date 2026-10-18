@@ -8,12 +8,12 @@ describe('SettingsPage', () => {
     expect(wrapper.find('.settings-page__title').text()).toBe('Settings')
 
     const sections = wrapper.findAll('.settings-page__section')
-    expect(sections.length).toBe(7) // Language, Server, Farming Sanity, Account, Your data, Game data, About
+    expect(sections.length).toBe(6) // Server, Farming Sanity, Account, Your data, Game data, About
   })
 
-  it('renders language toggle buttons', async () => {
+  it('renders drop data server toggle buttons', async () => {
     const wrapper = await mountSuspended(SettingsPage)
     const toggleBtns = wrapper.findAll('.settings-page__toggle-btn')
-    expect(toggleBtns.length).toBeGreaterThanOrEqual(4) // 2 for lang + 2 for server
+    expect(toggleBtns.length).toBe(2) // 2 for server (CN, Global)
   })
 })

@@ -18,13 +18,12 @@ describe('filterDevOnlyRoutes', () => {
     { name: 'index', path: '/' },
     { name: 'operators', path: '/operators' },
     { name: '_ui', path: '/_ui' },
-    { name: '_ui-ru', path: '/ru/_ui' },
   ]
 
   it('keeps _ui showcase routes when not in production environment', () => {
     const result = filterDevOnlyRoutes([...samplePages], false)
     expect(result.some((r) => r.path.includes('_ui'))).toBe(true)
-    expect(result.length).toBe(4)
+    expect(result.length).toBe(3)
   })
 
   it('filters out _ui showcase routes when in production environment', () => {

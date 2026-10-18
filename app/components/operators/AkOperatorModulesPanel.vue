@@ -34,7 +34,7 @@ function getItemName(id: string): string {
   if (id === '4001') return 'LMD'
   const it = itemsMap.get(id)
   if (!it) return id
-  return resolveI18nString(it.name, locale.value as 'en' | 'ru' | 'zh') || it.name?.en || id
+  return resolveI18nString(it.name, locale.value as 'en' | 'zh') || it.name?.en || id
 }
 
 // Track active stage per module (1..3)
@@ -50,13 +50,13 @@ function toggleStory(id: string): void {
 }
 
 function getModuleName(m: OperatorModule): string {
-  return resolveI18nString(m.name, locale.value as 'en' | 'ru' | 'zh') || m.name?.en || m.type
+  return resolveI18nString(m.name, locale.value as 'en' | 'zh') || m.name?.en || m.type
 }
 
 function getModuleDescription(m: OperatorModule): string {
   if (!m.description) return ''
   return (
-    resolveI18nString(m.description, locale.value as 'en' | 'ru' | 'zh') ||
+    resolveI18nString(m.description, locale.value as 'en' | 'zh') ||
     m.description.en ||
     m.description.zh ||
     ''
@@ -76,11 +76,11 @@ function getStageParts(m: OperatorModule, stageNum: number) {
 function getCandidateText(cand: OperatorModulePartCandidate, currentLocale: string): string {
   return (
     (cand.upgradeDescription &&
-      resolveI18nString(cand.upgradeDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.upgradeDescription, currentLocale as 'en' | 'zh')) ||
     (cand.additionalDescription &&
-      resolveI18nString(cand.additionalDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.additionalDescription, currentLocale as 'en' | 'zh')) ||
     (cand.overrideDescription &&
-      resolveI18nString(cand.overrideDescription, currentLocale as 'en' | 'ru' | 'zh')) ||
+      resolveI18nString(cand.overrideDescription, currentLocale as 'en' | 'zh')) ||
     cand.upgradeDescription?.en ||
     cand.additionalDescription?.en ||
     cand.overrideDescription?.en ||

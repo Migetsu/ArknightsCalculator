@@ -41,7 +41,7 @@ for (const op of rawOperatorsIndex as OperatorSummary[]) {
 function getOperatorName(id: string): string {
   const op = props.operatorsMap?.get(id) ?? fallbackOperatorsMap.get(id)
   if (!op) return id
-  return resolveI18nString(op.name, locale.value as 'en' | 'ru' | 'zh') || op.name.en || id
+  return resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en || id
 }
 
 // Available rate-up 6★ targets for selected banner

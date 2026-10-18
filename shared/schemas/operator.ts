@@ -3,7 +3,7 @@ import { z } from 'zod'
 /**
  * Supported UI and content locales.
  */
-export type ContentLocale = 'ru' | 'en' | 'zh'
+export type ContentLocale = 'en' | 'zh'
 
 /**
  * Provenance source for localized strings.
@@ -73,7 +73,7 @@ export function isPendingTranslation(text: I18nInput | string | undefined | null
 
 /**
  * Pure helper to resolve localized text following the fallback chain:
- * ru -> en -> zh.
+ * en -> zh.
  */
 export function resolveI18nString(
   text: I18nInput | undefined | null,
@@ -81,16 +81,13 @@ export function resolveI18nString(
 ): string {
   if (!text) return ''
 
-  if (locale === 'ru' && text.ru && text.ru.trim().length > 0) {
-    return text.ru
-  }
   if (locale === 'zh' && text.zh && text.zh.trim().length > 0) {
     return text.zh
   }
   if (text.en && text.en.trim().length > 0) {
     return text.en
   }
-  return text.zh || text.ru || ''
+  return text.zh || ''
 }
 
 /**

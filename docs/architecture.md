@@ -9,7 +9,7 @@
 - **Styling:** SCSS + BEM methodology (no UI component libraries)
 - **Icons & Images:** `@nuxt/icon`, `@nuxt/image`
 - **Backend / Database:** Supabase (Client: `@nuxtjs/supabase`, RLS-enabled, stateless proxy for secure integrations)
-- **Localization:** `@nuxtjs/i18n` (en/ru, planned)
+- **Localization:** `@nuxtjs/i18n` (English, no prefixes)
 - **Testing:** Vitest (`@nuxt/test-utils`), Playwright (Chromium)
 - **Deployment:** Vercel (CI via GitHub Actions)
 
@@ -53,7 +53,7 @@ For operator details (`/operators/[id]`), the data loading strategy is evaluated
   - Component tests run in `nuxt` environment with `happy-dom` via `@nuxt/test-utils`.
 - `tests/e2e/`: End-to-end tests using Playwright (Chromium).
   - `smoke.spec.ts`: Basic page health checks.
-  - `i18n.spec.ts`: Locale switching, URL prefixing, and preference persistence.
+  - `i18n.spec.ts`: English-only navigation and i18n integrity.
   - `responsive.spec.ts`: Desktop, tablet, mobile viewports, drawers, modals.
   - `layout-sanity.spec.ts`: Viewport-wide overflow defense (`scrollWidth <= clientWidth`), missing key detection, and component collision validation.
   - `fixtures.ts`: Page error and `console.error` assertions, preventing regressions.

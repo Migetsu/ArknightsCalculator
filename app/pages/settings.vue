@@ -5,22 +5,11 @@ import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import metaData from '~/../data/meta.json'
 import type { ServerRegion } from '~/../shared/schemas/operator'
 
-const { t, locale, setLocale } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
-const router = useRouter()
+const { t, locale } = useI18n()
 const settingsStore = useSettingsStore()
 
 const isSyncModalOpen = ref(false)
 const notificationMessage = ref<string | null>(null)
-
-function changeLanguage(lang: 'en' | 'ru'): void {
-  if (locale.value === lang) return
-  setLocale(lang)
-  const targetPath = switchLocalePath(lang)
-  if (targetPath) {
-    router.push(targetPath)
-  }
-}
 
 function selectServer(server: ServerRegion): void {
   settingsStore.setDropDataServer(server)
@@ -106,34 +95,6 @@ function openSource(): void {
       <div v-if="notificationMessage" class="settings-page__notification" role="status">
         {{ notificationMessage }}
       </div>
-
-      <!-- 1. Language Section -->
-      <section class="settings-page__section">
-        <div class="settings-page__section-header">
-          <h2 class="settings-page__section-title">{{ t('settings.language.title') }}</h2>
-          <p class="settings-page__section-desc">
-            {{ t('settings.language.desc') }}
-          </p>
-        </div>
-        <div class="settings-page__button-group">
-          <button
-            type="button"
-            class="settings-page__toggle-btn"
-            :class="{ 'settings-page__toggle-btn--active': locale === 'en' }"
-            @click="changeLanguage('en')"
-          >
-            {{ t('settings.language.en') }}
-          </button>
-          <button
-            type="button"
-            class="settings-page__toggle-btn"
-            :class="{ 'settings-page__toggle-btn--active': locale === 'ru' }"
-            @click="changeLanguage('ru')"
-          >
-            {{ t('settings.language.ru') }}
-          </button>
-        </div>
-      </section>
 
       <!-- 2. Drop Data Server Section -->
       <section class="settings-page__section">
