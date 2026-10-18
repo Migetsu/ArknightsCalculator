@@ -875,19 +875,18 @@
 
 ## In progress
 
-- Machine translation of CN-only content via Gemini API (`feat/mt-prompt-builder`).
-  Steps 1-2 of 5 done: REST client + `--check`, and the prompt builder with
-  `--dry-run`. Remaining: the translation loop, then import.
+- Machine translation of CN-only content via Gemini API (`feat/mt-run`).
+  Steps 1-3 of 5 done: REST client + `--check`, prompt builder + `--dry-run`, and the
+  translation loop `--run` with validation, corrective retry and quarantine. The full
+  backlog (169 strings) translated with 0 quarantined in 6 requests.
+  Remaining: import into `data/i18n/machine/` and the UI check.
   Pipeline and model-choice rationale: `docs/i18n-machine-translation.md`.
 
 ## Next
 
-- Machine translation step 3: `--run [--limit N]` — read the batches, call the API,
-  validate every returned string (tag multiset, placeholders, newlines) with
-  `validateTranslation`, retry failures once with the specific diff, quarantine what
-  still fails to `.cache/translate/failed.jsonl`, and support `--resume`.
-- Machine translation step 4: end-to-end import into `data/i18n/machine/` on a small
-  slice, then verify the badge flips PENDING -> MT in the UI.
+- Machine translation step 4: `--import` end-to-end on the produced batches, verify
+  `data/i18n/machine/*.json`, confirm the badge flips PENDING -> MT in the UI, and
+  re-run `data:validate`.
 - Module `PLN-02`: Operator planner store & target state persistence via Pinia.
 - Module `DEP-01`: Depot inventory management & craft tree decomposition core.
 

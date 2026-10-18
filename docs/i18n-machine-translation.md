@@ -35,19 +35,79 @@ translation backend can be replaced without touching the data model.
              -> reports freshness, request count and estimated tokens, and writes the
                 built prompts to .cache/translate/prompts/. Makes no API requests.
 
-4. translate scripts/data/translate-with-gemini.ts  (this document)
+4. run       npm run data:translate:run      (or --run [--limit N] [--batch N]
+             [--resume] [--no-repair])
+             -> validates every returned string, re-sends failures once with the
+                specific diff, quarantines what still fails to
+                .cache/translate/failed.jsonl, and writes the accepted strings to
+                .cache/translate/out/.
 
 5. import    npx jiti scripts/data/translate-missing.ts --import
              -> validates every string with validateTranslation() and writes
                 data/i18n/machine/{operators,skills,talents,modules}.json
 ```
 
+## The translation loop
+
+`scripts/data/lib/mt-run.ts` holds the loop, free of IO so a fake client can drive
+it in tests. For each batch it:
+
+1. requests the translations;
+2. checks every returned string with `checkTranslation`, which combines
+   `validateTranslation` (tag multiset, placeholder set, newline count) with three
+   checks `validateTranslation` deliberately treats as valid because it is also used
+   on already-imported data: empty output, output identical to the source, and output
+   still containing Chinese characters;
+3. re-sends whatever failed in a **single corrective request** that carries the
+   previous attempt and the exact validator messages per item;
+4. writes anything that fails both rounds to `failed.jsonl` and keeps it out of the
+   output directory.
+
+Accepted strings are written to `.cache/translate/out/batch_NNN.jsonl`, numbered after
+any existing output so `--resume` appends rather than overwrites.
+
+### Measured on the full backlog
+
+169 strings, 3 batches, `gemini-3.8-flash`:
+
+```
+batch 1/3 (60 items): 59 ok, 1 to repair   -> repair recovered 1, 0 quarantined
+batch 2/3 (60 items): 59 ok, 1 to repair   -> repair recovered 1, 0 quarantined
+batch 3/3 (49 items): 46 ok, 3 to repair   -> repair recovered 3, 0 quarantined
+
+translated 169 (5 after a corrective retry), quarantined 0, requests 6
+```
+
+A first-pass failure rate of ~3% (5/169) was fully absorbed by the corrective retry.
+Re-checking the output independently: 0 tag mismatches, 0 placeholder mismatches,
+0 newline mismatches, 0 strings with leftover Chinese.
+
+`--resume` on the same set makes **0 requests** and skips all 169.
+
 `.cache/` is gitignored: batches are working state, only `data/i18n/machine/*.json`
 is committed.
 
 > **Batches go stale.** `.cache/translate/in/` must be regenerated with `--export`
 > before every run. A batch exported before an EN data migration will contain
-> strings that are already covered by the official layer.
+> strings that are already covered by the official layer. `--export` clears the
+> directory first, because a previous export with a larger set or a smaller batch
+> size leaves higher-numbered files behind and those stale strings would be
+> translated again alongside the fresh ones.
+
+## What is not collected
+
+A string is only collected if it contains at least one CJK ideograph. Without that
+guard the collector treated any string where `en === zh` as a missing translation,
+which pulled in content that needs no translation at all:
+
+- operator codenames: `12F`, `W`, `Lancet-2`, `Castle-3`, `THRM-EX`
+- talent and module names: `Mon3tr`, `Mon2tr`, `DWDB-221E`
+- masked values: `？？？`
+
+That was 19 of the original 188 templates. Left in, they would have been sent to the
+API, come back unchanged, failed the source-identical check and landed in
+`failed.jsonl` — and, had they been imported, would have stamped already-correct
+official values with a machine-translation badge.
 
 ## Backend: Gemini API
 
