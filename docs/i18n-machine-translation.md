@@ -31,9 +31,13 @@ translation backend can be replaced without touching the data model.
              Each line: { id, type, charId, charNameZh, zh, tags[], placeholders[],
                           keys[], relevantGlossary{zh:en} }
 
-3. translate scripts/data/translate-with-gemini.ts  (this document)
+3. dry run   npm run data:translate:dry        (or --dry-run [--limit N] [--batch N])
+             -> reports freshness, request count and estimated tokens, and writes the
+                built prompts to .cache/translate/prompts/. Makes no API requests.
 
-4. import    npx jiti scripts/data/translate-missing.ts --import
+4. translate scripts/data/translate-with-gemini.ts  (this document)
+
+5. import    npx jiti scripts/data/translate-missing.ts --import
              -> validates every string with validateTranslation() and writes
                 data/i18n/machine/{operators,skills,talents,modules}.json
 ```
@@ -93,10 +97,35 @@ The client always sends `responseMimeType: 'application/json'` plus a
 parsed out of prose. Translation responses are a flat
 `[{ "id": string, "en": string }]` array.
 
+## Prompt construction
+
+`scripts/data/lib/mt-prompt.ts` is pure (no IO) so the prompt shape is unit
+testable. It builds:
+
+- a system instruction covering terminology, per-type style and the markup rules;
+- a **compact** JSON user payload — one object per item, `{id, type, character?, zh,
+glossary?}`, where `character` and `glossary` are omitted when they would carry no
+  information. Indented JSON would add roughly a fifth to the prompt for no benefit.
+
+`scripts/data/lib/mt-batch.ts` holds the file-system side: validating batch lines
+with Zod (a malformed cache fails loudly instead of silently producing a wrong
+prompt), listing batches and writing built prompts for inspection.
+
+`--dry-run` never builds prompts from the cached batch. It always collects the
+untranslated set live and reports the drift against the cache, because a stale
+cache means paying for strings that are already translated upstream.
+
 ## Cost and quota
 
 The whole current backlog (188 unique strings, ~35k Chinese characters) fits in
-**4 requests** at `batchSize 60`, roughly 51k input and 17k output tokens.
+**4 requests** at `batchSize 60`. Measured with `models/gemini-3.8-flash:countTokens`
+on the built prompts: 10,088 + 11,438 + 8,205 + ~2,200 = **~31,900 input tokens**,
+plus roughly 17k output tokens.
+
+`estimatePromptTokens()` in `mt-prompt.ts` predicts the input side without an API
+call. Its coefficients (CJK 0.827 tokens/char, Latin/JSON 0.330) are fitted against
+`countTokens` and reproduce it within ~1.5%.
+
 Free-tier `RPM`/`TPM`/`RPD` values are no longer published in the Gemini docs —
 Google moved them into AI Studio per project ("Rate limits depend on various
 factors ... and can be viewed in Google AI Studio"). The practical risk is not a
