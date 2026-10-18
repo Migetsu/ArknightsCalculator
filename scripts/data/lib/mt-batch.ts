@@ -24,6 +24,9 @@ export const UNTRANSLATED_TYPES = [
   'skill_desc',
   'talent_desc',
   'module_desc',
+  'module_stage_desc',
+  'potential_desc',
+  'profile_text',
 ] as const satisfies readonly UntranslatedType[]
 
 /**
@@ -130,15 +133,21 @@ export interface OutItem extends BatchItem {
   en: string
 }
 
-/** Ids already translated in `.cache/translate/out/`, so a re-run can skip them. */
-export async function readOutIds(dir: string = BATCH_OUT_DIR): Promise<Set<string>> {
-  const ids = new Set<string>()
+/**
+ * Keys already translated in `.cache/translate/out/`, so a re-run can skip them.
+ *
+ * Deliberately keyed on `keys` rather than the item `id`: ids are positional
+ * (`type_N`) and shift whenever the upstream data changes, so an id-keyed resume
+ * silently skips the wrong strings after an update.
+ */
+export async function readOutKeys(dir: string = BATCH_OUT_DIR): Promise<Set<string>> {
+  const keys = new Set<string>()
 
   let entries: string[]
   try {
     entries = await fs.readdir(resolveFromCwd(dir))
   } catch {
-    return ids
+    return keys
   }
 
   for (const entry of entries) {
@@ -147,9 +156,11 @@ export async function readOutIds(dir: string = BATCH_OUT_DIR): Promise<Set<strin
     for (const line of raw.split(/\r?\n/)) {
       if (!line.trim()) continue
       try {
-        const parsed = JSON.parse(line) as { id?: unknown; en?: unknown }
-        if (typeof parsed.id === 'string' && typeof parsed.en === 'string' && parsed.en.trim()) {
-          ids.add(parsed.id)
+        const parsed = JSON.parse(line) as { keys?: unknown; en?: unknown }
+        if (typeof parsed.en !== 'string' || !parsed.en.trim()) continue
+        if (!Array.isArray(parsed.keys)) continue
+        for (const key of parsed.keys) {
+          if (typeof key === 'string' && key) keys.add(key)
         }
       } catch {
         // A corrupt line simply does not count as translated; it will be redone.
@@ -157,7 +168,7 @@ export async function readOutIds(dir: string = BATCH_OUT_DIR): Promise<Set<strin
     }
   }
 
-  return ids
+  return keys
 }
 
 /** Writes one translated batch to `.cache/translate/out/`. */

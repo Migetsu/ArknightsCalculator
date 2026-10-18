@@ -40,6 +40,7 @@
     "data:translate:check": "jiti scripts/data/translate-with-gemini.ts --check",
     "data:translate:dry": "jiti scripts/data/translate-with-gemini.ts --dry-run",
     "data:translate:run": "jiti scripts/data/translate-with-gemini.ts --run",
+    "data:translate:all": "jiti scripts/data/translate-missing.ts --export 60 && jiti scripts/data/translate-with-gemini.ts --run --resume && jiti scripts/data/translate-missing.ts --import",
     "screenshots": "jiti scripts/take-screenshots.ts"
   },
   "engines": {

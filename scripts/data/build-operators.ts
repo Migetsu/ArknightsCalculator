@@ -443,9 +443,50 @@ export function buildOperatorData(
       })
 
     // 4. Build Talents
-    const talents: OperatorTalent[] = (cn.talents ?? [])
+    //
+    // Keys use the index in the FINAL array, not in the raw CN table. Hidden and
+    // empty talents/candidates are dropped below, so raw indices drift from the
+    // emitted ones — and the collector, which reads this built file, would then
+    // generate keys that never match. EN lookups keep using the raw indices,
+    // because the EN table is aligned with the CN table.
+    const rawTalents = cn.talents ?? []
+    const isEmittableTalent = (cnCand: {
+      isHideTalent?: boolean
+      name?: string
+      description?: string
+    }): boolean =>
+      !cnCand.isHideTalent &&
+      Boolean(cnCand.name && cnCand.name.trim()) &&
+      Boolean(
+        cnCand.description && cnCand.description.trim() && cnCand.description.trim() !== '-',
+      )
+
+    const talentFinalIndex = new Map<number, number>()
+    const candidateFinalIndex = new Map<number, Map<number, number>>()
+    {
+      let nextTalent = 0
+      rawTalents.forEach((rawTalent, rawTIdx) => {
+        const kept = (rawTalent.candidates ?? [])
+          .map((cnCand, rawCIdx) => ({ cnCand, rawCIdx }))
+          .filter(({ cnCand }) => isEmittableTalent(cnCand))
+        if (kept.length === 0) return
+
+        talentFinalIndex.set(rawTIdx, nextTalent)
+        candidateFinalIndex.set(
+          rawTIdx,
+          new Map(kept.map(({ rawCIdx }, finalCIdx) => [rawCIdx, finalCIdx])),
+        )
+        nextTalent += 1
+      })
+    }
+
+    const talents: OperatorTalent[] = rawTalents
       .map((rawTalent, tIdx) => {
         const enTalent = en?.talents?.[tIdx]
+        const finalTIdx = talentFinalIndex.get(tIdx)
+        if (finalTIdx === undefined) return { candidates: [] }
+        const finalCandidateIndices = candidateFinalIndex.get(tIdx) ?? new Map<number, number>()
+
         const candidates = (rawTalent.candidates ?? [])
           .map((cnCand, cIdx) => {
             if (cnCand.isHideTalent) return null
@@ -457,11 +498,12 @@ export function buildOperatorData(
             )
             if (!hasRawName || !hasRawDesc) return null
 
+            const finalCIdx = finalCandidateIndices.get(cIdx) ?? cIdx
             const enCand = enTalent?.candidates?.[cIdx]
             const isStale = checkTalentCandidateStale(cnCand, enCand)
             const candName = resolveLayeredI18nString(
               {
-                key: `${id}.talent.${tIdx}.${cIdx}.name`,
+                key: `${id}.talent.${finalTIdx}.${finalCIdx}.name`,
                 charId: id,
                 category: 'talents',
                 officialEn: enCand?.name,
@@ -474,7 +516,7 @@ export function buildOperatorData(
             )
             const candDesc = resolveLayeredI18nString(
               {
-                key: `${id}.talent.${tIdx}.${cIdx}.desc`,
+                key: `${id}.talent.${finalTIdx}.${finalCIdx}.desc`,
                 charId: id,
                 category: 'talents',
                 officialEn: enCand?.description,
