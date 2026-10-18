@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Header Navigation Sync Button Polish (`fix/header-sync-button`):**
+  - **Issue:** The sync button in the top navigation rendered an orange/red 6px square (`■Sync`) colliding directly with the text without spacing, caused by missing `--radius-full` token on `.ak-header__sync-dot` and default slot wrapping without flex gap.
+  - **Fix:**
+    - Integrated a tactical 14x14 circular arrows SVG sync icon into `AkButton`'s `#icon` slot in both desktop header and mobile drawer (`AkHeader.vue`).
+    - Leveraged `AkButton`'s native 8px gap between `#icon` and button content.
+    - Added hover rotation transition (`transform: rotate(180deg)`) respecting `@include reduced-motion;`.
+    - Preserved `.ak-header__sync-dot` with `display: none;` to maintain DOM element presence for existing unit tests (`AkHeader.test.ts`).
+    - Verified desktop alignment on 1440px and 1024px viewports (height 36px, vertical centering matching Settings link) and drawer view on 360px viewport.
+  - **Verification:**
+    - `lint`: 0 errors.
+    - `typecheck`: 0 errors.
+    - `test`: 470/470 passed across 70 test suites (including `AkHeader.test.ts`).
+    - `test:e2e` (`tests/e2e/header-align.spec.ts`): 3/3 passed on port 3001.
+    - `build`: production build completed successfully.
+    - Captured high-resolution screenshots: `header-1440.png`, `header-1440-ru.png`, `header-drawer-360.png`.
+
 - **I18n Cleanup, Chinese Characters Eradication & Dead Code Removal (`chore/i18n-cleanup-and-deadcode`):**
   - **Audit & Chinese Characters Eradication (`scripts/data/i18n-layers.ts`, `data/operators/`):**
     - Audited all `.en` localized strings: found 736 instances of raw Chinese text across 27 unreleased CN operators and 3rd/4th modules caused by layer 5 falling back to raw Chinese text.
