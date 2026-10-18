@@ -165,21 +165,35 @@ describe('mt-run', () => {
       expect(calls).toHaveLength(1)
     })
 
-    it('skips ids that a previous run already translated', async () => {
+    it('skips items whose keys a previous run already translated', async () => {
       const { client, calls } = fakeClient([
         [{ id: 'b', en: 'ATK <@ba.vup>increased</> for {time}s' }],
       ])
 
       const result = await runTranslation({
         client,
-        items: [item({ id: 'a' }), item({ id: 'b' })],
+        items: [item({ id: 'a', keys: ['key.a'] }), item({ id: 'b', keys: ['key.b'] })],
         batchSize: 10,
-        alreadyTranslated: new Set(['a']),
+        alreadyTranslatedKeys: new Set(['key.a']),
       })
 
       expect(result.skipped).toBe(1)
       expect(result.entries.map((entry) => entry.item.id)).toEqual(['b'])
       expect(calls[0]?.userPrompt).not.toContain('"id":"a"')
+    })
+
+    it('does not skip an item whose keys are only partially translated', async () => {
+      const { client } = fakeClient([[{ id: 'a', en: 'ATK <@ba.vup>increased</> for {time}s' }]])
+
+      const result = await runTranslation({
+        client,
+        items: [item({ id: 'a', keys: ['key.a', 'key.a2'] })],
+        batchSize: 10,
+        alreadyTranslatedKeys: new Set(['key.a']),
+      })
+
+      expect(result.skipped).toBe(0)
+      expect(result.entries).toHaveLength(1)
     })
 
     it('splits items across batches and counts one request per batch', async () => {
