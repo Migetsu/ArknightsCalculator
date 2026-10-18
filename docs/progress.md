@@ -1,6 +1,25 @@
 # Project Progress
 
-- **Gacha Target 6★ Operator Selection & Rate-up Share Calculation (`feat/gacha-target-share-selection`):**
+- **Official CN Game Data Migration to SanityGoneAK & Decommissioning of Kengxxiao (`feat/migrate-cn-source`):**
+  - **Data Source Unification (`scripts/data/sources.config.ts`):**
+    - Pinned CN source to `SanityGoneAK/arknights-gamedata`, branch `main`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, locale `cn`.
+    - Both Global (EN) and China (CN) are now unified under `SanityGoneAK/arknights-gamedata`, eliminating upstream drift, dual-source maintenance, and dependency on frozen Kengxxiao repository.
+    - Updated `RawDataSourceConfig` type to include `'cn'`.
+  - **Build Pipeline Alignment (`scripts/data/`):**
+    - Updated `build-constants.ts`, `build-items.ts`, `build-recipes.ts` to accept `RawDataSourceConfig['locale']` (including `'cn'`).
+    - Updated `build-recruit.ts` to resolve `gacha_table.json` dynamically via `DATA_SOURCES_CONFIG.sources.cn.locale` and `en.locale`.
+    - Re-fetched and regenerated all data (`npm run data:fetch -- --source=cn`, `npm run data:build`, `npm run data:constants`, `npm run data:items`, `npm run data:recipes`, `npm run data:recruit`, `npm run data:stages`).
+    - Verified operator Clement (`char_4231_clemnt`) S3 projectile lifetime received fresh upstream balance update (5s -> 3.5s).
+    - Preserved 100% of operators (434) and items (848), with zero missing mappings between EN and CN.
+  - **Testing & Verification:**
+    - Added unit test suite `tests/unit/scripts/sources-config.test.ts` checking upstream repo parity, canonical locales (`en`, `cn`), and URL helpers.
+    - Updated `tests/unit/data/raw-schemas.test.ts` URL assertions.
+    - Ran `data:validate`: 434 operators, 76 recipes, 848 items, 318 recruit pool — 0 integrity issues.
+    - Ran `i18n:check`: en.json and ru.json keys identical.
+    - Ran `typecheck`, `test` (467/467 passed across 69 suites), `lint` (0 errors), `build` (production bundle complete in 1m 35s).
+  - **Documentation (`docs/data-sources.md`, `docs/data-source-probe.md`):**
+    - Updated source tables and declared formal deprecation/decommissioning of Kengxxiao.
+    - Added "Conclusion / Migration Done" block in `docs/data-source-probe.md`.
   - **Schema & Math Engine (`shared/schemas/banner.ts`, `shared/utils/gacha/index.ts`):**
     - Extended `GachaBannerSchema` with optional `rateUpShareMode` (`'single' | 'equal_split' | 'manual'`) and `rateUpShare` (`0..1`).
     - Implemented `getTargetRateUpShare(banner: GachaBanner): number | null`:
