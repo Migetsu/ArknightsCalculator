@@ -875,9 +875,9 @@
 
 ## In progress
 
-- Machine translation of CN-only content via Gemini API (`feat/mt-coverage`).
-  Steps 1-5 done. The pipeline is complete and **no `[Pending Translation]` string
-  remains** in `data/operators/` (750 strings resolved by the machine layer).
+- Machine translation of CN-only content via Gemini API — complete.
+  **No `[Pending Translation]` remains** in `data/operators/` or `data/constants.json`.
+  Coverage includes terminology tooltips and operator role tags.
   Runbook and rationale: `docs/i18n-machine-translation.md`.
 
 ## Next
