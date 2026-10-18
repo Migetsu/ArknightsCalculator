@@ -43,11 +43,13 @@ const activeStages = ref<Record<string, number>>(
   Object.fromEntries(props.modules.map((m) => [m.id, Math.max(1, m.stages?.length ?? 1)])),
 )
 
-// Track expanded lore/story for advanced modules (collapsed by default)
-const expandedStories = ref<Record<string, boolean>>({})
+// Track expanded lore/story for advanced modules (collapsed by default).
+// Only one story is open at a time: several expanded blocks at once made the
+// panel hard to scan and read as a bug.
+const expandedStoryId = ref<string | null>(null)
 
 function toggleStory(id: string): void {
-  expandedStories.value[id] = !expandedStories.value[id]
+  expandedStoryId.value = expandedStoryId.value === id ? null : id
 }
 
 function getModuleName(m: OperatorModule): string {
@@ -199,14 +201,14 @@ function getStageCost(m: OperatorModule, stageNum: number) {
             @click="toggleStory(mod.id)"
           >
             {{
-              expandedStories[mod.id]
+              expandedStoryId === mod.id
                 ? t('operators.detail.modules.hideStory')
                 : t('operators.detail.modules.showStory')
             }}
           </AkButton>
         </div>
         <p
-          v-if="mod.type === 'INITIAL' || expandedStories[mod.id]"
+          v-if="mod.type === 'INITIAL' || expandedStoryId === mod.id"
           class="ak-operator-modules-panel__dossier-text"
         >
           {{ getModuleDescription(mod) }}

@@ -188,9 +188,30 @@ The collector covers every localized field the builder resolves:
 | `module_stage_desc`           | module stage part `additionalDescription` / `upgradeDescription` / `overrideDescription` |
 | `potential_desc`              | `potentialRanks[].description`                                                           |
 | `profile_text`                | `itemUsage` / `itemDesc` (operator dossier)                                              |
+| `term_name` / `term_desc`     | `data/constants.json` terminology dictionary (the tooltips in rich text)                 |
+| `operator_tag`                | operator role tags, as a fallback (see below)                                            |
 
-As of the 2026-10-18 run this leaves **0 pending strings** in `data/operators/`, with
-750 strings resolved by the machine layer.
+As of the 2026-10-18 run this leaves **0 pending strings** in `data/operators/` and
+`data/constants.json`, with 750 operator strings and 14 term strings resolved by the
+machine layer.
+
+### Role tags do not need the API
+
+`tagList` is a plain string array in the game tables, not a localized field, so
+CN-only operators shipped the Chinese tag (`["高空","输出","控场"]`). The CN and EN
+tagLists are **parallel arrays**, so the official EN name for a Chinese tag is
+recoverable from the operators that have both — no translation needed. The builder
+builds that dictionary once and resolves every tag through the layer chain, with the
+machine layer left as a fallback for a tag that has no English counterpart yet.
+Empty tag entries exist in the tables and are dropped.
+
+### A source string with no Han character is not untranslated
+
+`resolveLayeredI18nString` used to return `[Pending Translation]` for any string it
+could not resolve, including strings that are already Latin and need no translation
+at all — `S.E.E.S.`, or a codename like `12F`. It now returns such a string as-is
+with source `zh` (no badge), which is what made the last two terminology entries
+resolve correctly.
 
 ### The talent index bug
 

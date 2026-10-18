@@ -227,6 +227,23 @@ export function buildOperatorData(
     }
   >()
 
+  // Operator role tags (Crowd-Control, Nuker, DP-Recovery, …) are plain strings in
+  // the game tables, not localized fields. CN-only operators therefore shipped the
+  // Chinese tag. The CN and EN tagLists are parallel arrays, so the official EN
+  // name for a Chinese tag is recoverable from the operators that have both.
+  const tagDictionary = new Map<string, string>()
+  for (const [id, cnChar] of Object.entries(bundle.cnChars)) {
+    const cnTags = cnChar.tagList ?? []
+    const enTags = bundle.enChars[id]?.tagList ?? []
+    for (let i = 0; i < cnTags.length; i++) {
+      const cnTag = cnTags[i]
+      const enTag = enTags[i]
+      if (cnTag && enTag && !tagDictionary.has(cnTag)) {
+        tagDictionary.set(cnTag, enTag)
+      }
+    }
+  }
+
   // 1. Regular operators from character_table.json
   for (const [id, cnChar] of Object.entries(bundle.cnChars)) {
     if (isPlayableOperator(id, cnChar)) {
@@ -307,7 +324,31 @@ export function buildOperatorData(
     const subclass = resolveSubclassName(cn.subProfessionId, bundle.enEquips, bundle.cnEquips)
     const faction = cn.nationId ?? cn.groupId ?? cn.teamId ?? null
     const position = (cn.position ?? 'MELEE') as OperatorPosition
-    const tagList = en?.tagList ?? cn.tagList ?? []
+    // Resolve every tag through the layer chain. The dictionary built above supplies
+    // the official EN name from the parallel EN/CN arrays; manual overrides and the
+    // machine layer remain as fallbacks for anything it does not cover.
+    //
+    // Empty entries exist in the game tables and are dropped, which is why the key
+    // uses the position in the emitted array rather than in the raw one.
+    const cnTags = cn.tagList ?? []
+    const enTags = en?.tagList ?? []
+    const tagList: string[] = (cnTags.length > 0 ? cnTags : enTags)
+      .map((tag, rawIndex) => ({ tag, rawIndex }))
+      .filter(({ tag }) => typeof tag === 'string' && tag.trim().length > 0)
+      .map(({ tag, rawIndex }, index) => {
+        const resolved = resolveLayeredI18nString(
+          {
+            key: `${id}.tag.${index}`,
+            charId: id,
+            officialEn: enTags[rawIndex] ?? tagDictionary.get(tag),
+            zhText: tag,
+          },
+          ctx,
+          trk,
+        )
+        // A tag must never render as the pending placeholder.
+        return resolved.source === 'pending' ? tag : resolved.en || tag
+      })
 
     // 1. Build Summary
     const summary: OperatorSummary = {

@@ -257,4 +257,38 @@ describe('i18n-layers resolution', () => {
     expect(latinRes.source).toBe('machine')
     expect(latinRes.en).toBe('Angelina the Mellow Wish')
   })
+
+  it('returns a source string with no CJK ideograph as-is instead of pending', () => {
+    const tracker = createI18nTracker()
+    const result = resolveLayeredI18nString(
+      {
+        key: 'term.ba.sees.name',
+        officialEn: null,
+        zhText: 'S.E.E.S.',
+      },
+      mockContext,
+      tracker,
+    )
+
+    expect(result.source).toBe('zh')
+    expect(result.en).toBe('S.E.E.S.')
+    expect(result.isMachineTranslation).toBe(false)
+    expect(tracker.sources.pending).toBe(0)
+  })
+
+  it('still reports pending for a source string that does have a CJK ideograph', () => {
+    const tracker = createI18nTracker()
+    const result = resolveLayeredI18nString(
+      {
+        key: 'term.ba.groundbind.name',
+        officialEn: null,
+        zhText: '缚地',
+      },
+      mockContext,
+      tracker,
+    )
+
+    expect(result.source).toBe('pending')
+    expect(result.en).toBe('[Pending Translation]')
+  })
 })
