@@ -1,5 +1,32 @@
 # Project Progress
 
+- **I18n Cleanup, Chinese Characters Eradication & Dead Code Removal (`chore/i18n-cleanup-and-deadcode`):**
+  - **Audit & Chinese Characters Eradication (`scripts/data/i18n-layers.ts`, `data/operators/`):**
+    - Audited all `.en` localized strings: found 736 instances of raw Chinese text across 27 unreleased CN operators and 3rd/4th modules caused by layer 5 falling back to raw Chinese text.
+    - Updated `scripts/data/i18n-layers.ts` layer 5 fallback: missing translations now return `en: '[Pending Translation]'` with `source: 'pending'`, strictly eradicating Chinese text from the English field.
+    - Updated `scripts/data/build-operators.ts`: included `tracker.sources.pending` in build reporting and `data/i18n/report.json`.
+    - Regenerated dataset via `npm run data:build`: verified exactly **0** Chinese characters remain in any `.en` field across all 434 operator files and `data/operators-index.json`.
+    - Added permanent regression test `tests/unit/data/en-no-chinese.test.ts`.
+  - **I18n Pipeline & Schema Support (`shared/schemas/operator.ts`, `scripts/data/`):**
+    - Extended `I18nSourceSchema` to include `'pending'`.
+    - Added `isPendingTranslation(text: I18nInput | string | undefined | null): boolean` pure helper.
+    - Updated `scripts/data/validate-translation.ts`: accepted `[Pending Translation]` as a valid placeholder.
+    - Updated `scripts/data/translate-missing.ts`: detected untranslated strings with `source: 'zh'` or `'pending'` or `[Pending Translation]`.
+  - **UI & Design Polish (`app/components/ui/`, `app/components/operators/`, `app/pages/_ui.vue`):**
+    - Updated `AkTranslationBadge.vue` to render `• PENDING` with tactical danger outline (`rgb(235 87 87 / 40%)`) and tooltip.
+    - Added localized tooltip messages in `i18n/locales/en.json` and `ru.json` (`operators.detail.pendingTranslation`).
+    - Updated `AkOperatorInfoPanel.vue`: added `AkTranslationBadge` to `itemUsage` and `itemDesc`, with italicized muted text for pending entries.
+    - Updated `AkOperatorSkillsPanel.vue`, `AkOperatorTalentsPanel.vue`, and `AkOperatorModulesPanel.vue`: added translation badges and styling for pending descriptions and names.
+    - Updated `AkRichText.vue`: added `.ak-rich-text--pending` styling for `[Pending Translation]`.
+    - Showcased PENDING badge in `app/pages/_ui.vue`.
+  - **Dead Code & Mockups Cleanup:**
+    - Archived 11 static HTML mockups in `docs/design/mockups/*.html` to `docs/archive/mockups/`.
+    - Removed unused/dead scripts: `scripts/data/mirror-assets.ts`, `scripts/data/process-translations.ts`, `scripts/data/verify-new-assets.ts`.
+    - Removed `"data:mirror-assets"` script from `package.json`.
+  - **Testing & Verification:**
+    - `i18n:check`, `typecheck`, `test` (470/470 passed across 70 suites), `lint` (0 errors), and `build` (complete production build) all 100% green.
+    - Captured 4 high-resolution Playwright screenshots on port 3001 and copied to artifacts.
+
 - **Official CN Game Data Migration to SanityGoneAK & Decommissioning of Kengxxiao (`feat/migrate-cn-source`):**
   - **Data Source Unification (`scripts/data/sources.config.ts`):**
     - Pinned CN source to `SanityGoneAK/arknights-gamedata`, branch `main`, commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`, locale `cn`.
