@@ -206,4 +206,68 @@ describe('AkOperatorSkillsPanel', () => {
     expect(range2?.props('rangeId')).toBe('3-4')
     expect(range2?.props('variant')).toBe('modified')
   })
+
+  it('renders base skill levels (1 -> 7) section when allSkillLvlup is provided', async () => {
+    const mockAllSkillLvlup = [
+      {
+        unlockCond: { phase: 0, level: 1 },
+        lvlUpCost: [{ id: '3301', count: 5 }],
+      },
+      {
+        unlockCond: { phase: 0, level: 1 },
+        lvlUpCost: [
+          { id: '3301', count: 5 },
+          { id: '30031', count: 6 },
+        ],
+      },
+      {
+        unlockCond: { phase: 0, level: 1 },
+        lvlUpCost: [{ id: '3302', count: 8 }],
+      },
+      {
+        unlockCond: { phase: 1, level: 1 },
+        lvlUpCost: [{ id: '3302', count: 8 }],
+      },
+      {
+        unlockCond: { phase: 1, level: 1 },
+        lvlUpCost: [{ id: '3302', count: 8 }],
+      },
+      {
+        unlockCond: { phase: 1, level: 1 },
+        lvlUpCost: [{ id: '3303', count: 8 }],
+      },
+    ]
+
+    const wrapper = await mountSuspended(AkOperatorSkillsPanel, {
+      props: {
+        skills: mockSkills,
+        allSkillLvlup: mockAllSkillLvlup,
+      },
+    })
+
+    const baseSection = wrapper.find('.ak-operator-skills-panel__base-section')
+    expect(baseSection.exists()).toBe(true)
+    expect(baseSection.text()).toContain('Base Skill Levels (1 → 7)')
+    expect(baseSection.text()).toContain('Total Materials (Lv 1 → 7)')
+
+    // 6 Step cards rendered
+    const steps = wrapper.findAll('.ak-operator-skills-panel__base-step')
+    expect(steps).toHaveLength(6)
+    expect(steps[0]!.text()).toContain('Lv 1 → Lv 2')
+    expect(steps[0]!.text()).toContain('Req: E0 Lv 1')
+    expect(steps[5]!.text()).toContain('Lv 6 → Lv 7')
+    expect(steps[5]!.text()).toContain('Req: E1 Lv 1')
+  })
+
+  it('omits base skill levels section when allSkillLvlup is undefined or empty', async () => {
+    const wrapper = await mountSuspended(AkOperatorSkillsPanel, {
+      props: {
+        skills: mockSkills,
+        allSkillLvlup: [],
+      },
+    })
+
+    const baseSection = wrapper.find('.ak-operator-skills-panel__base-section')
+    expect(baseSection.exists()).toBe(false)
+  })
 })

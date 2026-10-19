@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { OperatorSkill } from '~/../shared/schemas/operator'
+import { computed, ref } from 'vue'
+import type { OperatorDetail, OperatorSkill } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
+import { getBaseSkillUpgradeSummary } from '~/../shared/utils/upgradeCosts'
 import rawItemsData from '~/../data/items.json'
 import type { GameItem } from '~/../shared/schemas/item'
 import AkRichText from '~/components/ui/AkRichText.vue'
@@ -14,14 +15,18 @@ import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 
 interface Props {
   skills: OperatorSkill[]
+  allSkillLvlup?: OperatorDetail['allSkillLvlup']
   defaultRangeId?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  allSkillLvlup: () => [],
   defaultRangeId: undefined,
 })
 
 const { t, locale } = useI18n()
+
+const baseSkillSummary = computed(() => getBaseSkillUpgradeSummary(props.allSkillLvlup))
 
 const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
 
@@ -89,6 +94,89 @@ function isCustomSkillRange(skill: OperatorSkill, lvlIndex: number): boolean {
     <div v-if="skills.length === 0" class="ak-operator-skills-panel__empty">
       {{ t('operators.detail.skills.noSkills') }}
     </div>
+
+    <!-- Base Skill Levels (1 -> 7) Section -->
+    <section
+      v-if="baseSkillSummary.steps.length > 0"
+      class="ak-operator-skills-panel__base-section"
+    >
+      <div class="ak-operator-skills-panel__base-header">
+        <div class="ak-operator-skills-panel__base-title-wrap">
+          <span class="ak-operator-skills-panel__base-tag">
+            {{ t('operators.detail.skills.baseTrainingTag') }}
+          </span>
+          <h3 class="ak-operator-skills-panel__base-title">
+            {{ t('operators.detail.skills.baseTrainingTitle') }}
+          </h3>
+          <p class="ak-operator-skills-panel__base-desc">
+            {{ t('operators.detail.skills.baseTrainingDesc') }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Total Materials Summary Banner -->
+      <div
+        v-if="baseSkillSummary.totalMaterials.length > 0"
+        class="ak-operator-skills-panel__base-totals"
+      >
+        <span class="ak-operator-skills-panel__base-totals-title">
+          {{ t('operators.detail.skills.baseTotalTitle') }}:
+        </span>
+        <div class="ak-operator-skills-panel__base-totals-items">
+          <AkItemIcon
+            v-for="mat in baseSkillSummary.totalMaterials"
+            :key="mat.id"
+            :item-id="mat.id"
+            :icon-id="getItemIconId(mat.id)"
+            :name="getItemName(mat.id)"
+            :tier="getItemRarity(mat.id)"
+            :count="mat.count"
+            size="sm"
+          />
+        </div>
+      </div>
+
+      <!-- Step-by-Step Level Grid -->
+      <div class="ak-operator-skills-panel__base-grid">
+        <div
+          v-for="step in baseSkillSummary.steps"
+          :key="step.toLevel"
+          class="ak-operator-skills-panel__base-step"
+        >
+          <div class="ak-operator-skills-panel__base-step-header">
+            <span class="ak-operator-skills-panel__base-step-name">
+              {{
+                t('operators.detail.skills.levelTransition', {
+                  from: step.fromLevel,
+                  to: step.toLevel,
+                })
+              }}
+            </span>
+            <span class="ak-operator-skills-panel__base-step-req">
+              {{
+                t('operators.detail.skills.unlockReq', {
+                  phase: step.unlockCond.phase,
+                  level: step.unlockCond.level,
+                })
+              }}
+            </span>
+          </div>
+
+          <div class="ak-operator-skills-panel__base-step-items">
+            <AkItemIcon
+              v-for="mat in step.materials"
+              :key="mat.id"
+              :item-id="mat.id"
+              :icon-id="getItemIconId(mat.id)"
+              :name="getItemName(mat.id)"
+              :tier="getItemRarity(mat.id)"
+              :count="mat.count"
+              size="sm"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div v-for="skill in skills" :key="skill.skillId" class="ak-operator-skills-panel__skill-card">
       <!-- Skill Header -->
@@ -363,6 +451,144 @@ function isCustomSkillRange(skill: OperatorSkill, lvlIndex: number): boolean {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
+  }
+
+  // Base Skill Levels (1 -> 7) Section
+  &__base-section {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  &__base-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-xs);
+  }
+
+  &__base-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  &__base-tag {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.16em;
+    color: var(--color-accent-amber);
+    text-transform: uppercase;
+  }
+
+  &__base-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-display);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+  }
+
+  &__base-desc {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__base-totals {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    background: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-sm) var(--space-md);
+
+    @include mq(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__base-totals-title {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__base-totals-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  &__base-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__base-step {
+    background: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__base-step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  &__base-step-name {
+    font-family: var(--font-display);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  &__base-step-req {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    color: var(--color-accent-amber);
+    background: rgb(255 157 43 / 10%);
+    border: 1px solid var(--color-accent-amber);
+    border-radius: var(--radius-xs);
+    padding: 1px 6px;
+  }
+
+  &__base-step-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
   }
 }
 </style>

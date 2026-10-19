@@ -115,4 +115,81 @@ describe('AkOperatorStatsPanel', () => {
     expect(rangeCard.text()).toContain('Range 2-3')
     expect(rangeCard.text()).toContain('E0')
   })
+
+  it('renders promotion costs for 6★ operator with E1 and E2, materials, and LMD', async () => {
+    const wrapper = await mountSuspended(AkOperatorStatsPanel, {
+      props: {
+        operator: silverAsh,
+        elite: 2,
+        level: 90,
+        trust: 100,
+        potential: 1,
+        moduleStage: 0,
+      },
+    })
+
+    const promoCard = wrapper.find('.ak-operator-stats-panel__promotion-card')
+    expect(promoCard.exists()).toBe(true)
+
+    const phaseCards = wrapper.findAll('.ak-operator-stats-panel__phase-card')
+    expect(phaseCards).toHaveLength(2)
+
+    // E1 card
+    const e1Card = phaseCards[0]!
+    expect(e1Card.text()).toContain('E1')
+    expect(e1Card.text()).toContain('Elite 1')
+    expect(e1Card.text()).toContain('30,000') // LMD
+
+    // E2 card
+    const e2Card = phaseCards[1]!
+    expect(e2Card.text()).toContain('E2')
+    expect(e2Card.text()).toContain('Elite 2')
+    expect(e2Card.text()).toContain('180,000') // LMD
+  })
+
+  it('renders E1 with 0 materials and 10,000 LMD, and omits E2 for 3★ operator (Fang)', async () => {
+    const fang = loadOperatorDetail('char_123_fang')
+    const wrapper = await mountSuspended(AkOperatorStatsPanel, {
+      props: {
+        operator: fang,
+        elite: 1,
+        level: 55,
+        trust: 100,
+        potential: 1,
+        moduleStage: 0,
+      },
+    })
+
+    const promoCard = wrapper.find('.ak-operator-stats-panel__promotion-card')
+    expect(promoCard.exists()).toBe(true)
+
+    const phaseCards = wrapper.findAll('.ak-operator-stats-panel__phase-card')
+    expect(phaseCards).toHaveLength(1)
+
+    const e1Card = phaseCards[0]!
+    expect(e1Card.text()).toContain('E1')
+    expect(e1Card.text()).toContain('Elite 1')
+    expect(e1Card.text()).toContain('10,000') // LMD
+    expect(e1Card.text()).toContain('No extra materials required')
+
+    // E2 must never be rendered for 3-star
+    expect(wrapper.text()).not.toContain('Elite 2')
+  })
+
+  it('does not render promotion card for 2★ and 1★ operators', async () => {
+    const noirc = loadOperatorDetail('char_500_noirc')
+    const wrapper = await mountSuspended(AkOperatorStatsPanel, {
+      props: {
+        operator: noirc,
+        elite: 0,
+        level: 30,
+        trust: 100,
+        potential: 1,
+        moduleStage: 0,
+      },
+    })
+
+    const promoCard = wrapper.find('.ak-operator-stats-panel__promotion-card')
+    expect(promoCard.exists()).toBe(false)
+  })
 })
