@@ -8,6 +8,10 @@ import {
   calculateRateUpProbability,
   getProbabilityMilestones,
   getTargetRateUpShare,
+  formatHumanDate,
+  formatBannerDateRange,
+  isProvenNotOnGlobal,
+  getBannerLifecycleStatus,
 } from '../../../shared/utils/gacha'
 import type { GachaBanner } from '../../../shared/schemas/banner'
 
@@ -388,6 +392,104 @@ describe('Gacha Utility Engine', () => {
     it('returns null for null or undefined banner', () => {
       expect(getTargetRateUpShare(null as unknown as GachaBanner)).toBeNull()
       expect(getTargetRateUpShare(undefined as unknown as GachaBanner)).toBeNull()
+    })
+  })
+
+  describe('formatHumanDate & formatBannerDateRange', () => {
+    it('formats ISO dates into human-readable strings without timezone shift', () => {
+      expect(formatHumanDate('2026-10-28T10:59:59.000Z')).toBe('Oct 28, 2026')
+      expect(formatHumanDate('2026-10-14T13:00:00.000Z')).toBe('Oct 14, 2026')
+    })
+
+    it('formats date-only strings without shifting day', () => {
+      expect(formatHumanDate('2026/05/15')).toBe('May 15, 2026')
+      expect(formatHumanDate('2026-05-29')).toBe('May 29, 2026')
+    })
+
+    it('formats Unix timestamps in seconds', () => {
+      // 1793185199 is 2026-10-28T10:59:59Z
+      expect(formatHumanDate(1793185199)).toBe('Oct 28, 2026')
+    })
+
+    it('formats date range string cleanly', () => {
+      expect(formatBannerDateRange('2026-10-14T13:00:00.000Z', '2026-10-28T10:59:59.000Z')).toBe(
+        'Oct 14, 2026 – Oct 28, 2026',
+      )
+    })
+  })
+
+  describe('isProvenNotOnGlobal', () => {
+    it('returns true ONLY for LIMITED banners on CN server without a paired Global banner', () => {
+      const provenNextLimited: GachaBanner = {
+        id: 'LIMITED_76_0_1',
+        server: 'cn',
+        ruleType: 'LIMITED',
+        type: 'limited',
+        title: '车辙与风的归所',
+        pairedBannerId: null,
+        rateUp6: [],
+        rateUp5: [],
+      }
+      expect(isProvenNotOnGlobal(provenNextLimited)).toBe(true)
+
+      // Paired limited banner (has Global pair)
+      const pairedLimited: GachaBanner = {
+        id: 'LIMITED_73_0_1',
+        server: 'cn',
+        ruleType: 'LIMITED',
+        type: 'limited',
+        title: '承诺',
+        pairedBannerId: 'LIMITED_EN_42_0_1',
+        rateUp6: [],
+        rateUp5: [],
+      }
+      expect(isProvenNotOnGlobal(pairedLimited)).toBe(false)
+
+      // Standard / normal banner with null pairedBannerId (unproven, must not receive badge)
+      const normalCnBanner: GachaBanner = {
+        id: 'NORM_0_1_1',
+        server: 'cn',
+        ruleType: 'NORMAL',
+        type: 'standard',
+        title: 'Standard Pool',
+        pairedBannerId: null,
+        rateUp6: [],
+        rateUp5: [],
+      }
+      expect(isProvenNotOnGlobal(normalCnBanner)).toBe(false)
+
+      // Single rate-up banner
+      const singleCnBanner: GachaBanner = {
+        id: 'SINGLE_78_0_1',
+        server: 'cn',
+        ruleType: 'SINGLE',
+        type: 'standard',
+        title: 'Single Solo',
+        pairedBannerId: null,
+        rateUp6: [],
+        rateUp5: [],
+      }
+      expect(isProvenNotOnGlobal(singleCnBanner)).toBe(false)
+    })
+  })
+
+  describe('getBannerLifecycleStatus', () => {
+    it('accurately resolves active, upcoming, and ended from openTime/endTime', () => {
+      const banner: GachaBanner = {
+        id: 'b_test',
+        type: 'standard',
+        title: 'Test',
+        openTime: 1000,
+        endTime: 2000,
+        rateUp6: [],
+        rateUp5: [],
+      }
+
+      expect(getBannerLifecycleStatus(banner, 500)).toBe('upcoming')
+      expect(getBannerLifecycleStatus(banner, 1000)).toBe('active')
+      expect(getBannerLifecycleStatus(banner, 1500)).toBe('active')
+      expect(getBannerLifecycleStatus(banner, 2000)).toBe('active')
+      expect(getBannerLifecycleStatus(banner, 2500)).toBe('ended')
     })
   })
 })

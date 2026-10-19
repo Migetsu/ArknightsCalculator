@@ -87,6 +87,77 @@ export function getBannerStatus(
 }
 
 /**
+ * Formats a Unix timestamp or ISO string into a human-readable date.
+ * Example: 'Oct 28, 2026'
+ */
+export function formatHumanDate(dateInput: number | string, locale = 'en-US'): string {
+  if (!dateInput) return ''
+  let date: Date
+  if (typeof dateInput === 'number') {
+    date = new Date(dateInput * 1000)
+  } else {
+    const clean = String(dateInput).replace(/\//g, '-')
+    if (/^\d{4}-\d{2}-\d{2}$/.test(clean)) {
+      date = new Date(`${clean}T00:00:00Z`)
+    } else {
+      date = new Date(dateInput)
+    }
+  }
+  if (Number.isNaN(date.getTime())) return String(dateInput)
+
+  return date.toLocaleDateString(locale, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  })
+}
+
+/**
+ * Formats banner start and end dates as a human-readable range.
+ * Example: 'Oct 14, 2026 – Oct 28, 2026'
+ */
+export function formatBannerDateRange(
+  startInput: number | string,
+  endInput: number | string,
+  locale = 'en-US',
+): string {
+  const start = formatHumanDate(startInput, locale)
+  const end = formatHumanDate(endInput, locale)
+  if (start && end) return `${start} – ${end}`
+  return start || end || ''
+}
+
+/**
+ * A banner is proven not to have arrived on Global yet iff:
+ * - It is on the Chinese server (server === 'cn')
+ * - It is a LIMITED banner (ruleType === 'LIMITED')
+ * - It has no proven paired Global banner (!pairedBannerId)
+ * In the official dataset, exactly LIMITED_76_0_1 meets this condition.
+ */
+export function isProvenNotOnGlobal(banner: GachaBanner): boolean {
+  return banner.server === 'cn' && banner.ruleType === 'LIMITED' && !banner.pairedBannerId
+}
+
+/**
+ * Computes banner lifecycle status ('active', 'upcoming', 'ended') from Unix timestamps.
+ */
+export function getBannerLifecycleStatus(
+  banner: GachaBanner,
+  nowSec = Math.floor(Date.now() / 1000),
+): 'active' | 'upcoming' | 'ended' {
+  if (banner.openTime && banner.endTime) {
+    if (nowSec < banner.openTime) return 'upcoming'
+    if (nowSec <= banner.endTime) return 'active'
+    return 'ended'
+  }
+  if (banner.cnStartDate && banner.cnEndDate) {
+    return getBannerStatus(banner.cnStartDate, banner.cnEndDate, new Date(nowSec * 1000)).status
+  }
+  return 'ended'
+}
+
+/**
  * Calculates total available headhunting pulls from currency treasury resources.
  *
  * Conversion rules:

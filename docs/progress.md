@@ -1,5 +1,37 @@
 # Project Progress
 
+- **Banners Page Overhaul & Chronological CN Archive (`feat/banners-page`):**
+  - **Context & Motivation:**
+    - Task 15 overhauls `app/pages/gacha.vue` and `app/components/gacha/GachaBannerCard.vue` to consume the real game dataset from `data/banners.json` generated in Task 14.
+    - Previous UI used hardcoded placeholder banner entries and lacked date formatting, active banner indicators, and performance safeguards for large timelines.
+  - **Implementation Details:**
+    - **Display Hierarchy (Owner Product Decision):**
+      - Top Hero Highlight: Global (EN) Banner (`meta.currentEnBanner`), displaying current active pool `LIMITED_EN_42_0_1` ("Sealed With Time") with human-readable end date (`Oct 28, 2026`) and countdown badge. Clicking or selecting binds it directly to the gacha calculator.
+      - CN Archive: 453 CN banners sorted strictly ascending by start date (`openTime`), oldest at top (`NORM_0_1_1`, `2019-01-29`), newest at bottom (`DOUBLE_78_0_2`, `2026-10-21`).
+      - Active CN Banners: Currently active CN banners (`DOUBLE_77_0_5`, `SINGLE_78_0_1`, `CLASSIC_DOUBLE_78_0_1`) are highlighted with an `ACTIVE NOW` badge.
+    - **Proven "Not on Global yet" Badge Scope:**
+      - Evaluated via `isProvenNotOnGlobal(banner)`: strictly true for `server === 'cn' && ruleType === 'LIMITED' && !pairedBannerId`.
+      - Exactly 1 out of 453 banners receives this badge: `LIMITED_76_0_1` ("车辙与风的归所", `LMTGS_COIN_7601`).
+      - Non-limited banners (`NORM`, `SINGLE`, `DOUBLE`, `CLASSIC`) have `pairedBannerId === null` due to schedule divergence and receive zero guesswork badges (AGENTS.md §0).
+    - **Date Normalization & Locale Utilities (`shared/utils/gacha/index.ts`):**
+      - `formatHumanDate(dateInput, locale = 'en-US')`: added UTC normalization for date-only strings (`YYYY-MM-DD` / `YYYY/MM/DD`) to prevent timezone day shift.
+      - `formatBannerDateRange(startInput, endInput, locale = 'en-US')`: formats clean ranges (e.g. `Oct 14 – Oct 28, 2026`).
+      - `getBannerLifecycleStatus(banner, nowSec)`: determines `'active' | 'upcoming' | 'ended'`.
+    - **Empty Rate-Up Handling (`app/components/gacha/GachaBannerCard.vue`):**
+      - Detects when `rateUp6` and `rateUp5` are empty arrays (`hasContent === false`).
+      - Completely omits the rate-up operators block and applies `.gacha-banner--no-rateup` for a compact, single-column design.
+    - **Performance & Incremental Rendering (`app/pages/gacha.vue`):**
+      - Chunked rendering with `PAGE_SIZE = 20` and `visibleCount = ref(20)`. Initial load renders 20 cards.
+      - Added "Show More (+20)" and "Show All (453)" controls. Pagination resets upon changing type filter.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added keys under `gacha.currentBanner`, `gacha.cnArchive`, and `gacha.banner`.
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 669 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 710 tests passed across 91 suites (+15 unit tests).
+    - `build`: production bundle compiled successfully.
+
 - **Banners Dataset from Official Game Data (`feat/banner-dataset`):**
   - **Context & Motivation:**
     - `data/banners.json` previously contained 4 hand-written stubs with missing Global (EN) dates, no machine-readable timestamps, and no verification.
