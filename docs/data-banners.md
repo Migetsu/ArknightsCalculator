@@ -165,3 +165,41 @@ The banners dataset is validated as part of `scripts/data/validate-data.ts` (Ste
 5. **Absence of Starter Pools**: Verifies no starter pools remain.
 6. **Chronological Sorting**: Verifies `cnBanners` and `enBanners` are strictly ascending by `openTime`.
 7. **Meta Integrity**: Confirms referenced banners in `meta` exist within the dataset.
+
+---
+
+## 7. Display Order, Incremental Rendering & UI Presentation (`app/pages/gacha.vue`)
+
+### 7.1 Display Hierarchy
+
+In accordance with owner product decisions:
+
+1. **Top Highlight (Current Global Banner)**: Rendered at the top of `/gacha` as a prominent hero section using `meta.currentEnBanner` (`LIMITED_EN_42_0_1`, "Sealed With Time"). Shows human-readable formatted end dates (`Oct 28, 2026`), countdown, and links directly to the gacha probability calculator.
+2. **CN Archive (Full Timeline)**: Below the current banner, renders the full CN timeline of 453 banners sorted strictly chronologically ascending by start date (`openTime`, earliest at top, latest at bottom).
+3. **Active CN Banners**: Any CN banners active at current time (`DOUBLE_77_0_5`, `SINGLE_78_0_1`, `CLASSIC_DOUBLE_78_0_1`) are contained within the timeline and highlighted with an `ACTIVE NOW` tactical badge.
+
+### 7.2 Proven "Not on Global yet" Badge Scope
+
+- Strictly evaluated by `isProvenNotOnGlobal(banner)`.
+- **Condition**: Returns `true` if and only if `server === 'cn' && ruleType === 'LIMITED' && !pairedBannerId`.
+- **Match Count**: Exactly **1** out of 453 CN banners qualifies: `LIMITED_76_0_1` ("车辙与风的归所", `LMTGS_COIN_7601`).
+- **Standard / Rotation Banners**: All 427 non-limited banners have `pairedBannerId === null` due to schedule divergence and never receive a "Not on Global yet" badge, strictly preventing false claims or unverified guesswork (AGENTS.md §0).
+
+### 7.3 Empty Rate-Up Handling (`GachaBannerCard.vue`)
+
+- Modern client tables use `gachaPoolDetail: "-"`, leaving `rateUp6` and `rateUp5` as empty arrays `[]`.
+- `GachaBannerCard.vue` calculates `hasContent = rateUp6.length > 0 || rateUp5.length > 0`.
+- When `hasContent` is `false`, the rate-up operator section is completely omitted, and `.gacha-banner--no-rateup` is applied to render a clean, compact single-column card.
+
+### 7.4 Performance & Incremental Rendering
+
+- Mounting 453 complex banner cards with image hooks simultaneously causes severe initial render lag.
+- Implemented client-side chunking: `PAGE_SIZE = 20`, `visibleCount = ref(20)`.
+- Initial mount renders only the first 20 cards.
+- Users can progressively load more via "Show More (+20)" or "Show All (453)".
+- Changing filters resets `visibleCount` back to 20.
+
+### 7.5 Mobile Responsiveness (360px)
+
+- Cards use flexible box layout with `min-width: 0` and word-break wrapping.
+- Zero horizontal overflow across all viewports from 360px to 1920px.

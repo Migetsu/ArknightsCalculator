@@ -8,6 +8,8 @@ import type { OperatorSummary } from '~/../shared/schemas/operator'
 describe('GachaBannerCard', () => {
   const mockBanner: GachaBanner = {
     id: 'banner_orienteering_7',
+    server: 'cn',
+    ruleType: 'NORMAL',
     type: 'standard',
     tag: 'ORIENTEERING',
     title: '[Standard Headhunting] Orienteering #7',
@@ -78,8 +80,8 @@ describe('GachaBannerCard', () => {
     })
 
     const datesText = wrapper.find('.gacha-banner__dates').text()
-    expect(datesText).toContain('2026/05/15 to 2026/05/29')
-    expect(datesText).toContain('2026/11/06 to 2026/11/20')
+    expect(datesText).toContain('May 15, 2026 – May 29, 2026')
+    expect(datesText).toContain('Nov 6, 2026 – Nov 20, 2026')
   })
 
   it('renders rate-up 6★ and 5★ avatars with operator navigation links', async () => {
@@ -100,5 +102,114 @@ describe('GachaBannerCard', () => {
     const auroraAvatar = avatars.find((av) => av.props('id') === 'char_422_aurora')
     expect(auroraAvatar?.exists()).toBe(true)
     expect(auroraAvatar?.props('rarity')).toBe(5)
+  })
+
+  it('does NOT render rate-up block when rateUp6 and rateUp5 are empty', async () => {
+    const emptyBanner: GachaBanner = {
+      id: 'NORM_0_1_1',
+      server: 'cn',
+      ruleType: 'NORMAL',
+      type: 'standard',
+      tag: 'NORMAL',
+      title: 'Standard Pool 1',
+      openTime: 1548727200,
+      endTime: 1557950399,
+      openIso: '2019-01-29T02:00:00.000Z',
+      endIso: '2019-05-15T19:59:59.000Z',
+      rateUp6: [],
+      rateUp5: [],
+    }
+
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: emptyBanner,
+        operatorsMap: mockOperatorsMap,
+      },
+    })
+
+    // Content column and ops sections are omitted
+    expect(wrapper.find('.gacha-banner__content').exists()).toBe(false)
+    expect(wrapper.find('.gacha-banner__ops-section').exists()).toBe(false)
+    expect(wrapper.classes()).toContain('gacha-banner--no-rateup')
+  })
+
+  it('renders "NOT ON GLOBAL YET" badge ONLY for proven limited CN banner (LIMITED_76_0_1)', async () => {
+    const nextLimitedBanner: GachaBanner = {
+      id: 'LIMITED_76_0_1',
+      server: 'cn',
+      ruleType: 'LIMITED',
+      type: 'limited',
+      tag: 'LIMITED',
+      title: '车辙与风的归所',
+      openTime: 1785502800,
+      endTime: 1786712399,
+      openIso: '2026-07-31T23:00:00.000Z',
+      endIso: '2026-08-14T22:59:59.000Z',
+      pairedBannerId: null,
+      isNextEnBanner: true,
+      rateUp6: [],
+      rateUp5: [],
+    }
+
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: nextLimitedBanner,
+        operatorsMap: mockOperatorsMap,
+      },
+    })
+
+    const badge = wrapper.find('.gacha-banner__countdown-badge--not-on-en')
+    expect(badge.exists()).toBe(true)
+    expect(badge.text()).toBe('NOT ON GLOBAL YET')
+  })
+
+  it('does NOT render "NOT ON GLOBAL YET" badge for non-limited banners even if pairedBannerId is null', async () => {
+    const normalBanner: GachaBanner = {
+      id: 'NORM_0_1_1',
+      server: 'cn',
+      ruleType: 'NORMAL',
+      type: 'standard',
+      tag: 'NORMAL',
+      title: 'Standard Pool 1',
+      openTime: 1548727200,
+      endTime: 1557950399,
+      pairedBannerId: null,
+      rateUp6: [],
+      rateUp5: [],
+    }
+
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: normalBanner,
+        operatorsMap: mockOperatorsMap,
+      },
+    })
+
+    expect(wrapper.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(false)
+  })
+
+  it('does NOT render "NOT ON GLOBAL YET" badge for paired limited banners', async () => {
+    const pairedLimitedBanner: GachaBanner = {
+      id: 'LIMITED_73_0_1',
+      server: 'cn',
+      ruleType: 'LIMITED',
+      type: 'limited',
+      tag: 'LIMITED',
+      title: '承诺',
+      openTime: 1791982800,
+      endTime: 1793185199,
+      pairedBannerId: 'LIMITED_EN_42_0_1',
+      rateUp6: [],
+      rateUp5: [],
+    }
+
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: pairedLimitedBanner,
+        operatorsMap: mockOperatorsMap,
+      },
+    })
+
+    expect(wrapper.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(false)
   })
 })

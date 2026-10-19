@@ -3,7 +3,12 @@ import { computed } from 'vue'
 import type { GachaBanner } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { calculateEstimatedGlobalDate, getBannerStatus } from '~/../shared/utils/gacha'
+import {
+  calculateEstimatedGlobalDate,
+  formatBannerDateRange,
+  getBannerLifecycleStatus,
+  isProvenNotOnGlobal,
+} from '~/../shared/utils/gacha'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 
 interface Props {
@@ -25,19 +30,30 @@ const emit = defineEmits<{
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const estGlobalStart = computed(() => calculateEstimatedGlobalDate(props.banner.cnStartDate))
-const estGlobalEnd = computed(() => calculateEstimatedGlobalDate(props.banner.cnEndDate))
+const lifecycleStatus = computed(() => getBannerLifecycleStatus(props.banner))
+const notOnGlobal = computed(() => isProvenNotOnGlobal(props.banner))
 
-const bannerStatus = computed(() => {
-  const start = props.dateMode === 'cn' ? props.banner.cnStartDate : estGlobalStart.value
-  const end = props.dateMode === 'cn' ? props.banner.cnEndDate : estGlobalEnd.value
-  return getBannerStatus(start, end)
+const formattedDates = computed(() => {
+  if (props.banner.openIso && props.banner.endIso) {
+    return formatBannerDateRange(props.banner.openIso, props.banner.endIso)
+  }
+  if (props.banner.openTime && props.banner.endTime) {
+    return formatBannerDateRange(props.banner.openTime, props.banner.endTime)
+  }
+  if (props.banner.cnStartDate && props.banner.cnEndDate) {
+    return formatBannerDateRange(props.banner.cnStartDate, props.banner.cnEndDate)
+  }
+  return ''
 })
 
-function formatDisplayDate(dateStr: string): string {
-  if (!dateStr) return ''
-  return dateStr.replace(/-/g, '/')
-}
+const estGlobalStart = computed(() => calculateEstimatedGlobalDate(props.banner.cnStartDate))
+const estGlobalEnd = computed(() => calculateEstimatedGlobalDate(props.banner.cnEndDate))
+const formattedEstGlobalDates = computed(() => {
+  if (estGlobalStart.value && estGlobalEnd.value) {
+    return formatBannerDateRange(estGlobalStart.value, estGlobalEnd.value)
+  }
+  return ''
+})
 
 function getOperatorName(id: string): string {
   const op = props.operatorsMap.get(id)
@@ -67,20 +83,30 @@ const rateUp5Ops = computed<BannerOp[]>(() => {
   }))
 })
 
+const hasRateUp = computed(() => rateUp6Ops.value.length > 0 || rateUp5Ops.value.length > 0)
+const hasContent = computed(() => Boolean(props.banner.description) || hasRateUp.value)
 const isLimited = computed(() => props.banner.type === 'limited')
+const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
 </script>
 
 <template>
   <div
     class="gacha-banner"
-    :class="[`gacha-banner--${banner.type}`, { 'gacha-banner--selected': isSelected }]"
+    :class="[
+      `gacha-banner--${banner.type}`,
+      `gacha-banner--${lifecycleStatus}`,
+      {
+        'gacha-banner--selected': isSelected,
+        'gacha-banner--no-rateup': !hasContent,
+      },
+    ]"
     role="button"
     tabindex="0"
     :aria-pressed="isSelected"
     @click="emit('select', banner.id)"
     @keydown.enter.space.prevent="emit('select', banner.id)"
   >
-    <!-- Left Column: Banner Card -->
+    <!-- Card Column -->
     <div class="gacha-banner__card">
       <div
         class="gacha-banner__badge-bar"
@@ -99,28 +125,40 @@ const isLimited = computed(() => props.banner.type === 'limited')
       <!-- Dates Block -->
       <div class="gacha-banner__dates">
         <div class="gacha-banner__date-row">
-          <span class="gacha-banner__date-label">CN:</span>
+          <span class="gacha-banner__date-label">{{ isCnServer ? 'CN:' : 'EN:' }}</span>
           <b class="gacha-banner__date-val">
-            {{ formatDisplayDate(banner.cnStartDate) }} to {{ formatDisplayDate(banner.cnEndDate) }}
+            {{ formattedDates }}
           </b>
         </div>
-        <div class="gacha-banner__date-row">
+        <div
+          v-if="dateMode === 'global' && isCnServer && formattedEstGlobalDates"
+          class="gacha-banner__date-row"
+        >
           <span class="gacha-banner__date-label">Est. Global:</span>
-          <b class="gacha-banner__date-val"> {{ estGlobalStart }} to {{ estGlobalEnd }} </b>
+          <b class="gacha-banner__date-val">{{ formattedEstGlobalDates }}</b>
         </div>
 
         <div class="gacha-banner__countdown-wrap">
+          <!-- Proven Not on Global yet badge (ONLY for proven LIMITED CN pool without EN pair) -->
           <span
-            v-if="bannerStatus.status === 'upcoming'"
-            class="gacha-banner__countdown-badge gacha-banner__countdown-badge--upcoming"
+            v-if="notOnGlobal"
+            class="gacha-banner__countdown-badge gacha-banner__countdown-badge--not-on-en"
           >
-            {{ t('gacha.banner.inDays', { days: bannerStatus.daysRemaining }) }}
+            {{ t('gacha.banner.notOnGlobalYet') }}
           </span>
+
+          <!-- Lifecycle Status Badge -->
           <span
-            v-else-if="bannerStatus.status === 'active'"
+            v-if="lifecycleStatus === 'active'"
             class="gacha-banner__countdown-badge gacha-banner__countdown-badge--active"
           >
             {{ t('gacha.banner.activeNow') }}
+          </span>
+          <span
+            v-else-if="lifecycleStatus === 'upcoming'"
+            class="gacha-banner__countdown-badge gacha-banner__countdown-badge--upcoming"
+          >
+            {{ t('gacha.banner.upcoming') }}
           </span>
           <span v-else class="gacha-banner__countdown-badge gacha-banner__countdown-badge--ended">
             {{ t('gacha.banner.ended') }}
@@ -129,8 +167,8 @@ const isLimited = computed(() => props.banner.type === 'limited')
       </div>
     </div>
 
-    <!-- Right Column: Rate-up Operators -->
-    <div class="gacha-banner__content">
+    <!-- Right Column: Rate-up Operators (rendered ONLY if rateUp operators or description exist) -->
+    <div v-if="hasContent" class="gacha-banner__content">
       <p v-if="banner.description" class="gacha-banner__desc">
         {{ banner.description }}
       </p>
@@ -208,6 +246,27 @@ const isLimited = computed(() => props.banner.type === 'limited')
       0 4px 16px rgb(255 157 43 / 15%);
   }
 
+  &--active {
+    border-left: 3px solid var(--color-status-success, #22c55e);
+  }
+
+  &--ended {
+    opacity: 0.92;
+  }
+
+  &--no-rateup {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+
+    .gacha-banner__card {
+      max-width: 100%;
+    }
+
+    .gacha-banner__art {
+      height: 100px;
+    }
+  }
+
   @media (width <= 820px) {
     grid-template-columns: 1fr;
     gap: var(--space-md, 20px);
@@ -230,6 +289,8 @@ const isLimited = computed(() => props.banner.type === 'limited')
     font-weight: var(--font-weight-extrabold);
     line-height: 1.35;
     letter-spacing: 0.02em;
+    overflow-wrap: break-word;
+    min-width: 0;
 
     &--limited {
       background-color: var(--color-accent-primary, #ff6a3d);
@@ -290,6 +351,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    min-width: 0;
   }
 
   &__date-row {
@@ -297,6 +359,8 @@ const isLimited = computed(() => props.banner.type === 'limited')
     gap: var(--space-2xs);
     flex-wrap: wrap;
     justify-content: center;
+    min-width: 0;
+    max-width: 100%;
   }
 
   &__date-label {
@@ -310,6 +374,10 @@ const isLimited = computed(() => props.banner.type === 'limited')
 
   &__countdown-wrap {
     margin-top: 6px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__countdown-badge {
@@ -335,6 +403,13 @@ const isLimited = computed(() => props.banner.type === 'limited')
     &--ended {
       border: 1px solid var(--color-border-subtle);
       color: var(--color-text-muted);
+    }
+
+    &--not-on-en {
+      border: 1px solid var(--color-accent-primary, #ff6a3d);
+      color: var(--color-accent-primary, #ff6a3d);
+      background-color: rgb(255 106 61 / 10%);
+      font-weight: var(--font-weight-bold);
     }
   }
 
