@@ -1,5 +1,30 @@
 # Project Progress
 
+- **Self-Checking Vue Runtime Patch (`fix/vue-patch-selfcheck`):**
+  - **Context & Defect Analysis:**
+    - `scripts/patch-vue.mjs` previously treated "files already patched" and "no pattern matched" identically, exiting with code 0 in both cases. If upstream Vue modified its syntax or variable names, the null-guard would silently fail to apply without raising an alarm.
+    - `tests/unit/scripts/patch-vue.test.ts` only verified regular expressions against hardcoded string literals rather than inspecting actual installed files in `node_modules/@vue/runtime-core/dist`.
+    - `scripts/patch-vue.mjs` was excluded from linting via `eslint.config.mjs` `ignores`.
+  - **Implementation Details:**
+    - **Self-checking Patch Logic (`scripts/patch-vue.mjs`):**
+      - Differentiated four outcomes: `skipped` (no job handling indicator), `already_patched` (guard present, no unpatched patterns), `patched` (unpatched pattern replaced with guard), and `error` (job indicator present, but neither matching unpatched pattern nor guard found).
+      - Added non-zero exit code (`process.exit(1)`) with descriptive file names and missing pattern diagnostics upon errors.
+      - Supported custom target paths via CLI arguments and optional `--check` mode for read-only validation.
+      - Exported pure utility functions (`patchContent`, `patchFile`, `runPatch`, `hasGuard`, `hasUnpatched`, `hasJobIndicator`, `PATTERNS`).
+    - **Linter Integration (`eslint.config.mjs`):**
+      - Removed `scripts/patch-vue.mjs` from ESLint `ignores`. Scoped `@typescript-eslint` rules to `ts/tsx/vue` and enabled `no-console: 'off'` specifically for `scripts/patch-vue.mjs`.
+    - **Comprehensive Unit & Integration Tests (`tests/unit/scripts/patch-vue.test.ts`):**
+      - Retained isolated regex checks on literals.
+      - Added lifecycle tests for `patchContent` covering `skipped`, `already_patched`, `patched`, and `error` states.
+      - Added live verification against physical installed Vue distributions (`runtime-core.esm-bundler.js`, `runtime-core.cjs.js`, `runtime-core.cjs.prod.js`), asserting guards are strictly present and unpatched patterns are absent.
+  - **Quality Gates & Verification:**
+    - `npm run i18n:check`: passed (628 keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: all 84 test suites passed (630/630 tests passed).
+    - `npm run data:validate`: passed (0 integrity issues).
+    - `npm run build`: production build passed.
+
 - **Operator Panels Followup & Bugfixes (`fix/operator-panels-followup`):**
   - **Context & Defect Analysis:**
     - Resolved three independent issues identified during review of Tasks 4 and 6:
