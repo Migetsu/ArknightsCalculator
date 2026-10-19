@@ -23,6 +23,7 @@ import AkModuleIcon from '~/components/ui/AkModuleIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkRichText from '~/components/ui/AkRichText.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
+import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 
 const { t } = useI18n()
 
@@ -589,6 +590,39 @@ const stepperLmd = ref(150000)
                 as="div"
               />
             </AkPanel>
+          </div>
+        </div>
+      </AkPanel>
+
+      <!-- Attack Range Grid (Ember Editorial) -->
+      <AkPanel title="AkRangeGrid Component" tag="UI // 13" line-color="ember">
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Size Variations (sm, md, lg):</span>
+          <div class="page-ui__row">
+            <AkRangeGrid range-id="3-6" size="sm" />
+            <AkRangeGrid range-id="3-6" size="md" />
+            <AkRangeGrid range-id="3-6" size="lg" />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">Tactical Edge Cases:</span>
+          <div class="page-ui__row">
+            <!-- Besieger 5x5 with dead zone on operator cell -->
+            <AkRangeGrid range-id="4-3" size="md" />
+            <!-- Extreme 1x1 melee single tile -->
+            <AkRangeGrid range-id="0-1" size="md" />
+            <!-- Asymmetric / Backwards reach -->
+            <AkRangeGrid range-id="b-1" size="md" />
+          </div>
+        </div>
+
+        <div class="page-ui__group">
+          <span class="page-ui__group-label">State Variants & Legend:</span>
+          <div class="page-ui__row">
+            <AkRangeGrid range-id="3-1" size="md" variant="default" :show-legend="true" />
+            <AkRangeGrid range-id="3-4" size="md" variant="modified" :show-legend="true" />
+            <AkRangeGrid range-id="3-1" size="md" variant="inherited" :show-legend="true" />
           </div>
         </div>
       </AkPanel>

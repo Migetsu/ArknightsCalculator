@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import AkOperatorSkillsPanel from '~/components/operators/AkOperatorSkillsPanel.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
+import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 import type { OperatorSkill } from '~/../shared/schemas/operator'
 
 describe('AkOperatorSkillsPanel', () => {
@@ -143,5 +144,66 @@ describe('AkOperatorSkillsPanel', () => {
     })
 
     expect(wrapper.find('.ak-operator-skills-panel__empty').exists()).toBe(true)
+  })
+
+  it('renders inherited range when skill rangeId is null, and modified range when specified', async () => {
+    const skillsWithRanges: OperatorSkill[] = [
+      {
+        skillId: 'sk_test_inherited',
+        icon: null,
+        levels: [
+          {
+            name: { en: 'Skill 1', zh: '技能1', source: 'official' },
+            description: { en: 'Desc 1', zh: '描述1', source: 'official' },
+            rangeId: null, // inherits defaultRangeId
+            skillType: 'AUTO',
+            spType: 1,
+            spCost: 30,
+            initSp: 0,
+            duration: 10,
+            blackboard: {},
+          },
+        ],
+      },
+      {
+        skillId: 'sk_test_modified',
+        icon: null,
+        levels: [
+          {
+            name: { en: 'Skill 2', zh: '技能2', source: 'official' },
+            description: { en: 'Desc 2', zh: '描述2', source: 'official' },
+            rangeId: '3-4', // custom modified range
+            skillType: 'MANUAL',
+            spType: 1,
+            spCost: 50,
+            initSp: 20,
+            duration: 30,
+            blackboard: {},
+          },
+        ],
+      },
+    ]
+
+    const wrapper = await mountSuspended(AkOperatorSkillsPanel, {
+      props: {
+        skills: skillsWithRanges,
+        defaultRangeId: '3-1',
+      },
+    })
+
+    const skillCards = wrapper.findAll('.ak-operator-skills-panel__skill-card')
+    expect(skillCards).toHaveLength(2)
+
+    // Skill 1: Inherited range '3-1'
+    const range1 = skillCards[0]?.findComponent(AkRangeGrid)
+    expect(range1?.exists()).toBe(true)
+    expect(range1?.props('rangeId')).toBe('3-1')
+    expect(range1?.props('variant')).toBe('inherited')
+
+    // Skill 2: Modified range '3-4'
+    const range2 = skillCards[1]?.findComponent(AkRangeGrid)
+    expect(range2?.exists()).toBe(true)
+    expect(range2?.props('rangeId')).toBe('3-4')
+    expect(range2?.props('variant')).toBe('modified')
   })
 })

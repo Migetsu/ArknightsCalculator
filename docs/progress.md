@@ -1,5 +1,43 @@
 # Project Progress
 
+- **Operator Attack Range Visualization (`feat/operator-range-ui`):**
+  - **Context & Motivation:**
+    - Operator attack range data (73 ranges) was collected in `data/ranges.json`, and range IDs existed in `phases[].rangeId` and `skills[].levels[].rangeId`, but the UI did not expose attack ranges anywhere (P1.1 and P1.2 in `docs/operator-wiki-audit.md`).
+    - Implemented a reusable tactical attack range grid UI component (`AkRangeGrid.vue`), a lazy-loading composable (`useOperatorRanges.ts`), and integrated attack range visualization into `AkOperatorStatsPanel.vue` and `AkOperatorSkillsPanel.vue`.
+  - **Implementation Details:**
+    - **Composable (`app/composables/useOperatorRanges.ts`):**
+      - Asynchronously imports `data/ranges.json` into an in-memory cache Map (`loadRangesMap`), isolating the 74.3 kB dataset into a separate lazy chunk (`ranges-*.mjs`) so initial page load remains lean.
+      - Exports `fetchRange(rangeId)`, `fetchRanges(rangeIds)`, `useRange(rangeId)`, and `useOperatorRanges(rangeIds)`.
+    - **UI Component (`app/components/ui/AkRangeGrid.vue`):**
+      - Built using Ember Editorial design tokens (BEM, SCSS scoped, mobile-first 360px+).
+      - Renders CSS grid based on `matrix` (`rows` × `cols`) with square tactical cells (sizes `sm`: 18px, `md`: 26px, `lg`: 34px).
+      - Dedicated operator anchor marker via self-contained SVG tactical reticle with high contrast highlight.
+      - Edge case handling:
+        - Besieger sniper dead zone (`'4-3'`, where operator anchor `matrix[2][0] === 0`): operator reticle remains prominently visible with dashed ember border and hatched styling.
+        - Extreme 1x1 melee range (`'0-1'`).
+        - Asymmetric/backwards reach (`'b-1'`).
+        - Standard 3x3 splash caster (`'3-6'`).
+      - Support for `variant="modified"` (Ember accent and "Skill Modified Range" badge) and `variant="inherited"` ("Inherited from Operator" badge).
+      - Interactive tooltip / title on each cell and optional legend.
+      - Registered in component showcase `app/pages/_ui.vue` (UI // 13).
+    - **Stats Panel Integration (`AkOperatorStatsPanel.vue`):**
+      - Added dedicated "Attack Range" tactical card with `AkRangeGrid` (`size="md"`).
+      - Dynamically and reactively updates when switching elite phase (`E0 / E1 / E2`).
+    - **Skills Panel Integration (`AkOperatorSkillsPanel.vue`):**
+      - Accepts `defaultRangeId` prop (derived from active operator elite phase in `[id].vue`).
+      - For each skill: renders `AkRangeGrid` (`size="sm"`).
+      - Displays `variant="modified"` when the skill specifies a custom `rangeId` (e.g. Amiya S3 `'3-4'`).
+      - Displays `variant="inherited"` when `rangeId === null`.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added keys under `operators.detail.range` and numeric SP types `1`, `2`, `4` under `operators.detail.skills.spTypes`.
+  - **Quality Gates & Testing:**
+    - `i18n:check`: 616 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 81 suites passed, 602/602 tests passed (including 7 component tests for `AkRangeGrid`, 5 tests for `useOperatorRanges`, and integration tests in stats and skills panels).
+    - `build`: Production build succeeded, verifying `ranges-*.mjs` lazy chunk generation.
+    - Closes P1.1 and P1.2 in `docs/operator-wiki-audit.md`.
+
 - **Fix Art Viewer Cosmetic Outfit Suffix Ingestion (`fix/art-viewer-skin-variants`):**
   - **Issue & Root Cause:**
     - An obsolete heuristic in `AkArtViewer.vue` (`endsWith('#1') || endsWith('#2')`) would drop 166 cosmetic outfits across 142 operators (e.g. `char_134_ifrit@summer#1`, `char_010_chen@nian#2`), mistaking them for default evolution phases.

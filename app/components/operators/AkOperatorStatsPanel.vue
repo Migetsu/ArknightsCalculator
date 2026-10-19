@@ -6,6 +6,7 @@ import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
+import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -43,6 +44,11 @@ const eliteOptions = computed<SegmentOption<number>[]>(() => {
 const maxLevelForPhase = computed(() => {
   const allowed = MAX_LEVEL_BY_RARITY[props.operator.rarity]
   return allowed?.[props.elite] ?? props.operator.phases[props.elite]?.maxLevel ?? 50
+})
+
+// Current attack range ID based on active elite phase
+const currentRangeId = computed(() => {
+  return props.operator.phases[props.elite]?.rangeId ?? props.operator.phases[0]?.rangeId ?? ''
 })
 
 function setElite(phase: number): void {
@@ -337,7 +343,20 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
       </div>
     </div>
 
-    <!-- 3. Source Breakdown Table (Desktop) -->
+    <!-- 3. Attack Range Overview Card -->
+    <div class="ak-operator-stats-panel__range-card">
+      <div class="ak-operator-stats-panel__range-header">
+        <span class="ak-operator-stats-panel__range-title">
+          {{ t('operators.detail.range.title') }}
+        </span>
+        <span class="ak-operator-stats-panel__range-phase"> E{{ elite }} </span>
+      </div>
+      <div class="ak-operator-stats-panel__range-body">
+        <AkRangeGrid :range-id="currentRangeId" size="md" :show-legend="true" />
+      </div>
+    </div>
+
+    <!-- 4. Source Breakdown Table (Desktop) -->
     <div class="ak-operator-stats-panel__table-wrapper">
       <table class="ak-operator-stats-panel__table">
         <thead>
@@ -522,7 +541,45 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
     margin-right: 4px;
   }
 
-  // 3. Desktop Table
+  // 3. Attack Range Card
+  &__range-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  &__range-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__range-title {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  &__range-phase {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-primary);
+  }
+
+  &__range-body {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  // 4. Desktop Table
   &__table-wrapper {
     display: none;
     background: var(--color-bg-deep);

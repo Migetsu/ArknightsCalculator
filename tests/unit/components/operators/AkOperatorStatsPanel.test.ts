@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { flushPromises } from '@vue/test-utils'
 import fs from 'node:fs'
 import path from 'node:path'
 import type { OperatorDetail } from '../../../../shared/schemas/operator'
@@ -88,5 +89,30 @@ describe('AkOperatorStatsPanel', () => {
     await panaceaBtn!.trigger('click')
     const emitted = wrapper.emitted('update:selectedModuleId')
     expect(emitted).toBeTruthy()
+  })
+
+  it('renders attack range card and updates range on elite phase change', async () => {
+    // SilverAsh: E0 -> range '2-3', E2 -> range '3-12'
+    const wrapper = await mountSuspended(AkOperatorStatsPanel, {
+      props: {
+        operator: silverAsh,
+        elite: 2,
+        level: 90,
+        trust: 100,
+        potential: 1,
+        moduleStage: 0,
+      },
+    })
+
+    const rangeCard = wrapper.find('.ak-operator-stats-panel__range-card')
+    expect(rangeCard.exists()).toBe(true)
+    expect(rangeCard.text()).toContain('Range 3-12')
+    expect(rangeCard.text()).toContain('E2')
+
+    // Change elite to 0
+    await wrapper.setProps({ elite: 0 })
+    await flushPromises()
+    expect(rangeCard.text()).toContain('Range 2-3')
+    expect(rangeCard.text()).toContain('E0')
   })
 })
