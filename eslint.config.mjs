@@ -4,7 +4,13 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default withNuxt(
   {
-    ignores: ['.nuxt-agent/**', 'scripts/dev-agent.mjs', 'data/**', 'lint-staged.config.mjs'],
+    ignores: [
+      '.nuxt-agent/**',
+      'scripts/dev-agent.mjs',
+      'scripts/patch-vue.mjs',
+      'data/**',
+      'lint-staged.config.mjs',
+    ],
   },
   {
     rules: {

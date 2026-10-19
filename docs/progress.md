@@ -1,5 +1,29 @@
 # Project Progress
 
+- **Fix Vue 3.5 Runtime TypeError (`fix/transition-job-flags-null`):**
+  - **Context & Defect Analysis:**
+    - User encountered a runtime error overlay popup in Firefox: `TypeError: can't access property "flags", instance.job is null`.
+    - Root cause analysis in Vue 3.5 scheduler / BaseTransition / HMR:
+      - In Vue 3.5, `instance.job.flags! & 8` (`SchedulerJobFlags.DISPOSED`) was introduced in `BaseTransition.ts` (line 1423) and `hmr.ts` (lines 509 & 541).
+      - The non-null assertion `!` in TypeScript compiled to unchecked property access `instance.job.flags & 8` in JavaScript.
+      - In `AkOperatorHero.vue`, `<Transition name="ak-hero-crossfade" mode="out-in">` triggered `afterLeave` synchronously or during unmount/variant changes while `instance.job` was null.
+      - During Vite HMR with asynchronous/Suspense components (such as `[id].vue`), `record.instances` can also contain instances whose `instance.job` is null.
+  - **Implementation Details:**
+    - **`AkOperatorHero.vue`:**
+      - Removed problematic `mode="out-in"` from `<Transition name="ak-hero-crossfade">`, preventing Vue from entering the flawed `leavingHooks.afterLeave` scheduler check.
+      - Added `position: absolute` on `.ak-hero-crossfade-leave-active` to ensure seamless in-place crossfade without layout jumps.
+    - **Vue Patch Script (`scripts/patch-vue.mjs`):**
+      - Created an idempotent patch script that replaces un-guarded `!(instance.job.flags & 8)` and `!(n.job.flags & 8)` with null-guarded checks `(instance.job && !(instance.job.flags & 8))` across all `@vue/*` and `vue` distributions in `node_modules`.
+      - Added to `postinstall` in `package.json` (`node scripts/patch-vue.mjs && nuxt prepare`) to ensure both local dev and production builds are completely immune to this Vue 3.5 bug.
+    - **Unit Tests:**
+      - Added `tests/unit/scripts/patch-vue.test.ts` to verify regex matching and idempotency.
+  - **Quality Gates & Verification:**
+    - `npm run i18n:check`: passed (628 keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: all 83 test suites passed (619 tests).
+    - `npm run build`: production build passed.
+
 - **Operator Promotion Costs & Base Skill Levels 1–7 (`feat/operator-upgrade-costs`):**
   - **Context & Motivation:**
     - In accordance with P1.4 and P1.5 from `docs/operator-wiki-audit.md`, operator promotion costs (`phases[].evolveCost` + LMD from `constants.json -> evolveGoldCost`) and common skill levels 1–7 training costs (`allSkillLvlup[]`) were missing from the UI.

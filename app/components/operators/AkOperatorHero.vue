@@ -141,7 +141,7 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
             @keydown.enter="handleOpenViewer"
             @keydown.space.prevent="handleOpenViewer"
           >
-            <Transition name="ak-hero-crossfade" mode="out-in">
+            <Transition name="ak-hero-crossfade">
               <img
                 :key="currentStage"
                 :src="primaryArtUrl"
@@ -653,6 +653,10 @@ const e2ThumbUrl = computed(() => resolveAsset('portrait', props.operator.id, { 
   transition:
     opacity 0.28s ease,
     transform 0.28s ease;
+}
+
+.ak-hero-crossfade-leave-active {
+  position: absolute;
 }
 
 .ak-hero-crossfade-enter-from,
