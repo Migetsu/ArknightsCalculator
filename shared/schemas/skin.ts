@@ -29,16 +29,16 @@ export const SkinSchema = z
     skinName: I18nStringSchema,
     /** Fashion brand identifier, e.g. 'sale', 'epoque', 'summer', 'winter' */
     brandId: z.string().nullable().optional(),
-    /** Display brand name, e.g. 'Coral Coast', 'EPOQUE' */
-    brandName: z.string().nullable().optional(),
-    /** List of illustrators/artists credited for the skin */
+    /** Localized display brand name with layered provenance */
+    brandName: I18nStringSchema.nullable().optional(),
+    /** List of illustrators/artists credited for the skin (proper pen names) */
     drawerList: z.array(z.string()),
-    /** Lore description or flavor text */
-    description: z.string().nullable().optional(),
-    /** Outfit quote or voice dialogue line */
-    dialog: z.string().nullable().optional(),
-    /** How the outfit is obtained, e.g. 'Store', 'Event Reward', 'Quest Reward' */
-    obtainApproach: z.string().nullable().optional(),
+    /** Localized lore description or flavor text */
+    description: I18nStringSchema.nullable().optional(),
+    /** Localized outfit quote or voice dialogue line */
+    dialog: I18nStringSchema.nullable().optional(),
+    /** Localized acquisition approach */
+    obtainApproach: I18nStringSchema.nullable().optional(),
     /** Whether the skin is sold in the Outfit Store for premium currency */
     isBuySkin: z.boolean(),
     /** Whether this is a default character appearance (E0/E1/E2) */

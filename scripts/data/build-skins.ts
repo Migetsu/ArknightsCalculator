@@ -80,36 +80,52 @@ const RAW_CACHE_DIR = path.resolve(process.cwd(), DATA_SOURCES_CONFIG.cacheDir)
 const DATA_OUTPUT_DIR = path.resolve(process.cwd(), 'data')
 const SKINS_OUTPUT_PATH = path.join(DATA_OUTPUT_DIR, 'skins.json')
 
+/**
+ * Resolves the fashion brand identifier and localized display names.
+ * Ensures English values from the official EN table take strict precedence,
+ * with Chinese values used only as fallback for CN-only releases.
+ */
 function resolveBrand(
   skinId: string,
-  displaySkin: RawDisplaySkin | undefined | null,
-  brandList: Record<string, RawBrand>,
-): { brandId?: string; brandName?: string } {
+  displaySkinEn: RawDisplaySkin | undefined | null,
+  displaySkinCn: RawDisplaySkin | undefined | null,
+  brandListEn: Record<string, RawBrand>,
+  brandListCn: Record<string, RawBrand>,
+): { brandId?: string; brandNameEn?: string; brandNameZh?: string } {
   let brandId: string | undefined
   const match = skinId.match(/@([^#]+)#/)
   if (match && match[1]) {
     brandId = match[1]
-  } else if (displaySkin?.skinGroupId && displaySkin.skinGroupId.includes('#')) {
-    const parts = displaySkin.skinGroupId.split('#')
-    brandId = parts[1]
+  } else if (displaySkinEn?.skinGroupId && displaySkinEn.skinGroupId.includes('#')) {
+    brandId = displaySkinEn.skinGroupId.split('#')[1]
+  } else if (displaySkinCn?.skinGroupId && displaySkinCn.skinGroupId.includes('#')) {
+    brandId = displaySkinCn.skinGroupId.split('#')[1]
   }
 
-  if (brandId && brandList[brandId]) {
-    return {
-      brandId,
-      brandName: brandList[brandId].brandName || displaySkin?.skinGroupName || undefined,
-    }
-  }
+  // EN display brand name:
+  // 1. displaySkin.skinGroupName from EN (e.g. 'Test Collection/II')
+  // 2. brandList.brandName from EN (e.g. 'Test Collection')
+  // 3. brandList.brandCapitalName from EN
+  const brandNameEn =
+    displaySkinEn?.skinGroupName ||
+    (brandId
+      ? brandListEn[brandId]?.brandName || brandListEn[brandId]?.brandCapitalName
+      : undefined)
 
-  if (brandId) {
-    return {
-      brandId,
-      brandName: displaySkin?.skinGroupName || brandId,
-    }
-  }
+  // ZH display brand name:
+  // 1. displaySkin.skinGroupName from CN
+  // 2. brandList.brandName from CN
+  // 3. brandList.brandCapitalName from CN
+  const brandNameZh =
+    displaySkinCn?.skinGroupName ||
+    (brandId
+      ? brandListCn[brandId]?.brandName || brandListCn[brandId]?.brandCapitalName
+      : undefined)
 
   return {
-    brandName: displaySkin?.skinGroupName || undefined,
+    brandId,
+    brandNameEn,
+    brandNameZh: brandNameZh || brandNameEn,
   }
 }
 
@@ -170,11 +186,6 @@ export async function buildSkins(): Promise<{
 
   console.log(`3. Processing ${sortedSkinIds.length} skins for playable operators...`)
 
-  const brandList = {
-    ...(rawEnTable.brandList || {}),
-    ...(rawCnTable.brandList || {}),
-  }
-
   const skins: Skin[] = []
   let cosmeticCount = 0
   let defaultCount = 0
@@ -214,23 +225,13 @@ export async function buildSkins(): Promise<{
     const officialEn = skinEn?.displaySkin?.skinName ?? null
     const zhText = skinCn?.displaySkin?.skinName ?? null
 
-    // Localize skin name
+    // 3.1 Localize skin name
     let skinName
-    if (!officialEn && !zhText) {
-      const groupEn = skinEn?.displaySkin?.skinGroupName
-      const groupZh = skinCn?.displaySkin?.skinGroupName
-      const enName =
-        groupEn === 'Default Outfit'
-          ? skinSource.displaySkin?.skinGroupId === 'ILLUST_2'
-            ? 'Elite 2'
-            : 'Default'
-          : groupEn || 'Default'
-      const zhName =
-        groupZh === '默认服装'
-          ? skinSource.displaySkin?.skinGroupId === 'ILLUST_2'
-            ? '精英二'
-            : '默认'
-          : groupZh || '默认服装'
+    if (isDefault) {
+      const isElite2 =
+        skinSource.displaySkin?.skinGroupId === 'ILLUST_2' || skinId.endsWith('#2')
+      const enName = isElite2 ? 'Elite 2' : 'Default'
+      const zhName = skinCn?.displaySkin?.skinGroupName || enName
 
       skinName = {
         en: enName,
@@ -252,35 +253,99 @@ export async function buildSkins(): Promise<{
       )
     }
 
-    // Resolve fashion brand
-    const { brandId, brandName } = resolveBrand(
+    // 3.2 Resolve fashion brand and localize brand name
+    const { brandId, brandNameEn, brandNameZh } = resolveBrand(
       skinId,
-      skinEn?.displaySkin ?? skinCn?.displaySkin,
-      brandList,
+      skinEn?.displaySkin,
+      skinCn?.displaySkin,
+      rawEnTable.brandList || {},
+      rawCnTable.brandList || {},
     )
 
-    // Resolve artists / illustrators
+    const brandName =
+      brandNameEn || brandNameZh
+        ? resolveLayeredI18nString(
+            {
+              key: `skin.${skinId}.brandName`,
+              charId,
+              officialEn: brandNameEn,
+              zhText: brandNameZh ?? null,
+              isGlobal: !isCnOnly,
+            },
+            i18nContext,
+            tracker,
+          )
+        : null
+
+    // 3.3 Artists / illustrators (proper pen names credited by developer)
     const drawerList =
       skinEn?.displaySkin?.drawerList ?? skinCn?.displaySkin?.drawerList ?? []
 
-    // Lore description & quotes
+    // 3.4 Localize lore description & quote/dialog
+    const rawDescEn = skinEn?.displaySkin?.description ?? null
+    const rawDescZh = skinCn?.displaySkin?.description ?? null
     const description =
-      skinEn?.displaySkin?.description ?? skinCn?.displaySkin?.description ?? null
-    const dialog =
-      skinEn?.displaySkin?.dialog ?? skinCn?.displaySkin?.dialog ?? null
-    const obtainApproach =
-      skinEn?.displaySkin?.obtainApproach ?? skinCn?.displaySkin?.obtainApproach ?? null
+      rawDescEn || rawDescZh
+        ? resolveLayeredI18nString(
+            {
+              key: `skin.${skinId}.description`,
+              charId,
+              officialEn: rawDescEn,
+              zhText: rawDescZh,
+              isGlobal: !isCnOnly,
+            },
+            i18nContext,
+            tracker,
+          )
+        : null
 
-    // Asset identifiers with fallback to skinId (converting @ to _ if needed)
+    const rawDialogEn = skinEn?.displaySkin?.dialog ?? null
+    const rawDialogZh = skinCn?.displaySkin?.dialog ?? null
+    const dialog =
+      rawDialogEn || rawDialogZh
+        ? resolveLayeredI18nString(
+            {
+              key: `skin.${skinId}.dialog`,
+              charId,
+              officialEn: rawDialogEn,
+              zhText: rawDialogZh,
+              isGlobal: !isCnOnly,
+            },
+            i18nContext,
+            tracker,
+          )
+        : null
+
+    // 3.5 Localize acquisition approach
+    const rawApproachEn = skinEn?.displaySkin?.obtainApproach ?? null
+    const rawApproachZh = skinCn?.displaySkin?.obtainApproach ?? null
+    const obtainApproach =
+      rawApproachEn || rawApproachZh
+        ? resolveLayeredI18nString(
+            {
+              key: `skin.${skinId}.obtainApproach`,
+              charId,
+              officialEn: rawApproachEn,
+              zhText: rawApproachZh,
+              isGlobal: !isCnOnly,
+            },
+            i18nContext,
+            tracker,
+          )
+        : null
+
+    // 3.6 Asset identifiers with fallback to skinId (converting @ to _ if needed)
     const normalizedFallback = skinId.replace(/@/g, '_')
     const illustId = skinSource.illustId || `illust_${normalizedFallback}`
     const avatarId = skinSource.avatarId || normalizedFallback
     const portraitId = skinSource.portraitId || normalizedFallback
 
-    // Determine verifiable price status without heuristic guessing
+    // 3.7 Determine verifiable price status without heuristic guessing
     const priceStatus = getSkinPriceStatus({
       skinId,
-      obtainApproach,
+      isDefault,
+      isBuySkin,
+      obtainApproach: rawApproachEn,
     })
     priceStatusCounts[priceStatus]++
 
@@ -289,7 +354,7 @@ export async function buildSkins(): Promise<{
       charId,
       skinName,
       brandId: brandId ?? null,
-      brandName: brandName ?? null,
+      brandName,
       drawerList: Array.from(drawerList),
       description,
       dialog,

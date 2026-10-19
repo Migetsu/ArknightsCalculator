@@ -8,6 +8,8 @@ import {
 import { isDefaultSkin, getSkinPriceStatus } from '../../../shared/utils/skin'
 import skinsDataset from '../../../data/skins.json'
 
+const CJK_IDEOGRAPH_REGEX = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/
+
 describe('Skin Schema and Utilities', () => {
   const baseValidSkin = {
     skinId: 'char_102_texas@summer#1',
@@ -19,11 +21,31 @@ describe('Skin Schema and Utilities', () => {
       isMachineTranslation: false,
     },
     brandId: 'summer',
-    brandName: 'Coral Coast',
+    brandName: {
+      en: 'Coral Coast',
+      zh: '珊瑚海岸',
+      source: 'official' as const,
+      isMachineTranslation: false,
+    },
     drawerList: ['幻象黑兔'],
-    description: 'Sun and sand.',
-    dialog: 'Coral Coast series summer outfit.',
-    obtainApproach: 'Store',
+    description: {
+      en: 'Sun and sand.',
+      zh: '阳光与沙滩。',
+      source: 'official' as const,
+      isMachineTranslation: false,
+    },
+    dialog: {
+      en: 'Coral Coast series summer outfit.',
+      zh: '珊瑚海岸系列夏季泳装。',
+      source: 'official' as const,
+      isMachineTranslation: false,
+    },
+    obtainApproach: {
+      en: 'Store',
+      zh: '采购中心',
+      source: 'official' as const,
+      isMachineTranslation: false,
+    },
     isBuySkin: true,
     isDefault: false,
     price: null,
@@ -45,10 +67,14 @@ describe('Skin Schema and Utilities', () => {
       expect(parsed.price).toBeNull()
       expect(parsed.priceStatus).toBe('unknown')
       expect(parsed.priceSource).toBeNull()
+      expect(parsed.brandName?.en).toBe('Coral Coast')
+      expect(parsed.description?.en).toBe('Sun and sand.')
+      expect(parsed.dialog?.en).toBe('Coral Coast series summer outfit.')
+      expect(parsed.obtainApproach?.en).toBe('Store')
       expect(parsed.servers).toEqual(['cn', 'en'])
     })
 
-    it('validates a default operator appearance record with default priceStatus', () => {
+    it('validates a default operator appearance record with default priceStatus and null details', () => {
       const defaultSkin = {
         ...baseValidSkin,
         skinId: 'char_002_amiya#1',
@@ -60,8 +86,10 @@ describe('Skin Schema and Utilities', () => {
           isMachineTranslation: false,
         },
         brandId: null,
-        brandName: 'Default Outfit',
+        brandName: null,
         drawerList: ['唯@W'],
+        description: null,
+        dialog: null,
         obtainApproach: null,
         isBuySkin: false,
         isDefault: true,
@@ -76,6 +104,8 @@ describe('Skin Schema and Utilities', () => {
       expect(parsed.isDefault).toBe(true)
       expect(parsed.priceStatus).toBe('default')
       expect(parsed.price).toBeNull()
+      expect(parsed.brandName).toBeNull()
+      expect(parsed.description).toBeNull()
     })
 
     it('validates a free reward cosmetic skin record with free priceStatus', () => {
@@ -88,16 +118,22 @@ describe('Skin Schema and Utilities', () => {
           source: 'official' as const,
           isMachineTranslation: false,
         },
-        obtainApproach: 'Event Reward',
+        obtainApproach: {
+          en: 'Event Reward',
+          zh: '活动获得',
+          source: 'official' as const,
+          isMachineTranslation: false,
+        },
         priceStatus: 'free' as const,
       }
 
       const parsed = SkinSchema.parse(rewardSkin)
       expect(parsed.priceStatus).toBe('free')
       expect(parsed.price).toBeNull()
+      expect(parsed.obtainApproach?.en).toBe('Event Reward')
     })
 
-    it('validates a CN-only skin record', () => {
+    it('validates a CN-only skin record with pending provenance', () => {
       const cnOnlySkin = {
         ...baseValidSkin,
         skinId: 'char_1001_amiya2@casc#1',
@@ -107,7 +143,12 @@ describe('Skin Schema and Utilities', () => {
           source: 'pending' as const,
           isMachineTranslation: false,
         },
-        obtainApproach: '采购中心',
+        obtainApproach: {
+          en: '[Pending Translation]',
+          zh: '采购中心',
+          source: 'pending' as const,
+          isMachineTranslation: false,
+        },
         isCnOnly: true,
         servers: ['cn' as const],
       }
@@ -115,12 +156,30 @@ describe('Skin Schema and Utilities', () => {
       const parsed = SkinSchema.parse(cnOnlySkin)
       expect(parsed.isCnOnly).toBe(true)
       expect(parsed.servers).toEqual(['cn'])
+      expect(parsed.skinName.source).toBe('pending')
+      expect(parsed.obtainApproach?.source).toBe('pending')
     })
 
     it('rejects invalid skin records missing mandatory fields', () => {
       expect(() =>
         SkinSchema.parse({
           skinId: 'incomplete_skin',
+        }),
+      ).toThrow()
+    })
+
+    it('rejects raw string values for localized user-facing fields', () => {
+      expect(() =>
+        SkinSchema.parse({
+          ...baseValidSkin,
+          brandName: 'Coral Coast', // Must be an I18nString object or null
+        }),
+      ).toThrow()
+
+      expect(() =>
+        SkinSchema.parse({
+          ...baseValidSkin,
+          description: 'A raw description string',
         }),
       ).toThrow()
     })
@@ -205,8 +264,74 @@ describe('Skin Schema and Utilities', () => {
 
       expect(numericPricesCount).toBe(0)
       expect(statusCounts.default).toBe(833)
-      expect(statusCounts.free).toBe(123)
-      expect(statusCounts.unknown).toBe(403)
+      expect(statusCounts.free).toBe(115)
+      expect(statusCounts.unknown).toBe(411)
+    })
+  })
+
+  describe('CJK-Safety Fuse Test', () => {
+    it('ensures no user-facing field in data/skins.json is a raw string containing CJK', () => {
+      const skins = skinsDataset as unknown as Record<string, unknown>[]
+      const checkFields = ['brandName', 'obtainApproach', 'description', 'dialog'] as const
+
+      for (const skin of skins) {
+        for (const field of checkFields) {
+          const val = skin[field]
+          if (typeof val === 'string') {
+            expect(CJK_IDEOGRAPH_REGEX.test(val)).toBe(false)
+          }
+        }
+      }
+    })
+
+    it('ensures English fields in data/skins.json do not contain CJK characters', () => {
+      const skins = skinsDataset as Skin[]
+      const checkFields = [
+        'skinName',
+        'brandName',
+        'obtainApproach',
+        'description',
+        'dialog',
+      ] as const
+
+      for (const skin of skins) {
+        for (const field of checkFields) {
+          const item = skin[field]
+          if (item && typeof item === 'object' && 'en' in item) {
+            const hasCjk = CJK_IDEOGRAPH_REGEX.test(item.en)
+            if (hasCjk) {
+              expect.fail(
+                `Skin '${skin.skinId}' field '${field}.en' contains CJK ideographs: "${item.en}"`,
+              )
+            }
+          }
+        }
+      }
+    })
+
+    it('ensures char_002_amiya@epoque#4 has English brandName "Test Collection/II" rather than Chinese', () => {
+      const amiyaSkin = (skinsDataset as Skin[]).find((s) => s.skinId === 'char_002_amiya@epoque#4')
+      expect(amiyaSkin).toBeDefined()
+      expect(amiyaSkin?.brandName?.en).toBe('Test Collection/II')
+      expect(amiyaSkin?.brandName?.source).toBe('official')
+      expect(CJK_IDEOGRAPH_REGEX.test(amiyaSkin?.brandName?.en ?? '')).toBe(false)
+    })
+
+    it('ensures all 72 CN-only skins have pending provenance and no CJK in en fields', () => {
+      const cnOnlySkins = (skinsDataset as Skin[]).filter((s) => s.isCnOnly)
+      expect(cnOnlySkins.length).toBe(72)
+
+      for (const skin of cnOnlySkins) {
+        if (!skin.isDefault) {
+          expect(CJK_IDEOGRAPH_REGEX.test(skin.skinName.en)).toBe(false)
+          if (skin.skinName.source === 'pending') {
+            expect(skin.skinName.en).toBe('[Pending Translation]')
+          }
+          if (skin.obtainApproach?.source === 'pending') {
+            expect(skin.obtainApproach.en).toBe('[Pending Translation]')
+          }
+        }
+      }
     })
   })
 
@@ -228,13 +353,14 @@ describe('Skin Schema and Utilities', () => {
   describe('getSkinPriceStatus pure helper', () => {
     it('returns "default" for default appearance skins', () => {
       expect(getSkinPriceStatus({ skinId: 'char_002_amiya#1' })).toBe('default')
-      expect(getSkinPriceStatus({ skinId: 'char_102_texas#2' })).toBe('default')
+      expect(getSkinPriceStatus({ skinId: 'char_102_texas#2', isDefault: true })).toBe('default')
     })
 
-    it('returns "unknown" for outfits obtainable in the Store / 采购中心', () => {
+    it('returns "unknown" for store outfits', () => {
       expect(
         getSkinPriceStatus({
           skinId: 'char_102_texas@summer#1',
+          isBuySkin: true,
           obtainApproach: 'Store',
         }),
       ).toBe('unknown')
@@ -242,14 +368,16 @@ describe('Skin Schema and Utilities', () => {
       expect(
         getSkinPriceStatus({
           skinId: 'char_1035_wisdel@sale#14',
-          obtainApproach: '采购中心',
+          isBuySkin: true,
+          obtainApproach: 'Store',
         }),
       ).toBe('unknown')
 
       expect(
         getSkinPriceStatus({
           skinId: 'char_1001_amiya2@casc#1',
-          obtainApproach: '采购中心、兑换码获得',
+          isBuySkin: true,
+          obtainApproach: 'Store, Redeem Code',
         }),
       ).toBe('unknown')
     })
@@ -258,6 +386,7 @@ describe('Skin Schema and Utilities', () => {
       expect(
         getSkinPriceStatus({
           skinId: 'char_002_amiya@winter#1',
+          isBuySkin: true,
           obtainApproach: 'Quest Reward',
         }),
       ).toBe('free')
@@ -265,13 +394,15 @@ describe('Skin Schema and Utilities', () => {
       expect(
         getSkinPriceStatus({
           skinId: 'char_199_yak@summer#1',
-          obtainApproach: '活动获得',
+          isBuySkin: true,
+          obtainApproach: 'Event Reward',
         }),
       ).toBe('free')
 
       expect(
         getSkinPriceStatus({
           skinId: 'char_1011_lava2@whirlwind#9',
+          isBuySkin: true,
           obtainApproach: 'Integrated Strategies',
         }),
       ).toBe('free')
@@ -279,7 +410,15 @@ describe('Skin Schema and Utilities', () => {
       expect(
         getSkinPriceStatus({
           skinId: 'char_4042_lupus@epoque#30',
-          obtainApproach: '生息演算',
+          isBuySkin: true,
+          obtainApproach: 'Reclamation Algorithm',
+        }),
+      ).toBe('free')
+
+      expect(
+        getSkinPriceStatus({
+          skinId: 'char_512_aprot@free#1',
+          isBuySkin: false,
         }),
       ).toBe('free')
     })

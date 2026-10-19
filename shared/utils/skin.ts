@@ -10,27 +10,42 @@ export function isDefaultSkin(skinId: string): boolean {
 }
 
 /**
- * Determines the verifiable price status of an operator skin based directly
- * on game data flags (obtainApproach), without guessing numerical costs.
+ * Determines the verifiable price status of an operator skin based on data flags
+ * (isDefault, isBuySkin, and English approach description) without heuristic numerical costs
+ * and without hardcoded non-Latin literals.
  */
 export function getSkinPriceStatus(skin: {
-  skinId: string
+  skinId?: string
+  isDefault?: boolean
+  isBuySkin?: boolean
   obtainApproach?: string | null
 }): SkinPriceStatus {
-  if (isDefaultSkin(skin.skinId)) {
+  const isDefault = skin.isDefault ?? (skin.skinId ? isDefaultSkin(skin.skinId) : false)
+  if (isDefault) {
     return 'default'
   }
 
+  if (skin.isBuySkin === false) {
+    return 'free'
+  }
+
   const approach = (skin.obtainApproach ?? '').toLowerCase()
-  const approachRaw = skin.obtainApproach ?? ''
+  const isFreeReward =
+    approach.includes('reward') ||
+    approach.includes('gift') ||
+    approach.includes('strategies') ||
+    approach.includes('reclamation') ||
+    approach.includes('special pack') ||
+    approach.includes('redemption code') ||
+    approach.includes('exchange')
 
-  // Store purchases from Procurement Center
-  const isStore = approach.includes('store') || approachRaw.includes('采购中心')
+  if (isFreeReward) {
+    return 'free'
+  }
 
-  if (isStore) {
+  if (approach.includes('store') || skin.isBuySkin) {
     return 'unknown'
   }
 
-  // Free distribution via events, quests, gifts, IS, RA, redemption codes, etc.
   return 'free'
 }

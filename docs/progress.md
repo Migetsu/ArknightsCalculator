@@ -12,14 +12,13 @@
     - Added `priceStatus` ('default' | 'free' | 'unknown') and `priceSource` (currently `null`).
     - Added a price guard test in `tests/unit/schemas/skin.test.ts` that fails validation if a skin has a numeric price without a verified non-empty `priceSource`.
     - Switched `data:skins` in `package.json` to standard `jiti scripts/data/build-skins.ts` and removed `tsx`.
-  - **Asset Resolution & URL-Encoding (`shared/utils/resolveAsset.ts`):**
-    - Enhanced `resolveAsset()` for `art`, `portrait`, and `avatar` to support skin variants (e.g. `resolveAsset('art', charId, { variant: skinId })`, `resolveAsset('art', skinId)`).
-    - Added automatic percent-encoding of `#` to `%23` for all asset URLs to resolve HTTP 404 hash truncation on CDN requests.
-  - **Integrity Validation & Testing:**
-    - Updated `scripts/data/validate-data.ts` to validate `data/skins.json` against `SkinListSchema` and verify all operator references.
-    - Added comprehensive unit test suite `tests/unit/schemas/skin.test.ts` (12 tests) covering schema parsing, default skin detection, and all price tiers.
-    - Expanded `tests/unit/shared/resolveAsset.test.ts` (23 tests) verifying skin art, portrait, and avatar resolution.
-    - Updated `docs/known-issues.md` (marked skin variants resolved) and created `docs/data-skins.md`.
+  - **I18n Elimination of Chinese Text & CJK Fuse Guard (Task 1b):**
+    - Fixed `resolveBrand`: prioritized official English client data (`displaySkin.skinGroupName` and `rawEnTable.brandList`), eliminating the CN overwrite bug where `时代` was returned instead of `Test Collection/II`. Verified on `char_002_amiya@epoque#4`.
+    - Converted all user-facing string fields (`brandName`, `description`, `dialog`, `obtainApproach`) into `I18nStringSchema` (`{ en, zh, source, isMachineTranslation }`) via `resolveLayeredI18nString`.
+    - CN-only skins with missing English text receive `en: '[Pending Translation]'` with `source: 'pending'`, preventing raw Chinese leaks into the English UI.
+    - Eliminated all hardcoded Chinese string literals from `.ts` files (`build-skins.ts`, `skin.ts`).
+    - Decided and documented `drawerList: string[]` preservation: artist handles are official creator pen names preserved across both CN and EN official game clients.
+    - Added CJK safety fuse unit tests in `tests/unit/schemas/skin.test.ts`. Total tests increased from 553 to 558 across 76 suites.
   - **Quality Gates:**
     - `data:skins`: passed (1359 skins generated).
     - `data:validate`: passed (0 integrity issues).
