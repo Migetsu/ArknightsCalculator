@@ -1,6 +1,39 @@
 # Project Progress
 
-- **Operator Potential Breakdown UI (`feat/operator-potential-ranks`):**
+- **Operator Handbook Dataset (`feat/operator-handbook-data`):**
+  - **Context & Motivation:**
+    - Operator lore, biographical profiles, physical evaluations/combat assessments, and archival stories were previously unextracted from game tables (`.cache/raw/{en,cn}/handbook_info_table.json`) and absent from `data/` (Audit row P2).
+    - In accordance with `AGENTS.md` §3 and §13, a dedicated, standalone dataset `data/handbook.json` was designed for on-demand lazy loading in the forthcoming operator dossier UI (Task 11).
+  - **Implementation Details:**
+    - **Schemas (`shared/schemas/handbook.ts`):**
+      - Defined strict Zod schemas and inferred TypeScript types: `HandbookProfileSchema`, `HandbookPhysicalExamSchema`, `HandbookStorySchema`, `OperatorHandbookSchema`, `HandbookDatasetSchema`, and `HandbookItemSchema`.
+      - Exported via `shared/schemas/index.ts`.
+    - **Parsing & Filtering Core (`shared/utils/handbook.ts`):**
+      - `parseTaggedSection`: parses `[Tag] Value` (EN) and `【Tag】 Value` (CN). Robustly handles edge cases where the tag line is empty and content appears on subsequent lines (e.g. Amiya `[Infection Status]`).
+      - `isHandbookStub`: detects and drops useless question-mark placeholders (e.g. `？？？` with ` ？？？？？？\n`).
+      - `isDuplicateStory`: detects exact duplicates by title and content (e.g. Amiya's second "Physical Exam" and "Profile"), while preserving legitimate updated stories (e.g. Amiya's updated "Basic Info" with height 150cm).
+      - `TAG_KEY_MAP`: 100% mapped dictionary covering standard biographical tags, robot engineering metrics (Lancet-2, Castle-3, THRM-EX), and collab academic metrics (Persona).
+    - **ETL Pipeline (`scripts/data/build-handbook.ts`):**
+      - Created deterministic build script mapped to `npm run data:handbook`.
+      - Processed 432 operators (415 EN + 17 CN-only).
+      - Deduplicated 2 redundant stories and stripped 1 question-mark stub.
+      - Preserved Amiya's alternative form records (`char_1001_amiya2`, `char_1037_amiya3`) with `unlockType: 'PATCH'` and `patchCharId`. No synthetic top-level records created, adhering to rule 7.
+      - Resolved CN-only operators via `resolveLayeredI18nString` with `source: 'pending'` and `'[Pending Translation]'` in `.en` (0 CJK characters in `.en`).
+    - **Validator Integration (`scripts/data/validate-data.ts`):**
+      - Added Section 8 verifying `HandbookDatasetSchema`, 100% referential integrity with `data/operators/`, and strict check preventing CJK characters from appearing in `.en`.
+    - **Unit & Integration Tests (`tests/unit/shared/handbook.test.ts`):**
+      - 14 tests verifying parsing utilities, edge cases, schema conformance, Amiya structured fields and PATCH records, CN-only operator fallback, and non-standard robot specifications.
+    - **Documentation:**
+      - Created `docs/data-handbook.md` and updated `docs/operator-wiki-audit.md` (row P2).
+  - **Quality Gates & Metrics:**
+    - `npm run data:handbook`: passed (432 operators, 2 duplicates dropped, 1 stub dropped).
+    - `npm run data:validate`: passed (432 handbooks checked, 0 errors).
+    - `npm run i18n:check`: passed (632 valid keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: 85 test suites passed (648/648 tests passed, +14 new tests).
+    - `npm run build`: production build passed.
+
   - **Context & Motivation:**
     - Operator potential rank bonuses (P2..P6) were present in `data/operators/*.json -> potentialRanks[]`, but the operator detail page only exposed a numeric potential selector (P1..P6) affecting calculation formulas without any textual descriptions or unlock breakdown (Audit row 242).
   - **Implementation Details:**

@@ -7,12 +7,13 @@ import type { OperatorDetail, OperatorSummary } from '../../shared/schemas/opera
 import { RecruitDataSchema } from '../../shared/schemas/recruit'
 import { SkinListSchema } from '../../shared/schemas/skin'
 import { RangesDictionarySchema, type RangesDictionary } from '../../shared/schemas/range'
+import { HandbookDatasetSchema, type HandbookDataset } from '../../shared/schemas/handbook'
 
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
 
 interface ValidationIssue {
-  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin' | 'range'
+  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin' | 'range' | 'handbook'
   entityId: string
   referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema' | 'range'
   referenceId: string
@@ -25,6 +26,7 @@ export async function validateDataIntegrity(): Promise<{
   totalItemsChecked: number
   totalSkinsChecked: number
   totalRangesChecked: number
+  totalHandbooksChecked: number
   totalItemReferences: number
   totalSkillReferences: number
   totalModuleReferences: number
@@ -37,13 +39,14 @@ export async function validateDataIntegrity(): Promise<{
 
   // 1. Load items, recipes, constants, and index
   console.log('1. Loading datasets...')
-  const [itemsRaw, recipesRaw, constantsRaw, indexRaw, recruitRaw, rangesRaw] = await Promise.all([
+  const [itemsRaw, recipesRaw, constantsRaw, indexRaw, recruitRaw, rangesRaw, handbookRaw] = await Promise.all([
     fs.readFile(path.join(DATA_DIR, 'items.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'recipes.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'constants.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'operators-index.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'recruit.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'ranges.json'), 'utf-8'),
+    fs.readFile(path.join(DATA_DIR, 'handbook.json'), 'utf-8'),
   ])
 
   const items = JSON.parse(itemsRaw) as GameItem[]
@@ -52,6 +55,7 @@ export async function validateDataIntegrity(): Promise<{
   const index = JSON.parse(indexRaw) as OperatorSummary[]
   const recruit = JSON.parse(recruitRaw) as unknown
   const ranges = JSON.parse(rangesRaw) as RangesDictionary
+  const handbook = JSON.parse(handbookRaw) as HandbookDataset
 
   const itemMap = new Map<string, GameItem>()
   for (const it of items) {
@@ -395,12 +399,126 @@ export async function validateDataIntegrity(): Promise<{
     })
   }
 
+  // 8. Validate Handbook Dataset Schema, operator references & CJK sanity
+  console.log('8. Validating handbook dataset schema, operator references & CJK sanity...')
+  let totalHandbooksChecked = 0
+  try {
+    HandbookDatasetSchema.parse(handbook)
+    const handbookOperatorIds = Object.keys(handbook)
+    totalHandbooksChecked = handbookOperatorIds.length
+
+    const opFilesSet = new Set(opFiles.map(f => f.replace('.json', '')))
+    const cjkRegex = /[\u4e00-\u9fa5]/
+
+    for (const charId of handbookOperatorIds) {
+      if (!opFilesSet.has(charId)) {
+        issues.push({
+          entityType: 'handbook',
+          entityId: 'handbook.json',
+          referenceType: 'operator',
+          referenceId: charId,
+          message: `Handbook contains unknown operator ID '${charId}' not found in data/operators/`,
+        })
+      }
+
+      const opHandbook = handbook[charId]
+      if (opHandbook) {
+        for (const field of opHandbook.profile.allFields) {
+          if (cjkRegex.test(field.title.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `profile.${field.key}.title.en`,
+              message: `English profile title contains untranslated Chinese characters: "${field.title.en}"`,
+            })
+          }
+          if (cjkRegex.test(field.value.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `profile.${field.key}.value.en`,
+              message: `English profile value contains untranslated Chinese characters: "${field.value.en}"`,
+            })
+          }
+        }
+
+        for (const field of opHandbook.physicalExam.allFields) {
+          if (cjkRegex.test(field.title.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `physicalExam.${field.key}.title.en`,
+              message: `English physical exam title contains untranslated Chinese characters: "${field.title.en}"`,
+            })
+          }
+          if (cjkRegex.test(field.value.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `physicalExam.${field.key}.value.en`,
+              message: `English physical exam value contains untranslated Chinese characters: "${field.value.en}"`,
+            })
+          }
+        }
+
+        for (let i = 0; i < opHandbook.stories.length; i++) {
+          const story = opHandbook.stories[i]
+          if (story && cjkRegex.test(story.storyTitle.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `stories[${i}].storyTitle.en`,
+              message: `English story title contains untranslated Chinese characters: "${story.storyTitle.en}"`,
+            })
+          }
+          if (story && cjkRegex.test(story.text.en)) {
+            issues.push({
+              entityType: 'handbook',
+              entityId: charId,
+              referenceType: 'schema',
+              referenceId: `stories[${i}].text.en`,
+              message: `English story text contains untranslated Chinese characters`,
+            })
+          }
+        }
+      }
+    }
+
+    // Check that all operator files except alternative forms (Amiya Guard & Medic) have a handbook
+    const EXPECTED_ABSENT_HANDBOOK = new Set(['char_1001_amiya2', 'char_1037_amiya3'])
+    for (const opId of opFilesSet) {
+      if (!handbook[opId] && !EXPECTED_ABSENT_HANDBOOK.has(opId)) {
+        issues.push({
+          entityType: 'handbook',
+          entityId: 'handbook.json',
+          referenceType: 'operator',
+          referenceId: opId,
+          message: `Missing handbook entry for operator '${opId}'`,
+        })
+      }
+    }
+  } catch (err: unknown) {
+    issues.push({
+      entityType: 'handbook',
+      entityId: 'handbook.json',
+      referenceType: 'schema',
+      referenceId: 'root',
+      message: err instanceof Error ? err.message : String(err),
+    })
+  }
+
   return {
     totalOperatorsChecked: opFiles.length,
     totalRecipesChecked: recipes.length,
     totalItemsChecked: items.length,
     totalSkinsChecked,
     totalRangesChecked: Object.keys(ranges).length,
+    totalHandbooksChecked,
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
@@ -420,6 +538,7 @@ async function main(): Promise<void> {
   console.log(`Items in dictionary:       ${result.totalItemsChecked}`)
   console.log(`Skins in dictionary:       ${result.totalSkinsChecked}`)
   console.log(`Ranges in dictionary:      ${result.totalRangesChecked}`)
+  console.log(`Handbooks in dictionary:   ${result.totalHandbooksChecked}`)
   console.log(`Recruit pool checked:      ${result.totalRecruitPoolChecked}`)
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
@@ -438,7 +557,7 @@ async function main(): Promise<void> {
     process.exit(1)
   }
 
-  console.log('\n[PASS] All item, skill, module, and range references are 100% valid!')
+  console.log('\n[PASS] All item, skill, module, range, and handbook references are 100% valid!')
 }
 
 if (process.argv[1]?.includes('validate-data')) {
