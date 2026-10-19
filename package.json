@@ -8,7 +8,7 @@
     "dev:agent": "node scripts/dev-agent.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "node scripts/patch-vue.mjs && nuxt prepare",
     "prepare": "husky",
     "typecheck": "nuxt typecheck",
     "lint": "eslint . && stylelint \"**/*.{scss,vue}\"",
