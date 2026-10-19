@@ -6,14 +6,15 @@ import type { GameConstants } from '../../shared/schemas/gameConstants'
 import type { OperatorDetail, OperatorSummary } from '../../shared/schemas/operator'
 import { RecruitDataSchema } from '../../shared/schemas/recruit'
 import { SkinListSchema } from '../../shared/schemas/skin'
+import { RangesDictionarySchema, type RangesDictionary } from '../../shared/schemas/range'
 
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
 
 interface ValidationIssue {
-  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin'
+  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin' | 'range'
   entityId: string
-  referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema'
+  referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema' | 'range'
   referenceId: string
   message: string
 }
@@ -23,9 +24,11 @@ export async function validateDataIntegrity(): Promise<{
   totalRecipesChecked: number
   totalItemsChecked: number
   totalSkinsChecked: number
+  totalRangesChecked: number
   totalItemReferences: number
   totalSkillReferences: number
   totalModuleReferences: number
+  totalRangeReferences: number
   totalRecruitPoolChecked: number
   globalReferencingCnOnlyCount: number
   issues: ValidationIssue[]
@@ -34,12 +37,13 @@ export async function validateDataIntegrity(): Promise<{
 
   // 1. Load items, recipes, constants, and index
   console.log('1. Loading datasets...')
-  const [itemsRaw, recipesRaw, constantsRaw, indexRaw, recruitRaw] = await Promise.all([
+  const [itemsRaw, recipesRaw, constantsRaw, indexRaw, recruitRaw, rangesRaw] = await Promise.all([
     fs.readFile(path.join(DATA_DIR, 'items.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'recipes.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'constants.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'operators-index.json'), 'utf-8'),
     fs.readFile(path.join(DATA_DIR, 'recruit.json'), 'utf-8'),
+    fs.readFile(path.join(DATA_DIR, 'ranges.json'), 'utf-8'),
   ])
 
   const items = JSON.parse(itemsRaw) as GameItem[]
@@ -47,6 +51,7 @@ export async function validateDataIntegrity(): Promise<{
   const constants = JSON.parse(constantsRaw) as GameConstants
   const index = JSON.parse(indexRaw) as OperatorSummary[]
   const recruit = JSON.parse(recruitRaw) as unknown
+  const ranges = JSON.parse(rangesRaw) as RangesDictionary
 
   const itemMap = new Map<string, GameItem>()
   for (const it of items) {
@@ -57,6 +62,7 @@ export async function validateDataIntegrity(): Promise<{
   let totalItemReferences = 0
   let totalSkillReferences = 0
   let totalModuleReferences = 0
+  let totalRangeReferences = 0
   let globalReferencingCnOnlyCount = 0
 
   // 2. Validate Constants item references
@@ -253,11 +259,38 @@ export async function validateDataIntegrity(): Promise<{
     }
 
     for (const phase of op.phases ?? []) {
+      if (phase.rangeId) {
+        totalRangeReferences++
+        if (!ranges[phase.rangeId]) {
+          issues.push({
+            entityType: 'operator',
+            entityId: `${op.id}:phase-${phase.phase}`,
+            referenceType: 'range',
+            referenceId: phase.rangeId,
+            message: `Operator '${op.id}' phase ${phase.phase} references unknown rangeId '${phase.rangeId}'`,
+          })
+        }
+      }
       for (const cost of phase.evolveCost ?? []) {
         checkItemAvailability(cost.id, 'evolveCost')
       }
     }
     for (const skill of op.skills ?? []) {
+      for (let lvlIdx = 0; lvlIdx < (skill.levels ?? []).length; lvlIdx++) {
+        const lvl = skill.levels[lvlIdx]
+        if (lvl?.rangeId) {
+          totalRangeReferences++
+          if (!ranges[lvl.rangeId]) {
+            issues.push({
+              entityType: 'operator',
+              entityId: `${op.id}:${skill.skillId}:level-${lvlIdx + 1}`,
+              referenceType: 'range',
+              referenceId: lvl.rangeId,
+              message: `Operator '${op.id}' skill '${skill.skillId}' level ${lvlIdx + 1} references unknown rangeId '${lvl.rangeId}'`,
+            })
+          }
+        }
+      }
       for (const mastery of skill.masteryCosts ?? []) {
         for (const cost of mastery.levelUpCost ?? []) {
           checkItemAvailability(cost.id, 'masteryCost')
@@ -348,14 +381,30 @@ export async function validateDataIntegrity(): Promise<{
     })
   }
 
+  // 7. Validate Ranges Dictionary Schema
+  console.log('7. Validating attack ranges dictionary schema...')
+  try {
+    RangesDictionarySchema.parse(ranges)
+  } catch (err: unknown) {
+    issues.push({
+      entityType: 'range',
+      entityId: 'ranges.json',
+      referenceType: 'schema',
+      referenceId: 'root',
+      message: err instanceof Error ? err.message : String(err),
+    })
+  }
+
   return {
     totalOperatorsChecked: opFiles.length,
     totalRecipesChecked: recipes.length,
     totalItemsChecked: items.length,
     totalSkinsChecked,
+    totalRangesChecked: Object.keys(ranges).length,
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
+    totalRangeReferences,
     totalRecruitPoolChecked,
     globalReferencingCnOnlyCount,
     issues,
@@ -370,10 +419,12 @@ async function main(): Promise<void> {
   console.log(`Recipes checked:           ${result.totalRecipesChecked}`)
   console.log(`Items in dictionary:       ${result.totalItemsChecked}`)
   console.log(`Skins in dictionary:       ${result.totalSkinsChecked}`)
+  console.log(`Ranges in dictionary:      ${result.totalRangesChecked}`)
   console.log(`Recruit pool checked:      ${result.totalRecruitPoolChecked}`)
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
   console.log(`Total module references:   ${result.totalModuleReferences}`)
+  console.log(`Total range references:    ${result.totalRangeReferences}`)
   console.log(`Global -> CN-only items:   ${result.globalReferencingCnOnlyCount} (permitted under explicit note)`)
   console.log(`Integrity issues found:    ${result.issues.length}`)
 
@@ -387,7 +438,7 @@ async function main(): Promise<void> {
     process.exit(1)
   }
 
-  console.log('\n[PASS] All item, skill, and module references are 100% valid!')
+  console.log('\n[PASS] All item, skill, module, and range references are 100% valid!')
 }
 
 if (process.argv[1]?.includes('validate-data')) {

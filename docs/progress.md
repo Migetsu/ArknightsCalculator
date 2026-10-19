@@ -5,7 +5,7 @@
     - Added `skin_table.json` to both `cn` and `en` source table configurations from `SanityGoneAK/arknights-gamedata` at commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
     - Downloaded and cached `.cache/raw/cn/skin_table.json` (4.54 MB, 2410 entries) and `.cache/raw/en/skin_table.json` (4.11 MB, 2114 entries).
   - **Raw Price Investigation & Analysis:**
-    - Thoroughly investigated raw game data across all 60 client tables (`skin_table.json`, `shop_client_table.json`, `activity_table.json`, `item_table.json`, `gamedata_const.json`).
+    - Thoroughly investigated the client gamedata tables relevant to cosmetics and shops (`skin_table.json`, `shop_client_table.json`, `activity_table.json`, `item_table.json`, `gamedata_const.json`).
     - Proved with concrete data that numeric Originite Prime price does not exist as a static column in client configuration dumps; skin store offerings are served dynamically by game server network packets (`/shop/getSkinShop`).
   - **Skin Pricing Status & Honest Verification (Task 1a):**
     - Removed heuristic pricing completely (`price` is strictly `null` for all 1359 skins, with `numeric prices: 0`).
@@ -25,8 +25,33 @@
     - `i18n:check`: passed (589 valid keys).
     - `lint`: passed (0 errors, 0 warnings).
     - `typecheck`: passed.
-    - `test`: passed (486/486 across 71 suites).
+    - `test`: passed (558/558 across 76 suites).
     - `build`: passed (production bundle ready).
+
+- **Operator Attack Ranges Dataset & Grid Normalization (`feat/operator-ranges`):**
+  - **Context & Motivation:**
+    - Upstream `range_table.json` was omitted from data fetching and local caches.
+    - Operator data (`data/operators/*.json`) references `rangeId` across evolution phases (`phases[].rangeId`) and skill levels (`skills[].levels[].rangeId`), but had no decoded grid geometry.
+    - Raw game coordinates use relative offsets from operator position `(0, 0)` that can be negative (e.g. Splash Caster `3-6` has `row: -1`; behind-attacks `b-1` has `col: -1`), requiring normalization into a 2D bounding matrix and operator `anchor`.
+  - **Implementation:**
+    - **Data Sources:** Added `range_table.json` to both CN and EN sources in `scripts/data/sources.config.ts`. Fetched raw tables via `npm run data:fetch` (73 records in both CN and EN).
+    - **Schemas & Types:** Created `shared/schemas/range.ts` with `RangeOffsetSchema`, `RangeAnchorSchema`, `RangeTableEntrySchema`, and `RangesDictionarySchema`.
+    - **Grid Normalization Core:** Created pure TS utility `shared/utils/range.ts` (`normalizeRange`, `reconstructOffsetsFromMatrix`).
+      - Guaranteed bounding box always includes operator position `(0, 0)` to support dead zones (e.g. Besieger snipers `4-3`).
+      - Projected relative offsets into a 0/1 bounding matrix (`rows x cols`) and 0-indexed operator `anchor`.
+      - Preserved direction and original `grids` for lossless representation and spatial math.
+      - Fixed JavaScript `-0` coordinate sign quirk (`col: minCol === 0 ? 0 : -minCol`).
+    - **Builder Pipeline:** Created `scripts/data/build-ranges.ts` generating `data/ranges.json` with script `"data:ranges"` in `package.json`. Idempotent generation.
+    - **Data Validation:** Updated `scripts/data/validate-data.ts` to check all 3,628 `rangeId` references in `data/operators/*.json` (1,251 in phases, 2,377 in skill levels, including 167 references in 17 CN-only operators). 0 unresolved references found.
+    - **Testing:** Created `tests/unit/schemas/range.test.ts` covering schema parsing, single-cell ranges (`0-1`), detached single cells (`1-5`), negative column coordinates (`b-1`), negative row coordinates (`3-6`), dead-zone Besieger snipers (`4-3`), 100% roundtrip invertibility across all 73 ranges, and referential integrity across all 434 operators.
+    - **Documentation:** Created comprehensive specification in `docs/data-ranges.md`.
+  - **Quality Gates:**
+    - `data:ranges`: 73 ranges built idempotently.
+    - `data:validate`: 3,628 range references verified with 0 issues.
+    - `test`: 543/543 passed across 76 suites (+9 new unit tests).
+    - `typecheck`: 0 errors.
+    - `lint`: 0 errors, 0 warnings.
+    - `build`: production build passed.
 
 - **Fix Operator Detail Item Icons & Skill SP Badges (`fix/operator-detail-item-icons`):**
   - **Issue:**
