@@ -154,4 +154,149 @@ describe('AkArtViewer', () => {
     expect(emitted).toBeTruthy()
     expect(emitted?.[0]?.[0]).toBe('char_172_svrash@snow#1')
   })
+
+  describe('Regression: Cosmetic outfits with #1 and #2 suffixes', () => {
+    function loadOperatorSkins(charId: string): Skin[] {
+      const filePath = path.resolve(process.cwd(), 'data/skins.json')
+      const raw = fs.readFileSync(filePath, 'utf-8')
+      const allSkins = JSON.parse(raw) as Skin[]
+      return allSkins.filter((s) => s.charId === charId)
+    }
+
+    const ifrit = loadOperatorDetail('char_134_ifrit')
+    const ifritSkins = loadOperatorSkins('char_134_ifrit')
+
+    it('retains cosmetic outfits ending in #1 (e.g. char_134_ifrit@summer#1) in availableVariants and opens on activeStage', async () => {
+      // char_134_ifrit has 5 skins: 2 default (#1, #2) and 3 cosmetic (@kfc#1, @rilakkuma#1, @summer#1)
+      expect(ifritSkins.length).toBe(5)
+      const cosmeticCount = ifritSkins.filter((s) => !s.isDefault).length
+      expect(cosmeticCount).toBe(3)
+
+      const wrapper = await mountSuspended(AkArtViewer, {
+        props: {
+          modelValue: true,
+          operator: ifrit,
+          activeStage: 'char_134_ifrit@summer#1',
+          skins: ifritSkins,
+        },
+        global: {
+          stubs: {
+            teleport: true,
+          },
+        },
+      })
+
+      // Expected variants: E0/E1 (1) + E2 (1) + 3 cosmetic outfits = 5 total
+      const stageBtns = wrapper.findAll('.ak-art-viewer__thumb-btn')
+      expect(stageBtns.length).toBe(1 + 1 + cosmeticCount)
+
+      // Confirm all cosmetic outfits ending in #1 are present as buttons
+      const btnTexts = stageBtns.map((b) => b.text())
+      expect(btnTexts.some((t) => t.includes('Sunburn SS.SP'))).toBe(true)
+      expect(btnTexts.some((t) => t.includes("Children's Party"))).toBe(true)
+      expect(btnTexts.some((t) => t.includes('Relaxing Trip'))).toBe(true)
+
+      // Active button must be the Sunburn skin, NOT e0 or e2
+      const activeBtn = wrapper.find('.ak-art-viewer__thumb-btn--active')
+      expect(activeBtn.exists()).toBe(true)
+      expect(activeBtn.text()).toContain('Sunburn SS.SP')
+
+      // Stage badge must display the outfit name
+      const badge = wrapper.find('.ak-art-viewer__stage-badge')
+      expect(badge.text()).toBe('SUNBURN SS.SP')
+    })
+
+    it('retains cosmetic outfits ending in #2 (e.g. char_010_chen@nian#2) in availableVariants and activates correctly', async () => {
+      const chen = loadOperatorDetail('char_010_chen')
+      const chenSkins = loadOperatorSkins('char_010_chen')
+      const cosmeticCount = chenSkins.filter((s) => !s.isDefault).length
+
+      const wrapper = await mountSuspended(AkArtViewer, {
+        props: {
+          modelValue: true,
+          operator: chen,
+          activeStage: 'char_010_chen@nian#2',
+          skins: chenSkins,
+        },
+        global: {
+          stubs: {
+            teleport: true,
+          },
+        },
+      })
+
+      // 1 (E0) + 1 (E2) + cosmetic outfits
+      const stageBtns = wrapper.findAll('.ak-art-viewer__thumb-btn')
+      expect(stageBtns.length).toBe(2 + cosmeticCount)
+
+      // Active button must be Ageless Afterglow (@nian#2), not e0 or e2
+      const activeBtn = wrapper.find('.ak-art-viewer__thumb-btn--active')
+      expect(activeBtn.exists()).toBe(true)
+      expect(activeBtn.text()).toContain('Ageless Afterglow')
+
+      const badge = wrapper.find('.ak-art-viewer__stage-badge')
+      expect(badge.text()).toBe('AGELESS AFTERGLOW')
+    })
+
+    it('calculates total variants strictly equal to 1 (e0) + (1 if E2) + cosmetic count without dropping any #1/#2 outfits', async () => {
+      // 1. Operator with no cosmetic skins and no E2 (Noir Corne char_500_noirc, 2★)
+      const noir = loadOperatorDetail('char_500_noirc')
+      const noirSkins = loadOperatorSkins('char_500_noirc')
+      expect(noirSkins.filter((s) => !s.isDefault).length).toBe(0)
+
+      const wrapperNoir = await mountSuspended(AkArtViewer, {
+        props: {
+          modelValue: true,
+          operator: noir,
+          skins: noirSkins,
+        },
+        global: {
+          stubs: { teleport: true },
+        },
+      })
+      // Exactly 1 variant (E0) -> footer navigation hidden
+      const noirBtns = wrapperNoir.findAll('.ak-art-viewer__thumb-btn')
+      expect(noirBtns.length).toBe(0)
+
+      // 2. Operator without E2 but with a cosmetic outfit (Lancet-2 char_285_medic2, 1★ with boc#4)
+      const lancet = loadOperatorDetail('char_285_medic2')
+      const lancetSkins = loadOperatorSkins('char_285_medic2')
+      const lancetCosmetic = lancetSkins.filter((s) => !s.isDefault)
+      expect(lancetCosmetic.length).toBe(1)
+
+      const wrapperLancet = await mountSuspended(AkArtViewer, {
+        props: {
+          modelValue: true,
+          operator: lancet,
+          skins: lancetSkins,
+        },
+        global: {
+          stubs: { teleport: true },
+        },
+      })
+      // 1 (E0) + 0 (no E2) + 1 (cosmetic) = 2 variants
+      const lancetBtns = wrapperLancet.findAll('.ak-art-viewer__thumb-btn')
+      expect(lancetBtns.length).toBe(1 + 0 + lancetCosmetic.length)
+
+      // 3. Operator with E2 and multiple outfits ending in #1 and #2 (Ch'en char_010_chen)
+      const chen = loadOperatorDetail('char_010_chen')
+      const chenSkins = loadOperatorSkins('char_010_chen')
+      const chenCosmetic = chenSkins.filter((s) => !s.isDefault)
+      expect(chenCosmetic.length).toBeGreaterThan(0)
+
+      const wrapperChen = await mountSuspended(AkArtViewer, {
+        props: {
+          modelValue: true,
+          operator: chen,
+          skins: chenSkins,
+        },
+        global: {
+          stubs: { teleport: true },
+        },
+      })
+      // 1 (E0) + 1 (E2) + cosmetic count
+      const chenBtns = wrapperChen.findAll('.ak-art-viewer__thumb-btn')
+      expect(chenBtns.length).toBe(1 + 1 + chenCosmetic.length)
+    })
+  })
 })
