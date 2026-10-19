@@ -1,6 +1,31 @@
 # Project Progress
 
-- **Operator Handbook Dataset (`feat/operator-handbook-data`):**
+- **Operator Handbook Per-Operator Split (`feat/operator-handbook-split`):**
+  - **Context & Motivation:**
+    - The initial implementation generated a monolithic `data/handbook.json` (10.97 MB). Loading this monolithic file on the operator detail page would consume ~11 MB of bandwidth for every operator page visit, which is unacceptable for mobile and slow connections.
+    - Split the dataset into individual files `data/handbook/<charId>.json` (432 files, avg ~25.2 KB), mirroring `data/operators/*.json`.
+  - **Implementation Details:**
+    - **ETL Pipeline (`scripts/data/build-handbook.ts`):**
+      - Creates `data/handbook/` directory and writes 432 deterministic files `data/handbook/<charId>.json`.
+      - Automatically deletes legacy monolithic `data/handbook.json` and purges any stale files.
+      - Measures and logs dataset metrics: min (10.62 KB, Castle-3), avg (25.17 KB), max (47.45 KB, Cello / Virtuosa). Total dataset volume is 10.62 MB (11,135,188 bytes).
+    - **Validator Integration (`scripts/data/validate-data.ts`):**
+      - Section 8 rewritten to scan `data/handbook/`, validate each file against `OperatorHandbookSchema`, enforce referential integrity across all 434 operators in `data/operators/` (432 present, 2 expected absent Amiya patch forms), ensure `data/handbook.json` does not exist, and verify 0 CJK characters in `.en`.
+    - **Unit Tests (`tests/unit/shared/handbook.test.ts`):**
+      - Updated suite (15 tests) verifying all 432 files pass schema validation, confirming legacy file removal, and performing strict field-by-field parity check on `char_002_amiya.json` (6 stories, exact profile/physicalExam fields, PATCH form links) proving data was completely unchanged.
+    - **Approved §14 Exception (`docs/known-issues.md`):**
+      - Formally documented the approved +39.3% (+10.97 MB) size growth exception for operator archival lore approved by the project owner on 2026-10-19.
+    - **Documentation:**
+      - Updated `docs/data-handbook.md` with the per-operator loading architecture.
+  - **Quality Gates & Metrics:**
+    - `npm run data:handbook`: passed (432 files, avg 25.17 KB).
+    - `npm run data:validate`: passed (432 files checked, 0 errors).
+    - `npm run i18n:check`: passed (632 valid keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: 85 test suites passed (649/649 tests passed, +1 test).
+    - `npm run build`: production build passed.
+
   - **Context & Motivation:**
     - Operator lore, biographical profiles, physical evaluations/combat assessments, and archival stories were previously unextracted from game tables (`.cache/raw/{en,cn}/handbook_info_table.json`) and absent from `data/` (Audit row P2).
     - In accordance with `AGENTS.md` §3 and §13, a dedicated, standalone dataset `data/handbook.json` was designed for on-demand lazy loading in the forthcoming operator dossier UI (Task 11).
