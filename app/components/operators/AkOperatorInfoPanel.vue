@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { OperatorDetail, I18nString } from '~/../shared/schemas/operator'
 import { resolveI18nString, isPendingTranslation } from '~/../shared/schemas/operator'
+import { isRecruitTag } from '~/../shared/utils/recruit'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 import AkOperatorDossierPanel from '~/components/operators/AkOperatorDossierPanel.vue'
@@ -12,6 +13,7 @@ interface Props {
 defineProps<Props>()
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 function getLocalizedField(field?: I18nString | null): string {
   if (!field) return '—'
@@ -60,9 +62,22 @@ function getLocalizedField(field?: I18nString | null): string {
     <div v-if="operator.tagList?.length" class="ak-operator-info-panel__tags-section">
       <span class="ak-operator-info-panel__label">{{ t('operators.detail.info.tags') }}</span>
       <div class="ak-operator-info-panel__tags-list">
-        <AkBadge v-for="tag in operator.tagList" :key="tag" size="sm" variant="cyan">
-          {{ tag }}
-        </AkBadge>
+        <template v-for="tag in operator.tagList" :key="tag">
+          <NuxtLink
+            v-if="isRecruitTag(tag)"
+            :to="localePath({ path: '/recruit', query: { tags: tag } })"
+            class="ak-operator-info-panel__tag-link"
+            :title="t('operators.detail.info.recruitTagTooltip', { tag })"
+            :aria-label="t('operators.detail.info.recruitTagTooltip', { tag })"
+          >
+            <AkBadge size="sm" variant="cyan">
+              {{ tag }}
+            </AkBadge>
+          </NuxtLink>
+          <AkBadge v-else size="sm" variant="cyan">
+            {{ tag }}
+          </AkBadge>
+        </template>
       </div>
     </div>
 
@@ -163,6 +178,26 @@ function getLocalizedField(field?: I18nString | null): string {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xs);
+  }
+
+  &__tag-link {
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: var(--radius-none);
+    transition:
+      opacity var(--transition-fast),
+      transform var(--transition-fast);
+
+    &:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-cyan);
+      outline-offset: 2px;
+    }
   }
 
   &__dossier-card {

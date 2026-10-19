@@ -75,4 +75,26 @@ test.describe('Recruitment Matrix Page (RCR-03)', () => {
     const clientWidth = await page.evaluate(() => document.documentElement.clientWidth)
     expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 1)
   })
+
+  test('navigating with query param pre-selects tags and computes combinations', async ({
+    page,
+  }) => {
+    await page.goto('/recruit?tags=DPS')
+    await page.waitForLoadState('domcontentloaded')
+
+    await expect(page.locator('.recruit-page__counter-value')).toContainText('1 / 5')
+    const dpsBtn = page.locator('.recruit-page__tag-btn', { hasText: 'DPS' })
+    await expect(dpsBtn).toHaveClass(/recruit-page__tag-btn--active/)
+    await expect(page.locator('.recruit-page__combo-card').first()).toBeVisible()
+  })
+
+  test('query param with > 5 tags triggers AkAlert warning and limits to 5', async ({ page }) => {
+    await page.goto('/recruit?tags=DPS,Support,Robot,Guard,Sniper,Vanguard')
+    await page.waitForLoadState('domcontentloaded')
+
+    await expect(page.locator('.recruit-page__counter-value')).toContainText('5 / 5')
+    const alert = page.locator('.recruit-page__alert')
+    await expect(alert).toBeVisible()
+    await expect(alert).toContainText('TAG LIMIT EXCEEDED')
+  })
 })

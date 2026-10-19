@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
+import AkAlert from '~/components/ui/AkAlert.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import { getModuleById } from '~/config/modules'
 import { useRecruitStore, MAX_RECRUIT_TAGS } from '~/stores/recruit'
+import { parseRecruitTagsQuery } from '~/../shared/utils/recruit'
 import type { GuaranteeTier, RecruitTagGroup } from '~/../shared/schemas/recruit'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
 const recruitStore = useRecruitStore()
 const moduleConfig = getModuleById('recruit')
 
@@ -23,6 +26,36 @@ const tagGroupOrder: RecruitTagGroup[] = ['qualification', 'position', 'class', 
 
 const combinations = computed(() => recruitStore.combinations)
 const selectedCount = computed(() => recruitStore.selectedTags.length)
+
+const queryTruncated = ref(false)
+const appliedQueryTags = ref<string[]>([])
+
+function applyTagsFromQuery() {
+  const queryTags = route.query.tags
+  if (!queryTags) {
+    queryTruncated.value = false
+    appliedQueryTags.value = []
+    return
+  }
+
+  const result = parseRecruitTagsQuery(queryTags, MAX_RECRUIT_TAGS)
+  queryTruncated.value = result.isTruncated
+  appliedQueryTags.value = result.appliedTags
+  recruitStore.setSelectedTags(result.appliedTags)
+}
+
+watch(
+  () => route.query.tags,
+  () => {
+    applyTagsFromQuery()
+  },
+  { immediate: true },
+)
+
+function handleResetTags() {
+  recruitStore.resetTags()
+  queryTruncated.value = false
+}
 
 function getTierBadgeClass(tier: GuaranteeTier): string {
   return `recruit-page__tier-badge--${tier}`
@@ -53,6 +86,20 @@ function asAvatarRarity(rarity: number): 1 | 2 | 3 | 4 | 5 | 6 {
         :badge="t('modules.status.ready')"
         badge-variant="green"
       />
+
+      <AkAlert
+        v-if="queryTruncated"
+        variant="warning"
+        :title="t('recruit.queryTruncatedTitle')"
+        class="recruit-page__alert"
+      >
+        {{
+          t('recruit.queryTruncatedWarning', {
+            max: MAX_RECRUIT_TAGS,
+            applied: appliedQueryTags.join(', '),
+          })
+        }}
+      </AkAlert>
 
       <div class="recruit-page__layout">
         <!-- Selector Panel (Left) -->
@@ -96,7 +143,7 @@ function asAvatarRarity(rarity: number): 1 | 2 | 3 | 4 | 5 | 6 {
               type="button"
               class="recruit-page__reset-btn"
               :disabled="selectedCount === 0"
-              @click="recruitStore.resetTags"
+              @click="handleResetTags"
             >
               {{ t('recruit.resetTags') }}
             </button>
