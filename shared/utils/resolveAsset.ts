@@ -314,13 +314,23 @@ export function resolveAsset(
     let skinBaseId: string | null = null
     const rawVariant = options?.variant?.trim()
 
-    if (cleanId.includes('@') || cleanId.includes('#')) {
+    if (cleanId.includes('@')) {
       skinBaseId = cleanId.replace(/@/g, '_')
-    } else if (rawVariant && (rawVariant.includes('@') || rawVariant.includes('#'))) {
+    } else if (cleanId.includes('#')) {
+      skinBaseId = cleanId.replace(/#/, '_')
+    } else if (rawVariant && rawVariant.includes('@')) {
       const normalizedVariant = rawVariant.replace(/@/g, '_')
       skinBaseId = normalizedVariant.startsWith(`${cleanId}_`)
         ? normalizedVariant
         : `${cleanId}_${normalizedVariant}`
+    } else if (rawVariant && rawVariant.includes('#')) {
+      if (rawVariant.startsWith(`${cleanId}#`)) {
+        skinBaseId = rawVariant.replace(`${cleanId}#`, `${cleanId}_`)
+      } else if (rawVariant.startsWith('#')) {
+        skinBaseId = `${cleanId}_${rawVariant.slice(1)}`
+      } else {
+        skinBaseId = `${cleanId}_${rawVariant}`
+      }
     }
 
     if (skinBaseId) {
@@ -328,10 +338,30 @@ export function resolveAsset(
       const skinFilename = `${skinFileBase}.${ext}`
       const encodedFilename = encodeAssetPath(skinFilename)
 
-      const candidates: string[] = [
+      const candidates: string[] = []
+
+      // 1a. Prioritize medium 1280px WebP copy for operator hero header if requested
+      if (options?.hero) {
+        const heroName = encodeAssetPath(`${skinFileBase}.webp`)
+        candidates.push(
+          `/art/hero/${skinFileBase}.webp`,
+          `${OPTIMIZED_ASSETS_CDN}/hero/${heroName}`,
+        )
+      }
+
+      // 1b. Prioritize local WebP thumbnail for list grids if requested
+      if (options?.thumbnail) {
+        const thumbName = encodeAssetPath(`${skinFileBase}.webp`)
+        candidates.push(
+          `/art/thumbs/${skinFileBase}.webp`,
+          `${OPTIMIZED_ASSETS_CDN}/thumbs/${thumbName}`,
+        )
+      }
+
+      candidates.push(
         `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
         `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,
-      ]
+      )
 
       // Fallback to portrait
       const portraitId = skinBaseId.endsWith('b') ? skinBaseId.slice(0, -1) : skinBaseId
@@ -418,7 +448,10 @@ export function resolveAsset(
     const rawVariant = options?.variant?.trim()
 
     if (rawVariant) {
-      const normalizedVariant = rawVariant.replace(/@/g, '_')
+      let normalizedVariant = rawVariant.replace(/@/g, '_')
+      if (normalizedVariant.startsWith(`${targetId}#`)) {
+        normalizedVariant = normalizedVariant.replace(`${targetId}#`, `${targetId}_`)
+      }
       if (normalizedVariant.startsWith(`${targetId}_`)) {
         targetId = normalizedVariant
       } else if (normalizedVariant.includes('#') || normalizedVariant.includes('_')) {
@@ -467,7 +500,10 @@ export function resolveAsset(
     const rawVariant = options?.variant?.trim()
 
     if (rawVariant) {
-      const normalizedVariant = rawVariant.replace(/@/g, '_')
+      let normalizedVariant = rawVariant.replace(/@/g, '_')
+      if (normalizedVariant.startsWith(`${targetId}#`)) {
+        normalizedVariant = normalizedVariant.replace(`${targetId}#`, `${targetId}_`)
+      }
       targetId = normalizedVariant.startsWith(`${targetId}_`)
         ? normalizedVariant
         : `${targetId}_${normalizedVariant}`

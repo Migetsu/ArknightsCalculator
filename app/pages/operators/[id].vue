@@ -12,6 +12,8 @@ import AkOperatorSkillsPanel from '~/components/operators/AkOperatorSkillsPanel.
 import AkOperatorTalentsPanel from '~/components/operators/AkOperatorTalentsPanel.vue'
 import AkOperatorModulesPanel from '~/components/operators/AkOperatorModulesPanel.vue'
 import AkOperatorInfoPanel from '~/components/operators/AkOperatorInfoPanel.vue'
+import AkOperatorSkinsPanel from '~/components/operators/AkOperatorSkinsPanel.vue'
+import { useOperatorSkins } from '~/composables/useOperatorSkins'
 import { LOW_RARITY_OPERATOR_IDS } from '~/../shared/utils/resolveAsset'
 
 const route = useRoute()
@@ -23,6 +25,7 @@ const id = computed(() => (route.params.id as string) || '')
 
 // Asynchronous operator detail fetching composable (isomorphic SSR + lazy client chunks)
 const { data: operator, status } = await useOperatorDetail(id)
+const { data: skins } = await useOperatorSkins(id)
 
 const displayName = computed(() => {
   if (!operator.value) return ''
@@ -75,12 +78,12 @@ const getInitialStage = () => {
   return !isNaN(qStage) && qStage >= 1 && qStage <= 3 ? qStage : 3
 }
 
-const getInitialArt = (op: typeof operator.value): 'e0' | 'e2' => {
+const getInitialArt = (op: typeof operator.value): string => {
   if (!op) return 'e2'
   const hasE2 = op.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(op.id)
-  if (!hasE2) return 'e0'
   const qArt = route.query.art as string
-  if (qArt === 'e0' || qArt === 'e2') return qArt
+  if (qArt) return qArt
+  if (!hasE2) return 'e0'
   // Default to E2 if elite >= 2, else E0
   const initialElite = getInitialElite(op)
   return initialElite >= 2 ? 'e2' : 'e0'
@@ -94,13 +97,19 @@ const trustState = ref<number>(getInitialTrust())
 const potState = ref<number>(getInitialPot())
 const selectedModuleId = ref<string | undefined>(getInitialModule(operator.value))
 const moduleStage = ref<number>(getInitialStage())
-const artState = ref<'e0' | 'e2'>(getInitialArt(operator.value))
+const artState = ref<string>(getInitialArt(operator.value))
 const userSelectedArt = ref<boolean>(Boolean(route.query.art))
 const isViewerOpen = ref(false)
 
-function handleArtChange(val: 'e0' | 'e2') {
+function handleArtChange(val: string) {
   userSelectedArt.value = true
   artState.value = val
+}
+
+function handleInspectSkin(skinId: string) {
+  artState.value = skinId
+  userSelectedArt.value = true
+  isViewerOpen.value = true
 }
 
 // Sync art with elite level when user hasn't overridden art manually
@@ -205,6 +214,7 @@ const tabs = computed<TabItem[]>(() => [
   { id: 'skills', label: t('operators.detail.tabs.skills') },
   { id: 'talents', label: t('operators.detail.tabs.talents') },
   { id: 'modules', label: t('operators.detail.tabs.modules') },
+  { id: 'skins', label: t('operators.detail.tabs.skins') },
   { id: 'info', label: t('operators.detail.tabs.info') },
 ])
 
@@ -299,6 +309,15 @@ useSchemaOrg([
                 <AkOperatorModulesPanel :modules="operator!.modules ?? []" />
               </div>
 
+              <!-- Outfits / Skins Tab -->
+              <div v-else-if="currentTab === 'skins'">
+                <AkOperatorSkinsPanel
+                  :operator="operator!"
+                  :skins="skins ?? []"
+                  @inspect="handleInspectSkin"
+                />
+              </div>
+
               <!-- Dossier Info Tab -->
               <div v-else-if="currentTab === 'info'">
                 <AkOperatorInfoPanel :operator="operator!" />
@@ -309,7 +328,12 @@ useSchemaOrg([
       </div>
 
       <!-- Fullscreen Art Viewer Modal -->
-      <AkArtViewer v-model="isViewerOpen" v-model:active-stage="artState" :operator="operator!" />
+      <AkArtViewer
+        v-model="isViewerOpen"
+        v-model:active-stage="artState"
+        :operator="operator!"
+        :skins="skins ?? []"
+      />
     </div>
 
     <!-- 404 / Operator Not Found State -->

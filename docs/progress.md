@@ -1,5 +1,45 @@
 # Project Progress
 
+- **Operator Skins Gallery & Multi-Variant Art Viewer (`feat/operator-skins-ui`):**
+  - **Context & Motivation:**
+    - Operator skins data (1,359 entries) was gathered in `data/skins.json`, but the UI did not expose skins: `AkArtViewer.vue` and `AkOperatorHero.vue` were hardcoded to only `e0` and `e2`.
+    - Implemented a dedicated "Outfits" tab on the operator page (`AkOperatorSkinsPanel.vue`), updated the full-resolution artwork modal (`AkArtViewer.vue`) to support all cosmetic outfits and evolution phases, and enabled skin selection in `AkOperatorHero.vue`.
+  - **Implementation Details:**
+    - **Asset Resolution (`shared/utils/resolveAsset.ts`):**
+      - Supported skin variant syntax (both default `#1`/`#2` phases and cosmetic `@brand#...` IDs).
+      - Added support for `options.hero` (`/art/hero/*.webp`) and `options.thumbnail` (`/art/thumbs/*.webp`) across all skin variants.
+    - **Skin Utilities (`shared/utils/skin.ts`):**
+      - `formatSkinPriceStatus(status)`: Honest labels `Base`, `Free`, `—` (zero numeric guesswork).
+      - `sortOperatorSkins()`: Consistent sorting with canonical defaults (`#1`, `#2`) first, followed by cosmetic outfits.
+      - `filterOperatorSkins()`: Filtering helpers for default or CN-only skins.
+    - **Composable (`app/composables/useOperatorSkins.ts`):**
+      - Implemented lazy-loaded chunk fetcher `fetchOperatorSkins(charId)` with in-memory caching to avoid bloating the initial page bundle.
+      - Provided reactive SSR-safe composable `useOperatorSkins(charId)`.
+    - **Skins Gallery Component (`app/components/operators/AkOperatorSkinsPanel.vue`):**
+      - Responsive grid in Ember Editorial theme, card layout with 480px WebP thumbnails and lazy loading.
+      - Honest tactical badges: `Base`, `Free`, `—` (no numeric OP prices), `CN ONLY` for CN-exclusive skins, and `AkTranslationBadge` for pending strings.
+      - Metadata: Brand name, skin title, drawerList (artists), dialogue/quote, acquisition method.
+      - "Inspect Artwork" button emitting `@inspect(skinId)`.
+      - Empty state via `AkEmptyState`.
+    - **Multi-Variant Art Viewer (`app/components/operators/AkArtViewer.vue`):**
+      - Extended to accept `skins?: Skin[]` prop.
+      - Dynamically computes available variants (`e0`, `e2`, plus all cosmetic skins).
+      - Cyclic navigation (`‹`, `›` buttons and `ArrowLeft` / `ArrowRight` keyboard shortcuts).
+      - Bottom thumbnail switcher with horizontal scroll.
+      - Dynamic stage badge reflecting the active skin's name.
+    - **Hero Art Integration (`app/components/operators/AkOperatorHero.vue` & `app/pages/operators/[id].vue`):**
+      - Relaxed `modelValueArt` type to string to support skin variant selection.
+      - Resolves 1280px hero WebP artwork with crossfade transition.
+      - Added `'skins'` tab ("Outfits") in operator detail tabs.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added keys under `operators.detail.skins` (title, count, inspect button, empty state, badges).
+  - **Quality Gates & Testing:**
+    - `i18n:check`: 602 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 79 test files passed, 585/585 tests passed (12 new tests in `tests/unit/shared/skin.test.ts`, 5 new tests in `tests/unit/components/operators/AkOperatorSkinsPanel.test.ts`, and updated `AkArtViewer.test.ts`).
+    - Zero image files committed to git. Zero numeric skin prices rendered.
+
 - **Operator Wiki Completeness Audit (`docs/operator-wiki-audit`):**
   - **Context & Motivation:**
     - Performed a thorough audit of operator data completeness across `data/operators/*.json`, `data/ranges.json`, `data/skins.json`, `data/constants.json`, `data/recruit.json`, `data/banners.json`, and raw cache (`handbook_info_table.json`, `building_data.json`).
