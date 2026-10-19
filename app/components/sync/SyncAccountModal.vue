@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { ref, watch, onMounted } from 'vue'
 import AkModal from '~/components/ui/AkModal.vue'
+import { useProfile } from '~/composables/useProfile'
 
 interface Props {
   modelValue: boolean
+  teleport?: boolean
 }
 
-defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  teleport: true,
+})
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
@@ -15,15 +18,35 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const {
+  profile,
+  loading: authLoading,
+  error: authError,
+  isAuthenticated,
+  userId,
+  userEmail,
+  fetchProfile,
+  signInWithEmail,
+  signUpWithEmail,
+  signOut,
+} = useProfile()
 
-type SyncTab = 'yostar' | 'json' | 'demo'
-const activeTab = ref<SyncTab>('yostar')
+type SyncTab = 'email' | 'yostar' | 'json' | 'demo'
+const activeTab = ref<SyncTab>('email')
 const selectedRegion = ref('EN')
 const email = ref('')
 const verificationCode = ref('')
 const isCodeSent = ref(false)
 
+// Cloud Auth local form state
+const authMode = ref<'signin' | 'signup'>('signin')
+const authEmail = ref('')
+const authPassword = ref('')
+const authDisplayName = ref('')
+const authSuccessMessage = ref<string | null>(null)
+
 const tabs: { id: SyncTab; labelKey: string }[] = [
+  { id: 'email', labelKey: 'syncModal.tabs.email' },
   { id: 'yostar', labelKey: 'syncModal.tabs.yostar' },
   { id: 'json', labelKey: 'syncModal.tabs.json' },
   { id: 'demo', labelKey: 'syncModal.tabs.demo' },
@@ -31,8 +54,46 @@ const tabs: { id: SyncTab; labelKey: string }[] = [
 
 const regions = ['EN', 'JP', 'KR', 'CN']
 
+watch(
+  () => props.modelValue,
+  (isOpen) => {
+    if (isOpen && isAuthenticated.value) {
+      void fetchProfile()
+    }
+  },
+)
+
+onMounted(() => {
+  if (isAuthenticated.value) {
+    void fetchProfile()
+  }
+})
+
 function handleClose(): void {
   emit('update:modelValue', false)
+}
+
+async function handleAuthSubmit(): Promise<void> {
+  authSuccessMessage.value = null
+  if (!authEmail.value || !authPassword.value) return
+
+  if (authMode.value === 'signin') {
+    const res = await signInWithEmail(authEmail.value, authPassword.value)
+    if (res.success) {
+      authPassword.value = ''
+    }
+  } else {
+    const res = await signUpWithEmail(authEmail.value, authPassword.value, authDisplayName.value)
+    if (res.success) {
+      authSuccessMessage.value = t('syncModal.auth.registrationSuccess')
+      authPassword.value = ''
+    }
+  }
+}
+
+async function handleSignOut(): Promise<void> {
+  authSuccessMessage.value = null
+  await signOut()
 }
 
 function handleSendCode(): void {
@@ -54,6 +115,7 @@ function handleLoadDemo(): void {
 <template>
   <AkModal
     :model-value="modelValue"
+    :teleport="teleport"
     :title="t('syncModal.title')"
     :tag="t('syncModal.tag')"
     width="620px"
@@ -84,8 +146,148 @@ function handleLoadDemo(): void {
         </button>
       </div>
 
+      <!-- Cloud Account (Email / Supabase) Tab -->
+      <div v-if="activeTab === 'email'" class="sync-modal__content">
+        <!-- Status indicator -->
+        <div class="sync-modal__status-bar">
+          <span class="sync-modal__status-label">{{ t('syncModal.auth.status') }}:</span>
+          <span
+            v-if="authLoading"
+            class="sync-modal__status-badge sync-modal__status-badge--loading"
+          >
+            {{ t('syncModal.auth.connecting') }}
+          </span>
+          <span
+            v-else-if="isAuthenticated"
+            class="sync-modal__status-badge sync-modal__status-badge--authenticated"
+          >
+            {{ t('syncModal.auth.authenticated') }}
+          </span>
+          <span v-else class="sync-modal__status-badge sync-modal__status-badge--unauthenticated">
+            {{ t('syncModal.auth.notAuthenticated') }}
+          </span>
+        </div>
+
+        <!-- Authenticated view -->
+        <div v-if="isAuthenticated" class="sync-modal__authenticated-view">
+          <div class="sync-modal__user-card">
+            <div class="sync-modal__user-row">
+              <span class="sync-modal__user-label">{{ t('syncModal.auth.loggedInAs') }}:</span>
+              <span class="sync-modal__user-value">{{ userEmail }}</span>
+            </div>
+            <div v-if="profile?.displayName" class="sync-modal__user-row">
+              <span class="sync-modal__user-label"
+                >{{ t('syncModal.auth.displayNameLabel') }}:</span
+              >
+              <span class="sync-modal__user-value">{{ profile.displayName }}</span>
+            </div>
+            <div class="sync-modal__user-row">
+              <span class="sync-modal__user-label">{{ t('syncModal.auth.userId') }}:</span>
+              <span class="sync-modal__user-code">{{ userId }}</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="sync-modal__btn-outline sync-modal__signout-btn"
+            :disabled="authLoading"
+            @click="handleSignOut"
+          >
+            {{ t('syncModal.auth.signOutButton') }}
+          </button>
+        </div>
+
+        <!-- Unauthenticated view: Login / Register Form -->
+        <div v-else class="sync-modal__auth-form">
+          <div class="sync-modal__sub-tabs" role="tablist">
+            <button
+              type="button"
+              role="tab"
+              :aria-selected="authMode === 'signin'"
+              class="sync-modal__sub-tab"
+              :class="{ 'sync-modal__sub-tab--active': authMode === 'signin' }"
+              @click="authMode = 'signin'"
+            >
+              {{ t('syncModal.auth.signInTab') }}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              :aria-selected="authMode === 'signup'"
+              class="sync-modal__sub-tab"
+              :class="{ 'sync-modal__sub-tab--active': authMode === 'signup' }"
+              @click="authMode = 'signup'"
+            >
+              {{ t('syncModal.auth.signUpTab') }}
+            </button>
+          </div>
+
+          <!-- Error Alert -->
+          <div v-if="authError" class="sync-modal__auth-error" role="alert">
+            {{ authError }}
+          </div>
+
+          <!-- Success Alert -->
+          <div v-if="authSuccessMessage" class="sync-modal__auth-success" role="alert">
+            {{ authSuccessMessage }}
+          </div>
+
+          <label class="sync-modal__field-label">
+            {{ t('syncModal.auth.emailLabel') }}
+            <input
+              v-model="authEmail"
+              type="email"
+              autocomplete="email"
+              placeholder="doctor@rhodes.island"
+              class="sync-modal__input"
+              :disabled="authLoading"
+            />
+          </label>
+
+          <label class="sync-modal__field-label">
+            {{ t('syncModal.auth.passwordLabel') }}
+            <input
+              v-model="authPassword"
+              type="password"
+              autocomplete="current-password"
+              placeholder="••••••••"
+              class="sync-modal__input"
+              :disabled="authLoading"
+              @keydown.enter="handleAuthSubmit"
+            />
+          </label>
+
+          <label v-if="authMode === 'signup'" class="sync-modal__field-label">
+            {{ t('syncModal.auth.displayNameLabel') }}
+            <input
+              v-model="authDisplayName"
+              type="text"
+              placeholder="Doctor"
+              class="sync-modal__input"
+              :disabled="authLoading"
+              @keydown.enter="handleAuthSubmit"
+            />
+          </label>
+
+          <button
+            type="button"
+            class="sync-modal__btn-primary sync-modal__auth-submit-btn"
+            :disabled="authLoading || !authEmail || !authPassword"
+            @click="handleAuthSubmit"
+          >
+            {{
+              authLoading
+                ? t('syncModal.auth.connecting')
+                : authMode === 'signin'
+                  ? t('syncModal.auth.signInButton')
+                  : t('syncModal.auth.signUpButton')
+            }}
+          </button>
+        </div>
+      </div>
+
       <!-- Yostar Email Code Tab -->
-      <div v-if="activeTab === 'yostar'" class="sync-modal__content">
+      <div v-else-if="activeTab === 'yostar'" class="sync-modal__content">
         <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
         <div
           class="sync-modal__regions"
@@ -170,7 +372,10 @@ function handleLoadDemo(): void {
         <button
           type="button"
           class="sync-modal__btn-primary"
-          :disabled="activeTab === 'yostar' && (!email || !verificationCode)"
+          :disabled="
+            (activeTab === 'yostar' && (!email || !verificationCode)) ||
+            (activeTab === 'email' && !isAuthenticated)
+          "
           @click="handleStartSync"
         >
           {{ t('syncModal.startSync') }}
@@ -256,6 +461,168 @@ function handleLoadDemo(): void {
   &__content {
     display: flex;
     flex-direction: column;
+  }
+
+  &__status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-bold);
+    margin-bottom: 18px;
+
+    @media (width <= 480px) {
+      padding: 8px 10px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__status-label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--letter-spacing-caption);
+  }
+
+  &__status-badge {
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-caption);
+    border: 1px solid currentcolor;
+
+    &--loading {
+      color: var(--color-accent-warning);
+    }
+
+    &--authenticated {
+      color: var(--color-accent-success);
+    }
+
+    &--unauthenticated {
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__authenticated-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__user-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-base);
+  }
+
+  &__user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+
+    @media (width <= 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+
+  &__user-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+  }
+
+  &__user-value {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__user-code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-accent);
+    word-break: break-all;
+  }
+
+  &__signout-btn {
+    align-self: flex-start;
+  }
+
+  &__auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .sync-modal__field-label {
+      margin-top: 0;
+    }
+  }
+
+  &__sub-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__sub-tab {
+    flex: 1;
+    padding: 8px 12px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-bold);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caption);
+    cursor: pointer;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    @include focus-ring;
+
+    &--active {
+      background-color: var(--color-bg-surface);
+      border-color: var(--color-accent-primary);
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__auth-error {
+    padding: 10px 12px;
+    background-color: var(--color-accent-danger-subtle);
+    border: 1px solid var(--color-accent-danger);
+    color: var(--color-accent-danger);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+  }
+
+  &__auth-success {
+    padding: 10px 12px;
+    background-color: var(--color-accent-success-subtle);
+    border: 1px solid var(--color-accent-success);
+    color: var(--color-accent-success);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+  }
+
+  &__auth-submit-btn {
+    margin-top: 6px;
+    width: 100%;
   }
 
   &__field-label {
@@ -348,14 +715,13 @@ function handleLoadDemo(): void {
       margin-top: 4px;
       padding: 8px 10px;
       font-size: 13px;
-      height: 38px;
     }
 
     &--code {
+      font-family: var(--font-mono);
+      font-size: 20px;
       letter-spacing: 0.5em;
       text-align: center;
-      font-size: 20px;
-      font-weight: var(--font-weight-semibold);
 
       @media (width <= 480px) {
         font-size: 17px;

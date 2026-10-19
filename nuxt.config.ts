@@ -14,9 +14,15 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
+    '@nuxtjs/supabase',
     '@nuxtjs/sitemap',
     'nuxt-schema-org',
   ],
+  supabase: {
+    redirect: false,
+    url: process.env.SUPABASE_URL || 'http://localhost:54321',
+    key: process.env.SUPABASE_KEY || 'dummy-anon-key',
+  },
   site: {
     url: 'https://arkcalc.vercel.app',
     name: 'Arknights Companion',

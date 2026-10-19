@@ -1,5 +1,37 @@
 # Project Progress
 
+- **Supabase Foundation: Auth, Profile Schema, and Strict RLS (`feat/supabase-foundation`):**
+  - **Context & Motivation:**
+    - Task 16 establishes the Supabase foundation for cloud account synchronization and authentication per AGENTS.md §4 and §14.
+  - **Implementation Details:**
+    - **Client Setup (`@nuxtjs/supabase` v2.1.0):**
+      - Installed `@nuxtjs/supabase` and configured in `nuxt.config.ts` (`redirect: false`, `url`, `key`).
+      - Client uses only the public anon key. `service_role` is forbidden per §4.
+    - **Database Migration (`supabase/migrations/0001_initial_profiles.sql`):**
+      - `public.profiles` table: `id` (references `auth.users(id)` ON DELETE CASCADE), `display_name`, `created_at`, `updated_at`.
+      - Strict Row-Level Security (RLS) enabled and forced. Authenticated users can only read, update, and insert their own row (`(select auth.uid()) = id`). Anon access denied.
+      - Triggers: `on_auth_user_created` calls `handle_new_user()` to automatically populate profile row upon signup; `on_profile_updated` maintains `updated_at`.
+      - Successfully applied and verified against the live project via Supabase MCP (`apply_migration`, `execute_sql`).
+    - **Typed Data Layer & Composable:**
+      - `app/types/database.types.ts`: TypeScript Database schema for Supabase client.
+      - `shared/schemas/profile.ts`: Pure Zod schemas (`RawProfileSchema`, `ProfileSchema`) and `mapRawProfile`.
+      - `app/composables/useProfile.ts`: Composable managing `user`, `profile`, `isAuthenticated`, `userId`, `userEmail`, `loading`, `error`, `fetchProfile`, `updateDisplayName`, `signInWithEmail`, `signUpWithEmail`, `signOut`.
+    - **UI Overhaul (`app/components/sync/SyncAccountModal.vue`):**
+      - Added Email / Cloud Account tab as default active tab with full PRTS styling.
+      - Four reactive states: Unauthenticated (Sign In / Register sub-tabs), Loading (`CONNECTING...`), Authenticated (account card, display name, user ID, email, Sign Out), and Error alert.
+      - Maintained Yostar, JSON, and Demo tabs completely intact.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added 16 keys under `syncModal.tabs.email` and `syncModal.auth.*` (685 keys verified).
+    - **Documentation:**
+      - Created comprehensive architectural guide `docs/supabase.md`.
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 685 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 729 passed across 94 test files (+19 new unit tests).
+    - Live verification: verified live REST endpoint (200 OK, RLS blocks anon), Auth endpoint, trigger execution, and cascade deletion.
+    - Manual approval status: PR opened and left pending owner review per AGENTS.md §14.
+
 - **Banners Page Overhaul & Chronological CN Archive (`feat/banners-page`):**
   - **Context & Motivation:**
     - Task 15 overhauls `app/pages/gacha.vue` and `app/components/gacha/GachaBannerCard.vue` to consume the real game dataset from `data/banners.json` generated in Task 14.
