@@ -101,6 +101,15 @@ const artState = ref<string>(getInitialArt(operator.value))
 const userSelectedArt = ref<boolean>(Boolean(route.query.art))
 const isViewerOpen = ref(false)
 
+const currentPhaseRangeId = computed(() => {
+  if (!operator.value) return undefined
+  return (
+    operator.value.phases[eliteState.value]?.rangeId ??
+    operator.value.phases[0]?.rangeId ??
+    undefined
+  )
+})
+
 function handleArtChange(val: string) {
   userSelectedArt.value = true
   artState.value = val
@@ -296,7 +305,10 @@ useSchemaOrg([
 
               <!-- Skills Tab -->
               <div v-else-if="currentTab === 'skills'">
-                <AkOperatorSkillsPanel :skills="operator!.skills ?? []" />
+                <AkOperatorSkillsPanel
+                  :skills="operator!.skills ?? []"
+                  :default-range-id="currentPhaseRangeId"
+                />
               </div>
 
               <!-- Talents Tab -->

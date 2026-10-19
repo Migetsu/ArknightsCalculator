@@ -10,12 +10,16 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkSkillIcon from '~/components/ui/AkSkillIcon.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
+import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 
 interface Props {
   skills: OperatorSkill[]
+  defaultRangeId?: string
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  defaultRangeId: undefined,
+})
 
 const { t, locale } = useI18n()
 
@@ -66,6 +70,17 @@ function getSkillBlackboard(skill: OperatorSkill, lvlIndex: number): Record<stri
 function getLevelLabel(idx: number): string {
   if (idx <= 7) return `Lv ${idx}`
   return `M${idx - 7}`
+}
+
+function getSkillRangeId(skill: OperatorSkill, lvlIndex: number): string | undefined {
+  const custom = skill.levels[lvlIndex]?.rangeId
+  if (custom && custom.trim()) return custom.trim()
+  return props.defaultRangeId
+}
+
+function isCustomSkillRange(skill: OperatorSkill, lvlIndex: number): boolean {
+  const custom = skill.levels[lvlIndex]?.rangeId
+  return Boolean(custom && custom.trim())
 }
 </script>
 
@@ -159,6 +174,22 @@ function getLevelLabel(idx: number): string {
             {{ skill.levels[(selectedLevels[skill.skillId] ?? 1) - 1]?.duration }}s
           </span>
         </div>
+      </div>
+
+      <!-- Skill Attack Range Section -->
+      <div
+        v-if="getSkillRangeId(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
+        class="ak-operator-skills-panel__range-row"
+      >
+        <AkRangeGrid
+          :range-id="getSkillRangeId(skill, (selectedLevels[skill.skillId] ?? 1) - 1)"
+          size="sm"
+          :variant="
+            isCustomSkillRange(skill, (selectedLevels[skill.skillId] ?? 1) - 1)
+              ? 'modified'
+              : 'inherited'
+          "
+        />
       </div>
 
       <!-- Description using AkRichText -->
@@ -296,6 +327,11 @@ function getLevelLabel(idx: number): string {
   &__telemetry-val {
     color: var(--color-accent-amber);
     font-weight: var(--font-weight-semibold);
+  }
+
+  &__range-row {
+    display: flex;
+    align-items: flex-start;
   }
 
   &__desc {
