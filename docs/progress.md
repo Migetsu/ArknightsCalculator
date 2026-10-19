@@ -1,5 +1,24 @@
 # Project Progress
 
+- **Operator Wiki Completeness Audit (`docs/operator-wiki-audit`):**
+  - **Context & Motivation:**
+    - Performed a thorough audit of operator data completeness across `data/operators/*.json`, `data/ranges.json`, `data/skins.json`, `data/constants.json`, `data/recruit.json`, `data/banners.json`, and raw cache (`handbook_info_table.json`, `building_data.json`).
+    - Evaluated `app/pages/operators/[id].vue` and all 7 subcomponents (`AkOperatorHero`, `AkArtViewer`, `AkOperatorStatsPanel`, `AkOperatorSkillsPanel`, `AkOperatorTalentsPanel`, `AkOperatorModulesPanel`, `AkOperatorInfoPanel`).
+  - **Key Audit Findings:**
+    - Analyzed 91 distinct fields/data entities: 38 (41.8%) are currently rendered, while 53 (58.2%) are not exposed in UI.
+    - Artworks: Only `E0/E1` and `E2` are shown. All 1,359 skins from `data/skins.json` are absent from UI.
+    - Ranges: 0 attack range visualization exists anywhere in UI despite `data/ranges.json` containing 73 normalized matrices.
+    - Materials: Elite promotion costs (`phases[].evolveCost`) and base skill upgrade costs (`allSkillLvlup[]`) are omitted.
+    - Potentials: Potential rank upgrade descriptions (`potentialRanks[]`) are omitted (only a numeric 1..6 slider exists).
+    - Unused raw caches: `handbook_info_table.json` contains full operator dossiers (birthday, height, race, birth place, combat experience, infection status) and 4 archive stories + clinical analysis; `building_data.json` contains full RIIC base skills.
+  - **Deliverable:**
+    - Created comprehensive audit specification in `docs/operator-wiki-audit.md` with full disparity matrix and actionable P1 / P2 / P3 roadmap.
+  - **Quality Gates:**
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 543/543 passed across 76 suites.
+    - `git diff --name-only`: modified strictly files in `docs/`.
+
 - **Operator Skins Ingestion Pipeline (`feat/operator-skins`):**
   - **Raw Data Ingestion (`scripts/data/sources.config.ts`, `scripts/data/fetch-raw.ts`):**
     - Added `skin_table.json` to both `cn` and `en` source table configurations from `SanityGoneAK/arknights-gamedata` at commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
