@@ -1,5 +1,40 @@
 # Project Progress
 
+- **Banners Dataset from Official Game Data (`feat/banner-dataset`):**
+  - **Context & Motivation:**
+    - `data/banners.json` previously contained 4 hand-written stubs with missing Global (EN) dates, no machine-readable timestamps, and no verification.
+    - Task 14 replaces stubs with a typed, validated dataset generated directly from official game tables (`.cache/raw/{cn,en}/gacha_table.json`).
+  - **Implementation Details:**
+    - **Zod Schemas (`shared/schemas/banner.ts`):**
+      - Defined `BannerServerSchema` (`'cn' | 'en'`), `BannerSummarySchema`, `NextBannerSummarySchema`, `BannersMetaSchema`, and `BannersDatasetSchema`.
+      - Updated `GachaBannerSchema` with machine-readable timestamps (`openTime`, `endTime`, `openIso`, `endIso`), localized names, `ruleType`, `durationDays`, `isActive`, `lmtgsid`, `pairedBannerId`, `isNextEnBanner`, preserving backward compatibility for existing calculator tests.
+    - **Build Script (`scripts/data/build-banners.ts`):**
+      - Filters out starter pools (`BOOT_*`, `newbee*`) and perpetual returning pools (`RETURN_EN_41_0_1`, `RETURN_71_0_1`) via a 180-day / `BACKFLOW` threshold.
+      - Retains 408 EN and 453 CN pools (861 total banners).
+      - Sorts both arrays chronologically ascending by `openTime` (oldest first).
+      - Server matching: matches 25 out of 25 LIMITED pools via commemorative coin ID (`LMTGSID`).
+      - Identifies Next EN Limited Banner as `LIMITED_76_0_1` ("车辙与风的归所", `LMTGS_COIN_7601`).
+      - Identifies active EN banner (`LIMITED_EN_42_0_1`, "Sealed With Time") and end timestamp (`2026-10-28T10:59:59.000Z`).
+      - Positional benchmark: tested on LIMITED pools (25/25 matches), proved that non-limited pools (`SINGLE`, `DOUBLE`, `NORMAL`) diverge due to Yostar event reordering and schedule changes; strictly omitted unverified guesswork (`pairedBannerId: null` for non-limited).
+      - Documented why `rateUp6`/`rateUp5` default to `[]` due to modern client tables using `gachaPoolDetail: "-"`.
+      - Added npm script `"data:banners": "jiti scripts/data/build-banners.ts"`.
+    - **Data Integrity Validation (`scripts/data/validate-data.ts`):**
+      - Added Step 9 validating `data/banners.json`: schema, ID uniqueness, interval sanity (`openTime < endTime`), absence of perpetual pools (> 180 days / `BACKFLOW`), chronological sorting, meta references.
+    - **Dataset Size Impact (AGENTS.md §14):**
+      - Generated `data/banners.json` (1.14 MB).
+      - Directory size grew from 38.56 MB to 39.65 MB (+2.82%), well below the 25% threshold in AGENTS.md §14.
+    - **Documentation:**
+      - Created `docs/data-banners.md` with complete architecture, 25 verified LIMITED pairs table, and positional analysis.
+      - Updated `docs/known-issues.md` (marked banner dataset issue as Resolved).
+      - Updated `docs/operator-wiki-audit.md` (P3.3 status).
+    - **Testing:**
+      - `tests/unit/data/build-banners.test.ts` (12 tests covering filters, sorting, active banner detection at fixed timestamp `1792414109`, 25/25 LMTGSID pairs, positional benchmark).
+      - All 91 unit test suites passed (695/695 tests).
+  - **Quality Gates & Metrics:**
+    - `npm run data:validate`: passed (861 banners checked, 0 issues).
+    - `npm run data:banners`: passed.
+    - `npm run test`: passed (695/695 unit tests).
+
 - **Recruit Tags Cross-Linking & Query Pre-population (`feat/recruit-tag-links`):**
   - **Context & Motivation:**
     - Tactical tags displayed on the operator page (`AkOperatorInfoPanel.vue`) were previously static chips with no cross-linking to the Recruitment Matrix (`app/pages/recruit.vue`).
