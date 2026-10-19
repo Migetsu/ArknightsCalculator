@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 import {
-  DEFAULT_EVOLVE_GOLD_COST,
   getOperatorPromotionCosts,
   getBaseSkillUpgradeSummary,
 } from '../../../shared/utils/upgradeCosts'
@@ -13,13 +12,36 @@ import lancetData from '../../../data/operators/char_285_medic2.json'
 import type { OperatorDetail } from '../../../shared/schemas/operator'
 
 describe('upgradeCosts utility', () => {
-  it('DEFAULT_EVOLVE_GOLD_COST matches data/constants.json evolveGoldCost exactly', () => {
-    expect(DEFAULT_EVOLVE_GOLD_COST).toEqual(constantsData.evolveGoldCost)
+  describe('guard: constants.json evolveGoldCost reactivity', () => {
+    it('strictly derives LMD evolve cost from provided evolveGoldCost map and reflects changes without hardcoding', () => {
+      // 1. Derives from official constantsData.evolveGoldCost
+      const officialCosts = getOperatorPromotionCosts(
+        svrashData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
+      expect(officialCosts[0]?.lmd).toBe(constantsData.evolveGoldCost['6']?.[0])
+      expect(officialCosts[1]?.lmd).toBe(constantsData.evolveGoldCost['6']?.[1])
+
+      // 2. Guard: if constants change, getOperatorPromotionCosts follows the map rather than silent defaults
+      const customMap = {
+        ...constantsData.evolveGoldCost,
+        '6': [99999, 88888],
+      }
+      const customCosts = getOperatorPromotionCosts(
+        svrashData as unknown as OperatorDetail,
+        customMap,
+      )
+      expect(customCosts[0]?.lmd).toBe(99999)
+      expect(customCosts[1]?.lmd).toBe(88888)
+    })
   })
 
   describe('getOperatorPromotionCosts', () => {
     it('calculates E1 and E2 costs correctly for 6★ operator (SilverAsh)', () => {
-      const costs = getOperatorPromotionCosts(svrashData as unknown as OperatorDetail)
+      const costs = getOperatorPromotionCosts(
+        svrashData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
       expect(costs).toHaveLength(2)
 
       const e1 = costs[0]!
@@ -42,7 +64,10 @@ describe('upgradeCosts utility', () => {
     })
 
     it('calculates E1 and E2 costs correctly for 5★ operator (Amiya)', () => {
-      const costs = getOperatorPromotionCosts(amiyaData as unknown as OperatorDetail)
+      const costs = getOperatorPromotionCosts(
+        amiyaData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
       expect(costs).toHaveLength(2)
 
       const e1 = costs[0]!
@@ -65,7 +90,10 @@ describe('upgradeCosts utility', () => {
     })
 
     it('calculates E1 with 0 materials and 10,000 LMD, with E2 absent for 3★ operator (Fang)', () => {
-      const costs = getOperatorPromotionCosts(fangData as unknown as OperatorDetail)
+      const costs = getOperatorPromotionCosts(
+        fangData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
       expect(costs).toHaveLength(1)
 
       const e1 = costs[0]!
@@ -79,10 +107,16 @@ describe('upgradeCosts utility', () => {
     })
 
     it('returns empty array for 2★ and 1★ operators with no promotions', () => {
-      const noircCosts = getOperatorPromotionCosts(noircData as unknown as OperatorDetail)
+      const noircCosts = getOperatorPromotionCosts(
+        noircData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
       expect(noircCosts).toEqual([])
 
-      const lancetCosts = getOperatorPromotionCosts(lancetData as unknown as OperatorDetail)
+      const lancetCosts = getOperatorPromotionCosts(
+        lancetData as unknown as OperatorDetail,
+        constantsData.evolveGoldCost,
+      )
       expect(lancetCosts).toEqual([])
     })
   })

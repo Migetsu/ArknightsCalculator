@@ -265,15 +265,25 @@ describe('resolveAsset utility', () => {
       expect(avatar[1]).toBe(`${SECONDARY_CDN_BASE}/avatar/char_002_amiya_winter%231.png`)
     })
 
-    it('resolves skin art to CDN skin image even when thumbnail or hero is requested', () => {
+    it('resolves skin art with full artwork first when thumbnail is not specified', () => {
+      const candidates = resolveAsset('art', 'char_002_amiya', {
+        variant: 'char_002_amiya@winter#1',
+      })
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[2]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+    })
+
+    it('prioritizes lightweight portrait when thumbnail is requested for skin art', () => {
       const candidates = resolveAsset('art', 'char_002_amiya', {
         variant: 'char_002_amiya@winter#1',
         thumbnail: true,
-        hero: true,
       })
-      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[0]).toBe(`${PRIMARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+      expect(candidates[1]).toBe(`${SECONDARY_CDN_BASE}/portrait/char_002_amiya_winter%231.png`)
+      expect(candidates[2]).toBe(`${PRIMARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
+      expect(candidates[3]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
       expect(candidates).not.toContain('/art/thumbs/char_002_amiya_winter%231b.webp')
-      expect(candidates).not.toContain('/art/hero/char_002_amiya_winter%231b.webp')
     })
   })
 })

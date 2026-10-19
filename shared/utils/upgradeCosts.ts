@@ -19,19 +19,6 @@ export interface BaseSkillUpgradeSummary {
 }
 
 /**
- * Standard LMD promotion costs by rarity ('1'..'6') -> [E1 cost, E2 cost].
- * Verified against data/constants.json -> evolveGoldCost.
- */
-export const DEFAULT_EVOLVE_GOLD_COST: Record<string, [number, number]> = {
-  '1': [0, 0],
-  '2': [0, 0],
-  '3': [10000, 0],
-  '4': [15000, 60000],
-  '5': [20000, 120000],
-  '6': [30000, 180000],
-}
-
-/**
  * Returns available elite promotion costs (E1, E2) for the given operator.
  * Respects operator rarity and accessible phases:
  * - 1-2★: Returns [] (no promotions exist).
@@ -40,7 +27,7 @@ export const DEFAULT_EVOLVE_GOLD_COST: Record<string, [number, number]> = {
  */
 export function getOperatorPromotionCosts(
   operator: Pick<OperatorDetail, 'rarity' | 'phases'>,
-  evolveGoldCostMap: Record<string, number[]> = DEFAULT_EVOLVE_GOLD_COST,
+  evolveGoldCostMap: Record<string, number[]>,
 ): PromotionCost[] {
   if (!operator.phases || operator.phases.length <= 1) {
     return []

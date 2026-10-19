@@ -338,21 +338,28 @@ export function resolveAsset(
       const skinFilename = `${skinFileBase}.${ext}`
       const encodedFilename = encodeAssetPath(skinFilename)
 
-      const candidates: string[] = []
-
-      // Primary & secondary CDN full skin artwork candidates
-      candidates.push(
-        `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
-        `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,
-      )
-
-      // Fallback to portrait
       const portraitId = skinBaseId.endsWith('b') ? skinBaseId.slice(0, -1) : skinBaseId
       const encodedPortrait = encodeAssetPath(`${portraitId}.${ext}`)
-      candidates.push(
-        `${PRIMARY_CDN_BASE}/portrait/${encodedPortrait}`,
-        `${SECONDARY_CDN_BASE}/portrait/${encodedPortrait}`,
-      )
+
+      const candidates: string[] = []
+
+      if (options?.thumbnail) {
+        // Thumbnail requested (e.g. skin cards in gallery): prioritize lightweight portrait/ first
+        candidates.push(
+          `${PRIMARY_CDN_BASE}/portrait/${encodedPortrait}`,
+          `${SECONDARY_CDN_BASE}/portrait/${encodedPortrait}`,
+          `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
+          `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,
+        )
+      } else {
+        // Full resolution artwork requested (e.g. art viewer modal)
+        candidates.push(
+          `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
+          `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,
+          `${PRIMARY_CDN_BASE}/portrait/${encodedPortrait}`,
+          `${SECONDARY_CDN_BASE}/portrait/${encodedPortrait}`,
+        )
+      }
 
       // Fallback to avatar
       candidates.push(

@@ -5,6 +5,7 @@ import { resolveI18nString } from '~/../shared/schemas/operator'
 import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
 import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
 import { getOperatorPromotionCosts } from '~/../shared/utils/upgradeCosts'
+import rawConstantsData from '~/../data/constants.json'
 import rawItemsData from '~/../data/items.json'
 import type { GameItem } from '~/../shared/schemas/item'
 import AkButton from '~/components/ui/AkButton.vue'
@@ -55,7 +56,9 @@ function getItemRarity(id: string): 1 | 2 | 3 | 4 | 5 {
 }
 
 // Available promotion costs (E1 / E2)
-const promotionCosts = computed(() => getOperatorPromotionCosts(props.operator))
+const promotionCosts = computed(() =>
+  getOperatorPromotionCosts(props.operator, rawConstantsData.evolveGoldCost),
+)
 
 // Max available elite phases by operator rarity (0..2)
 const maxElitePhase = computed(() => props.operator.phases.length - 1)
