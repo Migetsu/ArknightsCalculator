@@ -13,7 +13,7 @@ interface Props {
   operatorCode: string
   heroMeta: string
   stats: CalculatedStatsResult | null
-  modelValueArt?: 'e0' | 'e2'
+  modelValueArt?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValueArt' | 'openViewer', val: 'e0' | 'e2'): void
+  (e: 'update:modelValueArt' | 'openViewer', val: string): void
 }>()
 
 const { t } = useI18n()
@@ -33,12 +33,25 @@ const hasElite2Art = computed(() => {
   return props.operator.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(props.operator.id)
 })
 
-const currentStage = computed<'e0' | 'e2'>(() => {
+const isSkinVariant = computed(() => {
+  return Boolean(
+    props.modelValueArt &&
+    props.modelValueArt !== 'e0' &&
+    props.modelValueArt !== 'e2' &&
+    props.modelValueArt !== '1' &&
+    props.modelValueArt !== '2',
+  )
+})
+
+const currentStage = computed<string>(() => {
+  if (isSkinVariant.value) {
+    return props.modelValueArt!
+  }
   if (!hasElite2Art.value) return 'e0'
   return props.modelValueArt === 'e0' ? 'e0' : 'e2'
 })
 
-function setArtStage(stage: 'e0' | 'e2'): void {
+function setArtStage(stage: string): void {
   emit('update:modelValueArt', stage)
 }
 
@@ -53,8 +66,15 @@ const e0ArtUrls = computed(() =>
 const e2ArtUrls = computed(() =>
   resolveAsset('art', props.operator.id, { variant: '2', hero: true }),
 )
+const skinArtUrls = computed(() => {
+  if (!isSkinVariant.value) return []
+  return resolveAsset('art', props.operator.id, { variant: props.modelValueArt, hero: true })
+})
 
 const activeArtUrls = computed(() => {
+  if (isSkinVariant.value) {
+    return skinArtUrls.value
+  }
   return currentStage.value === 'e2' ? e2ArtUrls.value : e0ArtUrls.value
 })
 

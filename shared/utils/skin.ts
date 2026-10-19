@@ -49,3 +49,57 @@ export function getSkinPriceStatus(skin: {
 
   return 'free'
 }
+
+/**
+ * Formats a verifiable skin price status for display in the UI.
+ * Strictly adheres to project rule: NO numeric prices.
+ * - 'default' -> 'Base'
+ * - 'free'    -> 'Free'
+ * - 'unknown' -> '—'
+ */
+export function formatSkinPriceStatus(status: SkinPriceStatus): string {
+  switch (status) {
+    case 'default':
+      return 'Base'
+    case 'free':
+      return 'Free'
+    case 'unknown':
+      return '—'
+  }
+}
+
+/**
+ * Sorts an operator's skins for display:
+ * Default forms (E0/E1 #1, E2 #2) first by default, followed by cosmetic outfits.
+ */
+export function sortOperatorSkins<T extends { skinId: string; isDefault: boolean }>(
+  skins: T[],
+  options?: { defaultFirst?: boolean },
+): T[] {
+  const defaultFirst = options?.defaultFirst ?? true
+  return [...skins].sort((a, b) => {
+    if (a.isDefault !== b.isDefault) {
+      return defaultFirst ? (a.isDefault ? -1 : 1) : a.isDefault ? 1 : -1
+    }
+    return a.skinId.localeCompare(b.skinId)
+  })
+}
+
+/**
+ * Filters an operator's skins by criteria.
+ */
+export function filterOperatorSkins<
+  T extends { skinId: string; isDefault: boolean; isCnOnly?: boolean },
+>(
+  skins: T[],
+  filters?: {
+    excludeDefault?: boolean
+    cnOnlyOnly?: boolean
+  },
+): T[] {
+  return skins.filter((skin) => {
+    if (filters?.excludeDefault && skin.isDefault) return false
+    if (filters?.cnOnlyOnly && !skin.isCnOnly) return false
+    return true
+  })
+}

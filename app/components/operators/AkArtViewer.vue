@@ -1,21 +1,24 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import type { OperatorDetail } from '~/../shared/schemas/operator'
+import type { Skin } from '~/../shared/schemas/skin'
 import { resolveAsset, LOW_RARITY_OPERATOR_IDS } from '~/../shared/utils/resolveAsset'
 
 interface Props {
   modelValue: boolean
   operator: OperatorDetail
-  activeStage?: 'e0' | 'e2'
+  activeStage?: string
+  skins?: Skin[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   activeStage: 'e2',
+  skins: () => [],
 })
 
 const emit = defineEmits<{
   (e: 'update:modelValue', val: boolean): void
-  (e: 'update:activeStage', val: 'e0' | 'e2'): void
+  (e: 'update:activeStage', val: string): void
 }>()
 
 const rootRef = ref<HTMLElement | null>(null)
@@ -29,19 +32,59 @@ const panY = ref(0)
 const isDragging = ref(false)
 const isLoading = ref(true)
 
+interface VariantOption {
+  id: string
+  label: string
+}
+
 const hasElite2 = computed(() => {
   return props.operator.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(props.operator.id)
 })
 
-const currentStage = computed<'e0' | 'e2'>(() => {
-  if (!hasElite2.value) return 'e0'
-  return props.activeStage === 'e0' ? 'e0' : 'e2'
+// Only cosmetic skins in the viewer tabs (as default appearances are already covered by E0/E1 and E2)
+const cosmeticSkins = computed(() => {
+  return props.skins.filter((s) => !s.isDefault)
+})
+
+const availableVariants = computed<VariantOption[]>(() => {
+  const list: VariantOption[] = [{ id: 'e0', label: 'E0 / E1' }]
+  if (hasElite2.value) {
+    list.push({ id: 'e2', label: 'E2' })
+  }
+  for (const s of cosmeticSkins.value) {
+    const name = s.skinName.en || s.skinName.zh || s.skinId
+    list.push({
+      id: s.skinId,
+      label: name,
+    })
+  }
+  return list
+})
+
+const currentStage = computed<string>(() => {
+  const match = availableVariants.value.find((v) => v.id === props.activeStage)
+  if (match) return match.id
+
+  if (props.activeStage === 'e2' && !hasElite2.value) return 'e0'
+  return hasElite2.value ? 'e2' : 'e0'
 })
 
 // High-resolution artwork candidate URLs (full original without thumbnail)
 const activeArtUrls = computed(() => {
-  const variant = currentStage.value === 'e2' ? '2' : '1'
+  let variant = currentStage.value
+  if (variant === 'e2') variant = '2'
+  else if (variant === 'e0') variant = '1'
   return resolveAsset('art', props.operator.id, { variant })
+})
+
+const currentStageLabel = computed(() => {
+  if (currentStage.value === 'e0') return 'ELITE 0 / 1'
+  if (currentStage.value === 'e2') return 'ELITE 2'
+  const match = cosmeticSkins.value.find((s) => s.skinId === currentStage.value)
+  if (match) {
+    return (match.skinName.en || match.skinName.zh || 'OUTFIT').toUpperCase()
+  }
+  return currentStage.value.toUpperCase()
 })
 
 const currentArtSrc = ref('')
@@ -70,15 +113,26 @@ function onImageError(): void {
 }
 
 // Stage switching helpers
-function setStage(stage: 'e0' | 'e2'): void {
+function setStage(stage: string): void {
   if (stage === currentStage.value) return
   resetTransform()
   emit('update:activeStage', stage)
 }
 
-function toggleStage(): void {
-  if (!hasElite2.value) return
-  setStage(currentStage.value === 'e2' ? 'e0' : 'e2')
+function prevStage(): void {
+  const vars = availableVariants.value
+  if (vars.length <= 1) return
+  const currentIndex = vars.findIndex((v) => v.id === currentStage.value)
+  const prevIndex = (currentIndex - 1 + vars.length) % vars.length
+  setStage(vars[prevIndex]!.id)
+}
+
+function nextStage(): void {
+  const vars = availableVariants.value
+  if (vars.length <= 1) return
+  const currentIndex = vars.findIndex((v) => v.id === currentStage.value)
+  const nextIndex = (currentIndex + 1) % vars.length
+  setStage(vars[nextIndex]!.id)
 }
 
 // Zoom controls
@@ -180,9 +234,15 @@ function handleKeydown(e: KeyboardEvent): void {
     return
   }
 
-  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+  if (e.key === 'ArrowRight') {
     e.preventDefault()
-    toggleStage()
+    nextStage()
+    return
+  }
+
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault()
+    prevStage()
     return
   }
 
@@ -250,7 +310,7 @@ onUnmounted(() => {
         <div class="ak-art-viewer__title-wrap">
           <span class="ak-art-viewer__title">{{ operator.name.en }}</span>
           <span class="ak-art-viewer__stage-badge">
-            {{ currentStage === 'e2' ? 'ELITE 2' : 'ELITE 0 / 1' }}
+            {{ currentStageLabel }}
           </span>
         </div>
 
@@ -297,21 +357,21 @@ onUnmounted(() => {
 
       <!-- Stage Navigation Arrows -->
       <button
-        v-if="hasElite2"
+        v-if="availableVariants.length > 1"
         type="button"
         class="ak-art-viewer__nav-arrow ak-art-viewer__nav-arrow--prev"
-        aria-label="Switch artwork stage"
-        @click="toggleStage"
+        aria-label="Previous artwork stage"
+        @click="prevStage"
       >
         ‹
       </button>
 
       <button
-        v-if="hasElite2"
+        v-if="availableVariants.length > 1"
         type="button"
         class="ak-art-viewer__nav-arrow ak-art-viewer__nav-arrow--next"
-        aria-label="Switch artwork stage"
-        @click="toggleStage"
+        aria-label="Next artwork stage"
+        @click="nextStage"
       >
         ›
       </button>
@@ -351,26 +411,18 @@ onUnmounted(() => {
       </main>
 
       <!-- Bottom Thumbnails Switcher -->
-      <footer v-if="hasElite2" class="ak-art-viewer__footer">
+      <footer v-if="availableVariants.length > 1" class="ak-art-viewer__footer">
         <div class="ak-art-viewer__thumbs">
           <button
+            v-for="v in availableVariants"
+            :key="v.id"
             type="button"
             class="ak-art-viewer__thumb-btn"
-            :class="{ 'ak-art-viewer__thumb-btn--active': currentStage === 'e0' }"
-            aria-label="Select Elite 0 / 1 artwork"
-            @click="setStage('e0')"
+            :class="{ 'ak-art-viewer__thumb-btn--active': currentStage === v.id }"
+            :aria-label="`Select ${v.label} artwork`"
+            @click="setStage(v.id)"
           >
-            <span class="ak-art-viewer__thumb-label">E0 / E1</span>
-          </button>
-
-          <button
-            type="button"
-            class="ak-art-viewer__thumb-btn"
-            :class="{ 'ak-art-viewer__thumb-btn--active': currentStage === 'e2' }"
-            aria-label="Select Elite 2 artwork"
-            @click="setStage('e2')"
-          >
-            <span class="ak-art-viewer__thumb-label">E2</span>
+            <span class="ak-art-viewer__thumb-label">{{ v.label }}</span>
           </button>
         </div>
       </footer>
@@ -583,6 +635,11 @@ onUnmounted(() => {
   &__thumbs {
     display: flex;
     gap: 12px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 4px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__thumb-btn {
