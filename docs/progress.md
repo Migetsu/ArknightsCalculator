@@ -1,5 +1,18 @@
 # Project Progress
 
+- **Fix Art Viewer Cosmetic Outfit Suffix Ingestion (`fix/art-viewer-skin-variants`):**
+  - **Issue & Root Cause:**
+    - An obsolete heuristic in `AkArtViewer.vue` (`endsWith('#1') || endsWith('#2')`) would drop 166 cosmetic outfits across 142 operators (e.g. `char_134_ifrit@summer#1`, `char_010_chen@nian#2`), mistaking them for default evolution phases.
+  - **Fix & Implementation:**
+    - Updated `AkArtViewer.vue` to strictly check `!skin.isDefault` (the canonical domain indicator, consistent with `AkOperatorSkinsPanel.vue`) and sort cosmetic skins via `sortOperatorSkins()`.
+    - Added canonical default skin identifier mapping (`char_xxx#1` -> `e0`, `char_xxx#2` -> `e2`) in `currentStage` when `activeStage` receives default skin IDs.
+    - Verified `scripts/data/build-skins.ts:232`: confirmed `skinId.endsWith('#2')` is strictly guarded inside `if (isDefault)` (i.e. `!skinId.includes('@')`), so it only distinguishes between default E2 and default E0/E1 without touching cosmetic outfits.
+    - Added regression tests in `tests/unit/components/operators/AkArtViewer.test.ts` covering `#1` outfits (Ifrit), `#2` outfits (Ch'en), and invariant total variant counts across operators (1 + (1 if E2) + cosmetic count). Confirmed tests fail if suffix filter is reinstated.
+  - **Verification:**
+    - Verified on real dataset: all 526 cosmetic outfits across 432 operators are retained in `availableVariants`.
+    - For `char_134_ifrit`, all 5 variants (`e0`, `e2`, `char_134_ifrit@kfc#1`, `char_134_ifrit@rilakkuma#1`, `char_134_ifrit@summer#1`) are present.
+    - All quality gates passed: `i18n:check`, `lint`, `typecheck`, `test` (588/588 passed across 79 suites), `build`.
+
 - **Operator Skins Gallery & Multi-Variant Art Viewer (`feat/operator-skins-ui`):**
   - **Context & Motivation:**
     - Operator skins data (1,359 entries) was gathered in `data/skins.json`, but the UI did not expose skins: `AkArtViewer.vue` and `AkOperatorHero.vue` were hardcoded to only `e0` and `e2`.

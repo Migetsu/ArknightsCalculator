@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import type { OperatorDetail } from '~/../shared/schemas/operator'
 import type { Skin } from '~/../shared/schemas/skin'
 import { resolveAsset, LOW_RARITY_OPERATOR_IDS } from '~/../shared/utils/resolveAsset'
+import { sortOperatorSkins } from '~/../shared/utils/skin'
 
 interface Props {
   modelValue: boolean
@@ -41,9 +42,10 @@ const hasElite2 = computed(() => {
   return props.operator.rarity >= 4 && !LOW_RARITY_OPERATOR_IDS.has(props.operator.id)
 })
 
-// Only cosmetic skins in the viewer tabs (as default appearances are already covered by E0/E1 and E2)
+// Only cosmetic skins in the viewer tabs (as default appearances are already covered by E0/E1 and E2).
+// Canonical appearance is determined strictly by isDefault === true, never by #1/#2 suffixes.
 const cosmeticSkins = computed(() => {
-  return props.skins.filter((s) => !s.isDefault)
+  return sortOperatorSkins(props.skins.filter((s) => !s.isDefault))
 })
 
 const availableVariants = computed<VariantOption[]>(() => {
@@ -64,6 +66,12 @@ const availableVariants = computed<VariantOption[]>(() => {
 const currentStage = computed<string>(() => {
   const match = availableVariants.value.find((v) => v.id === props.activeStage)
   if (match) return match.id
+
+  // Handle canonical default skin identifiers (e.g. char_002_amiya#1 -> e0, char_002_amiya#2 -> e2)
+  const defaultSkinMatch = props.skins.find((s) => s.skinId === props.activeStage && s.isDefault)
+  if (defaultSkinMatch) {
+    return defaultSkinMatch.skinId.endsWith('#2') && hasElite2.value ? 'e2' : 'e0'
+  }
 
   if (props.activeStage === 'e2' && !hasElite2.value) return 'e0'
   return hasElite2.value ? 'e2' : 'e0'
