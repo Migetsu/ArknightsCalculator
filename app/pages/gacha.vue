@@ -37,9 +37,10 @@ onMounted(async () => {
 })
 
 // Datasets
-const banners = shallowRef<readonly GachaBanner[]>(
-  rawBannersData as unknown as readonly GachaBanner[],
-)
+const rawBanners = Array.isArray(rawBannersData)
+  ? rawBannersData
+  : ((rawBannersData as unknown as { banners?: GachaBanner[] }).banners ?? [])
+const banners = shallowRef<readonly GachaBanner[]>(rawBanners as unknown as readonly GachaBanner[])
 const operatorsMap = computed(() => {
   const map = new Map<string, OperatorSummary>()
   for (const op of rawOperatorsIndex as OperatorSummary[]) {

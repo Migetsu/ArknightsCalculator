@@ -8,16 +8,18 @@ import { RecruitDataSchema } from '../../shared/schemas/recruit'
 import { SkinListSchema } from '../../shared/schemas/skin'
 import { RangesDictionarySchema, type RangesDictionary } from '../../shared/schemas/range'
 import { OperatorHandbookSchema, type OperatorHandbook } from '../../shared/schemas/handbook'
+import { BannersDatasetSchema, type BannersDataset } from '../../shared/schemas/banner'
 
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
 const HANDBOOK_DIR = path.join(DATA_DIR, 'handbook')
 const LEGACY_HANDBOOK_FILE = path.join(DATA_DIR, 'handbook.json')
+const BANNERS_FILE = path.join(DATA_DIR, 'banners.json')
 
 interface ValidationIssue {
-  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin' | 'range' | 'handbook'
+  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin' | 'range' | 'handbook' | 'banner'
   entityId: string
-  referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema' | 'range'
+  referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema' | 'range' | 'banner'
   referenceId: string
   message: string
 }
@@ -29,6 +31,7 @@ export async function validateDataIntegrity(): Promise<{
   totalSkinsChecked: number
   totalRangesChecked: number
   totalHandbooksChecked: number
+  totalBannersChecked: number
   totalItemReferences: number
   totalSkillReferences: number
   totalModuleReferences: number
@@ -552,6 +555,143 @@ export async function validateDataIntegrity(): Promise<{
     })
   }
 
+  // 9. Validate Banners dataset
+  console.log('9. Validating banners dataset in data/banners.json...')
+  let totalBannersChecked = 0
+  try {
+    const bannersRaw = await fs.readFile(BANNERS_FILE, 'utf-8')
+    let bannersData: BannersDataset
+    try {
+      const parsed = JSON.parse(bannersRaw) as unknown
+      bannersData = BannersDatasetSchema.parse(parsed)
+    } catch (err: unknown) {
+      issues.push({
+        entityType: 'banner',
+        entityId: 'banners.json',
+        referenceType: 'schema',
+        referenceId: 'root',
+        message: `Schema error in banners.json: ${err instanceof Error ? err.message : String(err)}`,
+      })
+      throw err
+    }
+
+    totalBannersChecked = bannersData.banners.length
+
+    // ID uniqueness in banners array
+    const seenBannerIds = new Set<string>()
+    for (const banner of bannersData.banners) {
+      if (seenBannerIds.has(banner.id)) {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'banner',
+          referenceId: banner.id,
+          message: `Duplicate banner ID '${banner.id}' in banners array`,
+        })
+      }
+      seenBannerIds.add(banner.id)
+
+      // Interval sanity: openTime < endTime
+      if (banner.openTime >= banner.endTime) {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'banner',
+          referenceId: banner.id,
+          message: `Banner '${banner.id}' has invalid interval: openTime (${banner.openTime}) >= endTime (${banner.endTime})`,
+        })
+      }
+
+      // No perpetual pools: duration > 180 days or rule BACKFLOW
+      const durationDays = (banner.endTime - banner.openTime) / 86400
+      if (durationDays > 180 || banner.ruleType === 'BACKFLOW') {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'banner',
+          referenceId: banner.id,
+          message: `Perpetual / returning pool '${banner.id}' was not filtered (duration: ${durationDays} days, rule: ${banner.ruleType})`,
+        })
+      }
+
+      // No starter pools
+      const lowerId = banner.id.toLowerCase()
+      if (lowerId.startsWith('boot_') || lowerId.includes('newbee')) {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'banner',
+          referenceId: banner.id,
+          message: `Starter pool '${banner.id}' was not filtered`,
+        })
+      }
+    }
+
+    // Chronological sorting of cnBanners
+    for (let i = 0; i < bannersData.cnBanners.length - 1; i++) {
+      const curr = bannersData.cnBanners[i]
+      const next = bannersData.cnBanners[i + 1]
+      if (curr && next && curr.openTime > next.openTime) {
+        issues.push({
+          entityType: 'banner',
+          entityId: curr.id,
+          referenceType: 'banner',
+          referenceId: next.id,
+          message: `cnBanners is not chronologically sorted: '${curr.id}' (${curr.openTime}) > '${next.id}' (${next.openTime})`,
+        })
+      }
+    }
+
+    // Chronological sorting of enBanners
+    for (let i = 0; i < bannersData.enBanners.length - 1; i++) {
+      const curr = bannersData.enBanners[i]
+      const next = bannersData.enBanners[i + 1]
+      if (curr && next && curr.openTime > next.openTime) {
+        issues.push({
+          entityType: 'banner',
+          entityId: curr.id,
+          referenceType: 'banner',
+          referenceId: next.id,
+          message: `enBanners is not chronologically sorted: '${curr.id}' (${curr.openTime}) > '${next.id}' (${next.openTime})`,
+        })
+      }
+    }
+
+    // Meta integrity
+    if (bannersData.meta.currentEnBanner) {
+      if (!seenBannerIds.has(bannersData.meta.currentEnBanner.id)) {
+        issues.push({
+          entityType: 'banner',
+          entityId: 'meta.currentEnBanner',
+          referenceType: 'banner',
+          referenceId: bannersData.meta.currentEnBanner.id,
+          message: `meta.currentEnBanner ID '${bannersData.meta.currentEnBanner.id}' does not exist in banners dataset`,
+        })
+      }
+    }
+    if (bannersData.meta.nextEnLimitedBanner) {
+      if (!seenBannerIds.has(bannersData.meta.nextEnLimitedBanner.id)) {
+        issues.push({
+          entityType: 'banner',
+          entityId: 'meta.nextEnLimitedBanner',
+          referenceType: 'banner',
+          referenceId: bannersData.meta.nextEnLimitedBanner.id,
+          message: `meta.nextEnLimitedBanner ID '${bannersData.meta.nextEnLimitedBanner.id}' does not exist in banners dataset`,
+        })
+      }
+    }
+  } catch (err: unknown) {
+    if (issues.length === 0 || !issues.some(i => i.entityType === 'banner')) {
+      issues.push({
+        entityType: 'banner',
+        entityId: 'banners.json',
+        referenceType: 'schema',
+        referenceId: 'root',
+        message: err instanceof Error ? err.message : String(err),
+      })
+    }
+  }
+
   return {
     totalOperatorsChecked: opFiles.length,
     totalRecipesChecked: recipes.length,
@@ -559,6 +699,7 @@ export async function validateDataIntegrity(): Promise<{
     totalSkinsChecked,
     totalRangesChecked: Object.keys(ranges).length,
     totalHandbooksChecked,
+    totalBannersChecked,
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
@@ -579,6 +720,7 @@ async function main(): Promise<void> {
   console.log(`Skins in dictionary:       ${result.totalSkinsChecked}`)
   console.log(`Ranges in dictionary:      ${result.totalRangesChecked}`)
   console.log(`Handbooks in dictionary:   ${result.totalHandbooksChecked}`)
+  console.log(`Banners checked:           ${result.totalBannersChecked}`)
   console.log(`Recruit pool checked:      ${result.totalRecruitPoolChecked}`)
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
