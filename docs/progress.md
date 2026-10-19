@@ -1,5 +1,36 @@
 # Project Progress
 
+- **Operator Promotion Costs & Base Skill Levels 1–7 (`feat/operator-upgrade-costs`):**
+  - **Context & Motivation:**
+    - In accordance with P1.4 and P1.5 from `docs/operator-wiki-audit.md`, operator promotion costs (`phases[].evolveCost` + LMD from `constants.json -> evolveGoldCost`) and common skill levels 1–7 training costs (`allSkillLvlup[]`) were missing from the UI.
+    - User also reported a defect where skin preview images were blank/dark in `AkOperatorSkinsPanel.vue` cards despite full artwork loading in `AkArtViewer.vue`.
+  - **Implementation Details:**
+    - **Skin Thumbnail Loading Fix:**
+      - Root cause: `AkOperatorSkinsPanel.vue` requested `{ thumbnail: true }` from `resolveAsset('art', ...)`. In `resolveAsset.ts`, `thumbnail: true` and `hero: true` prepended `/art/thumbs/...` and `Migetsu/arkcalc-assets/thumbs/...`, neither of which exist for skins (pre-rendered webp assets only exist for base operators). As a result, browser 404'd and secondary static mirror was not reached.
+      - Removed nonexistent local thumbnail/hero paths for skin variants in `shared/utils/resolveAsset.ts`, ensuring direct resolution to `PRIMARY_CDN_BASE` full art WebP/PNG.
+      - Updated `AkOperatorSkinsPanel.vue` to drop `thumbnail: true` and added an iterative candidate error fallback loop cycling through mirrors.
+    - **Core Calculation Helper (`shared/utils/upgradeCosts.ts`):**
+      - Created pure, typed functions `getOperatorPromotionCosts` and `getBaseSkillUpgradeSummary`.
+      - Strict rarity handling:
+        - 6★ (`char_172_svrash`): E1 = 3 items + 30,000 LMD, E2 = 3 items + 180,000 LMD.
+        - 5★ (`char_002_amiya`): E1 = 3 items + 20,000 LMD, E2 = 3 items + 120,000 LMD.
+        - 3★ (`char_123_fang`): E1 = 0 items + 10,000 LMD, E2 is strictly absent (does not exist).
+        - 1★-2★ (`char_500_noirc`, `char_285_medic2`): neither E1 nor E2 rendered (empty array).
+      - `DEFAULT_EVOLVE_GOLD_COST` validated against `data/constants.json -> evolveGoldCost`.
+    - **UI Integration:**
+      - **Promotion Costs in `AkOperatorStatsPanel.vue`:** Added dedicated `Promotion Costs` card displaying cards for E1 and E2 with LMD (`AkItemIcon` with formatted currency) and promotion materials (`AkItemIcon`). Correctly handles 3★ with "No extra materials required" label.
+      - **Base Skill Levels 1–7 in `AkOperatorSkillsPanel.vue`:** Added `Base Skill Levels (1 → 7)` section showing total required materials banner and responsive step-by-step grid covering all 6 transitions (`Lv 1 → Lv 2` to `Lv 6 → Lv 7`) with unlock requirements (`Req: E0/E1 Lv 1`).
+      - **Prop propagation in `[id].vue`:** Passed `operator.allSkillLvlup` into `AkOperatorSkillsPanel`.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added keys under `operators.detail.stats` (`promotionTitle`, `promotionTag`, `elite1`, `elite2`, `noExtraMaterials`, `lmd`) and `operators.detail.skills` (`baseTrainingTitle`, `baseTrainingTag`, `baseTrainingDesc`, `baseTotalTitle`, `levelTransition`, `unlockReq`).
+  - **Quality Gates & Verification:**
+    - `i18n:check`: 628 keys verified.
+    - `lint`: 0 errors across ESLint and Stylelint.
+    - `typecheck`: 0 errors.
+    - `test`: 82 suites passed, 616/616 tests passed.
+    - `build`: Full client and Nitro server production build succeeded in 1m 11s.
+    - Closes P1.4 and P1.5 in `docs/operator-wiki-audit.md`.
+
 - **Operator Attack Range Visualization (`feat/operator-range-ui`):**
   - **Context & Motivation:**
     - Operator attack range data (73 ranges) was collected in `data/ranges.json`, and range IDs existed in `phases[].rangeId` and `skills[].levels[].rangeId`, but the UI did not expose attack ranges anywhere (P1.1 and P1.2 in `docs/operator-wiki-audit.md`).

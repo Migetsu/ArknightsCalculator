@@ -340,24 +340,7 @@ export function resolveAsset(
 
       const candidates: string[] = []
 
-      // 1a. Prioritize medium 1280px WebP copy for operator hero header if requested
-      if (options?.hero) {
-        const heroName = encodeAssetPath(`${skinFileBase}.webp`)
-        candidates.push(
-          `/art/hero/${skinFileBase}.webp`,
-          `${OPTIMIZED_ASSETS_CDN}/hero/${heroName}`,
-        )
-      }
-
-      // 1b. Prioritize local WebP thumbnail for list grids if requested
-      if (options?.thumbnail) {
-        const thumbName = encodeAssetPath(`${skinFileBase}.webp`)
-        candidates.push(
-          `/art/thumbs/${skinFileBase}.webp`,
-          `${OPTIMIZED_ASSETS_CDN}/thumbs/${thumbName}`,
-        )
-      }
-
+      // Primary & secondary CDN full skin artwork candidates
       candidates.push(
         `${PRIMARY_CDN_BASE}/${dir}/${encodedFilename}`,
         `${SECONDARY_CDN_BASE}/${dir}/${encodedFilename}`,

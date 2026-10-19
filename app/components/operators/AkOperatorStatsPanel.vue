@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { OperatorDetail } from '~/../shared/schemas/operator'
+import { resolveI18nString } from '~/../shared/schemas/operator'
 import { calculateOperatorStats, MAX_LEVEL_BY_RARITY } from '~/../shared/utils/stats/calculateStats'
 import type { CalculatedStatsResult } from '~/../shared/utils/stats/types'
+import { getOperatorPromotionCosts } from '~/../shared/utils/upgradeCosts'
+import rawItemsData from '~/../data/items.json'
+import type { GameItem } from '~/../shared/schemas/item'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkStepper from '~/components/ui/AkStepper.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
+import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -28,7 +33,29 @@ const emit = defineEmits<{
   (e: 'update:selectedModuleId', val: string | undefined): void
 }>()
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
+
+function getItemName(id: string): string {
+  if (id === '4001') return t('operators.detail.stats.lmd')
+  const it = itemsMap.get(id)
+  if (!it) return id
+  return resolveI18nString(it.name, locale.value as 'en' | 'zh') || it.name.en || id
+}
+
+function getItemIconId(id: string): string | undefined {
+  return itemsMap.get(id)?.iconId
+}
+
+function getItemRarity(id: string): 1 | 2 | 3 | 4 | 5 {
+  if (id === '4001') return 4
+  const r = itemsMap.get(id)?.rarity ?? 1
+  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
+}
+
+// Available promotion costs (E1 / E2)
+const promotionCosts = computed(() => getOperatorPromotionCosts(props.operator))
 
 // Max available elite phases by operator rarity (0..2)
 const maxElitePhase = computed(() => props.operator.phases.length - 1)
@@ -432,6 +459,71 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
         </div>
       </div>
     </div>
+
+    <!-- 5. Promotion Costs Card (E1 / E2) -->
+    <section v-if="promotionCosts.length > 0" class="ak-operator-stats-panel__promotion-card">
+      <div class="ak-operator-stats-panel__promotion-header">
+        <div class="ak-operator-stats-panel__promotion-title-wrap">
+          <span class="ak-operator-stats-panel__promotion-tag">
+            {{ t('operators.detail.stats.promotionTag') }}
+          </span>
+          <h3 class="ak-operator-stats-panel__promotion-title">
+            {{ t('operators.detail.stats.promotionTitle') }}
+          </h3>
+        </div>
+      </div>
+
+      <div class="ak-operator-stats-panel__promotion-phases">
+        <div
+          v-for="promo in promotionCosts"
+          :key="promo.phase"
+          class="ak-operator-stats-panel__phase-card"
+        >
+          <div class="ak-operator-stats-panel__phase-header">
+            <span class="ak-operator-stats-panel__phase-badge"> E{{ promo.phase }} </span>
+            <span class="ak-operator-stats-panel__phase-name">
+              {{
+                promo.phase === 1
+                  ? t('operators.detail.stats.elite1')
+                  : t('operators.detail.stats.elite2')
+              }}
+            </span>
+          </div>
+
+          <div class="ak-operator-stats-panel__phase-items">
+            <!-- LMD Currency -->
+            <AkItemIcon
+              v-if="promo.lmd > 0"
+              item-id="4001"
+              :name="t('operators.detail.stats.lmd')"
+              :tier="4"
+              :count="promo.lmd.toLocaleString('en-US')"
+              size="md"
+            />
+
+            <!-- Required Materials -->
+            <AkItemIcon
+              v-for="mat in promo.materials"
+              :key="mat.id"
+              :item-id="mat.id"
+              :icon-id="getItemIconId(mat.id)"
+              :name="getItemName(mat.id)"
+              :tier="getItemRarity(mat.id)"
+              :count="mat.count"
+              size="md"
+            />
+
+            <!-- 3-star operators require LMD only (0 materials) -->
+            <span
+              v-if="promo.materials.length === 0"
+              class="ak-operator-stats-panel__phase-no-materials"
+            >
+              {{ t('operators.detail.stats.noExtraMaterials') }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -707,6 +799,108 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
     gap: 8px 12px;
     font-family: var(--font-body);
     font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  // 5. Promotion Costs Card
+  &__promotion-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  &__promotion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-xs);
+  }
+
+  &__promotion-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  &__promotion-tag {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.16em;
+    color: var(--color-accent-amber);
+    text-transform: uppercase;
+  }
+
+  &__promotion-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-display);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+  }
+
+  &__promotion-phases {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__phase-card {
+    background: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  &__phase-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  &__phase-badge {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-amber);
+    background: rgb(255 157 43 / 10%);
+    border: 1px solid var(--color-accent-amber);
+    border-radius: var(--radius-xs);
+    padding: 2px 8px;
+  }
+
+  &__phase-name {
+    font-family: var(--font-display);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  &__phase-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  &__phase-no-materials {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    font-style: italic;
     color: var(--color-text-secondary);
   }
 }

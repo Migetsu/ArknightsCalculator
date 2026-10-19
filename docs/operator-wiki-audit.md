@@ -236,15 +236,15 @@
 | **Ренж навыков**                              | `data/operators/*.json` `skills[].levels[].rangeId` + `data/ranges.json` | `AkOperatorSkillsPanel.vue`, `AkRangeGrid.vue`                      | Полностью отображается (мини-сетки с бейджами Inherited / Modified)           |
 | **Статы: HP, ATK, DEF, RES**                  | `phases[].attributesKeyFrames`                                           | `AkOperatorHero.vue`, `AkOperatorStatsPanel.vue`                    | Полностью отображается (Hero + Декомпозиция)                                  |
 | **Статы: Cost, Block, Интервал, Редеплой**    | `phases[].attributesKeyFrames`                                           | `AkOperatorStatsPanel.vue`                                          | Отображается в таблице декомпозиции                                           |
-| **Затраты на элиту (Evolve Cost)**            | `phases[].evolveCost`                                                    | **Не показано**                                                     | **Нет блока требуемых материалов для E1 и E2**                                |
-| **Стоимость элиты в LMD**                     | `data/constants.json` `evolveGoldCost`                                   | **Не показано**                                                     | Нет вывода требуемого золота на промоушен                                     |
+| **Затраты на элиту (Evolve Cost)**            | `phases[].evolveCost`                                                    | `AkOperatorStatsPanel.vue` (блок Promotion Costs)                   | Отображаются материалы для E1 и E2 с иконками `AkItemIcon`                    |
+| **Стоимость элиты в LMD**                     | `data/constants.json` `evolveGoldCost`                                   | `AkOperatorStatsPanel.vue` (в карточках E1/E2)                      | Отображается в блоке Promotion Costs (E1 / E2) с иконкой LMD                  |
 | **Опыт и LMD по уровням**                     | `data/constants.json` `characterExpMap, characterUpgradeCostMap`         | **Не показано**                                                     | Нет калькулятора/вывода затрат EXP и LMD до капа                              |
 | **Расшифровка потенциалов**                   | `potentialRanks[].description`                                           | **Не показано**                                                     | Слайдер 1..6 есть, но **текстовых описаний бонусов P1–P6 нет**                |
 | **Бонусы доверия (Trust)**                    | `favorKeyFrames[].data`                                                  | `AkOperatorStatsPanel.vue` (в колонке Trust)                        | Стат учтен в формуле, но нет отдельной карточки капа доверия (+HP, +ATK)      |
 | **Навыки: Иконка, Имя, Описание**             | `skills[].iconId, levels[].name, description`                            | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается с RichText                                             |
 | **Навыки: SP Cost, Init SP, Длительность**    | `skills[].levels[].spCost, initSp, duration`                             | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается                                                        |
 | **Навыки: Затраты на Мастерство (M1-M3)**     | `skills[].masteryCosts[].levelUpCost`                                    | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается через `AkItemIcon`                                     |
-| **Навыки: Затраты на уровни 1–7**             | `allSkillLvlup[].lvlUpCost`                                              | **Не показано**                                                     | **Нет блока материалов прокачки базовых уровней 1–7**                         |
+| **Навыки: Затраты на уровни 1–7**             | `allSkillLvlup[].lvlUpCost`                                              | `AkOperatorSkillsPanel.vue` (блок Base Skill Levels)                | Отображаются все 6 шагов с условиями и суммарный итог материалов              |
 | **Таланты: Имя, Описание, Условия**           | `talents[].candidates[]`                                                 | `AkOperatorTalentsPanel.vue`                                        | Полностью отображается                                                        |
 | **Модули: Статы, Трейты, Истории, Стоимость** | `modules[].stages[], parts[], description`                               | `AkOperatorModulesPanel.vue`                                        | Полностью отображается                                                        |
 | **Метаданные: Художник, Сэйю, Фракция, Код**  | `artist, va, faction, displayNumber, subclass`                           | `AkOperatorInfoPanel.vue`                                           | Полностью отображается                                                        |
@@ -280,10 +280,13 @@ _Эти задачи дадут максимальный прирост ценн
    - Карточки скинов отображают превью 480px WebP, бренд (`brandName`), название (`displaySkinName`), автора (`drawerList`), текстовое описание (`description`), цитату (`dialog`), способ получения (`obtainApproach`), тактические бейджи `CN ONLY` и `PENDING`, а также честный статус цены (`Base`, `Free`, `—`).
    - Кнопка «Inspect Artwork» открывает полноэкранный `AkArtViewer` с выбором наряда в оригинальном разрешении, циклической навигацией стрелками (клавиатура и кнопки `‹` `›`) и полосой миниатюр.
    - Селектор артов в `AkOperatorHero.vue` обновлен для отображения 1280px WebP арта выбранного скина.
-4. **P1.4 — Секция затрат на повышение элиты (Evolve Costs):**
-   - В `AkOperatorStatsPanel.vue` добавить блок материалов для перехода E0 -> E1 и E1 -> E2 (иконки `AkItemIcon`, количество, стоимость в LMD).
-5. **P1.5 — Материалы прокачки базовых навыков 1–7 (`allSkillLvlup`):**
-   - В `AkOperatorSkillsPanel.vue` добавить раскрываемый аккордеон общих затрат на уровни 1–7.
+4. **P1.4 — Секция затрат на повышение элиты (Evolve Costs):** ✅ **РЕАЛИЗОВАНО**
+   - В `AkOperatorStatsPanel.vue` добавлена карточка `Promotion Costs` с разбивкой по ступеням элиты (E1, E2).
+   - Отображаются необходимые материалы (`AkItemIcon`), валюта LMD (`data/constants.json -> evolveGoldCost`).
+   - Учтены правила редкости: 3★ операторы (Fang) выводят E1 с 0 материалами и 10,000 LMD, а E2 отсутствует; 1★-2★ операторы скрывают блок полностью.
+5. **P1.5 — Материалы прокачки базовых навыков 1–7 (`allSkillLvlup`):** ✅ **РЕАЛИЗОВАНО**
+   - В `AkOperatorSkillsPanel.vue` добавлена секция `Base Skill Levels (1 → 7)`.
+   - Отображаются баннер суммарного расхода материалов на прокачку 1->7 уровней и пошаговая сетка из 6 переходов (Lv 1->2 ... Lv 6->7) с указанием условий открытия (Req: E0/E1 Lv 1) и иконками `AkItemIcon`.
 6. **P1.6 — Карточки бонусов потенциала (Potential Dossier):**
    - Под слайдером потенциала в `AkOperatorStatsPanel.vue` (или отдельным модальным окном) вывести список всех 5 рангов из `potentialRanks[]` с их официальными описаниями.
 

@@ -211,4 +211,28 @@ describe('AkOperatorSkinsPanel', () => {
     expect(emitted).toBeTruthy()
     expect(emitted?.[0]?.[0]).toBe('char_172_svrash#1')
   })
+
+  it('renders valid CDN artwork URLs for skin preview images without non-existent thumbs', async () => {
+    const wrapper = await mountSuspended(AkOperatorSkinsPanel, {
+      props: {
+        operator: silverAsh,
+        skins: mockSkins,
+      },
+    })
+
+    const previewImages = wrapper.findAll('.ak-operator-skins-panel__preview-img')
+    expect(previewImages.length).toBe(3)
+
+    const firstImg = previewImages[0]!
+    const src = firstImg.attributes('src')
+    expect(src).toBeDefined()
+    expect(src).toContain('cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource')
+    expect(src).toContain('/skin/char_172_svrash_1b.png')
+    expect(src).not.toContain('/art/thumbs/')
+
+    // Trigger error event to test fallback to secondary CDN
+    await firstImg.trigger('error')
+    const fallbackSrc = firstImg.attributes('src')
+    expect(fallbackSrc).toContain('cdn.statically.io/gh/yuanyan3060/ArknightsGameResource')
+  })
 })

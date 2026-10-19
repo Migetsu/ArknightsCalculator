@@ -50,23 +50,22 @@ function getSkinObtainApproach(skin: Skin): string {
 function getSkinPreviewUrl(skin: Skin): string {
   const candidates = resolveAsset('art', skin.charId, {
     variant: skin.skinId,
-    thumbnail: true,
   })
   return candidates[0] || ''
 }
 
-function getSkinSecondaryUrl(skin: Skin): string {
+function handleImageError(e: Event, skin: Skin): void {
+  const target = e.target as HTMLImageElement
   const candidates = resolveAsset('art', skin.charId, {
     variant: skin.skinId,
-    thumbnail: true,
   })
-  return candidates[1] || ''
-}
-
-function handleImageError(e: Event, secondaryUrl: string): void {
-  const target = e.target as HTMLImageElement
-  if (secondaryUrl && target.src !== secondaryUrl) {
-    target.src = secondaryUrl
+  const currentSrc = target.src
+  const nextCandidate = candidates.find(
+    (c) => c !== currentSrc && !target.dataset.triedUrls?.includes(c),
+  )
+  if (nextCandidate) {
+    target.dataset.triedUrls = (target.dataset.triedUrls || '') + ';' + nextCandidate
+    target.src = nextCandidate
   }
 }
 </script>
@@ -128,7 +127,7 @@ function handleImageError(e: Event, secondaryUrl: string): void {
               loading="lazy"
               decoding="async"
               class="ak-operator-skins-panel__preview-img"
-              @error="(e) => handleImageError(e, getSkinSecondaryUrl(skin))"
+              @error="(e) => handleImageError(e, skin)"
             />
 
             <div class="ak-operator-skins-panel__preview-scrim" />

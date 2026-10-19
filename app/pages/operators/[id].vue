@@ -307,6 +307,7 @@ useSchemaOrg([
               <div v-else-if="currentTab === 'skills'">
                 <AkOperatorSkillsPanel
                   :skills="operator!.skills ?? []"
+                  :all-skill-lvlup="operator!.allSkillLvlup"
                   :default-range-id="currentPhaseRangeId"
                 />
               </div>
