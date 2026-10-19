@@ -1,5 +1,46 @@
 # Project Progress
 
+- **Operator Dossier UI Panel (`feat/operator-dossier-ui`):**
+  - **Context & Motivation:**
+    - The operator handbook dataset (`data/handbook/<charId>.json`) was partitioned into individual files in Task 11. Task 12 implements the interactive UI on the operator detail page ("Dossier" tab), presenting biographical profiles, tactical physical assessments, and archival narrative lore.
+  - **Implementation Details:**
+    - **Composable (`app/composables/useOperatorHandbook.ts`):**
+      - Created `useOperatorHandbook` with asynchronous on-demand chunk loading via dynamic import (`import('../../data/handbook/${cleanId}.json')`).
+      - Caches loaded entries in a runtime `Map<string, OperatorHandbook>` so repeat navigation incurs zero network or bundle overhead.
+      - Returns `null` cleanly for operators without separate handbook records (e.g. Amiya Guard/Medic patch forms `char_1001_amiya2` / `char_1037_amiya3`).
+      - SSR-friendly via `useAsyncData`.
+    - **Pure Story Logic Core (`shared/utils/handbook.ts`):**
+      - `getStorySortOrder`: assigns canonical display weights (Basic Info: 10, Profile: 20, Clinical Analysis: 30, Originium Arts Rating: 35, Archive Files 1–5: 40–80, Promotion Record: 90).
+      - `sortHandbookStories`: sorts stories into canonical lore order with stable chronological ordering for ties.
+      - `isPatchStory`: identifies class-conversion form stories by `unlockType === 'PATCH'` or `patchCharId`.
+      - `getPatchFormLabel`: maps patchCharIds to readable class forms (`char_1001_amiya2` -> Guard, `char_1037_amiya3` -> Medic).
+      - `splitHandbookStories`: cleanly splits stories into standard archival records and class conversion records.
+    - **UI Component (`app/components/operators/AkOperatorDossierPanel.vue`):**
+      - Basic Profile section: responsive grid of vital statistics with localized field titles (`resolveI18nString(field.title)`) without hardcoded English, and provenance translation badges (`<AkTranslationBadge>`) explicitly imported.
+      - Physical Evaluation section: tactical assessment cards styled with amber accent borders and mono evaluation ratings.
+      - Archive Stories section: collapsible accordions with first story expanded by default, formatted prose preserving newlines (`white-space: pre-wrap`), unlock condition badges (Trust %, Elite/Level, Direct Access), and translation provenance indicators.
+      - Class Conversion Records section: separated group with cyan accent, target form badge (`Form: Guard`, `Form: Medic`), and full lore logs.
+      - Clean empty handling: renders nothing (no empty boxes, broken borders, or layout shifts) when `handbook` is null.
+      - Styled in scoped SCSS with BEM and design tokens, fully responsive down to 360px without horizontal scroll.
+    - **Integration (`app/components/operators/AkOperatorInfoPanel.vue`):**
+      - Embedded `<AkOperatorDossierPanel :char-id="operator.id" />` under metadata and item usage cards.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added 19 keys under `operators.detail.dossier` for section headers, tags, form labels, and unlock conditions.
+    - **Unit Tests:**
+      - `tests/unit/components/operators/AkOperatorDossierPanel.test.ts` (6 tests: profile/physical rendering, story order, patch stories, empty state handling, translation badge rendering for CN-only Makoto, and accordion toggle).
+      - `tests/unit/composables/useOperatorHandbook.test.ts` (5 tests: fetch, caching, null handling for missing files, empty input handling, reactive async data).
+      - `tests/unit/components/operators/AkOperatorInfoPanel.test.ts` (integration test).
+      - `tests/unit/shared/handbook.test.ts` (+4 tests for sorting and splitting).
+    - **Documentation:**
+      - Updated `docs/data-handbook.md` with canonical story ordering rules and UI integration architecture.
+      - Marked P2 dossier item as completed in `docs/operator-wiki-audit.md`.
+  - **Quality Gates & Metrics:**
+    - `npm run i18n:check`: passed (651 valid keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: 88 test suites passed (666/666 tests passed, +17 new tests).
+    - `npm run build`: production build passed.
+
 - **Operator Handbook Per-Operator Split (`feat/operator-handbook-split`):**
   - **Context & Motivation:**
     - The initial implementation generated a monolithic `data/handbook.json` (10.97 MB). Loading this monolithic file on the operator detail page would consume ~11 MB of bandwidth for every operator page visit, which is unacceptable for mobile and slow connections.
