@@ -13,6 +13,7 @@ import AkStepper from '~/components/ui/AkStepper.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 import AkRangeGrid from '~/components/ui/AkRangeGrid.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -230,6 +231,34 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
       total: `${s.respawnTime}s`,
     },
   ]
+})
+
+interface PotentialRankDisplay {
+  level: number
+  rankLabel: string
+  isActive: boolean
+  description: string
+  isCustom: boolean
+  provenance: NonNullable<OperatorDetail['potentialRanks']>[number]['description']
+}
+
+// Breakdown of potential enhancement ranks (P2..P6)
+const potentialRanksList = computed<PotentialRankDisplay[]>(() => {
+  const raw = props.operator.potentialRanks ?? []
+  return raw.map((rank, idx) => {
+    const level = idx + 2 // Index 0 -> P2, Index 4 -> P6
+    return {
+      level,
+      rankLabel: `P${level}`,
+      isActive: props.potential >= level,
+      description:
+        resolveI18nString(rank.description, locale.value as 'en' | 'zh') ||
+        rank.description.en ||
+        '',
+      isCustom: rank.type === 'CUSTOM',
+      provenance: rank.description,
+    }
+  })
 })
 </script>
 
@@ -463,7 +492,75 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
       </div>
     </div>
 
-    <!-- 5. Promotion Costs Card (E1 / E2) -->
+    <!-- 5. Potential Enhancement Card (P2..P6) -->
+    <section v-if="potentialRanksList.length > 0" class="ak-operator-stats-panel__potential-card">
+      <div class="ak-operator-stats-panel__potential-header">
+        <div class="ak-operator-stats-panel__potential-title-wrap">
+          <span class="ak-operator-stats-panel__potential-tag">
+            {{ t('operators.detail.stats.potentialBreakdownTag') }}
+          </span>
+          <h3 class="ak-operator-stats-panel__potential-title">
+            {{ t('operators.detail.stats.potentialBreakdownTitle') }}
+          </h3>
+        </div>
+      </div>
+
+      <div class="ak-operator-stats-panel__potential-list">
+        <div
+          v-for="rank in potentialRanksList"
+          :key="rank.rankLabel"
+          class="ak-operator-stats-panel__potential-item"
+          :class="{
+            'ak-operator-stats-panel__potential-item--active': rank.isActive,
+            'ak-operator-stats-panel__potential-item--locked': !rank.isActive,
+          }"
+        >
+          <div class="ak-operator-stats-panel__potential-item-header">
+            <span
+              class="ak-operator-stats-panel__potential-rank-badge"
+              :class="{
+                'ak-operator-stats-panel__potential-rank-badge--active': rank.isActive,
+              }"
+            >
+              {{ rank.rankLabel }}
+            </span>
+            <span
+              class="ak-operator-stats-panel__potential-status-badge"
+              :class="{
+                'ak-operator-stats-panel__potential-status-badge--active': rank.isActive,
+              }"
+            >
+              {{
+                rank.isActive
+                  ? t('operators.detail.stats.potentialUnlocked')
+                  : t('operators.detail.stats.potentialLocked')
+              }}
+            </span>
+          </div>
+
+          <div class="ak-operator-stats-panel__potential-desc-wrap">
+            <span class="ak-operator-stats-panel__potential-desc">
+              {{ rank.description }}
+            </span>
+            <AkTranslationBadge
+              v-if="
+                rank.provenance.source === 'machine' ||
+                rank.provenance.source === 'pending' ||
+                rank.provenance.stale ||
+                rank.provenance.isMachineTranslation
+              "
+              :source="
+                rank.provenance.source ??
+                (rank.provenance.isMachineTranslation ? 'machine' : undefined)
+              "
+              :stale="rank.provenance.stale"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Promotion Costs Card (E1 / E2) -->
     <section v-if="promotionCosts.length > 0" class="ak-operator-stats-panel__promotion-card">
       <div class="ak-operator-stats-panel__promotion-header">
         <div class="ak-operator-stats-panel__promotion-title-wrap">
@@ -905,6 +1002,135 @@ const breakdownRows = computed<BreakdownRow[]>(() => {
     font-size: var(--font-size-xs);
     font-style: italic;
     color: var(--color-text-secondary);
+  }
+
+  // 5. Potential Enhancement Card
+  &__potential-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  &__potential-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__potential-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__potential-tag {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-mono);
+    color: var(--color-text-muted);
+  }
+
+  &__potential-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-display);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+  }
+
+  &__potential-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+
+    @include mq(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__potential-item {
+    background: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xs);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    transition:
+      border-color var(--transition-fast),
+      opacity var(--transition-fast);
+
+    &--active {
+      border-color: var(--color-accent-amber);
+      background: rgb(255 157 43 / 4%);
+    }
+
+    &--locked {
+      opacity: 0.55;
+      border-style: dashed;
+    }
+  }
+
+  &__potential-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  &__potential-rank-badge {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: 1px 6px;
+    border-radius: var(--radius-xs);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+
+    &--active {
+      color: var(--color-accent-amber);
+      background: rgb(255 157 43 / 10%);
+      border-color: var(--color-accent-amber);
+    }
+  }
+
+  &__potential-status-badge {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+
+    &--active {
+      color: var(--color-accent-green);
+    }
+  }
+
+  &__potential-desc-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  &__potential-desc {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-snug);
+    color: var(--color-text-primary);
   }
 }
 </style>
