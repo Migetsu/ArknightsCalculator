@@ -28,7 +28,8 @@ import {
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
-const OUTPUT_FILE = path.join(DATA_DIR, 'handbook.json')
+const HANDBOOK_DIR = path.join(DATA_DIR, 'handbook')
+const LEGACY_OUTPUT_FILE = path.join(DATA_DIR, 'handbook.json')
 
 interface RawStoryItem {
   storyText?: string
@@ -378,24 +379,79 @@ export async function buildHandbook(): Promise<{
   // Validate full dataset schema
   HandbookDatasetSchema.parse(dataset)
 
-  // Write deterministic JSON file
-  await fs.writeFile(OUTPUT_FILE, JSON.stringify(dataset, null, 2) + '\n', 'utf-8')
+  // Ensure target handbook directory exists
+  await fs.mkdir(HANDBOOK_DIR, { recursive: true })
 
-  console.log(`[OK] Successfully wrote data/handbook.json`)
-  console.log(`     Total operators covered: ${Object.keys(dataset).length}`)
+  // Remove legacy monolithic handbook.json if present
+  try {
+    await fs.unlink(LEGACY_OUTPUT_FILE)
+  } catch (err: unknown) {
+    if ((err as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw err
+    }
+  }
+
+  // Write each operator handbook as an individual JSON file
+  let totalBytes = 0
+  let minBytes = Number.POSITIVE_INFINITY
+  let maxBytes = 0
+  let minOp = ''
+  let maxOp = ''
+
+  for (const [charId, opHandbook] of Object.entries(dataset)) {
+    const opFilePath = path.join(HANDBOOK_DIR, `${charId}.json`)
+    const content = JSON.stringify(opHandbook, null, 2) + '\n'
+    await fs.writeFile(opFilePath, content, 'utf-8')
+
+    const size = Buffer.byteLength(content, 'utf-8')
+    totalBytes += size
+    if (size < minBytes) {
+      minBytes = size
+      minOp = charId
+    }
+    if (size > maxBytes) {
+      maxBytes = size
+      maxOp = charId
+    }
+  }
+
+  // Clean up any stale files in data/handbook/
+  const existingFiles = await fs.readdir(HANDBOOK_DIR)
+  for (const file of existingFiles) {
+    if (file.endsWith('.json')) {
+      const opId = file.replace('.json', '')
+      if (!dataset[opId]) {
+        await fs.unlink(path.join(HANDBOOK_DIR, file))
+      }
+    }
+  }
+
+  const opCount = Object.keys(dataset).length
+  const avgBytes = opCount > 0 ? totalBytes / opCount : 0
+
+  console.log(`[OK] Successfully wrote ${opCount} files to data/handbook/`)
+  console.log(`     Total operators covered: ${opCount}`)
   console.log(`     Covered in EN:           ${enCovered}`)
   console.log(`     Covered in CN:           ${cnCovered}`)
   console.log(`     CN-only covered:         ${cnOnlyCovered}`)
   console.log(`     Duplicates dropped:      ${duplicatesDropped}`)
   console.log(`     Stubs dropped:           ${stubsDropped}`)
+  console.log(`     Total dataset size:      ${(totalBytes / 1024 / 1024).toFixed(2)} MB (${totalBytes} bytes)`)
+  console.log(`     File size min:           ${(minBytes / 1024).toFixed(2)} KB (${minOp})`)
+  console.log(`     File size avg:           ${(avgBytes / 1024).toFixed(2)} KB`)
+  console.log(`     File size max:           ${(maxBytes / 1024).toFixed(2)} KB (${maxOp})`)
 
   return {
-    totalOperators: Object.keys(dataset).length,
+    totalOperators: opCount,
     enCovered,
     cnCovered,
     cnOnlyCovered,
     duplicatesDropped,
     stubsDropped,
+    totalBytes,
+    minBytes,
+    avgBytes,
+    maxBytes,
     dataset,
   }
 }

@@ -1,14 +1,14 @@
-# Operator Handbook Dataset (data/handbook.json)
+# Operator Handbook Dataset (data/handbook/<charId>.json)
 
-## 1. Overview
+## 1. Overview & Architecture
 
-The operator handbook dataset (`data/handbook.json`) contains the complete lore, basic profile, physical evaluation/combat tests, and archival stories for all playable Arknights operators.
+The operator handbook dataset contains the complete lore, biographical profile, physical evaluation/combat tests, and archival stories for all playable Arknights operators.
 
 In accordance with architectural guidelines (`AGENTS.md` §3 and §13):
 
-- Handbooks are stored in a standalone dataset file (`data/handbook.json`) rather than bloated into `data/operators/*.json`.
-- The dataset is designed to be loaded lazily on demand when navigating to the operator dossier/archive view.
-- Handbooks are keyed by canonical operator ID (`charId`, e.g. `char_002_amiya`).
+- **Per-operator file layout**: Handbooks are stored as individual files in `data/handbook/<charId>.json` (e.g. `data/handbook/char_002_amiya.json`) rather than a single monolithic file or bloated into `data/operators/*.json`.
+- **On-demand lazy loading**: When viewing an operator's detail page, opening the "Dossier / Archive" tab loads only that specific operator's file (~25 KB average) over the network or via dynamic import, rather than forcing the client to download an 11 MB monolithic JSON payload. This is critical for mobile devices and slow connections.
+- **Approved §14 exception**: The size growth of the `data/` directory by +39.3% (+10.97 MB, 27.94 MB -> 38.91 MB) was deliberately reviewed and approved by the project owner on 2026-10-19 due to the inherent volume of narrative prose stories across 432 operators.
 
 ## 2. Structure & Schemas
 
@@ -19,6 +19,7 @@ Each operator handbook is typed as `OperatorHandbook`:
 ```ts
 interface OperatorHandbook {
   charId: string
+  infoName: LayeredI18nString
   profile: HandbookProfile
   physicalExam: HandbookPhysicalExam
   stories: HandbookStory[]
@@ -71,6 +72,6 @@ Stories consisting entirely of question mark placeholders (e.g. `？？？` with
 
 ## 6. Build and Validation Scripts
 
-- **Build**: `npm run data:handbook` (`scripts/data/build-handbook.ts`)
-- **Validation**: `npm run data:validate` (`scripts/data/validate-data.ts`)
+- **Build**: `npm run data:handbook` (`scripts/data/build-handbook.ts`) writes 432 files into `data/handbook/<charId>.json` and cleans up legacy monolithic `data/handbook.json`.
+- **Validation**: `npm run data:validate` (`scripts/data/validate-data.ts`) validates all 432 files against `OperatorHandbookSchema`, checks referential integrity against `data/operators/`, and verifies no monolithic file exists.
 - **Unit Tests**: `tests/unit/shared/handbook.test.ts`
