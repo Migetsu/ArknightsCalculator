@@ -54,6 +54,10 @@ export const useRecruitStore = defineStore('recruit', () => {
     selectedTags.value = []
   }
 
+  function setSelectedTags(tags: string[]): void {
+    selectedTags.value = [...tags]
+  }
+
   function setServerPool(pool: 'global' | 'cn'): void {
     serverPool.value = pool
   }
@@ -71,6 +75,7 @@ export const useRecruitStore = defineStore('recruit', () => {
     combinations,
     toggleTag,
     resetTags,
+    setSelectedTags,
     setServerPool,
     isTagSelected,
   }

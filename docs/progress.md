@@ -1,5 +1,41 @@
 # Project Progress
 
+- **Recruit Tags Cross-Linking & Query Pre-population (`feat/recruit-tag-links`):**
+  - **Context & Motivation:**
+    - Tactical tags displayed on the operator page (`AkOperatorInfoPanel.vue`) were previously static chips with no cross-linking to the Recruitment Matrix (`app/pages/recruit.vue`).
+    - The recruit page did not read `route.query.tags`, preventing direct links and sharing from populating recruitment calculations.
+    - Addressed Task 13 (and closed P3.2 in `docs/operator-wiki-audit.md`): linking valid recruitment tags to `/recruit?tags=<tag>`, pre-populating recruit calculator tags, capping at 5 tags with `AkAlert` warning, and gracefully isolating non-recruit tags (`Soar`).
+  - **Implementation Details:**
+    - **Tag Validation Utilities (`shared/utils/recruit/tagValidation.ts`):**
+      - `RECRUIT_TAG_NAMES`: canonical set of 29 valid recruitment tags.
+      - `isRecruitTag(tagName)`: strict type guard distinguishing recruit tags from non-recruit tags (e.g. `Soar` for CN operators Angelina the Mellow Wish, Kal'tsit Esperanta, Contrail, Tippi).
+      - `parseRecruitTagsQuery(rawQuery, maxTags)`: parses comma-separated or multi-query tag inputs, deduplicates preserving order, isolates valid tags from ignored tags, detects truncation when `validTags.length > maxTags`, and caps `appliedTags` to `maxTags`.
+    - **Recruit Store (`app/stores/recruit.ts`):**
+      - Added `setSelectedTags(tags: string[])` action ensuring applied query tags are clamped to `MAX_RECRUIT_TAGS` (5) and trigger combination recalculation.
+    - **Recruit Page (`app/pages/recruit.vue`):**
+      - Added reactive synchronization with `route.query.tags` using `parseRecruitTagsQuery`.
+      - Renders `<AkAlert>` warning banner (`variant="warning"`) with title `recruit.queryTruncatedTitle` and message listing applied tags when input exceeds 5 tags.
+      - Resets both selected tags and truncation alert on `resetTags` click.
+    - **Operator Dossier Panel (`app/components/operators/AkOperatorInfoPanel.vue`):**
+      - Each recruit tag renders as an interactive `<NuxtLink>` to `localePath({ path: '/recruit', query: { tags: tag } })`.
+      - Non-recruit tag `Soar` renders as a static `<AkBadge>` without link.
+      - Added scoped BEM styles for `.ak-operator-info-panel__tag-link` with hover states and accessible focus rings.
+    - **Localization (`i18n/locales/en.json`):**
+      - Added `operators.detail.info.recruitTagTooltip`, `recruit.queryTruncatedTitle`, and `recruit.queryTruncatedWarning`.
+    - **Testing:**
+      - `tests/unit/shared/recruit/tagValidation.test.ts` (10 tests).
+      - `tests/unit/pages/recruit.test.ts` (6 tests).
+      - `tests/unit/components/operators/AkOperatorInfoPanel.test.ts` (2 tests).
+      - `tests/e2e/recruit.spec.ts` (+2 E2E tests for query params and truncation warning).
+      - `tests/e2e/operator-detail.spec.ts` (+1 E2E test for tag link click navigation).
+  - **Quality Gates & Metrics:**
+    - `npm run i18n:check`: passed (654 valid keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: 90 test suites passed (683/683 tests passed, +17 new tests).
+    - `npm run build`: production build passed.
+    - `playwright test`: passed (recruit, operator-detail, and layout-sanity across 360px..1920px).
+
 - **Operator Dossier UI Panel (`feat/operator-dossier-ui`):**
   - **Context & Motivation:**
     - The operator handbook dataset (`data/handbook/<charId>.json`) was partitioned into individual files in Task 11. Task 12 implements the interactive UI on the operator detail page ("Dossier" tab), presenting biographical profiles, tactical physical assessments, and archival narrative lore.

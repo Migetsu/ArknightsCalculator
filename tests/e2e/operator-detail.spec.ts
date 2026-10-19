@@ -186,4 +186,23 @@ test.describe('Operator Detail (/operators/[id])', () => {
     expect(leakedOtherOps).toEqual([])
     expect(totalScriptBytes).toBeGreaterThan(0)
   })
+
+  test('clicking recruit tag link in dossier tab navigates to recruitment calculator', async ({
+    page,
+  }) => {
+    await page.goto('/operators/char_002_amiya?tab=info')
+    await page.waitForLoadState('domcontentloaded')
+
+    const dpsTagLink = page.locator('.ak-operator-info-panel__tag-link', { hasText: 'DPS' })
+    await expect(dpsTagLink).toBeVisible()
+    await expect(dpsTagLink).toHaveAttribute('href', '/recruit?tags=DPS')
+
+    await dpsTagLink.click()
+    await page.waitForLoadState('domcontentloaded')
+
+    await expect(page).toHaveURL(/\/recruit\?tags=DPS/)
+    await expect(page.locator('.recruit-page__counter-value')).toContainText('1 / 5')
+    const activeDpsBtn = page.locator('.recruit-page__tag-btn--active', { hasText: 'DPS' })
+    await expect(activeDpsBtn).toBeVisible()
+  })
 })

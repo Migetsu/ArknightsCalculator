@@ -32,5 +32,35 @@ describe('AkOperatorInfoPanel', () => {
     expect(wrapper.find('[data-testid="dossier-profile-section"]').exists()).toBe(true)
     expect(wrapper.find('[data-testid="dossier-physical-section"]').exists()).toBe(true)
     expect(wrapper.find('[data-testid="dossier-stories-section"]').exists()).toBe(true)
+
+    // Tag links: DPS is a recruit tag and should be wrapped in NuxtLink
+    const tagLinks = wrapper.findAll('.ak-operator-info-panel__tag-link')
+    expect(tagLinks.length).toBe(1)
+    expect(tagLinks[0]!.text()).toBe('DPS')
+    expect(tagLinks[0]!.attributes('href')).toBe('/recruit?tags=DPS')
+  })
+
+  it('renders non-recruit tag "Soar" without a link while recruit tags are linked', async () => {
+    const aglna2 = loadOperatorDetail('char_1015_aglna2')
+    const wrapper = await mountSuspended(AkOperatorInfoPanel, {
+      props: {
+        operator: aglna2,
+      },
+    })
+    await flushPromises()
+
+    // aglna2 tagList: ['Soar', 'DPS', 'Crowd-Control']
+    const tagLinks = wrapper.findAll('.ak-operator-info-panel__tag-link')
+    expect(tagLinks.length).toBe(2)
+    const linkedTagNames = tagLinks.map((l) => l.text())
+    expect(linkedTagNames).toContain('DPS')
+    expect(linkedTagNames).toContain('Crowd-Control')
+    expect(linkedTagNames).not.toContain('Soar')
+
+    // Soar is rendered in an AkBadge outside of tag-link
+    const allBadges = wrapper.findAll('.ak-badge')
+    const soarBadge = allBadges.find((b) => b.text() === 'Soar')
+    expect(soarBadge).toBeDefined()
+    expect(soarBadge!.element.closest('a')).toBeNull()
   })
 })
