@@ -247,7 +247,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
     it('identifies the active EN banner at reference timestamp', () => {
       expect(stats.currentEnBanner).not.toBeNull()
       expect(stats.currentEnBanner?.id).toBe('LIMITED_EN_42_0_1')
-      expect(stats.currentEnBanner?.name).toBe('Sealed With Time')
+      expect(stats.currentEnBanner?.name.en).toBe('Sealed With Time')
 
       const enActive = dataset.enBanners.find((b) => b.id === 'LIMITED_EN_42_0_1')
       expect(enActive?.isActive).toBe(true)

@@ -8,6 +8,14 @@ import {
   type GachaBanner,
   type NextBannerSummary,
 } from '../../shared/schemas/banner'
+import {
+  createEmptyI18nLayersContext,
+  createI18nTracker,
+  loadI18nLayersContext,
+  resolveLayeredI18nString,
+  type I18nLayersContext,
+  type I18nLayersTracker,
+} from './i18n-layers'
 
 export interface RawGachaPool {
   gachaPoolId: string
@@ -73,6 +81,8 @@ export function mapRuleToBannerType(ruleType: string, poolName: string): BannerT
 export interface BuildBannersOptions {
   now?: number
   write?: boolean
+  i18nContext?: I18nLayersContext
+  tracker?: I18nLayersTracker
 }
 
 export interface BuildBannersResult {
@@ -107,9 +117,11 @@ export interface BuildBannersResult {
 export function buildBannersFromTables(
   enRaw: RawGachaTable,
   cnRaw: RawGachaTable,
-  options: { now?: number } = {},
+  options: { now?: number; i18nContext?: I18nLayersContext; tracker?: I18nLayersTracker } = {},
 ): BuildBannersResult {
   const nowSec = options.now ?? Math.floor(Date.now() / 1000)
+  const i18nContext = options.i18nContext ?? createEmptyI18nLayersContext()
+  const tracker = options.tracker
 
   const enPoolsTotal = enRaw.gachaPoolClient.length
   const cnPoolsTotal = cnRaw.gachaPoolClient.length
@@ -201,14 +213,25 @@ export function buildBannersFromTables(
     const isActive = nowSec >= p.openTime && nowSec <= p.endTime
     const pairedId = enToCnLimitedPairs.get(p.gachaPoolId) ?? null
 
+    const bannerName = resolveLayeredI18nString(
+      {
+        key: `banner.${p.gachaPoolId}.name`,
+        officialEn: p.gachaPoolName,
+        zhText: p.gachaPoolName,
+        isGlobal: true,
+      },
+      i18nContext,
+      tracker,
+    )
+
     return {
       id: p.gachaPoolId,
       server: 'en',
       ruleType: p.gachaRuleType,
       type,
       tag: p.gachaRuleType,
-      name: p.gachaPoolName,
-      title: p.gachaPoolName,
+      name: bannerName,
+      title: bannerName,
       openTime: p.openTime,
       endTime: p.endTime,
       openIso,
@@ -234,14 +257,25 @@ export function buildBannersFromTables(
     const pairedId = cnToEnLimitedPairs.get(p.gachaPoolId) ?? null
     const isNext = nextCnLimited ? p.gachaPoolId === nextCnLimited.gachaPoolId : false
 
+    const bannerName = resolveLayeredI18nString(
+      {
+        key: `banner.${p.gachaPoolId}.name`,
+        officialEn: null,
+        zhText: p.gachaPoolName,
+        isGlobal: false,
+      },
+      i18nContext,
+      tracker,
+    )
+
     return {
       id: p.gachaPoolId,
       server: 'cn',
       ruleType: p.gachaRuleType,
       type,
       tag: p.gachaRuleType,
-      name: p.gachaPoolName,
-      title: p.gachaPoolName,
+      name: bannerName,
+      title: bannerName,
       openTime: p.openTime,
       endTime: p.endTime,
       openIso,
@@ -294,17 +328,18 @@ export function buildBannersFromTables(
     null
 
   // Next EN limited banner summary
-  const nextEnLimitedBanner: NextBannerSummary | null = nextCnLimited
+  const nextCnBanner = cnBanners.find((b) => b.isNextEnBanner)
+  const nextEnLimitedBanner: NextBannerSummary | null = nextCnBanner
     ? {
-        id: nextCnLimited.gachaPoolId,
+        id: nextCnBanner.id,
         server: 'cn',
-        name: nextCnLimited.gachaPoolName,
-        ruleType: nextCnLimited.gachaRuleType,
-        lmtgsid: nextCnLimited.LMTGSID ?? null,
-        openTime: nextCnLimited.openTime,
-        endTime: nextCnLimited.endTime,
-        openIso: new Date(nextCnLimited.openTime * 1000).toISOString(),
-        endIso: new Date(nextCnLimited.endTime * 1000).toISOString(),
+        name: nextCnBanner.name ?? nextCnBanner.title,
+        ruleType: nextCnBanner.ruleType,
+        lmtgsid: nextCnBanner.lmtgsid ?? null,
+        openTime: nextCnBanner.openTime,
+        endTime: nextCnBanner.endTime,
+        openIso: nextCnBanner.openIso,
+        endIso: nextCnBanner.endIso,
       }
     : null
 
@@ -350,7 +385,9 @@ export function buildBannersFromTables(
   }
 }
 
-export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBannersResult {
+export async function buildBannersDataset(
+  options: BuildBannersOptions = {},
+): Promise<BuildBannersResult> {
   const enPath = path.join(CACHE_DIR, 'en/gacha_table.json')
   const cnPath = path.join(CACHE_DIR, 'cn/gacha_table.json')
 
@@ -363,8 +400,10 @@ export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBan
 
   const enRaw: RawGachaTable = JSON.parse(fs.readFileSync(enPath, 'utf8'))
   const cnRaw: RawGachaTable = JSON.parse(fs.readFileSync(cnPath, 'utf8'))
+  const i18nContext = options.i18nContext ?? (await loadI18nLayersContext())
+  const tracker = options.tracker ?? createI18nTracker()
 
-  const result = buildBannersFromTables(enRaw, cnRaw, { now: options.now })
+  const result = buildBannersFromTables(enRaw, cnRaw, { now: options.now, i18nContext, tracker })
 
   if (options.write !== false) {
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result.dataset, null, 2) + '\n', 'utf8')
@@ -375,19 +414,27 @@ export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBan
 
 // Direct execution via CLI / jiti
 if (process.argv[1]?.includes('build-banners')) {
-  console.log('=== Building Arknights Banners Dataset ===\n')
-  const { stats } = buildBannersDataset({ write: true })
+  ;(async () => {
+    console.log('=== Building Arknights Banners Dataset ===\n')
+    const { stats } = await buildBannersDataset({ write: true })
 
-  console.log(`EN Pools: ${stats.enPoolsTotal} total -> ${stats.enRetained} retained`)
-  console.log(`  Excluded: ${stats.enExcludedStarter} starter, ${stats.enExcludedPerpetual} perpetual (RETURN_EN_41_0_1)`)
-  console.log(`CN Pools: ${stats.cnPoolsTotal} total -> ${stats.cnRetained} retained`)
-  console.log(`  Excluded: ${stats.cnExcludedStarter} starter, ${stats.cnExcludedPerpetual} perpetual (RETURN_71_0_1)`)
-  console.log(`Total Banners Generated: ${stats.totalRetained}\n`)
+    console.log(`EN Pools: ${stats.enPoolsTotal} total -> ${stats.enRetained} retained`)
+    console.log(`  Excluded: ${stats.enExcludedStarter} starter, ${stats.enExcludedPerpetual} perpetual (RETURN_EN_41_0_1)`)
+    console.log(`CN Pools: ${stats.cnPoolsTotal} total -> ${stats.cnRetained} retained`)
+    console.log(`  Excluded: ${stats.cnExcludedStarter} starter, ${stats.cnExcludedPerpetual} perpetual (RETURN_71_0_1)`)
+    console.log(`Total Banners Generated: ${stats.totalRetained}\n`)
 
-  console.log(`Verified LIMITED Pairs via LMTGSID: ${stats.verifiedLimitedPairsCount} of 25`)
-  console.log(`Current EN Banner: ${stats.currentEnBanner?.id} ("${stats.currentEnBanner?.name}")`)
-  console.log(`  Ends at: ${stats.currentEnBanner?.endIso}`)
-  console.log(`Active CN Banners (${stats.activeCnBanners.length}): ${stats.activeCnBanners.map(b => b.name).join(', ')}`)
-  console.log(`Next EN Limited Banner: ${stats.nextEnLimitedBanner?.id} ("${stats.nextEnLimitedBanner?.name}", LMTGSID: ${stats.nextEnLimitedBanner?.lmtgsid})\n`)
-  console.log(`Dataset successfully written to ${OUTPUT_FILE}`)
+    console.log(`Verified LIMITED Pairs via LMTGSID: ${stats.verifiedLimitedPairsCount} of 25`)
+    console.log(
+      `Current EN Banner: ${stats.currentEnBanner?.id} ("${stats.currentEnBanner?.name.en ?? stats.currentEnBanner?.name.zh}")`,
+    )
+    console.log(`  Ends at: ${stats.currentEnBanner?.endIso}`)
+    console.log(
+      `Active CN Banners (${stats.activeCnBanners.length}): ${stats.activeCnBanners.map((b) => b.name.en || b.name.zh).join(', ')}`,
+    )
+    console.log(
+      `Next EN Limited Banner: ${stats.nextEnLimitedBanner?.id} ("${stats.nextEnLimitedBanner?.name.en || stats.nextEnLimitedBanner?.name.zh}", LMTGSID: ${stats.nextEnLimitedBanner?.lmtgsid})\n`,
+    )
+    console.log(`Dataset successfully written to ${OUTPUT_FILE}`)
+  })()
 }

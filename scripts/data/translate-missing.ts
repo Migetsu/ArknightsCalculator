@@ -22,6 +22,47 @@ export type UntranslatedType =
   | 'term_name'
   | 'term_desc'
   | 'operator_tag'
+  | 'skin_name'
+  | 'skin_brand'
+  | 'skin_desc'
+  | 'skin_dialog'
+  | 'skin_obtain'
+  | 'banner_name'
+
+export interface RawSkinItem {
+  skinId: string
+  charId: string
+  skinName?: I18nField | null
+  brandName?: I18nField | null
+  description?: I18nField | null
+  dialog?: I18nField | null
+  obtainApproach?: I18nField | null
+}
+
+export interface RawBannerItem {
+  id: string
+  name: string | I18nField
+  server?: string
+}
+
+export interface CollectSkinsOptions {
+  glossary?: GlossaryData | null
+  charNames?: Record<string, string>
+}
+
+export interface CollectBannersOptions {
+  glossary?: GlossaryData | null
+}
+
+export function isUntranslated(
+  field?: { en?: string; zh?: string; source?: string } | null,
+): boolean {
+  if (!field) return false
+  if (field.source === 'zh' || field.source === 'pending') return true
+  if (!field.en || field.en === field.zh || field.en === '[Pending Translation]') return true
+  return false
+}
+
 
 /**
  * Matches a CJK ideograph (Han character), not fullwidth punctuation.
@@ -151,6 +192,116 @@ function findRelevantGlossary(
 }
 
 /**
+ * Collects untranslated skin strings from a list of raw skin items.
+ * Deduplicates by type and Chinese text, aggregating target keys.
+ */
+export function collectUntranslatedFromSkins(
+  skins: RawSkinItem[],
+  options?: CollectSkinsOptions,
+): UntranslatedItem[] {
+  const glossary = options?.glossary ?? null
+  const charNames = options?.charNames ?? {}
+  const templateMap = new Map<string, UntranslatedItem>()
+
+  for (const skin of skins) {
+    const charId = skin.charId || ''
+    const charNameZh = charNames[charId] || ''
+    const fields: Array<[keyof RawSkinItem, UntranslatedType, string]> = [
+      ['skinName', 'skin_name', 'name'],
+      ['brandName', 'skin_brand', 'brandName'],
+      ['description', 'skin_desc', 'description'],
+      ['dialog', 'skin_dialog', 'dialog'],
+      ['obtainApproach', 'skin_obtain', 'obtainApproach'],
+    ]
+
+    for (const [fieldKey, type, subKey] of fields) {
+      const val = skin[fieldKey] as I18nField | undefined | null
+      if (!isUntranslated(val)) continue
+      const zh = (val?.zh || '').trim()
+      if (!zh || !hasCjkIdeograph(zh)) continue
+
+      const key = `skin.${skin.skinId}.${subKey}`
+      const mapKey = `${type}:::${zh}`
+      const existing = templateMap.get(mapKey)
+
+      if (existing) {
+        if (!existing.keys.includes(key)) {
+          existing.keys.push(key)
+        }
+      } else {
+        const item: UntranslatedItem = {
+          id: `${type}_${templateMap.size + 1}`,
+          type,
+          charId,
+          charNameZh,
+          zh,
+          tags: extractOpenTags(zh),
+          placeholders: extractPlaceholders(zh),
+          keys: [key],
+          relevantGlossary: findRelevantGlossary(zh, 'terms', glossary),
+        }
+        templateMap.set(mapKey, item)
+      }
+    }
+  }
+
+  return Array.from(templateMap.values())
+}
+
+/**
+ * Collects untranslated banner names from a list of raw banner items.
+ * Deduplicates by banner name and Chinese text, aggregating target keys.
+ */
+export function collectUntranslatedFromBanners(
+  banners: RawBannerItem[],
+  options?: CollectBannersOptions,
+): UntranslatedItem[] {
+  const glossary = options?.glossary ?? null
+  const templateMap = new Map<string, UntranslatedItem>()
+
+  for (const banner of banners) {
+    let zh = ''
+    let untranslated = false
+
+    if (typeof banner.name === 'string') {
+      zh = banner.name.trim()
+      untranslated = true
+    } else if (banner.name && typeof banner.name === 'object') {
+      zh = (banner.name.zh || '').trim()
+      untranslated = isUntranslated(banner.name)
+    }
+
+    if (!untranslated || !zh || !hasCjkIdeograph(zh)) continue
+
+    const key = `banner.${banner.id}.name`
+    const type: UntranslatedType = 'banner_name'
+    const mapKey = `${type}:::${zh}`
+    const existing = templateMap.get(mapKey)
+
+    if (existing) {
+      if (!existing.keys.includes(key)) {
+        existing.keys.push(key)
+      }
+    } else {
+      const item: UntranslatedItem = {
+        id: `${type}_${templateMap.size + 1}`,
+        type,
+        charId: '',
+        charNameZh: '',
+        zh,
+        tags: extractOpenTags(zh),
+        placeholders: extractPlaceholders(zh),
+        keys: [key],
+        relevantGlossary: findRelevantGlossary(zh, 'terms', glossary),
+      }
+      templateMap.set(mapKey, item)
+    }
+  }
+
+  return Array.from(templateMap.values())
+}
+
+/**
  * Scans all operator JSON files to collect untranslated strings (source: 'zh').
  */
 export async function collectUntranslatedItems(): Promise<{
@@ -186,6 +337,12 @@ export async function collectUntranslatedItems(): Promise<{
     term_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     term_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     operator_tag: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    skin_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    skin_brand: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    skin_desc: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    skin_dialog: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    skin_obtain: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    banner_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
   })
 
   const byType = emptyStatsByType()
@@ -236,13 +393,6 @@ export async function collectUntranslatedItems(): Promise<{
 
       templateMap.set(mapKey, { item, instances: 1 })
     }
-  }
-
-  function isUntranslated(field?: { en?: string; zh?: string; source?: string } | null): boolean {
-    if (!field) return false
-    if (field.source === 'zh' || field.source === 'pending') return true
-    if (!field.en || field.en === field.zh || field.en === '[Pending Translation]') return true
-    return false
   }
 
   for (const file of files) {
@@ -421,6 +571,55 @@ export async function collectUntranslatedItems(): Promise<{
     // constants.json is optional; the operator pass alone is still valid.
   }
 
+  // Skins pass
+  try {
+    const skinsPath = path.resolve(process.cwd(), 'data/skins.json')
+    const skinsRaw = await fs.readFile(skinsPath, 'utf-8')
+    const skins = JSON.parse(skinsRaw) as RawSkinItem[]
+
+    const charNames: Record<string, string> = {}
+    try {
+      const idxRaw = await fs.readFile(
+        path.resolve(process.cwd(), 'data/operators-index.json'),
+        'utf-8',
+      )
+      const idx = JSON.parse(idxRaw) as Array<{ id: string; name?: { zh?: string } }>
+      for (const op of idx) {
+        if (op.name?.zh) charNames[op.id] = op.name.zh
+      }
+    } catch {
+      // ignore
+    }
+
+    const skinItems = collectUntranslatedFromSkins(skins, { glossary, charNames })
+    for (const item of skinItems) {
+      for (const key of item.keys) {
+        registerString(item.type, item.charId, item.charNameZh, key, item.zh, 'terms')
+      }
+    }
+  } catch {
+    // skins.json is optional
+  }
+
+  // Banners pass
+  try {
+    const bannersPath = path.resolve(process.cwd(), 'data/banners.json')
+    const bannersRaw = await fs.readFile(bannersPath, 'utf-8')
+    const bannersData = JSON.parse(bannersRaw) as {
+      cnBanners?: RawBannerItem[]
+      banners?: RawBannerItem[]
+    }
+    const bannerList = bannersData.cnBanners ?? bannersData.banners ?? []
+    const bannerItems = collectUntranslatedFromBanners(bannerList, { glossary })
+    for (const item of bannerItems) {
+      for (const key of item.keys) {
+        registerString(item.type, item.charId, item.charNameZh, key, item.zh, 'terms')
+      }
+    }
+  } catch {
+    // banners.json is optional
+  }
+
   const items: UntranslatedItem[] = []
   let totalChars = 0
 
@@ -455,15 +654,21 @@ const PRIORITY_ORDER: Record<UntranslatedType, number> = {
   skill_name: 2,
   talent_name: 3,
   module_name: 4,
-  potential_desc: 5,
-  term_name: 6,
-  skill_desc: 7,
-  talent_desc: 8,
-  module_stage_desc: 9,
-  module_desc: 10,
-  profile_text: 11,
-  term_desc: 12,
-  operator_tag: 13,
+  skin_name: 5,
+  skin_brand: 6,
+  banner_name: 7,
+  potential_desc: 8,
+  term_name: 9,
+  skill_desc: 10,
+  talent_desc: 11,
+  module_stage_desc: 12,
+  module_desc: 13,
+  skin_desc: 14,
+  skin_dialog: 15,
+  skin_obtain: 16,
+  profile_text: 17,
+  term_desc: 18,
+  operator_tag: 19,
 }
 
 /**
@@ -531,6 +736,8 @@ export async function importBatches(): Promise<{
   const talentsMach: Record<string, { text: string; source: 'machine' }> = {}
   const modulesMach: Record<string, { text: string; source: 'machine' }> = {}
   const termsMach: Record<string, { text: string; source: 'machine' }> = {}
+  const skinsMach: Record<string, { text: string; source: 'machine' }> = {}
+  const bannersMach: Record<string, { text: string; source: 'machine' }> = {}
 
   // Load existing machine files to preserve existing translations
   async function loadExisting(file: string, target: Record<string, { text: string; source: 'machine' }>) {
@@ -551,6 +758,8 @@ export async function importBatches(): Promise<{
   await loadExisting('talents.json', talentsMach)
   await loadExisting('modules.json', modulesMach)
   await loadExisting('terms.json', termsMach)
+  await loadExisting('skins.json', skinsMach)
+  await loadExisting('banners.json', bannersMach)
 
   let importedCount = 0
   let invalidCount = 0
@@ -614,6 +823,14 @@ export async function importBatches(): Promise<{
           case 'module_desc':
           case 'module_stage_desc':
             return modulesMach
+          case 'skin_name':
+          case 'skin_brand':
+          case 'skin_desc':
+          case 'skin_dialog':
+          case 'skin_obtain':
+            return skinsMach
+          case 'banner_name':
+            return bannersMach
         }
       })()
 
@@ -652,6 +869,22 @@ export async function importBatches(): Promise<{
     await fs.writeFile(
       path.join(machineDir, 'terms.json'),
       JSON.stringify(termsMach, null, 2) + '\n',
+      'utf-8',
+    )
+  }
+
+  if (Object.keys(skinsMach).length > 0) {
+    await fs.writeFile(
+      path.join(machineDir, 'skins.json'),
+      JSON.stringify(skinsMach, null, 2) + '\n',
+      'utf-8',
+    )
+  }
+
+  if (Object.keys(bannersMach).length > 0) {
+    await fs.writeFile(
+      path.join(machineDir, 'banners.json'),
+      JSON.stringify(bannersMach, null, 2) + '\n',
       'utf-8',
     )
   }

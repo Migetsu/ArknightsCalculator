@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { I18nStringSchema } from './operator'
 
 export const BannerServerSchema = z.enum(['cn', 'en'])
 export type BannerServer = z.infer<typeof BannerServerSchema>
@@ -15,8 +16,8 @@ export const GachaBannerSchema = z.object({
   ruleType: z.string().default('NORMAL'),
   type: BannerTypeSchema,
   tag: z.string().optional(),
-  name: z.string().optional(),
-  title: z.string(),
+  name: I18nStringSchema.optional(),
+  title: I18nStringSchema,
   subtitle: z.string().optional(),
   description: z.string().optional(),
   openTime: z.number().default(0),
@@ -43,7 +44,7 @@ export type GachaBanner = z.infer<typeof GachaBannerSchema>
 export const BannerSummarySchema = z.object({
   id: z.string(),
   server: BannerServerSchema,
-  name: z.string(),
+  name: I18nStringSchema,
   ruleType: z.string(),
   openTime: z.number(),
   endTime: z.number(),
@@ -55,7 +56,7 @@ export type BannerSummary = z.infer<typeof BannerSummarySchema>
 export const NextBannerSummarySchema = z.object({
   id: z.string(),
   server: BannerServerSchema,
-  name: z.string(),
+  name: I18nStringSchema,
   ruleType: z.string(),
   lmtgsid: z.string().nullable().optional(),
   openTime: z.number(),

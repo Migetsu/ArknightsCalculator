@@ -48,6 +48,7 @@ export interface TranslationRunOptions {
   /** Send the corrective retry for validation failures. Defaults to true. */
   repair?: boolean
   onProgress?: (message: string) => void
+  onBatchSuccess?: (entries: TranslatedEntry[]) => Promise<void> | void
 }
 
 type TranslationResponse = Array<{ id?: string; en?: string }>
@@ -132,13 +133,16 @@ export async function runTranslation(
 
     const byId = toResponseMap(response)
     const roundFailures: MtRepairFailure[] = []
+    const chunkEntries: TranslatedEntry[] = []
 
     for (const item of chunk) {
       const en = byId.get(item.id) ?? ''
       const issues = checkTranslation(item.zh, en)
 
       if (issues.length === 0) {
-        entries.push({ item, en, repaired: false })
+        const entry = { item, en, repaired: false }
+        entries.push(entry)
+        chunkEntries.push(entry)
       } else {
         roundFailures.push({ item, en, issues })
       }
@@ -164,7 +168,9 @@ export async function runTranslation(
         const issues = checkTranslation(failure.item.zh, en)
 
         if (issues.length === 0) {
-          entries.push({ item: failure.item, en, repaired: true })
+          const entry = { item: failure.item, en, repaired: true }
+          entries.push(entry)
+          chunkEntries.push(entry)
           repairedCount += 1
         } else {
           stillFailing.push({ item: failure.item, en, issues })
@@ -176,6 +182,14 @@ export async function runTranslation(
     } else if (roundFailures.length > 0) {
       report(`${label}: ${roundFailures.length} quarantined (repair disabled)`)
       failures.push(...roundFailures)
+    }
+
+    if (chunkEntries.length > 0) {
+      await options.onBatchSuccess?.(chunkEntries)
+    }
+
+    if (index + 1 < chunks.length) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
     }
   }
 

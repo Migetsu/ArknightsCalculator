@@ -10,6 +10,7 @@ import {
   isProvenNotOnGlobal,
 } from '~/../shared/utils/gacha'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
 interface Props {
   banner: GachaBanner
@@ -29,6 +30,15 @@ const emit = defineEmits<{
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+
+const bannerTitle = computed(() => {
+  return (
+    resolveI18nString(props.banner.title, locale.value as 'en' | 'zh') ||
+    props.banner.title?.en ||
+    props.banner.title?.zh ||
+    ''
+  )
+})
 
 const lifecycleStatus = computed(() => getBannerLifecycleStatus(props.banner))
 const notOnGlobal = computed(() => isProvenNotOnGlobal(props.banner))
@@ -112,7 +122,13 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
         class="gacha-banner__badge-bar"
         :class="{ 'gacha-banner__badge-bar--limited': isLimited }"
       >
-        {{ banner.title }}
+        <span class="gacha-banner__title-text">{{ bannerTitle }}</span>
+        <AkTranslationBadge
+          v-if="banner.title?.source"
+          :source="banner.title.source"
+          :stale="banner.title.stale"
+          class="gacha-banner__title-badge"
+        />
       </div>
 
       <!-- Banner Art Frame -->
@@ -280,6 +296,11 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
   }
 
   &__badge-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2xs, 4px);
     background-color: var(--color-accent-amber, #ff9d2b);
     color: var(--color-bg-deep, #120d0b);
     padding: 9px 12px;

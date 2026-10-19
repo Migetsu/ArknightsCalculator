@@ -1,5 +1,49 @@
 # Project Progress
 
+- **Skins & Banners Machine Translation Pipeline (`feat/i18n-skins-banners`):**
+  - **Context & Motivation:**
+    - `data/skins.json` contained 203 fields with `source: 'pending'` across 72 CN-only skins that were never translated because the translation collector only scanned operators and constants (known issue 15).
+    - `data/banners.json` contained 453 CN banner names (105 unique Chinese titles) that lacked localized `I18nString` schemas and machine translations.
+    - Task 18 extends the Gemini machine translation pipeline to scan, deduplicate, translate, and import skins and banners into the layered i18n architecture.
+  - **Implementation Details:**
+    - **Banner Schema Migration (`shared/schemas/banner.ts`):**
+      - Migrated `GachaBannerSchema.title`, `GachaBannerSchema.name`, `BannerSummarySchema.name`, and `NextBannerSummarySchema.name` to `I18nStringSchema`.
+    - **Banners Builder (`scripts/data/build-banners.ts`):**
+      - Integrated `loadI18nLayersContext` and `resolveLayeredI18nString` with key `banner.${id}.name`.
+      - EN banners resolve with `officialEn: p.gachaPoolName` -> `source: 'official'`.
+      - CN banners resolve through layered chain -> `source: 'machine'` when in machine dictionaries, or `pending` fallback.
+    - **UI Localization & Badges:**
+      - `app/components/gacha/GachaBannerCard.vue`: computes `bannerTitle` using `resolveI18nString(props.banner.title, locale.value as 'en' | 'zh')`, renders `<AkTranslationBadge>` for `pending` and `machine` translations in `gacha-banner__badge-bar`.
+      - `app/pages/gacha.vue`: resolves `currentEnBannerTitle` with `<AkTranslationBadge>`.
+    - **Collector & Importer (`scripts/data/translate-missing.ts`, `mt-batch.ts`, `mt-prompt.ts`):**
+      - Added untranslated types: `'skin_name'`, `'skin_brand'`, `'skin_desc'`, `'skin_dialog'`, `'skin_obtain'`, `'banner_name'`.
+      - Extracted pure collection functions `collectUntranslatedFromSkins` and `collectUntranslatedFromBanners` supporting in-memory fixtures without filesystem or `.cache` dependencies.
+      - Integrated collection into `collectUntranslatedItems`: scanned 203 skin fields (129 unique templates) and 453 CN banners (105 unique templates) = 234 unique templates.
+      - Updated `importBatches` to load, merge, and save `data/i18n/machine/skins.json` (203 entries) and `data/i18n/machine/banners.json` (453 entries).
+      - Incremental batch streaming: updated `runTranslation` and `translate-with-gemini.ts` to persist batches to disk immediately upon completion with resilient retry backoff (up to 8 retries).
+    - **Live Translation Execution:**
+      - Executed `npm run data:translate:all` using `gemini-3.5-flash-lite`.
+      - 234 items translated across 4 batches, 0 items quarantined, 0 errors.
+      - Rebuilt `data/skins.json` (`npm run data:skins`) and `data/banners.json` (`npm run data:banners`).
+      - Verified 100% elimination of pending strings: 0 pending across skins and banners. Re-running analysis yields 0 untranslated strings (idempotency verified).
+    - **Unit Tests:**
+      - `tests/unit/data/translate-skins-banners.test.ts` (3 tests: skin field collection/deduplication, CJK filtering, banner deduplication without `.cache`).
+      - `tests/unit/components/gacha/GachaBannerCard.test.ts` (updated to `I18nString`, added badge tests for `PENDING` and `MT`).
+      - `tests/unit/data/build-banners.test.ts` (updated for `I18nString` on `currentEnBanner?.name.en`).
+      - `tests/unit/shared/gacha.test.ts` (updated mock banner titles with `mockI18n`).
+      - `tests/unit/scripts/mt-batch.test.ts` (verified schema acceptance of skin and banner types).
+    - **Documentation:**
+      - Updated `docs/i18n-machine-translation.md` with skin/banner types, dictionaries, and 0 pending status.
+      - Updated `docs/data-banners.md` with `I18nString` specifications.
+      - Updated `docs/known-issues.md` marking item 15 as Resolved.
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 685 valid keys.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 736 tests passed across 95 test files.
+    - `data:validate`: 100% valid.
+    - `build`: production bundle compiled cleanly.
+
 - **CI Stabilization: Cache Decoupling & E2E OOM Resolution (`fix/ci-green`):**
   - **Context & Motivation:**
     - CI was failing on GitHub Actions since Task 14 due to two independent issues:

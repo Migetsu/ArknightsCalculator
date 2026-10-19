@@ -44,7 +44,7 @@ translation backend can be replaced without touching the data model.
 
 5. import    npx jiti scripts/data/translate-missing.ts --import
              -> validates every string with validateTranslation() and writes
-                data/i18n/machine/{operators,skills,talents,modules}.json
+                data/i18n/machine/{operators,skills,talents,modules,skins,banners}.json
 ```
 
 ## The translation loop
@@ -190,10 +190,14 @@ The collector covers every localized field the builder resolves:
 | `profile_text`                | `itemUsage` / `itemDesc` (operator dossier)                                              |
 | `term_name` / `term_desc`     | `data/constants.json` terminology dictionary (the tooltips in rich text)                 |
 | `operator_tag`                | operator role tags, as a fallback (see below)                                            |
+| `skin_name` / `skin_brand`    | `data/skins.json` skin name and brand name                                               |
+| `skin_desc` / `skin_dialog`   | `data/skins.json` skin description and quote/dialog                                      |
+| `skin_obtain`                 | `data/skins.json` acquisition method description                                         |
+| `banner_name`                 | `data/banners.json` headhunting banner name and title                                    |
 
-As of the 2026-10-18 run this leaves **0 pending strings** in `data/operators/` and
-`data/constants.json`, with 750 operator strings and 14 term strings resolved by the
-machine layer.
+As of the Task 18 run this leaves **0 pending strings** across all datasets (`data/operators/`,
+`data/constants.json`, `data/skins.json`, `data/banners.json`), with 750 operator strings, 14 term strings,
+203 skin fields, and 453 CN banner names resolved by the machine layer.
 
 ### Role tags do not need the API
 

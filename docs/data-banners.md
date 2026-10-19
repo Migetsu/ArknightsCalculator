@@ -52,7 +52,7 @@ Each banner object contains:
 - `server`: `'en' | 'cn'`.
 - `ruleType`: Raw game rule type (e.g. `'LIMITED'`, `'LINKAGE'`, `'NORMAL'`, `'SINGLE'`, `'DOUBLE'`).
 - `type`: High-level category: `'limited' | 'standard' | 'joint_operation'`.
-- `name` / `title`: Official localized pool title (e.g. `"Sealed With Time"`, `"承诺"`).
+- `name` / `title`: `I18nString` (`{ en: string, zh: string, source: I18nSource, isMachineTranslation: boolean }`). Localized pool title, resolved through the layered i18n pipeline (`resolveLayeredI18nString` with key `banner.${id}.name`). For CN-only banners, English translations are provided by machine translation (`data/i18n/machine/banners.json`) with an `MT` badge, or `[Pending Translation]` with a `PENDING` badge if uncollected.
 - `openTime` / `endTime`: Exact Unix timestamps in seconds.
 - `openIso` / `endIso`: Standard ISO 8601 strings (e.g. `2026-10-14T10:00:00.000Z`).
 - `durationDays`: Duration of the banner in fractional days.
