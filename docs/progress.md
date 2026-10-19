@@ -7,20 +7,11 @@
   - **Raw Price Investigation & Analysis:**
     - Thoroughly investigated raw game data across all 60 client tables (`skin_table.json`, `shop_client_table.json`, `activity_table.json`, `item_table.json`, `gamedata_const.json`).
     - Proved with concrete data that numeric Originite Prime price does not exist as a static column in client configuration dumps; skin store offerings are served dynamically by game server network packets (`/shop/getSkinShop`).
-    - Implemented a deterministic, pure price calculation function (`calculateSkinPrice` in `shared/utils/skin.ts`) matching official game rules:
-      - 24 OP for Dynamic Live2D skins with unique deployment entrance animation (`dynEntranceId !== null`) or dynamic voice (`dynIllustId !== null && voiceType === 'ALL'`).
-      - 21 OP for Live2D skins (`dynIllustId !== null`).
-      - 15 OP for known early effectless store skins (`KNOWN_15_OP_SKIN_IDS`).
-      - 18 OP for standard store outfits.
-      - `null` price for free reward outfits (Event Rewards, Quest Rewards, Integrated Strategies, Reclamation Algorithm, Gift packs, and default appearances).
-  - **Zod Schemas & Barrel Export (`shared/schemas/skin.ts`, `shared/schemas/index.ts`):**
-    - Created `SkinSchema`, `SkinListSchema`, and `SkinRecordMapSchema` covering all required fields (`skinId`, `charId`, `skinName: I18nStringSchema`, `brandId`, `brandName`, `drawerList`, `description`, `dialog`, `obtainApproach`, `isBuySkin`, `price`, `currency`, `illustId`, `avatarId`, `portraitId`, `isCnOnly`, `servers`).
-    - Created `shared/schemas/index.ts` re-exporting all domain schemas.
-    - Extended `ServerRegionSchema` to include `'en'`.
-  - **Generator Script & Build Command (`scripts/data/build-skins.ts`, `package.json`):**
-    - Created `scripts/data/build-skins.ts` merging CN and EN tables with multi-layer i18n name resolution (`skin.<skinId>.name`).
-    - Output `data/skins.json` contains 1359 playable operator skins (526 cosmetic outfits and 833 default appearances).
-    - Added `"data:skins": "tsx scripts/data/build-skins.ts"` in `package.json`.
+  - **Skin Pricing Status & Honest Verification (Task 1a):**
+    - Removed heuristic pricing completely (`price` is strictly `null` for all 1359 skins, with `numeric prices: 0`).
+    - Added `priceStatus` ('default' | 'free' | 'unknown') and `priceSource` (currently `null`).
+    - Added a price guard test in `tests/unit/schemas/skin.test.ts` that fails validation if a skin has a numeric price without a verified non-empty `priceSource`.
+    - Switched `data:skins` in `package.json` to standard `jiti scripts/data/build-skins.ts` and removed `tsx`.
   - **Asset Resolution & URL-Encoding (`shared/utils/resolveAsset.ts`):**
     - Enhanced `resolveAsset()` for `art`, `portrait`, and `avatar` to support skin variants (e.g. `resolveAsset('art', charId, { variant: skinId })`, `resolveAsset('art', skinId)`).
     - Added automatic percent-encoding of `#` to `%23` for all asset URLs to resolve HTTP 404 hash truncation on CDN requests.

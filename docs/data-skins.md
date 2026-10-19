@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The operator skins pipeline ingests `skin_table.json` from upstream game data (`SanityGoneAK/arknights-gamedata`), normalizes metadata across CN and EN sources, resolves names and descriptions via the layered i18n system, deterministically calculates Originite Prime store costs, and provides asset resolution for illustrations, portraits, and avatars.
+The operator skins pipeline ingests `skin_table.json` from upstream game data (`SanityGoneAK/arknights-gamedata`), normalizes metadata across CN and EN sources, resolves names and descriptions via the layered i18n system, registers verifiable pricing status, and provides asset resolution for illustrations, portraits, and avatars.
 
 ## 2. Source Configuration
 
@@ -18,43 +18,41 @@ Cached locally in `.cache/raw/{cn,en}/skin_table.json` via `npm run data:fetch`.
 
 ## 3. Zod Schema (`shared/schemas/skin.ts`)
 
-| Field            | Type               | Description                                                               |
-| :--------------- | :----------------- | :------------------------------------------------------------------------ |
-| `skinId`         | `string`           | Unique identifier (e.g. `char_102_texas@summer#1`, `char_002_amiya#1`)    |
-| `charId`         | `string`           | Parent operator ID (e.g. `char_102_texas`)                                |
-| `skinName`       | `I18nString`       | Layered localized name (`en`, `zh`, `source`, `isMachineTranslation`)     |
-| `brandId`        | `string \| null`   | Fashion brand tag (e.g. `sale`, `epoque`, `summer`, `winter`, `boc`)      |
-| `brandName`      | `string \| null`   | Full brand name (e.g. `Coral Coast`, `EPOQUE`, `Test Collection`)         |
-| `drawerList`     | `string[]`         | Credited artists / illustrators                                           |
-| `description`    | `string \| null`   | Flavor / lore description                                                 |
-| `dialog`         | `string \| null`   | Quote or dialogue line                                                    |
-| `obtainApproach` | `string \| null`   | Acquisition method (`Store`, `Event Reward`, `Quest Reward`, etc.)        |
-| `isBuySkin`      | `boolean`          | Store outfit indicator from game data                                     |
-| `price`          | `number \| null`   | Cost in Originite Prime (24, 21, 18, 15), or `null` for non-store outfits |
-| `currency`       | `string \| null`   | `'ORIGINITE_PRIME'` when price is defined, else `null`                    |
-| `illustId`       | `string`           | Asset ID for full character illustration                                  |
-| `avatarId`       | `string`           | Asset ID for square icon                                                  |
-| `portraitId`     | `string`           | Asset ID for half-body portrait                                           |
-| `isCnOnly`       | `boolean`          | `true` if present only in CN `skin_table.json`                            |
-| `servers`        | `('cn' \| 'en')[]` | Server availability list (`['cn']` or `['cn', 'en']`)                     |
+| Field            | Type                               | Description                                                                 |
+| :--------------- | :--------------------------------- | :-------------------------------------------------------------------------- |
+| `skinId`         | `string`                           | Unique identifier (e.g. `char_102_texas@summer#1`, `char_002_amiya#1`)      |
+| `charId`         | `string`                           | Parent operator ID (e.g. `char_102_texas`)                                  |
+| `skinName`       | `I18nString`                       | Layered localized name (`en`, `zh`, `source`, `isMachineTranslation`)       |
+| `brandId`        | `string \| null`                   | Fashion brand tag (e.g. `sale`, `epoque`, `summer`, `winter`, `boc`)        |
+| `brandName`      | `string \| null`                   | Full brand name (e.g. `Coral Coast`, `EPOQUE`, `Test Collection`)           |
+| `drawerList`     | `string[]`                         | Credited artists / illustrators                                             |
+| `description`    | `string \| null`                   | Flavor / lore description                                                   |
+| `dialog`         | `string \| null`                   | Quote or dialogue line                                                      |
+| `obtainApproach` | `string \| null`                   | Acquisition method (`Store`, `Event Reward`, `Quest Reward`, etc.)          |
+| `isBuySkin`      | `boolean`                          | Store outfit indicator from game data                                       |
+| `isDefault`      | `boolean`                          | `true` for default appearances (E0/E1/E2), `false` for cosmetic outfits     |
+| `price`          | `number \| null`                   | Numeric price in Originite Prime; strictly `null` without a verified source |
+| `priceStatus`    | `'default' \| 'free' \| 'unknown'` | Verified pricing status: default appearance, free reward, or store outfit   |
+| `priceSource`    | `string \| null`                   | Verified source reference for the price; strictly `null` currently          |
+| `currency`       | `string \| null`                   | Currency code (e.g. `'ORIGINITE_PRIME'`), currently `null`                  |
+| `illustId`       | `string`                           | Asset ID for full character illustration                                    |
+| `avatarId`       | `string`                           | Asset ID for square icon                                                    |
+| `portraitId`     | `string`                           | Asset ID for half-body portrait                                             |
+| `isCnOnly`       | `boolean`                          | `true` if present only in CN `skin_table.json`                              |
+| `servers`        | `('cn' \| 'en')[]`                 | Server availability list (`['cn']` or `['cn', 'en']`)                       |
 
-## 4. Skin Price Determination
+## 4. Skin Price Status & Verification
 
-In raw Arknights game data tables, numeric skin prices are **not stored as static fields** in `skin_table.json` or `shop_client_table.json`; instead, store rotations and purchases are managed dynamically by the game server packet protocol (`/shop/getSkinShop`).
+In raw Arknights game data tables (`skin_table.json`), numerical skin prices in Originite Prime are **not stored as static fields**. In the Arknights client architecture, active outfit shop inventory and pricing are delivered dynamically via server-side game network packets during active store rotations (`/shop/getSkinShop`).
 
-To support cost calculation for planners and inventory, prices are derived via deterministic rules implemented in `shared/utils/skin.ts`:
+To maintain strict data integrity without unverified heuristics:
 
-1. **Free / Milestone / Reward Outfits (`price = null`):**
-   - Outfits where `isBuySkin === false` (e.g. default E0/E1/E2 sprites).
-   - Outfits where `obtainApproach` indicates a reward (`Event Reward`, `Quest Reward`, `Event Gift`, `Integrated Strategies`, `Reclamation Algorithm`, special packs).
-2. **Dynamic 24 OP Outfits (`price = 24, currency = 'ORIGINITE_PRIME'`):**
-   - Live2D / dynamic outfits featuring custom deployment entrance animations (`dynEntranceId !== null`) or dynamic voice lines (`dynIllustId !== null && voiceType === 'ALL'`).
-3. **Live2D 21 OP Outfits (`price = 21, currency = 'ORIGINITE_PRIME'`):**
-   - Standard Live2D / dynamic outfits (`dynIllustId !== null`, `dynEntranceId === null`).
-4. **Early 15 OP Outfits (`price = 15, currency = 'ORIGINITE_PRIME'`):**
-   - Early cosmetic outfits without custom combat/particle effects (cataloged in `KNOWN_15_OP_SKIN_IDS`).
-5. **Standard 18 OP Outfits (`price = 18, currency = 'ORIGINITE_PRIME'`):**
-   - Standard store outfits featuring custom combat models and skill animations.
+1. **No guessed numerical prices:** `price` is set to `null` for all entries in `data/skins.json`.
+2. **Refinement fuse test:** `SkinSchema` enforces that any non-null `price` requires a non-empty `priceSource`.
+3. **Verifiable status (`priceStatus`):**
+   - `'default'`: default operator appearance (E0, E1, E2, class change) identified by `isDefaultSkin(skinId)`.
+   - `'free'`: cosmetic outfits obtained outside the Outfit Store via event milestones, gifts, missions, Integrated Strategies, Reclamation Algorithm, or redemption codes, read directly from `obtainApproach`.
+   - `'unknown'`: cosmetic outfits sold in the Outfit Store (`obtainApproach` contains `Store` / `采购中心`), whose numerical price awaits an external verified source.
 
 ## 5. Asset Resolution & CDN Encoding
 

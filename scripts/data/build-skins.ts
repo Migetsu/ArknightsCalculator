@@ -14,7 +14,7 @@ import {
   loadI18nLayersContext,
   resolveLayeredI18nString,
 } from './i18n-layers'
-import { calculateSkinPrice } from '../../shared/utils/skin'
+import { isDefaultSkin, getSkinPriceStatus } from '../../shared/utils/skin'
 
 interface RawDisplaySkin {
   skinName: string | null
@@ -119,6 +119,11 @@ export async function buildSkins(): Promise<{
   defaultCount: number
   cnOnlyCount: number
   buySkinsCount: number
+  priceStatusCounts: {
+    default: number
+    free: number
+    unknown: number
+  }
 }> {
   console.log('=== Arknights Operator Skins Generator ===\n')
 
@@ -175,6 +180,11 @@ export async function buildSkins(): Promise<{
   let defaultCount = 0
   let cnOnlyCount = 0
   let buySkinsCount = 0
+  const priceStatusCounts = {
+    default: 0,
+    free: 0,
+    unknown: 0,
+  }
 
   for (const skinId of sortedSkinIds) {
     const skinCn = rawCnTable.charSkins[skinId]
@@ -188,11 +198,11 @@ export async function buildSkins(): Promise<{
       cnOnlyCount++
     }
 
-    const isCosmetic = skinId.includes('@')
-    if (isCosmetic) {
-      cosmeticCount++
-    } else {
+    const isDefault = isDefaultSkin(skinId)
+    if (isDefault) {
       defaultCount++
+    } else {
+      cosmeticCount++
     }
 
     const isBuySkin = Boolean(skinSource.isBuySkin)
@@ -267,16 +277,12 @@ export async function buildSkins(): Promise<{
     const avatarId = skinSource.avatarId || normalizedFallback
     const portraitId = skinSource.portraitId || normalizedFallback
 
-    // Calculate price and currency
-    const priceResult = calculateSkinPrice({
+    // Determine verifiable price status without heuristic guessing
+    const priceStatus = getSkinPriceStatus({
       skinId,
-      isBuySkin,
-      dynEntranceId: skinSource.dynEntranceId,
-      dynIllustId: skinSource.dynIllustId,
-      voiceType: skinSource.voiceType,
-      obtainApproach: skinSource.displaySkin?.obtainApproach,
-      displayTagId: skinSource.displaySkin?.displayTagId,
+      obtainApproach,
     })
+    priceStatusCounts[priceStatus]++
 
     const skinRecord: Skin = SkinSchema.parse({
       skinId,
@@ -289,8 +295,11 @@ export async function buildSkins(): Promise<{
       dialog,
       obtainApproach,
       isBuySkin,
-      price: priceResult.price ?? null,
-      currency: priceResult.currency ?? null,
+      isDefault,
+      price: null,
+      priceStatus,
+      priceSource: null,
+      currency: null,
       illustId,
       avatarId,
       portraitId,
@@ -315,6 +324,9 @@ export async function buildSkins(): Promise<{
   console.log(`Default Operator Outfits: ${defaultCount}`)
   console.log(`Store Outfits (isBuySkin): ${buySkinsCount}`)
   console.log(`CN-only Skins: ${cnOnlyCount}`)
+  console.log(
+    `Price Status: default=${priceStatusCounts.default}, free=${priceStatusCounts.free}, unknown=${priceStatusCounts.unknown}`,
+  )
   console.log(`Output: data/skins.json\n`)
 
   return {
@@ -323,6 +335,7 @@ export async function buildSkins(): Promise<{
     defaultCount,
     cnOnlyCount,
     buySkinsCount,
+    priceStatusCounts,
   }
 }
 
