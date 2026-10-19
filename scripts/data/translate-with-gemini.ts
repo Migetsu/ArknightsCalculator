@@ -259,7 +259,11 @@ interface RunSummary {
 }
 
 async function runRun(options: CliOptions): Promise<RunSummary> {
-  const client = createGeminiClient({ apiKey: requireApiKey(), model: resolveModel() })
+  const client = createGeminiClient({
+    apiKey: requireApiKey(),
+    model: resolveModel(),
+    maxRetries: 8,
+  })
   const { items: liveItems } = await collectUntranslatedItems()
 
   const source = options.limit ? liveItems.slice(0, options.limit) : liveItems
@@ -274,6 +278,11 @@ async function runRun(options: CliOptions): Promise<RunSummary> {
     )
   }
 
+  // Continue numbering after any existing output so a resumed run appends
+  // instead of overwriting the previous run's translations.
+  let outIndex = (await countOutBatches()) + 1
+  let outFiles = 0
+
   const result = await runTranslation({
     client,
     items: source,
@@ -281,20 +290,15 @@ async function runRun(options: CliOptions): Promise<RunSummary> {
     alreadyTranslatedKeys,
     repair: options.repair,
     onProgress: (message) => console.log(`  ${message}`),
+    onBatchSuccess: async (chunkEntries) => {
+      await writeOutBatch(
+        outIndex,
+        chunkEntries.map((entry) => ({ ...toBatchItem(entry.item), en: entry.en })),
+      )
+      outIndex += 1
+      outFiles += 1
+    },
   })
-
-  // Continue numbering after any existing output so a resumed run appends
-  // instead of overwriting the previous run's translations.
-  const startIndex = (await countOutBatches()) + 1
-  let index = startIndex
-  for (const chunk of chunkItems(result.entries, options.batchSize)) {
-    await writeOutBatch(
-      index,
-      chunk.map((entry) => ({ ...toBatchItem(entry.item), en: entry.en })),
-    )
-    index += 1
-  }
-  const outFiles = index - startIndex
 
   const failedFile = await writeFailures(result.failures)
 

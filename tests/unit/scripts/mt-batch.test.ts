@@ -44,7 +44,12 @@ describe('mt-batch', () => {
     })
 
     it('rejects an unknown string type', () => {
-      expect(BatchItemSchema.safeParse({ ...VALID_ITEM, type: 'banner_name' }).success).toBe(false)
+      expect(BatchItemSchema.safeParse({ ...VALID_ITEM, type: 'unknown_type' }).success).toBe(false)
+    })
+
+    it('accepts skin and banner types', () => {
+      expect(BatchItemSchema.safeParse({ ...VALID_ITEM, type: 'skin_name' }).success).toBe(true)
+      expect(BatchItemSchema.safeParse({ ...VALID_ITEM, type: 'banner_name' }).success).toBe(true)
     })
 
     it('rejects a glossary whose values are not strings', () => {

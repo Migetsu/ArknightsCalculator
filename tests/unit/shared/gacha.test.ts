@@ -14,6 +14,11 @@ import {
   getBannerLifecycleStatus,
 } from '../../../shared/utils/gacha'
 import type { GachaBanner } from '../../../shared/schemas/banner'
+import type { I18nString } from '../../../shared/schemas/operator'
+
+function mockI18n(en: string, zh: string = en): I18nString {
+  return { en, zh, source: 'official', isMachineTranslation: false }
+}
 
 describe('Gacha Utility Engine', () => {
   describe('calculateEstimatedGlobalDate', () => {
@@ -353,7 +358,7 @@ describe('Gacha Utility Engine', () => {
       const bannerDefault: GachaBanner = {
         id: 'b6',
         type: 'standard',
-        title: 'Single Banner Default',
+        title: mockI18n('Single Banner Default'),
         cnStartDate: '2026/05/15',
         cnEndDate: '2026/05/29',
         rateUp6: ['char_1', 'char_2'],
@@ -365,7 +370,7 @@ describe('Gacha Utility Engine', () => {
       const bannerCustom: GachaBanner = {
         id: 'b7',
         type: 'limited',
-        title: 'Single Banner Custom',
+        title: mockI18n('Single Banner Custom'),
         cnStartDate: '2026/05/15',
         cnEndDate: '2026/05/29',
         rateUp6: ['char_1'],
@@ -380,7 +385,7 @@ describe('Gacha Utility Engine', () => {
       const banner: GachaBanner = {
         id: 'b8',
         type: 'standard',
-        title: 'Empty RateUp Banner',
+        title: mockI18n('Empty RateUp Banner'),
         cnStartDate: '2026/05/15',
         cnEndDate: '2026/05/29',
         rateUp6: [],
@@ -425,7 +430,7 @@ describe('Gacha Utility Engine', () => {
         server: 'cn',
         ruleType: 'LIMITED',
         type: 'limited',
-        title: '车辙与风的归所',
+        title: mockI18n('Where the Ruts and Winds Return', '车辙与风的归所'),
         pairedBannerId: null,
         rateUp6: [],
         rateUp5: [],
@@ -438,7 +443,7 @@ describe('Gacha Utility Engine', () => {
         server: 'cn',
         ruleType: 'LIMITED',
         type: 'limited',
-        title: '承诺',
+        title: mockI18n('Promise', '承诺'),
         pairedBannerId: 'LIMITED_EN_42_0_1',
         rateUp6: [],
         rateUp5: [],
@@ -451,7 +456,7 @@ describe('Gacha Utility Engine', () => {
         server: 'cn',
         ruleType: 'NORMAL',
         type: 'standard',
-        title: 'Standard Pool',
+        title: mockI18n('Standard Pool'),
         pairedBannerId: null,
         rateUp6: [],
         rateUp5: [],
@@ -464,7 +469,7 @@ describe('Gacha Utility Engine', () => {
         server: 'cn',
         ruleType: 'SINGLE',
         type: 'standard',
-        title: 'Single Solo',
+        title: mockI18n('Single Solo'),
         pairedBannerId: null,
         rateUp6: [],
         rateUp5: [],
@@ -478,7 +483,7 @@ describe('Gacha Utility Engine', () => {
       const banner: GachaBanner = {
         id: 'b_test',
         type: 'standard',
-        title: 'Test',
+        title: mockI18n('Test'),
         openTime: 1000,
         endTime: 2000,
         rateUp6: [],

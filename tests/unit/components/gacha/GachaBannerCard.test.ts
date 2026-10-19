@@ -12,7 +12,12 @@ describe('GachaBannerCard', () => {
     ruleType: 'NORMAL',
     type: 'standard',
     tag: 'ORIENTEERING',
-    title: '[Standard Headhunting] Orienteering #7',
+    title: {
+      en: '[Standard Headhunting] Orienteering #7',
+      zh: '[Standard Headhunting] Orienteering #7',
+      source: 'official',
+      isMachineTranslation: false,
+    },
     description: 'Choose 3 of the 6★ operators: only these 6★ appear on this banner.',
     cnStartDate: '2026/05/15',
     cnEndDate: '2026/05/29',
@@ -71,6 +76,40 @@ describe('GachaBannerCard', () => {
     expect(wrapper.find('.gacha-banner__art-tag').text()).toBe('ORIENTEERING')
   })
 
+  it('renders translation badge for pending and machine-translated titles', async () => {
+    const pendingBanner: GachaBanner = {
+      ...mockBanner,
+      id: 'banner_pending_test',
+      title: {
+        en: '[Pending Translation]',
+        zh: '未翻译卡池',
+        source: 'pending',
+        isMachineTranslation: false,
+      },
+    }
+    const wrapperPending = await mountSuspended(GachaBannerCard, {
+      props: { banner: pendingBanner, operatorsMap: mockOperatorsMap },
+    })
+    expect(wrapperPending.find('.ak-translation-badge--pending').exists()).toBe(true)
+    expect(wrapperPending.find('.ak-translation-badge').text()).toBe('PENDING')
+
+    const machineBanner: GachaBanner = {
+      ...mockBanner,
+      id: 'banner_machine_test',
+      title: {
+        en: 'Ruts and Winds',
+        zh: '车辙与风',
+        source: 'machine',
+        isMachineTranslation: true,
+      },
+    }
+    const wrapperMachine = await mountSuspended(GachaBannerCard, {
+      props: { banner: machineBanner, operatorsMap: mockOperatorsMap },
+    })
+    expect(wrapperMachine.find('.ak-translation-badge--machine').exists()).toBe(true)
+    expect(wrapperMachine.find('.ak-translation-badge').text()).toBe('MT')
+  })
+
   it('calculates and displays CN dates and projected Global dates (+175 days)', async () => {
     const wrapper = await mountSuspended(GachaBannerCard, {
       props: {
@@ -111,7 +150,12 @@ describe('GachaBannerCard', () => {
       ruleType: 'NORMAL',
       type: 'standard',
       tag: 'NORMAL',
-      title: 'Standard Pool 1',
+      title: {
+        en: 'Standard Pool 1',
+        zh: 'Standard Pool 1',
+        source: 'official',
+        isMachineTranslation: false,
+      },
       openTime: 1548727200,
       endTime: 1557950399,
       openIso: '2019-01-29T02:00:00.000Z',
@@ -140,7 +184,12 @@ describe('GachaBannerCard', () => {
       ruleType: 'LIMITED',
       type: 'limited',
       tag: 'LIMITED',
-      title: '车辙与风的归所',
+      title: {
+        en: 'Where the Ruts and Winds Return',
+        zh: '车辙与风的归所',
+        source: 'machine',
+        isMachineTranslation: true,
+      },
       openTime: 1785502800,
       endTime: 1786712399,
       openIso: '2026-07-31T23:00:00.000Z',
@@ -170,7 +219,12 @@ describe('GachaBannerCard', () => {
       ruleType: 'NORMAL',
       type: 'standard',
       tag: 'NORMAL',
-      title: 'Standard Pool 1',
+      title: {
+        en: 'Standard Pool 1',
+        zh: 'Standard Pool 1',
+        source: 'official',
+        isMachineTranslation: false,
+      },
       openTime: 1548727200,
       endTime: 1557950399,
       pairedBannerId: null,
@@ -195,7 +249,12 @@ describe('GachaBannerCard', () => {
       ruleType: 'LIMITED',
       type: 'limited',
       tag: 'LIMITED',
-      title: '承诺',
+      title: {
+        en: 'Promise',
+        zh: '承诺',
+        source: 'official',
+        isMachineTranslation: false,
+      },
       openTime: 1791982800,
       endTime: 1793185199,
       pairedBannerId: 'LIMITED_EN_42_0_1',

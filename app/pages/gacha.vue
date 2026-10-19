@@ -4,6 +4,7 @@ import rawBannersData from '~/../data/banners.json'
 import rawOperatorsIndex from '~/../data/operators-index.json'
 import type { BannersDataset, GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
+import { resolveI18nString } from '~/../shared/schemas/operator'
 import { formatHumanDate } from '~/../shared/utils/gacha'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
@@ -13,10 +14,11 @@ import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
+import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const depotStore = useDepotStore()
 const moduleConfig = getModuleById('gacha')
@@ -40,6 +42,15 @@ onMounted(async () => {
 // Dataset parsing
 const bannersDataset = rawBannersData as unknown as BannersDataset
 const currentEnBanner = computed(() => bannersDataset.meta?.currentEnBanner ?? null)
+const currentEnBannerTitle = computed(() => {
+  if (!currentEnBanner.value) return ''
+  return (
+    resolveI18nString(currentEnBanner.value.name, locale.value as 'en' | 'zh') ||
+    currentEnBanner.value.name?.en ||
+    currentEnBanner.value.name?.zh ||
+    ''
+  )
+})
 
 // Raw CN banners (453 items, sorted ascending by openTime)
 const rawCnBanners = Array.isArray(bannersDataset.cnBanners) ? bannersDataset.cnBanners : []
@@ -235,7 +246,14 @@ function selectBanner(id: string): void {
                     <span class="gacha-current-en__rule-tag">{{ currentEnBanner.ruleType }}</span>
                     <span class="gacha-current-en__server-badge">GLOBAL // EN</span>
                   </div>
-                  <h2 class="gacha-current-en__title">{{ currentEnBanner.name }}</h2>
+                  <h2 class="gacha-current-en__title">
+                    <span>{{ currentEnBannerTitle }}</span>
+                    <AkTranslationBadge
+                      v-if="currentEnBanner.name?.source"
+                      :source="currentEnBanner.name.source"
+                      :stale="currentEnBanner.name.stale"
+                    />
+                  </h2>
                 </div>
 
                 <div class="gacha-current-en__end-wrap">
@@ -678,6 +696,10 @@ function selectBanner(id: string): void {
 
   &__title {
     margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs, 8px);
     font-family: var(--font-heading);
     font-size: var(--font-size-xl, 22px);
     font-weight: var(--font-weight-extrabold);
