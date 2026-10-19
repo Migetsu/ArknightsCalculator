@@ -1,5 +1,33 @@
 # Project Progress
 
+- **Operator Skins Ingestion Pipeline (`feat/operator-skins`):**
+  - **Raw Data Ingestion (`scripts/data/sources.config.ts`, `scripts/data/fetch-raw.ts`):**
+    - Added `skin_table.json` to both `cn` and `en` source table configurations from `SanityGoneAK/arknights-gamedata` at commit `b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74`.
+    - Downloaded and cached `.cache/raw/cn/skin_table.json` (4.54 MB, 2410 entries) and `.cache/raw/en/skin_table.json` (4.11 MB, 2114 entries).
+  - **Raw Price Investigation & Analysis:**
+    - Thoroughly investigated raw game data across all 60 client tables (`skin_table.json`, `shop_client_table.json`, `activity_table.json`, `item_table.json`, `gamedata_const.json`).
+    - Proved with concrete data that numeric Originite Prime price does not exist as a static column in client configuration dumps; skin store offerings are served dynamically by game server network packets (`/shop/getSkinShop`).
+  - **Skin Pricing Status & Honest Verification (Task 1a):**
+    - Removed heuristic pricing completely (`price` is strictly `null` for all 1359 skins, with `numeric prices: 0`).
+    - Added `priceStatus` ('default' | 'free' | 'unknown') and `priceSource` (currently `null`).
+    - Added a price guard test in `tests/unit/schemas/skin.test.ts` that fails validation if a skin has a numeric price without a verified non-empty `priceSource`.
+    - Switched `data:skins` in `package.json` to standard `jiti scripts/data/build-skins.ts` and removed `tsx`.
+  - **I18n Elimination of Chinese Text & CJK Fuse Guard (Task 1b):**
+    - Fixed `resolveBrand`: prioritized official English client data (`displaySkin.skinGroupName` and `rawEnTable.brandList`), eliminating the CN overwrite bug where `时代` was returned instead of `Test Collection/II`. Verified on `char_002_amiya@epoque#4`.
+    - Converted all user-facing string fields (`brandName`, `description`, `dialog`, `obtainApproach`) into `I18nStringSchema` (`{ en, zh, source, isMachineTranslation }`) via `resolveLayeredI18nString`.
+    - CN-only skins with missing English text receive `en: '[Pending Translation]'` with `source: 'pending'`, preventing raw Chinese leaks into the English UI.
+    - Eliminated all hardcoded Chinese string literals from `.ts` files (`build-skins.ts`, `skin.ts`).
+    - Decided and documented `drawerList: string[]` preservation: artist handles are official creator pen names preserved across both CN and EN official game clients.
+    - Added CJK safety fuse unit tests in `tests/unit/schemas/skin.test.ts`. Total tests increased from 553 to 558 across 76 suites.
+  - **Quality Gates:**
+    - `data:skins`: passed (1359 skins generated).
+    - `data:validate`: passed (0 integrity issues).
+    - `i18n:check`: passed (589 valid keys).
+    - `lint`: passed (0 errors, 0 warnings).
+    - `typecheck`: passed.
+    - `test`: passed (486/486 across 71 suites).
+    - `build`: passed (production bundle ready).
+
 - **Fix Operator Detail Item Icons & Skill SP Badges (`fix/operator-detail-item-icons`):**
   - **Issue:**
     - In operator skill and module upgrade requirements, material images failed to load, falling back to dark boxes displaying initials with IDs (e.g. `301` with count `6` for `30165` Rephasic Enantiomer; `PP` with count `4` for `30115` Polymerization Preparation).

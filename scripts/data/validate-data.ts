@@ -5,12 +5,13 @@ import type { CraftRecipe } from '../../shared/schemas/recipe'
 import type { GameConstants } from '../../shared/schemas/gameConstants'
 import type { OperatorDetail, OperatorSummary } from '../../shared/schemas/operator'
 import { RecruitDataSchema } from '../../shared/schemas/recruit'
+import { SkinListSchema } from '../../shared/schemas/skin'
 
 const DATA_DIR = path.resolve(process.cwd(), 'data')
 const OPERATORS_DIR = path.join(DATA_DIR, 'operators')
 
 interface ValidationIssue {
-  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit'
+  entityType: 'operator' | 'recipe' | 'constants' | 'asset' | 'recruit' | 'skin'
   entityId: string
   referenceType: 'item' | 'skill' | 'module' | 'operator' | 'schema'
   referenceId: string
@@ -21,10 +22,12 @@ export async function validateDataIntegrity(): Promise<{
   totalOperatorsChecked: number
   totalRecipesChecked: number
   totalItemsChecked: number
+  totalSkinsChecked: number
   totalItemReferences: number
   totalSkillReferences: number
   totalModuleReferences: number
   totalRecruitPoolChecked: number
+  globalReferencingCnOnlyCount: number
   issues: ValidationIssue[]
 }> {
   console.log('=== Arknights Data Integrity & Referential Validator ===\n')
@@ -316,10 +319,40 @@ export async function validateDataIntegrity(): Promise<{
     })
   }
 
+  // 6. Validate Skins dataset
+  console.log('6. Validating skins dataset & operator references...')
+  let totalSkinsChecked = 0
+  try {
+    const skinsRaw = await fs.readFile(path.join(DATA_DIR, 'skins.json'), 'utf-8')
+    const skins = SkinListSchema.parse(JSON.parse(skinsRaw))
+    totalSkinsChecked = skins.length
+
+    for (const skin of skins) {
+      if (!indexedIds.has(skin.charId)) {
+        issues.push({
+          entityType: 'skin',
+          entityId: skin.skinId,
+          referenceType: 'operator',
+          referenceId: skin.charId,
+          message: `Skin '${skin.skinId}' references unknown operator '${skin.charId}'`,
+        })
+      }
+    }
+  } catch (err: unknown) {
+    issues.push({
+      entityType: 'skin',
+      entityId: 'skins.json',
+      referenceType: 'schema',
+      referenceId: 'root',
+      message: err instanceof Error ? err.message : String(err),
+    })
+  }
+
   return {
     totalOperatorsChecked: opFiles.length,
     totalRecipesChecked: recipes.length,
     totalItemsChecked: items.length,
+    totalSkinsChecked,
     totalItemReferences,
     totalSkillReferences,
     totalModuleReferences,
@@ -336,6 +369,7 @@ async function main(): Promise<void> {
   console.log(`Operators checked:         ${result.totalOperatorsChecked}`)
   console.log(`Recipes checked:           ${result.totalRecipesChecked}`)
   console.log(`Items in dictionary:       ${result.totalItemsChecked}`)
+  console.log(`Skins in dictionary:       ${result.totalSkinsChecked}`)
   console.log(`Recruit pool checked:      ${result.totalRecruitPoolChecked}`)
   console.log(`Total item references:     ${result.totalItemReferences}`)
   console.log(`Total skill references:    ${result.totalSkillReferences}`)
