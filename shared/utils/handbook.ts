@@ -1,3 +1,5 @@
+import type { HandbookStory } from '../schemas/handbook'
+
 /**
  * Utilities for parsing and normalizing Arknights operator handbook tables.
  */
@@ -247,4 +249,84 @@ export const CANONICAL_TITLES: Record<string, { en: string; zh: string }> = {
   socialPractice: { en: 'Social Practice', zh: '社会实践' },
   communicationSkill: { en: 'Communication Skill', zh: '沟通技巧' },
   gunSkillAdaptation: { en: 'Gun Skill Adaptation', zh: '铳械技艺适应性' },
+}
+
+/**
+ * Checks whether a story represents an alternate class-conversion form (e.g. Amiya Guard/Medic).
+ */
+export function isPatchStory(story: HandbookStory): boolean {
+  return story.unlockType === 'PATCH' || Boolean(story.patchCharId)
+}
+
+/**
+ * Known patch form display labels for class conversions.
+ */
+export const PATCH_FORM_CLASS_LABELS: Record<string, string> = {
+  char_1001_amiya2: 'Guard',
+  char_1037_amiya3: 'Medic',
+}
+
+/**
+ * Resolves the class conversion form label for a given patchCharId.
+ */
+export function getPatchFormLabel(patchCharId?: string | null): string {
+  if (!patchCharId) return 'Alternate Form'
+  return PATCH_FORM_CLASS_LABELS[patchCharId] || patchCharId
+}
+
+/**
+ * Canonical story ordering priorities.
+ * Lower number = appears earlier in the dossier.
+ */
+export function getStorySortOrder(story: HandbookStory): number {
+  const en = story.storyTitle.en?.trim() || ''
+  const zh = story.storyTitle.zh?.trim() || ''
+
+  if (en === 'Basic Info' || zh === '基础档案') return 10
+  if (en === 'Profile' || zh === '客观履历' || zh === '学生概况') return 20
+  if (en === 'Clinical Analysis' || zh === '临床诊断分析' || zh === '特殊疾病筛查') return 30
+  if (en === 'Originium Arts Rating' || zh === '源石技艺评定') return 35
+  if (en === 'Archive File 1' || zh === '档案资料一') return 40
+  if (en === 'Archive File 2' || zh === '档案资料二') return 50
+  if (en === 'Archive File 3' || zh === '档案资料三') return 60
+  if (en === 'Archive File 4' || zh === '档案资料四') return 70
+  if (en === 'Archive File 5' || zh === '档案资料五') return 80
+  if (en === 'Promotion Record' || zh === '晋升记录' || zh === '加密报告') return 90
+
+  // Class conversion records (if sorted together)
+  if (en === 'Class Conversion Record 1' || zh === '升变档案一') return 110
+  if (en === 'Class Conversion Record 2' || zh === '升变档案二') return 120
+
+  return 100
+}
+
+/**
+ * Sorts stories into canonical lore order, preserving original relative order for ties.
+ */
+export function sortHandbookStories(stories: HandbookStory[]): HandbookStory[] {
+  return [...stories].sort((a, b) => getStorySortOrder(a) - getStorySortOrder(b))
+}
+
+/**
+ * Splits stories into standard archival stories (sorted canonically) and class conversion PATCH stories.
+ */
+export function splitHandbookStories(stories: HandbookStory[]): {
+  standardStories: HandbookStory[]
+  patchStories: HandbookStory[]
+} {
+  const standard: HandbookStory[] = []
+  const patch: HandbookStory[] = []
+
+  for (const story of stories) {
+    if (isPatchStory(story)) {
+      patch.push(story)
+    } else {
+      standard.push(story)
+    }
+  }
+
+  return {
+    standardStories: sortHandbookStories(standard),
+    patchStories: sortHandbookStories(patch),
+  }
 }

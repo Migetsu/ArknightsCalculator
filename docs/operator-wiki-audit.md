@@ -226,36 +226,35 @@
 
 ## 4. Сводная матрица расхождений (Data vs UI)
 
-| Данные / Сущность                             | Есть в данных (путь / файл)                                              | Показано в UI (файл / компонент)                                    | Чего не хватает (пробел)                                                      |
-| :-------------------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------------------------------ | :---------------------------------------------------------------------------- |
-| **Базовый арт E0 / E1**                       | `resolveAsset('art', id, { variant: '1' })`                              | `AkOperatorHero.vue`, `AkArtViewer.vue`                             | Полностью отображается                                                        |
-| **Арт элиты 2 (E2)**                          | `resolveAsset('art', id, { variant: '2' })`                              | `AkOperatorHero.vue`, `AkArtViewer.vue`                             | Полностью отображается                                                        |
-| **Скины операторов**                          | `data/skins.json` (`1,359` записей, 432 оператора)                       | `AkOperatorSkinsPanel.vue`, `AkArtViewer.vue`, `AkOperatorHero.vue` | Полностью отображается (галерея Outfits, просмотрщик и Hero)                  |
-| **Статус цены скинов**                        | `data/skins.json` (`priceStatus`)                                        | `AkOperatorSkinsPanel.vue`                                          | Отображаются честные статусы `Base`, `Free`, `—` и способ получения           |
-| **Ренж фаз элиты**                            | `data/operators/*.json` `phases[].rangeId` + `data/ranges.json`          | `AkOperatorStatsPanel.vue`, `AkRangeGrid.vue`                       | Полностью отображается (карточка Attack Range с динамической сменой E0/E1/E2) |
-| **Ренж навыков**                              | `data/operators/*.json` `skills[].levels[].rangeId` + `data/ranges.json` | `AkOperatorSkillsPanel.vue`, `AkRangeGrid.vue`                      | Полностью отображается (мини-сетки с бейджами Inherited / Modified)           |
-| **Статы: HP, ATK, DEF, RES**                  | `phases[].attributesKeyFrames`                                           | `AkOperatorHero.vue`, `AkOperatorStatsPanel.vue`                    | Полностью отображается (Hero + Декомпозиция)                                  |
-| **Статы: Cost, Block, Интервал, Редеплой**    | `phases[].attributesKeyFrames`                                           | `AkOperatorStatsPanel.vue`                                          | Отображается в таблице декомпозиции                                           |
-| **Затраты на элиту (Evolve Cost)**            | `phases[].evolveCost`                                                    | `AkOperatorStatsPanel.vue` (блок Promotion Costs)                   | Отображаются материалы для E1 и E2 с иконками `AkItemIcon`                    |
-| **Стоимость элиты в LMD**                     | `data/constants.json` `evolveGoldCost`                                   | `AkOperatorStatsPanel.vue` (в карточках E1/E2)                      | Отображается в блоке Promotion Costs (E1 / E2) с иконкой LMD                  |
-| **Опыт и LMD по уровням**                     | `data/constants.json` `characterExpMap, characterUpgradeCostMap`         | **Не показано**                                                     | Нет калькулятора/вывода затрат EXP и LMD до капа                              |
-| **Расшифровка потенциалов**                   | `potentialRanks[].description`                                           | `AkOperatorStatsPanel.vue` (блок Potential Enhancement)             | Отображаются карточки бонусов P2–P6 с активным состоянием и бейджами перевода |
-| **Бонусы доверия (Trust)**                    | `favorKeyFrames[].data`                                                  | `AkOperatorStatsPanel.vue` (в колонке Trust)                        | Стат учтен в формуле, но нет отдельной карточки капа доверия (+HP, +ATK)      |
-| **Навыки: Иконка, Имя, Описание**             | `skills[].iconId, levels[].name, description`                            | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается с RichText                                             |
-| **Навыки: SP Cost, Init SP, Длительность**    | `skills[].levels[].spCost, initSp, duration`                             | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается                                                        |
-| **Навыки: Затраты на Мастерство (M1-M3)**     | `skills[].masteryCosts[].levelUpCost`                                    | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается через `AkItemIcon`                                     |
-| **Навыки: Затраты на уровни 1–7**             | `allSkillLvlup[].lvlUpCost`                                              | `AkOperatorSkillsPanel.vue` (блок Base Skill Levels)                | Отображаются все 6 шагов с условиями и суммарный итог материалов              |
-| **Таланты: Имя, Описание, Условия**           | `talents[].candidates[]`                                                 | `AkOperatorTalentsPanel.vue`                                        | Полностью отображается                                                        |
-| **Модули: Статы, Трейты, Истории, Стоимость** | `modules[].stages[], parts[], description`                               | `AkOperatorModulesPanel.vue`                                        | Полностью отображается                                                        |
-| **Метаданные: Художник, Сэйю, Фракция, Код**  | `artist, va, faction, displayNumber, subclass`                           | `AkOperatorInfoPanel.vue`                                           | Полностью отображается                                                        |
-| **Теги рекрутинга**                           | `tagList`                                                                | `AkOperatorInfoPanel.vue`                                           | Отображаются в виде чипов                                                     |
-| **Анкета: Пол, День рождения, Рост, Раса**    | `data/handbook.json` (`profile`)                                         | **Ожидает UI (Задача 11)**                                          | Данные собраны и типизированы в `data/handbook.json`                          |
-| **Физосмотр / Тесты боевых качеств**          | `data/handbook.json` (`physicalExam`)                                    | **Ожидает UI (Задача 11)**                                          | Данные собраны и типизированы в `data/handbook.json`                          |
-| **Архивы оператора 1–4, Клиника, Промоушен**  | `data/handbook.json` (`stories`)                                         | **Ожидает UI (Задача 11)**                                          | Данные собраны и типизированы в `data/handbook.json`                          |
-| **Голосовые реплики / транскрипты**           | `.cache/raw/en/handbook_info_table.json`                                 | **Не показано**                                                     | **Нет в `data/operators/*.json`**, нет в UI                                   |
-| **Базовые навыки базы (RIIC Skills)**         | `.cache/raw/en/building_data.json`                                       | **Не показано**                                                     | **Нет в `data/operators/*.json`**, нет в UI                                   |
-| **Гарантированные теги рекрутинга**           | `data/recruit.json`                                                      | **Не показано**                                                     | Нет кросс-линка со страницей калькулятора рекрутинга                          |
-| **История появления в баннерах**              | `data/banners.json`                                                      | **Не показано**                                                     | Нет истории баннеров и даты дебюта                                            |
+| Данные / Сущность                             | Есть в данных (путь / файл)                                              | Показано в UI (файл / компонент)                                    | Чего не хватает (пробел)                                                        |
+| :-------------------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------------------------------ | :------------------------------------------------------------------------------ |
+| **Базовый арт E0 / E1**                       | `resolveAsset('art', id, { variant: '1' })`                              | `AkOperatorHero.vue`, `AkArtViewer.vue`                             | Полностью отображается                                                          |
+| **Арт элиты 2 (E2)**                          | `resolveAsset('art', id, { variant: '2' })`                              | `AkOperatorHero.vue`, `AkArtViewer.vue`                             | Полностью отображается                                                          |
+| **Скины операторов**                          | `data/skins.json` (`1,359` записей, 432 оператора)                       | `AkOperatorSkinsPanel.vue`, `AkArtViewer.vue`, `AkOperatorHero.vue` | Полностью отображается (галерея Outfits, просмотрщик и Hero)                    |
+| **Статус цены скинов**                        | `data/skins.json` (`priceStatus`)                                        | `AkOperatorSkinsPanel.vue`                                          | Отображаются честные статусы `Base`, `Free`, `—` и способ получения             |
+| **Ренж фаз элиты**                            | `data/operators/*.json` `phases[].rangeId` + `data/ranges.json`          | `AkOperatorStatsPanel.vue`, `AkRangeGrid.vue`                       | Полностью отображается (карточка Attack Range с динамической сменой E0/E1/E2)   |
+| **Ренж навыков**                              | `data/operators/*.json` `skills[].levels[].rangeId` + `data/ranges.json` | `AkOperatorSkillsPanel.vue`, `AkRangeGrid.vue`                      | Полностью отображается (мини-сетки с бейджами Inherited / Modified)             |
+| **Статы: HP, ATK, DEF, RES**                  | `phases[].attributesKeyFrames`                                           | `AkOperatorHero.vue`, `AkOperatorStatsPanel.vue`                    | Полностью отображается (Hero + Декомпозиция)                                    |
+| **Статы: Cost, Block, Интервал, Редеплой**    | `phases[].attributesKeyFrames`                                           | `AkOperatorStatsPanel.vue`                                          | Отображается в таблице декомпозиции                                             |
+| **Затраты на элиту (Evolve Cost)**            | `phases[].evolveCost`                                                    | `AkOperatorStatsPanel.vue` (блок Promotion Costs)                   | Отображаются материалы для E1 и E2 с иконками `AkItemIcon`                      |
+| **Стоимость элиты в LMD**                     | `data/constants.json` `evolveGoldCost`                                   | `AkOperatorStatsPanel.vue` (в карточках E1/E2)                      | Отображается в блоке Promotion Costs (E1 / E2) с иконкой LMD                    |
+| **Опыт и LMD по уровням**                     | `data/constants.json` `characterExpMap, characterUpgradeCostMap`         | **Не показано**                                                     | Нет калькулятора/вывода затрат EXP и LMD до капа                                |
+| **Расшифровка потенциалов**                   | `potentialRanks[].description`                                           | `AkOperatorStatsPanel.vue` (блок Potential Enhancement)             | Отображаются карточки бонусов P2–P6 с активным состоянием и бейджами перевода   |
+| **Бонусы доверия (Trust)**                    | `favorKeyFrames[].data`                                                  | `AkOperatorStatsPanel.vue` (в колонке Trust)                        | Стат учтен в формуле, но нет отдельной карточки капа доверия (+HP, +ATK)        |
+| **Навыки: Иконка, Имя, Описание**             | `skills[].iconId, levels[].name, description`                            | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается с RichText                                               |
+| **Навыки: SP Cost, Init SP, Длительность**    | `skills[].levels[].spCost, initSp, duration`                             | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается                                                          |
+| **Навыки: Затраты на Мастерство (M1-M3)**     | `skills[].masteryCosts[].levelUpCost`                                    | `AkOperatorSkillsPanel.vue`                                         | Полностью отображается через `AkItemIcon`                                       |
+| **Навыки: Затраты на уровни 1–7**             | `allSkillLvlup[].lvlUpCost`                                              | `AkOperatorSkillsPanel.vue` (блок Base Skill Levels)                | Отображаются все 6 шагов с условиями и суммарный итог материалов                |
+| **Таланты: Имя, Описание, Условия**           | `talents[].candidates[]`                                                 | `AkOperatorTalentsPanel.vue`                                        | Полностью отображается                                                          |
+| **Модули: Статы, Трейты, Истории, Стоимость** | `modules[].stages[], parts[], description`                               | `AkOperatorModulesPanel.vue`                                        | Полностью отображается                                                          |
+| **Метаданные: Художник, Сэйю, Фракция, Код**  | `artist, va, faction, displayNumber, subclass`                           | `AkOperatorInfoPanel.vue`                                           | Полностью отображается                                                          |
+| **Анкета: Пол, День рождения, Рост, Раса**    | `data/handbook/<charId>.json` (`profile`)                                | `AkOperatorDossierPanel.vue` (вкладка Dossier)                      | Полностью отображается (Задача 12)                                              |
+| **Физосмотр / Тесты боевых качеств**          | `data/handbook/<charId>.json` (`physicalExam`)                           | `AkOperatorDossierPanel.vue` (вкладка Dossier)                      | Полностью отображается (Задача 12)                                              |
+| **Архивы оператора 1–5, Клиника, Промоушен**  | `data/handbook/<charId>.json` (`stories`)                                | `AkOperatorDossierPanel.vue` (вкладка Dossier)                      | Полностью отображается, аккордеон, канонический порядок, PATCH-группа (Зад. 12) |
+| **Голосовые реплики / транскрипты**           | `.cache/raw/en/handbook_info_table.json`                                 | **Не показано**                                                     | **Нет в `data/operators/*.json`**, нет в UI                                     |
+| **Базовые навыки базы (RIIC Skills)**         | `.cache/raw/en/building_data.json`                                       | **Не показано**                                                     | **Нет в `data/operators/*.json`**, нет в UI                                     |
+| **Гарантированные теги рекрутинга**           | `data/recruit.json`                                                      | **Не показано**                                                     | Нет кросс-линка со страницей калькулятора рекрутинга                            |
+| **История появления в баннерах**              | `data/banners.json`                                                      | **Не показано**                                                     | Нет истории баннеров и даты дебюта                                              |
 
 ---
 
@@ -286,8 +285,8 @@ _Эти задачи дадут максимальный прирост ценн
 5. **P1.5 — Материалы прокачки базовых навыков 1–7 (`allSkillLvlup`):** ✅ **РЕАЛИЗОВАНО**
    - В `AkOperatorSkillsPanel.vue` добавлена секция `Base Skill Levels (1 → 7)`.
    - Отображаются баннер суммарного расхода материалов на прокачку 1->7 уровней и пошаговая сетка из 6 переходов (Lv 1->2 ... Lv 6->7) с указанием условий открытия (Req: E0/E1 Lv 1) и иконками `AkItemIcon`.
-6. **P1.6 — Карточки бонусов потенциала (Potential Dossier):**
-   - Под слайдером потенциала в `AkOperatorStatsPanel.vue` (или отдельным модальным окном) вывести список всех 5 рангов из `potentialRanks[]` с их официальными описаниями.
+6. **P1.6 — Карточки бонусов потенциала (Potential Dossier):** ✅ **РЕАЛИЗОВАНО**
+   - В `AkOperatorStatsPanel.vue` добавлена карточка `Potential Enhancement` со списком бонусов каждого ранга (P2..P6), статусом (Active / Locked) и официальным описанием.
 
 ---
 
@@ -295,17 +294,16 @@ _Эти задачи дадут максимальный прирост ценн
 
 _Таблицы уже скачиваются в `.cache/raw/`, необходимо извлечь их в `scripts/data/build-operators.ts` и обновить схему._
 
-1. **P2.1 — Извлечение анкеты оператора (Basic Info Profile):**
-   - **Источник:** `.cache/raw/{en,cn}/handbook_info_table.json` (`handbookDict[charId].storyTextAudio[0]`).
-   - **Поля:** Gender, Birthday, Place of Birth, Race, Height, Combat Experience, Infection Status.
-   - **Действие:** Добавить парсер в `scripts/data/build-operators.ts`, расширить `OperatorDetailSchema.profile`, вывести в `AkOperatorInfoPanel.vue`.
+1. **P2.1 — Извлечение анкеты оператора (Basic Info Profile):** ✅ **РЕАЛИЗОВАНО**
+   - **Источник:** `data/handbook/<charId>.json` (`profile.allFields`).
+   - **UI:** Выведено в `AkOperatorDossierPanel.vue` (сетка Basic Profile, бейджи локализации, чистый адаптивный рендер).
 2. **P2.2 — Извлечение навыков базы (RIIC Base Skills):**
    - **Источник:** `.cache/raw/{en,cn}/building_data.json` (`chars[charId].buffChar`, `buffs`).
    - **Поля:** комната размещения (Control, Factory, Trading, Dormitory), условие открытия (E0 / E2), название и описание баффа.
    - **Действие:** Расширить `build-operators.ts`, добавить новую вкладку «Base / RIIC» или секцию в инфо-панель.
-3. **P2.3 — Извлечение историй и архивов (Archive Stories):**
-   - **Источник:** `.cache/raw/{en,cn}/handbook_info_table.json` (Истории 1–4, Clinical Analysis, Promotion Record).
-   - **Действие:** Создать отдельный файл историй (или lazy-чанк `data/stories/[id].json`, чтобы не раздувать базовый бандл оператора), добавить вкладку «Story / Lore».
+3. **P2.3 — Извлечение историй и архивов (Archive Stories):** ✅ **РЕАЛИЗОВАНО**
+   - **Источник:** `data/handbook/<charId>.json` (`stories`).
+   - **UI:** Выведено в `AkOperatorDossierPanel.vue` (аккордеон с сохранением переносов строк, каноническое ранжирование историй, отдельная подсекция для смены класса PATCH-форм Амии Guard/Medic).
 
 ---
 

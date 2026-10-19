@@ -3,6 +3,7 @@ import type { OperatorDetail, I18nString } from '~/../shared/schemas/operator'
 import { resolveI18nString, isPendingTranslation } from '~/../shared/schemas/operator'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
+import AkOperatorDossierPanel from '~/components/operators/AkOperatorDossierPanel.vue'
 
 interface Props {
   operator: OperatorDetail
@@ -109,6 +110,9 @@ function getLocalizedField(field?: I18nString | null): string {
         {{ getLocalizedField(operator.itemDesc) }}
       </p>
     </div>
+
+    <!-- Operator Dossier (Basic Profile, Physical Evaluation, Archival Stories) -->
+    <AkOperatorDossierPanel :char-id="operator.id" />
   </div>
 </template>
 

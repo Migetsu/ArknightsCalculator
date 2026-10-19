@@ -74,4 +74,31 @@ Stories consisting entirely of question mark placeholders (e.g. `？？？` with
 
 - **Build**: `npm run data:handbook` (`scripts/data/build-handbook.ts`) writes 432 files into `data/handbook/<charId>.json` and cleans up legacy monolithic `data/handbook.json`.
 - **Validation**: `npm run data:validate` (`scripts/data/validate-data.ts`) validates all 432 files against `OperatorHandbookSchema`, checks referential integrity against `data/operators/`, and verifies no monolithic file exists.
-- **Unit Tests**: `tests/unit/shared/handbook.test.ts`
+- **Unit Tests**: `tests/unit/shared/handbook.test.ts`, `tests/unit/composables/useOperatorHandbook.test.ts`, `tests/unit/components/operators/AkOperatorDossierPanel.test.ts`
+
+## 7. Canonical Story Ordering Rule
+
+In raw source tables, stories appear in varying chronological order (for example, Amiya's chapter 14 story additions append updated "Basic Info" after other records).
+When displayed in the UI, stories are sorted according to canonical lore priority (`sortHandbookStories` in `shared/utils/handbook.ts`):
+
+1. **Basic Info** (`Basic Info` / `【基础档案】`)
+2. **Profile** (`Profile` / `【客观履历】` / `【学生概况】`)
+3. **Clinical Analysis** (`Clinical Analysis` / `【临床诊断分析】` / `【特殊疾病筛查】`)
+4. **Originium Arts Rating** (`Originium Arts Rating` / `【源石技艺评定】`)
+5. **Archive Files 1–5** (`Archive File 1` .. `Archive File 5` / `【档案资料一】` .. `【档案资料五】`)
+6. **Promotion Record** (`Promotion Record` / `【晋升记录】` / `【加密报告】`)
+7. **Other narrative records**
+
+Ties (such as Amiya's initial and post-chapter Clinical Analysis) preserve their stable chronological relative order.
+
+## 8. Class Conversion Records & UI Integration
+
+- **PATCH Separation**: Stories with `unlockType === 'PATCH'` or a non-null `patchCharId` (e.g. Amiya's saber Qui'lon record for `char_1001_amiya2` and boiler Sarkaz record for `char_1037_amiya3`) are partitioned into a dedicated "Class Conversion Records" group with form badges (`Guard`, `Medic`).
+- **Composable (`useOperatorHandbook.ts`)**: Loads `data/handbook/<charId>.json` dynamically per visited operator and caches in a runtime `Map<string, OperatorHandbook>`. Returns `null` without throwing if an operator has no separate handbook file.
+- **UI Component (`AkOperatorDossierPanel.vue`)**:
+  - Embedded in `AkOperatorInfoPanel.vue` ("Dossier" tab).
+  - Displays localized field titles (`resolveI18nString(field.title)`) and values without hardcoded labels.
+  - Collapsible accordions with preserved newline formatting (`white-space: pre-wrap`).
+  - Tactical assessments for physical evaluations.
+  - Translation provenance badges (`<AkTranslationBadge>`) for pending/machine translations.
+  - Clean empty handling: absent handbook data (e.g. Amiya patch forms) renders nothing without broken borders or empty boxes.

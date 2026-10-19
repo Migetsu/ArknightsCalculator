@@ -5,6 +5,11 @@ import {
   parseTaggedSection,
   isHandbookStub,
   isDuplicateStory,
+  isPatchStory,
+  getPatchFormLabel,
+  getStorySortOrder,
+  sortHandbookStories,
+  splitHandbookStories,
 } from '../../../shared/utils/handbook'
 import { OperatorHandbookSchema, type OperatorHandbook } from '../../../shared/schemas/handbook'
 import amiyaHandbookRaw from '../../../data/handbook/char_002_amiya.json'
@@ -200,6 +205,93 @@ confirmed Infected by medical examination.
       expect(lancetHandbook.physicalExam.brake?.en).toBe('Normal')
       expect(lancetHandbook.physicalExam.passability?.en).toBe('[Pending Translation]')
       expect(lancetHandbook.physicalExam.endurance?.en).toBe('Excellent')
+    })
+  })
+
+  describe('Story Ordering and Classification Helpers', () => {
+    it('correctly identifies PATCH stories by unlockType and patchCharId', () => {
+      const patchStories = amiyaHandbook.stories.filter(isPatchStory)
+      expect(patchStories).toHaveLength(2)
+      expect(patchStories[0]?.patchCharId).toBe('char_1001_amiya2')
+      expect(patchStories[1]?.patchCharId).toBe('char_1037_amiya3')
+
+      const regularStories = amiyaHandbook.stories.filter((s) => !isPatchStory(s))
+      expect(regularStories).toHaveLength(4)
+    })
+
+    it('resolves correct form labels for patchCharIds', () => {
+      expect(getPatchFormLabel('char_1001_amiya2')).toBe('Guard')
+      expect(getPatchFormLabel('char_1037_amiya3')).toBe('Medic')
+      expect(getPatchFormLabel(null)).toBe('Alternate Form')
+      expect(getPatchFormLabel('char_custom_form')).toBe('char_custom_form')
+    })
+
+    it('assigns canonical sort orders to handbook stories', () => {
+      const dummyBasic = {
+        storyTitle: { en: 'Basic Info', zh: '基础档案' },
+        text: { en: 'A', zh: 'A' },
+      }
+      const dummyProfile = {
+        storyTitle: { en: 'Profile', zh: '客观履历' },
+        text: { en: 'B', zh: 'B' },
+      }
+      const dummyClinical = {
+        storyTitle: { en: 'Clinical Analysis', zh: '临床诊断分析' },
+        text: { en: 'C', zh: 'C' },
+      }
+      const dummyFile1 = {
+        storyTitle: { en: 'Archive File 1', zh: '档案资料一' },
+        text: { en: 'D', zh: 'D' },
+      }
+      const dummyFile4 = {
+        storyTitle: { en: 'Archive File 4', zh: '档案资料四' },
+        text: { en: 'E', zh: 'E' },
+      }
+      const dummyPromo = {
+        storyTitle: { en: 'Promotion Record', zh: '晋升记录' },
+        text: { en: 'F', zh: 'F' },
+      }
+
+      expect(getStorySortOrder(dummyBasic)).toBe(10)
+      expect(getStorySortOrder(dummyProfile)).toBe(20)
+      expect(getStorySortOrder(dummyClinical)).toBe(30)
+      expect(getStorySortOrder(dummyFile1)).toBe(40)
+      expect(getStorySortOrder(dummyFile4)).toBe(70)
+      expect(getStorySortOrder(dummyPromo)).toBe(90)
+    })
+
+    it('sorts arbitrary unordered stories into canonical order', () => {
+      const unordered = [
+        { storyTitle: { en: 'Archive File 4', zh: '档案资料四' }, text: { en: 'E', zh: 'E' } },
+        { storyTitle: { en: 'Basic Info', zh: '基础档案' }, text: { en: 'A', zh: 'A' } },
+        { storyTitle: { en: 'Promotion Record', zh: '晋升记录' }, text: { en: 'F', zh: 'F' } },
+        { storyTitle: { en: 'Profile', zh: '客观履历' }, text: { en: 'B', zh: 'B' } },
+      ]
+
+      const sorted = sortHandbookStories(unordered)
+      expect(sorted.map((s) => s.storyTitle.en)).toEqual([
+        'Basic Info',
+        'Profile',
+        'Archive File 4',
+        'Promotion Record',
+      ])
+    })
+
+    it('splits Amiya stories into 4 standard stories and 2 PATCH stories', () => {
+      const { standardStories, patchStories } = splitHandbookStories(amiyaHandbook.stories)
+
+      expect(standardStories).toHaveLength(4)
+      expect(patchStories).toHaveLength(2)
+
+      // In raw Amiya data, "Basic Info" is at index 3, but canonical order places it first
+      expect(standardStories[0]?.storyTitle.en).toBe('Basic Info')
+      expect(standardStories[1]?.storyTitle.en).toBe('Profile')
+      expect(standardStories[2]?.storyTitle.en).toBe('Clinical Analysis')
+      expect(standardStories[3]?.storyTitle.en).toBe('Clinical Analysis')
+
+      // PATCH stories are ordered 1 then 2
+      expect(patchStories[0]?.storyTitle.en).toBe('Class Conversion Record 1')
+      expect(patchStories[1]?.storyTitle.en).toBe('Class Conversion Record 2')
     })
   })
 })
