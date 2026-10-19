@@ -1,5 +1,29 @@
 # Project Progress
 
+- **Operator Potential Breakdown UI (`feat/operator-potential-ranks`):**
+  - **Context & Motivation:**
+    - Operator potential rank bonuses (P2..P6) were present in `data/operators/*.json -> potentialRanks[]`, but the operator detail page only exposed a numeric potential selector (P1..P6) affecting calculation formulas without any textual descriptions or unlock breakdown (Audit row 242).
+  - **Implementation Details:**
+    - **Component (`AkOperatorStatsPanel.vue`):**
+      - Created `potentialRanksList` computed mapping `potentialRanks[]` (5 items: index 0 -> P2, index 1 -> P3, index 2 -> P4, index 3 -> P5, index 4 -> P6).
+      - Ensured P1 is never labeled for index 0 (P1 is the baseline potential without enhancements).
+      - Resolved description text using `resolveI18nString(rank.description, locale)` with English fallback.
+      - Integrated with `props.potential` selector: ranks with `level <= props.potential` are visually highlighted as active (`.ak-operator-stats-panel__potential-item--active` with amber accent and green "Active" badge); higher ranks are dimmed as locked (`.ak-operator-stats-panel__potential-item--locked` with dashed border and "Locked" status).
+      - Added `AkTranslationBadge` for machine-translated, pending, or stale descriptions (e.g. for CN-only operators).
+      - Implemented empty state guard: if `potentialRanks` is empty/undefined (e.g. Conviction `char_159_peacok`, Luo Xiaohei `char_4067_lolxh`), the entire card is omitted via `v-if`.
+      - Styled in Ember Editorial design system using BEM, CSS custom properties, and responsive grid layout (1 column on mobile, 2 columns on tablet, 5 columns on desktop).
+    - **Localization (`i18n/locales/en.json`):**
+      - Added keys under `operators.detail.stats`: `potentialBreakdownTitle`, `potentialBreakdownTag`, `potentialUnlocked`, `potentialLocked`.
+    - **Documentation (`docs/operator-wiki-audit.md`):**
+      - Updated row 242 to mark potential rank breakdown as implemented.
+  - **Quality Gates & Testing:**
+    - `npm run i18n:check`: passed (632 valid keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed (0 TypeScript errors).
+    - `npm test`: all 84 test suites passed (634/634 tests passed, +4 tests in `AkOperatorStatsPanel.test.ts`).
+    - `npm run data:validate`: passed (0 integrity issues).
+    - `npm run build`: production build passed.
+
 - **Self-Checking Vue Runtime Patch (`fix/vue-patch-selfcheck`):**
   - **Context & Defect Analysis:**
     - `scripts/patch-vue.mjs` previously treated "files already patched" and "no pattern matched" identically, exiting with code 0 in both cases. If upstream Vue modified its syntax or variable names, the null-guard would silently fail to apply without raising an alarm.
