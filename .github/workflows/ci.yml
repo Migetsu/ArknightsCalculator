@@ -12,6 +12,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NODE_OPTIONS: '--max-old-space-size=4096'
+
 jobs:
   quality:
     name: Code Quality & Unit Tests

@@ -9,7 +9,7 @@ import {
   type NextBannerSummary,
 } from '../../shared/schemas/banner'
 
-interface RawGachaPool {
+export interface RawGachaPool {
   gachaPoolId: string
   gachaIndex: number
   openTime: number
@@ -31,7 +31,7 @@ interface RawGachaPool {
   limitParam?: unknown
 }
 
-interface RawGachaTable {
+export interface RawGachaTable {
   gachaPoolClient: RawGachaPool[]
   newbeeGachaPoolClient?: RawGachaPool[]
 }
@@ -104,22 +104,12 @@ export interface BuildBannersResult {
   }
 }
 
-export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBannersResult {
+export function buildBannersFromTables(
+  enRaw: RawGachaTable,
+  cnRaw: RawGachaTable,
+  options: { now?: number } = {},
+): BuildBannersResult {
   const nowSec = options.now ?? Math.floor(Date.now() / 1000)
-
-  // 1. Read raw tables
-  const enPath = path.join(CACHE_DIR, 'en/gacha_table.json')
-  const cnPath = path.join(CACHE_DIR, 'cn/gacha_table.json')
-
-  if (!fs.existsSync(enPath)) {
-    throw new Error(`EN gacha_table not found at ${enPath}`)
-  }
-  if (!fs.existsSync(cnPath)) {
-    throw new Error(`CN gacha_table not found at ${cnPath}`)
-  }
-
-  const enRaw: RawGachaTable = JSON.parse(fs.readFileSync(enPath, 'utf8'))
-  const cnRaw: RawGachaTable = JSON.parse(fs.readFileSync(cnPath, 'utf8'))
 
   const enPoolsTotal = enRaw.gachaPoolClient.length
   const cnPoolsTotal = cnRaw.gachaPoolClient.length
@@ -338,10 +328,6 @@ export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBan
   // Validate with Zod schema
   const parsed = BannersDatasetSchema.parse(dataset)
 
-  if (options.write !== false) {
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(parsed, null, 2) + '\n', 'utf8')
-  }
-
   return {
     dataset: parsed,
     stats: {
@@ -362,6 +348,29 @@ export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBan
       nextEnLimitedBanner,
     },
   }
+}
+
+export function buildBannersDataset(options: BuildBannersOptions = {}): BuildBannersResult {
+  const enPath = path.join(CACHE_DIR, 'en/gacha_table.json')
+  const cnPath = path.join(CACHE_DIR, 'cn/gacha_table.json')
+
+  if (!fs.existsSync(enPath)) {
+    throw new Error(`EN gacha_table not found at ${enPath}`)
+  }
+  if (!fs.existsSync(cnPath)) {
+    throw new Error(`CN gacha_table not found at ${cnPath}`)
+  }
+
+  const enRaw: RawGachaTable = JSON.parse(fs.readFileSync(enPath, 'utf8'))
+  const cnRaw: RawGachaTable = JSON.parse(fs.readFileSync(cnPath, 'utf8'))
+
+  const result = buildBannersFromTables(enRaw, cnRaw, { now: options.now })
+
+  if (options.write !== false) {
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result.dataset, null, 2) + '\n', 'utf8')
+  }
+
+  return result
 }
 
 // Direct execution via CLI / jiti

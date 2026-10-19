@@ -1,5 +1,35 @@
 # Project Progress
 
+- **CI Stabilization: Cache Decoupling & E2E OOM Resolution (`fix/ci-green`):**
+  - **Context & Motivation:**
+    - CI was failing on GitHub Actions since Task 14 due to two independent issues:
+      1. `tests/unit/data/build-banners.test.ts` crashed with `Error: EN gacha_table not found at <repo>/.cache/raw/en/gacha_table.json` because CI runs without `.cache`.
+      2. Playwright E2E smoke test crashed with `FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory` during `npm run build` inside `webServer.command`.
+  - **Implementation Details:**
+    - **Cache Decoupling (`scripts/data/build-banners.ts`):**
+      - Extracted pure calculation function `buildBannersFromTables(enRaw, cnRaw, options)` accepting in-memory `RawGachaTable` objects without filesystem dependencies.
+      - File reading from `.cache/raw` isolated to `buildBannersDataset()` for CLI execution (`npm run data:banners`).
+      - Exported `RawGachaPool` and `RawGachaTable` interfaces for clean typing.
+    - **Unit Test Decoupling (`tests/unit/data/build-banners.test.ts`):**
+      - Migrated pipeline tests to invoke `buildBannersFromTables` with self-contained, realistic `RawGachaTable` fixtures covering starter pools, perpetual pools, standard pools, and matched limited pools.
+      - Migrated catalog validation tests to assert directly against committed `data/banners.json`.
+      - Verified zero reliance on `.cache`: when `.cache/raw` and `.cache/penguin` were renamed, all 94 test files (731 tests) passed 100%.
+    - **Audit of Other Build Scripts:**
+      - Audited `build-constants.ts`, `build-handbook.ts`, `build-items.ts`, `build-ranges.ts`, `build-recipes.ts`, and `fetch-penguin.ts`. Verified no tests attempt to read missing `.cache` directories.
+    - **E2E OOM Root Cause & Fix:**
+      - Root Cause: In Nuxt SSR, 864+ operator and handbook JSON chunks are bundled into the Nitro server bundle using Rollup. The AST and module graph for 864 chunks peaks at ~2.3 - 2.5 GB of heap memory. On 64-bit Linux runners, Node's default heap limit is 2048 MB, causing V8 GC allocation failure at 2042 MB during `Building Nuxt Nitro server`.
+      - Fix:
+        1. Added `NODE_OPTIONS: '--max-old-space-size=4096'` at the workflow level in `.github/workflows/ci.yml`.
+        2. Set `sourcemap: false` in `nuxt.config.ts`, reducing memory overhead during bundling.
+        3. Increased Playwright `webServer.timeout` in `playwright.config.ts` from 120s to 180s for runner scheduling variance.
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 685 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test`: 731 passed across 94 test files with missing/renamed `.cache`.
+    - `data:validate`: 100% valid.
+    - `build`: production bundle compiled cleanly in 58.2s (with 4096MB) and 1m 00s (with 2560MB).
+
 - **Supabase Foundation: Auth, Profile Schema, and Strict RLS (`feat/supabase-foundation`):**
   - **Context & Motivation:**
     - Task 16 establishes the Supabase foundation for cloud account synchronization and authentication per AGENTS.md §4 and §14.

@@ -35,6 +35,6 @@ export default defineConfig({
       : 'npm run dev:agent',
     url: BASE_URL,
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 180 * 1000,
   },
 })
