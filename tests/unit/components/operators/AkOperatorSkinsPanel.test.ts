@@ -227,12 +227,14 @@ describe('AkOperatorSkinsPanel', () => {
     const src = firstImg.attributes('src')
     expect(src).toBeDefined()
     expect(src).toContain('cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource')
-    expect(src).toContain('/skin/char_172_svrash_1b.png')
+    expect(src).toContain('/portrait/char_172_svrash_1.png')
+    expect(src).not.toContain('/skin/')
     expect(src).not.toContain('/art/thumbs/')
 
-    // Trigger error event to test fallback to secondary CDN
+    // Trigger error event to test fallback to secondary CDN portrait
     await firstImg.trigger('error')
     const fallbackSrc = firstImg.attributes('src')
     expect(fallbackSrc).toContain('cdn.statically.io/gh/yuanyan3060/ArknightsGameResource')
+    expect(fallbackSrc).toContain('/portrait/char_172_svrash_1.png')
   })
 })

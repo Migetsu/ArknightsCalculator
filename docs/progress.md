@@ -1,5 +1,28 @@
 # Project Progress
 
+- **Operator Panels Followup & Bugfixes (`fix/operator-panels-followup`):**
+  - **Context & Defect Analysis:**
+    - Resolved three independent issues identified during review of Tasks 4 and 6:
+      1. `AkOperatorTalentsPanel.vue` used `<AkTranslationBadge>` without importing it, causing `[Vue warn]: Failed to resolve component` and emitting invalid HTML tags for CN-only operators.
+      2. `AkOperatorStatsPanel.vue` and `upgradeCosts.ts` relied on a hardcoded `DEFAULT_EVOLVE_GOLD_COST` fallback table instead of reading directly from `data/constants.json -> evolveGoldCost`.
+      3. Skin gallery cards in `AkOperatorSkinsPanel.vue` loaded full-resolution original art files (400–900 KB) because `resolveAsset` ignored `options.thumbnail` for skin assets.
+  - **Implementation Details:**
+    - **Fix 1 (`AkOperatorTalentsPanel.vue`):** Added explicit import `import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'`. Added unit test `tests/unit/components/operators/AkOperatorTalentsPanel.test.ts` mounting `char_4217_makoto` to verify no unparsed custom tags exist and translation badge renders with class `.ak-translation-badge`.
+    - **Fix 2 (`upgradeCosts.ts` & `AkOperatorStatsPanel.vue`):** Removed `DEFAULT_EVOLVE_GOLD_COST` literal table from `shared/utils/upgradeCosts.ts`. Made `evolveGoldCostMap: Record<string, number[]>` a required second argument in `getOperatorPromotionCosts`. Updated `AkOperatorStatsPanel.vue` to import `rawConstantsData from '~/../data/constants.json'` and pass `rawConstantsData.evolveGoldCost`. Added guard test in `tests/unit/shared/upgradeCosts.test.ts` verifying no silent hardcoded defaults exist.
+    - **Fix 3 (`resolveAsset.ts` & `AkOperatorSkinsPanel.vue`):**
+      - In `shared/utils/resolveAsset.ts`: when `kind === 'art'`, `skinBaseId` is present, and `options.thumbnail: true` is requested, prioritized lightweight `/portrait/{id}.png` CDN URLs before full `/skin/{id}b.png` art.
+      - In `AkOperatorSkinsPanel.vue`: passed `{ variant: skin.skinId, thumbnail: true }` in `getSkinPreviewUrl` and error fallback handler. Modal `AkArtViewer.vue` continues requesting full-resolution art without thumbnail flag.
+      - Portrait availability: 1,356 of 1,359 skins (99.8%) have CDN portraits; fallback handles the remaining 3 unreleased CN outfits without error.
+      - Verified CDN payload reduction: Texas winter skin dropped from 473.7 KB to 113.0 KB (4.2x reduction); SilverAsh winter skin dropped from 906.3 KB to 135.1 KB (6.7x reduction).
+      - Added unit test in `tests/unit/shared/resolveAsset.test.ts` and updated `tests/unit/components/operators/AkOperatorSkinsPanel.test.ts`.
+  - **Quality Gates & Verification:**
+    - `npm run i18n:check`: passed (628 keys).
+    - `npm run lint`: passed (ESLint & Stylelint clean).
+    - `npm run typecheck`: passed.
+    - `npm test`: all 84 test suites passed (622/622 tests passed).
+    - `npm run data:validate`: passed (434 operators, 1,359 skins, 73 ranges, 0 errors).
+    - `npm run build`: production build passed.
+
 - **Fix Vue 3.5 Runtime TypeError (`fix/transition-job-flags-null`):**
   - **Context & Defect Analysis:**
     - User encountered a runtime error overlay popup in Firefox: `TypeError: can't access property "flags", instance.job is null`.

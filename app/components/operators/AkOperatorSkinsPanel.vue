@@ -50,6 +50,7 @@ function getSkinObtainApproach(skin: Skin): string {
 function getSkinPreviewUrl(skin: Skin): string {
   const candidates = resolveAsset('art', skin.charId, {
     variant: skin.skinId,
+    thumbnail: true,
   })
   return candidates[0] || ''
 }
@@ -58,6 +59,7 @@ function handleImageError(e: Event, skin: Skin): void {
   const target = e.target as HTMLImageElement
   const candidates = resolveAsset('art', skin.charId, {
     variant: skin.skinId,
+    thumbnail: true,
   })
   const currentSrc = target.src
   const nextCandidate = candidates.find(
