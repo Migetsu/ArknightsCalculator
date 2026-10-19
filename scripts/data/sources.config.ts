@@ -79,6 +79,7 @@ export const DATA_SOURCES_CONFIG: DataSourcesConfig = {
         'char_patch_table.json',
         'gamedata_const.json',
         'skin_table.json',
+        'range_table.json',
       ],
     },
     en: {
@@ -99,6 +100,7 @@ export const DATA_SOURCES_CONFIG: DataSourcesConfig = {
         'char_patch_table.json',
         'gamedata_const.json',
         'skin_table.json',
+        'range_table.json',
       ],
     },
   },

@@ -23,7 +23,7 @@ describe('scripts/data/sources.config', () => {
     expect(en.commit).toBe('b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74')
   })
 
-  it('includes all 11 required gamedata tables for both sources', () => {
+  it('includes all 13 required gamedata tables for both sources', () => {
     const requiredTables = [
       'character_table.json',
       'skill_table.json',
@@ -36,6 +36,8 @@ describe('scripts/data/sources.config', () => {
       'handbook_info_table.json',
       'char_patch_table.json',
       'gamedata_const.json',
+      'skin_table.json',
+      'range_table.json',
     ]
 
     for (const table of requiredTables) {
