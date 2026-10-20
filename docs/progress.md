@@ -10,7 +10,7 @@
     - `tests/unit/pages/gacha.test.ts`: file wall 12.64 s, test bodies 6.02 s. Mounting the page costs 113-334 ms per test, while the two "Show All" tests cost 2241 ms and 2216 ms (453 cards re-rendered). `JSON.parse` of the 861-record `data/banners.json` (2.09 MB) takes 6.0 ms, so dataset parsing is not the wait; the remaining ~6.6 s is transform/import/environment setup.
     - A cold first run (empty Vite cache) also timed out `tests/unit/scripts/patch-vue.test.ts` at 5000 ms (`full runPatch` file time 5.8 s), the same contention class with a short body timeout.
   - **Changes (`vitest.config.ts`):**
-    - `maxWorkers: 12` on both projects. Vitest requires equal `maxWorkers` for projects in the same `sequence.groupOrder`, so the unit project mirrors the nuxt cap instead of serializing the projects.
+    - `maxWorkers = min(12, availableParallelism() - 1)` on both projects. On the 16-core dev machine this is 12; on the 4-core CI runner it keeps the default 3. Vitest requires equal `maxWorkers` for projects in the same `sequence.groupOrder`, so the unit project mirrors the nuxt cap instead of serializing the projects.
     - `hookTimeout: 30_000` on the nuxt project only; setup measured 4.3 s idle and over 10 s under load, so 30 s doubles the 10 s budget that setup exceeded.
   - **Worker matrix (same load: 6 CPU threads + 8 HTTP loops + `dev:agent`):**
     | `maxWorkers` | `hookTimeout`  | Result                         | Duration |
@@ -21,6 +21,7 @@
     | 6            | 30 s           | 96 files / 764 passed          | 32.53 s  |
     | 12           | 30 s           | 96 files / 764 passed          | 27.68 s  |
     - 4 and 8 were rejected: with the default hook they timed out, and the smaller pools stretched the run to 78-81 s. 6 with 30 s stayed green (32.5 s) but was slower than 12 (27.7 s), so 12 is the balance.
+    - The first CI run with a fixed 12 failed on the 4-core runner (`recruit.test.ts` 5000 ms, `gacha.test.ts` 20000 ms), which is why the cap is derived from the core count instead of being constant.
   - **Results:**
     - After the change, three idle runs: 18.17 s, 18.19 s, 19.21 s (median 18.19 s, 24.8% faster than the 24.20 s baseline).
     - Five consecutive green runs: 18.17 s, 18.19 s, 19.21 s, 25.82 s (under load), 21.17 s (under load).
