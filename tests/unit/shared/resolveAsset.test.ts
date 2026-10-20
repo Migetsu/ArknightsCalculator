@@ -285,5 +285,31 @@ describe('resolveAsset utility', () => {
       expect(candidates[3]).toBe(`${SECONDARY_CDN_BASE}/skin/char_002_amiya_winter%231b.png`)
       expect(candidates).not.toContain('/art/thumbs/char_002_amiya_winter%231b.webp')
     })
+
+    it('resolves banner art candidates with optimized WebP and fexli upstream fallback', () => {
+      const candidates = resolveAsset('banner', 'NORM_10_0_1')
+      expect(candidates[0]).toBe(
+        `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/banners/NORM_10_0_1.webp`,
+      )
+      expect(candidates[1]).toBe(`${PRIMARY_FEXLI_CDN_BASE}/gacha/NORM_10_0_1.png`)
+      expect(candidates[2]).toBe(`${SECONDARY_FEXLI_CDN_BASE}/gacha/NORM_10_0_1.png`)
+    })
+
+    it('resolves EN banner by trying stripped _EN candidate first', () => {
+      const candidates = resolveAsset('banner', 'NORM_EN_24_0_2')
+      expect(candidates[0]).toBe(
+        `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/banners/NORM_24_0_2.webp`,
+      )
+      expect(candidates).toContain(
+        `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/banners/NORM_EN_24_0_2.webp`,
+      )
+    })
+
+    it('encodes special characters in banner art id', () => {
+      const candidates = resolveAsset('banner', 'SPECIAL#1')
+      expect(candidates[0]).toBe(
+        `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}/banners/SPECIAL%231.webp`,
+      )
+    })
   })
 })

@@ -1,7 +1,7 @@
 /**
  * Asset kinds supported by Arknights game resource repositories.
  */
-export type AssetKind = 'avatar' | 'portrait' | 'art' | 'item' | 'skill' | 'equip'
+export type AssetKind = 'avatar' | 'portrait' | 'art' | 'item' | 'skill' | 'equip' | 'banner'
 
 export interface ResolveAssetOptions {
   /**
@@ -29,7 +29,7 @@ export interface ResolveAssetOptions {
 /**
  * Pinned commit for pre-rendered optimized WebP assets repository (Migetsu/arkcalc-assets).
  */
-export const OPTIMIZED_ASSETS_COMMIT = 'e8031f907867066f1c76669f8ca3712f19de81b5'
+export const OPTIMIZED_ASSETS_COMMIT = 'fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1'
 export const OPTIMIZED_ASSETS_CDN = `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}`
 
 /**
@@ -82,6 +82,7 @@ const KIND_DIR_MAP: Record<AssetKind, string> = {
   item: 'item',
   skill: 'skill',
   equip: 'equip',
+  banner: 'gacha',
 }
 
 /**
@@ -622,7 +623,27 @@ export function resolveAsset(
     ]
   }
 
-  // 6. Generic fallback resolution
+  // 6. Banner art kind handling
+  if (kind === 'banner') {
+    const isEn = cleanId.includes('_EN_') || cleanId.includes('_EN')
+    const artIds = isEn ? [cleanId.replace(/_EN(?=_|$)/, ''), cleanId] : [cleanId]
+
+    const candidates: string[] = []
+
+    for (const artId of artIds) {
+      const encodedId = encodeAssetPath(artId)
+      // 1. Optimized 480px WebP thumbnail from Migetsu/arkcalc-assets
+      candidates.push(`${OPTIMIZED_ASSETS_CDN}/banners/${encodedId}.webp`)
+      // 2. Primary full-resolution PNG from fexli/ArknightsResource
+      candidates.push(`${PRIMARY_FEXLI_CDN_BASE}/gacha/${encodedId}.png`)
+      // 3. Secondary Statically mirror
+      candidates.push(`${SECONDARY_FEXLI_CDN_BASE}/gacha/${encodedId}.png`)
+    }
+
+    return Array.from(new Set(candidates))
+  }
+
+  // 7. Generic fallback resolution
   const filename = options?.variant ? `${cleanId}_${options.variant}.${ext}` : `${cleanId}.${ext}`
 
   return [`${PRIMARY_CDN_BASE}/${dir}/${filename}`, `${SECONDARY_CDN_BASE}/${dir}/${filename}`]

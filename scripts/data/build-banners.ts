@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { getBannerArtCandidates } from '../../shared/utils/gacha'
 import {
   BannersDatasetSchema,
   type BannersDataset,
@@ -117,11 +118,30 @@ export interface BuildBannersResult {
 export function buildBannersFromTables(
   enRaw: RawGachaTable,
   cnRaw: RawGachaTable,
-  options: { now?: number; i18nContext?: I18nLayersContext; tracker?: I18nLayersTracker } = {},
+  options: {
+    now?: number
+    i18nContext?: I18nLayersContext
+    tracker?: I18nLayersTracker
+    knownArtIds?: Set<string>
+  } = {},
 ): BuildBannersResult {
   const nowSec = options.now ?? Math.floor(Date.now() / 1000)
   const i18nContext = options.i18nContext ?? createEmptyI18nLayersContext()
   const tracker = options.tracker
+
+  let knownArtIds = options.knownArtIds
+  if (!knownArtIds) {
+    const artsFile = path.join(DATA_DIR, 'banner-arts.json')
+    if (fs.existsSync(artsFile)) {
+      try {
+        const list = JSON.parse(fs.readFileSync(artsFile, 'utf8')) as string[]
+        knownArtIds = new Set(list)
+      } catch {
+        // fallback to empty set
+      }
+    }
+  }
+  const safeArtIds = knownArtIds ?? new Set<string>()
 
   const enPoolsTotal = enRaw.gachaPoolClient.length
   const cnPoolsTotal = cnRaw.gachaPoolClient.length
@@ -224,6 +244,10 @@ export function buildBannersFromTables(
       tracker,
     )
 
+    const artCandidates = getBannerArtCandidates(p.gachaPoolId, 'en')
+    const matchedArt = artCandidates.find((c) => safeArtIds.has(c))
+    const hasArt = Boolean(matchedArt)
+
     return {
       id: p.gachaPoolId,
       server: 'en',
@@ -244,6 +268,9 @@ export function buildBannersFromTables(
       isNextEnBanner: false,
       cnStartDate: openIso.split('T')[0]!.replace(/-/g, '/'),
       cnEndDate: endIso.split('T')[0]!.replace(/-/g, '/'),
+      hasArt,
+      artId: matchedArt,
+      bannerArt: matchedArt,
       rateUp6: [],
       rateUp5: [],
     }
@@ -268,6 +295,10 @@ export function buildBannersFromTables(
       tracker,
     )
 
+    const artCandidates = getBannerArtCandidates(p.gachaPoolId, 'cn')
+    const matchedArt = artCandidates.find((c) => safeArtIds.has(c))
+    const hasArt = Boolean(matchedArt)
+
     return {
       id: p.gachaPoolId,
       server: 'cn',
@@ -288,6 +319,9 @@ export function buildBannersFromTables(
       isNextEnBanner: isNext,
       cnStartDate: openIso.split('T')[0]!.replace(/-/g, '/'),
       cnEndDate: endIso.split('T')[0]!.replace(/-/g, '/'),
+      hasArt,
+      artId: matchedArt,
+      bannerArt: matchedArt,
       rateUp6: [],
       rateUp5: [],
     }

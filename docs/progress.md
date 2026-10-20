@@ -1,5 +1,47 @@
 # Project Progress
 
+- **Banner Artwork: Ingestion, 480px WebP Optimization, Delivery & Presentation (`feat/banner-art`):**
+  - **Context & Motivation:**
+    - Gacha banners lacked artwork completely, showing a text placeholder frame ("ARKCALC // BANNER").
+    - Raw upstream banner PNGs in `fexli/ArknightsResource` (gacha/) weigh 1.2–1.7 MB per banner, causing unacceptable data consumption (>25 MB per page) on slow connections.
+    - Task 19 ingests banner arts, generates lightweight 480px WebP thumbnails (~39 KB, 35x size reduction), publishes them to `Migetsu/arkcalc-assets`, and renders them in `GachaBannerCard.vue` with lazy loading and responsive fallback.
+  - **Implementation Details:**
+    - **Dependency Decision (`sharp`):**
+      - Explicitly added `"sharp": "^0.35.5"` to `devDependencies` in `package.json` to eliminate silent reliance on transitive dependency from `@nuxt/image` / `ipx`.
+    - **Banner Art Resolution & Candidate ID Helper (`shared/utils/gacha/index.ts`):**
+      - Implemented pure function `getBannerArtCandidates(id, server)`: for CN returns pool ID directly; for EN strips `_EN` suffix/infix (e.g. `NORM_EN_24_0_2` -> `NORM_24_0_2`) with raw fallback.
+    - **Schema & Asset Resolver Integration (`shared/schemas/banner.ts`, `shared/utils/resolveAsset.ts`):**
+      - Added `hasArt: z.boolean().default(false)`, `artId: z.string().optional()`, `bannerArt: z.string().optional()` to `GachaBannerSchema`.
+      - Added `'banner'` to `AssetKind` in `resolveAsset.ts` with multi-tier candidate resolution:
+        1. jsDelivr `Migetsu/arkcalc-assets@{OPTIMIZED_ASSETS_COMMIT}/banners/{id}.webp`
+        2. jsDelivr `fexli/ArknightsResource@{FEXLI_REPO_COMMIT}/gacha/{id}.png`
+        3. Statically `fexli/ArknightsResource/{FEXLI_REPO_COMMIT}/gacha/{id}.png`
+    - **Asset Processing & Publication (`scripts/data/build-banner-thumbs.ts`):**
+      - Built automated pipeline fetching 304 unique matched banner arts from `fexli/ArknightsResource`, converting each with Sharp into 480px WebP (quality: 80, effort: 4).
+      - Published 304 `.webp` files (total 11.68 MB, avg 39.3 KB) to `Migetsu/arkcalc-assets` (commit `fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1`), well under the 50 MB threshold.
+      - Generated `data/banner-arts.json` manifest.
+      - Pinned new commit in `shared/utils/resolveAsset.ts` and verified live HTTP 200 responses via jsDelivr CDN.
+    - **Banners Builder (`scripts/data/build-banners.ts`):**
+      - Injected `safeArtIds` matching into `buildBannersFromTables`, setting `hasArt: true` and `artId` for 304 CN banners and 31 EN banners.
+    - **UI Presentation (`app/components/gacha/GachaBannerCard.vue`):**
+      - Rendered banner artwork with `loading="lazy"`, `decoding="async"`, `object-fit: cover`, and graceful fallback to the existing styled placeholder on `@error` or when `hasArt: false`.
+      - Responsive: 100% width on mobile, 0 horizontal overflow at 360px.
+    - **Unit Tests:**
+      - Added `getBannerArtCandidates` test suite in `tests/unit/shared/gacha.test.ts` (CN vs EN, stripping `_EN`, invalid inputs).
+      - Added banner art tests in `tests/unit/components/gacha/GachaBannerCard.test.ts` (rendering with lazy loading, placeholder fallback when `hasArt: false`, and `@error` fallback).
+      - Added banner art resolution tests in `tests/unit/shared/resolveAsset.test.ts` (WebP CDN, fexli PNG fallback, EN stripping, URL encoding).
+      - Added banner art builder tests in `tests/unit/data/build-banners.test.ts` (verifying `hasArt` and `artId` without filesystem/.cache dependencies).
+    - **Documentation:**
+      - Updated `docs/assets.md` with banner art kind, CDN paths, and publication workflow.
+      - Updated `docs/data-banners.md` with `hasArt` and `artId` fields.
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 685 valid keys.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `test -- --project unit`: 495 passed across 45 test files.
+    - `data:validate`: 100% valid.
+    - `build`: production bundle compiled cleanly.
+
 - **Skins & Banners Machine Translation Pipeline (`feat/i18n-skins-banners`):**
   - **Context & Motivation:**
     - `data/skins.json` contained 203 fields with `source: 'pending'` across 72 CN-only skins that were never translated because the translation collector only scanned operators and constants (known issue 15).

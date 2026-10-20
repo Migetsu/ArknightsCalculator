@@ -320,5 +320,88 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(committedBannersDataset.meta.currentEnBanner?.id).toBe('LIMITED_EN_42_0_1')
       expect(committedBannersDataset.meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
     })
+
+    it('verifies art coverage in committed dataset (304 CN and 31 EN banners with art)', () => {
+      const cnWithArt = committedBannersDataset.cnBanners.filter((b) => b.hasArt)
+      const cnWithoutArt = committedBannersDataset.cnBanners.filter((b) => !b.hasArt)
+      const enWithArt = committedBannersDataset.enBanners.filter((b) => b.hasArt)
+      const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
+
+      expect(cnWithArt.length).toBe(304)
+      expect(cnWithoutArt.length).toBe(149)
+      expect(enWithArt.length).toBe(31)
+      expect(enWithoutArt.length).toBe(377)
+
+      for (const b of cnWithArt) {
+        expect(b.artId).toBe(b.id)
+      }
+      for (const b of enWithArt) {
+        expect(b.artId).toBe(b.id.replace('_EN_', '_'))
+      }
+    })
+  })
+
+  describe('Banner Art assignment in buildBannersFromTables', () => {
+    it('accurately sets hasArt and artId based on knownArtIds for CN and EN', () => {
+      const mockEn: RawGachaTable = {
+        gachaPoolClient: [
+          {
+            gachaPoolId: 'NORM_EN_24_0_2',
+            gachaIndex: 1,
+            openTime: 100,
+            endTime: 200,
+            gachaPoolName: 'EN Pool With Art',
+            gachaRuleType: 'NORMAL',
+          },
+          {
+            gachaPoolId: 'NORM_EN_0_1_1',
+            gachaIndex: 2,
+            openTime: 100,
+            endTime: 200,
+            gachaPoolName: 'EN Pool Without Art',
+            gachaRuleType: 'NORMAL',
+          },
+        ],
+      }
+      const mockCn: RawGachaTable = {
+        gachaPoolClient: [
+          {
+            gachaPoolId: 'NORM_24_0_2',
+            gachaIndex: 1,
+            openTime: 100,
+            endTime: 200,
+            gachaPoolName: 'CN Pool With Art',
+            gachaRuleType: 'NORMAL',
+          },
+          {
+            gachaPoolId: 'NORM_0_1_1',
+            gachaIndex: 2,
+            openTime: 100,
+            endTime: 200,
+            gachaPoolName: 'CN Pool Without Art',
+            gachaRuleType: 'NORMAL',
+          },
+        ],
+      }
+
+      const knownArtIds = new Set(['NORM_24_0_2'])
+      const { dataset } = buildBannersFromTables(mockEn, mockCn, { knownArtIds })
+
+      const enWithArt = dataset.enBanners.find((b) => b.id === 'NORM_EN_24_0_2')
+      expect(enWithArt?.hasArt).toBe(true)
+      expect(enWithArt?.artId).toBe('NORM_24_0_2')
+
+      const enWithoutArt = dataset.enBanners.find((b) => b.id === 'NORM_EN_0_1_1')
+      expect(enWithoutArt?.hasArt).toBe(false)
+      expect(enWithoutArt?.artId).toBeUndefined()
+
+      const cnWithArt = dataset.cnBanners.find((b) => b.id === 'NORM_24_0_2')
+      expect(cnWithArt?.hasArt).toBe(true)
+      expect(cnWithArt?.artId).toBe('NORM_24_0_2')
+
+      const cnWithoutArt = dataset.cnBanners.find((b) => b.id === 'NORM_0_1_1')
+      expect(cnWithoutArt?.hasArt).toBe(false)
+      expect(cnWithoutArt?.artId).toBeUndefined()
+    })
   })
 })

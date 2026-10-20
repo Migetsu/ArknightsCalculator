@@ -357,3 +357,24 @@ export function getProbabilityMilestones(
     }
   })
 }
+
+/**
+ * Resolves candidate art identifiers for a banner based on its pool ID and server.
+ * - For CN: uses pool ID as-is (e.g. 'NORM_10_0_1').
+ * - For EN: tries pool ID with '_EN' stripped (e.g. 'NORM_EN_0_1_1' -> 'NORM_0_1_1'), then falls back to raw ID.
+ */
+export function getBannerArtCandidates(id: string, server?: 'cn' | 'en' | string): string[] {
+  if (!id || typeof id !== 'string') return []
+  const cleanId = id.trim()
+  if (!cleanId) return []
+
+  const isEn = server === 'en' || cleanId.includes('_EN_') || cleanId.includes('_EN')
+  if (isEn) {
+    const stripped = cleanId.replace(/_EN(?=_|$)/, '')
+    if (stripped !== cleanId) {
+      return [stripped, cleanId]
+    }
+  }
+
+  return [cleanId]
+}

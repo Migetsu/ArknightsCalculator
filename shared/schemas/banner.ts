@@ -32,6 +32,8 @@ export const GachaBannerSchema = z.object({
   isNextEnBanner: z.boolean().optional(),
   cnStartDate: z.string().default(''),
   cnEndDate: z.string().default(''),
+  hasArt: z.boolean().default(false),
+  artId: z.string().optional(),
   bannerArt: z.string().optional(),
   rateUp6: z.array(z.string()).default([]),
   rateUp5: z.array(z.string()).default([]),
