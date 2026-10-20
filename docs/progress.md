@@ -1,5 +1,38 @@
 # Project Progress
 
+- **Deterministic Full Test Run: Worker Cap & Nuxt Hook Timeout (`fix/deterministic-tests`):**
+  - **Context & Motivation:**
+    - `npx vitest run` passed on a quiet machine but failed on files that passed in isolation. `vitest.config.ts` set neither `maxWorkers` nor `hookTimeout`, so every Nuxt test file booted a full Nuxt app with the 10 s default hook budget and the worker count followed the 16 logical cores.
+  - **Diagnosis (measured 2026-10-20, 16 logical cores):**
+    - Baseline on clean `main`, three runs: 96 files / 764 tests, 26.22 s, 24.20 s, 21.44 s (median 24.20 s).
+    - Reproduced under load (6 CPU worker threads + 8 HTTP loops against `dev:agent` on port 3001): 8 files failed, 70 tests skipped, `Hook timed out in 10000ms` raised at `@nuxt/test-utils/dist/runtime/entry.mjs:10` (`beforeAll(setupNuxt)`), total 43.92 s.
+    - `tests/unit/composables/useProfile.test.ts`: 9 test bodies total 5.4 ms, file wall time 4.38 s, so 4.37 s (99.9%) is spent before the first test. The under-load failure stack points at `beforeAll(setupNuxt)` in `@nuxt/test-utils/dist/runtime/entry.mjs:10`, so the budget is consumed by the Nuxt environment bootstrap, not the bodies.
+    - `tests/unit/pages/gacha.test.ts`: file wall 12.64 s, test bodies 6.02 s. Mounting the page costs 113-334 ms per test, while the two "Show All" tests cost 2241 ms and 2216 ms (453 cards re-rendered). `JSON.parse` of the 861-record `data/banners.json` (2.09 MB) takes 6.0 ms, so dataset parsing is not the wait; the remaining ~6.6 s is transform/import/environment setup.
+    - A cold first run (empty Vite cache) also timed out `tests/unit/scripts/patch-vue.test.ts` at 5000 ms (`full runPatch` file time 5.8 s), the same contention class with a short body timeout.
+  - **Changes (`vitest.config.ts`):**
+    - `maxWorkers = min(12, availableParallelism() - 1)` on both projects. On the 16-core dev machine this is 12; on the 4-core CI runner it keeps the default 3. Vitest requires equal `maxWorkers` for projects in the same `sequence.groupOrder`, so the unit project mirrors the nuxt cap instead of serializing the projects.
+    - `hookTimeout: 30_000` on the nuxt project only; setup measured 4.3 s idle and over 10 s under load, so 30 s doubles the 10 s budget that setup exceeded.
+  - **Worker matrix (same load: 6 CPU threads + 8 HTTP loops + `dev:agent`):**
+    | `maxWorkers` | `hookTimeout`  | Result                         | Duration |
+    | :----------- | :------------- | :----------------------------- | :------- |
+    | auto         | 10 s (default) | 8 files timed out, 70 skipped  | 43.92 s  |
+    | 4            | 10 s (default) | 4 files timed out, 39 skipped  | 81.26 s  |
+    | 8            | 10 s (default) | 11 files timed out, 90 skipped | 78.58 s  |
+    | 6            | 30 s           | 96 files / 764 passed          | 32.53 s  |
+    | 12           | 30 s           | 96 files / 764 passed          | 27.68 s  |
+    - 4 and 8 were rejected: with the default hook they timed out, and the smaller pools stretched the run to 78-81 s. 6 with 30 s stayed green (32.5 s) but was slower than 12 (27.7 s), so 12 is the balance.
+    - The first CI run with a fixed 12 failed on the 4-core runner (`recruit.test.ts` 5000 ms, `gacha.test.ts` 20000 ms), which is why the cap is derived from the core count instead of being constant.
+  - **Results:**
+    - After the change, three idle runs: 18.17 s, 18.19 s, 19.21 s (median 18.19 s, 24.8% faster than the 24.20 s baseline).
+    - Five consecutive green runs: 18.17 s, 18.19 s, 19.21 s, 25.82 s (under load), 21.17 s (under load).
+    - Counts unchanged: unit 509 tests / 46 files, nuxt 255 tests / 50 files, total 764 tests / 96 files, 0 skipped, 0 todo.
+  - **Quality Gates & Metrics:**
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `data:validate`: 0 integrity issues.
+    - `i18n:check`: 688 valid keys.
+    - `build`: 53.1 MB in 1m 29s (`NUXT_BUILD_DIR=.nuxt-agent`).
+
 - **Official Banner Titles & Layered Provenance (`fix/banner-official-names`):**
   - **Context & Motivation:**
     - In `data/banners.json`, all 453 CN banners had `name.source = 'machine'`, despite 187 of them having a confirmed paired EN banner with an official English title from Yostar (e.g. `LIMITED_61_0_1` was labeled "Preaching Freedom" instead of official "Freedom of Preach" from `LIMITED_EN_36_0_1`), and 11 CN debut banners having community-curated event titles in `data/wiki-banners.json`.
