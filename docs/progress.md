@@ -1,5 +1,46 @@
 # Project Progress
 
+- **Official Banner Titles & Layered Provenance (`fix/banner-official-names`):**
+  - **Context & Motivation:**
+    - In `data/banners.json`, all 453 CN banners had `name.source = 'machine'`, despite 187 of them having a confirmed paired EN banner with an official English title from Yostar (e.g. `LIMITED_61_0_1` was labeled "Preaching Freedom" instead of official "Freedom of Preach" from `LIMITED_EN_36_0_1`), and 11 CN debut banners having community-curated event titles in `data/wiki-banners.json`.
+    - The project's declared i18n layer order (`manual > official > wiki > machine > zh`) was bypassed because `build-banners.ts` previously passed `officialEn: null` and omitted `wikiEn` for all CN banners.
+    - Task 21 enforces the programmatic priority hierarchy across all banners, provides an honest audit of skins provenance, and adds unit test coverage.
+  - **Implementation Details:**
+    - **I18n Layers Resolver (`scripts/data/i18n-layers.ts`):**
+      - Added `wikiSource?: 'wiki' | 'community'` to `I18nResolutionOptions`.
+      - Ensured that when `wikiSource` is specified, it strictly dictates `source`, while retaining automatic fallback to `isGlobal ? 'wiki' : 'community'` for operators.
+    - **Banner Builder Integration (`scripts/data/build-banners.ts`):**
+      - Created `enPoolMap` indexing all retained EN pools.
+      - For each CN banner:
+        - If paired with an EN banner (`pairedId`), extracted `officialEn = pairedEnPool.gachaPoolName`.
+        - If matched with a wiki event (`wikiMatch`), extracted `wikiEn = wikiMatch.name`.
+        - Passed `officialEn`, `wikiEn`, `zhText: p.gachaPoolName`, and `wikiSource: 'wiki'` into `resolveLayeredI18nString`.
+      - The resolver programmatic hierarchy ensures:
+        1. When `officialEn` is present, it immediately returns `source: 'official'` (superseding both wiki and machine).
+        2. When `officialEn` is absent but `wikiEn` is present, it immediately returns `source: 'wiki'` (superseding machine).
+        3. Only when neither is present does it fall back to `source: 'machine'`.
+      - Chinese original title (`name.zh`) is strictly preserved across all banners.
+      - Rebuilt `data/banners.json`.
+    - **Banner Provenance Breakdown (453 CN Banners):**
+      - `source: 'official'`: **187 banners** (from paired EN pools, including `LIMITED_61_0_1` -> "Freedom of Preach").
+      - `source: 'wiki'`: **11 banners** (from `data/wiki-banners.json`, including `LIMITED_76_0_1` -> "Trails End Winds Rest").
+      - `source: 'machine'`: **255 banners** (routine bi-weekly standard pool rotations that do not appear in event archives).
+    - **Skins Audit (`data/skins.json`):**
+      - 1,319 out of 1,359 skins already have `source: 'official'` from official Global `skin_table.json`.
+      - The remaining 40 skins are CN-only releases with no official EN client table or wiki dataset in the project; they honestly remain `source: 'machine'` without fabrication.
+    - **Unit Tests:**
+      - Added 3 layer priority tests in `tests/unit/data/i18n-layers.test.ts` (verifying `official > machine`, `wiki > machine`, and machine fallback).
+      - Added 1 test in `tests/unit/data/build-banners.test.ts` (verifying `LIMITED_61_0_1`, `LIMITED_76_0_1`, and 187/11/255 provenance distribution).
+    - **Documentation:**
+      - Updated `docs/data-banners.md` (Section 2.2 and Section 5.5).
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 688 valid keys.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `data:validate`: 0 integrity issues.
+    - `test -- --project unit`: 509 passed across 46 files (+4 unit tests).
+    - `build`: production bundle compiled cleanly.
+
 - **Banner Composition & Real Global Dates from Wiki (`feat/banner-operators`):**
   - **Context & Motivation:**
     - In `data/banners.json`, `rateUp6` and `rateUp5` were empty for all 861 banners due to game client tables wiping `gachaPoolDetail` to `"-"`.

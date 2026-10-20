@@ -44,6 +44,7 @@ export interface I18nResolutionOptions {
   fallbackEn?: string | null
   isStale?: boolean
   isGlobal?: boolean
+  wikiSource?: 'wiki' | 'community'
 }
 
 export interface I18nLayersTracker {
@@ -256,7 +257,8 @@ export function resolveLayeredI18nString(
           ? (context.globalAvailability?.[options.charId] ?? true)
           : true
 
-    const source: I18nSource = isGlobal ? 'wiki' : 'community'
+    const source: I18nSource =
+      options.wikiSource ?? (isGlobal ? 'wiki' : 'community')
     if (tracker) {
       if (source === 'community') {
         tracker.sources.community++
