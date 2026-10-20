@@ -110,17 +110,98 @@ describe('GachaBannerCard', () => {
     expect(wrapperMachine.find('.ak-translation-badge').text()).toBe('MT')
   })
 
-  it('calculates and displays CN dates and projected Global dates (+175 days)', async () => {
+  it('displays CN dates and real Global dates when available from wiki dataset', async () => {
+    const bannerWithGlobal: GachaBanner = {
+      ...mockBanner,
+      globalStartDate: '2026/10/14',
+      globalEndDate: '2026/10/28',
+    }
     const wrapper = await mountSuspended(GachaBannerCard, {
       props: {
-        banner: mockBanner,
+        banner: bannerWithGlobal,
         operatorsMap: mockOperatorsMap,
       },
     })
 
     const datesText = wrapper.find('.gacha-banner__dates').text()
     expect(datesText).toContain('May 15, 2026 – May 29, 2026')
-    expect(datesText).toContain('Nov 6, 2026 – Nov 20, 2026')
+    expect(datesText).toContain('Oct 14, 2026 – Oct 28, 2026')
+  })
+
+  it('does NOT render Global date row when globalStartDate is absent (no 175-day estimation)', async () => {
+    const bannerWithoutGlobal: GachaBanner = {
+      ...mockBanner,
+      globalStartDate: undefined,
+      globalEndDate: undefined,
+    }
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: bannerWithoutGlobal,
+        operatorsMap: mockOperatorsMap,
+      },
+    })
+
+    const datesText = wrapper.find('.gacha-banner__dates').text()
+    expect(datesText).toContain('May 15, 2026 – May 29, 2026')
+    expect(datesText).not.toContain('Global:')
+    expect(datesText).not.toContain('Est. Global:')
+  })
+
+  it('renders primary 6★, other 6★, secondary 6★, and 5★ rate-up operators', async () => {
+    const complexBanner: GachaBanner = {
+      ...mockBanner,
+      type: 'limited',
+      rateUp6: ['char_003_kalts', 'char_1040_lemuen'],
+      primaryRateUp6: 'char_003_kalts',
+      secondaryRateUp6: ['char_249_mlyse'],
+      rateUp5: ['char_422_aurora'],
+    }
+
+    const extendedMap = new Map(mockOperatorsMap)
+    extendedMap.set('char_1040_lemuen', {
+      id: 'char_1040_lemuen',
+      name: { en: 'Lemuen', zh: '蕾缪安', source: 'official', isMachineTranslation: false },
+      displayNumber: 'SN01',
+      rarity: 6,
+      class: 'SNIPER',
+      subclass: 'marksman',
+      faction: 'laterano',
+      position: 'RANGED',
+      tagList: ['DPS'],
+      servers: ['cn'],
+      hasIcon: true,
+      isClassChange: false,
+    })
+    extendedMap.set('char_249_mlyse', {
+      id: 'char_249_mlyse',
+      name: { en: 'Muelsyse', zh: '缪尔赛思', source: 'official', isMachineTranslation: false },
+      displayNumber: 'RL07',
+      rarity: 6,
+      class: 'VANGUARD',
+      subclass: 'tactician',
+      faction: 'rhine',
+      position: 'MELEE',
+      tagList: ['Summon'],
+      servers: ['cn', 'global'],
+      hasIcon: true,
+      isClassChange: false,
+    })
+
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: complexBanner,
+        operatorsMap: extendedMap,
+      },
+    })
+
+    const avatars = wrapper.findAllComponents(AkAvatar)
+    expect(avatars.length).toBe(4) // Kal'tsit, Lemuen, Muelsyse, Aurora
+
+    const headings = wrapper.findAll('.gacha-banner__ops-heading').map((h) => h.text())
+    expect(headings).toContain('RATE-UP') // Primary 6★
+    expect(headings).toContain('OTHER 6★ RATE-UP') // Other 6★ (Lemuen)
+    expect(headings).toContain('SECONDARY RATE-UP') // Secondary 6★ (Muelsyse)
+    expect(headings).toContain('5★ OPERATORS') // 5★ (Aurora)
   })
 
   it('renders rate-up 6★ and 5★ avatars with operator navigation links', async () => {

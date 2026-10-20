@@ -65,6 +65,8 @@ export async function validateDataIntegrity(): Promise<{
     itemMap.set(it.id, it)
   }
 
+  const validOperatorIds = new Set(index.map((op) => op.id))
+
   const issues: ValidationIssue[] = []
   let totalItemReferences = 0
   let totalSkillReferences = 0
@@ -623,6 +625,66 @@ export async function validateDataIntegrity(): Promise<{
           referenceType: 'banner',
           referenceId: banner.id,
           message: `Starter pool '${banner.id}' was not filtered`,
+        })
+      }
+
+      // Rate-up operator referential integrity
+      for (const opId of banner.rateUp6) {
+        if (!validOperatorIds.has(opId)) {
+          issues.push({
+            entityType: 'banner',
+            entityId: banner.id,
+            referenceType: 'operator',
+            referenceId: opId,
+            message: `rateUp6 operator '${opId}' does not exist in operators dataset`,
+          })
+        }
+      }
+
+      for (const opId of banner.rateUp5) {
+        if (!validOperatorIds.has(opId)) {
+          issues.push({
+            entityType: 'banner',
+            entityId: banner.id,
+            referenceType: 'operator',
+            referenceId: opId,
+            message: `rateUp5 operator '${opId}' does not exist in operators dataset`,
+          })
+        }
+      }
+
+      if (banner.primaryRateUp6 && !validOperatorIds.has(banner.primaryRateUp6)) {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'operator',
+          referenceId: banner.primaryRateUp6,
+          message: `primaryRateUp6 operator '${banner.primaryRateUp6}' does not exist in operators dataset`,
+        })
+      }
+
+      for (const opId of banner.secondaryRateUp6 ?? []) {
+        if (!validOperatorIds.has(opId)) {
+          issues.push({
+            entityType: 'banner',
+            entityId: banner.id,
+            referenceType: 'operator',
+            referenceId: opId,
+            message: `secondaryRateUp6 operator '${opId}' does not exist in operators dataset`,
+          })
+        }
+      }
+    }
+
+    // Paired banner referential integrity
+    for (const banner of bannersData.banners) {
+      if (banner.pairedBannerId && !seenBannerIds.has(banner.pairedBannerId)) {
+        issues.push({
+          entityType: 'banner',
+          entityId: banner.id,
+          referenceType: 'banner',
+          referenceId: banner.pairedBannerId,
+          message: `pairedBannerId '${banner.pairedBannerId}' does not exist in banners dataset`,
         })
       }
     }

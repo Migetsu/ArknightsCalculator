@@ -9,6 +9,7 @@ import {
   type GachaBanner,
   type NextBannerSummary,
 } from '../../shared/schemas/banner'
+import type { ParsedWikiBanner } from './fetch-wiki-banners'
 import {
   createEmptyI18nLayersContext,
   createI18nTracker,
@@ -79,11 +80,52 @@ export function mapRuleToBannerType(ruleType: string, poolName: string): BannerT
   return 'standard'
 }
 
+export function isLimitedWikiType(t: string): boolean {
+  return ['celebration', 'festival', 'carnival', 'crossover', 'limited rerun'].includes(t.toLowerCase())
+}
+
+export function matchWikiToBanner(
+  b: RawGachaPool,
+  candidates: ParsedWikiBanner[],
+): ParsedWikiBanner | null {
+  if (candidates.length === 0) return null
+  if (candidates.length === 1) {
+    const c = candidates[0]!
+    if (isLimitedWikiType(c.type) && b.gachaRuleType !== 'LIMITED' && b.gachaRuleType !== 'LINKAGE') {
+      return null
+    }
+    return c
+  }
+  if (b.gachaRuleType === 'LIMITED' || b.gachaRuleType === 'LINKAGE') {
+    return candidates.find((c) => isLimitedWikiType(c.type)) ?? null
+  }
+  const bannerType = mapRuleToBannerType(b.gachaRuleType, b.gachaPoolName)
+  if (bannerType === 'joint_operation') {
+    return candidates.find((c) => c.type === 'jo') ?? null
+  }
+  if (b.gachaRuleType === 'SINGLE' || b.gachaRuleType === 'DOUBLE' || b.gachaRuleType === 'ATTAIN') {
+    return (
+      candidates.find((c) =>
+        ['special', 'rerun', 'linkup', 'tftw', 'orient'].includes(c.type.toLowerCase()),
+      ) ?? null
+    )
+  }
+  if (b.gachaRuleType === 'NORMAL' || b.gachaRuleType.includes('CLASSIC')) {
+    return (
+      candidates.find((c) =>
+        ['standard', 'kernel', 'kernel locating', 'kernel linkup'].includes(c.type.toLowerCase()),
+      ) ?? null
+    )
+  }
+  return candidates[0]!
+}
+
 export interface BuildBannersOptions {
   now?: number
   write?: boolean
   i18nContext?: I18nLayersContext
   tracker?: I18nLayersTracker
+  wikiBanners?: ParsedWikiBanner[]
 }
 
 export interface BuildBannersResult {
@@ -108,6 +150,18 @@ export interface BuildBannersResult {
       cnName: string
       cnOpen: string
     }>
+    wikiBannersLoaded: number
+    cnMatchedWikiCount: number
+    enMatchedWikiCount: number
+    totalPairsFormed: number
+    lmtgsidDiscrepanciesCount: number
+    discrepancies: Array<{
+      cnId: string
+      cnLmt?: string | null
+      enId: string
+      enLmt?: string | null
+      wikiName: string
+    }>
     currentEnBanner: BannerSummary | null
     activeEnBanners: BannerSummary[]
     activeCnBanners: BannerSummary[]
@@ -123,6 +177,7 @@ export function buildBannersFromTables(
     i18nContext?: I18nLayersContext
     tracker?: I18nLayersTracker
     knownArtIds?: Set<string>
+    wikiBanners?: ParsedWikiBanner[]
   } = {},
 ): BuildBannersResult {
   const nowSec = options.now ?? Math.floor(Date.now() / 1000)
@@ -142,6 +197,19 @@ export function buildBannersFromTables(
     }
   }
   const safeArtIds = knownArtIds ?? new Set<string>()
+
+  let wikiBanners = options.wikiBanners
+  if (!wikiBanners) {
+    const wikiFile = path.join(DATA_DIR, 'wiki-banners.json')
+    if (fs.existsSync(wikiFile)) {
+      try {
+        wikiBanners = JSON.parse(fs.readFileSync(wikiFile, 'utf8')) as ParsedWikiBanner[]
+      } catch {
+        wikiBanners = []
+      }
+    }
+  }
+  const safeWikiBanners = wikiBanners ?? []
 
   const enPoolsTotal = enRaw.gachaPoolClient.length
   const cnPoolsTotal = cnRaw.gachaPoolClient.length
@@ -220,18 +288,123 @@ export function buildBannersFromTables(
     }
   }
 
-  // 5. Identify Next EN Limited Banner via LMTGSID progression
+  // 5. Build Wiki Lookup Maps & Date-based Cross-Server Pairing across all families
+  const wikiByCn = new Map<string, ParsedWikiBanner[]>()
+  const wikiByGlobal = new Map<string, ParsedWikiBanner[]>()
+  for (const w of safeWikiBanners) {
+    if (w.cnStart) {
+      if (!wikiByCn.has(w.cnStart)) wikiByCn.set(w.cnStart, [])
+      wikiByCn.get(w.cnStart)!.push(w)
+    }
+    if (w.globalStart) {
+      if (!wikiByGlobal.has(w.globalStart)) wikiByGlobal.set(w.globalStart, [])
+      wikiByGlobal.get(w.globalStart)!.push(w)
+    }
+  }
+
+  // Pre-match CN pools to wiki
+  const cnPoolToWiki = new Map<string, ParsedWikiBanner>()
+  for (const p of cnFiltered) {
+    const utcDate = new Date(p.openTime * 1000).toISOString().split('T')[0]!
+    const bjDate = new Date(p.openTime * 1000 + 8 * 3600 * 1000).toISOString().split('T')[0]!
+    const cands = [
+      ...(wikiByCn.get(utcDate) ?? []),
+      ...(bjDate !== utcDate ? (wikiByCn.get(bjDate) ?? []) : []),
+    ]
+    const matched = matchWikiToBanner(p, cands)
+    if (matched) cnPoolToWiki.set(p.gachaPoolId, matched)
+  }
+
+  // Pre-match EN pools to wiki
+  const enPoolToWiki = new Map<string, ParsedWikiBanner>()
+  for (const p of enFiltered) {
+    const utcDate = new Date(p.openTime * 1000).toISOString().split('T')[0]!
+    const pstDate = new Date(p.openTime * 1000 - 7 * 3600 * 1000).toISOString().split('T')[0]!
+    const cands = [
+      ...(wikiByGlobal.get(utcDate) ?? []),
+      ...(pstDate !== utcDate ? (wikiByGlobal.get(pstDate) ?? []) : []),
+    ]
+    const matched = matchWikiToBanner(p, cands)
+    if (matched) enPoolToWiki.set(p.gachaPoolId, matched)
+  }
+
+  // Match CN <-> EN pairs across all banner families
+  const cnToEnDatePairs = new Map<string, string>()
+  const enToCnDatePairs = new Map<string, string>()
+  const lmtgsidDiscrepancies: Array<{
+    cnId: string
+    cnLmt?: string | null
+    enId: string
+    enLmt?: string | null
+    wikiName: string
+  }> = []
+
+  for (const cnP of cnFiltered) {
+    const w = cnPoolToWiki.get(cnP.gachaPoolId)
+    if (!w || !w.globalStart) continue
+
+    const enCandidates = enFiltered.filter((enP) => {
+      const enW = enPoolToWiki.get(enP.gachaPoolId)
+      if (enW && enW === w) return true
+      const utcDate = new Date(enP.openTime * 1000).toISOString().split('T')[0]!
+      const pstDate = new Date(enP.openTime * 1000 - 7 * 3600 * 1000).toISOString().split('T')[0]!
+      return utcDate === w.globalStart || pstDate === w.globalStart
+    })
+
+    if (enCandidates.length > 0) {
+      let matchedEn = enCandidates.find((enP) => enP.gachaRuleType === cnP.gachaRuleType)
+      if (!matchedEn) {
+        const cnType = mapRuleToBannerType(cnP.gachaRuleType, cnP.gachaPoolName)
+        matchedEn = enCandidates.find(
+          (enP) => mapRuleToBannerType(enP.gachaRuleType, enP.gachaPoolName) === cnType,
+        )
+      }
+      if (!matchedEn && enCandidates.length === 1 && !isLimitedWikiType(w.type)) {
+        matchedEn = enCandidates[0]
+      }
+
+      if (matchedEn) {
+        cnToEnDatePairs.set(cnP.gachaPoolId, matchedEn.gachaPoolId)
+        enToCnDatePairs.set(matchedEn.gachaPoolId, cnP.gachaPoolId)
+
+        if (cnP.LMTGSID || matchedEn.LMTGSID) {
+          if (cnP.LMTGSID !== matchedEn.LMTGSID) {
+            lmtgsidDiscrepancies.push({
+              cnId: cnP.gachaPoolId,
+              cnLmt: cnP.LMTGSID,
+              enId: matchedEn.gachaPoolId,
+              enLmt: matchedEn.LMTGSID,
+              wikiName: w.name,
+            })
+          }
+        }
+      }
+    }
+  }
+
+  // 6. Identify Next EN Limited Banner via LMTGSID progression
   // In sorted CN limited pools, find the first one that does NOT have an EN match
   const cnLimitedSorted = cnFiltered.filter((p) => p.gachaRuleType === 'LIMITED')
-  const nextCnLimited = cnLimitedSorted.find((p) => !cnToEnLimitedPairs.has(p.gachaPoolId))
+  const nextCnLimited = cnLimitedSorted.find(
+    (p) => !cnToEnLimitedPairs.has(p.gachaPoolId) && !cnToEnDatePairs.has(p.gachaPoolId),
+  )
 
-  // 6. Transform into GachaBanner entries
+  // 7. Transform into GachaBanner entries
   const enBanners: GachaBanner[] = enFiltered.map((p) => {
     const type = mapRuleToBannerType(p.gachaRuleType, p.gachaPoolName)
     const openIso = new Date(p.openTime * 1000).toISOString()
     const endIso = new Date(p.endTime * 1000).toISOString()
     const isActive = nowSec >= p.openTime && nowSec <= p.endTime
-    const pairedId = enToCnLimitedPairs.get(p.gachaPoolId) ?? null
+    const pairedId =
+      enToCnDatePairs.get(p.gachaPoolId) ?? enToCnLimitedPairs.get(p.gachaPoolId) ?? null
+
+    const wikiMatch = enPoolToWiki.get(p.gachaPoolId)
+    const rateUp6 = wikiMatch ? [...wikiMatch.rateUp6] : []
+    const rateUp5 = wikiMatch ? [...wikiMatch.rateUp5] : []
+    const primaryRateUp6 = wikiMatch?.primaryRateUp6
+    const secondaryRateUp6 = wikiMatch ? [...wikiMatch.secondaryRateUp6] : []
+    const globalStartDate = openIso.split('T')[0]!.replace(/-/g, '/')
+    const globalEndDate = endIso.split('T')[0]!.replace(/-/g, '/')
 
     const bannerName = resolveLayeredI18nString(
       {
@@ -268,11 +441,15 @@ export function buildBannersFromTables(
       isNextEnBanner: false,
       cnStartDate: openIso.split('T')[0]!.replace(/-/g, '/'),
       cnEndDate: endIso.split('T')[0]!.replace(/-/g, '/'),
+      globalStartDate,
+      globalEndDate,
       hasArt,
       artId: matchedArt,
       bannerArt: matchedArt,
-      rateUp6: [],
-      rateUp5: [],
+      rateUp6,
+      rateUp5,
+      primaryRateUp6,
+      secondaryRateUp6,
     }
   })
 
@@ -281,8 +458,25 @@ export function buildBannersFromTables(
     const openIso = new Date(p.openTime * 1000).toISOString()
     const endIso = new Date(p.endTime * 1000).toISOString()
     const isActive = nowSec >= p.openTime && nowSec <= p.endTime
-    const pairedId = cnToEnLimitedPairs.get(p.gachaPoolId) ?? null
+    const pairedId =
+      cnToEnDatePairs.get(p.gachaPoolId) ?? cnToEnLimitedPairs.get(p.gachaPoolId) ?? null
     const isNext = nextCnLimited ? p.gachaPoolId === nextCnLimited.gachaPoolId : false
+
+    const wikiMatch = cnPoolToWiki.get(p.gachaPoolId)
+    const rateUp6 = wikiMatch ? [...wikiMatch.rateUp6] : []
+    const rateUp5 = wikiMatch ? [...wikiMatch.rateUp5] : []
+    const primaryRateUp6 = wikiMatch?.primaryRateUp6
+    const secondaryRateUp6 = wikiMatch ? [...wikiMatch.secondaryRateUp6] : []
+    const globalStartDate = wikiMatch?.rawGlobalStart
+      ? wikiMatch.rawGlobalStart.replace(/-/g, '/')
+      : wikiMatch?.globalStart
+        ? wikiMatch.globalStart.replace(/-/g, '/')
+        : undefined
+    const globalEndDate = wikiMatch?.rawGlobalEnd
+      ? wikiMatch.rawGlobalEnd.replace(/-/g, '/')
+      : wikiMatch?.globalEnd
+        ? wikiMatch.globalEnd.replace(/-/g, '/')
+        : undefined
 
     const bannerName = resolveLayeredI18nString(
       {
@@ -319,11 +513,15 @@ export function buildBannersFromTables(
       isNextEnBanner: isNext,
       cnStartDate: openIso.split('T')[0]!.replace(/-/g, '/'),
       cnEndDate: endIso.split('T')[0]!.replace(/-/g, '/'),
+      globalStartDate,
+      globalEndDate,
       hasArt,
       artId: matchedArt,
       bannerArt: matchedArt,
-      rateUp6: [],
-      rateUp5: [],
+      rateUp6,
+      rateUp5,
+      primaryRateUp6,
+      secondaryRateUp6,
     }
   })
 
@@ -411,6 +609,12 @@ export function buildBannersFromTables(
       totalRetained: allBanners.length,
       verifiedLimitedPairsCount: verifiedLimitedPairs.length,
       verifiedLimitedPairs,
+      wikiBannersLoaded: safeWikiBanners.length,
+      cnMatchedWikiCount: cnPoolToWiki.size,
+      enMatchedWikiCount: enPoolToWiki.size,
+      totalPairsFormed: cnToEnDatePairs.size,
+      lmtgsidDiscrepanciesCount: lmtgsidDiscrepancies.length,
+      discrepancies: lmtgsidDiscrepancies,
       currentEnBanner,
       activeEnBanners,
       activeCnBanners,
@@ -459,6 +663,14 @@ if (process.argv[1]?.includes('build-banners')) {
     console.log(`Total Banners Generated: ${stats.totalRetained}\n`)
 
     console.log(`Verified LIMITED Pairs via LMTGSID: ${stats.verifiedLimitedPairsCount} of 25`)
+    console.log(`Wiki Banners Loaded: ${stats.wikiBannersLoaded}`)
+    console.log(`  CN Pools matched to Wiki: ${stats.cnMatchedWikiCount}`)
+    console.log(`  EN Pools matched to Wiki: ${stats.enMatchedWikiCount}`)
+    console.log(`  Total CN<->EN Pairs Formed: ${stats.totalPairsFormed}`)
+    console.log(`  LMTGSID Discrepancies: ${stats.lmtgsidDiscrepanciesCount}`)
+    if (stats.discrepancies.length > 0) {
+      console.log(`  Discrepancies list:`, stats.discrepancies)
+    }
     console.log(
       `Current EN Banner: ${stats.currentEnBanner?.id} ("${stats.currentEnBanner?.name.en ?? stats.currentEnBanner?.name.zh}")`,
     )

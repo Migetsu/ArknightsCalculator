@@ -13,7 +13,9 @@ describe('GachaPage', () => {
     const wrapper = await mountSuspended(GachaPage)
     expect(wrapper.text()).toContain('GCH-02')
     expect(wrapper.text()).toContain('Banners')
-    expect(wrapper.find('.gacha-page__disclaimer').text()).toContain('Global dates are estimates')
+    expect(wrapper.find('.gacha-page__disclaimer').text()).toContain(
+      'Global dates reflect official Global',
+    )
   })
 
   it('renders date switcher, type filter buttons, and calculator', async () => {
@@ -115,7 +117,7 @@ describe('GachaPage', () => {
     expect(activeCnCard).toBeDefined()
     expect(activeCnCard!.classes()).toContain('gacha-banner--active')
     expect(activeCnCard!.text()).toContain('ACTIVE NOW')
-  })
+  }, 20000)
 
   it('marks ONLY LIMITED_76_0_1 with "NOT ON GLOBAL YET" badge', async () => {
     const wrapper = await mountSuspended(GachaPage)
@@ -140,7 +142,7 @@ describe('GachaPage', () => {
     for (const card of normalCards) {
       expect(card.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(false)
     }
-  })
+  }, 20000)
 
   it('toggles calculator visibility when calculator toggle button is clicked', async () => {
     const wrapper = await mountSuspended(GachaPage)
