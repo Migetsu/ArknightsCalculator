@@ -271,4 +271,75 @@ describe('GachaBannerCard', () => {
 
     expect(wrapper.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(false)
   })
+
+  describe('banner art rendering', () => {
+    it('renders banner art img with lazy loading when hasArt is true', async () => {
+      const bannerWithArt: GachaBanner = {
+        ...mockBanner,
+        hasArt: true,
+        artId: 'NORM_10_0_1',
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: bannerWithArt,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const img = wrapper.find('img.gacha-banner__art-img')
+      expect(img.exists()).toBe(true)
+      expect(img.attributes('src')).toContain('/banners/NORM_10_0_1.webp')
+      expect(img.attributes('alt')).toBe('[Standard Headhunting] Orienteering #7')
+      expect(img.attributes('loading')).toBe('lazy')
+      expect(img.attributes('decoding')).toBe('async')
+
+      // Grid watermark placeholder should not be rendered when art is present
+      expect(wrapper.find('.gacha-banner__art-watermark').exists()).toBe(false)
+    })
+
+    it('renders placeholder frame when hasArt is false', async () => {
+      const bannerWithoutArt: GachaBanner = {
+        ...mockBanner,
+        hasArt: false,
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: bannerWithoutArt,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      expect(wrapper.find('img.gacha-banner__art-img').exists()).toBe(false)
+      expect(wrapper.find('.gacha-banner__art-grid').exists()).toBe(true)
+      expect(wrapper.find('.gacha-banner__art-watermark').exists()).toBe(true)
+      expect(wrapper.find('.gacha-banner__art-tag').text()).toBe('ORIENTEERING')
+    })
+
+    it('falls back to placeholder frame when image load fails (@error)', async () => {
+      const bannerWithArt: GachaBanner = {
+        ...mockBanner,
+        hasArt: true,
+        artId: 'NORM_10_0_1',
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: bannerWithArt,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const img = wrapper.find('img.gacha-banner__art-img')
+      expect(img.exists()).toBe(true)
+
+      // Trigger image error
+      await img.trigger('error')
+
+      // Img is removed, placeholder is shown
+      expect(wrapper.find('img.gacha-banner__art-img').exists()).toBe(false)
+      expect(wrapper.find('.gacha-banner__art-watermark').exists()).toBe(true)
+    })
+  })
 })

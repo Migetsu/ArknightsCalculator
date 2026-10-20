@@ -60,6 +60,9 @@ Each banner object contains:
 - `lmtgsid`: Limited headhunting coin/currency identifier (e.g. `LMTGS_COIN_7301`), or `null`.
 - `pairedBannerId`: ID of the paired banner on the counterpart server (populated for limited banners via `LMTGSID`), or `null`.
 - `isNextEnBanner`: Boolean flag marking the next upcoming limited banner in `cnBanners`.
+- `hasArt`: Boolean flag indicating whether banner artwork is available in the CDN (`true` for 304 CN and 31 EN banners).
+- `artId`: Resolved art identifier in the assets repository (e.g. `NORM_10_0_1`, or for EN `NORM_24_0_2`).
+- `bannerArt`: Alias to `artId` for backward compatibility.
 - `rateUp6` / `rateUp5`: Array of operator IDs (see Section 5 below).
 
 ---

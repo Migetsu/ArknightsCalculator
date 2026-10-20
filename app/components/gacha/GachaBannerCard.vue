@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { GachaBanner } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
@@ -9,6 +9,7 @@ import {
   getBannerLifecycleStatus,
   isProvenNotOnGlobal,
 } from '~/../shared/utils/gacha'
+import { resolveAsset } from '~/../shared/utils/resolveAsset'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 
@@ -30,6 +31,23 @@ const emit = defineEmits<{
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+
+const imageError = ref(false)
+
+const bannerArtCandidates = computed<string[]>(() => {
+  if (!props.banner.hasArt) return []
+  const targetId = props.banner.artId || props.banner.id
+  return resolveAsset('banner', targetId, { format: 'webp' })
+})
+
+const bannerArtUrl = computed<string | null>(() => {
+  if (imageError.value || bannerArtCandidates.value.length === 0) return null
+  return bannerArtCandidates.value[0] ?? null
+})
+
+function onImageError() {
+  imageError.value = true
+}
 
 const bannerTitle = computed(() => {
   return (
@@ -133,9 +151,22 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
 
       <!-- Banner Art Frame -->
       <div class="gacha-banner__art">
-        <div class="gacha-banner__art-grid" aria-hidden="true" />
-        <span class="gacha-banner__art-tag">{{ banner.tag || 'HEADHUNTING' }}</span>
-        <span class="gacha-banner__art-watermark">ARKCALC // BANNER</span>
+        <img
+          v-if="banner.hasArt && bannerArtUrl && !imageError"
+          :src="bannerArtUrl"
+          :alt="bannerTitle"
+          width="480"
+          height="236"
+          loading="lazy"
+          decoding="async"
+          class="gacha-banner__art-img"
+          @error="onImageError"
+        />
+        <template v-else>
+          <div class="gacha-banner__art-grid" aria-hidden="true" />
+          <span class="gacha-banner__art-tag">{{ banner.tag || 'HEADHUNTING' }}</span>
+          <span class="gacha-banner__art-watermark">ARKCALC // BANNER</span>
+        </template>
       </div>
 
       <!-- Dates Block -->
@@ -331,6 +362,14 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     justify-content: center;
     overflow: hidden;
     gap: var(--space-2xs);
+  }
+
+  &__art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   &__art-grid {

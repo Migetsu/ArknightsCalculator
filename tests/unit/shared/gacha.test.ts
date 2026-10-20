@@ -12,6 +12,7 @@ import {
   formatBannerDateRange,
   isProvenNotOnGlobal,
   getBannerLifecycleStatus,
+  getBannerArtCandidates,
 } from '../../../shared/utils/gacha'
 import type { GachaBanner } from '../../../shared/schemas/banner'
 import type { I18nString } from '../../../shared/schemas/operator'
@@ -495,6 +496,32 @@ describe('Gacha Utility Engine', () => {
       expect(getBannerLifecycleStatus(banner, 1500)).toBe('active')
       expect(getBannerLifecycleStatus(banner, 2000)).toBe('active')
       expect(getBannerLifecycleStatus(banner, 2500)).toBe('ended')
+    })
+  })
+
+  describe('getBannerArtCandidates', () => {
+    it('returns pool ID as is for CN banners', () => {
+      expect(getBannerArtCandidates('NORM_10_0_1', 'cn')).toEqual(['NORM_10_0_1'])
+      expect(getBannerArtCandidates('LIMITED_27_0_3', 'cn')).toEqual(['LIMITED_27_0_3'])
+    })
+
+    it('strips _EN suffix/infix for EN banners with raw fallback', () => {
+      expect(getBannerArtCandidates('NORM_EN_0_1_1', 'en')).toEqual(['NORM_0_1_1', 'NORM_EN_0_1_1'])
+      expect(getBannerArtCandidates('LIMITED_EN_42_0_1', 'en')).toEqual([
+        'LIMITED_42_0_1',
+        'LIMITED_EN_42_0_1',
+      ])
+    })
+
+    it('infers server from ID containing _EN when server argument is omitted', () => {
+      expect(getBannerArtCandidates('NORM_EN_24_0_2')).toEqual(['NORM_24_0_2', 'NORM_EN_24_0_2'])
+    })
+
+    it('handles empty or invalid input gracefully', () => {
+      expect(getBannerArtCandidates('')).toEqual([])
+      expect(getBannerArtCandidates('   ')).toEqual([])
+      // @ts-expect-error test invalid input
+      expect(getBannerArtCandidates(null)).toEqual([])
     })
   })
 })
