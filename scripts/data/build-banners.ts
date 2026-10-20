@@ -166,6 +166,9 @@ export interface BuildBannersResult {
     activeEnBanners: BannerSummary[]
     activeCnBanners: BannerSummary[]
     nextEnLimitedBanner: NextBannerSummary | null
+    cnBannerNamesOfficial: number
+    cnBannerNamesWiki: number
+    cnBannerNamesMachine: number
   }
 }
 
@@ -390,6 +393,11 @@ export function buildBannersFromTables(
   )
 
   // 7. Transform into GachaBanner entries
+  const enPoolMap = new Map<string, RawGachaPool>()
+  for (const p of enFiltered) {
+    enPoolMap.set(p.gachaPoolId, p)
+  }
+
   const enBanners: GachaBanner[] = enFiltered.map((p) => {
     const type = mapRuleToBannerType(p.gachaRuleType, p.gachaPoolName)
     const openIso = new Date(p.openTime * 1000).toISOString()
@@ -478,12 +486,18 @@ export function buildBannersFromTables(
         ? wikiMatch.globalEnd.replace(/-/g, '/')
         : undefined
 
+    const pairedEnPool = pairedId ? enPoolMap.get(pairedId) : undefined
+    const officialEn = pairedEnPool?.gachaPoolName ?? null
+    const wikiEn = wikiMatch?.name ?? null
+
     const bannerName = resolveLayeredI18nString(
       {
         key: `banner.${p.gachaPoolId}.name`,
-        officialEn: null,
+        officialEn,
+        wikiEn,
         zhText: p.gachaPoolName,
-        isGlobal: false,
+        isGlobal: true,
+        wikiSource: 'wiki',
       },
       i18nContext,
       tracker,
@@ -578,6 +592,15 @@ export function buildBannersFromTables(
   // All combined banners
   const allBanners: GachaBanner[] = [...cnBanners, ...enBanners]
 
+  let cnBannerNamesOfficial = 0
+  let cnBannerNamesWiki = 0
+  let cnBannerNamesMachine = 0
+  for (const b of cnBanners) {
+    if (b.name.source === 'official') cnBannerNamesOfficial++
+    else if (b.name.source === 'wiki') cnBannerNamesWiki++
+    else if (b.name.source === 'machine') cnBannerNamesMachine++
+  }
+
   const dataset = {
     meta: {
       generatedAt: new Date(nowSec * 1000).toISOString(),
@@ -619,6 +642,9 @@ export function buildBannersFromTables(
       activeEnBanners,
       activeCnBanners,
       nextEnLimitedBanner,
+      cnBannerNamesOfficial,
+      cnBannerNamesWiki,
+      cnBannerNamesMachine,
     },
   }
 }
@@ -667,6 +693,10 @@ if (process.argv[1]?.includes('build-banners')) {
     console.log(`  CN Pools matched to Wiki: ${stats.cnMatchedWikiCount}`)
     console.log(`  EN Pools matched to Wiki: ${stats.enMatchedWikiCount}`)
     console.log(`  Total CN<->EN Pairs Formed: ${stats.totalPairsFormed}`)
+    console.log(`CN Banner Names Provenance:`)
+    console.log(`  Official (from paired EN): ${stats.cnBannerNamesOfficial}`)
+    console.log(`  Wiki (from arknights.wiki.gg): ${stats.cnBannerNamesWiki}`)
+    console.log(`  Machine (fallback): ${stats.cnBannerNamesMachine}`)
     console.log(`  LMTGSID Discrepancies: ${stats.lmtgsidDiscrepanciesCount}`)
     if (stats.discrepancies.length > 0) {
       console.log(`  Discrepancies list:`, stats.discrepancies)

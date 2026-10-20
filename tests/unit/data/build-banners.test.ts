@@ -267,6 +267,10 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
 
       const cnLimited = dataset.cnBanners.find((b) => b.id === 'LIMITED_73_0_1')
       expect(cnLimited?.pairedBannerId).toBe('LIMITED_EN_42_0_1')
+      expect(cnLimited?.name.en).toBe('Sealed With Time')
+      expect(cnLimited?.name.zh).toBe('承诺')
+      expect(cnLimited?.name.source).toBe('official')
+      expect(cnLimited?.name.isMachineTranslation).toBe(false)
     })
 
     it('predicts the Next EN Limited Banner as the first unreleased CN limited pool', () => {
@@ -438,6 +442,42 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       const cnWithoutArt = dataset.cnBanners.find((b) => b.id === 'NORM_0_1_1')
       expect(cnWithoutArt?.hasArt).toBe(false)
       expect(cnWithoutArt?.artId).toBeUndefined()
+    })
+
+    it('resolves CN banner English names via paired EN banner (official) or wiki fallback', () => {
+      // 1. LIMITED_61_0_1 has official name from paired EN banner LIMITED_EN_36_0_1
+      const cn61 = committedBannersDataset.cnBanners.find((b) => b.id === 'LIMITED_61_0_1')
+      expect(cn61).toBeDefined()
+      expect(cn61?.name.en).toBe('Freedom of Preach')
+      expect(cn61?.name.zh).toBe('布道自由')
+      expect(cn61?.name.source).toBe('official')
+      expect(cn61?.name.isMachineTranslation).toBe(false)
+      expect(cn61?.pairedBannerId).toBe('LIMITED_EN_36_0_1')
+
+      // 2. LIMITED_76_0_1 (unreleased on Global) takes name from arknights.wiki.gg
+      const cn76 = committedBannersDataset.cnBanners.find((b) => b.id === 'LIMITED_76_0_1')
+      expect(cn76).toBeDefined()
+      expect(cn76?.name.en).toBe('Trails End Winds Rest')
+      expect(cn76?.name.zh).toBe('车辙与风的归所')
+      expect(cn76?.name.source).toBe('wiki')
+      expect(cn76?.name.isMachineTranslation).toBe(false)
+      expect(cn76?.pairedBannerId).toBeNull()
+
+      // 3. Provenance distribution across all 453 CN banners
+      let officialCount = 0
+      let wikiCount = 0
+      let machineCount = 0
+
+      for (const b of committedBannersDataset.cnBanners) {
+        if (b.name.source === 'official') officialCount++
+        else if (b.name.source === 'wiki') wikiCount++
+        else if (b.name.source === 'machine') machineCount++
+      }
+
+      expect(officialCount).toBe(187)
+      expect(wikiCount).toBe(11)
+      expect(machineCount).toBe(255)
+      expect(officialCount + wikiCount + machineCount).toBe(453)
     })
   })
 })

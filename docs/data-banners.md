@@ -53,7 +53,11 @@ Each banner object contains:
 - `server`: `'en' | 'cn'`.
 - `ruleType`: Raw game rule type (e.g. `'LIMITED'`, `'LINKAGE'`, `'NORMAL'`, `'SINGLE'`, `'DOUBLE'`).
 - `type`: High-level category: `'limited' | 'standard' | 'joint_operation'`.
-- `name` / `title`: `I18nString` (`{ en: string, zh: string, source: I18nSource, isMachineTranslation: boolean }`). Localized pool title, resolved through the layered i18n pipeline (`resolveLayeredI18nString` with key `banner.${id}.name`). For CN-only banners, English translations are provided by machine translation (`data/i18n/machine/banners.json`) with an `MT` badge, or `[Pending Translation]` with a `PENDING` badge if uncollected.
+- `name` / `title`: `I18nString` (`{ en: string, zh: string, source: I18nSource, isMachineTranslation: boolean }`). Localized pool title, resolved programmatically through `resolveLayeredI18nString` following the project's strict layered order:
+  - **Official (`source: 'official'`)**: For CN banners with a `pairedBannerId`, the official English name is taken directly from the paired EN banner (`gachaPoolName`). 187 CN banners and all 408 EN banners have official names.
+  - **Wiki (`source: 'wiki'`)**: For CN banners without an EN pair that match an event in `data/wiki-banners.json` (such as unreleased debut/limited pools like `LIMITED_76_0_1`), the title is sourced from `arknights.wiki.gg`. 11 CN banners have wiki names.
+  - **Machine (`source: 'machine'`)**: Generic bi-weekly standard pool rotations that do not appear in wiki event archives fall back to `data/i18n/machine/banners.json`. 255 CN banners have machine names.
+  - Original Chinese name (`zh`) is strictly preserved across all banners for verification and search.
 - `openTime` / `endTime`: Exact Unix timestamps in seconds.
 - `openIso` / `endIso`: Standard ISO 8601 strings (e.g. `2026-10-14T10:00:00.000Z`).
 - `globalStartDate` / `globalEndDate`: Real Global server release dates in `YYYY/MM/DD` format (sourced from wiki archives; absent for unreleased CN banners).
@@ -150,6 +154,19 @@ Previously, Global release dates for upcoming CN banners were guessed using a ha
 - The "Estimated Global" toggle was removed from the UI.
 - All Global dates shown in the UI are real historical or confirmed dates (`globalStartDate`, `globalEndDate`).
 - CN banners that have not yet released on Global simply omit the Global date line, preventing unverified speculation.
+
+### 5.5 Layered Provenance of Banner Titles
+
+English banner titles are resolved via `resolveLayeredI18nString` using the strict layered priority: `manual > official > wiki > machine > zh`.
+
+| Category                     | CN Count | EN Count | Provenance (`source`) | Sourcing Mechanism                                                                                                                                        |
+| :--------------------------- | :------- | :------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Official (Paired EN)**     | 187      | 408      | `official`            | For CN banners with `pairedBannerId`, title is copied directly from `pairedEnPool.gachaPoolName`. For EN banners, title is taken from Yostar client data. |
+| **Wiki (arknights.wiki.gg)** | 11       | 0        | `wiki`                | For CN banners without an EN pair that match an event in `data/wiki-banners.json` (e.g. `LIMITED_76_0_1` -> "Trails End Winds Rest").                     |
+| **Machine Fallback**         | 255      | 0        | `machine`             | Standard bi-weekly pool rotations ("适合多种场合的强力干员") not cataloged in event archives fall back to `data/i18n/machine/banners.json`.               |
+| **Total**                    | **453**  | **408**  | —                     | **861 Total Banners**                                                                                                                                     |
+
+This guarantees that whenever an official title exists for an event (e.g., `LIMITED_61_0_1` paired with `LIMITED_EN_36_0_1`), the official translation ("Freedom of Preach") programmatically supersedes any machine translation ("Preaching Freedom").
 
 ---
 

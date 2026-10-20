@@ -291,4 +291,77 @@ describe('i18n-layers resolution', () => {
     expect(result.source).toBe('pending')
     expect(result.en).toBe('[Pending Translation]')
   })
+
+  describe('layer priority enforcement: official > wiki > machine', () => {
+    const ctxWithMachine: I18nLayersContext = {
+      ...mockContext,
+      overrides: {},
+      machine: {
+        'banner.TEST_01.name': 'Machine Banner Name',
+      },
+    }
+
+    it('official overrides machine when both are available', () => {
+      const tracker = createI18nTracker()
+      const result = resolveLayeredI18nString(
+        {
+          key: 'banner.TEST_01.name',
+          officialEn: 'Official Banner Name',
+          wikiEn: 'Wiki Banner Name',
+          zhText: '测试寻访',
+        },
+        ctxWithMachine,
+        tracker,
+      )
+
+      expect(result.source).toBe('official')
+      expect(result.en).toBe('Official Banner Name')
+      expect(result.zh).toBe('测试寻访')
+      expect(result.isMachineTranslation).toBe(false)
+      expect(tracker.sources.official).toBe(1)
+      expect(tracker.sources.machine).toBe(0)
+    })
+
+    it('wiki overrides machine when official is absent', () => {
+      const tracker = createI18nTracker()
+      const result = resolveLayeredI18nString(
+        {
+          key: 'banner.TEST_01.name',
+          officialEn: null,
+          wikiEn: 'Wiki Banner Name',
+          zhText: '测试寻访',
+          wikiSource: 'wiki',
+        },
+        ctxWithMachine,
+        tracker,
+      )
+
+      expect(result.source).toBe('wiki')
+      expect(result.en).toBe('Wiki Banner Name')
+      expect(result.zh).toBe('测试寻访')
+      expect(result.isMachineTranslation).toBe(false)
+      expect(tracker.sources.wiki).toBe(1)
+      expect(tracker.sources.machine).toBe(0)
+    })
+
+    it('machine is used when neither official nor wiki is available', () => {
+      const tracker = createI18nTracker()
+      const result = resolveLayeredI18nString(
+        {
+          key: 'banner.TEST_01.name',
+          officialEn: null,
+          wikiEn: null,
+          zhText: '测试寻访',
+        },
+        ctxWithMachine,
+        tracker,
+      )
+
+      expect(result.source).toBe('machine')
+      expect(result.en).toBe('Machine Banner Name')
+      expect(result.zh).toBe('测试寻访')
+      expect(result.isMachineTranslation).toBe(true)
+      expect(tracker.sources.machine).toBe(1)
+    })
+  })
 })
