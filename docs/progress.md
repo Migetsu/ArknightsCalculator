@@ -1,5 +1,55 @@
 # Project Progress
 
+- **Banner Composition & Real Global Dates from Wiki (`feat/banner-operators`):**
+  - **Context & Motivation:**
+    - In `data/banners.json`, `rateUp6` and `rateUp5` were empty for all 861 banners due to game client tables wiping `gachaPoolDetail` to `"-"`.
+    - Future Global releases used an arbitrary 175-day heuristic (`calculateEstimatedGlobalDate`) and "Estimated Global" toggle, which violates AGENTS.md §0 (zero unverified guesswork).
+    - Cross-server pairing was restricted to 25 limited pools via `LMTGSID`, leaving all standard, joint operation, and rerun banners unpaired.
+    - Task 20 ingests community-curated banner archives from `arknights.wiki.gg` to populate real banner composition and official historical Global dates.
+  - **Implementation Details:**
+    - **Wiki Scraping & Parser Pipeline (`scripts/data/fetch-wiki-banners.ts`):**
+      - Fetched 8 banner archive pages (`Headhunting/Banners/2020` through `2026` + `Headhunting/Banners/Upcoming`) using User-Agent `ArknightsCalculator-Build/1.0`. Cached locally in `.cache/wiki/banners/`.
+      - Parsed 417 wiki `{{Banners cell}}` blocks into structured records.
+      - Implemented `normalizeOperatorName` with diacritics stripping (`Młynar` -> `char_4064_mlynar`, `Eyjafjalla the Hvít Aska` -> `char_1016_agoat2`).
+      - Verified 2,645 total operator references against `data/operators-index.json`: **0 unmapped operator names** (100% resolution).
+      - Saved structured intermediate artifact `data/wiki-banners.json` (284 KB, CC-BY-SA 4.0).
+      - Added npm script `"data:wiki-banners": "jiti scripts/data/fetch-wiki-banners.ts"`.
+    - **Banner Schema Extensions (`shared/schemas/banner.ts`):**
+      - Added `globalStartDate: z.string().optional()`, `globalEndDate: z.string().optional()`, `primaryRateUp6: z.string().optional()`, `secondaryRateUp6: z.array(z.string()).default([])` to `GachaBannerSchema`.
+    - **Banner Dataset Builder (`scripts/data/build-banners.ts`):**
+      - Integrated `wiki-banners.json` into pure function `buildBannersFromTables` (with graceful fallback to `[]` when absent, preserving offline test execution).
+      - Stitched CN pools by exact date (Beijing `UTC+8` and `UTC`) and EN pools by exact date (Pacific `UTC-7` and `UTC`) with ruleType disambiguation.
+      - **CN matching**: 198 pools matched (195 with composition, 187 with real Global dates).
+      - **EN matching**: 401 pools matched (398 with composition, 97.5% coverage).
+      - **Cross-server pairing**: Formed **187 CN <-> EN pairs** across all pool families (up from 25 limited-only pairs).
+      - **LMTGSID Cross-check**: All 25 verified limited pairs matched 1:1 with **0 LMTGSID discrepancies**.
+      - Rebuilt `data/banners.json`.
+    - **Elimination of the 175-Day Heuristic:**
+      - Removed `calculateEstimatedGlobalDate` from `shared/utils/gacha/index.ts`.
+      - Removed `estimatedGlobal` toggle and options from `app/pages/gacha.vue` and `app/components/gacha/GachaBannerCard.vue`.
+      - Global dates displayed in UI reflect only real official wiki dates; unreleased CN banners cleanly omit the Global date line without speculation.
+      - Updated localization in `i18n/locales/en.json` (`gacha.dates.global`, `gacha.banner.primaryRateUp`, `secondaryRateUp`, `otherSixStar`).
+    - **UI Presentation (`app/components/gacha/GachaBannerCard.vue`):**
+      - Formats real `globalStartDate` and `globalEndDate` when present.
+      - Renders featured operators with avatars, names, and tactical badges: primary 6★, other 6★, secondary/sparkable 6★ reruns, and 5★ operators.
+      - Hides operator section entirely when no rate-ups exist (`.gacha-banner--no-rateup`).
+    - **Validation (`scripts/data/validate-data.ts`):**
+      - Added referential integrity validation for all operator IDs in `rateUp6`, `rateUp5`, `primaryRateUp6`, `secondaryRateUp6` against `operators-index.json`.
+      - Added pairing validation confirming `pairedBannerId` references valid banner IDs.
+    - **Unit Tests:**
+      - Created `tests/unit/data/fetch-wiki-banners.test.ts` (9 tests: fixtures, parsing, diacritics mapping, 0 heuristic check, 100% offline).
+      - Updated `tests/unit/components/gacha/GachaBannerCard.test.ts` (13 tests).
+      - Updated `tests/unit/data/build-banners.test.ts` (17 tests).
+      - Updated `tests/unit/shared/gacha.test.ts` (33 tests).
+      - Updated `tests/unit/pages/gacha.test.ts` (9 tests).
+  - **Quality Gates & Metrics:**
+    - `i18n:check`: 689 keys verified.
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `data:validate`: 100% valid (0 integrity issues).
+    - `test`: 96 test suites passed (752/752 tests).
+    - `build`: production bundle compiled cleanly.
+
 - **Banner Artwork: Ingestion, 480px WebP Optimization, Delivery & Presentation (`feat/banner-art`):**
   - **Context & Motivation:**
     - Gacha banners lacked artwork completely, showing a text placeholder frame ("ARKCALC // BANNER").

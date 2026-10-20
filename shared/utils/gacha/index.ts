@@ -27,26 +27,6 @@ export interface ProbabilityMilestone {
 }
 
 /**
- * Calculates estimated Global release date from CN date by adding an offset in days (default: 175 days).
- * Input formats: 'YYYY/MM/DD' or 'YYYY-MM-DD'.
- * Output format: 'YYYY/MM/DD'.
- */
-export function calculateEstimatedGlobalDate(cnDateStr: string, offsetDays = 175): string {
-  if (!cnDateStr || typeof cnDateStr !== 'string') return ''
-  const normalized = cnDateStr.replace(/\//g, '-')
-  const parsed = new Date(`${normalized}T00:00:00Z`)
-  if (Number.isNaN(parsed.getTime())) return cnDateStr
-
-  const targetTime = parsed.getTime() + offsetDays * 24 * 60 * 60 * 1000
-  const result = new Date(targetTime)
-
-  const y = result.getUTCFullYear()
-  const m = String(result.getUTCMonth() + 1).padStart(2, '0')
-  const d = String(result.getUTCDate()).padStart(2, '0')
-  return `${y}/${m}/${d}`
-}
-
-/**
  * Calculates days remaining from reference time (now) to a target date string.
  */
 export function calculateDaysRemaining(targetDateStr: string, now = new Date()): number {

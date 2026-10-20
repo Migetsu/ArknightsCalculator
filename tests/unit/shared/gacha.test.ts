@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest'
 import {
-  calculateEstimatedGlobalDate,
   calculateDaysRemaining,
   getBannerStatus,
   calculateTotalPulls,
@@ -22,21 +21,6 @@ function mockI18n(en: string, zh: string = en): I18nString {
 }
 
 describe('Gacha Utility Engine', () => {
-  describe('calculateEstimatedGlobalDate', () => {
-    it('accurately projects CN dates to Global dates with 175 days formula', () => {
-      expect(calculateEstimatedGlobalDate('2026/05/15')).toBe('2026/11/06')
-      expect(calculateEstimatedGlobalDate('2026/05/29')).toBe('2026/11/20')
-      expect(calculateEstimatedGlobalDate('2026/06/01')).toBe('2026/11/23')
-      expect(calculateEstimatedGlobalDate('2026/06/15')).toBe('2026/12/07')
-      expect(calculateEstimatedGlobalDate('2026/06/26')).toBe('2026/12/18')
-      expect(calculateEstimatedGlobalDate('2026/07/10')).toBe('2027/01/01')
-    })
-
-    it('handles dash-separated dates as well', () => {
-      expect(calculateEstimatedGlobalDate('2026-05-15')).toBe('2026/11/06')
-    })
-  })
-
   describe('getBannerStatus and calculateDaysRemaining', () => {
     const fixedNow = new Date('2026-10-17T12:00:00Z')
 

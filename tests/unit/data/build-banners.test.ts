@@ -339,6 +339,42 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
         expect(b.artId).toBe(b.id.replace('_EN_', '_'))
       }
     })
+
+    it('verifies rate-up operators and real Global dates coverage in committed dataset', () => {
+      const cnWithRateUp = committedBannersDataset.cnBanners.filter(
+        (b) => b.rateUp6.length > 0 || b.rateUp5.length > 0,
+      )
+      const enWithRateUp = committedBannersDataset.enBanners.filter(
+        (b) => b.rateUp6.length > 0 || b.rateUp5.length > 0,
+      )
+      const cnWithGlobalDate = committedBannersDataset.cnBanners.filter(
+        (b) => Boolean(b.globalStartDate),
+      )
+      const cnWithPair = committedBannersDataset.cnBanners.filter(
+        (b) => Boolean(b.pairedBannerId),
+      )
+
+      expect(cnWithRateUp.length).toBe(195)
+      expect(enWithRateUp.length).toBe(398)
+      expect(cnWithGlobalDate.length).toBe(187)
+      expect(cnWithPair.length).toBe(187)
+
+      // Verified benchmark banner: Cremation Last Wish (W & Weedy)
+      const wBanner = committedBannersDataset.cnBanners.find((b) => b.id === 'LIMITED_9_0_3')
+      expect(wBanner).toBeDefined()
+      expect(wBanner?.rateUp6).toEqual(['char_113_cqbw', 'char_400_weedy'])
+      expect(wBanner?.rateUp5).toEqual(['char_401_elysm'])
+      expect(wBanner?.primaryRateUp6).toBe('char_113_cqbw')
+      expect(wBanner?.globalStartDate).toBe('2020/12/30')
+      expect(wBanner?.globalEndDate).toBe('2021/01/13')
+      expect(wBanner?.pairedBannerId).toBe('LIMITED_EN_4_3_1')
+
+      // Paired EN banner matches
+      const enW = committedBannersDataset.enBanners.find((b) => b.id === 'LIMITED_EN_4_3_1')
+      expect(enW).toBeDefined()
+      expect(enW?.pairedBannerId).toBe('LIMITED_9_0_3')
+      expect(enW?.rateUp6).toEqual(['char_113_cqbw', 'char_400_weedy'])
+    })
   })
 
   describe('Banner Art assignment in buildBannersFromTables', () => {

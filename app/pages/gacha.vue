@@ -80,7 +80,7 @@ const dateMode = ref<DateMode>('global')
 
 const dateModeOptions = computed<SegmentOption<DateMode>[]>(() => [
   { value: 'cn', label: t('gacha.dates.cn') },
-  { value: 'global', label: t('gacha.dates.estimatedGlobal') },
+  { value: 'global', label: t('gacha.dates.global') },
 ])
 
 // Type Filters

@@ -4,7 +4,6 @@ import type { GachaBanner } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import {
-  calculateEstimatedGlobalDate,
   formatBannerDateRange,
   getBannerLifecycleStatus,
   isProvenNotOnGlobal,
@@ -74,11 +73,9 @@ const formattedDates = computed(() => {
   return ''
 })
 
-const estGlobalStart = computed(() => calculateEstimatedGlobalDate(props.banner.cnStartDate))
-const estGlobalEnd = computed(() => calculateEstimatedGlobalDate(props.banner.cnEndDate))
-const formattedEstGlobalDates = computed(() => {
-  if (estGlobalStart.value && estGlobalEnd.value) {
-    return formatBannerDateRange(estGlobalStart.value, estGlobalEnd.value)
+const formattedGlobalDates = computed(() => {
+  if (props.banner.globalStartDate && props.banner.globalEndDate) {
+    return formatBannerDateRange(props.banner.globalStartDate, props.banner.globalEndDate)
   }
   return ''
 })
@@ -95,8 +92,37 @@ interface BannerOp {
   rarity: 1 | 2 | 3 | 4 | 5 | 6
 }
 
+const primaryRateUp6Op = computed<BannerOp | null>(() => {
+  const id = props.banner.primaryRateUp6
+  if (!id) return null
+  return {
+    id,
+    name: getOperatorName(id),
+    rarity: 6,
+  }
+})
+
+const otherRateUp6Ops = computed<BannerOp[]>(() => {
+  const primaryId = props.banner.primaryRateUp6
+  return props.banner.rateUp6
+    .filter((id) => id !== primaryId)
+    .map((id) => ({
+      id,
+      name: getOperatorName(id),
+      rarity: 6,
+    }))
+})
+
 const rateUp6Ops = computed<BannerOp[]>(() => {
   return props.banner.rateUp6.map((id) => ({
+    id,
+    name: getOperatorName(id),
+    rarity: 6,
+  }))
+})
+
+const secondaryRateUp6Ops = computed<BannerOp[]>(() => {
+  return (props.banner.secondaryRateUp6 ?? []).map((id) => ({
     id,
     name: getOperatorName(id),
     rarity: 6,
@@ -111,7 +137,12 @@ const rateUp5Ops = computed<BannerOp[]>(() => {
   }))
 })
 
-const hasRateUp = computed(() => rateUp6Ops.value.length > 0 || rateUp5Ops.value.length > 0)
+const hasRateUp = computed(
+  () =>
+    rateUp6Ops.value.length > 0 ||
+    secondaryRateUp6Ops.value.length > 0 ||
+    rateUp5Ops.value.length > 0,
+)
 const hasContent = computed(() => Boolean(props.banner.description) || hasRateUp.value)
 const isLimited = computed(() => props.banner.type === 'limited')
 const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
@@ -178,11 +209,11 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
           </b>
         </div>
         <div
-          v-if="dateMode === 'global' && isCnServer && formattedEstGlobalDates"
+          v-if="dateMode === 'global' && isCnServer && formattedGlobalDates"
           class="gacha-banner__date-row"
         >
-          <span class="gacha-banner__date-label">Est. Global:</span>
-          <b class="gacha-banner__date-val">{{ formattedEstGlobalDates }}</b>
+          <span class="gacha-banner__date-label">{{ t('gacha.banner.globalDate') }}:</span>
+          <b class="gacha-banner__date-val">{{ formattedGlobalDates }}</b>
         </div>
 
         <div class="gacha-banner__countdown-wrap">
@@ -220,8 +251,50 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
         {{ banner.description }}
       </p>
 
-      <!-- 6★ Rate-up -->
-      <div v-if="rateUp6Ops.length > 0" class="gacha-banner__ops-section">
+      <!-- Primary 6★ Rate-up (when distinct) & Other 6★ Rate-up -->
+      <template v-if="primaryRateUp6Op && otherRateUp6Ops.length > 0">
+        <!-- Main / Primary 6★ -->
+        <div class="gacha-banner__ops-section">
+          <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
+            {{ isLimited ? t('gacha.banner.rateUp') : t('gacha.banner.primaryRateUp') }}
+          </h3>
+          <div class="gacha-banner__ops-grid">
+            <NuxtLink
+              :to="localePath(`/operators/${primaryRateUp6Op.id}`)"
+              class="gacha-banner__op-link"
+              :title="primaryRateUp6Op.name"
+            >
+              <AkAvatar
+                :id="primaryRateUp6Op.id"
+                :name="primaryRateUp6Op.name"
+                :rarity="primaryRateUp6Op.rarity"
+                :size="56"
+              />
+            </NuxtLink>
+          </div>
+        </div>
+
+        <!-- Other 6★ Rate-up -->
+        <div class="gacha-banner__ops-section">
+          <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
+            {{ t('gacha.banner.otherSixStar') }}
+          </h3>
+          <div class="gacha-banner__ops-grid">
+            <NuxtLink
+              v-for="op in otherRateUp6Ops"
+              :key="op.id"
+              :to="localePath(`/operators/${op.id}`)"
+              class="gacha-banner__op-link"
+              :title="op.name"
+            >
+              <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
+            </NuxtLink>
+          </div>
+        </div>
+      </template>
+
+      <!-- Standard 6★ Rate-up (when single 6★ or no distinct primary) -->
+      <div v-else-if="rateUp6Ops.length > 0" class="gacha-banner__ops-section">
         <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
           {{
             isLimited && rateUp6Ops.length === 1
@@ -238,6 +311,24 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
             :title="op.name"
           >
             <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
+          </NuxtLink>
+        </div>
+      </div>
+
+      <!-- Secondary 6★ Rate-up (sparkable / past limited reruns) -->
+      <div v-if="secondaryRateUp6Ops.length > 0" class="gacha-banner__ops-section">
+        <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--secondary">
+          {{ t('gacha.banner.secondaryRateUp') }}
+        </h3>
+        <div class="gacha-banner__ops-grid">
+          <NuxtLink
+            v-for="op in secondaryRateUp6Ops"
+            :key="op.id"
+            :to="localePath(`/operators/${op.id}`)"
+            class="gacha-banner__op-link"
+            :title="op.name"
+          >
+            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="48" />
           </NuxtLink>
         </div>
       </div>
@@ -504,6 +595,10 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
 
     &--six {
       color: var(--color-accent-amber, #ffd9a8);
+    }
+
+    &--secondary {
+      color: var(--color-accent-primary, #ff6a3d);
     }
 
     &--five {
