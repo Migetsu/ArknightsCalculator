@@ -21,7 +21,7 @@ const depotStore = useDepotStore()
 const moduleConfig = getModuleById('gacha')
 
 useHead({
-  title: computed(() => `${t('gacha.title')} | ArkCalc`),
+  title: computed(() => `${t('gacha.title')} | RhodesLab`),
   meta: [
     {
       name: 'description',

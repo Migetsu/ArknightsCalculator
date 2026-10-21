@@ -42,15 +42,11 @@ function isModuleActive(path: string): boolean {
   <header class="ak-header">
     <div class="ak-header__brand-group">
       <NuxtLink :to="localePath('/')" class="ak-header__brand">
-        <!-- Original geometric brand mark: Terminal Delta -->
         <span class="ak-header__brand-logo" aria-hidden="true">
-          <svg class="ak-header__brand-svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-            <rect x="2.5" y="2.5" width="19" height="19" stroke="currentColor" stroke-width="1.5" />
-            <polygon points="12,6 18,17.5 6,17.5" fill="currentColor" />
-          </svg>
+          <img src="/logo-mark.svg" class="ak-header__brand-svg" width="22" height="22" alt="" />
         </span>
 
-        <span class="ak-header__brand-title layout-default__brand-title">ARKCALC</span>
+        <span class="ak-header__brand-title layout-default__brand-title">RHODESLAB</span>
       </NuxtLink>
 
       <!-- Desktop horizontal navigation -->
