@@ -656,6 +656,21 @@ describe('Gacha Utility Engine', () => {
         expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), 163.5)).toBe('2026-10-26')
       })
 
+      it('prefers the explicit CN-local start date over the UTC open timestamp', () => {
+        // openTime is 2026-05-14T23:00Z, i.e. 2026-05-15 07:00 in CN (UTC+8)
+        const cnLateBanner = banner({
+          id: 'b',
+          openTime: Date.UTC(2026, 4, 14, 23, 0) / 1000,
+          cnStartDate: '2026/05/15',
+        })
+        expect(getEstimatedGlobalDate(cnLateBanner, 163)).toBe('2026-10-25')
+      })
+
+      it('falls back to the UTC+8 date derived from openTime', () => {
+        const cnLateBanner = banner({ id: 'b', openTime: Date.UTC(2026, 4, 14, 23, 0) / 1000 })
+        expect(getEstimatedGlobalDate(cnLateBanner, 163)).toBe('2026-10-25')
+      })
+
       it('returns null without a usable lag or start time', () => {
         expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), null)).toBeNull()
         expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), Number.NaN)).toBeNull()

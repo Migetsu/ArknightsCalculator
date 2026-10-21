@@ -35,6 +35,9 @@ describe('GachaPage', () => {
     const hero = wrapper.find('.gacha-current-en')
     expect(hero.exists()).toBe(true)
     expect(hero.find('.gacha-current-en__title').text()).toContain('Sealed With Time')
+    expect(hero.text()).toContain('2026-10-28')
+    expect(hero.text()).toContain('LIMITED')
+    expect(hero.text()).toContain('ACTIVE NOW')
 
     // 2 rate-up 6★, 3 secondary 6★ and 1 rate-up 5★ for LIMITED_EN_42_0_1
     expect(hero.findAllComponents(AkAvatar)).toHaveLength(6)
@@ -67,6 +70,34 @@ describe('GachaPage', () => {
       const next = cards[i + 1]!.props('banner')
       expect(current.openTime).toBeLessThanOrEqual(next.openTime)
     }
+  })
+
+  it('renders CN-local banner dates and EST Global dates from the dataset', async () => {
+    const wrapper = await mountSuspended(GachaPage)
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+
+    // SPECIAL_73_0_3: CN 2026-05-15 … 2026-05-29, EST 2026-10-25
+    const first = cards[0]!
+    expect(first.props('banner').id).toBe('SPECIAL_73_0_3')
+    const firstDates = first.find('.gacha-banner__dates').text()
+    expect(firstDates).toContain('May 15')
+    expect(firstDates).toContain('May 29')
+    expect(firstDates).toContain('Oct 25')
+
+    // LINKAGE_74_0_1: CN 2026-06-01 … 2026-06-15
+    const linkage = cards.find((card) => card.props('banner').id === 'LINKAGE_74_0_1')
+    expect(linkage).toBeDefined()
+    const linkageDates = linkage!.find('.gacha-banner__dates').text()
+    expect(linkageDates).toContain('Jun 1')
+    expect(linkageDates).toContain('Jun 15')
+
+    // SINGLE_78_0_1: CN 2026-10-09 … 2026-10-23, EST 2027-03-21
+    const last = cards[cards.length - 1]!
+    expect(last.props('banner').id).toBe('SINGLE_78_0_1')
+    const lastDates = last.find('.gacha-banner__dates').text()
+    expect(lastDates).toContain('Oct 9')
+    expect(lastDates).toContain('Oct 23')
+    expect(lastDates).toContain('Mar 21')
   })
 
   it('marks the current CN banner (SINGLE_78_0_1) as active', async () => {

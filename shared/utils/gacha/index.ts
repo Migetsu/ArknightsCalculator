@@ -117,6 +117,9 @@ export function isProvenNotOnGlobal(banner: GachaBanner): boolean {
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 
+/** China Standard Time is UTC+8 all year round (no daylight saving). */
+const CN_UTC_OFFSET_MS = 8 * 60 * 60 * 1000
+
 /** Number of most recent CN→Global pairs used for the lag median. */
 export const UPCOMING_LAG_SAMPLE_SIZE = 12
 
@@ -242,12 +245,28 @@ export function getGlobalLagDays(
 }
 
 /**
- * Estimated Global start date (`YYYY-MM-DD`) for a CN banner: CN start plus the rounded lag.
+ * CN-local banner start as UTC milliseconds: the explicit `cnStartDate`
+ * (already a UTC+8 calendar date) or the UTC+8 date derived from `openTime`.
+ * Returns null when neither source is usable.
+ */
+function getCnLocalStartMs(banner: GachaBanner): number | null {
+  const fromDate = parseBannerDate(banner.cnStartDate)
+  if (fromDate !== null) return fromDate
+  if (banner.openTime > 0) return banner.openTime * 1000 + CN_UTC_OFFSET_MS
+  return null
+}
+
+/**
+ * Estimated Global start date (`YYYY-MM-DD`) for a CN banner: the CN-local start date
+ * plus the rounded lag. Global pools open at the daily reset, so the UTC date of
+ * `openTime` is often one day behind the CN in-game date and must not be used directly.
  * Returns null without a valid lag or start time.
  */
 export function getEstimatedGlobalDate(banner: GachaBanner, lagDays: number | null): string | null {
-  if (lagDays === null || !Number.isFinite(lagDays) || banner.openTime <= 0) return null
-  const estimated = new Date(banner.openTime * 1000 + Math.round(lagDays) * MS_PER_DAY)
+  if (lagDays === null || !Number.isFinite(lagDays)) return null
+  const cnStartMs = getCnLocalStartMs(banner)
+  if (cnStartMs === null) return null
+  const estimated = new Date(cnStartMs + Math.round(lagDays) * MS_PER_DAY)
   if (Number.isNaN(estimated.getTime())) return null
   return estimated.toISOString().slice(0, 10)
 }

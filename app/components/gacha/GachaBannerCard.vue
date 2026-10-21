@@ -70,6 +70,10 @@ const lifecycleStatus = computed<'active' | 'upcoming' | 'ended'>(() => {
 const notOnGlobal = computed(() => isProvenNotOnGlobal(props.banner))
 
 const formattedDates = computed(() => {
+  // CN server dates are CN-local (UTC+8); openIso/endIso are UTC and can lag by a day.
+  if (isCnServer.value && props.banner.cnStartDate && props.banner.cnEndDate) {
+    return formatBannerDateRange(props.banner.cnStartDate, props.banner.cnEndDate)
+  }
   if (props.banner.openIso && props.banner.endIso) {
     return formatBannerDateRange(props.banner.openIso, props.banner.endIso)
   }
