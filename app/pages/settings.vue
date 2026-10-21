@@ -30,7 +30,7 @@ function handleExport(): void {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `arkcalc-backup-${new Date().toISOString().slice(0, 10)}.json`
+  a.download = `rhodeslab-backup-${new Date().toISOString().slice(0, 10)}.json`
   a.click()
   URL.revokeObjectURL(url)
 }
