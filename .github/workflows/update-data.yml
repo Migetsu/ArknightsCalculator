@@ -96,7 +96,12 @@ jobs:
       - name: Build skins
         run: npm run data:skins
 
+      - name: Back up wiki banner data
+        run: cp data/wiki-banners.json "$RUNNER_TEMP/wiki-banners.json"
+
       - name: Fetch wiki banner data
+        id: wiki
+        continue-on-error: true
         run: |
           for attempt in 1 2 3; do
             if npm run data:wiki-banners; then
@@ -109,6 +114,12 @@ jobs:
           done
           echo "::error::data:wiki-banners failed after 3 attempts."
           exit 1
+
+      - name: Restore wiki banners after a failed scrape
+        if: steps.wiki.outcome == 'failure'
+        run: |
+          cp "$RUNNER_TEMP/wiki-banners.json" data/wiki-banners.json
+          echo "::warning::Wiki banner scrape failed; keeping the checked-in snapshot. Other game data can still be updated."
 
       - name: Build banners
         run: npm run data:banners
@@ -165,6 +176,7 @@ jobs:
             - **Pinned commit:** `${{ steps.pins.outputs.sha }}`
             - **`data/` size:** ${{ steps.guard.outputs.before_human }} -> ${{ steps.guard.outputs.after_human }} (${{ steps.guard.outputs.growth }})
             - **Validation:** `npm run data:validate` passed
+            - **Wiki banners:** ${{ steps.wiki.outcome == 'failure' && 'existing snapshot (scrape failed)' || 'refreshed' }}
             - **Growth guard:** within the 25% threshold from `AGENTS.md` section 14
 
             Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `data:validate`.
