@@ -9,7 +9,7 @@ import {
   getBannerLifecycleStatus,
   isProvenNotOnGlobal,
 } from '~/../shared/utils/gacha'
-import { resolveAsset } from '~/../shared/utils/resolveAsset'
+import { resolveAsset, OPTIMIZED_ASSETS_CDN } from '~/../shared/utils/resolveAsset'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 import GachaRateUpOps from '~/components/gacha/GachaRateUpOps.vue'
 
@@ -40,7 +40,11 @@ const imageError = ref(false)
 const bannerArtCandidates = computed<string[]>(() => {
   if (!props.banner.hasArt) return []
   const targetId = props.banner.artId || props.banner.id
-  return resolveAsset('banner', targetId, { format: 'webp' })
+  // `artId` is the published optimized file. resolveAsset prefers the legacy stripped `_EN`
+  // id, which 404s for the EN banner that owns its own art, so the exact id goes first.
+  const published = `${OPTIMIZED_ASSETS_CDN}/banners/${targetId}.webp`
+  const candidates = resolveAsset('banner', targetId, { format: 'webp' })
+  return [published, ...candidates.filter((url) => url !== published)]
 })
 
 const bannerArtUrl = computed<string | null>(() => {
