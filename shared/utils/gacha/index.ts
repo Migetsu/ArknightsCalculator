@@ -76,12 +76,8 @@ export function formatHumanDate(dateInput: number | string, locale = 'en-US'): s
   if (typeof dateInput === 'number') {
     date = new Date(dateInput * 1000)
   } else {
-    const clean = String(dateInput).replace(/\//g, '-')
-    if (/^\d{4}-\d{2}-\d{2}$/.test(clean)) {
-      date = new Date(`${clean}T00:00:00Z`)
-    } else {
-      date = new Date(dateInput)
-    }
+    const parsed = parseBannerDate(String(dateInput))
+    date = parsed === null ? new Date(dateInput) : new Date(parsed)
   }
   if (Number.isNaN(date.getTime())) return String(dateInput)
 
@@ -117,6 +113,143 @@ export function formatBannerDateRange(
  */
 export function isProvenNotOnGlobal(banner: GachaBanner): boolean {
   return banner.server === 'cn' && banner.ruleType === 'LIMITED' && !banner.pairedBannerId
+}
+
+const MS_PER_DAY = 24 * 60 * 60 * 1000
+
+/** Number of most recent CN→Global pairs used for the lag median. */
+export const UPCOMING_LAG_SAMPLE_SIZE = 12
+
+/**
+ * Parses a wiki banner date in `YYYY/MM/DD` or `YYYY/MM/DD HH:mm:ss` form
+ * (dashes are accepted too) as UTC milliseconds. Returns null for invalid input.
+ * Parsing never depends on the host time zone.
+ */
+export function parseBannerDate(dateInput?: string | null): number | null {
+  if (!dateInput) return null
+  const match = /^(\d{4})[/-](\d{1,2})[/-](\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/.exec(
+    dateInput.trim(),
+  )
+  if (!match) return null
+
+  const year = Number(match[1])
+  const month = Number(match[2])
+  const day = Number(match[3])
+  const hours = Number(match[4] ?? 0)
+  const minutes = Number(match[5] ?? 0)
+  const seconds = Number(match[6] ?? 0)
+
+  const ms = Date.UTC(year, month - 1, day, hours, minutes, seconds)
+  const date = new Date(ms)
+  if (
+    Number.isNaN(ms) ||
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month - 1 ||
+    date.getUTCDate() !== day ||
+    date.getUTCHours() !== hours ||
+    date.getUTCMinutes() !== minutes ||
+    date.getUTCSeconds() !== seconds
+  ) {
+    return null
+  }
+  return ms
+}
+
+/**
+ * Latest CN banner start time that already has a real Global release date.
+ * Everything after this point is the unreleased window. Data-driven, never uses the clock.
+ */
+export function getUpcomingCutoff(banners: readonly GachaBanner[]): number | null {
+  let cutoff: number | null = null
+  for (const banner of banners) {
+    if (banner.server !== 'cn' || banner.openTime <= 0) continue
+    if (parseBannerDate(banner.globalStartDate) === null) continue
+    if (cutoff === null || banner.openTime > cutoff) cutoff = banner.openTime
+  }
+  return cutoff
+}
+
+/**
+ * CN banners that have not been released on Global yet and have a known rate-up roster,
+ * sorted from the oldest (closest to Global) to the newest. Returns [] when the dataset
+ * has no confirmed Global dates to derive the cutoff from.
+ */
+export function getUpcomingBanners(banners: readonly GachaBanner[]): GachaBanner[] {
+  const cutoff = getUpcomingCutoff(banners)
+  if (cutoff === null) return []
+
+  return banners
+    .filter(
+      (banner) =>
+        banner.server === 'cn' &&
+        banner.openTime > cutoff &&
+        parseBannerDate(banner.globalStartDate) === null &&
+        ((banner.rateUp6?.length ?? 0) > 0 || (banner.rateUp5?.length ?? 0) > 0),
+    )
+    .sort((a, b) => a.openTime - b.openTime)
+}
+
+export interface GlobalLagPair {
+  id: string
+  cnOpenTime: number
+  lagDays: number
+}
+
+/**
+ * Confirmed CN→Global pairs ordered by CN start date, limited to the most recent `sampleSize`.
+ */
+export function getGlobalLagPairs(
+  banners: readonly GachaBanner[],
+  sampleSize = UPCOMING_LAG_SAMPLE_SIZE,
+): GlobalLagPair[] {
+  const pairs = banners
+    .filter((banner) => banner.server === 'cn' && banner.openTime > 0)
+    .map((banner) => {
+      const globalStart = parseBannerDate(banner.globalStartDate)
+      if (globalStart === null) return null
+      return {
+        id: banner.id,
+        cnOpenTime: banner.openTime,
+        lagDays: (globalStart - banner.openTime * 1000) / MS_PER_DAY,
+      }
+    })
+    .filter((pair): pair is GlobalLagPair => pair !== null)
+    .sort((a, b) => a.cnOpenTime - b.cnOpenTime)
+
+  if (sampleSize <= 0) return pairs
+  return pairs.slice(-sampleSize)
+}
+
+/**
+ * Median CN→Global lag in days over the most recent `sampleSize` confirmed pairs.
+ * Returns null when no confirmed pair exists.
+ */
+export function getGlobalLagDays(
+  banners: readonly GachaBanner[],
+  sampleSize = UPCOMING_LAG_SAMPLE_SIZE,
+): number | null {
+  const lags = getGlobalLagPairs(banners, sampleSize)
+    .map((pair) => pair.lagDays)
+    .sort((a, b) => a - b)
+  if (lags.length === 0) return null
+
+  const middle = Math.floor(lags.length / 2)
+  if (lags.length % 2 === 1) return lags[middle] ?? null
+  const lower = lags[middle - 1]
+  const upper = lags[middle]
+  if (lower === undefined || upper === undefined) return null
+  return (lower + upper) / 2
+}
+
+/**
+ * Estimated Global start date (`YYYY-MM-DD`) for a CN banner: CN start plus the rounded lag.
+ * Returns null without a valid lag or start time.
+ */
+export function getEstimatedGlobalDate(banner: GachaBanner, lagDays: number | null): string | null {
+  if (lagDays === null || !Number.isFinite(lagDays) || banner.openTime <= 0) return null
+  const estimated = new Date(banner.openTime * 1000 + Math.round(lagDays) * MS_PER_DAY)
+  if (Number.isNaN(estimated.getTime())) return null
+  return estimated.toISOString().slice(0, 10)
 }
 
 /**
