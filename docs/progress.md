@@ -1,5 +1,16 @@
 # Project Progress
 
+- **Task 29 — Licenses, attribution and reuse terms (`docs/licenses`):**
+  - Added root `NOTICE` and `docs/licenses.md` with a component-by-component breakdown:
+    code (MIT), wiki-derived data (CC-BY-SA 4.0), game IP/game data (Hypergryph/Yostar,
+    not relicensed), fexli art source (no upstream license, attribution only), Penguin
+    Statistics drop data (CC BY-NC 4.0), optimized WebP assets, and third-party npm
+    packages.
+  - Updated `README.md`, the in-app footer attribution string (no key changes) and
+    `docs/assets.md` to link the notice and name the actual data sources; added change
+    notes for CC-BY-SA attribution.
+  - No application code or data changes; `i18n:check` key count unchanged.
+
 - **Task 28 — Slow 4G performance: honest metrics and server-side datasets (`perf/slow-internet`):**
   - **Goal & context:** Task 27 removed the per-operator chunk explosion, but `tests/e2e/throttling.spec.ts` reported `LCP/TBT = 0` (no PerformanceObserver) and only asserted `scriptKb > 0`; `docs/metrics-operators.json` from 2026-10-17 was stale. Task 28 makes the suite measure real Core Web Vitals, stores per-page medians, enforces budgets, and moves the two heaviest client datasets behind Nitro.
   - **Honest metrics harness (`tests/e2e/throttling.spec.ts`):**
