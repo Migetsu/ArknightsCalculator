@@ -335,22 +335,49 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(committedBannersDataset.meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
     })
 
-    it('verifies art coverage in committed dataset (304 CN and 31 EN banners with art)', () => {
+    it('verifies art coverage in committed dataset (306 CN and 148 EN banners with art)', () => {
       const cnWithArt = committedBannersDataset.cnBanners.filter((b) => b.hasArt)
       const cnWithoutArt = committedBannersDataset.cnBanners.filter((b) => !b.hasArt)
       const enWithArt = committedBannersDataset.enBanners.filter((b) => b.hasArt)
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
-      expect(cnWithArt.length).toBe(304)
-      expect(cnWithoutArt.length).toBe(149)
-      expect(enWithArt.length).toBe(31)
-      expect(enWithoutArt.length).toBe(377)
+      expect(cnWithArt.length).toBe(306)
+      expect(cnWithoutArt.length).toBe(147)
+      expect(enWithArt.length).toBe(148)
+      expect(enWithoutArt.length).toBe(260)
 
       for (const b of cnWithArt) {
         expect(b.artId).toBe(b.id)
       }
       for (const b of enWithArt) {
-        expect(b.artId).toBe(b.id.replace('_EN_', '_'))
+        const allowed = b.pairedBannerId
+          ? [b.pairedBannerId, b.id]
+          : [b.id.replace('_EN_', '_'), b.id]
+        expect(allowed).toContain(b.artId)
+      }
+    })
+
+    it('uses paired CN art for EN banners and never a foreign stripped id', () => {
+      const pairedArt: Record<string, string> = {
+        LIMITED_EN_27_0_3: 'LIMITED_44_0_1',
+        NORM_EN_27_0_6: 'NORM_44_0_3',
+        NORM_EN_32_0_2: 'NORM_52_0_2',
+        NORM_EN_33_0_5: 'NORM_56_0_3',
+        SINGLE_EN_37_0_1: 'SINGLE_63_0_1',
+        SINGLE_EN_40_0_1: 'SINGLE_69_0_1',
+        NORM_EN_41_0_3: 'NORM_71_0_3',
+      }
+      for (const [enId, cnArtId] of Object.entries(pairedArt)) {
+        const banner = committedBannersDataset.enBanners.find((b) => b.id === enId)
+        expect(banner?.artId).toBe(cnArtId)
+      }
+
+      // Paired CN pools without any published art stay without art instead of
+      // borrowing the art of an unrelated stripped pool.
+      for (const enId of ['NORM_EN_30_0_3', 'NORM_EN_32_0_4']) {
+        const banner = committedBannersDataset.enBanners.find((b) => b.id === enId)
+        expect(banner?.pairedBannerId).toBeTruthy()
+        expect(banner?.hasArt).toBe(false)
       }
     })
 

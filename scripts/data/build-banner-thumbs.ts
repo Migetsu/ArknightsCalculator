@@ -11,6 +11,7 @@ const FEXLI_BASE_URL = `https://cdn.jsdelivr.net/gh/fexli/ArknightsResource@${FE
 interface BannerSummaryEntry {
   id: string
   server?: 'cn' | 'en'
+  pairedBannerId?: string | null
 }
 
 interface BannersFile {
@@ -137,7 +138,7 @@ export async function runBuildBannerThumbs(
   let enWithArt = 0
   let enWithoutArt = 0
   for (const b of bannersData.enBanners) {
-    const candidates = getBannerArtCandidates(b.id, 'en')
+    const candidates = getBannerArtCandidates(b.id, 'en', b.pairedBannerId)
     const matched = candidates.find((c) => availableFexliFiles.has(c))
     if (matched) {
       enWithArt++
@@ -211,9 +212,17 @@ export async function runBuildBannerThumbs(
   console.log(`Total size:    ${totalSizeMb} MB`)
   console.log(`Average size:  ${avgKb} KB per 480px WebP thumbnail`)
 
-  // 4. Save data/banner-arts.json with available art IDs
+  // 4. Save data/banner-arts.json with available art IDs.
+  // Keep IDs already published (including wiki-sourced ones not present in fexli).
   const manifestPath = path.resolve(process.cwd(), 'data/banner-arts.json')
-  await fs.writeFile(manifestPath, JSON.stringify(artIdList, null, 2) + '\n')
+  let publishedArtIds: string[] = []
+  try {
+    publishedArtIds = JSON.parse(await fs.readFile(manifestPath, 'utf-8')) as string[]
+  } catch {
+    // manifest does not exist yet
+  }
+  const mergedArtIds = Array.from(new Set([...artIdList, ...publishedArtIds])).sort()
+  await fs.writeFile(manifestPath, JSON.stringify(mergedArtIds, null, 2) + '\n')
   console.log(`Saved available banner arts list to ${manifestPath}\n`)
 
   return {

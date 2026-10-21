@@ -18,15 +18,15 @@
 
 | Репозиторий                         | Зафиксированный SHA                        | Дата последнего коммита | Лицензия                                   | Назначение                                                                    |
 | :---------------------------------- | :----------------------------------------- | :---------------------- | :----------------------------------------- | :---------------------------------------------------------------------------- |
-| `Migetsu/arkcalc-assets`            | `fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1` | 2026-10-20              | MIT / Game Fan Assets (Fair Use)           | Оптимизированные WebP (480px thumbs, 1280px hero арты, 480px превью баннеров) |
+| `Migetsu/arkcalc-assets`            | `e5e06cebacf644b149ac1dfce6048b4c7fd5e899` | 2026-10-21              | MIT / Game Fan Assets (Fair Use)           | Оптимизированные WebP (480px thumbs, 1280px hero арты, 480px превью баннеров) |
 | `yuanyan3060/ArknightsGameResource` | `9bf239661e37766fba585806fb9fa67e79bb679e` | 2026-10-09              | GNU AGPL-3.0                               | Аватары, портреты, предметы, навыки, полноразмерный арт                       |
 | `fexli/ArknightsResource`           | `d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5` | 2026-10-10              | None / Custom (Game Fan Assets / Fair Use) | Модули операторов (100% покрытие), арты баннеров (gacha/)                     |
 | `Aceship/Arknight-Images`           | `0b28f9562fcadbd644c6225f8f8aefbb500b4d22` | 2024-05-01              | None / Custom (Game Fan Assets / Fair Use) | Резервный источник модулей (legacy)                                           |
 
 - **Шаблоны URL:**
-  - Оптимизированные миниатюры WebP (480px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1/thumbs/{id}.webp`
-  - Оптимизированный арт для Hero WebP (1280px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1/hero/{id}.webp`
-  - Оптимизированные превью баннеров WebP (480px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@fb1b4d1fbcf948a59b45500ceaeb1efe6de5a5a1/banners/{id}.webp`
+  - Оптимизированные миниатюры WebP (480px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@e5e06cebacf644b149ac1dfce6048b4c7fd5e899/thumbs/{id}.webp`
+  - Оптимизированный арт для Hero WebP (1280px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@e5e06cebacf644b149ac1dfce6048b4c7fd5e899/hero/{id}.webp`
+  - Оптимизированные превью баннеров WebP (480px): `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@e5e06cebacf644b149ac1dfce6048b4c7fd5e899/banners/{id}.webp`
   - Аватары / портреты: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/{kind}/{id}.png`
   - Навыки: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/skill/skill_icon_{iconId}.png`
   - Предметы: `https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf239661e37766fba585806fb9fa67e79bb679e/item/{iconId}.png`
@@ -238,7 +238,14 @@ npm run data:assets
    git clone --depth 1 https://github.com/Migetsu/arkcalc-assets.git temp-assets-repo
    ```
 
-   Каталог `temp-assets-repo/` внесён в `.gitignore` основного репозитория, предотвращая попадание бинарных изображений в кодовую базу.
+   - Каталог `temp-assets-repo/` внесён в `.gitignore` основного репозитория, предотвращая попадание бинарных изображений в кодовую базу.
+
+   - **Баннеры, которых нет в `fexli`** (текущий EN и новые ротации), берутся с `arknights.wiki.gg`:
+     - HTML-страницы `Headhunting/Banners/<год>` и `Headhunting/Banners/Upcoming` отдают `200`; `api.php` может отвечать `502`, HTML остаётся рабочим источником.
+     - Нужно брать точный `src` уже готового thumbnail (1024px) из HTML, а не собирать URL вручную: у full-file и thumb разные хеши.
+     - Скачанный файл проверяется по PNG-сигнатуре и размерам через `sharp`; затем `resize({ width: 480, withoutEnlargement: true })` + `webp({ quality: 80, effort: 4 })`.
+     - Имя файла — `<bannerId>.webp`: для EN используется собственный `LIMITED_EN_42_0_1.webp`, а не id пары.
+     - Источник лицензирован **CC-BY-SA 4.0**, атрибуция обязательна (см. §8).
 
 2. **Запуск скрипта оптимизации:**
    - Для артов баннеров:
@@ -292,3 +299,5 @@ npm run data:assets
 Все игровые изображения, арты операторов, иконки предметов и логотипы являются интеллектуальной собственностью **Hypergryph Co., Ltd.** и **Yostar, Inc.**.
 
 Данный проект является бесплатным, неофициальным и фанатским компаньоном. Все материалы используются исключительно в справочных и информационных целях (Fair Use). В футере приложения на всех страницах выводится обязательный дисклеймер об авторских правах.
+
+Арты баннеров, добавленные из [arknights.wiki.gg](https://arknights.wiki.gg) (включая 12 файлов задачи 24), распространяются на условиях **CC-BY-SA 4.0**; источник и лицензия указываются в `docs/data-banners.md` и в этом документе.

@@ -438,7 +438,7 @@ export function buildBannersFromTables(
       tracker,
     )
 
-    const artCandidates = getBannerArtCandidates(p.gachaPoolId, 'en')
+    const artCandidates = getBannerArtCandidates(p.gachaPoolId, 'en', pairedId)
     const matchedArt = artCandidates.find((c) => safeArtIds.has(c))
     const hasArt = Boolean(matchedArt)
 
