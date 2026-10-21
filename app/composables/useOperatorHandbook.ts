@@ -1,28 +1,35 @@
 import type { AsyncData, NuxtError } from '#app'
 import type { Ref, ComputedRef } from 'vue'
 import type { OperatorHandbook } from '~~/shared/schemas/handbook'
+import { isValidOperatorDataId } from '~~/shared/utils/operatorData'
+import type { OperatorDataFetcher } from '~~/shared/utils/operatorData'
 
 const handbookCache = new Map<string, OperatorHandbook>()
 
 /**
- * Loads operator handbook asynchronously by charId.
- * Asynchronously imports data/handbook/<charId>.json in an individual lazy chunk
- * and caches the loaded entry in memory.
- * Returns null if the file does not exist (e.g. Amiya patch forms).
+ * Loads an operator dossier from the Nitro handbook endpoint and caches the
+ * parsed entry in memory.
+ * Returns null if the dossier does not exist (e.g. Amiya patch forms).
  */
-export async function fetchOperatorHandbook(charId: string): Promise<OperatorHandbook | null> {
+export async function fetchOperatorHandbook(
+  charId: string,
+  fetcher: OperatorDataFetcher = (url) => $fetch(url),
+): Promise<OperatorHandbook | null> {
   if (!charId || typeof charId !== 'string') return null
   const cleanId = charId.trim()
+  if (!isValidOperatorDataId(cleanId)) return null
 
-  if (handbookCache.has(cleanId)) {
-    return handbookCache.get(cleanId) ?? null
+  const cached = handbookCache.get(cleanId)
+  if (cached) {
+    return cached
   }
 
   try {
-    const module = await import(`../../data/handbook/${cleanId}.json`)
-    const data = (module.default ?? module) as OperatorHandbook
-    handbookCache.set(cleanId, data)
-    return data
+    const data = await fetcher(`/api/handbook/${cleanId}`)
+    if (data === null || typeof data !== 'object' || Array.isArray(data)) return null
+    const handbook = data as OperatorHandbook
+    handbookCache.set(cleanId, handbook)
+    return handbook
   } catch (_err) {
     return null
   }
@@ -43,10 +50,11 @@ export function useOperatorHandbook(
   charId: Ref<string> | ComputedRef<string> | string,
 ): AsyncData<OperatorHandbook | null, NuxtError | undefined> {
   const getId = () => (typeof charId === 'string' ? charId : toValue(charId))
+  const requestFetch = useRequestFetch()
 
   return useAsyncData<OperatorHandbook | null>(
     () => `operator-handbook-${getId()}`,
-    () => fetchOperatorHandbook(getId()),
+    () => fetchOperatorHandbook(getId(), requestFetch),
     {
       default: () => null,
       watch: typeof charId === 'string' ? [] : [() => toValue(charId)],

@@ -1,9 +1,17 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { useFarmingStore } from '../../../app/stores/farming'
 import { useSettingsStore } from '../../../app/stores/settings'
 import { usePlannerStore } from '../../../app/stores/planner'
 import { useDepotStore } from '../../../app/stores/depot'
+import { readOperatorDataFixture } from '../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+
+mockNuxtImport('$fetch', () => mockFetch)
+
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 describe('useFarmingStore', () => {
   beforeEach(() => {

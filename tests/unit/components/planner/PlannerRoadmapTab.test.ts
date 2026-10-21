@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { flushPromises } from '@vue/test-utils'
 import { setActivePinia, createPinia } from 'pinia'
 import fs from 'node:fs'
@@ -9,6 +9,13 @@ import { usePlannerStore } from '../../../../app/stores/planner'
 import { useDepotStore } from '../../../../app/stores/depot'
 import { MemoryStorageAdapter } from '../../../../app/utils/storage/memoryAdapter'
 import type { OperatorDetail } from '../../../../shared/schemas/operator'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+
+mockNuxtImport('$fetch', () => mockFetch)
+
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 function loadOperator(id: string): OperatorDetail {
   const filePath = path.resolve(process.cwd(), `data/operators/${id}.json`)
