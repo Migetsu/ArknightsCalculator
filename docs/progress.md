@@ -72,15 +72,20 @@
     disconnect), modal 21, stores 13 — plus `tests/e2e/sync-modal.spec.ts` (5 cases against
     the production preview: login, saved-session re-sync, 401 clears the token, 360 px and
     1280 px, no console errors; every `/api/yostar/*` call intercepted).
-  - **Gates (2026-10-21):** `lint` clean, `typecheck` clean, `test` 910 / 108 files,
-    `data:validate` 0 issues, `i18n:check` 713 keys, `build` (`NUXT_BUILD_DIR=.nuxt-agent`)
+  - **Gates (2026-10-21):** `lint` clean, `typecheck` clean, `test` 911 / 108 files,
+    `data:validate` 0 issues, `i18n:check` 715 keys, `build` (`NUXT_BUILD_DIR=.nuxt-agent`)
     clean. Client bundle unchanged: `_nuxt` 3.54 MB / 79 files, JS 2.85 MB / 50 files
     (baseline 3.53 MB / 79 and 2.85 MB / 50); the `/api/yostar/login` route chunk is 187 KB
     because it bundles the item and operator catalog server-side.
-  - **Deferred:** the live login itself (owner-only, checklist in `docs/yostar-sync.md`),
-    JP/KR realms, exact Yostar error-code coverage, Amiya `tmpl` variants, the Vercel 10 s
-    function budget versus the seven-call chain, the accepted XSS exposure of the
-    `localStorage` token and the missing upstream expiry — all recorded in
+  - **Live verification (2026-10-21):** `POST /api/yostar/login` with the owner's code
+    returned 200: 132 operators, 78 depot items, doctor level 72. `POST /api/yostar/sync`
+    with the returned session (no code) returned the same counts. A **malformed** saved
+    token returned `502 unavailable`, not `401 invalid_session`; the client's 401-clears
+    path remains covered by unit/e2e mocks, and the corrupted-token case is recorded in
+    `docs/known-issues.md`. UI reload/SAVED SESSION/DISCONNECT were not exercised live.
+  - **Deferred:** JP/KR realms, exact Yostar error-code coverage, Amiya `tmpl` variants,
+    the Vercel 10 s function budget versus the seven-call chain, the accepted XSS exposure
+    of the `localStorage` token and the missing upstream expiry — all recorded in
     `docs/known-issues.md`.
 
 - **Task 29 — Licenses, attribution and reuse terms (`docs/licenses`):**
