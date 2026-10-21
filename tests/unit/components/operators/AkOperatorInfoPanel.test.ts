@@ -1,10 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { flushPromises } from '@vue/test-utils'
 import fs from 'node:fs'
 import path from 'node:path'
 import type { OperatorDetail } from '../../../../shared/schemas/operator'
 import AkOperatorInfoPanel from '~/components/operators/AkOperatorInfoPanel.vue'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockRequestFetch = (url: string) => readOperatorDataFixture(url)
+
+mockNuxtImport('useRequestFetch', () => () => mockRequestFetch)
 
 function loadOperatorDetail(id: string): OperatorDetail {
   const filePath = path.resolve(process.cwd(), `data/operators/${id}.json`)

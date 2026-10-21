@@ -1,7 +1,8 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import fs from 'node:fs'
 import path from 'node:path'
 import { setActivePinia, createPinia } from 'pinia'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import {
   usePlannerStore,
   PLANNER_STORAGE_KEY,
@@ -9,6 +10,13 @@ import {
 } from '../../../app/stores/planner'
 import { useDepotStore } from '../../../app/stores/depot'
 import { MemoryStorageAdapter } from '../../../app/utils/storage'
+import { readOperatorDataFixture } from '../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+
+mockNuxtImport('$fetch', () => mockFetch)
+
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 describe('usePlannerStore', () => {
   let memoryAdapter: MemoryStorageAdapter

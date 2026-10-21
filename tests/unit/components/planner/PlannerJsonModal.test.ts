@@ -1,8 +1,15 @@
-import { describe, expect, it, beforeEach } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, expect, it, beforeEach, vi } from 'vitest'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import PlannerJsonModal from '../../../../app/components/planner/PlannerJsonModal.vue'
 import { usePlannerStore } from '../../../../app/stores/planner'
 import { MemoryStorageAdapter } from '../../../../app/utils/storage'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+
+mockNuxtImport('$fetch', () => mockFetch)
+
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 describe('PlannerJsonModal.vue', () => {
   beforeEach(async () => {

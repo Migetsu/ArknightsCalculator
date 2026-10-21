@@ -1,10 +1,17 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
 import PlannerMaterialsTab from '../../../../app/components/planner/PlannerMaterialsTab.vue'
 import { usePlannerStore } from '../../../../app/stores/planner'
 import { useDepotStore } from '../../../../app/stores/depot'
 import { MemoryStorageAdapter } from '../../../../app/utils/storage/memoryAdapter'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+
+mockNuxtImport('$fetch', () => mockFetch)
+
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 describe('PlannerMaterialsTab', () => {
   beforeEach(() => {

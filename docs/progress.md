@@ -1,5 +1,28 @@
 # Project Progress
 
+- **Server Data Assets: operator detail & handbook (`refactor/server-data-assets`):**
+  - **Context & Motivation:**
+    - `useOperatorDetail` / `useOperatorHandbook` loaded one JSON per operator via template-literal dynamic imports. Vite/Nitro emitted one chunk per file: **1005 `.output/server/chunks`** and **920 client JS chunks**, pushing builds to OOM at ~2040 MB.
+    - `NODE_OPTIONS=--max-old-space-size=4096` and `sourcemap: false` only masked the chunk explosion.
+  - **Approach (see `docs/server-data-assets.md`):**
+    - Raw `nitro.serverAssets` over `data/operators` + `data/handbook` was rejected: Nitro 2.13.4 bundles each server asset as its own `import('raw:…')` chunk. A 3-file probe produced exactly 3 chunks (`chunks/raw/*.mjs`), i.e. it would recreate the 866 chunks.
+    - Implemented build-time aggregation into **8 operator + 4 handbook bucket files** (`modules/server-data-assets/`), exposed as `serverAssets` (`assets:operators`, `assets:handbook`). Generated output lives in `<rootDir>/.cache/server-data-assets` because Nuxt clears the build directory after `nitro:config` (a buildDir-based first version silently lost the assets; caught by production verification).
+    - Added `server/api/operators/[id].get.ts` and `server/api/handbook/[id].get.ts`: id validation `^[a-zA-Z0-9_]+$` (400 for malformed/traversal), 404 for unknown or broken data, `cache-control: public, max-age=3600`.
+    - Bucket mapping is a deterministic FNV-1a hash (`shared/utils/operatorData.ts`), so no id→bucket manifest is needed. `server/utils/operatorData.ts` caches parsed buckets in-process (bounded by the 12 buckets).
+    - Composables keep their public contract (`useAsyncData` keys, `default: null`, id `watch`, handbook Map cache with object identity, null for Amiya patch forms). SSR uses `useRequestFetch()` (internal request, no absolute origin), client navigation uses `$fetch`; helpers accept an injectable fetcher for tests. Planner store keeps its client-only `$fetch` path.
+    - `data/**`, schemas and `data:validate` untouched; no new dependencies; no data copied to `public/`.
+  - **Measured (production build, `NUXT_BUILD_DIR=.nuxt-agent`, local Windows, before → after):**
+    - `.output/server/chunks`: **1005 → 153** (12 of them are the data buckets).
+    - `.output/server`: **50.68 MB → 38.65 MB**; `.output/public/_nuxt`: **28.96 MB / 920 JS → 6.07 MB / 51 JS**; `.output` excluding the local-only `public/art` mirror: **80.50 MB → 45.56 MB** (−43%).
+    - Build: **1m 20s → 1m 14s cold / 0m 50s warm**; peak process-tree working set **4.1 GB → 2.6 GB**.
+    - Nitro server total reported size: **40.5 MB (8.59 MB gzip)**.
+  - **Tests & Gates:**
+    - Full suite: **802 tests / 99 files**, 0 failed, 0 skipped (was 789 / 96). New: bucket generator (grouping, cache invalidation, stale-file cleanup, all real operator/handbook ids), id validation, `useOperatorDetail` (previously untested), rewritten `useOperatorHandbook` (real data via fs, cache identity, 404/patch forms, invalid ids); planner/farming/dossier/info-panel tests inject the fs-backed API double.
+    - `lint` 0 errors, `typecheck` 0 errors, `data:validate` 0 integrity issues (432 handbooks, 861 banners), `i18n:check` 689 keys.
+    - Playwright on 3001: `/operators/char_002_amiya?tab=info` contains dossier fields in SSR HTML, patch section present; `/operators/char_285_medic2` has no patch section; `/operators/char_1001_amiya2` renders no dossier; invalid id renders the tactical 404; client-side navigation hits `/api/operators/…` + `/api/handbook/…` (200); 0 console errors; `scrollWidth == clientWidth` at 360 and 1280.
+    - Production server: `/api/operators/char_002_amiya` 200, `/api/handbook/char_002_amiya` 200, `/api/handbook/char_1001_amiya2` 404, operator SSR HTML contains dossier data.
+  - **Deferred:** local Windows production preview returns 500 for store-backed pages (`/`, `/gacha`, …) with `getActivePinia()`; reproduced on unmodified `main`, pre-existing and environment-specific (CI Ubuntu and Vercel are green). Recorded in `docs/known-issues.md`. Dev server must be restarted after `npm run data:*` to pick up regenerated buckets (cache signature is checked at startup).
+
 - **Current EN Banner as a Banner Card (`feat/gacha-current-card`):**
   - **Context & Motivation:**
     - The active Global banner on `/gacha` was a bespoke hero (`.gacha-current-en`): title, "Ends: Oct 28", 6 rate-up operators, no banner art, and a different visual format from the cards below.

@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { flushPromises } from '@vue/test-utils'
 import AkOperatorDossierPanel from '~/components/operators/AkOperatorDossierPanel.vue'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockRequestFetch = (url: string) => readOperatorDataFixture(url)
+
+mockNuxtImport('useRequestFetch', () => () => mockRequestFetch)
 
 describe('AkOperatorDossierPanel', () => {
   it('renders basic profile and physical evaluation fields correctly for Amiya (char_002_amiya)', async () => {
