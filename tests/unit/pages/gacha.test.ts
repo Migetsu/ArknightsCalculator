@@ -1,14 +1,28 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { ref } from 'vue'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
 import GachaPage from '~/pages/gacha.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
+import bannersDataset from '../../../data/banners.json'
+import type { BannersDataset } from '../../../shared/schemas/banner'
+import { buildGachaPageData } from '../../../shared/utils/gachaPageData'
+
+const { mockUseGachaPageData } = vi.hoisted(() => ({ mockUseGachaPageData: vi.fn() }))
+
+mockNuxtImport('useGachaPageData', () => mockUseGachaPageData)
 
 describe('GachaPage', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
+    // The page now receives a Nitro projection instead of importing the dataset.
+    mockUseGachaPageData.mockReturnValue({
+      data: ref(buildGachaPageData(bannersDataset as unknown as BannersDataset)),
+      status: ref('success'),
+      refresh: vi.fn(),
+    })
   })
 
   it('renders page header with module code GCH-02 and title', async () => {

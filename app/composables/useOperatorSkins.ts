@@ -1,34 +1,31 @@
 import type { AsyncData, NuxtError } from '#app'
 import type { Ref, ComputedRef } from 'vue'
 import type { Skin } from '~~/shared/schemas/skin'
-
-let skinsByCharIdCache: Map<string, Skin[]> | null = null
+import { isValidOperatorDataId } from '~~/shared/utils/operatorData'
+import type { OperatorDataFetcher } from '~~/shared/utils/operatorData'
 
 /**
- * Loads skins for a specific operator by charId.
- * Asynchronously imports data/skins.json in a separate lazy chunk and caches the index map.
+ * Loads the skins of one operator through the Nitro data endpoint.
+ *
+ * The dataset itself (1.6 MB) stays a server asset, so the operator page no
+ * longer downloads and parses it before hydration. `useAsyncData` still caches
+ * the per-operator result on the client, and SSR uses the internal request to
+ * avoid an extra network hop.
  */
-export async function fetchOperatorSkins(charId: string): Promise<Skin[]> {
+export async function fetchOperatorSkins(
+  charId: string,
+  fetcher: OperatorDataFetcher = (url) => $fetch(url),
+): Promise<Skin[]> {
   if (!charId || typeof charId !== 'string') return []
   const cleanId = charId.trim()
+  if (!isValidOperatorDataId(cleanId)) return []
 
-  if (!skinsByCharIdCache) {
-    try {
-      const module = await import('~/../data/skins.json')
-      const rawData = (module.default ?? module) as Skin[]
-      const map = new Map<string, Skin[]>()
-      for (const skin of rawData) {
-        const list = map.get(skin.charId) ?? []
-        list.push(skin)
-        map.set(skin.charId, list)
-      }
-      skinsByCharIdCache = map
-    } catch (_err) {
-      return []
-    }
+  try {
+    const data = await fetcher(`/api/skins/${cleanId}`)
+    return Array.isArray(data) ? (data as Skin[]) : []
+  } catch (_err) {
+    return []
   }
-
-  return skinsByCharIdCache.get(cleanId) ?? []
 }
 
 /**
@@ -38,10 +35,11 @@ export function useOperatorSkins(
   charId: Ref<string> | ComputedRef<string> | string,
 ): AsyncData<Skin[], NuxtError | undefined> {
   const getId = () => (typeof charId === 'string' ? charId : toValue(charId))
+  const requestFetch = useRequestFetch()
 
   return useAsyncData<Skin[]>(
     () => `operator-skins-${getId()}`,
-    () => fetchOperatorSkins(getId()),
+    () => fetchOperatorSkins(getId(), requestFetch),
     {
       default: () => [],
       watch: typeof charId === 'string' ? [] : [() => toValue(charId)],

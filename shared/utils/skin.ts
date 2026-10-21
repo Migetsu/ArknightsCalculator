@@ -1,4 +1,22 @@
-import type { SkinPriceStatus } from '../schemas/skin'
+import type { Skin, SkinPriceStatus } from '../schemas/skin'
+
+/**
+ * Groups the flat skins dataset by operator id, preserving dataset order inside
+ * each group. The server uses it to answer per-operator skin requests without
+ * shipping the whole 1.6 MB dataset to every operator detail page.
+ */
+export function groupSkinsByCharId(skins: readonly Skin[]): Map<string, Skin[]> {
+  const groups = new Map<string, Skin[]>()
+  for (const skin of skins) {
+    const list = groups.get(skin.charId)
+    if (list) {
+      list.push(skin)
+    } else {
+      groups.set(skin.charId, [skin])
+    }
+  }
+  return groups
+}
 
 /**
  * Checks whether the given skin ID represents a default character form (E0, E1, E2, class change)

@@ -32,6 +32,22 @@ export default defineNuxtModule({
           pattern: '*.json',
         })
       }
+
+      // The skins dataset is one flat file. It is never part of the client
+      // bundle; `/api/skins/[id]` filters it down to a single operator.
+      nitroConfig.serverAssets.push({
+        baseName: 'skins',
+        dir: dataDir,
+        pattern: 'skins.json',
+      })
+
+      // /gacha consumes a projection of the banners dataset through
+      // `/api/gacha/banners`; the 2 MB source file stays server-side.
+      nitroConfig.serverAssets.push({
+        baseName: 'gacha',
+        dir: dataDir,
+        pattern: 'banners.json',
+      })
     })
   },
 })

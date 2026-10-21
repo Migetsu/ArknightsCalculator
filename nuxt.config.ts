@@ -44,6 +44,12 @@ export default defineNuxtConfig({
     format: ['webp', 'png'],
   },
   css: ['~/assets/styles/main.scss'],
+  nitro: {
+    // `@pinia/nuxt` inlines pinia into the server entry, while page chunks keep
+    // importing the external package on Windows; two instances make
+    // `getActivePinia()` fail during SSR. Bundling pinia once fixes the split.
+    externals: { inline: ['pinia'] },
+  },
   vite: {
     cacheDir: process.env.NUXT_BUILD_DIR ? `${process.env.NUXT_BUILD_DIR}/vite` : undefined,
     css: {

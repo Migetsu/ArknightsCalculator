@@ -3,6 +3,7 @@ import {
   formatSkinPriceStatus,
   sortOperatorSkins,
   filterOperatorSkins,
+  groupSkinsByCharId,
   isDefaultSkin,
 } from '../../../shared/utils/skin'
 import skinsDataset from '../../../data/skins.json'
@@ -127,6 +128,37 @@ describe('Skin utilities (shared/utils/skin.ts)', () => {
       expect(freshFastener).toBeDefined()
       expect(freshFastener?.priceStatus).toBe('free')
       expect(formatSkinPriceStatus(freshFastener!.priceStatus)).toBe('Free')
+    })
+  })
+
+  describe('groupSkinsByCharId', () => {
+    const typedSkins = skinsDataset as unknown as Skin[]
+
+    it('keeps every skin grouped under its operator without data loss', () => {
+      const grouped = groupSkinsByCharId(typedSkins)
+      const chars = new Set(typedSkins.map((skin) => skin.charId))
+
+      expect(grouped.size).toBe(chars.size)
+      expect([...grouped.values()].reduce((sum, list) => sum + list.length, 0)).toBe(
+        typedSkins.length,
+      )
+      for (const [charId, list] of grouped) {
+        expect(list.every((skin) => skin.charId === charId)).toBe(true)
+      }
+    })
+
+    it('serves the same SilverAsh outfits the detail page displayed before the API move', () => {
+      const grouped = groupSkinsByCharId(typedSkins)
+      const silverAsh = grouped.get('char_172_svrash') ?? []
+
+      expect(silverAsh.length).toBe(5)
+      expect(silverAsh.map((skin) => skin.skinId)).toEqual(
+        typedSkins.filter((skin) => skin.charId === 'char_172_svrash').map((skin) => skin.skinId),
+      )
+    })
+
+    it('returns an empty group for an unknown operator', () => {
+      expect(groupSkinsByCharId(typedSkins).get('char_999_unknown')).toBeUndefined()
     })
   })
 })

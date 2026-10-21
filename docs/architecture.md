@@ -54,9 +54,15 @@ Current strategy (details and measurements in `docs/server-data-assets.md`):
 4. **SEO / PWA:** operator pages stay SSR, so dossier text is present in the HTML. The API is
    HTTP-cacheable (`cache-control: public, max-age=3600`) and can be cached by a service worker
    if PWA caching is added later. No operator data is emitted to the client bundle.
+5. **Other heavy datasets (Task 28):** the same server-asset pattern now serves
+   `/api/skins/[id]` (per-operator skins filtered from `data/skins.json`) and
+   `/api/gacha/banners` (current EN banner + upcoming CN window projected from
+   `data/banners.json`). Neither dataset is imported by a client route chunk anymore.
 
 Result: server chunks drop to 153, client JS chunks to 51, and the client bundle shrinks by
-~23 MB while SSR content and 404 behaviour are unchanged.
+~23 MB while SSR content and 404 behaviour are unchanged. After Task 28 the client bundle is
+3.53 MB / 50 JS chunks with 156 server chunks; `/gacha` scripts fall from 2572 KB to 1072 KB on
+Slow 4G. See `docs/server-data-assets.md`.
 
 ## 5. Testing
 
