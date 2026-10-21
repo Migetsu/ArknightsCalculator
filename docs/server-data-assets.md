@@ -1,6 +1,7 @@
 # Server Data Assets: operator detail & handbook delivery
 
-Status: implemented in `refactor/server-data-assets` (Task 27).
+Status: implemented in `refactor/server-data-assets` (Task 27); extended with skins and
+gacha banners in `perf/slow-internet` (Task 28).
 
 ## Problem
 
@@ -154,6 +155,31 @@ Chunk budget target `< 200` is met with 153 chunks (12 of them are the data buck
   (`/`, `/gacha`, …) because of a pre-existing Pinia SSR issue that also reproduces on
   unmodified `main`; `/operators` and `/operators/[id]` are unaffected. See
   `docs/known-issues.md` (2026-10-21, `refactor/server-data-assets`).
+
+## Related datasets: skins and gacha banners (Task 28)
+
+Two more datasets were moved out of route chunks because they dominated the Slow 4G
+scripts on their pages. Both are registered as plain Nitro `serverAssets` by the same
+module; no buckets are needed because each request parses at most one file once.
+
+| Dataset           | Source              | Server asset                                       | API                  | Client path                               |
+| :---------------- | :------------------ | :------------------------------------------------- | :------------------- | :---------------------------------------- |
+| Skins (1.62 MB)   | `data/skins.json`   | `assets:skins` (`chunks/raw/skins.mjs`, 1812 KB)   | `/api/skins/[id]`    | `useOperatorSkins` → `fetchOperatorSkins` |
+| Banners (2.08 MB) | `data/banners.json` | `assets:gacha` (`chunks/raw/banners.mjs`, 2348 KB) | `/api/gacha/banners` | `useGachaPageData` → `fetchGachaPageData` |
+
+- `server/utils/skins.ts` groups the flat array by `charId` once
+  (`shared/utils/skin.ts#groupSkinsByCharId`) and returns `[]` for unknown ids, preserving the
+  previous empty panel. Malformed ids get 400.
+- `shared/utils/gachaPageData.ts#buildGachaPageData` reuses the existing
+  `getUpcomingBanners` / `getGlobalLagDays` helpers and returns the current EN banner with its
+  rate-up roster, the 11 upcoming CN banners and the lag. The API is 10.2 KB instead of 1.48 MB
+  of JSON; `/gacha` no longer imports `data/banners.json`.
+- `useOperatorSkins` and `useGachaPageData` fetch through `useRequestFetch()` on SSR (no extra
+  network hop) and `$fetch` on the client. `fetchOperatorSkins` follows the Task 27 contract:
+  unsafe ids never reach the network, failures fall back to `[]`; `fetchGachaPageData` throws on
+  a malformed payload so the page renders its error state instead of an empty schedule.
+- The source files are still the single source of truth; the generator and `npm run data:validate`
+  are untouched, nothing is copied into `public/`, and both assets are server-only.
 
 ## How to extend
 

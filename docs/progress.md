@@ -1,5 +1,38 @@
 # Project Progress
 
+- **Task 28 — Slow 4G performance: honest metrics and server-side datasets (`perf/slow-internet`):**
+  - **Goal & context:** Task 27 removed the per-operator chunk explosion, but `tests/e2e/throttling.spec.ts` reported `LCP/TBT = 0` (no PerformanceObserver) and only asserted `scriptKb > 0`; `docs/metrics-operators.json` from 2026-10-17 was stale. Task 28 makes the suite measure real Core Web Vitals, stores per-page medians, enforces budgets, and moves the two heaviest client datasets behind Nitro.
+  - **Honest metrics harness (`tests/e2e/throttling.spec.ts`):**
+    - Slow 4G via CDP (`1.6 Mbps` down / `750 Kbps` up, `150 ms` latency), `4x` CPU throttling, `360×640`, three runs per page in a fresh browser context (no shared HTTP cache).
+    - `PerformanceObserver` with `buffered: true` for `largest-contentful-paint`, `layout-shift` (CLS without recent input), `longtask` (TBT = Σ duration − 50 ms) and `paint` (FCP). Script bytes come from `response.body()` of every script response; transfer bytes from `performance.getEntriesByType('resource')`; TTFB/nav from the navigation entry.
+    - Pages: `/`, `/operators`, `/operators/char_172_svrash`, `/gacha`, `/depot`, `/farming`. The test writes `docs/metrics-operators.json` (timestamp, network, CPU, runs, per-page medians + raw runs) and asserts `scriptKb`, `LCP > 0` and per-page budgets.
+  - **Datasets moved out of the client bundle:**
+    - `data/skins.json` (1.62 MB file, 1255 KB compiled chunk) was a template dynamic import on every operator detail page. It is now a Nitro server asset (`assets:skins`) read once and grouped by `charId` (`shared/utils/skin.ts#groupSkinsByCharId`); `/api/skins/[id]` returns only that operator's outfits (SilverAsh: **5.7 KB** vs 1.8 MB server file). `useOperatorSkins` keeps its `useAsyncData` contract and uses `useRequestFetch()` on SSR.
+    - `data/banners.json` (2.08 MB file, 1364 KB compiled chunk) was imported by `/gacha`. `/api/gacha/banners` returns a compact projection (`shared/utils/gachaPageData.ts`): current EN banner with its rate-up roster, the 11 upcoming CN banners and the Global lag. Payload: **10.2 KB** vs 1.48 MB JSON. Filters, calculator, EST dates and the empty/error/loading states are unchanged; the page now uses `useGachaPageData` (`useRequestFetch` + `$fetch`).
+    - No data, schemas or `data:validate` input changed; nothing was copied to `public/`; no dependencies were added.
+  - **Bundle effect (production build, `NUXT_BUILD_DIR=.nuxt-agent`):**
+    - `.output/public/_nuxt`: **6.07 MB / 80 files → 3.53 MB / 79 files**; JS **5.38 MB / 51 → 2.85 MB / 50**.
+    - Largest remaining client chunks: penguin + stages **1371 KB** (`/farming`, deferred), route map 402 KB, items 207 KB, operators index 147 KB.
+    - Server assets added: `chunks/raw/banners.mjs` (2348 KB) and `chunks/raw/skins.mjs` (1812 KB), server-only. Server chunks **153 → 156**.
+    - Build: 1m 23s baseline worktree → **1m 15s**.
+  - **Slow 4G medians (3 runs, 2026-10-21; baseline 13:41, after 14:07):**
+
+    | Page                         | scriptKb before → after | transferKb before → after | LCP ms before → after | TBT ms before → after | CLS before → after | nav ms before → after |
+    | :--------------------------- | ----------------------: | ------------------------: | --------------------: | --------------------: | -----------------: | --------------------: |
+    | `/`                          |         1197 → **1197** |               1442 → 1442 |           1288 → 1460 |             200 → 611 |      0.024 → 0.024 |           8108 → 8172 |
+    | `/operators`                 |           960 → **897** |               1820 → 1757 |           2016 → 2240 |             545 → 744 |      0.002 → 0.002 |         10055 → 10456 |
+    | `/operators/char_172_svrash` |         1370 → **1223** |               3674 → 2207 |           8344 → 8388 |             483 → 740 |              0 → 0 |         13704 → 12350 |
+    | `/gacha`                     |         2572 → **1072** |               3351 → 1834 |           2360 → 2728 |            388 → 1268 |      0.001 → 0.001 |         13032 → 11754 |
+    | `/depot`                     |         1068 → **1061** |               2387 → 2380 |           1784 → 2000 |            664 → 1728 |      0.177 → 0.177 |         13496 → 13806 |
+    | `/farming`                   |         2645 → **2432** |               3175 → 2883 |           1636 → 1884 |             327 → 690 |      0.004 → 0.004 |           9642 → 9989 |
+    - **`/gacha` (the targeted dataset): script −58.3%, transfer −45.3%, nav −9.8%.** Detail: transfer **−39.9%** (the 1255 KB skins chunk no longer downloads; `scriptKb` under-counted that chunk in the old run because its response body was not readable), nav −9.9%.
+    - LCP/TBT/CLS runs on this Windows host are noisy. A paired baseline re-measure at 13:56 (baseline worktree, same host) gave `/gacha` LCP 2632 ms, `/depot` 2004 ms, `/farming` 1892 ms, i.e. untouched pages are flat (depot −0.2%, farming −0.4%) and gacha LCP moves within +3.6%. LCP **did not drop by 20%**: FCP = LCP on these pages and happens before hydration, so they are bound by SSR HTML (331 KB) + render-blocking CSS at 1.6 Mbps, not by the removed data chunk. Recorded in `docs/known-issues.md` with the exact reason; no numbers were massaged.
+    - Budgets (20%+ headroom, medians): `/` 1450 KB / 1800 ms, `/operators` 1250 / 2600, detail 1500 / 10500, `/gacha` 1600 / 4000, `/depot` 1300 / 2800, `/farming` 2900 / 2600.
+
+  - **Production preview fix:** `nuxt.config.ts` now sets `nitro.externals.inline: ['pinia']`. Previously `@pinia/nuxt` inlined Pinia into the server entry while page chunks imported the external package, so `getActivePinia()` failed on Windows and 4 of the 6 measured pages returned 500. All six pages and both new APIs now return 200 on `node .output/server/index.mjs`.
+  - **Tests & gates:** unit suite **817 tests / 102 files** pass (was 802/99): new `groupSkinsByCharId` real-data coverage, `fetchOperatorSkins`/`useOperatorSkins` (endpoint, unsafe ids, error fallback), `buildGachaPageData` (real dataset projection, size <5% of dataset, runtime guard), `fetchGachaPageData`, updated page test with the projection contract. `lint`, `typecheck`, `data:validate` (861 banners), `i18n:check`, `build` clean. Playwright: throttling suite green against the production build; operator-detail e2e adds a skins endpoint check.
+  - **Deferred:** farming matrices (1.37 MB penguin + stages) and `items.json` (207 KB via `AkItemIcon`) remain in the client; LCP target not reached (SSR-bound); `scriptKb` body-count variance ±150–400 KB — see `docs/known-issues.md`.
+
 - **Server Data Assets: operator detail & handbook (`refactor/server-data-assets`):**
   - **Context & Motivation:**
     - `useOperatorDetail` / `useOperatorHandbook` loaded one JSON per operator via template-literal dynamic imports. Vite/Nitro emitted one chunk per file: **1005 `.output/server/chunks`** and **920 client JS chunks**, pushing builds to OOM at ~2040 MB.
