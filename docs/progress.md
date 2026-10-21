@@ -1,6 +1,18 @@
 # Project Progress
 
-- **Task 31 — Yostar account sync (`feat/yostar-sync`):**
+- **Task 31 — RhodesLab rebrand, logo and PWA (`feat/rhodeslab-pwa`):**
+  - Renamed user-facing brand to **RhodesLab**: header wordmark, page titles, dashboard copy,
+    UI/gacha watermarks, README/NOTICE, `site.name`, package name and backup filename.
+  - New cut-corner **R** mark: `public/logo.svg`, transparent `public/logo-mark.svg`,
+    favicon and PWA icons (192/512/maskable/Apple touch).
+  - Added `@vite-pwa/nuxt`: manifest, auto-update service worker, installability head tags
+    and an **Install app** footer button with an iOS Share hint.
+  - Preserved `arkcalc_*` storage keys and the `arkcalcVersion` export field for data
+    compatibility. Domain migration is documented in `docs/rebrand.md` and remains manual.
+  - Chrome CDP `Page.getInstallabilityErrors` empty on the production build; service worker
+    activated; manifest and icons return 200.
+
+- **Task 26 — Yostar account sync (`feat/yostar-sync`):**
   - **Goal:** replace the Yostar tab stub (a flag flip and a modal close) with a real
     e-mail-code login that imports the Global account roster and depot, with honest
     loading/error/empty states and an unofficial-integration advisory.

@@ -1,7 +1,17 @@
-# Arknights Companion
+# RhodesLab
 
 Free, fan-made Arknights companion app (planner, depot, farming, wiki, recruitment, and gacha).
 Built with Nuxt 4, Vue 3, Pinia, TypeScript, and SCSS.
+
+## Install as an app
+
+RhodesLab is a Progressive Web App. In Chrome, Edge, or Android Chromium browsers use the
+**Install app** action in the address bar or the in-app button in the footer. On iPhone and
+iPad, use **Share → Add to Home Screen**. Firefox desktop does not install PWAs.
+
+The app icon uses the RhodesLab cut-corner mark; the installed app opens in standalone mode
+and uses the offline app shell. Game data synced from Yostar and the cloud account are
+separate features.
 
 ## Legal Status & Attribution
 

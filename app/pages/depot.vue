@@ -24,7 +24,7 @@ const plannerStore = usePlannerStore()
 const isDev = import.meta.dev
 
 useHead({
-  title: computed(() => `${t('depot.title')} | ArkCalc`),
+  title: computed(() => `${t('depot.title')} | RhodesLab`),
   meta: [
     {
       name: 'description',

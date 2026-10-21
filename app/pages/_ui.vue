@@ -66,7 +66,7 @@ const stepperLmd = ref(150000)
         tag-label="DEV SHOWCASE"
         :title="t('ui.title')"
         :subtitle="t('ui.subtitle')"
-        watermark="ARKCALC"
+        watermark="RHODESLAB"
         badge="DEV-ONLY"
         badge-variant="amber"
       >

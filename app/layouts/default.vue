@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import AkHeader from '~/components/ui/AkHeader.vue'
+import AkInstallApp from '~/components/ui/AkInstallApp.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -44,6 +45,7 @@ const isTransparentHeader = computed(() => {
         <p class="layout-default__attribution">
           {{ t('layout.footer.attribution') }}
         </p>
+        <AkInstallApp />
       </div>
     </footer>
   </div>

@@ -161,7 +161,7 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
         <template v-else>
           <div class="gacha-banner__art-grid" aria-hidden="true" />
           <span class="gacha-banner__art-tag">{{ banner.tag || 'HEADHUNTING' }}</span>
-          <span class="gacha-banner__art-watermark">ARKCALC // BANNER</span>
+          <span class="gacha-banner__art-watermark">RHODESLAB // BANNER</span>
         </template>
       </div>
 

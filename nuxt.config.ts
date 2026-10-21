@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@nuxtjs/sitemap',
     'nuxt-schema-org',
+    '@vite-pwa/nuxt',
   ],
   supabase: {
     redirect: false,
@@ -32,8 +33,9 @@ export default defineNuxtConfig({
     },
   },
   site: {
+    // Domain migration is pending; keep the current production URL until the owner moves it.
     url: 'https://arkcalc.vercel.app',
-    name: 'Arknights Companion',
+    name: 'RhodesLab',
   },
   sitemap: {
     exclude: ['/_ui'],
@@ -90,6 +92,63 @@ export default defineNuxtConfig({
           pages.splice(uiIndex, 1)
         }
       }
+    },
+  },
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      id: '/',
+      name: 'RhodesLab — Arknights Companion',
+      short_name: 'RhodesLab',
+      description: 'Unofficial Arknights companion: planner, depot, farming, gacha and wiki.',
+      lang: 'en',
+      start_url: '/',
+      scope: '/',
+      display: 'standalone',
+      orientation: 'any',
+      theme_color: '#0b0e11',
+      background_color: '#0b0e11',
+      categories: ['games', 'utilities'],
+      icons: [
+        { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+        {
+          src: '/icons/icon-maskable-512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable',
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,webp,woff2}'],
+      cleanupOutdatedCaches: true,
+    },
+    client: {
+      // Vitest cannot resolve the virtual:pwa-register module; production keeps
+      // the Nuxt PWA client plugin and the install prompt.
+      registerPlugin: process.env.NODE_ENV !== 'test',
+      installPrompt: true,
+    },
+    devOptions: {
+      enabled: false,
+    },
+  },
+  app: {
+    head: {
+      title: 'RhodesLab — Arknights Companion',
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icons/favicon-32.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/apple-touch-icon.png' },
+      ],
+      meta: [
+        { name: 'theme-color', content: '#0b0e11' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'apple-mobile-web-app-title', content: 'RhodesLab' },
+      ],
     },
   },
   i18n: {
