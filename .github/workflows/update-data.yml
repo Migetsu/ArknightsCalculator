@@ -1,0 +1,177 @@
+name: Update Game Data
+
+on:
+  schedule:
+    # Run weekly on Monday at 04:00 UTC, one hour after the Penguin Stats job
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  # Never cancel an in-flight data refresh: a partial run would leave a
+  # misleading diff. Queued runs wait for the current one to finish.
+  group: update-game-data-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    name: Refresh Game Data & Open PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify required secrets
+        env:
+          CRON_PAT: ${{ secrets.CRON_PAT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$CRON_PAT" ]; then
+            echo "::error::CRON_PAT is not available. The data update PR must be opened with a fine-grained PAT (Contents: read/write, Pull requests: read/write) so that CI runs on it."
+            exit 1
+          fi
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY is not available. Machine translation of CN-only content cannot run, so the data update would leave untranslated strings."
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Measure data/ size before update
+        id: data-size-before
+        run: echo "bytes=$(du -sb data | cut -f1)" >> "$GITHUB_OUTPUT"
+
+      - name: Update upstream source pins
+        id: pins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm run data:pins | tee "$RUNNER_TEMP/data-pins.log"
+          sha=$(sed -n 's/^New pin: \([0-9a-f]\{40\}\)$/\1/p' "$RUNNER_TEMP/data-pins.log" | tail -n1)
+          if [ -z "$sha" ]; then
+            echo "::error::Could not read the upstream commit from data:pins output."
+            exit 1
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch raw game tables at the new pin
+        run: npm run data:fetch
+
+      - name: Build stages
+        run: npm run data:stages
+
+      - name: Build items
+        run: npm run data:items
+
+      - name: Build recipes
+        run: npm run data:recipes
+
+      - name: Build constants
+        run: npm run data:constants
+
+      - name: Build operators
+        run: npm run data:build
+
+      - name: Build handbook
+        run: npm run data:handbook
+
+      - name: Build ranges
+        run: npm run data:ranges
+
+      - name: Build recruit tags
+        run: npm run data:recruit
+
+      - name: Build skins
+        run: npm run data:skins
+
+      - name: Fetch wiki banner data
+        run: |
+          for attempt in 1 2 3; do
+            if npm run data:wiki-banners; then
+              exit 0
+            fi
+            echo "::warning::data:wiki-banners failed (attempt $attempt/3); the wiki API occasionally returns 502."
+            if [ "$attempt" -lt 3 ]; then
+              sleep 30
+            fi
+          done
+          echo "::error::data:wiki-banners failed after 3 attempts."
+          exit 1
+
+      - name: Build banners
+        run: npm run data:banners
+
+      - name: Machine-translate new CN-only content
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+        run: npm run data:translate:all
+
+      - name: Validate generated data
+        run: npm run data:validate
+
+      - name: Guard data/ growth (AGENTS.md section 14)
+        id: guard
+        env:
+          BEFORE_BYTES: ${{ steps.data-size-before.outputs.bytes }}
+        run: |
+          after=$(du -sb data | cut -f1)
+          if [ -z "$BEFORE_BYTES" ] || [ "$BEFORE_BYTES" -le 0 ]; then
+            echo "::error::Could not measure the baseline size of data/."
+            exit 1
+          fi
+          growth=$(awk -v before="$BEFORE_BYTES" -v after="$after" 'BEGIN { printf "%+.3f", (after / before - 1) * 100 }')
+          human() { awk -v bytes="$1" 'BEGIN { printf "%.2f MB", bytes / 1048576 }'; }
+          echo "data/ size: $BEFORE_BYTES -> $after bytes ($growth%)"
+          echo "before_human=$(human "$BEFORE_BYTES")" >> "$GITHUB_OUTPUT"
+          echo "after_human=$(human "$after")" >> "$GITHUB_OUTPUT"
+          echo "growth=$growth%" >> "$GITHUB_OUTPUT"
+          if awk -v before="$BEFORE_BYTES" -v after="$after" 'BEGIN { exit !(after / before > 1.25) }'; then
+            echo "::error::data/ grew by more than 25% ($growth%). AGENTS.md section 14 requires manual owner approval before such a change is proposed, so no PR was opened."
+            exit 1
+          fi
+
+      - name: Create Pull Request with updated data
+        uses: peter-evans/create-pull-request@v6
+        with:
+          # A PAT is required: PRs opened with GITHUB_TOKEN do not trigger
+          # `pull_request` workflows, so CI would never run on this PR.
+          token: ${{ secrets.CRON_PAT }}
+          commit-message: 'chore(data): sync game data from upstream at ${{ steps.pins.outputs.sha }}'
+          branch: chore/data-update
+          delete-branch: true
+          add-paths: |
+            data/
+            scripts/data/sources.config.ts
+          title: 'chore(data): weekly game data sync at ${{ steps.pins.outputs.sha }}'
+          body: |
+            ## Automated Game Data Update
+
+            Weekly refresh of the pinned upstream game data, created by `.github/workflows/update-data.yml`.
+
+            - **Upstream:** `SanityGoneAK/arknights-gamedata@main`
+            - **Pinned commit:** `${{ steps.pins.outputs.sha }}`
+            - **`data/` size:** ${{ steps.guard.outputs.before_human }} -> ${{ steps.guard.outputs.after_human }} (${{ steps.guard.outputs.growth }})
+            - **Validation:** `npm run data:validate` passed
+            - **Growth guard:** within the 25% threshold from `AGENTS.md` section 14
+
+            Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `data:validate`.
+
+            `data:assets` and thumbnails are not part of this workflow; they publish to the separate assets repository.
+
+            This PR is never merged automatically: review the diff and the size delta, then merge manually if CI is green.
+          labels: |
+            automated
+            data-sync

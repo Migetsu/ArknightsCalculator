@@ -47,7 +47,9 @@ jobs:
         if: steps.git-diff.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # A PAT is required: PRs opened with GITHUB_TOKEN do not trigger
+          # `pull_request` workflows, so CI would never run on this PR.
+          token: ${{ secrets.CRON_PAT }}
           commit-message: 'chore(data): weekly update of Penguin Stats drop matrix'
           branch: chore/update-penguin-data
           delete-branch: true
