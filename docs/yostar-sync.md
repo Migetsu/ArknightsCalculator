@@ -18,7 +18,9 @@ the app imports
 - the account status (doctor name/level, LMD, Orundum, Originite Prime).
 
 The depot and roster are replaced by the snapshot of the account. Nothing is written until the
-proxy returns a successful, sanitized payload, so a failed login never wipes local data.
+proxy returns a successful, sanitized payload, so a failed login never wipes local data. On the
+first successful login the Yostar account token is kept on the device (section 4), so later
+syncs need one click, no code.
 
 ## 2. Endpoints (verified 2026-10-21)
 
@@ -81,38 +83,74 @@ browser ──POST /api/yostar/send-code {email}──▶ Nitro ──▶ en-sdk
 browser ──POST /api/yostar/login {email,code}─▶ Nitro ──▶ get-auth → user/login → network_config
                                                         → version → u8 getToken → account/login
                                                         → account/syncData
-                                              └─ sanitized payload ──▶ browser
+                                              └─ sanitized payload + account token ──▶ browser
+browser ──POST /api/yostar/sync {uid,token}──▶ Nitro ──▶ network_config → version → u8 getToken
+                                                        → account/login → account/syncData
+                                              └─ sanitized payload (no token) ──▶ browser
 ```
 
-- `server/utils/yostar.ts` holds the whole flow. The e-mail, the code, the Yostar token, the
-  u8 token and the session secret are locals of one request; nothing is cached, written to
-  disk, Supabase or a log.
+- `server/utils/yostar.ts` holds the whole flow. The e-mail, the code, the u8 token and the
+  session secret are locals of one request; nothing is cached, written to disk, Supabase or a log.
 - The routes never log. Errors are `YostarError(reason)` whose `message` is the reason code
   only; upstream messages (Chinese `Msg` strings) are never forwarded to the client.
-- `/api/yostar/login` answers with a payload validated by `YostarSyncPayloadSchema`: doctor
-  name/level, operators, depot items, currencies, skip counters. No e-mail, uid or token field
-  exists in the schema.
-- Both routes set `cache-control: no-store`.
+- `/api/yostar/login` answers with a payload validated by `YostarSyncPayloadSchema` (doctor
+  name/level, operators, depot items, currencies, skip counters) plus the `session` object
+  (`uid`, `token`, `expiresAt`) described in section 4.
+- `/api/yostar/sync` accepts `{ uid, token }` and answers with the same payload **without**
+  any `session` field.
+- All three routes set `cache-control: no-store`.
 - Timeout: 8 s per upstream request (`YOSTAR_TIMEOUT_MS`); a timeout maps to `504`.
-- The login chain makes **seven** sequential upstream calls; a cold Vercel function has a 10 s
-  budget on Hobby, so a slow upstream can hit the platform limit before our own timeout. This
-  is listed in `docs/known-issues.md`.
+- The full login chain makes **seven** sequential upstream calls (the re-sync chain five); a
+  cold Vercel function has a 10 s budget on Hobby, so a slow upstream can hit the platform
+  limit before our own timeout. This is listed in `docs/known-issues.md`.
 
 ### Error mapping
 
-| Reason            | HTTP | Meaning                                           |
-| :---------------- | ---: | :------------------------------------------------ |
-| `invalid_email`   |  400 | Yostar rejected the address (`Code 100400`)       |
-| `invalid_code`    |  400 | Wrong/expired code (`100303`, `100302`, `100190`) |
-| `rate_limited`    |  429 | Upstream HTTP 429 or `Code 100429`                |
-| `timeout`         |  504 | No answer within 8 s                              |
-| `unavailable`     |  502 | Other upstream/network failure                    |
-| `invalid_payload` |  502 | Upstream answered with an unexpected shape        |
-| `disabled`        |  404 | `NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false`           |
+| Reason            | HTTP | Meaning                                               |
+| :---------------- | ---: | :---------------------------------------------------- |
+| `invalid_email`   |  400 | Yostar rejected the address (`Code 100400`)           |
+| `invalid_code`    |  400 | Wrong/expired code (`100303`, `100302`, `100190`)     |
+| `invalid_session` |  401 | Stored token rejected or revoked (`/api/yostar/sync`) |
+| `rate_limited`    |  429 | Upstream HTTP 429 or `Code 100429`                    |
+| `timeout`         |  504 | No answer within 8 s                                  |
+| `unavailable`     |  502 | Other upstream/network failure                        |
+| `invalid_payload` |  502 | Upstream answered with an unexpected shape            |
+| `disabled`        |  404 | `NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false`               |
 
-Bodies: `{ ok: true }` for send-code, `{ ok: true, ...payload }` for login, and
+Bodies: `{ ok: true }` for send-code, `{ ok: true, ...payload }` for sync, and
 `{ ok: false, error }` for every failure — the UI translates `error`, it never shows a raw
 message.
+
+## 4. Account token on the device (owner decision 2026-10-21)
+
+The owner asked that a repeat sync must not require the e-mail code again. The proxy stays
+stateless, so the durable credential is the **Yostar account token** (`user/login` →
+`UserInfo.ID` + `UserInfo.Token`), which `/api/yostar/login` returns to the client:
+
+```json
+{
+  "ok": true,
+  "...payload": "...",
+  "session": { "uid": "...", "token": "...", "expiresAt": "2026-11-20T10:00:00.000Z" }
+}
+```
+
+- Stored in `localStorage` under `arkcalc_yostar_session`
+  (`YOSTAR_SESSION_STORAGE_KEY`), **not** `sessionStorage`, **not** Supabase, **not** on the
+  server. This is an explicit exception to AGENTS.md §4, recorded there.
+- `expiresAt` is our own 30-day cap (`YOSTAR_SESSION_TTL_MS`): the verified Yostar responses
+  do not publish a token expiry, so the client never claims to know one.
+- `readStoredYostarSession()` validates the stored JSON, deletes expired or malformed entries
+  and never returns a token it cannot verify.
+- Repeat sync: the modal shows a `SAVED SESSION` panel with the expiry date, `SYNC NOW` posts
+  the stored pair to `/api/yostar/sync`. No e-mail or code is involved.
+- `401 invalid_session` (or an expiry found on read) clears the entry and the UI asks for a
+  new code; `DISCONNECT` clears it manually.
+- The UI states that the token lives in this browser and that anyone with access to the
+  browser profile can use it.
+- **Risk accepted by the owner:** anything that can run JavaScript on this origin (an XSS in
+  this app or a compromised dependency) can read the token. Nothing is logged, and the token
+  never reaches a server we control.
 
 ## 4. `syncData` fields consumed
 
@@ -152,17 +190,21 @@ rest is dropped at the boundary.
 `NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false` in the deployment to:
 
 - show a disabled notice instead of the Yostar form and disable `START SYNC`;
-- make `/api/yostar/send-code` and `/api/yostar/login` answer `404`.
+- make `/api/yostar/send-code`, `/api/yostar/login` and `/api/yostar/sync` answer `404`.
 
 The flag was **not** added to `.env.example`: it is public build-time config, not a secret, and
 `.env.example` is an owner-approval zone. Documented here instead.
 
 ## 7. Verification done by the agent
 
-- Unit: mapper (7 cases), route handlers (12 cases), transport chain with a fake `fetch`
-  (15 cases), composable (11 cases), stores (13 cases), modal UI (16 cases).
-- No real e-mail, code or token was used. The `send-code` probe used `not-an-email`, which the
-  upstream rejects before any mail is generated.
+- Unit: mapper (7 cases), route handlers (16 cases across the three routes), transport chain
+  with a fake `fetch` (20 cases, including the token re-sync path), composable (18 cases,
+  including token storage, expiry and 401), stores (13 cases), modal UI (21 cases).
+- E2E (`tests/e2e/sync-modal.spec.ts`, 5 cases, production preview): send-code → login →
+  import → depot check, saved-session re-sync, 401 → token dropped, 360 px and 1280 px, console
+  clean. Every `/api/yostar/*` request is intercepted; no real e-mail, code or token is used.
+- The `send-code` probe used `not-an-email`, which the upstream rejects before any mail is
+  generated.
 
 ## 8. Live checklist for the owner
 
@@ -174,10 +216,19 @@ Only the owner can execute this — it needs a real inbox and an Arknights accou
    e-mail from Yostar within a minute.
 3. Enter the 6-digit code and press `START SYNC`. Expect a green `SYNC COMPLETE` panel with the
    operator/item counts, then `/depot` shows the account's materials and balances.
-4. Check the Network tab: only `/api/yostar/send-code` and `/api/yostar/login` are called; the
-   response of the latter contains no `token`, `uid` or e-mail.
-5. Negative case: wrong code → red `The verification code is wrong or has expired`.
-6. Server logs must contain no e-mail, code or token.
+4. Check the Network tab: `/api/yostar/send-code` and `/api/yostar/login` are the only calls;
+   the login response contains the `session` token by design (owner decision) but no e-mail and
+   no code. `localStorage['arkcalc_yostar_session']` now holds the token.
+5. Reload the page, open the modal again: the tab shows `SAVED SESSION` with the expiry date and
+   `SYNC NOW`; pressing it must call only `/api/yostar/sync` and import the same data without a
+   code.
+6. Negative case: wrong code → red `The verification code is wrong or has expired`. A tampered
+   or revoked token (`SYNC NOW` after changing `localStorage['arkcalc_yostar_session']`) → red
+   `The saved session expired or was revoked`, the entry is gone and the code form is back.
+7. `DISCONNECT` removes the entry and returns to the e-mail form.
+8. Server logs must contain no e-mail, code or token.
 
 If step 2 or 3 fails, record the HTTP status of the upstream request and the `Code`/`Msg` from
-the Yostar response; the reason mapping in section 3 tells which code needs adding.
+the Yostar response; the reason mapping in section 3 tells which code needs adding. If step 5
+returns `401`, the token lifetime is shorter than the 30-day cap — record it and lower
+`YOSTAR_SESSION_TTL_MS`.
