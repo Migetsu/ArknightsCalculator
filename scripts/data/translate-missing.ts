@@ -715,6 +715,22 @@ export async function exportBatches(
 }
 
 /**
+ * Returns the translated batch files in `outDir`, or an empty list when the
+ * directory does not exist. The weekly data workflow can legitimately export
+ * zero batches (nothing new to translate), and `--import` must not fail then.
+ */
+export async function readTranslationBatchFiles(outDir: string): Promise<string[]> {
+  try {
+    return (await fs.readdir(outDir)).filter(
+      (f) => f.endsWith('.jsonl') || f.endsWith('.json'),
+    )
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return []
+    throw error
+  }
+}
+
+/**
  * Imports translated batches from .cache/translate/out/, validates with validateTranslation,
  * and writes to data/i18n/machine/*.json.
  */
@@ -727,9 +743,11 @@ export async function importBatches(): Promise<{
   const machineDir = path.resolve(process.cwd(), 'data/i18n/machine')
   await fs.mkdir(machineDir, { recursive: true })
 
-  const files = (await fs.readdir(outDir)).filter(
-    (f) => f.endsWith('.jsonl') || f.endsWith('.json'),
-  )
+  const files = await readTranslationBatchFiles(outDir)
+  if (files.length === 0) {
+    console.log('[translate] No translated batches to import; nothing to do.')
+    return { importedCount: 0, invalidCount: 0, invalidItems: [] }
+  }
 
   const operatorsMach: Record<string, { text: string; source: 'machine' }> = {}
   const skillsMach: Record<string, { text: string; source: 'machine' }> = {}
