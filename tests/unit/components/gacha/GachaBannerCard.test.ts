@@ -147,6 +147,53 @@ describe('GachaBannerCard', () => {
     expect(datesText).not.toContain('Est. Global:')
   })
 
+  it('renders the EST estimate when no real Global date exists', async () => {
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: mockBanner,
+        operatorsMap: mockOperatorsMap,
+        globalEstimate: '2026-10-25',
+      },
+    })
+
+    const datesText = wrapper.find('.gacha-banner__dates').text()
+    expect(datesText).toContain('Est. Global:')
+    expect(datesText).toContain('≈ Oct 25, 2026')
+    expect(wrapper.find('.gacha-banner__est-badge').text()).toBe('EST')
+  })
+
+  it('prefers a real Global date over the EST estimate', async () => {
+    const bannerWithGlobal: GachaBanner = {
+      ...mockBanner,
+      globalStartDate: '2026/10/14',
+      globalEndDate: '2026/10/28',
+    }
+    const wrapper = await mountSuspended(GachaBannerCard, {
+      props: {
+        banner: bannerWithGlobal,
+        operatorsMap: mockOperatorsMap,
+        globalEstimate: '2026-12-01',
+      },
+    })
+
+    const datesText = wrapper.find('.gacha-banner__dates').text()
+    expect(datesText).toContain('Oct 14, 2026 – Oct 28, 2026')
+    expect(datesText).not.toContain('≈')
+    expect(wrapper.find('.gacha-banner__est-badge').exists()).toBe(false)
+  })
+
+  it('renders NEXT ON GLOBAL only when isNext is true', async () => {
+    const nextWrapper = await mountSuspended(GachaBannerCard, {
+      props: { banner: mockBanner, operatorsMap: mockOperatorsMap, isNext: true },
+    })
+    expect(nextWrapper.find('.gacha-banner__countdown-badge--next').text()).toBe('NEXT ON GLOBAL')
+
+    const regularWrapper = await mountSuspended(GachaBannerCard, {
+      props: { banner: mockBanner, operatorsMap: mockOperatorsMap, isNext: false },
+    })
+    expect(regularWrapper.find('.gacha-banner__countdown-badge--next').exists()).toBe(false)
+  })
+
   it('renders primary 6★, other 6★, secondary 6★, and 5★ rate-up operators', async () => {
     const complexBanner: GachaBanner = {
       ...mockBanner,

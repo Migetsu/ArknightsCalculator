@@ -3,6 +3,8 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
 import GachaPage from '~/pages/gacha.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
+import AkAvatar from '~/components/ui/AkAvatar.vue'
+import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 
 describe('GachaPage', () => {
   beforeEach(() => {
@@ -13,136 +15,107 @@ describe('GachaPage', () => {
     const wrapper = await mountSuspended(GachaPage)
     expect(wrapper.text()).toContain('GCH-02')
     expect(wrapper.text()).toContain('Banners')
-    expect(wrapper.find('.gacha-page__disclaimer').text()).toContain(
-      'Global dates reflect official Global',
-    )
+    expect(wrapper.find('.gacha-page__disclaimer').text()).toContain('EST dates are estimates')
   })
 
   it('renders date switcher, type filter buttons, and calculator', async () => {
     const wrapper = await mountSuspended(GachaPage)
 
-    // Segmented date options
     expect(wrapper.find('.gacha-page__date-switcher').exists()).toBe(true)
 
-    // Filter buttons
     const filterBtns = wrapper.findAll('.gacha-page__filter-btn')
     expect(filterBtns.length).toBe(4) // All, Standard, Limited, Joint Operation
 
-    // Calculator section exists
     expect(wrapper.find('.gacha-page__calculator-section').exists()).toBe(true)
-
-    // Banner cards are rendered
-    const bannerCards = wrapper.findAllComponents({ name: 'GachaBannerCard' })
-    expect(bannerCards.length).toBeGreaterThan(0)
   })
 
-  it('renders current Global EN banner from meta with name and end date', async () => {
+  it('renders the current Global banner with its rate-up roster from the full dataset', async () => {
     const wrapper = await mountSuspended(GachaPage)
 
-    const currentEnCard = wrapper.find('.gacha-current-en')
-    expect(currentEnCard.exists()).toBe(true)
-    expect(currentEnCard.text()).toContain('Sealed With Time')
-    expect(currentEnCard.text()).toContain('2026-10-28')
-    expect(currentEnCard.text()).toContain('LIMITED')
-    expect(currentEnCard.text()).toContain('ACTIVE NOW')
+    const hero = wrapper.find('.gacha-current-en')
+    expect(hero.exists()).toBe(true)
+    expect(hero.find('.gacha-current-en__title').text()).toContain('Sealed With Time')
+
+    // 2 rate-up 6★, 3 secondary 6★ and 1 rate-up 5★ for LIMITED_EN_42_0_1
+    expect(hero.findAllComponents(AkAvatar)).toHaveLength(6)
+    expect(hero.text()).toContain('SECONDARY RATE-UP')
+    expect(hero.text()).toContain('5★ OPERATORS')
   })
 
-  it('renders CN archive sorted chronologically ascending by openTime', async () => {
+  it('renders only the 11 upcoming CN banners, without the archive or pagination', async () => {
     const wrapper = await mountSuspended(GachaPage)
 
-    const bannerCards = wrapper.findAllComponents(GachaBannerCard)
-    expect(bannerCards.length).toBeGreaterThan(0)
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+    expect(cards).toHaveLength(11)
+    expect(wrapper.text()).not.toContain('453')
+    expect(wrapper.find('.gacha-page__pagination').exists()).toBe(false)
 
-    // First banner in CN archive is the earliest beta/launch banner NORM_0_1_1
-    const firstBanner = bannerCards[0]!.props('banner')
-    expect(firstBanner.id).toBe('NORM_0_1_1')
-    expect(firstBanner.openTime).toBe(1548727200)
+    const buttonTexts = wrapper.findAll('button').map((button) => button.text())
+    expect(buttonTexts.some((text) => text.includes('Show More'))).toBe(false)
+    expect(buttonTexts.some((text) => text.includes('Show All'))).toBe(false)
+  })
 
-    // Verify ascending order
-    for (let i = 0; i < bannerCards.length - 1; i++) {
-      const curr = bannerCards[i]!.props('banner')
-      const next = bannerCards[i + 1]!.props('banner')
-      expect(curr.openTime).toBeLessThanOrEqual(next.openTime)
+  it('orders upcoming banners from oldest to newest', async () => {
+    const wrapper = await mountSuspended(GachaPage)
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+
+    expect(cards[0]!.props('banner').id).toBe('SPECIAL_73_0_3')
+    expect(cards[cards.length - 1]!.props('banner').id).toBe('SINGLE_78_0_1')
+
+    for (let i = 0; i < cards.length - 1; i++) {
+      const current = cards[i]!.props('banner')
+      const next = cards[i + 1]!.props('banner')
+      expect(current.openTime).toBeLessThanOrEqual(next.openTime)
     }
   })
 
-  it('limits initial rendered cards to 20 (chunked) and loads more on button click', async () => {
+  it('marks the current CN banner (SINGLE_78_0_1) as active', async () => {
     const wrapper = await mountSuspended(GachaPage)
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+    const active = cards.find((card) => card.props('banner').id === 'SINGLE_78_0_1')
 
-    // Initial chunk is strictly 20 items (not all 453 cards rendered on mount)
-    const initialCards = wrapper.findAllComponents(GachaBannerCard)
-    expect(initialCards.length).toBe(20)
-
-    expect(wrapper.find('.gacha-page__pagination-summary').text()).toContain(
-      'Showing 20 of 453 banners',
-    )
-
-    // Click "Show More"
-    const buttons = wrapper.findAll('.gacha-page__pagination-actions button')
-    const showMoreBtn = buttons[0]
-    expect(showMoreBtn).toBeDefined()
-    await showMoreBtn!.trigger('click')
-
-    const updatedCards = wrapper.findAllComponents(GachaBannerCard)
-    expect(updatedCards.length).toBe(40)
+    expect(active).toBeDefined()
+    expect(active!.classes()).toContain('gacha-banner--active')
+    expect(active!.text()).toContain('ACTIVE NOW')
   })
 
-  it('filters banners when a filter button is clicked and resets pagination', async () => {
+  it('marks exactly one banner as NOT ON GLOBAL YET', async () => {
     const wrapper = await mountSuspended(GachaPage)
-    const filterBtns = wrapper.findAll('.gacha-page__filter-btn')
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+    const badges = wrapper.findAll('.gacha-banner__countdown-badge--not-on-en')
 
-    // Find the 'Limited' button (index 2)
-    const limitedBtn = filterBtns[2]
-    expect(limitedBtn).toBeDefined()
-    await limitedBtn!.trigger('click')
+    expect(badges).toHaveLength(1)
 
-    const bannerCards = wrapper.findAllComponents(GachaBannerCard)
-    expect(bannerCards.length).toBeGreaterThan(0)
-    for (const card of bannerCards) {
-      expect(card.props('banner').type).toBe('limited')
-    }
+    const limited = cards.find((card) => card.props('banner').id === 'LIMITED_76_0_1')
+    expect(limited).toBeDefined()
+    expect(limited!.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(true)
   })
 
-  it('marks active CN banner with active status', async () => {
+  it('marks the first upcoming banner with NEXT ON GLOBAL and an EST estimate', async () => {
     const wrapper = await mountSuspended(GachaPage)
+    const cards = wrapper.findAllComponents(GachaBannerCard)
+    const first = cards[0]!
 
-    // Load all to search through all CN banners
-    const buttons = wrapper.findAll('.gacha-page__pagination-actions button')
-    const showAllBtn = buttons[1]
-    expect(showAllBtn).toBeDefined()
-    await showAllBtn!.trigger('click')
+    expect(wrapper.findAll('.gacha-banner__countdown-badge--next')).toHaveLength(1)
+    expect(first.find('.gacha-banner__countdown-badge--next').text()).toBe('NEXT ON GLOBAL')
+    expect(first.find('.gacha-banner__est-badge').text()).toBe('EST')
+    expect(first.find('.gacha-banner__dates').text()).toContain('≈')
+  })
 
-    const bannerCards = wrapper.findAllComponents(GachaBannerCard)
-    const activeCnCard = bannerCards.find((c) => c.props('banner').id === 'DOUBLE_77_0_5')
-    expect(activeCnCard).toBeDefined()
-    expect(activeCnCard!.classes()).toContain('gacha-banner--active')
-    expect(activeCnCard!.text()).toContain('ACTIVE NOW')
-  }, 20000)
-
-  it('marks ONLY LIMITED_76_0_1 with "NOT ON GLOBAL YET" badge', async () => {
+  it('filters upcoming banners by type and shows an empty state', async () => {
     const wrapper = await mountSuspended(GachaPage)
+    const filters = wrapper.findAll('.gacha-page__filter-btn')
 
-    // Load all to examine all CN banners
-    const buttons = wrapper.findAll('.gacha-page__pagination-actions button')
-    const showAllBtn = buttons[1]
-    await showAllBtn!.trigger('click')
+    await filters[1]!.trigger('click')
+    expect(wrapper.findAllComponents(GachaBannerCard)).toHaveLength(7)
 
-    const bannerCards = wrapper.findAllComponents(GachaBannerCard)
+    await filters[2]!.trigger('click')
+    expect(wrapper.findAllComponents(GachaBannerCard)).toHaveLength(4)
 
-    // Exactly one card should have the badge: LIMITED_76_0_1
-    const cardsWithNotOnEn = bannerCards.filter((card) =>
-      card.find('.gacha-banner__countdown-badge--not-on-en').exists(),
-    )
-
-    expect(cardsWithNotOnEn.length).toBe(1)
-    expect(cardsWithNotOnEn[0]!.props('banner').id).toBe('LIMITED_76_0_1')
-
-    // Check that standard banners with null pairedBannerId do NOT have this badge
-    const normalCards = bannerCards.filter((card) => card.props('banner').ruleType === 'NORMAL')
-    for (const card of normalCards) {
-      expect(card.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(false)
-    }
-  }, 20000)
+    await filters[3]!.trigger('click')
+    expect(wrapper.findAllComponents(GachaBannerCard)).toHaveLength(0)
+    expect(wrapper.findComponent(AkEmptyState).exists()).toBe(true)
+  })
 
   it('toggles calculator visibility when calculator toggle button is clicked', async () => {
     const wrapper = await mountSuspended(GachaPage)
