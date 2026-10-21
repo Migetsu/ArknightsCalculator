@@ -1799,6 +1799,19 @@
   - 10 E2E tests in `tests/e2e/operator-detail.spec.ts` passing (100%).
   - All linters, type checks, formats, and builds clean.
 
+### 2026-10-21: Weekly game data sync workflow (Task 30, `chore/data-cron`)
+
+- Added `scripts/data/update-sources.ts` and the `npm run data:pins` script (`jiti`, no new dependencies): it resolves the latest `main` commit of `SanityGoneAK/arknights-gamedata` through the GitHub API, validates the SHA against `^[0-9a-f]{40}$`, and rewrites `sources.cn.commit` / `sources.en.commit` in `scripts/data/sources.config.ts` idempotently. Pinned asset repositories are untouched. `--dry-run` prints the old and new SHAs and writes nothing; an unreachable API, an unexpected payload or a malformed SHA exits non-zero.
+- Added `.github/workflows/update-data.yml`: weekly (`0 4 * * 1`, one hour after the Penguin Stats job) plus `workflow_dispatch`, `contents: write` / `pull-requests: write`, `concurrency` with `cancel-in-progress: false`, `timeout-minutes: 60`.
+  - Pipeline order: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` (three attempts, 30 s pause) -> `data:banners` -> `data:translate:all` -> `data:validate`.
+  - Fails fast when `CRON_PAT` or `GEMINI_API_KEY` is missing; `GEMINI_MODEL` comes from `vars.GEMINI_MODEL`, defaulting to `gemini-3.8-flash`.
+  - `data/` growth guard: `du -sb data` before the pipeline and again after `data:validate`; growth above 25% fails before the PR step with the section 14 manual-approval message.
+  - The PR is opened by `peter-evans/create-pull-request@v6` with `token: secrets.CRON_PAT` (a PR created with `GITHUB_TOKEN` does not trigger `pull_request` CI), branch `chore/data-update`, `delete-branch: true`, `add-paths: data/ scripts/data/sources.config.ts`, labels `automated` / `data-sync`. The bot never merges it.
+- `update-penguin.yml`: switched its automated PR to the same `CRON_PAT` so that CI also runs on Penguin Stats PRs.
+- `docs/data-update.md`: documented the new workflow, its schedule, pipeline order, secrets, size guard and review rules.
+- Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
+- Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
+
 ## In progress
 
 - Machine translation of CN-only content via Gemini API — complete.
@@ -1808,9 +1821,9 @@
 
 ## Next
 
-- Optional: a scheduled `update-translations.yml` GitHub Action that runs
-  `data:translate:all` after a data refresh and opens a PR, mirroring the existing
-  `update-penguin.yml`.
+- Translation scheduling is covered by `update-data.yml` (Task 30), which runs
+  `data:translate:all` after the data refresh and opens a single PR; a separate
+  `update-translations.yml` is not needed.
 - Module `PLN-02`: Operator planner store & target state persistence via Pinia.
 - Module `DEP-01`: Depot inventory management & craft tree decomposition core.
 
