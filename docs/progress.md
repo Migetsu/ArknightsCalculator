@@ -9,7 +9,7 @@
       - `parseBannerDate` parses `YYYY/MM/DD` and `YYYY/MM/DD HH:mm:ss` as UTC; `formatHumanDate` now uses it, so date-time values no longer depend on the host time zone.
       - `getUpcomingCutoff` = latest CN `openTime` that already has a valid `globalStartDate`; `getUpcomingBanners` keeps CN banners after the cutoff with no real Global date and a non-empty `rateUp6`/`rateUp5`, sorted oldest first. The clock is not used.
       - `getGlobalLagPairs` / `getGlobalLagDays` take the 12 most recent confirmed CN→Global pairs (sorted by CN start) and return the median lag.
-      - `getEstimatedGlobalDate` = CN start + `round(lag)` days, returned as `YYYY-MM-DD`.
+      - `getEstimatedGlobalDate` = CN-local start (`cnStartDate`, fallback UTC+8 from `openTime`) + `round(lag)` days, returned as `YYYY-MM-DD`.
     - **Page (`app/pages/gacha.vue`):**
       - Hero keeps its layout and now renders the full banner's rate-up roster from `banners` (LIMITED_EN_42_0_1: 2×6★, 3 secondary 6★, 1×5★).
       - Section `CN // UPCOMING` / "Upcoming on Global" renders all 11 cards immediately; `PAGE_SIZE`, `visibleCount`, "Show More", "Show All" and the pagination markup were removed.
@@ -19,25 +19,33 @@
       - Rate-up rendering extracted into `GachaRateUpOps` and reused by the hero (existing BEM hooks kept for tests).
       - A real `globalStartDate` always wins over the estimate; the estimate only renders when no real date exists.
       - The active CN badge now prefers the dataset's `isActive` flag (SINGLE_78_0_1) instead of the wall clock.
+      - CN cards render `cnStartDate` / `cnEndDate` (CN-local, UTC+8); only EN cards fall back to `openIso` / `endIso`.
     - **i18n (`i18n/locales/en.json`):**
       - Added `gacha.upcoming.*`, `gacha.banner.nextOnGlobal`, `gacha.banner.globalEstimate`, `gacha.banner.est`; removed the unused `gacha.cnArchive.*` pagination keys; the disclaimer now explains EST dates. `i18n:check`: 688 keys.
   - **Measured Data:**
     - Cutoff: `LIMITED_73_0_1`, CN start 2026-05-01 (openTime 1777590000).
-    - Upcoming: **11** banners, 2026-05-15 … 2026-10-08 (UTC dates), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
+    - Upcoming: **11** banners, 2026-05-15 … 2026-10-09 (CN-local, UTC+8), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
     - Lag: median **163.375 days** over the latest 12 confirmed pairs (rounded to 163); the latest pair `LIMITED_73_0_1` = 166.375 days; full-history median = 181.83.
-    - Estimates: `SPECIAL_73_0_3` → 2026-10-25, `LIMITED_76_0_1` → 2027-01-10, `SINGLE_78_0_1` → 2027-03-20.
+    - Estimates: `SPECIAL_73_0_3` → 2026-10-25, `LINKAGE_74_0_1` → 2026-11-11, `LIMITED_76_0_1` → 2027-01-11, `SINGLE_78_0_1` → 2027-03-21.
   - **Tests:**
-    - Unit: 520 tests / 46 files (+11 window/forecast tests).
-    - Nuxt: 259 tests / 50 files (+1 page test, +3 card tests).
-    - Total: 779 tests / 96 files; 0 skipped, 0 todo; the 20 s timeouts on the gacha page tests were removed (the slowest page test is now ~1.0 s).
-    - `GachaBannerCard.test.ts` keeps all previous checks and adds EST, real-date priority and NEXT badge coverage.
+    - Unit: 523 tests / 46 files (+11 window/forecast tests, +3 CN-date tests after the review fix).
+    - Nuxt: 262 tests / 50 files (+1 page test, +5 card tests).
+    - Total: 785 tests / 96 files; 0 skipped, 0 todo; the 20 s timeouts on the gacha page tests were removed (the slowest page test is now ~1.0 s).
+    - `GachaBannerCard.test.ts` keeps all previous checks and adds EST, real-date priority, NEXT badge and CN-over-UTC date coverage.
   - **Quality Gates & Metrics:**
     - `lint`: 0 errors, 0 warnings.
     - `typecheck`: 0 errors.
     - `data:validate`: 0 integrity issues.
     - `i18n:check`: 688 valid keys.
-    - `build`: 53.1 MB in 1m 45s (`NUXT_BUILD_DIR=.nuxt-agent`).
-    - Three full runs: 21.02 s, 20.74 s, 23.48 s (the third with `dev:agent` on port 3001), all 779/779.
+    - `build`: 53.1 MB in 1m 25s (`NUXT_BUILD_DIR=.nuxt-agent`).
+    - Full runs: 779/779 in 20.27 s before the review fix, 785/785 in 19.05 s after it.
+  - **Review Fix (PR #83 blockers, 2026-10-21):**
+    - **CN dates (`scripts/data/build-banners.ts`):** `formatCnLocalDate` derives `cnStartDate` / `cnEndDate` from `openTime` / `endTime` as UTC+8 (Asia/Shanghai) instead of slicing the UTC `openIso` / `endIso`. The rebuild changed 307 `cnStartDate` and 452 `cnEndDate` values (all +1 day), plus 2 EN `isActive` flags and `generatedAt`; names, art, rosters and counts are unchanged (861 banners, 453 CN / 408 EN).
+    - **Card (`GachaBannerCard.vue`):** `formattedDates` prefers `cnStartDate` / `cnEndDate` on the CN server and falls back to `openIso` / `endIso` only for EN, so the corrected dates reach the UI.
+    - **EST (`shared/utils/gacha/index.ts`):** `getEstimatedGlobalDate` adds `round(lag)` to the CN-local start (`cnStartDate`, fallback UTC+8 from `openTime`); the lag median (12 pairs) and the "real `globalStartDate` wins" rule are unchanged.
+    - **Dates before → after:** `SPECIAL_73_0_3` CN 2026/05/15–2026/05/28 → 2026/05/15–2026/05/29, EST 2026-10-25 (unchanged); `LINKAGE_74_0_1` CN 2026/05/31–2026/06/14 → 2026/06/01–2026/06/15, EST 2026-11-10 → 2026-11-11; `LIMITED_76_0_1` CN 2026/07/31–2026/08/14 → 2026/08/01–2026/08/15, EST 2027-01-10 → 2027-01-11; `SINGLE_78_0_1` CN 2026/10/08–2026/10/22 → 2026/10/09–2026/10/23, EST 2027-03-20 → 2027-03-21.
+    - **Tests:** restored the `2026-10-28` / `LIMITED` / `ACTIVE NOW` hero checks and added page assertions for CN `May 15`/`May 29`, `Jun 1`/`Jun 15`, `Oct 9`/`Oct 23` and EST `Oct 25`/`Mar 21`, plus unit tests for `formatCnLocalDate`, the CN-over-UTC card preference and the CN-local forecast base.
+    - **Deferred:** the `ENDED` / `ACTIVE NOW` badge semantics on upcoming cards were intentionally not changed (recorded in `docs/known-issues.md`).
 
 - **Deterministic Full Test Run: Worker Cap & Nuxt Hook Timeout (`fix/deterministic-tests`):**
   - **Context & Motivation:**

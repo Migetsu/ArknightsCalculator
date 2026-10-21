@@ -60,6 +60,7 @@ Each banner object contains:
   - Original Chinese name (`zh`) is strictly preserved across all banners for verification and search.
 - `openTime` / `endTime`: Exact Unix timestamps in seconds.
 - `openIso` / `endIso`: Standard ISO 8601 strings (e.g. `2026-10-14T10:00:00.000Z`).
+- `cnStartDate` / `cnEndDate`: CN-local banner dates in `YYYY/MM/DD`, computed from `openTime` / `endTime` as **UTC+8 (Asia/Shanghai)** by `formatCnLocalDate` in `scripts/data/build-banners.ts`. The CN client stores timestamps in UTC, but banners open and close at the CN daily reset (04:00 / 16:00 CST), so the UTC calendar date is often one day behind the in-game date (e.g. `2026-05-28T19:59:59Z` is `2026/05/29` in CN). These fields are the source of truth for CN date display.
 - `globalStartDate` / `globalEndDate`: Real Global server release dates in `YYYY/MM/DD` or `YYYY/MM/DD HH:mm:ss` format, parsed as UTC (sourced from wiki archives; absent for unreleased CN banners).
 - `durationDays`: Duration of the banner in fractional days.
 - `isActive`: Boolean flag indicating if banner is active at generation time.
@@ -201,7 +202,8 @@ The full 453-banner archive and the "Show More / Show All" pagination were remov
 - **Cutoff**: the latest CN `openTime` among banners with a valid `globalStartDate` — currently `LIMITED_73_0_1` (CN start 2026-05-01, `openTime` 1777590000).
 - **Filter**: `server === 'cn'`, `openTime > cutoff`, no real `globalStartDate`, and `rateUp6.length > 0 || rateUp5.length > 0`.
 - **Order**: ascending `openTime`, oldest (closest to Global) first.
-- **Current result**: 11 banners, 2026-05-15 … 2026-10-08 (UTC), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
+- **Current result**: 11 banners, 2026-05-15 … 2026-10-09 (CN-local dates, UTC+8), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
+- **CN date display**: cards on the CN server render `cnStartDate` / `cnEndDate`; `openIso` / `endIso` are UTC and are used only for EN banners. Before the review fix, the card preferred `openIso` / `endIso`, so every CN card was one day early whenever the UTC date differed from the CN date.
 - The window is derived only from the dataset; `Date.now()` is not used, so the list and the tests stay stable as the clock moves.
 
 Implementation: `getUpcomingCutoff` and `getUpcomingBanners` in `shared/utils/gacha/index.ts`.
@@ -209,9 +211,9 @@ Implementation: `getUpcomingCutoff` and `getUpcomingBanners` in `shared/utils/ga
 ### 7.3 EST Global Forecast
 
 - **Lag**: median CN→Global lag over the latest 12 confirmed pairs, sorted by CN start. Currently **163.375 days** (rounded to 163). The latest pair `LIMITED_73_0_1` is 166.375 days; the full-history median is 181.83, which is why the recent window is used.
-- **Estimate**: CN `openTime` + `round(lag)` days, returned as `YYYY-MM-DD`.
+- **Estimate**: CN-local start date (`cnStartDate`; fallback is the UTC+8 date derived from `openTime`) + `round(lag)` days, returned as `YYYY-MM-DD`.
 - **Priority**: a real `globalStartDate` always wins; the estimate renders only when no real date exists.
-- **Examples**: `SPECIAL_73_0_3` (2026-05-15) → 2026-10-25; `LIMITED_76_0_1` (2026-07-31) → 2027-01-10; `SINGLE_78_0_1` (2026-10-08) → 2027-03-20.
+- **Examples**: `SPECIAL_73_0_3` (CN 2026-05-15) → 2026-10-25; `LINKAGE_74_0_1` (CN 2026-06-01) → 2026-11-11; `LIMITED_76_0_1` (CN 2026-08-01) → 2027-01-11; `SINGLE_78_0_1` (CN 2026-10-09) → 2027-03-21.
 - **Presentation**: `≈ <date>` plus an `EST` badge and a page disclaimer. This is an approved §14 exception (owner decision 2026-10-20) recorded in `docs/known-issues.md`; it is not the removed constant 175-day heuristic.
 
 Parsing accepts `YYYY/MM/DD` and `YYYY/MM/DD HH:mm:ss` and always builds UTC dates, so the result does not depend on the host time zone.
