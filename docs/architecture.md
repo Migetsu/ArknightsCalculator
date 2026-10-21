@@ -34,15 +34,29 @@ docs/           architectural decisions, module guides, progress tracking
 
 ## 4. Operator Data Loading Architecture
 
-For operator details (`/operators/[id]`), the data loading strategy is evaluated against 4 core criteria:
+Operator details and dossiers are generated JSON (`data/operators/*.json`, `data/handbook/*.json`),
+but they are **not** imported as JS modules. A dynamic import per file made Vite/Nitro emit one
+chunk per operator (1005 server chunks, ~920 client chunks) and pushed builds to OOM.
 
-1. **SSR / Prerender for SEO:** Full operator profiles must be renderable during server-side rendering or prerendering with meta tags, OpenGraph data, and Schema.org semantic annotations without client-only flash.
-2. **Fast initial start & minimal bundle:** Loading the catalog (`/operators`) must only load `data/operators-index.json` (~197 KB, ~35 KB gzip). The 434 individual operator details (~18 MB total) must never bloat the initial client bundle.
-3. **PWA / Offline support:** Individual operator records are loaded on-demand via a typed composable (`useOperatorDetail(id)`). When deployed, each operator record is served as a dedicated lazy chunk or Nitro endpoint, allowing standard Service Worker HTTP caching (CacheFirst/StaleWhileRevalidate) for offline companion usage.
-4. **Implementation mechanism:**
-   - Server-side / SSR: Directly reads operator detail JSON from `data/operators/${id}.json` via isomorphic loader (or dynamic import / Nitro route), guaranteeing zero network roundtrip during SSR.
-   - Client-side navigation: Uses Nuxt's isomorphic `useAsyncData(`operator-detail-${id}`, () => import(\`~/../data/operators/\${id}.json\`))` or Nitro endpoint with SWR cache headers.
-   - Result: 0 KB overhead for unvisited operators, instant SSR hydration, pre-rendered static HTML for search engines, and straightforward caching for offline PWA.
+Current strategy (details and measurements in `docs/server-data-assets.md`):
+
+1. **Build-time aggregation:** `modules/server-data-assets/` groups the files into 8 operator and
+   4 handbook bucket files under `.cache/server-data-assets` and exposes them as Nitro
+   `serverAssets` (`assets:operators`, `assets:handbook`). `data/` and `data:validate` are
+   untouched.
+2. **Nitro API endpoints:** `/api/operators/[id]` and `/api/handbook/[id]` validate the id,
+   read the matching bucket (in-process cache, bounded by bucket count) and return 404 for
+   unknown or malformed entries.
+3. **SSR and client:** `useOperatorDetail` / `useOperatorHandbook` keep `useAsyncData` keys,
+   `default: null` and `watch` semantics. SSR fetches through `useRequestFetch()` (internal
+   request, no absolute origin); client navigations use `$fetch`. The handbook Map cache is
+   preserved.
+4. **SEO / PWA:** operator pages stay SSR, so dossier text is present in the HTML. The API is
+   HTTP-cacheable (`cache-control: public, max-age=3600`) and can be cached by a service worker
+   if PWA caching is added later. No operator data is emitted to the client bundle.
+
+Result: server chunks drop to 153, client JS chunks to 51, and the client bundle shrinks by
+~23 MB while SSR content and 404 behaviour are unchanged.
 
 ## 5. Testing
 
