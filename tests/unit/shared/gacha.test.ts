@@ -494,9 +494,29 @@ describe('Gacha Utility Engine', () => {
     it('returns pool ID as is for CN banners', () => {
       expect(getBannerArtCandidates('NORM_10_0_1', 'cn')).toEqual(['NORM_10_0_1'])
       expect(getBannerArtCandidates('LIMITED_27_0_3', 'cn')).toEqual(['LIMITED_27_0_3'])
+      expect(getBannerArtCandidates('LIMITED_27_0_3', 'cn', 'LIMITED_EN_27_0_3')).toEqual([
+        'LIMITED_27_0_3',
+      ])
     })
 
-    it('strips _EN suffix/infix for EN banners with raw fallback', () => {
+    it('prefers the paired CN banner over the stripped id for EN banners', () => {
+      expect(getBannerArtCandidates('LIMITED_EN_27_0_3', 'en', 'LIMITED_44_0_1')).toEqual([
+        'LIMITED_44_0_1',
+        'LIMITED_EN_27_0_3',
+      ])
+      expect(getBannerArtCandidates('NORM_EN_41_0_3', 'en', 'NORM_71_0_3')).toEqual([
+        'NORM_71_0_3',
+        'NORM_EN_41_0_3',
+      ])
+    })
+
+    it('does not fall back to a foreign stripped id when a pair is known', () => {
+      const candidates = getBannerArtCandidates('NORM_EN_30_0_3', 'en', 'CLASSIC_49_0_1')
+      expect(candidates).toEqual(['CLASSIC_49_0_1', 'NORM_EN_30_0_3'])
+      expect(candidates).not.toContain('NORM_30_0_3')
+    })
+
+    it('strips _EN suffix/infix for EN banners without a pair, with raw fallback', () => {
       expect(getBannerArtCandidates('NORM_EN_0_1_1', 'en')).toEqual(['NORM_0_1_1', 'NORM_EN_0_1_1'])
       expect(getBannerArtCandidates('LIMITED_EN_42_0_1', 'en')).toEqual([
         'LIMITED_42_0_1',
@@ -506,6 +526,10 @@ describe('Gacha Utility Engine', () => {
 
     it('infers server from ID containing _EN when server argument is omitted', () => {
       expect(getBannerArtCandidates('NORM_EN_24_0_2')).toEqual(['NORM_24_0_2', 'NORM_EN_24_0_2'])
+      expect(getBannerArtCandidates('NORM_EN_24_0_2', undefined, 'NORM_52_0_2')).toEqual([
+        'NORM_52_0_2',
+        'NORM_EN_24_0_2',
+      ])
     })
 
     it('handles empty or invalid input gracefully', () => {
