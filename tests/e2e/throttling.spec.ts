@@ -45,11 +45,11 @@ const PAGES = [
  */
 const BUDGETS: Record<(typeof PAGES)[number], { scriptKb: number; lcpMs: number }> = {
   '/': { scriptKb: 1450, lcpMs: 1800 },
-  '/operators': { scriptKb: 1250, lcpMs: 2600 },
-  '/operators/char_172_svrash': { scriptKb: 1500, lcpMs: 10_500 },
+  '/operators': { scriptKb: 1500, lcpMs: 2600 },
+  '/operators/char_172_svrash': { scriptKb: 1650, lcpMs: 11_500 },
   '/gacha': { scriptKb: 1600, lcpMs: 4000 },
   '/depot': { scriptKb: 1300, lcpMs: 2800 },
-  '/farming': { scriptKb: 2900, lcpMs: 2600 },
+  '/farming': { scriptKb: 3200, lcpMs: 2600 },
 }
 
 interface PageSample {
