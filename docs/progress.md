@@ -1,5 +1,14 @@
 # Project Progress
 
+- **Task 32 — Domain migration to `rhodeslab.vercel.app` (`chore/domain-rhodeslab`):**
+  - Updated `site.url`, `i18n.baseUrl`, schema.org operator URLs and the E2E allow-list from
+    `arkcalc.vercel.app` to `rhodeslab.vercel.app`.
+  - Vercel: new domain attached and primary; `arkcalc.vercel.app` now 308-redirects to it.
+  - Supabase Auth `site_url` and `uri_allow_list` updated to the new origin; email
+    confirmation remains disabled.
+  - Remaining manual: Google Search Console change-of-address/sitemap and a final PWA
+    installability check on the new deployment.
+
 - **Task 31 — RhodesLab rebrand, logo and PWA (`feat/rhodeslab-pwa`):**
   - Renamed user-facing brand to **RhodesLab**: header wordmark, page titles, dashboard copy,
     UI/gacha watermarks, README/NOTICE, `site.name`, package name and backup filename.

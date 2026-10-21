@@ -17,15 +17,15 @@ is retired from user-facing copy.
 - **Storage keys** `arkcalc_*` are unchanged so existing depot/planner/roster data survives.
 - The export key `arkcalcVersion` is kept for import compatibility.
 - `Migetsu/arkcalc-assets` remains the real asset repository URL.
-- `https://arkcalc.vercel.app` remains the canonical URL until the owner changes the
-  Vercel domain; then update `site.url`, `i18n.baseUrl`, sitemap/canonical, Supabase Auth
-  Site URL/Redirect URLs and add a 301 from the old domain.
+- `https://arkcalc.vercel.app` is kept as a **308 redirect** to
+  `https://rhodeslab.vercel.app`; `site.url` and `i18n.baseUrl` now use the new domain.
 
-## Domain migration checklist
+## Domain migration checklist (done 2026-10-21)
 
-1. Add the new domain in Vercel and set it as primary.
-2. Keep `arkcalc.vercel.app` as a 301 redirect.
-3. Update `nuxt.config.ts` `site.url` and `i18n.baseUrl`.
-4. Update Supabase Auth Site URL and redirect allow-list.
-5. Update Google Search Console change-of-address and sitemap submission.
-6. Re-run the PWA installability check; `start_url`/`scope` are relative.
+1. Added `rhodeslab.vercel.app` in Vercel and set it as primary.
+2. Added `arkcalc.vercel.app` as a 308 redirect.
+3. Updated `nuxt.config.ts` `site.url` and `i18n.baseUrl`; schema.org URLs in
+   `app/pages/operators/index.vue`.
+4. Updated Supabase Auth Site URL and redirect allow-list.
+5. Remaining manual: Google Search Console change-of-address and sitemap submission.
+6. Re-run the PWA installability check after the deploy; `start_url`/`scope` are relative.
