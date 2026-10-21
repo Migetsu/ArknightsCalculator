@@ -153,7 +153,7 @@ useSchemaOrg([
       '@type': 'ListItem',
       position: index + 1,
       name: resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en,
-      url: `https://arkcalc.vercel.app/operators/${op.id}`,
+      url: `https://rhodeslab.vercel.app/operators/${op.id}`,
     })),
   }),
 ])

@@ -61,7 +61,7 @@ test.describe('Layout Sanity & Responsiveness', () => {
           const ignoredTokens = new Set([
             'example.com',
             'vercel.app',
-            'arkcalc.vercel.app',
+            'rhodeslab.vercel.app',
             'arknights.wiki.gg',
             'wiki.gg',
             'penguin-stats.io',

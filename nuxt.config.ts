@@ -33,8 +33,7 @@ export default defineNuxtConfig({
     },
   },
   site: {
-    // Domain migration is pending; keep the current production URL until the owner moves it.
-    url: 'https://arkcalc.vercel.app',
+    url: 'https://rhodeslab.vercel.app',
     name: 'RhodesLab',
   },
   sitemap: {
@@ -155,7 +154,7 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts',
     defaultLocale: 'en',
     strategy: 'no_prefix',
-    baseUrl: 'https://arkcalc.vercel.app',
+    baseUrl: 'https://rhodeslab.vercel.app',
     locales: [
       {
         code: 'en',

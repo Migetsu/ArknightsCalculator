@@ -32,5 +32,6 @@ be checked locally with `node .output/server/index.mjs` on port 3001.
 - Head tags include `manifest`, SVG/PNG favicons, `apple-touch-icon`, `theme-color`,
   `apple-mobile-web-app-*`.
 
-The domain is still `https://arkcalc.vercel.app` until the owner changes it on Vercel.
-`start_url` and `scope` are relative, so the PWA keeps working after the domain move.
+The production domain is `https://rhodeslab.vercel.app`; the old
+`https://arkcalc.vercel.app` redirects (308) to it. `start_url` and `scope` are relative,
+so the PWA keeps working after the domain move.
