@@ -4,9 +4,7 @@ import rawBannersData from '~/../data/banners.json'
 import rawOperatorsIndex from '~/../data/operators-index.json'
 import type { BannersDataset, GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
-import { resolveI18nString } from '~/../shared/schemas/operator'
 import {
-  formatHumanDate,
   getEstimatedGlobalDate,
   getGlobalLagDays,
   getUpcomingBanners,
@@ -19,12 +17,10 @@ import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
-import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
-import GachaRateUpOps from '~/components/gacha/GachaRateUpOps.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
 const depotStore = useDepotStore()
 const moduleConfig = getModuleById('gacha')
@@ -48,15 +44,6 @@ onMounted(async () => {
 // Dataset parsing
 const bannersDataset = rawBannersData as unknown as BannersDataset
 const currentEnBanner = computed(() => bannersDataset.meta?.currentEnBanner ?? null)
-const currentEnBannerTitle = computed(() => {
-  if (!currentEnBanner.value) return ''
-  return (
-    resolveI18nString(currentEnBanner.value.name, locale.value as 'en' | 'zh') ||
-    currentEnBanner.value.name?.en ||
-    currentEnBanner.value.name?.zh ||
-    ''
-  )
-})
 
 // Full CN timeline (data-driven)
 const cnBanners: readonly GachaBanner[] = Array.isArray(bannersDataset.cnBanners)
@@ -219,65 +206,25 @@ function selectBanner(id: string): void {
             />
           </div>
 
-          <!-- Section 1: Current Global Active Banner (Top of page) -->
+          <!-- Section 1: Current Global Active Banner (same card as the list below) -->
           <section class="gacha-page__current-en">
-            <div
-              v-if="currentEnBanner"
-              class="gacha-current-en"
-              :class="{ 'gacha-current-en--selected': activeBanner?.id === currentEnBanner.id }"
-              role="button"
-              tabindex="0"
-              :aria-pressed="activeBanner?.id === currentEnBanner.id"
-              @click="selectBanner(currentEnBanner.id)"
-              @keydown.enter.space.prevent="selectBanner(currentEnBanner.id)"
-            >
+            <div class="gacha-current-en">
               <div class="gacha-current-en__header">
                 <span class="gacha-current-en__tag">{{ t('gacha.currentBanner.tag') }}</span>
-                <span class="gacha-current-en__status-badge">{{
-                  t('gacha.banner.activeNow')
-                }}</span>
+                <span class="gacha-current-en__server">{{ t('gacha.currentBanner.server') }}</span>
               </div>
 
-              <div class="gacha-current-en__body">
-                <div class="gacha-current-en__main">
-                  <div class="gacha-current-en__meta-bar">
-                    <span class="gacha-current-en__rule-tag">{{ currentEnBanner.ruleType }}</span>
-                    <span class="gacha-current-en__server-badge">GLOBAL // EN</span>
-                  </div>
-                  <h2 class="gacha-current-en__title">
-                    <span>{{ currentEnBannerTitle }}</span>
-                    <AkTranslationBadge
-                      v-if="currentEnBanner.name?.source"
-                      :source="currentEnBanner.name.source"
-                      :stale="currentEnBanner.name.stale"
-                    />
-                  </h2>
-                </div>
-
-                <div class="gacha-current-en__end-wrap">
-                  <span class="gacha-current-en__end-label">
-                    {{
-                      t('gacha.currentBanner.endsOn', {
-                        date: formatHumanDate(currentEnBanner.endIso),
-                      })
-                    }}
-                  </span>
-                  <span class="gacha-current-en__end-iso">
-                    {{ currentEnBanner.endIso.split('T')[0] }}
-                  </span>
-                </div>
-              </div>
-
-              <GachaRateUpOps
+              <GachaBannerCard
                 v-if="currentEnFullBanner"
-                class="gacha-current-en__rate-up"
                 :banner="currentEnFullBanner"
                 :operators-map="operatorsMap"
+                :is-selected="activeBanner?.id === currentEnFullBanner.id"
+                @select="selectBanner"
               />
-            </div>
 
-            <div v-else class="gacha-current-en gacha-current-en--empty">
-              <p class="gacha-current-en__empty-text">{{ t('gacha.currentBanner.noActive') }}</p>
+              <p v-else class="gacha-current-en__empty-text">
+                {{ t('gacha.currentBanner.noActive') }}
+              </p>
             </div>
           </section>
 
@@ -553,34 +500,12 @@ function selectBanner(id: string): void {
   }
 }
 
-/* Current Global Banner Component Styles */
+/* Current Global Banner Section: a section header above the shared banner card */
 .gacha-current-en {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  padding: var(--space-lg);
-  background-color: var(--color-bg-surface);
-  border: 1px solid var(--color-border-subtle);
-  border-left: 4px solid var(--color-accent-primary, #ff6a3d);
-  cursor: pointer;
   min-width: 0;
-  transition:
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-
-  &:hover {
-    border-color: var(--color-border-bold);
-  }
-
-  &:focus-visible {
-    @include focus-ring;
-  }
-
-  &--selected {
-    box-shadow:
-      0 0 0 1px var(--color-accent-amber),
-      0 4px 16px rgb(255 157 43 / 15%);
-  }
 
   &__header {
     display: flex;
@@ -588,6 +513,8 @@ function selectBanner(id: string): void {
     justify-content: space-between;
     gap: var(--space-sm);
     flex-wrap: wrap;
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border-subtle);
   }
 
   &__tag {
@@ -599,107 +526,12 @@ function selectBanner(id: string): void {
     text-transform: uppercase;
   }
 
-  &__status-badge {
-    display: inline-block;
-    padding: 3px 10px;
+  &__server {
     font-family: var(--font-mono);
     font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
+    color: var(--color-text-muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-status-success);
-    background-color: rgb(34 197 94 / 10%);
-    border: 1px solid var(--color-status-success);
-  }
-
-  &__body {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    min-width: 0;
-
-    @media (width <= 640px) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  &__main {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 0;
-  }
-
-  &__meta-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  &__rule-tag {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.1em;
-    color: var(--color-accent-primary, #ff6a3d);
-  }
-
-  &__server-badge {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-2xs);
-    color: var(--color-text-muted);
-    letter-spacing: 0.1em;
-  }
-
-  &__title {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-xs, 8px);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-xl, 22px);
-    font-weight: var(--font-weight-extrabold);
-    color: var(--color-text-primary);
-    letter-spacing: 0.02em;
-    overflow-wrap: break-word;
-    min-width: 0;
-  }
-
-  &__end-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 2px;
-    font-family: var(--font-mono);
-
-    @media (width <= 640px) {
-      align-items: flex-start;
-    }
-  }
-
-  &__end-label {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent-amber);
-  }
-
-  &__end-iso {
-    font-size: var(--font-size-2xs);
-    color: var(--color-text-muted);
-  }
-
-  &__rate-up {
-    margin-top: var(--space-xs);
-  }
-
-  &--empty {
-    padding: var(--space-md);
-    border-left: 1px solid var(--color-border-subtle);
-    cursor: default;
   }
 
   &__empty-text {
