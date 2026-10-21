@@ -3,6 +3,7 @@ import type { Ref, ComputedRef } from 'vue'
 import type { OperatorHandbook } from '~~/shared/schemas/handbook'
 import { isValidOperatorDataId } from '~~/shared/utils/operatorData'
 import type { OperatorDataFetcher } from '~~/shared/utils/operatorData'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 
 const handbookCache = new Map<string, OperatorHandbook>()
 
@@ -13,7 +14,7 @@ const handbookCache = new Map<string, OperatorHandbook>()
  */
 export async function fetchOperatorHandbook(
   charId: string,
-  fetcher: OperatorDataFetcher = (url) => $fetch(url),
+  fetcher: OperatorDataFetcher = fetchJson,
 ): Promise<OperatorHandbook | null> {
   if (!charId || typeof charId !== 'string') return null
   const cleanId = charId.trim()
@@ -54,7 +55,7 @@ export function useOperatorHandbook(
 
   return useAsyncData<OperatorHandbook | null>(
     () => `operator-handbook-${getId()}`,
-    () => fetchOperatorHandbook(getId(), requestFetch),
+    () => fetchOperatorHandbook(getId(), asJsonFetcher(requestFetch)),
     {
       default: () => null,
       watch: typeof charId === 'string' ? [] : [() => toValue(charId)],

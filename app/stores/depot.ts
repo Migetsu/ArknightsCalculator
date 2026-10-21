@@ -137,6 +137,33 @@ export const useDepotStore = defineStore('depot', () => {
     await save()
   }
 
+  /**
+   * Replaces the whole depot with an external snapshot (e.g. a Yostar sync).
+   * The caller is responsible for offering this only after a successful sync.
+   */
+  async function importSnapshot(snapshot: {
+    items: Record<string, number>
+    currencies: DepotCurrencies
+  }): Promise<void> {
+    const nextItems: Record<string, number> = {}
+    for (const [itemId, count] of Object.entries(snapshot.items)) {
+      const safeCount = Math.max(0, Math.min(999999, Math.floor(count) || 0))
+      if (safeCount > 0) nextItems[itemId] = safeCount
+    }
+
+    items.value = nextItems
+    currencies.value = {
+      lmd: Math.max(0, Math.min(999999999, Math.floor(snapshot.currencies.lmd) || 0)),
+      orundum: Math.max(0, Math.min(999999999, Math.floor(snapshot.currencies.orundum) || 0)),
+      originitePrime: Math.max(
+        0,
+        Math.min(999999999, Math.floor(snapshot.currencies.originitePrime) || 0),
+      ),
+    }
+    isCorrupted.value = false
+    await save()
+  }
+
   function exportJson(): string {
     const data: DepotData = {
       schemaVersion: CURRENT_DEPOT_SCHEMA_VERSION,
@@ -178,6 +205,7 @@ export const useDepotStore = defineStore('depot', () => {
     setItemCount,
     setCurrency,
     clearDepot,
+    importSnapshot,
     exportJson,
     importJson,
     dismissCorruptionAlert,

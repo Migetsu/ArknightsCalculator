@@ -33,6 +33,76 @@ mockNuxtImport('useProfile', () => () => ({
   signOut: mockSignOut,
 }))
 
+// Yostar integration state is driven directly so no network call can happen.
+const yostarEnabled = ref(true)
+const yostarSendingCode = ref(false)
+const yostarSyncing = ref(false)
+const yostarCodeSent = ref(false)
+const yostarError = ref<string | null>(null)
+const yostarResult = ref<unknown>(null)
+const mockSendCode = vi.fn().mockResolvedValue(true)
+const mockStartSync = vi.fn().mockResolvedValue(false)
+
+mockNuxtImport('useYostarSync', () => () => ({
+  enabled: yostarEnabled,
+  sendingCode: yostarSendingCode,
+  syncing: yostarSyncing,
+  codeSent: yostarCodeSent,
+  error: yostarError,
+  result: yostarResult,
+  sendCode: mockSendCode,
+  startSync: mockStartSync,
+  reset: vi.fn(),
+}))
+
+const mockRosterImport = vi.fn().mockResolvedValue(undefined)
+const mockDepotImport = vi.fn().mockResolvedValue(undefined)
+
+mockNuxtImport('useRosterStore', () => () => ({
+  importSync: mockRosterImport,
+  operators: ref({}),
+  operatorCount: ref(0),
+  doctor: ref({ name: '', level: 1 }),
+}))
+mockNuxtImport('useDepotStore', () => () => ({
+  importSnapshot: mockDepotImport,
+  items: ref({}),
+  currencies: ref({ lmd: 0, orundum: 0, originitePrime: 0 }),
+}))
+
+const syncPayload = {
+  doctor: { name: 'Doctor', level: 108, server: 'en' },
+  operators: [
+    {
+      charId: 'char_003_kalts',
+      elite: 2,
+      level: 90,
+      skillLevel: 7,
+      potential: 4,
+      favor: 150,
+      skills: {},
+      modules: {},
+    },
+  ],
+  depot: {
+    currencies: { lmd: 100, orundum: 5, originitePrime: 1 },
+    items: { '30115': 4 },
+  },
+  unknownOperatorIds: [],
+  unknownItemCount: 0,
+  skippedEntries: 0,
+  syncedAt: '2026-10-21T10:00:00.000Z',
+}
+
+async function openYostarTab() {
+  const wrapper = await mountSuspended(SyncAccountModal, {
+    props: { modelValue: true, teleport: false },
+  })
+  const tabs = wrapper.findAll('.sync-modal__tab')
+  await tabs[1]?.trigger('click')
+  return wrapper
+}
+
 describe('SyncAccountModal.vue', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -40,6 +110,12 @@ describe('SyncAccountModal.vue', () => {
     mockProfile.value = null
     mockLoading.value = false
     mockError.value = null
+    yostarEnabled.value = true
+    yostarSendingCode.value = false
+    yostarSyncing.value = false
+    yostarCodeSent.value = false
+    yostarError.value = null
+    yostarResult.value = null
   })
 
   it('renders modal with cloud account tab active by default and unauthenticated status', async () => {
@@ -149,4 +225,149 @@ describe('SyncAccountModal.vue', () => {
     await loadDemoBtn.trigger('click')
     expect(wrapper.emitted('load-demo')).toBeTruthy()
   })
+
+  describe('Yostar tab', () => {
+    it('disables the send button until an e-mail is typed', async () => {
+      const wrapper = await openYostarTab()
+
+      const sendBtn = wrapper.find('.sync-modal__send-btn')
+      expect(sendBtn.attributes('disabled')).toBeDefined()
+
+      await wrapper.find('input[name="yostar-email"]').setValue('test@example.com')
+      expect(wrapper.find('.sync-modal__send-btn').attributes('disabled')).toBeUndefined()
+    })
+
+    it('requests a code and reflects the loading and sent states', async () => {
+      const wrapper = await openYostarTab()
+      await wrapper.find('input[name="yostar-email"]').setValue('test@example.com')
+
+      await wrapper.find('.sync-modal__send-btn').trigger('click')
+      expect(mockSendCode).toHaveBeenCalledWith('test@example.com')
+
+      yostarCodeSent.value = true
+      yostarSendingCode.value = true
+      await wrapper.vm.$nextTick()
+
+      const sendBtn = wrapper.find('.sync-modal__send-btn')
+      expect(sendBtn.text().toUpperCase()).toContain('SENDING')
+      expect(sendBtn.attributes('disabled')).toBeDefined()
+    })
+
+    it('renders a readable error when the proxy rejects the code', async () => {
+      const wrapper = await openYostarTab()
+
+      yostarError.value = 'invalid_code'
+      await wrapper.vm.$nextTick()
+
+      const alert = wrapper.find('.sync-modal__auth-error')
+      expect(alert.exists()).toBe(true)
+      expect(alert.text().toLowerCase()).toContain('verification code')
+      expect(alert.text()).not.toContain('invalid_code')
+    })
+
+    it('disables the start button until both e-mail and code are present', async () => {
+      const wrapper = await openYostarTab()
+
+      const footerButtons = wrapper.findAll('.sync-modal__footer-actions button')
+      const startBtn = footerButtons[footerButtons.length - 1]
+      expect(startBtn?.attributes('disabled')).toBeDefined()
+
+      await wrapper.find('input[name="yostar-email"]').setValue('test@example.com')
+      await wrapper.find('input[name="yostar-code"]').setValue('123456')
+      expect(
+        wrapper.findAll('.sync-modal__footer-actions button').at(-1)?.attributes('disabled'),
+      ).toBeUndefined()
+    })
+
+    it('imports the payload into the roster and depot stores, then shows a summary', async () => {
+      mockStartSync.mockImplementation(async () => {
+        yostarResult.value = syncPayload
+        return true
+      })
+
+      const wrapper = await openYostarTab()
+      await wrapper.find('input[name="yostar-email"]').setValue('test@example.com')
+      await wrapper.find('input[name="yostar-code"]').setValue('123456')
+
+      await wrapper.findAll('.sync-modal__footer-actions button').at(-1)?.trigger('click')
+      await flushPromises()
+
+      expect(mockStartSync).toHaveBeenCalledWith('test@example.com', '123456')
+      expect(mockRosterImport).toHaveBeenCalledWith(syncPayload)
+      expect(mockDepotImport).toHaveBeenCalledWith({
+        items: syncPayload.depot.items,
+        currencies: syncPayload.depot.currencies,
+      })
+
+      const success = wrapper.find('.sync-modal__auth-success')
+      expect(success.exists()).toBe(true)
+      expect(success.text()).toContain('SYNC COMPLETE')
+      expect(success.text()).toContain('1 operators')
+      expect(wrapper.find('input[name="yostar-email"]').exists()).toBe(false)
+    })
+
+    it('closes the modal from the DONE button after a successful sync', async () => {
+      yostarResult.value = syncPayload
+      const wrapper = await openYostarTab()
+
+      const doneBtn = wrapper.findAll('.sync-modal__footer-actions button').at(-1)
+      expect(doneBtn?.text().toUpperCase()).toContain('DONE')
+
+      await doneBtn?.trigger('click')
+      expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([false])
+    })
+
+    it('shows the empty state when the account returned nothing', async () => {
+      yostarResult.value = {
+        ...syncPayload,
+        operators: [],
+        depot: { currencies: syncPayload.depot.currencies, items: {} },
+      }
+      const wrapper = await openYostarTab()
+
+      const success = wrapper.find('.sync-modal__auth-success')
+      expect(success.text().toLowerCase()).toContain('no operators')
+    })
+
+    it('reports skipped unknown ids instead of hiding them', async () => {
+      yostarResult.value = {
+        ...syncPayload,
+        unknownOperatorIds: ['char_999_future'],
+        unknownItemCount: 2,
+      }
+      const wrapper = await openYostarTab()
+
+      const muted = wrapper.find('.sync-modal__success-muted')
+      expect(muted.exists()).toBe(true)
+      expect(muted.text()).toContain('1 operators')
+      expect(muted.text()).toContain('2 items')
+    })
+
+    it('disables the whole tab when the feature flag is off', async () => {
+      yostarEnabled.value = false
+      const wrapper = await openYostarTab()
+
+      expect(wrapper.find('.sync-modal__regions').exists()).toBe(false)
+      expect(wrapper.find('input[name="yostar-email"]').exists()).toBe(false)
+      const alert = wrapper.find('.sync-modal__auth-error')
+      expect(alert.text().toLowerCase()).toContain('disabled')
+      expect(
+        wrapper.findAll('.sync-modal__footer-actions button').at(-1)?.attributes('disabled'),
+      ).toBeDefined()
+    })
+
+    it('marks non-EN regions as unsupported', async () => {
+      const wrapper = await openYostarTab()
+
+      const regions = wrapper.findAll('.sync-modal__reg-btn')
+      expect(regions).toHaveLength(4)
+      expect(regions[0]?.attributes('disabled')).toBeUndefined()
+      expect(regions[1]?.attributes('disabled')).toBeDefined()
+      expect(regions[1]?.attributes('title')).toBeTruthy()
+    })
+  })
 })
+
+async function flushPromises(): Promise<void> {
+  await new Promise((resolve) => setTimeout(resolve, 0))
+}
