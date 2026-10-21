@@ -65,9 +65,9 @@ This document describes how game data and drop matrices are synchronized, normal
 2. `data:fetch` — download the raw tables at the new commit.
 3. `data:stages`, `data:items`, `data:recipes`, `data:constants`.
 4. `data:build` (operators), `data:handbook`, `data:ranges`, `data:recruit`, `data:skins`.
-5. `data:wiki-banners` — retried three times with a 30 s pause because the wiki API intermittently returns 502; the third failure fails the job.
+5. `data:wiki-banners` — retried three times with a 30 s pause because the wiki API intermittently returns 502. If all attempts fail, the workflow restores the checked-in `data/wiki-banners.json` snapshot and continues; the PR body marks wiki banners as `existing snapshot (scrape failed)`.
 6. `data:banners`.
-7. `data:translate:all` — Gemini translation of CN-only strings.
+7. `data:translate:all` — Gemini translation of CN-only strings. If there is nothing new to translate, the export produces zero batches and the import is a no-op (a missing `.cache/translate/out` is not an error).
 8. `data:validate` — referential integrity across all generated data.
 
 `data:assets`, `data:thumbs` and `data:banner-thumbs` are **not** part of this workflow: they publish to the separate assets repository and are run manually (see `docs/assets.md`).
@@ -93,4 +93,4 @@ The workflow records `du -sb data` before the pipeline and measures it again aft
 - The PR body reports the upstream commit, the `data/` size before and after with the growth percentage, and that validation passed.
 - A maintainer reviews the diff and the CI run (which exists because of `CRON_PAT`) and merges manually.
 - A growth above 25% is blocked by the guard and needs an explicit section 14 approval recorded in `docs/known-issues.md` before the limit can be raised.
-- A failing `data:validate`, a translation error or a triggered growth guard fails the workflow itself, so no PR is created.
+- A failing `data:validate`, a translation error or a triggered growth guard fails the workflow itself, so no PR is created. A wiki-banner scrape failure is the only tolerated external failure: it keeps the previous snapshot and is called out in the PR body.
