@@ -467,6 +467,28 @@ describe('GachaBannerCard', () => {
       expect(wrapper.find('.gacha-banner__art-watermark').exists()).toBe(false)
     })
 
+    it('prefers the published artId over the legacy stripped EN id', async () => {
+      const enBannerWithOwnArt: GachaBanner = {
+        ...mockBanner,
+        id: 'LIMITED_EN_42_0_1',
+        server: 'en',
+        type: 'limited',
+        hasArt: true,
+        artId: 'LIMITED_EN_42_0_1',
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: enBannerWithOwnArt,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const src = wrapper.find('img.gacha-banner__art-img').attributes('src')
+      expect(src).toContain('/banners/LIMITED_EN_42_0_1.webp')
+      expect(src).not.toContain('/banners/LIMITED_42_0_1.webp')
+    })
+
     it('renders placeholder frame when hasArt is false', async () => {
       const bannerWithoutArt: GachaBanner = {
         ...mockBanner,

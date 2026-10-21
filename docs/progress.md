@@ -1,5 +1,24 @@
 # Project Progress
 
+- **Current EN Banner as a Banner Card (`feat/gacha-current-card`):**
+  - **Context & Motivation:**
+    - The active Global banner on `/gacha` was a bespoke hero (`.gacha-current-en`): title, "Ends: Oct 28", 6 rate-up operators, no banner art, and a different visual format from the cards below.
+    - The owner asked for the active EN banner to look like the list card (`GachaBannerCard`); `LIMITED_EN_42_0_1` already has published art from Task 24, and the full banner (rate-up composition, EN dates) lives in `banners`, not in `meta.currentEnBanner`.
+  - **Implementation Details:**
+    - **Page (`app/pages/gacha.vue`):** the custom hero markup and its CSS (~155 lines: `__body`, `__main`, `__meta-bar`, `__title`, `__end-wrap`, `--selected`, `--empty`) are removed. The section now renders a small header (`PRTS // GLOBAL ACTIVE HEADHUNTING` + `GLOBAL // EN`) above `<GachaBannerCard :banner="currentEnFullBanner" :is-selected="activeBanner?.id === currentEnFullBanner.id" @select="selectBanner" />`. No extra `role="button"`/click wrapper, no `globalEstimate`/`isNext`. Title, dates and `ACTIVE NOW` are not duplicated outside the card. Default `activeBanner` still resolves to the current EN banner.
+    - **Card (`app/components/gacha/GachaBannerCard.vue`):** the art URL is the published `artId` file. `resolveAsset('banner', …)` still strips the legacy `_EN` suffix first, so the card now puts `${OPTIMIZED_ASSETS_CDN}/banners/${artId}.webp` first and keeps the other candidates after it. Verified by HEAD requests: `banners/LIMITED_42_0_1.webp` → **404**, `banners/LIMITED_EN_42_0_1.webp` → **200** (40,572 bytes). No new component, no new prop, no duplicated rate-up rendering (`GachaRateUpOps` is still reused).
+    - **i18n:** added `gacha.currentBanner.server` = `GLOBAL // EN`; the previous hardcoded label is now a translation key. `i18n:check`: **689** keys (was 688).
+  - **Tests:**
+    - `tests/unit/pages/gacha.test.ts` (11 tests): the hero test now finds `GachaBannerCard` inside `.gacha-current-en`, asserts the header labels, title `Sealed With Time`, `<img class="gacha-banner__art-img">` with `src` = `LIMITED_EN_42_0_1.webp` and `width="480"`, 6 rate-up avatars, `SECONDARY RATE-UP` / `5★ OPERATORS`, `EN: Oct 14, 2026 – Oct 28, 2026`, `endIso` = `2026-10-28T10:59:59.000Z`, `ruleType` = `LIMITED` (+ `gacha-banner--limited` / `--active` / `--selected` classes) and `ACTIVE NOW`.
+    - All card-count and filter assertions are scoped to `.gacha-page__upcoming` (11 upcoming, 7 standard / 4 limited / 0 joint), and the hero card is asserted not to leak into that section.
+    - `tests/unit/components/gacha/GachaBannerCard.test.ts`: 18 → 19 tests, previous checks untouched; new test asserts the published `LIMITED_EN_42_0_1.webp` is preferred over the legacy stripped `LIMITED_42_0_1.webp`.
+    - Full suite: **789 tests / 96 files**, 0 failed, 0 skipped, 0 todo (was 788).
+  - **Quality Gates & Metrics:**
+    - `lint`: 0 errors, 0 warnings (ESLint + Stylelint); `typecheck`: 0 errors; `data:validate`: 0 integrity issues (861 banners checked); `i18n:check`: 689 keys.
+    - `build` (`NUXT_BUILD_DIR=.nuxt-agent`): 53.1 MB (10.4 MB gzip) in 2m 08s.
+    - Playwright (port 3001, dev:agent): hero card is `gacha-banner--limited gacha-banner--active gacha-banner--selected`; art natural size **480×262**, rendered 338×149 at 1280, 298×149 at 360; 6 rate-up avatars; `EN: Oct 14, 2026 – Oct 28, 2026`; `ACTIVE NOW`; 11 upcoming cards; `scrollWidth == clientWidth` at 360, 768, 1280 and 1920; console 0 errors / 0 warnings; hero art response **200**. Clicking the first upcoming card's badge bar moves selection (hero `aria-pressed` false, calculator targets change) and clicking the hero restores it.
+    - Screenshots: `docs/screenshots/task25-gacha-hero-1280.png`, `docs/screenshots/task25-gacha-hero-360.png` (gitignored).
+
 - **Banner Art: Visible Window, EN Pair Mapping & Wiki Source (`fix/banner-art`):**
   - **Context & Motivation:**
     - 335 of 861 banners had art (304 CN + 31 EN). The current EN banner and 2 of the 11 upcoming cards (`SPECIAL_73_0_3`, `SPECIAL_77_0_4`) were placeholders.
