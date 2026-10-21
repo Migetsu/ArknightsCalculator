@@ -67,7 +67,7 @@ This document describes how game data and drop matrices are synchronized, normal
 4. `data:build` (operators), `data:handbook`, `data:ranges`, `data:recruit`, `data:skins`.
 5. `data:wiki-banners` — retried three times with a 30 s pause because the wiki API intermittently returns 502. If all attempts fail, the workflow restores the checked-in `data/wiki-banners.json` snapshot and continues; the PR body marks wiki banners as `existing snapshot (scrape failed)`.
 6. `data:banners`.
-7. `data:translate:all` — Gemini translation of CN-only strings.
+7. `data:translate:all` — Gemini translation of CN-only strings. If there is nothing new to translate, the export produces zero batches and the import is a no-op (a missing `.cache/translate/out` is not an error).
 8. `data:validate` — referential integrity across all generated data.
 
 `data:assets`, `data:thumbs` and `data:banner-thumbs` are **not** part of this workflow: they publish to the separate assets repository and are run manually (see `docs/assets.md`).

@@ -1,5 +1,8 @@
+import fs from 'node:fs/promises'
+import os from 'node:os'
+import path from 'node:path'
 import { describe, it, expect } from 'vitest'
-import { hasCjkIdeograph } from '../../../scripts/data/translate-missing'
+import { hasCjkIdeograph, readTranslationBatchFiles } from '../../../scripts/data/translate-missing'
 
 describe('hasCjkIdeograph', () => {
   it('accepts real Chinese text', () => {
@@ -20,5 +23,29 @@ describe('hasCjkIdeograph', () => {
 
   it('rejects empty input', () => {
     expect(hasCjkIdeograph('')).toBe(false)
+  })
+})
+
+describe('readTranslationBatchFiles', () => {
+  it('returns an empty list when the out directory does not exist', async () => {
+    const base = await fs.mkdtemp(path.join(os.tmpdir(), 'translate-batches-'))
+    try {
+      await expect(readTranslationBatchFiles(path.join(base, 'out'))).resolves.toEqual([])
+    } finally {
+      await fs.rm(base, { recursive: true, force: true })
+    }
+  })
+
+  it('returns only json/jsonl batch files', async () => {
+    const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'translate-batches-'))
+    try {
+      await fs.writeFile(path.join(dir, 'batch_001.jsonl'), '')
+      await fs.writeFile(path.join(dir, 'batch_002.json'), '{}')
+      await fs.writeFile(path.join(dir, 'notes.txt'), '')
+      const files = await readTranslationBatchFiles(dir)
+      expect(files.sort()).toEqual(['batch_001.jsonl', 'batch_002.json'])
+    } finally {
+      await fs.rm(dir, { recursive: true, force: true })
+    }
   })
 })
