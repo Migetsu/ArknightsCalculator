@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref, computed, shallowRef, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import rawBannersData from '~/../data/banners.json'
 import rawOperatorsIndex from '~/../data/operators-index.json'
 import type { BannersDataset, GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { formatHumanDate } from '~/../shared/utils/gacha'
+import {
+  formatHumanDate,
+  getEstimatedGlobalDate,
+  getGlobalLagDays,
+  getUpcomingBanners,
+} from '~/../shared/utils/gacha'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
 import AkContainer from '~/components/ui/AkContainer.vue'
@@ -17,6 +22,7 @@ import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
+import GachaRateUpOps from '~/components/gacha/GachaRateUpOps.vue'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -52,15 +58,22 @@ const currentEnBannerTitle = computed(() => {
   )
 })
 
-// Raw CN banners (453 items, sorted ascending by openTime)
-const rawCnBanners = Array.isArray(bannersDataset.cnBanners) ? bannersDataset.cnBanners : []
-const cnBanners = shallowRef<readonly GachaBanner[]>(rawCnBanners)
+// Full CN timeline (data-driven)
+const cnBanners: readonly GachaBanner[] = Array.isArray(bannersDataset.cnBanners)
+  ? bannersDataset.cnBanners
+  : []
 
 // All combined banners for calculator lookup
 const allBanners = computed<readonly GachaBanner[]>(() => {
   if (Array.isArray(bannersDataset.banners)) return bannersDataset.banners
   if (Array.isArray(rawBannersData)) return rawBannersData as unknown as GachaBanner[]
-  return cnBanners.value
+  return cnBanners
+})
+
+// Full EN banner with the rate-up roster (meta.currentEnBanner carries no composition)
+const currentEnFullBanner = computed<GachaBanner | null>(() => {
+  if (!currentEnBanner.value) return null
+  return allBanners.value.find((banner) => banner.id === currentEnBanner.value?.id) ?? null
 })
 
 const operatorsMap = computed(() => {
@@ -96,35 +109,20 @@ const filterOptions = computed<{ value: FilterChoice; label: string }[]>(() => [
 
 const isCalculatorVisible = ref(true)
 
-// Filtered CN archive banners (chronologically sorted ascending by openTime)
-const filteredCnBanners = computed<GachaBanner[]>(() => {
+// Upcoming CN banners: released on CN, not yet on Global, with a known rate-up roster.
+// The window and the Global lag are derived from the dataset only, never from the clock.
+const upcomingBanners = computed<GachaBanner[]>(() => getUpcomingBanners(cnBanners))
+const globalLagDays = computed<number | null>(() => getGlobalLagDays(cnBanners))
+
+const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
   if (selectedFilter.value === 'all') {
-    return [...cnBanners.value]
+    return upcomingBanners.value
   }
-  return cnBanners.value.filter((b) => b.type === selectedFilter.value)
+  return upcomingBanners.value.filter((banner) => banner.type === selectedFilter.value)
 })
 
-// Incremental / Chunked Rendering (prevents mounting 453 heavy cards simultaneously)
-const PAGE_SIZE = 20
-const visibleCount = ref(PAGE_SIZE)
-
-watch(selectedFilter, () => {
-  visibleCount.value = PAGE_SIZE
-})
-
-const displayedCnBanners = computed<GachaBanner[]>(() => {
-  return filteredCnBanners.value.slice(0, visibleCount.value)
-})
-
-const hasMoreBanners = computed(() => visibleCount.value < filteredCnBanners.value.length)
-const remainingBannersCount = computed(() => filteredCnBanners.value.length - visibleCount.value)
-
-function loadMore(): void {
-  visibleCount.value = Math.min(visibleCount.value + PAGE_SIZE, filteredCnBanners.value.length)
-}
-
-function loadAll(): void {
-  visibleCount.value = filteredCnBanners.value.length
+function estimateFor(banner: GachaBanner): string | null {
+  return getEstimatedGlobalDate(banner, globalLagDays.value)
 }
 
 // Active banner selection for Calculator
@@ -154,7 +152,7 @@ const activeBanner = computed<GachaBanner | null>(() => {
     const enFound = allBanners.value.find((b) => b.id === currentEnBanner.value?.id)
     if (enFound) return enFound
   }
-  return displayedCnBanners.value[0] ?? null
+  return filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? null
 })
 
 function selectBanner(id: string): void {
@@ -269,6 +267,13 @@ function selectBanner(id: string): void {
                   </span>
                 </div>
               </div>
+
+              <GachaRateUpOps
+                v-if="currentEnFullBanner"
+                class="gacha-current-en__rate-up"
+                :banner="currentEnFullBanner"
+                :operators-map="operatorsMap"
+              />
             </div>
 
             <div v-else class="gacha-current-en gacha-current-en--empty">
@@ -302,56 +307,36 @@ function selectBanner(id: string): void {
             </div>
           </div>
 
-          <!-- Section 2: CN Timeline Archive (Sorted ascending by openTime) -->
-          <section class="gacha-page__cn-archive">
+          <!-- Section 2: Upcoming CN banners (oldest first, not yet on Global) -->
+          <section class="gacha-page__upcoming">
             <div class="gacha-page__section-header">
               <div class="gacha-page__section-meta">
-                <span class="gacha-page__section-tag">{{ t('gacha.cnArchive.tag') }}</span>
-                <span class="gacha-page__section-count">({{ filteredCnBanners.length }})</span>
+                <span class="gacha-page__section-tag">{{ t('gacha.upcoming.tag') }}</span>
+                <span class="gacha-page__section-count">
+                  ({{ filteredUpcomingBanners.length }})
+                </span>
               </div>
-              <h2 class="gacha-page__section-title">{{ t('gacha.cnArchive.title') }}</h2>
-              <p class="gacha-page__section-subtitle">{{ t('gacha.cnArchive.subtitle') }}</p>
+              <h2 class="gacha-page__section-title">{{ t('gacha.upcoming.title') }}</h2>
+              <p class="gacha-page__section-subtitle">{{ t('gacha.upcoming.subtitle') }}</p>
             </div>
 
-            <!-- Chunked Banner Cards Column -->
+            <!-- Upcoming Banner Cards Column (rendered immediately, no pagination) -->
             <div class="gacha-page__banners-list">
               <GachaBannerCard
-                v-for="banner in displayedCnBanners"
+                v-for="banner in filteredUpcomingBanners"
                 :key="banner.id"
                 :banner="banner"
                 :date-mode="dateMode"
                 :operators-map="operatorsMap"
                 :is-selected="activeBanner?.id === banner.id"
+                :global-estimate="estimateFor(banner)"
+                :is-next="banner.id === upcomingBanners[0]?.id"
                 @select="selectBanner"
               />
 
               <!-- Empty Filter State -->
-              <div v-if="filteredCnBanners.length === 0" class="gacha-page__empty-box">
+              <div v-if="filteredUpcomingBanners.length === 0" class="gacha-page__empty-box">
                 <AkEmptyState :title="t('gacha.empty')" />
-              </div>
-            </div>
-
-            <!-- Pagination / Incremental Loading Controls -->
-            <div v-if="filteredCnBanners.length > 0" class="gacha-page__pagination">
-              <span class="gacha-page__pagination-summary">
-                {{
-                  t('gacha.cnArchive.showingCount', {
-                    shown: displayedCnBanners.length,
-                    total: filteredCnBanners.length,
-                  })
-                }}
-              </span>
-              <div v-if="hasMoreBanners" class="gacha-page__pagination-actions">
-                <AkButton variant="secondary" size="sm" @click="loadMore">
-                  {{
-                    t('gacha.cnArchive.showMore', {
-                      count: Math.min(PAGE_SIZE, remainingBannersCount),
-                    })
-                  }}
-                </AkButton>
-                <AkButton variant="ghost" size="sm" @click="loadAll">
-                  {{ t('gacha.cnArchive.showAll', { total: filteredCnBanners.length }) }}
-                </AkButton>
               </div>
             </div>
           </section>
@@ -468,7 +453,7 @@ function selectBanner(id: string): void {
   }
 
   /* Section Header */
-  &__cn-archive {
+  &__upcoming {
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
@@ -527,32 +512,7 @@ function selectBanner(id: string): void {
     padding: var(--space-2xl) 0;
   }
 
-  /* Pagination */
-  &__pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-    padding: var(--space-md);
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border-subtle);
-    min-width: 0;
-  }
-
-  &__pagination-summary {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-  }
-
-  &__pagination-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-  }
-
+  /* Pagination removed: all upcoming cards render immediately */
   &__disclaimer {
     margin: 0;
     font-family: var(--font-body);
@@ -730,6 +690,10 @@ function selectBanner(id: string): void {
   &__end-iso {
     font-size: var(--font-size-2xs);
     color: var(--color-text-muted);
+  }
+
+  &__rate-up {
+    margin-top: var(--space-xs);
   }
 
   &--empty {

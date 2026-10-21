@@ -56,6 +56,19 @@ const OUTPUT_FILE = path.join(DATA_DIR, 'banners.json')
  */
 export const PERPETUAL_THRESHOLD_DAYS = 180
 
+/** China Standard Time is UTC+8 all year round (no daylight saving). */
+const CN_UTC_OFFSET_MS = 8 * 60 * 60 * 1000
+
+/**
+ * Formats a Unix timestamp as the CN-local (UTC+8) calendar date used in game.
+ * Gacha timestamps are stored in UTC, so CN pools opening or closing around
+ * midnight UTC would otherwise be reported one day earlier than in game.
+ */
+export function formatCnLocalDate(unixSeconds: number): string {
+  const localDate = new Date(unixSeconds * 1000 + CN_UTC_OFFSET_MS).toISOString().slice(0, 10)
+  return localDate.replace(/-/g, '/')
+}
+
 export function isStarterPool(pool: RawGachaPool): boolean {
   const idLower = pool.gachaPoolId.toLowerCase()
   return idLower.startsWith('boot_') || idLower.includes('newbee')
@@ -525,8 +538,8 @@ export function buildBannersFromTables(
       lmtgsid: p.LMTGSID ?? null,
       pairedBannerId: pairedId,
       isNextEnBanner: isNext,
-      cnStartDate: openIso.split('T')[0]!.replace(/-/g, '/'),
-      cnEndDate: endIso.split('T')[0]!.replace(/-/g, '/'),
+      cnStartDate: formatCnLocalDate(p.openTime),
+      cnEndDate: formatCnLocalDate(p.endTime),
       globalStartDate,
       globalEndDate,
       hasArt,

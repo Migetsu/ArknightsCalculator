@@ -12,6 +12,13 @@ import {
   isProvenNotOnGlobal,
   getBannerLifecycleStatus,
   getBannerArtCandidates,
+  parseBannerDate,
+  getUpcomingCutoff,
+  getUpcomingBanners,
+  getGlobalLagPairs,
+  getGlobalLagDays,
+  getEstimatedGlobalDate,
+  UPCOMING_LAG_SAMPLE_SIZE,
 } from '../../../shared/utils/gacha'
 import type { GachaBanner } from '../../../shared/schemas/banner'
 import type { I18nString } from '../../../shared/schemas/operator'
@@ -506,6 +513,169 @@ describe('Gacha Utility Engine', () => {
       expect(getBannerArtCandidates('   ')).toEqual([])
       // @ts-expect-error test invalid input
       expect(getBannerArtCandidates(null)).toEqual([])
+    })
+  })
+
+  describe('upcoming CN window and Global estimate', () => {
+    function banner(overrides: Partial<GachaBanner> & { id: string }): GachaBanner {
+      return {
+        id: overrides.id,
+        server: 'cn',
+        ruleType: 'NORMAL',
+        type: 'standard',
+        title: mockI18n(overrides.id),
+        openTime: 0,
+        endTime: 0,
+        openIso: '',
+        endIso: '',
+        isActive: false,
+        cnStartDate: '',
+        cnEndDate: '',
+        hasArt: false,
+        rateUp6: [],
+        rateUp5: [],
+        secondaryRateUp6: [],
+        ...overrides,
+      }
+    }
+
+    function isoDate(openTime: number, lagDays: number): string {
+      return new Date(openTime * 1000 + lagDays * 86_400_000).toISOString().slice(0, 10)
+    }
+
+    describe('parseBannerDate', () => {
+      it('parses date-only and date-time values as UTC', () => {
+        expect(parseBannerDate('2026/10/14')).toBe(Date.UTC(2026, 9, 14))
+        expect(parseBannerDate('2026-10-14')).toBe(Date.UTC(2026, 9, 14))
+        expect(parseBannerDate('2026/10/14 08:00:00')).toBe(Date.UTC(2026, 9, 14, 8, 0, 0))
+        expect(parseBannerDate('2026/10/14 08:00')).toBe(Date.UTC(2026, 9, 14, 8, 0, 0))
+      })
+
+      it('returns null for empty, malformed and impossible dates', () => {
+        expect(parseBannerDate(undefined)).toBeNull()
+        expect(parseBannerDate('')).toBeNull()
+        expect(parseBannerDate('not-a-date')).toBeNull()
+        expect(parseBannerDate('2026/02/30')).toBeNull()
+        expect(parseBannerDate('2026/13/01')).toBeNull()
+      })
+    })
+
+    describe('getUpcomingCutoff', () => {
+      it('uses the latest CN start that already has a real Global date', () => {
+        const banners = [
+          banner({ id: 'old', openTime: 100, globalStartDate: '2026/01/01' }),
+          banner({ id: 'cutoff', openTime: 500, globalStartDate: '2026/05/01 08:00:00' }),
+          banner({ id: 'pending', openTime: 900 }),
+          banner({ id: 'invalid', openTime: 1200, globalStartDate: 'nope' }),
+          banner({ id: 'en', server: 'en', openTime: 9999, globalStartDate: '2027/01/01' }),
+        ]
+        expect(getUpcomingCutoff(banners)).toBe(500)
+      })
+
+      it('returns null when no CN banner has a valid Global date', () => {
+        expect(getUpcomingCutoff([banner({ id: 'a', openTime: 100 })])).toBeNull()
+        expect(getUpcomingCutoff([])).toBeNull()
+      })
+    })
+
+    describe('getUpcomingBanners', () => {
+      const banners = [
+        banner({ id: 'cutoff', openTime: 500, globalStartDate: '2026/05/01' }),
+        banner({ id: 'too-old', openTime: 100, rateUp6: ['char_a'] }),
+        banner({ id: 'no-roster', openTime: 600 }),
+        banner({ id: 'standard', openTime: 700, rateUp6: ['char_a'] }),
+        banner({ id: 'limited', openTime: 800, type: 'limited', rateUp5: ['char_b'] }),
+        banner({
+          id: 'already-global',
+          openTime: 400,
+          globalStartDate: '2026/09/01',
+          rateUp6: ['char_c'],
+        }),
+        banner({
+          id: 'invalid-global',
+          openTime: 950,
+          globalStartDate: 'nope',
+          rateUp6: ['char_d'],
+        }),
+      ]
+
+      it('keeps only unreleased CN banners with a rate-up roster, oldest first', () => {
+        expect(getUpcomingBanners(banners).map((item) => item.id)).toEqual([
+          'standard',
+          'limited',
+          'invalid-global',
+        ])
+      })
+
+      it('returns an empty list without a confirmed cutoff', () => {
+        expect(
+          getUpcomingBanners([banner({ id: 'a', openTime: 100, rateUp6: ['char_a'] })]),
+        ).toEqual([])
+      })
+    })
+
+    describe('getGlobalLagPairs and getGlobalLagDays', () => {
+      const pairs = Array.from({ length: 13 }, (_, index) => {
+        const openTime = (index + 1) * 86_400
+        const lagDays = index + 1
+        return banner({
+          id: `pair-${index + 1}`,
+          openTime,
+          globalStartDate: isoDate(openTime, lagDays),
+        })
+      })
+
+      it('sorts confirmed pairs by CN start and samples the latest 12', () => {
+        const sampled = getGlobalLagPairs([...pairs].reverse())
+        expect(sampled).toHaveLength(UPCOMING_LAG_SAMPLE_SIZE)
+        expect(sampled[0]?.id).toBe('pair-2')
+        expect(sampled.at(-1)?.id).toBe('pair-13')
+        expect(sampled.map((pair) => pair.lagDays)).toEqual([
+          2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+        ])
+      })
+
+      it('returns the median lag of the sampled pairs', () => {
+        expect(getGlobalLagDays(pairs)).toBeCloseTo(7.5)
+        expect(getGlobalLagDays(pairs, 3)).toBe(12)
+      })
+
+      it('ignores invalid Global dates and returns null without pairs', () => {
+        const invalid = banner({ id: 'bad', openTime: 100, globalStartDate: '2026/02/30' })
+        expect(getGlobalLagPairs([invalid])).toEqual([])
+        expect(getGlobalLagDays([invalid])).toBeNull()
+        expect(getGlobalLagDays([])).toBeNull()
+      })
+    })
+
+    describe('getEstimatedGlobalDate', () => {
+      const openTime = Date.UTC(2026, 4, 15) / 1000
+
+      it('adds the rounded lag to the CN start date', () => {
+        expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), 163)).toBe('2026-10-25')
+        expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), 163.5)).toBe('2026-10-26')
+      })
+
+      it('prefers the explicit CN-local start date over the UTC open timestamp', () => {
+        // openTime is 2026-05-14T23:00Z, i.e. 2026-05-15 07:00 in CN (UTC+8)
+        const cnLateBanner = banner({
+          id: 'b',
+          openTime: Date.UTC(2026, 4, 14, 23, 0) / 1000,
+          cnStartDate: '2026/05/15',
+        })
+        expect(getEstimatedGlobalDate(cnLateBanner, 163)).toBe('2026-10-25')
+      })
+
+      it('falls back to the UTC+8 date derived from openTime', () => {
+        const cnLateBanner = banner({ id: 'b', openTime: Date.UTC(2026, 4, 14, 23, 0) / 1000 })
+        expect(getEstimatedGlobalDate(cnLateBanner, 163)).toBe('2026-10-25')
+      })
+
+      it('returns null without a usable lag or start time', () => {
+        expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), null)).toBeNull()
+        expect(getEstimatedGlobalDate(banner({ id: 'b', openTime }), Number.NaN)).toBeNull()
+        expect(getEstimatedGlobalDate(banner({ id: 'b', openTime: 0 }), 163)).toBeNull()
+      })
     })
   })
 })

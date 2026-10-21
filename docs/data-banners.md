@@ -60,7 +60,8 @@ Each banner object contains:
   - Original Chinese name (`zh`) is strictly preserved across all banners for verification and search.
 - `openTime` / `endTime`: Exact Unix timestamps in seconds.
 - `openIso` / `endIso`: Standard ISO 8601 strings (e.g. `2026-10-14T10:00:00.000Z`).
-- `globalStartDate` / `globalEndDate`: Real Global server release dates in `YYYY/MM/DD` format (sourced from wiki archives; absent for unreleased CN banners).
+- `cnStartDate` / `cnEndDate`: CN-local banner dates in `YYYY/MM/DD`, computed from `openTime` / `endTime` as **UTC+8 (Asia/Shanghai)** by `formatCnLocalDate` in `scripts/data/build-banners.ts`. The CN client stores timestamps in UTC, but banners open and close at the CN daily reset (04:00 / 16:00 CST), so the UTC calendar date is often one day behind the in-game date (e.g. `2026-05-28T19:59:59Z` is `2026/05/29` in CN). These fields are the source of truth for CN date display.
+- `globalStartDate` / `globalEndDate`: Real Global server release dates in `YYYY/MM/DD` or `YYYY/MM/DD HH:mm:ss` format, parsed as UTC (sourced from wiki archives; absent for unreleased CN banners).
 - `durationDays`: Duration of the banner in fractional days.
 - `isActive`: Boolean flag indicating if banner is active at generation time.
 - `lmtgsid`: Limited headhunting coin/currency identifier (e.g. `LMTGS_COIN_7301`), or `null`.
@@ -186,38 +187,50 @@ The banners dataset is validated in `scripts/data/validate-data.ts` (Step 9):
 
 ---
 
-## 7. Display Order, Incremental Rendering & UI Presentation (`app/pages/gacha.vue`)
+## 7. Display, Upcoming Window & EST Forecast (`app/pages/gacha.vue`)
 
 ### 7.1 Display Hierarchy
 
-1. **Top Highlight (Current Global Banner)**: Rendered at the top of `/gacha` as a prominent hero section using `meta.currentEnBanner` (`LIMITED_EN_42_0_1`, "Sealed With Time"). Shows human-readable formatted end dates (`Oct 28, 2026`), countdown, featured rate-up operators, and links directly to the gacha probability calculator.
-2. **CN Archive (Full Timeline)**: Below the current banner, renders the full CN timeline of 453 banners sorted strictly chronologically ascending by start date (`openTime`, earliest at top, latest at bottom).
-3. **Active CN Banners**: Any CN banners active at current time (`DOUBLE_77_0_5`, `SINGLE_78_0_1`, `CLASSIC_DOUBLE_78_0_1`) are contained within the timeline and highlighted with an `ACTIVE NOW` tactical badge.
+1. **Top Highlight (Current Global Banner)**: Rendered at the top of `/gacha` using `meta.currentEnBanner` (`LIMITED_EN_42_0_1`, "Sealed With Time"). Shows the end date (`Oct 28, 2026`) and the full rate-up roster taken from the matching entry in `banners` (2×6★, 3 secondary 6★, 1×5★), because the meta summary carries no composition. Selecting the hero binds it to the calculator.
+2. **Upcoming on Global (CN window)**: Below the hero, renders the 11 CN banners that have not reached Global yet, oldest first. Each card shows CN dates and an `EST` Global estimate.
+3. **Active CN Banner**: The dataset marks the currently running CN pool with `isActive` (`SINGLE_78_0_1`); the card renders `ACTIVE NOW` from that flag instead of the wall clock.
 
-### 7.2 Proven "Not on Global yet" Badge Scope
+The full 453-banner archive and the "Show More / Show All" pagination were removed in Task 23; there is no separate archive page.
 
-- Strictly evaluated by `isProvenNotOnGlobal(banner)`.
-- **Condition**: Returns `true` if and only if `server === 'cn' && ruleType === 'LIMITED' && !pairedBannerId`.
-- **Match Count**: Exactly **1** out of 453 CN banners qualifies: `LIMITED_76_0_1` ("车辙与风的归所", `LMTGS_COIN_7601`).
-- Standard / Rotation banners without a pair never receive this badge, preventing false claims (AGENTS.md §0).
+### 7.2 Upcoming Window Rules
 
-### 7.3 Rate-Up Operator Display (`GachaBannerCard.vue`)
+- **Cutoff**: the latest CN `openTime` among banners with a valid `globalStartDate` — currently `LIMITED_73_0_1` (CN start 2026-05-01, `openTime` 1777590000).
+- **Filter**: `server === 'cn'`, `openTime > cutoff`, no real `globalStartDate`, and `rateUp6.length > 0 || rateUp5.length > 0`.
+- **Order**: ascending `openTime`, oldest (closest to Global) first.
+- **Current result**: 11 banners, 2026-05-15 … 2026-10-09 (CN-local dates, UTC+8), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
+- **CN date display**: cards on the CN server render `cnStartDate` / `cnEndDate`; `openIso` / `endIso` are UTC and are used only for EN banners. Before the review fix, the card preferred `openIso` / `endIso`, so every CN card was one day early whenever the UTC date differed from the CN date.
+- The window is derived only from the dataset; `Date.now()` is not used, so the list and the tests stay stable as the clock moves.
 
-- `GachaBannerCard.vue` visualizes featured operators with avatars, names, and tactical badges:
-  - **Primary 6★**: Labeled "FEATURED 6★" with high-contrast accent.
-  - **Secondary 6★ (Reruns/Spark)**: Labeled "RERUN / SPARK 6★" with muted styling.
-  - **Standard 6★ / 5★**: Grouped into dedicated tactical chip rows.
-- If a banner has no rate-up operators (e.g. legacy generic rotations), the operator section is cleanly omitted (`.gacha-banner--no-rateup`).
+Implementation: `getUpcomingCutoff` and `getUpcomingBanners` in `shared/utils/gacha/index.ts`.
 
-### 7.4 Performance & Incremental Rendering
+### 7.3 EST Global Forecast
 
-- Mounting 453 complex banner cards with avatars simultaneously causes severe initial render lag.
-- Implemented client-side chunking: `PAGE_SIZE = 20`, `visibleCount = ref(20)`.
-- Initial mount renders only the first 20 cards.
-- Users can progressively load more via "Show More (+20)" or "Show All (453)".
-- Changing filters resets `visibleCount` back to 20.
+- **Lag**: median CN→Global lag over the latest 12 confirmed pairs, sorted by CN start. Currently **163.375 days** (rounded to 163). The latest pair `LIMITED_73_0_1` is 166.375 days; the full-history median is 181.83, which is why the recent window is used.
+- **Estimate**: CN-local start date (`cnStartDate`; fallback is the UTC+8 date derived from `openTime`) + `round(lag)` days, returned as `YYYY-MM-DD`.
+- **Priority**: a real `globalStartDate` always wins; the estimate renders only when no real date exists.
+- **Examples**: `SPECIAL_73_0_3` (CN 2026-05-15) → 2026-10-25; `LINKAGE_74_0_1` (CN 2026-06-01) → 2026-11-11; `LIMITED_76_0_1` (CN 2026-08-01) → 2027-01-11; `SINGLE_78_0_1` (CN 2026-10-09) → 2027-03-21.
+- **Presentation**: `≈ <date>` plus an `EST` badge and a page disclaimer. This is an approved §14 exception (owner decision 2026-10-20) recorded in `docs/known-issues.md`; it is not the removed constant 175-day heuristic.
 
-### 7.5 Mobile Responsiveness (360px)
+Parsing accepts `YYYY/MM/DD` and `YYYY/MM/DD HH:mm:ss` and always builds UTC dates, so the result does not depend on the host time zone.
+
+### 7.4 Badge Scope
+
+- **NOT ON GLOBAL YET**: strictly `isProvenNotOnGlobal(banner)` (`cn` + `LIMITED` + no `pairedBannerId`). Exactly **1** upcoming banner qualifies: `LIMITED_76_0_1`.
+- **NEXT ON GLOBAL**: only the first banner of the unfiltered upcoming window (`SPECIAL_73_0_3`).
+- Standard/rotation banners never receive the "not on global" badge, preventing false claims (AGENTS.md §0).
+
+### 7.5 Rate-Up Operator Display (`GachaRateUpOps.vue`)
+
+- Rate-up rendering is shared by `GachaBannerCard.vue` and the Global hero.
+- Groups: primary 6★, other 6★, secondary/sparkable 6★, 5★; each links to the operator page.
+- If a banner has no rate-up operators (e.g. legacy generic rotations), the section is omitted (`.gacha-banner--no-rateup`).
+
+### 7.6 Mobile Responsiveness (360px)
 
 - Cards use flexible box layout with `min-width: 0` and word-break wrapping.
 - Zero horizontal overflow across all viewports from 360px to 1920px.

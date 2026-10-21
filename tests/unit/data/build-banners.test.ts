@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   buildBannersFromTables,
+  formatCnLocalDate,
   isPerpetualPool,
   isStarterPool,
   mapRuleToBannerType,
@@ -122,6 +123,15 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(mapRuleToBannerType('NORMAL', '第12次联合行动')).toBe('joint_operation')
       expect(mapRuleToBannerType('NORMAL', 'Standard Pool 123')).toBe('standard')
       expect(mapRuleToBannerType('SINGLE', 'Solo Rate-Up')).toBe('standard')
+    })
+  })
+
+  describe('formatCnLocalDate', () => {
+    it('formats UTC timestamps as CN-local (UTC+8) calendar dates', () => {
+      expect(formatCnLocalDate(1778832000)).toBe('2026/05/15') // 2026-05-15T08:00Z
+      expect(formatCnLocalDate(1779998399)).toBe('2026/05/29') // 2026-05-28T19:59:59Z
+      expect(formatCnLocalDate(1780268400)).toBe('2026/06/01') // 2026-05-31T23:00Z
+      expect(formatCnLocalDate(1792699199)).toBe('2026/10/23') // 2026-10-22T19:59:59Z
     })
   })
 

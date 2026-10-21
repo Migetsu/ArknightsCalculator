@@ -5,23 +5,28 @@ import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import {
   formatBannerDateRange,
+  formatHumanDate,
   getBannerLifecycleStatus,
   isProvenNotOnGlobal,
 } from '~/../shared/utils/gacha'
 import { resolveAsset } from '~/../shared/utils/resolveAsset'
-import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkTranslationBadge from '~/components/ui/AkTranslationBadge.vue'
+import GachaRateUpOps from '~/components/gacha/GachaRateUpOps.vue'
 
 interface Props {
   banner: GachaBanner
   dateMode?: 'cn' | 'global'
   operatorsMap: Map<string, OperatorSummary>
   isSelected?: boolean
+  globalEstimate?: string | null
+  isNext?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   dateMode: 'global',
   isSelected: false,
+  globalEstimate: null,
+  isNext: false,
 })
 
 const emit = defineEmits<{
@@ -29,7 +34,6 @@ const emit = defineEmits<{
 }>()
 
 const { t, locale } = useI18n()
-const localePath = useLocalePath()
 
 const imageError = ref(false)
 
@@ -57,10 +61,19 @@ const bannerTitle = computed(() => {
   )
 })
 
-const lifecycleStatus = computed(() => getBannerLifecycleStatus(props.banner))
+const lifecycleStatus = computed<'active' | 'upcoming' | 'ended'>(() => {
+  // The dataset marks the currently running CN pool at generation time, which keeps
+  // the badge data-driven instead of depending on the wall clock.
+  if (props.banner.isActive) return 'active'
+  return getBannerLifecycleStatus(props.banner)
+})
 const notOnGlobal = computed(() => isProvenNotOnGlobal(props.banner))
 
 const formattedDates = computed(() => {
+  // CN server dates are CN-local (UTC+8); openIso/endIso are UTC and can lag by a day.
+  if (isCnServer.value && props.banner.cnStartDate && props.banner.cnEndDate) {
+    return formatBannerDateRange(props.banner.cnStartDate, props.banner.cnEndDate)
+  }
   if (props.banner.openIso && props.banner.endIso) {
     return formatBannerDateRange(props.banner.openIso, props.banner.endIso)
   }
@@ -80,68 +93,16 @@ const formattedGlobalDates = computed(() => {
   return ''
 })
 
-function getOperatorName(id: string): string {
-  const op = props.operatorsMap.get(id)
-  if (!op) return id
-  return resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en || id
-}
-
-interface BannerOp {
-  id: string
-  name: string
-  rarity: 1 | 2 | 3 | 4 | 5 | 6
-}
-
-const primaryRateUp6Op = computed<BannerOp | null>(() => {
-  const id = props.banner.primaryRateUp6
-  if (!id) return null
-  return {
-    id,
-    name: getOperatorName(id),
-    rarity: 6,
-  }
-})
-
-const otherRateUp6Ops = computed<BannerOp[]>(() => {
-  const primaryId = props.banner.primaryRateUp6
-  return props.banner.rateUp6
-    .filter((id) => id !== primaryId)
-    .map((id) => ({
-      id,
-      name: getOperatorName(id),
-      rarity: 6,
-    }))
-})
-
-const rateUp6Ops = computed<BannerOp[]>(() => {
-  return props.banner.rateUp6.map((id) => ({
-    id,
-    name: getOperatorName(id),
-    rarity: 6,
-  }))
-})
-
-const secondaryRateUp6Ops = computed<BannerOp[]>(() => {
-  return (props.banner.secondaryRateUp6 ?? []).map((id) => ({
-    id,
-    name: getOperatorName(id),
-    rarity: 6,
-  }))
-})
-
-const rateUp5Ops = computed<BannerOp[]>(() => {
-  return props.banner.rateUp5.map((id) => ({
-    id,
-    name: getOperatorName(id),
-    rarity: 5,
-  }))
+const formattedGlobalEstimate = computed(() => {
+  if (!props.globalEstimate) return ''
+  return formatHumanDate(props.globalEstimate)
 })
 
 const hasRateUp = computed(
   () =>
-    rateUp6Ops.value.length > 0 ||
-    secondaryRateUp6Ops.value.length > 0 ||
-    rateUp5Ops.value.length > 0,
+    props.banner.rateUp6.length > 0 ||
+    (props.banner.secondaryRateUp6 ?? []).length > 0 ||
+    props.banner.rateUp5.length > 0,
 )
 const hasContent = computed(() => Boolean(props.banner.description) || hasRateUp.value)
 const isLimited = computed(() => props.banner.type === 'limited')
@@ -215,8 +176,24 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
           <span class="gacha-banner__date-label">{{ t('gacha.banner.globalDate') }}:</span>
           <b class="gacha-banner__date-val">{{ formattedGlobalDates }}</b>
         </div>
+        <div
+          v-else-if="dateMode === 'global' && isCnServer && formattedGlobalEstimate"
+          class="gacha-banner__date-row"
+        >
+          <span class="gacha-banner__date-label"> {{ t('gacha.banner.globalEstimate') }}: </span>
+          <b class="gacha-banner__date-val">≈ {{ formattedGlobalEstimate }}</b>
+          <span class="gacha-banner__est-badge">{{ t('gacha.banner.est') }}</span>
+        </div>
 
         <div class="gacha-banner__countdown-wrap">
+          <!-- Next banner expected on Global (first item of the upcoming window) -->
+          <span
+            v-if="isNext"
+            class="gacha-banner__countdown-badge gacha-banner__countdown-badge--next"
+          >
+            {{ t('gacha.banner.nextOnGlobal') }}
+          </span>
+
           <!-- Proven Not on Global yet badge (ONLY for proven LIMITED CN pool without EN pair) -->
           <span
             v-if="notOnGlobal"
@@ -251,105 +228,7 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
         {{ banner.description }}
       </p>
 
-      <!-- Primary 6★ Rate-up (when distinct) & Other 6★ Rate-up -->
-      <template v-if="primaryRateUp6Op && otherRateUp6Ops.length > 0">
-        <!-- Main / Primary 6★ -->
-        <div class="gacha-banner__ops-section">
-          <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
-            {{ isLimited ? t('gacha.banner.rateUp') : t('gacha.banner.primaryRateUp') }}
-          </h3>
-          <div class="gacha-banner__ops-grid">
-            <NuxtLink
-              :to="localePath(`/operators/${primaryRateUp6Op.id}`)"
-              class="gacha-banner__op-link"
-              :title="primaryRateUp6Op.name"
-            >
-              <AkAvatar
-                :id="primaryRateUp6Op.id"
-                :name="primaryRateUp6Op.name"
-                :rarity="primaryRateUp6Op.rarity"
-                :size="56"
-              />
-            </NuxtLink>
-          </div>
-        </div>
-
-        <!-- Other 6★ Rate-up -->
-        <div class="gacha-banner__ops-section">
-          <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
-            {{ t('gacha.banner.otherSixStar') }}
-          </h3>
-          <div class="gacha-banner__ops-grid">
-            <NuxtLink
-              v-for="op in otherRateUp6Ops"
-              :key="op.id"
-              :to="localePath(`/operators/${op.id}`)"
-              class="gacha-banner__op-link"
-              :title="op.name"
-            >
-              <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
-            </NuxtLink>
-          </div>
-        </div>
-      </template>
-
-      <!-- Standard 6★ Rate-up (when single 6★ or no distinct primary) -->
-      <div v-else-if="rateUp6Ops.length > 0" class="gacha-banner__ops-section">
-        <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--six">
-          {{
-            isLimited && rateUp6Ops.length === 1
-              ? t('gacha.banner.rateUp')
-              : t('gacha.banner.sixStar')
-          }}
-        </h3>
-        <div class="gacha-banner__ops-grid">
-          <NuxtLink
-            v-for="op in rateUp6Ops"
-            :key="op.id"
-            :to="localePath(`/operators/${op.id}`)"
-            class="gacha-banner__op-link"
-            :title="op.name"
-          >
-            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
-          </NuxtLink>
-        </div>
-      </div>
-
-      <!-- Secondary 6★ Rate-up (sparkable / past limited reruns) -->
-      <div v-if="secondaryRateUp6Ops.length > 0" class="gacha-banner__ops-section">
-        <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--secondary">
-          {{ t('gacha.banner.secondaryRateUp') }}
-        </h3>
-        <div class="gacha-banner__ops-grid">
-          <NuxtLink
-            v-for="op in secondaryRateUp6Ops"
-            :key="op.id"
-            :to="localePath(`/operators/${op.id}`)"
-            class="gacha-banner__op-link"
-            :title="op.name"
-          >
-            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="48" />
-          </NuxtLink>
-        </div>
-      </div>
-
-      <!-- 5★ Rate-up -->
-      <div v-if="rateUp5Ops.length > 0" class="gacha-banner__ops-section">
-        <h3 class="gacha-banner__ops-heading gacha-banner__ops-heading--five">
-          {{ t('gacha.banner.fiveStar') }}
-        </h3>
-        <div class="gacha-banner__ops-grid">
-          <NuxtLink
-            v-for="op in rateUp5Ops"
-            :key="op.id"
-            :to="localePath(`/operators/${op.id}`)"
-            class="gacha-banner__op-link"
-            :title="op.name"
-          >
-            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
-          </NuxtLink>
-        </div>
-      </div>
+      <GachaRateUpOps v-if="hasRateUp" :banner="banner" :operators-map="operatorsMap" />
     </div>
   </div>
 </template>
@@ -523,6 +402,18 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     font-family: var(--font-mono);
   }
 
+  &__est-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs, 10px);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    color: var(--color-accent-amber);
+    border: 1px solid var(--color-accent-amber);
+    background-color: rgb(255 157 43 / 10%);
+  }
+
   &__countdown-wrap {
     margin-top: 6px;
     display: flex;
@@ -562,6 +453,13 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
       background-color: rgb(255 106 61 / 10%);
       font-weight: var(--font-weight-bold);
     }
+
+    &--next {
+      border: 1px solid var(--color-accent-amber, #ff9d2b);
+      color: var(--color-bg-deep, #120d0b);
+      background-color: var(--color-accent-amber, #ff9d2b);
+      font-weight: var(--font-weight-bold);
+    }
   }
 
   &__content {
@@ -577,53 +475,6 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     font-size: var(--font-size-sm, 14px);
     line-height: 1.55;
     color: var(--color-text-secondary);
-  }
-
-  &__ops-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  &__ops-heading {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: var(--font-size-2xs, 11px);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-
-    &--six {
-      color: var(--color-accent-amber, #ffd9a8);
-    }
-
-    &--secondary {
-      color: var(--color-accent-primary, #ff6a3d);
-    }
-
-    &--five {
-      color: var(--color-rarity-5, #ffd54f);
-    }
-  }
-
-  &__ops-grid {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  &__op-link {
-    display: inline-flex;
-    text-decoration: none;
-    transition: transform var(--transition-fast);
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-
-    &:focus-visible {
-      @include focus-ring;
-    }
   }
 }
 </style>
