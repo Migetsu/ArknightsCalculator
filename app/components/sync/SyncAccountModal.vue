@@ -561,8 +561,10 @@ function handleLoadDemo(): void {
     margin-bottom: 22px;
 
     @media (width <= 480px) {
-      // Four nowrap labels overflow a 360px modal panel at 12px; 6px keeps them inside.
-      gap: 6px;
+      // Four nowrap labels do not fit a 360px panel; wrapping keeps the row inside
+      // the panel whatever font metrics the deployment ends up using.
+      flex-wrap: wrap;
+      gap: 6px 10px;
       margin-bottom: 12px;
     }
   }
