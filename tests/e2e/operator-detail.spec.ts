@@ -32,6 +32,23 @@ test.describe('Operator Detail (/operators/[id])', () => {
     await expect(page).toHaveURL(/tab=talents/)
   })
 
+  test('renders operator skins from the per-operator data endpoint', async ({ page }) => {
+    await page.goto('/operators/char_172_svrash?tab=skins')
+    await expect(page.locator('.ak-operator-skins-panel')).toBeVisible()
+    await expect(page.locator('.ak-operator-skins-panel__card')).toHaveCount(5)
+
+    // The full 1.6 MB skins dataset stays server-side; the API returns one operator.
+    const response = await page.request.get('/api/skins/char_172_svrash')
+    expect(response.status()).toBe(200)
+    const skins = (await response.json()) as Array<{ charId: string }>
+    expect(skins).toHaveLength(5)
+    expect(skins.every((skin) => skin.charId === 'char_172_svrash')).toBe(true)
+
+    const unknown = await page.request.get('/api/skins/char_999_unknown')
+    expect(unknown.status()).toBe(200)
+    expect(await unknown.json()).toEqual([])
+  })
+
   test('renders 1* operator without Elite 2 (Lancet-2)', async ({ page }) => {
     await page.goto('/operators/char_285_medic2')
     await expect(page.locator('h1')).toContainText('Lancet-2')

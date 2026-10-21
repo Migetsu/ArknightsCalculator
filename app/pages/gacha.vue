@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import rawBannersData from '~/../data/banners.json'
-import rawOperatorsIndex from '~/../data/operators-index.json'
-import type { BannersDataset, GachaBanner, BannerType } from '~/../shared/schemas/banner'
+import type { GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
-import {
-  getEstimatedGlobalDate,
-  getGlobalLagDays,
-  getUpcomingBanners,
-} from '~/../shared/utils/gacha'
+import rawOperatorsIndex from '~/../data/operators-index.json'
+import { getEstimatedGlobalDate } from '~/../shared/utils/gacha'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
 import AkContainer from '~/components/ui/AkContainer.vue'
@@ -41,27 +36,13 @@ onMounted(async () => {
   }
 })
 
-// Dataset parsing
-const bannersDataset = rawBannersData as unknown as BannersDataset
-const currentEnBanner = computed(() => bannersDataset.meta?.currentEnBanner ?? null)
+// The full banners dataset stays server-side; the API returns the current
+// Global banner and the upcoming CN window this page renders.
+const { data: gachaData, status, refresh } = await useGachaPageData()
 
-// Full CN timeline (data-driven)
-const cnBanners: readonly GachaBanner[] = Array.isArray(bannersDataset.cnBanners)
-  ? bannersDataset.cnBanners
-  : []
-
-// All combined banners for calculator lookup
-const allBanners = computed<readonly GachaBanner[]>(() => {
-  if (Array.isArray(bannersDataset.banners)) return bannersDataset.banners
-  if (Array.isArray(rawBannersData)) return rawBannersData as unknown as GachaBanner[]
-  return cnBanners
-})
-
-// Full EN banner with the rate-up roster (meta.currentEnBanner carries no composition)
-const currentEnFullBanner = computed<GachaBanner | null>(() => {
-  if (!currentEnBanner.value) return null
-  return allBanners.value.find((banner) => banner.id === currentEnBanner.value?.id) ?? null
-})
+const currentEnFullBanner = computed<GachaBanner | null>(() => gachaData.value.currentEnFullBanner)
+const upcomingBanners = computed<readonly GachaBanner[]>(() => gachaData.value.upcomingBanners)
+const globalLagDays = computed<number | null>(() => gachaData.value.globalLagDays)
 
 const operatorsMap = computed(() => {
   const map = new Map<string, OperatorSummary>()
@@ -73,7 +54,11 @@ const operatorsMap = computed(() => {
 
 // Page State & Date Mode
 type PageState = 'ready' | 'loading' | 'error'
-const pageState = ref<PageState>('ready')
+const pageState = computed<PageState>(() => {
+  if (status.value === 'pending') return 'loading'
+  if (status.value === 'error') return 'error'
+  return 'ready'
+})
 
 type DateMode = 'cn' | 'global'
 const dateMode = ref<DateMode>('global')
@@ -98,12 +83,9 @@ const isCalculatorVisible = ref(true)
 
 // Upcoming CN banners: released on CN, not yet on Global, with a known rate-up roster.
 // The window and the Global lag are derived from the dataset only, never from the clock.
-const upcomingBanners = computed<GachaBanner[]>(() => getUpcomingBanners(cnBanners))
-const globalLagDays = computed<number | null>(() => getGlobalLagDays(cnBanners))
-
 const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
   if (selectedFilter.value === 'all') {
-    return upcomingBanners.value
+    return [...upcomingBanners.value]
   }
   return upcomingBanners.value.filter((banner) => banner.type === selectedFilter.value)
 })
@@ -117,13 +99,13 @@ const activeBannerId = ref<string | null>(null)
 
 // Initialize active banner with current EN banner if available, otherwise first banner
 watch(
-  allBanners,
-  (list) => {
-    if (!activeBannerId.value && list.length > 0) {
-      if (currentEnBanner.value) {
-        activeBannerId.value = currentEnBanner.value.id
+  [currentEnFullBanner, upcomingBanners],
+  () => {
+    if (!activeBannerId.value) {
+      if (currentEnFullBanner.value) {
+        activeBannerId.value = currentEnFullBanner.value.id
       } else {
-        activeBannerId.value = list[0]?.id ?? null
+        activeBannerId.value = upcomingBanners.value[0]?.id ?? null
       }
     }
   },
@@ -132,14 +114,11 @@ watch(
 
 const activeBanner = computed<GachaBanner | null>(() => {
   if (activeBannerId.value) {
-    const found = allBanners.value.find((b) => b.id === activeBannerId.value)
+    const found = upcomingBanners.value.find((b) => b.id === activeBannerId.value)
     if (found) return found
+    if (currentEnFullBanner.value?.id === activeBannerId.value) return currentEnFullBanner.value
   }
-  if (currentEnBanner.value) {
-    const enFound = allBanners.value.find((b) => b.id === currentEnBanner.value?.id)
-    if (enFound) return enFound
-  }
-  return filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? null
+  return filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? currentEnFullBanner.value
 })
 
 function selectBanner(id: string): void {
@@ -189,7 +168,7 @@ function selectBanner(id: string): void {
         >
           <p>{{ t('modules.error.description') }}</p>
           <template #actions>
-            <AkButton variant="secondary" size="sm" @click="pageState = 'ready'">
+            <AkButton variant="secondary" size="sm" @click="refresh()">
               {{ t('common.retry') }}
             </AkButton>
           </template>
