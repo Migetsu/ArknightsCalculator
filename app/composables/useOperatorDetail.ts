@@ -2,6 +2,7 @@ import type { AsyncData, NuxtError } from '#app'
 import type { OperatorDetail } from '~/../shared/schemas/operator'
 import { isValidOperatorDataId } from '~/../shared/utils/operatorData'
 import type { OperatorDataFetcher } from '~/../shared/utils/operatorData'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 
 /**
  * Loads full OperatorDetail data through the Nitro data endpoint.
@@ -10,7 +11,7 @@ import type { OperatorDataFetcher } from '~/../shared/utils/operatorData'
  */
 export async function fetchOperatorDetail(
   id: string,
-  fetcher: OperatorDataFetcher = (url) => $fetch(url),
+  fetcher: OperatorDataFetcher = fetchJson,
 ): Promise<OperatorDetail | null> {
   if (!id || typeof id !== 'string') return null
   const cleanId = id.trim()
@@ -36,7 +37,7 @@ export function useOperatorDetail(
 
   return useAsyncData<OperatorDetail | null>(
     () => `operator-detail-${toValue(operatorId)}`,
-    () => fetchOperatorDetail(toValue(operatorId), requestFetch),
+    () => fetchOperatorDetail(toValue(operatorId), asJsonFetcher(requestFetch)),
     {
       default: () => null,
       watch: [() => toValue(operatorId)],

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import AkModal from '~/components/ui/AkModal.vue'
 import { useProfile } from '~/composables/useProfile'
+import { useYostarSync } from '~/composables/useYostarSync'
+import { useDepotStore } from '~/stores/depot'
+import { useRosterStore } from '~/stores/roster'
+import type { YostarSyncPayload } from '~~/shared/schemas/yostar'
 
 interface Props {
   modelValue: boolean
@@ -31,12 +35,30 @@ const {
   signOut,
 } = useProfile()
 
+const depotStore = useDepotStore()
+const rosterStore = useRosterStore()
+
+const {
+  enabled: yostarEnabled,
+  sendingCode,
+  syncing: yostarSyncing,
+  codeSent: isCodeSent,
+  error: yostarError,
+  result: yostarResult,
+  session: yostarSession,
+  hasSession: yostarHasSession,
+  sendCode,
+  startSync,
+  syncWithSession,
+  forget: forgetYostarSession,
+  reset: resetYostarState,
+} = useYostarSync()
+
 type SyncTab = 'email' | 'yostar' | 'json' | 'demo'
 const activeTab = ref<SyncTab>('email')
 const selectedRegion = ref('EN')
 const email = ref('')
 const verificationCode = ref('')
-const isCodeSent = ref(false)
 
 // Cloud Auth local form state
 const authMode = ref<'signin' | 'signup'>('signin')
@@ -52,11 +74,73 @@ const tabs: { id: SyncTab; labelKey: string }[] = [
   { id: 'demo', labelKey: 'syncModal.tabs.demo' },
 ]
 
-const regions = ['EN', 'JP', 'KR', 'CN']
+// Only the Global (EN) account realm is verified for this build.
+const regions: { id: string; supported: boolean }[] = [
+  { id: 'EN', supported: true },
+  { id: 'JP', supported: false },
+  { id: 'KR', supported: false },
+  { id: 'CN', supported: false },
+]
+
+const yostarErrorText = computed(() =>
+  yostarError.value ? t(`syncModal.yostar.errors.${yostarError.value}`) : null,
+)
+
+const yostarResultEmpty = computed(() => {
+  const result = yostarResult.value
+  if (!result) return false
+  return result.operators.length === 0 && Object.keys(result.depot.items).length === 0
+})
+
+const yostarSummary = computed(() => {
+  const result = yostarResult.value
+  if (!result) return ''
+  return t('syncModal.yostar.summary', {
+    operators: result.operators.length,
+    items: Object.keys(result.depot.items).length,
+    level: result.doctor.level,
+  })
+})
+
+const yostarSkipped = computed(() => {
+  const result = yostarResult.value
+  if (!result) return ''
+  if (result.unknownOperatorIds.length === 0 && result.unknownItemCount === 0) return ''
+  return t('syncModal.yostar.unknown', {
+    operators: result.unknownOperatorIds.length,
+    items: result.unknownItemCount,
+  })
+})
+
+// Date-only ISO slice keeps SSR and client markup identical.
+const yostarSessionExpiresOn = computed(() => yostarSession.value?.expiresAt.slice(0, 10) ?? '')
+
+const startSyncDisabled = computed(() => {
+  if (activeTab.value === 'email') return !isAuthenticated.value
+  if (activeTab.value !== 'yostar') return false
+  if (!yostarEnabled.value || yostarSyncing.value) return true
+  if (yostarResult.value) return false
+  if (yostarHasSession.value) return false
+  return !email.value || !verificationCode.value
+})
+
+const startSyncLabel = computed(() => {
+  if (activeTab.value === 'yostar') {
+    if (yostarSyncing.value) return t('syncModal.yostar.syncing')
+    if (yostarResult.value) return t('syncModal.yostar.done')
+    if (yostarHasSession.value) return t('syncModal.yostar.syncNow')
+  }
+  return t('syncModal.startSync')
+})
 
 watch(
   () => props.modelValue,
   (isOpen) => {
+    if (isOpen) {
+      // A previous result, error or "code sent" hint must not leak into a fresh
+      // visit; the stored account token is kept.
+      resetYostarState()
+    }
     if (isOpen && isAuthenticated.value) {
       void fetchProfile()
     }
@@ -85,7 +169,11 @@ async function handleAuthSubmit(): Promise<void> {
   } else {
     const res = await signUpWithEmail(authEmail.value, authPassword.value, authDisplayName.value)
     if (res.success) {
-      authSuccessMessage.value = t('syncModal.auth.registrationSuccess')
+      // Supabase e-mail confirmation is disabled on this project, so a successful
+      // sign-up usually ships a session. Only claim "check your inbox" when it did not.
+      authSuccessMessage.value = isAuthenticated.value
+        ? t('syncModal.auth.registrationSignedIn')
+        : t('syncModal.auth.registrationSuccess')
       authPassword.value = ''
     }
   }
@@ -96,14 +184,51 @@ async function handleSignOut(): Promise<void> {
   await signOut()
 }
 
-function handleSendCode(): void {
+async function handleSendCode(): Promise<void> {
   if (!email.value) return
-  isCodeSent.value = true
+  await sendCode(email.value)
 }
 
-function handleStartSync(): void {
-  // UI stub: closes dialog
-  handleClose()
+/**
+ * Applies a successful sync to the local stores. Nothing is written until the
+ * proxy has already returned a sanitized payload, so a failed login never
+ * overwrites existing depot or roster data.
+ */
+async function applyYostarSync(payload: YostarSyncPayload): Promise<void> {
+  await rosterStore.importSync(payload)
+  await depotStore.importSnapshot({
+    items: payload.depot.items,
+    currencies: payload.depot.currencies,
+  })
+}
+
+async function handleStartSync(): Promise<void> {
+  if (activeTab.value !== 'yostar') {
+    handleClose()
+    return
+  }
+
+  if (yostarResult.value) {
+    handleClose()
+    return
+  }
+
+  let success = false
+  if (yostarHasSession.value) {
+    success = await syncWithSession()
+  } else if (email.value && verificationCode.value) {
+    success = await startSync(email.value, verificationCode.value)
+  }
+  if (!success || !yostarResult.value) return
+
+  await applyYostarSync(yostarResult.value)
+  verificationCode.value = ''
+}
+
+/** Drops the token kept on this device and asks for a fresh e-mail code. */
+function handleYostarDisconnect(): void {
+  forgetYostarSession()
+  verificationCode.value = ''
 }
 
 function handleLoadDemo(): void {
@@ -168,6 +293,11 @@ function handleLoadDemo(): void {
           </span>
         </div>
 
+        <!-- Success Alert (outside the v-if/v-else pair: a sign-up can switch the view) -->
+        <div v-if="authSuccessMessage" class="sync-modal__auth-success" role="alert">
+          {{ authSuccessMessage }}
+        </div>
+
         <!-- Authenticated view -->
         <div v-if="isAuthenticated" class="sync-modal__authenticated-view">
           <div class="sync-modal__user-card">
@@ -227,11 +357,6 @@ function handleLoadDemo(): void {
             {{ authError }}
           </div>
 
-          <!-- Success Alert -->
-          <div v-if="authSuccessMessage" class="sync-modal__auth-success" role="alert">
-            {{ authSuccessMessage }}
-          </div>
-
           <label class="sync-modal__field-label">
             {{ t('syncModal.auth.emailLabel') }}
             <input
@@ -288,59 +413,124 @@ function handleLoadDemo(): void {
 
       <!-- Yostar Email Code Tab -->
       <div v-else-if="activeTab === 'yostar'" class="sync-modal__content">
-        <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
-        <div
-          class="sync-modal__regions"
-          role="radiogroup"
-          :aria-label="t('syncModal.region.label')"
-        >
-          <button
-            v-for="reg in regions"
-            :key="reg"
-            type="button"
-            role="radio"
-            :aria-checked="selectedRegion === reg"
-            class="sync-modal__reg-btn"
-            :class="{ 'sync-modal__reg-btn--active': selectedRegion === reg }"
-            @click="selectedRegion = reg"
-          >
-            {{ reg }}
-          </button>
+        <!-- Feature flag off: no inputs, only an explanation -->
+        <div v-if="!yostarEnabled" class="sync-modal__auth-error" role="alert">
+          {{ t('syncModal.yostar.disabledDesc') }}
         </div>
 
-        <div class="sync-modal__email-group">
-          <label class="sync-modal__field-label">
-            {{ t('syncModal.email.label') }}
-            <input
-              v-model="email"
-              type="email"
-              placeholder="you@example.com"
-              class="sync-modal__input"
-            />
-          </label>
-          <button
-            type="button"
-            class="sync-modal__send-btn"
-            :disabled="!email"
-            @click="handleSendCode"
-          >
-            {{ isCodeSent ? t('syncModal.code.sent') : t('syncModal.code.send') }}
-          </button>
+        <!-- Import finished: show what was actually imported -->
+        <div v-else-if="yostarResult" class="sync-modal__auth-success" role="status">
+          <strong class="sync-modal__success-title">{{
+            t('syncModal.yostar.successTitle')
+          }}</strong>
+          <p v-if="yostarResultEmpty" class="sync-modal__success-line">
+            {{ t('syncModal.yostar.empty') }}
+          </p>
+          <p v-else class="sync-modal__success-line">{{ yostarSummary }}</p>
+          <p v-if="yostarSkipped" class="sync-modal__success-muted">{{ yostarSkipped }}</p>
         </div>
 
-        <p class="sync-modal__hint">{{ t('syncModal.email.hint') }}</p>
+        <template v-else>
+          <!-- A token from an earlier sync is on this device: no code needed. -->
+          <template v-if="yostarHasSession">
+            <div class="sync-modal__auth-success" role="status">
+              <strong class="sync-modal__success-title">{{
+                t('syncModal.yostar.sessionTitle')
+              }}</strong>
+              <p class="sync-modal__success-line">{{ t('syncModal.yostar.sessionDesc') }}</p>
+              <p class="sync-modal__success-muted">
+                {{ t('syncModal.yostar.sessionExpires', { date: yostarSessionExpiresOn }) }}
+              </p>
+            </div>
+            <button
+              type="button"
+              class="sync-modal__btn-outline sync-modal__disconnect-btn"
+              :disabled="yostarSyncing"
+              @click="handleYostarDisconnect"
+            >
+              {{ t('syncModal.yostar.disconnect') }}
+            </button>
+          </template>
 
-        <label class="sync-modal__field-label">
-          {{ t('syncModal.code.label') }}
-          <input
-            v-model="verificationCode"
-            type="text"
-            inputmode="numeric"
-            maxlength="6"
-            placeholder="000000"
-            class="sync-modal__input sync-modal__input--code"
-          />
-        </label>
+          <template v-else>
+            <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
+            <div
+              class="sync-modal__regions"
+              role="radiogroup"
+              :aria-label="t('syncModal.region.label')"
+            >
+              <button
+                v-for="reg in regions"
+                :key="reg.id"
+                type="button"
+                role="radio"
+                :aria-checked="selectedRegion === reg.id"
+                :disabled="!reg.supported"
+                :title="reg.supported ? undefined : t('syncModal.yostar.regionUnsupported')"
+                class="sync-modal__reg-btn"
+                :class="{ 'sync-modal__reg-btn--active': selectedRegion === reg.id }"
+                @click="selectedRegion = reg.id"
+              >
+                {{ reg.id }}
+              </button>
+            </div>
+
+            <div class="sync-modal__email-group">
+              <label class="sync-modal__field-label">
+                {{ t('syncModal.email.label') }}
+                <input
+                  v-model="email"
+                  type="email"
+                  name="yostar-email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  class="sync-modal__input"
+                  :disabled="sendingCode || yostarSyncing"
+                />
+              </label>
+              <button
+                type="button"
+                class="sync-modal__send-btn"
+                :disabled="!email || sendingCode || yostarSyncing"
+                @click="handleSendCode"
+              >
+                {{
+                  sendingCode
+                    ? t('syncModal.yostar.sendingCode')
+                    : isCodeSent
+                      ? t('syncModal.code.sent')
+                      : t('syncModal.code.send')
+                }}
+              </button>
+            </div>
+
+            <p class="sync-modal__hint">{{ t('syncModal.email.hint') }}</p>
+
+            <label class="sync-modal__field-label">
+              {{ t('syncModal.code.label') }}
+              <input
+                v-model="verificationCode"
+                type="text"
+                name="yostar-code"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                placeholder="000000"
+                class="sync-modal__input sync-modal__input--code"
+                :disabled="yostarSyncing"
+              />
+            </label>
+          </template>
+
+          <div v-if="yostarErrorText" class="sync-modal__auth-error" role="alert">
+            {{ yostarErrorText }}
+          </div>
+
+          <!-- Unofficial integration / ToS advisory -->
+          <p class="sync-modal__hint sync-modal__hint--warning">
+            {{ t('syncModal.yostar.unofficial') }}
+          </p>
+        </template>
       </div>
 
       <!-- JSON File Import Tab -->
@@ -372,13 +562,10 @@ function handleLoadDemo(): void {
         <button
           type="button"
           class="sync-modal__btn-primary"
-          :disabled="
-            (activeTab === 'yostar' && (!email || !verificationCode)) ||
-            (activeTab === 'email' && !isAuthenticated)
-          "
+          :disabled="startSyncDisabled"
           @click="handleStartSync"
         >
-          {{ t('syncModal.startSync') }}
+          {{ startSyncLabel }}
         </button>
       </div>
     </template>
@@ -425,7 +612,10 @@ function handleLoadDemo(): void {
     margin-bottom: 22px;
 
     @media (width <= 480px) {
-      gap: 12px;
+      // Four nowrap labels do not fit a 360px panel; wrapping keeps the row inside
+      // the panel whatever font metrics the deployment ends up using.
+      flex-wrap: wrap;
+      gap: 6px 10px;
       margin-bottom: 12px;
     }
   }
@@ -620,6 +810,29 @@ function handleLoadDemo(): void {
     line-height: 1.4;
   }
 
+  &__success-title {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-caption);
+    margin-bottom: 6px;
+  }
+
+  &__success-line {
+    margin: 0;
+  }
+
+  &__success-muted {
+    margin: 6px 0 0;
+    color: var(--color-text-secondary);
+  }
+
+  &__disconnect-btn {
+    margin-top: 12px;
+    align-self: flex-start;
+  }
+
   &__auth-submit-btn {
     margin-top: 6px;
     width: 100%;
@@ -672,6 +885,11 @@ function handleLoadDemo(): void {
       background-color: var(--color-accent-primary);
       border-color: var(--color-accent-primary);
       color: var(--color-text-inverse);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
   }
 
@@ -765,6 +983,12 @@ function handleLoadDemo(): void {
     @media (width <= 480px) {
       margin: 0 0 10px;
       font-size: 11px;
+    }
+
+    &--warning {
+      margin: 12px 0 0;
+      color: var(--color-accent-warning);
+      font-size: var(--font-size-xs);
     }
   }
 

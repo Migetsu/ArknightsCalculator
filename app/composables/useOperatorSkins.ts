@@ -3,6 +3,7 @@ import type { Ref, ComputedRef } from 'vue'
 import type { Skin } from '~~/shared/schemas/skin'
 import { isValidOperatorDataId } from '~~/shared/utils/operatorData'
 import type { OperatorDataFetcher } from '~~/shared/utils/operatorData'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 
 /**
  * Loads the skins of one operator through the Nitro data endpoint.
@@ -14,7 +15,7 @@ import type { OperatorDataFetcher } from '~~/shared/utils/operatorData'
  */
 export async function fetchOperatorSkins(
   charId: string,
-  fetcher: OperatorDataFetcher = (url) => $fetch(url),
+  fetcher: OperatorDataFetcher = fetchJson,
 ): Promise<Skin[]> {
   if (!charId || typeof charId !== 'string') return []
   const cleanId = charId.trim()
@@ -39,7 +40,7 @@ export function useOperatorSkins(
 
   return useAsyncData<Skin[]>(
     () => `operator-skins-${getId()}`,
-    () => fetchOperatorSkins(getId(), requestFetch),
+    () => fetchOperatorSkins(getId(), asJsonFetcher(requestFetch)),
     {
       default: () => [],
       watch: typeof charId === 'string' ? [] : [() => toValue(charId)],

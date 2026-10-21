@@ -110,4 +110,38 @@ describe('useDepotStore', () => {
     // And store was cleanly reset
     expect(store.items).toEqual({})
   })
+
+  it('replaces the depot from an external snapshot and persists it', async () => {
+    const store = useDepotStore()
+    await store.init(memoryAdapter)
+    await store.setItemCount('30013', 25)
+
+    await store.importSnapshot({
+      items: { '30115': 4, '30012': 0, '30014': 2.7 },
+      currencies: { lmd: 120000, orundum: 600, originitePrime: 3 },
+    })
+
+    expect(store.items).toEqual({ '30115': 4, '30014': 2 })
+    expect(store.currencies).toEqual({ lmd: 120000, orundum: 600, originitePrime: 3 })
+
+    const stored = (await memoryAdapter.getItem(DEPOT_STORAGE_KEY)) as {
+      items: Record<string, number>
+      currencies: { lmd: number }
+    }
+    expect(stored.items).toEqual({ '30115': 4, '30014': 2 })
+    expect(stored.currencies.lmd).toBe(120000)
+  })
+
+  it('clamps negative snapshot values instead of storing them', async () => {
+    const store = useDepotStore()
+    await store.init(memoryAdapter)
+
+    await store.importSnapshot({
+      items: { '30115': -10 },
+      currencies: { lmd: -1, orundum: Number.NaN, originitePrime: 0 },
+    })
+
+    expect(store.items).toEqual({})
+    expect(store.currencies).toEqual({ lmd: 0, orundum: 0, originitePrime: 0 })
+  })
 })

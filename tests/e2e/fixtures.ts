@@ -5,7 +5,7 @@ export const test = baseTest.extend({
     const errorLogs: string[] = []
 
     // Whitelist known third-party or browser-specific harmless logs if necessary
-    const isWhitelisted = (text: string): boolean => {
+    const isWhitelisted = (text: string, url = ''): boolean => {
       // 1. Harmless browser favicon 404 in test environment
       if (text.includes('favicon.ico') && text.includes('404')) {
         return true
@@ -27,13 +27,18 @@ export const test = baseTest.extend({
       if (text.includes('/_ui') && text.includes('404')) {
         return true
       }
+      // 5. Expected 4xx from the Yostar sync proxy: sync-modal.spec.ts deliberately
+      // exercises the rejected-code state, and Chromium logs every non-2xx resource.
+      if (url.includes('/api/yostar/') && text.includes('Failed to load resource')) {
+        return true
+      }
       return false
     }
 
     page.on('console', (msg) => {
       if (msg.type() === 'error') {
         const text = msg.text()
-        if (!isWhitelisted(text)) {
+        if (!isWhitelisted(text, msg.location().url)) {
           errorLogs.push(`[Console Error] ${text}`)
         }
       }

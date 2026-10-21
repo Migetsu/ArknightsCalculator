@@ -25,6 +25,13 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL || 'http://localhost:54321',
     key: process.env.SUPABASE_KEY || 'dummy-anon-key',
   },
+  runtimeConfig: {
+    public: {
+      // Yostar account sync (docs/yostar-sync.md). Set NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false
+      // to hide the tab and make /api/yostar/* answer 404.
+      yostarSyncEnabled: true,
+    },
+  },
   site: {
     // Domain migration is pending; keep the current production URL until the owner moves it.
     url: 'https://arkcalc.vercel.app',

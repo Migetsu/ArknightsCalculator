@@ -12,6 +12,82 @@
   - Chrome CDP `Page.getInstallabilityErrors` empty on the production build; service worker
     activated; manifest and icons return 200.
 
+- **Task 26 — Yostar account sync (`feat/yostar-sync`):**
+  - **Goal:** replace the Yostar tab stub (a flag flip and a modal close) with a real
+    e-mail-code login that imports the Global account roster and depot, with honest
+    loading/error/empty states and an unofficial-integration advisory.
+  - **Endpoints verified live 2026-10-21** (Node 22 `fetch`, full table in
+    `docs/yostar-sync.md`): `ak-conf.arknights.global` network config gives
+    `gs https://gs.arknights.global:8443` and `u8/as https://as.arknights.global`; the
+    account SDK is **not** on `as` (404 there) but on
+    `https://en-sdk-api.yostarplat.com` (`/yostar/send-code`, `/yostar/get-auth`,
+    `/user/login`); client version from
+    `ark-us-static-online.yo-star.com/.../Android/version`; `account/login` and
+    `account/syncData` on `gs` (`syncData` without a secret -> `code 5574`). Same flow as
+    `thesadru/ArkPRTS` (`arkprts/auth.py`) and `neeia/ak-roster` (`yostarAuth.ts`).
+    Deliberately invalid inputs were used (`not-an-email`, bogus code/token): the SDK
+    answered `100400` / `100303` / `100190`. No real e-mail or code was involved.
+  - **Stateless proxy (`server/utils/yostar.ts`, `server/api/yostar/*`):** the e-mail,
+    the code, the u8 token and the session secret are locals of one request; nothing is
+    cached, persisted or logged, every route sets `cache-control: no-store`, errors carry a
+    reason enum only (never an upstream message, e-mail or token), and the sync payload has
+    no account identifiers. Timeouts: 8 s per upstream request -> `504`.
+  - **On-device token (owner decision 2026-10-21):** `/api/yostar/login` also returns
+    `session { uid, token, expiresAt }`; the client keeps it in
+    `localStorage['arkcalc_yostar_session']` (not sessionStorage, not Supabase, never on the
+    server) with a 30-day cap, since Yostar publishes no expiry. `/api/yostar/sync` takes
+    that pair and re-walks u8 -> account/login -> syncData (five calls, no code). A rejected
+    token maps to `401 invalid_session`: the entry is deleted and the UI asks for a new code.
+    The tab shows a `SAVED SESSION` panel with the expiry, `SYNC NOW` and `DISCONNECT`, and
+    warns that the token lives in this browser. `AGENTS.md` §4 records the exception.
+  - **Mapping (`shared/utils/yostar`):** `user.troop.chars` -> operators (`elite`,
+    `level`, `mainSkillLvl`, mastery per unlocked skill, module stages, potential,
+    trust), `user.inventory` -> depot items (currency pseudo-items `4001`/`4002`/`4003`
+    excluded), `user.status` -> doctor name/level plus LMD, Orundum and
+    `payDiamond + freeDiamond`. Unknown operator/item ids are skipped and reported,
+    malformed entries are counted, and no input can make the mapper throw.
+  - **Client:** `useYostarSync` (send code, login, re-sync, token storage/expiry, reason
+    mapping), a persisted roster store (`arkcalc_roster`, gameplay state only) and
+    `depotStore.importSnapshot`. The modal renders the region selector (only EN enabled),
+    the code button with sending/sent states, a translated error alert, a success summary
+    with skipped-id counts, an empty state and the ToS advisory; nothing is written until
+    the proxy returns a valid payload, and a previous result is cleared when the modal
+    reopens. Flag: `runtimeConfig.public.yostarSyncEnabled`
+    (`NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false` hides the tab and 404s all three routes).
+  - **Supabase registration copy:** with `mailer_autoconfirm=true` a successful sign-up
+    ships a session, so the tab now says `Account created and signed in.` and only falls
+    back to `Registration completed. Check email...` when no session was created. The
+    success alert moved out of the unauthenticated branch, otherwise it disappeared the
+    moment the view switched to the authenticated card.
+  - **Notable fix outside the module:** adding three H3 routes pushed Nitro's typed-route
+    union past TypeScript's instantiation depth (`TS2321`) in `useOperatorDetail`,
+    `useOperatorSkins`, `useOperatorHandbook` and `useGachaPageData`. Runtime-built URLs
+    now go through `app/utils/fetchJson.ts` (same `$fetch` runtime, no route-literal
+    matching). Without it `npm run typecheck` fails; verified by removing the routes and
+    by reverting the fix.
+  - **Tests:** 84 new unit tests — mapper 7, transport chain 20 (fake `fetch`: chain
+    order, wrong code, 429, timeout, missing token, no console output, credentials absent
+    from URLs and errors, token re-sync, `invalid_session`, TTL), routes 16 across the
+    three routes, composable 18 (token storage, expiry, malformed entry, 401 clears,
+    disconnect), modal 21, stores 13 — plus `tests/e2e/sync-modal.spec.ts` (5 cases against
+    the production preview: login, saved-session re-sync, 401 clears the token, 360 px and
+    1280 px, no console errors; every `/api/yostar/*` call intercepted).
+  - **Gates (2026-10-21):** `lint` clean, `typecheck` clean, `test` 911 / 108 files,
+    `data:validate` 0 issues, `i18n:check` 715 keys, `build` (`NUXT_BUILD_DIR=.nuxt-agent`)
+    clean. Client bundle unchanged: `_nuxt` 3.54 MB / 79 files, JS 2.85 MB / 50 files
+    (baseline 3.53 MB / 79 and 2.85 MB / 50); the `/api/yostar/login` route chunk is 187 KB
+    because it bundles the item and operator catalog server-side.
+  - **Live verification (2026-10-21):** `POST /api/yostar/login` with the owner's code
+    returned 200: 132 operators, 78 depot items, doctor level 72. `POST /api/yostar/sync`
+    with the returned session (no code) returned the same counts. A **malformed** saved
+    token returned `502 unavailable`, not `401 invalid_session`; the client's 401-clears
+    path remains covered by unit/e2e mocks, and the corrupted-token case is recorded in
+    `docs/known-issues.md`. UI reload/SAVED SESSION/DISCONNECT were not exercised live.
+  - **Deferred:** JP/KR realms, exact Yostar error-code coverage, Amiya `tmpl` variants,
+    the Vercel 10 s function budget versus the seven-call chain, the accepted XSS exposure
+    of the `localStorage` token and the missing upstream expiry — all recorded in
+    `docs/known-issues.md`.
+
 - **Task 29 — Licenses, attribution and reuse terms (`docs/licenses`):**
   - Added root `NOTICE` and `docs/licenses.md` with a component-by-component breakdown:
     code (MIT), wiki-derived data (CC-BY-SA 4.0), game IP/game data (Hypergryph/Yostar,
