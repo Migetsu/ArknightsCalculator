@@ -1,5 +1,60 @@
 # Project Progress
 
+- **Task 31 — Yostar account sync (`feat/yostar-sync`):**
+  - **Goal:** replace the Yostar tab stub (a flag flip and a modal close) with a real
+    e-mail-code login that imports the Global account roster and depot, with honest
+    loading/error/empty states and an unofficial-integration advisory.
+  - **Endpoints verified live 2026-10-21** (Node 22 `fetch`, full table in
+    `docs/yostar-sync.md`): `ak-conf.arknights.global` network config gives
+    `gs https://gs.arknights.global:8443` and `u8/as https://as.arknights.global`; the
+    account SDK is **not** on `as` (404 there) but on
+    `https://en-sdk-api.yostarplat.com` (`/yostar/send-code`, `/yostar/get-auth`,
+    `/user/login`); client version from
+    `ark-us-static-online.yo-star.com/.../Android/version`; `account/login` and
+    `account/syncData` on `gs` (`syncData` without a secret -> `code 5574`). Same flow as
+    `thesadru/ArkPRTS` (`arkprts/auth.py`) and `neeia/ak-roster` (`yostarAuth.ts`).
+    Deliberately invalid inputs were used (`not-an-email`, bogus code/token): the SDK
+    answered `100400` / `100303` / `100190`. No real e-mail or code was involved.
+  - **Stateless proxy (`server/utils/yostar.ts`, `server/api/yostar/*`):** the e-mail,
+    the code, the Yostar token, the u8 token and the session secret are locals of one
+    request; nothing is cached, persisted or logged, both routes set
+    `cache-control: no-store`, errors carry a reason enum only (never an upstream
+    message, e-mail or token), and the login route returns a payload with no account
+    identifiers. Timeouts: 8 s per upstream request -> `504`.
+  - **Mapping (`shared/utils/yostar`):** `user.troop.chars` -> operators (`elite`,
+    `level`, `mainSkillLvl`, mastery per unlocked skill, module stages, potential,
+    trust), `user.inventory` -> depot items (currency pseudo-items `4001`/`4002`/`4003`
+    excluded), `user.status` -> doctor name/level plus LMD, Orundum and
+    `payDiamond + freeDiamond`. Unknown operator/item ids are skipped and reported,
+    malformed entries are counted, and no input can make the mapper throw.
+  - **Client:** `useYostarSync` (send code, login, reason mapping), a persisted roster
+    store (`arkcalc_roster`, gameplay state only) and `depotStore.importSnapshot`.
+    The modal renders the region selector (only EN enabled), the code button with
+    sending/sent states, a translated error alert, a success summary with skipped-id
+    counts, an empty state and the ToS advisory; nothing is written until the proxy
+    returns a valid payload. Flag: `runtimeConfig.public.yostarSyncEnabled`
+    (`NUXT_PUBLIC_YOSTAR_SYNC_ENABLED=false` hides the tab and 404s both routes).
+  - **Notable fix outside the module:** adding two H3 routes pushed Nitro's typed-route
+    union past TypeScript's instantiation depth (`TS2321`) in `useOperatorDetail`,
+    `useOperatorSkins`, `useOperatorHandbook` and `useGachaPageData`. Runtime-built URLs
+    now go through `app/utils/fetchJson.ts` (same `$fetch` runtime, no route-literal
+    matching). Without it `npm run typecheck` fails; verified by removing the routes and
+    by reverting the fix.
+  - **Tests:** 62 new unit tests — mapper 7, transport chain 15 (fake `fetch`: chain
+    order, wrong code, 429, timeout, missing token, no console output, credentials absent
+    from URLs and errors), routes 12, composable 11, modal 16, stores 11 — plus
+    `tests/e2e/sync-modal.spec.ts` (every `/api/yostar/*` call intercepted, 360 px and
+    1280 px, no console errors).
+  - **Gates (2026-10-21):** `lint` clean, `typecheck` clean, `test` 887 / 108 files,
+    `data:validate` 0 issues, `i18n:check` 706 keys, `build` (`NUXT_BUILD_DIR=.nuxt-agent`)
+    35.3 s. Client bundle unchanged: `_nuxt` 3.54 MB / 79 files, JS 2.85 MB / 50 files
+    (baseline 3.53 MB / 79 and 2.85 MB / 50); the new `/api/yostar/login` route chunk is
+    187 KB because it bundles the item and operator catalog server-side.
+  - **Deferred:** the live login itself (owner-only, checklist in `docs/yostar-sync.md`),
+    JP/KR realms, exact Yostar error-code coverage, Amiya `tmpl` variants and the Vercel
+    10 s function budget versus the seven-call chain — all recorded in
+    `docs/known-issues.md`.
+
 - **Task 29 — Licenses, attribution and reuse terms (`docs/licenses`):**
   - Added root `NOTICE` and `docs/licenses.md` with a component-by-component breakdown:
     code (MIT), wiki-derived data (CC-BY-SA 4.0), game IP/game data (Hypergryph/Yostar,
