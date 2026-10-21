@@ -67,8 +67,8 @@ Each banner object contains:
 - `lmtgsid`: Limited headhunting coin/currency identifier (e.g. `LMTGS_COIN_7301`), or `null`.
 - `pairedBannerId`: ID of the paired banner on the counterpart server (populated across all banner types via exact date and pool matching), or `null`.
 - `isNextEnBanner`: Boolean flag marking the next upcoming limited banner in `cnBanners`.
-- `hasArt`: Boolean flag indicating whether banner artwork is available in the CDN (`true` for 304 CN and 31 EN banners).
-- `artId`: Resolved art identifier in the assets repository (e.g. `NORM_10_0_1`, or for EN `NORM_24_0_2`).
+- `hasArt`: Boolean flag indicating whether banner artwork is available in the CDN (`true` for 306 CN and 148 EN banners after Task 24).
+- `artId`: Resolved art identifier in the assets repository; for EN with a pair this is the paired CN id (e.g. `LIMITED_EN_27_0_3` → `LIMITED_44_0_1`).
 - `bannerArt`: Alias to `artId` for backward compatibility.
 - `primaryRateUp6`: Optional operator ID of the premier featured 6★ operator.
 - `rateUp6`: Array of featured 6★ operator IDs.
@@ -234,3 +234,18 @@ Parsing accepts `YYYY/MM/DD` and `YYYY/MM/DD HH:mm:ss` and always builds UTC dat
 
 - Cards use flexible box layout with `min-width: 0` and word-break wrapping.
 - Zero horizontal overflow across all viewports from 360px to 1920px.
+
+### 7.7 Banner Art Mapping & Availability
+
+- **Candidate order** (`getBannerArtCandidates` in `shared/utils/gacha/index.ts`):
+  - CN: the pool id itself.
+  - EN with a confirmed `pairedBannerId`: paired CN id → raw EN id. The stripped `_EN` id is intentionally skipped, because a known pair proves it belongs to another banner.
+  - EN without a pair: stripped `_EN` id → raw EN id (legacy pools).
+- **Registry**: `data/banner-arts.json` lists every art id published in `Migetsu/arkcalc-assets`; the builder sets `hasArt`, `artId` and `bannerArt` from the first candidate present in that list.
+- **Availability after Task 24**: **454 / 861** banners have art (306 CN, 148 EN). All 12 visible banners (current EN + 11 upcoming) have art; 147 CN and 260 EN remain without it.
+- **Source and format**:
+  - Most files come from `fexli/ArknightsResource/gacha/`.
+  - The 12 visible banners use `arknights.wiki.gg` (CC-BY-SA 4.0): exact 1024px thumbnail `src` from the HTML page, verified as PNG, resized to **480px WebP** (`quality 80`, `effort 4`) and published as `<bannerId>.webp`.
+  - Pin: `OPTIMIZED_ASSETS_COMMIT = e5e06cebacf644b149ac1dfce6048b4c7fd5e899` (assets commit `e5e06ce`, 9 CN files replaced + 3 new).
+- **Duplicates**: 145 art id groups are shared by more than one banner; 123 are legitimate CN↔EN pairs, 22 are legacy non-pair groups where an unpaired EN banner reuses the stripped id of a different CN rotation (deferred, see `docs/known-issues.md`).
+- Two paired EN banners (`NORM_EN_30_0_3`, `NORM_EN_32_0_4`) have `hasArt: false` because their pairs (`CLASSIC_49_0_1`, `CLASSIC_54_0_2`) have no published art; they no longer show foreign art.

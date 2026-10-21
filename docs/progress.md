@@ -1,5 +1,34 @@
 # Project Progress
 
+- **Banner Art: Visible Window, EN Pair Mapping & Wiki Source (`fix/banner-art`):**
+  - **Context & Motivation:**
+    - 335 of 861 banners had art (304 CN + 31 EN). The current EN banner and 2 of the 11 upcoming cards (`SPECIAL_73_0_3`, `SPECIAL_77_0_4`) were placeholders.
+    - 9 EN banners used art of a foreign CN banner because EN candidates were built by stripping `_EN` instead of following `pairedBannerId`.
+  - **Implementation Details:**
+    - **Art mapping (`shared/utils/gacha/index.ts`):**
+      - `getBannerArtCandidates(id, server, pairedBannerId?)`: for an EN banner with a known pair the order is paired CN id → raw EN id; the stripped `_EN` id is not used, because a known pair proves it belongs to a different banner. Without a pair the old stripped → raw fallback stays.
+      - `build-banners.ts` passes `pairedId` for EN banners; `build-banner-thumbs.ts` passes `pairedBannerId` and now merges the existing `data/banner-arts.json` instead of overwriting wiki-sourced ids.
+    - **Wiki-sourced art (12 files):**
+      - Parsed the exact `src` of 1024px thumbnails from `Headhunting/Banners/2026` (current EN) and `Headhunting/Banners/Upcoming` (11 CN), matched by `cnStartDate` and the Global date, verified the PNG signature and dimensions (all 1024px wide), then resized to 480px WebP (quality 80, effort 4).
+      - Published 12 files in `Migetsu/arkcalc-assets` commit **`e5e06cebacf644b149ac1dfce6048b4c7fd5e899`** (9 CN replaced with wiki versions, 3 new: `SPECIAL_73_0_3`, `SPECIAL_77_0_4`, `LIMITED_EN_42_0_1`). Total 305,026 bytes (~298 KB), 20.1–39.6 KB per file.
+      - Updated `OPTIMIZED_ASSETS_COMMIT`; `data/banner-arts.json` grew from 304 to 307 entries; `data/banners.json` rebuilt.
+    - **Documentation:** wiki source, CC-BY-SA 4.0 attribution and pin workflow in `docs/assets.md`; pair-first mapping in `docs/data-banners.md`.
+  - **Measured Data:**
+    - `hasArt`: 335 → **454** (CN 304 → 306, EN 31 → 148).
+    - Field diff: **121 added** (2 CN + 119 EN), **2 removed**, **7 changed** (the 7 fixed EN banners now point at their paired CN art).
+    - The 2 EN banners whose paired CN pool has no art (`NORM_EN_30_0_3` → `CLASSIC_49_0_1`, `NORM_EN_32_0_4` → `CLASSIC_54_0_2`) now honestly have `hasArt: false` instead of foreign art.
+    - Duplicate `artId` groups: 31 before → 145 after (123 legitimate CN↔EN pairs, 22 legacy non-pair groups).
+    - Remaining without art: 147 CN and 260 EN (36 with a pair lacking art, 224 unpaired).
+  - **Tests:**
+    - `getBannerArtCandidates`: pair priority, no foreign stripped fallback, no-pair fallback, inferred server (+3 tests).
+    - Committed-dataset test updated to 306 CN / 148 EN and extended with explicit pair-art assertions for the 7 fixed EN banners plus the 2 honest misses.
+    - Full suite: **788 tests / 96 files**, 0 failed, 0 skipped.
+  - **Quality Gates & Metrics:**
+    - `data:validate`: 0 integrity issues.
+    - `lint`: 0 errors, 0 warnings; `typecheck`: 0 errors; `i18n:check`: 688 keys.
+    - `build`: 53.1 MB in 2m 14s (`NUXT_BUILD_DIR=.nuxt-agent`).
+    - Playwright (port 3001): 11/11 cards have `<img class="gacha-banner__art-img">`, 480×154 each, 0 placeholders, 11/11 CDN responses **200**, no horizontal overflow at 360 and 1280 px. The hero still does not render art (Task 25).
+
 - **Upcoming CN Banner Window & EST Global Forecast (`feat/gacha-upcoming-window`):**
   - **Context & Motivation:**
     - `/gacha` rendered the full 453-banner CN archive with "Show More / Show All" pagination, while the current Global hero showed only its title and end date.
