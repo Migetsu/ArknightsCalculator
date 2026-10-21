@@ -19,6 +19,7 @@ export type YostarServer = (typeof YOSTAR_SERVERS)[number]
 export const YOSTAR_ERROR_REASONS = [
   'invalid_email',
   'invalid_code',
+  'invalid_session',
   'rate_limited',
   'timeout',
   'unavailable',
@@ -27,6 +28,27 @@ export const YOSTAR_ERROR_REASONS = [
 ] as const
 export const YostarErrorReasonSchema = z.enum(YOSTAR_ERROR_REASONS)
 export type YostarErrorReason = z.infer<typeof YostarErrorReasonSchema>
+
+/**
+ * Long-lived Yostar account token the client keeps on the device.
+ *
+ * Owner decision (2026-10-21): stored in `localStorage` under a namespaced key so
+ * a repeat sync does not ask for e-mail and code again. It never goes to Supabase
+ * or any server storage; the Nitro proxy stays stateless. The UI must warn that
+ * the token lives on this device.
+ */
+export const YostarSessionSchema = z.object({
+  /** Yostar channel uid, the account half of the credential. */
+  uid: z.string().min(1).max(128),
+  /** Yostar account token. Never logged. */
+  token: z.string().min(1).max(512),
+  /** ISO timestamp after which the client must forget the token. */
+  expiresAt: z.string(),
+})
+export type YostarSession = z.infer<typeof YostarSessionSchema>
+
+/** localStorage key for {@link YostarSession}. */
+export const YOSTAR_SESSION_STORAGE_KEY = 'arkcalc_yostar_session'
 
 /** One owned operator, already normalized to planner-compatible units. */
 export const YostarOperatorSchema = z.object({
@@ -61,8 +83,8 @@ export const YostarCurrenciesSchema = z.object({
 export type YostarCurrencies = z.infer<typeof YostarCurrenciesSchema>
 
 /**
- * Sanitized payload returned by `/api/yostar/login` and imported on the client.
- * Contains no account identifiers, no tokens and no e-mail.
+ * Sanitized payload returned by `/api/yostar/login` and `/api/yostar/sync` and
+ * imported on the client. Contains no e-mail and no token.
  */
 export const YostarSyncPayloadSchema = z.object({
   doctor: YostarDoctorSchema,
@@ -81,3 +103,12 @@ export const YostarSyncPayloadSchema = z.object({
   syncedAt: z.string(),
 })
 export type YostarSyncPayload = z.infer<typeof YostarSyncPayloadSchema>
+
+/**
+ * `/api/yostar/login` response: the import payload plus the account token the
+ * client stores on the device. `/api/yostar/sync` returns the payload only.
+ */
+export const YostarLoginResponseSchema = YostarSyncPayloadSchema.extend({
+  session: YostarSessionSchema,
+})
+export type YostarLoginResponse = z.infer<typeof YostarLoginResponseSchema>

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import sendCodeHandler from '../../../server/api/yostar/send-code.post'
 import loginHandler from '../../../server/api/yostar/login.post'
+import syncHandler from '../../../server/api/yostar/sync.post'
 import { YostarError } from '../../../server/utils/yostar'
 
 /**
@@ -28,6 +29,7 @@ vi.mock('h3', () => ({
 const proxy = vi.hoisted(() => ({
   requestYostarEmailCode: vi.fn(),
   fetchYostarSyncUser: vi.fn(),
+  fetchYostarSyncUserWithToken: vi.fn(),
 }))
 
 vi.mock('../../../server/utils/yostar', async (importOriginal) => {
@@ -36,6 +38,7 @@ vi.mock('../../../server/utils/yostar', async (importOriginal) => {
     ...actual,
     requestYostarEmailCode: proxy.requestYostarEmailCode,
     fetchYostarSyncUser: proxy.fetchYostarSyncUser,
+    fetchYostarSyncUserWithToken: proxy.fetchYostarSyncUserWithToken,
   }
 })
 
@@ -51,6 +54,8 @@ const rawUser = {
   inventory: { '30115': 4 },
 }
 
+const account = { uid: 'channel-uid', token: 'yostar-account-token' }
+
 beforeEach(() => {
   vi.clearAllMocks()
   requestBody = null
@@ -65,11 +70,8 @@ beforeEach(() => {
   })
 })
 
-async function call(handler: unknown): Promise<{ status?: number; body: unknown }> {
-  return (await (handler as (event: unknown) => Promise<unknown>)(event)) as {
-    status?: number
-    body: unknown
-  }
+async function call(handler: unknown): Promise<Record<string, unknown>> {
+  return (await (handler as (event: unknown) => Promise<unknown>)(event)) as Record<string, unknown>
 }
 
 describe('POST /api/yostar/send-code', () => {
@@ -134,15 +136,18 @@ describe('POST /api/yostar/send-code', () => {
 })
 
 describe('POST /api/yostar/login', () => {
-  it('returns a sanitized sync payload', async () => {
+  beforeEach(() => {
     requestBody = { email: 'test@example.com', code: '123456' }
-    proxy.fetchYostarSyncUser.mockResolvedValue(rawUser)
+    proxy.fetchYostarSyncUser.mockResolvedValue({ account, user: rawUser })
+  })
 
+  it('returns a sanitized sync payload with an on-device session', async () => {
     const result = (await call(loginHandler)) as {
       ok: boolean
       operators: Array<{ charId: string }>
       depot: { items: Record<string, number>; currencies: { lmd: number } }
       doctor: { name: string }
+      session: { uid: string; token: string; expiresAt: string }
     }
 
     expect(proxy.fetchYostarSyncUser).toHaveBeenCalledWith('test@example.com', '123456')
@@ -152,13 +157,13 @@ describe('POST /api/yostar/login', () => {
     expect(result.depot.items).toEqual({ '30115': 4 })
     expect(result.depot.currencies.lmd).toBe(100)
     expect(result.doctor.name).toBe('Doctor')
+    expect(result.session.uid).toBe('channel-uid')
+    expect(result.session.token).toBe('yostar-account-token')
+    expect(Number.isNaN(Date.parse(result.session.expiresAt))).toBe(false)
     expect(h3.setHeader).toHaveBeenCalledWith(event, 'cache-control', 'no-store')
   })
 
-  it('never returns the e-mail, uid, code or any token', async () => {
-    requestBody = { email: 'test@example.com', code: '123456' }
-    proxy.fetchYostarSyncUser.mockResolvedValue(rawUser)
-
+  it('never returns the e-mail or the verification code', async () => {
     const result = await call(loginHandler)
     const serialized = JSON.stringify(result)
 
@@ -176,7 +181,6 @@ describe('POST /api/yostar/login', () => {
   })
 
   it('maps a wrong code to 400 invalid_code', async () => {
-    requestBody = { email: 'test@example.com', code: '000000' }
     proxy.fetchYostarSyncUser.mockRejectedValue(new YostarError('invalid_code'))
 
     const result = await call(loginHandler)
@@ -186,7 +190,6 @@ describe('POST /api/yostar/login', () => {
   })
 
   it('maps an upstream timeout to 504', async () => {
-    requestBody = { email: 'test@example.com', code: '123456' }
     proxy.fetchYostarSyncUser.mockRejectedValue(new YostarError('timeout'))
 
     const result = await call(loginHandler)
@@ -197,9 +200,53 @@ describe('POST /api/yostar/login', () => {
 
   it('answers 404 when the feature flag is off', async () => {
     flagEnabled = false
-    requestBody = { email: 'test@example.com', code: '123456' }
 
     await expect(call(loginHandler)).rejects.toMatchObject({ statusCode: 404 })
     expect(proxy.fetchYostarSyncUser).not.toHaveBeenCalled()
+  })
+})
+
+describe('POST /api/yostar/sync', () => {
+  beforeEach(() => {
+    requestBody = { uid: 'channel-uid', token: 'yostar-account-token' }
+    proxy.fetchYostarSyncUserWithToken.mockResolvedValue(rawUser)
+  })
+
+  it('re-syncs from the stored token and returns no session back', async () => {
+    const result = (await call(syncHandler)) as {
+      ok: boolean
+      operators: Array<{ charId: string }>
+      session?: unknown
+    }
+
+    expect(proxy.fetchYostarSyncUserWithToken).toHaveBeenCalledWith(account)
+    expect(result.ok).toBe(true)
+    expect(result.operators).toHaveLength(1)
+    expect(result.session).toBeUndefined()
+    expect(JSON.stringify(result)).not.toContain('yostar-account-token')
+    expect(h3.setHeader).toHaveBeenCalledWith(event, 'cache-control', 'no-store')
+  })
+
+  it('rejects a rejected token with 401 invalid_session', async () => {
+    proxy.fetchYostarSyncUserWithToken.mockRejectedValue(new YostarError('invalid_session'))
+
+    const result = await call(syncHandler)
+
+    expect(result).toEqual({ ok: false, error: 'invalid_session' })
+    expect(h3.setResponseStatus).toHaveBeenCalledWith(event, 401)
+  })
+
+  it('rejects an empty token before calling upstream', async () => {
+    requestBody = { uid: 'channel-uid', token: '' }
+
+    await expect(call(syncHandler)).rejects.toMatchObject({ statusCode: 400 })
+    expect(proxy.fetchYostarSyncUserWithToken).not.toHaveBeenCalled()
+  })
+
+  it('answers 404 when the feature flag is off', async () => {
+    flagEnabled = false
+
+    await expect(call(syncHandler)).rejects.toMatchObject({ statusCode: 404 })
+    expect(proxy.fetchYostarSyncUserWithToken).not.toHaveBeenCalled()
   })
 })

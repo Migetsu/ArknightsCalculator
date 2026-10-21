@@ -45,8 +45,13 @@ const {
   codeSent: isCodeSent,
   error: yostarError,
   result: yostarResult,
+  session: yostarSession,
+  hasSession: yostarHasSession,
   sendCode,
   startSync,
+  syncWithSession,
+  forget: forgetYostarSession,
+  reset: resetYostarState,
 } = useYostarSync()
 
 type SyncTab = 'email' | 'yostar' | 'json' | 'demo'
@@ -107,11 +112,15 @@ const yostarSkipped = computed(() => {
   })
 })
 
+// Date-only ISO slice keeps SSR and client markup identical.
+const yostarSessionExpiresOn = computed(() => yostarSession.value?.expiresAt.slice(0, 10) ?? '')
+
 const startSyncDisabled = computed(() => {
   if (activeTab.value === 'email') return !isAuthenticated.value
   if (activeTab.value !== 'yostar') return false
   if (!yostarEnabled.value || yostarSyncing.value) return true
   if (yostarResult.value) return false
+  if (yostarHasSession.value) return false
   return !email.value || !verificationCode.value
 })
 
@@ -119,6 +128,7 @@ const startSyncLabel = computed(() => {
   if (activeTab.value === 'yostar') {
     if (yostarSyncing.value) return t('syncModal.yostar.syncing')
     if (yostarResult.value) return t('syncModal.yostar.done')
+    if (yostarHasSession.value) return t('syncModal.yostar.syncNow')
   }
   return t('syncModal.startSync')
 })
@@ -126,6 +136,11 @@ const startSyncLabel = computed(() => {
 watch(
   () => props.modelValue,
   (isOpen) => {
+    if (isOpen) {
+      // A previous result, error or "code sent" hint must not leak into a fresh
+      // visit; the stored account token is kept.
+      resetYostarState()
+    }
     if (isOpen && isAuthenticated.value) {
       void fetchProfile()
     }
@@ -154,7 +169,11 @@ async function handleAuthSubmit(): Promise<void> {
   } else {
     const res = await signUpWithEmail(authEmail.value, authPassword.value, authDisplayName.value)
     if (res.success) {
-      authSuccessMessage.value = t('syncModal.auth.registrationSuccess')
+      // Supabase e-mail confirmation is disabled on this project, so a successful
+      // sign-up usually ships a session. Only claim "check your inbox" when it did not.
+      authSuccessMessage.value = isAuthenticated.value
+        ? t('syncModal.auth.registrationSignedIn')
+        : t('syncModal.auth.registrationSuccess')
       authPassword.value = ''
     }
   }
@@ -194,12 +213,21 @@ async function handleStartSync(): Promise<void> {
     return
   }
 
-  if (!email.value || !verificationCode.value) return
-
-  const success = await startSync(email.value, verificationCode.value)
+  let success = false
+  if (yostarHasSession.value) {
+    success = await syncWithSession()
+  } else if (email.value && verificationCode.value) {
+    success = await startSync(email.value, verificationCode.value)
+  }
   if (!success || !yostarResult.value) return
 
   await applyYostarSync(yostarResult.value)
+  verificationCode.value = ''
+}
+
+/** Drops the token kept on this device and asks for a fresh e-mail code. */
+function handleYostarDisconnect(): void {
+  forgetYostarSession()
   verificationCode.value = ''
 }
 
@@ -265,6 +293,11 @@ function handleLoadDemo(): void {
           </span>
         </div>
 
+        <!-- Success Alert (outside the v-if/v-else pair: a sign-up can switch the view) -->
+        <div v-if="authSuccessMessage" class="sync-modal__auth-success" role="alert">
+          {{ authSuccessMessage }}
+        </div>
+
         <!-- Authenticated view -->
         <div v-if="isAuthenticated" class="sync-modal__authenticated-view">
           <div class="sync-modal__user-card">
@@ -322,11 +355,6 @@ function handleLoadDemo(): void {
           <!-- Error Alert -->
           <div v-if="authError" class="sync-modal__auth-error" role="alert">
             {{ authError }}
-          </div>
-
-          <!-- Success Alert -->
-          <div v-if="authSuccessMessage" class="sync-modal__auth-success" role="alert">
-            {{ authSuccessMessage }}
           </div>
 
           <label class="sync-modal__field-label">
@@ -403,73 +431,96 @@ function handleLoadDemo(): void {
         </div>
 
         <template v-else>
-          <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
-          <div
-            class="sync-modal__regions"
-            role="radiogroup"
-            :aria-label="t('syncModal.region.label')"
-          >
+          <!-- A token from an earlier sync is on this device: no code needed. -->
+          <template v-if="yostarHasSession">
+            <div class="sync-modal__auth-success" role="status">
+              <strong class="sync-modal__success-title">{{
+                t('syncModal.yostar.sessionTitle')
+              }}</strong>
+              <p class="sync-modal__success-line">{{ t('syncModal.yostar.sessionDesc') }}</p>
+              <p class="sync-modal__success-muted">
+                {{ t('syncModal.yostar.sessionExpires', { date: yostarSessionExpiresOn }) }}
+              </p>
+            </div>
             <button
-              v-for="reg in regions"
-              :key="reg.id"
               type="button"
-              role="radio"
-              :aria-checked="selectedRegion === reg.id"
-              :disabled="!reg.supported"
-              :title="reg.supported ? undefined : t('syncModal.yostar.regionUnsupported')"
-              class="sync-modal__reg-btn"
-              :class="{ 'sync-modal__reg-btn--active': selectedRegion === reg.id }"
-              @click="selectedRegion = reg.id"
+              class="sync-modal__btn-outline sync-modal__disconnect-btn"
+              :disabled="yostarSyncing"
+              @click="handleYostarDisconnect"
             >
-              {{ reg.id }}
+              {{ t('syncModal.yostar.disconnect') }}
             </button>
-          </div>
+          </template>
 
-          <div class="sync-modal__email-group">
+          <template v-else>
+            <label class="sync-modal__field-label">{{ t('syncModal.region.label') }}</label>
+            <div
+              class="sync-modal__regions"
+              role="radiogroup"
+              :aria-label="t('syncModal.region.label')"
+            >
+              <button
+                v-for="reg in regions"
+                :key="reg.id"
+                type="button"
+                role="radio"
+                :aria-checked="selectedRegion === reg.id"
+                :disabled="!reg.supported"
+                :title="reg.supported ? undefined : t('syncModal.yostar.regionUnsupported')"
+                class="sync-modal__reg-btn"
+                :class="{ 'sync-modal__reg-btn--active': selectedRegion === reg.id }"
+                @click="selectedRegion = reg.id"
+              >
+                {{ reg.id }}
+              </button>
+            </div>
+
+            <div class="sync-modal__email-group">
+              <label class="sync-modal__field-label">
+                {{ t('syncModal.email.label') }}
+                <input
+                  v-model="email"
+                  type="email"
+                  name="yostar-email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  class="sync-modal__input"
+                  :disabled="sendingCode || yostarSyncing"
+                />
+              </label>
+              <button
+                type="button"
+                class="sync-modal__send-btn"
+                :disabled="!email || sendingCode || yostarSyncing"
+                @click="handleSendCode"
+              >
+                {{
+                  sendingCode
+                    ? t('syncModal.yostar.sendingCode')
+                    : isCodeSent
+                      ? t('syncModal.code.sent')
+                      : t('syncModal.code.send')
+                }}
+              </button>
+            </div>
+
+            <p class="sync-modal__hint">{{ t('syncModal.email.hint') }}</p>
+
             <label class="sync-modal__field-label">
-              {{ t('syncModal.email.label') }}
+              {{ t('syncModal.code.label') }}
               <input
-                v-model="email"
-                type="email"
-                name="yostar-email"
-                autocomplete="email"
-                placeholder="you@example.com"
-                class="sync-modal__input"
-                :disabled="sendingCode || yostarSyncing"
+                v-model="verificationCode"
+                type="text"
+                name="yostar-code"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                placeholder="000000"
+                class="sync-modal__input sync-modal__input--code"
+                :disabled="yostarSyncing"
               />
             </label>
-            <button
-              type="button"
-              class="sync-modal__send-btn"
-              :disabled="!email || sendingCode || yostarSyncing"
-              @click="handleSendCode"
-            >
-              {{
-                sendingCode
-                  ? t('syncModal.yostar.sendingCode')
-                  : isCodeSent
-                    ? t('syncModal.code.sent')
-                    : t('syncModal.code.send')
-              }}
-            </button>
-          </div>
-
-          <p class="sync-modal__hint">{{ t('syncModal.email.hint') }}</p>
-
-          <label class="sync-modal__field-label">
-            {{ t('syncModal.code.label') }}
-            <input
-              v-model="verificationCode"
-              type="text"
-              name="yostar-code"
-              inputmode="numeric"
-              autocomplete="one-time-code"
-              maxlength="6"
-              placeholder="000000"
-              class="sync-modal__input sync-modal__input--code"
-              :disabled="yostarSyncing"
-            />
-          </label>
+          </template>
 
           <div v-if="yostarErrorText" class="sync-modal__auth-error" role="alert">
             {{ yostarErrorText }}
@@ -775,6 +826,11 @@ function handleLoadDemo(): void {
   &__success-muted {
     margin: 6px 0 0;
     color: var(--color-text-secondary);
+  }
+
+  &__disconnect-btn {
+    margin-top: 12px;
+    align-self: flex-start;
   }
 
   &__auth-submit-btn {

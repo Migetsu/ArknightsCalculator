@@ -6,6 +6,9 @@ import {
   YostarError,
   yostarHttpStatus,
   YOSTAR_ENDPOINTS,
+  YOSTAR_SESSION_TTL_MS,
+  createYostarSessionExpiry,
+  fetchYostarSyncUserWithToken,
   type YostarRequestDeps,
 } from '../../../server/utils/yostar'
 
@@ -185,7 +188,7 @@ describe('fetchYostarSyncUser', () => {
     const calls: FetchCall[] = []
     const deps = createDeps(happyHandlers(), calls)
 
-    const user = await fetchYostarSyncUser(TEST_EMAIL, TEST_CODE, deps)
+    const { account, user } = await fetchYostarSyncUser(TEST_EMAIL, TEST_CODE, deps)
 
     expect(calls.map((call) => new URL(call.url).pathname)).toEqual([
       '/yostar/get-auth',
@@ -197,6 +200,7 @@ describe('fetchYostarSyncUser', () => {
       '/account/syncData',
     ])
     expect(user).toMatchObject({ status: { nickName: 'Doctor' } })
+    expect(account).toEqual({ uid: 'channel-uid', token: 'yostar-token' })
 
     const syncDataCall = calls[6]
     const headers = syncDataCall?.init.headers as Record<string, string>
@@ -282,6 +286,78 @@ describe('fetchYostarSyncUser', () => {
   })
 })
 
+describe('fetchYostarSyncUserWithToken', () => {
+  const account = { uid: 'channel-uid', token: 'yostar-token' }
+
+  it('re-syncs from a stored account token without asking for a code again', async () => {
+    const calls: FetchCall[] = []
+    const deps = createDeps(happyHandlers(), calls)
+
+    const user = await fetchYostarSyncUserWithToken(account, deps)
+
+    expect(calls.map((call) => new URL(call.url).pathname)).toEqual([
+      '/config/prod/official/network_config',
+      '/Android/version',
+      '/user/v1/getToken',
+      '/account/login',
+      '/account/syncData',
+    ])
+    expect(user).toMatchObject({ status: { nickName: 'Doctor' } })
+
+    const u8Call = calls[2]
+    const body = JSON.parse(String(u8Call?.init.body)) as { extension: string }
+    expect(JSON.parse(body.extension)).toEqual({ type: 1, uid: account.uid, token: account.token })
+  })
+
+  it('reports an expired or revoked token as invalid_session', async () => {
+    const deps = createDeps(
+      happyHandlers({
+        '/user/v1/getToken': () => jsonResponse({ result: 1, uid: 'u8-uid', token: 'u8-token' }),
+      }),
+    )
+
+    await expect(fetchYostarSyncUserWithToken(account, deps)).rejects.toMatchObject({
+      reason: 'invalid_session',
+    })
+  })
+
+  it('reports a rejected account/login as invalid_session', async () => {
+    const deps = createDeps(
+      happyHandlers({
+        '/account/login': () =>
+          jsonResponse({ result: 3, uid: 'player-uid', secret: 'session-secret' }),
+      }),
+    )
+
+    await expect(fetchYostarSyncUserWithToken(account, deps)).rejects.toMatchObject({
+      reason: 'invalid_session',
+    })
+  })
+
+  it('keeps upstream/network failures distinct from an invalid session', async () => {
+    const deps = createDeps(
+      happyHandlers({
+        '/account/syncData': () => {
+          throw Object.assign(new Error('aborted'), { name: 'TimeoutError' })
+        },
+      }),
+    )
+
+    await expect(fetchYostarSyncUserWithToken(account, deps)).rejects.toMatchObject({
+      reason: 'timeout',
+    })
+  })
+})
+
+describe('createYostarSessionExpiry', () => {
+  it('returns an ISO timestamp one TTL ahead of now', () => {
+    const now = Date.parse('2026-10-21T10:00:00.000Z')
+    const expiry = createYostarSessionExpiry(now)
+    expect(expiry).toBe('2026-11-20T10:00:00.000Z')
+    expect(Date.parse(expiry) - now).toBe(YOSTAR_SESSION_TTL_MS)
+  })
+})
+
 describe('isYostarSyncEnabled', () => {
   it('defaults to enabled', () => {
     expect(isYostarSyncEnabled({ public: {} })).toBe(true)
@@ -297,6 +373,7 @@ describe('yostarHttpStatus', () => {
   it('maps failure reasons to HTTP statuses', () => {
     expect(yostarHttpStatus('invalid_email')).toBe(400)
     expect(yostarHttpStatus('invalid_code')).toBe(400)
+    expect(yostarHttpStatus('invalid_session')).toBe(401)
     expect(yostarHttpStatus('rate_limited')).toBe(429)
     expect(yostarHttpStatus('timeout')).toBe(504)
     expect(yostarHttpStatus('unavailable')).toBe(502)

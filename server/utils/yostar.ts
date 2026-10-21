@@ -5,10 +5,13 @@ import type { YostarErrorReason } from '../../shared/schemas/yostar'
 /**
  * Stateless Arknights Global (Yostar EN) login proxy.
  *
- * Nothing here persists or logs anything: the e-mail, the verification code and
- * every intermediate token live only in locals of a single request and are
- * garbage collected when it ends. Endpoints and headers are verified against
- * public clients; see `docs/yostar-sync.md` for URLs, dates and sources.
+ * Nothing here persists or logs anything: the e-mail, the verification code, the
+ * u8 token and the session secret live only in locals of a single request and are
+ * garbage collected when it ends. The one exception is the Yostar account token:
+ * the owner decided (2026-10-21) that the client may keep it in `localStorage`
+ * under a namespaced key so a repeat sync does not ask for e-mail and code again.
+ * It is still never stored or logged server-side. Endpoints and headers are
+ * verified against public clients; see `docs/yostar-sync.md`.
  */
 
 /**
@@ -33,8 +36,17 @@ export const YOSTAR_ENDPOINTS = {
   sdkBase: 'https://en-sdk-api.yostarplat.com',
 } as const
 
-/** Per-request upstream timeout. The login chain makes six sequential calls. */
+/** Per-request upstream timeout. The login chain makes seven sequential calls. */
 export const YOSTAR_TIMEOUT_MS = 8_000
+
+/**
+ * Client-side lifetime of the stored account token.
+ *
+ * The verified Yostar responses (`get-auth`, `user/login`) do not publish an
+ * expiry, so this is our own conservative cap, not an upstream guarantee: after
+ * it the client forgets the token and asks for a fresh e-mail code.
+ */
+export const YOSTAR_SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000
 
 export const SendCodeInputSchema = z.object({
   email: z.email().max(254),
@@ -45,8 +57,15 @@ export const LoginInputSchema = z.object({
   code: z.string().regex(/^\d{6}$/),
 })
 
+/** Token pair cached on the device; re-sync starts from the u8 exchange. */
+export const SyncInputSchema = z.object({
+  uid: z.string().min(1).max(128),
+  token: z.string().min(1).max(512),
+})
+
 export type SendCodeInput = z.infer<typeof SendCodeInputSchema>
 export type LoginInput = z.infer<typeof LoginInputSchema>
+export type YostarAccountToken = z.infer<typeof SyncInputSchema>
 
 /**
  * h3 v1 `readValidatedBody` returns whatever the validator returns, so the
@@ -342,6 +361,7 @@ async function loadU8Token(
   u8BaseUrl: string,
   deviceIds: { deviceId: string; deviceId2: string; deviceId3: string },
   deps: YostarRequestDeps,
+  failureReason: YostarErrorReason,
 ): Promise<{ uid: string; token: string }> {
   const body: Record<string, string | number> = {
     appId: '1',
@@ -372,7 +392,7 @@ async function loadU8Token(
 
   const parsed = U8TokenSchema.safeParse(raw)
   if (!parsed.success) throw new YostarError('invalid_payload')
-  if (parsed.data.result !== 0) throw new YostarError('invalid_code')
+  if (parsed.data.result !== 0) throw new YostarError(failureReason)
   return { uid: parsed.data.uid, token: parsed.data.token }
 }
 
@@ -388,6 +408,7 @@ async function loadLoginSecret(
   version: { resVersion: string; clientVersion: string },
   deviceIds: { deviceId: string; deviceId2: string; deviceId3: string },
   deps: YostarRequestDeps,
+  failureReason: YostarErrorReason,
 ): Promise<{ uid: string; secret: string }> {
   const body = {
     platform: 1,
@@ -420,7 +441,7 @@ async function loadLoginSecret(
 
   const parsed = LoginSecretSchema.safeParse(raw)
   if (!parsed.success) throw new YostarError('invalid_payload')
-  if (parsed.data.result !== 0) throw new YostarError('unavailable')
+  if (parsed.data.result !== 0) throw new YostarError(failureReason)
   return { uid: parsed.data.uid, secret: parsed.data.secret }
 }
 
@@ -458,23 +479,78 @@ async function loadSyncData(
 }
 
 /**
- * Full stateless login chain: e-mail code -> Yostar token -> u8 token ->
- * session secret -> `syncData.user`. The intermediate tokens never leave this
- * function.
+ * Steps 3-5 of the chain: u8 token -> session secret -> `syncData.user`.
+ *
+ * `failureReason` decides how an upstream rejection of the account token is
+ * reported: a token that was minted a second ago is a code problem, a stored one
+ * means the session expired.
+ */
+async function runSyncChain(
+  account: YostarAccountToken,
+  deps: YostarRequestDeps,
+  failureReason: YostarErrorReason,
+): Promise<unknown> {
+  const serverMap = await loadServerMap(deps)
+  const version = await loadClientVersion(serverMap.hv, deps)
+  const deviceIds = createDeviceIds()
+  const u8Token = await loadU8Token(account, serverMap.u8, deviceIds, deps, failureReason)
+  const session = await loadLoginSecret(
+    u8Token,
+    serverMap.gs,
+    version,
+    deviceIds,
+    deps,
+    failureReason,
+  )
+  return loadSyncData(session, serverMap.gs, deps)
+}
+
+export interface YostarLoginResult {
+  /** Account token the client stores on the device. Never logged server-side. */
+  account: YostarAccountToken
+  /** Raw `syncData.user`, mapped and sanitized by the route. */
+  user: unknown
+}
+
+/**
+ * Full login chain: e-mail code -> Yostar account token -> u8 token -> session
+ * secret -> `syncData.user`. The e-mail, the code and the intermediate tokens
+ * stay inside this function. Only the account token is handed back, because the
+ * owner decided the client may keep it on the device.
  */
 export async function fetchYostarSyncUser(
   email: string,
   code: string,
   deps: YostarRequestDeps = createYostarDeps(),
-): Promise<unknown> {
+): Promise<YostarLoginResult> {
   const emailToken = await submitEmailCode(email, code, deps)
   const account = await exchangeYostarToken(email, emailToken, deps)
-  const serverMap = await loadServerMap(deps)
-  const version = await loadClientVersion(serverMap.hv, deps)
-  const deviceIds = createDeviceIds()
-  const u8Token = await loadU8Token(account, serverMap.u8, deviceIds, deps)
-  const session = await loadLoginSecret(u8Token, serverMap.gs, version, deviceIds, deps)
-  return loadSyncData(session, serverMap.gs, deps)
+  const user = await runSyncChain(account, deps, 'invalid_code')
+  return { account, user }
+}
+
+/**
+ * Re-sync with the account token the client kept on the device. Any rejection of
+ * that token is reported as `invalid_session` so the client forgets it and asks
+ * for a new e-mail code instead of retrying forever.
+ */
+export async function fetchYostarSyncUserWithToken(
+  account: YostarAccountToken,
+  deps: YostarRequestDeps = createYostarDeps(),
+): Promise<unknown> {
+  try {
+    return await runSyncChain(account, deps, 'invalid_session')
+  } catch (error) {
+    if (error instanceof YostarError && error.reason === 'invalid_code') {
+      throw new YostarError('invalid_session')
+    }
+    throw error
+  }
+}
+
+/** ISO expiry for the on-device token cap. */
+export function createYostarSessionExpiry(now = Date.now()): string {
+  return new Date(now + YOSTAR_SESSION_TTL_MS).toISOString()
 }
 
 /** Maps a failure reason to the HTTP status the routes return. */
@@ -483,6 +559,8 @@ export function yostarHttpStatus(reason: YostarErrorReason): number {
     case 'invalid_email':
     case 'invalid_code':
       return 400
+    case 'invalid_session':
+      return 401
     case 'rate_limited':
       return 429
     case 'timeout':

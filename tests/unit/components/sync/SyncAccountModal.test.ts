@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import SyncAccountModal from '../../../../app/components/sync/SyncAccountModal.vue'
 
@@ -23,7 +23,7 @@ mockNuxtImport('useProfile', () => () => ({
   profile: mockProfile,
   loading: mockLoading,
   error: mockError,
-  isAuthenticated: ref(!!mockUser.value),
+  isAuthenticated: computed(() => !!mockUser.value),
   userId: ref(mockUser.value?.id ?? mockUser.value?.sub ?? null),
   userEmail: ref(mockUser.value?.email ?? null),
   fetchProfile: mockFetchProfile,
@@ -40,8 +40,12 @@ const yostarSyncing = ref(false)
 const yostarCodeSent = ref(false)
 const yostarError = ref<string | null>(null)
 const yostarResult = ref<unknown>(null)
+const yostarSession = ref<{ uid: string; token: string; expiresAt: string } | null>(null)
+const yostarHasSession = ref(false)
 const mockSendCode = vi.fn().mockResolvedValue(true)
 const mockStartSync = vi.fn().mockResolvedValue(false)
+const mockSyncWithSession = vi.fn().mockResolvedValue(false)
+const mockForget = vi.fn()
 
 mockNuxtImport('useYostarSync', () => () => ({
   enabled: yostarEnabled,
@@ -50,8 +54,12 @@ mockNuxtImport('useYostarSync', () => () => ({
   codeSent: yostarCodeSent,
   error: yostarError,
   result: yostarResult,
+  session: yostarSession,
+  hasSession: yostarHasSession,
   sendCode: mockSendCode,
   startSync: mockStartSync,
+  syncWithSession: mockSyncWithSession,
+  forget: mockForget,
   reset: vi.fn(),
 }))
 
@@ -116,6 +124,8 @@ describe('SyncAccountModal.vue', () => {
     yostarCodeSent.value = false
     yostarError.value = null
     yostarResult.value = null
+    yostarSession.value = null
+    yostarHasSession.value = false
   })
 
   it('renders modal with cloud account tab active by default and unauthenticated status', async () => {
@@ -365,6 +375,106 @@ describe('SyncAccountModal.vue', () => {
       expect(regions[1]?.attributes('disabled')).toBeDefined()
       expect(regions[1]?.attributes('title')).toBeTruthy()
     })
+
+    it('shows the stored-session panel instead of the code form', async () => {
+      yostarSession.value = {
+        uid: 'channel-uid',
+        token: 'yostar-account-token',
+        expiresAt: '2026-11-20T10:00:00.000Z',
+      }
+      yostarHasSession.value = true
+
+      const wrapper = await openYostarTab()
+
+      const panel = wrapper.find('.sync-modal__auth-success')
+      expect(panel.exists()).toBe(true)
+      expect(panel.text()).toContain('SAVED SESSION')
+      expect(panel.text()).toContain('2026-11-20')
+      expect(panel.text().toLowerCase()).toContain('localstorage')
+
+      expect(wrapper.find('input[name="yostar-email"]').exists()).toBe(false)
+      expect(wrapper.find('input[name="yostar-code"]').exists()).toBe(false)
+
+      const startBtn = wrapper.findAll('.sync-modal__footer-actions button').at(-1)
+      expect(startBtn?.text().toUpperCase()).toContain('SYNC NOW')
+      expect(startBtn?.attributes('disabled')).toBeUndefined()
+    })
+
+    it('syncs again from the stored session without asking for a code', async () => {
+      yostarSession.value = {
+        uid: 'channel-uid',
+        token: 'yostar-account-token',
+        expiresAt: '2026-11-20T10:00:00.000Z',
+      }
+      yostarHasSession.value = true
+      mockSyncWithSession.mockImplementation(async () => {
+        yostarResult.value = syncPayload
+        return true
+      })
+
+      const wrapper = await openYostarTab()
+      await wrapper.findAll('.sync-modal__footer-actions button').at(-1)?.trigger('click')
+      await flushPromises()
+
+      expect(mockSyncWithSession).toHaveBeenCalled()
+      expect(mockStartSync).not.toHaveBeenCalled()
+      expect(mockRosterImport).toHaveBeenCalledWith(syncPayload)
+      expect(wrapper.find('.sync-modal__auth-success').text()).toContain('SYNC COMPLETE')
+    })
+
+    it('disconnects the stored session and returns to the e-mail form', async () => {
+      yostarSession.value = {
+        uid: 'channel-uid',
+        token: 'yostar-account-token',
+        expiresAt: '2026-11-20T10:00:00.000Z',
+      }
+      yostarHasSession.value = true
+
+      const wrapper = await openYostarTab()
+      await wrapper.find('.sync-modal__disconnect-btn').trigger('click')
+      expect(mockForget).toHaveBeenCalled()
+
+      yostarHasSession.value = false
+      yostarSession.value = null
+      await wrapper.vm.$nextTick()
+
+      expect(wrapper.find('input[name="yostar-email"]').exists()).toBe(true)
+      expect(wrapper.find('.sync-modal__disconnect-btn').exists()).toBe(false)
+    })
+
+    it('explains an expired session error and keeps the code form', async () => {
+      yostarHasSession.value = false
+      yostarError.value = 'invalid_session'
+
+      const wrapper = await openYostarTab()
+
+      const alert = wrapper.find('.sync-modal__auth-error')
+      expect(alert.text().toLowerCase()).toContain('session expired')
+      expect(wrapper.find('input[name="yostar-code"]').exists()).toBe(true)
+    })
+  })
+
+  it('reports an immediate sign-in after registration when a session exists', async () => {
+    mockSignUp.mockImplementation(async () => {
+      // Supabase creates the session during signUp when confirmation is disabled.
+      mockUser.value = { sub: 'usr-42', id: 'usr-42', email: 'doctor@rhodes.island' }
+      return { success: true }
+    })
+
+    const wrapper = await mountSuspended(SyncAccountModal, {
+      props: { modelValue: true, teleport: false },
+    })
+
+    await wrapper.findAll('.sync-modal__sub-tab')[1]?.trigger('click')
+    await wrapper.findAll('input')[0]?.setValue('doctor@rhodes.island')
+    await wrapper.findAll('input')[1]?.setValue('secret123')
+    await wrapper.find('.sync-modal__auth-submit-btn').trigger('click')
+    await flushPromises()
+
+    const success = wrapper.find('.sync-modal__auth-success')
+    expect(success.exists()).toBe(true)
+    expect(success.text()).toContain('Account created and signed in.')
+    expect(success.text().toLowerCase()).not.toContain('check email')
   })
 })
 
