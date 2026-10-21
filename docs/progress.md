@@ -1,5 +1,44 @@
 # Project Progress
 
+- **Upcoming CN Banner Window & EST Global Forecast (`feat/gacha-upcoming-window`):**
+  - **Context & Motivation:**
+    - `/gacha` rendered the full 453-banner CN archive with "Show More / Show All" pagination, while the current Global hero showed only its title and end date.
+    - Product decision (owner, 2026-10-20): show the current EN banner with its rate-up roster, and below it only the CN banners that have not reached Global yet and have a known rate-up composition.
+  - **Implementation Details:**
+    - **Window & forecast (`shared/utils/gacha/index.ts`):**
+      - `parseBannerDate` parses `YYYY/MM/DD` and `YYYY/MM/DD HH:mm:ss` as UTC; `formatHumanDate` now uses it, so date-time values no longer depend on the host time zone.
+      - `getUpcomingCutoff` = latest CN `openTime` that already has a valid `globalStartDate`; `getUpcomingBanners` keeps CN banners after the cutoff with no real Global date and a non-empty `rateUp6`/`rateUp5`, sorted oldest first. The clock is not used.
+      - `getGlobalLagPairs` / `getGlobalLagDays` take the 12 most recent confirmed CN→Global pairs (sorted by CN start) and return the median lag.
+      - `getEstimatedGlobalDate` = CN start + `round(lag)` days, returned as `YYYY-MM-DD`.
+    - **Page (`app/pages/gacha.vue`):**
+      - Hero keeps its layout and now renders the full banner's rate-up roster from `banners` (LIMITED_EN_42_0_1: 2×6★, 3 secondary 6★, 1×5★).
+      - Section `CN // UPCOMING` / "Upcoming on Global" renders all 11 cards immediately; `PAGE_SIZE`, `visibleCount`, "Show More", "Show All" and the pagination markup were removed.
+      - Type filters kept (7 standard / 4 limited / 0 joint_operation); an empty filter renders `AkEmptyState`.
+      - First upcoming card gets `NEXT ON GLOBAL`; every card without a real Global date shows `≈ <date>` plus an `EST` badge.
+    - **Cards (`app/components/gacha/GachaBannerCard.vue`, `app/components/gacha/GachaRateUpOps.vue`):**
+      - Rate-up rendering extracted into `GachaRateUpOps` and reused by the hero (existing BEM hooks kept for tests).
+      - A real `globalStartDate` always wins over the estimate; the estimate only renders when no real date exists.
+      - The active CN badge now prefers the dataset's `isActive` flag (SINGLE_78_0_1) instead of the wall clock.
+    - **i18n (`i18n/locales/en.json`):**
+      - Added `gacha.upcoming.*`, `gacha.banner.nextOnGlobal`, `gacha.banner.globalEstimate`, `gacha.banner.est`; removed the unused `gacha.cnArchive.*` pagination keys; the disclaimer now explains EST dates. `i18n:check`: 688 keys.
+  - **Measured Data:**
+    - Cutoff: `LIMITED_73_0_1`, CN start 2026-05-01 (openTime 1777590000).
+    - Upcoming: **11** banners, 2026-05-15 … 2026-10-08 (UTC dates), first `SPECIAL_73_0_3`, last `SINGLE_78_0_1`.
+    - Lag: median **163.375 days** over the latest 12 confirmed pairs (rounded to 163); the latest pair `LIMITED_73_0_1` = 166.375 days; full-history median = 181.83.
+    - Estimates: `SPECIAL_73_0_3` → 2026-10-25, `LIMITED_76_0_1` → 2027-01-10, `SINGLE_78_0_1` → 2027-03-20.
+  - **Tests:**
+    - Unit: 520 tests / 46 files (+11 window/forecast tests).
+    - Nuxt: 259 tests / 50 files (+1 page test, +3 card tests).
+    - Total: 779 tests / 96 files; 0 skipped, 0 todo; the 20 s timeouts on the gacha page tests were removed (the slowest page test is now ~1.0 s).
+    - `GachaBannerCard.test.ts` keeps all previous checks and adds EST, real-date priority and NEXT badge coverage.
+  - **Quality Gates & Metrics:**
+    - `lint`: 0 errors, 0 warnings.
+    - `typecheck`: 0 errors.
+    - `data:validate`: 0 integrity issues.
+    - `i18n:check`: 688 valid keys.
+    - `build`: 53.1 MB in 1m 45s (`NUXT_BUILD_DIR=.nuxt-agent`).
+    - Three full runs: 21.02 s, 20.74 s, 23.48 s (the third with `dev:agent` on port 3001), all 779/779.
+
 - **Deterministic Full Test Run: Worker Cap & Nuxt Hook Timeout (`fix/deterministic-tests`):**
   - **Context & Motivation:**
     - `npx vitest run` passed on a quiet machine but failed on files that passed in isolation. `vitest.config.ts` set neither `maxWorkers` nor `hookTimeout`, so every Nuxt test file booted a full Nuxt app with the 10 s default hook budget and the worker count followed the 16 logical cores.
