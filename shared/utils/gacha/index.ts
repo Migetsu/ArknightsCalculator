@@ -493,20 +493,33 @@ export function getProbabilityMilestones(
 /**
  * Resolves candidate art identifiers for a banner based on its pool ID and server.
  * - For CN: uses pool ID as-is (e.g. 'NORM_10_0_1').
- * - For EN: tries pool ID with '_EN' stripped (e.g. 'NORM_EN_0_1_1' -> 'NORM_0_1_1'), then falls back to raw ID.
+ * - For EN with a confirmed pair: the paired CN pool first, then the raw EN ID.
+ *   The stripped `_EN` id is intentionally NOT used here, because a known pair
+ *   proves that the stripped pool is a different banner (foreign art).
+ * - For EN without a pair: stripped id (e.g. 'NORM_EN_0_1_1' -> 'NORM_0_1_1'),
+ *   then the raw EN id.
  */
-export function getBannerArtCandidates(id: string, server?: 'cn' | 'en' | string): string[] {
+export function getBannerArtCandidates(
+  id: string,
+  server?: 'cn' | 'en' | string,
+  pairedBannerId?: string | null,
+): string[] {
   if (!id || typeof id !== 'string') return []
   const cleanId = id.trim()
   if (!cleanId) return []
 
   const isEn = server === 'en' || cleanId.includes('_EN_') || cleanId.includes('_EN')
-  if (isEn) {
+  if (!isEn) return [cleanId]
+
+  const candidates: string[] = []
+  const pairedId = pairedBannerId?.trim()
+  if (pairedId) {
+    candidates.push(pairedId, cleanId)
+  } else {
     const stripped = cleanId.replace(/_EN(?=_|$)/, '')
-    if (stripped !== cleanId) {
-      return [stripped, cleanId]
-    }
+    if (stripped !== cleanId) candidates.push(stripped)
+    candidates.push(cleanId)
   }
 
-  return [cleanId]
+  return Array.from(new Set(candidates))
 }
