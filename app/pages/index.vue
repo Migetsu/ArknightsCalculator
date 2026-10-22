@@ -127,29 +127,35 @@ onBeforeUnmount(() => {
       <!-- 1. Hero Terminal Banner -->
       <section class="dashboard-page__hero">
         <p class="dashboard-page__hero-tag">
-          {{ isAuthenticated ? 'TERMINAL // ACCOUNT CONNECTED' : 'TERMINAL // NO ACCOUNT SYNCED' }}
+          {{
+            isAuthenticated
+              ? t('dashboard.hero.terminalConnected')
+              : t('dashboard.hero.terminalNoAccount')
+          }}
         </p>
         <h1 class="dashboard-page__hero-title dashboard-page__title">
           {{
             isAuthenticated
-              ? `Welcome back, ${doctorName}`
+              ? t('dashboard.hero.welcomeBackName', { name: doctorName })
               : isDemoLoaded
                 ? t('dashboard.title')
-                : 'Welcome back, Doctor'
+                : t('dashboard.hero.welcomeBack')
           }}
         </h1>
         <p class="dashboard-page__hero-desc dashboard-page__subtitle">
           {{
             isAuthenticated
-              ? 'Account connected. Manage your profile or sync Yostar data below.'
+              ? t('dashboard.hero.accountConnectedDesc')
               : isDemoLoaded
                 ? t('dashboard.subtitle')
-                : 'Sync your account to import your roster, depot and goals, or explore with demo data first.'
+                : t('dashboard.hero.syncDesc')
           }}
         </p>
         <div class="dashboard-page__hero-actions">
           <button type="button" class="dashboard-page__btn-primary" @click="isSyncModalOpen = true">
-            {{ isAuthenticated ? 'Open profile' : t('settings.account.syncBtn') }}
+            {{
+              isAuthenticated ? t('dashboard.hero.manageAccountBtn') : t('settings.account.syncBtn')
+            }}
           </button>
           <button
             v-if="!isAuthenticated"
