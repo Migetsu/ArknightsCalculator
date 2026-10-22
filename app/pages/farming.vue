@@ -503,11 +503,23 @@ const snapshotDateFormatted = computed(() => {
     }
   }
 
-  &__side-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+  &__stages-card {
     min-width: 0;
+
+    @media (width <= 768px) {
+      order: 2;
+    }
+  }
+
+  &__side-col {
+    display: contents;
+
+    @include mq(md) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      min-width: 0;
+    }
   }
 
   &__card {
@@ -643,6 +655,10 @@ const snapshotDateFormatted = computed(() => {
 
   &__cost-card {
     gap: var(--space-sm);
+
+    @media (width <= 768px) {
+      order: 1;
+    }
   }
 
   &__cost-val {
@@ -678,6 +694,10 @@ const snapshotDateFormatted = computed(() => {
 
   &__schedule-card {
     gap: var(--space-md);
+
+    @media (width <= 768px) {
+      order: 3;
+    }
   }
 
   &__day-picker {

@@ -449,6 +449,12 @@ onUnmounted(() => {
   user-select: none;
   overflow: hidden;
 
+  @media (width <= 640px) {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   &__backdrop {
     position: absolute;
     inset: 0;
@@ -466,6 +472,12 @@ onUnmounted(() => {
     padding: 16px 24px;
     background: linear-gradient(180deg, rgb(18 13 11 / 95%) 0%, rgb(18 13 11 / 0%) 100%);
     gap: 16px;
+
+    @media (width <= 640px) {
+      padding: 12px 16px;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
   }
 
   &__title-wrap {
@@ -494,6 +506,11 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     gap: 8px;
+
+    @media (width <= 640px) {
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
   }
 
   &__zoom-val {
@@ -620,6 +637,13 @@ onUnmounted(() => {
     justify-content: center;
     max-width: 90vw;
     max-height: 85vh;
+
+    @media (width <= 640px) {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
   }
 
   &__art-img {
@@ -628,6 +652,13 @@ onUnmounted(() => {
     object-fit: contain;
     filter: drop-shadow(0 20px 40px rgb(0 0 0 / 85%));
     pointer-events: none;
+
+    @media (width <= 640px) {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
   }
 
   &__footer {
