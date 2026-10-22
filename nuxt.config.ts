@@ -121,7 +121,22 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,svg,webp,woff2}'],
+      globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+      globIgnores: ['**/art/**', '**/_nuxt/builds/**'],
+      runtimeCaching: [
+        {
+          urlPattern: /\/art\/.*\.webp$/i,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'arkcalc-art-v1',
+            expiration: {
+              maxEntries: 120,
+              maxAgeSeconds: 60 * 60 * 24 * 30,
+            },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+      ],
       cleanupOutdatedCaches: true,
     },
     client: {
