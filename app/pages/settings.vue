@@ -78,12 +78,6 @@ function handleResetData(): void {
 function openSyncModal(): void {
   isSyncModalOpen.value = true
 }
-
-function openSource(): void {
-  if (typeof window !== 'undefined') {
-    window.open('https://github.com/dmitry-k/ArknightsCalculator', '_blank', 'noopener,noreferrer')
-  }
-}
 </script>
 
 <template>
@@ -248,9 +242,14 @@ function openSource(): void {
           </p>
         </div>
         <div>
-          <button type="button" class="settings-page__btn-outline" @click="openSource">
+          <a
+            href="https://github.com/Migetsu/ArknightsCalculator"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="settings-page__btn-outline"
+          >
             {{ t('settings.about.openSourceBtn') }}
-          </button>
+          </a>
         </div>
       </section>
     </div>
@@ -426,6 +425,10 @@ function openSource(): void {
   }
 
   &__btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     padding: 11px 20px;
     background-color: transparent;
     border: 1px solid var(--color-border-gold);

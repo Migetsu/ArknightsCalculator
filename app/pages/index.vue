@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import { DEMO_DASHBOARD_DATA } from '~/../shared/data/demo-dashboard'
 import { useSettingsStore } from '~/stores/settings'
 import { usePlannerStore } from '~/stores/planner'
+import { useProfile } from '~/composables/useProfile'
 import rawOperatorsData from '~/../data/operators-index.json'
 import {
   resolveI18nString,
@@ -16,6 +17,28 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const settingsStore = useSettingsStore()
 const plannerStore = usePlannerStore()
+const {
+  isAuthenticated,
+  profile,
+  userEmail,
+  loading: isProfileLoading,
+  fetchProfile,
+} = useProfile()
+
+const doctorName = computed(() => {
+  if (isProfileLoading.value) return '…'
+  return profile.value?.displayName || userEmail.value || 'Doctor'
+})
+
+watch(
+  isAuthenticated,
+  (val) => {
+    if (val && !profile.value) {
+      void fetchProfile()
+    }
+  },
+  { immediate: true },
+)
 
 const allOperators = rawOperatorsData as unknown as readonly OperatorSummary[]
 const operatorsMap = computed(() => {
@@ -103,22 +126,43 @@ onBeforeUnmount(() => {
     <div class="dashboard-page__container">
       <!-- 1. Hero Terminal Banner -->
       <section class="dashboard-page__hero">
-        <p class="dashboard-page__hero-tag">TERMINAL // NO ACCOUNT SYNCED</p>
+        <p class="dashboard-page__hero-tag">
+          {{
+            isAuthenticated
+              ? t('dashboard.hero.terminalConnected')
+              : t('dashboard.hero.terminalNoAccount')
+          }}
+        </p>
         <h1 class="dashboard-page__hero-title dashboard-page__title">
-          {{ isDemoLoaded ? t('dashboard.title') : 'Welcome back, Doctor' }}
+          {{
+            isAuthenticated
+              ? t('dashboard.hero.welcomeBackName', { name: doctorName })
+              : isDemoLoaded
+                ? t('dashboard.title')
+                : t('dashboard.hero.welcomeBack')
+          }}
         </h1>
         <p class="dashboard-page__hero-desc dashboard-page__subtitle">
           {{
-            isDemoLoaded
-              ? t('dashboard.subtitle')
-              : 'Sync your account to import your roster, depot and goals, or explore with demo data first.'
+            isAuthenticated
+              ? t('dashboard.hero.accountConnectedDesc')
+              : isDemoLoaded
+                ? t('dashboard.subtitle')
+                : t('dashboard.hero.syncDesc')
           }}
         </p>
         <div class="dashboard-page__hero-actions">
           <button type="button" class="dashboard-page__btn-primary" @click="isSyncModalOpen = true">
-            {{ t('settings.account.syncBtn') }}
+            {{
+              isAuthenticated ? t('dashboard.hero.manageAccountBtn') : t('settings.account.syncBtn')
+            }}
           </button>
-          <button type="button" class="dashboard-page__btn-outline" @click="handleLoadDemo">
+          <button
+            v-if="!isAuthenticated"
+            type="button"
+            class="dashboard-page__btn-outline"
+            @click="handleLoadDemo"
+          >
             {{ t('dashboard.alert.loadDemo') }}
           </button>
         </div>
