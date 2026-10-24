@@ -24,6 +24,33 @@ export interface Database {
         }
         Relationships: []
       }
+      user_data: {
+        Row: {
+          user_id: string
+          plans: Json
+          settings: Json
+          depot: Json
+          roster_synced_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          user_id: string
+          plans?: Json
+          settings?: Json
+          depot?: Json
+          roster_synced_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          user_id?: string
+          plans?: Json
+          settings?: Json
+          depot?: Json
+          roster_synced_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>
