@@ -144,4 +144,20 @@ describe('useDepotStore', () => {
     expect(store.items).toEqual({})
     expect(store.currencies).toEqual({ lmd: 0, orundum: 0, originitePrime: 0 })
   })
+
+  it('computes singlePermits, tenRollPermits and totalPermitPulls correctly', async () => {
+    const store = useDepotStore()
+    await store.init(memoryAdapter)
+
+    expect(store.singlePermits).toBe(0)
+    expect(store.tenRollPermits).toBe(0)
+    expect(store.totalPermitPulls).toBe(0)
+
+    await store.setItemCount('7003', 4) // 4 Single Permits
+    await store.setItemCount('7004', 2) // 2 Ten-roll Permits = 20 pulls
+
+    expect(store.singlePermits).toBe(4)
+    expect(store.tenRollPermits).toBe(2)
+    expect(store.totalPermitPulls).toBe(24)
+  })
 })

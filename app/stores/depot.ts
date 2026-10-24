@@ -106,6 +106,10 @@ export const useDepotStore = defineStore('depot', () => {
     return items.value[itemId] ?? 0
   }
 
+  const singlePermits = computed<number>(() => getItemCount('7003'))
+  const tenRollPermits = computed<number>(() => getItemCount('7004'))
+  const totalPermitPulls = computed<number>(() => singlePermits.value + tenRollPermits.value * 10)
+
   async function setItemCount(itemId: string, count: number): Promise<void> {
     const safeCount = Math.max(0, Math.min(999999, Math.floor(count) || 0))
     if (safeCount === 0) {
@@ -205,6 +209,9 @@ export const useDepotStore = defineStore('depot', () => {
     getAdapter,
     init,
     getItemCount,
+    singlePermits,
+    tenRollPermits,
+    totalPermitPulls,
     setItemCount,
     setCurrency,
     clearDepot,
