@@ -196,7 +196,20 @@ export function buildBannersFromTables(
     wikiBanners?: ParsedWikiBanner[]
   } = {},
 ): BuildBannersResult {
-  const nowSec = options.now ?? Math.floor(Date.now() / 1000)
+  let defaultNowSec = Math.floor(Date.now() / 1000)
+  if (!options.now && !process.env.UPDATE_DATA && fs.existsSync(OUTPUT_FILE)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8')) as {
+        meta?: { generatedAt?: string }
+      }
+      if (existing.meta?.generatedAt) {
+        defaultNowSec = Math.floor(new Date(existing.meta.generatedAt).getTime() / 1000)
+      }
+    } catch {
+      // fallback to Date.now()
+    }
+  }
+  const nowSec = options.now ?? defaultNowSec
   const i18nContext = options.i18nContext ?? createEmptyI18nLayersContext()
   const tracker = options.tracker
 

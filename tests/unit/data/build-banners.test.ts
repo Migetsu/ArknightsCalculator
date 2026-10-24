@@ -504,17 +504,20 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       let officialCount = 0
       let wikiCount = 0
       let machineCount = 0
+      let manualCount = 0
 
       for (const b of committedBannersDataset.cnBanners) {
         if (b.name.source === 'official') officialCount++
         else if (b.name.source === 'wiki') wikiCount++
         else if (b.name.source === 'machine') machineCount++
+        else if (b.name.source === 'manual') manualCount++
       }
 
       expect(officialCount).toBe(187)
-      expect(wikiCount).toBe(11)
+      expect(wikiCount).toBe(10)
+      expect(manualCount).toBe(1)
       expect(machineCount).toBe(255)
-      expect(officialCount + wikiCount + machineCount).toBe(453)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(453)
     })
   })
 })
