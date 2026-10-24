@@ -38,10 +38,11 @@ describe('buildGachaPageData', () => {
     expect(projectionBytes / datasetBytes).toBeLessThan(0.05)
   })
 
-  it('supports CN server mode with active CN banner', () => {
+  it('supports CN server mode with active CN banner while preserving EN banner in currentEnFullBanner', () => {
     const pageData = buildGachaPageData(dataset, 'cn')
     expect(pageData.currentBanner).toBeDefined()
     expect(pageData.currentBanner?.server).toBe('cn')
+    expect(pageData.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
     expect(pageData.upcomingBanners).toHaveLength(11)
   })
 

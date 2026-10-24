@@ -31,10 +31,12 @@ test.describe('Gacha Page (GCH-02)', () => {
     // Page header
     await expect(page.locator('.ak-page-header__title')).toBeVisible()
 
-    // Active Global banner exists
+    // Active Global banner exists with title and rate-up operators
     const currentEnCard = page.locator('.gacha-page__current-en .gacha-banner')
     await expect(currentEnCard).toBeVisible()
     await expect(currentEnCard.locator('.gacha-banner__countdown-badge--active')).toBeVisible()
+    await expect(currentEnCard.locator('.gacha-banner__title-text')).toHaveText('Sealed With Time')
+    await expect(currentEnCard.locator('.gacha-banner__content')).toBeVisible()
 
     // Upcoming banners exist (11 banners)
     const upcomingCards = page.locator('.gacha-page__upcoming .gacha-banner')

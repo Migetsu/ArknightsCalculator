@@ -6,7 +6,6 @@ import { resolveI18nString } from '~/../shared/schemas/operator'
 import { getEstimatedGlobalDate } from '~/../shared/utils/gacha'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
-import { useSettingsStore } from '~/stores/settings'
 import { useGachaPageData, fetchBannerDetail } from '~/composables/useGachaPageData'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
@@ -21,7 +20,6 @@ import GachaPityTooltip from '~/components/gacha/GachaPityTooltip.vue'
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const depotStore = useDepotStore()
-const settingsStore = useSettingsStore()
 const moduleConfig = getModuleById('gacha')
 
 useHead({
@@ -42,11 +40,7 @@ onMounted(async () => {
 
 // The full banners dataset stays server-side; the API returns the current
 // Global banner and the upcoming CN window this page renders.
-const {
-  data: gachaData,
-  status,
-  refresh,
-} = await useGachaPageData(computed(() => settingsStore.dropDataServer))
+const { data: gachaData, status, refresh } = await useGachaPageData()
 
 const currentEnFullBanner = computed<GachaBanner | null>(() => gachaData.value.currentEnFullBanner)
 const upcomingBanners = computed<readonly GachaBanner[]>(() => gachaData.value.upcomingBanners)
