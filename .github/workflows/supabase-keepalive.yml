@@ -12,13 +12,21 @@ jobs:
     steps:
       - name: Ping user_data REST endpoint
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL || secrets.NUXT_PUBLIC_SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || secrets.SUPABASE_KEY || secrets.NUXT_PUBLIC_SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY || secrets.SUPABASE_ANON_KEY }}
         run: |
-          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
-            echo "Skipping ping: Supabase credentials not found in secrets."
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_KEY" ]; then
+            echo "Skipping ping: Supabase credentials (SUPABASE_URL, SUPABASE_KEY) not found in secrets."
             exit 0
           fi
           echo "Pinging Supabase REST endpoint..."
-          curl -s -f -o /dev/null -H "apikey: $SUPABASE_ANON_KEY" "$SUPABASE_URL/rest/v1/user_data?select=count"
-          echo "Ping successful!"
+          HTTP_STATUS=$(curl -s -o /tmp/supabase_response.txt -w "%{http_code}" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            "$SUPABASE_URL/rest/v1/user_data?select=user_id&limit=1")
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "Ping failed with HTTP status $HTTP_STATUS:"
+            cat /tmp/supabase_response.txt
+            exit 1
+          fi
+          echo "Ping successful (HTTP $HTTP_STATUS)!"
