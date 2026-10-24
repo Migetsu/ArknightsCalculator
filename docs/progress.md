@@ -1909,6 +1909,21 @@
 - Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
 - Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
 
+## Performance: /farming & AkItemIcon lazy data delivery (known-issues #46, #47)
+
+- **Nitro Farming Endpoint (`/api/farming/data`)**: Moved heavy farming datasets (`data/penguin/{cn,us}.json`, `data/stages.json`) behind a dedicated server asset route (`server/api/farming/data.get.ts`).
+  - Responses are pre-filtered and minified: drop matrices omit `stdDev`, `stagesMap` is limited to relevant candidate stages with game data flags, and `itemsMap` contains compact metadata (`id`, `name`, `rarity`, `iconId`).
+  - In-memory process caching with `Cache-Control: public, max-age=3600`.
+  - `/farming` page chunk size decreased from **1,370 KB** down to **27 KB** (over **98% reduction** in client JavaScript).
+- **AkItemIcon On-Demand Item Lookup (`/api/items/[id]`)**: Removed static `data/items.json` (316 KB) from `AkItemIcon.vue` and `FarmingDeficitTable.vue`.
+  - Added `/api/items/[id]` endpoint backed by Nitro server asset `items.json` and in-memory Map cache.
+  - Implemented `useItemMeta` composable with client-side Map cache, request de-duplication, SSR prefetch (`useRequestFetch`), and fallback to initials/placeholder.
+  - Zero network overhead when props (`tier`, `name`, `iconId`) are provided directly by caller components.
+- **Verification**:
+  - Full test suite passes: 117 test files, 957 tests (including new `farming-data.test.ts` and `item-data.test.ts`).
+  - E2E tests (`farming.spec.ts`, `depot.spec.ts`) pass against port 3001.
+  - `lint`, `typecheck`, `data:validate`, `i18n:check`, and `build` pass with zero warnings/errors.
+
 ## In progress
 
 - Machine translation of CN-only content via Gemini API — complete.

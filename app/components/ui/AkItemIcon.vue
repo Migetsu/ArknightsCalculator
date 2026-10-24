@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { resolveAsset, ITEM_ICON_DEFAULT_MAP } from '~/../shared/utils/resolveAsset'
-import rawItemsData from '~/../data/items.json'
 import type { GameItem } from '~/../shared/schemas/item'
+import { fetchItemMeta, getCachedItem } from '~/composables/useItemMeta'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 
 export type AkItemIconSize = 36 | 40 | 48 | 56 | 64 | 'sm' | 'md' | 'lg'
 
@@ -42,9 +43,55 @@ const props = withDefaults(defineProps<Props>(), {
   size: 48,
 })
 
-const itemsMap = new Map((rawItemsData as unknown as GameItem[]).map((it) => [it.id, it]))
+const itemMeta = ref<GameItem | null>(null)
 
-const itemMeta = computed(() => (props.itemId ? itemsMap.get(props.itemId) : undefined))
+// Check if we need to load item metadata (tier, name, or iconId are missing)
+const isMetadataMissing = computed(() => {
+  if (!props.itemId) return false
+  return props.tier === undefined || !props.name || !props.iconId
+})
+
+function loadMetadata(id: string): void {
+  const cached = getCachedItem(id)
+  if (cached !== undefined) {
+    itemMeta.value = cached
+    return
+  }
+
+  const fetcher = import.meta.server ? asJsonFetcher(useRequestFetch()) : fetchJson
+
+  void fetchItemMeta(id, fetcher).then((meta) => {
+    if (props.itemId === id) {
+      itemMeta.value = meta
+    }
+  })
+}
+
+watch(
+  () => [props.itemId, isMetadataMissing.value] as const,
+  ([newId, missing]) => {
+    if (!newId || !missing) {
+      itemMeta.value = null
+      return
+    }
+    loadMetadata(newId)
+  },
+  { immediate: true },
+)
+
+if (props.itemId && isMetadataMissing.value) {
+  const cached = getCachedItem(props.itemId)
+  if (cached !== undefined) {
+    itemMeta.value = cached
+  } else {
+    try {
+      const fetcher = import.meta.server ? asJsonFetcher(useRequestFetch()) : fetchJson
+      itemMeta.value = await fetchItemMeta(props.itemId, fetcher)
+    } catch (_err) {
+      itemMeta.value = null
+    }
+  }
+}
 
 const effectiveIconId = computed(() => {
   return (
