@@ -181,4 +181,22 @@ describe('mapYostarSync', () => {
     )
     expect(result.depot.items).toEqual({ mod_unlock_token: 2 })
   })
+
+  it('passes headhunting permits through knownItemIds', () => {
+    const permitsCtx: YostarMapContext = {
+      knownOperatorIds: new Set(),
+      knownItemIds: new Set(['7003', '7004']),
+    }
+    const result = mapYostarSync(
+      {
+        inventory: {
+          '7003': 5,
+          '7004': 2,
+        },
+      },
+      permitsCtx,
+    )
+    expect(result.depot.items).toEqual({ '7003': 5, '7004': 2 })
+    expect(result.unknownItemCount).toBe(0)
+  })
 })

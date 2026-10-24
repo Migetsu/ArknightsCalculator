@@ -16,6 +16,9 @@ test.describe('Farming Depot Integration Flow', () => {
       await expect(card).toBeVisible()
       await card.scrollIntoViewIfNeeded()
 
+      const incBtn = card.locator('.ak-stepper__btn--inc')
+      await incBtn.click()
+
       const input = card.locator('input[type="number"]')
       await input.fill('10')
       await input.dispatchEvent('input')
@@ -54,7 +57,7 @@ test.describe('Farming Depot Integration Flow', () => {
       expect(storedData?.items?.[itemId]).toBeGreaterThanOrEqual(10)
     }
 
-    // 3. Navigate directly to /farming (simulating direct link / reload)
+    // Simulates real user flow: user adds items, then navigates to /farming directly.
     await page.goto('/farming')
     await page.waitForLoadState('domcontentloaded')
 

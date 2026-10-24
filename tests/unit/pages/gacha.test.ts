@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { ref } from 'vue'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
+import { useDepotStore } from '~/stores/depot'
 import GachaPage from '~/pages/gacha.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
@@ -194,5 +195,21 @@ describe('GachaPage', () => {
     await toggleBtn.trigger('click')
 
     expect(wrapper.find('.gacha-page__calculator-section').exists()).toBe(false)
+  })
+
+  it('passes single and ten-roll permits from depot to gacha forecast', async () => {
+    const wrapper = await mountSuspended(GachaPage)
+    const depotStore = useDepotStore()
+    depotStore.currencies.orundum = 0
+    depotStore.currencies.originitePrime = 0
+    depotStore.items['7003'] = 5
+    depotStore.items['7004'] = 1
+
+    await wrapper.vm.$nextTick()
+
+    // 5 single + 1 ten-roll = 15 pulls now
+    const breakdown = wrapper.find('.gacha-forecast-card__breakdown')
+    expect(breakdown.exists()).toBe(true)
+    expect(breakdown.text()).toContain('Current pulls: 15')
   })
 })

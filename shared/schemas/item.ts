@@ -11,6 +11,7 @@ export const ItemTypeSchema = z.enum([
   'catalyst',
   'exp_card',
   'currency',
+  'permit',
   'other',
 ])
 

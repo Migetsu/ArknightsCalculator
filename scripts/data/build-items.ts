@@ -74,6 +74,15 @@ export function classifyItem(item: RawItem): ItemType | null {
     return 'material'
   }
 
+  // 5. Permits (Headhunting / recruitment permits)
+  if (
+    item.itemType === 'TKT_GACHA' ||
+    item.itemType === 'TKT_GACHA_10' ||
+    item.itemType === 'TKT_RECRUIT'
+  ) {
+    return 'permit'
+  }
+
   // Fallback for unclassified item types
   return null
 }
