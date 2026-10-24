@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { forecastPulls } from '../../../../shared/utils/gacha/forecast'
+import { forecastPulls, calculatePullsUntilDate } from '../../../../shared/utils/gacha/forecast'
 
 describe('forecastPulls', () => {
   const fixedToday = new Date('2026-10-22T00:00:00Z')
@@ -106,5 +106,44 @@ describe('forecastPulls', () => {
     expect(result.pullsNow).toBe(3)
     expect(result.pullsWithIncome).toBe(3)
     expect(result.orundumTotal).toBe(1800)
+  })
+})
+
+describe('calculatePullsUntilDate', () => {
+  const now = new Date('2026-10-24T00:00:00Z').getTime()
+  const sevenDaysLater = now + 7 * 24 * 60 * 60 * 1000
+  const fourteenDaysLater = now + 14 * 24 * 60 * 60 * 1000
+
+  it('calculates 7 days F2P income yielding 5 pulls with 0 starting resources', () => {
+    // 7 * 100 + 2300 * 1 = 3000 Orundum / 600 = 5 pulls
+    const pulls = calculatePullsUntilDate(sevenDaysLater, 0, 0, 'f2p', 0, 0, now)
+    expect(pulls).toBe(5)
+  })
+
+  it('calculates 7 days Monthly Card income yielding 7 pulls with 0 starting resources', () => {
+    // 7 * 300 + 2300 * 1 = 4400 Orundum / 600 = 7 pulls (4400 / 600 = 7.33)
+    const pulls = calculatePullsUntilDate(sevenDaysLater, 0, 0, 'monthly', 0, 0, now)
+    expect(pulls).toBe(7)
+  })
+
+  it('calculates 0 remaining days returning only current resources', () => {
+    // 1200 orundum (2 pulls) + 3 single permits (3 pulls) = 5 pulls
+    const pulls = calculatePullsUntilDate(now, 1200, 3, 'f2p', 0, 0, now)
+    expect(pulls).toBe(5)
+  })
+
+  it('handles past date as 0 days remaining', () => {
+    const pastDate = now - 1000 * 60 * 60 * 24
+    const pulls = calculatePullsUntilDate(pastDate, 600, 1, 'f2p', 0, 0, now)
+    expect(pulls).toBe(2)
+  })
+
+  it('combines orundum, OP, single permits, ten-roll permits and income over 14 days', () => {
+    // 14 days F2P: 14 * 100 + 2300 * 2 = 1400 + 4600 = 6000 Orundum (10 pulls)
+    // Starting: 600 orundum (1) + 5 OP (900) + 2 single permits (1200) + 1 ten-roll permit (6000)
+    // Starting orundum: 600 + 900 + 1200 + 6000 = 8700 (14 pulls)
+    // Total orundum: 8700 + 6000 = 14700 / 600 = 24.5 -> 24 pulls
+    const pulls = calculatePullsUntilDate(fourteenDaysLater, 600, 2, 'f2p', 5, 1, now)
+    expect(pulls).toBe(24)
   })
 })

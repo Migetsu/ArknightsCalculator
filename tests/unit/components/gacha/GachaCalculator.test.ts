@@ -188,4 +188,89 @@ describe('GachaCalculator', () => {
     const pullsVal = wrapper.find('.gacha-calc__stat-value--rolls')
     expect(pullsVal.text()).toBe('30')
   })
+
+  it('renders target banner selector and emits select-banner on change', async () => {
+    const sampleForecastBanners = [
+      {
+        id: 'banner_curr',
+        title: 'Current Banner',
+        endDate: new Date(Date.now() + 5 * 86400000).toISOString(),
+        isUpcoming: false,
+      },
+      {
+        id: 'banner_next',
+        title: 'Upcoming Banner',
+        endDate: new Date(Date.now() + 14 * 86400000).toISOString(),
+        isUpcoming: true,
+      },
+    ]
+
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: {
+        banner: sampleLimitedBanner,
+        banners: sampleForecastBanners,
+      },
+    })
+
+    const select = wrapper.find<HTMLSelectElement>('#gacha-forecast-banner')
+    expect(select.exists()).toBe(true)
+
+    const options = select.findAll('option')
+    expect(options.length).toBe(2)
+    expect(options[0]?.text()).toContain('Current Banner')
+    expect(options[1]?.text()).toContain('Upcoming Banner (Upcoming)')
+
+    await select.setValue('banner_next')
+    expect(wrapper.emitted('select-banner')?.[0]).toEqual(['banner_next'])
+  })
+
+  it('displays permits notice when single or ten-roll permits are present in treasury', async () => {
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: { banner: sampleLimitedBanner },
+    })
+
+    const depotStore = useDepotStore()
+    depotStore.items['7003'] = 4
+    depotStore.items['7004'] = 2
+
+    const fillBtn = wrapper.find('.gacha-calc__depot-btn')
+    await fillBtn.trigger('click')
+
+    const notice = wrapper.find('.gacha-calc__permits-notice')
+    expect(notice.exists()).toBe(true)
+    expect(notice.text()).toContain('4 single')
+    expect(notice.text()).toContain('2 10-roll')
+    expect(notice.text()).toContain('24')
+  })
+
+  it('updates forecast when switching between F2P and Monthly Card income mode', async () => {
+    const sampleForecastBanners = [
+      {
+        id: 'banner_future',
+        title: 'Future Banner',
+        endDate: new Date(Date.now() + 14 * 86400000).toISOString(),
+        isUpcoming: true,
+      },
+    ]
+
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: {
+        banner: sampleLimitedBanner,
+        banners: sampleForecastBanners,
+      },
+    })
+
+    const statVal = wrapper.find('.gacha-forecast-card__stat-value')
+    expect(statVal.exists()).toBe(true)
+    const initialPulls = parseInt(statVal.text().replace(/\D+/g, ''), 10)
+
+    // Switch to monthly card
+    const monthlyRadio = wrapper.find<HTMLInputElement>('input[value="monthly_card"]')
+    expect(monthlyRadio.exists()).toBe(true)
+    await monthlyRadio.setValue(true)
+
+    const monthlyPulls = parseInt(statVal.text().replace(/\D+/g, ''), 10)
+    // 14 days of monthly card adds 200 * 14 = 2800 orundum = 4 additional pulls
+    expect(monthlyPulls).toBeGreaterThan(initialPulls)
+  })
 })

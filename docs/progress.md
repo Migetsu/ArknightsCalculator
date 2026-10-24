@@ -1909,6 +1909,31 @@
 - Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
 - Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
 
+## Gacha: Wave 2 Headhunting Permits & Savings Forecast (Task 37 / `feat/wave-2-gacha-calculator`)
+
+- **Headhunting Permits in Depot & Calculator**:
+  - Verified and confirmed permit items in `data/items.json`: `7003` (Headhunting Permit, `TKT_GACHA`, 1 pull) and `7004` (Ten-roll Headhunting Permit, `TKT_GACHA_10`, 10 pulls).
+  - Extended `useDepotStore`: added computed getters `singlePermits`, `tenRollPermits`, and `totalPermitPulls`.
+  - Embedded Single & Ten-roll Permit steppers inside `GachaCalculator.vue`.
+  - Linked permits to total rolls calculation (`calculateTotalPulls`) and forecast rolls breakdown (`forecastResult.pullsNow`).
+  - Added tactical permits notice in `GachaCalculator.vue` (`.gacha-calc__permits-notice`) showing free pulls breakdown when permits are present.
+- **Target Banner Selection & Savings Forecast**:
+  - Added `GACHA_INCOME_RATES` in `shared/constants/gameConstants.ts` with sourced documentation:
+    - Annihilation: 1,800 Orundum / week
+    - Daily Missions: 100 Orundum / day (700 / week)
+    - Weekly Missions: 500 Orundum / week
+    - F2P total: 3,000 Orundum / week (5 pulls / week)
+    - Monthly Card: +200 Orundum / day (+1,400 / week) -> 4,400 Orundum / week (7.33 pulls / week)
+    - Conversion: 1 pull = 600 Orundum, 1 Originite Prime = 180 Orundum.
+  - Implemented `calculatePullsUntilDate` in `shared/utils/gacha/forecast.ts` calculating available pulls until target banner end date via `days * daily + weekly * (days / 7) + currentResources`.
+  - Embedded target banner selector, F2P / Monthly Card toggle, and forecast breakdown directly into `GachaCalculator.vue`.
+  - Synced feed selection: clicking upcoming banner cards updates active and forecast target banner.
+  - Cleaned up duplicate forecast card component and styles from `app/pages/gacha.vue`.
+- **Testing & Verification**:
+  - Unit tests passing: `forecast.test.ts` (10 tests), `depot.test.ts` (9 tests), `GachaCalculator.test.ts` (13 tests), `gacha.test.ts` (13 tests).
+  - Playwright E2E passing in `tests/e2e/gacha.spec.ts` (4 tests).
+  - All project quality checks passing: `npm run lint`, `npm run typecheck`, `npm run data:validate`, `npm run i18n:check`, `npm run test`, and production `build`.
+
 ## UX & Inventory: Wave 1 fixes (Task 36 / `fix/wave-1-ux`)
 
 - **Settings Repository Link**:
