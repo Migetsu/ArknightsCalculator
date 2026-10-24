@@ -20,7 +20,9 @@ export default defineConfig({
       {
         test: {
           name: 'unit',
-          include: ['tests/unit/{shared,scripts,routes,config,data,schemas}/**/*.{test,spec}.ts'],
+          include: [
+            'tests/unit/{shared,scripts,routes,config,data,schemas,utils}/**/*.{test,spec}.ts',
+          ],
           environment: 'node',
           // Vitest requires equal maxWorkers for projects in the same sequence group.
           maxWorkers,
