@@ -168,4 +168,24 @@ describe('GachaCalculator', () => {
     await select.setValue('char_4228_closur')
     expect(label.text()).toContain('Closure')
   })
+
+  it('fills treasury from depot including single and ten-roll permits', async () => {
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: { banner: sampleLimitedBanner },
+    })
+
+    const depotStore = useDepotStore()
+    depotStore.currencies.orundum = 1200
+    depotStore.currencies.originitePrime = 10
+    depotStore.items['7003'] = 5
+    depotStore.items['7004'] = 2
+
+    const fillBtn = wrapper.find('.gacha-calc__depot-btn')
+    expect(fillBtn.exists()).toBe(true)
+    await fillBtn.trigger('click')
+
+    // 1200/600 (2) + 10*180/600 (3) + 5 (5) + 2*10 (20) = 30 pulls
+    const pullsVal = wrapper.find('.gacha-calc__stat-value--rolls')
+    expect(pullsVal.text()).toBe('30')
+  })
 })

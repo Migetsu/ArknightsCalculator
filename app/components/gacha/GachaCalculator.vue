@@ -100,6 +100,8 @@ onMounted(async () => {
 function fillFromDepot(): void {
   orundum.value = depotStore.currencies.orundum || 0
   originitePrime.value = depotStore.currencies.originitePrime || 0
+  permitsSingle.value = depotStore.items['7003'] || depotStore.items['7001'] || 0
+  permitsTen.value = depotStore.items['7004'] || depotStore.items['7002'] || 0
 }
 
 const totalAvailablePulls = computed<number>(() => {
