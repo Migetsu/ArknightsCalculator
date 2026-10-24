@@ -19,6 +19,8 @@ test.describe('Depot Module', () => {
     await expect(currenciesBar).toContainText('LMD')
     await expect(currenciesBar).toContainText('Orundum')
     await expect(currenciesBar).toContainText('Originite Prime')
+    await expect(currenciesBar).toContainText('Single Permits')
+    await expect(currenciesBar).toContainText('Ten-roll Permits')
 
     // 3. Verify active plan filter checkboxes
     const planCheckboxes = page.locator('.ak-depot__checkbox-input')

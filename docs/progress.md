@@ -1,5 +1,20 @@
 # Project Progress
 
+- **Task 42 — Account Headhunting Permits Mapping and Gacha Calculator Sync (`fix/gacha-account-permits`):**
+  - **Account Sync Headhunting Permits & Recruitment Licenses (`shared/utils/yostar/index.ts`):**
+    - Diagnosed missing Single and Ten-roll Permits from Yostar account synchronization: in the Arknights `/account/syncData` API payload, permits and licenses are placed inside `user.status` rather than `user.inventory` (`status.gachaTicket` for Single Permits, `status.tenGachaTicket` for Ten-roll Permits, and `status.recruitLicense` for Recruitment Licenses).
+    - Updated `RawStatusSchema` in `shared/utils/yostar/index.ts` to include `gachaTicket`, `tenGachaTicket`, and `recruitLicense`.
+    - Mapped these fields directly to depot item IDs `'7003'` (Headhunting Permit), `'7004'` (Ten-roll Headhunting Permit), and `'7001'` (Recruitment Permit) in `mapYostarSync()`.
+  - **Depot Currencies Top Bar (`app/pages/depot.vue`):**
+    - Added Headhunting Permits (`7003`) and Ten-roll Permits (`7004`) to `CURRENCY_IDS` (preventing duplication in the lower materials grid) and rendered dedicated steppers with `AkItemIcon` in the top currencies bar (`.ak-depot__currencies`).
+  - **Gacha Calculator Treasury Synchronization (`app/components/gacha/GachaCalculator.vue`):**
+    - Ensured `GachaCalculator.vue` automatically pre-fills treasury inputs (`permitsSingle`, `permitsTen`, `orundum`, `originitePrime`) on mount and reacts smoothly to `depotStore` updates via `watch` and `fillFromDepot()`.
+  - **Tests & Quality Gates:**
+    - Added unit test in `tests/unit/shared/yostar/mapSyncData.test.ts` verifying extraction of status-level `gachaTicket`, `tenGachaTicket`, and `recruitLicense` into depot items.
+    - Updated E2E suite `tests/e2e/depot.spec.ts` to verify Single and Ten-roll permits present in the depot currency bar.
+    - Added E2E test in `tests/e2e/gacha.spec.ts` verifying end-to-end user flow: setting permits in depot and navigating to `/gacha` automatically pre-fills calculator inputs and recalculates available pulls (including 26 pulls from 1200 orundum + 4 singles + 2 ten-rolls).
+    - Quality gates passed: `lint`, `typecheck`, `test` (118 files, 989 tests), `build` (Nuxt 4 + Nitro), Playwright E2E.
+
 - **Task 41 — Wave 4: PWA E2E coverage, Yostar UI session audit & Global Supabase Cloud Sync (`test/wave-4-pwa-yostar-audit`):**
   - **Global Supabase Cloud Sync Persistence (`default.vue`, `useCloudSync.ts`, `settings.vue`):**
     - Diagnosed and fixed Supabase cloud sync data persistence across routes and devices: previous auto-sync was scoped only to `settings.vue` and was terminated on route unmount, preventing plans, depot items, and settings modifications made on `/planner`, `/depot`, or `/farming` from ever syncing to Supabase.

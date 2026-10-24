@@ -134,10 +134,8 @@ watch(
     () => depotStore.singlePermits,
     () => depotStore.tenRollPermits,
   ],
-  ([newOrundum, newOP, newSingle, newTen]) => {
-    if (newOrundum || newOP || newSingle || newTen) {
-      fillFromDepot()
-    }
+  () => {
+    fillFromDepot()
   },
   { immediate: true },
 )
@@ -146,18 +144,7 @@ onMounted(async () => {
   if (depotStore.status === 'idle') {
     await depotStore.init()
   }
-  if (
-    orundum.value === 0 &&
-    originitePrime.value === 0 &&
-    permitsSingle.value === 0 &&
-    permitsTen.value === 0 &&
-    (depotStore.currencies.orundum > 0 ||
-      depotStore.currencies.originitePrime > 0 ||
-      depotStore.singlePermits > 0 ||
-      depotStore.tenRollPermits > 0)
-  ) {
-    fillFromDepot()
-  }
+  fillFromDepot()
 })
 
 // Target forecast banner & income mode

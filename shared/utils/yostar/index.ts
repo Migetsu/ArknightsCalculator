@@ -59,6 +59,9 @@ const RawStatusSchema = z.object({
   diamondShard: z.number().catch(0),
   payDiamond: z.number().catch(0),
   freeDiamond: z.number().catch(0),
+  gachaTicket: z.number().catch(0),
+  tenGachaTicket: z.number().catch(0),
+  recruitLicense: z.number().catch(0),
 })
 
 const RawInventorySchema = z.record(z.string(), z.number().catch(0))
@@ -198,6 +201,23 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
         continue
       }
       items[itemId] = count
+    }
+  }
+
+  // Arknights stores headhunting permits and recruitment licenses inside status rather than inventory
+  const status = RawStatusSchema.safeParse(root.status)
+  if (status.success) {
+    const singlePermits = toCount(status.data.gachaTicket)
+    if (singlePermits > 0 && ctx.knownItemIds.has('7003')) {
+      items['7003'] = Math.max(items['7003'] ?? 0, singlePermits)
+    }
+    const tenRollPermits = toCount(status.data.tenGachaTicket)
+    if (tenRollPermits > 0 && ctx.knownItemIds.has('7004')) {
+      items['7004'] = Math.max(items['7004'] ?? 0, tenRollPermits)
+    }
+    const recruitLicenses = toCount(status.data.recruitLicense)
+    if (recruitLicenses > 0 && ctx.knownItemIds.has('7001')) {
+      items['7001'] = Math.max(items['7001'] ?? 0, recruitLicenses)
     }
   }
 

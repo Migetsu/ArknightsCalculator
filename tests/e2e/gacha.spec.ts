@@ -75,6 +75,7 @@ test.describe('Gacha Page (GCH-02)', () => {
   }) => {
     await page.goto('/gacha')
     await page.waitForLoadState('domcontentloaded')
+    await expect(page.locator('.gacha-calc')).toBeVisible()
 
     // Verify forecast card is rendered inside calculator
     const forecastCard = page.locator('.gacha-forecast-card')
@@ -136,5 +137,45 @@ test.describe('Gacha Page (GCH-02)', () => {
     const endStat = await page.locator('.gacha-forecast-card__stat-value').innerText()
     const endTargetNum = parseInt(endStat.replace(/\D+/g, ''), 10)
     expect(endTargetNum).toBeGreaterThanOrEqual(startTargetNum)
+  })
+
+  test('automatically loads single and ten-roll permits from depot on gacha page', async ({
+    page,
+  }) => {
+    // 1. Set permits in depot
+    await page.goto('/depot')
+    await page.waitForLoadState('domcontentloaded')
+    await page.locator('.ak-depot__currencies').waitFor({ state: 'visible' })
+
+    const singlePermitInput = page.getByRole('spinbutton', {
+      name: 'Headhunting Permit',
+      exact: true,
+    })
+    const tenPermitInput = page.getByRole('spinbutton', {
+      name: 'Ten-roll Headhunting Permit',
+      exact: true,
+    })
+    const orundumInput = page.getByRole('spinbutton', { name: 'Orundum', exact: true })
+
+    await singlePermitInput.fill('4')
+    await singlePermitInput.dispatchEvent('input')
+    await tenPermitInput.fill('2')
+    await tenPermitInput.dispatchEvent('input')
+    await orundumInput.fill('1200')
+    await orundumInput.dispatchEvent('input')
+
+    // 2. Navigate to /gacha
+    await page.goto('/gacha')
+    await page.waitForLoadState('domcontentloaded')
+    await expect(page.locator('.gacha-calc')).toBeVisible()
+
+    // Expect inputs to have been filled from depot automatically
+    const singleInput = page.getByRole('spinbutton', { name: 'Single Permits' })
+    const tenInput = page.getByRole('spinbutton', { name: 'Ten-roll Permits' })
+    await expect(singleInput).toHaveValue('4')
+    await expect(tenInput).toHaveValue('2')
+
+    // 1200 orundum (2) + 4 single (4) + 2 ten-roll (20) = 26 pulls
+    await expect(page.locator('.gacha-calc__stat-value--rolls')).toHaveText('26')
   })
 })
