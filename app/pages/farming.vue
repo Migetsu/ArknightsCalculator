@@ -195,6 +195,11 @@ const snapshotDateFormatted = computed(() => {
                   : t('farming.emptyState.allCoveredDesc')
               "
             >
+              <div v-if="depotItemCount > 0" class="farming-page__empty-badge">
+                <AkBadge variant="green" size="sm">
+                  {{ t('farming.depotBadge', { count: depotItemCount }) }}
+                </AkBadge>
+              </div>
               <template #action>
                 <div class="farming-page__empty-actions">
                   <AkButton variant="primary" size="md" :to="localePath('/planner')">
@@ -526,6 +531,12 @@ const snapshotDateFormatted = computed(() => {
     align-items: center;
     gap: var(--space-sm);
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__empty-badge {
+    margin-top: var(--space-xs);
+    display: flex;
     justify-content: center;
   }
 
