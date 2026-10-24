@@ -199,4 +199,36 @@ describe('mapYostarSync', () => {
     expect(result.depot.items).toEqual({ '7003': 5, '7004': 2 })
     expect(result.unknownItemCount).toBe(0)
   })
+
+  it('maps headhunting permits and recruitment licenses from status fields', () => {
+    const permitsCtx: YostarMapContext = {
+      knownOperatorIds: new Set(),
+      knownItemIds: new Set(['7001', '7003', '7004', '30012']),
+    }
+    const result = mapYostarSync(
+      {
+        status: {
+          nickName: 'Doctor',
+          level: 100,
+          gold: 500000,
+          diamondShard: 6000,
+          payDiamond: 10,
+          freeDiamond: 20,
+          gachaTicket: 15,
+          tenGachaTicket: 3,
+          recruitLicense: 40,
+        },
+        inventory: {
+          '30012': 5,
+        },
+      },
+      permitsCtx,
+    )
+    expect(result.depot.items).toEqual({
+      '30012': 5,
+      '7003': 15,
+      '7004': 3,
+      '7001': 40,
+    })
+  })
 })

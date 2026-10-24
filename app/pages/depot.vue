@@ -71,7 +71,7 @@ const typeOptions: { value: FilterType; labelKey: string }[] = [
 ]
 
 // Exclude standalone top-bar currencies from main inventory grid
-const CURRENCY_IDS = new Set(['4001', '4002', '4003'])
+const CURRENCY_IDS = new Set(['4001', '4002', '4003', '7003', '7004'])
 
 const filteredItems = computed<DepotItemEntry[]>(() => {
   const query = searchQuery.value.trim().toLowerCase()
@@ -322,6 +322,54 @@ async function handleFillFromPlans(): Promise<void> {
                   wide
                   aria-label="Originite Prime"
                   @update:model-value="depotStore.setCurrency('originitePrime', $event)"
+                />
+              </div>
+            </div>
+
+            <!-- Single Permit (id: 7003) -->
+            <div class="ak-depot__currency-item">
+              <AkItemIcon
+                item-id="7003"
+                icon-id="TKT_GACHA"
+                name="Headhunting Permit"
+                :tier="4"
+                :size="48"
+              />
+              <div class="ak-depot__currency-meta">
+                <span class="ak-depot__currency-name">{{
+                  t('gacha.calculator.singlePermits')
+                }}</span>
+                <AkStepper
+                  :model-value="depotStore.getItemCount('7003')"
+                  :min="0"
+                  :max="9999"
+                  :step="1"
+                  wide
+                  aria-label="Headhunting Permit"
+                  @update:model-value="depotStore.setItemCount('7003', $event)"
+                />
+              </div>
+            </div>
+
+            <!-- Ten-roll Permit (id: 7004) -->
+            <div class="ak-depot__currency-item">
+              <AkItemIcon
+                item-id="7004"
+                icon-id="TKT_GACHA_10"
+                name="Ten-roll Permit"
+                :tier="5"
+                :size="48"
+              />
+              <div class="ak-depot__currency-meta">
+                <span class="ak-depot__currency-name">{{ t('gacha.calculator.tenPermits') }}</span>
+                <AkStepper
+                  :model-value="depotStore.getItemCount('7004')"
+                  :min="0"
+                  :max="999"
+                  :step="1"
+                  wide
+                  aria-label="Ten-roll Headhunting Permit"
+                  @update:model-value="depotStore.setItemCount('7004', $event)"
                 />
               </div>
             </div>
