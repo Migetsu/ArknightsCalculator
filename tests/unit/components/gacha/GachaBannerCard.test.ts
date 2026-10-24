@@ -533,4 +533,82 @@ describe('GachaBannerCard', () => {
       expect(wrapper.find('.gacha-banner__art-watermark').exists()).toBe(true)
     })
   })
+
+  describe('accessibility and selection interactions (WCAG 4.1.2)', () => {
+    it('does not place role="button" on root container to avoid nested interactive controls', async () => {
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: mockBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      // The root element must NOT be a button (which would illegally enclose operator <a> links)
+      expect(wrapper.attributes('role')).toBeUndefined()
+      expect(wrapper.attributes('tabindex')).toBeUndefined()
+
+      // The card column acts as the keyboard-focusable button
+      const cardBtn = wrapper.find('.gacha-banner__card')
+      expect(cardBtn.attributes('role')).toBe('button')
+      expect(cardBtn.attributes('tabindex')).toBe('0')
+      expect(cardBtn.attributes('aria-pressed')).toBe('false')
+
+      // The card column must NOT contain any nested links or buttons
+      expect(cardBtn.find('a').exists()).toBe(false)
+      expect(cardBtn.find('button').exists()).toBe(false)
+    })
+
+    it('emits "select" when .gacha-banner__card is clicked', async () => {
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: mockBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const cardBtn = wrapper.find('.gacha-banner__card')
+      await cardBtn.trigger('click')
+
+      expect(wrapper.emitted('select')).toBeTruthy()
+      expect(wrapper.emitted('select')![0]).toEqual(['banner_orienteering_7'])
+    })
+
+    it('emits "select" on Enter and Space keydown events on .gacha-banner__card', async () => {
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: mockBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const cardBtn = wrapper.find('.gacha-banner__card')
+      await cardBtn.trigger('keydown.enter')
+      expect(wrapper.emitted('select')).toHaveLength(1)
+
+      await cardBtn.trigger('keydown.space')
+      expect(wrapper.emitted('select')).toHaveLength(2)
+    })
+
+    it('marks upcoming CN banner as UPCOMING instead of ENDED when openTime is in the past', async () => {
+      const pastCnBanner: GachaBanner = {
+        ...mockBanner,
+        server: 'cn',
+        openTime: 1700000000,
+        endTime: 1701000000,
+        pairedBannerId: null,
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: pastCnBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      expect(wrapper.classes()).not.toContain('gacha-banner--ended')
+      expect(wrapper.classes()).toContain('gacha-banner--upcoming')
+      expect(wrapper.find('.gacha-banner__countdown-badge--ended').exists()).toBe(false)
+      expect(wrapper.find('.gacha-banner__countdown-badge--upcoming').exists()).toBe(true)
+    })
+  })
 })
