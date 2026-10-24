@@ -7,6 +7,7 @@ import { useRosterStore } from '~/stores/roster'
 import { useProfile } from '~/composables/useProfile'
 import { useCloudSync } from '~/composables/useCloudSync'
 import { buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
+import { useTimeAgo } from '@vueuse/core'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
@@ -23,6 +24,7 @@ const rosterStore = useRosterStore()
 const { isAuthenticated } = useProfile()
 const cloudSync = useCloudSync()
 const {
+  cloudUserData,
   pulling,
   pushing,
   lastSyncedAt,
@@ -36,6 +38,16 @@ const isDisconnectModalOpen = ref(false)
 const isDisconnecting = ref(false)
 const hasUnsavedChanges = ref(false)
 const notificationMessage = ref<string | null>(null)
+
+const rosterSyncedTime = computed(() => {
+  const synced = cloudUserData.value?.roster_synced_at
+  if (!synced) return null
+  try {
+    return useTimeAgo(new Date(synced)).value
+  } catch {
+    return new Date(synced).toLocaleString()
+  }
+})
 
 const formattedLastSynced = computed(() => {
   if (!lastSyncedAt.value) return t('settings.cloudSync.neverSynced')
@@ -327,6 +339,11 @@ function openSyncModal(): void {
               t('settings.cloudSync.lastSyncedLabel')
             }}</span>
             <b class="settings-page__meta-val">{{ formattedLastSynced }}</b>
+          </div>
+          <div v-if="rosterSyncedTime" class="settings-page__meta-row">
+            <span class="settings-page__meta-label">{{
+              t('settings.cloudSync.rosterSynced', { time: rosterSyncedTime })
+            }}</span>
           </div>
           <div class="settings-page__action-row">
             <AkButton
