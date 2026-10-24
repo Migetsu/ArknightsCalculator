@@ -154,7 +154,22 @@ jobs:
             exit 1
           fi
 
+      - name: Check for meaningful data changes (skip timestamp-only)
+        id: diff_check
+        run: |
+          MEANINGFUL_DIFF=$(git diff -U0 | grep -E '^[+-]' | grep -vE '^[+-]{3}' | grep -vE '"(generatedAt|updated_at|updatedAt)"' || true)
+          UNTRACKED=$(git ls-files --others --exclude-standard)
+
+          if [ -z "$MEANINGFUL_DIFF" ] && [ -z "$UNTRACKED" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "Only timestamps changed, skipping PR."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Meaningful data changes detected."
+          fi
+
       - name: Create Pull Request with updated data
+        if: steps.diff_check.outputs.has_changes != 'false'
         uses: peter-evans/create-pull-request@v6
         with:
           # A PAT is required: PRs opened with GITHUB_TOKEN do not trigger

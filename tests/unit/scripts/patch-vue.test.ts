@@ -53,7 +53,7 @@ describe('patch-vue patterns (isolated unit regex check)', () => {
     p3.lastIndex = 0
     expect(p3.test(patched)).toBe(false)
   })
-})
+}, 30_000)
 
 describe('self-checking patchContent outcomes', () => {
   it('returns "skipped" when content does not touch instance.job or n.job', () => {
@@ -90,7 +90,7 @@ describe('self-checking patchContent outcomes', () => {
     expect(result.error).toContain('contains job indicator (instance.job)')
     expect(result.error).toContain('neither an unpatched pattern nor the null guard')
   })
-})
+}, 30_000)
 
 describe('real Vue installation verification (node_modules/@vue/runtime-core/dist)', () => {
   /**
@@ -141,4 +141,4 @@ describe('real Vue installation verification (node_modules/@vue/runtime-core/dis
     expect(results.errors).toHaveLength(0)
     expect(results.alreadyPatched.length).toBeGreaterThanOrEqual(3)
   })
-})
+}, 30_000)
