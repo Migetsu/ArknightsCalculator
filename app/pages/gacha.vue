@@ -766,6 +766,8 @@ function selectBanner(id: string): void {
   flex-direction: column;
   gap: var(--space-md);
   min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 
   @media (width <= 640px) {
     padding: var(--space-sm);
@@ -826,6 +828,8 @@ function selectBanner(id: string): void {
     align-items: flex-end;
     gap: var(--space-lg);
     flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
 
     @media (width <= 640px) {
       flex-direction: column;
@@ -839,6 +843,12 @@ function selectBanner(id: string): void {
     flex-direction: column;
     gap: 6px;
     min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (width <= 640px) {
+      width: 100%;
+    }
   }
 
   &__label {
@@ -851,14 +861,17 @@ function selectBanner(id: string): void {
   }
 
   &__select {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 8px 12px;
     background-color: var(--color-bg-deep);
     border: 1px solid var(--color-border-subtle);
     color: var(--color-text-primary);
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
-    min-width: 260px;
-    max-width: 100%;
     cursor: pointer;
     transition: border-color var(--transition-fast);
 
@@ -866,16 +879,21 @@ function selectBanner(id: string): void {
       outline: 2px solid var(--color-accent-amber);
       outline-offset: 1px;
     }
-
-    @media (width <= 640px) {
-      min-width: 100%;
-    }
   }
 
   &__radios {
     display: flex;
     gap: var(--space-sm);
     flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (width <= 640px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
   }
 
   &__radio-label {
@@ -883,6 +901,9 @@ function selectBanner(id: string): void {
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
     background-color: var(--color-bg-deep);
     border: 1px solid var(--color-border-subtle);
     color: var(--color-text-secondary);
@@ -916,6 +937,8 @@ function selectBanner(id: string): void {
 
   &__radio-text {
     line-height: 1.2;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 
   &__results {
@@ -928,6 +951,9 @@ function selectBanner(id: string): void {
     background-color: var(--color-bg-deep);
     border: 1px solid var(--color-border-subtle);
     border-left: 3px solid var(--color-accent-amber);
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 
     @media (width <= 640px) {
       flex-direction: column;

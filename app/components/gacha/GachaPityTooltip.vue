@@ -187,7 +187,7 @@ onUnmounted(() => {
     );
 
     @media (width <= 480px) {
-      right: -40px;
+      right: 0;
       width: calc(100vw - 32px);
       padding: var(--space-sm, 12px);
       gap: var(--space-xs, 8px);
