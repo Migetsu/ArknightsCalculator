@@ -6,13 +6,13 @@ import AkInstallApp from '~/components/ui/AkInstallApp.vue'
 import AkModal from '~/components/ui/AkModal.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import { useProfile } from '~/composables/useProfile'
+import { useCloudSync } from '~/composables/useCloudSync'
 import {
-  useCloudSync,
   hasLocalData,
   hasCloudData,
   applyCloudDataToLocalStores,
   buildCurrentPayload,
-} from '~/composables/useCloudSync'
+} from '~/utils/cloudSync/applyToStores'
 import { usePlannerStore } from '~/stores/planner'
 import { useSettingsStore } from '~/stores/settings'
 import { useDepotStore } from '~/stores/depot'
