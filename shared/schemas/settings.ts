@@ -1,8 +1,9 @@
 import { z } from 'zod'
+import { ServerRegionSchema } from './operator'
 
 export const SettingsStateSchema = z
   .object({
-    dropDataServer: z.enum(['cn', 'global']).default('cn'),
+    dropDataServer: ServerRegionSchema.default('cn'),
     farmingMaxSanity: z.number().int().min(1).max(200).default(135),
     farmingRegenMinutes: z.number().int().min(1).max(60).default(6),
     farmingAllowCrafting: z.boolean().default(true),

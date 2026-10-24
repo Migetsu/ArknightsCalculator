@@ -3,11 +3,12 @@ import { ref, computed, watch, onMounted } from 'vue'
 import type { GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import rawOperatorsIndex from '~/../data/operators-index.json'
 import { getEstimatedGlobalDate } from '~/../shared/utils/gacha'
 import { forecastPulls, type ForecastMode } from '~/../shared/utils/gacha/forecast'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
+import { useSettingsStore } from '~/stores/settings'
+import { useGachaPageData, fetchBannerDetail } from '~/composables/useGachaPageData'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
@@ -21,6 +22,7 @@ import GachaPityTooltip from '~/components/gacha/GachaPityTooltip.vue'
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const depotStore = useDepotStore()
+const settingsStore = useSettingsStore()
 const moduleConfig = getModuleById('gacha')
 
 useHead({
@@ -41,7 +43,11 @@ onMounted(async () => {
 
 // The full banners dataset stays server-side; the API returns the current
 // Global banner and the upcoming CN window this page renders.
-const { data: gachaData, status, refresh } = await useGachaPageData()
+const {
+  data: gachaData,
+  status,
+  refresh,
+} = await useGachaPageData(computed(() => settingsStore.dropDataServer))
 
 const currentEnFullBanner = computed<GachaBanner | null>(() => gachaData.value.currentEnFullBanner)
 const upcomingBanners = computed<readonly GachaBanner[]>(() => gachaData.value.upcomingBanners)
@@ -49,8 +55,23 @@ const globalLagDays = computed<number | null>(() => gachaData.value.globalLagDay
 
 const operatorsMap = computed(() => {
   const map = new Map<string, OperatorSummary>()
-  for (const op of rawOperatorsIndex as OperatorSummary[]) {
-    map.set(op.id, op)
+  if (gachaData.value?.operators) {
+    for (const [id, op] of Object.entries(gachaData.value.operators)) {
+      map.set(id, {
+        id: op.id,
+        name: op.name,
+        rarity: op.rarity,
+        displayNumber: '',
+        class: 'WARRIOR',
+        subclass: '',
+        faction: '',
+        position: 'MELEE',
+        tagList: [],
+        servers: ['cn', 'global'],
+        hasIcon: true,
+        isClassChange: false,
+      })
+    }
   }
   return map
 })
@@ -115,13 +136,25 @@ watch(
   { immediate: true },
 )
 
+const bannerDetails = ref<Record<string, GachaBanner>>({})
+
 const activeBanner = computed<GachaBanner | null>(() => {
+  let base: GachaBanner | null = null
   if (activeBannerId.value) {
     const found = upcomingBanners.value.find((b) => b.id === activeBannerId.value)
-    if (found) return found
-    if (currentEnFullBanner.value?.id === activeBannerId.value) return currentEnFullBanner.value
+    if (found) base = found
+    else if (currentEnFullBanner.value?.id === activeBannerId.value)
+      base = currentEnFullBanner.value
   }
-  return filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? currentEnFullBanner.value
+  if (!base) {
+    base = filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? currentEnFullBanner.value
+  }
+  if (!base) return null
+  const detailed = bannerDetails.value[base.id]
+  if (detailed) {
+    return { ...base, ...detailed }
+  }
+  return base
 })
 
 // Banner Forecast state
@@ -229,10 +262,18 @@ const forecastResult = computed(() => {
   })
 })
 
-function selectBanner(id: string): void {
+async function selectBanner(id: string): Promise<void> {
   activeBannerId.value = id
   if (forecastBanners.value.some((b) => b.id === id)) {
     selectedForecastBannerId.value = id
+  }
+  if (!bannerDetails.value[id]) {
+    try {
+      const detail = await fetchBannerDetail(id)
+      bannerDetails.value[id] = detail
+    } catch (_err) {
+      // Non-fatal: compact banner remains displayed
+    }
   }
 }
 </script>
@@ -430,7 +471,11 @@ function selectBanner(id: string): void {
 
               <GachaBannerCard
                 v-if="currentEnFullBanner"
-                :banner="currentEnFullBanner"
+                :banner="
+                  bannerDetails[currentEnFullBanner.id]
+                    ? { ...currentEnFullBanner, ...bannerDetails[currentEnFullBanner.id] }
+                    : currentEnFullBanner
+                "
                 :operators-map="operatorsMap"
                 :is-selected="activeBanner?.id === currentEnFullBanner.id"
                 @select="selectBanner"
@@ -486,7 +531,9 @@ function selectBanner(id: string): void {
               <GachaBannerCard
                 v-for="banner in filteredUpcomingBanners"
                 :key="banner.id"
-                :banner="banner"
+                :banner="
+                  bannerDetails[banner.id] ? { ...banner, ...bannerDetails[banner.id] } : banner
+                "
                 :date-mode="dateMode"
                 :operators-map="operatorsMap"
                 :is-selected="activeBanner?.id === banner.id"

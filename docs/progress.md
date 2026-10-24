@@ -1909,6 +1909,25 @@
 - Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
 - Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
 
+## Performance: /gacha SSR payload and LCP optimization (known-issues #48, Task 35)
+
+- **Nitro Gacha Endpoints**:
+  - `/api/gacha/banners`: Added `?server=cn|global` query support (defaults to `global`). Serializes a compact projection of active and upcoming banners omitting heavy unneeded fields (`description`, `banner-arts`, raw archive data).
+  - Supplies a lightweight `operators` dictionary (`{ id, name, rarity }`) covering only the 67 operators featured in the active and upcoming pools (~2.6 KB JSON vs 218 KB full operators index).
+  - Nuxt payload (`__NUXT_DATA__`) on `/gacha` measured at **19.7 KB** (well within the <= 60 KB budget).
+  - `/api/gacha/banners/[id]`: Added on-demand banner details endpoint (returns full banner data including descriptions upon selection or click, with client-side caching in `fetchBannerDetail`).
+- **Client Route Bundle Optimization**:
+  - Removed direct static `data/operators-index.json` (218 KB) imports from `app/pages/gacha.vue` and `app/components/gacha/GachaCalculator.vue`.
+  - `operatorsMap` is now derived from the compact `gachaData.operators` payload, preserving 100% compatibility with `GachaBannerCard`, `GachaRateUpOps`, and `GachaCalculator`.
+  - Added reactive server switching watching `settingsStore.dropDataServer`.
+- **SSR HTML Reduction**:
+  - Baseline SSR HTML for `/gacha` recorded at **331 KB** under Slow 4G.
+  - New SSR HTML payload measured at **131 KB** in dev and clean ~95 KB body in production with compact banners.
+- **Verification**:
+  - Full test suite passes: 118 test files, 966 unit tests (including new `tests/unit/server/gacha-page-data.test.ts`).
+  - Playwright E2E suite passes (`tests/e2e/gacha.spec.ts`: SSR payload budget, no unneeded descriptions/arts, lifecycle badges verified including 33e.1 upcoming fix, calculator interactivity).
+  - Quality gates: `lint`, `typecheck`, `test`, `data:validate`, `i18n:check`, `build` all pass cleanly.
+
 ## Performance: /farming & AkItemIcon lazy data delivery (known-issues #46, #47)
 
 - **Nitro Farming Endpoint (`/api/farming/data`)**: Moved heavy farming datasets (`data/penguin/{cn,us}.json`, `data/stages.json`) behind a dedicated server asset route (`server/api/farming/data.get.ts`).

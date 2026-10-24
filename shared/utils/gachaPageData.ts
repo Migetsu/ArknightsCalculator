@@ -1,41 +1,135 @@
 import type { BannersDataset, GachaBanner } from '../schemas/banner'
+import type { I18nString, OperatorSummary, ServerRegion } from '../schemas/operator'
 import { getGlobalLagDays, getUpcomingBanners } from './gacha'
 
+export interface CompactOperatorInfo {
+  id: string
+  name: I18nString
+  rarity: 1 | 2 | 3 | 4 | 5 | 6
+}
+
 /**
- * The /gacha page only renders the active Global banner and the upcoming CN
- * window. Serving that projection from Nitro keeps the 1.5 MB banners dataset
- * out of the route chunk while every field the page uses stays identical.
+ * Compact projection of the /gacha payload:
+ * - Active banner for the selected server
+ * - Upcoming CN window
+ * - Minimal operator dictionary for rate-up operators
+ * - No heavy descriptions or unneeded raw banner records in SSR
  */
 export interface GachaPageData {
+  currentBanner: GachaBanner | null
   currentEnBannerId: string | null
   currentEnFullBanner: GachaBanner | null
   upcomingBanners: GachaBanner[]
   globalLagDays: number | null
+  operators?: Record<string, CompactOperatorInfo>
+}
+
+export function toCompactBanner(banner: GachaBanner): GachaBanner {
+  return {
+    id: banner.id,
+    server: banner.server,
+    ruleType: banner.ruleType,
+    type: banner.type,
+    tag: banner.tag,
+    name: banner.name,
+    title: banner.title,
+    openTime: banner.openTime,
+    endTime: banner.endTime,
+    openIso: banner.openIso,
+    endIso: banner.endIso,
+    durationDays: banner.durationDays,
+    isActive: banner.isActive,
+    pairedBannerId: banner.pairedBannerId,
+    isNextEnBanner: banner.isNextEnBanner,
+    cnStartDate: banner.cnStartDate,
+    cnEndDate: banner.cnEndDate,
+    globalStartDate: banner.globalStartDate,
+    globalEndDate: banner.globalEndDate,
+    hasArt: banner.hasArt,
+    artId: banner.artId,
+    rateUp6: banner.rateUp6 ?? [],
+    rateUp5: banner.rateUp5 ?? [],
+    primaryRateUp6: banner.primaryRateUp6,
+    secondaryRateUp6: banner.secondaryRateUp6 ?? [],
+    rateUpShareMode: banner.rateUpShareMode,
+    rateUpShare: banner.rateUpShare,
+    lmtgsid: banner.lmtgsid,
+  }
 }
 
 export function emptyGachaPageData(): GachaPageData {
   return {
+    currentBanner: null,
     currentEnBannerId: null,
     currentEnFullBanner: null,
     upcomingBanners: [],
     globalLagDays: null,
+    operators: {},
   }
 }
 
-export function buildGachaPageData(dataset: BannersDataset): GachaPageData {
+export function buildGachaPageData(
+  dataset: BannersDataset,
+  server: ServerRegion = 'global',
+  operatorsIndex?: readonly OperatorSummary[],
+): GachaPageData {
   const cnBanners = Array.isArray(dataset.cnBanners) ? dataset.cnBanners : []
   const allBanners =
     Array.isArray(dataset.banners) && dataset.banners.length > 0 ? dataset.banners : cnBanners
-  const currentEnBanner = dataset.meta?.currentEnBanner ?? null
-  const currentEnFullBanner: GachaBanner | null = currentEnBanner
-    ? (allBanners.find((banner) => banner.id === currentEnBanner.id) ?? null)
-    : null
+
+  let currentBanner: GachaBanner | null = null
+  if (server === 'cn') {
+    const activeCnId = dataset.meta?.activeCnBanners?.[0]?.id
+    if (activeCnId) {
+      currentBanner = cnBanners.find((b) => b.id === activeCnId) ?? null
+    }
+    if (!currentBanner) {
+      currentBanner = cnBanners.find((b) => b.isActive) ?? null
+    }
+  } else {
+    const currentEnBanner = dataset.meta?.currentEnBanner ?? null
+    currentBanner = currentEnBanner
+      ? (allBanners.find((banner) => banner.id === currentEnBanner.id) ?? null)
+      : null
+  }
+
+  const upcomingBanners = getUpcomingBanners(cnBanners)
+  const globalLagDays = getGlobalLagDays(cnBanners)
+
+  const compactCurrentBanner = currentBanner ? toCompactBanner(currentBanner) : null
+  const compactUpcomingBanners = upcomingBanners.map(toCompactBanner)
+
+  const neededOpIds = new Set<string>()
+  const bannersToScan = [compactCurrentBanner, ...compactUpcomingBanners].filter(
+    (b): b is GachaBanner => b !== null,
+  )
+  for (const b of bannersToScan) {
+    for (const opId of b.rateUp6 || []) neededOpIds.add(opId)
+    for (const opId of b.rateUp5 || []) neededOpIds.add(opId)
+    for (const opId of b.secondaryRateUp6 || []) neededOpIds.add(opId)
+    if (b.primaryRateUp6) neededOpIds.add(b.primaryRateUp6)
+  }
+
+  const operators: Record<string, CompactOperatorInfo> = {}
+  if (operatorsIndex && Array.isArray(operatorsIndex)) {
+    for (const op of operatorsIndex) {
+      if (neededOpIds.has(op.id)) {
+        operators[op.id] = {
+          id: op.id,
+          name: op.name,
+          rarity: op.rarity,
+        }
+      }
+    }
+  }
 
   return {
-    currentEnBannerId: currentEnBanner?.id ?? null,
-    currentEnFullBanner,
-    upcomingBanners: getUpcomingBanners(cnBanners),
-    globalLagDays: getGlobalLagDays(cnBanners),
+    currentBanner: compactCurrentBanner,
+    currentEnBannerId: compactCurrentBanner?.id ?? null,
+    currentEnFullBanner: compactCurrentBanner,
+    upcomingBanners: compactUpcomingBanners,
+    globalLagDays,
+    operators,
   }
 }
 
@@ -46,7 +140,7 @@ export function buildGachaPageData(dataset: BannersDataset): GachaPageData {
 export function isGachaPageData(value: unknown): value is GachaPageData {
   if (value === null || typeof value !== 'object') return false
   const candidate = value as Record<string, unknown>
-  const banner = candidate.currentEnFullBanner
+  const banner = candidate.currentEnFullBanner ?? candidate.currentBanner
   return (
     Array.isArray(candidate.upcomingBanners) &&
     (banner === null || (typeof banner === 'object' && !Array.isArray(banner))) &&

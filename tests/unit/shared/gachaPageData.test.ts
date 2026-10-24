@@ -28,13 +28,21 @@ describe('buildGachaPageData', () => {
     expect(pageData.globalLagDays).toBe(163.375)
   })
 
-  it('is small enough to stay out of the route chunk', () => {
+  it('is small enough to stay out of the route chunk and meets <= 60 KB budget', () => {
     const pageData = buildGachaPageData(dataset)
     const projectionBytes = JSON.stringify(pageData).length
     const datasetBytes = JSON.stringify(dataset).length
 
+    expect(projectionBytes).toBeLessThan(60_000)
     expect(projectionBytes).toBeLessThan(100_000)
     expect(projectionBytes / datasetBytes).toBeLessThan(0.05)
+  })
+
+  it('supports CN server mode with active CN banner', () => {
+    const pageData = buildGachaPageData(dataset, 'cn')
+    expect(pageData.currentBanner).toBeDefined()
+    expect(pageData.currentBanner?.server).toBe('cn')
+    expect(pageData.upcomingBanners).toHaveLength(11)
   })
 
   it('is accepted by the runtime guard', () => {
