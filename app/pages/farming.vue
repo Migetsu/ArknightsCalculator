@@ -3,6 +3,7 @@ import { computed, onMounted } from 'vue'
 import { useFarmingStore } from '~/stores/farming'
 import { useSettingsStore } from '~/stores/settings'
 import { usePlannerStore } from '~/stores/planner'
+import { useDepotStore } from '~/stores/depot'
 import { getModuleById } from '~/config/modules'
 import rawItemsData from '~/../data/items.json'
 import type { GameItem } from '~/../shared/schemas/item'
@@ -10,6 +11,7 @@ import type { ServerRegion } from '~/../shared/schemas/operator'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
+import AkBadge from '~/components/ui/AkBadge.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
@@ -20,7 +22,10 @@ const localePath = useLocalePath()
 const farmingStore = useFarmingStore()
 const settingsStore = useSettingsStore()
 const plannerStore = usePlannerStore()
+const depotStore = useDepotStore()
 const moduleConfig = getModuleById('farming')
+
+const depotItemCount = computed(() => Object.values(depotStore.items).filter((c) => c > 0).length)
 
 const allItems = rawItemsData as unknown as readonly GameItem[]
 const itemsMap = computed(() => {
@@ -51,6 +56,9 @@ onMounted(async () => {
   }
   if (farmingStore.status === 'idle') {
     await farmingStore.init()
+  }
+  if (depotStore.status === 'idle') {
+    void depotStore.init()
   }
 })
 
@@ -164,16 +172,24 @@ const snapshotDateFormatted = computed(() => {
         <div v-if="!farmingStore.hasDeficit" class="farming-page__empty-wrap">
           <div class="farming-page__empty-box">
             <AkEmptyState
-              :title="t('farming.emptyTitle')"
-              :description="t('farming.emptyDescription')"
+              :title="
+                plannerStore.plans.length === 0
+                  ? t('farming.emptyState.noPlansTitle')
+                  : t('farming.emptyState.allCoveredTitle')
+              "
+              :description="
+                plannerStore.plans.length === 0
+                  ? t('farming.emptyState.noPlansDesc')
+                  : t('farming.emptyState.allCoveredDesc')
+              "
             >
               <template #action>
                 <div class="farming-page__empty-actions">
                   <AkButton variant="primary" size="md" :to="localePath('/planner')">
-                    {{ t('farming.goToPlanner') }}
+                    {{ t('farming.emptyState.openPlannerBtn') }}
                   </AkButton>
                   <AkButton variant="secondary" size="md" :to="localePath('/depot')">
-                    {{ t('farming.goToDepot') }}
+                    {{ t('farming.emptyState.openDepotBtn') }}
                   </AkButton>
                 </div>
               </template>
@@ -325,6 +341,9 @@ const snapshotDateFormatted = computed(() => {
               <div class="farming-page__cost-val">
                 {{ farmingStore.optimizationResult.totalSanity.toLocaleString() }}
                 <span class="farming-page__cost-unit">AP</span>
+                <AkBadge v-if="depotItemCount > 0" variant="green" size="sm">
+                  {{ t('farming.depotBadge', { count: depotItemCount }) }}
+                </AkBadge>
               </div>
               <p class="farming-page__cost-sub">
                 {{
@@ -662,6 +681,10 @@ const snapshotDateFormatted = computed(() => {
   }
 
   &__cost-val {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
     font-family: var(--font-headline);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-extrabold);
