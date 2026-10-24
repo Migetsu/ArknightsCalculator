@@ -102,4 +102,45 @@ describe('useFarmingStore', () => {
     expect(ce6?.runs).toBe(100) // 1,000,000 / 10,000 = 100 runs
     expect(ls6?.runs).toBe(12) // ceil(111,400 / 10,000) = 12 runs
   })
+
+  it('reduces material deficit when depotStore.items are populated (both crafting and direct modes)', async () => {
+    const planner = usePlannerStore()
+    const depot = useDepotStore()
+    const settings = useSettingsStore()
+    const farming = useFarmingStore()
+    await farming.init()
+
+    await planner.addPlan('char_003_kalts')
+    settings.setFarmingAllowCrafting(true)
+
+    // Check one of the raw deficit items from Kal'tsit's requirements
+    const rawDeficitKeys = Object.keys(farming.activeDeficit).filter(
+      (k) => k !== '4001' && !k.startsWith('200'),
+    )
+    expect(rawDeficitKeys.length).toBeGreaterThan(0)
+    const targetItemId = rawDeficitKeys[0]!
+    const initialRemaining = farming.activeDeficit[targetItemId]!
+    expect(initialRemaining).toBeGreaterThan(1)
+
+    // Add inventory to depotStore.items
+    const stockToAdd = Math.floor(initialRemaining / 2)
+    await depot.setItemCount(targetItemId, stockToAdd)
+
+    // Verify activeDeficit remaining quantity reduced by stockToAdd
+    expect(farming.activeDeficit[targetItemId]).toBe(initialRemaining - stockToAdd)
+
+    // Direct deficit mode: check that depot stock is also subtracted
+    settings.setFarmingAllowCrafting(false)
+    const directDemandItem = planner.aggregatedDemand.items.find((i) => i.id === targetItemId)
+    if (directDemandItem) {
+      expect(farming.activeDeficit[targetItemId]).toBe(
+        Math.max(0, directDemandItem.count - stockToAdd),
+      )
+    }
+
+    // Fully cover item in crafting mode
+    settings.setFarmingAllowCrafting(true)
+    await depot.setItemCount(targetItemId, initialRemaining)
+    expect(farming.activeDeficit[targetItemId] ?? 0).toBe(0)
+  })
 })

@@ -32,6 +32,15 @@ describe('GachaPityTooltip', () => {
 
     const sections = wrapper.findAll('.gacha-pity-tooltip__section')
     expect(sections.length).toBe(4)
+
+    expect(sections[0]?.text()).toContain('Base Rate & Soft Pity')
+    expect(sections[0]?.text()).toContain('Base chance 2.0%')
+    expect(sections[1]?.text()).toContain('Limited Banners & 300 Spark')
+    expect(sections[1]?.text()).toContain('300 spark certificates')
+    expect(sections[2]?.text()).toContain('Standard Solo Banners (150 Guarantee)')
+    expect(sections[2]?.text()).toContain('150th pull')
+    expect(sections[3]?.text()).toContain('Currency Conversions')
+    expect(sections[3]?.text()).toContain('3.33 OP per 1 pull')
   })
 
   it('closes popover when close button is clicked', async () => {

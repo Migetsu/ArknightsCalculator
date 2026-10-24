@@ -50,12 +50,11 @@ watch(
 const depotItemCount = computed(() => Object.values(depotStore.items).filter((c) => c > 0).length)
 
 const breakdownItems = computed(() => {
-  const depot = depotStore.items
   return Object.entries(farmingStore.activeDeficit)
     .map(([id, count]) => ({
       id,
       remaining: count,
-      have: depot[id] ?? 0,
+      have: depotStore.getItemCount(id),
     }))
     .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
 })

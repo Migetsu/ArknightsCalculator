@@ -74,10 +74,20 @@ export const useFarmingStore = defineStore('farming', () => {
   const activeDeficit = computed<Record<string, number>>(() => {
     if (customDeficit.value) return customDeficit.value
     const def: Record<string, number> = {}
-    if (plannerStore.resolvedRawDeficit) {
-      for (const item of plannerStore.resolvedRawDeficit) {
-        if (item.count > 0) {
-          def[item.id] = item.count
+    if (settingsStore.farmingAllowCrafting) {
+      if (plannerStore.resolvedRawDeficit) {
+        for (const item of plannerStore.resolvedRawDeficit) {
+          if (item.count > 0) {
+            def[item.id] = item.count
+          }
+        }
+      }
+    } else {
+      for (const item of plannerStore.aggregatedDemand?.items ?? []) {
+        const have = depotStore.getItemCount(item.id)
+        const missing = Math.max(0, item.count - have)
+        if (missing > 0) {
+          def[item.id] = missing
         }
       }
     }
