@@ -283,15 +283,15 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
   }
 
   &--no-rateup {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 340px);
     max-width: 100%;
 
     .gacha-banner__card {
-      max-width: 100%;
+      max-width: 340px;
     }
 
     .gacha-banner__art {
-      height: 100px;
+      height: 150px;
     }
   }
 

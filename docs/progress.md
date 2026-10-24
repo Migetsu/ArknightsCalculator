@@ -1909,6 +1909,19 @@
 - Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
 - Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
 
+## Gacha: Fix Global Active Banner & Card Proportions (Task 38 / `fix/gacha-active-banner`)
+
+- **Global Active Banner (`PRTS // GLOBAL ACTIVE HEADHUNTING`)**:
+  - Fixed an issue where `useGachaPageData(computed(() => settingsStore.dropDataServer))` requested `?server=cn` whenever the user's default drop rates server was set to `cn`, causing `currentEnFullBanner` to be replaced with the CN active standard filler banner (`DOUBLE_77_0_5`).
+  - Switched `/gacha` to `useGachaPageData()` (unconditionally Global).
+  - In `shared/utils/gachaPageData.ts`, ensured `currentEnFullBanner` and `currentEnBannerId` always resolve to the actual Global EN active banner (`LIMITED_EN_42_0_1`, "Sealed With Time") regardless of server query parameters.
+- **Card Proportions on Empty Rate-up (`.gacha-banner--no-rateup`)**:
+  - Restricted `.gacha-banner--no-rateup` to `grid-template-columns: minmax(0, 340px)` and `.gacha-banner__art { height: 150px }`, preventing cards without rate-up rosters from stretching across 1440px into a 100px letterbox sliver.
+- **Verification**:
+  - Added assertion in `tests/e2e/gacha.spec.ts` checking that the active banner displays "Sealed With Time" with rate-up operators visible.
+  - Added unit test coverage in `tests/unit/shared/gachaPageData.test.ts` and `tests/unit/server/gacha-page-data.test.ts` verifying `currentEnFullBanner` is preserved across server modes.
+  - All 118 test files (979 tests), Playwright E2E, lint, typecheck, data:validate, i18n:check, and build pass cleanly.
+
 ## Gacha: Wave 2 Headhunting Permits & Savings Forecast (Task 37 / `feat/wave-2-gacha-calculator`)
 
 - **Headhunting Permits in Depot & Calculator**:

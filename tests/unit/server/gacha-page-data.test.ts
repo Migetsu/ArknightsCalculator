@@ -42,10 +42,11 @@ describe('server: gachaPageData', () => {
     expect(opCount).toBeLessThan(100) // only active/upcoming ops, far less than full 300+ catalog
   })
 
-  it('reads CN gacha page data with active CN banner', async () => {
+  it('reads CN gacha page data with active CN banner while preserving currentEnFullBanner', async () => {
     const data = await readGachaPageData('cn')
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.server).toBe('cn')
+    expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
     expect(data.upcomingBanners).toHaveLength(11)
   })
 

@@ -77,30 +77,35 @@ export function buildGachaPageData(
   const allBanners =
     Array.isArray(dataset.banners) && dataset.banners.length > 0 ? dataset.banners : cnBanners
 
-  let currentBanner: GachaBanner | null = null
+  const currentEnBanner = dataset.meta?.currentEnBanner ?? null
+  const enBanner = currentEnBanner
+    ? (allBanners.find((banner) => banner.id === currentEnBanner.id) ?? null)
+    : null
+  const compactEnBanner = enBanner ? toCompactBanner(enBanner) : null
+
+  let currentBanner: GachaBanner | null = compactEnBanner
   if (server === 'cn') {
     const activeCnId = dataset.meta?.activeCnBanners?.[0]?.id
+    let cnBanner: GachaBanner | null = null
     if (activeCnId) {
-      currentBanner = cnBanners.find((b) => b.id === activeCnId) ?? null
+      cnBanner = cnBanners.find((b) => b.id === activeCnId) ?? null
     }
-    if (!currentBanner) {
-      currentBanner = cnBanners.find((b) => b.isActive) ?? null
+    if (!cnBanner) {
+      cnBanner = cnBanners.find((b) => b.isActive) ?? null
     }
-  } else {
-    const currentEnBanner = dataset.meta?.currentEnBanner ?? null
-    currentBanner = currentEnBanner
-      ? (allBanners.find((banner) => banner.id === currentEnBanner.id) ?? null)
-      : null
+    if (cnBanner) {
+      currentBanner = toCompactBanner(cnBanner)
+    }
   }
 
   const upcomingBanners = getUpcomingBanners(cnBanners)
   const globalLagDays = getGlobalLagDays(cnBanners)
 
-  const compactCurrentBanner = currentBanner ? toCompactBanner(currentBanner) : null
+  const compactCurrentBanner = currentBanner
   const compactUpcomingBanners = upcomingBanners.map(toCompactBanner)
 
   const neededOpIds = new Set<string>()
-  const bannersToScan = [compactCurrentBanner, ...compactUpcomingBanners].filter(
+  const bannersToScan = [compactCurrentBanner, compactEnBanner, ...compactUpcomingBanners].filter(
     (b): b is GachaBanner => b !== null,
   )
   for (const b of bannersToScan) {
@@ -125,8 +130,8 @@ export function buildGachaPageData(
 
   return {
     currentBanner: compactCurrentBanner,
-    currentEnBannerId: compactCurrentBanner?.id ?? null,
-    currentEnFullBanner: compactCurrentBanner,
+    currentEnBannerId: compactEnBanner?.id ?? null,
+    currentEnFullBanner: compactEnBanner,
     upcomingBanners: compactUpcomingBanners,
     globalLagDays,
     operators,
