@@ -1909,6 +1909,24 @@
 - Verification: `data:pins --dry-run` reports the already-pinned upstream commit (no config change), 8 new unit tests cover the pin logic, `lint`, `typecheck`, `data:validate` (0 integrity issues), `test` (103 files / 825 tests) and `build` (`NUXT_BUILD_DIR=.nuxt-agent`) all pass; both workflow files parse as YAML and every `run` block passed `bash -n`.
 - Deferred: the first live `workflow_dispatch` run after merge, because the data pipeline rewrites `data/` and was not executed locally.
 
+## UX & Inventory: Wave 1 fixes (Task 36 / `fix/wave-1-ux`)
+
+- **Settings Repository Link**:
+  - Open source and feedback button links to `https://github.com/Migetsu/ArknightsCalculator` with `target="_blank"` and `rel="noopener noreferrer"`.
+  - Added unit test in `tests/unit/pages/settings.test.ts`.
+- **Homepage Auth Display & Management**:
+  - Displays `displayName` (with fallback to `userEmail` or `Doctor`) when Supabase authenticated.
+  - Replaces "Sync account" button with "Manage account" link to `/settings` and hides demo prompt.
+  - Added unit tests in `tests/unit/pages/index.test.ts`.
+- **Farming Depot Inventory Accounting**:
+  - Audit revealed `depotStore.getItemCount(itemId)` returned 0 for currency items (LMD `4001`) because currencies are stored under `currencies.lmd`. Updated `getItemCount` to map `4001` (LMD), `4002` (Orundum), `4003` (Originite Prime).
+  - In `app/pages/farming.vue`, updated `have` to use `depotStore.getItemCount(id)` instead of `depot[id] ?? 0`.
+  - In `app/stores/farming.ts`, added handling for direct farming mode (`farmingAllowCrafting: false`), subtracting available depot inventory directly from aggregated planner demand.
+  - Added unit tests in `tests/unit/stores/farming.test.ts` verifying deficit reductions across both crafting and direct modes.
+- **Gacha Pity Tooltip Texts**:
+  - Synchronized official mechanic descriptions in `i18n/locales/en.json` (Base rate & soft pity, Limited 300 spark, Standard solo 150 guarantee, Currency conversions).
+  - Updated unit tests in `tests/unit/components/gacha/GachaPityTooltip.test.ts`.
+
 ## Performance: /gacha SSR payload and LCP optimization (known-issues #48, Task 35)
 
 - **Nitro Gacha Endpoints**:

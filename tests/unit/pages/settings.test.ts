@@ -107,4 +107,16 @@ describe('SettingsPage', () => {
     expect(cloudSyncSection.exists()).toBe(true)
     expect(cloudSyncSection.text()).toContain('Roster synced:')
   })
+
+  it('renders about section with open source repository link opening in new tab', async () => {
+    const wrapper = await mountSuspended(SettingsPage)
+    const aboutSection = wrapper.find('.settings-page__section:last-child')
+    expect(aboutSection.exists()).toBe(true)
+
+    const repoLink = aboutSection.find('a.settings-page__btn-outline')
+    expect(repoLink.exists()).toBe(true)
+    expect(repoLink.attributes('href')).toBe('https://github.com/Migetsu/ArknightsCalculator')
+    expect(repoLink.attributes('target')).toBe('_blank')
+    expect(repoLink.attributes('rel')).toBe('noopener noreferrer')
+  })
 })

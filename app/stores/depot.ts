@@ -100,6 +100,9 @@ export const useDepotStore = defineStore('depot', () => {
   }
 
   function getItemCount(itemId: string): number {
+    if (itemId === '4001') return currencies.value.lmd
+    if (itemId === '4002') return currencies.value.orundum
+    if (itemId === '4003') return currencies.value.originitePrime
     return items.value[itemId] ?? 0
   }
 

@@ -26,7 +26,7 @@ const {
 } = useProfile()
 
 const doctorName = computed(() => {
-  if (isProfileLoading.value) return '…'
+  if (isProfileLoading.value && !profile.value) return '…'
   return profile.value?.displayName || userEmail.value || 'Doctor'
 })
 
@@ -152,10 +152,20 @@ onBeforeUnmount(() => {
           }}
         </p>
         <div class="dashboard-page__hero-actions">
-          <button type="button" class="dashboard-page__btn-primary" @click="isSyncModalOpen = true">
-            {{
-              isAuthenticated ? t('dashboard.hero.manageAccountBtn') : t('settings.account.syncBtn')
-            }}
+          <NuxtLink
+            v-if="isAuthenticated"
+            :to="localePath('/settings')"
+            class="dashboard-page__btn-primary"
+          >
+            {{ t('dashboard.hero.manageAccountBtn') }}
+          </NuxtLink>
+          <button
+            v-else
+            type="button"
+            class="dashboard-page__btn-primary"
+            @click="isSyncModalOpen = true"
+          >
+            {{ t('settings.account.syncBtn') }}
           </button>
           <button
             v-if="!isAuthenticated"
@@ -371,6 +381,10 @@ onBeforeUnmount(() => {
     font-size: 15px;
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: background-color var(--transition-fast);
 
     @include focus-ring;
