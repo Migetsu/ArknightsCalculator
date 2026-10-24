@@ -107,6 +107,74 @@ describe('forecastPulls', () => {
     expect(result.pullsWithIncome).toBe(3)
     expect(result.orundumTotal).toBe(1800)
   })
+
+  it('defaults to target="start" and calculates income until bannerStartDate', () => {
+    const fixedBannerStart = '2026-10-25T00:00:00Z' // 3 days
+    const result = forecastPulls(
+      {
+        bannerStartDate: fixedBannerStart,
+        bannerEndDate: fixedBannerEnd, // 7 days
+        currentOrundum: 0,
+        currentOP: 0,
+        currentTicketsSingle: 0,
+        currentTicketsTen: 0,
+        mode: 'f2p',
+      },
+      fixedToday,
+    )
+
+    expect(result.target).toBe('start')
+    expect(result.daysUntil).toBe(3)
+    expect(result.isAlreadyStarted).toBe(false)
+    // 3 days F2P: 3/7 * 3000 = 1285.7 -> 1286 orundum -> 2 pulls
+    expect(result.orundumFromIncome).toBe(1286)
+    expect(result.pullsWithIncome).toBe(2)
+  })
+
+  it('calculates until bannerEndDate when target="end"', () => {
+    const fixedBannerStart = '2026-10-25T00:00:00Z' // 3 days
+    const result = forecastPulls(
+      {
+        bannerStartDate: fixedBannerStart,
+        bannerEndDate: fixedBannerEnd, // 7 days
+        target: 'end',
+        currentOrundum: 0,
+        currentOP: 0,
+        currentTicketsSingle: 0,
+        currentTicketsTen: 0,
+        mode: 'f2p',
+      },
+      fixedToday,
+    )
+
+    expect(result.target).toBe('end')
+    expect(result.daysUntil).toBe(7)
+    expect(result.isAlreadyStarted).toBe(false)
+    expect(result.pullsWithIncome).toBe(5)
+  })
+
+  it('marks isAlreadyStarted=true and daysUntil=0 when bannerStartDate is in the past for target="start"', () => {
+    const pastStart = '2026-10-20T00:00:00Z'
+    const result = forecastPulls(
+      {
+        bannerStartDate: pastStart,
+        bannerEndDate: fixedBannerEnd,
+        target: 'start',
+        currentOrundum: 600,
+        currentOP: 0,
+        currentTicketsSingle: 0,
+        currentTicketsTen: 0,
+        mode: 'f2p',
+      },
+      fixedToday,
+    )
+
+    expect(result.target).toBe('start')
+    expect(result.daysUntil).toBe(0)
+    expect(result.isAlreadyStarted).toBe(true)
+    expect(result.orundumFromIncome).toBe(0)
+    expect(result.pullsWithIncome).toBe(1)
+  })
 })
 
 describe('calculatePullsUntilDate', () => {

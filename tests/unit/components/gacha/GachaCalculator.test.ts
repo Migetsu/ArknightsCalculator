@@ -273,4 +273,41 @@ describe('GachaCalculator', () => {
     // 14 days of monthly card adds 200 * 14 = 2800 orundum = 4 additional pulls
     expect(monthlyPulls).toBeGreaterThan(initialPulls)
   })
+
+  it('defaults to banner start forecast and updates pulls when toggling to banner end', async () => {
+    const now = Date.now()
+    const sampleForecastBanners = [
+      {
+        id: 'banner_future',
+        title: 'Future Banner',
+        startDate: new Date(now + 7 * 86400000).toISOString(),
+        endDate: new Date(now + 21 * 86400000).toISOString(),
+        isUpcoming: true,
+      },
+    ]
+
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: {
+        banner: sampleLimitedBanner,
+        banners: sampleForecastBanners,
+      },
+    })
+
+    const startRadio = wrapper.find<HTMLInputElement>('input[value="start"]')
+    const endRadio = wrapper.find<HTMLInputElement>('input[value="end"]')
+    expect(startRadio.exists()).toBe(true)
+    expect(endRadio.exists()).toBe(true)
+    expect(startRadio.element.checked).toBe(true)
+
+    const statVal = wrapper.find('.gacha-forecast-card__stat-value')
+    expect(statVal.text()).toContain('Pulls by start')
+    const startPulls = parseInt(statVal.text().replace(/\D+/g, ''), 10)
+
+    // Switch to banner end
+    await endRadio.setValue(true)
+
+    expect(statVal.text()).toContain('Pulls by end')
+    const endPulls = parseInt(statVal.text().replace(/\D+/g, ''), 10)
+    expect(endPulls).toBeGreaterThan(startPulls)
+  })
 })

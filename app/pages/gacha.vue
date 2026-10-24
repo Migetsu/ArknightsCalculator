@@ -150,6 +150,29 @@ const activeBanner = computed<GachaBanner | null>(() => {
   return base
 })
 
+function resolveBannerStartDate(banner: GachaBanner): string | null {
+  if (banner.globalStartDate) {
+    const d = new Date(banner.globalStartDate)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
+  }
+  if (banner.server === 'en' || banner.isActive) {
+    if (banner.openIso) return banner.openIso
+    if (banner.openTime) return new Date(banner.openTime * 1000).toISOString()
+  }
+  const estStart = getEstimatedGlobalDate(banner, globalLagDays.value)
+  if (estStart) {
+    const d = new Date(estStart)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
+  }
+  if (banner.openIso) return banner.openIso
+  if (banner.openTime) return new Date(banner.openTime * 1000).toISOString()
+  if (banner.cnStartDate) {
+    const d = new Date(banner.cnStartDate)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
+  }
+  return null
+}
+
 function resolveBannerEndDate(banner: GachaBanner): string | null {
   if (banner.globalEndDate) {
     const d = new Date(banner.globalEndDate)
@@ -190,6 +213,7 @@ const forecastBanners = computed<ForecastBannerOption[]>(() => {
 
   const result: ForecastBannerOption[] = []
   for (const banner of candidates) {
+    const startDate = resolveBannerStartDate(banner)
     const endDate = resolveBannerEndDate(banner)
     if (!endDate) continue
     const endMs = new Date(endDate).getTime()
@@ -204,6 +228,7 @@ const forecastBanners = computed<ForecastBannerOption[]>(() => {
     result.push({
       id: banner.id,
       title: name,
+      startDate,
       endDate,
       isUpcoming: !currentEnFullBanner.value || banner.id !== currentEnFullBanner.value.id,
       type: banner.type,

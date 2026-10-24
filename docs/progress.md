@@ -1,5 +1,20 @@
 # Project Progress
 
+- **Task 40 — Operator Talents Progression Grouping & Gacha Pulls Forecast to Banner Start (`fix/talents-progression-gacha-start-forecast`):**
+  - **Operator Talents Grouping (`AkOperatorTalentsPanel.vue`):**
+    - Grouped operator talents by title into a single card per talent with an index badge (`TALENT 1`, `TALENT 2`, etc.), preventing duplicated talent headers (such as 4 duplicate "Floating Above the Earth" headers on Angelina the Dream Deliverer).
+    - Rendered progression stages (Elite phase, level, potential requirements, and `AkRichText` descriptions) cleanly inside `.ak-operator-talents-panel__progression-list`.
+  - **Gacha Pulls Savings Forecast to Banner Start (`forecast.ts`, `gacha.vue`, `GachaCalculator.vue`):**
+    - Added support for forecasting pulls until either banner start date or banner end date (`target: 'start' | 'end'`, defaulting to `'start'`).
+    - Extended `ForecastInput` and `ForecastResult` with `bannerStartDate`, `bannerEndDate`, `target`, and `isAlreadyStarted`.
+    - Added `resolveBannerStartDate(banner)` in `gacha.vue` resolving `globalStartDate`, `openIso`, `openTime`, `getEstimatedGlobalDate`, and `cnStartDate`.
+    - Added interactive target toggle in `GachaCalculator.vue` (`Calculate Until: [Banner Start] / [Banner End]`, default `'start'`), updating summary copy (`Pulls by start` / `Pulls by end`), remaining days badge, and dynamic subtitle.
+  - **Tests & Quality Gates:**
+    - Unit tests in `AkOperatorTalentsPanel.test.ts` for talent grouping and stage progression rendering.
+    - Unit tests in `forecast.test.ts` and `GachaCalculator.test.ts` for start vs end target date calculations and toggle reactivity.
+    - E2E tests in `operator-detail.spec.ts` for talent progression grouping and `gacha.spec.ts` for banner start / end forecast toggle.
+    - Quality gates passed: `i18n:check` (784 keys), `lint`, `typecheck`, `test` (118 files, 988 tests), `build` (Nuxt 4 + Nitro).
+
 - **Task 39 — Wave 3: Mobile UX art viewer & farming layout reorder (`fix/wave-3-mobile-ux`):**
   - **Operator Art Viewer (`AkArtViewer.vue`):**
     - Unified responsive mobile breakpoint to `@media (width <= 768px)`.

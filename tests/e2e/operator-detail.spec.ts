@@ -257,4 +257,27 @@ test.describe('Operator Detail (/operators/[id])', () => {
     const restoredOverflow = await page.evaluate(() => document.body.style.overflow)
     expect(restoredOverflow).toBe('')
   })
+
+  test('groups operator talents by title with progression stage list without duplicate talent cards', async ({
+    page,
+  }) => {
+    // Open Angelina the Dream Deliverer (char_1015_aglna2) with 2 talents
+    await page.goto('/operators/char_1015_aglna2?tab=talents')
+    await expect(page.locator('.ak-operator-talents-panel')).toBeVisible()
+
+    // Exactly 2 talent cards (one per talent slot), not 4 duplicated cards
+    const talentCards = page.locator('.ak-operator-talents-panel__talent-card')
+    await expect(talentCards).toHaveCount(2)
+
+    // The first talent card has the title "Floating Above the Earth" once
+    const firstCard = talentCards.first()
+    await expect(firstCard.locator('.ak-operator-talents-panel__name')).toContainText(
+      'Floating Above the Earth',
+    )
+    await expect(firstCard.locator('.ak-operator-talents-panel__name')).toHaveCount(1)
+
+    // The first talent has progression stages listed underneath
+    const stages = firstCard.locator('.ak-operator-talents-panel__stage-row')
+    await expect(stages).toHaveCount(4)
+  })
 })

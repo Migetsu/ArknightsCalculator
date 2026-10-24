@@ -117,5 +117,24 @@ test.describe('Gacha Page (GCH-02)', () => {
     const monthlyStat = await page.locator('.gacha-forecast-card__stat-value').innerText()
     const monthlyNum = parseInt(monthlyStat.replace(/\D+/g, ''), 10)
     expect(monthlyNum).toBeGreaterThanOrEqual(initialNum)
+
+    // Toggle forecast target: Banner Start vs Banner End
+    const startTargetRadio = page.locator('input[value="start"]')
+    const endTargetRadio = page.locator('input[value="end"]')
+    await expect(startTargetRadio).toBeVisible()
+    await expect(endTargetRadio).toBeVisible()
+    await expect(startTargetRadio).toBeChecked()
+    await expect(page.locator('.gacha-forecast-card__stat-value')).toContainText('Pulls by start')
+
+    const startStat = await page.locator('.gacha-forecast-card__stat-value').innerText()
+    const startTargetNum = parseInt(startStat.replace(/\D+/g, ''), 10)
+
+    await endTargetRadio.check()
+    await expect(endTargetRadio).toBeChecked()
+    await expect(page.locator('.gacha-forecast-card__stat-value')).toContainText('Pulls by end')
+
+    const endStat = await page.locator('.gacha-forecast-card__stat-value').innerText()
+    const endTargetNum = parseInt(endStat.replace(/\D+/g, ''), 10)
+    expect(endTargetNum).toBeGreaterThanOrEqual(startTargetNum)
   })
 })
