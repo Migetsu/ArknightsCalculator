@@ -1,12 +1,20 @@
 import { defineConfig } from 'vitest/config'
 import { defineVitestProject } from '@nuxt/test-utils/config'
 import { availableParallelism } from 'node:os'
+import { fileURLToPath } from 'node:url'
 
 // Cap simultaneous Nuxt environment boots on many-core machines, but never above
 // the default worker count of a small CI runner (4 cores => 3 workers there).
 const maxWorkers = Math.min(12, Math.max(1, availableParallelism() - 1))
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~~': fileURLToPath(new URL('./', import.meta.url)),
+      '~': fileURLToPath(new URL('./app', import.meta.url)),
+      '#shared': fileURLToPath(new URL('./shared', import.meta.url)),
+    },
+  },
   test: {
     projects: [
       {
