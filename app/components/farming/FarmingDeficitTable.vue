@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import rawItemsData from '~/../data/items.json'
-import type { GameItem } from '~/../shared/schemas/item'
+import { useFarmingStore } from '~/stores/farming'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 export interface FarmingDeficitItem {
@@ -17,28 +16,18 @@ interface Props {
 const props = defineProps<Props>()
 
 const { t } = useI18n()
-
-const allItems = rawItemsData as unknown as readonly GameItem[]
-const itemsMap = computed(() => {
-  const map = new Map<string, GameItem>()
-  for (const it of allItems) {
-    map.set(it.id, it)
-  }
-  return map
-})
+const farmingStore = useFarmingStore()
 
 function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {
-  const item = itemsMap.value.get(itemId)
-  const r = item?.rarity ?? 1
-  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
+  return farmingStore.getItemRarity(itemId)
 }
 
 function getItemIconId(itemId: string): string | undefined {
-  return itemsMap.value.get(itemId)?.iconId
+  return farmingStore.getItemIconId(itemId)
 }
 
 function getItemName(itemId: string): string {
-  return itemsMap.value.get(itemId)?.name?.en ?? itemId
+  return farmingStore.getItemName(itemId)
 }
 
 const visibleItems = computed(() => props.items.filter((item) => item.remaining > 0))

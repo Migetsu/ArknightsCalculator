@@ -48,6 +48,27 @@ export default defineNuxtModule({
         dir: dataDir,
         pattern: 'banners.json',
       })
+
+      // Items catalog for /api/items/[id] on-demand lookup and farming metadata.
+      nitroConfig.serverAssets.push({
+        baseName: 'items',
+        dir: dataDir,
+        pattern: 'items.json',
+      })
+
+      // Stages dataset for /api/farming/data server-side filtering.
+      nitroConfig.serverAssets.push({
+        baseName: 'stages',
+        dir: dataDir,
+        pattern: 'stages.json',
+      })
+
+      // Penguin drop matrices for /api/farming/data.
+      nitroConfig.serverAssets.push({
+        baseName: 'penguin',
+        dir: resolve(dataDir, 'penguin'),
+        pattern: '*.json',
+      })
     })
   },
 })

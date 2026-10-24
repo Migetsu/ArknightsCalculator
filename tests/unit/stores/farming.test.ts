@@ -28,11 +28,13 @@ describe('useFarmingStore', () => {
     expect(farming.openSupplyGroups.length).toBeGreaterThan(0)
   })
 
-  it('switches server snapshot when settings change', () => {
+  it('switches server snapshot when settings change', async () => {
     const settings = useSettingsStore()
     const farming = useFarmingStore()
+    await farming.init()
 
     settings.setDropDataServer('cn')
+    await farming.loadData('cn')
     expect(farming.activeServer).toBe('cn')
     expect(farming.activeSnapshot.server).toBe('CN')
 
@@ -41,8 +43,9 @@ describe('useFarmingStore', () => {
     expect(farming.activeSnapshot.server).toBe('US')
   })
 
-  it('runs optimization on custom or planner deficit', () => {
+  it('runs optimization on custom or planner deficit', async () => {
     const farming = useFarmingStore()
+    await farming.init()
     // Rock T2 (30012)
     farming.setCustomDeficit({ '30012': 10 })
 
@@ -52,17 +55,19 @@ describe('useFarmingStore', () => {
     expect(result.totalSanity).toBeGreaterThan(0)
   })
 
-  it('allows selecting day of week for supply schedule', () => {
+  it('allows selecting day of week for supply schedule', async () => {
     const farming = useFarmingStore()
+    await farming.init()
     farming.setSelectedDay(3) // Wednesday
     expect(farming.selectedDay).toBe(3)
     const prefixes = farming.openSupplyGroups.map((g) => g.codePrefix).sort()
     expect(prefixes).toEqual(['CA', 'LS', 'PR-C', 'PR-D', 'SK'])
   })
 
-  it('toggles allowCrafting to switch between crafting substitution (1-7) and direct drop (S2-5)', () => {
+  it('toggles allowCrafting to switch between crafting substitution (1-7) and direct drop (S2-5)', async () => {
     const settings = useSettingsStore()
     const farming = useFarmingStore()
+    await farming.init()
     farming.setCustomDeficit({ '30011': 90 }) // 90 Orirock T1
 
     settings.setFarmingAllowCrafting(true)
@@ -77,6 +82,7 @@ describe('useFarmingStore', () => {
     const depot = useDepotStore()
     const settings = useSettingsStore()
     const farming = useFarmingStore()
+    await farming.init()
 
     await planner.addPlan('char_003_kalts')
     settings.setFarmingAllowCrafting(true)

@@ -1,22 +1,15 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useSettingsStore } from './settings'
 import { usePlannerStore } from './planner'
 import { useDepotStore } from './depot'
 import type { PenguinMatrixSnapshot } from '~/../shared/schemas/farming'
 import type { Stage } from '~/../shared/schemas/stage'
+import type { FarmingDataResponse, FarmingItemMeta } from '~/../shared/utils/farming/farmingData'
 import { optimizeFarming, getServerDayOfWeek, getOpenSupplyGroups } from '~/../shared/utils/farming'
-
-// Local static snapshots (offline-first, no runtime network queries to Penguin)
-import cnDataRaw from '~/../data/penguin/cn.json'
-import usDataRaw from '~/../data/penguin/us.json'
-import benchmarkDataRaw from '~/../data/penguin/benchmark.json'
-import stagesDataRaw from '~/../data/stages.json'
-
-const cnSnapshot = cnDataRaw as PenguinMatrixSnapshot
-const usSnapshot = usDataRaw as PenguinMatrixSnapshot
-const benchmarkSnapshot = benchmarkDataRaw as PenguinMatrixSnapshot
-const stagesMap = stagesDataRaw as Record<string, Stage>
+import { fetchFarmingData } from '~/composables/useFarmingData'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
+import type { JsonFetcher } from '~/utils/fetchJson'
 
 const EXP_CARD_VALUES: Readonly<Record<string, number>> = {
   '2001': 200,
@@ -32,6 +25,13 @@ const SORTED_EXP_CARDS: ReadonlyArray<readonly [string, number]> = [
   ['2001', 200],
 ]
 
+const EMPTY_SNAPSHOT: PenguinMatrixSnapshot = {
+  server: 'US',
+  fetchedAt: '',
+  minSampleSize: 300,
+  stages: {},
+}
+
 export const useFarmingStore = defineStore('farming', () => {
   const settingsStore = useSettingsStore()
   const plannerStore = usePlannerStore()
@@ -42,13 +42,20 @@ export const useFarmingStore = defineStore('farming', () => {
   const customDeficit = ref<Record<string, number> | null>(null)
   const selectedDay = ref<number>(getServerDayOfWeek(new Date(), settingsStore.dropDataServer))
 
+  const snapshots = ref<Record<string, PenguinMatrixSnapshot>>({})
+  const stagesMap = ref<Record<string, Stage>>({})
+  const itemsMap = ref<Record<string, FarmingItemMeta>>({})
+
   const activeServer = computed<'cn' | 'global'>(() => settingsStore.dropDataServer)
 
   const activeSnapshot = computed<PenguinMatrixSnapshot>(() => {
-    if (activeServer.value === 'cn') {
-      return cnSnapshot || benchmarkSnapshot
-    }
-    return usSnapshot || benchmarkSnapshot
+    const key = activeServer.value === 'cn' ? 'cn' : 'global'
+    return (
+      snapshots.value[key] ?? {
+        ...EMPTY_SNAPSHOT,
+        server: key === 'cn' ? 'CN' : 'US',
+      }
+    )
   })
 
   const currentServerDay = computed<number>(() => {
@@ -129,7 +136,7 @@ export const useFarmingStore = defineStore('farming', () => {
       maxSanity: settingsStore.farmingMaxSanity,
       regenMinutes: settingsStore.farmingRegenMinutes,
       allowCrafting: settingsStore.farmingAllowCrafting,
-      stagesMap,
+      stagesMap: stagesMap.value,
     })
   })
 
@@ -147,16 +154,58 @@ export const useFarmingStore = defineStore('farming', () => {
     customDeficit.value = deficit
   }
 
-  async function init(): Promise<void> {
+  function setData(data: FarmingDataResponse): void {
+    const key = data.server === 'CN' ? 'cn' : 'global'
+    snapshots.value[key] = data.snapshot
+    stagesMap.value = { ...stagesMap.value, ...data.stagesMap }
+    itemsMap.value = { ...itemsMap.value, ...data.itemsMap }
+    status.value = 'ready'
+  }
+
+  function getItemName(itemId: string): string {
+    return itemsMap.value[itemId]?.name ?? itemId
+  }
+
+  function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {
+    return itemsMap.value[itemId]?.rarity ?? 1
+  }
+
+  function getItemIconId(itemId: string): string | undefined {
+    return itemsMap.value[itemId]?.iconId
+  }
+
+  async function loadData(
+    server: 'global' | 'cn' = activeServer.value,
+    fetcher: JsonFetcher = fetchJson,
+  ): Promise<void> {
+    const key = server === 'cn' ? 'cn' : 'global'
+    if (snapshots.value[key]) return
+
     status.value = 'loading'
     error.value = null
     try {
-      selectedDay.value = currentServerDay.value
-      status.value = 'ready'
+      const data = await fetchFarmingData(server, fetcher)
+      setData(data)
     } catch (err) {
       status.value = 'error'
       error.value = (err as Error).message
     }
+  }
+
+  watch(
+    () => activeServer.value,
+    (newServer) => {
+      if (status.value !== 'idle') {
+        const fetcher = import.meta.server ? asJsonFetcher(useRequestFetch()) : fetchJson
+        void loadData(newServer, fetcher)
+      }
+    },
+  )
+
+  async function init(): Promise<void> {
+    selectedDay.value = currentServerDay.value
+    const fetcher = import.meta.server ? asJsonFetcher(useRequestFetch()) : fetchJson
+    await loadData(activeServer.value, fetcher)
   }
 
   return {
@@ -165,6 +214,8 @@ export const useFarmingStore = defineStore('farming', () => {
     selectedDay,
     activeServer,
     activeSnapshot,
+    stagesMap,
+    itemsMap,
     currentServerDay,
     isSnapshotOutdated,
     activeDeficit,
@@ -173,6 +224,11 @@ export const useFarmingStore = defineStore('farming', () => {
     openSupplyGroups,
     setSelectedDay,
     setCustomDeficit,
+    setData,
+    loadData,
+    getItemName,
+    getItemRarity,
+    getItemIconId,
     init,
   }
 })

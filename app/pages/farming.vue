@@ -5,9 +5,9 @@ import { useSettingsStore } from '~/stores/settings'
 import { usePlannerStore } from '~/stores/planner'
 import { useDepotStore } from '~/stores/depot'
 import { getModuleById } from '~/config/modules'
-import rawItemsData from '~/../data/items.json'
-import type { GameItem } from '~/../shared/schemas/item'
 import type { ServerRegion } from '~/../shared/schemas/operator'
+import { fetchFarmingData } from '~/composables/useFarmingData'
+import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 import AkContainer from '~/components/ui/AkContainer.vue'
 import AkPageHeader from '~/components/ui/AkPageHeader.vue'
 import AkAlert from '~/components/ui/AkAlert.vue'
@@ -26,6 +26,27 @@ const plannerStore = usePlannerStore()
 const depotStore = useDepotStore()
 const moduleConfig = getModuleById('farming')
 
+const { data: farmingData } = await useAsyncData(
+  () => `farming-data-${settingsStore.dropDataServer}`,
+  () => {
+    const fetcher = import.meta.server ? asJsonFetcher(useRequestFetch()) : fetchJson
+    return fetchFarmingData(settingsStore.dropDataServer, fetcher)
+  },
+  {
+    watch: [() => settingsStore.dropDataServer],
+  },
+)
+
+watch(
+  farmingData,
+  (newData) => {
+    if (newData) {
+      farmingStore.setData(newData)
+    }
+  },
+  { immediate: true },
+)
+
 const depotItemCount = computed(() => Object.values(depotStore.items).filter((c) => c > 0).length)
 
 const breakdownItems = computed(() => {
@@ -39,27 +60,16 @@ const breakdownItems = computed(() => {
     .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
 })
 
-const allItems = rawItemsData as unknown as readonly GameItem[]
-const itemsMap = computed(() => {
-  const map = new Map<string, GameItem>()
-  for (const it of allItems) {
-    map.set(it.id, it)
-  }
-  return map
-})
-
 function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {
-  const item = itemsMap.value.get(itemId)
-  const r = item?.rarity ?? 1
-  return Math.max(1, Math.min(5, r)) as 1 | 2 | 3 | 4 | 5
+  return farmingStore.getItemRarity(itemId)
 }
 
 function getItemIconId(itemId: string): string | undefined {
-  return itemsMap.value.get(itemId)?.iconId
+  return farmingStore.getItemIconId(itemId)
 }
 
 function getItemName(itemId: string): string {
-  return itemsMap.value.get(itemId)?.name.en ?? itemId
+  return farmingStore.getItemName(itemId)
 }
 
 onMounted(async () => {

@@ -1,7 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, it, expect, vi } from 'vitest'
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import { PRIMARY_CDN_BASE, SECONDARY_CDN_BASE } from '../../../../shared/utils/resolveAsset'
+import { readOperatorDataFixture } from '../../support/operatorDataFixture'
+
+const mockFetch = vi.hoisted(() => vi.fn())
+mockNuxtImport('$fetch', () => mockFetch)
+mockFetch.mockImplementation((url: string) => readOperatorDataFixture(url))
 
 describe('AkItemIcon', () => {
   it('renders image element when itemId is provided', async () => {
