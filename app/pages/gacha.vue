@@ -16,6 +16,7 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
+import GachaPityTooltip from '~/components/gacha/GachaPityTooltip.vue'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -249,6 +250,7 @@ function selectBanner(id: string): void {
         badge-variant="amber"
       >
         <template #actions>
+          <GachaPityTooltip />
           <AkButton
             variant="ghost"
             size="sm"
@@ -305,6 +307,7 @@ function selectBanner(id: string): void {
                     {{ t('gacha.forecast.subtitle') }}
                   </span>
                 </div>
+                <GachaPityTooltip />
               </div>
 
               <div v-if="forecastBanners.length === 0" class="gacha-forecast-card__empty">
