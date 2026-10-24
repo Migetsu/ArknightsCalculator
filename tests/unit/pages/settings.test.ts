@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { ref } from 'vue'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import SettingsPage from '../../../app/pages/settings.vue'
+import { useCloudSync } from '../../../app/composables/useCloudSync'
 
 const mockIsAuthenticated = ref(false)
 const mockUserId = ref<string | null>(null)
@@ -22,6 +23,8 @@ describe('SettingsPage', () => {
   beforeEach(() => {
     mockIsAuthenticated.value = false
     mockUserId.value = null
+    const { reset } = useCloudSync()
+    reset()
   })
 
   it('renders settings title and sections', async () => {
@@ -72,5 +75,36 @@ describe('SettingsPage', () => {
     expect(content.text()).toContain('Last synced:')
     expect(content.text()).toContain('Sync now')
     expect(content.text()).toContain('Disconnect')
+  })
+
+  it('shows roster synced relative time when roster_synced_at set', async () => {
+    mockIsAuthenticated.value = true
+    mockUserId.value = 'test-doctor-uuid'
+
+    const { cloudUserData } = useCloudSync()
+    cloudUserData.value = {
+      user_id: 'test-doctor-uuid',
+      plans: [],
+      settings: {
+        dropDataServer: 'global',
+        farmingMaxSanity: 135,
+        farmingRegenMinutes: 6,
+        farmingAllowCrafting: true,
+      },
+      depot: {
+        schemaVersion: 1,
+        updatedAt: '2026-10-24T10:00:00.000Z',
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+        items: {},
+      },
+      roster_synced_at: '2026-10-24T10:00:00.000Z',
+      updated_at: '2026-10-24T10:00:00.000Z',
+    }
+
+    const wrapper = await mountSuspended(SettingsPage)
+    const cloudSyncSection = wrapper.find('.settings-page__section--cloud-sync')
+
+    expect(cloudSyncSection.exists()).toBe(true)
+    expect(cloudSyncSection.text()).toContain('Roster synced:')
   })
 })
