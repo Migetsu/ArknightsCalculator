@@ -1,18 +1,126 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, watch, onBeforeUnmount } from 'vue'
 import { useSettingsStore } from '~/stores/settings'
+import { usePlannerStore } from '~/stores/planner'
+import { useDepotStore } from '~/stores/depot'
+import { useRosterStore } from '~/stores/roster'
+import { useProfile } from '~/composables/useProfile'
+import { useCloudSync, buildCurrentPayload } from '~/composables/useCloudSync'
 import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
+import AkBadge from '~/components/ui/AkBadge.vue'
+import AkButton from '~/components/ui/AkButton.vue'
+import AkModal from '~/components/ui/AkModal.vue'
 import metaData from '~/../data/meta.json'
 import type { ServerRegion } from '~/../shared/schemas/operator'
 
 const { t, locale } = useI18n()
 const settingsStore = useSettingsStore()
+const plannerStore = usePlannerStore()
+const depotStore = useDepotStore()
+const rosterStore = useRosterStore()
+
+const { isAuthenticated } = useProfile()
+const cloudSync = useCloudSync()
+const {
+  pulling,
+  pushing,
+  lastSyncedAt,
+  error: cloudSyncError,
+  push: cloudSyncPush,
+  forget: cloudSyncForget,
+} = cloudSync
 
 const isSyncModalOpen = ref(false)
+const isDisconnectModalOpen = ref(false)
+const isDisconnecting = ref(false)
+const hasUnsavedChanges = ref(false)
 const notificationMessage = ref<string | null>(null)
+
+const formattedLastSynced = computed(() => {
+  if (!lastSyncedAt.value) return t('settings.cloudSync.neverSynced')
+  try {
+    return lastSyncedAt.value.toLocaleString()
+  } catch {
+    return String(lastSyncedAt.value)
+  }
+})
+
+watch(lastSyncedAt, () => {
+  hasUnsavedChanges.value = false
+})
+
+let stopAutoSync: (() => void) | null = null
+
+watch(
+  isAuthenticated,
+  (authed) => {
+    if (authed) {
+      if (!stopAutoSync) {
+        stopAutoSync = cloudSync.startAutoSync(
+          () => {
+            hasUnsavedChanges.value = true
+            return buildCurrentPayload({
+              plannerStore,
+              settingsStore,
+              depotStore,
+              rosterStore,
+            })
+          },
+          { debounceMs: 5000 },
+        )
+      }
+    } else {
+      if (stopAutoSync) {
+        stopAutoSync()
+        stopAutoSync = null
+      }
+    }
+  },
+  { immediate: true },
+)
+
+onBeforeUnmount(() => {
+  if (stopAutoSync) {
+    stopAutoSync()
+    stopAutoSync = null
+  }
+})
 
 function selectServer(server: ServerRegion): void {
   settingsStore.setDropDataServer(server)
+}
+
+async function handleManualSync(): Promise<void> {
+  const payload = buildCurrentPayload({
+    plannerStore,
+    settingsStore,
+    depotStore,
+    rosterStore,
+  })
+  const ok = await cloudSyncPush(payload)
+  if (ok) {
+    hasUnsavedChanges.value = false
+    notificationMessage.value = t('settings.cloudSync.statusInSync')
+    setTimeout(() => {
+      notificationMessage.value = null
+    }, 3000)
+  }
+}
+
+async function handleConfirmDisconnect(): Promise<void> {
+  isDisconnecting.value = true
+  try {
+    const ok = await cloudSyncForget()
+    if (ok) {
+      isDisconnectModalOpen.value = false
+      notificationMessage.value = t('settings.cloudSync.disconnect') + ' OK'
+      setTimeout(() => {
+        notificationMessage.value = null
+      }, 3000)
+    }
+  } finally {
+    isDisconnecting.value = false
+  }
 }
 
 function handleExport(): void {
@@ -184,6 +292,66 @@ function openSyncModal(): void {
         </div>
       </section>
 
+      <!-- Cloud Sync Section -->
+      <section class="settings-page__section settings-page__section--cloud-sync">
+        <div class="settings-page__section-header">
+          <div class="settings-page__title-badge-row">
+            <h2 class="settings-page__section-title">{{ t('settings.cloudSync.title') }}</h2>
+            <template v-if="isAuthenticated">
+              <AkBadge v-if="pulling || pushing" variant="cyan" dot>
+                {{ t('settings.cloudSync.statusSyncing') }}
+              </AkBadge>
+              <AkBadge v-else-if="cloudSyncError" variant="red" dot>
+                {{ t('settings.cloudSync.statusError') }}
+              </AkBadge>
+              <AkBadge v-else-if="hasUnsavedChanges" variant="amber" dot>
+                {{ t('settings.cloudSync.statusUnsaved') }}
+              </AkBadge>
+              <AkBadge v-else variant="green" dot>
+                {{ t('settings.cloudSync.statusInSync') }}
+              </AkBadge>
+            </template>
+            <AkBadge v-else variant="neutral" dot>
+              {{ t('settings.cloudSync.guestPrompt') }}
+            </AkBadge>
+          </div>
+          <p class="settings-page__section-desc">
+            {{ t('settings.cloudSync.desc') }}
+          </p>
+        </div>
+
+        <div v-if="isAuthenticated" class="settings-page__cloud-sync-content">
+          <div class="settings-page__meta-row">
+            <span class="settings-page__meta-label">{{
+              t('settings.cloudSync.lastSyncedLabel')
+            }}</span>
+            <b class="settings-page__meta-val">{{ formattedLastSynced }}</b>
+          </div>
+          <div class="settings-page__action-row">
+            <AkButton
+              variant="primary"
+              :disabled="pulling || pushing"
+              :loading="pulling || pushing"
+              @click="handleManualSync"
+            >
+              {{ t('settings.cloudSync.syncNow') }}
+            </AkButton>
+            <AkButton variant="danger" @click="isDisconnectModalOpen = true">
+              {{ t('settings.cloudSync.disconnect') }}
+            </AkButton>
+          </div>
+        </div>
+        <div v-else class="settings-page__action-row">
+          <a
+            href="/login"
+            class="settings-page__btn-outline settings-page__guest-login-link"
+            @click.prevent="openSyncModal"
+          >
+            {{ t('settings.cloudSync.loginButton') }}
+          </a>
+        </div>
+      </section>
+
       <!-- 4. Your Data Section -->
       <section class="settings-page__section">
         <div class="settings-page__section-header">
@@ -256,6 +424,24 @@ function openSyncModal(): void {
 
     <!-- Account Sync Modal -->
     <SyncAccountModal v-model="isSyncModalOpen" />
+
+    <!-- Disconnect Cloud Storage Modal -->
+    <AkModal v-model="isDisconnectModalOpen" :title="t('settings.cloudSync.disconnectModalTitle')">
+      <p class="settings-page__modal-text">
+        {{ t('settings.cloudSync.disconnectModalBody') }}
+      </p>
+
+      <template #footer>
+        <div class="settings-page__modal-actions">
+          <AkButton variant="danger" :loading="isDisconnecting" @click="handleConfirmDisconnect">
+            {{ t('settings.cloudSync.disconnectConfirm') }}
+          </AkButton>
+          <AkButton variant="secondary" @click="isDisconnectModalOpen = false">
+            {{ t('settings.cloudSync.cancel') }}
+          </AkButton>
+        </div>
+      </template>
+    </AkModal>
   </div>
 </template>
 
@@ -489,6 +675,34 @@ function openSyncModal(): void {
   &__meta-val {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-semibold);
+  }
+
+  &__title-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  &__cloud-sync-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  &__modal-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  &__modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    width: 100%;
   }
 }
 </style>

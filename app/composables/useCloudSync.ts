@@ -1,5 +1,8 @@
 import { ref, watch, getCurrentInstance, onBeforeUnmount, type Ref } from 'vue'
 import type { Database, Json } from '~/types/database.types'
+import type { PlanItem } from '~~/shared/utils/planner/types'
+import type { ServerRegion } from '~~/shared/schemas/operator'
+import type { DepotCurrencies } from '~~/shared/schemas/depot'
 import {
   UserDataRowSchema,
   type UserDataRow,
@@ -7,6 +10,7 @@ import {
 } from '~~/shared/schemas/userData'
 
 export interface UseCloudSyncReturn {
+  cloudUserData: Ref<UserDataRow | null>
   pulling: Ref<boolean>
   pushing: Ref<boolean>
   lastSyncedAt: Ref<Date | null>
@@ -14,7 +18,132 @@ export interface UseCloudSyncReturn {
   pull: (opts?: { acceptEmpty?: boolean }) => Promise<'loaded' | 'empty' | 'error'>
   push: (payload?: UserDataPayload) => Promise<boolean>
   forget: () => Promise<boolean>
+  reset: () => void
   startAutoSync: (sources: () => UserDataPayload, opts?: { debounceMs?: number }) => () => void
+}
+
+export function hasLocalData(stores: {
+  plannerStore: { plans: Array<unknown> }
+  settingsStore: {
+    dropDataServer: string
+    farmingMaxSanity: number
+    farmingRegenMinutes: number
+    farmingAllowCrafting: boolean
+  }
+  depotStore: {
+    items: Record<string, number>
+    currencies: { lmd: number; orundum: number; originitePrime: number }
+  }
+}): boolean {
+  const hasPlans = stores.plannerStore.plans.length > 0
+  const hasDepotItems = Object.keys(stores.depotStore.items).length > 0
+  const hasDepotCurrencies =
+    stores.depotStore.currencies.lmd > 0 ||
+    stores.depotStore.currencies.orundum > 0 ||
+    stores.depotStore.currencies.originitePrime > 0
+  const hasCustomSettings =
+    stores.settingsStore.dropDataServer !== 'cn' ||
+    stores.settingsStore.farmingMaxSanity !== 135 ||
+    stores.settingsStore.farmingRegenMinutes !== 6 ||
+    !stores.settingsStore.farmingAllowCrafting
+
+  return Boolean(hasPlans || hasDepotItems || hasDepotCurrencies || hasCustomSettings)
+}
+
+export function hasCloudData(data: UserDataRow | null): boolean {
+  if (!data) return false
+  const hasPlans = Array.isArray(data.plans) && data.plans.length > 0
+  const hasDepotItems = data.depot?.items && Object.keys(data.depot.items).length > 0
+  const hasDepotCurrencies =
+    data.depot?.currencies &&
+    ((data.depot.currencies.lmd ?? 0) > 0 ||
+      (data.depot.currencies.orundum ?? 0) > 0 ||
+      (data.depot.currencies.originitePrime ?? 0) > 0)
+  const hasRoster = data.roster_synced_at !== null
+
+  return Boolean(hasPlans || hasDepotItems || hasDepotCurrencies || hasRoster)
+}
+
+export async function applyCloudDataToLocalStores(
+  data: UserDataRow,
+  stores: {
+    plannerStore: { importPlans: (plans: PlanItem[], mode: 'replace') => Promise<void> }
+    settingsStore: {
+      setDropDataServer: (s: ServerRegion) => void
+      setFarmingMaxSanity: (n: number) => void
+      setFarmingRegenMinutes: (n: number) => void
+      setFarmingAllowCrafting: (b: boolean) => void
+    }
+    depotStore: {
+      importSnapshot: (s: {
+        items: Record<string, number>
+        currencies: DepotCurrencies
+      }) => Promise<void>
+    }
+  },
+): Promise<void> {
+  if (Array.isArray(data.plans)) {
+    await stores.plannerStore.importPlans(data.plans, 'replace')
+  }
+
+  if (data.settings) {
+    if (data.settings.dropDataServer) {
+      stores.settingsStore.setDropDataServer(data.settings.dropDataServer)
+    }
+    if (typeof data.settings.farmingMaxSanity === 'number') {
+      stores.settingsStore.setFarmingMaxSanity(data.settings.farmingMaxSanity)
+    }
+    if (typeof data.settings.farmingRegenMinutes === 'number') {
+      stores.settingsStore.setFarmingRegenMinutes(data.settings.farmingRegenMinutes)
+    }
+    if (typeof data.settings.farmingAllowCrafting === 'boolean') {
+      stores.settingsStore.setFarmingAllowCrafting(data.settings.farmingAllowCrafting)
+    }
+  }
+
+  if (data.depot) {
+    await stores.depotStore.importSnapshot({
+      items: data.depot.items ?? {},
+      currencies: {
+        lmd: data.depot.currencies?.lmd ?? 0,
+        orundum: data.depot.currencies?.orundum ?? 0,
+        originitePrime: data.depot.currencies?.originitePrime ?? 0,
+      },
+    })
+  }
+}
+
+export function buildCurrentPayload(stores: {
+  plannerStore: { plans: PlanItem[] }
+  settingsStore: {
+    dropDataServer: ServerRegion
+    farmingMaxSanity: number
+    farmingRegenMinutes: number
+    farmingAllowCrafting: boolean
+  }
+  depotStore: {
+    updatedAt?: string
+    currencies: DepotCurrencies
+    items: Record<string, number>
+  }
+  rosterStore?: { syncedAt: string | null }
+}): UserDataPayload {
+  return {
+    plans: JSON.parse(JSON.stringify(stores.plannerStore.plans)),
+    settings: {
+      dropDataServer: stores.settingsStore.dropDataServer,
+      farmingMaxSanity: stores.settingsStore.farmingMaxSanity,
+      farmingRegenMinutes: stores.settingsStore.farmingRegenMinutes,
+      farmingAllowCrafting: stores.settingsStore.farmingAllowCrafting,
+    },
+    depot: {
+      schemaVersion: 1,
+      updatedAt: stores.depotStore.updatedAt ?? new Date().toISOString(),
+      currencies: { ...stores.depotStore.currencies },
+      items: { ...stores.depotStore.items },
+    },
+    roster_synced_at: stores.rosterStore?.syncedAt ?? null,
+  }
 }
 
 export function useCloudSync(): UseCloudSyncReturn {
@@ -186,7 +315,16 @@ export function useCloudSync(): UseCloudSyncReturn {
     return cleanup
   }
 
+  function reset(): void {
+    cloudUserData.value = null
+    lastSyncedAt.value = null
+    error.value = null
+    pulling.value = false
+    pushing.value = false
+  }
+
   return {
+    cloudUserData,
     pulling,
     pushing,
     lastSyncedAt,
@@ -194,6 +332,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     pull,
     push,
     forget,
+    reset,
     startAutoSync,
   }
 }
