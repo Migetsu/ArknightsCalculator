@@ -10,7 +10,11 @@ import {
   getProbabilityMilestones,
   getTargetRateUpShare,
 } from '~/../shared/utils/gacha'
-import { forecastPulls, type ForecastMode } from '~/../shared/utils/gacha/forecast'
+import {
+  forecastPulls,
+  type ForecastMode,
+  type ForecastTarget,
+} from '~/../shared/utils/gacha/forecast'
 import { useDepotStore } from '~/stores/depot'
 import AkProgress from '~/components/ui/AkProgress.vue'
 import AkButton from '~/components/ui/AkButton.vue'
@@ -21,6 +25,7 @@ import GachaPityTooltip from '~/components/gacha/GachaPityTooltip.vue'
 export interface ForecastBannerOption {
   id: string
   title: string
+  startDate?: string | null
   endDate: string | null
   isUpcoming?: boolean
   type?: BannerType
@@ -158,6 +163,7 @@ onMounted(async () => {
 // Target forecast banner & income mode
 const selectedTargetBannerId = ref<string | null>(null)
 const forecastMode = ref<ForecastMode>('f2p')
+const forecastTarget = ref<ForecastTarget>('start')
 
 watch(
   [() => props.selectedBannerId, () => props.banners, () => props.banner],
@@ -197,9 +203,20 @@ const targetForecastBanner = computed(() => {
 })
 
 const forecastResult = computed(() => {
+  let startDate: string | null = null
   let endDate: string | null = null
   const b = targetForecastBanner.value
   if (b) {
+    if ('startDate' in b && typeof b.startDate === 'string') {
+      startDate = b.startDate
+    } else if ('globalStartDate' in b && typeof b.globalStartDate === 'string') {
+      startDate = b.globalStartDate
+    } else if ('openIso' in b && typeof b.openIso === 'string') {
+      startDate = b.openIso
+    } else if ('cnStartDate' in b && typeof b.cnStartDate === 'string') {
+      startDate = b.cnStartDate
+    }
+
     if ('endDate' in b && typeof b.endDate === 'string') {
       endDate = b.endDate
     } else if ('globalEndDate' in b && typeof b.globalEndDate === 'string') {
@@ -211,7 +228,9 @@ const forecastResult = computed(() => {
     }
   }
   return forecastPulls({
+    bannerStartDate: startDate,
     bannerEndDate: endDate,
+    target: forecastTarget.value,
     currentOrundum: orundum.value,
     currentOP: originitePrime.value,
     currentTicketsSingle: permitsSingle.value,
@@ -491,7 +510,11 @@ const probabilityLabel = computed<string>(() => {
             {{ t('gacha.forecast.title') }}
           </h3>
           <span class="gacha-forecast-card__subtitle">
-            {{ t('gacha.forecast.subtitle') }}
+            {{
+              forecastTarget === 'start'
+                ? t('gacha.forecast.subtitleStart')
+                : t('gacha.forecast.subtitleEnd')
+            }}
           </span>
         </div>
         <GachaPityTooltip />
@@ -518,6 +541,52 @@ const probabilityLabel = computed<string>(() => {
                 {{ b.title }}{{ b.isUpcoming ? ' (Upcoming)' : '' }}
               </option>
             </select>
+          </div>
+
+          <!-- Forecast Target Toggle (Start vs End) -->
+          <div
+            class="gacha-forecast-card__control-group"
+            role="radiogroup"
+            :aria-label="t('gacha.forecast.targetLabel')"
+          >
+            <span class="gacha-forecast-card__label"> {{ t('gacha.forecast.targetLabel') }}: </span>
+            <div class="gacha-forecast-card__radios">
+              <label
+                class="gacha-forecast-card__radio-label"
+                :class="{
+                  'gacha-forecast-card__radio-label--active': forecastTarget === 'start',
+                }"
+              >
+                <input
+                  v-model="forecastTarget"
+                  type="radio"
+                  value="start"
+                  name="forecast-target-date"
+                  class="gacha-forecast-card__radio-input"
+                />
+                <span class="gacha-forecast-card__radio-text">{{
+                  t('gacha.forecast.targetStart')
+                }}</span>
+              </label>
+
+              <label
+                class="gacha-forecast-card__radio-label"
+                :class="{
+                  'gacha-forecast-card__radio-label--active': forecastTarget === 'end',
+                }"
+              >
+                <input
+                  v-model="forecastTarget"
+                  type="radio"
+                  value="end"
+                  name="forecast-target-date"
+                  class="gacha-forecast-card__radio-input"
+                />
+                <span class="gacha-forecast-card__radio-text">{{
+                  t('gacha.forecast.targetEnd')
+                }}</span>
+              </label>
+            </div>
           </div>
 
           <!-- Income Mode Toggle -->
@@ -571,7 +640,11 @@ const probabilityLabel = computed<string>(() => {
         <div class="gacha-forecast-card__results">
           <div class="gacha-forecast-card__stat-primary">
             <span class="gacha-forecast-card__stat-value">
-              {{ t('gacha.forecast.pullsTotal', { count: forecastResult.pullsWithIncome }) }}
+              {{
+                forecastTarget === 'start'
+                  ? t('gacha.forecast.pullsByStart', { count: forecastResult.pullsWithIncome })
+                  : t('gacha.forecast.pullsByEnd', { count: forecastResult.pullsWithIncome })
+              }}
             </span>
           </div>
 
@@ -587,8 +660,18 @@ const probabilityLabel = computed<string>(() => {
                 })
               }}
             </span>
-            <span v-if="forecastResult.daysUntil > 0" class="gacha-forecast-card__days-badge">
-              {{ t('gacha.forecast.daysRemaining', { count: forecastResult.daysUntil }) }}
+            <span
+              v-if="forecastResult.isAlreadyStarted && forecastTarget === 'start'"
+              class="gacha-forecast-card__days-badge gacha-forecast-card__days-badge--active"
+            >
+              {{ t('gacha.forecast.bannerActive') }}
+            </span>
+            <span v-else-if="forecastResult.daysUntil > 0" class="gacha-forecast-card__days-badge">
+              {{
+                forecastTarget === 'start'
+                  ? t('gacha.forecast.daysUntilStart', { count: forecastResult.daysUntil })
+                  : t('gacha.forecast.daysUntilEnd', { count: forecastResult.daysUntil })
+              }}
             </span>
           </div>
         </div>
@@ -1248,6 +1331,12 @@ const probabilityLabel = computed<string>(() => {
     font-weight: var(--font-weight-bold);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+
+    &--active {
+      background-color: rgb(0 229 255 / 15%);
+      border-color: var(--color-accent-cyan);
+      color: var(--color-accent-cyan);
+    }
   }
 }
 </style>

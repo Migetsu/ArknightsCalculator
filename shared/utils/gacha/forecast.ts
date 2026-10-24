@@ -6,9 +6,13 @@ import {
 } from '../../constants/gameConstants'
 
 export type ForecastMode = 'f2p' | 'monthly' | 'monthly_card'
+export type ForecastTarget = 'start' | 'end'
 
 export interface ForecastInput {
-  bannerEndDate: string | null
+  bannerStartDate?: string | null
+  bannerEndDate?: string | null
+  targetDate?: string | null
+  target?: ForecastTarget
   currentOrundum: number
   currentOP: number
   currentTicketsSingle: number
@@ -23,6 +27,8 @@ export interface ForecastResult {
   orundumTotal: number
   pullsNow: number
   pullsWithIncome: number
+  target: ForecastTarget
+  isAlreadyStarted: boolean
 }
 
 const MS_PER_DAY = 1000 * 60 * 60 * 24
@@ -85,9 +91,27 @@ export function forecastPulls(input: ForecastInput, today: Date = new Date()): F
   const ticketsSingle = Math.max(0, input.currentTicketsSingle || 0)
   const ticketsTen = Math.max(0, input.currentTicketsTen || 0)
 
+  const target: ForecastTarget =
+    input.target ?? (input.bannerStartDate ? 'start' : input.bannerEndDate ? 'end' : 'start')
+
+  const chosenDateStr =
+    input.targetDate ??
+    (target === 'start'
+      ? (input.bannerStartDate ?? input.bannerEndDate)
+      : (input.bannerEndDate ?? input.bannerStartDate))
+
   let daysUntil = 0
-  if (input.bannerEndDate) {
-    const end = new Date(input.bannerEndDate)
+  let isAlreadyStarted = false
+
+  if (input.bannerStartDate) {
+    const startObj = new Date(input.bannerStartDate)
+    if (!Number.isNaN(startObj.getTime()) && startObj.getTime() <= today.getTime()) {
+      isAlreadyStarted = true
+    }
+  }
+
+  if (chosenDateStr) {
+    const end = new Date(chosenDateStr)
     const diff = end.getTime() - today.getTime()
     daysUntil = Math.max(0, Math.ceil(diff / MS_PER_DAY))
   }
@@ -115,5 +139,7 @@ export function forecastPulls(input: ForecastInput, today: Date = new Date()): F
     orundumTotal,
     pullsNow,
     pullsWithIncome,
+    target,
+    isAlreadyStarted,
   }
 }
