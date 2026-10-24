@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onBeforeUnmount } from 'vue'
+import { ref, computed } from 'vue'
 import { useSettingsStore } from '~/stores/settings'
 import { usePlannerStore } from '~/stores/planner'
 import { useDepotStore } from '~/stores/depot'
@@ -36,7 +36,7 @@ const {
 const isSyncModalOpen = ref(false)
 const isDisconnectModalOpen = ref(false)
 const isDisconnecting = ref(false)
-const hasUnsavedChanges = ref(false)
+const hasUnsavedChanges = computed(() => cloudSync.hasPendingChanges.value)
 const notificationMessage = ref<string | null>(null)
 
 const rosterSyncedTime = computed(() => {
@@ -58,47 +58,6 @@ const formattedLastSynced = computed(() => {
   }
 })
 
-watch(lastSyncedAt, () => {
-  hasUnsavedChanges.value = false
-})
-
-let stopAutoSync: (() => void) | null = null
-
-watch(
-  isAuthenticated,
-  (authed) => {
-    if (authed) {
-      if (!stopAutoSync) {
-        stopAutoSync = cloudSync.startAutoSync(
-          () => {
-            hasUnsavedChanges.value = true
-            return buildCurrentPayload({
-              plannerStore,
-              settingsStore,
-              depotStore,
-              rosterStore,
-            })
-          },
-          { debounceMs: 5000 },
-        )
-      }
-    } else {
-      if (stopAutoSync) {
-        stopAutoSync()
-        stopAutoSync = null
-      }
-    }
-  },
-  { immediate: true },
-)
-
-onBeforeUnmount(() => {
-  if (stopAutoSync) {
-    stopAutoSync()
-    stopAutoSync = null
-  }
-})
-
 function selectServer(server: ServerRegion): void {
   settingsStore.setDropDataServer(server)
 }
@@ -112,7 +71,6 @@ async function handleManualSync(): Promise<void> {
   })
   const ok = await cloudSyncPush(payload)
   if (ok) {
-    hasUnsavedChanges.value = false
     notificationMessage.value = t('settings.cloudSync.statusInSync')
     setTimeout(() => {
       notificationMessage.value = null

@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+
 interface PwaInstallApi {
   showInstallPrompt?: boolean
   install?: () => Promise<void>
+}
+
+interface BeforeInstallPromptEvent extends Event {
+  prompt?: () => Promise<void>
+  userChoice?: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>
 }
 
 const { $pwa } = useNuxtApp()
@@ -9,9 +16,25 @@ const { t } = useI18n()
 
 const pwa = $pwa as PwaInstallApi | undefined
 const mounted = ref(false)
+const installed = ref(false)
+const nativePrompt = ref<BeforeInstallPromptEvent | null>(null)
+
+function handleBeforeInstallPrompt(e: Event): void {
+  e.preventDefault()
+  nativePrompt.value = e as BeforeInstallPromptEvent
+}
 
 onMounted(() => {
   mounted.value = true
+  if (typeof window !== 'undefined') {
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  }
 })
 
 const isStandalone = computed(() => {
@@ -26,14 +49,28 @@ const isIos = computed(() => {
 })
 
 const canInstall = computed(
-  () => mounted.value && Boolean(pwa?.showInstallPrompt) && !isStandalone.value,
+  () =>
+    mounted.value &&
+    !isStandalone.value &&
+    !installed.value &&
+    (Boolean(pwa?.showInstallPrompt) || nativePrompt.value !== null),
 )
 const showIosHint = computed(
   () => mounted.value && isIos.value && !isStandalone.value && !canInstall.value,
 )
 
 async function install(): Promise<void> {
-  await pwa?.install?.()
+  try {
+    if (nativePrompt.value?.prompt) {
+      await nativePrompt.value.prompt()
+      nativePrompt.value = null
+    }
+    if (pwa?.install) {
+      await pwa.install()
+    }
+  } finally {
+    installed.value = true
+  }
 }
 </script>
 

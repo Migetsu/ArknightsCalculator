@@ -1,5 +1,30 @@
 # Project Progress
 
+- **Task 41 — Wave 4: PWA E2E coverage, Yostar UI session audit & Global Supabase Cloud Sync (`test/wave-4-pwa-yostar-audit`):**
+  - **Global Supabase Cloud Sync Persistence (`default.vue`, `useCloudSync.ts`, `settings.vue`):**
+    - Diagnosed and fixed Supabase cloud sync data persistence across routes and devices: previous auto-sync was scoped only to `settings.vue` and was terminated on route unmount, preventing plans, depot items, and settings modifications made on `/planner`, `/depot`, or `/farming` from ever syncing to Supabase.
+    - Moved auto-sync watcher to `app/layouts/default.vue` at the root layout level, tracking plans, depot items, currencies, and settings with a 2000ms debounce across all pages.
+    - Updated `useCloudSync.ts` to use shared `useState` across Nuxt context for `pulling`, `pushing`, `lastSyncedAt`, `error`, and `hasPendingChanges`.
+    - Added automatic cloud sync pull on initial app load for existing authenticated sessions (`onMounted`), intelligent conflict auto-resolution when local and cloud datasets are identical, and an `isApplyingCloudData` guard to prevent circular echo pushes.
+  - **PWA Installation & Standalone Detection E2E (`AkInstallApp.vue`, `tests/e2e/pwa.spec.ts`):**
+    - Extended `AkInstallApp.vue` to listen directly to native `beforeinstallprompt` browser events with prompt execution and post-install state cleanup (`installed` ref).
+    - Created automated Playwright test suite in `tests/e2e/pwa.spec.ts` testing:
+      1. Triggering `beforeinstallprompt`, verifying `.ak-install-app__button` appearance, clicking "Install app", and asserting prompt invocation.
+      2. Standalone display-mode hiding both the install button and hints.
+      3. iOS Safari user-agent detection displaying the manual "Share -> Add to Home Screen" instruction hint.
+      4. Standalone iOS web app suppressing the instruction hint.
+  - **Yostar UI Session Persistence & Disconnect E2E (`tests/e2e/yostar-ui.spec.ts`):**
+    - Created automated Playwright test suite in `tests/e2e/yostar-ui.spec.ts` verifying:
+      1. Session token storage in `localStorage['arkcalc_yostar_session']` upon successful login.
+      2. Reloading with valid session restoring the `SAVED SESSION` state without prompting for email/code.
+      3. Clicking `DISCONNECT` (`.sync-modal__disconnect-btn`) clearing `localStorage` and restoring the login form.
+      4. Automatic cleanup of expired session tokens on app startup with graceful fallback to login form.
+  - **Known Issues Audit (`docs/known-issues.md`):**
+    - Closed issues #4 (Yostar UI session verification) and #54 (PWA beforeinstallprompt automation) as `Resolved`.
+    - Updated deferred architectural items (#6, #8, #28, #29, #51, #57, #58, #59) to `Deferred`.
+  - **Quality Gates:**
+    - Passed all linters, type checks, unit tests, and Playwright E2E suites.
+
 - **Task 40 — Operator Talents Progression Grouping & Gacha Pulls Forecast to Banner Start (`fix/talents-progression-gacha-start-forecast`):**
   - **Operator Talents Grouping (`AkOperatorTalentsPanel.vue`):**
     - Grouped operator talents by title into a single card per talent with an index badge (`TALENT 1`, `TALENT 2`, etc.), preventing duplicated talent headers (such as 4 duplicate "Floating Above the Earth" headers on Angelina the Dream Deliverer).
