@@ -1,7 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { ref } from 'vue'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { useCloudSync } from '../../../app/composables/useCloudSync'
+import {
+  useCloudSync,
+  hasLocalData,
+  hasCloudData,
+  applyCloudDataToLocalStores,
+  buildCurrentPayload,
+} from '../../../app/composables/useCloudSync'
 import type { UserDataRow } from '../../../shared/schemas/userData'
 
 const TEST_USER_ID = '11111111-1111-4111-a111-111111111111'
@@ -180,5 +186,123 @@ describe('useCloudSync composable', () => {
     expect(mockSupabase.from).toHaveBeenCalledWith('user_data')
     expect(mockDelete).toHaveBeenCalledTimes(1)
     expect(mockDeleteEq).toHaveBeenCalledWith('user_id', TEST_USER_ID)
+  })
+
+  it('reset clears state variables', () => {
+    const { reset, cloudUserData, lastSyncedAt, error } = useCloudSync()
+    cloudUserData.value = validRow
+    lastSyncedAt.value = new Date()
+    error.value = 'some error'
+
+    reset()
+
+    expect(cloudUserData.value).toBeNull()
+    expect(lastSyncedAt.value).toBeNull()
+    expect(error.value).toBeNull()
+  })
+
+  it('hasLocalData detects empty vs non-empty stores', () => {
+    const emptyStores = {
+      plannerStore: { plans: [] },
+      settingsStore: {
+        dropDataServer: 'cn',
+        farmingMaxSanity: 135,
+        farmingRegenMinutes: 6,
+        farmingAllowCrafting: true,
+      },
+      depotStore: {
+        items: {},
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+      },
+    }
+    expect(hasLocalData(emptyStores)).toBe(false)
+
+    const withPlans = {
+      ...emptyStores,
+      plannerStore: { plans: [{ id: 'plan-1' }] },
+    }
+    expect(hasLocalData(withPlans)).toBe(true)
+
+    const withDepot = {
+      ...emptyStores,
+      depotStore: {
+        items: { '30012': 1 },
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+      },
+    }
+    expect(hasLocalData(withDepot)).toBe(true)
+  })
+
+  it('hasCloudData detects presence of cloud plans, depot or roster', () => {
+    expect(hasCloudData(null)).toBe(false)
+
+    const emptyCloud: UserDataRow = {
+      user_id: TEST_USER_ID,
+      plans: [],
+      settings: {
+        dropDataServer: 'cn',
+        farmingMaxSanity: 135,
+        farmingRegenMinutes: 6,
+        farmingAllowCrafting: true,
+      },
+      depot: {
+        items: {},
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+      },
+      roster_synced_at: null,
+      updated_at: '2026-10-24T12:00:00.000Z',
+    }
+    expect(hasCloudData(emptyCloud)).toBe(false)
+
+    expect(hasCloudData(validRow)).toBe(true)
+  })
+
+  it('applyCloudDataToLocalStores applies cloud data to stores', async () => {
+    const mockPlannerStore = { importPlans: vi.fn().mockResolvedValue(undefined) }
+    const mockSettingsStore = {
+      setDropDataServer: vi.fn(),
+      setFarmingMaxSanity: vi.fn(),
+      setFarmingRegenMinutes: vi.fn(),
+      setFarmingAllowCrafting: vi.fn(),
+    }
+    const mockDepotStore = { importSnapshot: vi.fn().mockResolvedValue(undefined) }
+
+    await applyCloudDataToLocalStores(validRow, {
+      plannerStore: mockPlannerStore,
+      settingsStore: mockSettingsStore,
+      depotStore: mockDepotStore,
+    })
+
+    expect(mockPlannerStore.importPlans).toHaveBeenCalledWith(validRow.plans, 'replace')
+    expect(mockSettingsStore.setDropDataServer).toHaveBeenCalledWith('global')
+    expect(mockSettingsStore.setFarmingMaxSanity).toHaveBeenCalledWith(135)
+    expect(mockDepotStore.importSnapshot).toHaveBeenCalledWith({
+      items: { '30012': 10 },
+      currencies: { lmd: 50000, orundum: 0, originitePrime: 0 },
+    })
+  })
+
+  it('buildCurrentPayload builds valid UserDataPayload from stores', () => {
+    const stores = {
+      plannerStore: { plans: validRow.plans },
+      settingsStore: {
+        dropDataServer: 'global' as const,
+        farmingMaxSanity: 135,
+        farmingRegenMinutes: 6,
+        farmingAllowCrafting: true,
+      },
+      depotStore: {
+        updatedAt: '2026-10-24T10:00:00.000Z',
+        currencies: { lmd: 50000, orundum: 0, originitePrime: 0 },
+        items: { '30012': 10 },
+      },
+      rosterStore: { syncedAt: '2026-10-24T10:00:00.000Z' },
+    }
+
+    const payload = buildCurrentPayload(stores)
+    expect(payload.plans).toEqual(validRow.plans)
+    expect(payload.settings.dropDataServer).toBe('global')
+    expect(payload.depot.items?.['30012']).toBe(10)
+    expect(payload.roster_synced_at).toBe('2026-10-24T10:00:00.000Z')
   })
 })
