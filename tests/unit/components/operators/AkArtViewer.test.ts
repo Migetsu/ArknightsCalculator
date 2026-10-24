@@ -89,6 +89,137 @@ describe('AkArtViewer', () => {
     expect(emitted?.[0]?.[0]).toBe(false)
   })
 
+  it('closes viewer on canvas click outside artwork bounds', async () => {
+    const wrapper = await mountSuspended(AkArtViewer, {
+      props: {
+        modelValue: true,
+        operator: silverAsh,
+        activeStage: 'e2',
+      },
+      global: {
+        stubs: {
+          teleport: true,
+        },
+      },
+    })
+
+    const artImg = wrapper.find('.ak-art-viewer__art-img')
+    expect(artImg.exists()).toBe(true)
+
+    // Mock bounding box of the art image
+    artImg.element.getBoundingClientRect = () => ({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 400,
+      width: 200,
+      height: 300,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    })
+
+    const canvas = wrapper.find('.ak-art-viewer__canvas')
+    expect(canvas.exists()).toBe(true)
+
+    // Click outside image bounds (e.g., at 20, 20)
+    await canvas.trigger('click', { clientX: 20, clientY: 20 })
+
+    const emitted = wrapper.emitted('update:modelValue')
+    expect(emitted).toBeTruthy()
+    expect(emitted?.[0]?.[0]).toBe(false)
+  })
+
+  it('does not close viewer when clicking inside artwork bounds', async () => {
+    const wrapper = await mountSuspended(AkArtViewer, {
+      props: {
+        modelValue: true,
+        operator: silverAsh,
+        activeStage: 'e2',
+      },
+      global: {
+        stubs: {
+          teleport: true,
+        },
+      },
+    })
+
+    const artImg = wrapper.find('.ak-art-viewer__art-img')
+    artImg.element.getBoundingClientRect = () => ({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 400,
+      width: 200,
+      height: 300,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    })
+
+    const canvas = wrapper.find('.ak-art-viewer__canvas')
+    // Click inside image bounds (at 200, 250)
+    await canvas.trigger('click', { clientX: 200, clientY: 250 })
+
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('does not close viewer if click followed a drag/pan gesture', async () => {
+    const wrapper = await mountSuspended(AkArtViewer, {
+      props: {
+        modelValue: true,
+        operator: silverAsh,
+        activeStage: 'e2',
+      },
+      global: {
+        stubs: {
+          teleport: true,
+        },
+      },
+    })
+
+    const canvas = wrapper.find('.ak-art-viewer__canvas')
+
+    // Simulate drag start and move > 5px
+    await canvas.trigger('pointerdown', { pointerId: 1, clientX: 50, clientY: 50 })
+    await canvas.trigger('pointermove', { pointerId: 1, clientX: 120, clientY: 130 })
+
+    // Trigger click immediately after drag
+    await canvas.trigger('click', { clientX: 120, clientY: 130 })
+
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('supports multi-touch pinch-to-zoom on canvas', async () => {
+    const wrapper = await mountSuspended(AkArtViewer, {
+      props: {
+        modelValue: true,
+        operator: silverAsh,
+        activeStage: 'e2',
+      },
+      global: {
+        stubs: {
+          teleport: true,
+        },
+      },
+    })
+
+    const canvas = wrapper.find('.ak-art-viewer__canvas')
+    const zoomVal = wrapper.find('.ak-art-viewer__zoom-val')
+    expect(zoomVal.text()).toBe('100%')
+
+    // Touch 1 down at (100, 100)
+    await canvas.trigger('pointerdown', { pointerId: 1, clientX: 100, clientY: 100 })
+    // Touch 2 down at (100, 200) -> initial distance = 100
+    await canvas.trigger('pointerdown', { pointerId: 2, clientX: 100, clientY: 200 })
+
+    // Move touch 2 to (100, 300) -> current distance = 200 (ratio 2x)
+    await canvas.trigger('pointermove', { pointerId: 2, clientX: 100, clientY: 300 })
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('.ak-art-viewer__zoom-val').text()).toBe('200%')
+  })
+
   it('renders cosmetic skin tabs when skins prop is provided and switches to skin variant', async () => {
     const mockSkins = [
       {

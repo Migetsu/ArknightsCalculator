@@ -56,6 +56,24 @@ test.describe('Farming Efficiency Page (FRM-07)', () => {
       await expect(page.locator('.farming-page__stage-row').first()).toBeVisible()
       await expect(page.locator('.farming-page__cost-card')).toBeVisible()
       await expect(page.locator('.farming-page__cost-val')).toBeVisible()
+
+      // Verify Mobile layout order: Total Cost above Suggested Farming Stages
+      await page.setViewportSize({ width: 375, height: 812 })
+      const costCard = page.locator('.farming-page__cost-card')
+      const stagesCard = page.locator('.farming-page__stages-card')
+      const costBoxMobile = await costCard.boundingBox()
+      const stagesBoxMobile = await stagesCard.boundingBox()
+      expect(costBoxMobile).not.toBeNull()
+      expect(stagesBoxMobile).not.toBeNull()
+      expect(costBoxMobile!.y).toBeLessThan(stagesBoxMobile!.y)
+
+      // Verify Desktop layout order: Stages card on the left, Total Cost on the right
+      await page.setViewportSize({ width: 1280, height: 800 })
+      const costBoxDesktop = await costCard.boundingBox()
+      const stagesBoxDesktop = await stagesCard.boundingBox()
+      expect(costBoxDesktop).not.toBeNull()
+      expect(stagesBoxDesktop).not.toBeNull()
+      expect(stagesBoxDesktop!.x).toBeLessThan(costBoxDesktop!.x)
     }
 
     // 3. Switch day in supply schedule

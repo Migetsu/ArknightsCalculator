@@ -571,6 +571,24 @@ const snapshotDateFormatted = computed(() => {
     }
   }
 
+  &__cost-card {
+    @media (width <= 768px) {
+      order: 1;
+    }
+  }
+
+  &__breakdown-card {
+    @media (width <= 768px) {
+      order: 3;
+    }
+  }
+
+  &__schedule-card {
+    @media (width <= 768px) {
+      order: 4;
+    }
+  }
+
   &__side-col {
     display: contents;
 

@@ -156,6 +156,9 @@ function resetTransform(): void {
   zoom.value = 1
   panX.value = 0
   panY.value = 0
+  activePointers.clear()
+  isDragging.value = false
+  initialPinchDistance = 0
 }
 
 function handleDoubleClick(): void {
@@ -182,14 +185,21 @@ let dragStartPointer: PointerCoord = { x: 0, y: 0 }
 let dragStartPan: PointerCoord = { x: 0, y: 0 }
 let initialPinchDistance = 0
 let initialPinchZoom = 1
+const artImgRef = ref<HTMLImageElement | null>(null)
+let hasDragged = false
 
 function onPointerDown(e: PointerEvent): void {
-  const target = e.currentTarget as HTMLElement
-  target.setPointerCapture(e.pointerId)
+  try {
+    const target = e.currentTarget as HTMLElement
+    target.setPointerCapture(e.pointerId)
+  } catch {
+    // Pointer capture can throw in tests / simulated envs
+  }
   activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
 
   if (activePointers.size === 1) {
     isDragging.value = true
+    hasDragged = false
     dragStartPointer = { x: e.clientX, y: e.clientY }
     dragStartPan = { x: panX.value, y: panY.value }
   } else if (activePointers.size === 2) {
@@ -209,9 +219,13 @@ function onPointerMove(e: PointerEvent): void {
   if (activePointers.size === 1 && isDragging.value) {
     const dx = e.clientX - dragStartPointer.x
     const dy = e.clientY - dragStartPointer.y
+    if (Math.hypot(dx, dy) > 5) {
+      hasDragged = true
+    }
     panX.value = Math.round(dragStartPan.x + dx)
     panY.value = Math.round(dragStartPan.y + dy)
   } else if (activePointers.size === 2) {
+    hasDragged = true
     const pts = Array.from(activePointers.values())
     if (pts[0] && pts[1] && initialPinchDistance > 0) {
       const currentDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y)
@@ -222,9 +236,48 @@ function onPointerMove(e: PointerEvent): void {
 }
 
 function onPointerUp(e: PointerEvent): void {
+  try {
+    const target = e.currentTarget as HTMLElement
+    if (target.hasPointerCapture(e.pointerId)) {
+      target.releasePointerCapture(e.pointerId)
+    }
+  } catch {
+    // Ignore in unsupported environments
+  }
   activePointers.delete(e.pointerId)
-  if (activePointers.size === 0) {
+
+  if (activePointers.size === 1) {
+    // Smooth transition from 2-finger pinch back to 1-finger panning
+    const remaining = Array.from(activePointers.values())[0]
+    if (remaining) {
+      isDragging.value = true
+      dragStartPointer = { x: remaining.x, y: remaining.y }
+      dragStartPan = { x: panX.value, y: panY.value }
+    }
+  } else if (activePointers.size === 0) {
     isDragging.value = false
+    initialPinchDistance = 0
+    setTimeout(() => {
+      hasDragged = false
+    }, 50)
+  }
+}
+
+function onCanvasClick(e: MouseEvent): void {
+  if (hasDragged) return
+  if (!artImgRef.value) {
+    closeViewer()
+    return
+  }
+  const rect = artImgRef.value.getBoundingClientRect()
+  const isInsideImage =
+    e.clientX >= rect.left &&
+    e.clientX <= rect.right &&
+    e.clientY >= rect.top &&
+    e.clientY <= rect.bottom
+
+  if (!isInsideImage) {
+    closeViewer()
   }
 }
 
@@ -387,6 +440,7 @@ onUnmounted(() => {
       <!-- Interactive Viewport Canvas -->
       <main
         class="ak-art-viewer__canvas"
+        @click="onCanvasClick"
         @wheel="handleWheel"
         @dblclick="handleDoubleClick"
         @pointerdown="onPointerDown"
@@ -408,6 +462,7 @@ onUnmounted(() => {
           }"
         >
           <img
+            ref="artImgRef"
             :src="currentArtSrc"
             :alt="`${operator.name.en} full artwork`"
             class="ak-art-viewer__art-img"
@@ -448,12 +503,8 @@ onUnmounted(() => {
   color: var(--color-text-primary);
   user-select: none;
   overflow: hidden;
-
-  @media (width <= 640px) {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
+  touch-action: none;
+  overscroll-behavior: contain;
 
   &__backdrop {
     position: absolute;
@@ -473,10 +524,9 @@ onUnmounted(() => {
     background: linear-gradient(180deg, rgb(18 13 11 / 95%) 0%, rgb(18 13 11 / 0%) 100%);
     gap: 16px;
 
-    @media (width <= 640px) {
-      padding: 12px 16px;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
+    @media (width <= 768px) {
+      padding: 10px 14px;
+      gap: 8px;
     }
   }
 
@@ -484,6 +534,7 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
   }
 
   &__title {
@@ -491,6 +542,14 @@ onUnmounted(() => {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-display);
+
+    @media (width <= 768px) {
+      font-size: var(--font-size-sm);
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   &__stage-badge {
@@ -500,6 +559,7 @@ onUnmounted(() => {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--color-accent-amber);
+    white-space: nowrap;
   }
 
   &__tools {
@@ -507,9 +567,8 @@ onUnmounted(() => {
     align-items: center;
     gap: 8px;
 
-    @media (width <= 640px) {
-      flex-wrap: wrap;
-      gap: var(--space-xs);
+    @media (width <= 768px) {
+      gap: 4px;
     }
   }
 
@@ -519,6 +578,11 @@ onUnmounted(() => {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
+
+    @media (width <= 768px) {
+      min-width: 38px;
+      font-size: 11px;
+    }
   }
 
   &__btn {
@@ -541,6 +605,13 @@ onUnmounted(() => {
       background var(--transition-fast);
 
     @include focus-ring;
+
+    @media (width <= 768px) {
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      font-size: var(--font-size-xs);
+    }
 
     &:hover:not(:disabled) {
       border-color: var(--color-accent-primary);
@@ -584,6 +655,20 @@ onUnmounted(() => {
 
     @include focus-ring;
 
+    @media (width <= 768px) {
+      width: 36px;
+      height: 48px;
+      font-size: 24px;
+
+      &--prev {
+        left: 6px;
+      }
+
+      &--next {
+        right: 6px;
+      }
+    }
+
     &:hover {
       background: var(--color-accent-primary);
       border-color: var(--color-accent-primary);
@@ -602,6 +687,10 @@ onUnmounted(() => {
     position: relative;
     z-index: 5;
     flex: 1;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -635,29 +724,27 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 90vw;
-    max-height: 85vh;
-
-    @media (width <= 640px) {
-      width: 100%;
-      max-width: 100vw;
-      overflow-x: hidden;
-      position: relative;
-    }
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
 
   &__art-img {
     max-width: 90vw;
     max-height: 85vh;
+    width: auto;
+    height: auto;
     object-fit: contain;
     filter: drop-shadow(0 20px 40px rgb(0 0 0 / 85%));
-    pointer-events: none;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 
-    @media (width <= 640px) {
+    @media (width <= 768px) {
       max-width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
+      max-height: 100%;
     }
   }
 
@@ -669,6 +756,10 @@ onUnmounted(() => {
     justify-content: center;
     padding: 16px;
     background: linear-gradient(0deg, rgb(18 13 11 / 95%) 0%, rgb(18 13 11 / 0%) 100%);
+
+    @media (width <= 768px) {
+      padding: 8px 12px;
+    }
   }
 
   &__thumbs {
@@ -679,6 +770,10 @@ onUnmounted(() => {
     padding: 4px;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
+
+    @media (width <= 768px) {
+      gap: 8px;
+    }
   }
 
   &__thumb-btn {
@@ -696,6 +791,11 @@ onUnmounted(() => {
       background var(--transition-fast);
 
     @include focus-ring;
+
+    @media (width <= 768px) {
+      padding: 6px 12px;
+      font-size: 11px;
+    }
 
     &:hover {
       border-color: var(--color-accent-amber);

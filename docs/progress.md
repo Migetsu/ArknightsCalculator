@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Task 39 — Wave 3: Mobile UX art viewer & farming layout reorder (`fix/wave-3-mobile-ux`):**
+  - **Operator Art Viewer (`AkArtViewer.vue`):**
+    - Unified responsive mobile breakpoint to `@media (width <= 768px)`.
+    - Handled background closing on mobile/desktop via canvas tap outside the artwork bounds (using `getBoundingClientRect()`), ignoring click events during or immediately after active drag/pan gestures (`hasDragged` flag).
+    - Enabled smooth multi-touch gestures (pinch-to-zoom and pan) with seamless recovery back to 1-finger pan if 1 finger lifts.
+    - Constrained artwork scaling using `max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;` without clipping or horizontal overflow across portrait and landscape orientations (`touch-action: none; overscroll-behavior: contain; overflow: hidden;`).
+    - Compacted controls, navigation arrows, and thumbnail buttons on screens `<= 768px`.
+  - **Farming Layout Reordering (`farming.vue`):**
+    - On mobile screens (`@media (width <= 768px)`), Total Cost (`.farming-page__cost-card`) renders first (`order: 1`), followed by Suggested Farming Stages (`.farming-page__stages-card`, `order: 2`), Material Breakdown (`order: 3`), and Supply Schedule (`order: 4`).
+    - On desktop (`> 768px`), layout remains standard (Stages on the left, Total Cost on the right).
+  - **Tests & Quality Gates:**
+    - Unit tests in `AkArtViewer.test.ts` for backdrop tap close, bounds detection, drag-suppressed close, and multi-touch pinch zoom.
+    - E2E tests in `operator-detail.spec.ts` for 375px mobile viewport full-screen art scaling, body scroll lock, and outside tap close.
+    - E2E tests in `farming.spec.ts` for mobile vertical order (`costBox.y < stagesBox.y`) and desktop column order (`stagesBox.x < costBox.x`).
+    - Quality gates passed: `lint`, `typecheck`, `test` (118 files, 983 tests), `build` (Nuxt + Nitro).
+
 - **Task 32 — Domain migration to `rhodeslab.vercel.app` (`chore/domain-rhodeslab`):**
   - Updated `site.url`, `i18n.baseUrl`, schema.org operator URLs and the E2E allow-list from
     `arkcalc.vercel.app` to `rhodeslab.vercel.app`.

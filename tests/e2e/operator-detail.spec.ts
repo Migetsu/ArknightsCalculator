@@ -222,4 +222,39 @@ test.describe('Operator Detail (/operators/[id])', () => {
     const activeDpsBtn = page.locator('.recruit-page__tag-btn--active', { hasText: 'DPS' })
     await expect(activeDpsBtn).toBeVisible()
   })
+
+  test('mobile art viewer opens full-screen, scales artwork within bounds, and closes on canvas click', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto('/operators/char_172_svrash')
+    await page.waitForLoadState('domcontentloaded')
+
+    const artBtn = page.locator('.ak-operator-hero__art-container')
+    await expect(artBtn).toBeVisible()
+    await artBtn.click()
+
+    const viewer = page.locator('.ak-art-viewer')
+    await expect(viewer).toBeVisible()
+
+    const artImg = page.locator('.ak-art-viewer__art-img')
+    await expect(artImg).toBeVisible()
+
+    const imgBox = await artImg.boundingBox()
+    expect(imgBox).not.toBeNull()
+    expect(imgBox!.width).toBeLessThanOrEqual(375)
+    expect(imgBox!.height).toBeLessThanOrEqual(812)
+
+    // Body scroll must be locked
+    const overflow = await page.evaluate(() => document.body.style.overflow)
+    expect(overflow).toBe('hidden')
+
+    // Tapping on canvas outside the artwork closes the viewer
+    await page.mouse.click(20, 80)
+    await expect(viewer).not.toBeVisible()
+
+    // Body scroll restored
+    const restoredOverflow = await page.evaluate(() => document.body.style.overflow)
+    expect(restoredOverflow).toBe('')
+  })
 })
