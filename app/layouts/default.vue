@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import AkHeader from '~/components/ui/AkHeader.vue'
 import AkInstallApp from '~/components/ui/AkInstallApp.vue'
@@ -30,6 +30,7 @@ const depotStore = useDepotStore()
 const rosterStore = useRosterStore()
 
 const isConflictModalOpen = ref(false)
+const isApplyingCloudData = ref(false)
 
 const conflictDateString = computed(() => {
   if (!cloudUserData.value?.updated_at) return ''
@@ -42,11 +43,18 @@ const conflictDateString = computed(() => {
 
 async function handleUseCloud(): Promise<void> {
   if (cloudUserData.value) {
-    await applyCloudDataToLocalStores(cloudUserData.value, {
-      plannerStore,
-      settingsStore,
-      depotStore,
-    })
+    isApplyingCloudData.value = true
+    try {
+      await applyCloudDataToLocalStores(cloudUserData.value, {
+        plannerStore,
+        settingsStore,
+        depotStore,
+      })
+    } finally {
+      setTimeout(() => {
+        isApplyingCloudData.value = false
+      }, 300)
+    }
   }
   isConflictModalOpen.value = false
 }
@@ -63,54 +71,153 @@ async function handleUseLocal(): Promise<void> {
   isConflictModalOpen.value = false
 }
 
+async function syncUserData(): Promise<void> {
+  if (!userId.value) return
+  await Promise.all([plannerStore.init(), depotStore.init(), rosterStore.init()])
+  const pullResult = await cloudSync.pull()
+  if (pullResult === 'empty') {
+    if (hasLocalData({ plannerStore, settingsStore, depotStore })) {
+      await cloudSync.push(
+        buildCurrentPayload({
+          plannerStore,
+          settingsStore,
+          depotStore,
+          rosterStore,
+        }),
+      )
+    }
+  } else if (pullResult === 'loaded') {
+    const localHasData = hasLocalData({ plannerStore, settingsStore, depotStore })
+    const cloudHasData = hasCloudData(cloudUserData.value)
+
+    if (cloudHasData && !localHasData) {
+      if (cloudUserData.value) {
+        isApplyingCloudData.value = true
+        try {
+          await applyCloudDataToLocalStores(cloudUserData.value, {
+            plannerStore,
+            settingsStore,
+            depotStore,
+          })
+        } finally {
+          setTimeout(() => {
+            isApplyingCloudData.value = false
+          }, 300)
+        }
+      }
+    } else if (cloudHasData && localHasData) {
+      const localPayload = buildCurrentPayload({
+        plannerStore,
+        settingsStore,
+        depotStore,
+        rosterStore,
+      })
+      const isIdentical =
+        JSON.stringify(localPayload.plans) === JSON.stringify(cloudUserData.value?.plans) &&
+        JSON.stringify(localPayload.depot?.items) ===
+          JSON.stringify(cloudUserData.value?.depot?.items) &&
+        JSON.stringify(localPayload.depot?.currencies) ===
+          JSON.stringify(cloudUserData.value?.depot?.currencies) &&
+        JSON.stringify(localPayload.settings) === JSON.stringify(cloudUserData.value?.settings)
+
+      if (!isIdentical) {
+        isConflictModalOpen.value = true
+      }
+    } else if (!cloudHasData && localHasData) {
+      await cloudSync.push(
+        buildCurrentPayload({
+          plannerStore,
+          settingsStore,
+          depotStore,
+          rosterStore,
+        }),
+      )
+    }
+  }
+}
+
+let stopGlobalAutoSync: (() => void) | null = null
+
+function setupAutoSync(): void {
+  if (stopGlobalAutoSync) {
+    stopGlobalAutoSync()
+    stopGlobalAutoSync = null
+  }
+
+  if (!userId.value) return
+
+  let timer: ReturnType<typeof setTimeout> | null = null
+
+  const unwatch = watch(
+    () => [
+      JSON.stringify(plannerStore.plans),
+      JSON.stringify(depotStore.items),
+      JSON.stringify(depotStore.currencies),
+      settingsStore.dropDataServer,
+      settingsStore.farmingMaxSanity,
+      settingsStore.farmingRegenMinutes,
+      settingsStore.farmingAllowCrafting,
+    ],
+    () => {
+      if (isApplyingCloudData.value) return
+      if (!userId.value) return
+      cloudSync.hasPendingChanges.value = true
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(async () => {
+        if (isApplyingCloudData.value) return
+        if (!userId.value) return
+        await cloudSync.push(
+          buildCurrentPayload({
+            plannerStore,
+            settingsStore,
+            depotStore,
+            rosterStore,
+          }),
+        )
+      }, 2000)
+    },
+    { deep: true },
+  )
+
+  stopGlobalAutoSync = () => {
+    if (timer) {
+      clearTimeout(timer)
+      timer = null
+    }
+    unwatch()
+  }
+}
+
+onMounted(() => {
+  if (userId.value) {
+    void syncUserData()
+    setupAutoSync()
+  }
+})
+
 watch(
   userId,
   async (newId, oldId) => {
-    if (newId && !oldId) {
-      await Promise.all([plannerStore.init(), depotStore.init(), rosterStore.init()])
-      const pullResult = await cloudSync.pull()
-      if (pullResult === 'empty') {
-        if (hasLocalData({ plannerStore, settingsStore, depotStore })) {
-          await cloudSync.push(
-            buildCurrentPayload({
-              plannerStore,
-              settingsStore,
-              depotStore,
-              rosterStore,
-            }),
-          )
-        }
-      } else if (pullResult === 'loaded') {
-        const localHasData = hasLocalData({ plannerStore, settingsStore, depotStore })
-        const cloudHasData = hasCloudData(cloudUserData.value)
-
-        if (cloudHasData && !localHasData) {
-          if (cloudUserData.value) {
-            await applyCloudDataToLocalStores(cloudUserData.value, {
-              plannerStore,
-              settingsStore,
-              depotStore,
-            })
-          }
-        } else if (cloudHasData && localHasData) {
-          isConflictModalOpen.value = true
-        } else if (!cloudHasData && localHasData) {
-          await cloudSync.push(
-            buildCurrentPayload({
-              plannerStore,
-              settingsStore,
-              depotStore,
-              rosterStore,
-            }),
-          )
-        }
-      }
+    if (newId && newId !== oldId) {
+      await syncUserData()
+      setupAutoSync()
     } else if (!newId && oldId) {
+      if (stopGlobalAutoSync) {
+        stopGlobalAutoSync()
+        stopGlobalAutoSync = null
+      }
       cloudSync.reset()
     }
   },
   { immediate: false },
 )
+
+onBeforeUnmount(() => {
+  if (stopGlobalAutoSync) {
+    stopGlobalAutoSync()
+    stopGlobalAutoSync = null
+  }
+})
 
 const head = useLocaleHead({
   seo: true,

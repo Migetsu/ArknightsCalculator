@@ -1,4 +1,4 @@
-import { ref, watch, getCurrentInstance, onBeforeUnmount, type Ref } from 'vue'
+import { watch, getCurrentInstance, onBeforeUnmount, type Ref } from 'vue'
 import type { Database, Json } from '~/types/database.types'
 import {
   UserDataRowSchema,
@@ -12,6 +12,7 @@ export interface UseCloudSyncReturn {
   pushing: Ref<boolean>
   lastSyncedAt: Ref<Date | null>
   error: Ref<string | null>
+  hasPendingChanges: Ref<boolean>
   pull: (opts?: { acceptEmpty?: boolean }) => Promise<'loaded' | 'empty' | 'error'>
   push: (payload: UserDataPayload) => Promise<boolean>
   forget: () => Promise<boolean>
@@ -24,10 +25,11 @@ export function useCloudSync(): UseCloudSyncReturn {
   const { userId } = useProfile()
 
   const cloudUserData = useState<UserDataRow | null>('cloud_user_data', () => null)
-  const pulling = ref(false)
-  const pushing = ref(false)
-  const lastSyncedAt = ref<Date | null>(null)
-  const error = ref<string | null>(null)
+  const pulling = useState<boolean>('cloud_sync_pulling', () => false)
+  const pushing = useState<boolean>('cloud_sync_pushing', () => false)
+  const lastSyncedAt = useState<Date | null>('cloud_sync_last_synced_at', () => null)
+  const error = useState<string | null>('cloud_sync_error', () => null)
+  const hasPendingChanges = useState<boolean>('cloud_sync_has_pending', () => false)
 
   async function pull(_opts?: { acceptEmpty?: boolean }): Promise<'loaded' | 'empty' | 'error'> {
     const uid = userId.value
@@ -115,6 +117,7 @@ export function useCloudSync(): UseCloudSyncReturn {
         lastSyncedAt.value = new Date()
       }
 
+      hasPendingChanges.value = false
       return true
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Unknown error during push'
@@ -143,6 +146,7 @@ export function useCloudSync(): UseCloudSyncReturn {
 
       cloudUserData.value = null
       lastSyncedAt.value = null
+      hasPendingChanges.value = false
       return true
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Unknown error during forget'
@@ -161,6 +165,7 @@ export function useCloudSync(): UseCloudSyncReturn {
       sources,
       (newVal) => {
         if (!userId.value) return
+        hasPendingChanges.value = true
         if (timer) clearTimeout(timer)
         timer = setTimeout(() => {
           void push(newVal)
@@ -190,6 +195,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     error.value = null
     pulling.value = false
     pushing.value = false
+    hasPendingChanges.value = false
   }
 
   return {
@@ -198,6 +204,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     pushing,
     lastSyncedAt,
     error,
+    hasPendingChanges,
     pull,
     push,
     forget,
