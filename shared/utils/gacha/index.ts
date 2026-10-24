@@ -278,6 +278,25 @@ export function getBannerLifecycleStatus(
   banner: GachaBanner,
   nowSec = Math.floor(Date.now() / 1000),
 ): 'active' | 'upcoming' | 'ended' {
+  if (banner.globalStartDate) {
+    const globalStart = parseBannerDate(banner.globalStartDate)
+    const globalEnd = parseBannerDate(banner.globalEndDate)
+    if (globalStart !== null) {
+      const nowMs = nowSec * 1000
+      if (nowMs < globalStart) return 'upcoming'
+      if (globalEnd !== null && nowMs <= globalEnd) return 'active'
+      if (globalEnd !== null && nowMs > globalEnd) return 'ended'
+    }
+  }
+
+  if (banner.server === 'cn' && !banner.pairedBannerId) {
+    if (banner.isActive) return 'active'
+    if (banner.openTime && banner.endTime) {
+      if (nowSec >= banner.openTime && nowSec <= banner.endTime) return 'active'
+    }
+    return 'upcoming'
+  }
+
   if (banner.openTime && banner.endTime) {
     if (nowSec < banner.openTime) return 'upcoming'
     if (nowSec <= banner.endTime) return 'active'

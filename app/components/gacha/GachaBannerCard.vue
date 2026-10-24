@@ -69,8 +69,15 @@ const lifecycleStatus = computed<'active' | 'upcoming' | 'ended'>(() => {
   // The dataset marks the currently running CN pool at generation time, which keeps
   // the badge data-driven instead of depending on the wall clock.
   if (props.banner.isActive) return 'active'
+  if (props.globalEstimate || props.isNext) return 'upcoming'
   return getBannerLifecycleStatus(props.banner)
 })
+
+function onBannerClick(event: MouseEvent) {
+  const target = event.target as HTMLElement | null
+  if (target?.closest('a, button, [role="button"]')) return
+  emit('select', props.banner.id)
+}
 const notOnGlobal = computed(() => isProvenNotOnGlobal(props.banner))
 
 const formattedDates = computed(() => {
@@ -124,14 +131,18 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
         'gacha-banner--no-rateup': !hasContent,
       },
     ]"
-    role="button"
-    tabindex="0"
-    :aria-pressed="isSelected"
-    @click="emit('select', banner.id)"
-    @keydown.enter.space.prevent="emit('select', banner.id)"
+    @click="onBannerClick"
   >
     <!-- Card Column -->
-    <div class="gacha-banner__card">
+    <div
+      class="gacha-banner__card"
+      role="button"
+      tabindex="0"
+      :aria-pressed="isSelected"
+      :aria-label="bannerTitle"
+      @click.stop="emit('select', banner.id)"
+      @keydown.enter.space.prevent="emit('select', banner.id)"
+    >
       <div
         class="gacha-banner__badge-bar"
         :class="{ 'gacha-banner__badge-bar--limited': isLimited }"
@@ -256,10 +267,6 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     border-color: var(--color-border-bold);
   }
 
-  &:focus-visible {
-    @include focus-ring;
-  }
-
   &--selected {
     border-color: var(--color-accent-amber);
     box-shadow:
@@ -298,6 +305,13 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     display: flex;
     flex-direction: column;
     min-width: 0;
+    cursor: pointer;
+
+    &:focus-visible {
+      @include focus-ring;
+
+      outline-offset: 2px;
+    }
   }
 
   &__badge-bar {

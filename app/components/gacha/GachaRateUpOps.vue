@@ -91,6 +91,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
             :to="localePath(`/operators/${primaryRateUp6Op.id}`)"
             class="gacha-rate-up__op-link gacha-banner__op-link"
             :title="primaryRateUp6Op.name"
+            @click.stop
           >
             <AkAvatar
               :id="primaryRateUp6Op.id"
@@ -116,6 +117,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
             :to="localePath(`/operators/${op.id}`)"
             class="gacha-rate-up__op-link gacha-banner__op-link"
             :title="op.name"
+            @click.stop
           >
             <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
           </NuxtLink>
@@ -141,6 +143,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :to="localePath(`/operators/${op.id}`)"
           class="gacha-rate-up__op-link gacha-banner__op-link"
           :title="op.name"
+          @click.stop
         >
           <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
         </NuxtLink>
@@ -164,6 +167,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :to="localePath(`/operators/${op.id}`)"
           class="gacha-rate-up__op-link gacha-banner__op-link"
           :title="op.name"
+          @click.stop
         >
           <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="48" />
         </NuxtLink>
@@ -184,6 +188,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :to="localePath(`/operators/${op.id}`)"
           class="gacha-rate-up__op-link gacha-banner__op-link"
           :title="op.name"
+          @click.stop
         >
           <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
         </NuxtLink>

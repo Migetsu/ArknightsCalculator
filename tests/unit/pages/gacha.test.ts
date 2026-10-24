@@ -146,6 +146,20 @@ describe('GachaPage', () => {
     expect(active!.text()).toContain('ACTIVE NOW')
   })
 
+  it('never displays ENDED status badge for banners in upcoming section', async () => {
+    const wrapper = await mountSuspended(GachaPage)
+    const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
+
+    expect(cards.length).toBeGreaterThan(0)
+    for (const card of cards) {
+      expect(card.classes()).not.toContain('gacha-banner--ended')
+      expect(card.find('.gacha-banner__countdown-badge--ended').exists()).toBe(false)
+      const countdownBadges = card.findAll('.gacha-banner__countdown-badge')
+      const badgeTexts = countdownBadges.map((b) => b.text())
+      expect(badgeTexts).not.toContain('ENDED')
+    }
+  })
+
   it('marks exactly one banner as NOT ON GLOBAL YET', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const upcoming = wrapper.find('.gacha-page__upcoming')
