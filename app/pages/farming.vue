@@ -16,6 +16,7 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
+import FarmingDeficitTable from '~/components/farming/FarmingDeficitTable.vue'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -26,6 +27,17 @@ const depotStore = useDepotStore()
 const moduleConfig = getModuleById('farming')
 
 const depotItemCount = computed(() => Object.values(depotStore.items).filter((c) => c > 0).length)
+
+const breakdownItems = computed(() => {
+  const depot = depotStore.items
+  return Object.entries(farmingStore.activeDeficit)
+    .map(([id, count]) => ({
+      id,
+      remaining: count,
+      have: depot[id] ?? 0,
+    }))
+    .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
+})
 
 const allItems = rawItemsData as unknown as readonly GameItem[]
 const itemsMap = computed(() => {
@@ -363,6 +375,15 @@ const snapshotDateFormatted = computed(() => {
               </p>
             </div>
 
+            <!-- Material Breakdown Card -->
+            <div
+              v-if="breakdownItems.length > 0"
+              class="farming-page__card farming-page__breakdown-card"
+            >
+              <h2 class="farming-page__card-title">{{ t('farming.breakdownTitle') }}</h2>
+              <FarmingDeficitTable :items="breakdownItems" />
+            </div>
+
             <!-- Supply Schedule Card -->
             <div class="farming-page__card farming-page__schedule-card">
               <h2 class="farming-page__card-title">{{ t('farming.supplyScheduleTitle') }}</h2>
@@ -677,6 +698,14 @@ const snapshotDateFormatted = computed(() => {
 
     @media (width <= 768px) {
       order: 1;
+    }
+  }
+
+  &__breakdown-card {
+    gap: var(--space-sm);
+
+    @media (width <= 768px) {
+      order: 2;
     }
   }
 
