@@ -216,8 +216,8 @@ const forecastResult = computed(() => {
 
   const currentOrundum = depotStore.currencies.orundum || 0
   const currentOP = depotStore.currencies.originitePrime || 0
-  const currentTicketsSingle = depotStore.items['7003'] || depotStore.items['7001'] || 0
-  const currentTicketsTen = depotStore.items['7004'] || depotStore.items['7002'] || 0
+  const currentTicketsSingle = depotStore.items['7003'] || 0
+  const currentTicketsTen = depotStore.items['7004'] || 0
 
   return forecastPulls({
     bannerEndDate,

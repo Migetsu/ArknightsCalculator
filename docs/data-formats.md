@@ -64,6 +64,7 @@ type ItemType =
   | 'catalyst' // Катализатор чипов (Chip Catalyst)
   | 'exp_card' // Карты опыта (Battle Records)
   | 'currency' // Валюта (LMD, Orundum, Originite Prime, сертификаты)
+  | 'permit' // Headhunting / recruitment permits (TKT_GACHA, TKT_GACHA_10, TKT_RECRUIT)
   | 'other' // Прочие предметы
 
 interface GameItem {
