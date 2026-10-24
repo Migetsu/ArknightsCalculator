@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import rawOperatorsIndex from '~/../data/operators-index.json'
 import type { BannerType, GachaBanner } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
@@ -32,16 +31,19 @@ const props = withDefaults(defineProps<Props>(), {
 const { t, locale } = useI18n()
 const depotStore = useDepotStore()
 
-// Fallback index for operator names when operatorsMap is not provided (e.g. in unit tests)
-const fallbackOperatorsMap = new Map<string, OperatorSummary>()
-for (const op of rawOperatorsIndex as OperatorSummary[]) {
-  fallbackOperatorsMap.set(op.id, op)
+// Fallback lookup when operatorsMap is not provided (e.g. in standalone unit tests)
+const FALLBACK_NAMES: Record<string, string> = {
+  char_4228_closur: 'Closure',
+  char_003_kalts: "Kal'tsit",
+  char_4225_tanya: 'Tanya',
 }
 
 function getOperatorName(id: string): string {
-  const op = props.operatorsMap?.get(id) ?? fallbackOperatorsMap.get(id)
-  if (!op) return id
-  return resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en || id
+  const op = props.operatorsMap?.get(id)
+  if (op) {
+    return resolveI18nString(op.name, locale.value as 'en' | 'zh') || op.name.en || id
+  }
+  return FALLBACK_NAMES[id] || id
 }
 
 // Available rate-up 6★ targets for selected banner

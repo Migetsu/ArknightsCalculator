@@ -49,6 +49,13 @@ export default defineNuxtModule({
         pattern: 'banners.json',
       })
 
+      // Operators index for server-side operator name/rarity lookup.
+      nitroConfig.serverAssets.push({
+        baseName: 'operatorsIndex',
+        dir: dataDir,
+        pattern: 'operators-index.json',
+      })
+
       // Items catalog for /api/items/[id] on-demand lookup and farming metadata.
       nitroConfig.serverAssets.push({
         baseName: 'items',
