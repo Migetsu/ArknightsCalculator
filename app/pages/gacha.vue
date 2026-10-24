@@ -2,8 +2,10 @@
 import { ref, computed, watch, onMounted } from 'vue'
 import type { GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
+import { resolveI18nString } from '~/../shared/schemas/operator'
 import rawOperatorsIndex from '~/../data/operators-index.json'
 import { getEstimatedGlobalDate } from '~/../shared/utils/gacha'
+import { forecastPulls, type ForecastMode } from '~/../shared/utils/gacha/forecast'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
 import AkContainer from '~/components/ui/AkContainer.vue'
@@ -14,8 +16,9 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkSegmented, { type SegmentOption } from '~/components/ui/AkSegmented.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
+import GachaPityTooltip from '~/components/gacha/GachaPityTooltip.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const depotStore = useDepotStore()
 const moduleConfig = getModuleById('gacha')
@@ -121,8 +124,116 @@ const activeBanner = computed<GachaBanner | null>(() => {
   return filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? currentEnFullBanner.value
 })
 
+// Banner Forecast state
+const forecastMode = ref<ForecastMode>('f2p')
+const selectedForecastBannerId = ref<string | null>(null)
+
+interface ForecastBannerOption {
+  id: string
+  name: string
+  endDate: string
+  formattedEndDate: string
+}
+
+function resolveBannerEndDate(banner: GachaBanner): string | null {
+  if (banner.globalEndDate) {
+    const d = new Date(banner.globalEndDate)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
+  }
+  if (banner.server === 'en' || banner.isActive) {
+    if (banner.endIso) return banner.endIso
+    if (banner.endTime) return new Date(banner.endTime * 1000).toISOString()
+  }
+  const estStart = getEstimatedGlobalDate(banner, globalLagDays.value)
+  if (estStart) {
+    const startMs = new Date(estStart).getTime()
+    const durationDays = banner.durationDays && banner.durationDays > 0 ? banner.durationDays : 14
+    return new Date(startMs + durationDays * 86400000).toISOString()
+  }
+  if (banner.endIso) return banner.endIso
+  if (banner.endTime) return new Date(banner.endTime * 1000).toISOString()
+  if (banner.cnEndDate) {
+    const d = new Date(banner.cnEndDate)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
+  }
+  return null
+}
+
+const forecastBanners = computed<ForecastBannerOption[]>(() => {
+  const candidates: GachaBanner[] = []
+  if (currentEnFullBanner.value) {
+    candidates.push(currentEnFullBanner.value)
+  }
+  for (const b of upcomingBanners.value) {
+    if (!candidates.some((c) => c.id === b.id)) {
+      candidates.push(b)
+    }
+  }
+
+  const now = new Date()
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
+
+  const result: ForecastBannerOption[] = []
+  for (const banner of candidates) {
+    const endDate = resolveBannerEndDate(banner)
+    if (!endDate) continue
+    const endMs = new Date(endDate).getTime()
+    if (Number.isNaN(endMs) || endMs < todayStart) continue
+
+    const name =
+      resolveI18nString(banner.name ?? banner.title, locale.value as 'en' | 'zh') ||
+      banner.name?.en ||
+      banner.title?.en ||
+      banner.id
+
+    result.push({
+      id: banner.id,
+      name,
+      endDate,
+      formattedEndDate: endDate.slice(0, 10),
+    })
+  }
+
+  return result
+})
+
+watch(
+  forecastBanners,
+  (list) => {
+    if (
+      !selectedForecastBannerId.value ||
+      !list.some((b) => b.id === selectedForecastBannerId.value)
+    ) {
+      selectedForecastBannerId.value = list[0]?.id ?? null
+    }
+  },
+  { immediate: true },
+)
+
+const forecastResult = computed(() => {
+  const selected = forecastBanners.value.find((b) => b.id === selectedForecastBannerId.value)
+  const bannerEndDate = selected?.endDate ?? null
+
+  const currentOrundum = depotStore.currencies.orundum || 0
+  const currentOP = depotStore.currencies.originitePrime || 0
+  const currentTicketsSingle = depotStore.items['7003'] || depotStore.items['7001'] || 0
+  const currentTicketsTen = depotStore.items['7004'] || depotStore.items['7002'] || 0
+
+  return forecastPulls({
+    bannerEndDate,
+    currentOrundum,
+    currentOP,
+    currentTicketsSingle,
+    currentTicketsTen,
+    mode: forecastMode.value,
+  })
+})
+
 function selectBanner(id: string): void {
   activeBannerId.value = id
+  if (forecastBanners.value.some((b) => b.id === id)) {
+    selectedForecastBannerId.value = id
+  }
 }
 </script>
 
@@ -139,6 +250,7 @@ function selectBanner(id: string): void {
         badge-variant="amber"
       >
         <template #actions>
+          <GachaPityTooltip />
           <AkButton
             variant="ghost"
             size="sm"
@@ -183,6 +295,129 @@ function selectBanner(id: string): void {
               :active-banner-type="activeBanner?.type ?? 'standard'"
               :operators-map="operatorsMap"
             />
+
+            <!-- Forecast to banner end card -->
+            <section class="gacha-forecast-card">
+              <div class="gacha-forecast-card__header">
+                <div class="gacha-forecast-card__title-wrap">
+                  <h3 class="gacha-forecast-card__title">
+                    {{ t('gacha.forecast.title') }}
+                  </h3>
+                  <span class="gacha-forecast-card__subtitle">
+                    {{ t('gacha.forecast.subtitle') }}
+                  </span>
+                </div>
+                <GachaPityTooltip />
+              </div>
+
+              <div v-if="forecastBanners.length === 0" class="gacha-forecast-card__empty">
+                <p class="gacha-forecast-card__empty-text">
+                  {{ t('gacha.forecast.noUpcoming') }}
+                </p>
+              </div>
+
+              <div v-else class="gacha-forecast-card__body">
+                <div class="gacha-forecast-card__controls">
+                  <!-- Banner Select -->
+                  <div class="gacha-forecast-card__control-group">
+                    <label for="gacha-forecast-banner" class="gacha-forecast-card__label">
+                      {{ t('gacha.forecast.bannerLabel') }}:
+                    </label>
+                    <select
+                      id="gacha-forecast-banner"
+                      v-model="selectedForecastBannerId"
+                      class="gacha-forecast-card__select"
+                      :aria-label="t('gacha.forecast.bannerLabel')"
+                    >
+                      <option v-for="b in forecastBanners" :key="b.id" :value="b.id">
+                        {{ b.name }} ({{ b.formattedEndDate }})
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Income Mode Radios -->
+                  <div
+                    class="gacha-forecast-card__control-group"
+                    role="radiogroup"
+                    :aria-label="t('gacha.forecast.modeLabel')"
+                  >
+                    <span class="gacha-forecast-card__label">
+                      {{ t('gacha.forecast.modeLabel') }}:
+                    </span>
+                    <div class="gacha-forecast-card__radios">
+                      <label
+                        class="gacha-forecast-card__radio-label"
+                        :class="{
+                          'gacha-forecast-card__radio-label--active': forecastMode === 'f2p',
+                        }"
+                      >
+                        <input
+                          v-model="forecastMode"
+                          type="radio"
+                          name="forecast-income-mode"
+                          value="f2p"
+                          class="gacha-forecast-card__radio-input"
+                        />
+                        <span class="gacha-forecast-card__radio-text">{{
+                          t('gacha.forecast.modeF2p')
+                        }}</span>
+                      </label>
+                      <label
+                        class="gacha-forecast-card__radio-label"
+                        :class="{
+                          'gacha-forecast-card__radio-label--active':
+                            forecastMode === 'monthly_card',
+                        }"
+                      >
+                        <input
+                          v-model="forecastMode"
+                          type="radio"
+                          name="forecast-income-mode"
+                          value="monthly_card"
+                          class="gacha-forecast-card__radio-input"
+                        />
+                        <span class="gacha-forecast-card__radio-text">{{
+                          t('gacha.forecast.modeMonthly')
+                        }}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Forecast Numerical Results -->
+                <div class="gacha-forecast-card__results">
+                  <div class="gacha-forecast-card__stat-primary">
+                    <span class="gacha-forecast-card__stat-value">
+                      {{
+                        t('gacha.forecast.pullsTotal', { count: forecastResult.pullsWithIncome })
+                      }}
+                    </span>
+                  </div>
+                  <div class="gacha-forecast-card__breakdown">
+                    <span class="gacha-forecast-card__breakdown-item">
+                      {{ t('gacha.forecast.pullsNow', { count: forecastResult.pullsNow }) }}
+                    </span>
+                    <span class="gacha-forecast-card__breakdown-sep">/</span>
+                    <span class="gacha-forecast-card__breakdown-item">
+                      {{
+                        t('gacha.forecast.pullsFromIncome', {
+                          count: Math.max(
+                            0,
+                            forecastResult.pullsWithIncome - forecastResult.pullsNow,
+                          ),
+                        })
+                      }}
+                    </span>
+                    <span
+                      v-if="forecastResult.daysUntil > 0"
+                      class="gacha-forecast-card__days-badge"
+                    >
+                      {{ t('gacha.forecast.daysRemaining', { count: forecastResult.daysUntil }) }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
 
           <!-- Section 1: Current Global Active Banner (same card as the list below) -->
@@ -518,6 +753,255 @@ function selectBanner(id: string): void {
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
+  }
+}
+
+/* Forecast to Banner End Card */
+.gacha-forecast-card {
+  margin-top: var(--space-md);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  @media (width <= 640px) {
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-xs);
+  }
+
+  &__title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-amber);
+    letter-spacing: 0.06em;
+  }
+
+  &__subtitle {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__empty {
+    padding: var(--space-md) 0;
+  }
+
+  &__empty-text {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  &__controls {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+
+    @media (width <= 640px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-sm);
+    }
+  }
+
+  &__control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (width <= 640px) {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__select {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-amber);
+      outline-offset: 1px;
+    }
+  }
+
+  &__radios {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (width <= 640px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+  }
+
+  &__radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    user-select: none;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    &:hover {
+      border-color: var(--color-border-bold);
+      color: var(--color-text-primary);
+    }
+
+    &--active {
+      border-color: var(--color-accent-amber);
+      color: var(--color-accent-amber);
+      background-color: rgb(255 157 43 / 10%);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  &__radio-input {
+    accent-color: var(--color-accent-amber);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &__radio-text {
+    line-height: 1.2;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  &__results {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-bg-deep);
+    border: 1px solid var(--color-border-subtle);
+    border-left: 3px solid var(--color-accent-amber);
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (width <= 640px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+  }
+
+  &__stat-primary {
+    min-width: 0;
+  }
+
+  &__stat-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-amber);
+    letter-spacing: 0.04em;
+  }
+
+  &__breakdown {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+
+  &__breakdown-item {
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__breakdown-sep {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  &__days-badge {
+    padding: 2px 6px;
+    background-color: rgb(255 157 43 / 12%);
+    border: 1px solid var(--color-accent-amber);
+    color: var(--color-accent-amber);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.04em;
   }
 }
 
