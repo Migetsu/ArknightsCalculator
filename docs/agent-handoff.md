@@ -298,13 +298,14 @@ site data. Supabase Auth `mailer_autoconfirm=true`; `site_url` и `uri_allow_lis
 ### 7.20. Домен — переехали (Задача 32, `f0f88b9`)
 
 `https://rhodeslab.vercel.app` — primary; `https://arkcalc.vercel.app` отдаёт **308** на него.
+Обновлены `site.url`, `i18n.baseUrl`, schema.org URL и E2E allow-list. Supabase Auth Site URL
+и allow-list — новый домен. Осталось вручную: Google Search Console change-of-address/sitemap
+и финальный PWA-installability check после деплоя (Chrome CDP ранее был чистым).
 
 ### 7.21. PWA precache 179 MB — закрыто (Задача 33a.1)
 
 PWA precache 179 MB (весь public/art/) — закрыто в 33a.1; workbox globIgnores + runtimeCaching StaleWhileRevalidate, maxEntries 120.
-Обновлены `site.url`, `i18n.baseUrl`, schema.org URL и E2E allow-list. Supabase Auth Site URL
-и allow-list — новый домен. Осталось вручную: Google Search Console change-of-address/sitemap
-и финальный PWA-installability check после деплоя (Chrome CDP ранее был чистым).
+Офлайн art изменён: раньше весь public/art был в precache (полный офлайн), теперь — только 120 последних открытых артов в runtime-кэше arkcalc-art-v1. Приемлемый трейд-офф из-за iOS Cache Storage ~50 MB; см. 33a.2 про PNG-иконки.
 
 ## 8. Очередь задач
 

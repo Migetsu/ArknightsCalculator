@@ -121,7 +121,7 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+      globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
       globIgnores: ['**/art/**', '**/_nuxt/builds/**'],
       runtimeCaching: [
         {
