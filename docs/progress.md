@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Task 46 — Cloud Sync Conflict Elimination & Overwrite Prevention (`fix/cloud-sync-conflict-elimination`):**
+  - **Eliminated Cloud Data Conflict Modal & Dialogs (`useCloudSync.ts`, `default.vue`):**
+    - Removed false conflict detection modal ("Cloud Data Conflict") across all devices. For a single-user companion app, cloud save in Supabase is the canonical source of truth.
+    - Updated `syncUserData()` in `useCloudSync.ts` to automatically pull and apply canonical cloud data directly to local stores (`applyCloudDataToLocalStores`) whenever cloud data exists.
+    - Completely removed `isConflictModalOpen`, `conflictDateString`, `handleUseCloud`, `handleUseLocal`, and `<AkModal v-model="isConflictModalOpen">` from `app/layouts/default.vue`.
+  - **Fixed Race Condition Auto-sync Overwrite & Data Loss Bug (`useCloudSync.ts`, `default.vue`):**
+    - Diagnosed critical data loss mechanism: on fresh devices or page loads, `syncUserData()` was unawaited (`void syncUserData()`) while `setupAutoSync()` immediately started watching local stores. As uninitialized empty local stores (`items: {}`, `currencies: 0`, `plans: []`) triggered the watcher, a debounced push occurred after 1000ms. If the conflict modal was open or data was in-flight, auto-sync pushed the empty stores to Supabase, overwriting cloud data with 0s and wiping user plans and inventory!
+    - Introduced `isInitialSyncDone: Ref<boolean>` in `useCloudSync.ts`. Auto-sync watchers in `setupAutoSync` and `startAutoSync` are strictly blocked (`if (!isInitialSyncDone.value) return`) until initial pull and local store hydration are completed.
+    - Added in-flight promise locking (`inFlightSync`) in `syncUserData()` to prevent duplicate concurrent network requests and state collisions when multiple triggers occur during authentication.
+    - Increased auto-sync debounce from 1000ms to 1500ms and ensured `isApplyingCloudData` guard prevents echo updates.
+    - Removed unused `AkModal` and `AkButton` component imports from `app/layouts/default.vue` root layout.
+  - **Tests & Quality Gates:**
+    - Updated unit test `tests/unit/composables/useCloudSync.test.ts` to verify that `syncUserData` seamlessly applies cloud data even when local device has differing data, pushes local data when cloud is empty, and toggles `isInitialSyncDone`.
+    - Updated `tests/unit/components/sync/SyncAccountModal.test.ts` with `isInitialSyncDone: ref(true)`.
+    - Passed all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (118 test files, 997 tests passed), `test:e2e` (all 42 layout sanity tests + 4 depot tests passed), and production `build`.
+
 - **Task 45 — Initial Load Main Thread Freeze and Header Menu Button Flash (`perf/initial-load-freeze-and-header-menu`, PR #120):**
   - **Header Menu Desktop Flash & Visibility Bug (`AkHeader.vue`, `main.scss`):**
     - Diagnosed layout race condition: on desktop screens (>= 1024px), `.ak-header__burger` (the `= Menu` button) appeared and flashed during initial page load alongside the full horizontal navigation bar.

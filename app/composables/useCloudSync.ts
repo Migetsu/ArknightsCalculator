@@ -18,6 +18,7 @@ export interface UseCloudSyncReturn {
   pulling: Ref<boolean>
   pushing: Ref<boolean>
   isApplyingCloudData: Ref<boolean>
+  isInitialSyncDone: Ref<boolean>
   lastSyncedAt: Ref<Date | null>
   error: Ref<string | null>
   hasPendingChanges: Ref<boolean>
@@ -29,8 +30,10 @@ export interface UseCloudSyncReturn {
   syncUserData: (
     stores: LocalStoresForCloudSync,
     callbacks?: { onConflict?: () => void },
-  ) => Promise<'loaded' | 'pushed' | 'conflict' | 'empty' | 'error'>
+  ) => Promise<'loaded' | 'pushed' | 'empty' | 'error'>
 }
+
+let inFlightSync: Promise<'loaded' | 'pushed' | 'empty' | 'error'> | null = null
 
 export function useCloudSync(): UseCloudSyncReturn {
   const supabase = useSupabaseClient<Database>()
@@ -40,6 +43,7 @@ export function useCloudSync(): UseCloudSyncReturn {
   const pulling = useState<boolean>('cloud_sync_pulling', () => false)
   const pushing = useState<boolean>('cloud_sync_pushing', () => false)
   const isApplyingCloudData = useState<boolean>('cloud_sync_is_applying', () => false)
+  const isInitialSyncDone = useState<boolean>('cloud_sync_initial_done', () => false)
   const lastSyncedAt = useState<Date | null>('cloud_sync_last_synced_at', () => null)
   const error = useState<string | null>('cloud_sync_error', () => null)
   const hasPendingChanges = useState<boolean>('cloud_sync_has_pending', () => false)
@@ -177,10 +181,15 @@ export function useCloudSync(): UseCloudSyncReturn {
     const unwatch = watch(
       sources,
       (newVal) => {
+        if (!isInitialSyncDone.value) return
+        if (isApplyingCloudData.value) return
         if (!userId.value) return
         hasPendingChanges.value = true
         if (timer) clearTimeout(timer)
         timer = setTimeout(() => {
+          if (!isInitialSyncDone.value) return
+          if (isApplyingCloudData.value) return
+          if (!userId.value) return
           void push(newVal)
         }, debounceMs)
       },
@@ -204,65 +213,64 @@ export function useCloudSync(): UseCloudSyncReturn {
 
   async function syncUserData(
     stores: LocalStoresForCloudSync,
-    callbacks?: { onConflict?: () => void },
-  ): Promise<'loaded' | 'pushed' | 'conflict' | 'empty' | 'error'> {
+    _callbacks?: { onConflict?: () => void },
+  ): Promise<'loaded' | 'pushed' | 'empty' | 'error'> {
     const uid = userId.value
     if (!uid) {
       error.value = 'User not authenticated'
       return 'error'
     }
 
-    await Promise.all([
-      stores.plannerStore?.init?.(),
-      stores.depotStore?.init?.(),
-      stores.rosterStore?.init?.(),
-    ])
-
-    const pullResult = await pull()
-    if (pullResult === 'empty') {
-      if (hasLocalData(stores)) {
-        await push(buildCurrentPayload(stores))
-        return 'pushed'
-      }
-      return 'empty'
-    } else if (pullResult === 'loaded') {
-      const localHasData = hasLocalData(stores)
-      const cloudHasData = hasCloudData(cloudUserData.value)
-
-      if (cloudHasData && !localHasData) {
-        if (cloudUserData.value) {
-          isApplyingCloudData.value = true
-          try {
-            await applyCloudDataToLocalStores(cloudUserData.value, stores)
-          } finally {
-            setTimeout(() => {
-              isApplyingCloudData.value = false
-            }, 300)
-          }
-        }
-        return 'loaded'
-      } else if (cloudHasData && localHasData) {
-        const localPayload = buildCurrentPayload(stores)
-        const isIdentical =
-          JSON.stringify(localPayload.plans) === JSON.stringify(cloudUserData.value?.plans) &&
-          JSON.stringify(localPayload.depot?.items) ===
-            JSON.stringify(cloudUserData.value?.depot?.items) &&
-          JSON.stringify(localPayload.depot?.currencies) ===
-            JSON.stringify(cloudUserData.value?.depot?.currencies) &&
-          JSON.stringify(localPayload.settings) === JSON.stringify(cloudUserData.value?.settings)
-
-        if (!isIdentical) {
-          callbacks?.onConflict?.()
-          return 'conflict'
-        }
-        return 'loaded'
-      } else if (!cloudHasData && localHasData) {
-        await push(buildCurrentPayload(stores))
-        return 'pushed'
-      }
-      return 'loaded'
+    if (inFlightSync) {
+      return inFlightSync
     }
-    return 'error'
+
+    inFlightSync = (async () => {
+      try {
+        await Promise.all([
+          stores.plannerStore?.init?.(),
+          stores.depotStore?.init?.(),
+          stores.rosterStore?.init?.(),
+        ])
+
+        const pullResult = await pull()
+        if (pullResult === 'empty') {
+          if (hasLocalData(stores)) {
+            await push(buildCurrentPayload(stores))
+            isInitialSyncDone.value = true
+            return 'pushed'
+          }
+          isInitialSyncDone.value = true
+          return 'empty'
+        } else if (pullResult === 'loaded') {
+          const cloudHasData = hasCloudData(cloudUserData.value)
+
+          if (cloudHasData && cloudUserData.value) {
+            isApplyingCloudData.value = true
+            try {
+              await applyCloudDataToLocalStores(cloudUserData.value, stores)
+            } finally {
+              setTimeout(() => {
+                isApplyingCloudData.value = false
+              }, 500)
+            }
+            isInitialSyncDone.value = true
+            return 'loaded'
+          } else if (hasLocalData(stores)) {
+            await push(buildCurrentPayload(stores))
+            isInitialSyncDone.value = true
+            return 'pushed'
+          }
+          isInitialSyncDone.value = true
+          return 'empty'
+        }
+        return 'error'
+      } finally {
+        inFlightSync = null
+      }
+    })()
+
+    return inFlightSync
   }
 
   function reset(): void {
@@ -272,6 +280,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     pulling.value = false
     pushing.value = false
     isApplyingCloudData.value = false
+    isInitialSyncDone.value = false
     hasPendingChanges.value = false
   }
 
@@ -280,6 +289,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     pulling,
     pushing,
     isApplyingCloudData,
+    isInitialSyncDone,
     lastSyncedAt,
     error,
     hasPendingChanges,

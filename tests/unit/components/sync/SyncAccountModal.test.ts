@@ -90,6 +90,7 @@ mockNuxtImport('useCloudSync', () => () => ({
   pulling: ref(false),
   pushing: ref(false),
   isApplyingCloudData: ref(false),
+  isInitialSyncDone: ref(true),
   lastSyncedAt: ref(null),
   error: ref(null),
   hasPendingChanges: ref(false),
