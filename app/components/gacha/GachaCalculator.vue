@@ -235,8 +235,19 @@ const totalAvailablePulls = computed<number>(() => {
   })
 })
 
+const activeBannerPulls = computed<number>(() => {
+  if (props.banner?.lmtgsid) {
+    return depotStore.getItemCount(props.banner.lmtgsid)
+  }
+  return 0
+})
+
+const totalPullsWithActiveBanner = computed<number>(() => {
+  return totalAvailablePulls.value + activeBannerPulls.value
+})
+
 const sparkProgress = computed(() => {
-  return calculateSparkProgress(totalAvailablePulls.value, 300)
+  return calculateSparkProgress(totalPullsWithActiveBanner.value, 300)
 })
 
 // Target simulation pulls (can be manually adjusted)
@@ -245,7 +256,7 @@ const simPulls = ref<number>(50)
 const currentProb = computed<number>(() => {
   if (!props.banner || targetRateUpShare.value === null) return 0
   const prob = calculateRateUpProbability(
-    totalAvailablePulls.value,
+    totalPullsWithActiveBanner.value,
     effectiveBannerType.value,
     targetRateUpShare.value,
   )
@@ -450,6 +461,18 @@ const probabilityLabel = computed<string>(() => {
               count: totalPermitsPulls,
               single: permitsSingle,
               ten: permitsTen,
+            })
+          }}
+        </span>
+      </div>
+
+      <!-- Already Pulled Notice (if commemorative coins exist) -->
+      <div v-if="activeBannerPulls > 0" class="gacha-calc__permits-notice">
+        <span class="gacha-calc__permits-tag">PULLS MADE</span>
+        <span class="gacha-calc__permits-text">
+          {{
+            t('gacha.calculator.alreadyPulledNotice', {
+              count: activeBannerPulls,
             })
           }}
         </span>
@@ -705,7 +728,7 @@ const probabilityLabel = computed<string>(() => {
           :key="m.pulls"
           class="gacha-calc__milestone-card"
           :class="{
-            'gacha-calc__milestone-card--active': totalAvailablePulls >= m.pulls,
+            'gacha-calc__milestone-card--active': totalPullsWithActiveBanner >= m.pulls,
             'gacha-calc__milestone-card--spark': m.isSpark,
           }"
         >

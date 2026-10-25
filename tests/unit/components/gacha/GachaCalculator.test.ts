@@ -310,4 +310,27 @@ describe('GachaCalculator', () => {
     const endPulls = parseInt(statVal.text().replace(/\D+/g, ''), 10)
     expect(endPulls).toBeGreaterThan(startPulls)
   })
+
+  it('counts rolls already made on active banner from commemorative coins in depot toward spark progress', async () => {
+    const limitedBannerWithLmt: GachaBanner = {
+      ...sampleLimitedBanner,
+      lmtgsid: 'LMTGS_COIN_7301',
+    }
+
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: {
+        banner: limitedBannerWithLmt,
+      },
+    })
+
+    const depotStore = useDepotStore()
+    depotStore.items['LMTGS_COIN_7301'] = 45
+    await wrapper.vm.$nextTick()
+
+    // Notice badge should display 45 pulls made
+    expect(wrapper.text()).toContain('45 pull(s) already made on this banner')
+
+    // Spark progress should reflect 45 made + available rolls
+    expect(wrapper.find('.gacha-calc__spark-bar').text()).toContain('74/300')
+  })
 })

@@ -17,8 +17,13 @@ import {
   type OperatorSummary,
   type ContentLocale,
 } from '~/../shared/schemas/operator'
-import { getEstimatedGlobalDate, formatBannerDateRange } from '~/../shared/utils/gacha'
+import {
+  getEstimatedGlobalDate,
+  formatBannerDateRange,
+  calculateTotalPulls,
+} from '~/../shared/utils/gacha'
 import { useGachaPageData } from '~/composables/useGachaPageData'
+import { useDepotStore } from '~/stores/depot'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
 
@@ -30,6 +35,7 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const settingsStore = useSettingsStore()
 const plannerStore = usePlannerStore()
+const depotStore = useDepotStore()
 const {
   isAuthenticated,
   profile,
@@ -178,6 +184,60 @@ watch(nextBannerInfo, () => {
   updateCountdown()
 })
 
+const activePlansCount = computed<number>(() => {
+  if (plannerStore.plans.length > 0) {
+    return plannerStore.plans.length
+  }
+  return isDemoLoaded.value ? dashboardData.value.stats.activeTargets : 0
+})
+
+const totalAvailablePulls = computed<number>(() => {
+  const pulls = calculateTotalPulls({
+    orundum: depotStore.currencies.orundum || 0,
+    originitePrime: depotStore.currencies.originitePrime || 0,
+    permitsSingle: depotStore.singlePermits || 0,
+    permitsTen: depotStore.tenRollPermits || 0,
+  })
+  if (pulls > 0) return pulls
+  return isDemoLoaded.value ? dashboardData.value.stats.availablePulls : 0
+})
+
+const activeBannerPulls = computed<number>(() => {
+  // 1. Check current Global banner from gacha page data
+  const enBanner = gachaData.value?.currentEnFullBanner
+  if (enBanner?.lmtgsid) {
+    const count = depotStore.getItemCount(enBanner.lmtgsid)
+    if (count > 0) return count
+  }
+
+  // 2. Check current banner for active server
+  const curBanner = gachaData.value?.currentBanner
+  if (curBanner?.lmtgsid) {
+    const count = depotStore.getItemCount(curBanner.lmtgsid)
+    if (count > 0) return count
+  }
+
+  // 3. Fallback: check any commemorative coin (LMTGS_COIN_*) held in depot
+  for (const [itemId, count] of Object.entries(depotStore.items)) {
+    if (itemId.startsWith('LMTGS_COIN_') && typeof count === 'number' && count > 0) {
+      return count
+    }
+  }
+
+  return 0
+})
+
+const sparkCurrent = computed<number>(() => {
+  if (activeBannerPulls.value > 0) {
+    return activeBannerPulls.value
+  }
+  return isDemoLoaded.value ? dashboardData.value.stats.sparkCurrent : 0
+})
+
+const sparkGoal = computed<number>(() => {
+  return dashboardData.value.stats.sparkGoal || 300
+})
+
 function handleLoadDemo(): void {
   isDemoLoaded.value = true
   dashboardData.value = {
@@ -208,6 +268,9 @@ function onVisibilityChange(): void {
 onMounted(() => {
   if (plannerStore.status === 'idle') {
     void plannerStore.init()
+  }
+  if (depotStore.status === 'idle') {
+    void depotStore.init()
   }
   updateCountdown()
   timerInterval = setInterval(updateCountdown, 1000)
@@ -288,21 +351,19 @@ onBeforeUnmount(() => {
         <div class="dashboard-page__stat-card">
           <span class="dashboard-page__stat-label">PULLS</span>
           <div class="dashboard-page__stat-val">
-            {{ dashboardData.stats.availablePulls }}
+            {{ totalAvailablePulls }}
           </div>
         </div>
 
         <div class="dashboard-page__stat-card">
           <span class="dashboard-page__stat-label">SPARK</span>
-          <div class="dashboard-page__stat-val">
-            {{ dashboardData.stats.sparkCurrent }} / {{ dashboardData.stats.sparkGoal }}
-          </div>
+          <div class="dashboard-page__stat-val">{{ sparkCurrent }} / {{ sparkGoal }}</div>
         </div>
 
         <div class="dashboard-page__stat-card">
           <span class="dashboard-page__stat-label">ACTIVE PLANS</span>
           <div class="dashboard-page__stat-val">
-            {{ dashboardData.stats.activeTargets }}
+            {{ activePlansCount }}
           </div>
         </div>
 
