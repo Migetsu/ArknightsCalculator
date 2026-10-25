@@ -1,3 +1,11 @@
 @use './fonts' as *;
 @use './tokens' as *;
 @use './reset' as *;
+
+// Critical responsive rules for layout header to prevent flash on initial load
+@include mq(lg) {
+  .ak-header__burger,
+  .layout-default__burger {
+    display: none !important;
+  }
+}

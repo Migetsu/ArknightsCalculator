@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import AkButton from './AkButton.vue'
 import AkDrawer from './AkDrawer.vue'
-import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
 import { APP_MODULES } from '~/config/modules'
+
+const SyncAccountModal = defineAsyncComponent(
+  () => import('~/components/sync/SyncAccountModal.vue'),
+)
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -194,7 +197,7 @@ function isModuleActive(path: string): boolean {
     </AkDrawer>
 
     <!-- Account Sync Modal -->
-    <SyncAccountModal v-model="isSyncModalOpen" />
+    <SyncAccountModal v-if="isSyncModalOpen" v-model="isSyncModalOpen" />
   </header>
 </template>
 
@@ -391,7 +394,7 @@ function isModuleActive(path: string): boolean {
     gap: var(--space-2xs);
 
     @include mq(lg) {
-      display: none;
+      display: none !important;
     }
   }
 
