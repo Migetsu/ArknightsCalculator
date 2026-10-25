@@ -34,6 +34,21 @@ describe('AkAvatar', () => {
     expect(img.attributes('alt')).toBe('Texas')
   })
 
+  it('resolves Elite 2 avatar candidate when variant is specified', async () => {
+    const wrapper = await mountSuspended(AkAvatar, {
+      props: {
+        id: 'char_4010_etlchi',
+        name: 'Ines',
+        rarity: 6,
+        variant: '2',
+      },
+    })
+
+    const img = wrapper.find('.ak-avatar__image')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe(`${PRIMARY_CDN_BASE}/avatar/char_4010_etlchi_2.png`)
+  })
+
   it('cycles through fallback candidates on error, ending with initials fallback', async () => {
     const wrapper = await mountSuspended(AkAvatar, {
       props: {

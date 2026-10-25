@@ -485,12 +485,13 @@ export function resolveAsset(
     return candidates
   }
 
-  // 3. Avatar kind handling with Amiya class change mapping
+  // 3. Avatar kind handling with Amiya class change mapping and Elite 2 promoted variants
   if (kind === 'avatar') {
     let targetId = cleanId.replace(/@/g, '_')
     const rawVariant = options?.variant?.trim()
+    const isLowRarity = LOW_RARITY_OPERATOR_IDS.has(cleanId)
 
-    if (rawVariant) {
+    if (rawVariant && !isLowRarity) {
       let normalizedVariant = rawVariant.replace(/@/g, '_')
       if (normalizedVariant.startsWith(`${targetId}#`)) {
         normalizedVariant = normalizedVariant.replace(`${targetId}#`, `${targetId}_`)
@@ -514,6 +515,24 @@ export function resolveAsset(
         `${SECONDARY_CDN_BASE}/${dir}/${targetId}.${ext}`,
       ]
     }
+
+    // When an alternate variant (e.g. '2' for Elite 2) is requested, fallback to base avatar if missing
+    if (rawVariant && !isLowRarity && targetId !== cleanId) {
+      const variantFilename = encodeAssetPath(`${targetId}.${ext}`)
+      const baseFilename = encodeAssetPath(`${cleanId}.${ext}`)
+      return [
+        `${PRIMARY_CDN_BASE}/${dir}/${variantFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${variantFilename}`,
+        `${PRIMARY_CDN_BASE}/${dir}/${baseFilename}`,
+        `${SECONDARY_CDN_BASE}/${dir}/${baseFilename}`,
+      ]
+    }
+
+    const baseFilename = encodeAssetPath(`${cleanId}.${ext}`)
+    return [
+      `${PRIMARY_CDN_BASE}/${dir}/${baseFilename}`,
+      `${SECONDARY_CDN_BASE}/${dir}/${baseFilename}`,
+    ]
   }
 
   // 3. Skill kind handling (skills in ArknightsGameResource use 'skill_icon_' prefix)

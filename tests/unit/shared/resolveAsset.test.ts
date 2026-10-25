@@ -52,6 +52,24 @@ describe('resolveAsset utility', () => {
       ])
     })
 
+    it('generates promoted Elite 2 avatar candidates with base fallback when variant is 2', () => {
+      const candidates = resolveAsset('avatar', 'char_4010_etlchi', { variant: '2' })
+      expect(candidates).toEqual([
+        `${PRIMARY_CDN_BASE}/avatar/char_4010_etlchi_2.png`,
+        `${SECONDARY_CDN_BASE}/avatar/char_4010_etlchi_2.png`,
+        `${PRIMARY_CDN_BASE}/avatar/char_4010_etlchi.png`,
+        `${SECONDARY_CDN_BASE}/avatar/char_4010_etlchi.png`,
+      ])
+    })
+
+    it('ignores variant 2 for low-rarity operators without E2 promotion', () => {
+      const candidates = resolveAsset('avatar', 'char_500_noirc', { variant: '2' })
+      expect(candidates).toEqual([
+        `${PRIMARY_CDN_BASE}/avatar/char_500_noirc.png`,
+        `${SECONDARY_CDN_BASE}/avatar/char_500_noirc.png`,
+      ])
+    })
+
     it('generates item candidates preferring iconId when provided', () => {
       const withIcon = resolveAsset('item', '30012', { iconId: 'MTL_SL_G2' })
       expect(withIcon[0]).toBe(`${PRIMARY_CDN_BASE}/item/MTL_SL_G2.png`)
