@@ -36,6 +36,11 @@ export const UNTRANSLATED_TYPES = [
   'skin_dialog',
   'skin_obtain',
   'banner_name',
+  'handbook_profile',
+  'handbook_exam',
+  'handbook_story_title',
+  'handbook_story_text',
+  'handbook_info_name',
 ] as const satisfies readonly UntranslatedType[]
 
 /**

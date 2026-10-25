@@ -7,6 +7,13 @@ import {
   type ValidationResult,
 } from './validate-translation'
 import type { GlossaryData, GlossaryCategory } from './glossary'
+import {
+  parseTaggedSection,
+  isHandbookStub,
+  isDuplicateStory,
+  TAG_KEY_MAP,
+  CANONICAL_TITLES,
+} from '../../shared/utils/handbook'
 
 export type UntranslatedType =
   | 'operator_name'
@@ -28,6 +35,11 @@ export type UntranslatedType =
   | 'skin_dialog'
   | 'skin_obtain'
   | 'banner_name'
+  | 'handbook_profile'
+  | 'handbook_exam'
+  | 'handbook_story_title'
+  | 'handbook_story_text'
+  | 'handbook_info_name'
 
 export interface RawSkinItem {
   skinId: string
@@ -301,6 +313,215 @@ export function collectUntranslatedFromBanners(
   return Array.from(templateMap.values())
 }
 
+export interface RawHandbookStoryItem {
+  storyText?: string
+  unLockType?: string
+  unLockParam?: string
+}
+
+export interface RawHandbookStoryAudio {
+  stories?: RawHandbookStoryItem[]
+  storyTitle?: string
+}
+
+export interface RawHandbookEntry {
+  charID?: string
+  infoName?: string
+  storyTextAudio?: RawHandbookStoryAudio[]
+}
+
+export interface RawHandbookTable {
+  handbookDict: Record<string, RawHandbookEntry>
+}
+
+export interface RawHandbookTables {
+  en?: RawHandbookTable | null
+  cn?: RawHandbookTable | null
+}
+
+export interface CollectHandbookOptions {
+  opIds?: string[]
+  glossary?: GlossaryData | null
+  charNames?: Record<string, string>
+  existingKeys?: Set<string>
+}
+
+export function collectUntranslatedFromHandbook(
+  tables: RawHandbookTables,
+  options?: CollectHandbookOptions,
+): UntranslatedItem[] {
+  const glossary = options?.glossary ?? null
+  const charNames = options?.charNames ?? {}
+  const existingKeys = options?.existingKeys ?? new Set<string>()
+  const enDict = tables.en?.handbookDict ?? {}
+  const cnDict = tables.cn?.handbookDict ?? {}
+  const templateMap = new Map<string, UntranslatedItem>()
+
+  const opIds =
+    options?.opIds ??
+    Object.keys(cnDict).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+
+  function register(
+    type: UntranslatedType,
+    charId: string,
+    key: string,
+    zhText: string,
+    glossaryCat: GlossaryCategory = 'terms',
+  ) {
+    if (existingKeys.has(key)) return
+    const zh = (zhText || '').trim()
+    if (!zh || !hasCjkIdeograph(zh)) return
+
+    const charNameZh = charNames[charId] || ''
+    const mapKey = `${type}:::${zh}`
+    const existing = templateMap.get(mapKey)
+
+    if (existing) {
+      if (!existing.keys.includes(key)) {
+        existing.keys.push(key)
+      }
+    } else {
+      const item: UntranslatedItem = {
+        id: `${type}_${templateMap.size + 1}`,
+        type,
+        charId,
+        charNameZh,
+        zh,
+        tags: extractOpenTags(zh),
+        placeholders: extractPlaceholders(zh),
+        keys: [key],
+        relevantGlossary: findRelevantGlossary(zh, glossaryCat, glossary),
+      }
+      templateMap.set(mapKey, item)
+    }
+  }
+
+  for (const charId of opIds) {
+    const enOp = enDict[charId]
+    const cnOp = cnDict[charId]
+    if (!cnOp) continue
+
+    const isGlobal = !!enOp
+    const enStories = enOp?.storyTextAudio ?? []
+    const cnStories = cnOp?.storyTextAudio ?? []
+
+    const primaryBasicIndexEn = enStories.findIndex((s) => s.storyTitle === 'Basic Info')
+    const primaryBasicIndexCn = cnStories.findIndex(
+      (s) => s.storyTitle === '基础档案' || s.storyTitle === '学生概况',
+    )
+    const primaryBasicIndex = primaryBasicIndexEn >= 0 ? primaryBasicIndexEn : primaryBasicIndexCn
+
+    const primaryExamIndexEn = enStories.findIndex(
+      (s) => s.storyTitle === 'Physical Exam' || s.storyTitle === 'Performance Review',
+    )
+    const primaryExamIndexCn = cnStories.findIndex(
+      (s) =>
+        s.storyTitle === '综合体检测试' ||
+        s.storyTitle === '综合性能检测结果' ||
+        s.storyTitle === '综合能力测试',
+    )
+    const primaryExamIndex = primaryExamIndexEn >= 0 ? primaryExamIndexEn : primaryExamIndexCn
+
+    const basicTextEn =
+      primaryBasicIndexEn >= 0 ? enStories[primaryBasicIndexEn]?.stories?.[0]?.storyText : undefined
+    const basicTextCn =
+      primaryBasicIndexCn >= 0 ? cnStories[primaryBasicIndexCn]?.stories?.[0]?.storyText : undefined
+
+    const examTextEn =
+      primaryExamIndexEn >= 0 ? enStories[primaryExamIndexEn]?.stories?.[0]?.storyText : undefined
+    const examTextCn =
+      primaryExamIndexCn >= 0 ? cnStories[primaryExamIndexCn]?.stories?.[0]?.storyText : undefined
+
+    function processSection(
+      enText: string | undefined,
+      cnText: string | undefined,
+      sectionType: 'profile' | 'exam',
+      type: UntranslatedType,
+    ) {
+      if (!cnText) return
+      const enTags = enText ? parseTaggedSection(enText) : []
+      const cnTags = cnText ? parseTaggedSection(cnText) : []
+      const enByCan = new Map<string, { tag: string; value: string }>()
+      for (const t of enTags) {
+        const canonicalKey = TAG_KEY_MAP[t.tag] ?? t.tag
+        enByCan.set(canonicalKey, t)
+      }
+
+      for (const t of cnTags) {
+        const canonicalKey = TAG_KEY_MAP[t.tag] ?? t.tag
+        const enEntry = enByCan.get(canonicalKey)
+        const rawEnVal = enEntry?.value ?? null
+        const rawCnVal = (t.value || '').trim()
+
+        if (!rawEnVal && rawCnVal) {
+          const key = `handbook.${charId}.${sectionType}.${canonicalKey}`
+          register(type, charId, key, rawCnVal, 'terms')
+        }
+
+        const canonicalTitle = CANONICAL_TITLES[canonicalKey]
+        const enTitle = enEntry?.tag ?? canonicalTitle?.en ?? (isGlobal ? canonicalKey : null)
+        const cnTitle = (t.tag || '').trim()
+        if (!enTitle && cnTitle) {
+          const key = `handbook.${charId}.${sectionType}.${canonicalKey}.title`
+          register(type, charId, key, cnTitle, 'terms')
+        }
+      }
+    }
+
+    processSection(basicTextEn, basicTextCn, 'profile', 'handbook_profile')
+    processSection(examTextEn, examTextCn, 'exam', 'handbook_exam')
+
+    const seenStories = new Set<string>()
+    if (basicTextEn) seenStories.add(`Basic Info:::${basicTextEn.trim()}`)
+    if (basicTextCn) seenStories.add(`基础档案:::${basicTextCn.trim()}`)
+    if (examTextEn) {
+      const enExamTitle = enStories[primaryExamIndexEn]?.storyTitle ?? 'Physical Exam'
+      seenStories.add(`${enExamTitle}:::${examTextEn.trim()}`)
+    }
+    if (examTextCn) {
+      const cnExamTitle = cnStories[primaryExamIndexCn]?.storyTitle ?? '综合体检测试'
+      seenStories.add(`${cnExamTitle}:::${examTextCn.trim()}`)
+    }
+
+    const storyCount = Math.max(enStories.length, cnStories.length)
+    for (let i = 0; i < storyCount; i++) {
+      if (i === primaryBasicIndex || i === primaryExamIndex) continue
+      const enStory = enStories[i]
+      const cnStory = cnStories[i]
+
+      const enTitle = enStory?.storyTitle ?? null
+      const cnTitle = (cnStory?.storyTitle ?? '').trim()
+      const enText = enStory?.stories?.[0]?.storyText ?? null
+      const cnText = (cnStory?.stories?.[0]?.storyText ?? '').trim()
+
+      const checkTitle = enTitle || cnTitle
+      const checkText = enText || cnText
+
+      if (isHandbookStub(checkTitle, checkText)) continue
+      if (isDuplicateStory(checkTitle, checkText, seenStories)) continue
+
+      if (!enTitle && cnTitle) {
+        const key = `handbook.${charId}.story.${i}.title`
+        register('handbook_story_title', charId, key, cnTitle, 'terms')
+      }
+
+      if (!enText && cnText) {
+        const key = `handbook.${charId}.story.${i}.text`
+        register('handbook_story_text', charId, key, cnText, 'terms')
+      }
+    }
+
+    const rawInfoNameEn = enOp?.infoName ?? null
+    const rawInfoNameCn = (cnOp?.infoName ?? '').trim()
+    if (!rawInfoNameEn && rawInfoNameCn) {
+      const key = `handbook.${charId}.infoName`
+      register('handbook_info_name', charId, key, rawInfoNameCn, 'operators')
+    }
+  }
+
+  return Array.from(templateMap.values())
+}
+
 /**
  * Scans all operator JSON files to collect untranslated strings (source: 'zh').
  */
@@ -343,6 +564,11 @@ export async function collectUntranslatedItems(): Promise<{
     skin_dialog: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     skin_obtain: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     banner_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    handbook_profile: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    handbook_exam: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    handbook_story_title: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    handbook_story_text: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    handbook_info_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
   })
 
   const byType = emptyStatsByType()
@@ -571,25 +797,25 @@ export async function collectUntranslatedItems(): Promise<{
     // constants.json is optional; the operator pass alone is still valid.
   }
 
+  const charNames: Record<string, string> = {}
+  try {
+    const idxRaw = await fs.readFile(
+      path.resolve(process.cwd(), 'data/operators-index.json'),
+      'utf-8',
+    )
+    const idx = JSON.parse(idxRaw) as Array<{ id: string; name?: { zh?: string } }>
+    for (const op of idx) {
+      if (op.name?.zh) charNames[op.id] = op.name.zh
+    }
+  } catch {
+    // ignore
+  }
+
   // Skins pass
   try {
     const skinsPath = path.resolve(process.cwd(), 'data/skins.json')
     const skinsRaw = await fs.readFile(skinsPath, 'utf-8')
     const skins = JSON.parse(skinsRaw) as RawSkinItem[]
-
-    const charNames: Record<string, string> = {}
-    try {
-      const idxRaw = await fs.readFile(
-        path.resolve(process.cwd(), 'data/operators-index.json'),
-        'utf-8',
-      )
-      const idx = JSON.parse(idxRaw) as Array<{ id: string; name?: { zh?: string } }>
-      for (const op of idx) {
-        if (op.name?.zh) charNames[op.id] = op.name.zh
-      }
-    } catch {
-      // ignore
-    }
 
     const skinItems = collectUntranslatedFromSkins(skins, { glossary, charNames })
     for (const item of skinItems) {
@@ -618,6 +844,60 @@ export async function collectUntranslatedItems(): Promise<{
     }
   } catch {
     // banners.json is optional
+  }
+
+  // Handbook pass
+  try {
+    const cnRaw = await fs.readFile(
+      path.resolve(process.cwd(), '.cache/raw/cn/handbook_info_table.json'),
+      'utf-8',
+    )
+    let enRaw: string | null = null
+    try {
+      enRaw = await fs.readFile(
+        path.resolve(process.cwd(), '.cache/raw/en/handbook_info_table.json'),
+        'utf-8',
+      )
+    } catch {
+      // EN table is optional
+    }
+
+    const rawTables: RawHandbookTables = {
+      cn: JSON.parse(cnRaw) as RawHandbookTable,
+      en: enRaw ? (JSON.parse(enRaw) as RawHandbookTable) : undefined,
+    }
+
+    const existingKeys = new Set<string>()
+    for (const subdir of ['machine', 'manual', 'patches']) {
+      try {
+        const p = path.resolve(process.cwd(), `data/i18n/${subdir}/handbook.json`)
+        const content = JSON.parse(await fs.readFile(p, 'utf-8')) as Record<
+          string,
+          { text?: string } | string
+        >
+        for (const [k, v] of Object.entries(content)) {
+          const val = typeof v === 'string' ? v : v?.text
+          if (val && val.trim() && val !== '[Pending Translation]') {
+            existingKeys.add(k)
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    const handbookItems = collectUntranslatedFromHandbook(rawTables, {
+      glossary,
+      charNames,
+      existingKeys,
+    })
+    for (const item of handbookItems) {
+      for (const key of item.keys) {
+        registerString(item.type, item.charId, item.charNameZh, key, item.zh, 'terms')
+      }
+    }
+  } catch {
+    // handbook raw files optional
   }
 
   const items: UntranslatedItem[] = []
@@ -669,6 +949,11 @@ const PRIORITY_ORDER: Record<UntranslatedType, number> = {
   profile_text: 17,
   term_desc: 18,
   operator_tag: 19,
+  handbook_profile: 20,
+  handbook_exam: 21,
+  handbook_story_title: 22,
+  handbook_story_text: 23,
+  handbook_info_name: 24,
 }
 
 /**
@@ -756,6 +1041,7 @@ export async function importBatches(): Promise<{
   const termsMach: Record<string, { text: string; source: 'machine' }> = {}
   const skinsMach: Record<string, { text: string; source: 'machine' }> = {}
   const bannersMach: Record<string, { text: string; source: 'machine' }> = {}
+  const handbookMach: Record<string, { text: string; source: 'machine' }> = {}
 
   // Load existing machine files to preserve existing translations
   async function loadExisting(file: string, target: Record<string, { text: string; source: 'machine' }>) {
@@ -778,6 +1064,7 @@ export async function importBatches(): Promise<{
   await loadExisting('terms.json', termsMach)
   await loadExisting('skins.json', skinsMach)
   await loadExisting('banners.json', bannersMach)
+  await loadExisting('handbook.json', handbookMach)
 
   let importedCount = 0
   let invalidCount = 0
@@ -849,6 +1136,12 @@ export async function importBatches(): Promise<{
             return skinsMach
           case 'banner_name':
             return bannersMach
+          case 'handbook_profile':
+          case 'handbook_exam':
+          case 'handbook_story_title':
+          case 'handbook_story_text':
+          case 'handbook_info_name':
+            return handbookMach
         }
       })()
 
@@ -903,6 +1196,14 @@ export async function importBatches(): Promise<{
     await fs.writeFile(
       path.join(machineDir, 'banners.json'),
       JSON.stringify(bannersMach, null, 2) + '\n',
+      'utf-8',
+    )
+  }
+
+  if (Object.keys(handbookMach).length > 0) {
+    await fs.writeFile(
+      path.join(machineDir, 'handbook.json'),
+      JSON.stringify(handbookMach, null, 2) + '\n',
       'utf-8',
     )
   }

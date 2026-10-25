@@ -15,8 +15,8 @@ import {
  * fake client in tests. The CLI owns the IO.
  */
 
-/** Matches any CJK character; an English translation must not contain one. */
-const CJK_REGEX = /[\u3000-\u303f\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]/
+/** Matches a CJK ideograph (Han character); an English translation must not contain one. */
+const CJK_IDEOGRAPH_REGEX = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/
 
 export interface TranslatedEntry {
   item: UntranslatedItem
@@ -83,7 +83,7 @@ export function checkTranslation(zh: string, en: string): string[] {
   if (en === '[Pending Translation]') {
     issues.push('the model returned the pending placeholder')
   }
-  if (CJK_REGEX.test(en)) {
+  if (CJK_IDEOGRAPH_REGEX.test(en)) {
     issues.push('the translation still contains Chinese characters')
   }
 
