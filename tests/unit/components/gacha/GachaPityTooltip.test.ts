@@ -9,26 +9,34 @@ describe('GachaPityTooltip', () => {
   })
 
   it('renders trigger button with accessible attributes and closed state', async () => {
-    const wrapper = await mountSuspended(GachaPityTooltip)
+    const wrapper = await mountSuspended(GachaPityTooltip, {
+      props: {
+        teleport: false,
+      },
+    })
 
     const trigger = wrapper.find('.gacha-pity-tooltip__trigger')
     expect(trigger.exists()).toBe(true)
     expect(trigger.attributes('aria-haspopup')).toBe('dialog')
     expect(trigger.attributes('aria-expanded')).toBe('false')
     expect(trigger.attributes('aria-label')).toBeTruthy()
-    expect(wrapper.find('.gacha-pity-tooltip__popover').exists()).toBe(false)
+    expect(wrapper.find('.ak-modal').exists()).toBe(false)
   })
 
-  it('opens popover on click and displays 4 pity sections', async () => {
-    const wrapper = await mountSuspended(GachaPityTooltip)
+  it('opens modal on click and displays 4 pity sections', async () => {
+    const wrapper = await mountSuspended(GachaPityTooltip, {
+      props: {
+        teleport: false,
+      },
+    })
 
     const trigger = wrapper.find('.gacha-pity-tooltip__trigger')
     await trigger.trigger('click')
 
     expect(trigger.attributes('aria-expanded')).toBe('true')
-    const popover = wrapper.find('.gacha-pity-tooltip__popover')
-    expect(popover.exists()).toBe(true)
-    expect(popover.attributes('role')).toBe('dialog')
+    const modal = wrapper.find('.ak-modal')
+    expect(modal.exists()).toBe(true)
+    expect(modal.attributes('role')).toBe('dialog')
 
     const sections = wrapper.findAll('.gacha-pity-tooltip__section')
     expect(sections.length).toBe(4)
@@ -43,30 +51,39 @@ describe('GachaPityTooltip', () => {
     expect(sections[3]?.text()).toContain('3.33 OP per 1 pull')
   })
 
-  it('closes popover when close button is clicked', async () => {
-    const wrapper = await mountSuspended(GachaPityTooltip)
+  it('closes modal when close button is clicked', async () => {
+    const wrapper = await mountSuspended(GachaPityTooltip, {
+      props: {
+        teleport: false,
+      },
+    })
 
     const trigger = wrapper.find('.gacha-pity-tooltip__trigger')
     await trigger.trigger('click')
-    expect(wrapper.find('.gacha-pity-tooltip__popover').exists()).toBe(true)
+    expect(wrapper.find('.ak-modal').exists()).toBe(true)
 
-    const closeBtn = wrapper.find('.gacha-pity-tooltip__close-btn')
+    const closeBtn = wrapper.find('.ak-modal__close')
+    expect(closeBtn.exists()).toBe(true)
     await closeBtn.trigger('click')
-    expect(wrapper.find('.gacha-pity-tooltip__popover').exists()).toBe(false)
+    expect(wrapper.find('.ak-modal').exists()).toBe(false)
     expect(trigger.attributes('aria-expanded')).toBe('false')
   })
 
-  it('closes popover on Escape keydown', async () => {
-    const wrapper = await mountSuspended(GachaPityTooltip)
+  it('closes modal on Escape keydown', async () => {
+    const wrapper = await mountSuspended(GachaPityTooltip, {
+      props: {
+        teleport: false,
+      },
+    })
 
     const trigger = wrapper.find('.gacha-pity-tooltip__trigger')
     await trigger.trigger('click')
-    expect(wrapper.find('.gacha-pity-tooltip__popover').exists()).toBe(true)
+    expect(wrapper.find('.ak-modal').exists()).toBe(true)
 
     const event = new KeyboardEvent('keydown', { key: 'Escape' })
-    document.dispatchEvent(event)
+    window.dispatchEvent(event)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.find('.gacha-pity-tooltip__popover').exists()).toBe(false)
+    expect(wrapper.find('.ak-modal').exists()).toBe(false)
   })
 })

@@ -525,7 +525,11 @@ const probabilityLabel = computed<string>(() => {
               @change="onTargetBannerChange"
             >
               <option v-for="b in props.banners" :key="b.id" :value="b.id">
-                {{ b.title }}{{ b.isUpcoming ? ' (Upcoming)' : '' }}
+                {{ b.title }} ({{
+                  b.isUpcoming
+                    ? t('gacha.forecast.bannerUpcoming')
+                    : t('gacha.forecast.bannerActive')
+                }})
               </option>
             </select>
           </div>
