@@ -40,6 +40,7 @@ export type UntranslatedType =
   | 'handbook_story_title'
   | 'handbook_story_text'
   | 'handbook_info_name'
+  | 'item_name'
 
 export interface RawSkinItem {
   skinId: string
@@ -313,6 +314,69 @@ export function collectUntranslatedFromBanners(
   return Array.from(templateMap.values())
 }
 
+export interface RawGameItem {
+  id: string
+  name: { en?: string; zh?: string; source?: string }
+  type?: string
+}
+
+export interface CollectItemsOptions {
+  glossary?: GlossaryData | null
+  existingKeys?: Set<string>
+}
+
+/**
+ * Collects untranslated item names from a list of raw or built items.
+ * Deduplicates by item name and Chinese text, aggregating target keys.
+ */
+export function collectUntranslatedFromItems(
+  items: RawGameItem[],
+  options?: CollectItemsOptions,
+): UntranslatedItem[] {
+  const glossary = options?.glossary ?? null
+  const existingKeys = options?.existingKeys ?? new Set<string>()
+  const templateMap = new Map<string, UntranslatedItem>()
+
+  for (const item of items) {
+    const key = `item.${item.id}.name`
+    if (existingKeys.has(key)) continue
+    if (!isUntranslated(item.name)) continue
+
+    const zh = (item.name?.zh || '').trim()
+    if (!zh || !hasCjkIdeograph(zh)) continue
+
+    const mapKey = `item_name:::${zh}`
+    const existing = templateMap.get(mapKey)
+
+    if (existing) {
+      if (!existing.keys.includes(key)) {
+        existing.keys.push(key)
+      }
+    } else {
+      const combinedGlossary: Record<string, string> = {
+        ...findRelevantGlossary(zh, 'items', glossary),
+        ...findRelevantGlossary(zh, 'terms', glossary),
+        ...findRelevantGlossary(zh, 'operators', glossary),
+      }
+
+      const entry: UntranslatedItem = {
+        id: `item_name_${templateMap.size + 1}`,
+        type: 'item_name',
+        charId: item.id,
+        charNameZh: zh,
+        zh,
+        tags: extractOpenTags(zh),
+        placeholders: extractPlaceholders(zh),
+        keys: [key],
+        relevantGlossary: combinedGlossary,
+      }
+      templateMap.set(mapKey, entry)
+    }
+  }
+
+  return Array.from(templateMap.values())
+}
+
 export interface RawHandbookStoryItem {
   storyText?: string
   unLockType?: string
@@ -569,6 +633,7 @@ export async function collectUntranslatedItems(): Promise<{
     handbook_story_title: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     handbook_story_text: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
     handbook_info_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
+    item_name: { instances: 0, unique: 0, chars: 0, estimatedTokens: 0 },
   })
 
   const byType = emptyStatsByType()
@@ -900,6 +965,41 @@ export async function collectUntranslatedItems(): Promise<{
     // handbook raw files optional
   }
 
+  // Items pass
+  try {
+    const itemsPath = path.resolve(process.cwd(), 'data/items.json')
+    const itemsRaw = await fs.readFile(itemsPath, 'utf-8')
+    const itemsData = JSON.parse(itemsRaw) as RawGameItem[]
+
+    const existingKeys = new Set<string>()
+    for (const subdir of ['machine', 'manual', 'patches']) {
+      try {
+        const p = path.resolve(process.cwd(), `data/i18n/${subdir}/items.json`)
+        const content = JSON.parse(await fs.readFile(p, 'utf-8')) as Record<
+          string,
+          { text?: string } | string
+        >
+        for (const [k, v] of Object.entries(content)) {
+          const val = typeof v === 'string' ? v : v?.text
+          if (val && val.trim() && val !== '[Pending Translation]') {
+            existingKeys.add(k)
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    const itemEntries = collectUntranslatedFromItems(itemsData, { glossary, existingKeys })
+    for (const item of itemEntries) {
+      for (const key of item.keys) {
+        registerString(item.type, item.charId, item.charNameZh, key, item.zh, 'items')
+      }
+    }
+  } catch {
+    // items.json is optional
+  }
+
   const items: UntranslatedItem[] = []
   let totalChars = 0
 
@@ -937,7 +1037,8 @@ const PRIORITY_ORDER: Record<UntranslatedType, number> = {
   skin_name: 5,
   skin_brand: 6,
   banner_name: 7,
-  potential_desc: 8,
+  item_name: 8,
+  potential_desc: 9,
   term_name: 9,
   skill_desc: 10,
   talent_desc: 11,
@@ -1042,6 +1143,7 @@ export async function importBatches(): Promise<{
   const skinsMach: Record<string, { text: string; source: 'machine' }> = {}
   const bannersMach: Record<string, { text: string; source: 'machine' }> = {}
   const handbookMach: Record<string, { text: string; source: 'machine' }> = {}
+  const itemsMach: Record<string, { text: string; source: 'machine' }> = {}
 
   // Load existing machine files to preserve existing translations
   async function loadExisting(file: string, target: Record<string, { text: string; source: 'machine' }>) {
@@ -1065,6 +1167,7 @@ export async function importBatches(): Promise<{
   await loadExisting('skins.json', skinsMach)
   await loadExisting('banners.json', bannersMach)
   await loadExisting('handbook.json', handbookMach)
+  await loadExisting('items.json', itemsMach)
 
   let importedCount = 0
   let invalidCount = 0
@@ -1142,6 +1245,8 @@ export async function importBatches(): Promise<{
           case 'handbook_story_text':
           case 'handbook_info_name':
             return handbookMach
+          case 'item_name':
+            return itemsMach
         }
       })()
 
@@ -1204,6 +1309,14 @@ export async function importBatches(): Promise<{
     await fs.writeFile(
       path.join(machineDir, 'handbook.json'),
       JSON.stringify(handbookMach, null, 2) + '\n',
+      'utf-8',
+    )
+  }
+
+  if (Object.keys(itemsMach).length > 0) {
+    await fs.writeFile(
+      path.join(machineDir, 'items.json'),
+      JSON.stringify(itemsMach, null, 2) + '\n',
       'utf-8',
     )
   }

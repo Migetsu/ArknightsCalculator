@@ -8,6 +8,11 @@ import {
 } from '../../shared/schemas/item'
 import type { RawItemTable, RawItem } from './schemas/item-table.schema'
 import type { RawBuildingData } from './schemas/building-data.schema'
+import {
+  createI18nTracker,
+  loadI18nLayersContext,
+  resolveLayeredI18nString,
+} from './i18n-layers'
 
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const OUTPUT_PATH = path.resolve(process.cwd(), 'data/items.json')
@@ -94,11 +99,13 @@ export async function buildItems(): Promise<{
   console.log('Loading raw item tables and recipe data...')
   const enLocale = DATA_SOURCES_CONFIG.sources.en.locale
   const cnLocale = DATA_SOURCES_CONFIG.sources.cn.locale
-  const [itemTableEn, itemTableCn, buildingDataEn] = await Promise.all([
+  const [itemTableEn, itemTableCn, buildingDataEn, i18nContext] = await Promise.all([
     loadRawJson<RawItemTable>(enLocale, 'item_table.json'),
     loadRawJson<RawItemTable>(cnLocale, 'item_table.json'),
     loadRawJson<RawBuildingData>(enLocale, 'building_data.json'),
+    loadI18nLayersContext(),
   ])
+  const i18nTracker = createI18nTracker()
 
   // Collect craftable product IDs from workshop and factory
   const craftableIds = new Set<string>()
@@ -143,12 +150,26 @@ export async function buildItems(): Promise<{
     const isModuleToken = id.startsWith('mod_')
     const servers: ('cn' | 'global')[] = rawEn ? ['cn', 'global'] : ['cn']
 
+    const isGlobal = !!rawEn?.name
+    const resolvedName = resolveLayeredI18nString(
+      {
+        key: `item.${id}.name`,
+        charId: id,
+        officialEn: rawEn?.name ?? null,
+        zhText: rawCn?.name ?? id,
+        isGlobal,
+      },
+      i18nContext,
+      i18nTracker,
+    )
+
     const itemObj: GameItem = {
       id,
       name: {
-        en: rawEn?.name || rawCn?.name || id,
-        zh: rawCn?.name || rawEn?.name || id,
-        source: rawEn?.name ? 'official' : 'zh',
+        en: resolvedName.en,
+        zh: resolvedName.zh || id,
+        source: resolvedName.source,
+        ...(resolvedName.isMachineTranslation ? { isMachineTranslation: true } : {}),
       },
       rarity,
       type: classifiedType,

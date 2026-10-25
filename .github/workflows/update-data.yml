@@ -127,8 +127,17 @@ jobs:
       - name: Machine-translate new CN-only content
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
         run: npm run data:translate:all
+
+      - name: Rebuild datasets with machine translations
+        run: |
+          npm run data:items
+          npm run data:constants
+          npm run data:build
+          npm run data:handbook
+          npm run data:skins
+          npm run data:banners
 
       - name: Validate generated data
         run: npm run data:validate
@@ -169,6 +178,7 @@ jobs:
           fi
 
       - name: Create Pull Request with updated data
+        id: cpr
         if: steps.diff_check.outputs.has_changes != 'false'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -194,11 +204,16 @@ jobs:
             - **Wiki banners:** ${{ steps.wiki.outcome == 'failure' && 'existing snapshot (scrape failed)' || 'refreshed' }}
             - **Growth guard:** within the 25% threshold from `AGENTS.md` section 14
 
-            Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `data:validate`.
+            Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `rebuild datasets` -> `data:validate`.
 
             `data:assets` and thumbnails are not part of this workflow; they publish to the separate assets repository.
-
-            This PR is never merged automatically: review the diff and the size delta, then merge manually if CI is green.
           labels: |
             automated
             data-sync
+
+      - name: Enable auto-merge for data update PR
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.CRON_PAT }}
+        run: |
+          gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash || echo "Auto-merge not configured or permitted; PR remains open for review."
