@@ -1,5 +1,19 @@
 # Project Progress
 
+- **Task 50 — Fix Home Dashboard Banner Countdown & Date Range Alignment (`fix/dashboard-banner-countdown-alignment`):**
+  - **Identified Root Causes of Misaligned Countdown on Home Dashboard (`index.vue`):**
+    - Diagnosed the user-reported contradiction: banner Orienteering #7 was displayed on the gacha page as `STARTS TODAY` (estimated Global date `Oct 25, 2026`), but the home dashboard countdown displayed `24 DAYS 19 HRS 04 MIN 41 SEC` and an impossible date range `Oct 25, 2026 – May 28, 2026`.
+    - Cause 1: `if (!Number.isNaN(parsed) && parsed > Date.now())` evaluated to false when `parsed <= Date.now()` (i.e. the banner's start date has arrived today), which caused `targetTimestamp` to retain the fallback mockup demo timestamp `24 days 19 hours 04 minutes 41 seconds`.
+    - Cause 2: `endDateStr` fell back to `b.cnEndDate` (`May 29, 2026`) instead of calculating `estStart + durationDays` (`Nov 8, 2026`), displaying an end date 5 months before the start date.
+  - **Resolved Countdown & Projection Logic (`app/pages/index.vue`):**
+    - Assigned `targetTimestamp = parsed` directly when valid and added `isStartsToday = targetTimestamp > 0 && targetTimestamp <= Date.now()`.
+    - When `isStartsToday` is true, the home dashboard displays `00 DAYS 00 HRS 00 MIN 00 SEC` and an `AkBadge` `[ STARTS TODAY ]`.
+    - For estimated Global banners without a published EN end date, `endDateStr` is now accurately projected forward by `b.durationDays` (default 14 days) from the estimated start date.
+  - **Tests & Quality Gates:**
+    - Added unit test in `tests/unit/pages/index-banner.test.ts` verifying date projection without backwards CN dates and 0-days countdown with `STARTS TODAY` badge.
+    - Verified all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (121 test files, 1008 tests passed), and production `build`.
+    - Pull Request #125 merged autonomously into `main` after all CI checks and Vercel preview passed.
+
 - **Task 49 — Farming Inventory Calculation Audit, Upcoming Gacha Countdown Badges & Real-Time Home Countdown (`feat/farming-runs-gacha-upcoming-home-countdown`):**
   - **Farming Runs Inventory Audit & Analysis (`useFarmingStore`, `resolveDemand`, `optimizeFarming`):**
     - Audited full pipeline of how inventory affects recommended stage runs. Confirmed that depot inventory directly reduces farming demand hierarchically from T5 down to T1 before running the Simplex LP optimization. Only the net deficit (`rawDeficit`) is passed into `optimizeFarming()`, directly reducing runs per stage.
