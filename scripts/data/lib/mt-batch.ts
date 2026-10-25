@@ -41,6 +41,7 @@ export const UNTRANSLATED_TYPES = [
   'handbook_story_title',
   'handbook_story_text',
   'handbook_info_name',
+  'item_name',
 ] as const satisfies readonly UntranslatedType[]
 
 /**

@@ -1,5 +1,28 @@
 # Project Progress
 
+- **Task 48 — Machine Translation for CN Items & End-to-End Update Pipeline Automation (`feat/items-gemini-translation-and-ci-automation`):**
+  - **Identified CN Untranslated Items & Build Gap (`build-items.ts`, `translate-missing.ts`):**
+    - Diagnosed that `scripts/data/build-items.ts` was not using `resolveLayeredI18nString` or `loadI18nLayersContext()`, falling back directly to raw Chinese names (`source: 'zh'`) for 51 CN-only items (new T3/T4 materials, operator tokens, kernel tokens, vouchers, currencies).
+    - `translate-missing.ts` did not include item strings in its extraction, batching, or import pipelines.
+  - **Implemented Item Translation Pipeline (`translate-missing.ts`, `mt-batch.ts`, `mt-prompt.ts`, `build-items.ts`):**
+    - Added `item_name` to `UNTRANSLATED_TYPES` in `mt-batch.ts` and `translate-missing.ts`.
+    - Added translation instructions for materials, currencies, and tokens (`<Operator>'s Token`, `<Operator>'s Kernel Token`) to `mt-prompt.ts`.
+    - Implemented `collectUntranslatedFromItems()` in `translate-missing.ts` with contextual glossary lookup across items, terms, and operators, deduplicating identical Chinese names (51 instances -> 50 unique templates).
+    - Updated `build-items.ts` to integrate `loadI18nLayersContext()`, `createI18nTracker()`, and `resolveLayeredI18nString()`, mapping items to `item.${id}.name`.
+  - **Translation Execution & Dataset Rebuild:**
+    - Translated all 50 unique templates using `gemini-3.5-flash-lite` (100% completion, 0 quarantined).
+    - Imported 51 keys into `data/i18n/machine/items.json`.
+    - Rebuilt `data/items.json` via `npm run data:items`: all 51 CN items now have English machine translations (`source: 'machine'`), with 0 CJK characters in `name.en`.
+    - Verified data integrity via `npm run data:validate` (100% valid referential integrity).
+  - **Full Automation for Future Updates (`.github/workflows/update-data.yml`, `update-penguin.yml`):**
+    - Diagnosed critical pipeline ordering gap in `update-data.yml`: previously `npm run data:translate:all` ran after dataset builders, but datasets were not re-run afterwards, leaving translated strings unbaked.
+    - Added automated dataset re-run step (`Rebuild datasets with machine translations`) right after `data:translate:all` in `update-data.yml` for items, constants, operators, handbooks, skins, and banners.
+    - Configured default model `gemini-3.5-flash-lite` in workflow and updated `.env.example`.
+    - Added automatic PR auto-merge step via `gh pr merge --auto --squash` so that weekly scheduled update PRs automatically merge into `main` once all CI checks pass.
+  - **Tests & Quality Gates:**
+    - Created unit test `tests/unit/data/translate-items.test.ts` for item string extraction, deduplication, and existingKeys filtering.
+    - Passed all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (120 test files, 1003 tests passed), and production `build`.
+
 - **Task 47 — Machine Translation for Operator Dossiers & Handbooks via Gemini API (`feat/handbook-gemini-translation`):**
   - **Identified Cause of `[Pending Translation]` in Dossiers:**
     - Operator dossiers (`data/handbook/`) were introduced in Task 25, while the initial machine translation pipeline (Task 17–18) only covered `data/operators/`, `data/skins.json`, and `data/banners.json`. `scripts/data/translate-missing.ts` previously did not scan or extract handbook strings.

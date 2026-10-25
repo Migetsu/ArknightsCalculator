@@ -44,6 +44,7 @@ jobs:
           fi
 
       - name: Create Pull Request with updated data
+        id: cpr
         if: steps.git-diff.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -66,3 +67,10 @@ jobs:
           labels: |
             automated
             data-sync
+
+      - name: Enable auto-merge for Penguin Stats PR
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.CRON_PAT }}
+        run: |
+          gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash || echo "Auto-merge not configured or permitted; PR remains open for review."
