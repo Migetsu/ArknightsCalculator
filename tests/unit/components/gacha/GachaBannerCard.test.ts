@@ -610,5 +610,44 @@ describe('GachaBannerCard', () => {
       expect(wrapper.find('.gacha-banner__countdown-badge--ended').exists()).toBe(false)
       expect(wrapper.find('.gacha-banner__countdown-badge--upcoming').exists()).toBe(true)
     })
+
+    it('renders days until banner badge with IN ~X DAYS when target date is in the future', async () => {
+      // 10 days in the future
+      const futureDate = new Date(Date.now() + 10 * 86400000).toISOString()
+      const upcomingBanner: GachaBanner = {
+        ...mockBanner,
+        globalStartDate: futureDate,
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: upcomingBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const daysBadge = wrapper.find('.gacha-banner__countdown-badge--days')
+      expect(daysBadge.exists()).toBe(true)
+      expect(daysBadge.text()).toMatch(/IN ~10 DAYS/i)
+    })
+
+    it('renders IN ~1 DAY when 1 day remaining until banner', async () => {
+      const oneDayFuture = new Date(Date.now() + 1 * 86400000).toISOString()
+      const upcomingBanner: GachaBanner = {
+        ...mockBanner,
+        globalStartDate: oneDayFuture,
+      }
+
+      const wrapper = await mountSuspended(GachaBannerCard, {
+        props: {
+          banner: upcomingBanner,
+          operatorsMap: mockOperatorsMap,
+        },
+      })
+
+      const daysBadge = wrapper.find('.gacha-banner__countdown-badge--days')
+      expect(daysBadge.exists()).toBe(true)
+      expect(daysBadge.text()).toBe('IN ~1 DAY')
+    })
   })
 })

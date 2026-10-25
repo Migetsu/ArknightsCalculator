@@ -74,4 +74,12 @@ describe('IndexPage', () => {
     const wrapper = await mountSuspended(IndexPage)
     expect(wrapper.find('.dashboard-page__title').text()).toBe('Welcome back, doctor@rhodes.island')
   })
+
+  it('renders countdown timer with days, hours, minutes, and seconds units', async () => {
+    const wrapper = await mountSuspended(IndexPage)
+    const units = wrapper.findAll('.dashboard-page__countdown-unit').map((u) => u.text())
+    expect(units).toEqual(['DAYS', 'HRS', 'MIN', 'SEC'])
+    const nums = wrapper.findAll('.dashboard-page__countdown-num')
+    expect(nums.length).toBe(4)
+  })
 })
