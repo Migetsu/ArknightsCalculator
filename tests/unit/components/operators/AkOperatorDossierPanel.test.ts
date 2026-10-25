@@ -110,7 +110,7 @@ describe('AkOperatorDossierPanel', () => {
     expect(wrapper.text()).toBe('')
   })
 
-  it('renders translation badges for pending translations on CN-only operators (char_4217_makoto)', async () => {
+  it('renders translation badges for machine translations on CN-only operators (char_4217_makoto)', async () => {
     const wrapper = await mountSuspended(AkOperatorDossierPanel, {
       props: {
         charId: 'char_4217_makoto',
@@ -119,13 +119,13 @@ describe('AkOperatorDossierPanel', () => {
 
     expect(wrapper.find('.ak-operator-dossier-panel').exists()).toBe(true)
 
-    // Makoto has pending translation badges
-    const badges = wrapper.findAll('.ak-translation-badge--pending')
+    // Makoto has machine translation badges
+    const badges = wrapper.findAll('.ak-translation-badge--machine')
     expect(badges.length).toBeGreaterThan(0)
 
-    // Check that pending badge has PENDING text
+    // Check that badge has MT text
     const badgeTexts = badges.map((b) => b.text())
-    expect(badgeTexts).toContain('PENDING')
+    expect(badgeTexts).toContain('MT')
 
     // Confirm no raw CJK characters appear in the English rendered view of Makoto's profile fields
     const cjkRegex = /[\u4e00-\u9fa5]/

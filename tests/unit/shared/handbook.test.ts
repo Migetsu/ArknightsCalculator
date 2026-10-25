@@ -168,12 +168,12 @@ confirmed Infected by medical examination.
       expect(patch2?.storyTitle.en).toBe('Class Conversion Record 2')
     })
 
-    it('validates CN-only operator (char_4217_makoto) with pending translation and no CJK in .en', () => {
+    it('validates CN-only operator (char_4217_makoto) with machine translation and no CJK in .en', () => {
       expect(makotoHandbook).toBeDefined()
       expect(makotoHandbook.charId).toBe('char_4217_makoto')
 
-      expect(makotoHandbook.profile.codeName?.source).toBe('pending')
-      expect(makotoHandbook.profile.codeName?.en).toBe('[Pending Translation]')
+      expect(makotoHandbook.profile.codeName?.source).toBe('machine')
+      expect(makotoHandbook.profile.codeName?.en).toBe('Makoto Yuki')
       expect(makotoHandbook.profile.codeName?.zh).toBe('结城理')
 
       const cjkRegex = /[\u4e00-\u9fa5]/
@@ -203,7 +203,8 @@ confirmed Infected by medical examination.
       expect(lancetHandbook.physicalExam.topSpeed?.en).toBe('15km/h')
       expect(lancetHandbook.physicalExam.climb?.en).toBe('Normal')
       expect(lancetHandbook.physicalExam.brake?.en).toBe('Normal')
-      expect(lancetHandbook.physicalExam.passability?.en).toBe('[Pending Translation]')
+      expect(lancetHandbook.physicalExam.passability?.en).toBe('Normal')
+      expect(lancetHandbook.physicalExam.passability?.source).toBe('machine')
       expect(lancetHandbook.physicalExam.endurance?.en).toBe('Excellent')
     })
   })

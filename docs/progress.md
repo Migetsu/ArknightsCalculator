@@ -1,5 +1,25 @@
 # Project Progress
 
+- **Task 47 — Machine Translation for Operator Dossiers & Handbooks via Gemini API (`feat/handbook-gemini-translation`):**
+  - **Identified Cause of `[Pending Translation]` in Dossiers:**
+    - Operator dossiers (`data/handbook/`) were introduced in Task 25, while the initial machine translation pipeline (Task 17–18) only covered `data/operators/`, `data/skins.json`, and `data/banners.json`. `scripts/data/translate-missing.ts` previously did not scan or extract handbook strings.
+    - 27 CN-exclusive / unlocalized operators (e.g. Makoto Yuki, Aigis, Yukari Takeba, Angelina alter, Orchid alter, Lancet-2 passability, etc.) were displaying `[Pending Translation]` across biographical profiles, medical exams, and operator lore stories.
+  - **Handbook Translation Extraction & Deduplication (`translate-missing.ts`, `mt-batch.ts`, `mt-prompt.ts`):**
+    - Added 5 new untranslated types to pipeline: `handbook_profile`, `handbook_exam`, `handbook_story_title`, `handbook_story_text`, `handbook_info_name`.
+    - Implemented `collectUntranslatedFromHandbook()` in `translate-missing.ts` to parse raw handbook tables, mapping profile/exam fields to canonical keys (`handbook.${charId}.${sectionType}.${canonicalKey}`) and stories to indexed keys (`handbook.${charId}.story.${i}.title`, `handbook.${charId}.story.${i}.text`).
+    - Smart template deduplication grouped identical Chinese strings across multiple operators (e.g. standard exam ratings "普通" / "标准") into shared translation items, reducing 459 total instances down to 191 unique prompt templates.
+    - Updated `mt-prompt.ts` with Arknights handbook lore and biographical style guidelines.
+    - Configured model to `gemini-3.5-flash-lite` in `.env` and adjusted CJK ideograph regex in `mt-run.ts` to prevent false quarantine of valid English text containing lenticular brackets (`【...】`).
+  - **Translation Execution & Handbook Dataset Rebuild:**
+    - Executed batch translation across all 191 templates (100% translation completion, 0 quarantined).
+    - Imported 459 resolved handbook keys into `data/i18n/machine/handbook.json`.
+    - Rebuilt `data/handbook/` via `npm run data:handbook`: 432 operator dossiers generated with 0 `[Pending Translation]` placeholders and 0 CJK characters in English fields.
+    - Verified data integrity via `npm run data:validate` (100% valid referential integrity).
+  - **Tests & Quality Gates:**
+    - Created unit test `tests/unit/data/translate-handbook.test.ts` for handbook string extraction, deduplication, and existingKeys filtering.
+    - Updated `tests/unit/shared/handbook.test.ts` and `tests/unit/components/operators/AkOperatorDossierPanel.test.ts` to verify `source: 'machine'` and `MT` translation badges.
+    - Passed all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (119 test files, 1000 tests passed), and production `build`.
+
 - **Task 46 — Cloud Sync Conflict Elimination & Overwrite Prevention (`fix/cloud-sync-conflict-elimination`):**
   - **Eliminated Cloud Data Conflict Modal & Dialogs (`useCloudSync.ts`, `default.vue`):**
     - Removed false conflict detection modal ("Cloud Data Conflict") across all devices. For a single-user companion app, cloud save in Supabase is the canonical source of truth.
