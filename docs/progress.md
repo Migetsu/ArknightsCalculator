@@ -1,5 +1,23 @@
 # Project Progress
 
+- **Task 51 — Dynamic Active Plans, Treasury Pulls & Active Banner Commemorative Spark Counter (`fix/dashboard-banner-pulls-and-active-plans`):**
+  - **Identified Root Causes of 0 Values on Dashboard & Gacha Calculator:**
+    - Diagnosed the user-reported issue: `ACTIVE PLANS: 0`, `PULLS: 0`, and `SPARK: 0 / 300` metric cards on the Home Dashboard (`app/pages/index.vue`) displayed hardcoded zeroes from `DEMO_DASHBOARD_DATA` instead of reading live user state.
+    - Diagnosed that pulls already made on the active limited banner were not tracked in either the Dashboard spark counter or the Gacha Calculator (`app/components/gacha/GachaCalculator.vue`).
+  - **Implemented Active Plans & Currency Pulls Integration (`app/pages/index.vue`):**
+    - Connected `activePlansCount` computed property to `plannerStore.plans.length`, falling back to demo state only when demo mode is active.
+    - Connected `totalAvailablePulls` computed property using `calculateTotalPulls` from `depotStore` currencies (Orundum, Originite Prime) and headhunting permits (single and ten-roll permits).
+    - Initialized `depotStore.init()` in `onMounted()`.
+  - **Implemented Commemorative Coins (`lmtgsid` / `LMTGS_COIN_...`) Spark Tracking:**
+    - In Arknights, every pull made on a limited banner awards 1 Headhunting Data Contract (commemorative coin `LMTGS_COIN_...`). Any commemorative coin in `depotStore.items` is the exact 1:1 count of pulls already performed on that banner.
+    - On Home Dashboard (`index.vue`): `activeBannerPulls` and `sparkCurrent` dynamically read `lmtgsid` for current Global banner (`gachaData.currentEnFullBanner.lmtgsid`), active server banner, or any `LMTGS_COIN_*` item held in depot, displaying `SPARK: X / 300`.
+    - In Gacha Calculator (`GachaCalculator.vue`): Added `activeBannerPulls` to `totalPullsWithActiveBanner`, updating spark progress bar, rate-up probability curve, milestone active states, and displaying a tactical notice badge `[ PULLS MADE ]` with localized notice `alreadyPulledNotice`.
+  - **Tests & Quality Gates:**
+    - Added unit test in `tests/unit/components/gacha/GachaCalculator.test.ts` verifying commemorative coin spark progress and pulls made notice.
+    - Added 3 unit tests in `tests/unit/pages/index.test.ts` for `ACTIVE PLANS`, `PULLS`, and `SPARK` dashboard metric cards.
+    - Verified all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (121 test files, 1012 tests passed), and production `build`.
+    - Pull Request #126 merged autonomously into `main` after all CI checks (Code Quality, E2E Smoke Tests, Vercel Preview) passed.
+
 - **Task 50 — Fix Home Dashboard Banner Countdown & Date Range Alignment (`fix/dashboard-banner-countdown-alignment`):**
   - **Identified Root Causes of Misaligned Countdown on Home Dashboard (`index.vue`):**
     - Diagnosed the user-reported contradiction: banner Orienteering #7 was displayed on the gacha page as `STARTS TODAY` (estimated Global date `Oct 25, 2026`), but the home dashboard countdown displayed `24 DAYS 19 HRS 04 MIN 41 SEC` and an impossible date range `Oct 25, 2026 – May 28, 2026`.
