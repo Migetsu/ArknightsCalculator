@@ -97,7 +97,8 @@ const isLimited = computed(() => props.banner.type === 'limited')
               :id="primaryRateUp6Op.id"
               :name="primaryRateUp6Op.name"
               :rarity="primaryRateUp6Op.rarity"
-              :size="56"
+              :size="64"
+              variant="2"
             />
           </NuxtLink>
         </div>
@@ -119,7 +120,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
             :title="op.name"
             @click.stop
           >
-            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
+            <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="64" variant="2" />
           </NuxtLink>
         </div>
       </div>
@@ -145,7 +146,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :title="op.name"
           @click.stop
         >
-          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
+          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="64" variant="2" />
         </NuxtLink>
       </div>
     </div>
@@ -169,7 +170,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :title="op.name"
           @click.stop
         >
-          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="48" />
+          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="52" variant="2" />
         </NuxtLink>
       </div>
     </div>
@@ -190,7 +191,7 @@ const isLimited = computed(() => props.banner.type === 'limited')
           :title="op.name"
           @click.stop
         >
-          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" />
+          <AkAvatar :id="op.id" :name="op.name" :rarity="op.rarity" :size="56" variant="2" />
         </NuxtLink>
       </div>
     </div>
@@ -233,17 +234,20 @@ const isLimited = computed(() => props.banner.type === 'limited')
 
   &__grid {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
   &__op-link {
     display: inline-flex;
     text-decoration: none;
-    transition: transform var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      filter var(--transition-fast);
 
     &:hover {
       transform: translateY(-2px);
+      filter: brightness(1.08);
     }
 
     &:focus-visible {

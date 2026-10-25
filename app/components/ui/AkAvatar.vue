@@ -43,6 +43,10 @@ interface Props {
    * Avatar display size: 44, 48, 52, 56, 64, 84px (or standard t-shirt sizes).
    */
   size?: AkAvatarSize
+  /**
+   * Optional variant for promoted artwork (e.g. '2' for Elite 2 avatar).
+   */
+  variant?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -50,6 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
   src: undefined,
   rarity: 6,
   size: 48,
+  variant: undefined,
 })
 
 const candidateUrls = computed(() => {
@@ -58,7 +63,7 @@ const candidateUrls = computed(() => {
     urls.push(props.src)
   }
   if (props.id) {
-    const resolved = resolveAsset('avatar', props.id)
+    const resolved = resolveAsset('avatar', props.id, { variant: props.variant })
     for (const url of resolved) {
       if (!urls.includes(url)) {
         urls.push(url)
@@ -71,9 +76,9 @@ const candidateUrls = computed(() => {
 const currentCandidateIndex = ref(0)
 const hasError = ref(false)
 
-// Reset state if target operator or explicit src changes
+// Reset state if target operator, explicit src or variant changes
 watch(
-  () => [props.id, props.src],
+  () => [props.id, props.src, props.variant],
   () => {
     currentCandidateIndex.value = 0
     hasError.value = false
@@ -184,6 +189,9 @@ const initials = computed(() => {
     height: 100%;
     object-fit: cover;
     display: block;
+    image-rendering: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   &__fallback {
