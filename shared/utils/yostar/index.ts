@@ -71,6 +71,8 @@ export interface YostarMapContext {
   knownOperatorIds: ReadonlySet<string>
   /** Item ids present in the local catalog (`data/items.json`). */
   knownItemIds: ReadonlySet<string>
+  /** Optional mapping of banner / pool id -> lmtgsid commemorative coin item id */
+  bannerToLmtgsid?: ReadonlyMap<string, string> | Record<string, string>
 }
 
 function clampInt(value: number, min: number, max: number): number {
@@ -86,6 +88,14 @@ function toCount(value: number): number {
 function asRecord(value: unknown): Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return {}
   return value as Record<string, unknown>
+}
+
+function extractGachaPoolPulls(rawPool: unknown): number {
+  if (typeof rawPool === 'number') return toCount(rawPool)
+  if (typeof rawPool !== 'object' || rawPool === null) return 0
+  const obj = rawPool as Record<string, unknown>
+  const count = Number(obj.poolCnt ?? obj.cnt ?? obj.count ?? obj.pulls ?? obj.val)
+  return toCount(count)
 }
 
 function mapCharacter(
@@ -196,7 +206,7 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
       const count = toCount(rawCount)
       if (!itemId || count === 0) continue
       if (YOSTAR_CURRENCY_ITEM_IDS.has(itemId)) continue
-      if (!ctx.knownItemIds.has(itemId)) {
+      if (!ctx.knownItemIds.has(itemId) && !itemId.startsWith('LMTGS_COIN_')) {
         unknownItemCount += 1
         continue
       }
@@ -218,6 +228,60 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
     const recruitLicenses = toCount(status.data.recruitLicense)
     if (recruitLicenses > 0 && ctx.knownItemIds.has('7001')) {
       items['7001'] = Math.max(items['7001'] ?? 0, recruitLicenses)
+    }
+  }
+
+  // Arknights stores limited banner spark progress and rolls inside gacha payload
+  const recordGachaPool = (poolId: string, rawPool: unknown) => {
+    const pulls = extractGachaPoolPulls(rawPool)
+    if (pulls <= 0) return
+
+    let coinId: string | null = null
+    if (ctx.bannerToLmtgsid) {
+      if (ctx.bannerToLmtgsid instanceof Map) {
+        coinId = ctx.bannerToLmtgsid.get(poolId) ?? null
+      } else {
+        coinId = (ctx.bannerToLmtgsid as Record<string, string>)[poolId] ?? null
+      }
+    }
+    if (!coinId && poolId.startsWith('LMTGS_COIN_')) {
+      coinId = poolId
+    }
+    if (coinId && (ctx.knownItemIds.has(coinId) || coinId.startsWith('LMTGS_COIN_'))) {
+      items[coinId] = Math.max(items[coinId] ?? 0, pulls)
+    }
+  }
+
+  if (root.gacha && typeof root.gacha === 'object') {
+    const gachaRecord = root.gacha as Record<string, unknown>
+
+    if (gachaRecord.limit && typeof gachaRecord.limit === 'object') {
+      for (const [poolId, rawPool] of Object.entries(
+        gachaRecord.limit as Record<string, unknown>,
+      )) {
+        recordGachaPool(poolId, rawPool)
+      }
+    }
+
+    if (gachaRecord.lmtgs && typeof gachaRecord.lmtgs === 'object') {
+      for (const [poolId, rawPool] of Object.entries(
+        gachaRecord.lmtgs as Record<string, unknown>,
+      )) {
+        recordGachaPool(poolId, rawPool)
+      }
+    }
+
+    for (const [key, rawVal] of Object.entries(gachaRecord)) {
+      if (key.startsWith('LIMITED') || key.startsWith('LMTGS')) {
+        recordGachaPool(key, rawVal)
+      }
+    }
+  }
+
+  const exGacha = asRecord(root.exgachadata || root.exGachaData)
+  for (const [key, rawVal] of Object.entries(exGacha)) {
+    if (key.startsWith('LIMITED') || key.startsWith('LMTGS')) {
+      recordGachaPool(key, rawVal)
     }
   }
 

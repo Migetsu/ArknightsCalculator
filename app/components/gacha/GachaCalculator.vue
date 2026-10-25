@@ -114,6 +114,31 @@ const orundum = ref<number>(0)
 const originitePrime = ref<number>(0)
 const permitsSingle = ref<number>(0)
 const permitsTen = ref<number>(0)
+const bannerPullsMade = ref<number>(0)
+
+function syncBannerPullsFromDepot(): void {
+  if (props.banner?.lmtgsid) {
+    bannerPullsMade.value = depotStore.getItemCount(props.banner.lmtgsid) || 0
+  } else {
+    bannerPullsMade.value = 0
+  }
+}
+
+watch(
+  [() => props.banner?.lmtgsid, () => depotStore.items],
+  () => {
+    syncBannerPullsFromDepot()
+  },
+  { immediate: true, deep: true },
+)
+
+function onBannerPullsChange(val: number): void {
+  const safe = Math.max(0, Math.min(300, Math.floor(val) || 0))
+  bannerPullsMade.value = safe
+  if (props.banner?.lmtgsid) {
+    void depotStore.setItemCount(props.banner.lmtgsid, safe)
+  }
+}
 
 // Fill from depot store
 function fillFromDepot(): void {
@@ -121,6 +146,7 @@ function fillFromDepot(): void {
   originitePrime.value = depotStore.currencies.originitePrime || 0
   permitsSingle.value = depotStore.getItemCount('7003') || 0
   permitsTen.value = depotStore.getItemCount('7004') || 0
+  syncBannerPullsFromDepot()
 }
 
 const totalPermitsPulls = computed<number>(() => {
@@ -237,7 +263,7 @@ const totalAvailablePulls = computed<number>(() => {
 
 const activeBannerPulls = computed<number>(() => {
   if (props.banner?.lmtgsid) {
-    return depotStore.getItemCount(props.banner.lmtgsid)
+    return bannerPullsMade.value
   }
   return 0
 })
@@ -419,6 +445,35 @@ const probabilityLabel = computed<string>(() => {
           class="gacha-calc__stepper"
           aria-label="Ten-roll Permits"
           @update:model-value="permitsTen = $event"
+        />
+      </div>
+
+      <!-- Pulls Made / Headhunting Data Contracts (Limited Banner Spark) -->
+      <div
+        v-if="props.banner?.lmtgsid"
+        class="gacha-calc__treasury-cell gacha-calc__treasury-cell--spark"
+      >
+        <div class="gacha-calc__item-info">
+          <AkItemIcon
+            :item-id="props.banner.lmtgsid"
+            :icon-id="props.banner.lmtgsid"
+            name="Headhunting Data Contract"
+            :tier="5"
+            :size="40"
+          />
+          <div class="gacha-calc__item-meta">
+            <span class="gacha-calc__item-label">{{ t('gacha.calculator.bannerPullsMade') }}</span>
+            <span class="gacha-calc__item-sub">{{ t('gacha.calculator.bannerPullsMadeSub') }}</span>
+          </div>
+        </div>
+        <AkStepper
+          :model-value="bannerPullsMade"
+          :min="0"
+          :max="300"
+          :step="1"
+          class="gacha-calc__stepper"
+          :aria-label="t('gacha.calculator.bannerPullsMade')"
+          @update:model-value="onBannerPullsChange($event)"
         />
       </div>
     </div>
@@ -881,6 +936,10 @@ const probabilityLabel = computed<string>(() => {
 
     @media (width <= 480px) {
       padding: 10px 12px;
+    }
+
+    &--spark {
+      border-color: rgb(245 158 11 / 40%);
     }
   }
 

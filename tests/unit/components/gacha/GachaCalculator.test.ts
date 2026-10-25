@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
 import GachaCalculator from '~/components/gacha/GachaCalculator.vue'
+import AkStepper from '~/components/ui/AkStepper.vue'
 import { useDepotStore } from '~/stores/depot'
 import type { GachaBanner } from '~/../shared/schemas/banner'
 
@@ -332,5 +333,32 @@ describe('GachaCalculator', () => {
 
     // Spark progress should reflect 45 made + available rolls
     expect(wrapper.find('.gacha-calc__spark-bar').text()).toContain('74/300')
+  })
+
+  it('renders a pulls made treasury cell for limited banner and updates depot item when changed', async () => {
+    const limitedBannerWithLmt: GachaBanner = {
+      ...sampleLimitedBanner,
+      lmtgsid: 'LMTGS_COIN_7301',
+    }
+
+    const wrapper = await mountSuspended(GachaCalculator, {
+      props: {
+        banner: limitedBannerWithLmt,
+      },
+    })
+
+    const sparkCell = wrapper.find('.gacha-calc__treasury-cell--spark')
+    expect(sparkCell.exists()).toBe(true)
+
+    const depotStore = useDepotStore()
+    const stepper = sparkCell.findComponent(AkStepper)
+    expect(stepper.exists()).toBe(true)
+
+    // Trigger update on stepper
+    await stepper.vm.$emit('update:modelValue', 22)
+    await wrapper.vm.$nextTick()
+
+    expect(depotStore.getItemCount('LMTGS_COIN_7301')).toBe(22)
+    expect(wrapper.text()).toContain('22 pull(s) already made on this banner')
   })
 })

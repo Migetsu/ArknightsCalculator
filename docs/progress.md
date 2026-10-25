@@ -1,5 +1,23 @@
 # Project Progress
 
+- **Task 52 — Yostar Sync Active Banner Rolls Mapping & Spark Pulls Made Input in Gacha Calculator (`fix/yostar-sync-banner-pulls-and-spark`):**
+  - **Identified Root Causes of Missing Active Banner Rolls:**
+    - Diagnosed the user-reported issue: After performing Yostar account sync, the user had ~22 rolls already made on the active limited banner ("Sealed With Time"), but the site still showed `SPARK: 0 / 300` on the Home Dashboard and 0 pulls made in the Gacha Calculator.
+    - Root Cause 1: In the Arknights game server payload (`syncData`), pulls made on active limited banners are stored in `root.gacha.limit[poolId].poolCnt` (and `root.gacha.lmtgs` / `root.exgachadata`), NOT in `root.inventory`. Previously, `mapYostarSync` only parsed `root.troop`, `root.status`, and `root.inventory`, completely omitting `root.gacha`.
+    - Root Cause 2: In `RawInventorySchema`, item IDs that did not match standard material items were filtered out unless explicitly permitted.
+    - Root Cause 3: In `GachaCalculator.vue`, there was no Treasury input or display for pulls already made / Headhunting Data Contracts on the selected limited banner.
+  - **Implemented Active Banner Pulls Extraction (`shared/utils/yostar/index.ts`, `server/utils/yostarRoutes.ts`):**
+    - In `server/utils/yostarRoutes.ts`, built `bannerToLmtgsid` lookup map from `data/banners.json` (`poolId` / `pairedBannerId` -> `lmtgsid`) and passed it to `mapYostarSync` context.
+    - In `shared/utils/yostar/index.ts`, parsed `root.gacha.limit`, `root.gacha.lmtgs`, and `root.exgachadata`. Extracted `poolCnt` and mapped each pool to its corresponding commemorative coin (`LMTGS_COIN_...`), setting `items[coinId] = Math.max(items[coinId] ?? 0, pulls)`. Allowed `LMTGS_COIN_...` items through inventory filtering.
+  - **Implemented Pulls Made Treasury Input (`app/components/gacha/GachaCalculator.vue`, `i18n/locales/en.json`):**
+    - Added reactive `bannerPullsMade` state synchronized with `depotStore.items[props.banner.lmtgsid]`.
+    - Added an interactive 5th Treasury cell with `AkItemIcon` and `AkStepper` (min: 0, max: 300, step: 1) styled with amber spark accent `&__treasury-cell--spark`.
+    - Allowed manual adjustments in the calculator to persist to `depotStore.setItemCount()`, seamlessly syncing to Supabase CloudSync and reflecting immediately in Home Dashboard `SPARK: X / 300`.
+  - **Tests & Quality Gates:**
+    - Added unit test in `tests/unit/shared/yostar/mapSyncData.test.ts` verifying `mapYostarSync` correctly extracts `poolCnt` into `items['LMTGS_COIN_7301']`.
+    - Added unit test in `tests/unit/components/gacha/GachaCalculator.test.ts` verifying rendering of the pulls made treasury cell and reactive updates to `depotStore`.
+    - Passed all quality gates: `i18n:check` (790 keys valid), `lint` (0 errors), `typecheck` (0 errors), `test` (121 test files, 1015 tests passed), and production `build`.
+
 - **Task 51 — Dynamic Active Plans, Treasury Pulls & Active Banner Commemorative Spark Counter (`fix/dashboard-banner-pulls-and-active-plans`):**
   - **Identified Root Causes of 0 Values on Dashboard & Gacha Calculator:**
     - Diagnosed the user-reported issue: `ACTIVE PLANS: 0`, `PULLS: 0`, and `SPARK: 0 / 300` metric cards on the Home Dashboard (`app/pages/index.vue`) displayed hardcoded zeroes from `DEMO_DASHBOARD_DATA` instead of reading live user state.
