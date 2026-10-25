@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Task 44 — Gacha Pity Modal Dialog & Pulls Savings Audit (`fix/gacha-modal-and-savings-audit`):**
+  - **Pity Rules Modal Migration (`GachaPityTooltip.vue`, `AkModal.vue`):**
+    - Diagnosed clipping issue on `/gacha`: when clicking the `(?)` question mark button in `AkPageHeader`, the inline popover was clipped by `.ak-page-header`'s `overflow: hidden;`, causing the dialog content to fall under lower page blocks as a cut-off border sliver.
+    - Migrated `GachaPityTooltip.vue` to use standard `AkModal` (`teleport: true`), rendering cleanly into document body with backdrop, focus trap, Escape dismissal, and tactical Arknights theme (`GACHA // RULES & RATES`).
+  - **Banner Forecast Dropdown Labels & Savings Audit (`GachaCalculator.vue`, `forecast.ts`, `en.json`):**
+    - Audited pull accumulation calculations for both F2P and Monthly Card modes:
+      - Confirmed Monthly Card is calculated as `F2P + Monthly Card`: F2P base (1800 Annihilation + 700 Dailies + 500 Weeklies = 3,000 Orundum/week = 5 pulls/week) + Monthly Card bonus (200/day * 7 = 1,400 Orundum/week) = 4,400 Orundum/week (7.33 pulls/week).
+      - Confirmed calculation to banner start vs banner end:
+        - Target `start`: computes savings until `bannerStartDate`. If the banner is already active, `daysUntil = 0` and badge displays `BANNER IS ACTIVE`.
+        - Target `end`: computes savings until `bannerEndDate`, giving full savings available before the banner disappears.
+    - Fixed dropdown label in `GachaCalculator.vue` so upcoming banners display `(Upcoming)` rather than confusingly repeating `(Banner Start)`.
+  - **Tests & Quality Gates:**
+    - Updated unit test `tests/unit/components/gacha/GachaPityTooltip.test.ts` to verify modal rendering, section contents, close button, and escape key listener.
+    - Added E2E test in `tests/e2e/gacha.spec.ts` verifying clicking `(?)` in the header opens the `AkModal` dialog cleanly without clipping and closes on close button.
+    - Passed all quality gates: `lint`, `typecheck`, `test` (118 files, 995 tests), `build` (Nuxt 4 + Nitro), and Playwright E2E.
+
 - **Task 43 — Cloud Sync Auto-pull and Instant Hydration on Login (`fix/cloud-sync-auto-pull-on-login`):**
   - **Postgres Timestamptz & Timezone Offset Support in Zod Schema (`shared/schemas/userData.ts`):**
     - Diagnosed critical bug blocking cloud pulls: `z.string().datetime()` strictly requires UTC timestamps ending in `Z`. Supabase PostgreSQL returns `timestamptz` formatted with timezone offsets and microseconds (e.g. `2026-10-25T07:26:58.577316+00:00` or space-separated `2026-10-25 07:26:56.35+00`). Every single pull failed Zod validation with `Invalid ISO datetime`, causing `UserDataRowSchema.safeParse` to fail and data to be discarded silently.

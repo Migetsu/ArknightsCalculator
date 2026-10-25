@@ -178,4 +178,27 @@ test.describe('Gacha Page (GCH-02)', () => {
     // 1200 orundum (2) + 4 single (4) + 2 ten-roll (20) = 26 pulls
     await expect(page.locator('.gacha-calc__stat-value--rolls')).toHaveText('26')
   })
+
+  test('opens pity rules modal when clicking question mark in header and closes it cleanly', async ({
+    page,
+  }) => {
+    await page.goto('/gacha')
+    await page.waitForLoadState('domcontentloaded')
+
+    const triggerBtn = page.locator('.ak-page-header .gacha-pity-tooltip__trigger')
+    await expect(triggerBtn).toBeVisible()
+    await triggerBtn.click()
+
+    const modal = page.locator('.ak-modal[role="dialog"]')
+    await expect(modal).toBeVisible()
+    await expect(modal).toContainText('HOW PITY WORKS')
+    await expect(modal).toContainText('Base Rate & Soft Pity')
+    await expect(modal).toContainText('Limited Banners & 300 Spark')
+
+    // Close via close button
+    const closeBtn = modal.locator('.ak-modal__close')
+    await expect(closeBtn).toBeVisible()
+    await closeBtn.click()
+    await expect(modal).toBeHidden()
+  })
 })
