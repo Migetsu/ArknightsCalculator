@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Task 49 — Farming Inventory Calculation Audit, Upcoming Gacha Countdown Badges & Real-Time Home Countdown (`feat/farming-runs-gacha-upcoming-home-countdown`):**
+  - **Farming Runs Inventory Audit & Analysis (`useFarmingStore`, `resolveDemand`, `optimizeFarming`):**
+    - Audited full pipeline of how inventory affects recommended stage runs. Confirmed that depot inventory directly reduces farming demand hierarchically from T5 down to T1 before running the Simplex LP optimization. Only the net deficit (`rawDeficit`) is passed into `optimizeFarming()`, directly reducing runs per stage.
+  - **Gacha Page Upcoming Banner Countdown Badges (`GachaBannerCard.vue`, `en.json`):**
+    - Implemented `daysUntilBanner` and `daysUntilText` for all banners with `lifecycleStatus === 'upcoming'` based on target start date (Global confirmed/estimated date or CN date depending on `dateMode`).
+    - Added clean tactical badge `.gacha-banner__countdown-badge--days` (`IN ~{days} DAYS`, `IN ~1 DAY`, or `STARTS TODAY`) alongside `UPCOMING`.
+    - Added localized strings in `i18n/locales/en.json` (`startsToday`, `inOneDay`).
+    - Added unit tests in `tests/unit/components/gacha/GachaBannerCard.test.ts`.
+  - **Home Page Real-Time Countdown Timer (`index.vue`):**
+    - Connected `app/pages/index.vue` to `useGachaPageData()` to display actual upcoming banner title and date range instead of static demo mockup.
+    - Added seconds countdown box (`SEC`) to `.dashboard-page__countdown-row` so users see the timer dynamically ticking down in real time every second.
+    - Optimized timer with `document.visibilitychange` listener to instantly recalibrate when tab becomes active.
+    - Updated unit test in `tests/unit/pages/index.test.ts`.
+  - **Tests & Quality Gates:**
+    - Passed all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (120 test files, 1006 tests passed), `test:e2e` (all 7 smoke & gacha tests passed), and production `build`.
+
 - **Task 48 — Machine Translation for CN Items & End-to-End Update Pipeline Automation (`feat/items-gemini-translation-and-ci-automation`):**
   - **Identified CN Untranslated Items & Build Gap (`build-items.ts`, `translate-missing.ts`):**
     - Diagnosed that `scripts/data/build-items.ts` was not using `resolveLayeredI18nString` or `loadI18nLayersContext()`, falling back directly to raw Chinese names (`source: 'zh'`) for 51 CN-only items (new T3/T4 materials, operator tokens, kernel tokens, vouchers, currencies).

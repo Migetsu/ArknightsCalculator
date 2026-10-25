@@ -17,6 +17,8 @@ import {
   type OperatorSummary,
   type ContentLocale,
 } from '~/../shared/schemas/operator'
+import { getEstimatedGlobalDate, formatBannerDateRange } from '~/../shared/utils/gacha'
+import { useGachaPageData } from '~/composables/useGachaPageData'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 
 const SyncAccountModal = defineAsyncComponent(
@@ -83,6 +85,50 @@ const isSyncModalOpen = ref(false)
 const dashboardData = ref(DEMO_DASHBOARD_DATA)
 const isDemoLoaded = ref(false)
 
+const { data: gachaData } = await useGachaPageData()
+
+const nextBannerInfo = computed(() => {
+  const b = gachaData.value?.upcomingBanners?.[0]
+  if (!b) {
+    return {
+      title: dashboardData.value.nextBanner.title,
+      dateRange: `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`,
+      targetTimestamp: dashboardData.value.nextBanner.targetTimestamp,
+    }
+  }
+
+  const title =
+    resolveI18nString(b.title ?? b.name, locale.value as ContentLocale) ||
+    b.title?.en ||
+    b.name?.en ||
+    b.id
+
+  const estStart = getEstimatedGlobalDate(b, gachaData.value?.globalLagDays ?? null)
+  const startDateStr = b.globalStartDate || estStart || b.openIso || b.cnStartDate || null
+  const endDateStr = b.globalEndDate || b.endIso || b.cnEndDate || null
+
+  let targetTimestamp = dashboardData.value.nextBanner.targetTimestamp
+  if (startDateStr) {
+    const parsed = new Date(
+      startDateStr.includes('/') ? startDateStr.replace(/\//g, '-') : startDateStr,
+    ).getTime()
+    if (!Number.isNaN(parsed) && parsed > Date.now()) {
+      targetTimestamp = parsed
+    }
+  }
+
+  let dateRange = `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`
+  if (startDateStr && endDateStr) {
+    dateRange = formatBannerDateRange(startDateStr, endDateStr)
+  }
+
+  return {
+    title,
+    dateRange,
+    targetTimestamp,
+  }
+})
+
 // Countdown timer reactive state
 const remainingTime = ref({
   days: 24,
@@ -94,7 +140,7 @@ const remainingTime = ref({
 let timerInterval: ReturnType<typeof setInterval> | null = null
 
 function updateCountdown(): void {
-  const diff = Math.max(0, dashboardData.value.nextBanner.targetTimestamp - Date.now())
+  const diff = Math.max(0, nextBannerInfo.value.targetTimestamp - Date.now())
   const totalSeconds = Math.floor(diff / 1000)
   remainingTime.value = {
     days: Math.floor(totalSeconds / 86400),
@@ -103,6 +149,10 @@ function updateCountdown(): void {
     seconds: totalSeconds % 60,
   }
 }
+
+watch(nextBannerInfo, () => {
+  updateCountdown()
+})
 
 function handleLoadDemo(): void {
   isDemoLoaded.value = true
@@ -125,17 +175,29 @@ function handleLoadDemo(): void {
   }
 }
 
+function onVisibilityChange(): void {
+  if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+    updateCountdown()
+  }
+}
+
 onMounted(() => {
   if (plannerStore.status === 'idle') {
     void plannerStore.init()
   }
   updateCountdown()
   timerInterval = setInterval(updateCountdown, 1000)
+  if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', onVisibilityChange)
+  }
 })
 
 onBeforeUnmount(() => {
   if (timerInterval) {
     clearInterval(timerInterval)
+  }
+  if (typeof document !== 'undefined') {
+    document.removeEventListener('visibilitychange', onVisibilityChange)
   }
 })
 </script>
@@ -232,10 +294,9 @@ onBeforeUnmount(() => {
       <section class="dashboard-page__widgets-grid dashboard-page__panels-grid">
         <!-- Next Headhunting Widget (3fr) -->
         <div class="dashboard-page__widget">
-          <h2 class="dashboard-page__widget-title">Next headhunting</h2>
+          <h2 class="dashboard-page__widget-title">{{ t('dashboard.banner.title') }}</h2>
           <p class="dashboard-page__widget-desc">
-            {{ dashboardData.nextBanner.title }} / {{ dashboardData.nextBanner.startDate }} to
-            {{ dashboardData.nextBanner.endDate }}
+            {{ nextBannerInfo.title }} / {{ nextBannerInfo.dateRange }}
           </p>
 
           <div class="dashboard-page__countdown-row">
@@ -243,19 +304,25 @@ onBeforeUnmount(() => {
               <div class="dashboard-page__countdown-num">
                 {{ String(remainingTime.days).padStart(2, '0') }}
               </div>
-              <span class="dashboard-page__countdown-unit">DAYS</span>
+              <span class="dashboard-page__countdown-unit">{{ t('dashboard.banner.days') }}</span>
             </div>
             <div class="dashboard-page__countdown-box">
               <div class="dashboard-page__countdown-num">
                 {{ String(remainingTime.hours).padStart(2, '0') }}
               </div>
-              <span class="dashboard-page__countdown-unit">HRS</span>
+              <span class="dashboard-page__countdown-unit">{{ t('dashboard.banner.hrs') }}</span>
             </div>
             <div class="dashboard-page__countdown-box">
               <div class="dashboard-page__countdown-num">
                 {{ String(remainingTime.minutes).padStart(2, '0') }}
               </div>
-              <span class="dashboard-page__countdown-unit">MIN</span>
+              <span class="dashboard-page__countdown-unit">{{ t('dashboard.banner.min') }}</span>
+            </div>
+            <div class="dashboard-page__countdown-box">
+              <div class="dashboard-page__countdown-num">
+                {{ String(remainingTime.seconds).padStart(2, '0') }}
+              </div>
+              <span class="dashboard-page__countdown-unit">{{ t('dashboard.banner.sec') }}</span>
             </div>
           </div>
         </div>
@@ -528,11 +595,12 @@ onBeforeUnmount(() => {
   }
 
   &__countdown-box {
-    padding: 14px 20px;
+    flex: 1 1 60px;
+    padding: 12px 14px;
     background-color: var(--color-bg-deep);
     text-align: center;
     border: 1px solid var(--color-border-subtle);
-    min-width: 72px;
+    min-width: 60px;
   }
 
   &__countdown-num {

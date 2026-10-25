@@ -118,6 +118,48 @@ const hasRateUp = computed(
 const hasContent = computed(() => Boolean(props.banner.description) || hasRateUp.value)
 const isLimited = computed(() => props.banner.type === 'limited')
 const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
+
+function parseTargetDateMs(dateStr: string): number | null {
+  const normalized = dateStr.includes('/') ? dateStr.replace(/\//g, '-') : dateStr
+  const d = new Date(normalized)
+  const ms = d.getTime()
+  return Number.isNaN(ms) ? null : ms
+}
+
+const daysUntilBanner = computed<number | null>(() => {
+  if (lifecycleStatus.value !== 'upcoming') return null
+
+  const targetDateStr =
+    props.dateMode === 'cn'
+      ? props.banner.cnStartDate ||
+        props.banner.openIso ||
+        (props.banner.openTime ? new Date(props.banner.openTime * 1000).toISOString() : null)
+      : props.banner.globalStartDate ||
+        props.globalEstimate ||
+        props.banner.openIso ||
+        (props.banner.openTime ? new Date(props.banner.openTime * 1000).toISOString() : null) ||
+        props.banner.cnStartDate
+
+  if (!targetDateStr) return null
+  const targetMs = parseTargetDateMs(targetDateStr)
+  if (targetMs === null) return null
+
+  const now = Date.now()
+  const diffMs = targetMs - now
+  if (diffMs <= 0) return 0
+  return Math.ceil(diffMs / 86400000)
+})
+
+const daysUntilText = computed<string>(() => {
+  if (daysUntilBanner.value === null) return ''
+  if (daysUntilBanner.value === 0) {
+    return t('gacha.banner.startsToday')
+  }
+  if (daysUntilBanner.value === 1) {
+    return t('gacha.banner.inOneDay')
+  }
+  return t('gacha.banner.inDays', { days: daysUntilBanner.value })
+})
 </script>
 
 <template>
@@ -232,6 +274,14 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
           </span>
           <span v-else class="gacha-banner__countdown-badge gacha-banner__countdown-badge--ended">
             {{ t('gacha.banner.ended') }}
+          </span>
+
+          <!-- Days until banner badge for upcoming status -->
+          <span
+            v-if="lifecycleStatus === 'upcoming' && daysUntilText"
+            class="gacha-banner__countdown-badge gacha-banner__countdown-badge--days"
+          >
+            {{ daysUntilText }}
           </span>
         </div>
       </div>
@@ -453,6 +503,13 @@ const isCnServer = computed(() => (props.banner.server ?? 'cn') === 'cn')
     &--upcoming {
       border: 1px solid var(--color-accent-amber, #ffd9a8);
       color: var(--color-accent-amber, #ffd9a8);
+    }
+
+    &--days {
+      border: 1px solid var(--color-accent-amber, #ffd9a8);
+      color: var(--color-accent-amber, #ffd9a8);
+      background-color: rgb(255 157 43 / 10%);
+      font-weight: var(--font-weight-bold);
     }
 
     &--active {
