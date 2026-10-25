@@ -1,5 +1,19 @@
 # Project Progress
 
+- **Task 45 — Initial Load Main Thread Freeze and Header Menu Button Flash (`perf/initial-load-freeze-and-header-menu`, PR #120):**
+  - **Header Menu Desktop Flash & Visibility Bug (`AkHeader.vue`, `main.scss`):**
+    - Diagnosed layout race condition: on desktop screens (>= 1024px), `.ak-header__burger` (the `= Menu` button) appeared and flashed during initial page load alongside the full horizontal navigation bar.
+    - Root cause: `.ak-button`'s scoped rule (`display: inline-flex`) competed at equal specificity `(0, 2, 0)` with `AkHeader`'s scoped `@include mq(lg) { display: none; }`, and SSR HTML rendered the button prior to component scoped CSS evaluation.
+    - Added a critical responsive rule in `app/assets/styles/main.scss` under `@include mq(lg) { .ak-header__burger, .layout-default__burger { display: none !important; } }` and updated `AkHeader.vue` with `display: none !important;`, ensuring the toggle cannot render on desktop from the very first frame.
+  - **Main Thread Freeze & Initial Hydration Optimization (`app/pages/index.vue`, `AkHeader.vue`, `default.vue`):**
+    - Removed static 218 KB `data/operators-index.json` import from `app/pages/index.vue`. Converted to an on-demand dynamic import (`import('~/../data/operators-index.json')`) that only loads if the user actually has active plans (`plannerStore.plans.length > 0`). For fresh visitors or users without plans, 218 KB of JSON is eliminated from the entry bundle, avoiding synchronous instantiation of 434 operator objects into a Map during initial hydration.
+    - Migrated `SyncAccountModal` (1,127 lines) to `defineAsyncComponent` with `v-if="isSyncModalOpen"` in both `AkHeader.vue` and `index.vue`, removing heavy authentication and synchronization code from the initial page payload until the modal is actually opened.
+    - Optimized `setupAutoSync` in `app/layouts/default.vue`: replaced synchronous `JSON.stringify(...)` in the watcher getter with direct reactive store references `[() => plannerStore.plans, () => depotStore.items, ...]`, avoiding repetitive JSON serialization on every reactive tick.
+  - **E2E & Quality Gates:**
+    - Updated `tests/e2e/responsive.spec.ts` to assert that `.layout-default__burger` is strictly hidden on desktop viewports (>= 1024px).
+    - Verified all 42 layout sanity tests (`tests/e2e/layout-sanity.spec.ts`), header alignment tests (`tests/e2e/header-align.spec.ts`), and responsive tests (`tests/e2e/responsive.spec.ts`).
+    - Passed all quality gates: `lint` (0 errors), `typecheck` (0 errors), `test` (118 test files, 995 tests passed), and production `build`. Autonomous squash merge to `main` via PR #120.
+
 - **Task 44 — Gacha Pity Modal Dialog & Pulls Savings Audit (`fix/gacha-modal-and-savings-audit`):**
   - **Pity Rules Modal Migration (`GachaPityTooltip.vue`, `AkModal.vue`):**
     - Diagnosed clipping issue on `/gacha`: when clicking the `(?)` question mark button in `AkPageHeader`, the inline popover was clipped by `.ak-page-header`'s `overflow: hidden;`, causing the dialog content to fall under lower page blocks as a cut-off border sliver.
