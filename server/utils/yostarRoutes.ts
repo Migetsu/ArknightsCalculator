@@ -3,6 +3,7 @@ import { mapYostarSync, type YostarMapContext } from '../../shared/utils/yostar'
 import type { YostarErrorReason, YostarSyncPayload } from '../../shared/schemas/yostar'
 import rawItemsData from '../../data/items.json'
 import rawOperatorsData from '../../data/operators-index.json'
+import rawBannersData from '../../data/banners.json'
 import { YostarError, yostarHttpStatus } from './yostar'
 
 /**
@@ -23,7 +24,28 @@ export function readYostarCatalog(): YostarMapContext {
     (rawOperatorsData as unknown as CatalogEntry[]).map((entry) => entry.id),
   )
   const itemIds = new Set((rawItemsData as unknown as CatalogEntry[]).map((entry) => entry.id))
-  catalogCache = { knownOperatorIds: operatorIds, knownItemIds: itemIds }
+
+  const bannerToLmtgsid = new Map<string, string>()
+  const banners =
+    (
+      rawBannersData as {
+        banners?: Array<{
+          id: string
+          lmtgsid?: string | null
+          pairedBannerId?: string | null
+        }>
+      }
+    )?.banners ?? []
+
+  for (const b of banners) {
+    if (b.lmtgsid) {
+      bannerToLmtgsid.set(b.id, b.lmtgsid)
+      if (b.pairedBannerId) bannerToLmtgsid.set(b.pairedBannerId, b.lmtgsid)
+      bannerToLmtgsid.set(b.lmtgsid, b.lmtgsid)
+    }
+  }
+
+  catalogCache = { knownOperatorIds: operatorIds, knownItemIds: itemIds, bannerToLmtgsid }
   return catalogCache
 }
 

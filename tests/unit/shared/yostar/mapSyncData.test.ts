@@ -231,4 +231,51 @@ describe('mapYostarSync', () => {
       '7001': 40,
     })
   })
+
+  it('maps active banner pulls from gacha.limit into commemorative coins (spark progress)', () => {
+    const gachaCtx: YostarMapContext = {
+      knownOperatorIds: new Set(),
+      knownItemIds: new Set(['30012', 'LMTGS_COIN_7301']),
+      bannerToLmtgsid: new Map([['LIMITED_EN_42_0_1', 'LMTGS_COIN_7301']]),
+    }
+
+    const result = mapYostarSync(
+      {
+        status: { nickName: 'Doctor', level: 120 },
+        troop: { chars: {} },
+        inventory: { '30012': 10 },
+        gacha: {
+          limit: {
+            LIMITED_EN_42_0_1: { poolCnt: 22 },
+          },
+        },
+      },
+      gachaCtx,
+    )
+
+    expect(result.depot.items['LMTGS_COIN_7301']).toBe(22)
+    expect(result.depot.items['30012']).toBe(10)
+  })
+
+  it('extracts commemorative coins directly if poolId starts with LMTGS_COIN_', () => {
+    const gachaCtx: YostarMapContext = {
+      knownOperatorIds: new Set(),
+      knownItemIds: new Set(),
+    }
+
+    const result = mapYostarSync(
+      {
+        status: { nickName: 'Doctor', level: 120 },
+        troop: { chars: {} },
+        gacha: {
+          limit: {
+            LMTGS_COIN_6001: 50,
+          },
+        },
+      },
+      gachaCtx,
+    )
+
+    expect(result.depot.items['LMTGS_COIN_6001']).toBe(50)
+  })
 })
