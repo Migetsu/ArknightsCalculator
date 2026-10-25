@@ -20,6 +20,7 @@ import {
 import { getEstimatedGlobalDate, formatBannerDateRange } from '~/../shared/utils/gacha'
 import { useGachaPageData } from '~/composables/useGachaPageData'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
+import AkBadge from '~/components/ui/AkBadge.vue'
 
 const SyncAccountModal = defineAsyncComponent(
   () => import('~/components/sync/SyncAccountModal.vue'),
@@ -94,6 +95,7 @@ const nextBannerInfo = computed(() => {
       title: dashboardData.value.nextBanner.title,
       dateRange: `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`,
       targetTimestamp: dashboardData.value.nextBanner.targetTimestamp,
+      isStartsToday: false,
     }
   }
 
@@ -105,16 +107,35 @@ const nextBannerInfo = computed(() => {
 
   const estStart = getEstimatedGlobalDate(b, gachaData.value?.globalLagDays ?? null)
   const startDateStr = b.globalStartDate || estStart || b.openIso || b.cnStartDate || null
-  const endDateStr = b.globalEndDate || b.endIso || b.cnEndDate || null
 
-  let targetTimestamp = dashboardData.value.nextBanner.targetTimestamp
+  let endDateStr: string | null = null
+  if (b.globalEndDate) {
+    endDateStr = b.globalEndDate
+  } else if (b.server === 'en' || b.isActive) {
+    endDateStr = b.endIso || (b.endTime ? new Date(b.endTime * 1000).toISOString() : null)
+  } else if (estStart) {
+    // When start date is estimated for Global, end date is start date + duration (default 14 days)
+    const startMs = new Date(
+      estStart.includes('/') ? estStart.replace(/\//g, '-') : estStart,
+    ).getTime()
+    const durationDays = b.durationDays && b.durationDays > 0 ? b.durationDays : 14
+    endDateStr = new Date(startMs + durationDays * 86400000).toISOString().slice(0, 10)
+  } else {
+    endDateStr = b.cnEndDate || b.endIso || null
+  }
+
+  let targetTimestamp = 0
   if (startDateStr) {
     const parsed = new Date(
       startDateStr.includes('/') ? startDateStr.replace(/\//g, '-') : startDateStr,
     ).getTime()
-    if (!Number.isNaN(parsed) && parsed > Date.now()) {
+    if (!Number.isNaN(parsed)) {
       targetTimestamp = parsed
     }
+  }
+
+  if (targetTimestamp === 0) {
+    targetTimestamp = dashboardData.value.nextBanner.targetTimestamp
   }
 
   let dateRange = `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`
@@ -122,10 +143,13 @@ const nextBannerInfo = computed(() => {
     dateRange = formatBannerDateRange(startDateStr, endDateStr)
   }
 
+  const isStartsToday = targetTimestamp > 0 && targetTimestamp <= Date.now()
+
   return {
     title,
     dateRange,
     targetTimestamp,
+    isStartsToday,
   }
 })
 
@@ -294,7 +318,12 @@ onBeforeUnmount(() => {
       <section class="dashboard-page__widgets-grid dashboard-page__panels-grid">
         <!-- Next Headhunting Widget (3fr) -->
         <div class="dashboard-page__widget">
-          <h2 class="dashboard-page__widget-title">{{ t('dashboard.banner.title') }}</h2>
+          <div class="dashboard-page__widget-head">
+            <h2 class="dashboard-page__widget-title">{{ t('dashboard.banner.title') }}</h2>
+            <AkBadge v-if="nextBannerInfo.isStartsToday" variant="amber" size="sm">
+              {{ t('gacha.banner.startsToday') }}
+            </AkBadge>
+          </div>
           <p class="dashboard-page__widget-desc">
             {{ nextBannerInfo.title }} / {{ nextBannerInfo.dateRange }}
           </p>
@@ -573,8 +602,15 @@ onBeforeUnmount(() => {
     min-width: 0;
   }
 
+  &__widget-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
   &__widget-title {
-    margin: 0 0 14px;
+    margin: 0;
     font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
@@ -619,13 +655,6 @@ onBeforeUnmount(() => {
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     letter-spacing: 0.1em;
-  }
-
-  &__widget-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 14px;
   }
 
   &__plans-list {
