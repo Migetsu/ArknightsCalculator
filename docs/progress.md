@@ -1,5 +1,22 @@
 # Project Progress
 
+- **Task 53 — Banner Schedule Rate-Up Operators Elite 2 Avatar Quality & Crisp Rendering (`fix/banner-rateup-avatars-quality`):**
+  - **Identified Root Causes of Low Quality Avatars on Banner Schedule:**
+    - Diagnosed the user-reported issue: On `/gacha` banner cards (such as Orienteering #7), operator avatars appeared low quality, pixelated, and awkwardly posed compared to the official banner artwork.
+    - Root Cause 1 (E0 vs E2): Operators were rendered using their default recruitment base avatar (`char_4010_etlchi.png`) instead of their promoted Elite 2 artwork (`char_4010_etlchi_2.png`), which features high-contrast, crystal-clear line art matching the banner illustration.
+    - Root Cause 2 (Avatar Size & Squeezing): Primary 6★ avatars were rendered at 56px inside large card containers, leaving excessive empty space while shrinking operator faces down to 38-40px.
+    - Root Cause 3 (Scaling Artifacts): Image scaling in `AkAvatar` lacked subpixel hardware-accelerated smoothing (`transform: translateZ(0); backface-visibility: hidden; image-rendering: auto;`).
+  - **Implemented Elite 2 Avatar Variant Support & Visual Polish (`shared/utils/resolveAsset.ts`, `app/components/ui/AkAvatar.vue`, `app/components/gacha/GachaRateUpOps.vue`):**
+    - In `shared/utils/resolveAsset.ts`: added support for `options.variant` in `avatar` kind with fallback chain (`_2.png` -> base `.png`). Low-rarity operators (1-3★) skip nonexistent `_2` variants.
+    - In `app/components/ui/AkAvatar.vue`: added `variant?: string` prop and forwarded it to `resolveAsset`. Added GPU-accelerated antialiasing.
+    - In `app/components/gacha/GachaRateUpOps.vue`: enabled `variant="2"` for all rate-up operators, increased 6★ avatars to `64px`, 5★ avatars to `56px`, and secondary 6★ avatars to `52px`. Increased grid gap to `12px` and added smooth hover brightness transition (`brightness(1.08)`).
+    - Preserved `loading="lazy"` and `decoding="async"`, ensuring zero impact on initial page load performance or data transfer.
+  - **Tests & Quality Gates:**
+    - Added unit tests in `tests/unit/shared/resolveAsset.test.ts` for Elite 2 avatar candidate generation with fallback and low-rarity skip.
+    - Added unit test in `tests/unit/components/ui/AkAvatar.test.ts` verifying Elite 2 avatar resolution.
+    - Verified all quality gates: `i18n:check` (790 keys valid), `lint` (0 errors), `typecheck` (0 errors), `test` (121 test files, 1018 tests passed), and production `build`.
+    - Pull Request #128 merged autonomously into `main` after all CI checks (Code Quality, E2E Smoke Tests, Vercel Preview) passed.
+
 - **Task 52 — Yostar Sync Active Banner Rolls Mapping & Spark Pulls Made Input in Gacha Calculator (`fix/yostar-sync-banner-pulls-and-spark`):**
   - **Identified Root Causes of Missing Active Banner Rolls:**
     - Diagnosed the user-reported issue: After performing Yostar account sync, the user had ~22 rolls already made on the active limited banner ("Sealed With Time"), but the site still showed `SPARK: 0 / 300` on the Home Dashboard and 0 pulls made in the Gacha Calculator.
