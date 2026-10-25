@@ -1,5 +1,23 @@
 # Project Progress
 
+- **Task 43 — Cloud Sync Auto-pull and Instant Hydration on Login (`fix/cloud-sync-auto-pull-on-login`):**
+  - **Postgres Timestamptz & Timezone Offset Support in Zod Schema (`shared/schemas/userData.ts`):**
+    - Diagnosed critical bug blocking cloud pulls: `z.string().datetime()` strictly requires UTC timestamps ending in `Z`. Supabase PostgreSQL returns `timestamptz` formatted with timezone offsets and microseconds (e.g. `2026-10-25T07:26:58.577316+00:00` or space-separated `2026-10-25 07:26:56.35+00`). Every single pull failed Zod validation with `Invalid ISO datetime`, causing `UserDataRowSchema.safeParse` to fail and data to be discarded silently.
+    - Replaced strict `datetime()` with `TimestampSchema` (`z.string().refine((val) => !isNaN(Date.parse(val)))`) for both `updated_at` and `roster_synced_at`.
+  - **False Conflict Resolution on Fresh/Mobile Devices (`app/utils/cloudSync/applyToStores.ts`):**
+    - Removed `hasCustomSettings` from `hasLocalData()`. Previously, if a fresh device had local settings (such as default drop server or sanity preference), `hasLocalData` returned `true` even with 0 plans and 0 items, falsely treating an empty device as having conflicting data and blocking automatic pull into local stores.
+  - **Instant Cloud Sync on Authentication (`useProfile.ts`, `SyncAccountModal.vue`, `useCloudSync.ts`):**
+    - Integrated `cloudSync.syncUserData()` directly into `handleAuthSubmit()` in `SyncAccountModal.vue`. As soon as a user logs in (or registers and confirms session), the cloud data is immediately pulled and applied to local stores without requiring a page reload or clicking extra sync buttons.
+    - Synchronized `user.value` immediately upon `signInWithPassword` in `useProfile.ts` so authentication state is instantly available.
+    - Made `mockMaybeSingle` and `fetchProfile()` resilient against undefined query responses.
+  - **Immediate Cloud Push upon Yostar Roster Sync (`SyncAccountModal.vue`):**
+    - Added immediate `cloudSync.push()` upon completion of `applyYostarSync()`, ensuring newly synced depot inventory and roster are sent to Supabase cloud straight away without waiting for layout debounces.
+  - **Tests & Quality Gates:**
+    - Added unit tests in `tests/unit/shared/schemas/userData.test.ts` verifying Postgres offset timestamptz strings.
+    - Added unit tests in `tests/unit/composables/useCloudSync.test.ts` verifying automatic application to empty devices and conflict detection when local data exists.
+    - Added unit test in `tests/unit/components/sync/SyncAccountModal.test.ts` verifying instant cloud sync on login and push on Yostar sync.
+    - All 118 test files (995 unit tests), `lint`, `typecheck`, `build` and Playwright E2E passed.
+
 - **Task 42 — Account Headhunting Permits Mapping and Gacha Calculator Sync (`fix/gacha-account-permits`):**
   - **Account Sync Headhunting Permits & Recruitment Licenses (`shared/utils/yostar/index.ts`):**
     - Diagnosed missing Single and Ten-roll Permits from Yostar account synchronization: in the Arknights `/account/syncData` API payload, permits and licenses are placed inside `user.status` rather than `user.inventory` (`status.gachaTicket` for Single Permits, `status.tenGachaTicket` for Ten-roll Permits, and `status.recruitLicense` for Recruitment Licenses).

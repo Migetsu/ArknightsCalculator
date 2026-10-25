@@ -53,6 +53,8 @@ describe('useCloudSync composable', () => {
         operatorId: 'char_002_amiya',
         current: { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
         target: { elite: 2, level: 50, skillLevel: 7, skills: {}, modules: {} },
+        priority: 1,
+        note: '',
         createdAt: '2026-10-24T10:00:00.000Z',
       },
     ],
@@ -193,5 +195,93 @@ describe('useCloudSync composable', () => {
     expect(cloudUserData.value).toBeNull()
     expect(lastSyncedAt.value).toBeNull()
     expect(error.value).toBeNull()
+  })
+
+  it('syncUserData automatically applies cloud data when local device has no plans or depot items', async () => {
+    mockSelectMaybeSingle.mockResolvedValueOnce({
+      data: {
+        ...validRow,
+        updated_at: '2026-10-25T07:26:58.577316+00:00',
+        roster_synced_at: '2026-10-25 07:26:56.35+00',
+      },
+      error: null,
+    })
+
+    const mockImportPlans = vi.fn().mockResolvedValue(undefined)
+    const mockImportSnapshot = vi.fn().mockResolvedValue(undefined)
+    const mockSetDropDataServer = vi.fn()
+
+    const emptyStores = {
+      plannerStore: {
+        plans: [],
+        init: vi.fn().mockResolvedValue(undefined),
+        importPlans: mockImportPlans,
+      },
+      depotStore: {
+        items: {},
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+        init: vi.fn().mockResolvedValue(undefined),
+        importSnapshot: mockImportSnapshot,
+      },
+      settingsStore: {
+        dropDataServer: 'global' as const, // Custom setting on local device must NOT block data pull!
+        setDropDataServer: mockSetDropDataServer,
+      },
+      rosterStore: {
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+    }
+
+    const { syncUserData, error } = useCloudSync()
+    const result = await syncUserData(emptyStores)
+
+    expect(result).toBe('loaded')
+    expect(error.value).toBeNull()
+    expect(mockImportPlans).toHaveBeenCalledWith(validRow.plans, 'replace')
+    expect(mockImportSnapshot).toHaveBeenCalledWith({
+      items: validRow.depot.items,
+      currencies: validRow.depot.currencies,
+    })
+    expect(mockSetDropDataServer).toHaveBeenCalledWith('global')
+  })
+
+  it('syncUserData invokes onConflict when both local and cloud have differing non-empty data', async () => {
+    mockSelectMaybeSingle.mockResolvedValueOnce({
+      data: validRow,
+      error: null,
+    })
+
+    const onConflict = vi.fn()
+    const populatedStores = {
+      plannerStore: {
+        plans: [
+          {
+            id: 'local-plan-different',
+            operatorId: 'char_102_texas',
+            current: { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+            target: { elite: 2, level: 80, skillLevel: 7, skills: {}, modules: {} },
+            createdAt: '2026-10-25T10:00:00.000Z',
+          },
+        ],
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+      depotStore: {
+        items: { '30012': 99 },
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+      settingsStore: {
+        dropDataServer: 'cn' as const,
+      },
+      rosterStore: {
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+    }
+
+    const { syncUserData } = useCloudSync()
+    const result = await syncUserData(populatedStores, { onConflict })
+
+    expect(result).toBe('conflict')
+    expect(onConflict).toHaveBeenCalledTimes(1)
   })
 })

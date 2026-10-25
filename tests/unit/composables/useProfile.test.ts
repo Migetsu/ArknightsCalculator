@@ -31,6 +31,7 @@ describe('useProfile composable', () => {
     mockUser.value = null
     mockSelect.mockReturnValue({ eq: mockEq })
     mockEq.mockReturnValue({ maybeSingle: mockMaybeSingle })
+    mockMaybeSingle.mockResolvedValue({ data: null, error: null })
     mockUpdate.mockReturnValue({ eq: vi.fn().mockResolvedValue({ error: null }) })
   })
 

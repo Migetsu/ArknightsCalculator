@@ -6,6 +6,7 @@ import type { UserDataRow, UserDataPayload } from '~~/shared/schemas/userData'
 export interface LocalStoresForCloudSync {
   plannerStore?: {
     plans?: PlanItem[]
+    init?: () => Promise<void>
     importPlans?: (plans: PlanItem[], mode: 'replace') => Promise<void>
   } | null
   settingsStore?: {
@@ -22,6 +23,7 @@ export interface LocalStoresForCloudSync {
     updatedAt?: string
     items?: Record<string, number>
     currencies?: DepotCurrencies
+    init?: () => Promise<void>
     importSnapshot?: (s: {
       items: Record<string, number>
       currencies: DepotCurrencies
@@ -29,6 +31,7 @@ export interface LocalStoresForCloudSync {
   } | null
   rosterStore?: {
     syncedAt?: string | null
+    init?: () => Promise<void>
   } | null
 }
 
@@ -49,17 +52,8 @@ export function hasLocalData(stores?: LocalStoresForCloudSync | null): boolean {
       (stores.depotStore.currencies.orundum ?? 0) > 0 ||
       (stores.depotStore.currencies.originitePrime ?? 0) > 0),
   )
-  const hasCustomSettings = Boolean(
-    stores.settingsStore &&
-    ((stores.settingsStore.dropDataServer && stores.settingsStore.dropDataServer !== 'cn') ||
-      (typeof stores.settingsStore.farmingMaxSanity === 'number' &&
-        stores.settingsStore.farmingMaxSanity !== 135) ||
-      (typeof stores.settingsStore.farmingRegenMinutes === 'number' &&
-        stores.settingsStore.farmingRegenMinutes !== 6) ||
-      stores.settingsStore.farmingAllowCrafting === false),
-  )
 
-  return Boolean(hasPlans || hasDepotItems || hasDepotCurrencies || hasCustomSettings)
+  return Boolean(hasPlans || hasDepotItems || hasDepotCurrencies)
 }
 
 export function hasCloudData(data?: UserDataRow | null): boolean {

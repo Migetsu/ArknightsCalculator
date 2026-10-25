@@ -3,8 +3,12 @@ import { computed, ref, watch, onMounted } from 'vue'
 import AkModal from '~/components/ui/AkModal.vue'
 import { useProfile } from '~/composables/useProfile'
 import { useYostarSync } from '~/composables/useYostarSync'
+import { useCloudSync } from '~/composables/useCloudSync'
+import { usePlannerStore } from '~/stores/planner'
+import { useSettingsStore } from '~/stores/settings'
 import { useDepotStore } from '~/stores/depot'
 import { useRosterStore } from '~/stores/roster'
+import { buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
 import type { YostarSyncPayload } from '~~/shared/schemas/yostar'
 
 interface Props {
@@ -37,6 +41,9 @@ const {
 
 const depotStore = useDepotStore()
 const rosterStore = useRosterStore()
+const plannerStore = usePlannerStore()
+const settingsStore = useSettingsStore()
+const cloudSync = useCloudSync()
 
 const {
   enabled: yostarEnabled,
@@ -165,6 +172,12 @@ async function handleAuthSubmit(): Promise<void> {
     const res = await signInWithEmail(authEmail.value, authPassword.value)
     if (res.success) {
       authPassword.value = ''
+      await cloudSync.syncUserData({
+        plannerStore,
+        settingsStore,
+        depotStore,
+        rosterStore,
+      })
     }
   } else {
     const res = await signUpWithEmail(authEmail.value, authPassword.value, authDisplayName.value)
@@ -175,6 +188,14 @@ async function handleAuthSubmit(): Promise<void> {
         ? t('syncModal.auth.registrationSignedIn')
         : t('syncModal.auth.registrationSuccess')
       authPassword.value = ''
+      if (isAuthenticated.value) {
+        await cloudSync.syncUserData({
+          plannerStore,
+          settingsStore,
+          depotStore,
+          rosterStore,
+        })
+      }
     }
   }
 }
@@ -182,6 +203,7 @@ async function handleAuthSubmit(): Promise<void> {
 async function handleSignOut(): Promise<void> {
   authSuccessMessage.value = null
   await signOut()
+  cloudSync.reset()
 }
 
 async function handleSendCode(): Promise<void> {
@@ -223,6 +245,20 @@ async function handleStartSync(): Promise<void> {
 
   await applyYostarSync(yostarResult.value)
   verificationCode.value = ''
+
+  if (userId.value) {
+    await cloudSync.push(
+      buildCurrentPayload(
+        {
+          plannerStore,
+          settingsStore,
+          depotStore,
+          rosterStore,
+        },
+        { isRosterSync: true },
+      ),
+    )
+  }
 }
 
 /** Drops the token kept on this device and asks for a fresh e-mail code. */

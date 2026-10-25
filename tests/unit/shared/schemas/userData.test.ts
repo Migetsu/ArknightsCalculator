@@ -93,6 +93,32 @@ describe('UserData schemas (UserDataRowSchema & UserDataPayloadSchema)', () => {
     }
   })
 
+  it('validates UserDataRow with Postgres timestamptz timezone offset and microseconds', () => {
+    const postgresRow = {
+      user_id: '48bdc6c4-da62-472f-931a-2605e26d3f3c',
+      updated_at: '2026-10-25T07:26:58.577316+00:00',
+      roster_synced_at: '2026-10-25 07:26:56.35+00',
+    }
+
+    const parsed = UserDataRowSchema.safeParse(postgresRow)
+    expect(parsed.success).toBe(true)
+    if (parsed.success) {
+      expect(parsed.data.updated_at).toBe('2026-10-25T07:26:58.577316+00:00')
+      expect(parsed.data.roster_synced_at).toBe('2026-10-25 07:26:56.35+00')
+    }
+  })
+
+  it('fails validation when updated_at is not a valid datetime string', () => {
+    const invalidDateRow = {
+      user_id: '48bdc6c4-da62-472f-931a-2605e26d3f3c',
+      updated_at: 'not-a-datetime',
+      roster_synced_at: null,
+    }
+
+    const parsed = UserDataRowSchema.safeParse(invalidDateRow)
+    expect(parsed.success).toBe(false)
+  })
+
   it('validates UserDataPayloadSchema (omits user_id and updated_at)', () => {
     const payload = {
       plans: validRow.plans,
