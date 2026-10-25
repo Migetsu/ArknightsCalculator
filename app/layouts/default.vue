@@ -90,14 +90,14 @@ function setupAutoSync(): void {
   let timer: ReturnType<typeof setTimeout> | null = null
 
   const unwatch = watch(
-    () => [
-      JSON.stringify(plannerStore.plans),
-      JSON.stringify(depotStore.items),
-      JSON.stringify(depotStore.currencies),
-      settingsStore.dropDataServer,
-      settingsStore.farmingMaxSanity,
-      settingsStore.farmingRegenMinutes,
-      settingsStore.farmingAllowCrafting,
+    [
+      () => plannerStore.plans,
+      () => depotStore.items,
+      () => depotStore.currencies,
+      () => settingsStore.dropDataServer,
+      () => settingsStore.farmingMaxSanity,
+      () => settingsStore.farmingRegenMinutes,
+      () => settingsStore.farmingAllowCrafting,
     ],
     () => {
       if (isApplyingCloudData.value) return

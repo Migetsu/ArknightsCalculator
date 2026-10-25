@@ -1,17 +1,27 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
-import SyncAccountModal from '~/components/sync/SyncAccountModal.vue'
+import {
+  ref,
+  shallowRef,
+  computed,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+  defineAsyncComponent,
+} from 'vue'
 import { DEMO_DASHBOARD_DATA } from '~/../shared/data/demo-dashboard'
 import { useSettingsStore } from '~/stores/settings'
 import { usePlannerStore } from '~/stores/planner'
 import { useProfile } from '~/composables/useProfile'
-import rawOperatorsData from '~/../data/operators-index.json'
 import {
   resolveI18nString,
   type OperatorSummary,
   type ContentLocale,
 } from '~/../shared/schemas/operator'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
+
+const SyncAccountModal = defineAsyncComponent(
+  () => import('~/components/sync/SyncAccountModal.vue'),
+)
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -40,14 +50,23 @@ watch(
   { immediate: true },
 )
 
-const allOperators = rawOperatorsData as unknown as readonly OperatorSummary[]
-const operatorsMap = computed(() => {
-  const map = new Map<string, OperatorSummary>()
-  for (const op of allOperators) {
-    map.set(op.id, op)
-  }
-  return map
-})
+const operatorsMap = shallowRef<Map<string, OperatorSummary>>(new Map())
+
+watch(
+  () => plannerStore.plans.length,
+  async (len) => {
+    if (len > 0 && operatorsMap.value.size === 0) {
+      const mod = await import('~/../data/operators-index.json')
+      const ops = (mod.default ?? mod) as unknown as readonly OperatorSummary[]
+      const map = new Map<string, OperatorSummary>()
+      for (const op of ops) {
+        map.set(op.id, op)
+      }
+      operatorsMap.value = map
+    }
+  },
+  { immediate: true },
+)
 
 function getOperatorName(operatorId: string): string {
   const op = operatorsMap.value.get(operatorId)
@@ -295,7 +314,11 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Account Sync Modal -->
-    <SyncAccountModal v-model="isSyncModalOpen" @load-demo="handleLoadDemo" />
+    <SyncAccountModal
+      v-if="isSyncModalOpen"
+      v-model="isSyncModalOpen"
+      @load-demo="handleLoadDemo"
+    />
   </div>
 </template>
 
