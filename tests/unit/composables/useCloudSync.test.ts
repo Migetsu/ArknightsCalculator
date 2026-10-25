@@ -245,12 +245,14 @@ describe('useCloudSync composable', () => {
     expect(mockSetDropDataServer).toHaveBeenCalledWith('global')
   })
 
-  it('syncUserData invokes onConflict when both local and cloud have differing non-empty data', async () => {
+  it('syncUserData seamlessly applies cloud data even when local device has existing differing data (cloud is canonical source of truth)', async () => {
     mockSelectMaybeSingle.mockResolvedValueOnce({
       data: validRow,
       error: null,
     })
 
+    const mockImportPlans = vi.fn().mockResolvedValue(undefined)
+    const mockImportSnapshot = vi.fn().mockResolvedValue(undefined)
     const onConflict = vi.fn()
     const populatedStores = {
       plannerStore: {
@@ -264,11 +266,13 @@ describe('useCloudSync composable', () => {
           },
         ],
         init: vi.fn().mockResolvedValue(undefined),
+        importPlans: mockImportPlans,
       },
       depotStore: {
         items: { '30012': 99 },
         currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
         init: vi.fn().mockResolvedValue(undefined),
+        importSnapshot: mockImportSnapshot,
       },
       settingsStore: {
         dropDataServer: 'cn' as const,
@@ -278,10 +282,91 @@ describe('useCloudSync composable', () => {
       },
     }
 
-    const { syncUserData } = useCloudSync()
+    const { syncUserData, isInitialSyncDone } = useCloudSync()
     const result = await syncUserData(populatedStores, { onConflict })
 
-    expect(result).toBe('conflict')
-    expect(onConflict).toHaveBeenCalledTimes(1)
+    expect(result).toBe('loaded')
+    expect(onConflict).not.toHaveBeenCalled()
+    expect(mockImportPlans).toHaveBeenCalledWith(validRow.plans, 'replace')
+    expect(mockImportSnapshot).toHaveBeenCalledWith({
+      items: validRow.depot.items,
+      currencies: validRow.depot.currencies,
+    })
+    expect(isInitialSyncDone.value).toBe(true)
+  })
+
+  it('syncUserData pushes local data to cloud when cloud is empty but local has data', async () => {
+    mockSelectMaybeSingle.mockResolvedValueOnce({
+      data: null,
+      error: null,
+    })
+    mockUpsertMaybeSingle.mockResolvedValueOnce({
+      data: validRow,
+      error: null,
+    })
+
+    const populatedStores = {
+      plannerStore: {
+        plans: [
+          {
+            id: 'local-plan-1',
+            operatorId: 'char_102_texas',
+            current: { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+            target: { elite: 2, level: 80, skillLevel: 7, skills: {}, modules: {} },
+            createdAt: '2026-10-25T10:00:00.000Z',
+          },
+        ],
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+      depotStore: {
+        items: { '30012': 99 },
+        currencies: { lmd: 500, orundum: 0, originitePrime: 0 },
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+      settingsStore: {
+        dropDataServer: 'global' as const,
+        farmingMaxSanity: 135,
+        farmingRegenMinutes: 6,
+        farmingAllowCrafting: true,
+      },
+      rosterStore: {
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+    }
+
+    const { syncUserData, isInitialSyncDone } = useCloudSync()
+    const result = await syncUserData(populatedStores)
+
+    expect(result).toBe('pushed')
+    expect(mockUpsert).toHaveBeenCalledTimes(1)
+    expect(isInitialSyncDone.value).toBe(true)
+  })
+
+  it('isInitialSyncDone starts as false, becomes true on sync, and resets on reset()', async () => {
+    mockSelectMaybeSingle.mockResolvedValueOnce({
+      data: null,
+      error: null,
+    })
+
+    const emptyStores = {
+      plannerStore: { plans: [], init: vi.fn().mockResolvedValue(undefined) },
+      depotStore: {
+        items: {},
+        currencies: { lmd: 0, orundum: 0, originitePrime: 0 },
+        init: vi.fn().mockResolvedValue(undefined),
+      },
+      settingsStore: {},
+      rosterStore: { init: vi.fn().mockResolvedValue(undefined) },
+    }
+
+    const { syncUserData, isInitialSyncDone, reset } = useCloudSync()
+    reset()
+    expect(isInitialSyncDone.value).toBe(false)
+
+    await syncUserData(emptyStores)
+    expect(isInitialSyncDone.value).toBe(true)
+
+    reset()
+    expect(isInitialSyncDone.value).toBe(false)
   })
 })

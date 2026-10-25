@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import AkHeader from '~/components/ui/AkHeader.vue'
 import AkInstallApp from '~/components/ui/AkInstallApp.vue'
-import AkModal from '~/components/ui/AkModal.vue'
-import AkButton from '~/components/ui/AkButton.vue'
 import { useProfile } from '~/composables/useProfile'
 import { useCloudSync } from '~/composables/useCloudSync'
-import { applyCloudDataToLocalStores, buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
+import { buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
 import { usePlannerStore } from '~/stores/planner'
 import { useSettingsStore } from '~/stores/settings'
 import { useDepotStore } from '~/stores/depot'
@@ -18,63 +16,20 @@ const route = useRoute()
 
 const { userId } = useProfile()
 const cloudSync = useCloudSync()
-const { cloudUserData, isApplyingCloudData } = cloudSync
+const { isApplyingCloudData, isInitialSyncDone } = cloudSync
 const plannerStore = usePlannerStore()
 const settingsStore = useSettingsStore()
 const depotStore = useDepotStore()
 const rosterStore = useRosterStore()
 
-const isConflictModalOpen = ref(false)
-
-const conflictDateString = computed(() => {
-  if (!cloudUserData.value?.updated_at) return ''
-  try {
-    return new Date(cloudUserData.value.updated_at).toLocaleString()
-  } catch {
-    return cloudUserData.value.updated_at
-  }
-})
-
-async function handleUseCloud(): Promise<void> {
-  if (cloudUserData.value) {
-    isApplyingCloudData.value = true
-    try {
-      await applyCloudDataToLocalStores(cloudUserData.value, {
-        plannerStore,
-        settingsStore,
-        depotStore,
-      })
-    } finally {
-      setTimeout(() => {
-        isApplyingCloudData.value = false
-      }, 300)
-    }
-  }
-  isConflictModalOpen.value = false
-}
-
-async function handleUseLocal(): Promise<void> {
-  await cloudSync.push(
-    buildCurrentPayload({
-      plannerStore,
-      settingsStore,
-      depotStore,
-      rosterStore,
-    }),
-  )
-  isConflictModalOpen.value = false
-}
-
 async function syncUserData(): Promise<void> {
   if (!userId.value) return
-  await cloudSync.syncUserData(
-    { plannerStore, settingsStore, depotStore, rosterStore },
-    {
-      onConflict: () => {
-        isConflictModalOpen.value = true
-      },
-    },
-  )
+  await cloudSync.syncUserData({
+    plannerStore,
+    settingsStore,
+    depotStore,
+    rosterStore,
+  })
 }
 
 let stopGlobalAutoSync: (() => void) | null = null
@@ -100,11 +55,13 @@ function setupAutoSync(): void {
       () => settingsStore.farmingAllowCrafting,
     ],
     () => {
+      if (!isInitialSyncDone.value) return
       if (isApplyingCloudData.value) return
       if (!userId.value) return
       cloudSync.hasPendingChanges.value = true
       if (timer) clearTimeout(timer)
       timer = setTimeout(async () => {
+        if (!isInitialSyncDone.value) return
         if (isApplyingCloudData.value) return
         if (!userId.value) return
         await cloudSync.push(
@@ -115,7 +72,7 @@ function setupAutoSync(): void {
             rosterStore,
           }),
         )
-      }, 1000)
+      }, 1500)
     },
     { deep: true },
   )
@@ -129,9 +86,9 @@ function setupAutoSync(): void {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (userId.value) {
-    void syncUserData()
+    await syncUserData()
     setupAutoSync()
   }
 })
@@ -201,28 +158,6 @@ const isTransparentHeader = computed(() => {
         <AkInstallApp />
       </div>
     </footer>
-
-    <!-- Cloud data conflict resolution modal -->
-    <AkModal v-model="isConflictModalOpen" :title="t('settings.cloudSync.conflictModalTitle')">
-      <p class="layout-default__conflict-text">
-        {{
-          t('settings.cloudSync.conflictModalBody', {
-            date: conflictDateString,
-          })
-        }}
-      </p>
-
-      <template #footer>
-        <div class="layout-default__conflict-actions">
-          <AkButton variant="primary" @click="handleUseCloud">
-            {{ t('settings.cloudSync.useCloud') }}
-          </AkButton>
-          <AkButton variant="secondary" @click="handleUseLocal">
-            {{ t('settings.cloudSync.useLocal') }}
-          </AkButton>
-        </div>
-      </template>
-    </AkModal>
   </div>
 </template>
 
@@ -278,20 +213,6 @@ const isTransparentHeader = computed(() => {
     color: var(--color-text-muted);
     line-height: var(--line-height-relaxed);
     margin: var(--space-3xs) 0 0;
-  }
-
-  &__conflict-text {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    margin: 0;
-  }
-
-  &__conflict-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--space-sm);
-    width: 100%;
   }
 }
 </style>
