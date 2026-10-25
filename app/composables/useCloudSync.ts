@@ -5,11 +5,19 @@ import {
   type UserDataRow,
   type UserDataPayload,
 } from '~~/shared/schemas/userData'
+import {
+  hasLocalData,
+  hasCloudData,
+  applyCloudDataToLocalStores,
+  buildCurrentPayload,
+  type LocalStoresForCloudSync,
+} from '~/utils/cloudSync/applyToStores'
 
 export interface UseCloudSyncReturn {
   cloudUserData: Ref<UserDataRow | null>
   pulling: Ref<boolean>
   pushing: Ref<boolean>
+  isApplyingCloudData: Ref<boolean>
   lastSyncedAt: Ref<Date | null>
   error: Ref<string | null>
   hasPendingChanges: Ref<boolean>
@@ -18,6 +26,10 @@ export interface UseCloudSyncReturn {
   forget: () => Promise<boolean>
   reset: () => void
   startAutoSync: (sources: () => UserDataPayload, opts?: { debounceMs?: number }) => () => void
+  syncUserData: (
+    stores: LocalStoresForCloudSync,
+    callbacks?: { onConflict?: () => void },
+  ) => Promise<'loaded' | 'pushed' | 'conflict' | 'empty' | 'error'>
 }
 
 export function useCloudSync(): UseCloudSyncReturn {
@@ -27,6 +39,7 @@ export function useCloudSync(): UseCloudSyncReturn {
   const cloudUserData = useState<UserDataRow | null>('cloud_user_data', () => null)
   const pulling = useState<boolean>('cloud_sync_pulling', () => false)
   const pushing = useState<boolean>('cloud_sync_pushing', () => false)
+  const isApplyingCloudData = useState<boolean>('cloud_sync_is_applying', () => false)
   const lastSyncedAt = useState<Date | null>('cloud_sync_last_synced_at', () => null)
   const error = useState<string | null>('cloud_sync_error', () => null)
   const hasPendingChanges = useState<boolean>('cloud_sync_has_pending', () => false)
@@ -189,12 +202,76 @@ export function useCloudSync(): UseCloudSyncReturn {
     return cleanup
   }
 
+  async function syncUserData(
+    stores: LocalStoresForCloudSync,
+    callbacks?: { onConflict?: () => void },
+  ): Promise<'loaded' | 'pushed' | 'conflict' | 'empty' | 'error'> {
+    const uid = userId.value
+    if (!uid) {
+      error.value = 'User not authenticated'
+      return 'error'
+    }
+
+    await Promise.all([
+      stores.plannerStore?.init?.(),
+      stores.depotStore?.init?.(),
+      stores.rosterStore?.init?.(),
+    ])
+
+    const pullResult = await pull()
+    if (pullResult === 'empty') {
+      if (hasLocalData(stores)) {
+        await push(buildCurrentPayload(stores))
+        return 'pushed'
+      }
+      return 'empty'
+    } else if (pullResult === 'loaded') {
+      const localHasData = hasLocalData(stores)
+      const cloudHasData = hasCloudData(cloudUserData.value)
+
+      if (cloudHasData && !localHasData) {
+        if (cloudUserData.value) {
+          isApplyingCloudData.value = true
+          try {
+            await applyCloudDataToLocalStores(cloudUserData.value, stores)
+          } finally {
+            setTimeout(() => {
+              isApplyingCloudData.value = false
+            }, 300)
+          }
+        }
+        return 'loaded'
+      } else if (cloudHasData && localHasData) {
+        const localPayload = buildCurrentPayload(stores)
+        const isIdentical =
+          JSON.stringify(localPayload.plans) === JSON.stringify(cloudUserData.value?.plans) &&
+          JSON.stringify(localPayload.depot?.items) ===
+            JSON.stringify(cloudUserData.value?.depot?.items) &&
+          JSON.stringify(localPayload.depot?.currencies) ===
+            JSON.stringify(cloudUserData.value?.depot?.currencies) &&
+          JSON.stringify(localPayload.settings) === JSON.stringify(cloudUserData.value?.settings)
+
+        if (!isIdentical) {
+          callbacks?.onConflict?.()
+          return 'conflict'
+        }
+        return 'loaded'
+      } else if (!cloudHasData && localHasData) {
+        await push(buildCurrentPayload(stores))
+        return 'pushed'
+      }
+      return 'loaded'
+    }
+    return 'error'
+  }
+
   function reset(): void {
     cloudUserData.value = null
     lastSyncedAt.value = null
     error.value = null
     pulling.value = false
     pushing.value = false
+    isApplyingCloudData.value = false
     hasPendingChanges.value = false
   }
 
@@ -202,6 +279,7 @@ export function useCloudSync(): UseCloudSyncReturn {
     cloudUserData,
     pulling,
     pushing,
+    isApplyingCloudData,
     lastSyncedAt,
     error,
     hasPendingChanges,
@@ -210,5 +288,6 @@ export function useCloudSync(): UseCloudSyncReturn {
     forget,
     reset,
     startAutoSync,
+    syncUserData,
   }
 }

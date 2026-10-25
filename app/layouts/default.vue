@@ -7,12 +7,7 @@ import AkModal from '~/components/ui/AkModal.vue'
 import AkButton from '~/components/ui/AkButton.vue'
 import { useProfile } from '~/composables/useProfile'
 import { useCloudSync } from '~/composables/useCloudSync'
-import {
-  hasLocalData,
-  hasCloudData,
-  applyCloudDataToLocalStores,
-  buildCurrentPayload,
-} from '~/utils/cloudSync/applyToStores'
+import { applyCloudDataToLocalStores, buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
 import { usePlannerStore } from '~/stores/planner'
 import { useSettingsStore } from '~/stores/settings'
 import { useDepotStore } from '~/stores/depot'
@@ -23,14 +18,13 @@ const route = useRoute()
 
 const { userId } = useProfile()
 const cloudSync = useCloudSync()
-const { cloudUserData } = cloudSync
+const { cloudUserData, isApplyingCloudData } = cloudSync
 const plannerStore = usePlannerStore()
 const settingsStore = useSettingsStore()
 const depotStore = useDepotStore()
 const rosterStore = useRosterStore()
 
 const isConflictModalOpen = ref(false)
-const isApplyingCloudData = ref(false)
 
 const conflictDateString = computed(() => {
   if (!cloudUserData.value?.updated_at) return ''
@@ -73,67 +67,14 @@ async function handleUseLocal(): Promise<void> {
 
 async function syncUserData(): Promise<void> {
   if (!userId.value) return
-  await Promise.all([plannerStore.init(), depotStore.init(), rosterStore.init()])
-  const pullResult = await cloudSync.pull()
-  if (pullResult === 'empty') {
-    if (hasLocalData({ plannerStore, settingsStore, depotStore })) {
-      await cloudSync.push(
-        buildCurrentPayload({
-          plannerStore,
-          settingsStore,
-          depotStore,
-          rosterStore,
-        }),
-      )
-    }
-  } else if (pullResult === 'loaded') {
-    const localHasData = hasLocalData({ plannerStore, settingsStore, depotStore })
-    const cloudHasData = hasCloudData(cloudUserData.value)
-
-    if (cloudHasData && !localHasData) {
-      if (cloudUserData.value) {
-        isApplyingCloudData.value = true
-        try {
-          await applyCloudDataToLocalStores(cloudUserData.value, {
-            plannerStore,
-            settingsStore,
-            depotStore,
-          })
-        } finally {
-          setTimeout(() => {
-            isApplyingCloudData.value = false
-          }, 300)
-        }
-      }
-    } else if (cloudHasData && localHasData) {
-      const localPayload = buildCurrentPayload({
-        plannerStore,
-        settingsStore,
-        depotStore,
-        rosterStore,
-      })
-      const isIdentical =
-        JSON.stringify(localPayload.plans) === JSON.stringify(cloudUserData.value?.plans) &&
-        JSON.stringify(localPayload.depot?.items) ===
-          JSON.stringify(cloudUserData.value?.depot?.items) &&
-        JSON.stringify(localPayload.depot?.currencies) ===
-          JSON.stringify(cloudUserData.value?.depot?.currencies) &&
-        JSON.stringify(localPayload.settings) === JSON.stringify(cloudUserData.value?.settings)
-
-      if (!isIdentical) {
+  await cloudSync.syncUserData(
+    { plannerStore, settingsStore, depotStore, rosterStore },
+    {
+      onConflict: () => {
         isConflictModalOpen.value = true
-      }
-    } else if (!cloudHasData && localHasData) {
-      await cloudSync.push(
-        buildCurrentPayload({
-          plannerStore,
-          settingsStore,
-          depotStore,
-          rosterStore,
-        }),
-      )
-    }
-  }
+      },
+    },
+  )
 }
 
 let stopGlobalAutoSync: (() => void) | null = null
@@ -174,7 +115,7 @@ function setupAutoSync(): void {
             rosterStore,
           }),
         )
-      }, 2000)
+      }, 1000)
     },
     { deep: true },
   )

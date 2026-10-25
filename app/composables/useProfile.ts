@@ -58,20 +58,16 @@ export function useProfile(): UseProfileReturn {
     error.value = null
 
     try {
-      const { data, error: fetchErr } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', uid)
-        .maybeSingle()
+      const res = await supabase.from('profiles').select('*').eq('id', uid).maybeSingle()
 
-      if (fetchErr) {
-        error.value = fetchErr.message
+      if (res?.error) {
+        error.value = res.error.message
         profile.value = null
         return null
       }
 
-      if (data) {
-        profile.value = mapRawProfile(data as RawProfile)
+      if (res?.data) {
+        profile.value = mapRawProfile(res.data as RawProfile)
       } else {
         profile.value = null
       }
@@ -125,13 +121,16 @@ export function useProfile(): UseProfileReturn {
     loading.value = true
     error.value = null
     try {
-      const { error: authErr } = await supabase.auth.signInWithPassword({
+      const authRes = await supabase.auth.signInWithPassword({
         email,
         password,
       })
-      if (authErr) {
-        error.value = authErr.message
-        return { success: false, error: authErr.message }
+      if (authRes?.error) {
+        error.value = authRes.error.message
+        return { success: false, error: authRes.error.message }
+      }
+      if (authRes?.data?.user) {
+        user.value = authRes.data.user as unknown as JwtPayload
       }
       await fetchProfile()
       return { success: true }
@@ -152,7 +151,7 @@ export function useProfile(): UseProfileReturn {
     loading.value = true
     error.value = null
     try {
-      const { error: authErr } = await supabase.auth.signUp({
+      const authRes = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -161,9 +160,12 @@ export function useProfile(): UseProfileReturn {
           },
         },
       })
-      if (authErr) {
-        error.value = authErr.message
-        return { success: false, error: authErr.message }
+      if (authRes?.error) {
+        error.value = authRes.error.message
+        return { success: false, error: authRes.error.message }
+      }
+      if (authRes?.data?.user) {
+        user.value = authRes.data.user as unknown as JwtPayload
       }
       await fetchProfile()
       return { success: true }
@@ -180,11 +182,12 @@ export function useProfile(): UseProfileReturn {
     loading.value = true
     error.value = null
     try {
-      const { error: signErr } = await supabase.auth.signOut()
-      if (signErr) {
-        error.value = signErr.message
+      const signRes = await supabase.auth.signOut()
+      if (signRes?.error) {
+        error.value = signRes.error.message
         return false
       }
+      user.value = null
       profile.value = null
       return true
     } catch (e: unknown) {

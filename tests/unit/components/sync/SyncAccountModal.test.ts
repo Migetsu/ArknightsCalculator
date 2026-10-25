@@ -78,6 +78,32 @@ mockNuxtImport('useDepotStore', () => () => ({
   currencies: ref({ lmd: 0, orundum: 0, originitePrime: 0 }),
 }))
 
+const mockCloudSyncUserData = vi.fn().mockResolvedValue('loaded')
+const mockCloudSyncPush = vi.fn().mockResolvedValue(true)
+const mockCloudSyncReset = vi.fn()
+
+mockNuxtImport('useCloudSync', () => () => ({
+  syncUserData: mockCloudSyncUserData,
+  push: mockCloudSyncPush,
+  reset: mockCloudSyncReset,
+  cloudUserData: ref(null),
+  pulling: ref(false),
+  pushing: ref(false),
+  isApplyingCloudData: ref(false),
+  lastSyncedAt: ref(null),
+  error: ref(null),
+  hasPendingChanges: ref(false),
+}))
+
+mockNuxtImport('usePlannerStore', () => () => ({
+  plans: ref([]),
+  init: vi.fn().mockResolvedValue(undefined),
+}))
+
+mockNuxtImport('useSettingsStore', () => () => ({
+  dropDataServer: ref('cn'),
+}))
+
 const syncPayload = {
   doctor: { name: 'Doctor', level: 108, server: 'en' },
   operators: [
@@ -213,6 +239,24 @@ describe('SyncAccountModal.vue', () => {
 
     await signOutBtn.trigger('click')
     expect(mockSignOut).toHaveBeenCalled()
+    expect(mockCloudSyncReset).toHaveBeenCalled()
+  })
+
+  it('submitting sign in form calls signInWithEmail and triggers cloudSync.syncUserData', async () => {
+    const wrapper = await mountSuspended(SyncAccountModal, {
+      props: { modelValue: true, teleport: false },
+    })
+
+    const emailInput = wrapper.findAll('.sync-modal__input')[0]
+    const passInput = wrapper.findAll('.sync-modal__input')[1]
+    const submitBtn = wrapper.find('.sync-modal__auth-submit-btn')
+
+    await emailInput?.setValue('doctor@rhodes.island')
+    await passInput?.setValue('password123')
+    await submitBtn.trigger('click')
+
+    expect(mockSignIn).toHaveBeenCalledWith('doctor@rhodes.island', 'password123')
+    expect(mockCloudSyncUserData).toHaveBeenCalled()
   })
 
   it('switches to Yostar and Demo tabs seamlessly', async () => {
@@ -420,6 +464,30 @@ describe('SyncAccountModal.vue', () => {
       expect(mockStartSync).not.toHaveBeenCalled()
       expect(mockRosterImport).toHaveBeenCalledWith(syncPayload)
       expect(wrapper.find('.sync-modal__auth-success').text()).toContain('SYNC COMPLETE')
+    })
+
+    it('pushes snapshot to cloud storage immediately after successful Yostar sync if authenticated', async () => {
+      mockUser.value = {
+        sub: 'usr-42',
+        id: 'usr-42',
+        email: 'doctor@rhodes.island',
+      }
+      yostarSession.value = {
+        uid: 'channel-uid',
+        token: 'yostar-account-token',
+        expiresAt: '2026-11-20T10:00:00.000Z',
+      }
+      yostarHasSession.value = true
+      mockSyncWithSession.mockImplementation(async () => {
+        yostarResult.value = syncPayload
+        return true
+      })
+
+      const wrapper = await openYostarTab()
+      await wrapper.findAll('.sync-modal__footer-actions button').at(-1)?.trigger('click')
+      await flushPromises()
+
+      expect(mockCloudSyncPush).toHaveBeenCalled()
     })
 
     it('disconnects the stored session and returns to the e-mail form', async () => {
