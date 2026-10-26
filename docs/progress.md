@@ -1,5 +1,24 @@
 # Project Progress
 
+- **Task 54 — Farming Deficit Table "Need" Column & LMD Run Calculation Clarity (`fix/farming-breakdown-need-column-clarity`):**
+  - **Diagnosed User-Reported Question Regarding Farming Runs & Depot Holdings:**
+    - Diagnosed the user-reported confusion on the `/farming` page: The user observed CE-6 recommending 275 runs (`2,750,000 LMD`), while the `Material breakdown` table showed `HAVE: 946,183` and `TO FARM: 2,747,531`. The user suspected that the farm planner was calculating runs for the total plan without deducting their existing 946k LMD.
+    - Verified exact user account data in Supabase:
+      - Active plans: Eyjafjalla the Hvít Aska (1,634,796 LMD) + Angelina the Mellow Wish (761,409 LMD) + Thumpy (1,061,409 LMD) + Workshop material crafting costs (236,100 LMD) = **3,693,714 LMD total required**.
+      - In depot (`HAVE`): **946,183 LMD**.
+      - Remaining deficit (`TO FARM`): 3,693,714 - 946,183 = **2,747,531 LMD**.
+      - CE-6 runs: `Math.ceil(2,747,531 / 10,000) = 275 runs` (`2,750,000 LMD`).
+      - Confirmed that the depot was ALREADY fully deducted: Without depot LMD, CE-6 would require **370 runs** (`3,700,000 LMD`). The user's depot saved 95 runs and 3,420 sanity.
+    - Identified UI Ambiguity: Unlike `/planner` (which has 3 columns: `NEED`, `HAVE`, `MISSING`), `/farming`'s `Material breakdown` table omitted the `NEED` column and only displayed `HAVE` and `TO FARM`. Users naturally assumed `TO FARM` was the total plan requirement rather than the net deficit.
+  - **Implemented "Need" Column in Farming Material Breakdown (`app/components/farming/FarmingDeficitTable.vue`, `app/pages/farming.vue`, `i18n/locales/en.json`):**
+    - In `i18n/locales/en.json`: added `"breakdownColumnNeed": "Need"`.
+    - In `FarmingDeficitTable.vue`: added optional `total?: number` field to `FarmingDeficitItem` interface, added `<th>Need</th>` column, and styled numeric need cells with subtle text color (`--color-text-secondary`).
+    - In `app/pages/farming.vue`: computed `total` for all breakdown items (`baseLmd + craftLmd` for LMD, `count + have` for materials), presenting `NEED`, `HAVE`, and `TO FARM` side-by-side (`NEED - HAVE = TO FARM`).
+  - **Tests & Quality Gates:**
+    - Updated unit tests in `tests/unit/components/farming/FarmingDeficitTable.test.ts` to assert `Need` column header and numerical values.
+    - Verified all gates: `i18n:check` (791 keys valid), `lint` (0 errors), `typecheck` (0 errors), `test` (121 test files, 1018 tests passed), and production `build`.
+    - Pull Request #131 merged autonomously into `main` after Vercel preview and GitHub Actions CI passed.
+
 - **Task 53 — Banner Schedule Rate-Up Operators Elite 2 Avatar Quality & Crisp Rendering (`fix/banner-rateup-avatars-quality`):**
   - **Identified Root Causes of Low Quality Avatars on Banner Schedule:**
     - Diagnosed the user-reported issue: On `/gacha` banner cards (such as Orienteering #7), operator avatars appeared low quality, pixelated, and awkwardly posed compared to the official banner artwork.
