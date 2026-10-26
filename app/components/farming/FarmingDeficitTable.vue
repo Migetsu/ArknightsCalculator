@@ -149,7 +149,7 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
   }
 
   &__th {
-    padding: var(--space-xs) 4px;
+    padding: var(--space-xs) var(--space-sm);
     color: var(--color-text-secondary);
     font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-semibold);
@@ -158,14 +158,20 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     text-align: left;
 
     @media (width <= 480px) {
+      padding: var(--space-xs) 4px;
       font-size: 10px;
       letter-spacing: 0.05em;
     }
 
     &--item {
       text-align: left;
-      padding-left: 0;
-      width: 34%;
+      padding-left: var(--space-sm);
+      width: 44%;
+
+      @media (width <= 480px) {
+        padding-left: 6px;
+        width: 35%;
+      }
     }
 
     &--num {
@@ -174,27 +180,48 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     }
 
     &--need {
-      width: 23%;
+      width: 19%;
+
+      @media (width <= 480px) {
+        width: 23%;
+      }
     }
 
     &--have {
-      width: 17%;
+      width: 16%;
+
+      @media (width <= 480px) {
+        width: 17%;
+      }
     }
 
     &--remaining {
-      width: 26%;
-      padding-right: 0;
+      width: 21%;
+      padding-right: var(--space-sm);
+
+      @media (width <= 480px) {
+        padding-right: 6px;
+        width: 25%;
+      }
     }
   }
 
   &__td {
-    padding: var(--space-xs) 4px;
+    padding: var(--space-xs) var(--space-sm);
     vertical-align: middle;
+
+    @media (width <= 480px) {
+      padding: var(--space-xs) 4px;
+    }
 
     &--item {
       text-align: left;
-      padding-left: 0;
+      padding-left: var(--space-sm);
       overflow: hidden;
+
+      @media (width <= 480px) {
+        padding-left: 6px;
+      }
     }
 
     &--num {
@@ -204,7 +231,11 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     }
 
     &--remaining {
-      padding-right: 0;
+      padding-right: var(--space-sm);
+
+      @media (width <= 480px) {
+        padding-right: 6px;
+      }
     }
 
     &--need {
