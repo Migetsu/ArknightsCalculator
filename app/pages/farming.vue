@@ -592,11 +592,11 @@ const snapshotDateFormatted = computed(() => {
   }
 
   &__breakdown-card {
-    padding: var(--space-md);
+    padding: var(--space-lg);
 
     @media (width <= 768px) {
       order: 3;
-      padding: var(--space-md) var(--space-sm);
+      padding: var(--space-md);
     }
   }
 
