@@ -46,7 +46,9 @@ describe('FarmingDeficitTable', () => {
     const row = rows[0]!
     expect(row.find('.farming-deficit-table__num--have').text()).toBe('0')
     expect(row.find('.farming-deficit-table__num--remaining').text()).toBe('5')
-    expect(row.find('.farming-deficit-table__item-name').text()).toBeTruthy()
+    const nameEl = row.find('.farming-deficit-table__item-name')
+    expect(nameEl.text()).toBeTruthy()
+    expect(nameEl.attributes('title')).toBe(nameEl.text())
   })
 
   it('renders no item rows for empty items array', async () => {

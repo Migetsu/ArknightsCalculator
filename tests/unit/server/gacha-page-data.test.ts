@@ -26,7 +26,7 @@ describe('server: gachaPageData', () => {
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.id).toBe('LIMITED_EN_42_0_1')
     expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
-    expect(data.upcomingBanners).toHaveLength(11)
+    expect(data.upcomingBanners).toHaveLength(10)
     expect(data.globalLagDays).toBe(163.375)
 
     // Verify compact: no description in SSR payload
@@ -47,7 +47,7 @@ describe('server: gachaPageData', () => {
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.server).toBe('cn')
     expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
-    expect(data.upcomingBanners).toHaveLength(11)
+    expect(data.upcomingBanners).toHaveLength(10)
   })
 
   it('verifies that serialized payload is well within the 60 KB budget', async () => {

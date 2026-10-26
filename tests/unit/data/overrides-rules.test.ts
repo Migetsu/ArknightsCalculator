@@ -33,24 +33,30 @@ describe('Manual Overrides Schema & Integrity', () => {
     const files = await fs.readdir(overridesDir)
     const jsonFiles = files.filter((f) => f.endsWith('.json'))
 
-    let totalOverrides = 0
     for (const file of jsonFiles) {
       const filePath = path.join(overridesDir, file)
       const content = await fs.readFile(filePath, 'utf-8')
       const json = JSON.parse(content) as Record<string, unknown>
 
       for (const [_key, value] of Object.entries(json)) {
-        totalOverrides++
         const parsed = ManualOverrideEntrySchema.parse(value)
         expect(parsed.text.trim().length).toBeGreaterThan(0)
         expect(parsed.source.startsWith('http')).toBe(true)
       }
     }
 
-    // Verify report.json parity: manual source count must equal total override entries in data/i18n/overrides
+    // Verify report.json parity: manual source count must equal operator/module override entries in data/i18n/overrides
+    const opModuleOverrides = jsonFiles
+      .filter((f) => f !== 'banners.json')
+    let opModuleCount = 0
+    for (const f of opModuleOverrides) {
+      const content = await fs.readFile(path.join(overridesDir, f), 'utf-8')
+      opModuleCount += Object.keys(JSON.parse(content) as Record<string, unknown>).length
+    }
+
     const rawReport = await fs.readFile(reportPath, 'utf-8')
     const report = JSON.parse(rawReport) as { sources?: { manual?: number } }
-    expect(report.sources?.manual ?? 0).toBe(totalOverrides)
+    expect(report.sources?.manual ?? 0).toBe(opModuleCount)
   })
 
   it('verifies Fiammetta module A is mapped in machine translation layer', async () => {

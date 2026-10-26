@@ -449,7 +449,7 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(res.uncoveredItems.map((u) => u.itemId)).not.toContain('2004')
     }
 
-    expect(cnFull.totalSanity).toBe(28209) // 17,265 materials + 6,912 CE-6 + 4,032 LS-6
-    expect(usFull.totalSanity).toBe(29727) // 18,783 materials + 6,912 CE-6 + 4,032 LS-6
+    expect(cnFull.totalSanity).toBe(28215) // 17,271 materials + 6,912 CE-6 + 4,032 LS-6
+    expect(usFull.totalSanity).toBe(29739) // 18,795 materials + 6,912 CE-6 + 4,032 LS-6
   })
 })

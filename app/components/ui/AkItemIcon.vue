@@ -5,7 +5,7 @@ import type { GameItem } from '~/../shared/schemas/item'
 import { fetchItemMeta, getCachedItem } from '~/composables/useItemMeta'
 import { asJsonFetcher, fetchJson } from '~/utils/fetchJson'
 
-export type AkItemIconSize = 36 | 40 | 48 | 56 | 64 | 'sm' | 'md' | 'lg'
+export type AkItemIconSize = 32 | 36 | 40 | 48 | 56 | 64 | 'sm' | 'md' | 'lg'
 
 interface Props {
   /**

@@ -19,8 +19,8 @@ describe('scripts/data/sources.config', () => {
     const { en, cn } = DATA_SOURCES_CONFIG.sources
     expect(en.branch).toBe('main')
     expect(cn.branch).toBe('main')
-    expect(cn.commit).toBe('b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74')
-    expect(en.commit).toBe('b5ff1ff3c389d18d8c0fcfa30735bd90f1d1ac74')
+    expect(cn.commit).toBe('c4eaba51f1d26390c3645d93cc7ef5b8173da1fb')
+    expect(en.commit).toBe('c4eaba51f1d26390c3645d93cc7ef5b8173da1fb')
   })
 
   it('includes all 13 required gamedata tables for both sources', () => {

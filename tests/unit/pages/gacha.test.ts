@@ -78,12 +78,12 @@ describe('GachaPage', () => {
     expect(card.text()).toContain('ACTIVE NOW')
   })
 
-  it('renders only the 11 upcoming CN banners, without the archive or pagination', async () => {
+  it('renders only the 10 upcoming CN banners, without the archive or pagination', async () => {
     const wrapper = await mountSuspended(GachaPage)
 
     const upcoming = wrapper.find('.gacha-page__upcoming')
     const cards = upcoming.findAllComponents(GachaBannerCard)
-    expect(cards).toHaveLength(11)
+    expect(cards).toHaveLength(10)
     // The current Global hero card must not leak into the upcoming section
     expect(upcoming.text()).not.toContain('Sealed With Time')
     expect(wrapper.text()).not.toContain('453')
@@ -98,7 +98,7 @@ describe('GachaPage', () => {
     const wrapper = await mountSuspended(GachaPage)
     const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
 
-    expect(cards[0]!.props('banner').id).toBe('SPECIAL_73_0_3')
+    expect(cards[0]!.props('banner').id).toBe('LINKAGE_74_0_1')
     expect(cards[cards.length - 1]!.props('banner').id).toBe('SINGLE_78_0_1')
 
     for (let i = 0; i < cards.length - 1; i++) {
@@ -112,13 +112,12 @@ describe('GachaPage', () => {
     const wrapper = await mountSuspended(GachaPage)
     const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
 
-    // SPECIAL_73_0_3: CN 2026-05-15 … 2026-05-29, EST 2026-10-25
+    // LINKAGE_74_0_1: CN 2026-06-01 … 2026-06-15
     const first = cards[0]!
-    expect(first.props('banner').id).toBe('SPECIAL_73_0_3')
+    expect(first.props('banner').id).toBe('LINKAGE_74_0_1')
     const firstDates = first.find('.gacha-banner__dates').text()
-    expect(firstDates).toContain('May 15')
-    expect(firstDates).toContain('May 29')
-    expect(firstDates).toContain('Oct 25')
+    expect(firstDates).toContain('Jun 1')
+    expect(firstDates).toContain('Jun 15')
 
     // LINKAGE_74_0_1: CN 2026-06-01 … 2026-06-15
     const linkage = cards.find((card) => card.props('banner').id === 'LINKAGE_74_0_1')
@@ -191,7 +190,7 @@ describe('GachaPage', () => {
     const upcoming = () => wrapper.find('.gacha-page__upcoming')
 
     await filters[1]!.trigger('click')
-    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(7)
+    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(6)
 
     await filters[2]!.trigger('click')
     expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(4)

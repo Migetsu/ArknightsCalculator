@@ -571,7 +571,7 @@ const snapshotDateFormatted = computed(() => {
 
     @include mq(lg) {
       display: grid;
-      grid-template-columns: 3fr 2fr;
+      grid-template-columns: 1.3fr 1fr;
       align-items: start;
       gap: var(--space-xl);
     }
@@ -592,8 +592,11 @@ const snapshotDateFormatted = computed(() => {
   }
 
   &__breakdown-card {
+    padding: var(--space-md);
+
     @media (width <= 768px) {
       order: 3;
+      padding: var(--space-md) var(--space-sm);
     }
   }
 
