@@ -1,5 +1,29 @@
 # Project Progress
 
+- **Task 55 — Eliminate Horizontal Scrolling & Optimize Material Breakdown Table Layout (`fix/farming-breakdown-table-no-overflow`):**
+  - **Identified Root Causes of Table Overflow on `/farming`:**
+    - Diagnosed the user-reported issue where the `Material breakdown` table had a horizontal scrollbar and clipped the right edge of numbers in the `TO FARM` column:
+    - Root Cause 1 (`overflow-x: auto;`): `.farming-deficit-table` had an explicit horizontal scroll container, displaying scrollbars whenever content exceeded width.
+    - Root Cause 2 (`table-layout: auto`): In standard CSS tables without fixed layout, `text-overflow: ellipsis` on table-cells never triggers because cells expand intrinsically to fit long names (e.g. "Strategic Battle Record" took 270px, leaving only 220px for the 3 number columns).
+    - Root Cause 3 (Excessive Padding): Cell horizontal padding was `var(--space-sm)` (12-16px per cell), consuming ~96px just for padding across 4 columns. Card padding was also `var(--space-lg)` (24px each side).
+  - **Implemented Fixed Table Layout & Fluid Proportions (`FarmingDeficitTable.vue`, `AkItemIcon.vue`, `farming.vue`):**
+    - In `FarmingDeficitTable.vue`:
+      - Replaced `overflow-x: auto;` with `overflow: hidden;`.
+      - Applied `table-layout: fixed; width: 100%;` to force strict 100% card width adherence and enable clean CSS text truncation with ellipsis.
+      - Allocated optimized column percentages: `ITEM: 34%`, `NEED: 23%`, `HAVE: 17%`, `TO FARM: 26%`.
+      - Reduced cell padding to `var(--space-xs) 4px;` with edge flushes (`padding-left: 0` for Item, `padding-right: 0` for Remaining).
+      - Resized `AkItemIcon` from 36px to 32px (added `32` to `AkItemIconSize` union in `AkItemIcon.vue`).
+      - Added native `title` attribute on item names so full names are visible on hover/touch.
+      - Scaled numbers to 11px tabular mono on screens `<= 480px` to comfortably accommodate multi-million values.
+    - In `app/pages/farming.vue`:
+      - Adjusted desktop grid split from `3fr 2fr` to `1.3fr 1fr` (56.5% / 43.5%), giving the sidebar ~40px more width.
+      - Reduced breakdown card padding from `24px` to `16px` (`padding: var(--space-md);` and `var(--space-md) var(--space-sm)` on mobile).
+  - **Tests & Quality Gates:**
+    - Visual inspection verified via Playwright screenshots at 1280px, 1024px, and 360px: zero scrollbars, zero clipping, perfect alignment.
+    - Layout sanity e2e test passed across all viewports (360px, 768px, 1024px, 1440px, 1920px).
+    - Quality gates passed: `i18n:check` (791 keys), `lint` (0 errors), `typecheck` (0 errors), `test` (121 files, 1018 tests), production `build`.
+    - Pull Request #132 autonomously squash-merged into `main`.
+
 - **Task 54 — Farming Deficit Table "Need" Column & LMD Run Calculation Clarity (`fix/farming-breakdown-need-column-clarity`):**
   - **Diagnosed User-Reported Question Regarding Farming Runs & Depot Holdings:**
     - Diagnosed the user-reported confusion on the `/farming` page: The user observed CE-6 recommending 275 runs (`2,750,000 LMD`), while the `Material breakdown` table showed `HAVE: 946,183` and `TO FARM: 2,747,531`. The user suspected that the farm planner was calculating runs for the total plan without deducting their existing 946k LMD.
