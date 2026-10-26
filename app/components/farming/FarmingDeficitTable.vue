@@ -5,6 +5,7 @@ import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 export interface FarmingDeficitItem {
   id: string
+  total?: number
   remaining: number
   have: number
 }
@@ -42,6 +43,9 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
             {{ t('farming.breakdownColumnItem') }}
           </th>
           <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
+            {{ t('farming.breakdownColumnNeed') }}
+          </th>
+          <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
             {{ t('farming.breakdownColumnHave') }}
           </th>
           <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
@@ -68,6 +72,13 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
               />
               <span class="farming-deficit-table__item-name">{{ getItemName(item.id) }}</span>
             </div>
+          </td>
+          <td
+            class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--need"
+          >
+            <span class="farming-deficit-table__num farming-deficit-table__num--need">
+              {{ item.total !== undefined ? item.total.toLocaleString() : '—' }}
+            </span>
           </td>
           <td
             class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--have"
@@ -157,6 +168,10 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
       white-space: nowrap;
     }
 
+    &--need {
+      color: var(--color-text-secondary);
+    }
+
     &--have {
       color: var(--color-text-secondary);
     }
@@ -189,6 +204,10 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
     font-weight: var(--font-weight-semibold);
+
+    &--need {
+      color: var(--color-text-secondary);
+    }
 
     &--have {
       color: var(--color-text-secondary);
