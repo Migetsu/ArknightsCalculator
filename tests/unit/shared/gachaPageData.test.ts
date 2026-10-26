@@ -22,9 +22,9 @@ describe('buildGachaPageData', () => {
   it('returns exactly the upcoming CN window in dataset order', () => {
     const pageData = buildGachaPageData(dataset)
 
-    expect(pageData.upcomingBanners).toHaveLength(11)
-    expect(pageData.upcomingBanners[0]?.id).toBe('SPECIAL_73_0_3')
-    expect(pageData.upcomingBanners[10]?.id).toBe('SINGLE_78_0_1')
+    expect(pageData.upcomingBanners).toHaveLength(10)
+    expect(pageData.upcomingBanners[0]?.id).toBe('LINKAGE_74_0_1')
+    expect(pageData.upcomingBanners[9]?.id).toBe('SINGLE_78_0_1')
     expect(pageData.globalLagDays).toBe(163.375)
   })
 
@@ -43,7 +43,7 @@ describe('buildGachaPageData', () => {
     expect(pageData.currentBanner).toBeDefined()
     expect(pageData.currentBanner?.server).toBe('cn')
     expect(pageData.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
-    expect(pageData.upcomingBanners).toHaveLength(11)
+    expect(pageData.upcomingBanners).toHaveLength(10)
   })
 
   it('is accepted by the runtime guard', () => {

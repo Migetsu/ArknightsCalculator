@@ -42,13 +42,22 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
           <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--item">
             {{ t('farming.breakdownColumnItem') }}
           </th>
-          <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
+          <th
+            scope="col"
+            class="farming-deficit-table__th farming-deficit-table__th--num farming-deficit-table__th--need"
+          >
             {{ t('farming.breakdownColumnNeed') }}
           </th>
-          <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
+          <th
+            scope="col"
+            class="farming-deficit-table__th farming-deficit-table__th--num farming-deficit-table__th--have"
+          >
             {{ t('farming.breakdownColumnHave') }}
           </th>
-          <th scope="col" class="farming-deficit-table__th farming-deficit-table__th--num">
+          <th
+            scope="col"
+            class="farming-deficit-table__th farming-deficit-table__th--num farming-deficit-table__th--remaining"
+          >
             {{ t('farming.breakdownColumnRemaining') }}
           </th>
         </tr>
@@ -67,10 +76,12 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
                 :icon-id="getItemIconId(item.id)"
                 :name="getItemName(item.id)"
                 :tier="getItemRarity(item.id)"
-                :size="36"
+                :size="32"
                 class="farming-deficit-table__item-icon"
               />
-              <span class="farming-deficit-table__item-name">{{ getItemName(item.id) }}</span>
+              <span class="farming-deficit-table__item-name" :title="getItemName(item.id)">
+                {{ getItemName(item.id) }}
+              </span>
             </div>
           </td>
           <td
@@ -103,10 +114,11 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
 <style lang="scss" scoped>
 .farming-deficit-table {
   width: 100%;
-  overflow-x: auto;
+  overflow: hidden;
 
   &__table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: var(--font-size-sm);
   }
@@ -137,35 +149,62 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
   }
 
   &__th {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-xs) 4px;
     color: var(--color-text-secondary);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2xs);
     font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-caption);
     text-align: left;
 
+    @media (width <= 480px) {
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
+
     &--item {
       text-align: left;
+      padding-left: 0;
+      width: 34%;
     }
 
     &--num {
       text-align: right;
       white-space: nowrap;
+    }
+
+    &--need {
+      width: 23%;
+    }
+
+    &--have {
+      width: 17%;
+    }
+
+    &--remaining {
+      width: 26%;
+      padding-right: 0;
     }
   }
 
   &__td {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-xs) 4px;
     vertical-align: middle;
 
     &--item {
       text-align: left;
+      padding-left: 0;
+      overflow: hidden;
     }
 
     &--num {
       text-align: right;
       white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &--remaining {
+      padding-right: 0;
     }
 
     &--need {
@@ -186,6 +225,7 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     align-items: center;
     gap: var(--space-xs);
     min-width: 0;
+    overflow: hidden;
   }
 
   &__item-icon {
@@ -194,16 +234,24 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
 
   &__item-name {
     color: var(--color-text-primary);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    min-width: 0;
   }
 
   &__num {
     font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
     font-variant-numeric: tabular-nums;
     font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+
+    @media (width <= 480px) {
+      font-size: 11px;
+    }
 
     &--need {
       color: var(--color-text-secondary);

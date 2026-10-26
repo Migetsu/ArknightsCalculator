@@ -342,7 +342,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
       expect(cnWithArt.length).toBe(306)
-      expect(cnWithoutArt.length).toBe(147)
+      expect(cnWithoutArt.length).toBe(148)
       expect(enWithArt.length).toBe(148)
       expect(enWithoutArt.length).toBe(260)
 
@@ -396,8 +396,8 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       )
 
       expect(cnWithRateUp.length).toBe(195)
-      expect(enWithRateUp.length).toBe(398)
-      expect(cnWithGlobalDate.length).toBe(187)
+      expect(enWithRateUp.length).toBe(399)
+      expect(cnWithGlobalDate.length).toBe(188)
       expect(cnWithPair.length).toBe(187)
 
       // Verified benchmark banner: Cremation Last Wish (W & Weedy)
@@ -516,8 +516,8 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(officialCount).toBe(187)
       expect(wikiCount).toBe(10)
       expect(manualCount).toBe(1)
-      expect(machineCount).toBe(255)
-      expect(officialCount + wikiCount + machineCount + manualCount).toBe(453)
+      expect(machineCount).toBe(256)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(454)
     })
   })
 })
