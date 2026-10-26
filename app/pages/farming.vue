@@ -51,11 +51,25 @@ const depotItemCount = computed(() => Object.values(depotStore.items).filter((c)
 
 const breakdownItems = computed(() => {
   return Object.entries(farmingStore.activeDeficit)
-    .map(([id, count]) => ({
-      id,
-      remaining: count,
-      have: depotStore.getItemCount(id),
-    }))
+    .map(([id, count]) => {
+      const have = depotStore.getItemCount(id)
+      let total: number | undefined
+      if (id === '4001') {
+        const baseLmd = plannerStore.aggregatedDemand?.lmd ?? 0
+        const craftLmd = settingsStore.farmingAllowCrafting
+          ? (plannerStore.resolvedCraftLmdCost ?? 0)
+          : 0
+        total = baseLmd + craftLmd
+      } else {
+        total = count + have
+      }
+      return {
+        id,
+        total,
+        remaining: count,
+        have,
+      }
+    })
     .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
 })
 
