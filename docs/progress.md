@@ -1,5 +1,19 @@
 # Project Progress
 
+- **Task 56 — Material Breakdown Table Padding, Margins & Column Rebalancing (`fix/farming-breakdown-padding-and-margins`):**
+  - **Diagnosed Visual Crowding on `/farming`:**
+    - Diagnosed user-reported issue where the `ITEM` column on the left and `TO FARM` column on the right were jammed flush against the edges of the card, while names like "Compound Cutting Fluid" prematurely truncated despite wide empty space in the middle.
+    - Cause 1: Previous attempt used flush edge padding (`padding-left: 0` and `padding-right: 0`), completely stripping internal margins from outer cells.
+    - Cause 2: Previous attempt allocated 66% of the table width to numbers (`34% / 23% / 17% / 26%`), squeezing `ITEM` into just 34% and pushing right-aligned `TO FARM` numerals to the far right border.
+  - **Implemented Balanced Padding & Fluid Column Widths (`FarmingDeficitTable.vue`, `farming.vue`):**
+    - Restored generous cell padding (`padding: var(--space-xs) var(--space-sm);` on desktop, `var(--space-xs) 4px;` on mobile) with dedicated outer margins (`padding-left: var(--space-sm);`, `padding-right: var(--space-sm);`).
+    - Restored standard card padding (`padding: var(--space-lg);` on desktop, `padding: var(--space-md);` on mobile).
+    - Rebalanced column proportions: `ITEM: 44%`, `NEED: 19%`, `HAVE: 16%`, `TO FARM: 21%` on desktop (mobile: `35% / 23% / 17% / 25%`). Long names like "Strategic Battle Record" and "Crystalline Component" now display in full without truncation on desktop, with zero empty voids and clean spacing between all columns.
+  - **Tests & Quality Gates:**
+    - Visual inspection verified via Playwright screenshots at 1280px, 1024px, and 360px: comfortable breathing margins, balanced layout, no truncation of common names.
+    - Quality gates passed: `i18n:check` (791 keys), `lint` (0 errors), `typecheck` (0 errors), `test` (121 files, 1018 tests), production `build`.
+    - Pull Request #133 autonomously squash-merged into `main`.
+
 - **Task 55 — Eliminate Horizontal Scrolling & Optimize Material Breakdown Table Layout (`fix/farming-breakdown-table-no-overflow`):**
   - **Identified Root Causes of Table Overflow on `/farming`:**
     - Diagnosed the user-reported issue where the `Material breakdown` table had a horizontal scrollbar and clipped the right edge of numbers in the `TO FARM` column:
