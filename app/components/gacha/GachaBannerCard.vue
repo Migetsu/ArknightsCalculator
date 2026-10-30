@@ -66,9 +66,6 @@ const bannerTitle = computed(() => {
 })
 
 const lifecycleStatus = computed<'active' | 'upcoming' | 'ended'>(() => {
-  // The dataset marks the currently running CN pool at generation time, which keeps
-  // the badge data-driven instead of depending on the wall clock.
-  if (props.banner.isActive) return 'active'
   if (props.globalEstimate || props.isNext) return 'upcoming'
   return getBannerLifecycleStatus(props.banner)
 })

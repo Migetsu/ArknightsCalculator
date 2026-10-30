@@ -21,6 +21,7 @@ import {
   getEstimatedGlobalDate,
   formatBannerDateRange,
   calculateTotalPulls,
+  getBannerLifecycleStatus,
 } from '~/../shared/utils/gacha'
 import { useGachaPageData } from '~/composables/useGachaPageData'
 import { useDepotStore } from '~/stores/depot'
@@ -203,24 +204,23 @@ const totalAvailablePulls = computed<number>(() => {
 })
 
 const activeBannerPulls = computed<number>(() => {
-  // 1. Check current Global banner from gacha page data
+  // Active pulls (spark) ONLY apply when a LIMITED banner is currently active!
+  // When no limited banner is active (e.g. between limited events), spark count is 0.
   const enBanner = gachaData.value?.currentEnFullBanner
-  if (enBanner?.lmtgsid) {
-    const count = depotStore.getItemCount(enBanner.lmtgsid)
-    if (count > 0) return count
+  if (enBanner && (enBanner.ruleType === 'LIMITED' || enBanner.type === 'limited')) {
+    const status = getBannerLifecycleStatus(enBanner)
+    if (status === 'active' && enBanner.lmtgsid) {
+      const count = depotStore.getItemCount(enBanner.lmtgsid)
+      if (count > 0) return count
+    }
   }
 
-  // 2. Check current banner for active server
   const curBanner = gachaData.value?.currentBanner
-  if (curBanner?.lmtgsid) {
-    const count = depotStore.getItemCount(curBanner.lmtgsid)
-    if (count > 0) return count
-  }
-
-  // 3. Fallback: check any commemorative coin (LMTGS_COIN_*) held in depot
-  for (const [itemId, count] of Object.entries(depotStore.items)) {
-    if (itemId.startsWith('LMTGS_COIN_') && typeof count === 'number' && count > 0) {
-      return count
+  if (curBanner && (curBanner.ruleType === 'LIMITED' || curBanner.type === 'limited')) {
+    const status = getBannerLifecycleStatus(curBanner)
+    if (status === 'active' && curBanner.lmtgsid) {
+      const count = depotStore.getItemCount(curBanner.lmtgsid)
+      if (count > 0) return count
     }
   }
 

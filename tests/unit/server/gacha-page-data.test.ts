@@ -24,8 +24,8 @@ describe('server: gachaPageData', () => {
   it('reads global gacha page data with compact banners and operator dictionary', async () => {
     const data = await readGachaPageData('global')
     expect(data.currentBanner).toBeDefined()
-    expect(data.currentBanner?.id).toBe('LIMITED_EN_42_0_1')
-    expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
+    expect(data.currentBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
     expect(data.upcomingBanners).toHaveLength(10)
     expect(data.globalLagDays).toBe(163.375)
 
@@ -46,7 +46,7 @@ describe('server: gachaPageData', () => {
     const data = await readGachaPageData('cn')
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.server).toBe('cn')
-    expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
+    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
     expect(data.upcomingBanners).toHaveLength(10)
   })
 

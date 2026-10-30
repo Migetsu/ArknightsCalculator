@@ -13,10 +13,10 @@ describe('buildGachaPageData', () => {
   it('keeps the active Global banner with its rate-up roster', () => {
     const pageData = buildGachaPageData(dataset)
 
-    expect(pageData.currentEnBannerId).toBe('LIMITED_EN_42_0_1')
-    expect(pageData.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
+    expect(pageData.currentEnBannerId).toBe('DOUBLE_EN_42_0_2')
+    expect(pageData.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
     expect(pageData.currentEnFullBanner?.rateUp6.length).toBeGreaterThan(0)
-    expect(pageData.currentEnFullBanner?.endIso).toBe('2026-10-28T10:59:59.000Z')
+    expect(pageData.currentEnFullBanner?.endIso).toBe('2026-11-06T10:59:59.000Z')
   })
 
   it('returns exactly the upcoming CN window in dataset order', () => {
@@ -42,7 +42,7 @@ describe('buildGachaPageData', () => {
     const pageData = buildGachaPageData(dataset, 'cn')
     expect(pageData.currentBanner).toBeDefined()
     expect(pageData.currentBanner?.server).toBe('cn')
-    expect(pageData.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
+    expect(pageData.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
     expect(pageData.upcomingBanners).toHaveLength(10)
   })
 

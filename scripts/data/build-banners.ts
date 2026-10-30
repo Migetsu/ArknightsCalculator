@@ -197,7 +197,7 @@ export function buildBannersFromTables(
   } = {},
 ): BuildBannersResult {
   let defaultNowSec = Math.floor(Date.now() / 1000)
-  if (!options.now && !process.env.UPDATE_DATA && fs.existsSync(OUTPUT_FILE)) {
+  if (!options.now && process.env.PRESERVE_TIMESTAMP && fs.existsSync(OUTPUT_FILE)) {
     try {
       const existing = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8')) as {
         meta?: { generatedAt?: string }

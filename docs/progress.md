@@ -1,5 +1,25 @@
 # Project Progress
 
+- **Task 57 — Dynamic Banner Lifecycle, Gacha Active Pool Resolution & Spark Sync (`fix/banner-lifecycle-and-spark-sync`):**
+  - **Diagnosed Issues Reported by User:**
+    - On Home Dashboard (`index.vue`), `SPARK` displayed `24 / 300` despite the limited banner (_Sealed With Time_ — Kal'tsit Esperanta & Closure) having ended on Oct 28.
+    - Cause 1: `activeBannerPulls` had a generic fallback that looped over depot for any `LMTGS_COIN_*` item and returned its count, causing past/expired event tokens to show as current spark even when no limited banner is running.
+    - Cause 2: `activeBannerPulls` did not verify whether the banner lifecycle status is currently `'active'`.
+    - Cause 3: On `/gacha`, `GachaBannerCard.vue` had `if (props.banner.isActive) return 'active'` overriding the real wall clock. Since `banners.json` was generated when the banner was running, `props.banner.isActive` remained `true`, causing the card to display `ACTIVE NOW` instead of `ENDED` after Oct 28.
+    - Cause 4: `scripts/data/build-banners.ts` had a timestamp freeze (`if (!options.now && !process.env.UPDATE_DATA)`), reusing `meta.generatedAt` from the existing file and preventing local and CI runs from updating banners.
+    - Cause 5: Automated upstream sync workflow (`.github/workflows/update-data.yml`) was scheduled only weekly (`0 4 * * 1`) instead of daily.
+  - **Implemented Solution:**
+    - `shared/utils/gacha/index.ts`: Updated `getBannerLifecycleStatus` to accurately evaluate `effectiveEndMs` (using `endTime`, `endIso`, or end of `globalEndDate`), correctly returning `'ended'` once the banner has concluded.
+    - `app/components/gacha/GachaBannerCard.vue`: Removed the hardcoded `if (props.banner.isActive) return 'active'` short-circuit so lifecycle status dynamically respects dates.
+    - `app/pages/index.vue`: Restricted `activeBannerPulls` strictly to active limited banners (`ruleType === 'LIMITED'` and `getBannerLifecycleStatus(banner) === 'active'`). Removed the generic expired depot coin loop. When no limited banner is active, `SPARK` safely displays `0 / 300`.
+    - `shared/utils/gachaPageData.ts`: Dynamically resolves the currently active Global banner (`DOUBLE_EN_42_0_2`), falling back to `null` if none are active.
+    - `scripts/data/build-banners.ts`: Removed the default timestamp freeze; `npm run data:banners` now builds against `Date.now()`.
+    - `.github/workflows/update-data.yml`: Updated cron schedule to daily (`0 4 * * *`) to automatically check for upstream updates, run the Gemini machine translator (`data:translate:all`), update banner statuses, and open/merge PRs.
+  - **Tests & Quality Gates:**
+    - Added unit test in `tests/unit/pages/index-banner.test.ts` verifying that an ended limited banner displays `0 / 300` even with depot tokens, and active limited banners properly count spark.
+    - All 121 test files, 1020 unit tests passed.
+    - `npm run i18n:check` (791 keys), `npm run lint` (0 errors), `npm run typecheck` (0 errors), `npm run data:validate` (0 errors), `npm run build` (clean build) all passed.
+
 - **Task 56 — Material Breakdown Table Padding, Margins & Column Rebalancing (`fix/farming-breakdown-padding-and-margins`):**
   - **Diagnosed Visual Crowding on `/farming`:**
     - Diagnosed user-reported issue where the `ITEM` column on the left and `TO FARM` column on the right were jammed flush against the edges of the card, while names like "Compound Cutting Fluid" prematurely truncated despite wide empty space in the middle.

@@ -1,6 +1,6 @@
 import type { BannersDataset, GachaBanner } from '../schemas/banner'
 import type { I18nString, OperatorSummary, ServerRegion } from '../schemas/operator'
-import { getGlobalLagDays, getUpcomingBanners } from './gacha'
+import { getBannerLifecycleStatus, getGlobalLagDays, getUpcomingBanners } from './gacha'
 
 export interface CompactOperatorInfo {
   id: string
@@ -72,15 +72,28 @@ export function buildGachaPageData(
   dataset: BannersDataset,
   server: ServerRegion = 'global',
   operatorsIndex?: readonly OperatorSummary[],
+  nowSec = Math.floor(Date.now() / 1000),
 ): GachaPageData {
   const cnBanners = Array.isArray(dataset.cnBanners) ? dataset.cnBanners : []
   const allBanners =
     Array.isArray(dataset.banners) && dataset.banners.length > 0 ? dataset.banners : cnBanners
+  const enBanners =
+    Array.isArray(dataset.enBanners) && dataset.enBanners.length > 0
+      ? dataset.enBanners
+      : allBanners.filter((b) => b.server === 'en')
 
-  const currentEnBanner = dataset.meta?.currentEnBanner ?? null
-  const enBanner = currentEnBanner
-    ? (allBanners.find((banner) => banner.id === currentEnBanner.id) ?? null)
+  const metaCurrentEn = dataset.meta?.currentEnBanner
+    ? (enBanners.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
     : null
+
+  const activeEn = enBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
+  const enBanner: GachaBanner | null =
+    metaCurrentEn && getBannerLifecycleStatus(metaCurrentEn, nowSec) === 'active'
+      ? metaCurrentEn
+      : (activeEn.find((b) => b.ruleType === 'LIMITED' || b.type === 'limited') ??
+        activeEn.sort((a, b) => (b.openTime ?? 0) - (a.openTime ?? 0))[0] ??
+        metaCurrentEn ??
+        null)
   const compactEnBanner = enBanner ? toCompactBanner(enBanner) : null
 
   let currentBanner: GachaBanner | null = compactEnBanner
@@ -90,8 +103,9 @@ export function buildGachaPageData(
     if (activeCnId) {
       cnBanner = cnBanners.find((b) => b.id === activeCnId) ?? null
     }
-    if (!cnBanner) {
-      cnBanner = cnBanners.find((b) => b.isActive) ?? null
+    if (!cnBanner || getBannerLifecycleStatus(cnBanner, nowSec) !== 'active') {
+      const activeCn = cnBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
+      cnBanner = activeCn[0] ?? cnBanners.find((b) => b.isActive) ?? null
     }
     if (cnBanner) {
       currentBanner = toCompactBanner(cnBanner)

@@ -55,25 +55,20 @@ describe('GachaPage', () => {
     // The hero reuses the list card instead of a bespoke layout
     const card = hero.findComponent(GachaBannerCard)
     expect(card.exists()).toBe(true)
-    expect(card.props('banner').id).toBe('LIMITED_EN_42_0_1')
-    expect(card.find('.gacha-banner__badge-bar').text()).toBe('Sealed With Time')
+    expect(card.props('banner').id).toBe('DOUBLE_EN_42_0_2')
+    expect(card.find('.gacha-banner__badge-bar').text()).toBe(
+      'Rare Operators useful in all kinds of stages',
+    )
 
-    // Same 480px banner art as the list cards, no placeholder frame
-    const art = card.find('img.gacha-banner__art-img')
-    expect(art.exists()).toBe(true)
-    expect(art.attributes('src')).toContain('/banners/LIMITED_EN_42_0_1.webp')
-    expect(art.attributes('width')).toBe('480')
-
-    // 2 rate-up 6★, 3 secondary 6★ and 1 rate-up 5★ for LIMITED_EN_42_0_1
-    expect(card.findAllComponents(AkAvatar)).toHaveLength(6)
-    expect(card.text()).toContain('SECONDARY RATE-UP')
+    // 2 rate-up 6★ and 3 rate-up 5★ for DOUBLE_EN_42_0_2
+    expect(card.findAllComponents(AkAvatar)).toHaveLength(5)
+    expect(card.text()).toContain('6★ OPERATORS')
     expect(card.text()).toContain('5★ OPERATORS')
 
-    // EN dates come from the ISO window, and the limited lifecycle badge is shown
-    expect(card.props('banner').endIso).toBe('2026-10-28T10:59:59.000Z')
-    expect(card.find('.gacha-banner__dates').text()).toContain('Oct 28, 2026')
-    expect(card.props('banner').ruleType).toBe('LIMITED')
-    expect(card.classes()).toContain('gacha-banner--limited')
+    // EN dates come from the ISO window, and the active lifecycle badge is shown
+    expect(card.props('banner').endIso).toBe('2026-11-06T10:59:59.000Z')
+    expect(card.find('.gacha-banner__dates').text()).toContain('Nov 6, 2026')
+    expect(card.props('banner').ruleType).toBe('DOUBLE')
     expect(card.classes()).toContain('gacha-banner--active')
     expect(card.text()).toContain('ACTIVE NOW')
   })
@@ -135,14 +130,13 @@ describe('GachaPage', () => {
     expect(lastDates).toContain('Mar 21')
   })
 
-  it('marks the current CN banner (SINGLE_78_0_1) as active', async () => {
+  it('marks active banner on Global as ACTIVE NOW', async () => {
     const wrapper = await mountSuspended(GachaPage)
-    const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
-    const active = cards.find((card) => card.props('banner').id === 'SINGLE_78_0_1')
+    const heroCard = wrapper.find('.gacha-current-en').findComponent(GachaBannerCard)
 
-    expect(active).toBeDefined()
-    expect(active!.classes()).toContain('gacha-banner--active')
-    expect(active!.text()).toContain('ACTIVE NOW')
+    expect(heroCard.exists()).toBe(true)
+    expect(heroCard.classes()).toContain('gacha-banner--active')
+    expect(heroCard.text()).toContain('ACTIVE NOW')
   })
 
   it('never displays ENDED status badge for banners in upcoming section', async () => {

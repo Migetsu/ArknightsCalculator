@@ -331,7 +331,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
     })
 
     it('verifies active EN banner and Next EN Limited Banner in committed dataset', () => {
-      expect(committedBannersDataset.meta.currentEnBanner?.id).toBe('LIMITED_EN_42_0_1')
+      expect(committedBannersDataset.meta.currentEnBanner?.id).toBe('DOUBLE_EN_42_0_2')
       expect(committedBannersDataset.meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
     })
 
@@ -342,7 +342,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
       expect(cnWithArt.length).toBe(306)
-      expect(cnWithoutArt.length).toBe(148)
+      expect(cnWithoutArt.length).toBe(147)
       expect(enWithArt.length).toBe(148)
       expect(enWithoutArt.length).toBe(260)
 
@@ -516,8 +516,8 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(officialCount).toBe(187)
       expect(wikiCount).toBe(10)
       expect(manualCount).toBe(1)
-      expect(machineCount).toBe(256)
-      expect(officialCount + wikiCount + machineCount + manualCount).toBe(454)
+      expect(machineCount).toBe(255)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(453)
     })
   })
 })
