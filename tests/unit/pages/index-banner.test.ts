@@ -57,4 +57,70 @@ describe('IndexPage nextBannerInfo', () => {
     // STARTS TODAY badge should be visible
     expect(wrapper.text()).toContain('STARTS TODAY')
   })
+
+  it('does NOT count spark from an ended limited banner even if old coins exist in depot', async () => {
+    const { useDepotStore } = await import('~/stores/depot')
+    const depot = useDepotStore()
+    await depot.setItemCount('LMTGS_COIN_7301', 24)
+
+    // Banner ended on Oct 28
+    mockGachaData.value.currentEnFullBanner = {
+      id: 'LIMITED_EN_42_0_1',
+      server: 'en',
+      ruleType: 'LIMITED',
+      type: 'limited',
+      tag: 'LIMITED',
+      name: { en: 'Sealed With Time', zh: 'Sealed With Time' },
+      title: { en: 'Sealed With Time', zh: 'Sealed With Time' },
+      openTime: 1791979200,
+      endTime: 1793185199,
+      openIso: '2026-10-14T12:00:00.000Z',
+      endIso: '2026-10-28T10:59:59.000Z',
+      durationDays: 14,
+      isActive: false,
+      lmtgsid: 'LMTGS_COIN_7301',
+      rateUp6: [],
+      rateUp5: [],
+      secondaryRateUp6: [],
+    }
+
+    const wrapper = await mountSuspended(IndexPage)
+    const stats = wrapper.findAll('.dashboard-page__stat-val')
+    // SPARK stat value should be 0 / 300, NOT 24 / 300
+    const sparkStat = stats.find((s) => s.text().includes('/ 300'))
+    expect(sparkStat?.text()).toBe('0 / 300')
+  })
+
+  it('correctly counts spark when limited banner is active', async () => {
+    const { useDepotStore } = await import('~/stores/depot')
+    const depot = useDepotStore()
+    await depot.setItemCount('LMTGS_COIN_7601', 45)
+
+    const futureEnd = new Date(Date.now() + 5 * 86400000).toISOString()
+    const pastStart = new Date(Date.now() - 5 * 86400000).toISOString()
+    mockGachaData.value.currentEnFullBanner = {
+      id: 'LIMITED_EN_43_0_1',
+      server: 'en',
+      ruleType: 'LIMITED',
+      type: 'limited',
+      tag: 'LIMITED',
+      name: { en: 'Active Limited', zh: 'Active Limited' },
+      title: { en: 'Active Limited', zh: 'Active Limited' },
+      openTime: Math.floor(Date.now() / 1000) - 5 * 86400,
+      endTime: Math.floor(Date.now() / 1000) + 5 * 86400,
+      openIso: pastStart,
+      endIso: futureEnd,
+      durationDays: 10,
+      isActive: true,
+      lmtgsid: 'LMTGS_COIN_7601',
+      rateUp6: [],
+      rateUp5: [],
+      secondaryRateUp6: [],
+    }
+
+    const wrapper = await mountSuspended(IndexPage)
+    const stats = wrapper.findAll('.dashboard-page__stat-val')
+    const sparkStat = stats.find((s) => s.text().includes('/ 300'))
+    expect(sparkStat?.text()).toBe('45 / 300')
+  })
 })

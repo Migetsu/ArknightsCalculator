@@ -13,7 +13,7 @@ describe('useGachaPageData composable', () => {
 
     expect(fetcher).toHaveBeenCalledWith('/api/gacha/banners')
     expect(data.upcomingBanners).toHaveLength(10)
-    expect(data.currentEnFullBanner?.id).toBe('LIMITED_EN_42_0_1')
+    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
   })
 
   it('fetches CN gacha payload with ?server=cn query parameter', async () => {

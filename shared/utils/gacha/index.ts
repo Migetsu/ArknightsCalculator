@@ -284,8 +284,17 @@ export function getBannerLifecycleStatus(
     if (globalStart !== null) {
       const nowMs = nowSec * 1000
       if (nowMs < globalStart) return 'upcoming'
-      if (globalEnd !== null && nowMs <= globalEnd) return 'active'
-      if (globalEnd !== null && nowMs > globalEnd) return 'ended'
+
+      const effectiveEndMs = banner.endTime
+        ? banner.endTime * 1000
+        : banner.endIso
+          ? new Date(banner.endIso).getTime()
+          : globalEnd !== null
+            ? globalEnd + MS_PER_DAY - 1
+            : null
+
+      if (effectiveEndMs !== null && nowMs <= effectiveEndMs) return 'active'
+      if (effectiveEndMs !== null && nowMs > effectiveEndMs) return 'ended'
     }
   }
 

@@ -2,8 +2,8 @@ name: Update Game Data
 
 on:
   schedule:
-    # Run weekly on Monday at 04:00 UTC, one hour after the Penguin Stats job
-    - cron: '0 4 * * 1'
+    # Run daily at 04:00 UTC to sync upstream changes, translations, and banner lifecycle updates
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 permissions:

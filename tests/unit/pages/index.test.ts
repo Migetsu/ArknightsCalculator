@@ -128,13 +128,13 @@ describe('IndexPage', () => {
     expect(pullsCard?.find('.dashboard-page__stat-val').text()).toBe('44')
   })
 
-  it('displays active banner commemorative coins from depotStore in SPARK metric tile', async () => {
+  it('displays 0 in SPARK metric tile when no limited banner is active even if depot has past commemorative coins', async () => {
     const depotStore = useDepotStore()
     depotStore.items['LMTGS_COIN_7301'] = 58
 
     const wrapper = await mountSuspended(IndexPage)
     const statCards = wrapper.findAll('.dashboard-page__stat-card')
     const sparkCard = statCards.find((c) => c.text().includes('SPARK'))
-    expect(sparkCard?.find('.dashboard-page__stat-val').text()).toBe('58 / 300')
+    expect(sparkCard?.find('.dashboard-page__stat-val').text()).toBe('0 / 300')
   })
 })
