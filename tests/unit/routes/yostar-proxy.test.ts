@@ -210,6 +210,36 @@ describe('fetchYostarSyncUser', () => {
     expect(JSON.parse(String(syncDataCall?.init.body))).toEqual({ platform: 1 })
   })
 
+  it('ignores partial override configs that carry no network map', async () => {
+    const deps = createDeps(
+      happyHandlers({
+        '/network_config': () =>
+          jsonResponse({
+            sign: 'signature',
+            content: JSON.stringify({
+              configVer: '1',
+              funcVer: 'V074',
+              configs: {
+                V074: {
+                  override: true,
+                  network: {
+                    gs: 'https://gs.example.test:8443',
+                    u8: 'https://u8.example.test',
+                    hv: 'https://hv.example.test/{0}/version',
+                  },
+                },
+                V076: { override: false },
+              },
+            }),
+          }),
+      }),
+    )
+
+    const { user } = await fetchYostarSyncUser(TEST_EMAIL, TEST_CODE, deps)
+
+    expect(user).toMatchObject({ status: { nickName: 'Doctor' } })
+  })
+
   it('submits the e-mail code and never puts the code in a URL', async () => {
     const calls: FetchCall[] = []
     const deps = createDeps(happyHandlers(), calls)

@@ -1,5 +1,15 @@
 # Project Progress
 
+- **Task 58 — Yostar Login Restored After the 2026-11 Game Update (`fix/yostar-network-config-override`):**
+  - **Reported symptom:** any e-mail code produced `The game server returned data this build cannot read.` (`invalid_payload`) — the account could not be imported at all.
+  - **Root cause:** the live `network_config` payload now lists two configs: `V074` (with the `network` map) and `V076` (`{"override": false}`, no `network`). `NetworkConfigSchema` required `network` on **every** entry of `configs`, so parsing failed before the `u8`/`account/login` steps. The code, the account and the credentials were never the problem.
+  - **Fix (`server/utils/yostar.ts`):** `configs` is now `z.record(z.string(), z.unknown())`; only `configs[funcVer]` is validated with the new `NetworkEntrySchema`. Unknown/partial override entries are ignored instead of failing the whole login.
+  - **Tests & Quality Gates:**
+    - New regression test in `tests/unit/routes/yostar-proxy.test.ts` ("ignores partial override configs that carry no network map"); confirmed it fails against the previous schema and passes with the fix. 21/21 tests in the file pass.
+    - `eslint`, `prettier --check`, `typecheck` clean.
+    - **Live verification 2026-11-12:** real `/api/yostar/login` against the owner's account returned `ok: true` — 134 operators, 97 depot items, doctor level 76, LMD 2 873 167, Orundum 94 665, Originite Prime 79, `unknownOperators: 0`, `unknownItems: 0`, `skippedEntries: 0`. Session token minted (not logged).
+  - **Docs:** `docs/yostar-sync.md` §2 documents the partial-override shape and the validation rule.
+
 - **Task 57 — Dynamic Banner Lifecycle, Gacha Active Pool Resolution & Spark Sync (`fix/banner-lifecycle-and-spark-sync`):**
   - **Diagnosed Issues Reported by User:**
     - On Home Dashboard (`index.vue`), `SPARK` displayed `24 / 300` despite the limited banner (_Sealed With Time_ — Kal'tsit Esperanta & Closure) having ended on Oct 28.
