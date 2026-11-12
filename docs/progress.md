@@ -1,5 +1,15 @@
 # Project Progress
 
+- **Task 61 — Farming Recommendations Are Now Executable (`fix/farming-craft-up-lp`):**
+  - **Reported:** are the `/farming` recommended stages really optimal for the needed quantity?
+  - **Audit:** independent recalculation against `data/penguin/us.json` plus a coverage replay through `resolveDemand`. Tier 2–4 picks were optimal, but plans under-covered raw Tier-1 demand (100 Orirock covered 3%, Blue Poison short 81 units, Amiya 47, Kal'tsit 216).
+  - **Root cause:** the optimizer unrolled demand to Tier-1 and credited higher-tier drops as lower-tier equivalents — the reverse of Workshop crafting. Nothing can be crafted downward, so those plans could not be executed.
+  - **Fix (`shared/utils/farming/optimize.ts`):** LP variables are now stage runs **and craft executions**, with one balance row per item (`docs/farming.md` §2). Crafting substitutes only upward; raw Tier-1 demand is farmed directly, higher-tier demand is crafted from the cheapest base stage. Integer rounding keeps the greedy residual cover and redundancy pruning, but verifies coverage with a top-down crafting pass.
+  - **Store (`app/stores/farming.ts`):** the deficit handed to the optimizer is the planner's item-level demand (minus depot), not the unrolled Tier-1 deficit.
+  - **Tests:** `optimize.test.ts` reworked for the new model (raw T1 farms directly, T3 demand crafts upward, Ka'tsit CN/US totals, CE-6/LS-6), plus a new end-to-end coverage test on Blue Poison that requires `resolveDemand` to report no missing materials. `tests/unit/stores/farming.test.ts` now asserts the crafting toggle via a higher-tier demand.
+  - **Result:** Blue Poison 777 → 1 370 AP with full coverage, Amiya 2 664 → 2 974 AP, Kal'tsit 18 795 → 19 550 AP; remaining `uncoveredItems` are only items Penguin does not drop (chip packs, chip catalyst, module/data-supplement tokens).
+  - **Docs:** `docs/farming.md` §1–§2 rewritten; `docs/farming-audit.md` §5 records the audit and the fix.
+
 - **Task 60 — Scheduled Data Refresh Survives a Gemini Outage (`fix/translation-outage-skip`):**
   - **Symptom:** `Update Game Data` failed every day since 2026-11-07 with `[FAIL] Gemini request failed with HTTP 503: This model is currently experiencing high demand` after 8 retries, aborting the whole pipeline before the PR — so upstream data changes were never published.
   - **Root cause:** the translation step was the only non-optional part of the chain; any exhausted retry on a retryable upstream status propagated to a non-zero exit and killed the job.

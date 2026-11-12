@@ -9,6 +9,7 @@ import type { OperatorDetail } from '../../../../shared/schemas/operator'
 import type { GameConstants } from '../../../../shared/schemas/gameConstants'
 import type { CraftRecipe } from '../../../../shared/schemas/recipe'
 import kaltsitRaw from '../../../../data/operators/char_003_kalts.json'
+import bluePoisonRaw from '../../../../data/operators/char_129_bluep.json'
 import constantsRaw from '../../../../data/constants.json'
 import recipesRaw from '../../../../data/recipes.json'
 import cnMatrixRaw from '../../../../data/penguin/cn.json'
@@ -153,17 +154,20 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
   })
 
   it('calculates natural regeneration days and Originite Prime cost accurately', () => {
-    const deficit = { '30012': 120 } // 120 / 1.2 = 100 runs * 6 AP = 600 sanity
+    // 120 Orirock Cubes: 1-7 drops 1.2 cubes and 0.4 raw Orirock per run, so the
+    // optimizer can craft the last few cubes from the raw byproduct:
+    // 90 runs * 6 AP = 540 sanity.
+    const deficit = { '30012': 120 }
     const res = optimizeFarming(deficit, dummyMatrix, {
       maxSanity: 135,
       regenMinutes: 6,
     })
 
-    expect(res.totalSanity).toBe(600)
-    // 600 / 240 sanity per day = 2.5 days
-    expect(res.naturalRegenDays).toBe(2.5)
-    // ceil(600 / 135) = 5 OP
-    expect(res.originitePrimeCost).toBe(5)
+    expect(res.totalSanity).toBe(540)
+    // 540 / 240 sanity per day = 2.25 days
+    expect(res.naturalRegenDays).toBe(2.3)
+    // ceil(540 / 135) = 4 OP
+    expect(res.originitePrimeCost).toBe(4)
   })
 
   it('satisfies monotonicity property: higher inventory -> lower deficit -> non-increasing sanity', () => {
@@ -234,7 +238,7 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     expect(res.stages[0]?.sanity).toBe(210) // 10 * 21 AP
   })
 
-  it('substitutes higher-tier drops via crafting recipes (1-7 Orirock Cube beats S2-5 Orirock, CA-5 beats CA-2)', () => {
+  it('farms base materials directly and crafts higher-tier demand upward', () => {
     const rockAndSummaryMatrix: Record<string, PenguinStageMatrix> = {
       'sub_02-05': {
         stageId: 'sub_02-05',
@@ -265,27 +269,28 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       },
     }
 
-    // Need 300 Orirock T1 ('30011') and 225 Skill Summary 1 ('3301')
-    // With allowCrafting = true:
-    // - 1-7 yields 1.25 * 3 = 3.75 Orirock eq per 6 AP -> 300 / 3.75 = 80 runs = 480 AP (vs S2-5: 80 * 12 = 960 AP)
-    // - CA-5 yields 22.5 Summary-1 eq per 30 AP -> 225 / 22.5 = 10 runs = 300 AP (vs CA-2: 45 * 15 = 675 AP)
-    const withCrafting = optimizeFarming({ '30011': 300, '3301': 225 }, rockAndSummaryMatrix, {
+    // Raw T1 demand ('30011' Orirock, '3301' Skill Summary 1) can only be met by
+    // stages that drop those items: a Cube or a Summary-2/3 cannot be crafted down.
+    const rawT1 = optimizeFarming({ '30011': 300, '3301': 225 }, rockAndSummaryMatrix, {
       allowCrafting: true,
     })
+    expect(rawT1.stages.map((s) => s.code).sort()).toEqual(['CA-2', 'S2-5'])
+    expect(rawT1.totalSanity).toBe(960 + 675) // 1635 AP
 
-    expect(withCrafting.stages.map((s) => s.code).sort()).toEqual(['1-7', 'CA-5'])
-    expect(withCrafting.totalSanity).toBe(480 + 300) // 780 AP
-    const stage17 = withCrafting.stages.find((s) => s.code === '1-7')
-    expect(stage17?.runs).toBe(80)
-    expect(stage17?.contributions[0]?.itemId).toBe('30012')
-    expect(stage17?.contributions[0]?.dropRate).toBe(1.25)
+    // A T3 demand ('30013' Orirock Cluster) has no direct stage in this fixture,
+    // so the optimizer crafts it upward from the cheap 1-7 cubes.
+    const cluster = optimizeFarming({ '30013': 5 }, rockAndSummaryMatrix, {
+      allowCrafting: true,
+    })
+    expect(cluster.uncoveredItems).toHaveLength(0)
+    expect(cluster.stages.map((s) => s.code)).toEqual(['1-7'])
+    expect(cluster.totalSanity).toBe(120)
 
-    // With allowCrafting = false: falls back to direct itemId matching (S2-5 and CA-2)
-    const withoutCrafting = optimizeFarming({ '30011': 300, '3301': 225 }, rockAndSummaryMatrix, {
+    // Without crafting the same T3 demand is not coverable at all.
+    const clusterNoCrafting = optimizeFarming({ '30013': 5 }, rockAndSummaryMatrix, {
       allowCrafting: false,
     })
-    expect(withoutCrafting.stages.map((s) => s.code).sort()).toEqual(['CA-2', 'S2-5'])
-    expect(withoutCrafting.totalSanity).toBe(960 + 675) // 1635 AP
+    expect(clusterNoCrafting.uncoveredItems.map((u) => u.itemId)).toEqual(['30013'])
   })
 
   it("optimizes Kal'tsit full deficit with lower sanity than non-crafting greedy and preserves monotonicity on CN and US", () => {
@@ -302,70 +307,80 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       gameConstants,
     )
 
+    const demand: Record<string, number> = {}
+    for (const item of cost.items) demand[item.id] = (demand[item.id] ?? 0) + item.count
+
+    // The optimizer consumes the item-level demand so it can craft materials
+    // upward exactly like the game; resolveDemand still reports the unrolled base
+    // materials used by the planner's own crafting breakdown.
     const emptyDepotRes = resolveDemand(cost.items, {}, { recipes: gameRecipes, useStock: true })
-    const partialDepotRes = resolveDemand(
-      cost.items,
-      { '30012': 100, '3303': 30, '30043': 20 },
-      { recipes: gameRecipes, useStock: true },
-    )
 
     // Verify 1d numbers: 0 direct 30011 before resolveDemand, 1191 after resolveDemand
     expect(cost.items.find((i) => i.id === '30011')).toBeUndefined()
     expect(emptyDepotRes.rawDeficit['30011']).toBe(1191)
     expect(emptyDepotRes.rawDeficit['3301']).toBe(1099)
 
+    const netDemand = (stock: Record<string, number>): Record<string, number> => {
+      const missing: Record<string, number> = {}
+      for (const item of cost.items) {
+        const count = Math.max(0, item.count - (stock[item.id] ?? 0))
+        if (count > 0) missing[item.id] = (missing[item.id] ?? 0) + count
+      }
+      return missing
+    }
+
     // CN comparison: allowCrafting = true (Simplex + crafting) vs allowCrafting = false
-    const cnNew = optimizeFarming(emptyDepotRes.rawDeficit, cnSnapshot, {
+    const cnNew = optimizeFarming(demand, cnSnapshot, {
       server: 'cn',
       stagesMap: realStagesMap,
       allowCrafting: true,
     })
-    const cnOldNoCrafting = optimizeFarming(emptyDepotRes.rawDeficit, cnSnapshot, {
+    const cnOldNoCrafting = optimizeFarming(demand, cnSnapshot, {
       server: 'cn',
       stagesMap: realStagesMap,
       allowCrafting: false,
     })
 
     expect(cnNew.totalSanity).toBeLessThan(cnOldNoCrafting.totalSanity)
-    expect(cnNew.totalSanity).toBeLessThan(20000) // ~17,373 AP vs 33,969 AP old
+    expect(cnNew.totalSanity).toBeLessThan(20000)
     expect(cnNew.stages.map((s) => s.code)).toContain('1-7')
     expect(cnNew.stages.map((s) => s.code)).toContain('CA-5')
-    expect(cnNew.stages.map((s) => s.code)).not.toContain('S2-5')
-    expect(cnNew.stages.map((s) => s.code)).not.toContain('CA-2')
 
-    // Uncovered items: Chip Catalyst (32001), Module Data Block (mod_unlock_token), and Data Supplement items
+    // Uncovered items: Chip Catalyst (3263), Module Data Block (mod_unlock_token),
+    // and the Data Supplement module tokens.
     expect(cnNew.uncoveredItems.map((u) => u.itemId).sort()).toEqual([
-      '32001',
+      '3263',
       'mod_unlock_token',
       'mod_update_token_1',
       'mod_update_token_2',
     ])
 
     // US comparison: allowCrafting = true vs allowCrafting = false, and no CN-only stages
-    const usNew = optimizeFarming(emptyDepotRes.rawDeficit, usSnapshot, {
+    const usNew = optimizeFarming(demand, usSnapshot, {
       server: 'global',
       stagesMap: realStagesMap,
       allowCrafting: true,
     })
-    const usOldNoCrafting = optimizeFarming(emptyDepotRes.rawDeficit, usSnapshot, {
+    const usOldNoCrafting = optimizeFarming(demand, usSnapshot, {
       server: 'global',
       stagesMap: realStagesMap,
       allowCrafting: false,
     })
 
     expect(usNew.totalSanity).toBeLessThan(usOldNoCrafting.totalSanity)
-    expect(usNew.totalSanity).toBeLessThan(22000) // ~18,864 AP vs 116,222 AP old
+    expect(usNew.totalSanity).toBeLessThan(22000)
     expect(usNew.stages.map((s) => s.code)).toContain('1-7')
     expect(usNew.stages.map((s) => s.code)).not.toContain('17-10')
     expect(usNew.stages.map((s) => s.code)).not.toContain('GA-4')
 
     // Monotonicity: more items in depot -> strictly non-increasing sanity on both CN and US
-    const cnPartial = optimizeFarming(partialDepotRes.rawDeficit, cnSnapshot, {
+    const partialStock = { '30012': 100, '3303': 30, '30043': 20 }
+    const cnPartial = optimizeFarming(netDemand(partialStock), cnSnapshot, {
       server: 'cn',
       stagesMap: realStagesMap,
       allowCrafting: true,
     })
-    const usPartial = optimizeFarming(partialDepotRes.rawDeficit, usSnapshot, {
+    const usPartial = optimizeFarming(netDemand(partialStock), usSnapshot, {
       server: 'global',
       stagesMap: realStagesMap,
       allowCrafting: true,
@@ -403,6 +418,47 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     expect(expRes.stages[0]?.contributions.map((c) => c.itemId)).toEqual(['2004', '2003'])
   })
 
+  it('covers the real farmable demand of a planner target end to end', () => {
+    const bluePoison = bluePoisonRaw as unknown as OperatorDetail
+    const cost = calculateCost(
+      bluePoison,
+      { elite: 0, level: 1, skillLevel: 1, skills: {}, modules: {} },
+      { elite: 1, level: 70, skillLevel: 7, skills: {}, modules: {} },
+      gameConstants,
+    )
+    const demand: Record<string, number> = {}
+    for (const item of cost.items) demand[item.id] = (demand[item.id] ?? 0) + item.count
+
+    const plan = optimizeFarming(demand, usSnapshot, {
+      server: 'global',
+      stagesMap: realStagesMap,
+      allowCrafting: true,
+    })
+
+    const stages = usSnapshot.stages as Record<string, PenguinStageMatrix>
+    const drops: Record<string, number> = {}
+    for (const stagePlan of plan.stages) {
+      const stage = stages[stagePlan.stageId]
+      if (!stage) continue
+      for (const drop of stage.drops) {
+        if (drop.dropRate > 0) {
+          drops[drop.itemId] = (drops[drop.itemId] ?? 0) + drop.dropRate * stagePlan.runs
+        }
+      }
+    }
+    const stock: Record<string, number> = {}
+    for (const [itemId, quantity] of Object.entries(drops)) {
+      const whole = Math.floor(quantity)
+      if (whole > 0) stock[itemId] = whole
+    }
+
+    const missing = resolveDemand(cost.items, stock, {
+      recipes: gameRecipes,
+      useStock: true,
+    }).rawDeficit
+    expect(missing).toEqual({})
+  })
+
   it("includes CE-6 and LS-6 for Kal'tsit full plan (materials + LMD + EXP) on both CN and US", () => {
     const cost = calculateCost(
       kaltsitOp,
@@ -419,10 +475,15 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     const workshopRes = resolveDemand(cost.items, {}, { recipes: gameRecipes, useStock: true })
     const expPlan = planExpCards(cost.exp, gameConstants.expItems)
 
+    const materialDemand: Record<string, number> = {}
+    for (const item of cost.items) {
+      materialDemand[item.id] = (materialDemand[item.id] ?? 0) + item.count
+    }
+
     // Total LMD = 1,634,796 + 279,500 = 1,914,296 -> 192 runs of CE-6 (6,912 AP)
     // Total EXP = 1,111,400 -> 112 runs of LS-6 (4,032 AP)
     const fullDeficit: Record<string, number> = {
-      ...workshopRes.rawDeficit,
+      ...materialDemand,
       '4001': cost.lmd + workshopRes.lmdForCrafting,
       ...expPlan.cards,
     }
@@ -449,7 +510,7 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(res.uncoveredItems.map((u) => u.itemId)).not.toContain('2004')
     }
 
-    expect(cnFull.totalSanity).toBe(28215) // 17,271 materials + 6,912 CE-6 + 4,032 LS-6
-    expect(usFull.totalSanity).toBe(29739) // 18,795 materials + 6,912 CE-6 + 4,032 LS-6
+    expect(cnFull.totalSanity).toBe(28605) // materials + CE-6 + LS-6
+    expect(usFull.totalSanity).toBe(30494) // materials + CE-6 + LS-6
   })
 })
