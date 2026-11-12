@@ -330,21 +330,26 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(positionalMatches).toBe(25)
     })
 
-    it('verifies active EN banner and Next EN Limited Banner in committed dataset', () => {
-      expect(committedBannersDataset.meta.currentEnBanner?.id).toBe('DOUBLE_EN_42_0_2')
-      expect(committedBannersDataset.meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
+    it('keeps the committed current EN banner inside the active EN window', () => {
+      const meta = committedBannersDataset.meta
+      const activeIds = (meta.activeEnBanners ?? []).map((banner) => banner.id)
+
+      expect(meta.currentEnBanner).not.toBeNull()
+      expect(meta.currentEnBanner?.server).toBe('en')
+      expect(activeIds).toContain(meta.currentEnBanner?.id)
+      expect(meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
     })
 
-    it('verifies art coverage in committed dataset (306 CN and 148 EN banners with art)', () => {
+    it('verifies art coverage in committed dataset (306 CN and 149 EN banners with art)', () => {
       const cnWithArt = committedBannersDataset.cnBanners.filter((b) => b.hasArt)
       const cnWithoutArt = committedBannersDataset.cnBanners.filter((b) => !b.hasArt)
       const enWithArt = committedBannersDataset.enBanners.filter((b) => b.hasArt)
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
       expect(cnWithArt.length).toBe(306)
-      expect(cnWithoutArt.length).toBe(147)
-      expect(enWithArt.length).toBe(148)
-      expect(enWithoutArt.length).toBe(260)
+      expect(cnWithoutArt.length).toBe(148)
+      expect(enWithArt.length).toBe(149)
+      expect(enWithoutArt.length).toBe(262)
 
       for (const b of cnWithArt) {
         expect(b.artId).toBe(b.id)
@@ -396,9 +401,9 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       )
 
       expect(cnWithRateUp.length).toBe(195)
-      expect(enWithRateUp.length).toBe(399)
+      expect(enWithRateUp.length).toBe(400)
       expect(cnWithGlobalDate.length).toBe(188)
-      expect(cnWithPair.length).toBe(187)
+      expect(cnWithPair.length).toBe(188)
 
       // Verified benchmark banner: Cremation Last Wish (W & Weedy)
       const wBanner = committedBannersDataset.cnBanners.find((b) => b.id === 'LIMITED_9_0_3')
@@ -500,7 +505,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(cn76?.name.isMachineTranslation).toBe(false)
       expect(cn76?.pairedBannerId).toBeNull()
 
-      // 3. Provenance distribution across all 453 CN banners
+      // 3. Provenance distribution across all 454 CN banners
       let officialCount = 0
       let wikiCount = 0
       let machineCount = 0
@@ -516,8 +521,8 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(officialCount).toBe(187)
       expect(wikiCount).toBe(10)
       expect(manualCount).toBe(1)
-      expect(machineCount).toBe(255)
-      expect(officialCount + wikiCount + machineCount + manualCount).toBe(453)
+      expect(machineCount).toBe(256)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(454)
     })
   })
 })

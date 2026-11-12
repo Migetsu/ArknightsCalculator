@@ -6,6 +6,21 @@ import {
 } from '../../../server/utils/gachaBanners'
 import rawBanners from '../../../data/banners.json'
 import rawOperatorsIndex from '../../../data/operators-index.json'
+import type { BannersDataset } from '../../../shared/schemas/banner'
+import { getBannerLifecycleStatus } from '../../../shared/utils/gacha'
+
+/**
+ * The endpoint selects the banner for the current wall-clock time, so the tests
+ * assert that the pick is one of today's active EN banners instead of pinning an
+ * id that changes on every rotation.
+ */
+function activeEnBannerIds(): string[] {
+  const nowSec = Math.floor(Date.now() / 1000)
+  const dataset = rawBanners as unknown as BannersDataset
+  return dataset.enBanners
+    .filter((banner) => getBannerLifecycleStatus(banner, nowSec) === 'active')
+    .map((banner) => banner.id)
+}
 
 describe('server: gachaPageData', () => {
   beforeEach(() => {
@@ -24,8 +39,9 @@ describe('server: gachaPageData', () => {
   it('reads global gacha page data with compact banners and operator dictionary', async () => {
     const data = await readGachaPageData('global')
     expect(data.currentBanner).toBeDefined()
-    expect(data.currentBanner?.id).toBe('DOUBLE_EN_42_0_2')
-    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(data.currentBanner?.server).toBe('en')
+    expect(activeEnBannerIds()).toContain(data.currentBanner?.id)
+    expect(data.currentEnFullBanner?.id).toBe(data.currentBanner?.id)
     expect(data.upcomingBanners).toHaveLength(10)
     expect(data.globalLagDays).toBe(163.375)
 
@@ -46,7 +62,7 @@ describe('server: gachaPageData', () => {
     const data = await readGachaPageData('cn')
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.server).toBe('cn')
-    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(activeEnBannerIds()).toContain(data.currentEnFullBanner?.id)
     expect(data.upcomingBanners).toHaveLength(10)
   })
 

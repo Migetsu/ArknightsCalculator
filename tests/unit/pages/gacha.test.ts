@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { ref } from 'vue'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { setActivePinia, createPinia } from 'pinia'
@@ -13,10 +13,18 @@ import { buildGachaPageData } from '../../../shared/utils/gachaPageData'
 
 const { mockUseGachaPageData } = vi.hoisted(() => ({ mockUseGachaPageData: vi.fn() }))
 
+/**
+ * Fixed instant inside the `SPECIAL_EN_42_0_3` window, the current EN pool in the
+ * committed dataset. The banner card derives its lifecycle badge from `Date.now()`,
+ * so the file runs on a frozen clock instead of today's rotation.
+ */
+const FIXED_NOW = new Date('2026-11-01T12:00:00.000Z')
+
 mockNuxtImport('useGachaPageData', () => mockUseGachaPageData)
 
 describe('GachaPage', () => {
   beforeEach(() => {
+    vi.useFakeTimers({ now: FIXED_NOW, toFake: ['Date'] })
     setActivePinia(createPinia())
     // The page now receives a Nitro projection instead of importing the dataset.
     mockUseGachaPageData.mockReturnValue({
@@ -24,6 +32,10 @@ describe('GachaPage', () => {
       status: ref('success'),
       refresh: vi.fn(),
     })
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
   })
 
   it('renders page header with module code GCH-02 and title', async () => {
@@ -55,20 +67,18 @@ describe('GachaPage', () => {
     // The hero reuses the list card instead of a bespoke layout
     const card = hero.findComponent(GachaBannerCard)
     expect(card.exists()).toBe(true)
-    expect(card.props('banner').id).toBe('DOUBLE_EN_42_0_2')
-    expect(card.find('.gacha-banner__badge-bar').text()).toBe(
-      'Rare Operators useful in all kinds of stages',
-    )
+    expect(card.props('banner').id).toBe('SPECIAL_EN_42_0_3')
+    expect(card.find('.gacha-banner__badge-bar').text()).toBe('Orienteering Headhunting')
 
-    // 2 rate-up 6★ and 3 rate-up 5★ for DOUBLE_EN_42_0_2
-    expect(card.findAllComponents(AkAvatar)).toHaveLength(5)
+    // 6 rate-up 6★ and 6 rate-up 5★ for SPECIAL_EN_42_0_3
+    expect(card.findAllComponents(AkAvatar)).toHaveLength(12)
     expect(card.text()).toContain('6★ OPERATORS')
     expect(card.text()).toContain('5★ OPERATORS')
 
     // EN dates come from the ISO window, and the active lifecycle badge is shown
-    expect(card.props('banner').endIso).toBe('2026-11-06T10:59:59.000Z')
-    expect(card.find('.gacha-banner__dates').text()).toContain('Nov 6, 2026')
-    expect(card.props('banner').ruleType).toBe('DOUBLE')
+    expect(card.props('banner').endIso).toBe('2026-11-11T10:59:59.000Z')
+    expect(card.find('.gacha-banner__dates').text()).toContain('Nov 11, 2026')
+    expect(card.props('banner').ruleType).toBe('SPECIAL')
     expect(card.classes()).toContain('gacha-banner--active')
     expect(card.text()).toContain('ACTIVE NOW')
   })

@@ -9,14 +9,21 @@ import {
 
 const dataset = bannersDataset as unknown as BannersDataset
 
+/**
+ * Fixed instant inside the `SPECIAL_EN_42_0_3` window, the banner the committed
+ * dataset lists as the current EN pool. Selection depends on wall-clock time, so
+ * pinning it keeps the assertions deterministic instead of following the rotation.
+ */
+const ACTIVE_WINDOW_NOW_SEC = Math.floor(Date.parse('2026-11-01T12:00:00.000Z') / 1000)
+
 describe('buildGachaPageData', () => {
   it('keeps the active Global banner with its rate-up roster', () => {
-    const pageData = buildGachaPageData(dataset)
+    const pageData = buildGachaPageData(dataset, 'global', undefined, ACTIVE_WINDOW_NOW_SEC)
 
-    expect(pageData.currentEnBannerId).toBe('DOUBLE_EN_42_0_2')
-    expect(pageData.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(pageData.currentEnBannerId).toBe('SPECIAL_EN_42_0_3')
+    expect(pageData.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
     expect(pageData.currentEnFullBanner?.rateUp6.length).toBeGreaterThan(0)
-    expect(pageData.currentEnFullBanner?.endIso).toBe('2026-11-06T10:59:59.000Z')
+    expect(pageData.currentEnFullBanner?.endIso).toBe('2026-11-11T10:59:59.000Z')
   })
 
   it('returns exactly the upcoming CN window in dataset order', () => {
@@ -39,10 +46,10 @@ describe('buildGachaPageData', () => {
   })
 
   it('supports CN server mode with active CN banner while preserving EN banner in currentEnFullBanner', () => {
-    const pageData = buildGachaPageData(dataset, 'cn')
+    const pageData = buildGachaPageData(dataset, 'cn', undefined, ACTIVE_WINDOW_NOW_SEC)
     expect(pageData.currentBanner).toBeDefined()
     expect(pageData.currentBanner?.server).toBe('cn')
-    expect(pageData.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(pageData.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
     expect(pageData.upcomingBanners).toHaveLength(10)
   })
 

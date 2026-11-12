@@ -1,5 +1,21 @@
 # Project Progress
 
+- **Task 59 — Green CI: Data-Dependent Test Drift (`fix/data-test-drift`):**
+  - **Symptom:** `main` had been red since 2026-10-31 (data sync PRs #135–#137): 13 unit tests across 7 files and the `/gacha` E2E test failed, which also blocked the Yostar fix PR.
+  - **Root causes:**
+    - Gacha tests pinned wall-clock-dependent banner ids (`DOUBLE_EN_42_0_2`), so every rotation broke them; the banner card derives its badge from `Date.now()` as well.
+    - Dataset-integrity pins (art coverage, rate-up coverage, provenance counts, skin counts) were not updated by the data PRs.
+    - `sources.config` test hardcoded the previous upstream commit hash instead of asserting EN/CN consistency.
+    - `/gacha` E2E expected the retired banner title `Sealed With Time` and 11 upcoming cards instead of the 10 CN-window cards the page renders.
+  - **Fix:**
+    - `tests/unit/{shared,composables}/…`: fixed clock (`2026-11-01T12:00:00Z`, inside the committed `SPECIAL_EN_42_0_3` window) passed to `buildGachaPageData`; `tests/unit/pages/gacha.test.ts` freezes only `Date` via fake timers so the projection and the card badge agree.
+    - `tests/unit/server/gacha-page-data.test.ts`: asserts the endpoint picks one of _today's_ active EN banners (via `getBannerLifecycleStatus`) instead of a fixed id.
+    - `tests/unit/data/build-banners.test.ts`: dataset pins updated to the committed data (454 CN banners: 306 art / 148 no-art, 149 EN art, 400 EN rate-up, 188 global dates, 188 paired, provenance 187/10/1/256); the `meta.currentEnBanner` assertion is now an invariant (non-null, EN, present in `activeEnBanners`).
+    - `tests/unit/schemas/skin.test.ts`: free 116, unknown 410, 71 CN-only skins.
+    - `tests/unit/scripts/sources-config.test.ts`: asserts `en.commit === cn.commit` and a full 40-hex revision instead of a literal hash.
+    - `tests/e2e/gacha.spec.ts`: derives the expected hero title from `data/banners.json` (membership in today's active EN set) and expects 10 upcoming cards.
+  - **Verification:** full `vitest run` — 121 files, 1021 tests pass; `eslint`, `prettier --check`, `typecheck` clean.
+
 - **Task 58 — Yostar Login Restored After the 2026-11 Game Update (`fix/yostar-network-config-override`):**
   - **Reported symptom:** any e-mail code produced `The game server returned data this build cannot read.` (`invalid_payload`) — the account could not be imported at all.
   - **Root cause:** the live `network_config` payload now lists two configs: `V074` (with the `network` map) and `V076` (`{"override": false}`, no `network`). `NetworkConfigSchema` required `network` on **every** entry of `configs`, so parsing failed before the `u8`/`account/login` steps. The code, the account and the credentials were never the problem.

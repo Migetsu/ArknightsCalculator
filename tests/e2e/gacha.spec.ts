@@ -1,4 +1,32 @@
+import { readFileSync } from 'node:fs'
 import { test, expect } from './fixtures'
+
+interface BannerWindow {
+  id: string
+  openTime: number
+  endTime: number
+  name: { en: string }
+  title: { en: string }
+}
+
+const bannersDataset = JSON.parse(
+  readFileSync(new URL('../../data/banners.json', import.meta.url), 'utf-8'),
+) as { enBanners: BannerWindow[] }
+
+/**
+ * Titles of the EN banners that are running now. The active pool rotates every
+ * couple of weeks, so the test asserts membership instead of a fixed title.
+ */
+function activeEnBannerTitles(nowSec: number): Set<string> {
+  const titles = new Set<string>()
+  for (const banner of bannersDataset.enBanners) {
+    if (nowSec >= banner.openTime && nowSec <= banner.endTime) {
+      titles.add(banner.title.en)
+      titles.add(banner.name.en)
+    }
+  }
+  return titles
+}
 
 test.describe('Gacha Page (GCH-02)', () => {
   test('SSR response does not include unneeded descriptions or heavy datasets in payload', async ({
@@ -31,16 +59,19 @@ test.describe('Gacha Page (GCH-02)', () => {
     // Page header
     await expect(page.locator('.ak-page-header__title')).toBeVisible()
 
-    // Active Global banner exists with title and rate-up operators
+    // Active Global banner exists with its title, lifecycle badge and EN dates
     const currentEnCard = page.locator('.gacha-page__current-en .gacha-banner')
     await expect(currentEnCard).toBeVisible()
     await expect(currentEnCard.locator('.gacha-banner__countdown-badge--active')).toBeVisible()
-    await expect(currentEnCard.locator('.gacha-banner__title-text')).toHaveText('Sealed With Time')
-    await expect(currentEnCard.locator('.gacha-banner__content')).toBeVisible()
+    const currentTitle = await currentEnCard.locator('.gacha-banner__title-text').textContent()
+    expect(activeEnBannerTitles(Math.floor(Date.now() / 1000))).toContain(
+      currentTitle?.trim() ?? '',
+    )
+    await expect(currentEnCard.locator('.gacha-banner__dates')).toBeVisible()
 
-    // Upcoming banners exist (11 banners)
+    // Upcoming banners exist (the CN window rendered by the page)
     const upcomingCards = page.locator('.gacha-page__upcoming .gacha-banner')
-    await expect(upcomingCards).toHaveCount(11)
+    await expect(upcomingCards).toHaveCount(10)
 
     // Upcoming banner lifecycle status: no ENDED badge on upcoming banners (33e.1 fix verification)
     const endedBadges = page.locator('.gacha-page__upcoming .gacha-banner__countdown-badge--ended')

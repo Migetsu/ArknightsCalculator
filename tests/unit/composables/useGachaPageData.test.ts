@@ -4,7 +4,18 @@ import bannersDataset from '../../../data/banners.json'
 import type { BannersDataset } from '../../../shared/schemas/banner'
 import { buildGachaPageData } from '../../../shared/utils/gachaPageData'
 
-const projection = buildGachaPageData(bannersDataset as unknown as BannersDataset)
+/**
+ * Fixed instant inside the `SPECIAL_EN_42_0_3` window (the current EN pool in the
+ * committed dataset) so the projection is deterministic across rotations.
+ */
+const ACTIVE_WINDOW_NOW_SEC = Math.floor(Date.parse('2026-11-01T12:00:00.000Z') / 1000)
+
+const projection = buildGachaPageData(
+  bannersDataset as unknown as BannersDataset,
+  'global',
+  undefined,
+  ACTIVE_WINDOW_NOW_SEC,
+)
 
 describe('useGachaPageData composable', () => {
   it('fetches the compact gacha payload from the data endpoint', async () => {
@@ -13,7 +24,7 @@ describe('useGachaPageData composable', () => {
 
     expect(fetcher).toHaveBeenCalledWith('/api/gacha/banners')
     expect(data.upcomingBanners).toHaveLength(10)
-    expect(data.currentEnFullBanner?.id).toBe('DOUBLE_EN_42_0_2')
+    expect(data.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
   })
 
   it('fetches CN gacha payload with ?server=cn query parameter', async () => {
