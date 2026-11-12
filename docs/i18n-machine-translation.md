@@ -47,6 +47,16 @@ translation backend can be replaced without touching the data model.
                 data/i18n/machine/{operators,skills,talents,modules,skins,banners}.json
 ```
 
+### A Gemini outage does not fail the scheduled data refresh (2026-11-12)
+
+`update-data.yml` runs `data:translate:all` inside the daily refresh. If Gemini is
+still unavailable after every retry (HTTP 429/5xx, timeout or network failure), the
+`--run` step prints `[SKIP] …` and exits `0` instead of failing the job: the datasets
+are rebuilt with `[Pending Translation]` markers and the next run resumes the backlog
+(`--resume`). Configuration and payload errors — a bad key, a blocked prompt, invalid
+JSON — still exit `1`, so a real misconfiguration is never silently skipped. `--check`
+always fails on an outage because probing connectivity is its whole purpose.
+
 ## The translation loop
 
 `scripts/data/lib/mt-run.ts` holds the loop, free of IO so a fake client can drive
