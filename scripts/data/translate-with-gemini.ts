@@ -145,6 +145,15 @@ function resolveModel(): string {
   return (process.env.GEMINI_MODEL ?? '').trim() || DEFAULT_GEMINI_MODEL
 }
 
+/**
+ * A transient Gemini outage (429/5xx or a network timeout after every retry) must
+ * not fail the scheduled data refresh: the datasets are still rebuilt, the new
+ * strings stay `[Pending Translation]`, and the next run resumes them.
+ */
+export function isTransientGeminiFailure(error: unknown): boolean {
+  return error instanceof GeminiApiError && error.retryable
+}
+
 async function runCheck(): Promise<void> {
   const client = createGeminiClient({ apiKey: requireApiKey(), model: resolveModel() })
 
@@ -357,6 +366,13 @@ async function main(): Promise<void> {
         : error instanceof Error
           ? error.message
           : String(error)
+    if (options.mode === '--run' && isTransientGeminiFailure(error)) {
+      console.warn(`[SKIP] Machine translation skipped: ${message}`)
+      console.warn(
+        '       The data refresh continues; pending strings stay untranslated and the next run resumes them.',
+      )
+      return
+    }
     console.error(`[FAIL] ${message}`)
     process.exit(1)
   }

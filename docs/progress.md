@@ -1,5 +1,12 @@
 # Project Progress
 
+- **Task 60 — Scheduled Data Refresh Survives a Gemini Outage (`fix/translation-outage-skip`):**
+  - **Symptom:** `Update Game Data` failed every day since 2026-11-07 with `[FAIL] Gemini request failed with HTTP 503: This model is currently experiencing high demand` after 8 retries, aborting the whole pipeline before the PR — so upstream data changes were never published.
+  - **Root cause:** the translation step was the only non-optional part of the chain; any exhausted retry on a retryable upstream status propagated to a non-zero exit and killed the job.
+  - **Fix (`scripts/data/translate-with-gemini.ts`):** new `isTransientGeminiFailure()` predicate (only `GeminiApiError.retryable`, i.e. 429/5xx/timeouts/network). In `--run` mode such a failure now prints `[SKIP] …` and exits `0`; configuration and payload errors (403, blocked prompt, schema) still exit `1`. `--check` keeps failing on an outage by design. `translate-missing --import` already treats an empty output directory as a no-op, so the pipeline continues to the rebuild, validation and PR steps.
+  - **Tests:** `tests/unit/scripts/translate-with-gemini.test.ts` covers the transient vs fatal classification.
+  - **Docs:** `docs/i18n-machine-translation.md` documents the skip contract.
+
 - **Task 59 — Green CI: Data-Dependent Test Drift (`fix/data-test-drift`):**
   - **Symptom:** `main` had been red since 2026-10-31 (data sync PRs #135–#137): 13 unit tests across 7 files and the `/gacha` E2E test failed, which also blocked the Yostar fix PR.
   - **Root causes:**
