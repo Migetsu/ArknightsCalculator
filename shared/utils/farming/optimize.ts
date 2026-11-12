@@ -162,64 +162,6 @@ function isMatrixSnapshot(
 }
 
 /**
- * Builds a base-material equivalence map from Workshop synthesis recipes.
- * For example:
- * - 30012 (Orirock Cube) -> { '30011': 3 }
- * - 30013 (Orirock Cluster) -> { '30011': 15 }
- * - 3302 (Skill Summary - 2) -> { '3301': 3 }
- * - 3303 (Skill Summary - 3) -> { '3301': 9 }
- * - 2001..2004 (Battle Records) -> { '2001': 1 | 2 | 5 | 10 }
- */
-export function buildBaseEquivalenceMap(
-  recipes: readonly CraftRecipe[] = defaultRecipes,
-): (itemId: string) => Record<string, number> {
-  const recipeByResult = new Map<string, CraftRecipe>()
-  for (const r of recipes) {
-    // Only use hierarchical Workshop synthesis recipes (exclude chip conversions, dualchip manufacture, and furniture dismantling)
-    if (r.kind !== 'synthesis') continue
-    if (r.resultId === '3401') continue
-    if (r.resultId.startsWith('311') || r.resultId.startsWith('313')) continue
-    if (r.ingredients.length > 0 && !recipeByResult.has(r.resultId)) {
-      recipeByResult.set(r.resultId, r)
-    }
-  }
-
-  const memo = new Map<string, Record<string, number>>()
-  for (const [cardId, factor] of Object.entries(EXP_CARD_EQUIV_TO_2001)) {
-    memo.set(cardId, { [EXP_CARD_BASE_ID]: factor })
-  }
-
-  function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
-    const cached = memo.get(itemId)
-    if (cached) return cached
-
-    const recipe = recipeByResult.get(itemId)
-    if (!recipe || visited.has(itemId)) {
-      const selfEq = { [itemId]: 1 }
-      memo.set(itemId, selfEq)
-      return selfEq
-    }
-
-    const nextVisited = new Set(visited)
-    nextVisited.add(itemId)
-
-    const resultCount = recipe.resultCount > 0 ? recipe.resultCount : 1
-    const eq: Record<string, number> = {}
-    for (const ing of recipe.ingredients) {
-      const sub = getEquiv(ing.id, nextVisited)
-      for (const [baseId, qty] of Object.entries(sub)) {
-        eq[baseId] = (eq[baseId] ?? 0) + (ing.count / resultCount) * qty
-      }
-    }
-
-    memo.set(itemId, eq)
-    return eq
-  }
-
-  return (itemId: string) => getEquiv(itemId)
-}
-
-/**
  * Checks whether a candidate stage exists on the server and is currently open.
  */
 export function isStageCurrentlyOpen(stage: PenguinStageMatrix, now: number): boolean {
@@ -356,13 +298,168 @@ function solveContinuousLpDualSimplex(
   return x
 }
 
+/** Workshop synthesis steps used by the crafting model (conversions are excluded). */
+interface CraftStep {
+  resultId: string
+  resultCount: number
+  ingredients: ReadonlyArray<{ id: string; count: number }>
+}
+
+function buildCraftSteps(recipes: readonly CraftRecipe[]): Map<string, CraftStep> {
+  const steps = new Map<string, CraftStep>()
+  for (const recipe of recipes) {
+    if (recipe.kind !== 'synthesis') continue
+    if (recipe.resultId === '3401') continue
+    if (recipe.resultId.startsWith('311') || recipe.resultId.startsWith('313')) continue
+    if (recipe.ingredients.length === 0 || steps.has(recipe.resultId)) continue
+    steps.set(recipe.resultId, {
+      resultId: recipe.resultId,
+      resultCount: recipe.resultCount > 0 ? recipe.resultCount : 1,
+      ingredients: recipe.ingredients,
+    })
+  }
+  return steps
+}
+
 /**
- * Optimizes sanity farming to satisfy item deficit using Linear Programming (Simplex)
- * with Workshop crafting substitution (T1-equivalents) and byproduct deduction.
+ * Normalizes the incoming demand to item ids the optimizer works with. EXP cards
+ * (`2001`–`2004`) are folded into the `2001` EXP unit because the game lets the
+ * player feed any card; every other item maps to itself.
+ */
+function normalizeDemand(rawDemand: Record<string, number>): Record<string, number> {
+  const demand: Record<string, number> = {}
+  for (const [itemId, count] of Object.entries(rawDemand)) {
+    if (!(count > 0)) continue
+    const expFactor = EXP_CARD_EQUIV_TO_2001[itemId]
+    if (expFactor !== undefined) {
+      demand[EXP_CARD_BASE_ID] = (demand[EXP_CARD_BASE_ID] ?? 0) + count * expFactor
+    } else {
+      demand[itemId] = (demand[itemId] ?? 0) + count
+    }
+  }
+  return demand
+}
+
+/** All items that can take part in crafting: the demand plus its ingredient closure. */
+function collectCraftUniverse(
+  demand: Readonly<Record<string, number>>,
+  steps: Map<string, CraftStep>,
+): Set<string> {
+  const universe = new Set<string>()
+  const queue = Object.keys(demand)
+  while (queue.length > 0) {
+    const id = queue.pop()!
+    if (universe.has(id)) continue
+    universe.add(id)
+    const step = steps.get(id)
+    if (step) for (const ingredient of step.ingredients) queue.push(ingredient.id)
+  }
+  return universe
+}
+
+/**
+ * Topological order with products before their ingredients (Kahn's algorithm over
+ * the "recipe -> ingredient" edges). Recipes form a DAG once chip and furniture
+ * conversions are excluded, so one pass can craft every intermediate.
+ */
+function orderForCrafting(universe: ReadonlySet<string>, steps: Map<string, CraftStep>): string[] {
+  const indegree = new Map<string, number>()
+  for (const id of universe) indegree.set(id, 0)
+  for (const id of universe) {
+    const step = steps.get(id)
+    if (!step) continue
+    for (const ingredient of step.ingredients) {
+      if (!universe.has(ingredient.id)) continue
+      indegree.set(ingredient.id, (indegree.get(ingredient.id) ?? 0) + 1)
+    }
+  }
+
+  const order: string[] = []
+  const queue = Array.from(universe)
+    .filter((id) => (indegree.get(id) ?? 0) === 0)
+    .sort()
+  while (queue.length > 0) {
+    const id = queue.shift()!
+    order.push(id)
+    const step = steps.get(id)
+    if (!step) continue
+    for (const ingredient of step.ingredients) {
+      if (!universe.has(ingredient.id)) continue
+      const next = (indegree.get(ingredient.id) ?? 0) - 1
+      indegree.set(ingredient.id, next)
+      if (next === 0) queue.push(ingredient.id)
+    }
+  }
+  return order
+}
+
+interface CraftEvaluation {
+  /** Items the plan cannot provide, with the missing amount (base materials). */
+  missing: Record<string, number>
+  /** Every amount the plan has to provide: the demand plus crafted ingredients. */
+  required: Record<string, number>
+}
+
+/**
+ * Top-down feasibility pass: given expected drops, craft ingredients upward and
+ * report what is still missing. Drops only ever satisfy their own tier — a Sugar
+ * Pack can never become a Sugar Substitute, because the game has no downward
+ * crafting.
+ */
+function evaluateCrafting(
+  demand: Readonly<Record<string, number>>,
+  drops: Readonly<Record<string, number>>,
+  order: readonly string[],
+  steps: Map<string, CraftStep>,
+): CraftEvaluation {
+  const pending = new Map<string, number>()
+  const required: Record<string, number> = {}
+  for (const [id, count] of Object.entries(demand)) {
+    pending.set(id, (pending.get(id) ?? 0) + count)
+    required[id] = (required[id] ?? 0) + count
+  }
+  const available = new Map<string, number>(Object.entries(drops))
+
+  const missing: Record<string, number> = {}
+  for (const id of order) {
+    const need = pending.get(id) ?? 0
+    if (need <= 0) continue
+    const fromDrops = Math.min(need, available.get(id) ?? 0)
+    available.set(id, (available.get(id) ?? 0) - fromDrops)
+    const remaining = need - fromDrops
+    if (remaining <= 1e-9) continue
+
+    const step = steps.get(id)
+    if (!step) {
+      missing[id] = (missing[id] ?? 0) + remaining
+      continue
+    }
+
+    const crafts = Math.ceil(remaining / step.resultCount - 1e-9)
+    for (const ingredient of step.ingredients) {
+      const amount = crafts * ingredient.count
+      pending.set(ingredient.id, (pending.get(ingredient.id) ?? 0) + amount)
+      required[ingredient.id] = (required[ingredient.id] ?? 0) + amount
+    }
+  }
+  return { missing, required }
+}
+
+/**
+ * Optimizes sanity farming to satisfy the item demand.
+ *
+ * The model is a linear program whose variables are stage runs and Workshop
+ * crafts: every stage contributes its expected drops, every craft consumes its
+ * ingredients and produces its result, and the objective minimizes total sanity.
+ * Crafting therefore only ever substitutes material *upward*, which matches the
+ * game. (An earlier model mapped higher-tier drops down to base materials, so it
+ * credited a Sugar Pack as 12 Sugar Substitutes and produced plans that could not
+ * be executed.)
+ *
  * Pure calculation logic (no Vue, no network, deterministic).
  */
 export function optimizeFarming(
-  rawDeficit: Record<string, number>,
+  rawDemand: Record<string, number>,
   matrixSnapshot: PenguinMatrixSnapshot | Record<string, PenguinStageMatrix>,
   options: FarmingOptimizationOptions = {},
 ): FarmingOptimizationResult {
@@ -373,6 +470,7 @@ export function optimizeFarming(
   const availableSet = options.availableStageIds ? new Set(options.availableStageIds) : null
   const allowCrafting = options.allowCrafting ?? true
   const now = options.now ?? Date.now()
+  const recipes = options.recipes ?? defaultRecipes
 
   const rawStageMatrices: Record<string, PenguinStageMatrix> = isMatrixSnapshot(matrixSnapshot)
     ? matrixSnapshot.stages
@@ -395,15 +493,8 @@ export function optimizeFarming(
     }
   }
 
-  // 1. Filter positive deficit items
-  const positiveDeficit: Record<string, number> = {}
-  for (const [itemId, count] of Object.entries(rawDeficit)) {
-    if (count > 0) {
-      positiveDeficit[itemId] = count
-    }
-  }
-
-  if (Object.keys(positiveDeficit).length === 0) {
+  let demand = normalizeDemand(rawDemand)
+  if (Object.keys(demand).length === 0) {
     return {
       stages: [],
       totalRuns: 0,
@@ -414,7 +505,7 @@ export function optimizeFarming(
     }
   }
 
-  // 2. Filter open & server-valid candidate stages
+  // 1. Filter open & server-valid candidate stages
   const candidateStages: PenguinStageMatrix[] = []
   for (const stage of Object.values(stageMatrices)) {
     if (stage.apCost <= 0) continue
@@ -440,155 +531,81 @@ export function optimizeFarming(
   // Deterministic stage ordering
   candidateStages.sort((a, b) => a.stageId.localeCompare(b.stageId))
 
-  // 3. Build recipe lookup for hierarchical synthesis when allowCrafting = true
-  const recipeByResult = new Map<string, CraftRecipe>()
-  if (allowCrafting) {
-    for (const r of options.recipes ?? defaultRecipes) {
-      if (r.kind !== 'synthesis') continue
-      if (r.resultId === '3401') continue
-      if (r.resultId.startsWith('311') || r.resultId.startsWith('313')) continue
-      if (r.ingredients.length > 0 && !recipeByResult.has(r.resultId)) {
-        recipeByResult.set(r.resultId, r)
-      }
-    }
-  }
-
-  const fullEquivFn = allowCrafting
-    ? buildBaseEquivalenceMap(options.recipes ?? defaultRecipes)
-    : (itemId: string) => {
-        const expFactor = EXP_CARD_EQUIV_TO_2001[itemId]
-        return expFactor !== undefined ? { [EXP_CARD_BASE_ID]: expFactor } : { [itemId]: 1 }
-      }
-
-  // Check which items have direct stage drops
-  const directlyDroppedItems = new Set<string>()
-  for (const stage of candidateStages) {
-    for (const drop of stage.drops) {
-      if (drop.dropRate > 0) {
-        directlyDroppedItems.add(drop.itemId)
-      }
-    }
-  }
-
-  // Decide whether a demanded item should be decomposed to its base ingredients:
-  // Decompose if item is an EXP card ('2001'–'2004') OR if allowCrafting is true AND either:
-  // (a) one of its base ingredients is also in positiveDeficit, or
-  // (b) no candidate stage drops the item directly (e.g. T4/T5 crafted items).
-  const baseDeficitMap = new Map<string, number>()
-  const itemToBaseKeys = new Map<string, string[]>()
-
-  for (const [itemId, count] of Object.entries(positiveDeficit)) {
-    const fullEq = fullEquivFn(itemId)
-    const baseKeys = Object.keys(fullEq)
-    const isComposite = baseKeys.length > 1 || baseKeys[0] !== itemId
-    const hasBaseInDeficit =
-      isComposite && baseKeys.some((k) => k !== itemId && positiveDeficit[k] !== undefined)
-    const isExpCard = EXP_CARD_EQUIV_TO_2001[itemId] !== undefined
-    const shouldDecomposeDemand =
-      isExpCard ||
-      (allowCrafting && isComposite && (hasBaseInDeficit || !directlyDroppedItems.has(itemId)))
-
-    const eq = shouldDecomposeDemand ? fullEq : { [itemId]: 1 }
-    const keys: string[] = []
-    for (const [baseId, factor] of Object.entries(eq)) {
-      if (factor > 0) {
-        baseDeficitMap.set(baseId, (baseDeficitMap.get(baseId) ?? 0) + count * factor)
-        keys.push(baseId)
-      }
-    }
-    itemToBaseKeys.set(itemId, keys)
-  }
-
-  // Resolve how any stage drop itemId decomposes into keys present in baseDeficitMap
-  const dropEquivMemo = new Map<string, Record<string, number>>()
-  function getEquiv(itemId: string, visited = new Set<string>()): Record<string, number> {
-    const expFactor = EXP_CARD_EQUIV_TO_2001[itemId]
-    if (expFactor !== undefined && baseDeficitMap.has(EXP_CARD_BASE_ID)) {
-      return { [EXP_CARD_BASE_ID]: expFactor }
-    }
-    if (!allowCrafting) {
-      return { [itemId]: 1 }
-    }
-    const cached = dropEquivMemo.get(itemId)
-    if (cached) return cached
-
-    if (baseDeficitMap.has(itemId)) {
-      const direct = { [itemId]: 1 }
-      dropEquivMemo.set(itemId, direct)
-      return direct
-    }
-
-    const recipe = recipeByResult.get(itemId)
-    if (!recipe || visited.has(itemId)) {
-      const selfEq = { [itemId]: 1 }
-      dropEquivMemo.set(itemId, selfEq)
-      return selfEq
-    }
-
-    const nextVisited = new Set(visited)
-    nextVisited.add(itemId)
-    const resultCount = recipe.resultCount > 0 ? recipe.resultCount : 1
-    const eq: Record<string, number> = {}
-    for (const ing of recipe.ingredients) {
-      const sub = getEquiv(ing.id, nextVisited)
-      for (const [baseId, factor] of Object.entries(sub)) {
-        eq[baseId] = (eq[baseId] ?? 0) + (ing.count / resultCount) * factor
-      }
-    }
-    dropEquivMemo.set(itemId, eq)
-    return eq
-  }
-
-  // 4. Identify coverable vs uncovered base items
-  const allBaseKeys = Array.from(baseDeficitMap.keys()).sort()
-  const coverableBaseKeys: string[] = []
-  const uncoveredBaseKeySet = new Set<string>()
-
   const hasDedicatedLsStage = candidateStages.some(
-    (s) => s.stageId.startsWith('wk_kc_') || s.code.startsWith('LS-'),
+    (stage) => stage.stageId.startsWith('wk_kc_') || stage.code.startsWith('LS-'),
   )
 
-  // Precompute stage -> baseId yield per run
-  const stageBaseYields = candidateStages.map((stage) => {
-    const yields: Record<string, number> = {}
+  /**
+   * Expected yield per run, keyed by the item ids the optimizer reasons about,
+   * plus the raw drops used for the UI contributions.
+   * EXP cards are folded into the `2001` unit; cards from non-LS stages are
+   * ignored while a dedicated EXP stage is available.
+   */
+  const stageYields: Array<{
+    stage: PenguinStageMatrix
+    rates: Record<string, number>
+    drops: Array<{ itemId: string; dropRate: number; expUnits: number }>
+  }> = candidateStages.map((stage) => {
     const isLsStage = stage.stageId.startsWith('wk_kc_') || stage.code.startsWith('LS-')
+    const rates: Record<string, number> = {}
+    const drops: Array<{ itemId: string; dropRate: number; expUnits: number }> = []
     for (const drop of stage.drops) {
       if (drop.dropRate <= 0) continue
-      if (hasDedicatedLsStage && !isLsStage && EXP_CARD_EQUIV_TO_2001[drop.itemId] !== undefined) {
+      const expFactor = EXP_CARD_EQUIV_TO_2001[drop.itemId]
+      if (expFactor !== undefined) {
+        if (hasDedicatedLsStage && !isLsStage) continue
+        rates[EXP_CARD_BASE_ID] = (rates[EXP_CARD_BASE_ID] ?? 0) + drop.dropRate * expFactor
+        drops.push({ itemId: drop.itemId, dropRate: drop.dropRate, expUnits: expFactor })
         continue
       }
-      const eq = getEquiv(drop.itemId)
-      for (const [baseId, factor] of Object.entries(eq)) {
-        if (baseDeficitMap.has(baseId) && factor > 0) {
-          yields[baseId] = (yields[baseId] ?? 0) + drop.dropRate * factor
-        }
-      }
+      rates[drop.itemId] = (rates[drop.itemId] ?? 0) + drop.dropRate
+      drops.push({ itemId: drop.itemId, dropRate: drop.dropRate, expUnits: 1 })
     }
-    return yields
+    return { stage, rates, drops }
   })
 
-  for (const baseId of allBaseKeys) {
-    const hasStage = stageBaseYields.some((y) => (y[baseId] ?? 0) > 0)
-    if (hasStage) {
-      coverableBaseKeys.push(baseId)
-    } else {
-      uncoveredBaseKeySet.add(baseId)
+  // 2. Material crafting model: recipes that build materials upward
+  const steps = allowCrafting ? buildCraftSteps(recipes) : new Map<string, CraftStep>()
+
+  const droppedItems = new Set<string>()
+  for (const { rates } of stageYields) {
+    for (const [itemId, rate] of Object.entries(rates)) {
+      if (rate > 0) droppedItems.add(itemId)
     }
   }
 
-  // Determine uncovered original items
+  const coverableMemo = new Map<string, boolean>()
+  function isCoverable(itemId: string, visiting: Set<string> = new Set()): boolean {
+    const memo = coverableMemo.get(itemId)
+    if (memo !== undefined) return memo
+    if (droppedItems.has(itemId)) {
+      coverableMemo.set(itemId, true)
+      return true
+    }
+    if (visiting.has(itemId)) return false
+    const step = steps.get(itemId)
+    if (!step) {
+      coverableMemo.set(itemId, false)
+      return false
+    }
+    visiting.add(itemId)
+    const result = step.ingredients.every((ingredient) => isCoverable(ingredient.id, visiting))
+    visiting.delete(itemId)
+    coverableMemo.set(itemId, result)
+    return result
+  }
+
   const uncoveredItems: Array<{ itemId: string; remainingQuantity: number }> = []
-  for (const [itemId, count] of Object.entries(positiveDeficit)) {
-    const keys = itemToBaseKeys.get(itemId) ?? [itemId]
-    if (keys.some((k) => uncoveredBaseKeySet.has(k))) {
-      uncoveredItems.push({
-        itemId,
-        remainingQuantity: count,
-      })
+  const coverableDemand: Record<string, number> = {}
+  for (const [itemId, amount] of Object.entries(demand)) {
+    if (!isCoverable(itemId)) {
+      uncoveredItems.push({ itemId, remainingQuantity: amount })
+      continue
     }
+    coverableDemand[itemId] = amount
   }
-
-  if (coverableBaseKeys.length === 0) {
+  demand = coverableDemand
+  if (Object.keys(demand).length === 0) {
     return {
       stages: [],
       totalRuns: 0,
@@ -599,205 +616,181 @@ export function optimizeFarming(
     }
   }
 
-  // Filter candidate stages to those that yield at least one coverable base item
-  const activeStageIndices: number[] = []
-  for (let j = 0; j < candidateStages.length; j++) {
-    const y = stageBaseYields[j]!
-    if (coverableBaseKeys.some((k) => (y[k] ?? 0) > 0)) {
-      activeStageIndices.push(j)
+  const activeUniverse = collectCraftUniverse(demand, steps)
+  const order = orderForCrafting(activeUniverse, steps)
+
+  // 3. Build the linear program: rows = items, columns = stage runs + crafts
+  const rowIds = order.slice().sort()
+  const rowIndex = new Map<string, number>()
+  rowIds.forEach((id, index) => rowIndex.set(id, index))
+  const rhsB = rowIds.map((id) => demand[id] ?? 0)
+
+  const stageColumns: Array<{
+    stage: PenguinStageMatrix
+    rates: Record<string, number>
+    drops: Array<{ itemId: string; dropRate: number; expUnits: number }>
+  }> = []
+  for (const entry of stageYields) {
+    if (rowIds.some((id) => (entry.rates[id] ?? 0) > 0)) stageColumns.push(entry)
+  }
+
+  const craftColumns: CraftStep[] = []
+  if (allowCrafting) {
+    for (const id of rowIds) {
+      const step = steps.get(id)
+      if (!step) continue
+      if (step.ingredients.some((ingredient) => !rowIndex.has(ingredient.id))) continue
+      craftColumns.push(step)
     }
   }
 
-  const m = coverableBaseKeys.length
-  const n = activeStageIndices.length
-  const costs = activeStageIndices.map((j) => candidateStages[j]!.apCost)
-  const rhsB = coverableBaseKeys.map((k) => baseDeficitMap.get(k) ?? 0)
-  const matrixA: number[][] = coverableBaseKeys.map((k) =>
-    activeStageIndices.map((j) => stageBaseYields[j]![k] ?? 0),
-  )
+  const costs = [...stageColumns.map((entry) => entry.stage.apCost), ...craftColumns.map(() => 0)]
+  const matrixA: number[][] = rowIds.map(() => new Array(costs.length).fill(0))
 
-  // 5. Solve continuous LP relaxation via Dual Simplex
-  const xCont = solveContinuousLpDualSimplex(costs, matrixA, rhsB)
-
-  // 6. Convert continuous runs to integer runs:
-  // Start from floor(xCont), then greedily add runs for remaining fractional deficit, then prune any redundant runs.
-  const intRuns = xCont.map((val) => (val > EPS ? Math.floor(val + 1e-9) : 0))
-
-  const remDeficit = rhsB.map((b, i) => {
-    let covered = 0
-    for (let j = 0; j < n; j++) {
-      if (intRuns[j]! > 0) {
-        covered += matrixA[i]![j]! * intRuns[j]!
-      }
+  stageColumns.forEach((entry, col) => {
+    for (const [itemId, rate] of Object.entries(entry.rates)) {
+      const row = rowIndex.get(itemId)
+      if (row === undefined || rate <= 0) continue
+      matrixA[row]![col] = rate
     }
-    return Math.max(0, b - covered)
+  })
+  const craftOffset = stageColumns.length
+  craftColumns.forEach((step, index) => {
+    const col = craftOffset + index
+    const resultRow = rowIndex.get(step.resultId)
+    if (resultRow !== undefined) matrixA[resultRow]![col] = step.resultCount
+    for (const ingredient of step.ingredients) {
+      const row = rowIndex.get(ingredient.id)
+      if (row === undefined) continue
+      matrixA[row]![col] = (matrixA[row]![col] ?? 0) - ingredient.count
+    }
   })
 
-  // Greedy integer residual completion (prioritize LP-selected basis stages first)
-  let guard = 0
-  while (guard++ < 10000) {
-    let maxRem = 0
-    for (let i = 0; i < m; i++) {
-      if (remDeficit[i]! > maxRem) {
-        maxRem = remDeficit[i]!
+  // 4. Solve the continuous relaxation, then round to integer runs
+  const xCont = solveContinuousLpDualSimplex(costs, matrixA, rhsB)
+  const runs = xCont.map((value, index) =>
+    index < craftOffset && value > EPS ? Math.floor(value + 1e-9) : 0,
+  )
+
+  const ratesByColumn = stageColumns.map((entry) => entry.rates)
+
+  function expectedDrops(runsForStages: readonly number[]): Record<string, number> {
+    const drops: Record<string, number> = {}
+    for (let col = 0; col < ratesByColumn.length; col++) {
+      const count = runsForStages[col]!
+      if (count <= 0) continue
+      for (const [itemId, rate] of Object.entries(ratesByColumn[col]!)) {
+        if (rate > 0) drops[itemId] = (drops[itemId] ?? 0) + rate * count
       }
     }
-    if (maxRem <= EPS) break
+    return drops
+  }
+
+  function missingFor(runsForStages: readonly number[]): Record<string, number> {
+    return evaluateCrafting(demand, expectedDrops(runsForStages), order, steps).missing
+  }
+
+  // Greedy integer completion: cover whatever the floored solution still lacks by
+  // adding runs of the cheapest stage that drops the missing item directly.
+  for (let iteration = 0; iteration < 200; iteration++) {
+    const missing = missingFor(runs)
+    const entries = Object.entries(missing).filter(([, count]) => count > 1e-6)
+    if (entries.length === 0) break
+    entries.sort((a, b) => b[1] - a[1])
+    const [itemId, amount] = entries[0]!
 
     let bestCol = -1
-    let bestScore = -1
-
-    for (const basisOnly of [true, false]) {
-      for (let j = 0; j < n; j++) {
-        if (basisOnly && xCont[j]! <= EPS) continue
-        let usefulYield = 0
-        for (let i = 0; i < m; i++) {
-          const rem = remDeficit[i]!
-          if (rem > EPS) {
-            const a = matrixA[i]![j]!
-            if (a > 0) {
-              usefulYield += Math.min(rem, a)
-            }
-          }
-        }
-        if (usefulYield <= 0) continue
-        const score = usefulYield / costs[j]!
-        if (score > bestScore + 1e-11) {
-          bestScore = score
-          bestCol = j
-        }
+    let bestScore = Number.POSITIVE_INFINITY
+    for (let col = 0; col < stageColumns.length; col++) {
+      const rate = ratesByColumn[col]![itemId] ?? 0
+      if (rate <= 0) continue
+      const score = stageColumns[col]!.stage.apCost / rate
+      if (score < bestScore - 1e-12) {
+        bestScore = score
+        bestCol = col
       }
-      if (bestCol !== -1) break
     }
-
-    if (bestCol === -1) break
-
-    intRuns[bestCol] = intRuns[bestCol]! + 1
-    for (let i = 0; i < m; i++) {
-      remDeficit[i] = Math.max(0, remDeficit[i]! - matrixA[i]![bestCol]!)
-    }
+    if (bestCol < 0) break
+    const bestRate = ratesByColumn[bestCol]![itemId]!
+    runs[bestCol] = (runs[bestCol] ?? 0) + Math.max(1, Math.ceil(amount / bestRate))
   }
 
-  // Redundancy pruning (most expensive stage first) to ensure minimal integer plan
-  const activeCols = Array.from({ length: n }, (_, j) => j)
-    .filter((j) => intRuns[j]! > 0)
-    .sort((a, b) => costs[b]! - costs[a]! || a - b)
-
-  const totalCovered = new Array<number>(m).fill(0)
-  for (let i = 0; i < m; i++) {
-    let sum = 0
-    for (const j of activeCols) {
-      sum += matrixA[i]![j]! * intRuns[j]!
-    }
-    totalCovered[i] = sum
-  }
-
-  for (const j of activeCols) {
-    while (intRuns[j]! > 0) {
-      let canDecrement = true
-      for (let i = 0; i < m; i++) {
-        const a = matrixA[i]![j]!
-        if (a > 0 && totalCovered[i]! - a < rhsB[i]! - EPS) {
-          canDecrement = false
-          break
-        }
-      }
-      if (!canDecrement) break
-      intRuns[j] = intRuns[j]! - 1
-      for (let i = 0; i < m; i++) {
-        totalCovered[i] = totalCovered[i]! - matrixA[i]![j]!
+  // 5. Redundancy pruning: drop runs while the demand stays covered
+  const pruneOrder = runs
+    .map((count, col) => ({ col, count }))
+    .filter((entry) => entry.count > 0)
+    .sort(
+      (a, b) =>
+        (stageColumns[b.col]!.stage.apCost ?? 0) - (stageColumns[a.col]!.stage.apCost ?? 0) ||
+        a.col - b.col,
+    )
+  for (const { col } of pruneOrder) {
+    while ((runs[col] ?? 0) > 0) {
+      runs[col] = runs[col]! - 1
+      if (Object.keys(missingFor(runs)).length > 0) {
+        runs[col] = runs[col]! + 1
+        break
       }
     }
   }
 
-  // 7. Build output stage plans and contributions
+  // 6. Build the plan
+  const evaluation = evaluateCrafting(demand, expectedDrops(runs), order, steps)
+  const required = evaluation.required
+
   const stagePlans: FarmingStagePlan[] = []
   let totalRuns = 0
   let totalSanity = 0
 
-  for (let j = 0; j < n; j++) {
-    const runs = intRuns[j]!
-    if (runs <= 0) continue
-
-    const stage = candidateStages[activeStageIndices[j]!]!
-    const sanity = runs * stage.apCost
-    totalRuns += runs
+  for (let col = 0; col < stageColumns.length; col++) {
+    const count = runs[col] ?? 0
+    if (count <= 0) continue
+    const entry = stageColumns[col]!
+    const stage = entry.stage
+    const sanity = count * stage.apCost
+    totalRuns += count
     totalSanity += sanity
 
-    // Identify primary contributing drop and meaningful drop contributions
     const contributingDrops: Array<{
       itemId: string
       dropRate: number
-      baseValuePerRun: number
       targetQty: number
     }> = []
-
-    const isLsStage = stage.stageId.startsWith('wk_kc_') || stage.code.startsWith('LS-')
-    for (const drop of stage.drops) {
+    for (const drop of entry.drops) {
       if (drop.dropRate <= 0) continue
-      if (hasDedicatedLsStage && !isLsStage && EXP_CARD_EQUIV_TO_2001[drop.itemId] !== undefined) {
-        continue
-      }
-      const eq = getEquiv(drop.itemId)
-      let baseValuePerRun = 0
-      let equivTarget = 0
-
-      for (const [baseId, factor] of Object.entries(eq)) {
-        const neededBase = baseDeficitMap.get(baseId) ?? 0
-        if (neededBase > 0 && factor > 0) {
-          baseValuePerRun += drop.dropRate * factor
-          equivTarget += neededBase / factor
-        }
-      }
-
-      if (baseValuePerRun > 0) {
-        const directTarget = positiveDeficit[drop.itemId]
-        contributingDrops.push({
-          itemId: drop.itemId,
-          dropRate: drop.dropRate,
-          baseValuePerRun,
-          targetQty:
-            directTarget !== undefined && directTarget > 0 ? directTarget : Math.ceil(equivTarget),
-        })
-      }
+      const normalizedId = drop.expUnits > 1 ? EXP_CARD_BASE_ID : drop.itemId
+      const needed = (required[normalizedId] ?? 0) > 0 || (rawDemand[drop.itemId] ?? 0) > 0
+      if (!needed) continue
+      contributingDrops.push({
+        itemId: drop.itemId,
+        dropRate: drop.dropRate,
+        targetQty: Math.ceil(rawDemand[drop.itemId] ?? required[normalizedId] ?? 0),
+      })
     }
-
-    contributingDrops.sort(
-      (a, b) => b.baseValuePerRun - a.baseValuePerRun || b.dropRate - a.dropRate,
-    )
+    contributingDrops.sort((a, b) => b.dropRate - a.dropRate)
 
     const primaryItemId = contributingDrops[0]?.itemId
-
-    const contributions: FarmedItemContribution[] = []
-    for (const cd of contributingDrops) {
-      // Include primary drop, direct deficit drops, or drops with >= 15% rate per run
-      const isDirectDeficit = (positiveDeficit[cd.itemId] ?? 0) > 0
-      if (cd.itemId === primaryItemId || cd.dropRate >= 0.15 || isDirectDeficit) {
-        contributions.push({
-          itemId: cd.itemId,
-          expectedQuantity: Math.round(runs * cd.dropRate * 10) / 10,
-          targetQuantity: cd.targetQty,
-          dropRate: cd.dropRate,
-        })
-      }
-    }
+    const contributions: FarmedItemContribution[] = contributingDrops.map((drop) => ({
+      itemId: drop.itemId,
+      expectedQuantity: Math.round(count * drop.dropRate * 10) / 10,
+      targetQuantity: drop.targetQty,
+      dropRate: drop.dropRate,
+    }))
 
     stagePlans.push({
       stageId: stage.stageId,
       code: stage.code,
       apCost: stage.apCost,
-      runs,
+      runs: count,
       sanity,
       contributions,
       primaryItemId,
     })
   }
 
-  // Sort plans: highest sanity cost first, then stageId
   stagePlans.sort((a, b) => b.sanity - a.sanity || a.stageId.localeCompare(b.stageId))
 
-  // 8. Equivalents
-  const naturalRegenPerDay = (24 * 60) / regenMinutes // 240 by default
+  const naturalRegenPerDay = (24 * 60) / regenMinutes
   const naturalRegenDays = Math.round((totalSanity / naturalRegenPerDay) * 10) / 10
   const originitePrimeCost = Math.ceil(totalSanity / maxSanity)
 

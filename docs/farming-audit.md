@@ -550,3 +550,48 @@ For **Kal'tsit** (`char_003_kalts`, E0 L1 $\to$ E2 L90, Skill 1$\to$7, S1–S3 M
 | **Full Plan Total (After)**         | Materials + LMD + EXP                                       | Materials + `CE-6` + `LS-6` | **`1,144` / `1,377`** | **`28,209` AP / `29,727` AP** |
 
 _(Note: With default 0 modules selected in the Planner UI, upgrade LMD is `1,334,796` + `225,900` craft LMD = `1,560,696` LMD $\to$ `157` runs of `CE-6` (`5,652` AP) + `112` runs of `LS-6` (`4,032` AP) + materials (`15,825` AP on CN / `17,250` AP on US) = **`25,509` AP on CN (`1,047` runs)** and **`26,934` AP on US (`1,260` runs)**.)_
+
+---
+
+## 5. Recommendation Audit (2026-11-12): Stage Optimality & Plan Executability
+
+**Question asked:** are the recommended stages really optimal by drop rate for the required quantity?
+
+**Method:** independent recalculation from `data/penguin/us.json` (snapshot 2026-11-09), the app's
+own `optimizeFarming`, and a coverage check that replays the plan's expected drops through
+`resolveDemand` (the same Workshop rules the app uses), so "covered" means "the original item demand
+is satisfiable", not "the T1-equivalent value matches".
+
+**What was correct**
+
+- Stage availability filtering (server, `exist`, open/close windows) and snapshot freshness.
+- For T2–T4 materials the plan cost equals the direct theoretical minimum (Loxic Kohl 1.007×,
+  Grindstone 1.007×, RMA70-12 1.010×, Integrated Device 1.006×).
+- Ranking is by AP per unit, not by the highest raw percentage — and that is the right metric.
+  Examples: Loxic Kohl drops 51.5% on 10-15 but GT-5 is cheaper (33.7 vs 46.6 AP/unit);
+  Grindstone 10-12 (46.5%) vs 9-16 (42.9 AP/unit); Orirock Cube S2-12 (228.6%) vs 1-7 (4.81 vs
+  6.56 AP/unit). Byproduct credit (CA-5 over CA-2) is a legitimate optimization.
+
+**What was broken**
+
+The optimizer unrolled the demand to T1 and then credited _higher-tier_ drops as lower-tier
+equivalents, which is the opposite direction of Workshop crafting. Recommended plans therefore
+looked cheap but could not be executed:
+
+| Scenario                  | Old plan         | Actual shortfall                               |
+| :------------------------ | :--------------- | :--------------------------------------------- |
+| 100 raw Orirock           | 1-7 ×26 (156 AP) | 97 Orirock (3% covered)                        |
+| Blue Poison E1 L70        | 777 AP           | 81 units (34 Summary-1, 22 Ester, 12 Diketon…) |
+| Amiya E2 L80              | 2 664 AP         | 47 units                                       |
+| Kal'tsit E2 + M3 + module | 18 795 AP        | 216 units (incl. ~110 farmable T1)             |
+
+**Fix:** the optimizer now solves an LP over stage runs **and craft executions** with one balance row
+per item (see `docs/farming.md` §2). Crafting only substitutes upward, so raw Tier-1 demand is farmed
+directly and higher-tier demand is crafted from cheap base stages. Rounded plans are verified with the
+same top-down crafting pass, and the page's deficit input switched from the unrolled T1 deficit to the
+planner's item-level demand.
+
+**Result after the fix:** Blue Poison and Fang plans fully cover their farmable demand (0 missing);
+Amiya and Kal'tsit only report the item families that Penguin does not drop (chip packs, chip catalyst,
+module/data-supplement tokens), which stay in `uncoveredItems`. Total sanity rose to a realistic level
+(Blue Poison 777 → 1 370 AP, Amiya 2 664 → 2 974 AP, Kal'tsit 18 795 → 19 550 AP).

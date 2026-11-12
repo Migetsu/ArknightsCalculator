@@ -70,25 +70,17 @@ export const useFarmingStore = defineStore('farming', () => {
     return Date.now() - snapshotTime > thirtyDaysMs
   })
 
-  // Raw deficit from planner (materials + LMD + EXP) or custom override
+  // Item-level deficit from the planner (materials + LMD + EXP) or a custom override.
+  // The optimizer receives the per-item demand and models Workshop crafting itself,
+  // so it can substitute material upward without inventing downward conversions.
   const activeDeficit = computed<Record<string, number>>(() => {
     if (customDeficit.value) return customDeficit.value
     const def: Record<string, number> = {}
-    if (settingsStore.farmingAllowCrafting) {
-      if (plannerStore.resolvedRawDeficit) {
-        for (const item of plannerStore.resolvedRawDeficit) {
-          if (item.count > 0) {
-            def[item.id] = item.count
-          }
-        }
-      }
-    } else {
-      for (const item of plannerStore.aggregatedDemand?.items ?? []) {
-        const have = depotStore.getItemCount(item.id)
-        const missing = Math.max(0, item.count - have)
-        if (missing > 0) {
-          def[item.id] = missing
-        }
+    for (const item of plannerStore.aggregatedDemand?.items ?? []) {
+      const have = depotStore.getItemCount(item.id)
+      const missing = Math.max(0, item.count - have)
+      if (missing > 0) {
+        def[item.id] = missing
       }
     }
 

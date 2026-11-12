@@ -64,17 +64,20 @@ describe('useFarmingStore', () => {
     expect(prefixes).toEqual(['CA', 'LS', 'PR-C', 'PR-D', 'SK'])
   })
 
-  it('toggles allowCrafting to switch between crafting substitution (1-7) and direct drop (S2-5)', async () => {
+  it('toggles allowCrafting: crafting builds higher-tier demand upward from cheap base stages', async () => {
     const settings = useSettingsStore()
     const farming = useFarmingStore()
     await farming.init()
-    farming.setCustomDeficit({ '30011': 90 }) // 90 Orirock T1
+    farming.setCustomDeficit({ '30013': 10 }) // 10 Orirock Clusters (T3)
 
     settings.setFarmingAllowCrafting(true)
-    expect(farming.optimizationResult.stages[0]?.code).toBe('1-7')
+    const withCrafting = farming.optimizationResult
+    expect(withCrafting.stages.map((s) => s.code)).toContain('1-7')
 
     settings.setFarmingAllowCrafting(false)
-    expect(farming.optimizationResult.stages[0]?.code).toBe('S2-5')
+    const withoutCrafting = farming.optimizationResult
+    expect(withoutCrafting.totalSanity).toBeGreaterThan(withCrafting.totalSanity)
+    expect(withoutCrafting.stages.map((s) => s.code)).not.toContain('1-7')
   })
 
   it('includes LMD (4001) and EXP (2001-2004) deficits from planner minus depot stock and recommends CE-6 and LS-6', async () => {
