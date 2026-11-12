@@ -41,6 +41,25 @@ The `as` host from the network config (`https://as.arknights.global`) **does not
 SDK paths: `/yostar/*` and `/user/login` answer `404 page not found` there (verified). The
 working account SDK base is `https://en-sdk-api.yostarplat.com`.
 
+### `network_config` may list partial override entries (verified 2026-11-12)
+
+After the 2026-11 game update the payload contains two configs:
+
+```json
+{
+  "funcVer": "V074",
+  "configs": {
+    "V074": { "override": true, "network": { "gs": "...", "u8": "...", "hv": "..." } },
+    "V076": { "override": false }
+  }
+}
+```
+
+Only `configs[funcVer]` carries a `network` map; `V076` is a partial override without one.
+The parser therefore validates **only the selected entry** — requiring `network` on every
+config failed every login with `invalid_payload` ("data this build cannot read") between the
+update and the 2026-11-12 fix.
+
 Sources (public open-source clients, both implement exactly this chain):
 
 - `thesadru/ArkPRTS` → `arkprts/auth.py` (`YostarAuth`, `generate_yostarplat_headers`,

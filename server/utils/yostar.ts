@@ -292,10 +292,18 @@ const ServerMapSchema = z.object({
   hv: z.string().startsWith('https://'),
 })
 
+/**
+ * The server map lives under `configs[funcVer]`. The payload also lists partial
+ * override entries (for example `V076: { override: false }`) that carry no
+ * `network` map, so only the selected entry is validated; requiring `network`
+ * on every entry broke login after the 2026-11 game update.
+ */
 const NetworkConfigSchema = z.object({
   funcVer: z.string().min(1),
-  configs: z.record(z.string(), z.object({ network: ServerMapSchema })),
+  configs: z.record(z.string(), z.unknown()),
 })
+
+const NetworkEntrySchema = z.object({ network: ServerMapSchema })
 
 async function loadServerMap(deps: YostarRequestDeps): Promise<YostarServerMap> {
   const raw = await requestJson(
@@ -315,9 +323,9 @@ async function loadServerMap(deps: YostarRequestDeps): Promise<YostarServerMap> 
 
   const parsed = NetworkConfigSchema.safeParse(content)
   if (!parsed.success) throw new YostarError('invalid_payload')
-  const current = parsed.data.configs[parsed.data.funcVer]
-  if (!current) throw new YostarError('invalid_payload')
-  return current.network
+  const current = NetworkEntrySchema.safeParse(parsed.data.configs[parsed.data.funcVer])
+  if (!current.success) throw new YostarError('invalid_payload')
+  return current.data.network
 }
 
 const ClientVersionSchema = z.object({
