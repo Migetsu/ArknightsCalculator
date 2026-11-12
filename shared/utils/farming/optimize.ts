@@ -668,8 +668,12 @@ export function optimizeFarming(
 
   // 4. Solve the continuous relaxation, then round to integer runs
   const xCont = solveContinuousLpDualSimplex(costs, matrixA, rhsB)
+  // Round the continuous solution up: flooring can leave a tiny gap that the
+  // greedy fallback would then fill by crafting a whole intermediate chain from
+  // scratch (e.g. 10 Aketon costing 522 AP instead of 288). Redundant runs are
+  // removed by the pruning pass below.
   const runs = xCont.map((value, index) =>
-    index < craftOffset && value > EPS ? Math.floor(value + 1e-9) : 0,
+    index < craftOffset && value > EPS ? Math.ceil(value - 1e-9) : 0,
   )
 
   const ratesByColumn = stageColumns.map((entry) => entry.rates)

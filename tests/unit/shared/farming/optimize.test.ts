@@ -418,6 +418,20 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     expect(expRes.stages[0]?.contributions.map((c) => c.itemId)).toEqual(['2004', '2003'])
   })
 
+  it('rounds small quantities up instead of crafting a whole intermediate chain', () => {
+    // 10 Aketon: 14-20 drops 0.8934 per run at 24 AP, so 12 runs (288 AP) is the
+    // integer optimum. Flooring the LP left a fractional gap that was filled by
+    // crafting from scratch (522 AP before the rounding fix).
+    const plan = optimizeFarming({ '30053': 10 }, usSnapshot, {
+      server: 'global',
+      stagesMap: realStagesMap,
+      allowCrafting: true,
+    })
+    expect(plan.totalSanity).toBe(288)
+    expect(plan.stages.map((s) => s.code)).toEqual(['14-20'])
+    expect(plan.stages[0]?.runs).toBe(12)
+  })
+
   it('covers the real farmable demand of a planner target end to end', () => {
     const bluePoison = bluePoisonRaw as unknown as OperatorDetail
     const cost = calculateCost(
@@ -510,7 +524,7 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(res.uncoveredItems.map((u) => u.itemId)).not.toContain('2004')
     }
 
-    expect(cnFull.totalSanity).toBe(28605) // materials + CE-6 + LS-6
-    expect(usFull.totalSanity).toBe(30494) // materials + CE-6 + LS-6
+    expect(cnFull.totalSanity).toBe(28185) // materials + CE-6 + LS-6
+    expect(usFull.totalSanity).toBe(29982) // materials + CE-6 + LS-6
   })
 })

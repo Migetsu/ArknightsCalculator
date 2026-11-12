@@ -595,3 +595,38 @@ planner's item-level demand.
 Amiya and Kal'tsit only report the item families that Penguin does not drop (chip packs, chip catalyst,
 module/data-supplement tokens), which stay in `uncoveredItems`. Total sanity rose to a realistic level
 (Blue Poison 777 → 1 370 AP, Amiya 2 664 → 2 974 AP, Kal'tsit 18 795 → 19 550 AP).
+
+---
+
+## 6. Per-Item Optimality Verification (2026-11-12, after the v3 model)
+
+**Question:** are the recommended stages individually optimal for each resource, including the
+option to craft a resource from lower tiers?
+
+**Ground truth:** independent Bellman recurrence over the crafting DAG plus the direct drop table
+from the same Penguin snapshot:
+`V(item) = min( apCost / dropRate over stages, Σ V(ingredient) × count / resultCount )`.
+V is a lower bound on the continuous cost per unit, so the app must not exceed it by more than
+integer rounding.
+
+**Result (all 60 materials checked):**
+
+- No material is more than 5% above V; the worst residual is 2.0% (Carbon Pack, Orirock) and comes
+  from rounding a fractional number of runs up.
+- 20 materials are cheaper to craft than to farm directly, with savings of 13%–76%; the app
+  recommends the crafting route for all of them (for example RMA70-24 uses 1-7 + 10-5 + WD-7,
+  Orirock Concentration uses 1-7 only).
+
+| Material                | Direct farm AP | Craft AP | Saving | App AP/unit |
+| :---------------------- | -------------: | -------: | -----: | ----------: |
+| Crystalline Circuit     |          614.3 |    152.4 |    75% |       137.7 |
+| Polymerized Gel         |          373.8 |    113.2 |    70% |       111.5 |
+| Orirock Concentration   |          340.3 |     96.2 |    72% |        93.4 |
+| Grindstone Pentahydrate |          430.3 |    111.0 |    74% |        77.0 |
+| White Horse Kohl        |          337.1 |    118.4 |    65% |       112.4 |
+| Orirock Cluster         |           27.7 |     24.1 |    13% |        23.4 |
+
+**Small-quantity rounding bug found during this check:** flooring the LP solution and then filling
+the fractional gap through crafting was expensive (10 Aketon: 522 AP vs 288 AP of direct runs,
++81%). The rounding now starts from `ceil(x*)` and prunes redundant runs, which brought every
+checked material within 2% of V at sensible quantities.

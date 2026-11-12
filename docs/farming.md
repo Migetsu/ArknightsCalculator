@@ -57,7 +57,9 @@ crafted upward from the cheapest base stage (for example 1-7 Orirock Cubes for O
 
 ### 2.3 Integer rounding
 
-1. Floor the continuous LP solution.
+1. Round the continuous LP solution **up**: flooring can leave a fractional gap that a greedy
+   completion would then fill by crafting a whole intermediate chain from scratch (10 Aketon cost
+   522 AP instead of the 288 AP of 12 direct 14-20 runs).
 2. Greedily cover any remaining shortfall with the cheapest stage that drops the missing item.
 3. Prune redundant runs in descending AP order while a top-down crafting pass still reports full
    coverage.
