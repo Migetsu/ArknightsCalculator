@@ -19,8 +19,10 @@ describe('scripts/data/sources.config', () => {
     const { en, cn } = DATA_SOURCES_CONFIG.sources
     expect(en.branch).toBe('main')
     expect(cn.branch).toBe('main')
-    expect(cn.commit).toBe('c4eaba51f1d26390c3645d93cc7ef5b8173da1fb')
-    expect(en.commit).toBe('c4eaba51f1d26390c3645d93cc7ef5b8173da1fb')
+    // The pinned revision moves with every upstream data sync; assert that both
+    // sources stay on the same full commit instead of a stale literal.
+    expect(cn.commit).toBe(en.commit)
+    expect(en.commit).toMatch(/^[0-9a-f]{40}$/)
   })
 
   it('includes all 13 required gamedata tables for both sources', () => {

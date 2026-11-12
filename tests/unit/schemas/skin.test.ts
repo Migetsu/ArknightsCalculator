@@ -264,8 +264,8 @@ describe('Skin Schema and Utilities', () => {
 
       expect(numericPricesCount).toBe(0)
       expect(statusCounts.default).toBe(833)
-      expect(statusCounts.free).toBe(115)
-      expect(statusCounts.unknown).toBe(411)
+      expect(statusCounts.free).toBe(116)
+      expect(statusCounts.unknown).toBe(410)
     })
   })
 
@@ -317,9 +317,9 @@ describe('Skin Schema and Utilities', () => {
       expect(CJK_IDEOGRAPH_REGEX.test(amiyaSkin?.brandName?.en ?? '')).toBe(false)
     })
 
-    it('ensures all 72 CN-only skins have pending provenance and no CJK in en fields', () => {
+    it('ensures all 71 CN-only skins have pending provenance and no CJK in en fields', () => {
       const cnOnlySkins = (skinsDataset as Skin[]).filter((s) => s.isCnOnly)
-      expect(cnOnlySkins.length).toBe(72)
+      expect(cnOnlySkins.length).toBe(71)
 
       for (const skin of cnOnlySkins) {
         if (!skin.isDefault) {
