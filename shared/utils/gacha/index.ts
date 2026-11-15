@@ -309,15 +309,18 @@ export function getEffectiveGlobalWindow(
   const globalStart = parseBannerDate(banner.globalStartDate)
 
   if (globalStart !== null) {
-    const explicitEnd = banner.endTime
-      ? banner.endTime * 1000
-      : banner.endIso
-        ? new Date(banner.endIso).getTime()
-        : null
-    const globalEnd = parseBannerDate(banner.globalEndDate)
+    // `openTime`/`endTime` of a paired CN banner are CN-local, so the Global end
+    // must come from the confirmed Global dates (or the banner duration), never
+    // from the CN end timestamp.
+    const rawGlobalEnd = banner.globalEndDate ?? ''
+    const globalEnd = parseBannerDate(rawGlobalEnd)
+    const endIsDateOnly = !/[T ]\d/.test(rawGlobalEnd)
     const endMs =
-      explicitEnd ??
-      (globalEnd !== null ? globalEnd + MS_PER_DAY - 1 : globalStart + durationDays * MS_PER_DAY)
+      globalEnd !== null
+        ? endIsDateOnly
+          ? globalEnd + MS_PER_DAY - 1
+          : globalEnd
+        : globalStart + durationDays * MS_PER_DAY
     return { startMs: globalStart, endMs, estimated: false }
   }
 
