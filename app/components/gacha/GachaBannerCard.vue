@@ -20,6 +20,8 @@ interface Props {
   isSelected?: boolean
   globalEstimate?: string | null
   isNext?: boolean
+  /** Estimated Global window, used when the dataset has no confirmed Global dates. */
+  globalWindow?: { startMs: number; endMs: number } | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,6 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
   isSelected: false,
   globalEstimate: null,
   isNext: false,
+  globalWindow: null,
 })
 
 const emit = defineEmits<{
@@ -66,6 +69,14 @@ const bannerTitle = computed(() => {
 })
 
 const lifecycleStatus = computed<'active' | 'upcoming' | 'ended'>(() => {
+  // A CN banner with an estimated Global window can already be live on Global;
+  // the window decides its status instead of the CN dates.
+  if (props.globalWindow) {
+    const now = Date.now()
+    if (now < props.globalWindow.startMs) return 'upcoming'
+    if (now <= props.globalWindow.endMs) return 'active'
+    return 'ended'
+  }
   if (props.globalEstimate || props.isNext) return 'upcoming'
   return getBannerLifecycleStatus(props.banner)
 })
