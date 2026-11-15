@@ -21,9 +21,23 @@ import {
   type I18nLayersContext,
   type I18nLayersTracker,
   createI18nTracker,
+  HAS_CJK_IDEOGRAPH_REGEX,
   loadI18nLayersContext,
   resolveLayeredI18nString,
 } from './i18n-layers'
+
+/**
+ * A CN-only handbook section has a Chinese tag and no English text. Passing that
+ * tag as `officialEn` used to short-circuit the i18n resolver's official layer, so
+ * the Chinese title landed in `en` and `data:validate` rejected the dataset. Only
+ * real Latin text may be treated as the official English layer; everything else
+ * falls through to the `[Pending Translation]` layer.
+ */
+export function toOfficialEnglish(value: string | null | undefined): string | null {
+  const trimmed = (value ?? '').trim()
+  if (!trimmed || HAS_CJK_IDEOGRAPH_REGEX.test(trimmed)) return null
+  return trimmed
+}
 
 const CACHE_DIR = path.resolve(process.cwd(), '.cache/raw')
 const DATA_DIR = path.resolve(process.cwd(), 'data')
@@ -125,14 +139,14 @@ function buildStructuredSection(
     const rawCnVal = cnEntry?.value ?? ''
 
     const canonicalTitle = CANONICAL_TITLES[canonicalKey]
-    const enTitle = enEntry?.tag ?? canonicalTitle?.en ?? canonicalKey
+    const enTitle = toOfficialEnglish(enEntry?.tag ?? canonicalTitle?.en)
     const cnTitle = cnEntry?.tag ?? canonicalTitle?.zh ?? canonicalKey
 
     const resolvedVal = resolveLayeredI18nString(
       {
         key: `handbook.${charId}.${sectionType}.${canonicalKey}`,
         charId,
-        officialEn: rawEnVal,
+        officialEn: toOfficialEnglish(rawEnVal),
         zhText: rawCnVal,
         isGlobal,
       },
