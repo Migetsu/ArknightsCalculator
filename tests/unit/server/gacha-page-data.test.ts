@@ -7,19 +7,33 @@ import {
 import rawBanners from '../../../data/banners.json'
 import rawOperatorsIndex from '../../../data/operators-index.json'
 import type { BannersDataset } from '../../../shared/schemas/banner'
-import { getBannerLifecycleStatus } from '../../../shared/utils/gacha'
+import {
+  getBannerLifecycleStatus,
+  getUpcomingBanners,
+  parseBannerDate,
+} from '../../../shared/utils/gacha'
 
 /**
  * The endpoint selects the banner for the current wall-clock time, so the tests
- * assert that the pick is one of today's active EN banners instead of pinning an
- * id that changes on every rotation.
+ * assert that the pick is one of today's active Global banners instead of pinning
+ * an id that changes on every rotation. A CN banner with confirmed Global dates
+ * is a Global pool too.
  */
 function activeEnBannerIds(): string[] {
   const nowSec = Math.floor(Date.now() / 1000)
   const dataset = rawBanners as unknown as BannersDataset
-  return dataset.enBanners
+  const candidates = [
+    ...dataset.enBanners,
+    ...dataset.cnBanners.filter((banner) => parseBannerDate(banner.globalStartDate) !== null),
+  ]
+  return candidates
     .filter((banner) => getBannerLifecycleStatus(banner, nowSec) === 'active')
     .map((banner) => banner.id)
+}
+
+function expectedUpcomingIds(): string[] {
+  const dataset = rawBanners as unknown as BannersDataset
+  return getUpcomingBanners(dataset.cnBanners, Date.now()).map((banner) => banner.id)
 }
 
 describe('server: gachaPageData', () => {
@@ -39,10 +53,9 @@ describe('server: gachaPageData', () => {
   it('reads global gacha page data with compact banners and operator dictionary', async () => {
     const data = await readGachaPageData('global')
     expect(data.currentBanner).toBeDefined()
-    expect(data.currentBanner?.server).toBe('en')
     expect(activeEnBannerIds()).toContain(data.currentBanner?.id)
     expect(data.currentEnFullBanner?.id).toBe(data.currentBanner?.id)
-    expect(data.upcomingBanners).toHaveLength(10)
+    expect(data.upcomingBanners.map((banner) => banner.id)).toEqual(expectedUpcomingIds())
     expect(data.globalLagDays).toBe(163.375)
 
     // Verify compact: no description in SSR payload
@@ -63,7 +76,7 @@ describe('server: gachaPageData', () => {
     expect(data.currentBanner).toBeDefined()
     expect(data.currentBanner?.server).toBe('cn')
     expect(activeEnBannerIds()).toContain(data.currentEnFullBanner?.id)
-    expect(data.upcomingBanners).toHaveLength(10)
+    expect(data.upcomingBanners.map((banner) => banner.id)).toEqual(expectedUpcomingIds())
   })
 
   it('verifies that serialized payload is well within the 60 KB budget', async () => {

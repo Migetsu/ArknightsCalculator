@@ -6,6 +6,7 @@ import {
   emptyGachaPageData,
   isGachaPageData,
 } from '../../../shared/utils/gachaPageData'
+import { getUpcomingBanners } from '../../../shared/utils/gacha'
 
 const dataset = bannersDataset as unknown as BannersDataset
 
@@ -27,11 +28,13 @@ describe('buildGachaPageData', () => {
   })
 
   it('returns exactly the upcoming CN window in dataset order', () => {
-    const pageData = buildGachaPageData(dataset)
+    const pageData = buildGachaPageData(dataset, 'global', undefined, ACTIVE_WINDOW_NOW_SEC)
+    const expected = getUpcomingBanners(dataset.cnBanners, ACTIVE_WINDOW_NOW_SEC * 1000)
 
-    expect(pageData.upcomingBanners).toHaveLength(10)
-    expect(pageData.upcomingBanners[0]?.id).toBe('LINKAGE_74_0_1')
-    expect(pageData.upcomingBanners[9]?.id).toBe('SINGLE_78_0_1')
+    expect(pageData.upcomingBanners.map((banner) => banner.id)).toEqual(
+      expected.map((banner) => banner.id),
+    )
+    expect(pageData.upcomingBanners.length).toBeGreaterThan(0)
     expect(pageData.globalLagDays).toBe(163.375)
   })
 
@@ -50,7 +53,11 @@ describe('buildGachaPageData', () => {
     expect(pageData.currentBanner).toBeDefined()
     expect(pageData.currentBanner?.server).toBe('cn')
     expect(pageData.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
-    expect(pageData.upcomingBanners).toHaveLength(10)
+    expect(pageData.upcomingBanners.map((banner) => banner.id)).toEqual(
+      getUpcomingBanners(dataset.cnBanners, ACTIVE_WINDOW_NOW_SEC * 1000).map(
+        (banner) => banner.id,
+      ),
+    )
   })
 
   it('is accepted by the runtime guard', () => {
