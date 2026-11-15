@@ -23,7 +23,7 @@ describe('Range Schema and Normalization (shared/schemas/range, shared/utils/ran
     const parsed = RangesDictionarySchema.parse(json)
 
     const keys = Object.keys(parsed)
-    expect(keys.length).toBe(73)
+    expect(keys.length).toBe(75)
 
     for (const [id, range] of Object.entries(parsed)) {
       expect(range.id).toBe(id)
@@ -188,7 +188,7 @@ describe('Range Schema and Normalization (shared/schemas/range, shared/utils/ran
 
       const files = await fs.readdir(operatorsDirPath)
       const opFiles = files.filter((f) => f.endsWith('.json'))
-      expect(opFiles.length).toBe(434)
+      expect(opFiles.length).toBe(440)
 
       let totalCheckedPhaseRefs = 0
       let totalCheckedSkillRefs = 0
@@ -221,9 +221,9 @@ describe('Range Schema and Normalization (shared/schemas/range, shared/utils/ran
         }
       }
 
-      expect(totalCheckedPhaseRefs).toBe(1251)
-      expect(totalCheckedSkillRefs).toBe(2377)
-      expect(totalCheckedPhaseRefs + totalCheckedSkillRefs).toBe(3628)
+      expect(totalCheckedPhaseRefs).toBe(1269)
+      expect(totalCheckedSkillRefs).toBe(2427)
+      expect(totalCheckedPhaseRefs + totalCheckedSkillRefs).toBe(3696)
       expect(missingPhaseRefs).toEqual([])
       expect(missingSkillRefs).toEqual([])
     })
@@ -260,8 +260,8 @@ describe('Range Schema and Normalization (shared/schemas/range, shared/utils/ran
         }
       }
 
-      expect(cnOnlyCount).toBe(17)
-      expect(cnRangeRefs).toBe(167)
+      expect(cnOnlyCount).toBe(23)
+      expect(cnRangeRefs).toBe(235)
     })
   })
 })
