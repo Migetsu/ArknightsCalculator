@@ -113,10 +113,10 @@ confirmed Infected by medical examination.
       expect(fs.existsSync(LEGACY_MONOLITH_FILE)).toBe(false)
     })
 
-    it('contains exactly 432 individual operator files in data/handbook/', () => {
+    it('contains exactly 438 individual operator files in data/handbook/', () => {
       const files = fs.readdirSync(HANDBOOK_DIR).filter((f) => f.endsWith('.json'))
-      expect(files).toHaveLength(432)
-      expect(files.length).toBeGreaterThanOrEqual(415)
+      expect(files).toHaveLength(438)
+      expect(files.length).toBeGreaterThanOrEqual(420)
     })
 
     it('validates every file conforms to OperatorHandbookSchema', () => {

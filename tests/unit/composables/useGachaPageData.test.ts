@@ -23,7 +23,8 @@ describe('useGachaPageData composable', () => {
     const data = await fetchGachaPageData(fetcher)
 
     expect(fetcher).toHaveBeenCalledWith('/api/gacha/banners')
-    expect(data.upcomingBanners).toHaveLength(10)
+    expect(data.upcomingBanners.length).toBe(projection.upcomingBanners.length)
+    expect(data.upcomingBanners.length).toBeGreaterThan(0)
     expect(data.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
   })
 

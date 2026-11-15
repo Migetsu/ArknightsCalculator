@@ -347,7 +347,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
       expect(cnWithArt.length).toBe(306)
-      expect(cnWithoutArt.length).toBe(148)
+      expect(cnWithoutArt.length).toBe(153)
       expect(enWithArt.length).toBe(149)
       expect(enWithoutArt.length).toBe(262)
 
@@ -400,9 +400,9 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
         (b) => Boolean(b.pairedBannerId),
       )
 
-      expect(cnWithRateUp.length).toBe(195)
-      expect(enWithRateUp.length).toBe(400)
-      expect(cnWithGlobalDate.length).toBe(188)
+      expect(cnWithRateUp.length).toBe(198)
+      expect(enWithRateUp.length).toBe(402)
+      expect(cnWithGlobalDate.length).toBe(189)
       expect(cnWithPair.length).toBe(188)
 
       // Verified benchmark banner: Cremation Last Wish (W & Weedy)
@@ -505,7 +505,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(cn76?.name.isMachineTranslation).toBe(false)
       expect(cn76?.pairedBannerId).toBeNull()
 
-      // 3. Provenance distribution across all 454 CN banners
+      // 3. Provenance distribution across all 459 CN banners
       let officialCount = 0
       let wikiCount = 0
       let machineCount = 0
@@ -519,10 +519,10 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       }
 
       expect(officialCount).toBe(187)
-      expect(wikiCount).toBe(10)
+      expect(wikiCount).toBe(13)
       expect(manualCount).toBe(1)
-      expect(machineCount).toBe(256)
-      expect(officialCount + wikiCount + machineCount + manualCount).toBe(454)
+      expect(machineCount).toBe(258)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(459)
     })
   })
 })

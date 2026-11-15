@@ -10,6 +10,7 @@ import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import bannersDataset from '../../../data/banners.json'
 import type { BannersDataset } from '../../../shared/schemas/banner'
 import { buildGachaPageData } from '../../../shared/utils/gachaPageData'
+import { formatBannerDateRange, isProvenNotOnGlobal } from '../../../shared/utils/gacha'
 
 const { mockUseGachaPageData } = vi.hoisted(() => ({ mockUseGachaPageData: vi.fn() }))
 
@@ -19,6 +20,15 @@ const { mockUseGachaPageData } = vi.hoisted(() => ({ mockUseGachaPageData: vi.fn
  * so the file runs on a frozen clock instead of today's rotation.
  */
 const FIXED_NOW = new Date('2026-11-01T12:00:00.000Z')
+const FIXED_SEC = Math.floor(FIXED_NOW.getTime() / 1000)
+
+/** The committed dataset's upcoming window at the frozen instant, used as the oracle. */
+const EXPECTED_UPCOMING = buildGachaPageData(
+  bannersDataset as unknown as BannersDataset,
+  'global',
+  undefined,
+  FIXED_SEC,
+).upcomingBanners
 
 mockNuxtImport('useGachaPageData', () => mockUseGachaPageData)
 
@@ -28,7 +38,14 @@ describe('GachaPage', () => {
     setActivePinia(createPinia())
     // The page now receives a Nitro projection instead of importing the dataset.
     mockUseGachaPageData.mockReturnValue({
-      data: ref(buildGachaPageData(bannersDataset as unknown as BannersDataset)),
+      data: ref(
+        buildGachaPageData(
+          bannersDataset as unknown as BannersDataset,
+          'global',
+          undefined,
+          FIXED_SEC,
+        ),
+      ),
       status: ref('success'),
       refresh: vi.fn(),
     })
@@ -91,7 +108,12 @@ describe('GachaPage', () => {
       undefined,
       Math.floor(FIXED_NOW.getTime() / 1000),
     )
-    const placeholder = dataset.enBanners.find((banner) => banner.id === 'DOUBLE_EN_42_0_4')!
+    const placeholder = {
+      ...dataset.enBanners.find((banner) => banner.id === 'DOUBLE_EN_42_0_4')!,
+      rateUp6: [],
+      rateUp5: [],
+      hasArt: false,
+    }
 
     // Estimated Global start 2026-10-31 with lag 163 -> CN start 163 days earlier.
     const estimatedStartMs = Date.parse('2026-10-31T00:00:00.000Z')
@@ -154,12 +176,13 @@ describe('GachaPage', () => {
     )
   })
 
-  it('renders only the 10 upcoming CN banners, without the archive or pagination', async () => {
+  it('renders the upcoming CN window without the archive or pagination', async () => {
     const wrapper = await mountSuspended(GachaPage)
 
     const upcoming = wrapper.find('.gacha-page__upcoming')
     const cards = upcoming.findAllComponents(GachaBannerCard)
-    expect(cards).toHaveLength(10)
+    expect(cards).toHaveLength(EXPECTED_UPCOMING.length)
+    expect(cards.length).toBeGreaterThan(0)
     // The current Global hero card must not leak into the upcoming section
     expect(upcoming.text()).not.toContain('Sealed With Time')
     expect(wrapper.text()).not.toContain('453')
@@ -170,45 +193,30 @@ describe('GachaPage', () => {
     expect(buttonTexts.some((text) => text.includes('Show All'))).toBe(false)
   })
 
-  it('orders upcoming banners from oldest to newest', async () => {
+  it('orders upcoming banners from the closest release to the newest', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
 
-    expect(cards[0]!.props('banner').id).toBe('LINKAGE_74_0_1')
-    expect(cards[cards.length - 1]!.props('banner').id).toBe('SINGLE_78_0_1')
-
-    for (let i = 0; i < cards.length - 1; i++) {
-      const current = cards[i]!.props('banner')
-      const next = cards[i + 1]!.props('banner')
-      expect(current.openTime).toBeLessThanOrEqual(next.openTime)
-    }
+    expect(cards.map((card) => card.props('banner').id)).toEqual(
+      EXPECTED_UPCOMING.map((banner) => banner.id),
+    )
   })
 
-  it('renders CN-local banner dates and EST Global dates from the dataset', async () => {
+  it('renders CN-local banner dates and the Global estimate from the dataset', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const cards = wrapper.find('.gacha-page__upcoming').findAllComponents(GachaBannerCard)
 
-    // LINKAGE_74_0_1: CN 2026-06-01 … 2026-06-15
     const first = cards[0]!
-    expect(first.props('banner').id).toBe('LINKAGE_74_0_1')
-    const firstDates = first.find('.gacha-banner__dates').text()
-    expect(firstDates).toContain('Jun 1')
-    expect(firstDates).toContain('Jun 15')
+    const firstBanner = first.props('banner')
+    expect(firstBanner.id).toBe(EXPECTED_UPCOMING[0]!.id)
+    expect(first.find('.gacha-banner__dates').text()).toContain(
+      formatBannerDateRange(firstBanner.cnStartDate!, firstBanner.cnEndDate!),
+    )
 
-    // LINKAGE_74_0_1: CN 2026-06-01 … 2026-06-15
-    const linkage = cards.find((card) => card.props('banner').id === 'LINKAGE_74_0_1')
-    expect(linkage).toBeDefined()
-    const linkageDates = linkage!.find('.gacha-banner__dates').text()
-    expect(linkageDates).toContain('Jun 1')
-    expect(linkageDates).toContain('Jun 15')
-
-    // SINGLE_78_0_1: CN 2026-10-09 … 2026-10-23, EST 2027-03-21
     const last = cards[cards.length - 1]!
-    expect(last.props('banner').id).toBe('SINGLE_78_0_1')
-    const lastDates = last.find('.gacha-banner__dates').text()
-    expect(lastDates).toContain('Oct 9')
-    expect(lastDates).toContain('Oct 23')
-    expect(lastDates).toContain('Mar 21')
+    expect(last.props('banner').id).toBe(EXPECTED_UPCOMING[EXPECTED_UPCOMING.length - 1]!.id)
+    // A banner without confirmed Global dates shows the estimated Global row.
+    expect(last.find('.gacha-banner__dates').text()).toContain('≈')
   })
 
   it('marks active banner on Global as ACTIVE NOW', async () => {
@@ -234,29 +242,40 @@ describe('GachaPage', () => {
     }
   })
 
-  it('marks exactly one banner as NOT ON GLOBAL YET', async () => {
+  it('marks banners proven not to be on Global yet', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const upcoming = wrapper.find('.gacha-page__upcoming')
     const cards = upcoming.findAllComponents(GachaBannerCard)
     const badges = upcoming.findAll('.gacha-banner__countdown-badge--not-on-en')
 
-    expect(badges).toHaveLength(1)
+    const expected = cards.filter((card) => isProvenNotOnGlobal(card.props('banner'))).length
+    expect(badges).toHaveLength(expected)
 
     const limited = cards.find((card) => card.props('banner').id === 'LIMITED_76_0_1')
     expect(limited).toBeDefined()
     expect(limited!.find('.gacha-banner__countdown-badge--not-on-en').exists()).toBe(true)
   })
 
-  it('marks the first upcoming banner with NEXT ON GLOBAL and an EST estimate', async () => {
+  it('marks the first upcoming banner with NEXT ON GLOBAL and the right date source', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const upcoming = wrapper.find('.gacha-page__upcoming')
     const cards = upcoming.findAllComponents(GachaBannerCard)
     const first = cards[0]!
+    const banner = first.props('banner')
 
     expect(upcoming.findAll('.gacha-banner__countdown-badge--next')).toHaveLength(1)
     expect(first.find('.gacha-banner__countdown-badge--next').text()).toBe('NEXT ON GLOBAL')
-    expect(first.find('.gacha-banner__est-badge').text()).toBe('EST')
-    expect(first.find('.gacha-banner__dates').text()).toContain('≈')
+
+    if (banner.globalStartDate) {
+      // A confirmed Global release shows the real window, not an EST estimate.
+      expect(first.find('.gacha-banner__est-badge').exists()).toBe(false)
+      expect(first.find('.gacha-banner__dates').text()).toContain(
+        formatBannerDateRange(banner.globalStartDate, banner.globalEndDate!),
+      )
+    } else {
+      expect(first.find('.gacha-banner__est-badge').text()).toBe('EST')
+      expect(first.find('.gacha-banner__dates').text()).toContain('≈')
+    }
   })
 
   it('filters upcoming banners by type and shows an empty state', async () => {
@@ -264,11 +283,14 @@ describe('GachaPage', () => {
     const filters = wrapper.findAll('.gacha-page__filter-btn')
     const upcoming = () => wrapper.find('.gacha-page__upcoming')
 
+    const standardCount = EXPECTED_UPCOMING.filter((banner) => banner.type === 'standard').length
+    const limitedCount = EXPECTED_UPCOMING.filter((banner) => banner.type === 'limited').length
+
     await filters[1]!.trigger('click')
-    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(6)
+    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(standardCount)
 
     await filters[2]!.trigger('click')
-    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(4)
+    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(limitedCount)
 
     await filters[3]!.trigger('click')
     expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(0)

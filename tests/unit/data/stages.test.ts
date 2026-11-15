@@ -13,7 +13,7 @@ describe('Stages Data Integrity & Cross-matching', () => {
     const parsed = StagesDictionarySchema.parse(json)
     const stageIds = Object.keys(parsed)
 
-    expect(stageIds.length).toBe(1620)
+    expect(stageIds.length).toBe(1630)
 
     let matched = 0
     let unmatched = 0
@@ -33,7 +33,7 @@ describe('Stages Data Integrity & Cross-matching', () => {
       }
     }
 
-    expect(matched).toBe(1590)
+    expect(matched).toBe(1600)
     expect(unmatched).toBe(30)
   })
 

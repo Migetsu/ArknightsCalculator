@@ -1,6 +1,11 @@
 import type { BannersDataset, GachaBanner } from '../schemas/banner'
 import type { I18nString, OperatorSummary, ServerRegion } from '../schemas/operator'
-import { getBannerLifecycleStatus, getGlobalLagDays, getUpcomingBanners } from './gacha'
+import {
+  getBannerLifecycleStatus,
+  getGlobalLagDays,
+  getUpcomingBanners,
+  parseBannerDate,
+} from './gacha'
 
 export interface CompactOperatorInfo {
   id: string
@@ -82,11 +87,21 @@ export function buildGachaPageData(
       ? dataset.enBanners
       : allBanners.filter((b) => b.server === 'en')
 
+  // A CN banner with confirmed Global dates is a Global pool for selection purposes,
+  // even when the dataset has no paired EN record for it yet.
+  const globalBanners: GachaBanner[] = [...enBanners]
+  const knownGlobalIds = new Set(globalBanners.map((banner) => banner.id))
+  for (const banner of cnBanners) {
+    if (knownGlobalIds.has(banner.id)) continue
+    if (parseBannerDate(banner.globalStartDate) === null) continue
+    globalBanners.push(banner)
+  }
+
   const metaCurrentEn = dataset.meta?.currentEnBanner
-    ? (enBanners.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
+    ? (globalBanners.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
     : null
 
-  const activeEn = enBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
+  const activeEn = globalBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
   const enBanner: GachaBanner | null =
     metaCurrentEn && getBannerLifecycleStatus(metaCurrentEn, nowSec) === 'active'
       ? metaCurrentEn
@@ -112,7 +127,7 @@ export function buildGachaPageData(
     }
   }
 
-  const upcomingBanners = getUpcomingBanners(cnBanners)
+  const upcomingBanners = getUpcomingBanners(cnBanners, nowSec * 1000)
   const globalLagDays = getGlobalLagDays(cnBanners)
 
   const compactCurrentBanner = currentBanner

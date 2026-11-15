@@ -1,5 +1,18 @@
 # Project Progress
 
+- **Task 62 — Banner Current/Next Fixed + Data Pipeline Restored (`fix/banner-effective-window`, `fix/handbook-pending-titles`, `fix/banner-upcoming-confirmed-global`):**
+  - **Reported (2026-11-15):** `/gacha` showed an old placeholder Joint Operation pool as the current banner while the live crossover stayed in "upcoming"; the home countdown showed `00:00:00:00` with "STARTS TODAY".
+  - **Root causes:** (1) a CN banner only counted as current when the dataset had confirmed Global dates, so its _estimated_ window (CN start + median lag) never promoted it; (2) the home widget took the first CN upcoming banner even after its estimate had passed; (3) the dataset was stale — the daily cron had failed since 2026-11-07 on `data:validate` (`char_4170_hdbell` profile title `驮兽接触经验` reached `en` as "official").
+  - **Fixes:**
+    - `getEffectiveGlobalWindow()` (shared) — confirmed Global dates, else CN start + lag.
+    - Home widget picks the nearest banner whose effective start is still in the future; "STARTS TODAY" only for a same-day start.
+    - `/gacha` promotes an estimated-live CN banner (and any CN banner with confirmed Global dates) to the global candidate set; `GachaBannerCard` gained a `globalWindow` prop for its lifecycle badge; `getUpcomingBanners` now keeps confirmed-Global-future banners.
+    - `build-handbook.ts`: `toOfficialEnglish()` drops CJK tags so CN-only titles fall through to `[Pending Translation]`.
+    - `update-data.yml`: data PRs are merged only after `gh pr checks --watch` reports green CI, instead of an unconditional auto-merge.
+  - **Data refresh:** workflow_dispatch run produced PR #146 (upstream `b50a862…`) and merged it; `data/banners.json` is now built 2026-11-15 and carries confirmed Global dates for `LINKAGE_74_0_1` (2026-11-16 – 2026-11-30).
+  - **Dataset pins refreshed:** banners (459 CN: 306 art, 153 no-art; 13 wiki names), stages 1 630, ranges 75, operators 440, skins 1 376 (87 CN-only), handbook files 438.
+  - **Tests:** dashboard regression (passed estimate is skipped, next future banner with a real timer), `/gacha` estimated-live hero + no duplication, data-driven upcoming counts; `vitest` 123 files / 1 028 tests, gacha E2E 6/6, `eslint`, `typecheck`, `build` clean.
+
 - **Task 61 — Farming Recommendations Are Now Executable (`fix/farming-craft-up-lp`):**
   - **Reported:** are the `/farming` recommended stages really optimal for the needed quantity?
   - **Audit:** independent recalculation against `data/penguin/us.json` plus a coverage replay through `resolveDemand`. Tier 2–4 picks were optimal, but plans under-covered raw Tier-1 demand (100 Orirock covered 3%, Blue Poison short 81 units, Amiya 47, Kal'tsit 216).

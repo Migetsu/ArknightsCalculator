@@ -211,9 +211,17 @@ jobs:
             automated
             data-sync
 
-      - name: Enable auto-merge for data update PR
+      - name: Merge the data PR once CI is green
         if: steps.cpr.outputs.pull-request-number
         env:
           GH_TOKEN: ${{ secrets.CRON_PAT }}
         run: |
-          gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto --squash || echo "Auto-merge not configured or permitted; PR remains open for review."
+          PR="${{ steps.cpr.outputs.pull-request-number }}"
+          # A data sync changes dataset sizes, so the pinned integrity tests must be
+          # refreshed in the same change. Waiting for CI keeps `main` green: a red PR
+          # stays open for the agent to update the pins (AGENTS.md section 14).
+          if timeout 1500 gh pr checks "$PR" --watch --interval 30; then
+            gh pr merge "$PR" --squash --delete-branch
+          else
+            echo "::warning::CI is not green for PR #$PR; leaving it open so the dataset pins can be refreshed before merging."
+          fi

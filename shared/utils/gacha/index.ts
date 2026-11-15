@@ -173,23 +173,37 @@ export function getUpcomingCutoff(banners: readonly GachaBanner[]): number | nul
 }
 
 /**
- * CN banners that have not been released on Global yet and have a known rate-up roster,
- * sorted from the oldest (closest to Global) to the newest. Returns [] when the dataset
- * has no confirmed Global dates to derive the cutoff from.
+ * Banners that are not live on Global yet and have a known rate-up roster, sorted
+ * from the closest release to the newest. A banner with a confirmed Global date in
+ * the future counts here even though its CN start is already old; without a
+ * confirmed date the CN start must be past the last known Global release.
+ * Returns [] when the dataset has no confirmed Global dates to derive the cutoff
+ * from.
  */
-export function getUpcomingBanners(banners: readonly GachaBanner[]): GachaBanner[] {
+export function getUpcomingBanners(
+  banners: readonly GachaBanner[],
+  nowMs = Date.now(),
+): GachaBanner[] {
   const cutoff = getUpcomingCutoff(banners)
   if (cutoff === null) return []
 
   return banners
-    .filter(
-      (banner) =>
-        banner.server === 'cn' &&
-        banner.openTime > cutoff &&
-        parseBannerDate(banner.globalStartDate) === null &&
-        ((banner.rateUp6?.length ?? 0) > 0 || (banner.rateUp5?.length ?? 0) > 0),
-    )
-    .sort((a, b) => a.openTime - b.openTime)
+    .filter((banner) => {
+      if (banner.server !== 'cn') return false
+      if ((banner.rateUp6?.length ?? 0) === 0 && (banner.rateUp5?.length ?? 0) === 0) return false
+      const globalStart = parseBannerDate(banner.globalStartDate)
+      // A confirmed Global release that has not started yet is still upcoming.
+      if (globalStart !== null) return globalStart > nowMs
+      return banner.openTime > cutoff
+    })
+    .sort((a, b) => {
+      const aGlobal = parseBannerDate(a.globalStartDate)
+      const bGlobal = parseBannerDate(b.globalStartDate)
+      if (aGlobal !== null && bGlobal !== null) return aGlobal - bGlobal
+      if (aGlobal !== null) return -1
+      if (bGlobal !== null) return 1
+      return a.openTime - b.openTime
+    })
 }
 
 export interface GlobalLagPair {
