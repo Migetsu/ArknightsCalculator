@@ -83,6 +83,77 @@ describe('GachaPage', () => {
     expect(card.text()).toContain('ACTIVE NOW')
   })
 
+  it('renders a CN banner whose estimated Global window is live as the current banner', async () => {
+    const dataset = bannersDataset as unknown as BannersDataset
+    const base = buildGachaPageData(
+      dataset,
+      'global',
+      undefined,
+      Math.floor(FIXED_NOW.getTime() / 1000),
+    )
+    const placeholder = dataset.enBanners.find((banner) => banner.id === 'DOUBLE_EN_42_0_4')!
+
+    // Estimated Global start 2026-10-31 with lag 163 -> CN start 163 days earlier.
+    const estimatedStartMs = Date.parse('2026-10-31T00:00:00.000Z')
+    const cnStartIso = new Date(estimatedStartMs - 163 * 86_400_000).toISOString().slice(0, 10)
+    const cnStart = cnStartIso.replace(/-/g, '/')
+    const cnEnd = new Date(Date.parse(`${cnStartIso}T00:00:00.000Z`) + 13 * 86_400_000)
+      .toISOString()
+      .slice(0, 10)
+      .replace(/-/g, '/')
+
+    const liveBanner = {
+      ...placeholder,
+      id: 'LINKAGE_TEST',
+      server: 'cn',
+      ruleType: 'LINKAGE',
+      type: 'limited',
+      name: {
+        en: 'Hunters of the Umbral Wilds',
+        zh: 'Hunters of the Umbral Wilds',
+        source: 'wiki',
+        isMachineTranslation: false,
+      },
+      title: {
+        en: 'Hunters of the Umbral Wilds',
+        zh: 'Hunters of the Umbral Wilds',
+        source: 'wiki',
+        isMachineTranslation: false,
+      },
+      cnStartDate: cnStart,
+      cnEndDate: cnEnd,
+      globalStartDate: null,
+      globalEndDate: null,
+      hasArt: true,
+      rateUp6: ['char_1048_orchd2'],
+      rateUp5: ['char_1049_catap2'],
+    }
+
+    mockUseGachaPageData.mockReturnValue({
+      data: ref({
+        ...base,
+        currentBanner: placeholder,
+        currentEnBannerId: placeholder.id,
+        currentEnFullBanner: placeholder,
+        upcomingBanners: [liveBanner],
+      }),
+      status: ref('success'),
+      refresh: vi.fn(),
+    })
+
+    const wrapper = await mountSuspended(GachaPage)
+    const hero = wrapper.find('.gacha-current-en')
+    const card = hero.findComponent(GachaBannerCard)
+
+    expect(card.props('banner').id).toBe('LINKAGE_TEST')
+    expect(card.classes()).toContain('gacha-banner--active')
+    expect(card.text()).toContain('ACTIVE NOW')
+    // The live pool must not be duplicated in the upcoming list.
+    expect(wrapper.find('.gacha-page__upcoming').text()).not.toContain(
+      'Hunters of the Umbral Wilds',
+    )
+  })
+
   it('renders only the 10 upcoming CN banners, without the archive or pagination', async () => {
     const wrapper = await mountSuspended(GachaPage)
 

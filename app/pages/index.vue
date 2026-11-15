@@ -18,11 +18,12 @@ import {
   type ContentLocale,
 } from '~/../shared/schemas/operator'
 import {
-  getEstimatedGlobalDate,
+  getEffectiveGlobalWindow,
   formatBannerDateRange,
   calculateTotalPulls,
   getBannerLifecycleStatus,
 } from '~/../shared/utils/gacha'
+import type { GachaBanner } from '~/../shared/schemas/banner'
 import { useGachaPageData } from '~/composables/useGachaPageData'
 import { useDepotStore } from '~/stores/depot'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
@@ -96,67 +97,49 @@ const isDemoLoaded = ref(false)
 const { data: gachaData } = await useGachaPageData()
 
 const nextBannerInfo = computed(() => {
-  const b = gachaData.value?.upcomingBanners?.[0]
-  if (!b) {
+  const lag = gachaData.value?.globalLagDays ?? null
+  const now = Date.now()
+
+  // "Next" is the nearest banner whose confirmed or estimated Global start is
+  // still in the future. A banner whose window already opened is the *current*
+  // one — keeping it here produced a 00:00:00:00 countdown with "STARTS TODAY".
+  let candidate: GachaBanner | null = null
+  let window: ReturnType<typeof getEffectiveGlobalWindow> = null
+  for (const banner of gachaData.value?.upcomingBanners ?? []) {
+    const effective = getEffectiveGlobalWindow(banner, lag)
+    if (!effective || effective.startMs <= now) continue
+    candidate = banner
+    window = effective
+    break
+  }
+
+  if (candidate && window) {
+    const title =
+      resolveI18nString(candidate.title ?? candidate.name, locale.value as ContentLocale) ||
+      candidate.title?.en ||
+      candidate.name?.en ||
+      candidate.id
+    const startDate = new Date(window.startMs).toISOString().slice(0, 10)
+    const endDate = new Date(window.endMs).toISOString().slice(0, 10)
+    const start = new Date(window.startMs)
+    const today = new Date(now)
+
     return {
-      title: dashboardData.value.nextBanner.title,
-      dateRange: `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`,
-      targetTimestamp: dashboardData.value.nextBanner.targetTimestamp,
-      isStartsToday: false,
+      title,
+      dateRange: formatBannerDateRange(startDate, endDate),
+      targetTimestamp: window.startMs,
+      isStartsToday:
+        start.getFullYear() === today.getFullYear() &&
+        start.getMonth() === today.getMonth() &&
+        start.getDate() === today.getDate(),
     }
   }
-
-  const title =
-    resolveI18nString(b.title ?? b.name, locale.value as ContentLocale) ||
-    b.title?.en ||
-    b.name?.en ||
-    b.id
-
-  const estStart = getEstimatedGlobalDate(b, gachaData.value?.globalLagDays ?? null)
-  const startDateStr = b.globalStartDate || estStart || b.openIso || b.cnStartDate || null
-
-  let endDateStr: string | null = null
-  if (b.globalEndDate) {
-    endDateStr = b.globalEndDate
-  } else if (b.server === 'en' || b.isActive) {
-    endDateStr = b.endIso || (b.endTime ? new Date(b.endTime * 1000).toISOString() : null)
-  } else if (estStart) {
-    // When start date is estimated for Global, end date is start date + duration (default 14 days)
-    const startMs = new Date(
-      estStart.includes('/') ? estStart.replace(/\//g, '-') : estStart,
-    ).getTime()
-    const durationDays = b.durationDays && b.durationDays > 0 ? b.durationDays : 14
-    endDateStr = new Date(startMs + durationDays * 86400000).toISOString().slice(0, 10)
-  } else {
-    endDateStr = b.cnEndDate || b.endIso || null
-  }
-
-  let targetTimestamp = 0
-  if (startDateStr) {
-    const parsed = new Date(
-      startDateStr.includes('/') ? startDateStr.replace(/\//g, '-') : startDateStr,
-    ).getTime()
-    if (!Number.isNaN(parsed)) {
-      targetTimestamp = parsed
-    }
-  }
-
-  if (targetTimestamp === 0) {
-    targetTimestamp = dashboardData.value.nextBanner.targetTimestamp
-  }
-
-  let dateRange = `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`
-  if (startDateStr && endDateStr) {
-    dateRange = formatBannerDateRange(startDateStr, endDateStr)
-  }
-
-  const isStartsToday = targetTimestamp > 0 && targetTimestamp <= Date.now()
 
   return {
-    title,
-    dateRange,
-    targetTimestamp,
-    isStartsToday,
+    title: dashboardData.value.nextBanner.title,
+    dateRange: `${dashboardData.value.nextBanner.startDate} to ${dashboardData.value.nextBanner.endDate}`,
+    targetTimestamp: dashboardData.value.nextBanner.targetTimestamp,
+    isStartsToday: false,
   }
 })
 

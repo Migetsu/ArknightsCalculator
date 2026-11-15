@@ -271,6 +271,49 @@ export function getEstimatedGlobalDate(banner: GachaBanner, lagDays: number | nu
   return estimated.toISOString().slice(0, 10)
 }
 
+export interface EffectiveGlobalWindow {
+  startMs: number
+  endMs: number
+  /** True when the window comes from the CN start plus the median lag. */
+  estimated: boolean
+}
+
+/**
+ * The Global window a banner occupies as far as the dataset can tell: confirmed
+ * Global dates when they exist, otherwise the CN start shifted by the median
+ * CN→Global lag and extended by the banner duration.
+ *
+ * The UI uses this to decide whether a CN banner is *already live* on Global
+ * (estimated) instead of still upcoming, which previously left countdowns at
+ * `00:00:00` for banners whose estimate had already passed.
+ */
+export function getEffectiveGlobalWindow(
+  banner: GachaBanner,
+  lagDays: number | null,
+): EffectiveGlobalWindow | null {
+  const durationDays = banner.durationDays && banner.durationDays > 0 ? banner.durationDays : 14
+  const globalStart = parseBannerDate(banner.globalStartDate)
+
+  if (globalStart !== null) {
+    const explicitEnd = banner.endTime
+      ? banner.endTime * 1000
+      : banner.endIso
+        ? new Date(banner.endIso).getTime()
+        : null
+    const globalEnd = parseBannerDate(banner.globalEndDate)
+    const endMs =
+      explicitEnd ??
+      (globalEnd !== null ? globalEnd + MS_PER_DAY - 1 : globalStart + durationDays * MS_PER_DAY)
+    return { startMs: globalStart, endMs, estimated: false }
+  }
+
+  const estimatedStart = getEstimatedGlobalDate(banner, lagDays)
+  if (estimatedStart === null) return null
+  const startMs = parseBannerDate(estimatedStart)
+  if (startMs === null) return null
+  return { startMs, endMs: startMs + durationDays * MS_PER_DAY, estimated: true }
+}
+
 /**
  * Computes banner lifecycle status ('active', 'upcoming', 'ended') from Unix timestamps.
  */

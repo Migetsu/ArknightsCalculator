@@ -1,32 +1,48 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { ref } from 'vue'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { formatBannerDateRange } from '../../../shared/utils/gacha'
 import IndexPage from '../../../app/pages/index.vue'
+
+const MS_DAY = 86_400_000
+const LAG_DAYS = 163
+
+function isoDate(ms: number): string {
+  return new Date(ms).toISOString().slice(0, 10)
+}
+
+function utcMidnight(ms: number): number {
+  return Math.floor(ms / MS_DAY) * MS_DAY
+}
+
+/** Builds a CN banner whose estimated Global start is `estimatedStartMs`. */
+function makeUpcomingBanner(id: string, title: string, estimatedStartMs: number) {
+  const cnStartMs = estimatedStartMs - LAG_DAYS * MS_DAY
+  return {
+    id,
+    server: 'cn',
+    ruleType: 'SPECIAL',
+    type: 'standard',
+    tag: 'SPECIAL',
+    name: { en: title, zh: title },
+    title: { en: title, zh: title },
+    openTime: Math.floor(cnStartMs / 1000),
+    endTime: Math.floor((cnStartMs + 14 * MS_DAY - 1) / 1000),
+    durationDays: 14,
+    isActive: false,
+    cnStartDate: isoDate(cnStartMs).replace(/-/g, '/'),
+    cnEndDate: isoDate(cnStartMs + 13 * MS_DAY).replace(/-/g, '/'),
+    rateUp6: [],
+    rateUp5: [],
+  }
+}
 
 const mockGachaData = ref({
   currentBanner: null,
   currentEnBannerId: null,
   currentEnFullBanner: null,
-  globalLagDays: 163,
-  upcomingBanners: [
-    {
-      id: 'SPECIAL_73_0_3',
-      server: 'cn',
-      ruleType: 'SPECIAL',
-      type: 'standard',
-      tag: 'SPECIAL',
-      name: { en: 'Orienteering #7', zh: '定向甄选' },
-      title: { en: 'Orienteering #7', zh: '定向甄选' },
-      openTime: 1778832000,
-      endTime: 1779998399,
-      durationDays: 14,
-      isActive: false,
-      cnStartDate: '2026/05/15',
-      cnEndDate: '2026/05/29',
-      rateUp6: [],
-      rateUp5: [],
-    },
-  ],
+  globalLagDays: LAG_DAYS,
+  upcomingBanners: [] as ReturnType<typeof makeUpcomingBanner>[],
 })
 
 mockNuxtImport('useGachaPageData', () => () => ({
@@ -36,26 +52,44 @@ mockNuxtImport('useGachaPageData', () => () => ({
 }))
 
 describe('IndexPage nextBannerInfo', () => {
-  it('projects future end date correctly instead of falling back to cnEndDate', async () => {
+  beforeEach(() => {
+    mockGachaData.value.upcomingBanners = []
+    mockGachaData.value.currentEnFullBanner = null
+  })
+
+  it('projects the Global window for the next banner from the CN date and lag', async () => {
+    const startMs = utcMidnight(Date.now() + 30 * MS_DAY)
+    mockGachaData.value.upcomingBanners = [makeUpcomingBanner('A', 'Orienteering #7', startMs)]
+
     const wrapper = await mountSuspended(IndexPage)
     const desc = wrapper.find('.dashboard-page__widget-desc').text()
 
-    // Title should be Orienteering #7
     expect(desc).toContain('Orienteering #7')
-    // Should NOT contain May 28 or May 29 (which would be backwards!)
-    expect(desc).not.toContain('May')
-    // Should contain Oct 25 and Nov (start + 14 days)
-    expect(desc).toMatch(/Oct 25, 2026 – Nov \d+, 2026/)
+    expect(desc).toContain(formatBannerDateRange(isoDate(startMs), isoDate(startMs + 14 * MS_DAY)))
+
+    const days = Number(wrapper.findAll('.dashboard-page__countdown-num')[0]?.text())
+    expect(days).toBeGreaterThanOrEqual(28)
+    expect(days).toBeLessThanOrEqual(30)
   })
 
-  it('shows startsToday badge and 0 days countdown when estimated date has arrived', async () => {
-    const wrapper = await mountSuspended(IndexPage)
-    // Should NOT show 24 days!
-    const daysNum = wrapper.findAll('.dashboard-page__countdown-num')[0]?.text()
-    expect(daysNum).toBe('00')
+  it('skips a banner whose estimated Global start already passed instead of showing a zero timer', async () => {
+    const liveStartMs = utcMidnight(Date.now() - 5 * MS_DAY)
+    const nextStartMs = utcMidnight(Date.now() + 10 * MS_DAY)
+    mockGachaData.value.upcomingBanners = [
+      makeUpcomingBanner('LIVE', 'Hunters of the Umbral Wilds', liveStartMs),
+      makeUpcomingBanner('NEXT', 'Next Global Pool', nextStartMs),
+    ]
 
-    // STARTS TODAY badge should be visible
-    expect(wrapper.text()).toContain('STARTS TODAY')
+    const wrapper = await mountSuspended(IndexPage)
+    const desc = wrapper.find('.dashboard-page__widget-desc').text()
+
+    // The live banner is the current one, not the "next" one with a dead countdown.
+    expect(desc).toContain('Next Global Pool')
+    expect(desc).not.toContain('Hunters of the Umbral Wilds')
+
+    const days = Number(wrapper.findAll('.dashboard-page__countdown-num')[0]?.text())
+    expect(days).toBeGreaterThanOrEqual(8)
+    expect(wrapper.text()).not.toContain('STARTS TODAY')
   })
 
   it('does NOT count spark from an ended limited banner even if old coins exist in depot', async () => {

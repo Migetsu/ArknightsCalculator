@@ -3,7 +3,7 @@ import { ref, computed, watch, onMounted } from 'vue'
 import type { GachaBanner, BannerType } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
-import { getEstimatedGlobalDate } from '~/../shared/utils/gacha'
+import { getEffectiveGlobalWindow, getEstimatedGlobalDate } from '~/../shared/utils/gacha'
 import { getModuleById } from '~/config/modules'
 import { useDepotStore } from '~/stores/depot'
 import { useGachaPageData, fetchBannerDetail } from '~/composables/useGachaPageData'
@@ -45,6 +45,49 @@ const { data: gachaData, status, refresh } = await useGachaPageData()
 const currentEnFullBanner = computed<GachaBanner | null>(() => gachaData.value.currentEnFullBanner)
 const upcomingBanners = computed<readonly GachaBanner[]>(() => gachaData.value.upcomingBanners)
 const globalLagDays = computed<number | null>(() => gachaData.value.globalLagDays)
+
+/**
+ * A CN banner whose *estimated* Global window has already opened is the pool
+ * players currently see on Global, even before the dataset has confirmed Global
+ * dates for it. Without this the page kept an older placeholder pool as current
+ * and left the live banner in "upcoming" forever.
+ */
+const estimatedLiveBanner = computed<GachaBanner | null>(() => {
+  const now = Date.now()
+  for (const banner of upcomingBanners.value) {
+    const window = getEffectiveGlobalWindow(banner, globalLagDays.value)
+    if (!window?.estimated) continue
+    if (window.startMs <= now && now < window.endMs) return banner
+  }
+  return null
+})
+
+/**
+ * Confirmed Global banner wins when it actually has content (rate-ups or art);
+ * otherwise the estimated-live pool is the banner players see in game.
+ */
+const heroBanner = computed<GachaBanner | null>(() => {
+  const confirmed = currentEnFullBanner.value
+  const live = estimatedLiveBanner.value
+  if (!live) return confirmed
+  const confirmedHasContent = Boolean(
+    confirmed &&
+    ((confirmed.rateUp6?.length ?? 0) > 0 ||
+      (confirmed.rateUp5?.length ?? 0) > 0 ||
+      confirmed.hasArt),
+  )
+  return confirmed && confirmedHasContent ? confirmed : live
+})
+
+const heroWindow = computed(() =>
+  heroBanner.value ? getEffectiveGlobalWindow(heroBanner.value, globalLagDays.value) : null,
+)
+
+const heroEstimate = computed(() => {
+  const banner = heroBanner.value
+  if (!banner || banner.server === 'en') return null
+  return getEstimatedGlobalDate(banner, globalLagDays.value)
+})
 
 const operatorsMap = computed(() => {
   const map = new Map<string, OperatorSummary>()
@@ -107,6 +150,14 @@ const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
   return upcomingBanners.value.filter((banner) => banner.type === selectedFilter.value)
 })
 
+// The estimated-live pool is rendered as the current banner, never duplicated in
+// the upcoming list.
+const visibleUpcomingBanners = computed<GachaBanner[]>(() => {
+  const hero = heroBanner.value
+  if (!hero || hero.server === 'en') return filteredUpcomingBanners.value
+  return filteredUpcomingBanners.value.filter((banner) => banner.id !== hero.id)
+})
+
 function estimateFor(banner: GachaBanner): string | null {
   return getEstimatedGlobalDate(banner, globalLagDays.value)
 }
@@ -114,16 +165,12 @@ function estimateFor(banner: GachaBanner): string | null {
 // Active banner selection for Calculator
 const activeBannerId = ref<string | null>(null)
 
-// Initialize active banner with current EN banner if available, otherwise first banner
+// Initialize active banner with the rendered current banner if available, otherwise first upcoming
 watch(
-  [currentEnFullBanner, upcomingBanners],
+  heroBanner,
   () => {
     if (!activeBannerId.value) {
-      if (currentEnFullBanner.value) {
-        activeBannerId.value = currentEnFullBanner.value.id
-      } else {
-        activeBannerId.value = upcomingBanners.value[0]?.id ?? null
-      }
+      activeBannerId.value = heroBanner.value?.id ?? upcomingBanners.value[0]?.id ?? null
     }
   },
   { immediate: true },
@@ -136,11 +183,14 @@ const activeBanner = computed<GachaBanner | null>(() => {
   if (activeBannerId.value) {
     const found = upcomingBanners.value.find((b) => b.id === activeBannerId.value)
     if (found) base = found
-    else if (currentEnFullBanner.value?.id === activeBannerId.value)
-      base = currentEnFullBanner.value
+    else if (heroBanner.value?.id === activeBannerId.value) base = heroBanner.value
   }
   if (!base) {
-    base = filteredUpcomingBanners.value[0] ?? upcomingBanners.value[0] ?? currentEnFullBanner.value
+    base =
+      visibleUpcomingBanners.value[0] ??
+      upcomingBanners.value[0] ??
+      heroBanner.value ??
+      currentEnFullBanner.value
   }
   if (!base) return null
   const detailed = bannerDetails.value[base.id]
@@ -199,8 +249,8 @@ function resolveBannerEndDate(banner: GachaBanner): string | null {
 
 const forecastBanners = computed<ForecastBannerOption[]>(() => {
   const candidates: GachaBanner[] = []
-  if (currentEnFullBanner.value) {
-    candidates.push(currentEnFullBanner.value)
+  if (heroBanner.value) {
+    candidates.push(heroBanner.value)
   }
   for (const b of upcomingBanners.value) {
     if (!candidates.some((c) => c.id === b.id)) {
@@ -230,7 +280,7 @@ const forecastBanners = computed<ForecastBannerOption[]>(() => {
       title: name,
       startDate,
       endDate,
-      isUpcoming: !currentEnFullBanner.value || banner.id !== currentEnFullBanner.value.id,
+      isUpcoming: !heroBanner.value || banner.id !== heroBanner.value.id,
       type: banner.type,
     })
   }
@@ -323,14 +373,16 @@ async function selectBanner(id: string): Promise<void> {
               </div>
 
               <GachaBannerCard
-                v-if="currentEnFullBanner"
+                v-if="heroBanner"
                 :banner="
-                  bannerDetails[currentEnFullBanner.id]
-                    ? { ...currentEnFullBanner, ...bannerDetails[currentEnFullBanner.id] }
-                    : currentEnFullBanner
+                  bannerDetails[heroBanner.id]
+                    ? { ...heroBanner, ...bannerDetails[heroBanner.id] }
+                    : heroBanner
                 "
                 :operators-map="operatorsMap"
-                :is-selected="activeBanner?.id === currentEnFullBanner.id"
+                :is-selected="activeBanner?.id === heroBanner.id"
+                :global-estimate="heroEstimate"
+                :global-window="heroWindow"
                 @select="selectBanner"
               />
 
@@ -372,7 +424,7 @@ async function selectBanner(id: string): Promise<void> {
               <div class="gacha-page__section-meta">
                 <span class="gacha-page__section-tag">{{ t('gacha.upcoming.tag') }}</span>
                 <span class="gacha-page__section-count">
-                  ({{ filteredUpcomingBanners.length }})
+                  ({{ visibleUpcomingBanners.length }})
                 </span>
               </div>
               <h2 class="gacha-page__section-title">{{ t('gacha.upcoming.title') }}</h2>
@@ -382,7 +434,7 @@ async function selectBanner(id: string): Promise<void> {
             <!-- Upcoming Banner Cards Column (rendered immediately, no pagination) -->
             <div class="gacha-page__banners-list">
               <GachaBannerCard
-                v-for="banner in filteredUpcomingBanners"
+                v-for="banner in visibleUpcomingBanners"
                 :key="banner.id"
                 :banner="
                   bannerDetails[banner.id] ? { ...banner, ...bannerDetails[banner.id] } : banner
@@ -391,12 +443,12 @@ async function selectBanner(id: string): Promise<void> {
                 :operators-map="operatorsMap"
                 :is-selected="activeBanner?.id === banner.id"
                 :global-estimate="estimateFor(banner)"
-                :is-next="banner.id === upcomingBanners[0]?.id"
+                :is-next="banner.id === visibleUpcomingBanners[0]?.id"
                 @select="selectBanner"
               />
 
               <!-- Empty Filter State -->
-              <div v-if="filteredUpcomingBanners.length === 0" class="gacha-page__empty-box">
+              <div v-if="visibleUpcomingBanners.length === 0" class="gacha-page__empty-box">
                 <AkEmptyState :title="t('gacha.empty')" />
               </div>
             </div>

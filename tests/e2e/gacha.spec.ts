@@ -1,5 +1,11 @@
 import { readFileSync } from 'node:fs'
 import { test, expect } from './fixtures'
+import {
+  getEffectiveGlobalWindow,
+  getGlobalLagDays,
+  getUpcomingBanners,
+} from '../../shared/utils/gacha'
+import type { GachaBanner } from '../../shared/schemas/banner'
 
 interface BannerWindow {
   id: string
@@ -11,19 +17,38 @@ interface BannerWindow {
 
 const bannersDataset = JSON.parse(
   readFileSync(new URL('../../data/banners.json', import.meta.url), 'utf-8'),
-) as { enBanners: BannerWindow[] }
+) as { enBanners: BannerWindow[]; cnBanners: BannerWindow[] }
+
+const cnBanners = bannersDataset.cnBanners as unknown as GachaBanner[]
+const globalLagDays = getGlobalLagDays(cnBanners)
+const upcomingBanners = getUpcomingBanners(cnBanners)
+
+/** A CN banner whose estimated Global window already opened is the current pool. */
+function liveEstimatedBanner(now = Date.now()): GachaBanner | null {
+  return (
+    upcomingBanners.find((banner) => {
+      const window = getEffectiveGlobalWindow(banner, globalLagDays)
+      return Boolean(window && window.startMs <= now && now < window.endMs)
+    }) ?? null
+  )
+}
 
 /**
- * Titles of the EN banners that are running now. The active pool rotates every
- * couple of weeks, so the test asserts membership instead of a fixed title.
+ * Titles of the banners that can be current: EN pools running now plus a live
+ * estimated CN pool. The active banner rotates, so the test asserts membership.
  */
-function activeEnBannerTitles(nowSec: number): Set<string> {
+function activeBannerTitles(nowSec: number): Set<string> {
   const titles = new Set<string>()
   for (const banner of bannersDataset.enBanners) {
     if (nowSec >= banner.openTime && nowSec <= banner.endTime) {
       titles.add(banner.title.en)
       titles.add(banner.name.en)
     }
+  }
+  const live = liveEstimatedBanner(nowSec * 1000)
+  if (live) {
+    titles.add(live.title.en)
+    titles.add(live.name.en)
   }
   return titles
 }
@@ -64,14 +89,15 @@ test.describe('Gacha Page (GCH-02)', () => {
     await expect(currentEnCard).toBeVisible()
     await expect(currentEnCard.locator('.gacha-banner__countdown-badge--active')).toBeVisible()
     const currentTitle = await currentEnCard.locator('.gacha-banner__title-text').textContent()
-    expect(activeEnBannerTitles(Math.floor(Date.now() / 1000))).toContain(
-      currentTitle?.trim() ?? '',
-    )
+    expect(activeBannerTitles(Math.floor(Date.now() / 1000))).toContain(currentTitle?.trim() ?? '')
     await expect(currentEnCard.locator('.gacha-banner__dates')).toBeVisible()
 
-    // Upcoming banners exist (the CN window rendered by the page)
+    // Upcoming banners: the CN window minus a pool that is already live.
+    const expectedUpcoming = upcomingBanners.filter(
+      (banner) => banner.id !== liveEstimatedBanner()?.id,
+    ).length
     const upcomingCards = page.locator('.gacha-page__upcoming .gacha-banner')
-    await expect(upcomingCards).toHaveCount(10)
+    await expect(upcomingCards).toHaveCount(expectedUpcoming)
 
     // Upcoming banner lifecycle status: no ENDED badge on upcoming banners (33e.1 fix verification)
     const endedBadges = page.locator('.gacha-page__upcoming .gacha-banner__countdown-badge--ended')
