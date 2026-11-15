@@ -1,0 +1,1523 @@
+{
+  "id": "char_4244_tocka",
+  "name": {
+    "en": "Frozendelta",
+    "zh": "冻河",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "displayNumber": "US50",
+  "rarity": 6,
+  "class": "SUPPORT",
+  "subclass": "Supportive Ranger",
+  "faction": "ursus",
+  "position": "RANGED",
+  "tagList": [
+    "Support",
+    "Nuker"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "Supporter operator Frozendelta uses his craft to trade for life's necessities.",
+    "zh": "辅助干员冻河，用技艺为自己换取生活的必需。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "From then on, he has nothing left, yet possesses everything.",
+    "zh": "自此，他既一无所有，亦无所不有。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "3-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 661,
+            "atk": 361,
+            "def": 104,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 973,
+            "atk": 517,
+            "def": 150,
+            "magicResistance": 10,
+            "cost": 15,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "3-18",
+      "evolveCost": [
+        {
+          "id": "3271",
+          "count": 5
+        },
+        {
+          "id": "30052",
+          "count": 7
+        },
+        {
+          "id": "30062",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 973,
+            "atk": 517,
+            "def": 150,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1315,
+            "atk": 664,
+            "def": 198,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "3-18",
+      "evolveCost": [
+        {
+          "id": "3273",
+          "count": 4
+        },
+        {
+          "id": "30155",
+          "count": 4
+        },
+        {
+          "id": "31024",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1315,
+            "atk": 664,
+            "def": 198,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1687,
+            "atk": 801,
+            "def": 225,
+            "magicResistance": 10,
+            "cost": 17,
+            "blockCnt": 1,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 2.1,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_tocka_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 21,
+          "initSp": 5,
+          "blackboard": {
+            "shield_atk_scale": 1.2,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 5,
+          "blackboard": {
+            "shield_atk_scale": 1.3,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 19,
+          "initSp": 6,
+          "blackboard": {
+            "shield_atk_scale": 1.4,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 18,
+          "initSp": 6,
+          "blackboard": {
+            "shield_atk_scale": 1.6,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 17,
+          "initSp": 7,
+          "blackboard": {
+            "shield_atk_scale": 1.7,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 16,
+          "initSp": 7,
+          "blackboard": {
+            "shield_atk_scale": 1.8,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 15,
+          "initSp": 8,
+          "blackboard": {
+            "shield_atk_scale": 1.9,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 2
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 14,
+          "initSp": 8,
+          "blackboard": {
+            "shield_atk_scale": 2.1,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 13,
+          "initSp": 8,
+          "blackboard": {
+            "shield_atk_scale": 2.3,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Nothing Left",
+            "zh": "一无所有之人",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to <@ba.vup>{max_target}</> operators within range (only targets without this effect will be chosen):\\nWhen attacked, gain a <$ba.barrier>Barrier</> equal to <@ba.vup>{shield_atk_scale:0%}</> of Frozendelta's ATK (decays over {shield_time}s) and <$ba.stun>Stun</> the attacker for <@ba.vup>{stun}</>s",
+            "zh": "对范围内<@ba.vup>{max_target}</>名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n受到攻击时，获得相当于冻河<@ba.vup>{shield_atk_scale:0%}</>攻击力的<$ba.barrier>屏障</>（在{shield_time}秒内衰减），并使攻击者<$ba.stun>晕眩</><@ba.vup>{stun}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 8,
+          "blackboard": {
+            "shield_atk_scale": 2.5,
+            "shield_time": 10,
+            "stun": 3,
+            "max_target": 3
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31094",
+              "count": 4
+            },
+            {
+              "id": "30053",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31114",
+              "count": 4
+            },
+            {
+              "id": "31064",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_tocka_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 20,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 20,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 25,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 25,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 8,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 30,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 30,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 35,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 40,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 45,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Yearning Howl",
+            "zh": "意欲呼啸之心",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Applies a <$ba.triggereffect>Trigger Effect</> to {max_target} operators <@ba.vup>across the battlefield</> (only targets without this effect will be chosen):\\nWhen the skill can be activated, Attack Speed <@ba.vup>+{attack_speed}</> for <@ba.vup>{buff_duration}</>s, during which the skill automatically activates",
+            "zh": "对<@ba.vup>全场</>{max_target}名干员施加<$ba.triggereffect>触发型效果</>（只选择未持有该效果的目标）：\\n技能可开启时，在<@ba.vup>{buff_duration}</>秒内攻击速度<@ba.vup>+{attack_speed}</>，期间技能变为自动开启",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "attack_speed": 50,
+            "buff_duration": 15,
+            "max_target": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30014",
+              "count": 4
+            },
+            {
+              "id": "31013",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31024",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31114",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_tocka_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.6,
+            "attack_speed": 50,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.5,
+            "bonus_atk_dec_per_sec": 0.033,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 29,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.65,
+            "attack_speed": 50,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.5,
+            "bonus_atk_dec_per_sec": 0.033,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 28,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.7,
+            "attack_speed": 50,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.6,
+            "bonus_atk_dec_per_sec": 0.04,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 27,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.75,
+            "attack_speed": 60,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.7,
+            "bonus_atk_dec_per_sec": 0.047,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.8,
+            "attack_speed": 60,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.7,
+            "bonus_atk_dec_per_sec": 0.047,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 26,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.85,
+            "attack_speed": 60,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.8,
+            "bonus_atk_dec_per_sec": 0.053,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 25,
+          "initSp": 10,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 1.9,
+            "attack_speed": 70,
+            "bonus_duration": 15,
+            "bonus_init_atk": 0.9,
+            "bonus_atk_dec_per_sec": 0.06,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 23,
+          "initSp": 11,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 2,
+            "attack_speed": 70,
+            "bonus_duration": 15,
+            "bonus_init_atk": 1,
+            "bonus_atk_dec_per_sec": 0.067,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 22,
+          "initSp": 12,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 2.1,
+            "attack_speed": 70,
+            "bonus_duration": 15,
+            "bonus_init_atk": 1.1,
+            "bonus_atk_dec_per_sec": 0.073,
+            "bonus_sp": 1
+          }
+        },
+        {
+          "name": {
+            "en": "Solitary Spring",
+            "zh": "踽踽独行之春",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, attacks deal Physical damage equal to <@ba.vup>{attack@atk_scale:0%}</> of ATK to {attack@max_target} enemies and <$ba.stun>Stun</> the targets for <@ba.vup>{attack@stun:0.0}</>s, immediately applies a <$ba.triggereffect>Trigger Effect</> to another operator within range (triggers it instead if it already exists):\\nUpon skill activation, increases self and Frozendelta's ATK by <@ba.vup>+{bonus_init_atk:0%}</> (decays over <@ba.vup>{bonus_duration}</>s) and transfers the <$ba.triggereffect>Trigger Effect</> to another operator within Frozendelta's attack range with the highest SP percentage; during Frozendelta's skill, the operator with this effect gains <@ba.vup>1</> SP per second",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，攻击对{attack@max_target}个敌人造成攻击力<@ba.vup>{attack@atk_scale:0%}</>的物理伤害并使目标<$ba.stun>晕眩</><@ba.vup>{attack@stun:0.0}</>秒，立刻对范围内另一名干员施加<$ba.triggereffect>触发型效果</>（已存在时改为将其触发）：\\n开启技能时自身和冻河攻击力<@ba.vup>+{bonus_init_atk:0%}</>（在<@ba.vup>{bonus_duration}</>秒内衰减），并将该<$ba.triggereffect>触发型效果</>转移给冻河攻击范围内技力比例最高的另一名干员；冻河技能期间拥有该效果的干员每秒获得<@ba.vup>1</>点技力",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 20,
+          "initSp": 13,
+          "blackboard": {
+            "attack@max_target": 4,
+            "attack@stun": 0.5,
+            "attack@atk_scale": 2.2,
+            "attack_speed": 80,
+            "bonus_duration": 15,
+            "bonus_init_atk": 1.2,
+            "bonus_atk_dec_per_sec": 0.08,
+            "bonus_sp": 1
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31034",
+              "count": 4
+            },
+            {
+              "id": "31093",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "30054",
+              "count": 4
+            },
+            {
+              "id": "31104",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30145",
+              "count": 6
+            },
+            {
+              "id": "31024",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30011",
+          "count": 6
+        },
+        {
+          "id": "30061",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30022",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30042",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "31073",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30043",
+          "count": 5
+        },
+        {
+          "id": "31033",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Mute of the Night",
+            "zh": "夜的哑然",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Recover 1 SP when self's <$ba.triggereffect>Trigger Effect</> is triggered, and heal a friendly operator within attack range for 40% of ATK",
+            "zh": "自身的<$ba.triggereffect>触发型效果</>触发时回复1点技力，并为攻击范围内一名友方干员治疗攻击力40%的生命",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp": 1,
+            "heal_scale": 0.4
+          }
+        },
+        {
+          "name": {
+            "en": "Mute of the Night",
+            "zh": "夜的哑然",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Recover 1 SP when self's <$ba.triggereffect>Trigger Effect</> is triggered, and heal a friendly operator within attack range for 60% <@ba.talpu>（+20%）</> of ATK",
+            "zh": "自身的<$ba.triggereffect>触发型效果</>触发时回复1点技力，并为攻击范围内一名友方干员治疗攻击力60%<@ba.talpu>（+20%）</>的生命",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "sp": 1,
+            "heal_scale": 0.6
+          }
+        },
+        {
+          "name": {
+            "en": "Mute of the Night",
+            "zh": "夜的哑然",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Recover 2 SP when self's <$ba.triggereffect>Trigger Effect</> is triggered, and heal a friendly operator within attack range for 80% of ATK",
+            "zh": "自身的<$ba.triggereffect>触发型效果</>触发时回复2点技力，并为攻击范围内一名友方干员治疗攻击力80%的生命",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "sp": 2,
+            "heal_scale": 0.8
+          }
+        },
+        {
+          "name": {
+            "en": "Mute of the Night",
+            "zh": "夜的哑然",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Recover 2 SP when self's <$ba.triggereffect>Trigger Effect</> is triggered, and heal a friendly operator within attack range for 100% <@ba.talpu>（+20%）</> of ATK",
+            "zh": "自身的<$ba.triggereffect>触发型效果</>触发时回复2点技力，并为攻击范围内一名友方干员治疗攻击力100%<@ba.talpu>（+20%）</>的生命",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 2
+          },
+          "blackboard": {
+            "sp": 2,
+            "heal_scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Snow Imprint",
+            "zh": "雪的印痕",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "The next Basic Attack after applying the <$ba.triggereffect>Trigger Effect</> deals AoE damage and inflicts a 20% <$ba.weaken>Enfeeble</> effect on the target for 6s, dealing Arts damage equal to 80% of ATK per second during the duration",
+            "zh": "施加<$ba.triggereffect>触发型效果</>后的下次普通攻击造成范围伤害，并使目标获得20%的<$ba.weaken>虚弱</>效果，持续6秒，期间每秒受到攻击力80%的法术伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack@t2_buff_duration": 6,
+            "attack@t2_magic_atk_scale": 0.8,
+            "attack@projectile_range": 1.5,
+            "attack@t2_atk": -0.2
+          }
+        },
+        {
+          "name": {
+            "en": "Snow Imprint",
+            "zh": "雪的印痕",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "The next Basic Attack after applying the <$ba.triggereffect>Trigger Effect</> deals AoE damage and inflicts a 20% <$ba.weaken>Enfeeble</> effect on the target for 8<@ba.talpu>（+2）</>s, dealing Arts damage equal to 80% of ATK per second during the duration",
+            "zh": "施加<$ba.triggereffect>触发型效果</>后的下次普通攻击造成范围伤害，并使目标获得20%的<$ba.weaken>虚弱</>效果，持续8<@ba.talpu>（+2）</>秒，期间每秒受到攻击力80%的法术伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "attack@t2_buff_duration": 8,
+            "attack@t2_magic_atk_scale": 0.8,
+            "attack@projectile_range": 1.5,
+            "attack@t2_atk": -0.2
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "First Talent Enhancement",
+        "zh": "第一天赋效果增强",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +40",
+        "zh": "攻击力+40",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Second Talent enhanced",
+        "zh": "第二天赋效果增强",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 50
+      }
+    }
+  ]
+}

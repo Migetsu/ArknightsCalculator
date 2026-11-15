@@ -1,0 +1,1711 @@
+{
+  "id": "char_4246_dminon",
+  "name": {
+    "en": "Dominion",
+    "zh": "国度",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "displayNumber": "SPCE",
+  "rarity": 6,
+  "class": "SPECIALIST",
+  "subclass": "Ambusher",
+  "faction": "ursus",
+  "position": "MELEE",
+  "tagList": [
+    "Crowd-Control"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "A \"Realm\" not belonging to Ursus, temporarily journeying with you.",
+    "zh": "一片不属于乌萨斯的“国度”，暂时与你同行。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "Until he finds the end of that trail of footprints in the snow.",
+    "zh": "直到他找到雪地里那串脚印的终点。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "y-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 688,
+            "atk": 399,
+            "def": 151,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 930,
+            "atk": 570,
+            "def": 223,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 80,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 5
+        },
+        {
+          "id": "30062",
+          "count": 5
+        },
+        {
+          "id": "30012",
+          "count": 7
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 930,
+            "atk": 570,
+            "def": 223,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 1208,
+            "atk": 741,
+            "def": 294,
+            "magicResistance": 20,
+            "cost": 23,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 90,
+      "rangeId": "y-1",
+      "evolveCost": [
+        {
+          "id": "3283",
+          "count": 4
+        },
+        {
+          "id": "30145",
+          "count": 4
+        },
+        {
+          "id": "31034",
+          "count": 2
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1208,
+            "atk": 741,
+            "def": 294,
+            "magicResistance": 30,
+            "cost": 23,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 90,
+          "data": {
+            "maxHp": 1590,
+            "atk": 927,
+            "def": 346,
+            "magicResistance": 30,
+            "cost": 23,
+            "blockCnt": 0,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 80,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_dminon_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 12,
+          "blackboard": {
+            "attack_speed": 46,
+            "sluggish": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 12,
+          "blackboard": {
+            "attack_speed": 50,
+            "sluggish": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 54,
+            "sluggish": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 14,
+          "blackboard": {
+            "attack_speed": 58,
+            "sluggish": 3
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 38,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 62,
+            "sluggish": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 36,
+          "initSp": 16,
+          "blackboard": {
+            "attack_speed": 66,
+            "sluggish": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 35,
+          "initSp": 18,
+          "blackboard": {
+            "attack_speed": 70,
+            "sluggish": 4
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 34,
+          "initSp": 20,
+          "blackboard": {
+            "attack_speed": 72,
+            "sluggish": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 32,
+          "initSp": 21,
+          "blackboard": {
+            "attack_speed": 75,
+            "sluggish": 5
+          }
+        },
+        {
+          "name": {
+            "en": "Halt",
+            "zh": "停步",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Speed <@ba.vup>+{attack_speed}</>, each enemy is <$ba.sluggish>Slowed</> for <@ba.vup>{sluggish}</>s the first time they step onto \"Dominion\"",
+            "zh": "攻击速度<@ba.vup>+{attack_speed}</>，每个敌人首次踏上“国度”时会<$ba.sluggish>停顿</><@ba.vup>{sluggish}</>秒",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 30,
+          "initSp": 22,
+          "blackboard": {
+            "attack_speed": 80,
+            "sluggish": 5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31064",
+              "count": 4
+            },
+            {
+              "id": "31113",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "31074",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30165",
+              "count": 6
+            },
+            {
+              "id": "30054",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_dminon_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 17,
+          "blackboard": {
+            "atk": 0.2,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 19,
+          "blackboard": {
+            "atk": 0.25,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 21,
+          "blackboard": {
+            "atk": 0.3,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 23,
+          "blackboard": {
+            "atk": 0.4,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.45,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 27,
+          "blackboard": {
+            "atk": 0.5,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 29,
+          "blackboard": {
+            "atk": 0.55,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 31,
+          "blackboard": {
+            "atk": 0.66,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 33,
+          "blackboard": {
+            "atk": 0.71,
+            "attack_speed": 30
+          }
+        },
+        {
+          "name": {
+            "en": "Slaughter",
+            "zh": "受戮",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack range <@ba.vup>is expanded</>, ATK <@ba.vup>+{atk:0%}</>, enemies on \"Dominion\" cannot dodge Physical and Arts attacks\\n<@ba.rem>On the second activation and onwards, additionally increases Attack Speed by <@ba.vup>+{attack_speed}</> and makes the duration infinite</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，使“国度”上的敌人无法闪避物理和法术攻击\\n<@ba.rem>第二次及以后使用时额外使攻击速度<@ba.vup>+{attack_speed}</>，且持续时间无限</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-3",
+          "skillType": "MANUAL",
+          "duration": 20,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.75,
+            "attack_speed": 30
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 4
+            },
+            {
+              "id": "31053",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31044",
+              "count": 4
+            },
+            {
+              "id": "31094",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30115",
+              "count": 6
+            },
+            {
+              "id": "31084",
+              "count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_dminon_3",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 63,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.3,
+            "attack@aoe_atk_scale": 0.4,
+            "attack_speed": 10,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 61,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.4,
+            "attack@aoe_atk_scale": 0.4,
+            "attack_speed": 10,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 59,
+          "initSp": 20,
+          "blackboard": {
+            "atk": 0.5,
+            "attack@aoe_atk_scale": 0.5,
+            "attack_speed": 10,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 57,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.55,
+            "attack@aoe_atk_scale": 0.5,
+            "attack_speed": 20,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.6,
+            "attack@aoe_atk_scale": 0.6,
+            "attack_speed": 20,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 25,
+          "blackboard": {
+            "atk": 0.65,
+            "attack@aoe_atk_scale": 0.6,
+            "attack_speed": 20,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 51,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.7,
+            "attack@aoe_atk_scale": 0.6,
+            "attack_speed": 30,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.8,
+            "attack@aoe_atk_scale": 0.7,
+            "attack_speed": 35,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.9,
+            "attack@aoe_atk_scale": 0.75,
+            "attack_speed": 37,
+            "attack@cd": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Desolate Realm",
+            "zh": "无人的国度",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Range <@ba.vup>Expands</>, ATK <@ba.vup>+{atk:0%}</>, and Attack Speed <@ba.vup>+{attack_speed}</>. Attacks all enemies on the \"Realm\" simultaneously. When a unit on the \"Realm\" is attacked by a Ground enemy, spreads \"Realm\" to the 4 surrounding tiles of the damage source and deals Physical damage equal to <@ba.vup>{attack@aoe_atk_scale:0%}</> of ATK (triggers up to 1 time every {attack@cd} seconds)\\n<@ba.rem>Resets the status of \"Realm\" on the field after the skill ends</>",
+            "zh": "攻击范围<@ba.vup>扩大</>，攻击力<@ba.vup>+{atk:0%}</>，攻击速度<@ba.vup>+{attack_speed}</>，同时攻击“国度”上的所有敌人，“国度”上的单位被地面敌人攻击时，在伤害来源周围四格扩散“国度”，并造成相当于攻击力<@ba.vup>{attack@aoe_atk_scale:0%}</>的物理伤害（每{attack@cd}秒最多触发1次）\\n<@ba.rem>技能结束后，重置场上的“国度”状态</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "y-10",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 1,
+            "attack@aoe_atk_scale": 0.8,
+            "attack_speed": 40,
+            "attack@cd": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 8
+            },
+            {
+              "id": "31104",
+              "count": 4
+            },
+            {
+              "id": "30063",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 12
+            },
+            {
+              "id": "31054",
+              "count": 4
+            },
+            {
+              "id": "30014",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 15
+            },
+            {
+              "id": "30155",
+              "count": 6
+            },
+            {
+              "id": "31104",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 5
+        },
+        {
+          "id": "30021",
+          "count": 5
+        },
+        {
+          "id": "30051",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30032",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30042",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 8
+        },
+        {
+          "id": "30043",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 8
+        },
+        {
+          "id": "30013",
+          "count": 5
+        },
+        {
+          "id": "30053",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Substantial Collapse",
+            "zh": "实质坍缩",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Fills self's attack range with \"Realm\". Ground enemies within the \"Realm\" have -5 Attack Speed and take Arts damage equal to 10% of ATK per second",
+            "zh": "自身攻击范围内弥漫“国度”，处于“国度”内的地面敌人攻击速度-5，每秒受到攻击力10%的法术伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 0,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": -5,
+            "atk_scale": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Substantial Collapse",
+            "zh": "实质坍缩",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Fills self's attack range with \"Realm\". Ground enemies within the \"Realm\" have -10 Attack Speed and take Arts damage equal to 10% of ATK per second",
+            "zh": "自身攻击范围内弥漫“国度”，处于“国度”内的地面敌人攻击速度-10，每秒受到攻击力10%的法术伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": -10,
+            "atk_scale": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Substantial Collapse",
+            "zh": "实质坍缩",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Fills self's attack range with \"Realm\". Ground enemies within the \"Realm\" have -15 Attack Speed and take Arts damage equal to 13% of ATK per second",
+            "zh": "自身攻击范围内弥漫“国度”，处于“国度”内的地面敌人攻击速度-15，每秒受到攻击力13%的法术伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "attack_speed": -15,
+            "atk_scale": 0.13
+          }
+        }
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "This Body, A Boundary",
+            "zh": "此身为界",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "When self retreats, deals Arts damage equal to 500% of ATK and inflicts 5-second <$ba.stun>Stun</> to all Ground enemies within the \"Realm\", after which all \"Realm\" disappear",
+            "zh": "自身撤退时，对“国度”内的所有地面敌人造成相当于攻击力500%的法术伤害和5秒<$ba.stun>晕眩</>，随后所有“国度”消失",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk_scale": 5,
+            "stun": 5
+          }
+        },
+        {
+          "name": {
+            "en": "This Body, A Boundary",
+            "zh": "此身为界",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "When self retreats, deals Arts damage equal to 600% <@ba.talpu>（+100%）</> of ATK and inflicts 5-second <$ba.stun>Stun</> to all Ground enemies within the \"Realm\", after which all \"Realm\" disappear",
+            "zh": "自身撤退时，对“国度”内的所有地面敌人造成相当于攻击力600%<@ba.talpu>（+100%）</>的法术伤害和5秒<$ba.stun>晕眩</>，随后所有“国度”消失",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk_scale": 6,
+            "stun": 5
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeploy Time -10 seconds",
+        "zh": "再部署时间-10秒",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Second Talent enhanced",
+        "zh": "第二天赋效果增强",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "maxHp": 200,
+        "atk": 40
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_dminon",
+      "name": {
+        "en": "Realm Badge",
+        "zh": "国度证章",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_dminon",
+      "description": {
+        "en": "Operator Realm excels at stealthy ambushes.\nPer Field Operations Department resolution,\nassigned as a Specialist Operator exercising Ambusher duties during field missions.\nThis badge is specially issued\nas certification.",
+        "zh": "干员国度擅长隐匿身形伏击敌人\n根据外勤部门决议\n在外勤任务中划分为特种干员，行使伏击客职责\n特别颁发此证章\n以兹证明",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "servers": [
+        "cn"
+      ]
+    },
+    {
+      "id": "uniequip_002_dminon",
+      "name": {
+        "en": "Empty Bottles And Cans",
+        "zh": "空瓶罐们",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_dminon",
+      "description": {
+        "en": "[Meeting Record]\n[Meeting No.: RSI-Conf.██]\n[Research Subject: Subspace-Permeable Collapse Entity (SPCE) currently contained at Rhodes Island]\n[Research Objective: Destructive behaviors exhibited by the above entity and their triggers (Attl: Derivative entities appearing alongside the above entity and their causes)]\n...\nPlayback, playback. Right here, when the victim threw a Molotov cocktail at him, he didn't react. The bottle actually grazed the exhaust pipe on his head, see that? But he didn't react.\nThis is the exact same thing we saw in the testing grounds—when ███ shot arrows at him, if the arrow couldn't pierce him, he wouldn't dodge. He doesn't actually understand what these attacking behaviors mean. What triggers his reaction is something else.\nYes, right here. The bottle hits the ground, plop, shatters.\nNext second, he vanishes on the spot.\nNext second... Okay, stop playing, I don't want to watch the ██ part afterwards again.\nBut that's the gist of it. What triggers his... destructive behaviors isn't the attacks he receives, but the sound of the glass container shattering.\nAs evidence, please look at this photo—the derivative entity that appeared beside him, which we've designated SPCE-001. A glass bottle, its body covered in cracks, with gelatinous \"Realm\" clinging to all the fissures. You can see \"Realm\" spilling out in a tougher, plastic-like solid form, supporting SPCE-001 as it moves around. Simply put, it's a bottle monster that uses \"Realm\" as its limbs.\nNow, if you look closely, you'll find—\nYes, SPCE-001 is the Molotov cocktail from the previous sighting material.\nWhich means, the first thing he did after ██ing the victim who threw the Molotov at him was to pick up the bottle fragments piece by piece, and then glue them back together using the \"Realm\" he had molded.\nOf course, those \"Realm\" are still part of him, so SPCE-001 will exhibit a tendency to converge toward him—simply put, it follows right behind his tail.\nSighting reports of derivative entities like this are a dime a dozen. A Freeman's wooden honey jar, Taman's condensed milk tin can, a Saint Petersburg souvenir shop's water cup... and the newly recorded SPCE-027, a flowerpot.\nTheir commonality? They're all containers, they all shattered, they were all repaired by him with \"Realm\", and... they all follow right behind his tail.\nLet me finish. I know what you guys are wondering: \"Without the Urusats Will's manipulation, does the Inquisitor really just do stupid things like this every day?\", right?\nRemember our own test results? When ███ shot arrows at him, if the arrow couldn't pierce him, he wouldn't dodge. But if the arrow would actually threaten him, he would make a quite terrifying... reaction. Why? Didn't I say he doesn't understand attacking behaviors?\nIt's very simple. Just as much as he hates seeing those containers shatter, he cares about the possibility of himself getting damaged.\nBecause he himself is a container.\nA container filled to the brim with \"Realm\".",
+        "zh": "【会议记录】\n【会议编号：RSI-Conf.██】\n【研究对象：现收容于罗德岛的亚空间坍缩渗透实体（Subspace-Permeable Collapse Entity, or SPCE）】\n【研究目标：上述实体表现出的破坏性行为及其诱因（附：伴随上述实体出现的衍生实体及其成因）】\n……\n回放，回放。就是这，受害者朝他扔燃烧瓶的时候，他没有反应。瓶子其实是擦着他头上的排气管过去的，看到了吗？但他没有反应。\n这和我们在测试场里看到的是一回事，███对他射箭的时候，如果那根箭扎不穿他，他就不躲。他其实不理解这些攻击行为是什么意思。触发他反应的，是另一件事。\n对，这里。瓶子落地，啪唧，碎了。\n下一秒，他就原地消失了。\n再下一秒……好了别放了，我不想把后面██的部分再看一遍。\n但意思是这个意思。触发他那些……破坏性行为的，不是他受到的攻击，而是燃烧瓶碎裂的声音。\n作为证据，请看这张照片——出现在他身边的衍生实体，我们称之为SPCE-001。一个玻璃瓶子，瓶身布满裂纹，所有裂纹处都粘附着胶质的“国度”。你能看到有“国度”蔓延出来，以更强韧的、类似塑胶的固体形态，支撑着SPCE-001四处移动。简单来说，这是个拿“国度”当手脚的瓶子怪。\n现在，如果你仔细看，就会发现——\n是的，SPCE-001，就是上一份目击材料里的燃烧瓶。\n也就是说，他在██了那个朝他扔燃烧瓶的受害者之后，做的第一件事，是一片一片地把瓶子碎片捡起来，然后用自己捏塑过的“国度”把它们粘回去。\n当然，那些“国度”依然是他的一部分，所以SPCE-001会表现出向他汇聚的倾向——简单来说，会跟在他屁股后面。\n这类衍生实体的目击报告还有的是。自由民的木雕蜂蜜罐、塔曼的炼乳易拉罐、圣骏堡纪念品店的水杯……还有刚刚被记录的SPCE-027，一个花盆。\n它们的共同点？都是容器，都碎了，都被他用“国度”修补好了，以及……都跟在他屁股后面。\n听我说完。我知道你们在疑惑什么，“内卫没了乌萨斯的意志操控，难道每天就干这种蠢事吗”，是吧？\n还记得我们自己的测试结果吗？███对他射箭的时候，如果那根箭扎不穿他，他就不躲。但如果那根箭确实会威胁到他，他会做出相当恐怖的……反应。为什么？我不是说他不理解攻击行为吗？\n很简单，他有多讨厌看到那些容器破碎，就有多介意自己会破损的可能性。\n因为他自己也是个容器。\n装着满满一腔“国度”的，一个容器。",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "servers": [
+        "cn"
+      ],
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "30155",
+            "count": 2
+          },
+          {
+            "id": "4001",
+            "count": 80000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 60
+          },
+          {
+            "id": "30145",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 100000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 4
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 20
+          },
+          {
+            "id": "30165",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 120000
+          }
+        ]
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "max_hp": 180,
+            "atk": 60
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Movement Speed of all enemies within attack range <@ba.kw>-20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "30155",
+              "count": 2
+            },
+            {
+              "id": "4001",
+              "count": 80000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "max_hp": 210,
+            "atk": 72
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Movement Speed of all enemies within attack range <@ba.kw>-20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Fills self's attack range with \"Realm\". Ground enemies within the \"Realm\" have -18 Attack Speed and take Arts damage equal to 17% of ATK per second",
+                    "zh": "自身攻击范围内弥漫“国度”，处于“国度”内的地面敌人攻击速度-18，每秒受到攻击力17%的法术伤害",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": -18,
+                    "atk_scale": 0.17
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 60
+            },
+            {
+              "id": "30145",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 100000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "max_hp": 230,
+            "atk": 80
+          },
+          "parts": [
+            {
+              "target": "DISPLAY",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "Movement Speed of all enemies within attack range <@ba.kw>-20%</>",
+                    "zh": "攻击范围内所有敌人移动速度<@ba.kw>-20%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT",
+              "candidates": [
+                {
+                  "blackboard": {
+                    "move_speed": -0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Fills self's attack range with \"Realm\". Ground enemies within the \"Realm\" have -20 Attack Speed and take Arts damage equal to 20% of ATK per second",
+                    "zh": "自身攻击范围内弥漫“国度”，处于“国度”内的地面敌人攻击速度-20，每秒受到攻击力20%的法术伤害",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "attack_speed": -20,
+                    "atk_scale": 0.2
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 4
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 20
+            },
+            {
+              "id": "30165",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 120000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
