@@ -1,0 +1,1390 @@
+{
+  "id": "char_4169_caledo",
+  "name": {
+    "en": "Caleido",
+    "zh": "镜匠",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "appellation": "Caleido",
+  "displayNumber": "R186",
+  "rarity": 5,
+  "class": "TANK",
+  "subclass": "Primal Protector",
+  "faction": "rhodes",
+  "position": "MELEE",
+  "tagList": [
+    "Elemental",
+    "Defense"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "Kazdel's newly emerged glazier Kaleid; the dazzling radiance on her shield is entirely her handiwork.",
+    "zh": "卡兹戴尔新晋镜匠卡莱朵，盾牌上眩目的光芒是她的手笔。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "This is the \"new life\" she forged for herself.",
+    "zh": "这是她自己给自己的“新生活”。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 50,
+      "rangeId": "0-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1440,
+            "atk": 249,
+            "def": 206,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 50,
+          "data": {
+            "maxHp": 1946,
+            "atk": 357,
+            "def": 279,
+            "magicResistance": 10,
+            "cost": 21,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 70,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3231",
+          "count": 4
+        },
+        {
+          "id": "30032",
+          "count": 4
+        },
+        {
+          "id": "30022",
+          "count": 3
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1946,
+            "atk": 357,
+            "def": 279,
+            "magicResistance": 10,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2595,
+            "atk": 476,
+            "def": 372,
+            "magicResistance": 10,
+            "cost": 23,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 80,
+      "rangeId": "0-1",
+      "evolveCost": [
+        {
+          "id": "3233",
+          "count": 3
+        },
+        {
+          "id": "31094",
+          "count": 8
+        },
+        {
+          "id": "31023",
+          "count": 15
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 2595,
+            "atk": 476,
+            "def": 372,
+            "magicResistance": 10,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 80,
+          "data": {
+            "maxHp": 3605,
+            "atk": 595,
+            "def": 518,
+            "magicResistance": 10,
+            "cost": 25,
+            "blockCnt": 3,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 1.6,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_caledo_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 7,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.35,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 6,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.5,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.7,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 5,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.8,
+            "ep_damage_ratio": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Zero-Tolerance Cut",
+            "zh": "无公差切割",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack deals Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK to all blocked enemies, and deals<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{ep_damage_ratio:0%}</> of ATK",
+            "zh": "下次攻击对阻挡的所有敌人造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害，并造成相当于攻击力<@ba.vup>{ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+          "spCost": 3,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.9,
+            "ep_damage_ratio": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31114",
+              "count": 3
+            },
+            {
+              "id": "30063",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31054",
+              "count": 3
+            },
+            {
+              "id": "30014",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30155",
+              "count": 4
+            },
+            {
+              "id": "30044",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_caledo_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.5,
+            "max_hp": 0.5,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.6,
+            "max_hp": 0.5,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 60,
+          "initSp": 30,
+          "blackboard": {
+            "atk": 0.65,
+            "max_hp": 0.5,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 33,
+          "blackboard": {
+            "atk": 0.7,
+            "max_hp": 0.6,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 33,
+          "blackboard": {
+            "atk": 0.75,
+            "max_hp": 0.6,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 58,
+          "initSp": 33,
+          "blackboard": {
+            "atk": 0.8,
+            "max_hp": 0.6,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 55,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 0.9,
+            "max_hp": 0.7,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 53,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 1,
+            "max_hp": 0.8,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 52,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 1.1,
+            "max_hp": 0.9,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        },
+        {
+          "name": {
+            "en": "\"Multi-Mirror\"",
+            "zh": "“多面镜”",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK <@ba.vup>+{atk:0%}</>, Max HP <@ba.vup>+{max_hp:0%}</>, converts <@ba.vup>{damage_resistance:0%}</> of Physical and Arts damage taken into half as much<$ba.dt.rampage>Rampage Damage</>, while attacking all blocked enemies, additionally dealing<$ba.dt.rampage2>Rampage Damage</> equal to <@ba.vup>{attack@ep_damage_ratio:0%}</> of ATK with each attack",
+            "zh": "攻击力<@ba.vup>+{atk:0%}</>，生命上限<@ba.vup>+{max_hp:0%}</>，将受到的物理与法术伤害的<@ba.vup>{damage_resistance:0%}</>转化为一半的<$ba.dt.rampage>狂躁损伤</>，同时攻击阻挡的所有敌人，每次攻击额外造成相当于攻击力<@ba.vup>{attack@ep_damage_ratio:0%}</>的<$ba.dt.rampage2>狂躁损伤</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": null,
+          "skillType": "MANUAL",
+          "duration": 35,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 35,
+          "blackboard": {
+            "atk": 1.2,
+            "max_hp": 1,
+            "damage_resistance": 0.3,
+            "attack@ep_damage_ratio": 0.25,
+            "ep_damage_ratio": 0.15
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 5
+            },
+            {
+              "id": "31024",
+              "count": 3
+            },
+            {
+              "id": "31083",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "31014",
+              "count": 3
+            },
+            {
+              "id": "31034",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 10
+            },
+            {
+              "id": "30145",
+              "count": 4
+            },
+            {
+              "id": "31104",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 4
+        },
+        {
+          "id": "30051",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30062",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30012",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 6
+        },
+        {
+          "id": "30063",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 6
+        },
+        {
+          "id": "31033",
+          "count": 3
+        },
+        {
+          "id": "30023",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Artisan's Savoir-Faire",
+            "zh": "工匠的素养",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 3% of Max HP instead",
+            "zh": "自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为3%的最大生命值",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0,
+            "hp_ratio_1": 0.02,
+            "hp_ratio_2": 0.03
+          }
+        },
+        {
+          "name": {
+            "en": "Artisan's Savoir-Faire",
+            "zh": "工匠的素养",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 5%<@ba.talpu>（+2%）</>of Max HP instead",
+            "zh": "自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为5%<@ba.talpu>（+2%）</>的最大生命值",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 0,
+            "hp_ratio_1": 0.02,
+            "hp_ratio_2": 0.05
+          }
+        },
+        {
+          "name": {
+            "en": "Artisan's Savoir-Faire",
+            "zh": "工匠的素养",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 6% of Max HP instead",
+            "zh": "自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为6%的最大生命值",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "max_hp": 0,
+            "hp_ratio_1": 0.02,
+            "hp_ratio_2": 0.06
+          }
+        },
+        {
+          "name": {
+            "en": "Artisan's Savoir-Faire",
+            "zh": "工匠的素养",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 8%<@ba.talpu>（+2%）</>of Max HP instead",
+            "zh": "自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为8%<@ba.talpu>（+2%）</>的最大生命值",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "max_hp": 0,
+            "hp_ratio_1": 0.02,
+            "hp_ratio_2": 0.08
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeploy Time -4 seconds",
+        "zh": "再部署时间-4秒",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "First Talent Enhancement",
+        "zh": "第一天赋效果增强",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 30,
+        "def": 50
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "uniequip_001_caledo",
+      "name": {
+        "en": "Glazier's Badge",
+        "zh": "镜匠证章",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "type": "INITIAL",
+      "typeName2": "",
+      "icon": "uniequip_001_caledo",
+      "description": {
+        "en": "Operator Glazier excels at dealing elemental damage while holding the battle line.\nPer Field Operations Department resolution,\nassigned to the Defender class as a Protean Defender for field missions.\nThis badge is hereby awarded\nin recognition of achievement.",
+        "zh": "干员镜匠擅长维持战线之余对敌人造成元素杀伤\n根据外勤部门决议\n在外勤任务中划分为重装干员，行使本源铁卫职责\n特别颁发此证章\n以兹证明",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "servers": [
+        "cn"
+      ]
+    },
+    {
+      "id": "uniequip_002_caledo",
+      "name": {
+        "en": "\"Aha!\"",
+        "zh": "“啊哈！”",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "type": "ADVANCED",
+      "typeName2": "X",
+      "icon": "uniequip_002_caledo",
+      "description": {
+        "en": "\"It is time to return, it has grown dark,\" Dado urged anxiously. I was somewhat reluctant to part, giving a final poke to the juvenile Originium Slugs locked in combat. \"It is still early,\" I said.\n\"Let us go quickly,\" Dado looked uneasily ahead. The road was pitch black, and we had to walk from one end to the other. He gripped my hand, his palm sweating. \"Do you not remember? If it is dark and children do not go home... the man-eating monster will appear to eat them.\"\nI squeezed his palm reassuringly: \"The fighting ended long ago, did it not? There are no man-eating monsters; they are just stories adults make up.\"\n\"Yet...\" Dado remained uneasy.\nSetting off on the way home, a flash of lightning split the pitch-black sky for a fleeting moment, illuminating the face before us: it had a gaping maw, distorted limbs, and tightly clutched a club in its hand, seeming as though it would smash down upon our heads the very next second. Dado screamed, but at that exact moment, the door beside us opened, and a woman welcomed us inside. The room was bright, filled with many finished and unfinished mirrors. She seemed to be that glazier named... Kaleid? She wiped our damp heads with a thick towel. Dado's lips regained a hint of color, yet he was still muttering about the man-eating monster.\n\"The man-eating monster?\" The woman smiled helplessly. \"After all this time, the excuse used to frighten children remains the same.\"\n\"When I was young, the archetype of the man-eating monster was outsiders who hated Sarkaz. Adults used this to warn children: do not go out, beware of those different outsiders.\" She poured us two cups of hot water. \"And now? How do they frighten you? Outsiders who hate Sarkaz and will inevitably make a comeback?\"\n\"...It's the same old routine anyway,\" I said. \"Only Dado still believes; I no longer do.\" Yet at the thought of what I had seen just moments ago, I could not help shivering once more.\n\"But we saw it!\" Dado shouted. \"Right outside, just now we...\"\nHearing our doubts, the woman carried a lamp outside, and returned with a smile curling at the corners of her lips: \"The 'monster' you saw could hardly be this, could it?\"\n\nThe rain stopped. The dark clouds dispersed, and the light of the twin moons gently bathed the earth. The lantern glowed brightly, reflecting the comical appearances of two children in the funhouse mirrors. After looking closely and understanding, the children were quickly amused by the sights in the mirrors and let out laughter. Yet one of the children remained somewhat uneasy, raising his head to ask the woman something. And the woman replied thus:\n\"It will not. The war has ended, and it will not appear again... I promise. You merely happened to encounter a funhouse mirror.\n\"Let us go, take the lantern, I will see you home.\"",
+        "zh": "“是时候回去了，天已经黑了。”达多焦急地催促。我有些依依不舍，最后拨弄了一下正在争斗的幼年源石虫们。“还早呢。”我说。“快走吧，”达多不安地看了一眼前方，路漆黑一片，我们要从这头走到那头，他握住我的手，掌心出汗，“你不记得吗？如果天黑了，还有小孩不回家……杀人怪兽就会出现，来吃他们。”\n我安抚地捏了捏他的掌心：“早就不打仗了，不是吗？没有杀人怪兽了，都是大人编出来的。”\n“可是……”达多仍在不安。\n踏上回家的路，闪电将漆黑的天空劈亮一瞬，照亮了我们面前的脸孔：它张着血盆大口，手脚变了形，手里紧攥着棒子，似乎下一秒就要砸在我们头顶。达多尖叫一声，但就在此刻，身边的门打开，一个女人将我们迎了进去。屋内亮着，立着好多面做完的，或是没做完的镜子。她似乎就是那个镜匠，叫……卡莱朵？她拿厚实的毛巾擦拭我们湿漉的头顶。达多嘴唇恢复了点血色，却仍在喃喃自语着杀人怪兽的事。\n“杀人怪兽？”女人无奈地笑，“这么久了，吓唬小孩还是同样的说辞。”\n“我小时候，杀人怪兽的原型是仇恨萨卡兹的外地人。大人以此告诫小孩：不要出门，要提防那些不一样的外来人。”她给我们倒了两杯热水，“现在呢？是怎么吓唬你们的？总会卷土重来的、仇恨萨卡兹的外地人？”\n“……反正还是老一套。”我说，“只有达多还信，我现在已经不信了。”可一想到刚才看见的，我不禁又打了个寒战。\n“但我们看见了！”达多喊叫一声，“就在外面，我们刚才……”\n听到我们的疑惑，女人拎了盏灯出门，回来后嘴角噙着笑意：“你们看见的‘怪兽’，莫非就是这个？”\n\n雨停了。乌云散去，双月的光芒温柔地洒在大地之上。提灯亮着，哈哈镜中照出两个孩子滑稽的样貌。仔细看明白之后，孩子们很快被镜子里的景象逗乐了，发出笑声。可其中一个孩子还是有些不安，他仰头问了女人什么。而女人则这样回答：\n“不会的。战争结束了，不会再出现……我保证。只是你们恰好遇到了一面哈哈镜而已。\n“走吧，拿好灯，我送你们回家。”",
+        "source": "machine",
+        "isMachineTranslation": true
+      },
+      "servers": [
+        "cn"
+      ],
+      "itemCost": {
+        "1": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "31064",
+            "count": 3
+          },
+          {
+            "id": "4001",
+            "count": 40000
+          }
+        ],
+        "2": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_1",
+            "count": 20
+          },
+          {
+            "id": "31084",
+            "count": 4
+          },
+          {
+            "id": "4001",
+            "count": 50000
+          }
+        ],
+        "3": [
+          {
+            "id": "mod_unlock_token",
+            "count": 2
+          },
+          {
+            "id": "mod_update_token_2",
+            "count": 8
+          },
+          {
+            "id": "30044",
+            "count": 5
+          },
+          {
+            "id": "4001",
+            "count": 60000
+          }
+        ]
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "stats": {
+            "atk": 25,
+            "def": 15
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When blocking enemies, elemental damage dealt by self is increased by <@ba.kw>15%</>",
+                    "zh": "阻挡敌人时，自身造成的元素损伤提升<@ba.kw>15%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ep_damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "31064",
+              "count": 3
+            },
+            {
+              "id": "4001",
+              "count": 40000
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "stats": {
+            "atk": 38,
+            "def": 31
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When blocking enemies, elemental damage dealt by self is increased by <@ba.kw>15%</>",
+                    "zh": "阻挡敌人时，自身造成的元素损伤提升<@ba.kw>15%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ep_damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Max HP +5%. While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 6% of Max HP instead",
+                    "zh": "生命上限+5%，自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为6%的最大生命值",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.05,
+                    "hp_ratio_1": 0.02,
+                    "hp_ratio_2": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Max HP +5%. While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 8%<@ba.talpu>（+2%）</>of Max HP instead",
+                    "zh": "生命上限+5%，自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为8%<@ba.talpu>（+2%）</>的最大生命值",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.05,
+                    "hp_ratio_1": 0.02,
+                    "hp_ratio_2": 0.08
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_1",
+              "count": 20
+            },
+            {
+              "id": "31084",
+              "count": 4
+            },
+            {
+              "id": "4001",
+              "count": 50000
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "stats": {
+            "atk": 60,
+            "def": 50
+          },
+          "parts": [
+            {
+              "target": "TRAIT",
+              "candidates": [
+                {
+                  "additionalDescription": {
+                    "en": "When blocking enemies, elemental damage dealt by self is increased by <@ba.kw>15%</>",
+                    "zh": "阻挡敌人时，自身造成的元素损伤提升<@ba.kw>15%</>",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "ep_damage_scale": 1.15
+                  },
+                  "requiredPotentialRank": 0
+                }
+              ]
+            },
+            {
+              "target": "TALENT_DATA_ONLY",
+              "candidates": [
+                {
+                  "upgradeDescription": {
+                    "en": "Max HP +10%. While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 6% of Max HP instead",
+                    "zh": "生命上限+10%，自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为6%的最大生命值",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.1,
+                    "hp_ratio_1": 0.02,
+                    "hp_ratio_2": 0.06
+                  },
+                  "requiredPotentialRank": 0
+                },
+                {
+                  "upgradeDescription": {
+                    "en": "Max HP +10%. While self is suffering from Elemental Injury burst, restores 2% of Max HP per second. If it is<$ba.dt.rampage>Rampage Damage</> burst, increases to 8%<@ba.talpu>（+2%）</>of Max HP instead",
+                    "zh": "生命上限+10%，自身处于元素损伤爆发期间，每秒回复自身2%的最大生命值，若为<$ba.dt.rampage>狂躁损伤</>爆发，则改为8%<@ba.talpu>（+2%）</>的最大生命值",
+                    "source": "machine",
+                    "isMachineTranslation": true
+                  },
+                  "blackboard": {
+                    "max_hp": 0.1,
+                    "hp_ratio_1": 0.02,
+                    "hp_ratio_2": 0.08
+                  },
+                  "requiredPotentialRank": 4
+                }
+              ]
+            }
+          ],
+          "cost": [
+            {
+              "id": "mod_unlock_token",
+              "count": 2
+            },
+            {
+              "id": "mod_update_token_2",
+              "count": 8
+            },
+            {
+              "id": "30044",
+              "count": 5
+            },
+            {
+              "id": "4001",
+              "count": 60000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1095 @@
+{
+  "id": "char_4170_hdbell",
+  "name": {
+    "en": "Herdbells",
+    "zh": "行铃",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "appellation": "Herdbells",
+  "displayNumber": "MN10",
+  "rarity": 4,
+  "class": "SPECIALIST",
+  "subclass": "调度者",
+  "faction": "minos",
+  "position": "MELEE",
+  "tagList": [
+    "DPS",
+    "Shift"
+  ],
+  "servers": [
+    "cn"
+  ],
+  "itemUsage": {
+    "en": "Pack-herder Gyalling and her pack beasts, at your service.",
+    "zh": "牧驮人行铃与她的驮兽们，为你服务。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "itemDesc": {
+    "en": "Pay upfront, then mount the beast.",
+    "zh": "先付款，再上驮兽。",
+    "source": "machine",
+    "isMachineTranslation": true
+  },
+  "artist": null,
+  "va": null,
+  "phases": [
+    {
+      "phase": 0,
+      "maxLevel": 45,
+      "rangeId": "1-1",
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 887,
+            "atk": 625,
+            "def": 175,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 45,
+          "data": {
+            "maxHp": 1199,
+            "atk": 893,
+            "def": 258,
+            "magicResistance": 0,
+            "cost": 21,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "maxLevel": 60,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3281",
+          "count": 3
+        },
+        {
+          "id": "30062",
+          "count": 1
+        },
+        {
+          "id": "30022",
+          "count": 1
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1199,
+            "atk": 893,
+            "def": 258,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 60,
+          "data": {
+            "maxHp": 1558,
+            "atk": 1160,
+            "def": 340,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "maxLevel": 70,
+      "rangeId": "1-1",
+      "evolveCost": [
+        {
+          "id": "3282",
+          "count": 5
+        },
+        {
+          "id": "30013",
+          "count": 20
+        },
+        {
+          "id": "31013",
+          "count": 9
+        }
+      ],
+      "attributesKeyFrames": [
+        {
+          "level": 1,
+          "data": {
+            "maxHp": 1558,
+            "atk": 1160,
+            "def": 340,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        },
+        {
+          "level": 70,
+          "data": {
+            "maxHp": 2050,
+            "atk": 1450,
+            "def": 400,
+            "magicResistance": 0,
+            "cost": 23,
+            "blockCnt": 2,
+            "moveSpeed": 1,
+            "attackSpeed": 100,
+            "baseAttackTime": 3.5,
+            "respawnTime": 70,
+            "hpRecoveryPerSec": 0,
+            "spRecoveryPerSec": 1
+          }
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "skillId": "skchr_hdbell_1",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets <@ba.vup>lightly</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>小力地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.5,
+            "force": 0,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets <@ba.vup>lightly</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>小力地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.6,
+            "force": 0,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets <@ba.vup>lightly</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>小力地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 12,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.7,
+            "force": 0,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.8,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 1.9,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 11,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.1,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.2,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 10,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.3,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Broccoli Impact",
+            "zh": "花椰菜冲击",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Next attack changes to herding a pack beast, pushing back touched targets with <@ba.vup>moderate force</> and dealing Physical damage equal to <@ba.vup>{atk_scale:0%}</> of ATK",
+            "zh": "下次攻击改为驱使驮兽，<@ba.vup>中等力度地</>推开碰触的目标并造成相当于攻击力<@ba.vup>{atk_scale:0%}</>的物理伤害",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "AUTO",
+          "duration": -1,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 9,
+          "initSp": 0,
+          "blackboard": {
+            "atk_scale": 2.4,
+            "force": 1,
+            "projectile_range": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            },
+            {
+              "id": "31033",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "31024",
+              "count": 2
+            },
+            {
+              "id": "31074",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30145",
+              "count": 2
+            },
+            {
+              "id": "31094",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "skillId": "skchr_hdbell_2",
+      "iconId": null,
+      "levels": [
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 50,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.15,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 49,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.2,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 48,
+          "initSp": 18,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.25,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 47,
+          "initSp": 21,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.3,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 46,
+          "initSp": 21,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.35,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 45,
+          "initSp": 21,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.4,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 44,
+          "initSp": 24,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.45,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 43,
+          "initSp": 24,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.5,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 42,
+          "initSp": 24,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.55,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        },
+        {
+          "name": {
+            "en": "Vegetable Platter",
+            "zh": "蔬菜大拼盘",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "Attack Interval <@ba.vup>slightly shortened</>, ATK <@ba.vup>+{atk:0%}</>, attacks change to herding a pack beast. The damage dealt to enemies by the pack beast increases by an additional <@ba.vup>12%</> for every tile passed (up to an additional <@ba.vup>48%</>)",
+            "zh": "攻击间隔<@ba.vup>小幅缩短</>，攻击力<@ba.vup>+{atk:0%}</>，攻击改为驱使驮兽，驮兽每经过一格对敌人造成的伤害额外提高<@ba.vup>12%</>（最高额外提高<@ba.vup>48%</>）",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "rangeId": "5-1",
+          "skillType": "MANUAL",
+          "duration": 36,
+          "spType": "INCREASE_WITH_TIME",
+          "spCost": 40,
+          "initSp": 27,
+          "blackboard": {
+            "base_attack_time": -0.5,
+            "atk": 0.6,
+            "attack@delta_atk_scale": 0.12,
+            "attack@max_atk_scale": 1.48,
+            "attack@projectile_range": 0.5
+          }
+        }
+      ],
+      "masteryCosts": [
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 2
+            },
+            {
+              "id": "31034",
+              "count": 1
+            },
+            {
+              "id": "30053",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 4
+            },
+            {
+              "id": "30054",
+              "count": 2
+            },
+            {
+              "id": "31094",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "unlockCond": {
+            "phase": 2,
+            "level": 1
+          },
+          "levelUpCost": [
+            {
+              "id": "3303",
+              "count": 6
+            },
+            {
+              "id": "30165",
+              "count": 2
+            },
+            {
+              "id": "30014",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allSkillLvlup": [
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3301",
+          "count": 2
+        },
+        {
+          "id": "30021",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 0,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30032",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "30042",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3302",
+          "count": 3
+        },
+        {
+          "id": "31023",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "unlockCond": {
+        "phase": 1,
+        "level": 1
+      },
+      "lvlUpCost": [
+        {
+          "id": "3303",
+          "count": 4
+        },
+        {
+          "id": "30033",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "candidates": [
+        {
+          "name": {
+            "en": "Pack Beast Boundary",
+            "zh": "驮兽边界感",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK +8% when not blocking enemies",
+            "zh": "未阻挡敌人时攻击力+8%",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.08
+          }
+        },
+        {
+          "name": {
+            "en": "Pack Beast Boundary",
+            "zh": "驮兽边界感",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK +10%<@ba.talpu> (+2%)</> when not blocking enemies",
+            "zh": "未阻挡敌人时攻击力+10%<@ba.talpu>（+2%）</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 1,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Pack Beast Boundary",
+            "zh": "驮兽边界感",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK +10% when not blocking enemies",
+            "zh": "未阻挡敌人时攻击力+10%",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 0
+          },
+          "blackboard": {
+            "atk": 0.1
+          }
+        },
+        {
+          "name": {
+            "en": "Pack Beast Boundary",
+            "zh": "驮兽边界感",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "description": {
+            "en": "ATK +12% <@ba.talpu>（+2%）</> when not blocking enemies",
+            "zh": "未阻挡敌人时攻击力+12%<@ba.talpu>（+2%）</>",
+            "source": "machine",
+            "isMachineTranslation": true
+          },
+          "unlockCond": {
+            "phase": 2,
+            "level": 1,
+            "potential": 4
+          },
+          "blackboard": {
+            "atk": 0.12
+          }
+        }
+      ]
+    }
+  ],
+  "potentialRanks": [
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Redeploy Time -4 seconds",
+        "zh": "再部署时间-4秒",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "ATK +25",
+        "zh": "攻击力+25",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "CUSTOM",
+      "description": {
+        "en": "Talent enhanced",
+        "zh": "天赋效果增强",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    },
+    {
+      "type": "BUFF",
+      "description": {
+        "en": "Deployment Cost -1",
+        "zh": "部署费用-1",
+        "source": "machine",
+        "isMachineTranslation": true
+      }
+    }
+  ],
+  "favorKeyFrames": [
+    {
+      "level": 0,
+      "data": {}
+    },
+    {
+      "level": 50,
+      "data": {
+        "atk": 50
+      }
+    }
+  ]
+}
