@@ -28,6 +28,27 @@ describe('mapYostarSync banner pulls', () => {
     expect(result.depot.items).toEqual({})
   })
 
+  it('captures the pity counter of a collab pool from gacha.normal', () => {
+    const result = mapYostarSync(
+      {
+        status: { nickName: 'Doctor', level: 100 },
+        troop: { chars: {} },
+        inventory: {},
+        gacha: {
+          normal: { LINKAGE_EN_42_0_5: { cnt: 10, maxCnt: 99, rarity: 6, avail: true } },
+          limit: {},
+        },
+      },
+      {
+        knownOperatorIds: new Set<string>(),
+        knownItemIds: new Set<string>(),
+        bannerToLmtgsid: new Map<string, string>(),
+      },
+    )
+
+    expect(result.bannerPulls['LINKAGE_EN_42_0_5']).toBe(10)
+  })
+
   it('keeps the highest counter when a pool appears in several sections', () => {
     const result = mapYostarSync(
       {
