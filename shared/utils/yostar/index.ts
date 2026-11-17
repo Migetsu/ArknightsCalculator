@@ -260,6 +260,16 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
   if (root.gacha && typeof root.gacha === 'object') {
     const gachaRecord = root.gacha as Record<string, unknown>
 
+    // `normal` holds per-pool pity counters (`cnt`) for pools without a spark coin,
+    // which is where LINKAGE/collab banners report their pulls.
+    if (gachaRecord.normal && typeof gachaRecord.normal === 'object') {
+      for (const [poolId, rawPool] of Object.entries(
+        gachaRecord.normal as Record<string, unknown>,
+      )) {
+        recordGachaPool(poolId, rawPool)
+      }
+    }
+
     if (gachaRecord.limit && typeof gachaRecord.limit === 'object') {
       for (const [poolId, rawPool] of Object.entries(
         gachaRecord.limit as Record<string, unknown>,

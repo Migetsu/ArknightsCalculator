@@ -2,8 +2,9 @@ name: Update Game Data
 
 on:
   schedule:
-    # Run daily at 04:00 UTC to sync upstream changes, translations, and banner lifecycle updates
+    # Twice a day: a game update can reach the upstream data hours after the first run.
     - cron: '0 4 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 permissions:
@@ -95,6 +96,12 @@ jobs:
 
       - name: Build skins
         run: npm run data:skins
+
+      # Keeps `data/asset-manifest.json` in sync with the public asset tree, so the
+      # catalogue knows which new operators have no artwork yet instead of rendering
+      # broken images after a data sync.
+      - name: Refresh asset manifest
+        run: npm run data:assets
 
       - name: Back up wiki banner data
         run: cp data/wiki-banners.json "$RUNNER_TEMP/wiki-banners.json"
@@ -204,9 +211,9 @@ jobs:
             - **Wiki banners:** ${{ steps.wiki.outcome == 'failure' && 'existing snapshot (scrape failed)' || 'refreshed' }}
             - **Growth guard:** within the 25% threshold from `AGENTS.md` section 14
 
-            Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `rebuild datasets` -> `data:validate`.
+            Pipeline: `data:pins` -> `data:fetch` -> `data:stages` -> `data:items` -> `data:recipes` -> `data:constants` -> `data:build` -> `data:handbook` -> `data:ranges` -> `data:recruit` -> `data:skins` -> `data:assets` -> `data:wiki-banners` -> `data:banners` -> `data:translate:all` -> `rebuild datasets` -> `data:validate`.
 
-            `data:assets` and thumbnails are not part of this workflow; they publish to the separate assets repository.
+            The asset manifest is refreshed from the public asset tree; thumbnails and hero art are still published by the separate assets workflow.
           labels: |
             automated
             data-sync

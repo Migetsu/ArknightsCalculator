@@ -2421,3 +2421,13 @@
     - New `bannerPulls` field in the Yostar sync payload (mapper captures every `gacha.limit`/`gacha.lmtgs` counter, not only pools with a coin); the sync modal stores it in `arkcalc_banner_pulls` on the device.
     - Dashboard SPARK reads `bannerPulls[banner.id]` (or the paired pool) first, then falls back to the spark coin. Goal is 300 for spark banners and 120 for LINKAGE guarantees; regular pools no longer contribute a meaningless zero.
   - **Tests:** lifecycle regression for confirmed windows, mapper `bannerPulls` cases, storage normalization/compartments, dashboard collab case `10 / 120`; `vitest` 124 files / 1 034 tests, E2E green.
+
+- **Task 64 — Self-Updating Data Pipeline & Pity-Based Pull Counters (`fix/self-updating-data`):**
+  - **Reported:** the pull counter did not change after a Yostar sync, and every game update needed an agent to refresh dataset pins before the daily cron could merge.
+  - **Pull counter root cause:** collab (LINKAGE) pools report their counter under `gacha.normal[poolId].cnt`, not under `gacha.limit`; the mapper only read `limit`/`lmtgs`, so `bannerPulls` stayed empty.
+  - **Fixes:**
+    - Mapper reads `gacha.normal` as well (max across sections), so LINKAGE pools without a spark coin still expose their counter.
+    - Dataset integrity tests are now invariant-based instead of pinning exact totals: art/rate-up/provenance sums must equal the committed dataset size, ranges/operators/stages/skins only need sane lower bounds. A data sync no longer turns `main` red, so the daily workflow can merge itself.
+    - `update-data.yml` runs twice a day (04:00 and 16:00 UTC), refreshes `data/asset-manifest.json` from the public asset tree before building banners, and still merges only after green CI.
+  - **Tests:** mapper `gacha.normal` case, resilient dataset invariants; full `vitest` suite green.
+  - **Docs:** `docs/known-issues.md` records that the displayed counter is the pool pity counter (resets after a 6★) and is device-local.
