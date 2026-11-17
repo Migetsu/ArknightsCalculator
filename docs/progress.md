@@ -2411,3 +2411,13 @@
 ## Known issues
 
 - Tracked in `docs/known-issues.md`.
+
+- **Task 63 — Limited Banner Priority, Lifecycle & Per-Banner Pull Counters (`fix/limited-banner-lifecycle-and-pulls`):**
+  - **Reported (2026-11-17):** the site kept a regular Joint Operation pool as the current banner although the event pool "Hunters of the Umbral Wilds" was live; the SPARK card stayed at `0 / 300` after 10 pulls on that event banner.
+  - **Root causes:** (1) `getBannerLifecycleStatus` used the CN `endTime` for a banner with confirmed Global dates, so a live Global release was classified as `ended`; (2) the dataset predated the EN pool record (synced later by PR #151); (3) SPARK only read `LMTGS_COIN_*` depot items, and LINKAGE/collab pools have no spark coin — their pull counter arrives in the Yostar `gacha.limit` payload.
+  - **Fixes:**
+    - Lifecycle now delegates to `getEffectiveGlobalWindow` for confirmed Global dates, so a paired CN banner is `active` while its Global window is open.
+    - Selected banner priority stays limited-first (`LIMITED`/`LINKAGE`/`type: limited`), which now resolves to the EN `LINKAGE_EN_42_0_5` record from the refreshed dataset.
+    - New `bannerPulls` field in the Yostar sync payload (mapper captures every `gacha.limit`/`gacha.lmtgs` counter, not only pools with a coin); the sync modal stores it in `arkcalc_banner_pulls` on the device.
+    - Dashboard SPARK reads `bannerPulls[banner.id]` (or the paired pool) first, then falls back to the spark coin. Goal is 300 for spark banners and 120 for LINKAGE guarantees; regular pools no longer contribute a meaningless zero.
+  - **Tests:** lifecycle regression for confirmed windows, mapper `bannerPulls` cases, storage normalization/compartments, dashboard collab case `10 / 120`; `vitest` 124 files / 1 034 tests, E2E green.
