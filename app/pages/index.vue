@@ -25,6 +25,7 @@ import {
 } from '~/../shared/utils/gacha'
 import type { GachaBanner } from '~/../shared/schemas/banner'
 import { useGachaPageData } from '~/composables/useGachaPageData'
+import { useBannerPulls } from '~/composables/useBannerPulls'
 import { useDepotStore } from '~/stores/depot'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
 import AkBadge from '~/components/ui/AkBadge.vue'
@@ -168,6 +169,8 @@ watch(nextBannerInfo, () => {
   updateCountdown()
 })
 
+const { pulls: bannerPulls } = useBannerPulls()
+
 const activePlansCount = computed<number>(() => {
   if (plannerStore.plans.length > 0) {
     return plannerStore.plans.length
@@ -186,27 +189,38 @@ const totalAvailablePulls = computed<number>(() => {
   return isDemoLoaded.value ? dashboardData.value.stats.availablePulls : 0
 })
 
+/**
+ * Spark/pull progress only makes sense for limited-style pools: LIMITED banners
+ * carry a 300-pull spark coin, LINKAGE (collab) banners have a 120-pull guarantee
+ * and no coin. Standard and Joint Operation pools are ignored, so the card no
+ * longer reports a meaningless 0 from a regular banner.
+ */
+const activeLimitedBanner = computed<GachaBanner | null>(() => {
+  const banner = gachaData.value?.currentEnFullBanner ?? gachaData.value?.currentBanner ?? null
+  if (!banner) return null
+  const isLimited =
+    banner.ruleType === 'LIMITED' || banner.ruleType === 'LINKAGE' || banner.type === 'limited'
+  if (!isLimited) return null
+  if (getBannerLifecycleStatus(banner) !== 'active') return null
+  return banner
+})
+
 const activeBannerPulls = computed<number>(() => {
-  // Active pulls (spark) ONLY apply when a LIMITED banner is currently active!
-  // When no limited banner is active (e.g. between limited events), spark count is 0.
-  const enBanner = gachaData.value?.currentEnFullBanner
-  if (enBanner && (enBanner.ruleType === 'LIMITED' || enBanner.type === 'limited')) {
-    const status = getBannerLifecycleStatus(enBanner)
-    if (status === 'active' && enBanner.lmtgsid) {
-      const count = depotStore.getItemCount(enBanner.lmtgsid)
-      if (count > 0) return count
-    }
+  const banner = activeLimitedBanner.value
+  if (!banner) return 0
+
+  // Pulls captured from the Yostar sync (works for collab pools without a coin).
+  for (const poolId of [banner.id, banner.pairedBannerId]) {
+    if (!poolId) continue
+    const count = bannerPulls.value[poolId]
+    if (typeof count === 'number' && count > 0) return count
   }
 
-  const curBanner = gachaData.value?.currentBanner
-  if (curBanner && (curBanner.ruleType === 'LIMITED' || curBanner.type === 'limited')) {
-    const status = getBannerLifecycleStatus(curBanner)
-    if (status === 'active' && curBanner.lmtgsid) {
-      const count = depotStore.getItemCount(curBanner.lmtgsid)
-      if (count > 0) return count
-    }
+  // Fallback: commemorative spark coins imported as depot items.
+  if (banner.lmtgsid) {
+    const coin = depotStore.getItemCount(banner.lmtgsid)
+    if (coin > 0) return coin
   }
-
   return 0
 })
 
@@ -218,6 +232,10 @@ const sparkCurrent = computed<number>(() => {
 })
 
 const sparkGoal = computed<number>(() => {
+  const banner = activeLimitedBanner.value
+  if (!banner) return dashboardData.value.stats.sparkGoal || 300
+  if (banner.lmtgsid) return 300
+  if (banner.ruleType === 'LINKAGE') return 120
   return dashboardData.value.stats.sparkGoal || 300
 })
 

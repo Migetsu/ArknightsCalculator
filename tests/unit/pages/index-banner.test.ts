@@ -52,9 +52,11 @@ mockNuxtImport('useGachaPageData', () => () => ({
 }))
 
 describe('IndexPage nextBannerInfo', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     mockGachaData.value.upcomingBanners = []
     mockGachaData.value.currentEnFullBanner = null
+    const { useBannerPulls } = await import('~/composables/useBannerPulls')
+    useBannerPulls().setPulls({})
   })
 
   it('projects the Global window for the next banner from the CN date and lag', async () => {
@@ -90,6 +92,36 @@ describe('IndexPage nextBannerInfo', () => {
     const days = Number(wrapper.findAll('.dashboard-page__countdown-num')[0]?.text())
     expect(days).toBeGreaterThanOrEqual(8)
     expect(wrapper.text()).not.toContain('STARTS TODAY')
+  })
+
+  it('counts pulls for an active collab banner from the synced pool counter (goal 120)', async () => {
+    const { useBannerPulls } = await import('~/composables/useBannerPulls')
+    useBannerPulls().setPulls({ LINKAGE_TEST_POOL: 10 })
+
+    mockGachaData.value.currentEnFullBanner = {
+      id: 'LINKAGE_TEST_POOL',
+      server: 'en',
+      ruleType: 'LINKAGE',
+      type: 'limited',
+      tag: 'LINKAGE',
+      name: { en: 'Hunters of the Umbral Wilds', zh: 'Hunters of the Umbral Wilds' },
+      title: { en: 'Hunters of the Umbral Wilds', zh: 'Hunters of the Umbral Wilds' },
+      openTime: Math.floor(Date.now() / 1000) - 86_400,
+      endTime: Math.floor(Date.now() / 1000) + 5 * 86_400,
+      durationDays: 15,
+      isActive: true,
+      lmtgsid: null,
+      rateUp6: [],
+      rateUp5: [],
+      secondaryRateUp6: [],
+    }
+
+    const wrapper = await mountSuspended(IndexPage)
+    const spark = wrapper
+      .findAll('.dashboard-page__stat-val')
+      .find((element) => element.text().includes('/ 120'))
+
+    expect(spark?.text()).toBe('10 / 120')
   })
 
   it('does NOT count spark from an ended limited banner even if old coins exist in depot', async () => {
