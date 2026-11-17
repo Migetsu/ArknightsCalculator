@@ -260,8 +260,8 @@ describe('Range Schema and Normalization (shared/schemas/range, shared/utils/ran
         }
       }
 
-      expect(cnOnlyCount).toBe(23)
-      expect(cnRangeRefs).toBe(235)
+      expect(cnOnlyCount).toBe(20)
+      expect(cnRangeRefs).toBe(198)
     })
   })
 })

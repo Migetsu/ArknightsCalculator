@@ -340,16 +340,16 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(meta.nextEnLimitedBanner?.id).toBe('LIMITED_76_0_1')
     })
 
-    it('verifies art coverage in committed dataset (306 CN and 149 EN banners with art)', () => {
+    it('verifies art coverage in committed dataset (306 CN and 150 EN banners with art)', () => {
       const cnWithArt = committedBannersDataset.cnBanners.filter((b) => b.hasArt)
       const cnWithoutArt = committedBannersDataset.cnBanners.filter((b) => !b.hasArt)
       const enWithArt = committedBannersDataset.enBanners.filter((b) => b.hasArt)
       const enWithoutArt = committedBannersDataset.enBanners.filter((b) => !b.hasArt)
 
       expect(cnWithArt.length).toBe(306)
-      expect(cnWithoutArt.length).toBe(153)
-      expect(enWithArt.length).toBe(149)
-      expect(enWithoutArt.length).toBe(262)
+      expect(cnWithoutArt.length).toBe(155)
+      expect(enWithArt.length).toBe(150)
+      expect(enWithoutArt.length).toBe(264)
 
       for (const b of cnWithArt) {
         expect(b.artId).toBe(b.id)
@@ -401,9 +401,9 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       )
 
       expect(cnWithRateUp.length).toBe(198)
-      expect(enWithRateUp.length).toBe(402)
+      expect(enWithRateUp.length).toBe(404)
       expect(cnWithGlobalDate.length).toBe(189)
-      expect(cnWithPair.length).toBe(188)
+      expect(cnWithPair.length).toBe(189)
 
       // Verified benchmark banner: Cremation Last Wish (W & Weedy)
       const wBanner = committedBannersDataset.cnBanners.find((b) => b.id === 'LIMITED_9_0_3')
@@ -505,7 +505,7 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
       expect(cn76?.name.isMachineTranslation).toBe(false)
       expect(cn76?.pairedBannerId).toBeNull()
 
-      // 3. Provenance distribution across all 459 CN banners
+      // 3. Provenance distribution across all 461 CN banners
       let officialCount = 0
       let wikiCount = 0
       let machineCount = 0
@@ -518,11 +518,11 @@ describe('Banners Dataset Builder (scripts/data/build-banners.ts)', () => {
         else if (b.name.source === 'manual') manualCount++
       }
 
-      expect(officialCount).toBe(187)
-      expect(wikiCount).toBe(13)
+      expect(officialCount).toBe(188)
+      expect(wikiCount).toBe(12)
       expect(manualCount).toBe(1)
-      expect(machineCount).toBe(258)
-      expect(officialCount + wikiCount + machineCount + manualCount).toBe(459)
+      expect(machineCount).toBe(260)
+      expect(officialCount + wikiCount + machineCount + manualCount).toBe(461)
     })
   })
 })
