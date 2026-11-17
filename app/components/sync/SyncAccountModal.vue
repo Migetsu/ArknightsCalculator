@@ -7,6 +7,7 @@ import { useCloudSync } from '~/composables/useCloudSync'
 import { usePlannerStore } from '~/stores/planner'
 import { useSettingsStore } from '~/stores/settings'
 import { useDepotStore } from '~/stores/depot'
+import { useBannerPulls } from '~/composables/useBannerPulls'
 import { useRosterStore } from '~/stores/roster'
 import { buildCurrentPayload } from '~/utils/cloudSync/applyToStores'
 import type { YostarSyncPayload } from '~~/shared/schemas/yostar'
@@ -41,6 +42,7 @@ const {
 
 const depotStore = useDepotStore()
 const rosterStore = useRosterStore()
+const { setPulls: setBannerPulls } = useBannerPulls()
 const plannerStore = usePlannerStore()
 const settingsStore = useSettingsStore()
 const cloudSync = useCloudSync()
@@ -222,6 +224,8 @@ async function applyYostarSync(payload: YostarSyncPayload): Promise<void> {
     items: payload.depot.items,
     currencies: payload.depot.currencies,
   })
+  // Per-pool pull counters stay on this device (spark cards, LINKAGE guarantees).
+  setBannerPulls(payload.bannerPulls ?? {})
 }
 
 async function handleStartSync(): Promise<void> {

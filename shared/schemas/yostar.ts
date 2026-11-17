@@ -100,6 +100,12 @@ export const YostarSyncPayloadSchema = z.object({
   unknownItemCount: z.number().int().min(0),
   /** Entries dropped because their shape did not match the expected schema. */
   skippedEntries: z.number().int().min(0),
+  /**
+   * Pulls the account made per gacha pool (`gachaPoolId` -> count). Kept for banners
+   * without a spark coin (LINKAGE/collab pools) so the dashboard can show progress
+   * toward the 120-pull guarantee instead of a permanent zero.
+   */
+  bannerPulls: z.record(z.string(), z.number().int().min(0)).default({}),
   syncedAt: z.string(),
 })
 export type YostarSyncPayload = z.infer<typeof YostarSyncPayloadSchema>

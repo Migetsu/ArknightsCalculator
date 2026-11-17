@@ -232,9 +232,14 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
   }
 
   // Arknights stores limited banner spark progress and rolls inside gacha payload
+  const bannerPulls: Record<string, number> = {}
   const recordGachaPool = (poolId: string, rawPool: unknown) => {
     const pulls = extractGachaPoolPulls(rawPool)
     if (pulls <= 0) return
+
+    // Keep the raw per-pool counter: LINKAGE (collab) pools have no spark coin but
+    // still track how many pulls the account made, which the dashboard shows.
+    bannerPulls[poolId] = Math.max(bannerPulls[poolId] ?? 0, pulls)
 
     let coinId: string | null = null
     if (ctx.bannerToLmtgsid) {
@@ -295,6 +300,7 @@ export function mapYostarSync(rawUser: unknown, ctx: YostarMapContext): YostarSy
     unknownOperatorIds: [...unknownOperatorIds],
     unknownItemCount,
     skippedEntries,
+    bannerPulls,
     syncedAt: new Date().toISOString(),
   }
 }

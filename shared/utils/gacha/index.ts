@@ -339,22 +339,14 @@ export function getBannerLifecycleStatus(
   nowSec = Math.floor(Date.now() / 1000),
 ): 'active' | 'upcoming' | 'ended' {
   if (banner.globalStartDate) {
-    const globalStart = parseBannerDate(banner.globalStartDate)
-    const globalEnd = parseBannerDate(banner.globalEndDate)
-    if (globalStart !== null) {
+    // A confirmed Global window is authoritative: `openTime`/`endTime` on a paired
+    // CN banner are CN-local and would otherwise mark a live Global release as ended.
+    const window = getEffectiveGlobalWindow(banner, null)
+    if (window) {
       const nowMs = nowSec * 1000
-      if (nowMs < globalStart) return 'upcoming'
-
-      const effectiveEndMs = banner.endTime
-        ? banner.endTime * 1000
-        : banner.endIso
-          ? new Date(banner.endIso).getTime()
-          : globalEnd !== null
-            ? globalEnd + MS_PER_DAY - 1
-            : null
-
-      if (effectiveEndMs !== null && nowMs <= effectiveEndMs) return 'active'
-      if (effectiveEndMs !== null && nowMs > effectiveEndMs) return 'ended'
+      if (nowMs < window.startMs) return 'upcoming'
+      if (nowMs <= window.endMs) return 'active'
+      return 'ended'
     }
   }
 
