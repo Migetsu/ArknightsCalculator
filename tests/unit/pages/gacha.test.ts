@@ -67,7 +67,7 @@ describe('GachaPage', () => {
     expect(wrapper.find('.gacha-page__date-switcher').exists()).toBe(true)
 
     const filterBtns = wrapper.findAll('.gacha-page__filter-btn')
-    expect(filterBtns.length).toBe(3) // All, Limited, Event
+    expect(filterBtns.length).toBe(4) // All, Limited, Event, Standard
 
     expect(wrapper.find('.gacha-page__calculator-section').exists()).toBe(true)
   })
@@ -277,7 +277,7 @@ describe('GachaPage', () => {
     }
   })
 
-  it('filters upcoming banners by limited and event rule types', async () => {
+  it('filters upcoming banners by limited, event and standard rule types', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const filters = wrapper.findAll('.gacha-page__filter-btn')
     const upcoming = () => wrapper.find('.gacha-page__upcoming')
@@ -286,15 +286,22 @@ describe('GachaPage', () => {
     const eventCount = EXPECTED_UPCOMING.filter(
       (banner) => banner.ruleType === 'LINKAGE' || banner.ruleType === 'SPECIAL',
     ).length
+    const standardCount = EXPECTED_UPCOMING.filter(
+      (banner) => banner.ruleType === 'NORMAL' || banner.ruleType === 'SINGLE',
+    ).length
 
     expect(limitedCount).toBeGreaterThan(0)
     expect(eventCount).toBeGreaterThan(0)
+    expect(standardCount).toBeGreaterThan(0)
 
     await filters[1]!.trigger('click')
     expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(limitedCount)
 
     await filters[2]!.trigger('click')
     expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(eventCount)
+
+    await filters[3]!.trigger('click')
+    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(standardCount)
   })
 
   it('toggles calculator visibility when calculator toggle button is clicked', async () => {

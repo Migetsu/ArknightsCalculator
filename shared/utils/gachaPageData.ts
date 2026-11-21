@@ -4,7 +4,8 @@ import {
   getBannerLifecycleStatus,
   getGlobalLagDays,
   getUpcomingBanners,
-  isFeaturedBanner,
+  isAllowedBanner,
+  isPremiumBanner,
   parseBannerDate,
 } from './gacha'
 
@@ -98,36 +99,48 @@ export function buildGachaPageData(
     globalBanners.push(banner)
   }
 
-  // Only limited and event pools are featured; standard, joint-operation and
-  // kernel banners are never selected as the current banner.
-  const featuredGlobal = globalBanners.filter(isFeaturedBanner)
+  // Standard, limited and event pools are listable; a live premium pool always wins
+  // the current slot, otherwise the newest standard pool is shown.
+  const allowedGlobal = globalBanners.filter(isAllowedBanner)
 
   const metaCurrentEn = dataset.meta?.currentEnBanner
-    ? (featuredGlobal.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
+    ? (allowedGlobal.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
     : null
 
-  const activeEn = featuredGlobal.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
-  const enBanner: GachaBanner | null =
+  const activeAllowed = allowedGlobal.filter(
+    (b) => getBannerLifecycleStatus(b, nowSec) === 'active',
+  )
+  const activePremium = activeAllowed
+    .filter(isPremiumBanner)
+    .sort((a, b) => (b.openTime ?? 0) - (a.openTime ?? 0))
+  const activeStandard = activeAllowed
+    .filter((b) => !isPremiumBanner(b))
+    .sort((a, b) => (b.openTime ?? 0) - (a.openTime ?? 0))
+  const metaActive =
     metaCurrentEn && getBannerLifecycleStatus(metaCurrentEn, nowSec) === 'active'
       ? metaCurrentEn
-      : (activeEn.find((b) => b.ruleType === 'LIMITED' || b.type === 'limited') ??
-        activeEn.sort((a, b) => (b.openTime ?? 0) - (a.openTime ?? 0))[0] ??
-        metaCurrentEn ??
-        null)
+      : null
+
+  const enBanner: GachaBanner | null =
+    (metaActive && isPremiumBanner(metaActive) ? metaActive : null) ??
+    activePremium[0] ??
+    metaActive ??
+    activeStandard[0] ??
+    null
   const compactEnBanner = enBanner ? toCompactBanner(enBanner) : null
 
   let currentBanner: GachaBanner | null = compactEnBanner
   if (server === 'cn') {
-    const activeCnFeatured = cnBanners.filter(
-      (b) => isFeaturedBanner(b) && getBannerLifecycleStatus(b, nowSec) === 'active',
+    const activeCnAllowed = cnBanners.filter(
+      (b) => isAllowedBanner(b) && getBannerLifecycleStatus(b, nowSec) === 'active',
     )
+    const activeCnPremium = activeCnAllowed.filter(isPremiumBanner)
     const activeCnId = dataset.meta?.activeCnBanners?.[0]?.id
-    let cnBanner: GachaBanner | null = activeCnId
-      ? (activeCnFeatured.find((b) => b.id === activeCnId) ?? null)
-      : null
-    if (!cnBanner) {
-      cnBanner = activeCnFeatured[0] ?? null
-    }
+    const cnBanner: GachaBanner | null =
+      activeCnPremium[0] ??
+      (activeCnId ? (activeCnAllowed.find((b) => b.id === activeCnId) ?? null) : null) ??
+      activeCnAllowed[0] ??
+      null
     if (cnBanner) {
       currentBanner = toCompactBanner(cnBanner)
     }

@@ -124,18 +124,28 @@ const CN_UTC_OFFSET_MS = 8 * 60 * 60 * 1000
 export const UPCOMING_LAG_SAMPLE_SIZE = 12
 
 /**
- * Rule types the app features: limited and event pools only. Regular (NORMAL),
- * debut (SINGLE), joint-operation (DOUBLE/CLASSIC_DOUBLE) and kernel
- * (CLASSIC/FESCLASSIC) banners are intentionally hidden from the banner widgets.
+ * Premium pools (limited and event) are always preferred for the "current banner"
+ * slot and are the only ones that can carry spark progress.
  */
-export const FEATURED_BANNER_RULE_TYPES: ReadonlySet<string> = new Set([
+export const PREMIUM_BANNER_RULE_TYPES: ReadonlySet<string> = new Set([
   'LIMITED',
   'LINKAGE',
   'SPECIAL',
 ])
 
-export function isFeaturedBanner(banner: GachaBanner): boolean {
-  return FEATURED_BANNER_RULE_TYPES.has(banner.ruleType)
+/** Standard headhunting pools are listed too, but never outrank a premium pool. */
+export const STANDARD_BANNER_RULE_TYPES: ReadonlySet<string> = new Set(['NORMAL', 'SINGLE'])
+
+/** Rule types rendered by the banner widgets (standard, limited and event only). */
+export function isAllowedBanner(banner: GachaBanner): boolean {
+  return (
+    PREMIUM_BANNER_RULE_TYPES.has(banner.ruleType) ||
+    STANDARD_BANNER_RULE_TYPES.has(banner.ruleType)
+  )
+}
+
+export function isPremiumBanner(banner: GachaBanner): boolean {
+  return PREMIUM_BANNER_RULE_TYPES.has(banner.ruleType)
 }
 
 /**
@@ -205,7 +215,7 @@ export function getUpcomingBanners(
   return banners
     .filter((banner) => {
       if (banner.server !== 'cn') return false
-      if (!isFeaturedBanner(banner)) return false
+      if (!isAllowedBanner(banner)) return false
       if ((banner.rateUp6?.length ?? 0) === 0 && (banner.rateUp5?.length ?? 0) === 0) return false
       const globalStart = parseBannerDate(banner.globalStartDate)
       // A confirmed Global release that has not started yet is still upcoming.

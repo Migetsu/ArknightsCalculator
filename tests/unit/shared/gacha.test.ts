@@ -639,6 +639,7 @@ describe('Gacha Utility Engine', () => {
 
       it('keeps only unreleased CN banners with a rate-up roster, oldest first', () => {
         expect(getUpcomingBanners(banners).map((item) => item.id)).toEqual([
+          'standard',
           'limited',
           'event',
           'invalid-global',

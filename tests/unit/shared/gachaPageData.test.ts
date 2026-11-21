@@ -15,6 +15,29 @@ const dataset = bannersDataset as unknown as BannersDataset
  * dataset lists as the current EN pool. Selection depends on wall-clock time, so
  * pinning it keeps the assertions deterministic instead of following the rotation.
  */
+
+function syntheticBanner(options: { id: string; ruleType: string; type: string; nowSec: number }) {
+  const { id, ruleType, type, nowSec } = options
+  return {
+    id,
+    server: 'en',
+    ruleType,
+    type,
+    title: { en: id, zh: id, source: 'official', isMachineTranslation: false },
+    openTime: nowSec - 3600,
+    endTime: nowSec + 86400,
+    openIso: new Date((nowSec - 3600) * 1000).toISOString(),
+    endIso: new Date((nowSec + 86400) * 1000).toISOString(),
+    isActive: true,
+    cnStartDate: '',
+    cnEndDate: '',
+    hasArt: true,
+    rateUp6: ['char_a'],
+    rateUp5: ['char_b'],
+    secondaryRateUp6: [],
+  }
+}
+
 const ACTIVE_WINDOW_NOW_SEC = Math.floor(Date.parse('2026-11-01T12:00:00.000Z') / 1000)
 
 describe('buildGachaPageData', () => {
@@ -25,6 +48,39 @@ describe('buildGachaPageData', () => {
     expect(pageData.currentEnFullBanner?.id).toBe('SPECIAL_EN_42_0_3')
     expect(pageData.currentEnFullBanner?.rateUp6.length).toBeGreaterThan(0)
     expect(pageData.currentEnFullBanner?.endIso).toBe('2026-11-11T10:59:59.000Z')
+  })
+
+  it('prefers a live premium banner over a live standard banner', () => {
+    const nowSec = Math.floor(Date.parse('2026-11-01T12:00:00.000Z') / 1000)
+    const datasetWithPools = {
+      ...dataset,
+      cnBanners: [],
+      enBanners: [
+        syntheticBanner({ id: 'STD_EN_1', ruleType: 'NORMAL', type: 'standard', nowSec }),
+        syntheticBanner({ id: 'LIM_EN_1', ruleType: 'LIMITED', type: 'limited', nowSec }),
+      ],
+      meta: { ...dataset.meta, currentEnBanner: null, activeEnBanners: [] },
+    } as unknown as BannersDataset
+
+    const pageData = buildGachaPageData(datasetWithPools, 'global', undefined, nowSec)
+
+    expect(pageData.currentEnBannerId).toBe('LIM_EN_1')
+  })
+
+  it('falls back to a live standard banner when no premium banner is active', () => {
+    const nowSec = Math.floor(Date.parse('2026-11-01T12:00:00.000Z') / 1000)
+    const datasetWithPools = {
+      ...dataset,
+      cnBanners: [],
+      enBanners: [
+        syntheticBanner({ id: 'STD_EN_1', ruleType: 'NORMAL', type: 'standard', nowSec }),
+      ],
+      meta: { ...dataset.meta, currentEnBanner: null, activeEnBanners: [] },
+    } as unknown as BannersDataset
+
+    const pageData = buildGachaPageData(datasetWithPools, 'global', undefined, nowSec)
+
+    expect(pageData.currentEnBannerId).toBe('STD_EN_1')
   })
 
   it('returns exactly the upcoming CN window in dataset order', () => {

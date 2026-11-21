@@ -2437,3 +2437,13 @@
   - **Fix:** new shared `isFeaturedBanner()` allow-list (`LIMITED`, `LINKAGE`, `SPECIAL`). It now drives the current-banner selection (`buildGachaPageData`), the upcoming CN window (`getUpcomingBanners`), the dashboard "next banner" widget and the `/gacha` list. The page filters became **All / Limited / Event**; the unused standard/joint-operation filters were removed.
   - **Tests:** featured filter unit cases, updated upcoming fixtures, page filter assertions and the dynamic `EXPECTED_UPCOMING` oracle; the stored-session tests were de-timed (their hardcoded expiry had passed, which was unrelated but blocking).
   - **Behaviour note:** when no limited/event pool is active the hero section shows its empty state instead of falling back to a regular pool. Spark tracking follows the same featured banner.
+
+- **Task 66 — Standard Banners Listed, Premium Priority (`feat/standard-banners-and-asset-automation`):**
+  - **Requested:** show Standard Headhunting banners again, but keep a live limited/event pool as the current banner.
+  - **Fix:** the allow-list is now `PREMIUM` (`LIMITED`, `LINKAGE`, `SPECIAL`) plus `STANDARD` (`NORMAL`, `SINGLE`); kernel (`CLASSIC`/`FESCLASSIC`) and joint-operation (`DOUBLE`/`CLASSIC_DOUBLE`) pools stay hidden. `buildGachaPageData` picks a live premium pool first, then the dataset's current banner, then the newest standard pool; CN mode mirrors the same priority. `/gacha` filters are **All / Limited / Event / Standard**.
+  - **Tests:** priority unit cases (premium wins over a live standard pool, standard is the fallback), updated upcoming fixtures and filter counts.
+
+- **Task 67 — Automated Asset Publication (`feat/standard-banners-and-asset-automation`):**
+  - Owner added the `ASSETS_REPO_TOKEN` secret (fine-grained PAT with write access to `Migetsu/arkcalc-assets`).
+  - New `.github/workflows/update-assets.yml` runs weekly (Monday 06:00 UTC) and on demand: generates operator thumbs/hero art (cached between runs), banner thumbnails into a shallow clone of the assets repository, pushes them, then bumps `OPTIMIZED_ASSETS_COMMIT` and `data/banner-arts.json` on a branch, opens a PR and merges it only after green CI. If the secret is absent it exits with a notice instead of failing.
+  - Manual steps from `docs/assets.md` §6.1 are now only needed for a token rotation or a forced rebuild.
