@@ -29,14 +29,14 @@ export interface ResolveAssetOptions {
 /**
  * Pinned commit for pre-rendered optimized WebP assets repository (Migetsu/arkcalc-assets).
  */
-export const OPTIMIZED_ASSETS_COMMIT = 'e5e06cebacf644b149ac1dfce6048b4c7fd5e899'
+export const OPTIMIZED_ASSETS_COMMIT = '23ff68a36da396111e0222026491f250cf87209f'
 export const OPTIMIZED_ASSETS_CDN = `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}`
 
 /**
  * Pinned resource commit from yuanyan3060/ArknightsGameResource.
  * Matches DATA_SOURCES_CONFIG.assets.commit.
  */
-export const ASSET_REPO_COMMIT = '9bf239661e37766fba585806fb9fa67e79bb679e'
+export const ASSET_REPO_COMMIT = '50032de7655f9a9208cecd72dfa07a9ee2af1f65'
 
 const REPO_OWNER = 'yuanyan3060'
 const REPO_NAME = 'ArknightsGameResource'
@@ -67,7 +67,7 @@ export const SECONDARY_EQUIP_CDN_BASE = `https://cdn.statically.io/gh/${EQUIP_RE
  */
 export const FEXLI_REPO_OWNER = 'fexli'
 export const FEXLI_REPO_NAME = 'ArknightsResource'
-export const FEXLI_REPO_COMMIT = 'd7bdc0146f99f6fa88ecdc1bbf79021c012c21c5'
+export const FEXLI_REPO_COMMIT = '53d2ac251329a54d714dec3b0b6fbdbedef1df17'
 
 export const PRIMARY_FEXLI_CDN_BASE = `https://cdn.jsdelivr.net/gh/${FEXLI_REPO_OWNER}/${FEXLI_REPO_NAME}@${FEXLI_REPO_COMMIT}`
 export const SECONDARY_FEXLI_CDN_BASE = `https://cdn.statically.io/gh/${FEXLI_REPO_OWNER}/${FEXLI_REPO_NAME}/${FEXLI_REPO_COMMIT}`
