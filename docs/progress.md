@@ -2463,3 +2463,10 @@
     - `update-assets.yml` runs after every successful "Update Game Data" run (plus weekly and manual), refreshes pins and the asset manifest, generates thumbs/banner art, rebuilds `data/banners.json` so `hasArt` reflects wiki fallback art, and commits `data/` together with the pin bump.
   - **Verified live:** the wiki parser found 12 cards; against the committed dataset it resolved exactly the three missing CN banner arts (`LIMITED_79_0_1` Cinders of Snow, `NORM_79_0_3` Stronghold Headhunting, `NORM_79_0_4` Joint Operation 4); the wiki PNG converts to a 480px WebP (26 KB).
   - **Tests:** `vitest` 128 files / 1 047 tests, `eslint`, `typecheck` green.
+
+- **Task 70 — Asset Pipeline End-to-End Verified (`fix/pin-assets-head-and-manifest-cache`):**
+  - Publication chain completed: `Migetsu/arkcalc-assets@23ff68a` now holds Cinders of Snow (`LIMITED_79_0_1`), Stronghold Headhunting (`NORM_79_0_3`) and Joint Operation 4 (`NORM_79_0_4`) art plus thumbs/heroes for the new operators (Talulah, Dominion).
+  - `OPTIMIZED_ASSETS_COMMIT` now always tracks the assets repository HEAD (a run that published in a previous attempt no longer leaves the site on an older pin).
+  - `build-asset-manifest` caches Git trees per commit SHA and retries GitHub 5xx responses; the rebuilt manifest reports **Art 440/440, Items 859/859, missingAvatarIds: []**.
+  - Production verification (`6fbf55f`): every upcoming banner image loads (`Cinders of Snow`, `Joint Operation 4`, `orient #8`, `Drifter of the Depth` included) and `char_4247_oxi` / `char_4246_dminon` detail pages load hero + portrait art; `/operators` shows zero broken images.
+  - Automated path: data sync → `workflow_run` triggers `Update Optimized Assets` → pins + manifest refreshed → wiki/fexli art generated → assets pushed → PR with pins and flags → merged after green CI.
