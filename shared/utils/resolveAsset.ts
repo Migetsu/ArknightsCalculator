@@ -29,7 +29,7 @@ export interface ResolveAssetOptions {
 /**
  * Pinned commit for pre-rendered optimized WebP assets repository (Migetsu/arkcalc-assets).
  */
-export const OPTIMIZED_ASSETS_COMMIT = 'e5e06cebacf644b149ac1dfce6048b4c7fd5e899'
+export const OPTIMIZED_ASSETS_COMMIT = '23ff68a36da396111e0222026491f250cf87209f'
 export const OPTIMIZED_ASSETS_CDN = `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${OPTIMIZED_ASSETS_COMMIT}`
 
 /**
