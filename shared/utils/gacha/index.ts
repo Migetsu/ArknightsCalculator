@@ -124,6 +124,21 @@ const CN_UTC_OFFSET_MS = 8 * 60 * 60 * 1000
 export const UPCOMING_LAG_SAMPLE_SIZE = 12
 
 /**
+ * Rule types the app features: limited and event pools only. Regular (NORMAL),
+ * debut (SINGLE), joint-operation (DOUBLE/CLASSIC_DOUBLE) and kernel
+ * (CLASSIC/FESCLASSIC) banners are intentionally hidden from the banner widgets.
+ */
+export const FEATURED_BANNER_RULE_TYPES: ReadonlySet<string> = new Set([
+  'LIMITED',
+  'LINKAGE',
+  'SPECIAL',
+])
+
+export function isFeaturedBanner(banner: GachaBanner): boolean {
+  return FEATURED_BANNER_RULE_TYPES.has(banner.ruleType)
+}
+
+/**
  * Parses a wiki banner date in `YYYY/MM/DD` or `YYYY/MM/DD HH:mm:ss` form
  * (dashes are accepted too) as UTC milliseconds. Returns null for invalid input.
  * Parsing never depends on the host time zone.
@@ -190,6 +205,7 @@ export function getUpcomingBanners(
   return banners
     .filter((banner) => {
       if (banner.server !== 'cn') return false
+      if (!isFeaturedBanner(banner)) return false
       if ((banner.rateUp6?.length ?? 0) === 0 && (banner.rateUp5?.length ?? 0) === 0) return false
       const globalStart = parseBannerDate(banner.globalStartDate)
       // A confirmed Global release that has not started yet is still upcoming.

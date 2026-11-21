@@ -38,7 +38,8 @@ const payload = {
 const session = {
   uid: 'channel-uid',
   token: 'yostar-account-token',
-  expiresAt: '2026-11-20T10:00:00.000Z',
+  // Relative so the stored-session tests never turn into time bombs.
+  expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
 }
 
 function httpError(status: number, data?: unknown): Error {
@@ -206,7 +207,7 @@ describe('stored Yostar session', () => {
 
   it('removes an expired token instead of using it', () => {
     writeStoredYostarSession(session)
-    expect(readStoredYostarSession(Date.parse('2026-12-01T00:00:00.000Z'))).toBeNull()
+    expect(readStoredYostarSession(Date.now() + 60 * 24 * 60 * 60 * 1000)).toBeNull()
     expect(window.localStorage.getItem(YOSTAR_SESSION_STORAGE_KEY)).toBeNull()
   })
 
