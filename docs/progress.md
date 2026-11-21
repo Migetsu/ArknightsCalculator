@@ -2453,3 +2453,13 @@
   - Workflow accepts `secrets.ASSETS_REPO_TOKEN || vars.ASSETS_REPO_TOKEN`; a preflight `git push --dry-run` proves write access before generating anything, and the copy step publishes only missing files (the existing 434 thumbs are never re-encoded).
   - First successful run generated thumbs/heroes for all 440 operators, generated banner thumbnails, cloned the assets repository, passed the write preflight and exited with **No asset changes to publish** — the published set is already current, so no pin bump was needed. The pin path (push → bump `OPTIMIZED_ASSETS_COMMIT` → PR → wait CI → merge) activates automatically on the next new artwork.
   - Schedule: Mondays 06:00 UTC plus manual dispatch; `public/art` is cached by `operators-index.json` so weekly runs only process new operators.
+
+- **Task 69 — Wiki Banner-Art Fallback & Auto-Bumped Upstream Pins (`feat/wiki-banner-art-fallback`):**
+  - **Reported:** new banners (e.g. "Cinders of Snow", "Joint Operation 4") rendered the placeholder, and new CN operators (Talulah, Olga) had no avatar/art.
+  - **Root causes:** the banner generator only read the `fexli/ArknightsResource` mirror, which lags days behind a release; the operator-art pin (`ASSET_REPO_COMMIT`) pointed at a snapshot from 2026-10-09, before those operators existed in the upstream mirror.
+  - **Fixes:**
+    - `build-banner-thumbs` now fetches the rendered wiki page `Headhunting/Banners/Upcoming?action=render`, parses every banner card (title, 1024px image, CN window) and uses it as a secondary source when fexli has no art. Mapping is by CN start date with a normalized-name fallback (`mapBannersToWikiCards`, unit-tested).
+    - New `data:bump-pins` script refreshes `ASSET_REPO_COMMIT` and `FEXLI_REPO_COMMIT` to the latest upstream commits before generation; `build-banner-thumbs` reads the fexli pin from `resolveAsset` instead of its own constant.
+    - `update-assets.yml` runs after every successful "Update Game Data" run (plus weekly and manual), refreshes pins and the asset manifest, generates thumbs/banner art, rebuilds `data/banners.json` so `hasArt` reflects wiki fallback art, and commits `data/` together with the pin bump.
+  - **Verified live:** the wiki parser found 12 cards; against the committed dataset it resolved exactly the three missing CN banner arts (`LIMITED_79_0_1` Cinders of Snow, `NORM_79_0_3` Stronghold Headhunting, `NORM_79_0_4` Joint Operation 4); the wiki PNG converts to a 480px WebP (26 KB).
+  - **Tests:** `vitest` 128 files / 1 047 tests, `eslint`, `typecheck` green.
