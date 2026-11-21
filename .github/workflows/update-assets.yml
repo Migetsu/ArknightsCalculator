@@ -144,9 +144,11 @@ jobs:
             git commit -m "chore: refresh optimized assets"
             git push origin main
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             echo "Published $(git rev-parse --short HEAD)"
           fi
+          # Always expose the current assets HEAD: even when this run published
+          # nothing, a previous run may have pushed files that the site must pin.
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Wait for jsDelivr to serve the refreshed commits
         if: steps.guard.outputs.enabled == 'true'
@@ -183,10 +185,9 @@ jobs:
         id: pr
         env:
           ASSETS_SHA: ${{ steps.publish.outputs.sha }}
-          ASSETS_CHANGED: ${{ steps.publish.outputs.changed }}
           BRANCH: chore/refresh-assets-${{ github.run_id }}
         run: |
-          if [ "$ASSETS_CHANGED" = "true" ] && [ -n "$ASSETS_SHA" ]; then
+          if [ -n "$ASSETS_SHA" ]; then
             sed -i "s/export const OPTIMIZED_ASSETS_COMMIT = '[0-9a-f]*'/export const OPTIMIZED_ASSETS_COMMIT = '${ASSETS_SHA}'/" shared/utils/resolveAsset.ts
           fi
           git config user.name "github-actions[bot]"

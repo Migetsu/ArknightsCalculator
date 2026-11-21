@@ -51,24 +51,45 @@ async function fetchGitTree(
   repo: string,
   treeSha: string,
 ): Promise<Set<string>> {
-  const cacheFile = path.resolve(process.cwd(), `.cache/trees/${cacheName}.json`)
+  // Include the tree SHA: pins are refreshed automatically, and a cache keyed only
+  // by repository name would keep serving the previous commit's file list.
+  const cacheFile = path.resolve(
+    process.cwd(),
+    `.cache/trees/${cacheName}-${treeSha}.json`,
+  )
   try {
     const raw = await fs.readFile(cacheFile, 'utf-8')
     const list = JSON.parse(raw) as Array<{ path: string }>
     return new Set(list.map((t) => t.path))
   } catch {
-    // If cache not found, fetch from GitHub API and persist
+    // If cache not found, fetch from GitHub API and persist. The tree endpoint
+    // occasionally returns 5xx, so retry with a short backoff before giving up.
     const url = `https://api.github.com/repos/${repo}/git/trees/${treeSha}?recursive=1`
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'ArknightsCalculator-AssetManifest/1.0' },
-    })
-    if (!res.ok) {
-      throw new Error(`Failed to fetch tree from ${repo}@${treeSha}: ${res.status}`)
+    const headers: Record<string, string> = {
+      'User-Agent': 'ArknightsCalculator-AssetManifest/1.0',
+      accept: 'application/vnd.github+json',
     }
-    const data = (await res.json()) as { tree: Array<{ path: string }> }
-    await fs.mkdir(path.dirname(cacheFile), { recursive: true })
-    await fs.writeFile(cacheFile, JSON.stringify(data.tree), 'utf-8')
-    return new Set(data.tree.map((t) => t.path))
+    const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN
+    if (token) headers.authorization = `Bearer ${token}`
+
+    let lastError: Error | null = null
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const res = await fetch(url, { headers })
+        if (res.ok) {
+          const data = (await res.json()) as { tree: Array<{ path: string }> }
+          await fs.mkdir(path.dirname(cacheFile), { recursive: true })
+          await fs.writeFile(cacheFile, JSON.stringify(data.tree), 'utf-8')
+          return new Set(data.tree.map((t) => t.path))
+        }
+        lastError = new Error(`Failed to fetch tree from ${repo}@${treeSha}: ${res.status}`)
+        if (res.status === 404) break
+      } catch (err) {
+        lastError = err instanceof Error ? err : new Error(String(err))
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1500 * attempt))
+    }
+    throw lastError ?? new Error(`Failed to fetch tree from ${repo}@${treeSha}`)
   }
 }
 
