@@ -105,16 +105,11 @@ jobs:
         if: steps.guard.outputs.enabled == 'true'
         run: npm run data:banner-thumbs
 
-      # `hasArt` comes from data/banner-arts.json, so the dataset must be rebuilt
-      # after new banner art (including wiki fallback art) was published.
-      - name: Rebuild banner dataset
+      # `hasArt` comes from data/banner-arts.json. Recompute just those flags instead
+      # of rebuilding the dataset, which would need the raw game tables.
+      - name: Refresh banner art flags
         if: steps.guard.outputs.enabled == 'true'
-        run: |
-          npm run data:banners || {
-            echo "::warning::Banner rebuild failed; retrying once."
-            sleep 5
-            npm run data:banners
-          }
+        run: npm run data:apply-banner-art
 
       - name: Copy generated art into the assets repository
         if: steps.guard.outputs.enabled == 'true'
