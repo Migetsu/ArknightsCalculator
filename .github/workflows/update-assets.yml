@@ -19,7 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     env:
-      ASSETS_REPO_TOKEN: ${{ secrets.ASSETS_REPO_TOKEN }}
+      # Accepted from Secrets or Variables: a fine-grained PAT can live in either
+      # place, and the workflow should not silently skip when it is a variable.
+      ASSETS_REPO_TOKEN: ${{ secrets.ASSETS_REPO_TOKEN || vars.ASSETS_REPO_TOKEN }}
       GH_TOKEN: ${{ secrets.CRON_PAT }}
     steps:
       - name: Check for the assets repository token
