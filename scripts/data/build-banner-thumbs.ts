@@ -2,16 +2,137 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
 import { getBannerArtCandidates } from '../../shared/utils/gacha'
+import { FEXLI_REPO_COMMIT } from '../../shared/utils/resolveAsset'
 
 const BATCH_SIZE = 10
 const MAX_RETRIES = 3
-const FEXLI_COMMIT = 'd7bdc0146f99f6fa88ecdc1bbf79021c012c21c5'
-const FEXLI_BASE_URL = `https://cdn.jsdelivr.net/gh/fexli/ArknightsResource@${FEXLI_COMMIT}/gacha`
+const FEXLI_BASE_URL = `https://cdn.jsdelivr.net/gh/fexli/ArknightsResource@${FEXLI_REPO_COMMIT}/gacha`
+const WIKI_UPCOMING_URL =
+  'https://arknights.wiki.gg/wiki/Headhunting/Banners/Upcoming?action=render'
+const WIKI_USER_AGENT = 'ArknightsCompanion/1.0 (+https://rhodeslab.vercel.app)'
 
 interface BannerSummaryEntry {
   id: string
   server?: 'cn' | 'en'
   pairedBannerId?: string | null
+  cnStartDate?: string | null
+  name?: { en?: string }
+}
+
+export interface WikiBannerCard {
+  name: string
+  imageUrl: string
+  cnStart: string
+  cnEnd: string
+}
+
+function decodeHtmlEntities(value: string): string {
+  return value
+    .replace(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+}
+
+function stripHtml(value: string): string {
+  return decodeHtmlEntities(value.replace(/<[^>]*>/g, '')).trim()
+}
+
+/**
+ * Parses banner cards from the rendered wiki "Upcoming" page. The card markup is a
+ * `div.banner` containing the localized title, the 1024px banner image and the CN
+ * release window; the date is the reliable key for mapping it to a dataset pool.
+ */
+export function parseWikiBannerCards(html: string): WikiBannerCard[] {
+  const cards: WikiBannerCard[] = []
+
+  for (const chunk of html.split('<div class="banner"').slice(1)) {
+    const imageUrl = /<img[^>]+src="([^"]+)"/.exec(chunk)?.[1]
+    const titleHtml = /<b>(.*?)<\/b>/s.exec(chunk)?.[1]
+    const dates = /CN date:<\/b>\s*(\d{4}\/\d{2}\/\d{2})\s*[–-]\s*(\d{4}\/\d{2}\/\d{2})/.exec(chunk)
+    if (!imageUrl || !titleHtml || !dates) continue
+
+    const name = stripHtml(titleHtml).replace(/^\[[^\]]*\]\s*/, '')
+    if (!name) continue
+
+    const absoluteUrl = imageUrl.startsWith('//')
+      ? `https:${imageUrl}`
+      : imageUrl.startsWith('/')
+        ? `https://arknights.wiki.gg${imageUrl}`
+        : imageUrl
+
+    cards.push({ name, imageUrl: absoluteUrl, cnStart: dates[1], cnEnd: dates[2] })
+  }
+
+  return cards
+}
+
+function normalizeDate(value: string | null | undefined): string | null {
+  if (!value) return null
+  const match = /^(\d{4})[/-](\d{2})[/-](\d{2})/.exec(value.trim())
+  return match ? `${match[1]}/${match[2]}/${match[3]}` : null
+}
+
+function normalizeName(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+}
+
+async function fetchWikiBannerCards(): Promise<WikiBannerCard[]> {
+  try {
+    const res = await fetch(WIKI_UPCOMING_URL, {
+      headers: { 'user-agent': WIKI_USER_AGENT, accept: 'text/html' },
+    })
+    if (!res.ok) {
+      console.warn(`[WARN] Wiki upcoming page responded ${res.status}; skipping wiki art.`)
+      return []
+    }
+    return parseWikiBannerCards(await res.text())
+  } catch (err) {
+    console.warn('[WARN] Could not fetch the wiki upcoming page; skipping wiki art.', err)
+    return []
+  }
+}
+
+/**
+ * Resolves wiki cards for dataset pools: the CN start date is authoritative, the
+ * normalized English name is the fallback for cards without a parseable date.
+ */
+export function mapBannersToWikiCards(
+  banners: BannerSummaryEntry[],
+  cards: WikiBannerCard[],
+): Map<string, string> {
+  const byStart = new Map<string, WikiBannerCard[]>()
+  const byName = new Map<string, WikiBannerCard>()
+  for (const card of cards) {
+    const startCards = byStart.get(card.cnStart) ?? []
+    startCards.push(card)
+    byStart.set(card.cnStart, startCards)
+    const nameKey = normalizeName(card.name)
+    if (nameKey && !byName.has(nameKey)) byName.set(nameKey, card)
+  }
+
+  const result = new Map<string, string>()
+  for (const banner of banners) {
+    const start = normalizeDate(banner.cnStartDate)
+    let card: WikiBannerCard | null = null
+    if (start) {
+      const matches = byStart.get(start)
+      if (matches?.length === 1) card = matches[0] ?? null
+    }
+    if (!card) {
+      const name = normalizeName(banner.name?.en ?? '')
+      card = name ? (byName.get(name) ?? null) : null
+    }
+    if (card) result.set(banner.id, card.imageUrl)
+  }
+
+  return result
 }
 
 interface BannersFile {
@@ -121,6 +242,8 @@ export async function runBuildBannerThumbs(
   let cnWithoutArt = 0
   const neededArtIds = new Set<string>()
   const bannerArtMapping = new Map<string, string>()
+  const artSourceUrls = new Map<string, string>()
+  const cnMissingArt: BannerSummaryEntry[] = []
 
   for (const b of bannersData.cnBanners) {
     const candidates = getBannerArtCandidates(b.id, 'cn')
@@ -131,7 +254,22 @@ export async function runBuildBannerThumbs(
       bannerArtMapping.set(b.id, matched)
     } else {
       cnWithoutArt++
+      cnMissingArt.push(b)
     }
+  }
+
+  // Secondary source: wiki.gg publishes CN banner art almost immediately after a
+  // game update, while the fexli mirror can lag for days. Match by CN start date.
+  const wikiCards = await fetchWikiBannerCards()
+  if (wikiCards.length > 0) {
+    const recovered = mapBannersToWikiCards(cnMissingArt, wikiCards)
+    for (const [bannerId, imageUrl] of recovered) {
+      neededArtIds.add(bannerId)
+      artSourceUrls.set(bannerId, imageUrl)
+    }
+    cnWithArt += recovered.size
+    cnWithoutArt -= recovered.size
+    console.log(`[WIKI] Recovered ${recovered.size} banner arts from the upcoming page.`)
   }
 
   // 2. Analyze EN banners
@@ -139,7 +277,9 @@ export async function runBuildBannerThumbs(
   let enWithoutArt = 0
   for (const b of bannersData.enBanners) {
     const candidates = getBannerArtCandidates(b.id, 'en', b.pairedBannerId)
-    const matched = candidates.find((c) => availableFexliFiles.has(c))
+    const matched = candidates.find(
+      (c) => availableFexliFiles.has(c) || artSourceUrls.has(c),
+    )
     if (matched) {
       enWithArt++
       neededArtIds.add(matched)
@@ -172,7 +312,8 @@ export async function runBuildBannerThumbs(
           return
         }
 
-        const sourceUrl = `${FEXLI_BASE_URL}/${artId}.png`
+        const sourceUrl =
+          artSourceUrls.get(artId) ?? `${FEXLI_BASE_URL}/${artId}.png`
         const rawBuf = await fetchWithRetry(sourceUrl)
         if (!rawBuf) {
           console.warn(`[WARN] Failed to fetch upstream art for ${artId}`)

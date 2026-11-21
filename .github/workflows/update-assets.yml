@@ -2,8 +2,13 @@ name: Update Optimized Assets
 
 on:
   schedule:
-    # Weekly, after the Monday data sync so new operators/banners are included.
+    # Weekly safety net; the workflow also runs after every successful data sync.
     - cron: '0 6 * * 1'
+  # New operators and banners arrive with the data sync, so publish their art right
+  # after it instead of waiting for the next weekly run.
+  workflow_run:
+    workflows: ['Update Game Data']
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +21,7 @@ concurrency:
 
 jobs:
   refresh-assets:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 180
     env:
@@ -52,6 +58,16 @@ jobs:
         if: steps.guard.outputs.enabled == 'true'
         run: npm ci
 
+      # The upstream mirrors carry new operators earlier than our pinned snapshot;
+      # refreshing the pins before generation is what makes new avatars/art appear.
+      - name: Refresh pinned upstream commits
+        if: steps.guard.outputs.enabled == 'true'
+        run: npm run data:bump-pins
+
+      - name: Refresh the asset manifest
+        if: steps.guard.outputs.enabled == 'true'
+        run: npm run data:assets
+
       # Art generation is expensive; cache the already generated WebP files so a
       # weekly run only processes operators added since the previous run.
       - name: Cache generated art
@@ -81,6 +97,12 @@ jobs:
       - name: Generate banner thumbnails
         if: steps.guard.outputs.enabled == 'true'
         run: npm run data:banner-thumbs
+
+      # `hasArt` comes from data/banner-arts.json, so the dataset must be rebuilt
+      # after new banner art (including wiki fallback art) was published.
+      - name: Rebuild banner dataset
+        if: steps.guard.outputs.enabled == 'true'
+        run: npm run data:banners
 
       - name: Copy generated art into the assets repository
         if: steps.guard.outputs.enabled == 'true'
@@ -130,7 +152,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
-          git add shared/utils/resolveAsset.ts data/banner-arts.json
+          git add shared/utils/resolveAsset.ts data/
           git commit -m "chore: publish optimized assets ${ASSETS_SHA:0:7}"
           git push -u origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" \
