@@ -2447,3 +2447,9 @@
   - Owner added the `ASSETS_REPO_TOKEN` secret (fine-grained PAT with write access to `Migetsu/arkcalc-assets`).
   - New `.github/workflows/update-assets.yml` runs weekly (Monday 06:00 UTC) and on demand: generates operator thumbs/hero art (cached between runs), banner thumbnails into a shallow clone of the assets repository, pushes them, then bumps `OPTIMIZED_ASSETS_COMMIT` and `data/banner-arts.json` on a branch, opens a PR and merges it only after green CI. If the secret is absent it exits with a notice instead of failing.
   - Manual steps from `docs/assets.md` §6.1 are now only needed for a token rotation or a forced rebuild.
+
+- **Task 68 — Asset Automation Verified (`fix/assets-token-scope` / run 44920767003):**
+  - The owner re-issued `ASSETS_REPO_TOKEN` for the correct repository (fine-grained, Contents: Read and write) and stored it as a repository variable.
+  - Workflow accepts `secrets.ASSETS_REPO_TOKEN || vars.ASSETS_REPO_TOKEN`; a preflight `git push --dry-run` proves write access before generating anything, and the copy step publishes only missing files (the existing 434 thumbs are never re-encoded).
+  - First successful run generated thumbs/heroes for all 440 operators, generated banner thumbnails, cloned the assets repository, passed the write preflight and exited with **No asset changes to publish** — the published set is already current, so no pin bump was needed. The pin path (push → bump `OPTIMIZED_ASSETS_COMMIT` → PR → wait CI → merge) activates automatically on the next new artwork.
+  - Schedule: Mondays 06:00 UTC plus manual dispatch; `public/art` is cached by `operators-index.json` so weekly runs only process new operators.
