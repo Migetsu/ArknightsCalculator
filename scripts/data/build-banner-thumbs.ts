@@ -183,7 +183,7 @@ async function fetchFexliGachaFileList(): Promise<Set<string>> {
     // proceed to network
   }
 
-  const apiUrl = `https://api.github.com/repos/fexli/ArknightsResource/contents/gacha?ref=${FEXLI_COMMIT}`
+  const apiUrl = `https://api.github.com/repos/fexli/ArknightsResource/contents/gacha?ref=${FEXLI_REPO_COMMIT}`
   const res = await fetch(apiUrl, {
     headers: {
       'User-Agent': 'ArknightsCalculator-AssetBuilder',
