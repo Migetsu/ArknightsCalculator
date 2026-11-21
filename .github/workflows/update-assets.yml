@@ -66,7 +66,14 @@ jobs:
 
       - name: Refresh the asset manifest
         if: steps.guard.outputs.enabled == 'true'
-        run: npm run data:assets
+        run: |
+          # The GitHub tree API occasionally returns 5xx; the committed manifest is a
+          # valid fallback, so a refresh failure must not block art publication.
+          npm run data:assets || {
+            echo "::warning::Asset manifest refresh failed; retrying once."
+            sleep 5
+            npm run data:assets || echo "::warning::Keeping the committed asset manifest."
+          }
 
       # Art generation is expensive; cache the already generated WebP files so a
       # weekly run only processes operators added since the previous run.
@@ -102,7 +109,12 @@ jobs:
       # after new banner art (including wiki fallback art) was published.
       - name: Rebuild banner dataset
         if: steps.guard.outputs.enabled == 'true'
-        run: npm run data:banners
+        run: |
+          npm run data:banners || {
+            echo "::warning::Banner rebuild failed; retrying once."
+            sleep 5
+            npm run data:banners
+          }
 
       - name: Copy generated art into the assets repository
         if: steps.guard.outputs.enabled == 'true'
