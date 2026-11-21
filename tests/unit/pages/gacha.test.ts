@@ -6,7 +6,6 @@ import { useDepotStore } from '~/stores/depot'
 import GachaPage from '~/pages/gacha.vue'
 import GachaBannerCard from '~/components/gacha/GachaBannerCard.vue'
 import AkAvatar from '~/components/ui/AkAvatar.vue'
-import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import bannersDataset from '../../../data/banners.json'
 import type { BannersDataset } from '../../../shared/schemas/banner'
 import { buildGachaPageData } from '../../../shared/utils/gachaPageData'
@@ -68,7 +67,7 @@ describe('GachaPage', () => {
     expect(wrapper.find('.gacha-page__date-switcher').exists()).toBe(true)
 
     const filterBtns = wrapper.findAll('.gacha-page__filter-btn')
-    expect(filterBtns.length).toBe(4) // All, Standard, Limited, Joint Operation
+    expect(filterBtns.length).toBe(3) // All, Limited, Event
 
     expect(wrapper.find('.gacha-page__calculator-section').exists()).toBe(true)
   })
@@ -278,23 +277,24 @@ describe('GachaPage', () => {
     }
   })
 
-  it('filters upcoming banners by type and shows an empty state', async () => {
+  it('filters upcoming banners by limited and event rule types', async () => {
     const wrapper = await mountSuspended(GachaPage)
     const filters = wrapper.findAll('.gacha-page__filter-btn')
     const upcoming = () => wrapper.find('.gacha-page__upcoming')
 
-    const standardCount = EXPECTED_UPCOMING.filter((banner) => banner.type === 'standard').length
-    const limitedCount = EXPECTED_UPCOMING.filter((banner) => banner.type === 'limited').length
+    const limitedCount = EXPECTED_UPCOMING.filter((banner) => banner.ruleType === 'LIMITED').length
+    const eventCount = EXPECTED_UPCOMING.filter(
+      (banner) => banner.ruleType === 'LINKAGE' || banner.ruleType === 'SPECIAL',
+    ).length
+
+    expect(limitedCount).toBeGreaterThan(0)
+    expect(eventCount).toBeGreaterThan(0)
 
     await filters[1]!.trigger('click')
-    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(standardCount)
-
-    await filters[2]!.trigger('click')
     expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(limitedCount)
 
-    await filters[3]!.trigger('click')
-    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(0)
-    expect(upcoming().findComponent(AkEmptyState).exists()).toBe(true)
+    await filters[2]!.trigger('click')
+    expect(upcoming().findAllComponents(GachaBannerCard)).toHaveLength(eventCount)
   })
 
   it('toggles calculator visibility when calculator toggle button is clicked', async () => {

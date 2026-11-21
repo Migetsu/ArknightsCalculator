@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import type { GachaBanner, BannerType } from '~/../shared/schemas/banner'
+import type { GachaBanner } from '~/../shared/schemas/banner'
 import type { OperatorSummary } from '~/../shared/schemas/operator'
 import { resolveI18nString } from '~/../shared/schemas/operator'
 import { getEffectiveGlobalWindow, getEstimatedGlobalDate } from '~/../shared/utils/gacha'
@@ -128,15 +128,14 @@ const dateModeOptions = computed<SegmentOption<DateMode>[]>(() => [
   { value: 'global', label: t('gacha.dates.global') },
 ])
 
-// Type Filters
-type FilterChoice = 'all' | BannerType
+// Type Filters — the catalogue only renders limited and event pools.
+type FilterChoice = 'all' | 'limited' | 'event'
 const selectedFilter = ref<FilterChoice>('all')
 
 const filterOptions = computed<{ value: FilterChoice; label: string }[]>(() => [
   { value: 'all', label: t('gacha.filter.all') },
-  { value: 'standard', label: t('gacha.filter.standard') },
   { value: 'limited', label: t('gacha.filter.limited') },
-  { value: 'joint_operation', label: t('gacha.filter.jointOperation') },
+  { value: 'event', label: t('gacha.filter.event') },
 ])
 
 const isCalculatorVisible = ref(true)
@@ -147,7 +146,12 @@ const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
   if (selectedFilter.value === 'all') {
     return [...upcomingBanners.value]
   }
-  return upcomingBanners.value.filter((banner) => banner.type === selectedFilter.value)
+  if (selectedFilter.value === 'limited') {
+    return upcomingBanners.value.filter((banner) => banner.ruleType === 'LIMITED')
+  }
+  return upcomingBanners.value.filter(
+    (banner) => banner.ruleType === 'LINKAGE' || banner.ruleType === 'SPECIAL',
+  )
 })
 
 // The estimated-live pool is rendered as the current banner, never duplicated in

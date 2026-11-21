@@ -2431,3 +2431,9 @@
     - `update-data.yml` runs twice a day (04:00 and 16:00 UTC), refreshes `data/asset-manifest.json` from the public asset tree before building banners, and still merges only after green CI.
   - **Tests:** mapper `gacha.normal` case, resilient dataset invariants; full `vitest` suite green.
   - **Docs:** `docs/known-issues.md` records that the displayed counter is the pool pity counter (resets after a 6★) and is device-local.
+
+- **Task 65 — Featured-Only Banner Catalogue (`fix/featured-banners-only`):**
+  - **Requested:** show only limited and event banners; hide standard, joint-operation (DOUBLE/CLASSIC_DOUBLE) and kernel (CLASSIC/FESCLASSIC) pools.
+  - **Fix:** new shared `isFeaturedBanner()` allow-list (`LIMITED`, `LINKAGE`, `SPECIAL`). It now drives the current-banner selection (`buildGachaPageData`), the upcoming CN window (`getUpcomingBanners`), the dashboard "next banner" widget and the `/gacha` list. The page filters became **All / Limited / Event**; the unused standard/joint-operation filters were removed.
+  - **Tests:** featured filter unit cases, updated upcoming fixtures, page filter assertions and the dynamic `EXPECTED_UPCOMING` oracle; the stored-session tests were de-timed (their hardcoded expiry had passed, which was unrelated but blocking).
+  - **Behaviour note:** when no limited/event pool is active the hero section shows its empty state instead of falling back to a regular pool. Spark tracking follows the same featured banner.

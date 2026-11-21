@@ -4,6 +4,7 @@ import {
   getBannerLifecycleStatus,
   getGlobalLagDays,
   getUpcomingBanners,
+  isFeaturedBanner,
   parseBannerDate,
 } from './gacha'
 
@@ -97,11 +98,15 @@ export function buildGachaPageData(
     globalBanners.push(banner)
   }
 
+  // Only limited and event pools are featured; standard, joint-operation and
+  // kernel banners are never selected as the current banner.
+  const featuredGlobal = globalBanners.filter(isFeaturedBanner)
+
   const metaCurrentEn = dataset.meta?.currentEnBanner
-    ? (globalBanners.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
+    ? (featuredGlobal.find((banner) => banner.id === dataset.meta?.currentEnBanner?.id) ?? null)
     : null
 
-  const activeEn = globalBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
+  const activeEn = featuredGlobal.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
   const enBanner: GachaBanner | null =
     metaCurrentEn && getBannerLifecycleStatus(metaCurrentEn, nowSec) === 'active'
       ? metaCurrentEn
@@ -113,14 +118,15 @@ export function buildGachaPageData(
 
   let currentBanner: GachaBanner | null = compactEnBanner
   if (server === 'cn') {
+    const activeCnFeatured = cnBanners.filter(
+      (b) => isFeaturedBanner(b) && getBannerLifecycleStatus(b, nowSec) === 'active',
+    )
     const activeCnId = dataset.meta?.activeCnBanners?.[0]?.id
-    let cnBanner: GachaBanner | null = null
-    if (activeCnId) {
-      cnBanner = cnBanners.find((b) => b.id === activeCnId) ?? null
-    }
-    if (!cnBanner || getBannerLifecycleStatus(cnBanner, nowSec) !== 'active') {
-      const activeCn = cnBanners.filter((b) => getBannerLifecycleStatus(b, nowSec) === 'active')
-      cnBanner = activeCn[0] ?? cnBanners.find((b) => b.isActive) ?? null
+    let cnBanner: GachaBanner | null = activeCnId
+      ? (activeCnFeatured.find((b) => b.id === activeCnId) ?? null)
+      : null
+    if (!cnBanner) {
+      cnBanner = activeCnFeatured[0] ?? null
     }
     if (cnBanner) {
       currentBanner = toCompactBanner(cnBanner)

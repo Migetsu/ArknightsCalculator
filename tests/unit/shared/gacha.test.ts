@@ -608,7 +608,20 @@ describe('Gacha Utility Engine', () => {
         banner({ id: 'too-old', openTime: 100, rateUp6: ['char_a'] }),
         banner({ id: 'no-roster', openTime: 600 }),
         banner({ id: 'standard', openTime: 700, rateUp6: ['char_a'] }),
-        banner({ id: 'limited', openTime: 800, type: 'limited', rateUp5: ['char_b'] }),
+        banner({
+          id: 'limited',
+          openTime: 800,
+          ruleType: 'LIMITED',
+          type: 'limited',
+          rateUp5: ['char_b'],
+        }),
+        banner({
+          id: 'event',
+          openTime: 900,
+          ruleType: 'LINKAGE',
+          type: 'limited',
+          rateUp6: ['char_e'],
+        }),
         banner({
           id: 'already-global',
           openTime: 400,
@@ -618,6 +631,7 @@ describe('Gacha Utility Engine', () => {
         banner({
           id: 'invalid-global',
           openTime: 950,
+          ruleType: 'SPECIAL',
           globalStartDate: 'nope',
           rateUp6: ['char_d'],
         }),
@@ -625,8 +639,8 @@ describe('Gacha Utility Engine', () => {
 
       it('keeps only unreleased CN banners with a rate-up roster, oldest first', () => {
         expect(getUpcomingBanners(banners).map((item) => item.id)).toEqual([
-          'standard',
           'limited',
+          'event',
           'invalid-global',
         ])
       })
