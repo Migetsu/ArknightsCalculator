@@ -67,6 +67,12 @@ jobs:
           git clone --depth 1 \
             "https://x-access-token:${ASSETS_REPO_TOKEN}@github.com/Migetsu/arkcalc-assets.git" \
             temp-assets-repo
+          # Fail fast with an actionable message instead of after minutes of image
+          # generation when the PAT is read-only.
+          if ! git -C temp-assets-repo push --dry-run origin HEAD:main >/dev/null 2>&1; then
+            echo "::error::ASSETS_REPO_TOKEN cannot push to Migetsu/arkcalc-assets. Grant Contents: Read and write to the token."
+            exit 1
+          fi
 
       - name: Generate operator thumbs and hero art
         if: steps.guard.outputs.enabled == 'true'
@@ -80,8 +86,19 @@ jobs:
         if: steps.guard.outputs.enabled == 'true'
         run: |
           mkdir -p temp-assets-repo/thumbs temp-assets-repo/hero
-          cp -f public/art/thumbs/*.webp temp-assets-repo/thumbs/ 2>/dev/null || true
-          cp -f public/art/hero/*.webp temp-assets-repo/hero/ 2>/dev/null || true
+          # Only publish files that are missing: the assets repository already holds
+          # the existing set, and re-encoding it would rewrite hundreds of binaries
+          # on every run. A forced refresh is a manual operation.
+          for file in public/art/thumbs/*.webp; do
+            [ -e "$file" ] || continue
+            target="temp-assets-repo/thumbs/$(basename "$file")"
+            [ -e "$target" ] || cp "$file" "$target"
+          done
+          for file in public/art/hero/*.webp; do
+            [ -e "$file" ] || continue
+            target="temp-assets-repo/hero/$(basename "$file")"
+            [ -e "$target" ] || cp "$file" "$target"
+          done
 
       - name: Commit and push the assets repository
         if: steps.guard.outputs.enabled == 'true'
