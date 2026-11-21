@@ -128,14 +128,15 @@ const dateModeOptions = computed<SegmentOption<DateMode>[]>(() => [
   { value: 'global', label: t('gacha.dates.global') },
 ])
 
-// Type Filters — the catalogue only renders limited and event pools.
-type FilterChoice = 'all' | 'limited' | 'event'
+// Type Filters — standard, limited and event pools are listed; kernel pools are not.
+type FilterChoice = 'all' | 'limited' | 'event' | 'standard'
 const selectedFilter = ref<FilterChoice>('all')
 
 const filterOptions = computed<{ value: FilterChoice; label: string }[]>(() => [
   { value: 'all', label: t('gacha.filter.all') },
   { value: 'limited', label: t('gacha.filter.limited') },
   { value: 'event', label: t('gacha.filter.event') },
+  { value: 'standard', label: t('gacha.filter.standard') },
 ])
 
 const isCalculatorVisible = ref(true)
@@ -148,6 +149,11 @@ const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
   }
   if (selectedFilter.value === 'limited') {
     return upcomingBanners.value.filter((banner) => banner.ruleType === 'LIMITED')
+  }
+  if (selectedFilter.value === 'standard') {
+    return upcomingBanners.value.filter(
+      (banner) => banner.ruleType === 'NORMAL' || banner.ruleType === 'SINGLE',
+    )
   }
   return upcomingBanners.value.filter(
     (banner) => banner.ruleType === 'LINKAGE' || banner.ruleType === 'SPECIAL',
