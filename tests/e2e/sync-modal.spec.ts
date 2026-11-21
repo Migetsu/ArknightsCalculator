@@ -35,7 +35,9 @@ const loginPayload = {
 const session = {
   uid: 'channel-uid',
   token: 'yostar-account-token',
-  expiresAt: '2026-11-20T10:00:00.000Z',
+  // Relative so the stored-session specs never expire; a fixed date would silently
+  // turn these tests red once the calendar passes it.
+  expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
 }
 
 const SESSION_KEY = 'arkcalc_yostar_session'
