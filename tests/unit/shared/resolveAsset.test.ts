@@ -15,25 +15,24 @@ import {
 } from '../../../shared/utils/resolveAsset'
 
 describe('resolveAsset utility', () => {
-  it('pins the asset repository commits to verified commit SHAs', () => {
-    expect(ASSET_REPO_COMMIT).toBe('9bf239661e37766fba585806fb9fa67e79bb679e')
-    expect(EQUIP_REPO_COMMIT).toBe('0b28f9562fcadbd644c6225f8f8aefbb500b4d22')
-    expect(FEXLI_REPO_COMMIT).toBe('d7bdc0146f99f6fa88ecdc1bbf79021c012c21c5')
+  it('pins every upstream repository to a full commit SHA and embeds it in the CDN URLs', () => {
+    // The pins are refreshed automatically by the asset workflow, so assert the
+    // contract (40-char SHA + URL wiring) instead of a snapshot of the value.
+    for (const sha of [
+      ASSET_REPO_COMMIT,
+      EQUIP_REPO_COMMIT,
+      FEXLI_REPO_COMMIT,
+      OPTIMIZED_ASSETS_COMMIT,
+    ]) {
+      expect(sha).toMatch(/^[0-9a-f]{40}$/)
+    }
 
-    expect(PRIMARY_CDN_BASE).toContain(
-      'cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@9bf2396',
-    )
-    expect(SECONDARY_CDN_BASE).toContain(
-      'cdn.statically.io/gh/yuanyan3060/ArknightsGameResource/9bf2396',
-    )
-    expect(PRIMARY_EQUIP_CDN_BASE).toContain('cdn.jsdelivr.net/gh/Aceship/Arknight-Images@0b28f95')
-    expect(SECONDARY_EQUIP_CDN_BASE).toContain(
-      'cdn.statically.io/gh/Aceship/Arknight-Images/0b28f95',
-    )
-    expect(PRIMARY_FEXLI_CDN_BASE).toContain('cdn.jsdelivr.net/gh/fexli/ArknightsResource@d7bdc01')
-    expect(SECONDARY_FEXLI_CDN_BASE).toContain(
-      'cdn.statically.io/gh/fexli/ArknightsResource/d7bdc01',
-    )
+    expect(PRIMARY_CDN_BASE).toContain(`ArknightsGameResource@${ASSET_REPO_COMMIT}`)
+    expect(SECONDARY_CDN_BASE).toContain(`ArknightsGameResource/${ASSET_REPO_COMMIT}`)
+    expect(PRIMARY_EQUIP_CDN_BASE).toContain(`Aceship/Arknight-Images@${EQUIP_REPO_COMMIT}`)
+    expect(SECONDARY_EQUIP_CDN_BASE).toContain(`Aceship/Arknight-Images/${EQUIP_REPO_COMMIT}`)
+    expect(PRIMARY_FEXLI_CDN_BASE).toContain(`fexli/ArknightsResource@${FEXLI_REPO_COMMIT}`)
+    expect(SECONDARY_FEXLI_CDN_BASE).toContain(`fexli/ArknightsResource/${FEXLI_REPO_COMMIT}`)
   })
 
   it('returns empty array when id is missing or whitespace', () => {

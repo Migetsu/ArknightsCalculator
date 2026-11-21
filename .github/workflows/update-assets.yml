@@ -148,27 +148,64 @@ jobs:
             echo "Published $(git rev-parse --short HEAD)"
           fi
 
-      - name: Pin the new assets commit and open a PR
-        if: steps.guard.outputs.enabled == 'true' && steps.publish.outputs.changed == 'true'
+      - name: Wait for jsDelivr to serve the refreshed commits
+        if: steps.guard.outputs.enabled == 'true'
+        run: |
+          GAME_SHA=$(sed -n "s/.*ASSET_REPO_COMMIT = '\([0-9a-f]*\)'.*/\1/p" shared/utils/resolveAsset.ts)
+          ASSETS_SHA="${{ steps.publish.outputs.sha }}"
+
+          warm() {
+            local attempt=1
+            while [ "$attempt" -le 30 ]; do
+              local code
+              code=$(curl -s -o /dev/null -w '%{http_code}' "$1" || true)
+              [ "$code" = "200" ] && return 0
+              attempt=$((attempt + 1))
+              sleep 10
+            done
+            return 1
+          }
+
+          if [ -n "$GAME_SHA" ]; then
+            warm "https://cdn.jsdelivr.net/gh/yuanyan3060/ArknightsGameResource@${GAME_SHA}/avatar/char_003_kalts.png" \
+              || echo "::warning::jsDelivr is not serving the refreshed game-data commit yet."
+          fi
+
+          if [ -n "$ASSETS_SHA" ]; then
+            for file in $(git -C temp-assets-repo ls-files thumbs hero banners | shuf -n 5); do
+              warm "https://cdn.jsdelivr.net/gh/Migetsu/arkcalc-assets@${ASSETS_SHA}/${file}" \
+                || echo "::warning::jsDelivr is not serving ${file} from ${ASSETS_SHA} yet."
+            done
+          fi
+
+      - name: Commit refreshed pins and open a PR
+        if: steps.guard.outputs.enabled == 'true'
         id: pr
         env:
           ASSETS_SHA: ${{ steps.publish.outputs.sha }}
+          ASSETS_CHANGED: ${{ steps.publish.outputs.changed }}
           BRANCH: chore/refresh-assets-${{ github.run_id }}
         run: |
-          sed -i "s/export const OPTIMIZED_ASSETS_COMMIT = '[0-9a-f]*'/export const OPTIMIZED_ASSETS_COMMIT = '${ASSETS_SHA}'/" shared/utils/resolveAsset.ts
+          if [ "$ASSETS_CHANGED" = "true" ] && [ -n "$ASSETS_SHA" ]; then
+            sed -i "s/export const OPTIMIZED_ASSETS_COMMIT = '[0-9a-f]*'/export const OPTIMIZED_ASSETS_COMMIT = '${ASSETS_SHA}'/" shared/utils/resolveAsset.ts
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
           git add shared/utils/resolveAsset.ts data/
-          git commit -m "chore: publish optimized assets ${ASSETS_SHA:0:7}"
+          if git diff --cached --quiet; then
+            echo "No pin or data changes to publish."
+            exit 0
+          fi
+          git commit -m "chore: refresh assets and pins"
           git push -u origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" \
-            --title "chore: publish optimized assets ${ASSETS_SHA:0:7}" \
-            --body "Automated asset publication. Generated operator thumbs/hero art and banner thumbnails were pushed to \`Migetsu/arkcalc-assets\` at \`${ASSETS_SHA}\`; this PR pins that commit in \`OPTIMIZED_ASSETS_COMMIT\` and records the new banner art list. Merged only after green CI."
+            --title "chore: refresh assets and pins" \
+            --body "Automated asset refresh: upstream pins, the asset manifest and banner art flags were updated.${ASSETS_SHA:+ Published optimized assets at ${ASSETS_SHA}.} Merged only after green CI."
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
-      - name: Wait for CI and merge the pin bump
-        if: steps.guard.outputs.enabled == 'true' && steps.publish.outputs.changed == 'true'
+      - name: Wait for CI and merge the asset refresh
+        if: steps.guard.outputs.enabled == 'true' && steps.pr.outputs.branch != ''
         env:
           BRANCH: ${{ steps.pr.outputs.branch }}
         run: |
