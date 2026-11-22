@@ -36,7 +36,7 @@ export const OPTIMIZED_ASSETS_CDN = `https://cdn.jsdelivr.net/gh/Migetsu/arkcalc
  * Pinned resource commit from yuanyan3060/ArknightsGameResource.
  * Matches DATA_SOURCES_CONFIG.assets.commit.
  */
-export const ASSET_REPO_COMMIT = '50032de7655f9a9208cecd72dfa07a9ee2af1f65'
+export const ASSET_REPO_COMMIT = '0fdfa06570cda97c404a4519da4df984eae56951'
 
 const REPO_OWNER = 'yuanyan3060'
 const REPO_NAME = 'ArknightsGameResource'
