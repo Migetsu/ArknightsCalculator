@@ -54,7 +54,7 @@ export type FarmingStagePlan = z.infer<typeof FarmingStagePlanSchema>
 
 export const FarmingItemDetailSchema = z.object({
   itemId: z.string(),
-  /** Gross demand for the item (before depot stock and crafting). */
+  /** Total requirement: plan demand plus the amount consumed by workshop crafts. */
   required: z.number().nonnegative(),
   /** How much of the requirement is covered by depot stock of the item itself. */
   fromStock: z.number().nonnegative(),

@@ -62,7 +62,8 @@ const breakdownItems = computed(() => {
         need: isLmd ? count + have : (details?.required ?? count),
         have,
         crafted: details?.crafted ?? 0,
-        farmed: details?.farmed ?? (isLmd ? count : 0),
+        // Expected drops are fractional; one decimal is enough for the table.
+        farmed: Math.round((details?.farmed ?? (isLmd ? count : 0)) * 10) / 10,
       }
     })
     .filter((row) => row.need > 0)

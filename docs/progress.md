@@ -2489,3 +2489,12 @@
     - Breakdown table gained a **Craft** column and now renders `Need / Have / Craft / To farm` (e.g. `42 / 0 / 32 / 10`), hiding rows with zero gross need.
     - Stage badges are sorted by remaining need (not drop rate), tooltips show the remaining need, and a hint explains that stages are chosen jointly to minimise total sanity.
   - **Verified:** optimizer tests assert the item breakdown for partial stock (100 demand / 40 stock → fromStock 40, farmed ≥60) and for a stocked crafting ingredient (31044 crafted 1, missing 0); production seeded check shows `Craft` values in the table. `vitest` 129 files / 1 054 tests, `eslint`, `typecheck`, `i18n:check` (795 keys) green.
+
+- **Task 73 — Farming Breakdown Reports Total Requirement (`fix/farming-breakdown-numbers`):**
+  - **Reported after #176:** the new columns showed implausible numbers (e.g. “Craft 16” for a goal demand of 4, “To farm 79 037” for Sugar), making the plan look broken.
+  - **Root cause:** `itemDetails.required` used the goal demand only, while `crafted`/`farmed` count **all** occurrences, including intermediates consumed by other crafts, and the evaluation could process the same item twice when it appeared more than once in the crafting order.
+  - **Fix:**
+    - `evaluateCrafting` consumes each item's pending amount exactly once.
+    - `itemDetails.required` is now the **total requirement** (goal demand plus consumption by crafts), so `required ≈ fromStock + crafted + farmed + missing` and every column reconciles (e.g. solvent `24 = 4 stock + 20 farmed`, Refined Solvent `16 = 13 crafted + 3.7 farmed`).
+    - Expected drops are rounded to one decimal in the table.
+  - **Verified:** seeded production run with a partial stock shows coherent rows; tests cover partial stock, fully covered demand, and a stocked crafting ingredient.
