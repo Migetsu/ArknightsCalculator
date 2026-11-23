@@ -2470,3 +2470,13 @@
   - `build-asset-manifest` caches Git trees per commit SHA and retries GitHub 5xx responses; the rebuilt manifest reports **Art 440/440, Items 859/859, missingAvatarIds: []**.
   - Production verification (`6fbf55f`): every upcoming banner image loads (`Cinders of Snow`, `Joint Operation 4`, `orient #8`, `Drifter of the Depth` included) and `char_4247_oxi` / `char_4246_dminon` detail pages load hero + portrait art; `/operators` shows zero broken images.
   - Automated path: data sync → `workflow_run` triggers `Update Optimized Assets` → pins + manifest refreshed → wiki/fexli art generated → assets pushed → PR with pins and flags → merged after green CI.
+
+- **Task 71 — Depot Stock Now Covers Crafting Ingredients (`fix/farming-depot-ingredients`):**
+  - **Reported:** the farming page demanded ~69 Semi-Synthetic Solvent (`31043`) while the depot held 92; the stage card listed it as a contribution even though the item was covered.
+  - **Root cause:** `activeDeficit` subtracted depot stock only from the planner's goal materials. Solvent is consumed indirectly by crafting T4 materials (`31044`, `31064`), so the optimizer expanded that demand inside the recipe tree and never saw the 92 in stock. Result: 81 solvent of "required" output and a misleading badge in the 12-10 stage card.
+  - **Fix:**
+    - `optimizeFarming` accepts `stock`; the crafting evaluation starts with drops **plus stock**, so stocked ingredients satisfy demand without farming, and stage contributions only list items whose net requirement is still positive.
+    - The store now passes **gross** planner demand plus a stock map (LMD and EXP cards excluded because those deficits are already netted separately), so stock applies to every item in the recipe tree, not only the final ones.
+    - The breakdown table shows gross need with net "to farm" and hides rows whose remaining quantity is zero.
+  - **Verified:** reconstructed the reported plan (Eyjafjalla Hvít Aska E2 L90, Angelina the Mellow Wish E2 L60, Thumpy E2 L60 + masteries): without stock the optimizer lists 81 solvent contributions; with `stock: {31043: 92}` the solvent contributions disappear and total sanity drops by ~460 AP.
+  - **Tests:** optimizer stock cases (fully covered, partially covered, stocked crafting ingredient), updated store semantics; `vitest` 129 files / 1 054 tests, `eslint`, `typecheck` green.

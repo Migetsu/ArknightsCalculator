@@ -106,7 +106,7 @@ describe('useFarmingStore', () => {
     expect(ls6?.runs).toBe(12) // ceil(111,400 / 10,000) = 12 runs
   })
 
-  it('reduces material deficit when depotStore.items are populated (both crafting and direct modes)', async () => {
+  it('keeps gross demand and passes depot stock to the optimizer', async () => {
     const planner = usePlannerStore()
     const depot = useDepotStore()
     const settings = useSettingsStore()
@@ -116,34 +116,28 @@ describe('useFarmingStore', () => {
     await planner.addPlan('char_003_kalts')
     settings.setFarmingAllowCrafting(true)
 
-    // Check one of the raw deficit items from Kal'tsit's requirements
     const rawDeficitKeys = Object.keys(farming.activeDeficit).filter(
       (k) => k !== '4001' && !k.startsWith('200'),
     )
     expect(rawDeficitKeys.length).toBeGreaterThan(0)
     const targetItemId = rawDeficitKeys[0]!
-    const initialRemaining = farming.activeDeficit[targetItemId]!
-    expect(initialRemaining).toBeGreaterThan(1)
+    const initialDemand = farming.activeDeficit[targetItemId]!
+    expect(initialDemand).toBeGreaterThan(1)
 
-    // Add inventory to depotStore.items
-    const stockToAdd = Math.floor(initialRemaining / 2)
+    const stockToAdd = Math.floor(initialDemand / 2)
     await depot.setItemCount(targetItemId, stockToAdd)
 
-    // Verify activeDeficit remaining quantity reduced by stockToAdd
-    expect(farming.activeDeficit[targetItemId]).toBe(initialRemaining - stockToAdd)
+    // The store no longer shrinks the demand: stock is handed to the optimizer so it
+    // can also cover crafting ingredients, not only the final materials.
+    expect(farming.activeDeficit[targetItemId]).toBe(initialDemand)
+    expect(farming.depotStock[targetItemId]).toBe(stockToAdd)
 
-    // Direct deficit mode: check that depot stock is also subtracted
-    settings.setFarmingAllowCrafting(false)
-    const directDemandItem = planner.aggregatedDemand.items.find((i) => i.id === targetItemId)
-    if (directDemandItem) {
-      expect(farming.activeDeficit[targetItemId]).toBe(
-        Math.max(0, directDemandItem.count - stockToAdd),
-      )
+    const targets = farming.optimizationResult.stages
+      .flatMap((stage) => stage.contributions)
+      .filter((contribution) => contribution.itemId === targetItemId)
+      .map((contribution) => contribution.targetQuantity)
+    for (const target of targets) {
+      expect(target).toBeLessThanOrEqual(initialDemand - stockToAdd + 1)
     }
-
-    // Fully cover item in crafting mode
-    settings.setFarmingAllowCrafting(true)
-    await depot.setItemCount(targetItemId, initialRemaining)
-    expect(farming.activeDeficit[targetItemId] ?? 0).toBe(0)
   })
 })

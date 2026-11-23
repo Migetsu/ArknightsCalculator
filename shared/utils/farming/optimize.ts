@@ -20,6 +20,8 @@ export interface FarmingOptimizationOptions {
   allowCrafting?: boolean
   recipes?: readonly CraftRecipe[]
   now?: number
+  /** Items already in the depot; subtracted from every requirement, including crafting ingredients. */
+  stock?: Readonly<Record<string, number>>
 }
 
 const DEFAULT_MAX_SANITY = 135
@@ -411,6 +413,7 @@ function evaluateCrafting(
   drops: Readonly<Record<string, number>>,
   order: readonly string[],
   steps: Map<string, CraftStep>,
+  stock: Readonly<Record<string, number>> = {},
 ): CraftEvaluation {
   const pending = new Map<string, number>()
   const required: Record<string, number> = {}
@@ -419,6 +422,11 @@ function evaluateCrafting(
     required[id] = (required[id] ?? 0) + count
   }
   const available = new Map<string, number>(Object.entries(drops))
+  // Depot stock behaves like drops already on hand: it satisfies demand and can be
+  // consumed by crafting, so ingredients covered by stock never need farming.
+  for (const [id, count] of Object.entries(stock)) {
+    if (count > 0) available.set(id, (available.get(id) ?? 0) + count)
+  }
 
   const missing: Record<string, number> = {}
   for (const id of order) {
@@ -491,6 +499,11 @@ export function optimizeFarming(
         drops: Array.from(dropMap.values()),
       }
     }
+  }
+
+  const stock: Record<string, number> = {}
+  for (const [id, count] of Object.entries(options.stock ?? {})) {
+    if (count > 0) stock[id] = count
   }
 
   let demand = normalizeDemand(rawDemand)
@@ -598,8 +611,10 @@ export function optimizeFarming(
   const uncoveredItems: Array<{ itemId: string; remainingQuantity: number }> = []
   const coverableDemand: Record<string, number> = {}
   for (const [itemId, amount] of Object.entries(demand)) {
+    const netAmount = amount - (stock[itemId] ?? 0)
+    if (netAmount <= 0) continue
     if (!isCoverable(itemId)) {
-      uncoveredItems.push({ itemId, remainingQuantity: amount })
+      uncoveredItems.push({ itemId, remainingQuantity: netAmount })
       continue
     }
     coverableDemand[itemId] = amount
@@ -691,7 +706,7 @@ export function optimizeFarming(
   }
 
   function missingFor(runsForStages: readonly number[]): Record<string, number> {
-    return evaluateCrafting(demand, expectedDrops(runsForStages), order, steps).missing
+    return evaluateCrafting(demand, expectedDrops(runsForStages), order, steps, stock).missing
   }
 
   // Greedy integer completion: cover whatever the floored solution still lacks by
@@ -739,7 +754,7 @@ export function optimizeFarming(
   }
 
   // 6. Build the plan
-  const evaluation = evaluateCrafting(demand, expectedDrops(runs), order, steps)
+  const evaluation = evaluateCrafting(demand, expectedDrops(runs), order, steps, stock)
   const required = evaluation.required
 
   const stagePlans: FarmingStagePlan[] = []
@@ -763,12 +778,18 @@ export function optimizeFarming(
     for (const drop of entry.drops) {
       if (drop.dropRate <= 0) continue
       const normalizedId = drop.expUnits > 1 ? EXP_CARD_BASE_ID : drop.itemId
-      const needed = (required[normalizedId] ?? 0) > 0 || (rawDemand[drop.itemId] ?? 0) > 0
-      if (!needed) continue
+      // Requirement net of depot stock: items already covered are not a reason to
+      // farm this stage, even though the stage still drops them as a byproduct.
+      const netRequired = Math.max(
+        0,
+        (required[normalizedId] ?? 0) - (stock[normalizedId] ?? 0),
+        (rawDemand[drop.itemId] ?? 0) - (stock[drop.itemId] ?? 0),
+      )
+      if (netRequired <= 0) continue
       contributingDrops.push({
         itemId: drop.itemId,
         dropRate: drop.dropRate,
-        targetQty: Math.ceil(rawDemand[drop.itemId] ?? required[normalizedId] ?? 0),
+        targetQty: Math.ceil(netRequired),
       })
     }
     contributingDrops.sort((a, b) => b.dropRate - a.dropRate)
