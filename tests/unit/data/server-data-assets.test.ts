@@ -80,7 +80,9 @@ describe('server data asset buckets', () => {
     }
   })
 
-  it('places every real operator and handbook entry into its bucket', async () => {
+  it(
+    'places every real operator and handbook entry into its bucket',
+    async () => {
     const outDir = await mkdtemp(join(tmpdir(), 'arkcalc-real-data-assets-'))
     try {
       await buildDataAssetBuckets({ dataDir: DATA_DIR, outDir })
@@ -113,7 +115,11 @@ describe('server data asset buckets', () => {
     } finally {
       await rm(outDir, { recursive: true, force: true })
     }
-  })
+    },
+    // Building every bucket reads the whole data/ tree; under a parallel full-suite
+    // run it can exceed the default 5s timeout.
+    20_000,
+  )
 
   it('keeps hash distribution usable for every configured bucket', async () => {
     const operatorFiles = (await readdir(join(DATA_DIR, 'operators'))).filter((file) =>
