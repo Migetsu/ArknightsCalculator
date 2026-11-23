@@ -860,7 +860,11 @@ export function optimizeFarming(
       remaining: number
     }
   > = {}
-  for (const itemId of Object.keys(demand)) {
+  // Include crafted ingredients too: the materials panel must explain that e.g.
+  // Refined Solvent is consumed by Nucleic Crystal Sinter, even when it is not a
+  // direct plan demand.
+  const detailIds = new Set<string>([...Object.keys(demand), ...Object.keys(evaluation.required)])
+  for (const itemId of detailIds) {
     itemDetails[itemId] = {
       itemId,
       // Total requirement: the plan demand plus the amount consumed by crafts.
