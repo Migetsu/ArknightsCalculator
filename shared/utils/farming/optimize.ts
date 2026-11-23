@@ -636,10 +636,13 @@ export function optimizeFarming(
   const uncoveredItems: Array<{ itemId: string; remainingQuantity: number }> = []
   const coverableDemand: Record<string, number> = {}
   for (const [itemId, amount] of Object.entries(demand)) {
-    const netAmount = amount - (stock[itemId] ?? 0)
-    if (netAmount <= 0) continue
+    // Keep every coverable item in the demand even when stock covers its direct
+    // need: it may still be consumed as a crafting ingredient. Stock is applied
+    // later by evaluateCrafting, so dropping the item here made stage badges and
+    // the breakdown disagree.
+    const netAmount = Math.max(0, amount - (stock[itemId] ?? 0))
     if (!isCoverable(itemId)) {
-      uncoveredItems.push({ itemId, remainingQuantity: netAmount })
+      if (netAmount > 0) uncoveredItems.push({ itemId, remainingQuantity: netAmount })
       continue
     }
     coverableDemand[itemId] = amount

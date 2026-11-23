@@ -562,6 +562,36 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(res.itemDetails['31043']?.farmed ?? 0).toBeGreaterThanOrEqual(60)
     })
 
+    it('keeps a stock-covered item in the breakdown when it is also a crafting ingredient', () => {
+      // Refined Solvent (31044) is consumed by Nucleic Crystal Sinter (30155) and
+      // was previously dropped from the demand when stock covered its direct need,
+      // so the breakdown showed the goal quantity while stage badges used the total.
+      const res = optimizeFarming({ '31044': 8, '30155': 6 }, usSnapshot, {
+        server: 'global',
+        stagesMap: realStagesMap,
+        allowCrafting: true,
+        stock: { '31044': 11 },
+      })
+
+      const detail = res.itemDetails['31044']
+      expect(detail).toBeDefined()
+      expect(detail?.required).toBeGreaterThan(8)
+      expect(detail?.fromStock).toBe(11)
+      expect(detail?.required).toBeGreaterThanOrEqual(
+        (detail?.fromStock ?? 0) + (detail?.crafted ?? 0) + (detail?.farmed ?? 0) - 1,
+      )
+
+      const contributionTargets = res.stages
+        .flatMap((stage) => stage.contributions)
+        .filter((contribution) => contribution.itemId === '31044')
+        .map((contribution) => contribution.targetQuantity)
+      for (const target of contributionTargets) {
+        expect(target).toBeLessThanOrEqual(
+          Math.ceil((detail?.required ?? 0) - (detail?.fromStock ?? 0) - (detail?.crafted ?? 0)),
+        )
+      }
+    })
+
     it('uses stocked crafting ingredients instead of farming them', () => {
       // 31044 is crafted from 31043; the stocked solvent must cover that ingredient.
       const res = optimizeFarming({ '31044': 1 }, usSnapshot, {

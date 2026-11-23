@@ -2498,3 +2498,9 @@
     - `itemDetails.required` is now the **total requirement** (goal demand plus consumption by crafts), so `required ≈ fromStock + crafted + farmed + missing` and every column reconciles (e.g. solvent `24 = 4 stock + 20 farmed`, Refined Solvent `16 = 13 crafted + 3.7 farmed`).
     - Expected drops are rounded to one decimal in the table.
   - **Verified:** seeded production run with a partial stock shows coherent rows; tests cover partial stock, fully covered demand, and a stocked crafting ingredient.
+
+- **Task 74 — Breakdown and Stage Badges Now Agree (`fix/farming-stock-covered-demand`):**
+  - **Reported:** Refined Solvent showed `Need 8 / To farm 0` in the breakdown while stage 12-10 still listed `x10` Refined Solvent.
+  - **Root cause:** an item fully covered by depot stock was removed from the demand **before** optimization (`coverableDemand`), but it can still be consumed by other crafts (Refined Solvent is used by Nucleic Crystal Sinter, `31044 ×2` per craft). The breakdown then fell back to the goal quantity (`8`), while the optimizer's total requirement (`52`) produced the stage badge (`~10` after stock and crafts).
+  - **Fix:** stock-covered items stay in the demand; stock is applied only inside `evaluateCrafting`, so `itemDetails.required` is the true total and every surface uses the same numbers. Regression test covers `{31044: 8, 30155: 6}` with 11 refined in stock.
+  - **Reconciliation:** `Need ≈ Have + Craft + To farm`; Refined Solvent now reads `52 / 11 / 32 / ~9.9`, matching the `x10` stage badge (rounded expected drops).
