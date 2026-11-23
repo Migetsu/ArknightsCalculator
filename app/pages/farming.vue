@@ -321,7 +321,7 @@ const snapshotDateFormatted = computed(() => {
                     />
                     <div class="farming-page__item-meta">
                       <span class="farming-page__item-qty"
-                        >x{{ item.expectedQuantity.toLocaleString('en-US') }}</span
+                        >~x{{ Math.ceil(item.expectedQuantity).toLocaleString('en-US') }}</span
                       >
                       <span v-if="item.dropRate !== undefined" class="farming-page__item-rate">
                         {{
