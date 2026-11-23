@@ -2510,3 +2510,13 @@
   - **Root cause:** the column displayed `farmed` (expected drop yield, fractional by nature) instead of the whole requirement left after stock and crafts.
   - **Fix:** `itemDetails.remaining = ceil(required − fromStock − crafted)` is an integer and is what the table renders; stage badges show expected drops as an estimate with a `~` prefix and a rounded whole number. Items fully covered show `To farm 0`.
   - **Tests:** integer `remaining` assertions for partial stock (60) and stock-covered ingredients; table tests use whole values.
+
+- **Task 76 — Materials Panel Redesign (`feat/farming-materials-panel`):**
+  - **Requested:** replace the opaque `Material breakdown` table with a clear list of required materials, what still needs farming, and which resources feed which crafts.
+  - **New panel (`FarmingMaterialList`):**
+    - Summary chips: how many materials still need farming and how many are covered.
+    - **To farm** section: one row per material with integer `to farm`, plus `need / have / craft` and, for each row, `Recipe:` (what it is crafted from) and `Used to craft:` (which higher-tier items consume it).
+    - **Covered by stock & crafts** section with the same detail, collapsed below.
+    - Explicit empty state when nothing needs farming.
+  - **Data:** `itemDetails` now also includes crafted ingredients (not only direct planner goals), so dependencies such as _Refined Solvent → Nucleic Crystal Sinter_ are visible even when the solvent itself is covered by stock. Recipe chains are derived from `data/recipes.json` and the planned craft counts.
+  - **Tests:** component tests for sections, usage/recipe lines and the empty state; page/farming tests updated; `vitest` 129 files / 1 055 tests, `eslint`, `typecheck`, `i18n:check` (807 keys) green.

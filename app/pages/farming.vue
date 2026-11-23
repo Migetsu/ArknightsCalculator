@@ -16,7 +16,9 @@ import AkButton from '~/components/ui/AkButton.vue'
 import AkEmptyState from '~/components/ui/AkEmptyState.vue'
 import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 import AkSegmented from '~/components/ui/AkSegmented.vue'
-import FarmingDeficitTable from '~/components/farming/FarmingDeficitTable.vue'
+import FarmingMaterialList from '~/components/farming/FarmingMaterialList.vue'
+import rawRecipesData from '~/../data/recipes.json'
+import type { CraftRecipe } from '~/../shared/schemas/recipe'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -49,25 +51,78 @@ watch(
 
 const depotItemCount = computed(() => Object.values(depotStore.items).filter((c) => c > 0).length)
 
-const breakdownItems = computed(() => {
-  return Object.entries(farmingStore.activeDeficit)
-    .map(([id, count]) => {
-      const have = depotStore.getItemCount(id)
-      const details = farmingStore.optimizationResult.itemDetails[id]
-      const isLmd = id === '4001'
-      return {
-        id,
-        // Gross requirement; LMD's deficit is already netted, so add the stock back
-        // to show the real total.
-        need: isLmd ? count + have : (details?.required ?? count),
-        have,
-        crafted: details?.crafted ?? 0,
-        // Whole units: ceil of the requirement left after stock and crafts.
-        remaining: details?.remaining ?? Math.max(0, Math.ceil(count) - have),
-      }
-    })
+interface MaterialUsageRow {
+  name: string
+  amount: number
+}
+
+interface MaterialRowData {
+  id: string
+  name: string
+  need: number
+  have: number
+  craft: number
+  farm: number
+  isGoal: boolean
+  recipe: MaterialUsageRow[]
+  usages: MaterialUsageRow[]
+}
+
+const recipesByResult = new Map<string, CraftRecipe>()
+for (const recipe of rawRecipesData as unknown as CraftRecipe[]) {
+  if (recipe.kind !== 'synthesis' || !recipe.resultId) continue
+  if (!recipesByResult.has(recipe.resultId)) recipesByResult.set(recipe.resultId, recipe)
+}
+
+const materialRows = computed<MaterialRowData[]>(() => {
+  const details = farmingStore.optimizationResult.itemDetails
+  const demandIds = new Set(Object.keys(farmingStore.activeDeficit))
+
+  const rows = Object.entries(details).map(([id, detail]) => {
+    const recipe = recipesByResult.get(id)
+    const crafts = recipe && detail.crafted > 0 ? detail.crafted / recipe.resultCount : 0
+    const ingredients =
+      recipe && crafts > 0
+        ? recipe.ingredients.map((ingredient) => ({
+            name: getItemName(ingredient.id),
+            amount: Math.ceil(ingredient.count * crafts),
+          }))
+        : []
+    return {
+      id,
+      name: getItemName(id),
+      need: detail.required,
+      have: depotStore.getItemCount(id),
+      craft: detail.crafted,
+      farm: detail.remaining,
+      isGoal: demandIds.has(id),
+      recipe: ingredients,
+      usages: [] as MaterialUsageRow[],
+      recipeSource: recipe,
+      crafts,
+    }
+  })
+
+  const usages = new Map<string, MaterialUsageRow[]>()
+  for (const row of rows) {
+    if (!row.recipeSource || row.crafts <= 0) continue
+    for (const ingredient of row.recipeSource.ingredients) {
+      const list = usages.get(ingredient.id) ?? []
+      list.push({ name: row.name, amount: Math.ceil(ingredient.count * row.crafts) })
+      usages.set(ingredient.id, list)
+    }
+  }
+
+  return rows
     .filter((row) => row.need > 0)
-    .sort((a, b) => b.remaining - a.remaining || b.need - a.need || a.id.localeCompare(b.id))
+    .map(({ recipeSource: _recipeSource, crafts: _crafts, ...row }) => ({
+      ...row,
+      usages: usages.get(row.id) ?? [],
+    }))
+    .sort(
+      (a, b) =>
+        b.farm - a.farm || Number(b.isGoal) - Number(a.isGoal) || a.name.localeCompare(b.name),
+    )
 })
 
 function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {
@@ -404,11 +459,11 @@ const snapshotDateFormatted = computed(() => {
 
             <!-- Material Breakdown Card -->
             <div
-              v-if="breakdownItems.length > 0"
+              v-if="materialRows.length > 0"
               class="farming-page__card farming-page__breakdown-card"
             >
               <h2 class="farming-page__card-title">{{ t('farming.breakdownTitle') }}</h2>
-              <FarmingDeficitTable :items="breakdownItems" />
+              <FarmingMaterialList :items="materialRows" />
             </div>
 
             <!-- Supply Schedule Card -->
