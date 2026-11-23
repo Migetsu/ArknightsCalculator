@@ -53,16 +53,20 @@ const breakdownItems = computed(() => {
   return Object.entries(farmingStore.activeDeficit)
     .map(([id, count]) => {
       const have = depotStore.getItemCount(id)
+      const details = farmingStore.optimizationResult.itemDetails[id]
+      const isLmd = id === '4001'
       return {
         id,
-        // LMD is already a net deficit; materials are gross demand minus depot.
-        total: id === '4001' ? count + have : count,
-        remaining: id === '4001' ? count : Math.max(0, count - have),
+        // Gross requirement; LMD's deficit is already netted, so add the stock back
+        // to show the real total.
+        need: isLmd ? count + have : (details?.required ?? count),
         have,
+        crafted: details?.crafted ?? 0,
+        farmed: details?.farmed ?? (isLmd ? count : 0),
       }
     })
-    .filter((row) => row.remaining > 0)
-    .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
+    .filter((row) => row.need > 0)
+    .sort((a, b) => b.farmed - a.farmed || b.need - a.need || a.id.localeCompare(b.id))
 })
 
 function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {
@@ -288,6 +292,8 @@ const snapshotDateFormatted = computed(() => {
               </div>
             </div>
 
+            <p class="farming-page__stage-hint">{{ t('farming.stageSelectionHint') }}</p>
+
             <div class="farming-page__stage-list">
               <div
                 v-for="plan in farmingStore.optimizationResult.stages"
@@ -303,7 +309,7 @@ const snapshotDateFormatted = computed(() => {
                     v-for="item in plan.contributions"
                     :key="item.itemId"
                     class="farming-page__item-badge"
-                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity.toLocaleString('en-US')} (${formatDropRate(item.dropRate, item.itemId)}/run)`"
+                    :title="`${getItemName(item.itemId)}: ~${item.expectedQuantity.toLocaleString('en-US')} (${formatDropRate(item.dropRate, item.itemId)}/run) · ${t('farming.dropRemaining')}: ${item.targetQuantity}`"
                   >
                     <AkItemIcon
                       :item-id="item.itemId"
@@ -653,6 +659,13 @@ const snapshotDateFormatted = computed(() => {
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-text-primary);
+  }
+
+  &__stage-hint {
+    margin: 0 var(--space-md) var(--space-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-2xs);
+    line-height: 1.4;
   }
 
   &__stage-list {

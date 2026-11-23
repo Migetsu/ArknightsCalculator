@@ -400,6 +400,12 @@ interface CraftEvaluation {
   missing: Record<string, number>
   /** Every amount the plan has to provide: the demand plus crafted ingredients. */
   required: Record<string, number>
+  /** Amount produced by workshop crafting for each item. */
+  crafted: Record<string, number>
+  /** Amount of each item covered by depot stock. */
+  fromStock: Record<string, number>
+  /** Amount of each item consumed directly from stage drops. */
+  farmed: Record<string, number>
 }
 
 /**
@@ -421,20 +427,33 @@ function evaluateCrafting(
     pending.set(id, (pending.get(id) ?? 0) + count)
     required[id] = (required[id] ?? 0) + count
   }
-  const available = new Map<string, number>(Object.entries(drops))
-  // Depot stock behaves like drops already on hand: it satisfies demand and can be
-  // consumed by crafting, so ingredients covered by stock never need farming.
+
+  const dropAvailable = new Map<string, number>(Object.entries(drops))
+  const stockAvailable = new Map<string, number>()
   for (const [id, count] of Object.entries(stock)) {
-    if (count > 0) available.set(id, (available.get(id) ?? 0) + count)
+    if (count > 0) stockAvailable.set(id, (stockAvailable.get(id) ?? 0) + count)
   }
 
   const missing: Record<string, number> = {}
+  const crafted: Record<string, number> = {}
+  const fromStock: Record<string, number> = {}
+  const farmed: Record<string, number> = {}
+
   for (const id of order) {
     const need = pending.get(id) ?? 0
     if (need <= 0) continue
-    const fromDrops = Math.min(need, available.get(id) ?? 0)
-    available.set(id, (available.get(id) ?? 0) - fromDrops)
-    const remaining = need - fromDrops
+
+    // Stock first: the depot is free, so attribute coverage to it before stage drops.
+    const stockUse = Math.min(need, stockAvailable.get(id) ?? 0)
+    stockAvailable.set(id, (stockAvailable.get(id) ?? 0) - stockUse)
+    if (stockUse > 0) fromStock[id] = (fromStock[id] ?? 0) + stockUse
+
+    const afterStock = need - stockUse
+    const fromDrops = Math.min(afterStock, dropAvailable.get(id) ?? 0)
+    dropAvailable.set(id, (dropAvailable.get(id) ?? 0) - fromDrops)
+    if (fromDrops > 0) farmed[id] = (farmed[id] ?? 0) + fromDrops
+
+    const remaining = afterStock - fromDrops
     if (remaining <= 1e-9) continue
 
     const step = steps.get(id)
@@ -444,13 +463,15 @@ function evaluateCrafting(
     }
 
     const crafts = Math.ceil(remaining / step.resultCount - 1e-9)
+    crafted[id] = (crafted[id] ?? 0) + crafts * step.resultCount
     for (const ingredient of step.ingredients) {
       const amount = crafts * ingredient.count
       pending.set(ingredient.id, (pending.get(ingredient.id) ?? 0) + amount)
       required[ingredient.id] = (required[ingredient.id] ?? 0) + amount
     }
   }
-  return { missing, required }
+
+  return { missing, required, crafted, fromStock, farmed }
 }
 
 /**
@@ -514,6 +535,7 @@ export function optimizeFarming(
       totalSanity: 0,
       naturalRegenDays: 0,
       originitePrimeCost: 0,
+      itemDetails: {},
       uncoveredItems: [],
     }
   }
@@ -627,6 +649,7 @@ export function optimizeFarming(
       totalSanity: 0,
       naturalRegenDays: 0,
       originitePrimeCost: 0,
+      itemDetails: {},
       uncoveredItems,
     }
   }
@@ -782,7 +805,9 @@ export function optimizeFarming(
       // farm this stage, even though the stage still drops them as a byproduct.
       const netRequired = Math.max(
         0,
-        (required[normalizedId] ?? 0) - (stock[normalizedId] ?? 0),
+        (required[normalizedId] ?? 0) -
+          (evaluation.fromStock[normalizedId] ?? 0) -
+          (evaluation.crafted[normalizedId] ?? 0),
         (rawDemand[drop.itemId] ?? 0) - (stock[drop.itemId] ?? 0),
       )
       if (netRequired <= 0) continue
@@ -792,7 +817,9 @@ export function optimizeFarming(
         targetQty: Math.ceil(netRequired),
       })
     }
-    contributingDrops.sort((a, b) => b.dropRate - a.dropRate)
+    // Show the items the plan needs most first: drop rate alone made a small
+    // byproduct look like the reason for the stage.
+    contributingDrops.sort((a, b) => b.targetQty - a.targetQty || b.dropRate - a.dropRate)
 
     const primaryItemId = contributingDrops[0]?.itemId
     const contributions: FarmedItemContribution[] = contributingDrops.map((drop) => ({
@@ -815,6 +842,28 @@ export function optimizeFarming(
 
   stagePlans.sort((a, b) => b.sanity - a.sanity || a.stageId.localeCompare(b.stageId))
 
+  const itemDetails: Record<
+    string,
+    {
+      itemId: string
+      required: number
+      fromStock: number
+      crafted: number
+      farmed: number
+      missing: number
+    }
+  > = {}
+  for (const itemId of Object.keys(demand)) {
+    itemDetails[itemId] = {
+      itemId,
+      required: demand[itemId] ?? 0,
+      fromStock: evaluation.fromStock[itemId] ?? 0,
+      crafted: evaluation.crafted[itemId] ?? 0,
+      farmed: evaluation.farmed[itemId] ?? 0,
+      missing: evaluation.missing[itemId] ?? 0,
+    }
+  }
+
   const naturalRegenPerDay = (24 * 60) / regenMinutes
   const naturalRegenDays = Math.round((totalSanity / naturalRegenPerDay) * 10) / 10
   const originitePrimeCost = Math.ceil(totalSanity / maxSanity)
@@ -825,6 +874,7 @@ export function optimizeFarming(
     totalSanity,
     naturalRegenDays,
     originitePrimeCost,
+    itemDetails,
     uncoveredItems,
   }
 }

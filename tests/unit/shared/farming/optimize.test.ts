@@ -557,6 +557,9 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(expected).toBeGreaterThanOrEqual(60)
       expect(expected).toBeLessThan(62)
       expect(res.totalSanity).toBeGreaterThan(0)
+      expect(res.itemDetails['31043']?.required).toBe(100)
+      expect(res.itemDetails['31043']?.fromStock).toBe(40)
+      expect(res.itemDetails['31043']?.farmed ?? 0).toBeGreaterThanOrEqual(60)
     })
 
     it('uses stocked crafting ingredients instead of farming them', () => {
@@ -574,6 +577,8 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
         ),
       )
       expect(contributedIds.has('31043')).toBe(false)
+      expect(res.itemDetails['31044']?.crafted).toBe(1)
+      expect(res.itemDetails['31044']?.missing).toBe(0)
     })
   })
 })

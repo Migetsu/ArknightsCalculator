@@ -2480,3 +2480,12 @@
     - The breakdown table shows gross need with net "to farm" and hides rows whose remaining quantity is zero.
   - **Verified:** reconstructed the reported plan (Eyjafjalla Hvít Aska E2 L90, Angelina the Mellow Wish E2 L60, Thumpy E2 L60 + masteries): without stock the optimizer lists 81 solvent contributions; with `stock: {31043: 92}` the solvent contributions disappear and total sanity drops by ~460 AP.
   - **Tests:** optimizer stock cases (fully covered, partially covered, stocked crafting ingredient), updated store semantics; `vitest` 129 files / 1 054 tests, `eslint`, `typecheck` green.
+
+- **Task 72 — Explainable Material Breakdown (`fix/farming-breakdown-clarity`):**
+  - **Reported:** the plan asked to farm 10 Refined Solvent although the depot could craft 32, and the stage card's `x10` looked like the total requirement; the page did not explain why 12-10 was chosen over the per-item best 9-4.
+  - **Root cause (UI):** the table only showed Need/Have/To farm for _demand_ items and the stage badge showed expected drops; neither exposed how much of an item was covered by workshop crafting, so "10 to farm" was indistinguishable from "10 needed in total". Stage selection is a joint LP optimum across all missing items, so a single item's cheapest stage can differ.
+  - **Fix:**
+    - `optimizeFarming` now reports `itemDetails` per demand item: `required`, `fromStock`, `crafted`, `farmed`, `missing`; stock is consumed before stage drops so coverage is attributed correctly.
+    - Breakdown table gained a **Craft** column and now renders `Need / Have / Craft / To farm` (e.g. `42 / 0 / 32 / 10`), hiding rows with zero gross need.
+    - Stage badges are sorted by remaining need (not drop rate), tooltips show the remaining need, and a hint explains that stages are chosen jointly to minimise total sanity.
+  - **Verified:** optimizer tests assert the item breakdown for partial stock (100 demand / 40 stock → fromStock 40, farmed ≥60) and for a stocked crafting ingredient (31044 crafted 1, missing 0); production seeded check shows `Craft` values in the table. `vitest` 129 files / 1 054 tests, `eslint`, `typecheck`, `i18n:check` (795 keys) green.

@@ -52,12 +52,30 @@ export const FarmingStagePlanSchema = z.object({
 
 export type FarmingStagePlan = z.infer<typeof FarmingStagePlanSchema>
 
+export const FarmingItemDetailSchema = z.object({
+  itemId: z.string(),
+  /** Gross demand for the item (before depot stock and crafting). */
+  required: z.number().nonnegative(),
+  /** How much of the requirement is covered by depot stock of the item itself. */
+  fromStock: z.number().nonnegative(),
+  /** How much is produced by planned workshop crafts. */
+  crafted: z.number().nonnegative(),
+  /** How much is directly dropped by the selected stages and consumed by the plan. */
+  farmed: z.number().nonnegative(),
+  /** Requirement that no stage and no craft can cover. */
+  missing: z.number().nonnegative(),
+})
+
+export type FarmingItemDetail = z.infer<typeof FarmingItemDetailSchema>
+
 export const FarmingOptimizationResultSchema = z.object({
   stages: z.array(FarmingStagePlanSchema),
   totalRuns: z.number().int().nonnegative(),
   totalSanity: z.number().nonnegative(),
   naturalRegenDays: z.number().nonnegative(),
   originitePrimeCost: z.number().int().nonnegative(),
+  /** Per-demand-item explanation of where the quantity comes from. */
+  itemDetails: z.record(z.string(), FarmingItemDetailSchema).default({}),
   uncoveredItems: z.array(
     z.object({
       itemId: z.string(),
