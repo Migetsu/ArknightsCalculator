@@ -76,11 +76,11 @@ export const useFarmingStore = defineStore('farming', () => {
   const activeDeficit = computed<Record<string, number>>(() => {
     if (customDeficit.value) return customDeficit.value
     const def: Record<string, number> = {}
+    // Gross demand: depot stock is passed separately so the optimizer can also use
+    // it for crafting ingredients, not only for the final materials.
     for (const item of plannerStore.aggregatedDemand?.items ?? []) {
-      const have = depotStore.getItemCount(item.id)
-      const missing = Math.max(0, item.count - have)
-      if (missing > 0) {
-        def[item.id] = missing
+      if (item.count > 0) {
+        def[item.id] = item.count
       }
     }
 
@@ -128,8 +128,25 @@ export const useFarmingStore = defineStore('farming', () => {
     return def
   })
 
+  /**
+   * Depot stock that the optimizer may consume. LMD ('4001') and EXP cards are
+   * excluded because their deficits are already netted above, and crediting them
+   * twice would under-farm.
+   */
+  const depotStock = computed<Record<string, number>>(() => {
+    const stock: Record<string, number> = {}
+    for (const [id, count] of Object.entries(depotStore.items)) {
+      if (count <= 0) continue
+      if (id === '4001' || EXP_CARD_VALUES[id] !== undefined) continue
+      stock[id] = count
+    }
+    return stock
+  })
+
   const hasDeficit = computed<boolean>(() => {
-    return Object.values(activeDeficit.value).some((qty) => qty > 0)
+    return Object.entries(activeDeficit.value).some(
+      ([id, qty]) => qty - (depotStock.value[id] ?? 0) > 0,
+    )
   })
 
   const optimizationResult = computed(() => {
@@ -139,6 +156,7 @@ export const useFarmingStore = defineStore('farming', () => {
       regenMinutes: settingsStore.farmingRegenMinutes,
       allowCrafting: settingsStore.farmingAllowCrafting,
       stagesMap: stagesMap.value,
+      stock: depotStock.value,
     })
   })
 
@@ -221,6 +239,7 @@ export const useFarmingStore = defineStore('farming', () => {
     currentServerDay,
     isSnapshotOutdated,
     activeDeficit,
+    depotStock,
     hasDeficit,
     optimizationResult,
     openSupplyGroups,

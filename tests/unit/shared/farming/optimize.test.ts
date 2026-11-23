@@ -527,4 +527,53 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     expect(cnFull.totalSanity).toBe(28185) // materials + CE-6 + LS-6
     expect(usFull.totalSanity).toBe(29982) // materials + CE-6 + LS-6
   })
+
+  describe('depot stock awareness', () => {
+    it('does not farm an item already covered by depot stock', () => {
+      const res = optimizeFarming({ '31043': 69 }, usSnapshot, {
+        server: 'global',
+        stagesMap: realStagesMap,
+        allowCrafting: true,
+        stock: { '31043': 92 },
+      })
+
+      expect(res.stages).toHaveLength(0)
+      expect(res.totalSanity).toBe(0)
+    })
+
+    it('farms only the part of the demand the depot does not cover', () => {
+      const res = optimizeFarming({ '31043': 100 }, usSnapshot, {
+        server: 'global',
+        stagesMap: realStagesMap,
+        allowCrafting: true,
+        stock: { '31043': 40 },
+      })
+
+      const expected = res.stages
+        .flatMap((stage) => stage.contributions)
+        .filter((contribution) => contribution.itemId === '31043')
+        .reduce((sum, contribution) => sum + contribution.expectedQuantity, 0)
+
+      expect(expected).toBeGreaterThanOrEqual(60)
+      expect(expected).toBeLessThan(62)
+      expect(res.totalSanity).toBeGreaterThan(0)
+    })
+
+    it('uses stocked crafting ingredients instead of farming them', () => {
+      // 31044 is crafted from 31043; the stocked solvent must cover that ingredient.
+      const res = optimizeFarming({ '31044': 1 }, usSnapshot, {
+        server: 'global',
+        stagesMap: realStagesMap,
+        allowCrafting: true,
+        stock: { '31043': 10 },
+      })
+
+      const contributedIds = new Set(
+        res.stages.flatMap((stage) =>
+          stage.contributions.map((contribution) => contribution.itemId),
+        ),
+      )
+      expect(contributedIds.has('31043')).toBe(false)
+    })
+  })
 })

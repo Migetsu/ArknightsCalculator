@@ -53,23 +53,15 @@ const breakdownItems = computed(() => {
   return Object.entries(farmingStore.activeDeficit)
     .map(([id, count]) => {
       const have = depotStore.getItemCount(id)
-      let total: number | undefined
-      if (id === '4001') {
-        const baseLmd = plannerStore.aggregatedDemand?.lmd ?? 0
-        const craftLmd = settingsStore.farmingAllowCrafting
-          ? (plannerStore.resolvedCraftLmdCost ?? 0)
-          : 0
-        total = baseLmd + craftLmd
-      } else {
-        total = count + have
-      }
       return {
         id,
-        total,
-        remaining: count,
+        // LMD is already a net deficit; materials are gross demand minus depot.
+        total: id === '4001' ? count + have : count,
+        remaining: id === '4001' ? count : Math.max(0, count - have),
         have,
       }
     })
+    .filter((row) => row.remaining > 0)
     .sort((a, b) => b.remaining - a.remaining || a.id.localeCompare(b.id))
 })
 
