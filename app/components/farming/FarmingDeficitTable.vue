@@ -5,9 +5,13 @@ import AkItemIcon from '~/components/ui/AkItemIcon.vue'
 
 export interface FarmingDeficitItem {
   id: string
-  total?: number
-  remaining: number
+  /** Gross requirement before stock and crafting. */
+  need: number
   have: number
+  /** Planned workshop crafts from stocked or farmed ingredients. */
+  crafted: number
+  /** Expected direct drops consumed to cover the remaining need. */
+  farmed: number
 }
 
 interface Props {
@@ -31,7 +35,7 @@ function getItemName(itemId: string): string {
   return farmingStore.getItemName(itemId)
 }
 
-const visibleItems = computed(() => props.items.filter((item) => item.remaining > 0))
+const visibleItems = computed(() => props.items.filter((item) => item.need > 0))
 </script>
 
 <template>
@@ -53,6 +57,12 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
             class="farming-deficit-table__th farming-deficit-table__th--num farming-deficit-table__th--have"
           >
             {{ t('farming.breakdownColumnHave') }}
+          </th>
+          <th
+            scope="col"
+            class="farming-deficit-table__th farming-deficit-table__th--num farming-deficit-table__th--craft"
+          >
+            {{ t('farming.breakdownColumnCraft') }}
           </th>
           <th
             scope="col"
@@ -88,7 +98,7 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
             class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--need"
           >
             <span class="farming-deficit-table__num farming-deficit-table__num--need">
-              {{ item.total !== undefined ? item.total.toLocaleString() : '—' }}
+              {{ item.need.toLocaleString() }}
             </span>
           </td>
           <td
@@ -99,10 +109,17 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
             </span>
           </td>
           <td
+            class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--craft"
+          >
+            <span class="farming-deficit-table__num farming-deficit-table__num--craft">
+              {{ item.crafted.toLocaleString() }}
+            </span>
+          </td>
+          <td
             class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--remaining"
           >
             <span class="farming-deficit-table__num farming-deficit-table__num--remaining">
-              {{ item.remaining.toLocaleString() }}
+              {{ item.farmed.toLocaleString() }}
             </span>
           </td>
         </tr>
@@ -195,8 +212,16 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
       }
     }
 
+    &--craft {
+      width: 15%;
+
+      @media (width <= 480px) {
+        width: 16%;
+      }
+    }
+
     &--remaining {
-      width: 21%;
+      width: 19%;
       padding-right: var(--space-sm);
 
       @media (width <= 480px) {
@@ -228,6 +253,10 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
       text-align: right;
       white-space: nowrap;
       overflow: hidden;
+    }
+
+    &--craft {
+      color: var(--color-text-secondary);
     }
 
     &--remaining {
@@ -289,6 +318,10 @@ const visibleItems = computed(() => props.items.filter((item) => item.remaining 
     }
 
     &--have {
+      color: var(--color-text-secondary);
+    }
+
+    &--craft {
       color: var(--color-text-secondary);
     }
 
