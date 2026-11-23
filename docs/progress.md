@@ -2504,3 +2504,9 @@
   - **Root cause:** an item fully covered by depot stock was removed from the demand **before** optimization (`coverableDemand`), but it can still be consumed by other crafts (Refined Solvent is used by Nucleic Crystal Sinter, `31044 ×2` per craft). The breakdown then fell back to the goal quantity (`8`), while the optimizer's total requirement (`52`) produced the stage badge (`~10` after stock and crafts).
   - **Fix:** stock-covered items stay in the demand; stock is applied only inside `evaluateCrafting`, so `itemDetails.required` is the true total and every surface uses the same numbers. Regression test covers `{31044: 8, 30155: 6}` with 11 refined in stock.
   - **Reconciliation:** `Need ≈ Have + Craft + To farm`; Refined Solvent now reads `52 / 11 / 32 / ~9.9`, matching the `x10` stage badge (rounded expected drops).
+
+- **Task 75 — Whole Units in “To farm” (`fix/farming-whole-units`):**
+  - **Reported:** `To farm` showed fractional values (2.1, 1.9), which cannot be farmed.
+  - **Root cause:** the column displayed `farmed` (expected drop yield, fractional by nature) instead of the whole requirement left after stock and crafts.
+  - **Fix:** `itemDetails.remaining = ceil(required − fromStock − crafted)` is an integer and is what the table renders; stage badges show expected drops as an estimate with a `~` prefix and a rounded whole number. Items fully covered show `To farm 0`.
+  - **Tests:** integer `remaining` assertions for partial stock (60) and stock-covered ingredients; table tests use whole values.

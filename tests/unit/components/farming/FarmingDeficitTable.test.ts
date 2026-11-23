@@ -5,9 +5,9 @@ import FarmingDeficitTable from '../../../../app/components/farming/FarmingDefic
 describe('FarmingDeficitTable', () => {
   it('renders need, have, craft and farm columns in the provided order', async () => {
     const items = [
-      { id: '30014', need: 42, have: 0, crafted: 32, farmed: 10 },
-      { id: '30013', need: 18, have: 10, crafted: 0, farmed: 8 },
-      { id: '30012', need: 4, have: 0, crafted: 0, farmed: 4 },
+      { id: '30014', need: 42, have: 0, crafted: 32, remaining: 10 },
+      { id: '30013', need: 18, have: 10, crafted: 0, remaining: 8 },
+      { id: '30012', need: 4, have: 0, crafted: 0, remaining: 4 },
     ]
 
     const wrapper = await mountSuspended(FarmingDeficitTable, {
@@ -30,7 +30,7 @@ describe('FarmingDeficitTable', () => {
   })
 
   it('renders a fully farmed row with have=0 and craft=0', async () => {
-    const items = [{ id: '30011', need: 5, have: 0, crafted: 0, farmed: 5 }]
+    const items = [{ id: '30011', need: 5, have: 0, crafted: 0, remaining: 5 }]
 
     const wrapper = await mountSuspended(FarmingDeficitTable, {
       props: { items },
@@ -58,9 +58,9 @@ describe('FarmingDeficitTable', () => {
 
   it('skips items with no gross need', async () => {
     const items = [
-      { id: '30011', need: 5, have: 1, crafted: 0, farmed: 5 },
-      { id: '30012', need: 0, have: 10, crafted: 0, farmed: 0 },
-      { id: '30013', need: 0, have: 5, crafted: 0, farmed: 0 },
+      { id: '30011', need: 5, have: 1, crafted: 0, remaining: 5 },
+      { id: '30012', need: 0, have: 10, crafted: 0, remaining: 0 },
+      { id: '30013', need: 0, have: 5, crafted: 0, remaining: 0 },
     ]
 
     const wrapper = await mountSuspended(FarmingDeficitTable, {
