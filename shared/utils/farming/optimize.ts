@@ -442,6 +442,9 @@ function evaluateCrafting(
   for (const id of order) {
     const need = pending.get(id) ?? 0
     if (need <= 0) continue
+    // Consume the pending amount exactly once: the topological order may list an
+    // item more than once, and re-processing it inflated craft/farm counters.
+    pending.set(id, 0)
 
     // Stock first: the depot is free, so attribute coverage to it before stage drops.
     const stockUse = Math.min(need, stockAvailable.get(id) ?? 0)
@@ -856,7 +859,8 @@ export function optimizeFarming(
   for (const itemId of Object.keys(demand)) {
     itemDetails[itemId] = {
       itemId,
-      required: demand[itemId] ?? 0,
+      // Total requirement: the plan demand plus the amount consumed by crafts.
+      required: evaluation.required[itemId] ?? demand[itemId] ?? 0,
       fromStock: evaluation.fromStock[itemId] ?? 0,
       crafted: evaluation.crafted[itemId] ?? 0,
       farmed: evaluation.farmed[itemId] ?? 0,
