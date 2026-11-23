@@ -10,8 +10,8 @@ export interface FarmingDeficitItem {
   have: number
   /** Planned workshop crafts from stocked or farmed ingredients. */
   crafted: number
-  /** Expected direct drops consumed to cover the remaining need. */
-  farmed: number
+  /** Whole units still missing after stock and planned crafts. */
+  remaining: number
 }
 
 interface Props {
@@ -119,7 +119,7 @@ const visibleItems = computed(() => props.items.filter((item) => item.need > 0))
             class="farming-deficit-table__td farming-deficit-table__td--num farming-deficit-table__td--remaining"
           >
             <span class="farming-deficit-table__num farming-deficit-table__num--remaining">
-              {{ item.farmed.toLocaleString() }}
+              {{ item.remaining.toLocaleString() }}
             </span>
           </td>
         </tr>

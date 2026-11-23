@@ -559,6 +559,8 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       expect(res.totalSanity).toBeGreaterThan(0)
       expect(res.itemDetails['31043']?.required).toBe(100)
       expect(res.itemDetails['31043']?.fromStock).toBe(40)
+      expect(res.itemDetails['31043']?.remaining).toBe(60)
+      expect(Number.isInteger(res.itemDetails['31043']?.remaining)).toBe(true)
       expect(res.itemDetails['31043']?.farmed ?? 0).toBeGreaterThanOrEqual(60)
     })
 
@@ -576,6 +578,7 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
       const detail = res.itemDetails['31044']
       expect(detail).toBeDefined()
       expect(detail?.required).toBeGreaterThan(8)
+      expect(Number.isInteger(detail?.remaining)).toBe(true)
       expect(detail?.fromStock).toBe(11)
       expect(detail?.required).toBeGreaterThanOrEqual(
         (detail?.fromStock ?? 0) + (detail?.crafted ?? 0) + (detail?.farmed ?? 0) - 1,

@@ -64,6 +64,8 @@ export const FarmingItemDetailSchema = z.object({
   farmed: z.number().nonnegative(),
   /** Requirement that no stage and no craft can cover. */
   missing: z.number().nonnegative(),
+  /** Whole units still to farm after depot stock and planned crafts. */
+  remaining: z.number().int().nonnegative(),
 })
 
 export type FarmingItemDetail = z.infer<typeof FarmingItemDetailSchema>

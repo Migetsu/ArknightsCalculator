@@ -62,12 +62,12 @@ const breakdownItems = computed(() => {
         need: isLmd ? count + have : (details?.required ?? count),
         have,
         crafted: details?.crafted ?? 0,
-        // Expected drops are fractional; one decimal is enough for the table.
-        farmed: Math.round((details?.farmed ?? (isLmd ? count : 0)) * 10) / 10,
+        // Whole units: ceil of the requirement left after stock and crafts.
+        remaining: details?.remaining ?? Math.max(0, Math.ceil(count) - have),
       }
     })
     .filter((row) => row.need > 0)
-    .sort((a, b) => b.farmed - a.farmed || b.need - a.need || a.id.localeCompare(b.id))
+    .sort((a, b) => b.remaining - a.remaining || b.need - a.need || a.id.localeCompare(b.id))
 })
 
 function getItemRarity(itemId: string): 1 | 2 | 3 | 4 | 5 {

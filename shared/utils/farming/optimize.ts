@@ -857,6 +857,7 @@ export function optimizeFarming(
       crafted: number
       farmed: number
       missing: number
+      remaining: number
     }
   > = {}
   for (const itemId of Object.keys(demand)) {
@@ -868,6 +869,16 @@ export function optimizeFarming(
       crafted: evaluation.crafted[itemId] ?? 0,
       farmed: evaluation.farmed[itemId] ?? 0,
       missing: evaluation.missing[itemId] ?? 0,
+      // Resources are whole units: this is the amount still missing after stock
+      // and crafts, not the fractional expected drop yield.
+      remaining: Math.max(
+        0,
+        Math.ceil(
+          (evaluation.required[itemId] ?? demand[itemId] ?? 0) -
+            (evaluation.fromStock[itemId] ?? 0) -
+            (evaluation.crafted[itemId] ?? 0),
+        ),
+      ),
     }
   }
 
