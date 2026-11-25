@@ -2530,3 +2530,8 @@
     - Stage hint updated: each material is farmed on its cheapest dedicated stage; other drops are extra.
   - **Verified on the account data:** Sugar Substitute now comes from **0-7 ×4** (guaranteed) instead of 1-7; plan sanity dropped from 26 226 to **15 621** with the same zero missing items, because low-rate byproduct constraints no longer inflate the run counts.
   - **Tests:** dedicated-vs-joint fixture, prologue merge assertion, full suite 129 files / 1 057 tests, `eslint`, `typecheck`, `i18n:check`.
+
+- **Task 78 — Farming Defaults to Global Drop Data (`fix/farming-default-global-data`):**
+  - **Found during the dedicated-stage verification:** the settings default for `dropDataServer` was `cn`, and the server-side render has no localStorage, so the first paint of `/farming` always used CN drop data. Plans therefore included CN-only event stages (GT-4, OS-7, 17-5, MN-4) that do not exist on Global, and the prologue/0-7 merge was bypassed until the user toggled the server manually.
+  - **Fix:** default (and reset) is now **global**; the farming API cache dropped from 1 hour to 5 minutes so a new deploy's stage data reaches clients promptly. Explicit CN selection still works and is persisted per device.
+  - **Verification:** with the captured account state and no stored override the page now plans against the Global snapshot, uses 0-7 for Sugar Substitute and contains no CN-only event stages.

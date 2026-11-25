@@ -10,9 +10,9 @@ describe('useSettingsStore', () => {
     localStorage.clear()
   })
 
-  it('initializes dropDataServer to cn', () => {
+  it('initializes dropDataServer to global', () => {
     const store = useSettingsStore()
-    expect(store.dropDataServer).toBe('cn')
+    expect(store.dropDataServer).toBe('global')
   })
 
   it('updates dropDataServer and persists to localStorage', async () => {
@@ -29,7 +29,7 @@ describe('useSettingsStore', () => {
     store.setFarmingMaxSanity(120)
     store.setFarmingRegenMinutes(8)
     store.resetAllSettings()
-    expect(store.dropDataServer).toBe('cn')
+    expect(store.dropDataServer).toBe('global')
     expect(store.farmingMaxSanity).toBe(135)
     expect(store.farmingRegenMinutes).toBe(6)
   })
