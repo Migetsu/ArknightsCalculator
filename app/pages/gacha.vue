@@ -163,9 +163,12 @@ const filteredUpcomingBanners = computed<GachaBanner[]>(() => {
 // The estimated-live pool is rendered as the current banner, never duplicated in
 // the upcoming list.
 const visibleUpcomingBanners = computed<GachaBanner[]>(() => {
-  const hero = heroBanner.value
-  if (!hero || hero.server === 'en') return filteredUpcomingBanners.value
-  return filteredUpcomingBanners.value.filter((banner) => banner.id !== hero.id)
+  // A pool that is already live is never "upcoming": hide the hero and any CN pool
+  // whose estimated Global window has opened, even when the hero is an EN banner.
+  const hidden = new Set<string>()
+  if (heroBanner.value) hidden.add(heroBanner.value.id)
+  if (estimatedLiveBanner.value) hidden.add(estimatedLiveBanner.value.id)
+  return filteredUpcomingBanners.value.filter((banner) => !hidden.has(banner.id))
 })
 
 function estimateFor(banner: GachaBanner): string | null {
