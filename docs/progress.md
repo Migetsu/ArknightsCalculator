@@ -2520,3 +2520,13 @@
     - Explicit empty state when nothing needs farming.
   - **Data:** `itemDetails` now also includes crafted ingredients (not only direct planner goals), so dependencies such as _Refined Solvent → Nucleic Crystal Sinter_ are visible even when the solvent itself is covered by stock. Recipe chains are derived from `data/recipes.json` and the planned craft counts.
   - **Tests:** component tests for sections, usage/recipe lines and the empty state; page/farming tests updated; `vitest` 129 files / 1 055 tests, `eslint`, `typecheck`, `i18n:check` (807 keys) green.
+
+- **Task 77 — Dedicated Stages per Material + Prologue Fallback (`fix/farming-dedicated-stages`):**
+  - **Reported:** the plan farmed Sugar Substitute on 1-7 (`~x16`, 5.9%/run) even though 0-7 guarantees it; low-rate byproducts from stages chosen for other items were treated as a valid source.
+  - **Root causes:** (1) the US Penguin snapshot does not track prologue stages, so 0-7 was absent and the optimizer used the 1-7 byproduct; (2) the LP let any drop rate satisfy demand, so a 5.9% byproduct competed with a dedicated stage.
+  - **Fixes:**
+    - `readFarmingData('global')` merges permanent prologue stages (`0-1…0-11`) missing from the US snapshot from CN (`mergeMissingPrologueStages`, tested).
+    - New `preferDedicatedStages` option: each item is covered only by its cheapest stage (sanity per expected unit); other stages' drops are no longer constraints. The farming store enables it.
+    - Stage hint updated: each material is farmed on its cheapest dedicated stage; other drops are extra.
+  - **Verified on the account data:** Sugar Substitute now comes from **0-7 ×4** (guaranteed) instead of 1-7; plan sanity dropped from 26 226 to **15 621** with the same zero missing items, because low-rate byproduct constraints no longer inflate the run counts.
+  - **Tests:** dedicated-vs-joint fixture, prologue merge assertion, full suite 129 files / 1 057 tests, `eslint`, `typecheck`, `i18n:check`.

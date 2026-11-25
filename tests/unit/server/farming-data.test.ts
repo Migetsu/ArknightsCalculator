@@ -36,6 +36,10 @@ describe('server: farmingData', () => {
     expect(Object.keys(data.stagesMap).length).toBeLessThan(Object.keys(rawStages).length)
     expect(data.stagesMap[firstStage!.stageId]).toBeDefined()
 
+    // Prologue stages (0-7) are missing from the US snapshot; they are merged from CN.
+    expect(data.snapshot.stages['main_00-07']).toBeDefined()
+    expect(data.stagesMap['main_00-07']).toBeDefined()
+
     // Check itemsMap
     expect(data.itemsMap['30012']).toBeDefined()
     expect(data.itemsMap['30012']?.name).toBe('Orirock Cube')

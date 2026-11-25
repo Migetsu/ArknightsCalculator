@@ -531,6 +531,46 @@ describe('Farming Optimization Core (shared/utils/farming/optimize)', () => {
     }
   })
 
+  describe('dedicated stage preference', () => {
+    const byproductMatrix: Record<string, PenguinStageMatrix> = {
+      stage_rocks: {
+        stageId: 'stage_rocks',
+        code: 'R-1',
+        apCost: 6,
+        drops: [
+          { itemId: '30012', quantity: 100, times: 100, dropRate: 1 },
+          { itemId: '30021', quantity: 6, times: 100, dropRate: 0.06 },
+        ],
+      },
+      stage_sugar: {
+        stageId: 'stage_sugar',
+        code: 'S-1',
+        apCost: 6,
+        drops: [{ itemId: '30021', quantity: 100, times: 100, dropRate: 1 }],
+      },
+    }
+
+    it('does not treat a 6% byproduct as the source for its demand in dedicated mode', () => {
+      const demand = { '30012': 100, '30021': 4 }
+      const joint = optimizeFarming(demand, byproductMatrix, { allowCrafting: false })
+      const dedicated = optimizeFarming(demand, byproductMatrix, {
+        allowCrafting: false,
+        preferDedicatedStages: true,
+      })
+
+      expect(joint.stages.map((stage) => stage.code)).not.toContain('S-1')
+      const sugarStage = dedicated.stages.find((stage) => stage.code === 'S-1')
+      expect(sugarStage?.runs).toBe(4)
+      expect(dedicated.itemDetails['30021']?.remaining).toBe(4)
+    })
+
+    it('keeps the byproduct-free joint plan as the default', () => {
+      const demand = { '30012': 100, '30021': 4 }
+      const joint = optimizeFarming(demand, byproductMatrix, { allowCrafting: false })
+      expect(joint.stages.map((stage) => stage.code)).toEqual(['R-1'])
+    })
+  })
+
   describe('depot stock awareness', () => {
     it('does not farm an item already covered by depot stock', () => {
       const res = optimizeFarming({ '31043': 69 }, usSnapshot, {

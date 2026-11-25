@@ -22,6 +22,12 @@ export interface FarmingOptimizationOptions {
   now?: number
   /** Items already in the depot; subtracted from every requirement, including crafting ingredients. */
   stock?: Readonly<Record<string, number>>
+  /**
+   * Farm each material on the stage that is cheapest *for that material* and stop
+   * counting incidental low-rate byproducts from stages chosen for other items as
+   * a source for it. Byproducts remain in the plan as extra drops.
+   */
+  preferDedicatedStages?: boolean
 }
 
 const DEFAULT_MAX_SANITY = 135
@@ -501,6 +507,7 @@ export function optimizeFarming(
   const stagesMap = options.stagesMap
   const availableSet = options.availableStageIds ? new Set(options.availableStageIds) : null
   const allowCrafting = options.allowCrafting ?? true
+  const preferDedicatedStages = options.preferDedicatedStages ?? false
   const now = options.now ?? Date.now()
   const recipes = options.recipes ?? defaultRecipes
 
@@ -601,6 +608,35 @@ export function optimizeFarming(
     }
     return { stage, rates, drops }
   })
+
+  if (preferDedicatedStages) {
+    // Pick the cheapest stage per item (sanity per expected unit), then keep that
+    // item only on its dedicated stage. Stages chosen for other items no longer
+    // satisfy its demand through a 5%-rate byproduct.
+    const bestStageByItem = new Map<string, { stageId: string; cost: number }>()
+    for (const entry of stageYields) {
+      for (const [itemId, rate] of Object.entries(entry.rates)) {
+        if (rate <= 0) continue
+        const cost = entry.stage.apCost / rate
+        const prev = bestStageByItem.get(itemId)
+        if (!prev || cost < prev.cost - 1e-9) {
+          bestStageByItem.set(itemId, { stageId: entry.stage.stageId, cost })
+        }
+      }
+    }
+    for (const entry of stageYields) {
+      const best = Object.fromEntries(
+        Object.keys(entry.rates)
+          .filter((itemId) => bestStageByItem.get(itemId)?.stageId === entry.stage.stageId)
+          .map((itemId) => [itemId, entry.rates[itemId]!]),
+      )
+      entry.rates = best
+      entry.drops = entry.drops.filter((drop) => {
+        const normalizedId = drop.expUnits > 1 ? EXP_CARD_BASE_ID : drop.itemId
+        return bestStageByItem.get(normalizedId)?.stageId === entry.stage.stageId
+      })
+    }
+  }
 
   // 2. Material crafting model: recipes that build materials upward
   const steps = allowCrafting ? buildCraftSteps(recipes) : new Map<string, CraftStep>()
