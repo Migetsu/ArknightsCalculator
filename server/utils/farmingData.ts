@@ -52,6 +52,30 @@ function buildCompactSnapshot(source: PenguinMatrixSnapshot): PenguinMatrixSnaps
   }
 }
 
+/**
+ * Prologue stages (0-1…0-11) are permanent and identical on every server, but the
+ * US Penguin snapshot does not track them. Without this fallback a guaranteed stage
+ * such as 0-7 (Sugar Substitute) is missing and the optimizer farms it from a 5%
+ * byproduct on 1-7 instead.
+ */
+export function mergeMissingPrologueStages(
+  usStages: Record<string, PenguinStageMatrix>,
+  cnStages: Record<string, PenguinStageMatrix>,
+  stagesRaw: Record<string, Stage>,
+): number {
+  let added = 0
+  for (const [stageId, stage] of Object.entries(cnStages)) {
+    if (usStages[stageId]) continue
+    const meta = stagesRaw[stageId]
+    if (!meta) continue
+    if (!meta.code.startsWith('0-')) continue
+    if (!meta.servers.includes('global')) continue
+    usStages[stageId] = stage
+    added += 1
+  }
+  return added
+}
+
 function buildCompactStagesMap(
   snapshotStages: Record<string, PenguinStageMatrix>,
   fullStagesMap: Record<string, Stage>,
@@ -101,6 +125,9 @@ export async function readFarmingData(
 
   if (usRaw && !cachedGlobal) {
     const compactUs = buildCompactSnapshot(usRaw)
+    if (cnRaw) {
+      mergeMissingPrologueStages(compactUs.stages, cnRaw.stages, stagesRaw)
+    }
     const stagesMap = buildCompactStagesMap(compactUs.stages, stagesRaw)
     cachedGlobal = {
       server: 'US',

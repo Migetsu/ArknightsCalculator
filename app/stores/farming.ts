@@ -157,6 +157,9 @@ export const useFarmingStore = defineStore('farming', () => {
       allowCrafting: settingsStore.farmingAllowCrafting,
       stagesMap: stagesMap.value,
       stock: depotStock.value,
+      // Farm each material on its own best stage; incidental byproducts from other
+      // stages stay in the plan as extra drops but do not justify a 5%-rate source.
+      preferDedicatedStages: true,
     })
   })
 
