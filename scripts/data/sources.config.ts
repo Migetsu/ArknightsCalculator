@@ -64,7 +64,7 @@ export const DATA_SOURCES_CONFIG: DataSourcesConfig = {
     cn: {
       repo: 'SanityGoneAK/arknights-gamedata',
       branch: 'main',
-      commit: 'd035ad195e0ba1a9ab11de53d50ea567f8df25f0',
+      commit: '1225115791c0974e680b3c62056193e230b5c70e',
       locale: 'cn',
       tables: [
         'character_table.json',
@@ -85,7 +85,7 @@ export const DATA_SOURCES_CONFIG: DataSourcesConfig = {
     en: {
       repo: 'SanityGoneAK/arknights-gamedata',
       branch: 'main',
-      commit: 'd035ad195e0ba1a9ab11de53d50ea567f8df25f0',
+      commit: '1225115791c0974e680b3c62056193e230b5c70e',
       locale: 'en',
       tables: [
         'character_table.json',
